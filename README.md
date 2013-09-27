@@ -6,9 +6,9 @@ PHP SDK for the full v1 Mozu Api
 
 Usage:
 
-<B>Authenticating an Application with server provided refresh interval tokens</B>
-Authentication::initialize("[AppID]","[Shared Secret]","[Mozu URL]");
-
+<B>Authenticating an Application with server provided refresh interval tokens</B><br>
+Authentication::initialize("[AppID]","[Shared Secret]","[Mozu URL]");<br>
+<br>
 <B>Authenticating an Application with Custom refresh token intervals</B><br>
 $refreshInterval = new RefreshInterval();<br>
 $currentTime = time();<br>
