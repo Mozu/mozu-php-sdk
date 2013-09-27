@@ -22,7 +22,7 @@ class AuthenticationTest extends PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->object = Authentication::initialize("3dfdd89123864b7bbda6a1d500dc1dbb","11d458cdaa8543ac8b1ba1d500dc1dbb","http://mozu-ci.com");
+        $this->object = Authentication::initialize("<AppID>","<Shared Secret>","<URL>");
     }
 
     /**

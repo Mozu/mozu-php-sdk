@@ -7,7 +7,7 @@ use Mozu\Api\Security\RefreshInterval;
 abstract class BaseTest extends \PHPUnit_Framework_TestCase 
 {
 
-	public static $baseUrl = "http://mozu-ci.com";
+	public static $baseUrl = "http://home.mozu.com";
 
     public static function Auth() {
     	
@@ -16,7 +16,7 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
     	
     	$refreshInterval->setAccessTokenExpirationInterval($currentTime+5)
     	->setRefreshTokenExpirationInterval($currentTime+20);
-    	Authentication::initialize("3e1596f42af247c19a67a243010dafc4","00be795bf1cd485e8397a243010dafc4",static::$baseUrl, $refreshInterval);
+    	Authentication::initialize("<AppID>","<Shared Secret>",static::$baseUrl, $refreshInterval);
     }
  }
  
