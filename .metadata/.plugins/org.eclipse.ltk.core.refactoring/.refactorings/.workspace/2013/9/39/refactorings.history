@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Delete resource &apos;Mozu.Api&apos;" deleteContents="false" description="Delete resource &apos;Mozu.Api&apos;" element1="/Mozu.Api" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1380295324443"/>
-</session>
