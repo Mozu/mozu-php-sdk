@@ -54,6 +54,7 @@ class MozuClient {
 	
 	public function withBody($body) {
 		$this->jsonBody = json_encode ( $body );
+    $this->addHeader('Content-Type', 'application/json');
 		return $this;
 	}
 	
