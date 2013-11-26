@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
-/**
-*	Value details for a product property attribute.
-*/
 class ProductPropertyValue
 {
-	/**
-	*Value details for a product property attribute.
-	*/
-	public $value;
+		public $value;
 	public function getValue() {
 		return $this->value;
 	}
@@ -32,10 +26,7 @@ class ProductPropertyValue
 		return $this;
 	}
 
-	/**
-	*Details of the vocabulary value for predefined product property attributes.
-	*/
-	public $attributeVocabularyValueDetail;
+		public $attributeVocabularyValueDetail;
 	public function getAttributeVocabularyValueDetail() {
 		return $this->attributeVocabularyValueDetail;
 	}
@@ -45,10 +36,7 @@ class ProductPropertyValue
 		return $this;
 	}
 
-	/**
-	*Content of the product property value.
-	*/
-	public $content;
+		public $content;
 	public function getContent() {
 		return $this->content;
 	}

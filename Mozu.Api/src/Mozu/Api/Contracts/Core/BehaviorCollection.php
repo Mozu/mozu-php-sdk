@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\Core;
 
 
 
-/**
-*	***Always private and should not be published.***
-*/
 class BehaviorCollection
 {
-	/**
-	*The number of the resource entity items listed in the query collection. Signed 64-bit (8-byte) integer. System-supplied and read-only.
-	*/
-	public $totalCount;
+		public $totalCount;
 	public function getTotalCount() {
 		return $this->totalCount;
 	}
@@ -32,10 +26,7 @@ class BehaviorCollection
 		return $this;
 	}
 
-	/**
-	*An array list of objects in the returned collection.
-	*/
-	public $items;
+		public $items;
 	public function getItems() {
 		return $this->items;
 	}

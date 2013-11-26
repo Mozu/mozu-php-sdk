@@ -16,15 +16,15 @@ use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\DiscountUrl;
 
 /**
-* Define and manage discounts to apply to products, product categories, or orders. The discounts can be a specified amount off the price, percentage off the price, or for free shipping. Create a coupon code that shoppers can use to redeem the discount.
+* 
 */
 class DiscountClient {
 
 	/**
-	* Retrieves a list of discounts according to any specified filter criteria and sort options.
+	* 
 	*
-	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+	* @param string $filter 
+	* @param int $pageSize 
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return MozuClient
@@ -33,7 +33,7 @@ class DiscountClient {
 	{
 		$url = DiscountUrl::getDiscountsUrl($filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -42,16 +42,16 @@ class DiscountClient {
 	}
 	
 	/**
-	* Retrieves the details of a single discount.
+	* 
 	*
-	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
+	* @param int $discountId 
 	* @return MozuClient
 	*/
 	public static function getDiscountClient($dataViewMode,  $discountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = DiscountUrl::getDiscountUrl($discountId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -60,16 +60,16 @@ class DiscountClient {
 	}
 	
 	/**
-	* Retrieves the localized content specified for the specified discount.
+	* 
 	*
-	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
+	* @param int $discountId 
 	* @return MozuClient
 	*/
 	public static function getDiscountContentClient($dataViewMode,  $discountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = DiscountUrl::getDiscountContentUrl($discountId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -78,7 +78,7 @@ class DiscountClient {
 	}
 	
 	/**
-	* Generates a random code for a coupon.
+	* 
 	*
 	* @return MozuClient
 	*/
@@ -86,7 +86,7 @@ class DiscountClient {
 	{
 		$url = DiscountUrl::generateRandomCouponUrl();
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -95,16 +95,16 @@ class DiscountClient {
 	}
 	
 	/**
-	* Creates a discount.
+	* 
 	*
-	* @param Discount $discount Properties of the discount to create. Required properties: Content.Name, AmountType, StartDate, and Target.Type.
+	* @param Discount $discount 
 	* @return MozuClient
 	*/
 	public static function createDiscountClient($dataViewMode, $discount, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = DiscountUrl::createDiscountUrl();
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($discount)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withBody($discount)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -113,16 +113,16 @@ class DiscountClient {
 	}
 	
 	/**
-	* Redeems a discount configured in the product admin.
+	* 
 	*
-	* @param Redemption $redemption Properties of the product discount redemption.
+	* @param Redemption $redemption 
 	* @return MozuClient
 	*/
 	public static function redeemDiscountClient($dataViewMode, $redemption, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = DiscountUrl::redeemDiscountUrl();
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($redemption)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withBody($redemption)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -131,17 +131,17 @@ class DiscountClient {
 	}
 	
 	/**
-	* Modifies a discount.
+	* 
 	*
-	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
-	* @param Discount $discount Properties of the discount to update. Required properties: Content.Name, AmountType, StartDate, and Target.Type. Any unspecified properties are set to null and boolean variables are set to false.
+	* @param int $discountId 
+	* @param Discount $discount 
 	* @return MozuClient
 	*/
 	public static function updateDiscountClient($dataViewMode, $discount,  $discountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = DiscountUrl::updateDiscountUrl($discountId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($discount)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withBody($discount)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -150,17 +150,17 @@ class DiscountClient {
 	}
 	
 	/**
-	* Modifies the localized content for the specified discount. Rename the discount without modifying any other discount properties.
+	* 
 	*
-	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
-	* @param DiscountLocalizedContent $content New Name and/or LocaleCode. Properties of the content to update. Required property: Name.
+	* @param int $discountId 
+	* @param DiscountLocalizedContent $content 
 	* @return MozuClient
 	*/
 	public static function updateDiscountContentClient($dataViewMode, $content,  $discountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = DiscountUrl::updateDiscountContentUrl($discountId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($content)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withBody($content)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -169,15 +169,15 @@ class DiscountClient {
 	}
 	
 	/**
-	* Deletes a discount specified by its discount ID.
+	* 
 	*
-	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
+	* @param int $discountId 
 	*/
 	public static function deleteDiscountClient($dataViewMode,  $discountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = DiscountUrl::deleteDiscountUrl($discountId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -186,16 +186,16 @@ class DiscountClient {
 	}
 	
 	/**
-	* Deletes a previous discount redemption from an order.
+	* 
 	*
-	* @param int $discountId Unique identifier of the previously redeemed discount. System-supplied and read only.
-	* @param int $orderNumber The number of the order associated with the redeemed product discount.
+	* @param int $discountId 
+	* @param int $orderNumber 
 	*/
 	public static function unRedeemDiscountClient($dataViewMode, $discountId =  null, $orderNumber =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = DiscountUrl::unRedeemDiscountUrl($discountId, $orderNumber);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);

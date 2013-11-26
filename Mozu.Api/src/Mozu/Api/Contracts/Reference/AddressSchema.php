@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\Reference;
 
 
 
-/**
-*	The structure of postal addresses based on the country specified. Since addresses vary from country to country, this schema allows a flexible storage structure.
-*/
 class AddressSchema
 {
-	/**
-	*2 letter geographic code representing the country for the physical or mailing address. Currently limited to the US.
-	*/
-	public $countryCode;
+		public $countryCode;
 	public function getCountryCode() {
 		return $this->countryCode;
 	}
@@ -32,10 +26,7 @@ class AddressSchema
 		return $this;
 	}
 
-	/**
-	*The label associated with this country.
-	*/
-	public $countryLabel;
+		public $countryLabel;
 	public function getCountryLabel() {
 		return $this->countryLabel;
 	}
@@ -45,10 +36,7 @@ class AddressSchema
 		return $this;
 	}
 
-	/**
-	*The unique identifier of this postal address schema.
-	*/
-	public $id;
+		public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -58,10 +46,7 @@ class AddressSchema
 		return $this;
 	}
 
-	/**
-	*The fields to display for postal addresses associated with this country.
-	*/
-	public $fields;
+		public $fields;
 	public function getFields() {
 		return $this->fields;
 	}

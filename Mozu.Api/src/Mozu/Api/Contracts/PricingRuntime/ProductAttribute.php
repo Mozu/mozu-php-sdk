@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\PricingRuntime;
 
 
 
-/**
-*	Details of the product attribute, such its name and description.
-*/
 class ProductAttribute
 {
-	/**
-	*The data type of the attribute. There are four valid data types: "Bool", "DateTime", "Number", "String"
-	*/
-	public $dataType;
+		public $dataType;
 	public function getDataType() {
 		return $this->dataType;
 	}
@@ -32,10 +26,7 @@ class ProductAttribute
 		return $this;
 	}
 
-	/**
-	*The description of this product attribute.
-	*/
-	public $description;
+		public $description;
 	public function getDescription() {
 		return $this->description;
 	}
@@ -45,10 +36,7 @@ class ProductAttribute
 		return $this;
 	}
 
-	/**
-	*The storefront interface input type for this attribute such as a radio button or drop-down menu selection.
-	*/
-	public $inputType;
+		public $inputType;
 	public function getInputType() {
 		return $this->inputType;
 	}
@@ -58,10 +46,7 @@ class ProductAttribute
 		return $this;
 	}
 
-	/**
-	*The name of the product attribute.
-	*/
-	public $name;
+		public $name;
 	public function getName() {
 		return $this->name;
 	}
@@ -71,10 +56,7 @@ class ProductAttribute
 		return $this;
 	}
 
-	/**
-	*An attribute value type is either predefined vocabulary by the admin during product attribute set up or it can be "AdminEntered" or "ShopperEntered". The difference between predefined values versus manually entered values is such that the first choice is a set of options to choose from. AdminEntered and ShopperEntered are values that are entered rather than system-supplied and are not stored in the database, but captured during a live commerce operations such as during an order.
-	*/
-	public $valueType;
+		public $valueType;
 	public function getValueType() {
 		return $this->valueType;
 	}

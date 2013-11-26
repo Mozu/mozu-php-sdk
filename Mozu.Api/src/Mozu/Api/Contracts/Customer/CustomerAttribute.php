@@ -14,9 +14,6 @@ namespace Mozu\Api\Contracts\Customer;
 
 
 
-/**
-*	Properties of an attribute associated with a customer account.
-*/
 class CustomerAttribute
 {
 		public $attributeDefinitionId;
@@ -29,10 +26,7 @@ class CustomerAttribute
 		return $this;
 	}
 
-	/**
-	*"The fully qualified name of the attribute, which is a user defined attribute identifier."
-	*/
-	public $fullyQualifiedName;
+		public $fullyQualifiedName;
 	public function getFullyQualifiedName() {
 		return $this->fullyQualifiedName;
 	}
@@ -42,10 +36,7 @@ class CustomerAttribute
 		return $this;
 	}
 
-	/**
-	*Unique identifier of the customer account attribute.
-	*/
-	public $id;
+		public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -55,10 +46,7 @@ class CustomerAttribute
 		return $this;
 	}
 
-	/**
-	*List of values for the attribute.
-	*/
-	public $values;
+		public $values;
 	public function getValues() {
 		return $this->values;
 	}
@@ -68,10 +56,7 @@ class CustomerAttribute
 		return $this;
 	}
 
-	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
-	*/
-	public $auditInfo;
+		public $auditInfo;
 	public function getAuditInfo() {
 		return $this->auditInfo;
 	}

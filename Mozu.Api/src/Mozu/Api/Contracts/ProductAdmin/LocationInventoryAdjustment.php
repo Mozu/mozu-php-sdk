@@ -16,26 +16,6 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 class LocationInventoryAdjustment
 {
-		public $type;
-	public function getType() {
-		return $this->type;
-	}
-	
-	public function setType($type) {
-		$this->type = $type;
-		return $this;
-	}
-
-		public $value;
-	public function getValue() {
-		return $this->value;
-	}
-	
-	public function setValue($value) {
-		$this->value = $value;
-		return $this;
-	}
-
 		public $locationCode;
 	public function getLocationCode() {
 		return $this->locationCode;
@@ -53,6 +33,26 @@ class LocationInventoryAdjustment
 	
 	public function setProductCode($productCode) {
 		$this->productCode = $productCode;
+		return $this;
+	}
+
+		public $type;
+	public function getType() {
+		return $this->type;
+	}
+	
+	public function setType($type) {
+		$this->type = $type;
+		return $this;
+	}
+
+		public $value;
+	public function getValue() {
+		return $this->value;
+	}
+	
+	public function setValue($value) {
+		$this->value = $value;
 		return $this;
 	}
 

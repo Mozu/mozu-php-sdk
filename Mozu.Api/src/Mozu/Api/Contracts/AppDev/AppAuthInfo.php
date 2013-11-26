@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\AppDev;
 
 
 
-/**
-*	The information required to authenticate third party applications against the Mozu API.
-*/
 class AppAuthInfo
 {
-	/**
-	*Unique identifier of the application. System-supplied and read-only.
-	*/
-	public $applicationId;
+		public $applicationId;
 	public function getApplicationId() {
 		return $this->applicationId;
 	}
@@ -32,10 +26,7 @@ class AppAuthInfo
 		return $this;
 	}
 
-	/**
-	*System-supplied alphanumeric code used to authenticate applications. This string is only available for viewing in Mozu Dev Center.
-	*/
-	public $sharedSecret;
+		public $sharedSecret;
 	public function getSharedSecret() {
 		return $this->sharedSecret;
 	}

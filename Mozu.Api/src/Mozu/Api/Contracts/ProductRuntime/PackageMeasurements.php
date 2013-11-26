@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 
-/**
-*	Dimensions of the packaged product.
-*/
 class PackageMeasurements
 {
-	/**
-	*Height of the package in imperial units of feet and inches.
-	*/
-	public $packageHeight;
+		public $packageHeight;
 	public function getPackageHeight() {
 		return $this->packageHeight;
 	}
@@ -32,10 +26,7 @@ class PackageMeasurements
 		return $this;
 	}
 
-	/**
-	*Length of the package in imperial units of feet and inches.
-	*/
-	public $packageLength;
+		public $packageLength;
 	public function getPackageLength() {
 		return $this->packageLength;
 	}
@@ -45,10 +36,7 @@ class PackageMeasurements
 		return $this;
 	}
 
-	/**
-	*Weight of the package in imperial units of pounds and ounces.
-	*/
-	public $packageWeight;
+		public $packageWeight;
 	public function getPackageWeight() {
 		return $this->packageWeight;
 	}
@@ -58,10 +46,7 @@ class PackageMeasurements
 		return $this;
 	}
 
-	/**
-	*Width of the package in imperial units of feet and inches.
-	*/
-	public $packageWidth;
+		public $packageWidth;
 	public function getPackageWidth() {
 		return $this->packageWidth;
 	}

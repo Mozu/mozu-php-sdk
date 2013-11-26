@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
-/**
-*	The category to which a product belongs.
-*/
 class ProductCategory
 {
-	/**
-	*Unique identifier for the storefront container used to organize products.
-	*/
-	public $categoryId;
+		public $categoryId;
 	public function getCategoryId() {
 		return $this->categoryId;
 	}

@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\PaymentService;
 
 
 
-/**
-*	Account information for the payment.
-*/
 class GatewayAccount
 {
-	/**
-	*2 letter geographic code representing the country for the physical or mailing address. Currently limited to the US.
-	*/
-	public $countryCode;
+		public $countryCode;
 	public function getCountryCode() {
 		return $this->countryCode;
 	}
@@ -32,10 +26,7 @@ class GatewayAccount
 		return $this;
 	}
 
-	/**
-	*Identifier of the payment gateway.
-	*/
-	public $gatewayDefinitionId;
+		public $gatewayDefinitionId;
 	public function getGatewayDefinitionId() {
 		return $this->gatewayDefinitionId;
 	}
@@ -45,10 +36,7 @@ class GatewayAccount
 		return $this;
 	}
 
-	/**
-	*Identifier of the entity.
-	*/
-	public $id;
+		public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -58,10 +46,7 @@ class GatewayAccount
 		return $this;
 	}
 
-	/**
-	*If true, the product is marked as available for sale. Setting a product to IsActive = false will prevent it from being shown on the customer facing storefront.
-	*/
-	public $isActive;
+		public $isActive;
 	public function getIsActive() {
 		return $this->isActive;
 	}
@@ -71,10 +56,7 @@ class GatewayAccount
 		return $this;
 	}
 
-	/**
-	*List of credential fields for the payment gateway account.
-	*/
-	public $credentialFields;
+		public $credentialFields;
 	public function getCredentialFields() {
 		return $this->credentialFields;
 	}

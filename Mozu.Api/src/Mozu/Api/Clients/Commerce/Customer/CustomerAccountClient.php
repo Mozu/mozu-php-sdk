@@ -16,15 +16,15 @@ use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\CustomerAccountUrl;
 
 /**
-* Create, view, update, and delete a contact in a customer account. A customer account may have multiple contacts for billing or shipping addresses. Each contact may also list any groups to which the contact belongs and whether the contact accepts marketing material such as newsletters or email offers.
+* 
 */
 class CustomerAccountClient {
 
 	/**
-	* Retrieves a list of customer accounts.
+	* 
 	*
-	* @param string $fields The fields to include in the response.
-	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
+	* @param string $fields 
+	* @param string $filter 
 	* @param int $pageSize 
 	* @param string $q 
 	* @param int $qLimit 
@@ -44,9 +44,9 @@ class CustomerAccountClient {
 	}
 	
 	/**
-	* Retrieve details of a customer account.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account to retrieve.
+	* @param int $accountId 
 	* @return MozuClient
 	*/
 	public static function getAccountClient( $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -100,7 +100,7 @@ class CustomerAccountClient {
 	}
 	
 	/**
-	* Creates a new customer account.
+	* 
 	*
 	* @param CustomerAccount $account 
 	* @return MozuClient
@@ -135,9 +135,25 @@ class CustomerAccountClient {
 	}
 	
 	/**
-	* Updates a customer account.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
+	* @param int $accountId 
+	*/
+	public static function recomputeCustomerLifetimeValueClient( $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	{
+		$url = CustomerAccountUrl::recomputeCustomerLifetimeValueUrl($accountId);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url);
+		if ($authTicket != null)
+			$mozuClient = $mozuClient->withUserAuth($authTicket);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* 
+	*
+	* @param int $accountId 
 	* @param CustomerAccount $account 
 	* @return MozuClient
 	*/
@@ -153,9 +169,9 @@ class CustomerAccountClient {
 	}
 	
 	/**
-	* Deletes a customer account. A customer account cannot be deleted if any orders exist, past or present.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account to delete.
+	* @param int $accountId 
 	*/
 	public static function deleteAccountClient( $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

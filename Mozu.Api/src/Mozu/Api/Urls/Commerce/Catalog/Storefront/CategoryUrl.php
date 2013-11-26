@@ -19,8 +19,8 @@ class CategoryUrl  {
 
 	/**
 		* Get Resource Url for GetCategories
-		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product category search results by any of its properties, including its position in the category hierarchy. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). <b>For example - "filter=IsDisplayed+eq+true"</b>
-		* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+		* @param string $filter 
+		* @param int $pageSize 
 		* @param string $sortBy 
 		* @param int $startIndex 
 		* @return string Resource Url
@@ -37,8 +37,8 @@ class CategoryUrl  {
 	
 	/**
 		* Get Resource Url for GetCategory
-		* @param bool $allowInactive If true, allow inactive categories to be retrieved in the category list response. If false, the categories retrieved will not include ones marked inactive.
-		* @param int $categoryId Unique identifier for the storefront container used to organize products.
+		* @param bool $allowInactive 
+		* @param int $categoryId 
 		* @return string Resource Url
 	*/
 	public static function getCategoryUrl($allowInactive, $categoryId)

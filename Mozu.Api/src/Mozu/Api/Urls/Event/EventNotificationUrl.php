@@ -19,8 +19,8 @@ class EventNotificationUrl  {
 
 	/**
 		* Get Resource Url for GetEvents
-		* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
-		* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+		* @param string $filter 
+		* @param int $pageSize 
 		* @param string $sortBy 
 		* @param int $startIndex 
 		* @return string Resource Url
@@ -37,7 +37,7 @@ class EventNotificationUrl  {
 	
 	/**
 		* Get Resource Url for GetEvent
-		* @param string $eventId The unique identifier of the event being retrieved. An event is a notification about a create, read, update, or delete on an order, product, discount or category.
+		* @param string $eventId 
 		* @return string Resource Url
 	*/
 	public static function getEventUrl($eventId)

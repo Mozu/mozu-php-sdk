@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
-/**
-*	The localized product image in the language specified by the LocaleCode.
-*/
 class ProductLocalizedImage
 {
-	/**
-	*Descriptive text associated with the image or video that appears on the storefront.
-	*/
-	public $altText;
+		public $altText;
 	public function getAltText() {
 		return $this->altText;
 	}
@@ -32,10 +26,7 @@ class ProductLocalizedImage
 		return $this;
 	}
 
-	/**
-	*Identifier of the localized product image.
-	*/
-	public $id;
+		public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -45,10 +36,7 @@ class ProductLocalizedImage
 		return $this;
 	}
 
-	/**
-	*Image title that appears on the storefront set to the language specified by the site's LocaleCode.
-	*/
-	public $imageLabel;
+		public $imageLabel;
 	public function getImageLabel() {
 		return $this->imageLabel;
 	}
@@ -58,10 +46,7 @@ class ProductLocalizedImage
 		return $this;
 	}
 
-	/**
-	*Directory path where the physical product image is stored.
-	*/
-	public $imagePath;
+		public $imagePath;
 	public function getImagePath() {
 		return $this->imagePath;
 	}
@@ -71,10 +56,7 @@ class ProductLocalizedImage
 		return $this;
 	}
 
-	/**
-	*URL of the image.
-	*/
-	public $imageUrl;
+		public $imageUrl;
 	public function getImageUrl() {
 		return $this->imageUrl;
 	}
@@ -84,10 +66,7 @@ class ProductLocalizedImage
 		return $this;
 	}
 
-	/**
-	*"Language used for the entity. Currently, only ""en-US"" is supported."
-	*/
-	public $localeCode;
+		public $localeCode;
 	public function getLocaleCode() {
 		return $this->localeCode;
 	}
@@ -117,10 +96,7 @@ class ProductLocalizedImage
 		return $this;
 	}
 
-	/**
-	*The physical link or URL of the product video. The physical path name is set in the language specified by the LocaleCode.
-	*/
-	public $videoUrl;
+		public $videoUrl;
 	public function getVideoUrl() {
 		return $this->videoUrl;
 	}

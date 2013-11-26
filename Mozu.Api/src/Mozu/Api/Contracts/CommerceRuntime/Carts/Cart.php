@@ -14,9 +14,6 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Carts;
 
 
 
-/**
-*	Properties of an active shopping cart.
-*/
 class Cart
 {
 		public $channelCode;
@@ -59,10 +56,7 @@ class Cart
 		return $this;
 	}
 
-	/**
-	*The estimated total of the cart after all discounts have been applied.
-	*/
-	public $discountedTotal;
+		public $discountedTotal;
 	public function getDiscountedTotal() {
 		return $this->discountedTotal;
 	}
@@ -72,10 +66,7 @@ class Cart
 		return $this;
 	}
 
-	/**
-	*Estimated amount of discounts applied to all items in the cart. Usually a negative dollar amount or number. System-supplied and read-only.
-	*/
-	public $discountTotal;
+		public $discountTotal;
 	public function getDiscountTotal() {
 		return $this->discountTotal;
 	}
@@ -85,10 +76,7 @@ class Cart
 		return $this;
 	}
 
-	/**
-	*Date in UTC Date/Time when the cart becomes inactive based on a system-calculated interval. For example, if an anonymous shopper has 14 days of inactivity, the cart is considered abandoned after that period of inactivity. System-supplied and read-only.
-	*/
-	public $expirationDate;
+		public $expirationDate;
 	public function getExpirationDate() {
 		return $this->expirationDate;
 	}
@@ -98,10 +86,7 @@ class Cart
 		return $this;
 	}
 
-	/**
-	*The monetary sum of all fees incurred in the cart.
-	*/
-	public $feeTotal;
+		public $feeTotal;
 	public function getFeeTotal() {
 		return $this->feeTotal;
 	}
@@ -111,10 +96,7 @@ class Cart
 		return $this;
 	}
 
-	/**
-	*If the handling fee for the cart is subject to sales tax, the total tax amount.
-	*/
-	public $handlingTaxTotal;
+		public $handlingTaxTotal;
 	public function getHandlingTaxTotal() {
 		return $this->handlingTaxTotal;
 	}
@@ -124,10 +106,7 @@ class Cart
 		return $this;
 	}
 
-	/**
-	*Unique identifier of the shopping cart.
-	*/
-	public $id;
+		public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -137,10 +116,7 @@ class Cart
 		return $this;
 	}
 
-	/**
-	*The total amount of tax for items in the cart.
-	*/
-	public $itemTaxTotal;
+		public $itemTaxTotal;
 	public function getItemTaxTotal() {
 		return $this->itemTaxTotal;
 	}
@@ -150,10 +126,7 @@ class Cart
 		return $this;
 	}
 
-	/**
-	*The date in UTC Date/Time when the items in the cart were last validated against the site's product catalog. System-supplied and read-only.
-	*/
-	public $lastValidationDate;
+		public $lastValidationDate;
 	public function getLastValidationDate() {
 		return $this->lastValidationDate;
 	}
@@ -173,10 +146,7 @@ class Cart
 		return $this;
 	}
 
-	/**
-	*The total amount of tax incurred on the shipping charges in the cart.
-	*/
-	public $shippingTaxTotal;
+		public $shippingTaxTotal;
 	public function getShippingTaxTotal() {
 		return $this->shippingTaxTotal;
 	}
@@ -186,10 +156,7 @@ class Cart
 		return $this;
 	}
 
-	/**
-	*The total shipping amount estimated for the cart.
-	*/
-	public $shippingTotal;
+		public $shippingTotal;
 	public function getShippingTotal() {
 		return $this->shippingTotal;
 	}
@@ -199,10 +166,7 @@ class Cart
 		return $this;
 	}
 
-	/**
-	*Unique identifier of the site.
-	*/
-	public $siteId;
+		public $siteId;
 	public function getSiteId() {
 		return $this->siteId;
 	}
@@ -212,10 +176,7 @@ class Cart
 		return $this;
 	}
 
-	/**
-	*Estimated amount of the cart without sales tax, shipping costs, and other fees.
-	*/
-	public $subtotal;
+		public $subtotal;
 	public function getSubtotal() {
 		return $this->subtotal;
 	}
@@ -225,10 +186,7 @@ class Cart
 		return $this;
 	}
 
-	/**
-	*The total sum of sales tax estimated for a cart.
-	*/
-	public $taxTotal;
+		public $taxTotal;
 	public function getTaxTotal() {
 		return $this->taxTotal;
 	}
@@ -238,10 +196,7 @@ class Cart
 		return $this;
 	}
 
-	/**
-	*Unique identifier of the Mozu tenant.
-	*/
-	public $tenantId;
+		public $tenantId;
 	public function getTenantId() {
 		return $this->tenantId;
 	}
@@ -251,10 +206,7 @@ class Cart
 		return $this;
 	}
 
-	/**
-	*Estimated total amount of the cart, including items, sales tax, shipping costs, and other fees.
-	*/
-	public $total;
+		public $total;
 	public function getTotal() {
 		return $this->total;
 	}
@@ -264,10 +216,7 @@ class Cart
 		return $this;
 	}
 
-	/**
-	*Unique identifier of the user associated with the shopping cart.
-	*/
-	public $userId;
+		public $userId;
 	public function getUserId() {
 		return $this->userId;
 	}
@@ -297,10 +246,7 @@ class Cart
 		return $this;
 	}
 
-	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
-	*/
-	public $auditInfo;
+		public $auditInfo;
 	public function getAuditInfo() {
 		return $this->auditInfo;
 	}
@@ -310,10 +256,7 @@ class Cart
 		return $this;
 	}
 
-	/**
-	*Messages logged or created each time the cart was modified.
-	*/
-	public $changeMessages;
+		public $changeMessages;
 	public function getChangeMessages() {
 		return $this->changeMessages;
 	}
@@ -333,10 +276,7 @@ class Cart
 		return $this;
 	}
 
-	/**
-	*An array list of objects in the returned collection.
-	*/
-	public $items;
+		public $items;
 	public function getItems() {
 		return $this->items;
 	}
@@ -346,10 +286,7 @@ class Cart
 		return $this;
 	}
 
-	/**
-	*List of order-level discounts projected to apply to the cart at checkout.
-	*/
-	public $orderDiscounts;
+		public $orderDiscounts;
 	public function getOrderDiscounts() {
 		return $this->orderDiscounts;
 	}

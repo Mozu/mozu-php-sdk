@@ -17,7 +17,7 @@ use Mozu\Api\Clients\Commerce\Orders\ShipmentClient;
 use Mozu\Api\ApiContext;
 
 /**
-* Use the shipments resource to manage shipments of collections of packages for an order.
+* 
 */
 class ShipmentResource {
 
@@ -44,9 +44,9 @@ class ShipmentResource {
 	}
 	
 	/**
-	* Retrieves the available shipping methods applicable to the order. Typically used to display available shipping method options on the checkout page.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order for the available shipment methods being retrieved.
+	* @param string $orderId 
 	* @return array|ShippingRate 
 	*/
 	public function getAvailableShipmentMethods( $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -59,10 +59,10 @@ class ShipmentResource {
 	}
 	
 	/**
-	* Creates a shipment from one or more package associated with an order and assign a label and tracking number to an order shipment.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order for this shipment.
-	* @param array|string $packageIds List of unique identifiers for each package associated with this shipment. Not all packages must belong to the same shipment.
+	* @param string $orderId 
+	* @param array|string $packageIds 
 	* @return array|Package 
 	*/
 	public function createPackageShipments($packageIds,  $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -75,10 +75,10 @@ class ShipmentResource {
 	}
 	
 	/**
-	* Cancels a shipment.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order to cancel shipment.
-	* @param string $shipmentId Unique identifier of the shipment to cancel.
+	* @param string $orderId 
+	* @param string $shipmentId 
 	*/
 	public function deleteShipment( $orderId,  $shipmentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

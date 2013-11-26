@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\Content;
 
 
 
-/**
-*	The hierarchical structure of the folders in a document list including root folder, parent folder, and subfolders.
-*/
 class FolderTree
 {
-	/**
-	*The name of the folder.
-	*/
-	public $folder;
+		public $folder;
 	public function getFolder() {
 		return $this->folder;
 	}
@@ -32,10 +26,7 @@ class FolderTree
 		return $this;
 	}
 
-	/**
-	*The subfolders contained within a folder.
-	*/
-	public $children;
+		public $children;
 	public function getChildren() {
 		return $this->children;
 	}

@@ -15,7 +15,6 @@ namespace Mozu\Api\Resources\Commerce\Location;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Location\LocationClient;
 use Mozu\Api\ApiContext;
-use Mozu\Api\DataViewMode;
 
 /**
 * 

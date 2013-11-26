@@ -16,12 +16,12 @@ use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Settings\General\TaxableTerritoryUrl;
 
 /**
-* Use the taxable territories subresource to manage the regional territories for this site that are subejct to sales tax.
+* 
 */
 class TaxableTerritoryClient {
 
 	/**
-	* Retrieves a list of the taxable territories configured for the site.
+	* 
 	*
 	* @return MozuClient
 	*/
@@ -37,9 +37,9 @@ class TaxableTerritoryClient {
 	}
 	
 	/**
-	* Creates a new territory for which to calculate sales tax.
+	* 
 	*
-	* @param TaxableTerritory $taxableTerritory Properties of the taxable territory to create.
+	* @param TaxableTerritory $taxableTerritory 
 	* @return MozuClient
 	*/
 	public static function addTaxableTerritoryClient($taxableTerritory, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -54,9 +54,9 @@ class TaxableTerritoryClient {
 	}
 	
 	/**
-	* Updates one or more taxable territories configured for a site.
+	* 
 	*
-	* @param array|TaxableTerritory $taxableterritories Properties of the taxable territories to update.
+	* @param array|TaxableTerritory $taxableterritories 
 	* @return MozuClient
 	*/
 	public static function updateTaxableTerritoriesClient($taxableterritories, Mozu\Api\Security\AuthTicket &$authTicket= null)

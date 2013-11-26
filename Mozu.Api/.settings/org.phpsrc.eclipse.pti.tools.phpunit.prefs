@@ -1,4 +1,4 @@
-bootstrap=\\Mozu.Api\\tests\\src\\bootstrap.php
+bootstrap=
 debug_print_output=true
 eclipse.preferences.version=1
 generate_code_coverage=true

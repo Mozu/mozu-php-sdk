@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\ProductAdmin\Discounts;
 
 
 
-/**
-*	Properties of a discount redemption.
-*/
 class Redemption
 {
-	/**
-	*Unique identifier of the discount associated with the redemption.
-	*/
-	public $discountId;
+		public $discountId;
 	public function getDiscountId() {
 		return $this->discountId;
 	}
@@ -32,10 +26,7 @@ class Redemption
 		return $this;
 	}
 
-	/**
-	*Number of the order associated with the discount redemption.
-	*/
-	public $orderNumber;
+		public $orderNumber;
 	public function getOrderNumber() {
 		return $this->orderNumber;
 	}
@@ -45,10 +36,7 @@ class Redemption
 		return $this;
 	}
 
-	/**
-	*The date and time on which the discount was redeemed.
-	*/
-	public $redeemedOn;
+		public $redeemedOn;
 	public function getRedeemedOn() {
 		return $this->redeemedOn;
 	}
@@ -58,10 +46,7 @@ class Redemption
 		return $this;
 	}
 
-	/**
-	*Unique identifier of the user who redeemed the discount.
-	*/
-	public $userId;
+		public $userId;
 	public function getUserId() {
 		return $this->userId;
 	}

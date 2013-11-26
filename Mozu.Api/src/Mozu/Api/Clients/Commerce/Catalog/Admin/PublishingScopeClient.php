@@ -29,7 +29,7 @@ class PublishingScopeClient {
 	{
 		$url = PublishingScopeUrl::discardDraftsUrl();
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($publishScope)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withBody($publishScope)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -46,7 +46,7 @@ class PublishingScopeClient {
 	{
 		$url = PublishingScopeUrl::publishDraftsUrl();
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($publishScope)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withBody($publishScope)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);

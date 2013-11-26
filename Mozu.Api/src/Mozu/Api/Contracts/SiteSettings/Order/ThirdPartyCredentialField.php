@@ -16,13 +16,13 @@ namespace Mozu\Api\Contracts\SiteSettings\Order;
 
 class ThirdPartyCredentialField
 {
-		public $apiname;
-	public function getApiname() {
-		return $this->apiname;
+		public $apiName;
+	public function getApiName() {
+		return $this->apiName;
 	}
 	
-	public function setApiname($apiname) {
-		$this->apiname = $apiname;
+	public function setApiName($apiName) {
+		$this->apiName = $apiName;
 		return $this;
 	}
 

@@ -17,14 +17,14 @@ use Mozu\Api\Clients\Platform\ReferenceDataClient;
 use Mozu\Api\ApiContext;
 
 /**
-* The Reference resource retrieves collections of standards the Mozu system currently supports. This includes content locales, top-level domains, units of measure, countries, currencies, time zones, and shipping or billing address schemas.
+* 
 */
 class ReferenceDataResource {
 
 	/**
-	* Retrieves a specific address schema based on the country code provided. This operation allows the creation of custom shipping and billing address fields.
+	* 
 	*
-	* @param string $countryCode 2 letter geographic code representing the country for the physical or mailing address. Currently limited to the US.
+	* @param string $countryCode 
 	* @return AddressSchema 
 	*/
 	public function getAddressSchema($countryCode =  null)
@@ -36,7 +36,7 @@ class ReferenceDataResource {
 	}
 	
 	/**
-	* Retrieves the entire list of address schemas that the system supports.
+	* 
 	*
 	* @return AddressSchemaCollection 
 	*/
@@ -49,9 +49,9 @@ class ReferenceDataResource {
 	}
 	
 	/**
-	* ***Always private and should not be published.***
+	* 
 	*
-	* @param int $behaviorId ***Always private and should not be published.***
+	* @param int $behaviorId 
 	* @return Behavior 
 	*/
 	public function getBehavior( $behaviorId)
@@ -63,7 +63,7 @@ class ReferenceDataResource {
 	}
 	
 	/**
-	* ***Always private and should not be published.***
+	* 
 	*
 	* @return BehaviorCategoryCollection 
 	*/
@@ -76,9 +76,9 @@ class ReferenceDataResource {
 	}
 	
 	/**
-	* ***Always private and should not be published.***
+	* 
 	*
-	* @param int $categoryId ***Always private and should not be published.***
+	* @param int $categoryId 
 	* @return BehaviorCategory 
 	*/
 	public function getBehaviorCategory( $categoryId)
@@ -90,7 +90,7 @@ class ReferenceDataResource {
 	}
 	
 	/**
-	* ***Always private and should not be published.***
+	* 
 	*
 	* @param string $userType 
 	* @return BehaviorCollection 
@@ -104,7 +104,7 @@ class ReferenceDataResource {
 	}
 	
 	/**
-	* Retrieves the entire list of content locales that the system supports. The content locales indicate the language used and the country where the language is used. Just because the system supports the content locale does not mean that the site or site group supports the language. For example,currently only "en-US" is supported.
+	* 
 	*
 	* @return ContentLocaleCollection 
 	*/
@@ -117,7 +117,7 @@ class ReferenceDataResource {
 	}
 	
 	/**
-	* Retrieves the entire list of countries that the system supports.
+	* 
 	*
 	* @return CountryCollection 
 	*/
@@ -130,7 +130,7 @@ class ReferenceDataResource {
 	}
 	
 	/**
-	* Retrieves the entire list of currencies that the system supports.
+	* 
 	*
 	* @return CurrencyCollection 
 	*/
@@ -143,7 +143,7 @@ class ReferenceDataResource {
 	}
 	
 	/**
-	* Retrieves the entire list of time zones that the system supports.
+	* 
 	*
 	* @return TimeZoneCollection 
 	*/
@@ -156,7 +156,7 @@ class ReferenceDataResource {
 	}
 	
 	/**
-	* Retrieves the entire list of top-level Internet domains that the system supports.
+	* 
 	*
 	* @return TopLevelDomainCollection 
 	*/
@@ -169,9 +169,9 @@ class ReferenceDataResource {
 	}
 	
 	/**
-	* Retrieves the entire list of units of measure that the system supports.
+	* 
 	*
-	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
+	* @param string $filter 
 	* @return UnitOfMeasureCollection 
 	*/
 	public function getUnitsOfMeasure($filter =  null)

@@ -16,12 +16,12 @@ use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Settings\Shipping\SiteShippingHandlingFeeUrl;
 
 /**
-* Use the Order Handling Fee subresource to configure any shipping and handling fees to apply to orders for this site.
+* 
 */
 class SiteShippingHandlingFeeClient {
 
 	/**
-	* Retrieves the details of the order handling fee configured for the site.
+	* 
 	*
 	* @return MozuClient
 	*/
@@ -37,9 +37,9 @@ class SiteShippingHandlingFeeClient {
 	}
 	
 	/**
-	* Creates a new order handling fee for the site.
+	* 
 	*
-	* @param SiteShippingHandlingFee $orderHandlingFee Properties of the order handling fee to assess for order shipment.
+	* @param SiteShippingHandlingFee $orderHandlingFee 
 	* @return MozuClient
 	*/
 	public static function createOrderHandlingFeeClient($orderHandlingFee, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -54,9 +54,9 @@ class SiteShippingHandlingFeeClient {
 	}
 	
 	/**
-	* Updates the order handling fee amount for the site.
+	* 
 	*
-	* @param SiteShippingHandlingFee $orderHandlingFee The combined price for all items in the order, including all selected options but excluding any discounts.
+	* @param SiteShippingHandlingFee $orderHandlingFee 
 	* @return MozuClient
 	*/
 	public static function updateOrderHandlingFeeClient($orderHandlingFee, Mozu\Api\Security\AuthTicket &$authTicket= null)

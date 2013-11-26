@@ -16,12 +16,12 @@ use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\Discounts\DiscountTargetUrl;
 
 /**
-* Retrieves and modifies the products, categories, and shipping methods eligible for discounts in the form of a fixed dollar amount, percentage off a product price, or free shipping.
+* 
 */
 class DiscountTargetClient {
 
 	/**
-	* Retrieves the discount target, that is which products, categories, or shipping methods are eligible for the discount.
+	* 
 	*
 	* @param int $discountId 
 	* @return MozuClient
@@ -30,7 +30,7 @@ class DiscountTargetClient {
 	{
 		$url = DiscountTargetUrl::getDiscountTargetUrl($discountId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -39,17 +39,17 @@ class DiscountTargetClient {
 	}
 	
 	/**
-	* Modifies properties of the discount target, for example, the dollar amount, or precentage off the price.
+	* 
 	*
-	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
-	* @param DiscountTarget $discountTarget Properties of the discount target to modify. Required properties: Target.Type. Any unspecified properties are set to null and boolean variables to false.
+	* @param int $discountId 
+	* @param DiscountTarget $discountTarget 
 	* @return MozuClient
 	*/
 	public static function updateDiscountTargetClient($dataViewMode, $discountTarget,  $discountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = DiscountTargetUrl::updateDiscountTargetUrl($discountId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($discountTarget)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withBody($discountTarget)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);

@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\Customer;
 
 
 
-/**
-*	The currency code and the total monetary sum of the order. Currently, only USD is supported.
-*/
 class CurrencyAmount
 {
-	/**
-	*The monetary amount in the specified currency locale code.
-	*/
-	public $amount;
+		public $amount;
 	public function getAmount() {
 		return $this->amount;
 	}
@@ -32,10 +26,7 @@ class CurrencyAmount
 		return $this;
 	}
 
-	/**
-	*"3-letter ISO 4217 standard global currency code. Currently, only ""USD"" (US Dollar) is supported."
-	*/
-	public $currencyCode;
+		public $currencyCode;
 	public function getCurrencyCode() {
 		return $this->currencyCode;
 	}

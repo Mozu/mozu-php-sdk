@@ -17,7 +17,7 @@ use Mozu\Api\Clients\Commerce\Customer\Accounts\CardClient;
 use Mozu\Api\ApiContext;
 
 /**
-* Use the Cards subresource to manage stored credit cards for customer accounts. Mozu stores limited card data in the Customer service for expedited ordering purposes; however, the complete card data is stored in the Payment service.
+* 
 */
 class CardResource {
 
@@ -28,9 +28,9 @@ class CardResource {
 	}
 
 	/**
-	* Retrieves all stored credit cards for the customer account.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
+	* @param int $accountId 
 	* @return CardCollection 
 	*/
 	public function getAccountCards( $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -43,10 +43,10 @@ class CardResource {
 	}
 	
 	/**
-	* Creates a new credit card record and stores it for the customer account.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param Card $card Properties of the customer credit card to add to the account.
+	* @param int $accountId 
+	* @param Card $card 
 	* @return Card 
 	*/
 	public function addAccountCard($card,  $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -59,10 +59,10 @@ class CardResource {
 	}
 	
 	/**
-	* Update one or more properties of a credit card defined for a customer account.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param Card $card Properties of the customer account credit card to update.
+	* @param int $accountId 
+	* @param Card $card 
 	* @return Card 
 	*/
 	public function updateAccountCard($card,  $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -75,10 +75,10 @@ class CardResource {
 	}
 	
 	/**
-	* Removes a stored credit card from a customer account.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param string $cardId Unique identifier of the credit card to delete.
+	* @param int $accountId 
+	* @param string $cardId 
 	*/
 	public function deleteAccountCard( $accountId,  $cardId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

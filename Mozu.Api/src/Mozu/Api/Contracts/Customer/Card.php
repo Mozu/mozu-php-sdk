@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\Customer;
 
 
 
-/**
-*	Properties of a credit card used to submit payment for an order.
-*/
 class Card
 {
-	/**
-	*The masked credit card number part returned from the payment gateway.
-	*/
-	public $cardNumberPart;
+		public $cardNumberPart;
 	public function getCardNumberPart() {
 		return $this->cardNumberPart;
 	}
@@ -32,10 +26,7 @@ class Card
 		return $this;
 	}
 
-	/**
-	*The type of credit card, such as Visa or Amex.
-	*/
-	public $cardType;
+		public $cardType;
 	public function getCardType() {
 		return $this->cardType;
 	}
@@ -45,10 +36,7 @@ class Card
 		return $this;
 	}
 
-	/**
-	*The two-digit month the credit card expires.
-	*/
-	public $expireMonth;
+		public $expireMonth;
 	public function getExpireMonth() {
 		return $this->expireMonth;
 	}
@@ -58,10 +46,7 @@ class Card
 		return $this;
 	}
 
-	/**
-	*The four-digit year the credit card expires.
-	*/
-	public $expireYear;
+		public $expireYear;
 	public function getExpireYear() {
 		return $this->expireYear;
 	}
@@ -71,10 +56,7 @@ class Card
 		return $this;
 	}
 
-	/**
-	*Unique ID of the credit card for the customer account. This identifier is separate from the credit card number.
-	*/
-	public $id;
+		public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -84,10 +66,7 @@ class Card
 		return $this;
 	}
 
-	/**
-	*The name printed on the credit card.
-	*/
-	public $nameOnCard;
+		public $nameOnCard;
 	public function getNameOnCard() {
 		return $this->nameOnCard;
 	}

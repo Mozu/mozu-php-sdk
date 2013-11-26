@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\AppDev;
 
 
 
-/**
-*	Properties of the authentication ticket refresh requests, which includes the refresh token string.
-*/
 class AuthTicketRequest
 {
-	/**
-	*The refresh token string from the application authentication ticket.
-	*/
-	public $refreshToken;
+		public $refreshToken;
 	public function getRefreshToken() {
 		return $this->refreshToken;
 	}

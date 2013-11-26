@@ -17,7 +17,7 @@ use Mozu\Api\Clients\Commerce\Catalog\Admin\Attributedefinition\Attributes\Attri
 use Mozu\Api\ApiContext;
 
 /**
-* Vocabulary values are predefined for an attribute.
+* 
 */
 class AttributeVocabularyValueResource {
 
@@ -28,9 +28,9 @@ class AttributeVocabularyValueResource {
 	}
 
 	/**
-	* Retrieves a list of attribute vocabulary values. To target a query, use one or several valid optional response groups.
+	* 
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
+	* @param string $attributeFQN 
 	* @return array|AttributeVocabularyValue 
 	*/
 	public function getAttributeVocabularyValues($dataViewMode,  $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -43,10 +43,10 @@ class AttributeVocabularyValueResource {
 	}
 	
 	/**
-	* Retrieves an attribute vocabulary value by providing the attribute FQN and value.
+	* 
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-	* @param string $value The actual unique value of the attribute vocabulary to retrieve. A single attribute must have a unique value and match the attribute's data type. If a string value returns null, the system will generate a value. The actual string content displayed shoud be stored as "Content" and actual content is required for string values.
+	* @param string $attributeFQN 
+	* @param string $value 
 	* @return AttributeVocabularyValue 
 	*/
 	public function getAttributeVocabularyValue($dataViewMode,  $attributeFQN,  $value, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -59,10 +59,10 @@ class AttributeVocabularyValueResource {
 	}
 	
 	/**
-	* Adds a new attribute vocabulary value.
+	* 
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-	* @param AttributeVocabularyValue $attributeVocabularyValue The predefined vocabulary value to add to the attribute content.
+	* @param string $attributeFQN 
+	* @param AttributeVocabularyValue $attributeVocabularyValue 
 	* @return AttributeVocabularyValue 
 	*/
 	public function addAttributeVocabularyValue($dataViewMode, $attributeVocabularyValue,  $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -75,10 +75,10 @@ class AttributeVocabularyValueResource {
 	}
 	
 	/**
-	* Update existing vocabulary values for an attribute.
+	* 
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-	* @param array|AttributeVocabularyValue $vocabularyValues The actual vocabulary values for the attribute being updated.
+	* @param string $attributeFQN 
+	* @param array|AttributeVocabularyValue $vocabularyValues 
 	* @return array|AttributeVocabularyValue 
 	*/
 	public function updateAttributeVocabularyValues($dataViewMode, $vocabularyValues,  $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -91,11 +91,11 @@ class AttributeVocabularyValueResource {
 	}
 	
 	/**
-	* Updates existing attribute vocabulary values.
+	* 
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-	* @param string $value The actual unique value of the attribute vocabulary value to update. A single attribute must have a unique value and match the attribute's data type. If a string value returns null, the system will generate a value. The actual string content displayed shoud be stored as "Content" and actual content is required for string values.
-	* @param AttributeVocabularyValue $attributeVocabularyValue The predefined vocabulary value to add to the attribute content to update.
+	* @param string $attributeFQN 
+	* @param string $value 
+	* @param AttributeVocabularyValue $attributeVocabularyValue 
 	* @return AttributeVocabularyValue 
 	*/
 	public function updateAttributeVocabularyValue($dataViewMode, $attributeVocabularyValue,  $attributeFQN,  $value, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -108,10 +108,10 @@ class AttributeVocabularyValueResource {
 	}
 	
 	/**
-	* Deletes an attribute's vocabulary value.
+	* 
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-	* @param string $value The actual unique value of the attribute vocabulary to delete. A single attribute must have a unique value and match the attribute's data type. If a string value returns null, the system will generate a value. The actual string content displayed shoud be stored as "Content" and actual content is required for string values.
+	* @param string $attributeFQN 
+	* @param string $value 
 	*/
 	public function deleteAttributeVocabularyValue($dataViewMode,  $attributeFQN,  $value, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

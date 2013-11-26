@@ -34,7 +34,7 @@ class LocationInventoryClient {
 	{
 		$url = LocationInventoryUrl::getLocationInventoriesUrl($filter, $pageSize, $productCode, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -53,7 +53,7 @@ class LocationInventoryClient {
 	{
 		$url = LocationInventoryUrl::getLocationInventoryUrl($locationCode, $productCode);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -72,7 +72,7 @@ class LocationInventoryClient {
 	{
 		$url = LocationInventoryUrl::addLocationInventoryUrl($productCode);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($locationInventoryList)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withBody($locationInventoryList)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -91,7 +91,7 @@ class LocationInventoryClient {
 	{
 		$url = LocationInventoryUrl::updateLocationInventoryUrl($productCode);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($locationInventoryAdjustments)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withBody($locationInventoryAdjustments)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -109,7 +109,7 @@ class LocationInventoryClient {
 	{
 		$url = LocationInventoryUrl::deleteLocationInventoryUrl($locationCode, $productCode);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);

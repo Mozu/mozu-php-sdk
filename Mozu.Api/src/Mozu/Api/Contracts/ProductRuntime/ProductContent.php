@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 
-/**
-*	Content associated with a product definition that can be localized.
-*/
 class ProductContent
 {
-	/**
-	*Description defined for the metadata used to internally manage information about the product.
-	*/
-	public $metaTagDescription;
+		public $metaTagDescription;
 	public function getMetaTagDescription() {
 		return $this->metaTagDescription;
 	}
@@ -32,10 +26,7 @@ class ProductContent
 		return $this;
 	}
 
-	/**
-	*Keywords defined for the metadata used to internally manage information about the product.
-	*/
-	public $metaTagKeywords;
+		public $metaTagKeywords;
 	public function getMetaTagKeywords() {
 		return $this->metaTagKeywords;
 	}
@@ -45,10 +36,7 @@ class ProductContent
 		return $this;
 	}
 
-	/**
-	*Title defined for the metadata used to internally manage information about the product.
-	*/
-	public $metaTagTitle;
+		public $metaTagTitle;
 	public function getMetaTagTitle() {
 		return $this->metaTagTitle;
 	}
@@ -58,10 +46,7 @@ class ProductContent
 		return $this;
 	}
 
-	/**
-	*Full description of the product, which typically appears on the product details page.
-	*/
-	public $productFullDescription;
+		public $productFullDescription;
 	public function getProductFullDescription() {
 		return $this->productFullDescription;
 	}
@@ -71,10 +56,7 @@ class ProductContent
 		return $this;
 	}
 
-	/**
-	*The descriptive brief product name.
-	*/
-	public $productName;
+		public $productName;
 	public function getProductName() {
 		return $this->productName;
 	}
@@ -84,10 +66,7 @@ class ProductContent
 		return $this;
 	}
 
-	/**
-	*Brief description of the product typically used when the product is displayed in a list or in search results.
-	*/
-	public $productShortDescription;
+		public $productShortDescription;
 	public function getProductShortDescription() {
 		return $this->productShortDescription;
 	}
@@ -97,23 +76,17 @@ class ProductContent
 		return $this;
 	}
 
-	/**
-	*Product URL defined for search engine optimization.
-	*/
-	public $seofriendlyUrl;
-	public function getSeofriendlyUrl() {
-		return $this->seofriendlyUrl;
+		public $seoFriendlyUrl;
+	public function getSeoFriendlyUrl() {
+		return $this->seoFriendlyUrl;
 	}
 	
-	public function setSeofriendlyUrl($seofriendlyUrl) {
-		$this->seofriendlyUrl = $seofriendlyUrl;
+	public function setSeoFriendlyUrl($seoFriendlyUrl) {
+		$this->seoFriendlyUrl = $seoFriendlyUrl;
 		return $this;
 	}
 
-	/**
-	*List of image files associated with the product.
-	*/
-	public $productImages;
+		public $productImages;
 	public function getProductImages() {
 		return $this->productImages;
 	}

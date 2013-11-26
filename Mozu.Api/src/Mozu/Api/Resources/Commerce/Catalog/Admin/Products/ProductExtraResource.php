@@ -17,7 +17,7 @@ use Mozu\Api\Clients\Commerce\Catalog\Admin\Products\ProductExtraClient;
 use Mozu\Api\ApiContext;
 
 /**
-* Query, create, and update product extras.
+* 
 */
 class ProductExtraResource {
 
@@ -28,9 +28,9 @@ class ProductExtraResource {
 	}
 
 	/**
-	* Retrieves a list of product extras.
+	* 
 	*
-	* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+	* @param string $productCode 
 	* @return array|ProductExtra 
 	*/
 	public function getExtras($dataViewMode,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -43,10 +43,10 @@ class ProductExtraResource {
 	}
 	
 	/**
-	* Retrieves an individual product extra.
+	* 
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-	* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+	* @param string $attributeFQN 
+	* @param string $productCode 
 	* @return ProductExtra 
 	*/
 	public function getExtra($dataViewMode,  $attributeFQN,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -59,10 +59,10 @@ class ProductExtraResource {
 	}
 	
 	/**
-	* Add or create an extra.
+	* 
 	*
-	* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
-	* @param ProductExtra $productExtra Properties of the product extra to create such as the attribute detail, fully qualified name, and list of product extra values.
+	* @param string $productCode 
+	* @param ProductExtra $productExtra 
 	* @return ProductExtra 
 	*/
 	public function addExtra($dataViewMode, $productExtra,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -75,11 +75,11 @@ class ProductExtraResource {
 	}
 	
 	/**
-	* Update a product extra.
+	* 
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-	* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
-	* @param ProductExtra $productExtra Properties of the product extra to update such as the attribute detail, fully qualified name, and list of product extra values.
+	* @param string $attributeFQN 
+	* @param string $productCode 
+	* @param ProductExtra $productExtra 
 	* @return ProductExtra 
 	*/
 	public function updateExtra($dataViewMode, $productExtra,  $attributeFQN,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -92,10 +92,10 @@ class ProductExtraResource {
 	}
 	
 	/**
-	* Delete a product extra by providing the product code and the attribute's fully qualified name.
+	* 
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-	* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+	* @param string $attributeFQN 
+	* @param string $productCode 
 	*/
 	public function deleteExtra($dataViewMode,  $attributeFQN,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

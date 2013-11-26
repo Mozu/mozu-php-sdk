@@ -16,21 +16,21 @@ use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\Attributedefinition\Producttypes\ProductTypeExtraUrl;
 
 /**
-* Collection of the attributes that are extras in this product type.
+* 
 */
 class ProductTypeExtraClient {
 
 	/**
-	* Retrieves a list of extras by providing the product type ID.
+	* 
 	*
-	* @param int $productTypeId Identifier of the product type whose list is being retrieved.
+	* @param int $productTypeId 
 	* @return MozuClient
 	*/
 	public static function getExtrasClient($dataViewMode,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductTypeExtraUrl::getExtrasUrl($productTypeId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -39,17 +39,17 @@ class ProductTypeExtraClient {
 	}
 	
 	/**
-	* Retrieves an extra by providing the attribute's FQN and product type ID.
+	* 
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-	* @param int $productTypeId Identifier of the product type whose extra is being retrieved.
+	* @param string $attributeFQN 
+	* @param int $productTypeId 
 	* @return MozuClient
 	*/
 	public static function getExtraClient($dataViewMode,  $attributeFQN,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductTypeExtraUrl::getExtraUrl($attributeFQN, $productTypeId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -58,17 +58,17 @@ class ProductTypeExtraClient {
 	}
 	
 	/**
-	* Add or create an extra.
+	* 
 	*
-	* @param int $productTypeId Identifier of the product type to add an extra.
-	* @param AttributeInProductType $attributeInProductType The properties of the attribute in product type to add or create extras.
+	* @param int $productTypeId 
+	* @param AttributeInProductType $attributeInProductType 
 	* @return MozuClient
 	*/
 	public static function addExtraClient($dataViewMode, $attributeInProductType,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductTypeExtraUrl::addExtraUrl($productTypeId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($attributeInProductType)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withBody($attributeInProductType)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -77,18 +77,18 @@ class ProductTypeExtraClient {
 	}
 	
 	/**
-	* Update an extra by providing the attribute's FQN and product type ID.
+	* 
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-	* @param int $productTypeId Identifier of the product type whose extra is being updated.
-	* @param AttributeInProductType $attributeInProductType The properties of the attribute in product type to update. The attributes exist as extras.
+	* @param string $attributeFQN 
+	* @param int $productTypeId 
+	* @param AttributeInProductType $attributeInProductType 
 	* @return MozuClient
 	*/
 	public static function updateExtraClient($dataViewMode, $attributeInProductType,  $attributeFQN,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductTypeExtraUrl::updateExtraUrl($attributeFQN, $productTypeId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($attributeInProductType)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withBody($attributeInProductType)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -97,16 +97,16 @@ class ProductTypeExtraClient {
 	}
 	
 	/**
-	* Delete an extra.
+	* 
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-	* @param int $productTypeId Identifier of the product type whose extra is being deleted.
+	* @param string $attributeFQN 
+	* @param int $productTypeId 
 	*/
 	public static function deleteExtraClient($dataViewMode,  $attributeFQN,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductTypeExtraUrl::deleteExtraUrl($attributeFQN, $productTypeId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);

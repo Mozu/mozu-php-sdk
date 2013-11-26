@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Products;
 
 
 
-/**
-*	Properties of a product set up in admin and added as an item in a cart or order.
-*/
 class Product
 {
-	/**
-	*Short description of the product in the language specified in the locale code for the storefront.
-	*/
-	public $description;
+		public $description;
 	public function getDescription() {
 		return $this->description;
 	}
@@ -32,10 +26,7 @@ class Product
 		return $this;
 	}
 
-	/**
-	*The alternate image description defined for the product, in the language specified in the locale code for the storefront.
-	*/
-	public $imageAlternateText;
+		public $imageAlternateText;
 	public function getImageAlternateText() {
 		return $this->imageAlternateText;
 	}
@@ -45,10 +36,7 @@ class Product
 		return $this;
 	}
 
-	/**
-	*The URL of the image file associated with a product on a storefront.
-	*/
-	public $imagePath;
+		public $imagePath;
 	public function getImagePath() {
 		return $this->imagePath;
 	}
@@ -58,10 +46,7 @@ class Product
 		return $this;
 	}
 
-	/**
-	*If true, the product can be purchased or fulfilled at regular intervals such as a monthly billing cycle or a digital or physical subscription.
-	*/
-	public $isRecurring;
+		public $isRecurring;
 	public function getIsRecurring() {
 		return $this->isRecurring;
 	}
@@ -71,10 +56,7 @@ class Product
 		return $this;
 	}
 
-	/**
-	*If true, the entity is subject to sales tax based on the relevant tax rate.
-	*/
-	public $isTaxable;
+		public $isTaxable;
 	public function getIsTaxable() {
 		return $this->isTaxable;
 	}
@@ -84,10 +66,7 @@ class Product
 		return $this;
 	}
 
-	/**
-	*The name of the product that appears on the storefront.
-	*/
-	public $name;
+		public $name;
 	public function getName() {
 		return $this->name;
 	}
@@ -97,10 +76,7 @@ class Product
 		return $this;
 	}
 
-	/**
-	*"Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
-	*/
-	public $productCode;
+		public $productCode;
 	public function getProductCode() {
 		return $this->productCode;
 	}
@@ -110,10 +86,7 @@ class Product
 		return $this;
 	}
 
-	/**
-	*The product type template associated with the product on the storefront.
-	*/
-	public $productType;
+		public $productType;
 	public function getProductType() {
 		return $this->productType;
 	}
@@ -123,10 +96,7 @@ class Product
 		return $this;
 	}
 
-	/**
-	*If true, the product cannot be shipped in combination with other products.
-	*/
-	public $shipsByItself;
+		public $shipsByItself;
 	public function getShipsByItself() {
 		return $this->shipsByItself;
 	}
@@ -136,10 +106,7 @@ class Product
 		return $this;
 	}
 
-	/**
-	*Merchant-created code associated with a specific product variation. Variation product codes maintain an association with the base product code.
-	*/
-	public $variationProductCode;
+		public $variationProductCode;
 	public function getVariationProductCode() {
 		return $this->variationProductCode;
 	}
@@ -149,10 +116,7 @@ class Product
 		return $this;
 	}
 
-	/**
-	*The list of all categories associated with the product.
-	*/
-	public $categories;
+		public $categories;
 	public function getCategories() {
 		return $this->categories;
 	}
@@ -162,10 +126,7 @@ class Product
 		return $this;
 	}
 
-	/**
-	*Dimensions of the packaged product.
-	*/
-	public $measurements;
+		public $measurements;
 	public function getMeasurements() {
 		return $this->measurements;
 	}
@@ -175,10 +136,7 @@ class Product
 		return $this;
 	}
 
-	/**
-	*The list of option attributes configured for the product.
-	*/
-	public $options;
+		public $options;
 	public function getOptions() {
 		return $this->options;
 	}
@@ -188,10 +146,7 @@ class Product
 		return $this;
 	}
 
-	/**
-	*The price of the product that appears on the storefront including any applied discounts.
-	*/
-	public $price;
+		public $price;
 	public function getPrice() {
 		return $this->price;
 	}

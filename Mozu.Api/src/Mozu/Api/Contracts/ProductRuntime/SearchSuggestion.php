@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 
-/**
-*	Suggest product search terms to a customer based on defined queries.
-*/
 class SearchSuggestion
 {
-	/**
-	*The query term entered by the shopper.
-	*/
-	public $query;
+		public $query;
 	public function getQuery() {
 		return $this->query;
 	}
@@ -32,10 +26,7 @@ class SearchSuggestion
 		return $this;
 	}
 
-	/**
-	*The term suggestions to return based on the specified query value.
-	*/
-	public $suggestions;
+		public $suggestions;
 	public function getSuggestions() {
 		return $this->suggestions;
 	}

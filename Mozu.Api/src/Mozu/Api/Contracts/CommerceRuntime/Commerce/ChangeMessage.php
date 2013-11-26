@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Commerce;
 
 
 
-/**
-*	Properties of a system message displayed when a change, such as a change in product price, occurs for a cart or order.
-*/
 class ChangeMessage
 {
-	/**
-	*Date and time when the entity was created. UTC Date/Time.
-	*/
-	public $createDate;
+		public $createDate;
 	public function getCreateDate() {
 		return $this->createDate;
 	}
@@ -32,10 +26,7 @@ class ChangeMessage
 		return $this;
 	}
 
-	/**
-	*Unique identifier of the change message. System-supplied and read-only.
-	*/
-	public $id;
+		public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -45,10 +36,7 @@ class ChangeMessage
 		return $this;
 	}
 
-	/**
-	*Identifier for the object associated with the change message, which can represent a cart, cart item, or an order.
-	*/
-	public $identifier;
+		public $identifier;
 	public function getIdentifier() {
 		return $this->identifier;
 	}
@@ -58,10 +46,7 @@ class ChangeMessage
 		return $this;
 	}
 
-	/**
-	*The text of the change message, such as "This product is no longer available". System-supplied and read-only.
-	*/
-	public $message;
+		public $message;
 	public function getMessage() {
 		return $this->message;
 	}
@@ -71,10 +56,7 @@ class ChangeMessage
 		return $this;
 	}
 
-	/**
-	*The new value of the object affected by the change, such as the new price of the product. System-supplied and read-only.
-	*/
-	public $newValue;
+		public $newValue;
 	public function getNewValue() {
 		return $this->newValue;
 	}
@@ -84,10 +66,7 @@ class ChangeMessage
 		return $this;
 	}
 
-	/**
-	*The prior value of the object affected by the change, such as the price of the product when it was added to the cart. System-supplied and read-only.
-	*/
-	public $oldValue;
+		public $oldValue;
 	public function getOldValue() {
 		return $this->oldValue;
 	}
@@ -97,10 +76,7 @@ class ChangeMessage
 		return $this;
 	}
 
-	/**
-	*The text that appears on the subject line of the message, such as "The product price has changed."
-	*/
-	public $subject;
+		public $subject;
 	public function getSubject() {
 		return $this->subject;
 	}
@@ -110,10 +86,7 @@ class ChangeMessage
 		return $this;
 	}
 
-	/**
-	*Represents the type of object affected by the change, such as Cart Item or Product. System-supplied and read-only.
-	*/
-	public $subjectType;
+		public $subjectType;
 	public function getSubjectType() {
 		return $this->subjectType;
 	}
@@ -123,10 +96,7 @@ class ChangeMessage
 		return $this;
 	}
 
-	/**
-	*The action associated with this message. For example, if the price of a product changes, the verb could be "Increased" or "Decreased". If the product is no longer available, the verb could be "Invalidated". System-supplied and read-only.
-	*/
-	public $verb;
+		public $verb;
 	public function getVerb() {
 		return $this->verb;
 	}

@@ -19,7 +19,7 @@ class CartUrl  {
 
 	/**
 		* Get Resource Url for GetCart
-		* @param string $cartId Identifier of the cart being retrieved.
+		* @param string $cartId 
 		* @return string Resource Url
 	*/
 	public static function getCartUrl($cartId)
@@ -51,7 +51,7 @@ class CartUrl  {
 	
 	/**
 		* Get Resource Url for GetUserCart
-		* @param string $userId Unique identifier of the user whose cart you want to retrieve.
+		* @param string $userId 
 		* @return string Resource Url
 	*/
 	public static function getUserCartUrl($userId)
@@ -63,7 +63,7 @@ class CartUrl  {
 	
 	/**
 		* Get Resource Url for GetUserCartSummary
-		* @param string $userId Unique identifier of the user whose cart details you want to retrieve.
+		* @param string $userId 
 		* @return string Resource Url
 	*/
 	public static function getUserCartSummaryUrl($userId)
@@ -85,7 +85,7 @@ class CartUrl  {
 	
 	/**
 		* Get Resource Url for DeleteCart
-		* @param string $cartId Identifier of the cart being deleted.
+		* @param string $cartId 
 		* @return string Resource Url
 	*/
 	public static function deleteCartUrl($cartId)

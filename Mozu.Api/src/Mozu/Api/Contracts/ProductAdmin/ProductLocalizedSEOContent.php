@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
-/**
-*	The localized product search engine optimized content in the language specified by the LocaleCode.
-*/
 class ProductLocalizedSEOContent
 {
-	/**
-	*"Language used for the entity. Currently, only ""en-US"" is supported."
-	*/
-	public $localeCode;
+		public $localeCode;
 	public function getLocaleCode() {
 		return $this->localeCode;
 	}
@@ -32,10 +26,7 @@ class ProductLocalizedSEOContent
 		return $this;
 	}
 
-	/**
-	*The description of the metatag used for the product SEO content set to the locale code language. The metadata description is used to manage information internally.
-	*/
-	public $metaTagDescription;
+		public $metaTagDescription;
 	public function getMetaTagDescription() {
 		return $this->metaTagDescription;
 	}
@@ -45,10 +36,7 @@ class ProductLocalizedSEOContent
 		return $this;
 	}
 
-	/**
-	*The metatag keywords for the product SEO content set in the locale code language. The metatag keywords are used to manage information internally.
-	*/
-	public $metaTagKeywords;
+		public $metaTagKeywords;
 	public function getMetaTagKeywords() {
 		return $this->metaTagKeywords;
 	}
@@ -58,10 +46,7 @@ class ProductLocalizedSEOContent
 		return $this;
 	}
 
-	/**
-	*The metatag title for the product SEO content set in the locale code language. The metatag title is used to manage information internally.
-	*/
-	public $metaTagTitle;
+		public $metaTagTitle;
 	public function getMetaTagTitle() {
 		return $this->metaTagTitle;
 	}
@@ -71,23 +56,17 @@ class ProductLocalizedSEOContent
 		return $this;
 	}
 
-	/**
-	*The search engine optimized human-readable portion of the URL in the language of the product's locale code.
-	*/
-	public $seofriendlyUrl;
-	public function getSeofriendlyUrl() {
-		return $this->seofriendlyUrl;
+		public $seoFriendlyUrl;
+	public function getSeoFriendlyUrl() {
+		return $this->seoFriendlyUrl;
 	}
 	
-	public function setSeofriendlyUrl($seofriendlyUrl) {
-		$this->seofriendlyUrl = $seofriendlyUrl;
+	public function setSeoFriendlyUrl($seoFriendlyUrl) {
+		$this->seoFriendlyUrl = $seoFriendlyUrl;
 		return $this;
 	}
 
-	/**
-	*Customizes the HTML title tag within the header section of the product details page for the specified product.
-	*/
-	public $titleTagTitle;
+		public $titleTagTitle;
 	public function getTitleTagTitle() {
 		return $this->titleTagTitle;
 	}

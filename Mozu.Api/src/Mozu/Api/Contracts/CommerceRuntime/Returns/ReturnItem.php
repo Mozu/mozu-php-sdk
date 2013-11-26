@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Returns;
 
 
 
-/**
-*	Properties of an item associated with a return for a previously shipped order.
-*/
 class ReturnItem
 {
-	/**
-	*Unique identifier of the item in the original completed order. All return items should be associated with a corresponding order item.
-	*/
-	public $orderItemId;
+		public $orderItemId;
 	public function getOrderItemId() {
 		return $this->orderItemId;
 	}
@@ -52,10 +46,7 @@ class ReturnItem
 		return $this;
 	}
 
-	/**
-	*The actual quantity received for the return item.
-	*/
-	public $quantityReceived;
+		public $quantityReceived;
 	public function getQuantityReceived() {
 		return $this->quantityReceived;
 	}
@@ -65,10 +56,7 @@ class ReturnItem
 		return $this;
 	}
 
-	/**
-	*The quantity of returned items that can be returned to active product stock.
-	*/
-	public $quantityRestockable;
+		public $quantityRestockable;
 	public function getQuantityRestockable() {
 		return $this->quantityRestockable;
 	}
@@ -78,10 +66,7 @@ class ReturnItem
 		return $this;
 	}
 
-	/**
-	*The quantity of the item shipped to the shopper in the event of a return item replacement.
-	*/
-	public $quantityShipped;
+		public $quantityShipped;
 	public function getQuantityShipped() {
 		return $this->quantityShipped;
 	}
@@ -111,10 +96,7 @@ class ReturnItem
 		return $this;
 	}
 
-	/**
-	*List of merchant-supplied notes associated with the return item.
-	*/
-	public $notes;
+		public $notes;
 	public function getNotes() {
 		return $this->notes;
 	}
@@ -134,10 +116,7 @@ class ReturnItem
 		return $this;
 	}
 
-	/**
-	*The list of return reasons for the item and the quantity associated with each return reason.
-	*/
-	public $reasons;
+		public $reasons;
 	public function getReasons() {
 		return $this->reasons;
 	}

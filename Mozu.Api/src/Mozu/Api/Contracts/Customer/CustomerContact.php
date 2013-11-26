@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\Customer;
 
 
 
-/**
-*	Contact information, including the contact's name, address, phone numbers, email addresses, and company (if supplied). Also indicates whether this is a billing, shipping, or billing and shipping contact.
-*/
 class CustomerContact
 {
-	/**
-	*Unique identifier of the customer account.
-	*/
-	public $accountId;
+		public $accountId;
 	public function getAccountId() {
 		return $this->accountId;
 	}
@@ -32,10 +26,7 @@ class CustomerContact
 		return $this;
 	}
 
-	/**
-	*The legal or doing business as (DBA) or tradestyle name of the business or organization. Max length: 200.
-	*/
-	public $companyOrOrganization;
+		public $companyOrOrganization;
 	public function getCompanyOrOrganization() {
 		return $this->companyOrOrganization;
 	}
@@ -45,10 +36,7 @@ class CustomerContact
 		return $this;
 	}
 
-	/**
-	*The email address of the specified user.
-	*/
-	public $email;
+		public $email;
 	public function getEmail() {
 		return $this->email;
 	}
@@ -58,10 +46,17 @@ class CustomerContact
 		return $this;
 	}
 
-	/**
-	*The first name of the contact. Max length: 200.
-	*/
-	public $firstName;
+		public $faxNumber;
+	public function getFaxNumber() {
+		return $this->faxNumber;
+	}
+	
+	public function setFaxNumber($faxNumber) {
+		$this->faxNumber = $faxNumber;
+		return $this;
+	}
+
+		public $firstName;
 	public function getFirstName() {
 		return $this->firstName;
 	}
@@ -71,10 +66,7 @@ class CustomerContact
 		return $this;
 	}
 
-	/**
-	*Identifier of the customer contact.
-	*/
-	public $id;
+		public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -84,10 +76,7 @@ class CustomerContact
 		return $this;
 	}
 
-	/**
-	*The last name or surname of the contact. Max length: 200.
-	*/
-	public $lastNameOrSurname;
+		public $lastNameOrSurname;
 	public function getLastNameOrSurname() {
 		return $this->lastNameOrSurname;
 	}
@@ -97,10 +86,7 @@ class CustomerContact
 		return $this;
 	}
 
-	/**
-	*The middle name or the first initial of the middle name of the contact. Max length: 100.
-	*/
-	public $middleNameOrInitial;
+		public $middleNameOrInitial;
 	public function getMiddleNameOrInitial() {
 		return $this->middleNameOrInitial;
 	}
@@ -110,10 +96,7 @@ class CustomerContact
 		return $this;
 	}
 
-	/**
-	*Address associated with the customer account contact.
-	*/
-	public $address;
+		public $address;
 	public function getAddress() {
 		return $this->address;
 	}
@@ -123,10 +106,7 @@ class CustomerContact
 		return $this;
 	}
 
-	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
-	*/
-	public $auditInfo;
+		public $auditInfo;
 	public function getAuditInfo() {
 		return $this->auditInfo;
 	}
@@ -136,10 +116,7 @@ class CustomerContact
 		return $this;
 	}
 
-	/**
-	*List of phone numbers associated with the customer account contact.
-	*/
-	public $phoneNumbers;
+		public $phoneNumbers;
 	public function getPhoneNumbers() {
 		return $this->phoneNumbers;
 	}

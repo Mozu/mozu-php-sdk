@@ -56,13 +56,13 @@ class ProductInCatalogInfo
 		return $this;
 	}
 
-		public $isSEOContentOverridden;
-	public function getIsSEOContentOverridden() {
-		return $this->isSEOContentOverridden;
+		public $isseoContentOverridden;
+	public function getIsseoContentOverridden() {
+		return $this->isseoContentOverridden;
 	}
 	
-	public function setIsSEOContentOverridden($isSEOContentOverridden) {
-		$this->isSEOContentOverridden = $isSEOContentOverridden;
+	public function setIsseoContentOverridden($isseoContentOverridden) {
+		$this->isseoContentOverridden = $isseoContentOverridden;
 		return $this;
 	}
 
@@ -106,13 +106,13 @@ class ProductInCatalogInfo
 		return $this;
 	}
 
-		public $seocontent;
-	public function getSeocontent() {
-		return $this->seocontent;
+		public $seoContent;
+	public function getSeoContent() {
+		return $this->seoContent;
 	}
 	
-	public function setSeocontent($seocontent) {
-		$this->seocontent = $seocontent;
+	public function setSeoContent($seoContent) {
+		$this->seoContent = $seoContent;
 		return $this;
 	}
 

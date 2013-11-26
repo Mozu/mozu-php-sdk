@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\Content;
 
 
 
-/**
-*	A high level description of the document draft.
-*/
 class DocumentDraftSummary
 {
-	/**
-	*Date when the entity was last updated. UTC Date/Time.
-	*/
-	public $activeUpdateDate;
+		public $activeUpdateDate;
 	public function getActiveUpdateDate() {
 		return $this->activeUpdateDate;
 	}
@@ -32,10 +26,7 @@ class DocumentDraftSummary
 		return $this;
 	}
 
-	/**
-	*Name of the document list associated with the draft.
-	*/
-	public $documentListName;
+		public $documentListName;
 	public function getDocumentListName() {
 		return $this->documentListName;
 	}
@@ -45,10 +36,7 @@ class DocumentDraftSummary
 		return $this;
 	}
 
-	/**
-	*The most recent date the draft has been modified. System-supplied and read-only.
-	*/
-	public $draftUpdateDate;
+		public $draftUpdateDate;
 	public function getDraftUpdateDate() {
 		return $this->draftUpdateDate;
 	}
@@ -58,10 +46,7 @@ class DocumentDraftSummary
 		return $this;
 	}
 
-	/**
-	*Identifier of document draft.
-	*/
-	public $id;
+		public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -71,10 +56,7 @@ class DocumentDraftSummary
 		return $this;
 	}
 
-	/**
-	*Name of the document draft.
-	*/
-	public $name;
+		public $name;
 	public function getName() {
 		return $this->name;
 	}
@@ -84,10 +66,7 @@ class DocumentDraftSummary
 		return $this;
 	}
 
-	/**
-	*Whether the draft has been published.
-	*/
-	public $publishType;
+		public $publishType;
 	public function getPublishType() {
 		return $this->publishType;
 	}
@@ -97,10 +76,7 @@ class DocumentDraftSummary
 		return $this;
 	}
 
-	/**
-	*Unique identifier of the entity who updated the resource property most recently. System-supplied and read-only.
-	*/
-	public $updatedBy;
+		public $updatedBy;
 	public function getUpdatedBy() {
 		return $this->updatedBy;
 	}

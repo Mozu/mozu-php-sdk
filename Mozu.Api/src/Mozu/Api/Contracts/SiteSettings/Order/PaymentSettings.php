@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\SiteSettings\Order;
 
 
 
-/**
-*	Properties of the payment settings used at order checkout time for the site.
-*/
 class PaymentSettings
 {
-	/**
-	*Settings that provide for the ability to pay for an order by mail.
-	*/
-	public $payByMail;
+		public $payByMail;
 	public function getPayByMail() {
 		return $this->payByMail;
 	}
@@ -32,10 +26,7 @@ class PaymentSettings
 		return $this;
 	}
 
-	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
-	*/
-	public $auditInfo;
+		public $auditInfo;
 	public function getAuditInfo() {
 		return $this->auditInfo;
 	}
@@ -55,10 +46,7 @@ class PaymentSettings
 		return $this;
 	}
 
-	/**
-	*List of name and account information for a payment gateway. Additional payment gateway providers will be supported in future releases.
-	*/
-	public $gateways;
+		public $gateways;
 	public function getGateways() {
 		return $this->gateways;
 	}

@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
-/**
-*	Properties of the category, price, or attribute facet shoppers use to filter product display results on a storefront.
-*/
 class Facet
 {
-	/**
-	*Unique identifier for the storefront container used to organize products.
-	*/
-	public $categoryId;
+		public $categoryId;
 	public function getCategoryId() {
 		return $this->categoryId;
 	}
@@ -32,10 +26,7 @@ class Facet
 		return $this;
 	}
 
-	/**
-	*Unique identifier of the facet.
-	*/
-	public $facetId;
+		public $facetId;
 	public function getFacetId() {
 		return $this->facetId;
 	}
@@ -45,10 +36,7 @@ class Facet
 		return $this;
 	}
 
-	/**
-	*The type of facet. Valid values are "range," which enables creation of a range of values, or "value," which populates the facet values based on the associated attribute or category.
-	*/
-	public $facetType;
+		public $facetType;
 	public function getFacetType() {
 		return $this->facetType;
 	}
@@ -58,10 +46,7 @@ class Facet
 		return $this;
 	}
 
-	/**
-	*If true, disables a facet inherited from a parent category.
-	*/
-	public $isHidden;
+		public $isHidden;
 	public function getIsHidden() {
 		return $this->isHidden;
 	}
@@ -71,10 +56,7 @@ class Facet
 		return $this;
 	}
 
-	/**
-	*The numeric sequence of the facet for its associated category.
-	*/
-	public $order;
+		public $order;
 	public function getOrder() {
 		return $this->order;
 	}
@@ -84,10 +66,7 @@ class Facet
 		return $this;
 	}
 
-	/**
-	*Overrides a facet inherited from a parent category for a specified subcategory. System-supplied and read only.
-	*/
-	public $overrideFacetId;
+		public $overrideFacetId;
 	public function getOverrideFacetId() {
 		return $this->overrideFacetId;
 	}
@@ -97,10 +76,7 @@ class Facet
 		return $this;
 	}
 
-	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
-	*/
-	public $auditInfo;
+		public $auditInfo;
 	public function getAuditInfo() {
 		return $this->auditInfo;
 	}
@@ -110,10 +86,7 @@ class Facet
 		return $this;
 	}
 
-	/**
-	*For range type facets, an array of ranges to use for the facet values. For example, a price facet might have range queries for $0-$25, $25-$50, and $50-$100.
-	*/
-	public $rangeQueries;
+		public $rangeQueries;
 	public function getRangeQueries() {
 		return $this->rangeQueries;
 	}
@@ -123,10 +96,7 @@ class Facet
 		return $this;
 	}
 
-	/**
-	*Container for the facet source information, which includes the category, price, or attribute properties.
-	*/
-	public $source;
+		public $source;
 	public function getSource() {
 		return $this->source;
 	}
@@ -136,10 +106,7 @@ class Facet
 		return $this;
 	}
 
-	/**
-	*System-supplied and read only parameter that validates a facet for its associated category.
-	*/
-	public $validity;
+		public $validity;
 	public function getValidity() {
 		return $this->validity;
 	}

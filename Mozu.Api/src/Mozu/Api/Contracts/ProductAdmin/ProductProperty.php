@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
-/**
-*	Properties of the product property to create such as attribute detail, fully qualified name, and list of product property values.
-*/
 class ProductProperty
 {
-	/**
-	*"The fully qualified name of the attribute, which is a user defined attribute identifier."
-	*/
-	public $attributeFQN;
+		public $attributeFQN;
 	public function getAttributeFQN() {
 		return $this->attributeFQN;
 	}
@@ -32,10 +26,7 @@ class ProductProperty
 		return $this;
 	}
 
-	/**
-	*The actual values that populate a product property to set in the Admin to appear on the Storefront.
-	*/
-	public $values;
+		public $values;
 	public function getValues() {
 		return $this->values;
 	}

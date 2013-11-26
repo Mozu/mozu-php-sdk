@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 
-/**
-*	Localized page content for a product category.
-*/
 class CategoryContent
 {
-	/**
-	*The localized description of the category to display on a storefront.
-	*/
-	public $description;
+		public $description;
 	public function getDescription() {
 		return $this->description;
 	}
@@ -32,10 +26,7 @@ class CategoryContent
 		return $this;
 	}
 
-	/**
-	*Defined description of the metadata used to manage product information internally, such as search engine optimization.
-	*/
-	public $metaTagDescription;
+		public $metaTagDescription;
 	public function getMetaTagDescription() {
 		return $this->metaTagDescription;
 	}
@@ -45,10 +36,7 @@ class CategoryContent
 		return $this;
 	}
 
-	/**
-	*Defined keywords of the metadata used to manage product information internally, such as search engine optimization.
-	*/
-	public $metaTagKeywords;
+		public $metaTagKeywords;
 	public function getMetaTagKeywords() {
 		return $this->metaTagKeywords;
 	}
@@ -58,10 +46,7 @@ class CategoryContent
 		return $this;
 	}
 
-	/**
-	*Defined title of the metadata used to manage product information internally, such as search engine optimization.
-	*/
-	public $metaTagTitle;
+		public $metaTagTitle;
 	public function getMetaTagTitle() {
 		return $this->metaTagTitle;
 	}
@@ -71,10 +56,7 @@ class CategoryContent
 		return $this;
 	}
 
-	/**
-	*Name of the product category.
-	*/
-	public $name;
+		public $name;
 	public function getName() {
 		return $this->name;
 	}
@@ -84,10 +66,7 @@ class CategoryContent
 		return $this;
 	}
 
-	/**
-	*Title that appears on the top of new pages associated with the product category on the storefront.
-	*/
-	public $pageTitle;
+		public $pageTitle;
 	public function getPageTitle() {
 		return $this->pageTitle;
 	}
@@ -97,10 +76,7 @@ class CategoryContent
 		return $this;
 	}
 
-	/**
-	*Human-readable identifier to associated with a product category to create friendly URLs.
-	*/
-	public $slug;
+		public $slug;
 	public function getSlug() {
 		return $this->slug;
 	}

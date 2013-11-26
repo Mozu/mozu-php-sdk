@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 
-/**
-*	The selection the shopper made from a list of options set up in product admin.
-*/
 class ProductOptionSelection
 {
-	/**
-	*"The fully qualified name of the attribute, which is a user defined attribute identifier."
-	*/
-	public $attributeFQN;
+		public $attributeFQN;
 	public function getAttributeFQN() {
 		return $this->attributeFQN;
 	}
@@ -32,10 +26,7 @@ class ProductOptionSelection
 		return $this;
 	}
 
-	/**
-	*Identifier of the value of this attribute.
-	*/
-	public $attributeValueId;
+		public $attributeValueId;
 	public function getAttributeValueId() {
 		return $this->attributeValueId;
 	}
@@ -45,10 +36,7 @@ class ProductOptionSelection
 		return $this;
 	}
 
-	/**
-	*The custom value the shopper entered for an option set up in product admin.
-	*/
-	public $shopperEnteredValue;
+		public $shopperEnteredValue;
 	public function getShopperEnteredValue() {
 		return $this->shopperEnteredValue;
 	}
@@ -58,10 +46,7 @@ class ProductOptionSelection
 		return $this;
 	}
 
-	/**
-	*The attribute value.
-	*/
-	public $value;
+		public $value;
 	public function getValue() {
 		return $this->value;
 	}

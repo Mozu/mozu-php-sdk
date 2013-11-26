@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\PricingRuntime;
 
 
 
-/**
-*	Properties of a line item in an order that is subject to tax.
-*/
 class TaxableLineItem
 {
-	/**
-	*Unique identifier of the taxable line item.
-	*/
-	public $id;
+		public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -32,10 +26,7 @@ class TaxableLineItem
 		return $this;
 	}
 
-	/**
-	*If true, the line item in the order is subject to tax.
-	*/
-	public $isTaxable;
+		public $isTaxable;
 	public function getIsTaxable() {
 		return $this->isTaxable;
 	}
@@ -45,10 +36,7 @@ class TaxableLineItem
 		return $this;
 	}
 
-	/**
-	*The sale price of the line item in the order.
-	*/
-	public $lineItemPrice;
+		public $lineItemPrice;
 	public function getLineItemPrice() {
 		return $this->lineItemPrice;
 	}
@@ -78,10 +66,7 @@ class TaxableLineItem
 		return $this;
 	}
 
-	/**
-	*The quantity of the line item in the order.
-	*/
-	public $quantity;
+		public $quantity;
 	public function getQuantity() {
 		return $this->quantity;
 	}
@@ -101,10 +86,7 @@ class TaxableLineItem
 		return $this;
 	}
 
-	/**
-	*The amount of shipping calculated for a line item in an order.
-	*/
-	public $shippingAmount;
+		public $shippingAmount;
 	public function getShippingAmount() {
 		return $this->shippingAmount;
 	}
@@ -114,10 +96,7 @@ class TaxableLineItem
 		return $this;
 	}
 
-	/**
-	*Properties of the product that represents the line item in the order.
-	*/
-	public $productProperties;
+		public $productProperties;
 	public function getProductProperties() {
 		return $this->productProperties;
 	}

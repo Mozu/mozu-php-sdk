@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 
-/**
-*	Properties of the facet used to index product searches on a storefront.
-*/
 class Facet
 {
-	/**
-	*The type of facet. Valid values are "range," which enables creation of a range of values, or "value," which populates the facet values based on the associated attribute or category.
-	*/
-	public $facetType;
+		public $facetType;
 	public function getFacetType() {
 		return $this->facetType;
 	}
@@ -32,10 +26,7 @@ class Facet
 		return $this;
 	}
 
-	/**
-	*The field name associated with the facet.
-	*/
-	public $field;
+		public $field;
 	public function getField() {
 		return $this->field;
 	}
@@ -45,10 +36,7 @@ class Facet
 		return $this;
 	}
 
-	/**
-	*The descriptive label for the facet.
-	*/
-	public $label;
+		public $label;
 	public function getLabel() {
 		return $this->label;
 	}
@@ -58,10 +46,7 @@ class Facet
 		return $this;
 	}
 
-	/**
-	*The values associated with the facet.
-	*/
-	public $values;
+		public $values;
 	public function getValues() {
 		return $this->values;
 	}

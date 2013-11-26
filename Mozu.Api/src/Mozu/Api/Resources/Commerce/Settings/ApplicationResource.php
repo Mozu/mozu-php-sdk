@@ -17,7 +17,7 @@ use Mozu\Api\Clients\Commerce\Settings\ApplicationClient;
 use Mozu\Api\ApiContext;
 
 /**
-* Use the applications subresource to update site settings for installed applications.
+* 
 */
 class ApplicationResource {
 
@@ -42,9 +42,9 @@ class ApplicationResource {
 	}
 	
 	/**
-	* Initializes an application with the necessary configured settings.
+	* 
 	*
-	* @param Application $application Properties of the application to update.
+	* @param Application $application 
 	* @return Application 
 	*/
 	public function thirdPartyUpdateApplication($application, Mozu\Api\Security\AuthTicket &$authTicket= null)

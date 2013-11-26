@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\Customer;
 
 
 
-/**
-*	Properties of the customer account.
-*/
 class CustomerAccount
 {
-	/**
-	*If true, the customer prefers to receive marketing material such as newsletters or email offers.
-	*/
-	public $acceptsMarketing;
+		public $acceptsMarketing;
 	public function getAcceptsMarketing() {
 		return $this->acceptsMarketing;
 	}
@@ -32,10 +26,7 @@ class CustomerAccount
 		return $this;
 	}
 
-	/**
-	*The legal or doing business as (DBA) or tradestyle name of the business or organization. Max length: 200.
-	*/
-	public $companyOrOrganization;
+		public $companyOrOrganization;
 	public function getCompanyOrOrganization() {
 		return $this->companyOrOrganization;
 	}
@@ -45,10 +36,17 @@ class CustomerAccount
 		return $this;
 	}
 
-	/**
-	*Identifier of the entity.
-	*/
-	public $id;
+		public $externalId;
+	public function getExternalId() {
+		return $this->externalId;
+	}
+	
+	public function setExternalId($externalId) {
+		$this->externalId = $externalId;
+		return $this;
+	}
+
+		public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -58,10 +56,7 @@ class CustomerAccount
 		return $this;
 	}
 
-	/**
-	*If true, this customer account has tax exempt status.
-	*/
-	public $taxExempt;
+		public $taxExempt;
 	public function getTaxExempt() {
 		return $this->taxExempt;
 	}
@@ -71,10 +66,7 @@ class CustomerAccount
 		return $this;
 	}
 
-	/**
-	*The tax identification number associated with the customer account.
-	*/
-	public $taxId;
+		public $taxId;
 	public function getTaxId() {
 		return $this->taxId;
 	}
@@ -84,10 +76,7 @@ class CustomerAccount
 		return $this;
 	}
 
-	/**
-	*Unique identifier of the user associated with the customer account.
-	*/
-	public $userId;
+		public $userId;
 	public function getUserId() {
 		return $this->userId;
 	}
@@ -97,10 +86,7 @@ class CustomerAccount
 		return $this;
 	}
 
-	/**
-	*Collection of customer account attributes.
-	*/
-	public $attributes;
+		public $attributes;
 	public function getAttributes() {
 		return $this->attributes;
 	}
@@ -110,10 +96,7 @@ class CustomerAccount
 		return $this;
 	}
 
-	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
-	*/
-	public $auditInfo;
+		public $auditInfo;
 	public function getAuditInfo() {
 		return $this->auditInfo;
 	}
@@ -133,10 +116,7 @@ class CustomerAccount
 		return $this;
 	}
 
-	/**
-	*Contact information, including the contact's name, address, phone numbers, email addresses, and company (if supplied). Also indicates whether this is a billing, shipping, or billing and shipping contact.
-	*/
-	public $contacts;
+		public $contacts;
 	public function getContacts() {
 		return $this->contacts;
 	}
@@ -146,10 +126,7 @@ class CustomerAccount
 		return $this;
 	}
 
-	/**
-	*List of groups of customer account groups.
-	*/
-	public $groups;
+		public $groups;
 	public function getGroups() {
 		return $this->groups;
 	}
@@ -169,10 +146,7 @@ class CustomerAccount
 		return $this;
 	}
 
-	/**
-	*List of customer account notes.
-	*/
-	public $notes;
+		public $notes;
 	public function getNotes() {
 		return $this->notes;
 	}

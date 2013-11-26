@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Payments;
 
 
 
-/**
-*	Properties of a payment transaction submitted for an order.
-*/
 class Payment
 {
-	/**
-	*The total monetary amount collected in this payment transaction for the order.
-	*/
-	public $amountCollected;
+		public $amountCollected;
 	public function getAmountCollected() {
 		return $this->amountCollected;
 	}
@@ -32,10 +26,7 @@ class Payment
 		return $this;
 	}
 
-	/**
-	*If the payment transaction is a shopper credit, the total monetary amount credited in this payment transaction for the order.
-	*/
-	public $amountCredited;
+		public $amountCredited;
 	public function getAmountCredited() {
 		return $this->amountCredited;
 	}
@@ -45,10 +36,7 @@ class Payment
 		return $this;
 	}
 
-	/**
-	*The actions a user can perform for a payment at this time.
-	*/
-	public $availableActions;
+		public $availableActions;
 	public function getAvailableActions() {
 		return $this->availableActions;
 	}
@@ -58,10 +46,7 @@ class Payment
 		return $this;
 	}
 
-	/**
-	*Unique identifier of the payment transaction.
-	*/
-	public $id;
+		public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -71,10 +56,7 @@ class Payment
 		return $this;
 	}
 
-	/**
-	*If true, the payment transaction occurs at regular intervals such as a monthly billing cycle or a digital or physical subscription.
-	*/
-	public $isRecurring;
+		public $isRecurring;
 	public function getIsRecurring() {
 		return $this->isRecurring;
 	}
@@ -84,10 +66,7 @@ class Payment
 		return $this;
 	}
 
-	/**
-	*Unique identifier of the order associated with the payment.
-	*/
-	public $orderId;
+		public $orderId;
 	public function getOrderId() {
 		return $this->orderId;
 	}
@@ -97,10 +76,7 @@ class Payment
 		return $this;
 	}
 
-	/**
-	*The transaction ID supplied by the payment service to associate with this order payment.
-	*/
-	public $paymentServiceTransactionId;
+		public $paymentServiceTransactionId;
 	public function getPaymentServiceTransactionId() {
 		return $this->paymentServiceTransactionId;
 	}
@@ -110,10 +86,7 @@ class Payment
 		return $this;
 	}
 
-	/**
-	*The type of payment transaction performed, either check or credit card. Paypal and additional payment types will be supported in a future release.
-	*/
-	public $paymentType;
+		public $paymentType;
 	public function getPaymentType() {
 		return $this->paymentType;
 	}
@@ -123,10 +96,7 @@ class Payment
 		return $this;
 	}
 
-	/**
-	*Current status of the payment transaction for the order.
-	*/
-	public $status;
+		public $status;
 	public function getStatus() {
 		return $this->status;
 	}
@@ -136,10 +106,7 @@ class Payment
 		return $this;
 	}
 
-	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
-	*/
-	public $auditInfo;
+		public $auditInfo;
 	public function getAuditInfo() {
 		return $this->auditInfo;
 	}
@@ -149,10 +116,7 @@ class Payment
 		return $this;
 	}
 
-	/**
-	*The billing information associates with this payment.
-	*/
-	public $billingInfo;
+		public $billingInfo;
 	public function getBillingInfo() {
 		return $this->billingInfo;
 	}
@@ -162,10 +126,7 @@ class Payment
 		return $this;
 	}
 
-	/**
-	*Container for the interactions associated with the payment, which includes details for each action performed for the payment.
-	*/
-	public $interactions;
+		public $interactions;
 	public function getInteractions() {
 		return $this->interactions;
 	}

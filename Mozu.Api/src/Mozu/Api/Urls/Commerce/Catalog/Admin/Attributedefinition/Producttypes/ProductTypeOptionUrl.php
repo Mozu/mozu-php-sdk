@@ -19,7 +19,7 @@ class ProductTypeOptionUrl  {
 
 	/**
 		* Get Resource Url for GetOptions
-		* @param int $productTypeId Identifier of the product type options to retrieve.
+		* @param int $productTypeId 
 		* @return string Resource Url
 	*/
 	public static function getOptionsUrl($productTypeId)
@@ -31,8 +31,8 @@ class ProductTypeOptionUrl  {
 	
 	/**
 		* Get Resource Url for GetOption
-		* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-		* @param int $productTypeId The identifier of the product option type of the option being retrieved.
+		* @param string $attributeFQN 
+		* @param int $productTypeId 
 		* @return string Resource Url
 	*/
 	public static function getOptionUrl($attributeFQN, $productTypeId)
@@ -45,7 +45,7 @@ class ProductTypeOptionUrl  {
 	
 	/**
 		* Get Resource Url for AddOption
-		* @param int $productTypeId Identifier of the product type where an attribute which exists as an option is being added.
+		* @param int $productTypeId 
 		* @return string Resource Url
 	*/
 	public static function addOptionUrl($productTypeId)
@@ -57,8 +57,8 @@ class ProductTypeOptionUrl  {
 	
 	/**
 		* Get Resource Url for UpdateOption
-		* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-		* @param int $productTypeId Identifier of the product type whose attribute that exists as an option to update.
+		* @param string $attributeFQN 
+		* @param int $productTypeId 
 		* @return string Resource Url
 	*/
 	public static function updateOptionUrl($attributeFQN, $productTypeId)
@@ -71,8 +71,8 @@ class ProductTypeOptionUrl  {
 	
 	/**
 		* Get Resource Url for DeleteOption
-		* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-		* @param int $productTypeId Identifier of the product type option to delete.
+		* @param string $attributeFQN 
+		* @param int $productTypeId 
 		* @return string Resource Url
 	*/
 	public static function deleteOptionUrl($attributeFQN, $productTypeId)

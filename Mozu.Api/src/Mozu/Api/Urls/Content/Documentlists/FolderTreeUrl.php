@@ -19,10 +19,10 @@ class FolderTreeUrl  {
 
 	/**
 		* Get Resource Url for GetFolderTree
-		* @param string $documentListName The name of the document list that contains this folder hierarchy.
-		* @param int $levels The number of levels in the folder hierarchy to return.
-		* @param string $rootFolderId The unique identifier of the top-level folder in the document list.
-		* @param string $rootFolderPath The location in the document hierarchy of the top-level folder in the document list.
+		* @param string $documentListName 
+		* @param int $levels 
+		* @param string $rootFolderId 
+		* @param string $rootFolderPath 
 		* @return string Resource Url
 	*/
 	public static function getFolderTreeUrl($documentListName, $levels, $rootFolderId, $rootFolderPath)

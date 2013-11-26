@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\Content;
 
 
 
-/**
-*	Properties of the facet used to retrieve documents.
-*/
 class Facet
 {
-	/**
-	*The number of facet results.
-	*/
-	public $count;
+		public $count;
 	public function getCount() {
 		return $this->count;
 	}
@@ -32,10 +26,7 @@ class Facet
 		return $this;
 	}
 
-	/**
-	*The name of the facet.
-	*/
-	public $name;
+		public $name;
 	public function getName() {
 		return $this->name;
 	}

@@ -16,14 +16,14 @@ use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Platform\ReferenceDataUrl;
 
 /**
-* The Reference resource retrieves collections of standards the Mozu system currently supports. This includes content locales, top-level domains, units of measure, countries, currencies, time zones, and shipping or billing address schemas.
+* 
 */
 class ReferenceDataClient {
 
 	/**
-	* Retrieves a specific address schema based on the country code provided. This operation allows the creation of custom shipping and billing address fields.
+	* 
 	*
-	* @param string $countryCode 2 letter geographic code representing the country for the physical or mailing address. Currently limited to the US.
+	* @param string $countryCode 
 	* @return MozuClient
 	*/
 	public static function getAddressSchemaClient($countryCode =  null)
@@ -36,7 +36,7 @@ class ReferenceDataClient {
 	}
 	
 	/**
-	* Retrieves the entire list of address schemas that the system supports.
+	* 
 	*
 	* @return MozuClient
 	*/
@@ -50,9 +50,9 @@ class ReferenceDataClient {
 	}
 	
 	/**
-	* ***Always private and should not be published.***
+	* 
 	*
-	* @param int $behaviorId ***Always private and should not be published.***
+	* @param int $behaviorId 
 	* @return MozuClient
 	*/
 	public static function getBehaviorClient( $behaviorId)
@@ -65,7 +65,7 @@ class ReferenceDataClient {
 	}
 	
 	/**
-	* ***Always private and should not be published.***
+	* 
 	*
 	* @return MozuClient
 	*/
@@ -79,9 +79,9 @@ class ReferenceDataClient {
 	}
 	
 	/**
-	* ***Always private and should not be published.***
+	* 
 	*
-	* @param int $categoryId ***Always private and should not be published.***
+	* @param int $categoryId 
 	* @return MozuClient
 	*/
 	public static function getBehaviorCategoryClient( $categoryId)
@@ -94,7 +94,7 @@ class ReferenceDataClient {
 	}
 	
 	/**
-	* ***Always private and should not be published.***
+	* 
 	*
 	* @param string $userType 
 	* @return MozuClient
@@ -109,7 +109,7 @@ class ReferenceDataClient {
 	}
 	
 	/**
-	* Retrieves the entire list of content locales that the system supports. The content locales indicate the language used and the country where the language is used. Just because the system supports the content locale does not mean that the site or site group supports the language. For example,currently only "en-US" is supported.
+	* 
 	*
 	* @return MozuClient
 	*/
@@ -123,7 +123,7 @@ class ReferenceDataClient {
 	}
 	
 	/**
-	* Retrieves the entire list of countries that the system supports.
+	* 
 	*
 	* @return MozuClient
 	*/
@@ -137,7 +137,7 @@ class ReferenceDataClient {
 	}
 	
 	/**
-	* Retrieves the entire list of currencies that the system supports.
+	* 
 	*
 	* @return MozuClient
 	*/
@@ -151,7 +151,7 @@ class ReferenceDataClient {
 	}
 	
 	/**
-	* Retrieves the entire list of time zones that the system supports.
+	* 
 	*
 	* @return MozuClient
 	*/
@@ -165,7 +165,7 @@ class ReferenceDataClient {
 	}
 	
 	/**
-	* Retrieves the entire list of top-level Internet domains that the system supports.
+	* 
 	*
 	* @return MozuClient
 	*/
@@ -179,9 +179,9 @@ class ReferenceDataClient {
 	}
 	
 	/**
-	* Retrieves the entire list of units of measure that the system supports.
+	* 
 	*
-	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
+	* @param string $filter 
 	* @return MozuClient
 	*/
 	public static function getUnitsOfMeasureClient($filter =  null)

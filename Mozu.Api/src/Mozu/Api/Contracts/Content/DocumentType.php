@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\Content;
 
 
 
-/**
-*	The type of documents used in the CMS such as "web_page" or "template" or "image_url".
-*/
 class DocumentType
 {
-	/**
-	*User-defined description of the document type.
-	*/
-	public $description;
+		public $description;
 	public function getDescription() {
 		return $this->description;
 	}
@@ -32,10 +26,7 @@ class DocumentType
 		return $this;
 	}
 
-	/**
-	*The name that displays for the document type.
-	*/
-	public $displayName;
+		public $displayName;
 	public function getDisplayName() {
 		return $this->displayName;
 	}
@@ -45,10 +36,7 @@ class DocumentType
 		return $this;
 	}
 
-	/**
-	*The document type scope specifies where the the template can be used such as "Global".
-	*/
-	public $documentTypeScope;
+		public $documentTypeScope;
 	public function getDocumentTypeScope() {
 		return $this->documentTypeScope;
 	}
@@ -58,10 +46,7 @@ class DocumentType
 		return $this;
 	}
 
-	/**
-	*The name of the document type.
-	*/
-	public $name;
+		public $name;
 	public function getName() {
 		return $this->name;
 	}
@@ -71,10 +56,7 @@ class DocumentType
 		return $this;
 	}
 
-	/**
-	*If applicable, the name of the parent document type.
-	*/
-	public $parentTypeName;
+		public $parentTypeName;
 	public function getParentTypeName() {
 		return $this->parentTypeName;
 	}
@@ -84,10 +66,7 @@ class DocumentType
 		return $this;
 	}
 
-	/**
-	*List of content entity descriptions localized to the site or site group's default language.
-	*/
-	public $localizedDescriptions;
+		public $localizedDescriptions;
 	public function getLocalizedDescriptions() {
 		return $this->localizedDescriptions;
 	}
@@ -97,10 +76,7 @@ class DocumentType
 		return $this;
 	}
 
-	/**
-	*List of content entity display names localized to the site or site group's default language.
-	*/
-	public $localizedDisplayNames;
+		public $localizedDisplayNames;
 	public function getLocalizedDisplayNames() {
 		return $this->localizedDisplayNames;
 	}
@@ -110,10 +86,7 @@ class DocumentType
 		return $this;
 	}
 
-	/**
-	*List of content property types associated with the document type.
-	*/
-	public $propertyTypes;
+		public $propertyTypes;
 	public function getPropertyTypes() {
 		return $this->propertyTypes;
 	}

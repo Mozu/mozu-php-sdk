@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\Core;
 
 
 
-/**
-*	Properties of a role assigned to a user for a defined scope.
-*/
 class UserRole
 {
-	/**
-	*Unique identifier of the user role.
-	*/
-	public $roleId;
+		public $roleId;
 	public function getRoleId() {
 		return $this->roleId;
 	}
@@ -32,10 +26,7 @@ class UserRole
 		return $this;
 	}
 
-	/**
-	*The name of the user role, such as "developer" or "administrator".
-	*/
-	public $roleName;
+		public $roleName;
 	public function getRoleName() {
 		return $this->roleName;
 	}
@@ -45,10 +36,7 @@ class UserRole
 		return $this;
 	}
 
-	/**
-	*Unique identifier of the user the role is assigned to.
-	*/
-	public $userId;
+		public $userId;
 	public function getUserId() {
 		return $this->userId;
 	}
@@ -58,10 +46,7 @@ class UserRole
 		return $this;
 	}
 
-	/**
-	*Properties of the developer account or Mozu tenant associated with the user role.
-	*/
-	public $assignedInScope;
+		public $assignedInScope;
 	public function getAssignedInScope() {
 		return $this->assignedInScope;
 	}
@@ -71,10 +56,7 @@ class UserRole
 		return $this;
 	}
 
-	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
-	*/
-	public $auditInfo;
+		public $auditInfo;
 	public function getAuditInfo() {
 		return $this->auditInfo;
 	}

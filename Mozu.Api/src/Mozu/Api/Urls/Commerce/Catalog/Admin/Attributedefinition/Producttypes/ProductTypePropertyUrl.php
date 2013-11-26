@@ -19,7 +19,7 @@ class ProductTypePropertyUrl  {
 
 	/**
 		* Get Resource Url for GetProperties
-		* @param int $productTypeId Identifier of the product type whose properties are being retrieved as a paged list.
+		* @param int $productTypeId 
 		* @return string Resource Url
 	*/
 	public static function getPropertiesUrl($productTypeId)
@@ -31,8 +31,8 @@ class ProductTypePropertyUrl  {
 	
 	/**
 		* Get Resource Url for GetProperty
-		* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-		* @param int $productTypeId Identifier of the product type whose single instance of a property is being retrieved.
+		* @param string $attributeFQN 
+		* @param int $productTypeId 
 		* @return string Resource Url
 	*/
 	public static function getPropertyUrl($attributeFQN, $productTypeId)
@@ -45,7 +45,7 @@ class ProductTypePropertyUrl  {
 	
 	/**
 		* Get Resource Url for AddProperty
-		* @param int $productTypeId Identifier of the product type whose properties are being added or created to the product type.
+		* @param int $productTypeId 
 		* @return string Resource Url
 	*/
 	public static function addPropertyUrl($productTypeId)
@@ -57,8 +57,8 @@ class ProductTypePropertyUrl  {
 	
 	/**
 		* Get Resource Url for UpdateProperty
-		* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-		* @param int $productTypeId Identifier of the product type whose single instance of a property is being updated.
+		* @param string $attributeFQN 
+		* @param int $productTypeId 
 		* @return string Resource Url
 	*/
 	public static function updatePropertyUrl($attributeFQN, $productTypeId)
@@ -71,8 +71,8 @@ class ProductTypePropertyUrl  {
 	
 	/**
 		* Get Resource Url for DeleteProperty
-		* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-		* @param int $productTypeId Identifier of the product type whose properties are being deleted.
+		* @param string $attributeFQN 
+		* @param int $productTypeId 
 		* @return string Resource Url
 	*/
 	public static function deletePropertyUrl($attributeFQN, $productTypeId)

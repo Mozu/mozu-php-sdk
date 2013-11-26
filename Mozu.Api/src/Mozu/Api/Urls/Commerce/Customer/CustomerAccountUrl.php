@@ -19,8 +19,8 @@ class CustomerAccountUrl  {
 
 	/**
 		* Get Resource Url for GetAccounts
-		* @param string $fields The fields to include in the response.
-		* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
+		* @param string $fields 
+		* @param string $filter 
 		* @param int $pageSize 
 		* @param string $q 
 		* @param int $qLimit 
@@ -43,7 +43,7 @@ class CustomerAccountUrl  {
 	
 	/**
 		* Get Resource Url for GetAccount
-		* @param int $accountId Unique identifier of the customer account to retrieve.
+		* @param int $accountId 
 		* @return string Resource Url
 	*/
 	public static function getAccountUrl($accountId)
@@ -110,8 +110,20 @@ class CustomerAccountUrl  {
 	}
 	
 	/**
+		* Get Resource Url for RecomputeCustomerLifetimeValue
+		* @param int $accountId 
+		* @return string Resource Url
+	*/
+	public static function recomputeCustomerLifetimeValueUrl($accountId)
+	{
+		$url = "/api/commerce/customer/accounts/{accountId}/recomputelifetimevalue";
+		$url = MozuUrl::formatUrl($url, "accountId", $accountId);
+		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+	}
+	
+	/**
 		* Get Resource Url for UpdateAccount
-		* @param int $accountId Unique identifier of the customer account.
+		* @param int $accountId 
 		* @return string Resource Url
 	*/
 	public static function updateAccountUrl($accountId)
@@ -123,7 +135,7 @@ class CustomerAccountUrl  {
 	
 	/**
 		* Get Resource Url for DeleteAccount
-		* @param int $accountId Unique identifier of the customer account to delete.
+		* @param int $accountId 
 		* @return string Resource Url
 	*/
 	public static function deleteAccountUrl($accountId)

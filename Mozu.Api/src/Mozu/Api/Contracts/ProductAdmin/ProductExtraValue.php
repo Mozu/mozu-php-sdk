@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
-/**
-*	Properties of a defined value for a product extra attribute.
-*/
 class ProductExtraValue
 {
-	/**
-	*The difference between the highest weight and the lowest weight associated with this product extra.
-	*/
-	public $deltaWeight;
+		public $deltaWeight;
 	public function getDeltaWeight() {
 		return $this->deltaWeight;
 	}
@@ -32,10 +26,7 @@ class ProductExtraValue
 		return $this;
 	}
 
-	/**
-	*If true, the product extra value shows defaults.
-	*/
-	public $isDefaulted;
+		public $isDefaulted;
 	public function getIsDefaulted() {
 		return $this->isDefaulted;
 	}
@@ -45,10 +36,7 @@ class ProductExtraValue
 		return $this;
 	}
 
-	/**
-	*Properties of a defined value for a product extra attribute.
-	*/
-	public $value;
+		public $value;
 	public function getValue() {
 		return $this->value;
 	}
@@ -58,10 +46,7 @@ class ProductExtraValue
 		return $this;
 	}
 
-	/**
-	*Detail of the product extra attribute vocabulary value.
-	*/
-	public $attributeVocabularyValueDetail;
+		public $attributeVocabularyValueDetail;
 	public function getAttributeVocabularyValueDetail() {
 		return $this->attributeVocabularyValueDetail;
 	}
@@ -71,10 +56,7 @@ class ProductExtraValue
 		return $this;
 	}
 
-	/**
-	*The difference between the highest price and the lowest price associated with this product extra.
-	*/
-	public $deltaPrice;
+		public $deltaPrice;
 	public function getDeltaPrice() {
 		return $this->deltaPrice;
 	}

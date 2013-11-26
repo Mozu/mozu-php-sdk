@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 
-/**
-*	Properties of an image defined for a product.
-*/
 class ProductImage
 {
-	/**
-	*Descriptive text associated with the image or video that appears on the storefront.
-	*/
-	public $altText;
+		public $altText;
 	public function getAltText() {
 		return $this->altText;
 	}
@@ -32,10 +26,7 @@ class ProductImage
 		return $this;
 	}
 
-	/**
-	*Image title that appears on the storefront.
-	*/
-	public $imageLabel;
+		public $imageLabel;
 	public function getImageLabel() {
 		return $this->imageLabel;
 	}
@@ -45,10 +36,7 @@ class ProductImage
 		return $this;
 	}
 
-	/**
-	*Directory path where the product image file is stored.
-	*/
-	public $imagePath;
+		public $imagePath;
 	public function getImagePath() {
 		return $this->imagePath;
 	}
@@ -58,10 +46,7 @@ class ProductImage
 		return $this;
 	}
 
-	/**
-	*URL of the product image.
-	*/
-	public $imageUrl;
+		public $imageUrl;
 	public function getImageUrl() {
 		return $this->imageUrl;
 	}
@@ -81,10 +66,7 @@ class ProductImage
 		return $this;
 	}
 
-	/**
-	*The numeric value that denotes the place this entity occupies in the order of the entity list.
-	*/
-	public $sequence;
+		public $sequence;
 	public function getSequence() {
 		return $this->sequence;
 	}
@@ -94,10 +76,7 @@ class ProductImage
 		return $this;
 	}
 
-	/**
-	*The file link or URL of the product video.
-	*/
-	public $videoUrl;
+		public $videoUrl;
 	public function getVideoUrl() {
 		return $this->videoUrl;
 	}

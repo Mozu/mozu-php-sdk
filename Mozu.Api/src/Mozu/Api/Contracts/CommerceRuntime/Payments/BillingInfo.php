@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Payments;
 
 
 
-/**
-*	Properties of the billing information entered for a payment.
-*/
 class BillingInfo
 {
-	/**
-	*If true, the customer's shipping address is the same as the customer's billing address.
-	*/
-	public $isSameBillingShippingAddress;
+		public $isSameBillingShippingAddress;
 	public function getIsSameBillingShippingAddress() {
 		return $this->isSameBillingShippingAddress;
 	}
@@ -32,10 +26,7 @@ class BillingInfo
 		return $this;
 	}
 
-	/**
-	*The type of payment, such as credit card or check. Additional payment types such as PayPal will be supported in future releases.
-	*/
-	public $paymentType;
+		public $paymentType;
 	public function getPaymentType() {
 		return $this->paymentType;
 	}
@@ -45,10 +36,7 @@ class BillingInfo
 		return $this;
 	}
 
-	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
-	*/
-	public $auditInfo;
+		public $auditInfo;
 	public function getAuditInfo() {
 		return $this->auditInfo;
 	}
@@ -58,10 +46,7 @@ class BillingInfo
 		return $this;
 	}
 
-	/**
-	*The cardholder's billing address.
-	*/
-	public $billingContact;
+		public $billingContact;
 	public function getBillingContact() {
 		return $this->billingContact;
 	}
@@ -71,10 +56,7 @@ class BillingInfo
 		return $this;
 	}
 
-	/**
-	*If the customer is paying by card, the credit card information.
-	*/
-	public $card;
+		public $card;
 	public function getCard() {
 		return $this->card;
 	}

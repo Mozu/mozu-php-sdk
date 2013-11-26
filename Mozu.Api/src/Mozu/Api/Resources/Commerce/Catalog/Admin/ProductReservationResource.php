@@ -17,7 +17,7 @@ use Mozu\Api\Clients\Commerce\Catalog\Admin\ProductReservationClient;
 use Mozu\Api\ApiContext;
 
 /**
-* Temporarily hold a product from inventory while a shopper is filling out payment information. Create a product reservation when a shopper proceeds to check out and then release the reservation when the order process is complete.
+* 
 */
 class ProductReservationResource {
 
@@ -28,10 +28,10 @@ class ProductReservationResource {
 	}
 
 	/**
-	* Retrieves a list of product reservations according to any specified filter criteria and sort options.
+	* 
 	*
-	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+	* @param string $filter 
+	* @param int $pageSize 
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return ProductReservationCollection 
@@ -46,9 +46,9 @@ class ProductReservationResource {
 	}
 	
 	/**
-	* Retrieves the details of a product reservation.
+	* 
 	*
-	* @param int $productReservationId Unique identifier of the product reservation.
+	* @param int $productReservationId 
 	* @return ProductReservation 
 	*/
 	public function getProductReservation($dataViewMode,  $productReservationId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -61,9 +61,9 @@ class ProductReservationResource {
 	}
 	
 	/**
-	* Creates a new product reservation for a product. This action places a hold on the product inventory for the quantity specified during the ordering process.
+	* 
 	*
-	* @param ProductReservation $productReservation Properties of the product reservation.
+	* @param ProductReservation $productReservation 
 	* @return ProductReservation 
 	*/
 	public function addProductReservation($dataViewMode, $productReservation, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -76,10 +76,10 @@ class ProductReservationResource {
 	}
 	
 	/**
-	* Commits a product reservation to decrement the product's inventory by the quantity specified then release the reservation once the order process completed successfully.
+	* 
 	*
-	* @param int $productReservationId Unique identifier of the reservation.
-	* @param int $qty Number of product items to remove from inventory.
+	* @param int $productReservationId 
+	* @param int $qty 
 	*/
 	public function commitReservation($dataViewMode,  $productReservationId,  $qty, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
@@ -106,9 +106,9 @@ class ProductReservationResource {
 	}
 	
 	/**
-	* Deletes a product reservation. For example, delete a reservation when an order is not processed to return the product quantity back to inventory.
+	* 
 	*
-	* @param int $productReservationId Unique identifier of the reservation.
+	* @param int $productReservationId 
 	*/
 	public function deleteProductReservation($dataViewMode,  $productReservationId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

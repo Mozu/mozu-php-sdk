@@ -16,12 +16,12 @@ use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Content\DocumentTypeUrl;
 
 /**
-* The DocumentTypes resource is a part of the Content Service.
+* 
 */
 class DocumentTypeClient {
 
 	/**
-	* Retrieves a paged list of DocumentTypes.
+	* 
 	*
 	* @param int $pageSize 
 	* @param int $startIndex 
@@ -39,9 +39,9 @@ class DocumentTypeClient {
 	}
 	
 	/**
-	* Retrieves an existing DocumentType.
+	* 
 	*
-	* @param string $documentTypeName The documentType name being retrieved.
+	* @param string $documentTypeName 
 	* @return MozuClient
 	*/
 	public static function getClient( $documentTypeName, Mozu\Api\Security\AuthTicket &$authTicket= null)

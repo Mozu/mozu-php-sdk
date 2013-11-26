@@ -16,21 +16,21 @@ use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\Products\ProductPropertyUrl;
 
 /**
-* Query, create, and update product properties.
+* 
 */
 class ProductPropertyClient {
 
 	/**
-	* Retrieves a list of product properties by providing the product code.
+	* 
 	*
-	* @param string $productCode Identifies the product for which a list of properties is being retrieved.
+	* @param string $productCode 
 	* @return MozuClient
 	*/
 	public static function getPropertiesClient($dataViewMode,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductPropertyUrl::getPropertiesUrl($productCode);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -39,17 +39,17 @@ class ProductPropertyClient {
 	}
 	
 	/**
-	* Retrieves the individual product property by providing the product code and the attribute's fully qualified name.
+	* 
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-	* @param string $productCode Identifies the product for which a single property is being retrieved.
+	* @param string $attributeFQN 
+	* @param string $productCode 
 	* @return MozuClient
 	*/
 	public static function getPropertyClient($dataViewMode,  $attributeFQN,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductPropertyUrl::getPropertyUrl($attributeFQN, $productCode);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -58,17 +58,17 @@ class ProductPropertyClient {
 	}
 	
 	/**
-	* Adds or creates an individual property by providing the product code.
+	* 
 	*
-	* @param string $productCode The merchant-created code that uniquely identifies the product such as a SKU or item number. Identifies the product for which a new property is created.
-	* @param ProductProperty $productProperty The details of the product property including the attribute detail, user's fully qualified name, and the list of product property values to add.
+	* @param string $productCode 
+	* @param ProductProperty $productProperty 
 	* @return MozuClient
 	*/
 	public static function addPropertyClient($dataViewMode, $productProperty,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductPropertyUrl::addPropertyUrl($productCode);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($productProperty)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withBody($productProperty)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -77,18 +77,18 @@ class ProductPropertyClient {
 	}
 	
 	/**
-	* Update the details of a product property by providng the product code and the attribute's fully qualified name.
+	* 
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-	* @param string $productCode Identifies the product for which a list of properties is being updated.
-	* @param ProductProperty $productProperty The details of the product property including the attribute detail, user's fully qualified name, and the list of product property values to update.
+	* @param string $attributeFQN 
+	* @param string $productCode 
+	* @param ProductProperty $productProperty 
 	* @return MozuClient
 	*/
 	public static function updatePropertyClient($dataViewMode, $productProperty,  $attributeFQN,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductPropertyUrl::updatePropertyUrl($attributeFQN, $productCode);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($productProperty)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withBody($productProperty)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -97,16 +97,16 @@ class ProductPropertyClient {
 	}
 	
 	/**
-	* Deletes the property by providing the product code and the attribute's fully qualified name.
+	* 
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-	* @param string $productCode Identifies the product for which a new property is being deleted.
+	* @param string $attributeFQN 
+	* @param string $productCode 
 	*/
 	public static function deletePropertyClient($dataViewMode,  $attributeFQN,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductPropertyUrl::deletePropertyUrl($attributeFQN, $productCode);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);

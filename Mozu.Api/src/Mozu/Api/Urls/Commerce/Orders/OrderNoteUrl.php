@@ -19,7 +19,7 @@ class OrderNoteUrl  {
 
 	/**
 		* Get Resource Url for GetOrderNotes
-		* @param string $orderId Unique identifier of the order whose notes are retrieved.
+		* @param string $orderId 
 		* @return string Resource Url
 	*/
 	public static function getOrderNotesUrl($orderId)
@@ -31,8 +31,8 @@ class OrderNoteUrl  {
 	
 	/**
 		* Get Resource Url for GetOrderNote
-		* @param string $noteId Unique identifier of the note text to retrieve.
-		* @param string $orderId Unique identifier of the order note to retrieve.
+		* @param string $noteId 
+		* @param string $orderId 
 		* @return string Resource Url
 	*/
 	public static function getOrderNoteUrl($noteId, $orderId)
@@ -45,7 +45,7 @@ class OrderNoteUrl  {
 	
 	/**
 		* Get Resource Url for CreateOrderNote
-		* @param string $orderId Unique identifier of the order to add a note.
+		* @param string $orderId 
 		* @return string Resource Url
 	*/
 	public static function createOrderNoteUrl($orderId)
@@ -57,8 +57,8 @@ class OrderNoteUrl  {
 	
 	/**
 		* Get Resource Url for UpdateOrderNote
-		* @param string $noteId Unique identifier of the note whose text is being updated.
-		* @param string $orderId Unique identifier of the order whose note is being updated.
+		* @param string $noteId 
+		* @param string $orderId 
 		* @return string Resource Url
 	*/
 	public static function updateOrderNoteUrl($noteId, $orderId)
@@ -71,8 +71,8 @@ class OrderNoteUrl  {
 	
 	/**
 		* Get Resource Url for DeleteOrderNote
-		* @param string $noteId Unique identifier of the note text to delete.
-		* @param string $orderId Unique identifier of the order note to delete.
+		* @param string $noteId 
+		* @param string $orderId 
 		* @return string Resource Url
 	*/
 	public static function deleteOrderNoteUrl($noteId, $orderId)

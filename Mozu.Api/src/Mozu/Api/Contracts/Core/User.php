@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\Core;
 
 
 
-/**
-*	Properties of the user.
-*/
 class User
 {
-	/**
-	*The email address of the specified user.
-	*/
-	public $emailAddress;
+		public $emailAddress;
 	public function getEmailAddress() {
 		return $this->emailAddress;
 	}
@@ -32,10 +26,7 @@ class User
 		return $this;
 	}
 
-	/**
-	*The first name of the contact. Max length: 200.
-	*/
-	public $firstName;
+		public $firstName;
 	public function getFirstName() {
 		return $this->firstName;
 	}
@@ -45,10 +36,7 @@ class User
 		return $this;
 	}
 
-	/**
-	*Identifier of the user.
-	*/
-	public $id;
+		public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -58,10 +46,7 @@ class User
 		return $this;
 	}
 
-	/**
-	*If true, the user is an active user.
-	*/
-	public $isActive;
+		public $isActive;
 	public function getIsActive() {
 		return $this->isActive;
 	}
@@ -71,10 +56,7 @@ class User
 		return $this;
 	}
 
-	/**
-	*The last name or surname of the contact. Max length: 200.
-	*/
-	public $lastName;
+		public $lastName;
 	public function getLastName() {
 		return $this->lastName;
 	}
@@ -84,10 +66,7 @@ class User
 		return $this;
 	}
 
-	/**
-	*"Language used for the entity. Currently, only ""en-US"" is supported."
-	*/
-	public $localeCode;
+		public $localeCode;
 	public function getLocaleCode() {
 		return $this->localeCode;
 	}
@@ -97,10 +76,7 @@ class User
 		return $this;
 	}
 
-	/**
-	*The user password.
-	*/
-	public $password;
+		public $password;
 	public function getPassword() {
 		return $this->password;
 	}
@@ -110,10 +86,7 @@ class User
 		return $this;
 	}
 
-	/**
-	*Collection of roles assigned to the user.
-	*/
-	public $roles;
+		public $roles;
 	public function getRoles() {
 		return $this->roles;
 	}
@@ -123,10 +96,7 @@ class User
 		return $this;
 	}
 
-	/**
-	*Collection of system-supplied data about the user.
-	*/
-	public $systemData;
+		public $systemData;
 	public function getSystemData() {
 		return $this->systemData;
 	}

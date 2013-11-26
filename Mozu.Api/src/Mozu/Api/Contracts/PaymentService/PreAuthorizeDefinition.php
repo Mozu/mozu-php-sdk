@@ -16,10 +16,7 @@ namespace Mozu\Api\Contracts\PaymentService;
 
 class PreAuthorizeDefinition
 {
-	/**
-	*Identifier of the entity.
-	*/
-	public $id;
+		public $id;
 	public function getId() {
 		return $this->id;
 	}

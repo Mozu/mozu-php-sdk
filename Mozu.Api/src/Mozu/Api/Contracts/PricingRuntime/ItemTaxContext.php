@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\PricingRuntime;
 
 
 
-/**
-*	Properties of the tax context applicable for line items in an order.
-*/
 class ItemTaxContext
 {
-	/**
-	*Unique identifier of the line item in the order.
-	*/
-	public $id;
+		public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -42,10 +36,7 @@ class ItemTaxContext
 		return $this;
 	}
 
-	/**
-	*Quantity of the line item in the order.
-	*/
-	public $quantity;
+		public $quantity;
 	public function getQuantity() {
 		return $this->quantity;
 	}
@@ -55,10 +46,7 @@ class ItemTaxContext
 		return $this;
 	}
 
-	/**
-	*Amount of tax applied to shipping costs for the line item in the order.
-	*/
-	public $shippingTax;
+		public $shippingTax;
 	public function getShippingTax() {
 		return $this->shippingTax;
 	}
@@ -68,10 +56,7 @@ class ItemTaxContext
 		return $this;
 	}
 
-	/**
-	*The total tax amount applied to the line item in the order, minus any shipping taxes.
-	*/
-	public $tax;
+		public $tax;
 	public function getTax() {
 		return $this->tax;
 	}

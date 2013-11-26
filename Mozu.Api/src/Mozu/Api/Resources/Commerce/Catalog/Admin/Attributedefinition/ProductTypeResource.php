@@ -17,7 +17,7 @@ use Mozu\Api\Clients\Commerce\Catalog\Admin\Attributedefinition\ProductTypeClien
 use Mozu\Api\ApiContext;
 
 /**
-* Use the Product Types resource to manage the types for your product catalog. Product types act as configuration templates, which store a set of attributes common to all products associated with that type. Unlike categories, products can only be associated with a single product type.
+* 
 */
 class ProductTypeResource {
 
@@ -28,10 +28,10 @@ class ProductTypeResource {
 	}
 
 	/**
-	* Retrieves a list of product types according to any specified filter criteria and sort options.
+	* 
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product type search results by any of its properties. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). <b>For example - "filter=Name+cont+shoes"</b>
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+	* @param string $filter 
+	* @param int $pageSize 
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return ProductTypeCollection 
@@ -46,9 +46,9 @@ class ProductTypeResource {
 	}
 	
 	/**
-	* Retrieves a product type by providing the product type ID.
+	* 
 	*
-	* @param int $productTypeId Identifier of the product type being retrieved.
+	* @param int $productTypeId 
 	* @return ProductType 
 	*/
 	public function getProductType($dataViewMode,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -61,9 +61,9 @@ class ProductTypeResource {
 	}
 	
 	/**
-	* Add or create a new product type.
+	* 
 	*
-	* @param ProductType $productType Add or create the product type using these properties.
+	* @param ProductType $productType 
 	* @return ProductType 
 	*/
 	public function addProductType($dataViewMode, $productType, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -76,10 +76,10 @@ class ProductTypeResource {
 	}
 	
 	/**
-	* Update a product type by providing the product type ID.
+	* 
 	*
-	* @param int $productTypeId Identifier of the product type to update.
-	* @param ProductType $productType The details of the product type to update.
+	* @param int $productTypeId 
+	* @param ProductType $productType 
 	* @return ProductType 
 	*/
 	public function updateProductType($dataViewMode, $productType,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -92,9 +92,9 @@ class ProductTypeResource {
 	}
 	
 	/**
-	* Delete product type by providing the product type ID.
+	* 
 	*
-	* @param int $productTypeId Identifier of the product type being deleted.
+	* @param int $productTypeId 
 	*/
 	public function deleteProductType($dataViewMode,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

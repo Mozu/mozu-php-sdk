@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
-/**
-*	Content of the product property value in the language defined for the locale code.
-*/
 class ProductPropertyValueLocalizedContent
 {
-	/**
-	*"Language used for the entity. Currently, only ""en-US"" is supported."
-	*/
-	public $localeCode;
+		public $localeCode;
 	public function getLocaleCode() {
 		return $this->localeCode;
 	}
@@ -32,10 +26,7 @@ class ProductPropertyValueLocalizedContent
 		return $this;
 	}
 
-	/**
-	*The string value of the product property set in the language specified the locale code.
-	*/
-	public $stringValue;
+		public $stringValue;
 	public function getStringValue() {
 		return $this->stringValue;
 	}

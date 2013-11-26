@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
-/**
-*	Container for the facet source information, which includes the category, price, or attribute properties.
-*/
 class FacetSource
 {
-	/**
-	*If true, the facet allows for values that consist of one or more ranges, such as 0-100, 100-200, and 200-300.
-	*/
-	public $allowsRangeQuery;
+		public $allowsRangeQuery;
 	public function getAllowsRangeQuery() {
 		return $this->allowsRangeQuery;
 	}
@@ -32,10 +26,7 @@ class FacetSource
 		return $this;
 	}
 
-	/**
-	*The data type associated with the attribute or category that generates the facet, such as bool or string.
-	*/
-	public $dataType;
+		public $dataType;
 	public function getDataType() {
 		return $this->dataType;
 	}
@@ -45,10 +36,7 @@ class FacetSource
 		return $this;
 	}
 
-	/**
-	*Identifier of the facet source, which is attribute, category, or price. For attribute facets, the AttributeFQN.
-	*/
-	public $id;
+		public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -58,10 +46,7 @@ class FacetSource
 		return $this;
 	}
 
-	/**
-	*System-supplied and read-only name of the associated facet source.
-	*/
-	public $name;
+		public $name;
 	public function getName() {
 		return $this->name;
 	}
@@ -71,10 +56,7 @@ class FacetSource
 		return $this;
 	}
 
-	/**
-	*The source type for the facet, either "Attribute" or "Element". Category and price facets are elements.
-	*/
-	public $type;
+		public $type;
 	public function getType() {
 		return $this->type;
 	}

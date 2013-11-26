@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
-/**
-*	Properties of an individual vocabulary value for an attribute. For example, a "color" attribute might have the following vocabulary values: Red, Blue, Green.
-*/
 class AttributeVocabularyValue
 {
-	/**
-	*The actual vocabulary value.
-	*/
-	public $value;
+		public $value;
 	public function getValue() {
 		return $this->value;
 	}
@@ -32,10 +26,7 @@ class AttributeVocabularyValue
 		return $this;
 	}
 
-	/**
-	*The number that denotes the order of the entity value within a list of entity values.
-	*/
-	public $valueSequence;
+		public $valueSequence;
 	public function getValueSequence() {
 		return $this->valueSequence;
 	}
@@ -45,10 +36,7 @@ class AttributeVocabularyValue
 		return $this;
 	}
 
-	/**
-	*Complex type that contains content for a language specified by LocaleCode.
-	*/
-	public $content;
+		public $content;
 	public function getContent() {
 		return $this->content;
 	}

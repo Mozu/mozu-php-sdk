@@ -16,12 +16,12 @@ use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Carts\ChangeMessageUrl;
 
 /**
-* System messages for live carts to notify the shopper about a product price or inventory change. System-supplied and read-only. For example: Product price is reduced due to a buy one, get one 50% off (BOGO) sale. A message may appear if the product is out of stock during the cart shopping process.
+* 
 */
 class ChangeMessageClient {
 
 	/**
-	* Retrieves messages to and from the current shopper. These are messages supplied by the system to notify the shopper of price increases or decreases or product unavailability.
+	* 
 	*
 	* @return MozuClient
 	*/
@@ -37,7 +37,7 @@ class ChangeMessageClient {
 	}
 	
 	/**
-	* Deletes all messages associated with the cart of the current shopper.
+	* 
 	*
 	*/
 	public static function removeAllMessagesClient(Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -52,9 +52,9 @@ class ChangeMessageClient {
 	}
 	
 	/**
-	* Removes a single message associated with the cart of the current shopper.
+	* 
 	*
-	* @param string $messageId Identifier of the message to remove from the cart.
+	* @param string $messageId 
 	*/
 	public static function removeMessageClient( $messageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

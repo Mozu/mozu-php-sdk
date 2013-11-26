@@ -16,12 +16,12 @@ use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Settings\Checkout\OrderProcessingSettingsUrl;
 
 /**
-* Use the order processing settings resource to define how orders and payments are processed for the site.
+* 
 */
 class OrderProcessingSettingsClient {
 
 	/**
-	* Retrieves a list of the order processing settings defined for the site.
+	* 
 	*
 	* @return MozuClient
 	*/
@@ -37,9 +37,9 @@ class OrderProcessingSettingsClient {
 	}
 	
 	/**
-	* Updates the order processing settings defined for the site.
+	* 
 	*
-	* @param OrderProcessingSettings $orderProcessingSettings List of the order processing settings to define for the site.
+	* @param OrderProcessingSettings $orderProcessingSettings 
 	* @return MozuClient
 	*/
 	public static function updateOrderProcessingSettingsClient($orderProcessingSettings, Mozu\Api\Security\AuthTicket &$authTicket= null)

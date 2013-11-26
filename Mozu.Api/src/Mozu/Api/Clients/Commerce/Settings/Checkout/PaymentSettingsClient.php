@@ -16,12 +16,12 @@ use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Settings\Checkout\PaymentSettingsUrl;
 
 /**
-* Specify settings when creating payments for order checkout on the site.
+* 
 */
 class PaymentSettingsClient {
 
 	/**
-	* Retrieves a list of the payment settings for the specified site.
+	* 
 	*
 	* @return MozuClient
 	*/
@@ -120,9 +120,9 @@ class PaymentSettingsClient {
 	}
 	
 	/**
-	* Updates one or more properties in the configured payment settings for a site.
+	* 
 	*
-	* @param PaymentSettings $paymentSettings Properties of the payment settings to use for the site.
+	* @param PaymentSettings $paymentSettings 
 	* @return MozuClient
 	*/
 	public static function updatePaymentSettingsClient($paymentSettings, Mozu\Api\Security\AuthTicket &$authTicket= null)

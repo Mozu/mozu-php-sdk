@@ -19,7 +19,7 @@ class TenantUrl  {
 
 	/**
 		* Get Resource Url for GetTenant
-		* @param int $tenantId Unique identifier of the Mozu tenant.
+		* @param int $tenantId 
 		* @return string Resource Url
 	*/
 	public static function getTenantUrl($tenantId)

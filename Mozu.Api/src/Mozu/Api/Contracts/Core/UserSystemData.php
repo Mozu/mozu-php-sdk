@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\Core;
 
 
 
-/**
-*	System-supplied and read-only information about the user.
-*/
 class UserSystemData
 {
-	/**
-	*Date and time when the entity was created. UTC Date/Time.
-	*/
-	public $createdOn;
+		public $createdOn;
 	public function getCreatedOn() {
 		return $this->createdOn;
 	}
@@ -32,10 +26,7 @@ class UserSystemData
 		return $this;
 	}
 
-	/**
-	*The number of failed authentication attempts associated with the user.
-	*/
-	public $failedLoginAttemptCount;
+		public $failedLoginAttemptCount;
 	public function getFailedLoginAttemptCount() {
 		return $this->failedLoginAttemptCount;
 	}
@@ -45,10 +36,7 @@ class UserSystemData
 		return $this;
 	}
 
-	/**
-	*The date and time the initial login was unsuccessful. Each time a user attempts to authenticate and it fails, an update occurs on this field. System-supplied and read-only.
-	*/
-	public $firstFailedLoginAttemptOn;
+		public $firstFailedLoginAttemptOn;
 	public function getFirstFailedLoginAttemptOn() {
 		return $this->firstFailedLoginAttemptOn;
 	}
@@ -58,10 +46,7 @@ class UserSystemData
 		return $this;
 	}
 
-	/**
-	*If true, the user account is locked due to multiple failed authentication attempts.
-	*/
-	public $isLocked;
+		public $isLocked;
 	public function getIsLocked() {
 		return $this->isLocked;
 	}
@@ -71,10 +56,7 @@ class UserSystemData
 		return $this;
 	}
 
-	/**
-	*If true, the login requires a password change for increased security. If false, the login does not require a password change.
-	*/
-	public $isPasswordChangeRequired;
+		public $isPasswordChangeRequired;
 	public function getIsPasswordChangeRequired() {
 		return $this->isPasswordChangeRequired;
 	}
@@ -84,10 +66,7 @@ class UserSystemData
 		return $this;
 	}
 
-	/**
-	*When the user's account was last locked. System-supplied and read-only.
-	*/
-	public $lastLockedOn;
+		public $lastLockedOn;
 	public function getLastLockedOn() {
 		return $this->lastLockedOn;
 	}
@@ -97,10 +76,7 @@ class UserSystemData
 		return $this;
 	}
 
-	/**
-	* When the user last logged into the store. System-supplied and read-only.
-	*/
-	public $lastLoginOn;
+		public $lastLoginOn;
 	public function getLastLoginOn() {
 		return $this->lastLoginOn;
 	}
@@ -110,10 +86,7 @@ class UserSystemData
 		return $this;
 	}
 
-	/**
-	* When the password was last modified. System-supplied and read-only.
-	*/
-	public $lastPasswordChangeOn;
+		public $lastPasswordChangeOn;
 	public function getLastPasswordChangeOn() {
 		return $this->lastPasswordChangeOn;
 	}
@@ -123,10 +96,7 @@ class UserSystemData
 		return $this;
 	}
 
-	/**
-	*The number of login attempts left for the user. The user must login successfully before this value reaches zero otherwise the account will be locked.
-	*/
-	public $remainingLoginAttempts;
+		public $remainingLoginAttempts;
 	public function getRemainingLoginAttempts() {
 		return $this->remainingLoginAttempts;
 	}
@@ -136,10 +106,7 @@ class UserSystemData
 		return $this;
 	}
 
-	/**
-	*Date and time when the entity was last updated. UTC Date/Time.
-	*/
-	public $updatedOn;
+		public $updatedOn;
 	public function getUpdatedOn() {
 		return $this->updatedOn;
 	}

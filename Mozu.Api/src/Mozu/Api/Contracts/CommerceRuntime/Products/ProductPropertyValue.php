@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Products;
 
 
 
-/**
-*	Values of a product property attribute.
-*/
 class ProductPropertyValue
 {
-	/**
-	*Property string value in the language specified in the locale code for the product storefront.
-	*/
-	public $stringValue;
+		public $stringValue;
 	public function getStringValue() {
 		return $this->stringValue;
 	}
@@ -32,10 +26,7 @@ class ProductPropertyValue
 		return $this;
 	}
 
-	/**
-	*Value of the product property.
-	*/
-	public $value;
+		public $value;
 	public function getValue() {
 		return $this->value;
 	}

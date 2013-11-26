@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 
-/**
-*	Properties of the product category that appears on the storefront.
-*/
 class Category
 {
-	/**
-	*Unique identifier for the storefront container used to organize products.
-	*/
-	public $categoryId;
+		public $categoryId;
 	public function getCategoryId() {
 		return $this->categoryId;
 	}
@@ -32,10 +26,7 @@ class Category
 		return $this;
 	}
 
-	/**
-	*The numeric value that denotes the place this entity occupies in the order of the entity list.
-	*/
-	public $sequence;
+		public $sequence;
 	public function getSequence() {
 		return $this->sequence;
 	}
@@ -45,10 +36,7 @@ class Category
 		return $this;
 	}
 
-	/**
-	*Complex type that contains content for a language specified by LocaleCode.
-	*/
-	public $content;
+		public $content;
 	public function getContent() {
 		return $this->content;
 	}
@@ -58,10 +46,7 @@ class Category
 		return $this;
 	}
 
-	/**
-	*List of the subcategories in the hierarchy for the specified categories.
-	*/
-	public $childrenCategories;
+		public $childrenCategories;
 	public function getChildrenCategories() {
 		return $this->childrenCategories;
 	}
@@ -71,10 +56,7 @@ class Category
 		return $this;
 	}
 
-	/**
-	*If applicable, the parent category in the hierarchy for the specified category.
-	*/
-	public $parentCategory;
+		public $parentCategory;
 	public function getParentCategory() {
 		return $this->parentCategory;
 	}

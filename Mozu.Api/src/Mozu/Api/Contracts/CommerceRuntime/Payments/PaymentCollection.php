@@ -14,9 +14,6 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Payments;
 
 
 
-/**
-*	Collection of payment transactions associated with an order.
-*/
 class PaymentCollection
 {
 		public $totalCount;

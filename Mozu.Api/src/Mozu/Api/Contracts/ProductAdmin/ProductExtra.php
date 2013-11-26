@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
-/**
-*	Properties of the product extra to create such as the attribute detail, fully qualified name, and list of product extra values. Setting up product extras in Product Admin allows for shopper-entered information such as th initials on a monogram.
-*/
 class ProductExtra
 {
-	/**
-	*"The fully qualified name of the attribute, which is a user defined attribute identifier."
-	*/
-	public $attributeFQN;
+		public $attributeFQN;
 	public function getAttributeFQN() {
 		return $this->attributeFQN;
 	}
@@ -32,10 +26,7 @@ class ProductExtra
 		return $this;
 	}
 
-	/**
-	*If true, the property has several selections.
-	*/
-	public $isMultiSelect;
+		public $isMultiSelect;
 	public function getIsMultiSelect() {
 		return $this->isMultiSelect;
 	}
@@ -45,10 +36,7 @@ class ProductExtra
 		return $this;
 	}
 
-	/**
-	*If true, the product extra is required for the request to return a valid response.
-	*/
-	public $isRequired;
+		public $isRequired;
 	public function getIsRequired() {
 		return $this->isRequired;
 	}
@@ -58,10 +46,7 @@ class ProductExtra
 		return $this;
 	}
 
-	/**
-	*The list of values that populate a product extra as set in the Admin for the Storefront.
-	*/
-	public $values;
+		public $values;
 	public function getValues() {
 		return $this->values;
 	}

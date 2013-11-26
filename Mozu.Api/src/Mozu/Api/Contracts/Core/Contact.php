@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\Core;
 
 
 
-/**
-*	Contact information for an account.
-*/
 class Contact
 {
-	/**
-	*The legal or doing business as (DBA) or tradestyle name of the business or organization. Max length: 200.
-	*/
-	public $companyOrOrganization;
+		public $companyOrOrganization;
 	public function getCompanyOrOrganization() {
 		return $this->companyOrOrganization;
 	}
@@ -32,10 +26,7 @@ class Contact
 		return $this;
 	}
 
-	/**
-	*The email address of the specified user.
-	*/
-	public $email;
+		public $email;
 	public function getEmail() {
 		return $this->email;
 	}
@@ -45,10 +36,7 @@ class Contact
 		return $this;
 	}
 
-	/**
-	*The first name of the contact. Max length: 200.
-	*/
-	public $firstName;
+		public $firstName;
 	public function getFirstName() {
 		return $this->firstName;
 	}
@@ -58,10 +46,7 @@ class Contact
 		return $this;
 	}
 
-	/**
-	*Identifier of the contact.
-	*/
-	public $id;
+		public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -71,10 +56,7 @@ class Contact
 		return $this;
 	}
 
-	/**
-	*The last name or surname of the contact. Max length: 200.
-	*/
-	public $lastNameOrSurname;
+		public $lastNameOrSurname;
 	public function getLastNameOrSurname() {
 		return $this->lastNameOrSurname;
 	}
@@ -84,10 +66,7 @@ class Contact
 		return $this;
 	}
 
-	/**
-	*The middle name or the first initial of the middle name of the contact. Max length: 100.
-	*/
-	public $middleNameOrInitial;
+		public $middleNameOrInitial;
 	public function getMiddleNameOrInitial() {
 		return $this->middleNameOrInitial;
 	}
@@ -97,10 +76,7 @@ class Contact
 		return $this;
 	}
 
-	/**
-	*Address information for the contact.
-	*/
-	public $address;
+		public $address;
 	public function getAddress() {
 		return $this->address;
 	}
@@ -110,10 +86,7 @@ class Contact
 		return $this;
 	}
 
-	/**
-	*List of phone numbers associated with the customer account contact.
-	*/
-	public $phoneNumbers;
+		public $phoneNumbers;
 	public function getPhoneNumbers() {
 		return $this->phoneNumbers;
 	}

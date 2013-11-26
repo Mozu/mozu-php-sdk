@@ -14,9 +14,6 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Orders;
 
 
 
-/**
-*	A characteristic of an order.
-*/
 class OrderAttribute
 {
 		public $attributeDefinitionId;
@@ -29,10 +26,7 @@ class OrderAttribute
 		return $this;
 	}
 
-	/**
-	*The fully qualified name of the attribute.
-	*/
-	public $fullyQualifiedName;
+		public $fullyQualifiedName;
 	public function getFullyQualifiedName() {
 		return $this->fullyQualifiedName;
 	}
@@ -42,10 +36,7 @@ class OrderAttribute
 		return $this;
 	}
 
-	/**
-	*The values of the order attribute.
-	*/
-	public $values;
+		public $values;
 	public function getValues() {
 		return $this->values;
 	}
@@ -55,10 +46,7 @@ class OrderAttribute
 		return $this;
 	}
 
-	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
-	*/
-	public $auditInfo;
+		public $auditInfo;
 	public function getAuditInfo() {
 		return $this->auditInfo;
 	}

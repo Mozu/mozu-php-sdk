@@ -16,15 +16,15 @@ use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\Attributedefinition\AttributeUrl;
 
 /**
-* Attributes allow a merchant to define a product base type by extending product details. Define details, such as specifications, to describe products. Create attributes to share across several or all products in a store or stores such as price, size, weight, color, and brand. Some attributes will apply to a specific type of product or a single product, for example, screen resolution or storage capacity. Create attributes separately from products to share common attributes across products. <br></br> Attributes are options, extras, and properties. Options are a a grouping of option values. Products with options do not produce child products with unique SKU's. Options themselves are not tied to inventory. However, they are tied to a product and are only available in the cart when a product is being added, updated, or removed. Examples: color or size. <br></br> Option values are the choices available in an option group. Examples: red, blue, green or small, medium, large. <br></br> Extras are product details to add on to the product itself. Examples: Upgrades, monogram. Properties are Examples: Brand name or UPC Code.
+* 
 */
 class AttributeClient {
 
 	/**
-	* Retrieves a paged list of attributes according to any specified filter criteria and sort options.
+	* 
 	*
-	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+	* @param string $filter 
+	* @param int $pageSize 
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return MozuClient
@@ -33,7 +33,7 @@ class AttributeClient {
 	{
 		$url = AttributeUrl::getAttributesUrl($filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -42,16 +42,16 @@ class AttributeClient {
 	}
 	
 	/**
-	* Retrieves summary details of a single attribute, such as whether it's required, has multiple values, or is entered by the shopper. Another operation retrieves the attribute's list of attribute values.
+	* 
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
+	* @param string $attributeFQN 
 	* @return MozuClient
 	*/
 	public static function getAttributeClient($dataViewMode,  $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = AttributeUrl::getAttributeUrl($attributeFQN);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -60,16 +60,16 @@ class AttributeClient {
 	}
 	
 	/**
-	* Creates a new attribute to describe one aspect of a product such as color or size. Specify several properties when creating the attribute. Include its display name, whether it represents a product option that a shopper selects when purchasing it, or whether the shopper supplies the value (if required to do so), such as engraved initials. Include how attribute values should appear on the storefront such as via radio buttons or text boxes.
+	* 
 	*
-	* @param Attribute $attribute Properties of the attribute to create.
+	* @param Attribute $attribute 
 	* @return MozuClient
 	*/
 	public static function addAttributeClient($dataViewMode, $attribute, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = AttributeUrl::addAttributeUrl();
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($attribute)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withBody($attribute)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -78,17 +78,17 @@ class AttributeClient {
 	}
 	
 	/**
-	* Updates an existing attribute with attribute properties to set.
+	* 
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-	* @param Attribute $attribute Any properties of the attribute that to update.
+	* @param string $attributeFQN 
+	* @param Attribute $attribute 
 	* @return MozuClient
 	*/
 	public static function updateAttributeClient($dataViewMode, $attribute,  $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = AttributeUrl::updateAttributeUrl($attributeFQN);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($attribute)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withBody($attribute)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -97,15 +97,15 @@ class AttributeClient {
 	}
 	
 	/**
-	* Deletes an existing attribute.
+	* 
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
+	* @param string $attributeFQN 
 	*/
 	public static function deleteAttributeClient($dataViewMode,  $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = AttributeUrl::deleteAttributeUrl($attributeFQN);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);

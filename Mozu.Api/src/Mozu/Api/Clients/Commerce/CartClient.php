@@ -16,14 +16,14 @@ use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\CartUrl;
 
 /**
-* Use the Carts resource to manage storefront shopping carts as items are added and removed. Each time a shopper's cart is modified, the Carts resource updates estimated prices, discounts, tax, and shipping.
+* 
 */
 class CartClient {
 
 	/**
-	* Retrieve a cart specified by its cart ID.
+	* 
 	*
-	* @param string $cartId Identifier of the cart being retrieved.
+	* @param string $cartId 
 	* @return MozuClient
 	*/
 	public static function getCartClient( $cartId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -38,7 +38,7 @@ class CartClient {
 	}
 	
 	/**
-	* Retrieves a cart's contents for the current shopper. If the shopper does not have an active cart on the site, the service creates one.
+	* 
 	*
 	* @return MozuClient
 	*/
@@ -54,7 +54,7 @@ class CartClient {
 	}
 	
 	/**
-	* Retrieves the number of items in the active cart and the status of the cart such as whether or not it has expired. Only an anonymous user's cart (guest that does not log in) that is emptied and idle will expire after 14 days. Note that the expiration counter is renewed each time action is made to the cart. For shoppers or users that are logged in, the cart does not expire.
+	* 
 	*
 	* @return MozuClient
 	*/
@@ -70,9 +70,9 @@ class CartClient {
 	}
 	
 	/**
-	* Retrieve a user's cart by specifying the user ID.
+	* 
 	*
-	* @param string $userId Unique identifier of the user whose cart you want to retrieve.
+	* @param string $userId 
 	* @return MozuClient
 	*/
 	public static function getUserCartClient( $userId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -87,9 +87,9 @@ class CartClient {
 	}
 	
 	/**
-	* Retrieves the current status of the specified user's cart, including the number of items in the active cart.
+	* 
 	*
-	* @param string $userId Unique identifier of the user whose cart details you want to retrieve.
+	* @param string $userId 
 	* @return MozuClient
 	*/
 	public static function getUserCartSummaryClient( $userId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -104,9 +104,9 @@ class CartClient {
 	}
 	
 	/**
-	* Update the current shopper's cart.
+	* 
 	*
-	* @param Cart $cart All of the properties of the cart to update. The product code is required.
+	* @param Cart $cart 
 	* @return MozuClient
 	*/
 	public static function updateCartClient($cart, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -121,9 +121,9 @@ class CartClient {
 	}
 	
 	/**
-	* Delete the cart specified by its cart ID.
+	* 
 	*
-	* @param string $cartId Identifier of the cart being deleted.
+	* @param string $cartId 
 	*/
 	public static function deleteCartClient( $cartId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
@@ -137,7 +137,7 @@ class CartClient {
 	}
 	
 	/**
-	* Deletes the cart of the currently active shopper.
+	* 
 	*
 	*/
 	public static function deleteCurrentCartClient(Mozu\Api\Security\AuthTicket &$authTicket= null)

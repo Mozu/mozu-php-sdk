@@ -31,7 +31,7 @@ class DiscountTargetUrl  {
 	
 	/**
 		* Get Resource Url for UpdateDiscountTarget
-		* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
+		* @param int $discountId 
 		* @return string Resource Url
 	*/
 	public static function updateDiscountTargetUrl($discountId)

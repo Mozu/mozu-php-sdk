@@ -17,7 +17,7 @@ use Mozu\Api\Clients\Content\PropertyTypeClient;
 use Mozu\Api\ApiContext;
 
 /**
-* Use the property types subresource to manage content properties.
+* 
 */
 class PropertyTypeResource {
 
@@ -28,9 +28,9 @@ class PropertyTypeResource {
 	}
 
 	/**
-	* Retrieve a list of the content property types.
+	* 
 	*
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+	* @param int $pageSize 
 	* @param int $startIndex 
 	* @return PropertyTypeCollection 
 	*/
@@ -44,9 +44,9 @@ class PropertyTypeResource {
 	}
 	
 	/**
-	* Retrieve the details of the content property type.
+	* 
 	*
-	* @param string $propertyTypeName The name of the content property type.
+	* @param string $propertyTypeName 
 	* @return PropertyType 
 	*/
 	public function get( $propertyTypeName, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -59,7 +59,7 @@ class PropertyTypeResource {
 	}
 	
 	/**
-	* Retrieve the value types associated with a content property.
+	* 
 	*
 	* @return array|PropertyValueType 
 	*/

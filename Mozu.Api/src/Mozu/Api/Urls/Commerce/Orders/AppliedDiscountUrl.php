@@ -20,8 +20,8 @@ class AppliedDiscountUrl  {
 	/**
 		* Get Resource Url for ApplyCoupon
 		* @param string $couponCode 
-		* @param string $orderId Unique identifier of the order to associate the coupon. System-supplied and read-only.
-		* @param string $updateMode Specifies whether to apply the coupon by updating the original order, updating the order in draft mode, or updating the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal", "ApplyToDraft", or "ApplyAndCommit".
+		* @param string $orderId 
+		* @param string $updateMode 
 		* @param string $version 
 		* @return string Resource Url
 	*/
@@ -38,8 +38,8 @@ class AppliedDiscountUrl  {
 	/**
 		* Get Resource Url for RemoveCoupon
 		* @param string $couponCode 
-		* @param string $orderId Unique identifier of the order with the coupon to remove.
-		* @param string $updateMode Specifies whether to remove the coupon by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal", "ApplyToDraft", or "ApplyAndCommit".
+		* @param string $orderId 
+		* @param string $updateMode 
 		* @param string $version 
 		* @return string Resource Url
 	*/
@@ -55,8 +55,8 @@ class AppliedDiscountUrl  {
 	
 	/**
 		* Get Resource Url for RemoveCoupons
-		* @param string $orderId Unique identifier of the order with the coupons to remove.
-		* @param string $updateMode Specifies whether to remove coupons by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal", "ApplyToDraft", or "ApplyAndCommit".
+		* @param string $orderId 
+		* @param string $updateMode 
 		* @param string $version 
 		* @return string Resource Url
 	*/

@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
-/**
-*	Properties of a specific product variation.
-*/
 class ProductVariation
 {
-	/**
-	*The difference between the base weight for a product and this variation of the product, which can be a positive or negative decimal value.
-	*/
-	public $deltaWeight;
+		public $deltaWeight;
 	public function getDeltaWeight() {
 		return $this->deltaWeight;
 	}
@@ -32,10 +26,7 @@ class ProductVariation
 		return $this;
 	}
 
-	/**
-	*If true, this variation of this product is marked available for sale.
-	*/
-	public $isActive;
+		public $isActive;
 	public function getIsActive() {
 		return $this->isActive;
 	}
@@ -45,10 +36,7 @@ class ProductVariation
 		return $this;
 	}
 
-	/**
-	*If true, the production variation is no longer available for sale. For example, if a merchant stops selling all "small" shirts, all product variations with the "small" option are set to IsOrphan. System-supplied and read-only.
-	*/
-	public $isOrphan;
+		public $isOrphan;
 	public function getIsOrphan() {
 		return $this->isOrphan;
 	}
@@ -58,10 +46,7 @@ class ProductVariation
 		return $this;
 	}
 
-	/**
-	*If true, one or more product variations are configured for the specified product code.
-	*/
-	public $variationExists;
+		public $variationExists;
 	public function getVariationExists() {
 		return $this->variationExists;
 	}
@@ -71,10 +56,7 @@ class ProductVariation
 		return $this;
 	}
 
-	/**
-	*System-generated key that represents the attribute values that uniquely identify a specific product variation.
-	*/
-	public $variationkey;
+		public $variationkey;
 	public function getVariationkey() {
 		return $this->variationkey;
 	}
@@ -84,10 +66,7 @@ class ProductVariation
 		return $this;
 	}
 
-	/**
-	*Merchant-created code associated with a specific product variation. Variation product codes maintain an association with the base product code.
-	*/
-	public $variationProductCode;
+		public $variationProductCode;
 	public function getVariationProductCode() {
 		return $this->variationProductCode;
 	}
@@ -97,10 +76,7 @@ class ProductVariation
 		return $this;
 	}
 
-	/**
-	*The difference between the base price for the product and this variation of the product, which can be a positive or negative decimal value. For example, if the base price for a t-shirt product is $10, but the XL variation should cost $12, the DeltaPrice value should be "2". However, if the XS variation should only cost $8, the DeltaPrice value should be "-2".
-	*/
-	public $deltaPrice;
+		public $deltaPrice;
 	public function getDeltaPrice() {
 		return $this->deltaPrice;
 	}
@@ -110,10 +86,7 @@ class ProductVariation
 		return $this;
 	}
 
-	/**
-	*Wrapper for the list of option attributes configured for the product variation.
-	*/
-	public $options;
+		public $options;
 	public function getOptions() {
 		return $this->options;
 	}

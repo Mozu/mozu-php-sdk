@@ -16,15 +16,15 @@ use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\ProductReservationUrl;
 
 /**
-* Temporarily hold a product from inventory while a shopper is filling out payment information. Create a product reservation when a shopper proceeds to check out and then release the reservation when the order process is complete.
+* 
 */
 class ProductReservationClient {
 
 	/**
-	* Retrieves a list of product reservations according to any specified filter criteria and sort options.
+	* 
 	*
-	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+	* @param string $filter 
+	* @param int $pageSize 
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return MozuClient
@@ -33,7 +33,7 @@ class ProductReservationClient {
 	{
 		$url = ProductReservationUrl::getProductReservationsUrl($filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -42,16 +42,16 @@ class ProductReservationClient {
 	}
 	
 	/**
-	* Retrieves the details of a product reservation.
+	* 
 	*
-	* @param int $productReservationId Unique identifier of the product reservation.
+	* @param int $productReservationId 
 	* @return MozuClient
 	*/
 	public static function getProductReservationClient($dataViewMode,  $productReservationId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductReservationUrl::getProductReservationUrl($productReservationId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -60,16 +60,16 @@ class ProductReservationClient {
 	}
 	
 	/**
-	* Creates a new product reservation for a product. This action places a hold on the product inventory for the quantity specified during the ordering process.
+	* 
 	*
-	* @param ProductReservation $productReservation Properties of the product reservation.
+	* @param ProductReservation $productReservation 
 	* @return MozuClient
 	*/
 	public static function addProductReservationClient($dataViewMode, $productReservation, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductReservationUrl::addProductReservationUrl();
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($productReservation)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withBody($productReservation)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -78,16 +78,16 @@ class ProductReservationClient {
 	}
 	
 	/**
-	* Commits a product reservation to decrement the product's inventory by the quantity specified then release the reservation once the order process completed successfully.
+	* 
 	*
-	* @param int $productReservationId Unique identifier of the reservation.
-	* @param int $qty Number of product items to remove from inventory.
+	* @param int $productReservationId 
+	* @param int $qty 
 	*/
 	public static function commitReservationClient($dataViewMode,  $productReservationId,  $qty, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductReservationUrl::commitReservationUrl($productReservationId, $qty);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -106,7 +106,7 @@ class ProductReservationClient {
 	{
 		$url = ProductReservationUrl::updateProductReservationUrl($productReservationId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($productReservation)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withBody($productReservation)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -115,15 +115,15 @@ class ProductReservationClient {
 	}
 	
 	/**
-	* Deletes a product reservation. For example, delete a reservation when an order is not processed to return the product quantity back to inventory.
+	* 
 	*
-	* @param int $productReservationId Unique identifier of the reservation.
+	* @param int $productReservationId 
 	*/
 	public static function deleteProductReservationClient($dataViewMode,  $productReservationId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductReservationUrl::deleteProductReservationUrl($productReservationId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);

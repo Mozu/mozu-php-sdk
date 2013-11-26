@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
-/**
-*	The localized product content in the language specified by the LocaleCode.
-*/
 class ProductLocalizedContent
 {
-	/**
-	*"Language used for the entity. Currently, only ""en-US"" is supported."
-	*/
-	public $localeCode;
+		public $localeCode;
 	public function getLocaleCode() {
 		return $this->localeCode;
 	}
@@ -32,10 +26,7 @@ class ProductLocalizedContent
 		return $this;
 	}
 
-	/**
-	*More detailed or full product description typically used for a product details page.
-	*/
-	public $productFullDescription;
+		public $productFullDescription;
 	public function getProductFullDescription() {
 		return $this->productFullDescription;
 	}
@@ -45,10 +36,7 @@ class ProductLocalizedContent
 		return $this;
 	}
 
-	/**
-	*The descriptive brief product name.
-	*/
-	public $productName;
+		public $productName;
 	public function getProductName() {
 		return $this->productName;
 	}
@@ -58,10 +46,7 @@ class ProductLocalizedContent
 		return $this;
 	}
 
-	/**
-	*Brief description of the product typically used when the product is displayed in a list or in search results.
-	*/
-	public $productShortDescription;
+		public $productShortDescription;
 	public function getProductShortDescription() {
 		return $this->productShortDescription;
 	}
@@ -71,10 +56,7 @@ class ProductLocalizedContent
 		return $this;
 	}
 
-	/**
-	*List of product images associated with a product.
-	*/
-	public $productImages;
+		public $productImages;
 	public function getProductImages() {
 		return $this->productImages;
 	}

@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Products;
 
 
 
-/**
-*	The price of a product that appears on a storefront after any applied discounts.
-*/
 class ProductPrice
 {
-	/**
-	*The price the merchant charges for a product on a storefront if no sales price is defined.
-	*/
-	public $price;
+		public $price;
 	public function getPrice() {
 		return $this->price;
 	}
@@ -32,10 +26,7 @@ class ProductPrice
 		return $this;
 	}
 
-	/**
-	*Current sale price defined for a product on a storefront.
-	*/
-	public $salePrice;
+		public $salePrice;
 	public function getSalePrice() {
 		return $this->salePrice;
 	}

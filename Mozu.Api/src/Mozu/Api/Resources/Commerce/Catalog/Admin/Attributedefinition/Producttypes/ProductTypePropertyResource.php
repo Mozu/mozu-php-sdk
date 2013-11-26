@@ -17,7 +17,7 @@ use Mozu\Api\Clients\Commerce\Catalog\Admin\Attributedefinition\Producttypes\Pro
 use Mozu\Api\ApiContext;
 
 /**
-* Collection of the attributes that are properties in this product type.
+* 
 */
 class ProductTypePropertyResource {
 
@@ -28,9 +28,9 @@ class ProductTypePropertyResource {
 	}
 
 	/**
-	* Retrieves a list of product properties that belong to a product type.
+	* 
 	*
-	* @param int $productTypeId Identifier of the product type whose properties are being retrieved as a paged list.
+	* @param int $productTypeId 
 	* @return array|AttributeInProductType 
 	*/
 	public function getProperties($dataViewMode,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -43,10 +43,10 @@ class ProductTypePropertyResource {
 	}
 	
 	/**
-	* Retrieves the single property by providing the property ID and the attribute's user-defined fully qualified name.
+	* 
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-	* @param int $productTypeId Identifier of the product type whose single instance of a property is being retrieved.
+	* @param string $attributeFQN 
+	* @param int $productTypeId 
 	* @return AttributeInProductType 
 	*/
 	public function getProperty($dataViewMode,  $attributeFQN,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -59,10 +59,10 @@ class ProductTypePropertyResource {
 	}
 	
 	/**
-	* Adds or creates the attribute which exists as properties in the product type.
+	* 
 	*
-	* @param int $productTypeId Identifier of the product type whose properties are being added or created to the product type.
-	* @param AttributeInProductType $attributeInProductType The attribute in product type refers to the specific product attribute that is being created to exist as a property only available in the product type template.
+	* @param int $productTypeId 
+	* @param AttributeInProductType $attributeInProductType 
 	* @return AttributeInProductType 
 	*/
 	public function addProperty($dataViewMode, $attributeInProductType,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -75,11 +75,11 @@ class ProductTypePropertyResource {
 	}
 	
 	/**
-	* Updates the single property by providing the property ID and the attribute's user-defined fully qualified name.
+	* 
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-	* @param int $productTypeId Identifier of the product type whose single instance of a property is being updated.
-	* @param AttributeInProductType $attributeInProductType The properties of the attribute (that exist as properties) are being updated.
+	* @param string $attributeFQN 
+	* @param int $productTypeId 
+	* @param AttributeInProductType $attributeInProductType 
 	* @return AttributeInProductType 
 	*/
 	public function updateProperty($dataViewMode, $attributeInProductType,  $attributeFQN,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -92,10 +92,10 @@ class ProductTypePropertyResource {
 	}
 	
 	/**
-	* Deletes the property by providing the attribute's user-defined fully qualified name.
+	* 
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-	* @param int $productTypeId Identifier of the product type whose properties are being deleted.
+	* @param string $attributeFQN 
+	* @param int $productTypeId 
 	*/
 	public function deleteProperty($dataViewMode,  $attributeFQN,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

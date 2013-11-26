@@ -14,9 +14,6 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Discounts;
 
 
 
-/**
-*	Properties of a discount applied to a product on a storefront.
-*/
 class AppliedProductDiscount
 {
 		public $couponCode;
@@ -29,10 +26,7 @@ class AppliedProductDiscount
 		return $this;
 	}
 
-	/**
-	*If true, the system ignores this discount when pricing the order.
-	*/
-	public $excluded;
+		public $excluded;
 	public function getExcluded() {
 		return $this->excluded;
 	}
@@ -42,10 +36,7 @@ class AppliedProductDiscount
 		return $this;
 	}
 
-	/**
-	*The value of the discount.
-	*/
-	public $impact;
+		public $impact;
 	public function getImpact() {
 		return $this->impact;
 	}
@@ -55,10 +46,7 @@ class AppliedProductDiscount
 		return $this;
 	}
 
-	/**
-	*The value of the discount for a single product unit.
-	*/
-	public $impactPerUnit;
+		public $impactPerUnit;
 	public function getImpactPerUnit() {
 		return $this->impactPerUnit;
 	}
@@ -68,10 +56,7 @@ class AppliedProductDiscount
 		return $this;
 	}
 
-	/**
-	*The number of product units priced with the associated discount.
-	*/
-	public $productQuantity;
+		public $productQuantity;
 	public function getProductQuantity() {
 		return $this->productQuantity;
 	}
@@ -81,10 +66,7 @@ class AppliedProductDiscount
 		return $this;
 	}
 
-	/**
-	*Properties of a discount applied to a product on a storefront.
-	*/
-	public $discount;
+		public $discount;
 	public function getDiscount() {
 		return $this->discount;
 	}

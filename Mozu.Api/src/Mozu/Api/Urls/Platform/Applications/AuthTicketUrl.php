@@ -39,7 +39,7 @@ class AuthTicketUrl  {
 	
 	/**
 		* Get Resource Url for DeleteAppAuthTicket
-		* @param string $refreshToken The refresh token string from the application's authentication ticket.
+		* @param string $refreshToken 
 		* @return string Resource Url
 	*/
 	public static function deleteAppAuthTicketUrl($refreshToken)

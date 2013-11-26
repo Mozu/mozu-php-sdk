@@ -16,14 +16,14 @@ use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Content\PropertyTypeUrl;
 
 /**
-* Use the property types subresource to manage content properties.
+* 
 */
 class PropertyTypeClient {
 
 	/**
-	* Retrieve a list of the content property types.
+	* 
 	*
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+	* @param int $pageSize 
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
@@ -39,9 +39,9 @@ class PropertyTypeClient {
 	}
 	
 	/**
-	* Retrieve the details of the content property type.
+	* 
 	*
-	* @param string $propertyTypeName The name of the content property type.
+	* @param string $propertyTypeName 
 	* @return MozuClient
 	*/
 	public static function getClient( $propertyTypeName, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -56,7 +56,7 @@ class PropertyTypeClient {
 	}
 	
 	/**
-	* Retrieve the value types associated with a content property.
+	* 
 	*
 	* @return MozuClient
 	*/

@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Returns;
 
 
 
-/**
-*	Properties of a return of one or more items shipped with a previously completed order.
-*/
 class MozuReturn
 {
-	/**
-	*The actions a user can perform for the return at this time.
-	*/
-	public $availableActions;
+		public $availableActions;
 	public function getAvailableActions() {
 		return $this->availableActions;
 	}
@@ -72,10 +66,7 @@ class MozuReturn
 		return $this;
 	}
 
-	/**
-	*Unique identifier of the return.
-	*/
-	public $id;
+		public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -105,10 +96,7 @@ class MozuReturn
 		return $this;
 	}
 
-	/**
-	*Unique identifier of the original completed order associated with this return.
-	*/
-	public $originalOrderId;
+		public $originalOrderId;
 	public function getOriginalOrderId() {
 		return $this->originalOrderId;
 	}
@@ -138,10 +126,7 @@ class MozuReturn
 		return $this;
 	}
 
-	/**
-	*If a refund action was performed for this return, the total amount refunded to the shopper. The refund amount can differ from the sum of the price of the returned items.
-	*/
-	public $refundAmount;
+		public $refundAmount;
 	public function getRefundAmount() {
 		return $this->refundAmount;
 	}
@@ -151,10 +136,7 @@ class MozuReturn
 		return $this;
 	}
 
-	/**
-	*A merchant-specific identifier used to sequentially order returns.
-	*/
-	public $returnNumber;
+		public $returnNumber;
 	public function getReturnNumber() {
 		return $this->returnNumber;
 	}
@@ -164,10 +146,7 @@ class MozuReturn
 		return $this;
 	}
 
-	/**
-	*Unique identifier for the order created as a result of the return. If the return results in shipping a replacement item, the order includes shipment information for the replaced items. If the return results in a refund, the order includes payment transactions to credit the shopper.
-	*/
-	public $returnOrderId;
+		public $returnOrderId;
 	public function getReturnOrderId() {
 		return $this->returnOrderId;
 	}
@@ -187,10 +166,7 @@ class MozuReturn
 		return $this;
 	}
 
-	/**
-	*The date by which a shopper must ship items associated with a return in an "awaiting items" state to the merchant.
-	*/
-	public $rmaDeadline;
+		public $rmaDeadline;
 	public function getRmaDeadline() {
 		return $this->rmaDeadline;
 	}
@@ -230,10 +206,7 @@ class MozuReturn
 		return $this;
 	}
 
-	/**
-	*Current status of the return, such as "ReturnAuthorized".
-	*/
-	public $status;
+		public $status;
 	public function getStatus() {
 		return $this->status;
 	}
@@ -253,10 +226,7 @@ class MozuReturn
 		return $this;
 	}
 
-	/**
-	*Unique identifier of the user responsible for the return. Read only and supplied by the original order.
-	*/
-	public $userId;
+		public $userId;
 	public function getUserId() {
 		return $this->userId;
 	}
@@ -286,10 +256,7 @@ class MozuReturn
 		return $this;
 	}
 
-	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
-	*/
-	public $auditInfo;
+		public $auditInfo;
 	public function getAuditInfo() {
 		return $this->auditInfo;
 	}
@@ -299,10 +266,7 @@ class MozuReturn
 		return $this;
 	}
 
-	/**
-	*An array list of objects in the returned collection.
-	*/
-	public $items;
+		public $items;
 	public function getItems() {
 		return $this->items;
 	}
@@ -312,10 +276,7 @@ class MozuReturn
 		return $this;
 	}
 
-	/**
-	*Collection of merchant-supplied notes entered for the return.
-	*/
-	public $notes;
+		public $notes;
 	public function getNotes() {
 		return $this->notes;
 	}
@@ -335,10 +296,7 @@ class MozuReturn
 		return $this;
 	}
 
-	/**
-	*Array of payments associated with this return, if applicable.
-	*/
-	public $payments;
+		public $payments;
 	public function getPayments() {
 		return $this->payments;
 	}

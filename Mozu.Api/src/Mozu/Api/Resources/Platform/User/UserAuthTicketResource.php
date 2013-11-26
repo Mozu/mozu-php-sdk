@@ -17,7 +17,7 @@ use Mozu\Api\Clients\Platform\User\UserAuthTicketClient;
 use Mozu\Api\ApiContext;
 
 /**
-* Manage the user authentication tickets used to perform operations in the Mozu API.
+* 
 */
 class UserAuthTicketResource {
 
@@ -28,9 +28,9 @@ class UserAuthTicketResource {
 	}
 
 	/**
-	* Generates an authentication ticket for a user.
+	* 
 	*
-	* @param UserAuthInfo $userAuthInfo The user authentication information, which consists of email address and password.
+	* @param UserAuthInfo $userAuthInfo 
 	* @return UserAuthTicket 
 	*/
 	public function createUserAuthTicket($userAuthInfo)
@@ -43,9 +43,9 @@ class UserAuthTicketResource {
 	}
 	
 	/**
-	* Generates an authentication ticket for a user that can be used for an individual site.
+	* 
 	*
-	* @param UserTokenInfo $userAuthInfo The user authentication information, which consists of email address and password.
+	* @param UserTokenInfo $userAuthInfo 
 	* @return UserAuthTicket 
 	*/
 	public function createAuthTicketForSite($userAuthInfo)
@@ -58,9 +58,9 @@ class UserAuthTicketResource {
 	}
 	
 	/**
-	* Refresh the user authentication ticket by supplying the refresh token.
+	* 
 	*
-	* @param string $refreshToken The refresh token generated in the user authentication ticket.
+	* @param string $refreshToken 
 	* @return UserAuthTicket 
 	*/
 	public function refreshUserAuthTicket( $refreshToken)

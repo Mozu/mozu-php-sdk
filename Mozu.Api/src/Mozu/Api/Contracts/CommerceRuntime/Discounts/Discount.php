@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Discounts;
 
 
 
-/**
-*	Properties of a discount defined for a product or order in a storefront.
-*/
 class Discount
 {
-	/**
-	*The date and time at which the discount can no longer be applied to a product or order.
-	*/
-	public $expirationDate;
+		public $expirationDate;
 	public function getExpirationDate() {
 		return $this->expirationDate;
 	}
@@ -32,10 +26,7 @@ class Discount
 		return $this;
 	}
 
-	/**
-	*Unique identifier of the discount.
-	*/
-	public $id;
+		public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -45,10 +36,7 @@ class Discount
 		return $this;
 	}
 
-	/**
-	*List of cart or order items to which the discount applies, if applicable.
-	*/
-	public $itemIds;
+		public $itemIds;
 	public function getItemIds() {
 		return $this->itemIds;
 	}
@@ -58,10 +46,7 @@ class Discount
 		return $this;
 	}
 
-	/**
-	*The name of the discount, in the language specified by the LocaleCode of the storefront.
-	*/
-	public $name;
+		public $name;
 	public function getName() {
 		return $this->name;
 	}

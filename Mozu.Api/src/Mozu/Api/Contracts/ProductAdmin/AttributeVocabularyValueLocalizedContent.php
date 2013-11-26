@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
-/**
-*	The localized text for the string value of a product attribute.
-*/
 class AttributeVocabularyValueLocalizedContent
 {
-	/**
-	*"Language used for the entity. Currently, only ""en-US"" is supported."
-	*/
-	public $localeCode;
+		public $localeCode;
 	public function getLocaleCode() {
 		return $this->localeCode;
 	}
@@ -32,10 +26,7 @@ class AttributeVocabularyValueLocalizedContent
 		return $this;
 	}
 
-	/**
-	*The localized value of the string in the language of the locale code.
-	*/
-	public $stringValue;
+		public $stringValue;
 	public function getStringValue() {
 		return $this->stringValue;
 	}

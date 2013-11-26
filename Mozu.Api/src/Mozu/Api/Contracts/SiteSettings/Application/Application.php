@@ -14,9 +14,6 @@ namespace Mozu\Api\Contracts\SiteSettings\Application;
 
 
 
-/**
-*	Properties of an application installed in a tenant.
-*/
 class Application
 {
 		public $appId;
@@ -29,10 +26,7 @@ class Application
 		return $this;
 	}
 
-	/**
-	*If true, the application is enabled for the tenant. System-supplied and read only.
-	*/
-	public $enabled;
+		public $enabled;
 	public function getEnabled() {
 		return $this->enabled;
 	}
@@ -42,10 +36,7 @@ class Application
 		return $this;
 	}
 
-	/**
-	*If true, the third party application settings have been configured and the application is initialized.
-	*/
-	public $initialized;
+		public $initialized;
 	public function getInitialized() {
 		return $this->initialized;
 	}
@@ -55,16 +46,13 @@ class Application
 		return $this;
 	}
 
-	/**
-	*URL of the application's setting configuration user interface. System-supplied and read only.
-	*/
-	public $uiconfigurationUrl;
-	public function getUiconfigurationUrl() {
-		return $this->uiconfigurationUrl;
+		public $uiConfigurationUrl;
+	public function getUiConfigurationUrl() {
+		return $this->uiConfigurationUrl;
 	}
 	
-	public function setUiconfigurationUrl($uiconfigurationUrl) {
-		$this->uiconfigurationUrl = $uiconfigurationUrl;
+	public function setUiConfigurationUrl($uiConfigurationUrl) {
+		$this->uiConfigurationUrl = $uiConfigurationUrl;
 		return $this;
 	}
 
@@ -78,10 +66,7 @@ class Application
 		return $this;
 	}
 
-	/**
-	*List of capabilities installed in a tenant.
-	*/
-	public $capabilities;
+		public $capabilities;
 	public function getCapabilities() {
 		return $this->capabilities;
 	}

@@ -16,17 +16,17 @@ use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Orders\AdjustmentUrl;
 
 /**
-* Use this subresource to manage ad-hoc order level price adjustments.
+* 
 */
 class AdjustmentClient {
 
 	/**
-	* Modify the amount charged for shipping the specified order.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order associated with the shipping adjustment.
-	* @param string $updateMode Specifies whether to apply the shipping adjustment by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal", "ApplyToDraft", or "ApplyAndCommit".
+	* @param string $orderId 
+	* @param string $updateMode 
 	* @param string $version 
-	* @param Adjustment $adjustment Properties of the shipping adjustment to apply to the order.
+	* @param Adjustment $adjustment 
 	* @return MozuClient
 	*/
 	public static function applyShippingAdjustmentClient($adjustment,  $orderId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -41,12 +41,12 @@ class AdjustmentClient {
 	}
 	
 	/**
-	* Applies a price adjustment to the specified order.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order for which to apply the adjustment.
-	* @param string $updateMode Specifies whether to apply the adjustment by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal", "ApplyToDraft", or "ApplyAndCommit".
+	* @param string $orderId 
+	* @param string $updateMode 
 	* @param string $version 
-	* @param Adjustment $adjustment Properties of the price adjustment to apply to the order.
+	* @param Adjustment $adjustment 
 	* @return MozuClient
 	*/
 	public static function applyAdjustmentClient($adjustment,  $orderId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -64,7 +64,7 @@ class AdjustmentClient {
 	* 
 	*
 	* @param string $orderId 
-	* @param string $updateMode Specifies whether to remove the shipping adjustment by updating the original order, updating the order in draft mode, or updating the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal", "ApplyToDraft", or "ApplyAndCommit".
+	* @param string $updateMode 
 	* @param string $version 
 	* @return MozuClient
 	*/
@@ -80,10 +80,10 @@ class AdjustmentClient {
 	}
 	
 	/**
-	* Removes a price adjustment from the specified order.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order for which to delete the adjustment.
-	* @param string $updateMode Specifies whether to remove the adjustment by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal", "ApplyToDraft", or "ApplyAndCommit".
+	* @param string $orderId 
+	* @param string $updateMode 
 	* @param string $version 
 	* @return MozuClient
 	*/

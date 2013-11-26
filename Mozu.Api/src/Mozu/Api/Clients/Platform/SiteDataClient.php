@@ -16,14 +16,14 @@ use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Platform\SiteDataUrl;
 
 /**
-* Use the site data resource to store site-level information required for a third-party application in the Mozu database.
+* 
 */
 class SiteDataClient {
 
 	/**
-	* Retrieves the value of a record in the Mozu database.
+	* 
 	*
-	* @param string $dbEntryQuery The database entry query string used to retrieve the record information.
+	* @param string $dbEntryQuery 
 	* @return MozuClient
 	*/
 	public static function getDBValueClient( $dbEntryQuery)
@@ -36,10 +36,10 @@ class SiteDataClient {
 	}
 	
 	/**
-	* Creates a new record in the Mozu database based on the information supplied in the request.
+	* 
 	*
-	* @param string $dbEntryQuery The database entry string to create.
-	* @param string $value The value string to create.
+	* @param string $dbEntryQuery 
+	* @param string $value 
 	*/
 	public static function createDBValueClient($value,  $dbEntryQuery)
 	{
@@ -51,10 +51,10 @@ class SiteDataClient {
 	}
 	
 	/**
-	* Updates a record in the Mozu database based on the information supplied in the request.
+	* 
 	*
-	* @param string $dbEntryQuery The database entry query string used to update the record information.
-	* @param string $value The database value to update.
+	* @param string $dbEntryQuery 
+	* @param string $value 
 	*/
 	public static function updateDBValueClient($value,  $dbEntryQuery)
 	{
@@ -66,9 +66,9 @@ class SiteDataClient {
 	}
 	
 	/**
-	* Removes a previously defined record in the Mozu database.
+	* 
 	*
-	* @param string $dbEntryQuery The database entry string to delete.
+	* @param string $dbEntryQuery 
 	*/
 	public static function deleteDBValueClient( $dbEntryQuery)
 	{

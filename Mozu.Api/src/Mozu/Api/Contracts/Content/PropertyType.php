@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\Content;
 
 
 
-/**
-*	Property type available for content. Property types are like templates that can be reused.
-*/
 class PropertyType
 {
-	/**
-	*Description of the content property type.
-	*/
-	public $description;
+		public $description;
 	public function getDescription() {
 		return $this->description;
 	}
@@ -32,10 +26,7 @@ class PropertyType
 		return $this;
 	}
 
-	/**
-	*The display name of the content property type.
-	*/
-	public $displayName;
+		public $displayName;
 	public function getDisplayName() {
 		return $this->displayName;
 	}
@@ -45,10 +36,7 @@ class PropertyType
 		return $this;
 	}
 
-	/**
-	*The template display details of the property type.
-	*/
-	public $displayTemplate;
+		public $displayTemplate;
 	public function getDisplayTemplate() {
 		return $this->displayTemplate;
 	}
@@ -58,10 +46,7 @@ class PropertyType
 		return $this;
 	}
 
-	/**
-	*The template edit details of the property type.
-	*/
-	public $editTemplate;
+		public $editTemplate;
 	public function getEditTemplate() {
 		return $this->editTemplate;
 	}
@@ -71,10 +56,7 @@ class PropertyType
 		return $this;
 	}
 
-	/**
-	*If true, this entity can be grouped.
-	*/
-	public $isAggregatable;
+		public $isAggregatable;
 	public function getIsAggregatable() {
 		return $this->isAggregatable;
 	}
@@ -84,10 +66,7 @@ class PropertyType
 		return $this;
 	}
 
-	/**
-	*If true, the property type has several values. If false, the property type can only have one value.
-	*/
-	public $isMultiValued;
+		public $isMultiValued;
 	public function getIsMultiValued() {
 		return $this->isMultiValued;
 	}
@@ -97,10 +76,7 @@ class PropertyType
 		return $this;
 	}
 
-	/**
-	*If true, the entity can be searched. If false, the entity cannot be searched.
-	*/
-	public $isQueryable;
+		public $isQueryable;
 	public function getIsQueryable() {
 		return $this->isQueryable;
 	}
@@ -110,10 +86,7 @@ class PropertyType
 		return $this;
 	}
 
-	/**
-	*If true, the entity is required for the request to return a valid response.
-	*/
-	public $isRequired;
+		public $isRequired;
 	public function getIsRequired() {
 		return $this->isRequired;
 	}
@@ -123,10 +96,7 @@ class PropertyType
 		return $this;
 	}
 
-	/**
-	*If true, the property type results are sortable. If false, the property type results cannot be sorted by any options.
-	*/
-	public $isSortable;
+		public $isSortable;
 	public function getIsSortable() {
 		return $this->isSortable;
 	}
@@ -136,10 +106,7 @@ class PropertyType
 		return $this;
 	}
 
-	/**
-	*The name of the content property type.
-	*/
-	public $name;
+		public $name;
 	public function getName() {
 		return $this->name;
 	}
@@ -149,10 +116,7 @@ class PropertyType
 		return $this;
 	}
 
-	/**
-	*Regular expression used for data validation.
-	*/
-	public $regex;
+		public $regex;
 	public function getRegex() {
 		return $this->regex;
 	}
@@ -162,10 +126,7 @@ class PropertyType
 		return $this;
 	}
 
-	/**
-	*List of content entity descriptions localized to the site or site group's default language.
-	*/
-	public $localizedDescriptions;
+		public $localizedDescriptions;
 	public function getLocalizedDescriptions() {
 		return $this->localizedDescriptions;
 	}
@@ -175,10 +136,7 @@ class PropertyType
 		return $this;
 	}
 
-	/**
-	*List of content entity display names localized to the site or site group's default language.
-	*/
-	public $localizedDisplayNames;
+		public $localizedDisplayNames;
 	public function getLocalizedDisplayNames() {
 		return $this->localizedDisplayNames;
 	}
@@ -188,10 +146,7 @@ class PropertyType
 		return $this;
 	}
 
-	/**
-	*Wrapper for property value type.
-	*/
-	public $propertyValueType;
+		public $propertyValueType;
 	public function getPropertyValueType() {
 		return $this->propertyValueType;
 	}

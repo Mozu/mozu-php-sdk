@@ -17,7 +17,7 @@ use Mozu\Api\Clients\Content\DocumentTypeClient;
 use Mozu\Api\ApiContext;
 
 /**
-* The DocumentTypes resource is a part of the Content Service.
+* 
 */
 class DocumentTypeResource {
 
@@ -28,7 +28,7 @@ class DocumentTypeResource {
 	}
 
 	/**
-	* Retrieves a paged list of DocumentTypes.
+	* 
 	*
 	* @param int $pageSize 
 	* @param int $startIndex 
@@ -44,9 +44,9 @@ class DocumentTypeResource {
 	}*/
 	
 	/**
-	* Retrieves an existing DocumentType.
+	* 
 	*
-	* @param string $documentTypeName The documentType name being retrieved.
+	* @param string $documentTypeName 
 	* @return DocumentType 
 	*/
 	/*public function get( $documentTypeName, Mozu\Api\Security\AuthTicket &$authTicket= null)

@@ -19,8 +19,8 @@ class DiscountUrl  {
 
 	/**
 		* Get Resource Url for GetDiscounts
-		* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
-		* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+		* @param string $filter 
+		* @param int $pageSize 
 		* @param string $sortBy 
 		* @param int $startIndex 
 		* @return string Resource Url
@@ -37,7 +37,7 @@ class DiscountUrl  {
 	
 	/**
 		* Get Resource Url for GetDiscount
-		* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
+		* @param int $discountId 
 		* @return string Resource Url
 	*/
 	public static function getDiscountUrl($discountId)
@@ -49,7 +49,7 @@ class DiscountUrl  {
 	
 	/**
 		* Get Resource Url for GetDiscountContent
-		* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
+		* @param int $discountId 
 		* @return string Resource Url
 	*/
 	public static function getDiscountContentUrl($discountId)
@@ -91,7 +91,7 @@ class DiscountUrl  {
 	
 	/**
 		* Get Resource Url for UpdateDiscount
-		* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
+		* @param int $discountId 
 		* @return string Resource Url
 	*/
 	public static function updateDiscountUrl($discountId)
@@ -103,7 +103,7 @@ class DiscountUrl  {
 	
 	/**
 		* Get Resource Url for UpdateDiscountContent
-		* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
+		* @param int $discountId 
 		* @return string Resource Url
 	*/
 	public static function updateDiscountContentUrl($discountId)
@@ -115,7 +115,7 @@ class DiscountUrl  {
 	
 	/**
 		* Get Resource Url for DeleteDiscount
-		* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
+		* @param int $discountId 
 		* @return string Resource Url
 	*/
 	public static function deleteDiscountUrl($discountId)
@@ -127,8 +127,8 @@ class DiscountUrl  {
 	
 	/**
 		* Get Resource Url for UnRedeemDiscount
-		* @param int $discountId Unique identifier of the previously redeemed discount. System-supplied and read only.
-		* @param int $orderNumber The number of the order associated with the redeemed product discount.
+		* @param int $discountId 
+		* @param int $orderNumber 
 		* @return string Resource Url
 	*/
 	public static function unRedeemDiscountUrl($discountId, $orderNumber)

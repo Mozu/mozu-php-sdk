@@ -17,7 +17,7 @@ use Mozu\Api\Clients\Commerce\Settings\Checkout\PaymentSettingsClient;
 use Mozu\Api\ApiContext;
 
 /**
-* Specify settings when creating payments for order checkout on the site.
+* 
 */
 class PaymentSettingsResource {
 
@@ -28,7 +28,7 @@ class PaymentSettingsResource {
 	}
 
 	/**
-	* Retrieves a list of the payment settings for the specified site.
+	* 
 	*
 	* @return PaymentSettings 
 	*/
@@ -115,9 +115,9 @@ class PaymentSettingsResource {
 	}
 	
 	/**
-	* Updates one or more properties in the configured payment settings for a site.
+	* 
 	*
-	* @param PaymentSettings $paymentSettings Properties of the payment settings to use for the site.
+	* @param PaymentSettings $paymentSettings 
 	* @return PaymentSettings 
 	*/
 	public function updatePaymentSettings($paymentSettings, Mozu\Api\Security\AuthTicket &$authTicket= null)

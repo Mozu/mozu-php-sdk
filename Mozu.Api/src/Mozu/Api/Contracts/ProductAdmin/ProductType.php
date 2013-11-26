@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
-/**
-*	A product type is like a product template.
-*/
 class ProductType
 {
-	/**
-	*Identifier of the entity.
-	*/
-	public $id;
+		public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -32,10 +26,7 @@ class ProductType
 		return $this;
 	}
 
-	/**
-	*If true, this product is associated with the overall product type. There is only one BaseProductType per site group. System-supplied and read-only.
-	*/
-	public $isBaseProductType;
+		public $isBaseProductType;
 	public function getIsBaseProductType() {
 		return $this->isBaseProductType;
 	}
@@ -55,10 +46,7 @@ class ProductType
 		return $this;
 	}
 
-	/**
-	*Name of the product type, such as "Shoes" or "TVs".
-	*/
-	public $name;
+		public $name;
 	public function getName() {
 		return $this->name;
 	}
@@ -78,10 +66,7 @@ class ProductType
 		return $this;
 	}
 
-	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
-	*/
-	public $auditInfo;
+		public $auditInfo;
 	public function getAuditInfo() {
 		return $this->auditInfo;
 	}
@@ -91,10 +76,7 @@ class ProductType
 		return $this;
 	}
 
-	/**
-	*The list of product type attributes which exist as extras. Example: monogram
-	*/
-	public $extras;
+		public $extras;
 	public function getExtras() {
 		return $this->extras;
 	}
@@ -104,10 +86,7 @@ class ProductType
 		return $this;
 	}
 
-	/**
-	*The list of product type attributes which exist as options.
-	*/
-	public $options;
+		public $options;
 	public function getOptions() {
 		return $this->options;
 	}
@@ -117,10 +96,7 @@ class ProductType
 		return $this;
 	}
 
-	/**
-	*The list of product type attributes which exist as properties, such as color.
-	*/
-	public $properties;
+		public $properties;
 	public function getProperties() {
 		return $this->properties;
 	}

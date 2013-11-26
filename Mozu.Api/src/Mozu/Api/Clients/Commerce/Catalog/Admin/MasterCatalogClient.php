@@ -46,7 +46,7 @@ class MasterCatalogClient {
 	{
 		$url = MasterCatalogUrl::getMasterCatalogUrl($masterCatalogId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -65,7 +65,7 @@ class MasterCatalogClient {
 	{
 		$url = MasterCatalogUrl::updateMasterCatalogUrl($masterCatalogId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($masterCatalog)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withBody($masterCatalog)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);

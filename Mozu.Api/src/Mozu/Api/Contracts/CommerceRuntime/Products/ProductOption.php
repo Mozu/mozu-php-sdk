@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Products;
 
 
 
-/**
-*	An option attribute configured for a product on a storefront.
-*/
 class ProductOption
 {
-	/**
-	*"The fully qualified name of the attribute, which is a user defined attribute identifier."
-	*/
-	public $attributeFQN;
+		public $attributeFQN;
 	public function getAttributeFQN() {
 		return $this->attributeFQN;
 	}
@@ -32,10 +26,7 @@ class ProductOption
 		return $this;
 	}
 
-	/**
-	*The data type, such as bool or string, used in this option attribute.
-	*/
-	public $dataType;
+		public $dataType;
 	public function getDataType() {
 		return $this->dataType;
 	}
@@ -45,10 +36,7 @@ class ProductOption
 		return $this;
 	}
 
-	/**
-	*The name of the product option attribute in the language of the locale code specified for the storefront.
-	*/
-	public $name;
+		public $name;
 	public function getName() {
 		return $this->name;
 	}
@@ -58,10 +46,7 @@ class ProductOption
 		return $this;
 	}
 
-	/**
-	*The value a shopper entered for an option attribute that requires additional input for the product on a storefront.
-	*/
-	public $shopperEnteredValue;
+		public $shopperEnteredValue;
 	public function getShopperEnteredValue() {
 		return $this->shopperEnteredValue;
 	}
@@ -71,10 +56,7 @@ class ProductOption
 		return $this;
 	}
 
-	/**
-	*If the value is a string, the string entered for the value.
-	*/
-	public $stringValue;
+		public $stringValue;
 	public function getStringValue() {
 		return $this->stringValue;
 	}
@@ -84,10 +66,7 @@ class ProductOption
 		return $this;
 	}
 
-	/**
-	*If the value if an object, the value selected.
-	*/
-	public $value;
+		public $value;
 	public function getValue() {
 		return $this->value;
 	}

@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\Core;
 
 
 
-/**
-*	Dimensions of the packaged product.
-*/
 class Measurement
 {
-	/**
-	*The unit of measurement, such as length or weight.
-	*/
-	public $unit;
+		public $unit;
 	public function getUnit() {
 		return $this->unit;
 	}
@@ -32,10 +26,7 @@ class Measurement
 		return $this;
 	}
 
-	/**
-	*The value of the measured unit.
-	*/
-	public $value;
+		public $value;
 	public function getValue() {
 		return $this->value;
 	}

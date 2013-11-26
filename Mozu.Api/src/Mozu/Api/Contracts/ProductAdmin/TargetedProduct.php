@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
-/**
-*	Product definition targeted for a defined discount.
-*/
 class TargetedProduct
 {
-	/**
-	*Product code of the product associated with the targeted discount.
-	*/
-	public $code;
+		public $code;
 	public function getCode() {
 		return $this->code;
 	}
@@ -32,10 +26,7 @@ class TargetedProduct
 		return $this;
 	}
 
-	/**
-	*Name of the product associated with the targeted discount.
-	*/
-	public $name;
+		public $name;
 	public function getName() {
 		return $this->name;
 	}

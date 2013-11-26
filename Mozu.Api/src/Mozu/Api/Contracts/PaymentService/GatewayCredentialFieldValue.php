@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\PaymentService;
 
 
 
-/**
-*	Field value information for the payment gateway.
-*/
 class GatewayCredentialFieldValue
 {
-	/**
-	*The name of the payment gateway field.
-	*/
-	public $name;
+		public $name;
 	public function getName() {
 		return $this->name;
 	}
@@ -32,10 +26,7 @@ class GatewayCredentialFieldValue
 		return $this;
 	}
 
-	/**
-	*The value of the payment gateway field.
-	*/
-	public $value;
+		public $value;
 	public function getValue() {
 		return $this->value;
 	}

@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 
-/**
-*	Properties of a created product selection.
-*/
 class ConfiguredProduct
 {
-	/**
-	*"Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
-	*/
-	public $productCode;
+		public $productCode;
 	public function getProductCode() {
 		return $this->productCode;
 	}
@@ -32,10 +26,7 @@ class ConfiguredProduct
 		return $this;
 	}
 
-	/**
-	*Merchant-created code associated with a specific product variation. Variation product codes maintain an association with the base product code.
-	*/
-	public $variationProductCode;
+		public $variationProductCode;
 	public function getVariationProductCode() {
 		return $this->variationProductCode;
 	}
@@ -45,10 +36,7 @@ class ConfiguredProduct
 		return $this;
 	}
 
-	/**
-	*List of shipping discounts that can be applied to the configured product.
-	*/
-	public $availableShippingDiscounts;
+		public $availableShippingDiscounts;
 	public function getAvailableShippingDiscounts() {
 		return $this->availableShippingDiscounts;
 	}
@@ -68,10 +56,7 @@ class ConfiguredProduct
 		return $this;
 	}
 
-	/**
-	*Dimensions of the packaged product.
-	*/
-	public $measurements;
+		public $measurements;
 	public function getMeasurements() {
 		return $this->measurements;
 	}
@@ -81,10 +66,7 @@ class ConfiguredProduct
 		return $this;
 	}
 
-	/**
-	*The list of options set up in product admin.
-	*/
-	public $options;
+		public $options;
 	public function getOptions() {
 		return $this->options;
 	}
@@ -94,10 +76,7 @@ class ConfiguredProduct
 		return $this;
 	}
 
-	/**
-	*Price that the merchant intends to sell the product which is not necessarily the list price. This is the price the merchant intends to sell the product if no sale price is present.
-	*/
-	public $price;
+		public $price;
 	public function getPrice() {
 		return $this->price;
 	}
@@ -107,10 +86,7 @@ class ConfiguredProduct
 		return $this;
 	}
 
-	/**
-	*For products with options that vary the cost of the product, the range between lowest and highest possible price of the product based on the current selection of options.
-	*/
-	public $priceRange;
+		public $priceRange;
 	public function getPriceRange() {
 		return $this->priceRange;
 	}
@@ -120,10 +96,7 @@ class ConfiguredProduct
 		return $this;
 	}
 
-	/**
-	*The current state of the configured product determines whether or not the product is eligible for purchase. Products with options are only purchasable if the shopper has selected all required options. If the product is not ready for purchase, a message lists missing options that are required.
-	*/
-	public $purchasableState;
+		public $purchasableState;
 	public function getPurchasableState() {
 		return $this->purchasableState;
 	}

@@ -19,7 +19,7 @@ class PaymentUrl  {
 
 	/**
 		* Get Resource Url for GetPayments
-		* @param string $orderId Unique identifier of the order.
+		* @param string $orderId 
 		* @return string Resource Url
 	*/
 	public static function getPaymentsUrl($orderId)
@@ -31,8 +31,8 @@ class PaymentUrl  {
 	
 	/**
 		* Get Resource Url for GetPayment
-		* @param string $orderId Unique identifier of the order associated with the payment transaction.
-		* @param string $paymentId Unique identifier of the payment transaction submitted for the order.
+		* @param string $orderId 
+		* @param string $paymentId 
 		* @return string Resource Url
 	*/
 	public static function getPaymentUrl($orderId, $paymentId)
@@ -45,8 +45,8 @@ class PaymentUrl  {
 	
 	/**
 		* Get Resource Url for GetAvailablePaymentActions
-		* @param string $orderId Unique identifier of the order associated with the payment.
-		* @param string $paymentId Unique identifer of the payment for which to retrieve available actions.
+		* @param string $orderId 
+		* @param string $paymentId 
 		* @return string Resource Url
 	*/
 	public static function getAvailablePaymentActionsUrl($orderId, $paymentId)
@@ -59,8 +59,8 @@ class PaymentUrl  {
 	
 	/**
 		* Get Resource Url for PerformPaymentAction
-		* @param string $orderId Unique identifier of the order associated with the payment.
-		* @param string $paymentId Unique identifer of the payment for which to perform the action.
+		* @param string $orderId 
+		* @param string $paymentId 
 		* @return string Resource Url
 	*/
 	public static function performPaymentActionUrl($orderId, $paymentId)
@@ -73,7 +73,7 @@ class PaymentUrl  {
 	
 	/**
 		* Get Resource Url for CreatePaymentAction
-		* @param string $orderId Unique identifier of the order for which to apply the payment.
+		* @param string $orderId 
 		* @return string Resource Url
 	*/
 	public static function createPaymentActionUrl($orderId)

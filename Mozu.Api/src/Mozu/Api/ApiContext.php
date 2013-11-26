@@ -55,7 +55,7 @@ class ApiContext implements iApiContext {
 	    return $this;
 	 }
 	 
-	 private function setTenantById() {
+	 public static function setTenantById() {
 	 	$this->tenantId = func_get_arg(0);
 	 }
 	 
@@ -79,7 +79,8 @@ class ApiContext implements iApiContext {
 	 	$this->setContextByTenant(func_get_arg(0));
 	 }
 	
-	 private function setContextByTenant(Tenant $tenant) {
+	
+	private function setContextByTenant(Tenant $tenant) {
 	 	$this->tenant = $tenant;
 	 	$this->tenantId = $this->tenant->id;
 	 	$this->tenantUrl = $this->getUrl($this->tenant->domain);
@@ -94,7 +95,8 @@ class ApiContext implements iApiContext {
 	 		if (count($this->tenant->masterCatalogs[0]->catalogs) == 1)
 	 			$this->catalogId = $this->tenant->masterCatalogs[0]->catalogs[0]->id;
 	 	}
-	 }
+	}
+	
 	public function getTenantId() {
 		return $this->tenantId;
 	}

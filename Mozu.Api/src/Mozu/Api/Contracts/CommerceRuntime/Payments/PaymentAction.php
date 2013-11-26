@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Payments;
 
 
 
-/**
-*	Properties of the payment action performed for an order.
-*/
 class PaymentAction
 {
-	/**
-	*The name of the payment action, such as "AuthorizeAndCapture".
-	*/
-	public $actionName;
+		public $actionName;
 	public function getActionName() {
 		return $this->actionName;
 	}
@@ -32,10 +26,7 @@ class PaymentAction
 		return $this;
 	}
 
-	/**
-	*The total monetary amount of the payment transaction.
-	*/
-	public $amount;
+		public $amount;
 	public function getAmount() {
 		return $this->amount;
 	}
@@ -55,10 +46,7 @@ class PaymentAction
 		return $this;
 	}
 
-	/**
-	*If applicable, the check number associated with the payment action.
-	*/
-	public $checkNumber;
+		public $checkNumber;
 	public function getCheckNumber() {
 		return $this->checkNumber;
 	}
@@ -78,10 +66,7 @@ class PaymentAction
 		return $this;
 	}
 
-	/**
-	*Date and time the payment gateway interaction was performed.
-	*/
-	public $interactionDate;
+		public $interactionDate;
 	public function getInteractionDate() {
 		return $this->interactionDate;
 	}
@@ -91,10 +76,7 @@ class PaymentAction
 		return $this;
 	}
 
-	/**
-	*Unique ID that references an original transaction in the event of a credit back.
-	*/
-	public $referenceSourcePaymentId;
+		public $referenceSourcePaymentId;
 	public function getReferenceSourcePaymentId() {
 		return $this->referenceSourcePaymentId;
 	}
@@ -114,10 +96,7 @@ class PaymentAction
 		return $this;
 	}
 
-	/**
-	*Properties of a manually performed interaction with the payment gateway.
-	*/
-	public $manualGatewayInteraction;
+		public $manualGatewayInteraction;
 	public function getManualGatewayInteraction() {
 		return $this->manualGatewayInteraction;
 	}
@@ -127,10 +106,7 @@ class PaymentAction
 		return $this;
 	}
 
-	/**
-	*The billing information associated with this payment action.
-	*/
-	public $newBillingInfo;
+		public $newBillingInfo;
 	public function getNewBillingInfo() {
 		return $this->newBillingInfo;
 	}

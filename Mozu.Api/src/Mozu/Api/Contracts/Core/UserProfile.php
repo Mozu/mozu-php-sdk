@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\Core;
 
 
 
-/**
-*	Properties of the admin user profile.
-*/
 class UserProfile
 {
-	/**
-	*The email address of the specified user.
-	*/
-	public $emailAddress;
+		public $emailAddress;
 	public function getEmailAddress() {
 		return $this->emailAddress;
 	}
@@ -32,10 +26,7 @@ class UserProfile
 		return $this;
 	}
 
-	/**
-	*The first name of the contact. Max length: 200.
-	*/
-	public $firstName;
+		public $firstName;
 	public function getFirstName() {
 		return $this->firstName;
 	}
@@ -45,10 +36,7 @@ class UserProfile
 		return $this;
 	}
 
-	/**
-	*The last name or surname of the contact. Max length: 200.
-	*/
-	public $lastName;
+		public $lastName;
 	public function getLastName() {
 		return $this->lastName;
 	}
@@ -58,10 +46,7 @@ class UserProfile
 		return $this;
 	}
 
-	/**
-	*Identifier of the user.
-	*/
-	public $userId;
+		public $userId;
 	public function getUserId() {
 		return $this->userId;
 	}

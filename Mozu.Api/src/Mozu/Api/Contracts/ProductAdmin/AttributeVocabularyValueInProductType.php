@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
-/**
-*	The actual vocabulary value of the attribute that exists as a part of the product type.
-*/
 class AttributeVocabularyValueInProductType
 {
-	/**
-	*Sequence of the attribute value within the product type.
-	*/
-	public $order;
+		public $order;
 	public function getOrder() {
 		return $this->order;
 	}
@@ -32,10 +26,7 @@ class AttributeVocabularyValueInProductType
 		return $this;
 	}
 
-	/**
-	*The vocabulary value of an attribute defined for a product type.
-	*/
-	public $value;
+		public $value;
 	public function getValue() {
 		return $this->value;
 	}
@@ -45,10 +36,7 @@ class AttributeVocabularyValueInProductType
 		return $this;
 	}
 
-	/**
-	*Navigates vocabulary value details for an attribute defined for a product type.
-	*/
-	public $vocabularyValueDetail;
+		public $vocabularyValueDetail;
 	public function getVocabularyValueDetail() {
 		return $this->vocabularyValueDetail;
 	}

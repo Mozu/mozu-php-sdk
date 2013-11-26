@@ -39,7 +39,7 @@ class UserAuthTicketUrl  {
 	
 	/**
 		* Get Resource Url for RefreshUserAuthTicket
-		* @param string $refreshToken The refresh token generated in the user authentication ticket.
+		* @param string $refreshToken 
 		* @return string Resource Url
 	*/
 	public static function refreshUserAuthTicketUrl($refreshToken)

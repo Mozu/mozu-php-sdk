@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
-/**
-*	The container for paged lists of related site-specific product category properties.
-*/
 class CategoryPagedCollection
 {
-	/**
-	*The number of pages returned based on the startIndex and pageSize supplied. Signed 64-bit (8-byte) integer. System-supplied and read-only.
-	*/
-	public $pageCount;
+		public $pageCount;
 	public function getPageCount() {
 		return $this->pageCount;
 	}
@@ -32,10 +26,7 @@ class CategoryPagedCollection
 		return $this;
 	}
 
-	/**
-	*Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
-	*/
-	public $pageSize;
+		public $pageSize;
 	public function getPageSize() {
 		return $this->pageSize;
 	}
@@ -55,10 +46,7 @@ class CategoryPagedCollection
 		return $this;
 	}
 
-	/**
-	*The number of the resource entity items listed in the query collection. Signed 64-bit (8-byte) integer. System-supplied and read-only.
-	*/
-	public $totalCount;
+		public $totalCount;
 	public function getTotalCount() {
 		return $this->totalCount;
 	}
@@ -68,10 +56,7 @@ class CategoryPagedCollection
 		return $this;
 	}
 
-	/**
-	*An array list of objects in the returned collection.
-	*/
-	public $items;
+		public $items;
 	public function getItems() {
 		return $this->items;
 	}

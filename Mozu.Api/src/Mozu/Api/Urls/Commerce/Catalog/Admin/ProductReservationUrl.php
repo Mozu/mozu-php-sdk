@@ -19,8 +19,8 @@ class ProductReservationUrl  {
 
 	/**
 		* Get Resource Url for GetProductReservations
-		* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
-		* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+		* @param string $filter 
+		* @param int $pageSize 
 		* @param string $sortBy 
 		* @param int $startIndex 
 		* @return string Resource Url
@@ -37,7 +37,7 @@ class ProductReservationUrl  {
 	
 	/**
 		* Get Resource Url for GetProductReservation
-		* @param int $productReservationId Unique identifier of the product reservation.
+		* @param int $productReservationId 
 		* @return string Resource Url
 	*/
 	public static function getProductReservationUrl($productReservationId)
@@ -59,8 +59,8 @@ class ProductReservationUrl  {
 	
 	/**
 		* Get Resource Url for CommitReservation
-		* @param int $productReservationId Unique identifier of the reservation.
-		* @param int $qty Number of product items to remove from inventory.
+		* @param int $productReservationId 
+		* @param int $qty 
 		* @return string Resource Url
 	*/
 	public static function commitReservationUrl($productReservationId, $qty)
@@ -85,7 +85,7 @@ class ProductReservationUrl  {
 	
 	/**
 		* Get Resource Url for DeleteProductReservation
-		* @param int $productReservationId Unique identifier of the reservation.
+		* @param int $productReservationId 
 		* @return string Resource Url
 	*/
 	public static function deleteProductReservationUrl($productReservationId)

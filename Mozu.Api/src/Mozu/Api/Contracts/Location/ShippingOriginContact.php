@@ -26,6 +26,16 @@ class ShippingOriginContact
 		return $this;
 	}
 
+		public $email;
+	public function getEmail() {
+		return $this->email;
+	}
+	
+	public function setEmail($email) {
+		$this->email = $email;
+		return $this;
+	}
+
 		public $firstName;
 	public function getFirstName() {
 		return $this->firstName;

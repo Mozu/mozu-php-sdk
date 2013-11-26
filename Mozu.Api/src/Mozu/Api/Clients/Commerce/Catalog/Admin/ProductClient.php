@@ -14,20 +14,20 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\ProductUrl;
-use Mozu\Api\Headers;
+
 /**
-* Use this resource to create products, view the attributes associated with existing products, and determine which sites feature a specific product.
+* 
 */
 class ProductClient {
 
 	/**
-	* Retrieves a list of products according to any specified facets, filter criteria, and sort options.
+	* 
 	*
-	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
+	* @param string $filter 
 	* @param bool $noCount 
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
-	* @param string $q A list of product search terms to use in the query when searching across product code and product name. Separate multiple search terms with a space character.
-	* @param int $qLimit The maximum number of search results to return in the response. You can limit any range between 1-100.
+	* @param int $pageSize 
+	* @param string $q 
+	* @param int $qLimit 
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return MozuClient
@@ -45,16 +45,16 @@ class ProductClient {
 	}
 	
 	/**
-	* Retrieves an existing product.
+	* 
 	*
-	* @param string $productCode Merchant-created code associated with the product such as a SKU. Max length: 30. Accepts a to z, A to Z, Ã‹-Ã˜, 0 to 9, #, semicolon, commas, apostrophes, and Spaces, but no punctuation or other characters.
+	* @param string $productCode 
 	* @return MozuClient
 	*/
 	public static function getProductClient($dataViewMode,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductUrl::getProductUrl($productCode);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -72,7 +72,7 @@ class ProductClient {
 	{
 		$url = ProductUrl::getProductInCatalogsUrl($productCode);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -91,7 +91,7 @@ class ProductClient {
 	{
 		$url = ProductUrl::getProductInCatalogUrl($catalogId, $productCode);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -100,16 +100,16 @@ class ProductClient {
 	}
 	
 	/**
-	* Creates a new product. Supply a product name, product code, price and other product characteristics such as its attributes, categories where the product belongs, whether the product has configurable options, stand-alone options, and so on.
+	* 
 	*
-	* @param Product $product Properties of the new product. Required properties: ProductCode, Content.ProductName, and Price.ListPrice.
+	* @param Product $product 
 	* @return MozuClient
 	*/
 	public static function addProductClient($dataViewMode, $product, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductUrl::addProductUrl();
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($product)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withBody($product)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -128,7 +128,7 @@ class ProductClient {
 	{
 		$url = ProductUrl::addProductInCatalogUrl($productCode);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($productInCatalogInfoIn)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withBody($productInCatalogInfoIn)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -137,17 +137,17 @@ class ProductClient {
 	}
 	
 	/**
-	* Modifies an existing product.
+	* 
 	*
-	* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
-	* @param Product $product Properties of the product to update. Required properties: ProductCode, Content.ProductName, and Price.ListPrice.
+	* @param string $productCode 
+	* @param Product $product 
 	* @return MozuClient
 	*/
 	public static function updateProductClient($dataViewMode, $product,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductUrl::updateProductUrl($productCode);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($product)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withBody($product)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -166,7 +166,7 @@ class ProductClient {
 	{
 		$url = ProductUrl::updateProductInCatalogsUrl($productCode);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($productInCatalogsIn)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withBody($productInCatalogsIn)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -186,7 +186,7 @@ class ProductClient {
 	{
 		$url = ProductUrl::updateProductInCatalogUrl($catalogId, $productCode);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($productInCatalogInfoIn)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withBody($productInCatalogInfoIn)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -195,15 +195,15 @@ class ProductClient {
 	}
 	
 	/**
-	* Deletes the product specified by its product code.
+	* 
 	*
-	* @param string $productCode Merchant-created code associated with the product such as a SKU.
+	* @param string $productCode 
 	*/
 	public static function deleteProductClient($dataViewMode,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductUrl::deleteProductUrl($productCode);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -221,7 +221,7 @@ class ProductClient {
 	{
 		$url = ProductUrl::deleteProductInCatalogUrl($catalogId, $productCode);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);

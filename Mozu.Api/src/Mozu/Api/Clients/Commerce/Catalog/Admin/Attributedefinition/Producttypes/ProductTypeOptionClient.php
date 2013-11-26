@@ -16,21 +16,21 @@ use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\Attributedefinition\Producttypes\ProductTypeOptionUrl;
 
 /**
-* Add or create, delete, retrieve, and update product types that exist as options.
+* 
 */
 class ProductTypeOptionClient {
 
 	/**
-	* Retrieves a list of product attributes that exist as options by specifying the product type ID.
+	* 
 	*
-	* @param int $productTypeId Identifier of the product type options to retrieve.
+	* @param int $productTypeId 
 	* @return MozuClient
 	*/
 	public static function getOptionsClient($dataViewMode,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductTypeOptionUrl::getOptionsUrl($productTypeId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -39,17 +39,17 @@ class ProductTypeOptionClient {
 	}
 	
 	/**
-	* Retrieves a single product attribute that exists as an option by providing the product type ID and the attribute's fully qualified name.
+	* 
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-	* @param int $productTypeId The identifier of the product option type of the option being retrieved.
+	* @param string $attributeFQN 
+	* @param int $productTypeId 
 	* @return MozuClient
 	*/
 	public static function getOptionClient($dataViewMode,  $attributeFQN,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductTypeOptionUrl::getOptionUrl($attributeFQN, $productTypeId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -58,17 +58,17 @@ class ProductTypeOptionClient {
 	}
 	
 	/**
-	* Adds or creates the attribute which exists as an option.
+	* 
 	*
-	* @param int $productTypeId Identifier of the product type where an attribute which exists as an option is being added.
-	* @param AttributeInProductType $attributeInProductType Adds or creates the attribute which exists as an option to the product type.
+	* @param int $productTypeId 
+	* @param AttributeInProductType $attributeInProductType 
 	* @return MozuClient
 	*/
 	public static function addOptionClient($dataViewMode, $attributeInProductType,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductTypeOptionUrl::addOptionUrl($productTypeId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($attributeInProductType)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withBody($attributeInProductType)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -77,18 +77,18 @@ class ProductTypeOptionClient {
 	}
 	
 	/**
-	* Updates the product attribute that exists as an option.
+	* 
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-	* @param int $productTypeId Identifier of the product type whose attribute that exists as an option to update.
-	* @param AttributeInProductType $attributeInProductType Updates the attribute which exist as options in the product type.
+	* @param string $attributeFQN 
+	* @param int $productTypeId 
+	* @param AttributeInProductType $attributeInProductType 
 	* @return MozuClient
 	*/
 	public static function updateOptionClient($dataViewMode, $attributeInProductType,  $attributeFQN,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductTypeOptionUrl::updateOptionUrl($attributeFQN, $productTypeId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($attributeInProductType)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withBody($attributeInProductType)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
@@ -97,16 +97,16 @@ class ProductTypeOptionClient {
 	}
 	
 	/**
-	* Deletes the product option by providing the product type ID and the attribute's fully qualified name.
+	* 
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-	* @param int $productTypeId Identifier of the product type option to delete.
+	* @param string $attributeFQN 
+	* @param int $productTypeId 
 	*/
 	public static function deleteOptionClient($dataViewMode,  $attributeFQN,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductTypeOptionUrl::deleteOptionUrl($attributeFQN, $productTypeId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Mozu\Api\Headers::X_VOL_DATAVIEW_MODE ,dataViewMode)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;
 		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);

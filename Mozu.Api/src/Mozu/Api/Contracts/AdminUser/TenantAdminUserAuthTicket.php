@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\AdminUser;
 
 
 
-/**
-*	Properties of the authentication ticket to be used in user claims with the Mozu API.
-*/
 class TenantAdminUserAuthTicket
 {
-	/**
-	*Alphanumeric string used to authenticate the user in API request headers.
-	*/
-	public $accessToken;
+		public $accessToken;
 	public function getAccessToken() {
 		return $this->accessToken;
 	}
@@ -32,10 +26,7 @@ class TenantAdminUserAuthTicket
 		return $this;
 	}
 
-	/**
-	*The date and time the user access token expires.
-	*/
-	public $accessTokenExpiration;
+		public $accessTokenExpiration;
 	public function getAccessTokenExpiration() {
 		return $this->accessTokenExpiration;
 	}
@@ -45,10 +36,7 @@ class TenantAdminUserAuthTicket
 		return $this;
 	}
 
-	/**
-	*Date and time when the entity was created. UTC Date/Time.
-	*/
-	public $createdOn;
+		public $createdOn;
 	public function getCreatedOn() {
 		return $this->createdOn;
 	}
@@ -58,10 +46,7 @@ class TenantAdminUserAuthTicket
 		return $this;
 	}
 
-	/**
-	*Collection of behaviors encrypted in the user authentication ticket. Behaviors are granted to users as part of the role assigned for the given tenant or developer account.
-	*/
-	public $grantedBehaviors;
+		public $grantedBehaviors;
 	public function getGrantedBehaviors() {
 		return $this->grantedBehaviors;
 	}
@@ -71,10 +56,7 @@ class TenantAdminUserAuthTicket
 		return $this;
 	}
 
-	/**
-	*Alphanumeric string used to generate a new user authentication ticket after the access token expires.
-	*/
-	public $refreshToken;
+		public $refreshToken;
 	public function getRefreshToken() {
 		return $this->refreshToken;
 	}
@@ -84,10 +66,7 @@ class TenantAdminUserAuthTicket
 		return $this;
 	}
 
-	/**
-	*The date and time the user refresh token expires.
-	*/
-	public $refreshTokenExpiration;
+		public $refreshTokenExpiration;
 	public function getRefreshTokenExpiration() {
 		return $this->refreshTokenExpiration;
 	}
@@ -97,10 +76,7 @@ class TenantAdminUserAuthTicket
 		return $this;
 	}
 
-	/**
-	*Collection of tenants for which the user authentication ticket grants access.
-	*/
-	public $availableTenants;
+		public $availableTenants;
 	public function getAvailableTenants() {
 		return $this->availableTenants;
 	}
@@ -110,10 +86,7 @@ class TenantAdminUserAuthTicket
 		return $this;
 	}
 
-	/**
-	*Tenant information associated with the user authentication ticket.
-	*/
-	public $tenant;
+		public $tenant;
 	public function getTenant() {
 		return $this->tenant;
 	}
@@ -123,10 +96,7 @@ class TenantAdminUserAuthTicket
 		return $this;
 	}
 
-	/**
-	*User information associated with the authentication ticket.
-	*/
-	public $user;
+		public $user;
 	public function getUser() {
 		return $this->user;
 	}

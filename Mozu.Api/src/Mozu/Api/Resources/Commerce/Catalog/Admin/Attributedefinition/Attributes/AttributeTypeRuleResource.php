@@ -17,7 +17,7 @@ use Mozu\Api\Clients\Commerce\Catalog\Admin\Attributedefinition\Attributes\Attri
 use Mozu\Api\ApiContext;
 
 /**
-* Type rules are subresources of product attributes which could be specifications that can be shared across products in a store or assigned to specific products. Attribute type rules provide definitions of how attribute types will appear on the user interface.
+* 
 */
 class AttributeTypeRuleResource {
 
@@ -28,10 +28,10 @@ class AttributeTypeRuleResource {
 	}
 
 	/**
-	* Retrieves a list of attribute type rules according to optional filter criteria and sort options. Attribute type rules help drive the behavior of attributes on a storefront page.
+	* 
 	*
-	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+	* @param string $filter 
+	* @param int $pageSize 
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return AttributeTypeRuleCollection 

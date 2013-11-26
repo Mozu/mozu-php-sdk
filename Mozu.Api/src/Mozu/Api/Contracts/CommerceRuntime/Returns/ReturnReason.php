@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Returns;
 
 
 
-/**
-*	The reason for which the item is returned. Valid values include Damaged, Defective, MissingParts, DifferentExpectations, Late, NoLongerWanted, or Other.
-*/
 class ReturnReason
 {
-	/**
-	*The quantity of the item returned for the specified reason.
-	*/
-	public $quantity;
+		public $quantity;
 	public function getQuantity() {
 		return $this->quantity;
 	}
@@ -32,10 +26,7 @@ class ReturnReason
 		return $this;
 	}
 
-	/**
-	*The reason for which an item is returned to the merchant.
-	*/
-	public $reason;
+		public $reason;
 	public function getReason() {
 		return $this->reason;
 	}

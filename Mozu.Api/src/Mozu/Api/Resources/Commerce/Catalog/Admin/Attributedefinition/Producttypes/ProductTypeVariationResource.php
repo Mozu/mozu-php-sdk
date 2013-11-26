@@ -17,7 +17,7 @@ use Mozu\Api\Clients\Commerce\Catalog\Admin\Attributedefinition\Producttypes\Pro
 use Mozu\Api\ApiContext;
 
 /**
-* Use the variations resource to manage product variations for a specific product type based on the attributes defined for the product type, such as size or color.
+* 
 */
 class ProductTypeVariationResource {
 
@@ -28,15 +28,15 @@ class ProductTypeVariationResource {
 	}
 
 	/**
-	* Creates the combinations of variations available for this product type.
+	* 
 	*
-	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+	* @param string $filter 
+	* @param int $pageSize 
 	* @param string $productCode 
-	* @param int $productTypeId Unique identifier of the product type.
-	* @param string $sortBy "The property by which to sort results and whether the results appear in ascending (a-z) order, represented by 'ASC' or in descending (z-a) order, represented by 'DESC'. The sortBy parameter follows an available property. <b>For example: sortBy=productCode+asc</b>"
-	* @param int $startIndex "Used to create paged results from a query. Indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3."
-	* @param array|ProductOption $productOptionsIn The product options configured for this product type.
+	* @param int $productTypeId 
+	* @param string $sortBy 
+	* @param int $startIndex 
+	* @param array|ProductOption $productOptionsIn 
 	* @return ProductVariationPagedCollection 
 	*/
 	public function generateProductVariations($dataViewMode, $productOptionsIn,  $productTypeId, $filter =  null, $pageSize =  null, $productCode =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)

@@ -17,7 +17,7 @@ use Mozu\Api\Clients\Commerce\Carts\CartItemClient;
 use Mozu\Api\ApiContext;
 
 /**
-* Use the cart items subresource to manage a collection of items in an active shopping cart.
+* 
 */
 class CartItemResource {
 
@@ -28,7 +28,7 @@ class CartItemResource {
 	}
 
 	/**
-	* Retrieves a list of cart items including the total number of items in the cart.
+	* 
 	*
 	* @return CartItemCollection 
 	*/
@@ -42,9 +42,9 @@ class CartItemResource {
 	}
 	
 	/**
-	* Retrieves a particular cart item by providing the cart item ID.
+	* 
 	*
-	* @param string $cartItemId Identifier of the cart item to retrieve.
+	* @param string $cartItemId 
 	* @return CartItem 
 	*/
 	public function getCartItem( $cartItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -57,9 +57,9 @@ class CartItemResource {
 	}
 	
 	/**
-	* Adds an item such as product to the current shopper's cart.
+	* 
 	*
-	* @param CartItem $cartItem All properties of the new cart item. The product code is required.
+	* @param CartItem $cartItem 
 	* @return CartItem 
 	*/
 	public function addItemToCart($cartItem, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -72,10 +72,10 @@ class CartItemResource {
 	}
 	
 	/**
-	* Update properties of a specific cart item.
+	* 
 	*
-	* @param string $cartItemId Identifier of the cart item to update.
-	* @param CartItem $cartItem The properties of the cart item to update.
+	* @param string $cartItemId 
+	* @param CartItem $cartItem 
 	* @return CartItem 
 	*/
 	public function updateCartItem($cartItem,  $cartItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -88,10 +88,10 @@ class CartItemResource {
 	}
 	
 	/**
-	* Update the quantity of an individual cart item in the cart of a current shopper.
+	* 
 	*
-	* @param string $cartItemId Identifier of the cart item to update quantity.
-	* @param int $quantity The number of cart items in the shopper's active cart.
+	* @param string $cartItemId 
+	* @param int $quantity 
 	* @return CartItem 
 	*/
 	public function updateCartItemQuantity( $cartItemId,  $quantity, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -104,7 +104,7 @@ class CartItemResource {
 	}
 	
 	/**
-	* Removes all cart items in the shopper's active cart.
+	* 
 	*
 	* @return Cart 
 	*/
@@ -118,9 +118,9 @@ class CartItemResource {
 	}
 	
 	/**
-	* Delete a specific cart item by providing the cart item ID.
+	* 
 	*
-	* @param string $cartItemId Identifier of the cart item to delete.
+	* @param string $cartItemId 
 	*/
 	public function deleteCartItem( $cartItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

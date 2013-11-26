@@ -39,7 +39,7 @@ class ChangeMessageUrl  {
 	
 	/**
 		* Get Resource Url for RemoveMessage
-		* @param string $messageId Identifier of the message to remove from the cart.
+		* @param string $messageId 
 		* @return string Resource Url
 	*/
 	public static function removeMessageUrl($messageId)

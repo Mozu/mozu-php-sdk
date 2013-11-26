@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\Core;
 
 
 
-/**
-*	Information required to authenticate a user.
-*/
 class UserAuthInfo
 {
-	/**
-	*The email address of the specified user.
-	*/
-	public $emailAddress;
+		public $emailAddress;
 	public function getEmailAddress() {
 		return $this->emailAddress;
 	}
@@ -32,10 +26,7 @@ class UserAuthInfo
 		return $this;
 	}
 
-	/**
-	*Password of the user.
-	*/
-	public $password;
+		public $password;
 	public function getPassword() {
 		return $this->password;
 	}

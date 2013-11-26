@@ -19,8 +19,8 @@ class FacetUrl  {
 
 	/**
 		* Get Resource Url for GetFacet
-		* @param int $facetId Unique identifier of the facet to retrieve.
-		* @param bool $validate Validates that the product category associated with a facet is active. System-supplied and read only.
+		* @param int $facetId 
+		* @param bool $validate 
 		* @return string Resource Url
 	*/
 	public static function getFacetUrl($facetId, $validate)
@@ -33,9 +33,9 @@ class FacetUrl  {
 	
 	/**
 		* Get Resource Url for GetFacetCategoryList
-		* @param int $categoryId Unique identifier of the category associated with the facets to retrieve.
-		* @param bool $includeAvailable If true, returns a list of the attributes and categories associated with a product type that have not been defined as a facet for the category.
-		* @param bool $validate Validates that the product category associated with a facet is active. System-supplied and read only.
+		* @param int $categoryId 
+		* @param bool $includeAvailable 
+		* @param bool $validate 
 		* @return string Resource Url
 	*/
 	public static function getFacetCategoryListUrl($categoryId, $includeAvailable, $validate)
@@ -59,7 +59,7 @@ class FacetUrl  {
 	
 	/**
 		* Get Resource Url for UpdateFacet
-		* @param int $facetId Unique identifier of the facet to modify.
+		* @param int $facetId 
 		* @return string Resource Url
 	*/
 	public static function updateFacetUrl($facetId)
@@ -71,7 +71,7 @@ class FacetUrl  {
 	
 	/**
 		* Get Resource Url for DeleteFacetById
-		* @param int $facetId Unique identifier of the facet to delete.
+		* @param int $facetId 
 		* @return string Resource Url
 	*/
 	public static function deleteFacetByIdUrl($facetId)

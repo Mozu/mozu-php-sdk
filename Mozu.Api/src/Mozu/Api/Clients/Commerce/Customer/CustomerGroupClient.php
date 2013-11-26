@@ -16,17 +16,17 @@ use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\CustomerGroupUrl;
 
 /**
-* Merchants create, view, update and delete groups. Groups are useful to manage sets of customers, for example, to offer discounts to particular groups or assign VIP status to a set of customers. A customer account can have several groups or none at all.
+* 
 */
 class CustomerGroupClient {
 
 	/**
-	* Retrieves a list of all customer groups defined for the site according to any specified filter criteria and sort options.
+	* 
 	*
-	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
-	* @param string $sortBy "The property by which to sort results and whether the results appear in ascending (a-z) order, represented by 'ASC' or in descending (z-a) order, represented by 'DESC'. The sortBy parameter follows an available property. <b>For example: sortBy=productCode+asc</b>"
-	* @param int $startIndex "Used to create paged results from a query. Indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3."
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $sortBy 
+	* @param int $startIndex 
 	* @return MozuClient
 	*/
 	public static function getGroupsClient($filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -41,9 +41,9 @@ class CustomerGroupClient {
 	}
 	
 	/**
-	* Retrieves the name of a customer group specified the customer group ID.
+	* 
 	*
-	* @param int $groupId Identifier of the customer group to retrieve.
+	* @param int $groupId 
 	* @return MozuClient
 	*/
 	public static function getGroupClient( $groupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -58,7 +58,7 @@ class CustomerGroupClient {
 	}
 	
 	/**
-	* Creates a new customer group. New customer groups do not have any associated customer accounts.
+	* 
 	*
 	* @param CustomerGroup $group 
 	* @return MozuClient
@@ -75,9 +75,9 @@ class CustomerGroupClient {
 	}
 	
 	/**
-	* Changes the name of an existing customer group.
+	* 
 	*
-	* @param int $groupId Identifier of the customer group to update.
+	* @param int $groupId 
 	* @param CustomerGroup $group 
 	* @return MozuClient
 	*/
@@ -93,9 +93,9 @@ class CustomerGroupClient {
 	}
 	
 	/**
-	* Deletes a customer group specified by its unique identifier. Deleting a group removes any customer account associations, but does not delete the customer account itself.
+	* 
 	*
-	* @param int $groupId Identifier of the customer group to delete.
+	* @param int $groupId 
 	*/
 	public static function deleteGroupClient( $groupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

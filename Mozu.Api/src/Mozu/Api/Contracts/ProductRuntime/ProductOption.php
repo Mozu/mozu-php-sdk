@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 
-/**
-*	Represents configurable and stand-alone options that a shopper can choose when ordering a product. Configurable options apply to a product, for example, a shopper chooses a T-shirtâ€™s color and size. A stand-alone option is independent of a product itself but can be added to a product when ordering it. For example, a shopper may choose to add a personalized monogram.
-*/
 class ProductOption
 {
-	/**
-	*"The fully qualified name of the attribute, which is a user defined attribute identifier."
-	*/
-	public $attributeFQN;
+		public $attributeFQN;
 	public function getAttributeFQN() {
 		return $this->attributeFQN;
 	}
@@ -32,10 +26,7 @@ class ProductOption
 		return $this;
 	}
 
-	/**
-	*If true, the product attribute or option has multiple values.
-	*/
-	public $isMultiValue;
+		public $isMultiValue;
 	public function getIsMultiValue() {
 		return $this->isMultiValue;
 	}
@@ -45,10 +36,7 @@ class ProductOption
 		return $this;
 	}
 
-	/**
-	*If true, the entity is required for the request to return a valid response.
-	*/
-	public $isRequired;
+		public $isRequired;
 	public function getIsRequired() {
 		return $this->isRequired;
 	}
@@ -58,10 +46,7 @@ class ProductOption
 		return $this;
 	}
 
-	/**
-	*Details of the product option attribute.
-	*/
-	public $attributeDetail;
+		public $attributeDetail;
 	public function getAttributeDetail() {
 		return $this->attributeDetail;
 	}
@@ -71,10 +56,7 @@ class ProductOption
 		return $this;
 	}
 
-	/**
-	*List of possible values for a product option attribute.
-	*/
-	public $values;
+		public $values;
 	public function getValues() {
 		return $this->values;
 	}

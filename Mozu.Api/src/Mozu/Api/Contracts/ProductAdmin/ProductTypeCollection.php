@@ -14,15 +14,19 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
-/**
-*	A group of product type lists.
-*/
 class ProductTypeCollection
 {
-	/**
-	*The number of pages returned based on the startIndex and pageSize supplied. Signed 64-bit (8-byte) integer. System-supplied and read-only.
-	*/
-	public $pageCount;
+		public $totalCount;
+	public function getTotalCount() {
+		return $this->totalCount;
+	}
+	
+	public function setTotalCount($totalCount) {
+		$this->totalCount = $totalCount;
+		return $this;
+	}
+
+		public $pageCount;
 	public function getPageCount() {
 		return $this->pageCount;
 	}
@@ -32,10 +36,7 @@ class ProductTypeCollection
 		return $this;
 	}
 
-	/**
-	*Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
-	*/
-	public $pageSize;
+		public $pageSize;
 	public function getPageSize() {
 		return $this->pageSize;
 	}
@@ -55,23 +56,7 @@ class ProductTypeCollection
 		return $this;
 	}
 
-	/**
-	*The number of the resource entity items listed in the query collection. Signed 64-bit (8-byte) integer. System-supplied and read-only.
-	*/
-	public $totalCount;
-	public function getTotalCount() {
-		return $this->totalCount;
-	}
-	
-	public function setTotalCount($totalCount) {
-		$this->totalCount = $totalCount;
-		return $this;
-	}
-
-	/**
-	*An array list of objects in the returned collection.
-	*/
-	public $items;
+		public $items;
 	public function getItems() {
 		return $this->items;
 	}

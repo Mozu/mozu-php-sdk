@@ -16,7 +16,7 @@ use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Orders\ShipmentUrl;
 
 /**
-* Use the shipments resource to manage shipments of collections of packages for an order.
+* 
 */
 class ShipmentClient {
 
@@ -39,9 +39,9 @@ class ShipmentClient {
 	}
 	
 	/**
-	* Retrieves the available shipping methods applicable to the order. Typically used to display available shipping method options on the checkout page.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order for the available shipment methods being retrieved.
+	* @param string $orderId 
 	* @return MozuClient
 	*/
 	public static function getAvailableShipmentMethodsClient( $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -56,10 +56,10 @@ class ShipmentClient {
 	}
 	
 	/**
-	* Creates a shipment from one or more package associated with an order and assign a label and tracking number to an order shipment.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order for this shipment.
-	* @param array|string $packageIds List of unique identifiers for each package associated with this shipment. Not all packages must belong to the same shipment.
+	* @param string $orderId 
+	* @param array|string $packageIds 
 	* @return MozuClient
 	*/
 	public static function createPackageShipmentsClient($packageIds,  $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -74,10 +74,10 @@ class ShipmentClient {
 	}
 	
 	/**
-	* Cancels a shipment.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order to cancel shipment.
-	* @param string $shipmentId Unique identifier of the shipment to cancel.
+	* @param string $orderId 
+	* @param string $shipmentId 
 	*/
 	public static function deleteShipmentClient( $orderId,  $shipmentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

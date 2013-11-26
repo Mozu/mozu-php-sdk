@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\Core;
 
 
 
-/**
-*	Phone number information for a contact.
-*/
 class Phone
 {
-	/**
-	*Home phone number.
-	*/
-	public $home;
+		public $home;
 	public function getHome() {
 		return $this->home;
 	}
@@ -32,10 +26,7 @@ class Phone
 		return $this;
 	}
 
-	/**
-	*Mobile phone number.
-	*/
-	public $mobile;
+		public $mobile;
 	public function getMobile() {
 		return $this->mobile;
 	}
@@ -45,10 +36,7 @@ class Phone
 		return $this;
 	}
 
-	/**
-	*Work phone number.
-	*/
-	public $work;
+		public $work;
 	public function getWork() {
 		return $this->work;
 	}

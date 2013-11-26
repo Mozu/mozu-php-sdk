@@ -17,7 +17,7 @@ use Mozu\Api\Clients\Commerce\Orders\PackageClient;
 use Mozu\Api\ApiContext;
 
 /**
-* Use the packages subresource to manage the physical packages to ship for an order.
+* 
 */
 class PackageResource {
 
@@ -28,10 +28,10 @@ class PackageResource {
 	}
 
 	/**
-	* Retrieves the details of a package of order items.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order associated with the package to retrieve.
-	* @param string $packageId Unique identifier of the package to retrieve.
+	* @param string $orderId 
+	* @param string $packageId 
 	* @return Package 
 	*/
 	public function getPackage( $orderId,  $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -60,10 +60,10 @@ class PackageResource {
 	}
 	
 	/**
-	* Retrieves the package label image supplied by the carrier.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order associated with the package label to retrieve.
-	* @param string $packageId Unique identifier of the package for which to retrieve the label.
+	* @param string $orderId 
+	* @param string $packageId 
 	*/
 	public function getPackageLabel( $orderId,  $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
@@ -74,10 +74,10 @@ class PackageResource {
 	}
 	
 	/**
-	* Creates a new physical package of order items.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order associated with this package.
-	* @param Package $package Properties of the physical package of order items.
+	* @param string $orderId 
+	* @param Package $package 
 	* @return Package 
 	*/
 	public function createPackage($pkg,  $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -90,11 +90,11 @@ class PackageResource {
 	}
 	
 	/**
-	* Updates one or more properties of a physical package of order items.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order associated with the package to update.
-	* @param string $packageId Unique identifier of the package of order items to update.
-	* @param Package $package Wrapper of properties for the package of order items to update.
+	* @param string $orderId 
+	* @param string $packageId 
+	* @param Package $package 
 	* @return Package 
 	*/
 	public function updatePackage($pkg,  $orderId,  $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -107,10 +107,10 @@ class PackageResource {
 	}
 	
 	/**
-	* Removes a physical package of items from the specified order.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order associated with the package to delete.
-	* @param string $packageId Unique identifier of the package to delete.
+	* @param string $orderId 
+	* @param string $packageId 
 	*/
 	public function deletePackage( $orderId,  $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

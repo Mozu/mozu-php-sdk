@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Commerce;
 
 
 
-/**
-*	Properties of an ad-hoc price adjustment for an order.
-*/
 class Adjustment
 {
-	/**
-	*The amount of the order-level adjustment, which can be a positive or negative amount.
-	*/
-	public $amount;
+		public $amount;
 	public function getAmount() {
 		return $this->amount;
 	}
@@ -32,10 +26,7 @@ class Adjustment
 		return $this;
 	}
 
-	/**
-	*The shopper-facing description of the order-level adjustment.
-	*/
-	public $description;
+		public $description;
 	public function getDescription() {
 		return $this->description;
 	}
@@ -45,10 +36,7 @@ class Adjustment
 		return $this;
 	}
 
-	/**
-	*Administrator notes associated with the order adjustment. These comments are not shopper facing.
-	*/
-	public $internalComment;
+		public $internalComment;
 	public function getInternalComment() {
 		return $this->internalComment;
 	}

@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
-/**
-*	Item used to define additional key-value pairs of data associated with a product attribute.
-*/
 class AttributeMetadataItem
 {
-	/**
-	*User-defined key for attribute metadata.
-	*/
-	public $key;
+		public $key;
 	public function getKey() {
 		return $this->key;
 	}
@@ -32,10 +26,7 @@ class AttributeMetadataItem
 		return $this;
 	}
 
-	/**
-	*Value for the user-defined key.
-	*/
-	public $value;
+		public $value;
 	public function getValue() {
 		return $this->value;
 	}

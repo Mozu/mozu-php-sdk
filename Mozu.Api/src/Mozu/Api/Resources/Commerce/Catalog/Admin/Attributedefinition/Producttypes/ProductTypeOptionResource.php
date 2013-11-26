@@ -17,7 +17,7 @@ use Mozu\Api\Clients\Commerce\Catalog\Admin\Attributedefinition\Producttypes\Pro
 use Mozu\Api\ApiContext;
 
 /**
-* Add or create, delete, retrieve, and update product types that exist as options.
+* 
 */
 class ProductTypeOptionResource {
 
@@ -28,9 +28,9 @@ class ProductTypeOptionResource {
 	}
 
 	/**
-	* Retrieves a list of product attributes that exist as options by specifying the product type ID.
+	* 
 	*
-	* @param int $productTypeId Identifier of the product type options to retrieve.
+	* @param int $productTypeId 
 	* @return array|AttributeInProductType 
 	*/
 	public function getOptions($dataViewMode,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -43,10 +43,10 @@ class ProductTypeOptionResource {
 	}
 	
 	/**
-	* Retrieves a single product attribute that exists as an option by providing the product type ID and the attribute's fully qualified name.
+	* 
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-	* @param int $productTypeId The identifier of the product option type of the option being retrieved.
+	* @param string $attributeFQN 
+	* @param int $productTypeId 
 	* @return AttributeInProductType 
 	*/
 	public function getOption($dataViewMode,  $attributeFQN,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -59,10 +59,10 @@ class ProductTypeOptionResource {
 	}
 	
 	/**
-	* Adds or creates the attribute which exists as an option.
+	* 
 	*
-	* @param int $productTypeId Identifier of the product type where an attribute which exists as an option is being added.
-	* @param AttributeInProductType $attributeInProductType Adds or creates the attribute which exists as an option to the product type.
+	* @param int $productTypeId 
+	* @param AttributeInProductType $attributeInProductType 
 	* @return AttributeInProductType 
 	*/
 	public function addOption($dataViewMode, $attributeInProductType,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -75,11 +75,11 @@ class ProductTypeOptionResource {
 	}
 	
 	/**
-	* Updates the product attribute that exists as an option.
+	* 
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-	* @param int $productTypeId Identifier of the product type whose attribute that exists as an option to update.
-	* @param AttributeInProductType $attributeInProductType Updates the attribute which exist as options in the product type.
+	* @param string $attributeFQN 
+	* @param int $productTypeId 
+	* @param AttributeInProductType $attributeInProductType 
 	* @return AttributeInProductType 
 	*/
 	public function updateOption($dataViewMode, $attributeInProductType,  $attributeFQN,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -92,10 +92,10 @@ class ProductTypeOptionResource {
 	}
 	
 	/**
-	* Deletes the product option by providing the product type ID and the attribute's fully qualified name.
+	* 
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-	* @param int $productTypeId Identifier of the product type option to delete.
+	* @param string $attributeFQN 
+	* @param int $productTypeId 
 	*/
 	public function deleteOption($dataViewMode,  $attributeFQN,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
