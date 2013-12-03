@@ -14,17 +14,19 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin\Products;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\Products\ProductVariationUrl;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Use the product variations sub-resource to manage the variations of a product based on its attributes. For example, a t-shirt product could be offered in six variations: Small Black, Medium Black, Large Black, Small White, Medium White, and Large White.
 */
 class ProductVariationClient {
 
 	/**
-	* 
+	* Retrieves the details of a product variation based on the supplied product code and variation key.
 	*
-	* @param string $productCode 
-	* @param string $variationKey 
+	* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
 	* @return MozuClient
 	*/
 	public static function getProductVariationClient($dataViewMode,  $productCode,  $variationKey, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -40,13 +42,13 @@ class ProductVariationClient {
 	}
 	
 	/**
-	* 
+	* Retrieves a list of the product variations configured for the specified product code.
 	*
-	* @param string $filter 
-	* @param int $pageSize 
-	* @param string $productCode 
-	* @param string $sortBy 
-	* @param int $startIndex 
+	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
+	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+	* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+	* @param string $sortBy "The property by which to sort results and whether the results appear in ascending (a-z) order, represented by 'ASC' or in descending (z-a) order, represented by 'DESC'. The sortBy parameter follows an available property. <b>For example: sortBy=productCode+asc</b>"
+	* @param int $startIndex "Used to create paged results from a query. Indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3."
 	* @return MozuClient
 	*/
 	public static function getProductVariationsClient($dataViewMode,  $productCode, $filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -62,10 +64,10 @@ class ProductVariationClient {
 	}
 	
 	/**
-	* 
+	* Modifies the collection of variations for the specified product code. Because this PUT replaces the existing resource, supply all information necessary to maintain for the product variation.
 	*
-	* @param string $productCode 
-	* @param ProductVariationCollection $productVariations 
+	* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+	* @param ProductVariationCollection $productVariations Wrapper for the collection of variations configured for the specified product code.
 	* @return MozuClient
 	*/
 	public static function updateProductVariationsClient($dataViewMode, $productVariations,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -81,11 +83,11 @@ class ProductVariationClient {
 	}
 	
 	/**
-	* 
+	* Modifies the details of a variation, based on the supplied variation key, for the specified product code.
 	*
-	* @param string $productCode 
-	* @param string $variationKey 
-	* @param ProductVariation $productVariation 
+	* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
+	* @param ProductVariation $productVariation Wrapper for the properties of the specified product variation.
 	* @return MozuClient
 	*/
 	public static function updateProductVariationClient($dataViewMode, $productVariation,  $productCode,  $variationKey, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -101,10 +103,10 @@ class ProductVariationClient {
 	}
 	
 	/**
-	* 
+	* Deletes a variation, based on the supplied variation key, for the specified product code.
 	*
-	* @param string $productCode 
-	* @param string $variationKey 
+	* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
 	*/
 	public static function deleteProductVariationClient($dataViewMode,  $productCode,  $variationKey, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

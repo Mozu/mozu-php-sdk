@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 
+/**
+*	Properties of a message displayed when a product validation failure occurs for a shopper in a storefront.
+*/
 class ValidationMessage
 {
-		public $message;
+	/**
+	*The contents of the message displayed to the user when the product validation failure occurs.
+	*/
+	public $message;
 	public function getMessage() {
 		return $this->message;
 	}
@@ -26,7 +32,10 @@ class ValidationMessage
 		return $this;
 	}
 
-		public $severity;
+	/**
+	*The severity level of the product validation failure.
+	*/
+	public $severity;
 	public function getSeverity() {
 		return $this->severity;
 	}
@@ -36,7 +45,10 @@ class ValidationMessage
 		return $this;
 	}
 
-		public $source;
+	/**
+	*The entity that triggered the product validation.
+	*/
+	public $source;
 	public function getSource() {
 		return $this->source;
 	}
@@ -46,7 +58,10 @@ class ValidationMessage
 		return $this;
 	}
 
-		public $sourceId;
+	/**
+	*Unique identifier of the entity that triggered the validation.
+	*/
+	public $sourceId;
 	public function getSourceId() {
 		return $this->sourceId;
 	}

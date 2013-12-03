@@ -19,8 +19,8 @@ class BillingInfoUrl  {
 
 	/**
 		* Get Resource Url for GetBillingInfo
-		* @param bool $draft 
-		* @param string $orderId 
+		* @param bool $draft If true, retrieve the draft version of the order billing information, which might include uncommitted changes.
+		* @param string $orderId Unique identifier of the order.
 		* @return string Resource Url
 	*/
 	public static function getBillingInfoUrl($draft, $orderId)
@@ -33,8 +33,8 @@ class BillingInfoUrl  {
 	
 	/**
 		* Get Resource Url for SetBillingInfo
-		* @param string $orderId 
-		* @param string $updateMode 
+		* @param string $orderId Unique identifier of the order.
+		* @param string $updateMode Specifies whether to set the billing information by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal", "ApplyToDraft", or "ApplyAndCommit".
 		* @param string $version 
 		* @return string Resource Url
 	*/

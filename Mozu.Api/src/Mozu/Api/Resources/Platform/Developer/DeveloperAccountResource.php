@@ -15,6 +15,8 @@ namespace Mozu\Api\Resources\Platform\Developer;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Platform\Developer\DeveloperAccountClient;
 use Mozu\Api\ApiContext;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * 

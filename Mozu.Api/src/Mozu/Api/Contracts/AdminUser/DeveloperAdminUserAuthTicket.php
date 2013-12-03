@@ -17,94 +17,22 @@ namespace Mozu\Api\Contracts\AdminUser;
 class DeveloperAdminUserAuthTicket
 {
 		public $accessToken;
-	public function getAccessToken() {
-		return $this->accessToken;
-	}
-	
-	public function setAccessToken($accessToken) {
-		$this->accessToken = $accessToken;
-		return $this;
-	}
 
 		public $accessTokenExpiration;
-	public function getAccessTokenExpiration() {
-		return $this->accessTokenExpiration;
-	}
-	
-	public function setAccessTokenExpiration($accessTokenExpiration) {
-		$this->accessTokenExpiration = $accessTokenExpiration;
-		return $this;
-	}
 
 		public $createdOn;
-	public function getCreatedOn() {
-		return $this->createdOn;
-	}
-	
-	public function setCreatedOn($createdOn) {
-		$this->createdOn = $createdOn;
-		return $this;
-	}
 
 		public $grantedBehaviors;
-	public function getGrantedBehaviors() {
-		return $this->grantedBehaviors;
-	}
-	
-	public function setGrantedBehaviors($grantedBehaviors) {
-		$this->grantedBehaviors = $grantedBehaviors;
-		return $this;
-	}
 
 		public $refreshToken;
-	public function getRefreshToken() {
-		return $this->refreshToken;
-	}
-	
-	public function setRefreshToken($refreshToken) {
-		$this->refreshToken = $refreshToken;
-		return $this;
-	}
 
 		public $refreshTokenExpiration;
-	public function getRefreshTokenExpiration() {
-		return $this->refreshTokenExpiration;
-	}
-	
-	public function setRefreshTokenExpiration($refreshTokenExpiration) {
-		$this->refreshTokenExpiration = $refreshTokenExpiration;
-		return $this;
-	}
 
 		public $account;
-	public function getAccount() {
-		return $this->account;
-	}
-	
-	public function setAccount($account) {
-		$this->account = $account;
-		return $this;
-	}
 
 		public $availableAccounts;
-	public function getAvailableAccounts() {
-		return $this->availableAccounts;
-	}
-	
-	public function setAvailableAccounts($availableAccounts) {
-		$this->availableAccounts = $availableAccounts;
-		return $this;
-	}
 
 		public $user;
-	public function getUser() {
-		return $this->user;
-	}
-	
-	public function setUser($user) {
-		$this->user = $user;
-		return $this;
-	}
 
 }
 

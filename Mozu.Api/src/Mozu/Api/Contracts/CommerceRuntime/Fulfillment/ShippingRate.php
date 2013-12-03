@@ -17,64 +17,16 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Fulfillment;
 class ShippingRate
 {
 		public $currencyCode;
-	public function getCurrencyCode() {
-		return $this->currencyCode;
-	}
-	
-	public function setCurrencyCode($currencyCode) {
-		$this->currencyCode = $currencyCode;
-		return $this;
-	}
 
 		public $isValid;
-	public function getIsValid() {
-		return $this->isValid;
-	}
-	
-	public function setIsValid($isValid) {
-		$this->isValid = $isValid;
-		return $this;
-	}
 
 		public $messages;
-	public function getMessages() {
-		return $this->messages;
-	}
-	
-	public function setMessages($messages) {
-		$this->messages = $messages;
-		return $this;
-	}
 
 		public $price;
-	public function getPrice() {
-		return $this->price;
-	}
-	
-	public function setPrice($price) {
-		$this->price = $price;
-		return $this;
-	}
 
 		public $shippingMethodCode;
-	public function getShippingMethodCode() {
-		return $this->shippingMethodCode;
-	}
-	
-	public function setShippingMethodCode($shippingMethodCode) {
-		$this->shippingMethodCode = $shippingMethodCode;
-		return $this;
-	}
 
 		public $shippingMethodName;
-	public function getShippingMethodName() {
-		return $this->shippingMethodName;
-	}
-	
-	public function setShippingMethodName($shippingMethodName) {
-		$this->shippingMethodName = $shippingMethodName;
-		return $this;
-	}
 
 }
 

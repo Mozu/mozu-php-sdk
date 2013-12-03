@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Carts;
 
 
 
+/**
+*	The properties of an active shopping cart.
+*/
 class CartSummary
 {
-		public $hasActiveCart;
+	/**
+	*If true, this shopping cart is active.
+	*/
+	public $hasActiveCart;
 	public function getHasActiveCart() {
 		return $this->hasActiveCart;
 	}
@@ -26,7 +32,10 @@ class CartSummary
 		return $this;
 	}
 
-		public $isExpired;
+	/**
+	*If true, the cart's period of inactivity is past its calculated expiration date and the cart is considered abandoned.
+	*/
+	public $isExpired;
 	public function getIsExpired() {
 		return $this->isExpired;
 	}
@@ -36,7 +45,10 @@ class CartSummary
 		return $this;
 	}
 
-		public $itemCount;
+	/**
+	*The total number of line items in the cart. Each line item can have multiple quantities.
+	*/
+	public $itemCount;
 	public function getItemCount() {
 		return $this->itemCount;
 	}
@@ -46,7 +58,10 @@ class CartSummary
 		return $this;
 	}
 
-		public $total;
+	/**
+	*Estimated total amount of the cart, including items, sales tax, shipping costs, and other fees.
+	*/
+	public $total;
 	public function getTotal() {
 		return $this->total;
 	}

@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 
+/**
+*	The product attribute details common between all attribute types - properties, options, and extras.
+*/
 class AttributeDetail
 {
-		public $dataType;
+	/**
+	*The data type (such as datetime or string) associated with the attribute.
+	*/
+	public $dataType;
 	public function getDataType() {
 		return $this->dataType;
 	}
@@ -26,7 +32,10 @@ class AttributeDetail
 		return $this;
 	}
 
-		public $dataTypeSequence;
+	/**
+	*Unique sequence of the attribute for its data type.
+	*/
+	public $dataTypeSequence;
 	public function getDataTypeSequence() {
 		return $this->dataTypeSequence;
 	}
@@ -36,7 +45,10 @@ class AttributeDetail
 		return $this;
 	}
 
-		public $description;
+	/**
+	*Description of the attribute in the language specified by the locale code.
+	*/
+	public $description;
 	public function getDescription() {
 		return $this->description;
 	}
@@ -46,7 +58,10 @@ class AttributeDetail
 		return $this;
 	}
 
-		public $inputType;
+	/**
+	*The input type (such as date or text area) accepted for the attribute's data type.
+	*/
+	public $inputType;
 	public function getInputType() {
 		return $this->inputType;
 	}
@@ -56,7 +71,10 @@ class AttributeDetail
 		return $this;
 	}
 
-		public $name;
+	/**
+	*Name of the atrribute in the language specified by the locale code.
+	*/
+	public $name;
 	public function getName() {
 		return $this->name;
 	}
@@ -66,7 +84,10 @@ class AttributeDetail
 		return $this;
 	}
 
-		public $usageType;
+	/**
+	*The usage type of the product attribute, which is property, option, or extra.
+	*/
+	public $usageType;
 	public function getUsageType() {
 		return $this->usageType;
 	}
@@ -76,7 +97,10 @@ class AttributeDetail
 		return $this;
 	}
 
-		public $valueType;
+	/**
+	*The type of value for the attribute, which is either ShopperEntered, AdminEntered, or Predefined.
+	*/
+	public $valueType;
 	public function getValueType() {
 		return $this->valueType;
 	}
@@ -86,7 +110,10 @@ class AttributeDetail
 		return $this;
 	}
 
-		public $validation;
+	/**
+	*Validation rules of an attribute that determine which values are valid for ShopperEntered and AdminEntered ValueTypes.
+	*/
+	public $validation;
 	public function getValidation() {
 		return $this->validation;
 	}

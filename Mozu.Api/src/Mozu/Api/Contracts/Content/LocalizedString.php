@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\Content;
 
 
 
+/**
+*	List of content entity display names localized to the site or site group's default language.
+*/
 class LocalizedString
 {
-		public $locale;
+	/**
+	*"Language used for the entity. Currently, only ""en-US"" is supported."
+	*/
+	public $locale;
 	public function getLocale() {
 		return $this->locale;
 	}
@@ -26,7 +32,10 @@ class LocalizedString
 		return $this;
 	}
 
-		public $value;
+	/**
+	*Value for the localized string.
+	*/
+	public $value;
 	public function getValue() {
 		return $this->value;
 	}

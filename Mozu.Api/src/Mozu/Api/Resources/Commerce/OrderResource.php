@@ -15,9 +15,11 @@ namespace Mozu\Api\Resources\Commerce;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\OrderClient;
 use Mozu\Api\ApiContext;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Manage order processing, payment, and shipping. Includes getting customer payment details, shipping address and selected shipment method, processing payment transactions, and, once paid, shipping the order to the shopper.
 */
 class OrderResource {
 
@@ -28,10 +30,10 @@ class OrderResource {
 	}
 
 	/**
-	* 
+	* Retrieves a list of orders according to any specified filter criteria and sort options.
 	*
-	* @param string $filter 
-	* @param int $pageSize 
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter an order's search results by any of its properties, including status, contact information, or total. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). <b>For example - "filter=Status+eq+Submitted"</b>
+	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
 	* @param string $q 
 	* @param int $qLimit 
 	* @param string $sortBy 
@@ -48,9 +50,9 @@ class OrderResource {
 	}
 	
 	/**
-	* 
+	* Retrieves available order actions which depends on the status of the order. Actions are "CreateOrder," "SubmitOrder," "SetOrderAsProcessing," "CloseOrder," or "CancelOrder."
 	*
-	* @param string $orderId 
+	* @param string $orderId Unique identifier of the available order actions to get.
 	* @return array|string 
 	*/
 	public function getAvailableActions( $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -78,10 +80,10 @@ class OrderResource {
 	}
 	
 	/**
-	* 
+	* Retrieves the details of an order specified by the order ID.
 	*
-	* @param bool $draft 
-	* @param string $orderId 
+	* @param bool $draft If true, retrieve the draft version of the order, which might include uncommitted changes to the order or its components.
+	* @param string $orderId Unique identifier of the order details to get.
 	* @return Order 
 	*/
 	public function getOrder( $orderId, $draft =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -94,9 +96,9 @@ class OrderResource {
 	}
 	
 	/**
-	* 
+	* Creates a new order for no-cart quick-ordering scenarios.
 	*
-	* @param Order $order 
+	* @param Order $order All properties of the order to place.
 	* @return Order 
 	*/
 	public function createOrder($order, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -109,9 +111,9 @@ class OrderResource {
 	}
 	
 	/**
-	* 
+	* Creates a new order from an existing cart when the customer chooses to proceed to checkout.
 	*
-	* @param string $cartId 
+	* @param string $cartId Unique identifier of the cart. This is the original cart ID expressed as a GUID.
 	* @return Order 
 	*/
 	public function createOrderFromCart( $cartId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -124,10 +126,10 @@ class OrderResource {
 	}
 	
 	/**
-	* 
+	* Perform the specified action for an order. Available actions depend on the current status of the order. When in doubt, first get a list of available order actions.
 	*
-	* @param string $orderId 
-	* @param OrderAction $action 
+	* @param string $orderId Unique identifier of the order.
+	* @param OrderAction $action Action to perform, which can be "CreateOrder," "SubmitOrder," "SetOrderAsProcessing," "CloseOrder," or "CancelOrder."
 	* @return Order 
 	*/
 	public function performOrderAction($action,  $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -140,13 +142,13 @@ class OrderResource {
 	}
 	
 	/**
-	* 
+	* Update the properties of a discount applied to an order.
 	*
-	* @param int $discountId 
-	* @param string $orderId 
-	* @param string $updateMode 
+	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
+	* @param string $orderId Unique identifier of the order discount. System-supplied and read only.
+	* @param string $updateMode Specifies whether to modify the discount by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal", "ApplyToDraft", or "ApplyAndCommit".
 	* @param string $version 
-	* @param AppliedDiscount $discount 
+	* @param AppliedDiscount $discount Properties of the order discount to update.
 	* @return Order 
 	*/
 	public function updateOrderDiscount($discount,  $discountId,  $orderId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -159,10 +161,10 @@ class OrderResource {
 	}
 	
 	/**
-	* 
+	* Deletes the current draft version of the order, which also deletes any uncommitted changes made to the order in draft mode.
 	*
-	* @param string $orderId 
-	* @param string $version 
+	* @param string $orderId Unique identifier of the order associated with the draft to delete.
+	* @param string $version The version of the order draft to delete.
 	*/
 	public function deleteOrderDraft( $orderId, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
@@ -188,12 +190,12 @@ class OrderResource {
 	}
 	
 	/**
-	* 
+	* Updates the specified order when additional order information, such as shipping or billing information, is modified during the checkout process.
 	*
-	* @param string $orderId 
-	* @param string $updateMode 
+	* @param string $orderId Unique identifier of the order to update.
+	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal", "ApplyToDraft", or "ApplyAndCommit".
 	* @param string $version 
-	* @param Order $order 
+	* @param Order $order The properties of the order to update.
 	* @return Order 
 	*/
 	public function updateOrder($order,  $orderId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)

@@ -19,8 +19,8 @@ class OrderUrl  {
 
 	/**
 		* Get Resource Url for GetOrders
-		* @param string $filter 
-		* @param int $pageSize 
+		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter an order's search results by any of its properties, including status, contact information, or total. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). <b>For example - "filter=Status+eq+Submitted"</b>
+		* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
 		* @param string $q 
 		* @param int $qLimit 
 		* @param string $sortBy 
@@ -41,7 +41,7 @@ class OrderUrl  {
 	
 	/**
 		* Get Resource Url for GetAvailableActions
-		* @param string $orderId 
+		* @param string $orderId Unique identifier of the available order actions to get.
 		* @return string Resource Url
 	*/
 	public static function getAvailableActionsUrl($orderId)
@@ -65,8 +65,8 @@ class OrderUrl  {
 	
 	/**
 		* Get Resource Url for GetOrder
-		* @param bool $draft 
-		* @param string $orderId 
+		* @param bool $draft If true, retrieve the draft version of the order, which might include uncommitted changes to the order or its components.
+		* @param string $orderId Unique identifier of the order details to get.
 		* @return string Resource Url
 	*/
 	public static function getOrderUrl($draft, $orderId)
@@ -89,7 +89,7 @@ class OrderUrl  {
 	
 	/**
 		* Get Resource Url for CreateOrderFromCart
-		* @param string $cartId 
+		* @param string $cartId Unique identifier of the cart. This is the original cart ID expressed as a GUID.
 		* @return string Resource Url
 	*/
 	public static function createOrderFromCartUrl($cartId)
@@ -101,7 +101,7 @@ class OrderUrl  {
 	
 	/**
 		* Get Resource Url for PerformOrderAction
-		* @param string $orderId 
+		* @param string $orderId Unique identifier of the order.
 		* @return string Resource Url
 	*/
 	public static function performOrderActionUrl($orderId)
@@ -113,9 +113,9 @@ class OrderUrl  {
 	
 	/**
 		* Get Resource Url for UpdateOrderDiscount
-		* @param int $discountId 
-		* @param string $orderId 
-		* @param string $updateMode 
+		* @param int $discountId Unique identifier of the discount. System-supplied and read only.
+		* @param string $orderId Unique identifier of the order discount. System-supplied and read only.
+		* @param string $updateMode Specifies whether to modify the discount by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal", "ApplyToDraft", or "ApplyAndCommit".
 		* @param string $version 
 		* @return string Resource Url
 	*/
@@ -131,8 +131,8 @@ class OrderUrl  {
 	
 	/**
 		* Get Resource Url for DeleteOrderDraft
-		* @param string $orderId 
-		* @param string $version 
+		* @param string $orderId Unique identifier of the order associated with the draft to delete.
+		* @param string $version The version of the order draft to delete.
 		* @return string Resource Url
 	*/
 	public static function deleteOrderDraftUrl($orderId, $version)
@@ -157,8 +157,8 @@ class OrderUrl  {
 	
 	/**
 		* Get Resource Url for UpdateOrder
-		* @param string $orderId 
-		* @param string $updateMode 
+		* @param string $orderId Unique identifier of the order to update.
+		* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal", "ApplyToDraft", or "ApplyAndCommit".
 		* @param string $version 
 		* @return string Resource Url
 	*/

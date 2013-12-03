@@ -17,144 +17,32 @@ namespace Mozu\Api\Contracts\Location;
 class Location
 {
 		public $code;
-	public function getCode() {
-		return $this->code;
-	}
-	
-	public function setCode($code) {
-		$this->code = $code;
-		return $this;
-	}
 
 		public $description;
-	public function getDescription() {
-		return $this->description;
-	}
-	
-	public function setDescription($description) {
-		$this->description = $description;
-		return $this;
-	}
 
 		public $fax;
-	public function getFax() {
-		return $this->fax;
-	}
-	
-	public function setFax($fax) {
-		$this->fax = $fax;
-		return $this;
-	}
 
 		public $name;
-	public function getName() {
-		return $this->name;
-	}
-	
-	public function setName($name) {
-		$this->name = $name;
-		return $this;
-	}
 
 		public $note;
-	public function getNote() {
-		return $this->note;
-	}
-	
-	public function setNote($note) {
-		$this->note = $note;
-		return $this;
-	}
 
 		public $phone;
-	public function getPhone() {
-		return $this->phone;
-	}
-	
-	public function setPhone($phone) {
-		$this->phone = $phone;
-		return $this;
-	}
 
 		public $supportsInventory;
-	public function getSupportsInventory() {
-		return $this->supportsInventory;
-	}
-	
-	public function setSupportsInventory($supportsInventory) {
-		$this->supportsInventory = $supportsInventory;
-		return $this;
-	}
 
 		public $tags;
-	public function getTags() {
-		return $this->tags;
-	}
-	
-	public function setTags($tags) {
-		$this->tags = $tags;
-		return $this;
-	}
 
 		public $address;
-	public function getAddress() {
-		return $this->address;
-	}
-	
-	public function setAddress($address) {
-		$this->address = $address;
-		return $this;
-	}
 
 		public $fulfillmentTypes;
-	public function getFulfillmentTypes() {
-		return $this->fulfillmentTypes;
-	}
-	
-	public function setFulfillmentTypes($fulfillmentTypes) {
-		$this->fulfillmentTypes = $fulfillmentTypes;
-		return $this;
-	}
 
 		public $geo;
-	public function getGeo() {
-		return $this->geo;
-	}
-	
-	public function setGeo($geo) {
-		$this->geo = $geo;
-		return $this;
-	}
 
 		public $locationTypes;
-	public function getLocationTypes() {
-		return $this->locationTypes;
-	}
-	
-	public function setLocationTypes($locationTypes) {
-		$this->locationTypes = $locationTypes;
-		return $this;
-	}
 
 		public $regularHours;
-	public function getRegularHours() {
-		return $this->regularHours;
-	}
-	
-	public function setRegularHours($regularHours) {
-		$this->regularHours = $regularHours;
-		return $this;
-	}
 
 		public $shippingOriginContact;
-	public function getShippingOriginContact() {
-		return $this->shippingOriginContact;
-	}
-	
-	public function setShippingOriginContact($shippingOriginContact) {
-		$this->shippingOriginContact = $shippingOriginContact;
-		return $this;
-	}
 
 }
 

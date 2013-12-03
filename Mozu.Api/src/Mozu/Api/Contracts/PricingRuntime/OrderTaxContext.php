@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\PricingRuntime;
 
 
 
+/**
+*	Properties of the tax context applicable for the order.
+*/
 class OrderTaxContext
 {
-		public $handlingFeeTax;
+	/**
+	*Tax amount applied to the handling fee defined for orders on this site.
+	*/
+	public $handlingFeeTax;
 	public function getHandlingFeeTax() {
 		return $this->handlingFeeTax;
 	}
@@ -26,7 +32,10 @@ class OrderTaxContext
 		return $this;
 	}
 
-		public $orderTax;
+	/**
+	*Tax amount applied to the order.
+	*/
+	public $orderTax;
 	public function getOrderTax() {
 		return $this->orderTax;
 	}
@@ -36,7 +45,10 @@ class OrderTaxContext
 		return $this;
 	}
 
-		public $shippingTax;
+	/**
+	*Tax amount applied to the shipping costs on the order.
+	*/
+	public $shippingTax;
 	public function getShippingTax() {
 		return $this->shippingTax;
 	}
@@ -46,7 +58,10 @@ class OrderTaxContext
 		return $this;
 	}
 
-		public $itemTaxContexts;
+	/**
+	*Properties of the tax context applicable for line items in an order.
+	*/
+	public $itemTaxContexts;
 	public function getItemTaxContexts() {
 		return $this->itemTaxContexts;
 	}

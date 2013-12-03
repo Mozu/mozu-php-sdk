@@ -17,24 +17,8 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class ProductInventoryInfo
 {
 		public $manageStock;
-	public function getManageStock() {
-		return $this->manageStock;
-	}
-	
-	public function setManageStock($manageStock) {
-		$this->manageStock = $manageStock;
-		return $this;
-	}
 
 		public $outOfStockBehavior;
-	public function getOutOfStockBehavior() {
-		return $this->outOfStockBehavior;
-	}
-	
-	public function setOutOfStockBehavior($outOfStockBehavior) {
-		$this->outOfStockBehavior = $outOfStockBehavior;
-		return $this;
-	}
 
 }
 

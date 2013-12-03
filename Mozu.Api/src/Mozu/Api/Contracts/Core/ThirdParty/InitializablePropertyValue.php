@@ -17,24 +17,8 @@ namespace Mozu\Api\Contracts\Core\ThirdParty;
 class InitializablePropertyValue
 {
 		public $initialized;
-	public function getInitialized() {
-		return $this->initialized;
-	}
-	
-	public function setInitialized($initialized) {
-		$this->initialized = $initialized;
-		return $this;
-	}
 
 		public $value;
-	public function getValue() {
-		return $this->value;
-	}
-	
-	public function setValue($value) {
-		$this->value = $value;
-		return $this;
-	}
 
 }
 

@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\AppDev;
 
 
 
+/**
+*	Properties of the authentication ticket used to authenticate applications.
+*/
 class AuthTicket
 {
-		public $accessToken;
+	/**
+	*The token that stores an encrypted list of the application's configured behaviors and authenticates the application.
+	*/
+	public $accessToken;
 	public function getAccessToken() {
 		return $this->accessToken;
 	}
@@ -26,7 +32,10 @@ class AuthTicket
 		return $this;
 	}
 
-		public $accessTokenExpiration;
+	/**
+	*Date and time the access token expires. After the access token expires, refresh the authentication ticket using the Refresh Token.
+	*/
+	public $accessTokenExpiration;
 	public function getAccessTokenExpiration() {
 		return $this->accessTokenExpiration;
 	}
@@ -36,7 +45,10 @@ class AuthTicket
 		return $this;
 	}
 
-		public $refreshToken;
+	/**
+	*The token that refreshes the application's authentication ticket.
+	*/
+	public $refreshToken;
 	public function getRefreshToken() {
 		return $this->refreshToken;
 	}
@@ -46,7 +58,10 @@ class AuthTicket
 		return $this;
 	}
 
-		public $refreshTokenExpiration;
+	/**
+	*Date and time the refresh token expires. After the refresh token expires, generate a new authentication ticket.
+	*/
+	public $refreshTokenExpiration;
 	public function getRefreshTokenExpiration() {
 		return $this->refreshTokenExpiration;
 	}

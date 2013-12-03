@@ -15,9 +15,11 @@ namespace Mozu\Api\Resources\Commerce\Catalog\Admin\Attributedefinition\Productt
 use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Catalog\Admin\Attributedefinition\Producttypes\ProductTypeExtraClient;
 use Mozu\Api\ApiContext;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Collection of the attributes that are extras in this product type.
 */
 class ProductTypeExtraResource {
 
@@ -28,9 +30,9 @@ class ProductTypeExtraResource {
 	}
 
 	/**
-	* 
+	* Retrieves a list of extras by providing the product type ID.
 	*
-	* @param int $productTypeId 
+	* @param int $productTypeId Identifier of the product type whose list is being retrieved.
 	* @return array|AttributeInProductType 
 	*/
 	public function getExtras($dataViewMode,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -43,10 +45,10 @@ class ProductTypeExtraResource {
 	}
 	
 	/**
-	* 
+	* Retrieves an extra by providing the attribute's FQN and product type ID.
 	*
-	* @param string $attributeFQN 
-	* @param int $productTypeId 
+	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
+	* @param int $productTypeId Identifier of the product type whose extra is being retrieved.
 	* @return AttributeInProductType 
 	*/
 	public function getExtra($dataViewMode,  $attributeFQN,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -59,10 +61,10 @@ class ProductTypeExtraResource {
 	}
 	
 	/**
-	* 
+	* Add or create an extra.
 	*
-	* @param int $productTypeId 
-	* @param AttributeInProductType $attributeInProductType 
+	* @param int $productTypeId Identifier of the product type to add an extra.
+	* @param AttributeInProductType $attributeInProductType The properties of the attribute in product type to add or create extras.
 	* @return AttributeInProductType 
 	*/
 	public function addExtra($dataViewMode, $attributeInProductType,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -75,11 +77,11 @@ class ProductTypeExtraResource {
 	}
 	
 	/**
-	* 
+	* Update an extra by providing the attribute's FQN and product type ID.
 	*
-	* @param string $attributeFQN 
-	* @param int $productTypeId 
-	* @param AttributeInProductType $attributeInProductType 
+	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
+	* @param int $productTypeId Identifier of the product type whose extra is being updated.
+	* @param AttributeInProductType $attributeInProductType The properties of the attribute in product type to update. The attributes exist as extras.
 	* @return AttributeInProductType 
 	*/
 	public function updateExtra($dataViewMode, $attributeInProductType,  $attributeFQN,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -92,10 +94,10 @@ class ProductTypeExtraResource {
 	}
 	
 	/**
-	* 
+	* Delete an extra.
 	*
-	* @param string $attributeFQN 
-	* @param int $productTypeId 
+	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
+	* @param int $productTypeId Identifier of the product type whose extra is being deleted.
 	*/
 	public function deleteExtra($dataViewMode,  $attributeFQN,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

@@ -19,9 +19,9 @@ class DocumentDraftSummaryUrl  {
 
 	/**
 		* Get Resource Url for ListDocumentDraftSummaries
-		* @param string $documentLists 
-		* @param int $pageSize 
-		* @param int $startIndex 
+		* @param string $documentLists Lists that contain the document drafts.
+		* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+		* @param int $startIndex "Used to create paged results from a query. Indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3."
 		* @return string Resource Url
 	*/
 	public static function listDocumentDraftSummariesUrl($documentLists, $pageSize, $startIndex)
@@ -35,7 +35,7 @@ class DocumentDraftSummaryUrl  {
 	
 	/**
 		* Get Resource Url for PublishDocuments
-		* @param string $documentLists 
+		* @param string $documentLists List of document lists that contain documents to publish.
 		* @return string Resource Url
 	*/
 	public static function publishDocumentsUrl($documentLists)
@@ -47,8 +47,8 @@ class DocumentDraftSummaryUrl  {
 	
 	/**
 		* Get Resource Url for DeleteDocumentDrafts
-		* @param string $documentIds 
-		* @param string $documentLists 
+		* @param string $documentIds Unique identifiers of the documents to delete.
+		* @param string $documentLists List of document lists that contain documents to delete.
 		* @return string Resource Url
 	*/
 	public static function deleteDocumentDraftsUrl($documentIds, $documentLists)

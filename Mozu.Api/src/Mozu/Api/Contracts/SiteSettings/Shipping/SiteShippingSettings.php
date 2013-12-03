@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\SiteSettings\Shipping;
 
 
 
+/**
+*	Properties of the shipping settings configured for an individual site.
+*/
 class SiteShippingSettings
 {
-		public $auditInfo;
+	/**
+	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*/
+	public $auditInfo;
 	public function getAuditInfo() {
 		return $this->auditInfo;
 	}
@@ -26,7 +32,10 @@ class SiteShippingSettings
 		return $this;
 	}
 
-		public $orderHandlingFee;
+	/**
+	*The combined price for all items in the order, including all selected options but excluding any discounts.
+	*/
+	public $orderHandlingFee;
 	public function getOrderHandlingFee() {
 		return $this->orderHandlingFee;
 	}

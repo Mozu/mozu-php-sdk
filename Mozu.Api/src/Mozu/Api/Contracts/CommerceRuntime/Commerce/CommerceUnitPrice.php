@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Commerce;
 
 
 
+/**
+*	Pricing details for a product in a cart or an order, including the original price, discount amount, and final price.
+*/
 class CommerceUnitPrice
 {
-		public $baseAmount;
+	/**
+	*The original price of the item in the cart or order.
+	*/
+	public $baseAmount;
 	public function getBaseAmount() {
 		return $this->baseAmount;
 	}
@@ -26,7 +32,10 @@ class CommerceUnitPrice
 		return $this;
 	}
 
-		public $discountAmount;
+	/**
+	*The calculated amount of the discount to apply.
+	*/
+	public $discountAmount;
 	public function getDiscountAmount() {
 		return $this->discountAmount;
 	}
@@ -36,7 +45,10 @@ class CommerceUnitPrice
 		return $this;
 	}
 
-		public $discountedAmount;
+	/**
+	*The price of the item after all discounts are applied.
+	*/
+	public $discountedAmount;
 	public function getDiscountedAmount() {
 		return $this->discountedAmount;
 	}
@@ -56,7 +68,10 @@ class CommerceUnitPrice
 		return $this;
 	}
 
-		public $listAmount;
+	/**
+	*The price the item is listed for in the storefront.
+	*/
+	public $listAmount;
 	public function getListAmount() {
 		return $this->listAmount;
 	}
@@ -66,7 +81,10 @@ class CommerceUnitPrice
 		return $this;
 	}
 
-		public $overrideAmount;
+	/**
+	*The override price of the item set by the merchant for a given order.
+	*/
+	public $overrideAmount;
 	public function getOverrideAmount() {
 		return $this->overrideAmount;
 	}
@@ -76,7 +94,10 @@ class CommerceUnitPrice
 		return $this;
 	}
 
-		public $saleAmount;
+	/**
+	*The sale price set for the item.
+	*/
+	public $saleAmount;
 	public function getSaleAmount() {
 		return $this->saleAmount;
 	}

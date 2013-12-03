@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\SiteSettings\Order;
 
 
 
+/**
+*	Properties of a payment gateway defined for the site.
+*/
 class Gateway
 {
-		public $areGatewayCredentialFieldsSet;
+	/**
+	*If true, the credential fields for the gateway are configured with valid values. For security purposes, Mozu does not return the credential fields for the gateway subresource.
+	*/
+	public $areGatewayCredentialFieldsSet;
 	public function getAreGatewayCredentialFieldsSet() {
 		return $this->areGatewayCredentialFieldsSet;
 	}
@@ -26,7 +32,10 @@ class Gateway
 		return $this;
 	}
 
-		public $supportedCards;
+	/**
+	*The types of credit cards the merchant supports using this payment gateway.
+	*/
+	public $supportedCards;
 	public function getSupportedCards() {
 		return $this->supportedCards;
 	}
@@ -36,7 +45,10 @@ class Gateway
 		return $this;
 	}
 
-		public $gatewayAccount;
+	/**
+	*Account information associated with the specified payment gateway.
+	*/
+	public $gatewayAccount;
 	public function getGatewayAccount() {
 		return $this->gatewayAccount;
 	}
@@ -46,7 +58,10 @@ class Gateway
 		return $this;
 	}
 
-		public $gatewayDefinition;
+	/**
+	*Properties of the payment gateway definition.
+	*/
+	public $gatewayDefinition;
 	public function getGatewayDefinition() {
 		return $this->gatewayDefinition;
 	}

@@ -14,16 +14,18 @@ namespace Mozu\Api\Clients\Content;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Content\DocumentListUrl;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Use the document lists resource to organize your site's documents into a hierarchy. Document lists can contain documents, folders, and complete hierarchies of folders, which contain documents with unique names.
 */
 class DocumentListClient {
 
 	/**
-	* 
+	* Retrieves a collection of document lists.
 	*
-	* @param int $pageSize 
+	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
 	* @param string $sort 
 	* @param int $startIndex 
 	* @return MozuClient
@@ -40,9 +42,9 @@ class DocumentListClient {
 	}
 	
 	/**
-	* 
+	* Retrieve the details of a document list by providing the list name.
 	*
-	* @param string $documentListName 
+	* @param string $documentListName The name of the document list.
 	* @return MozuClient
 	*/
 	public static function getDocumentListClient( $documentListName, Mozu\Api\Security\AuthTicket &$authTicket= null)

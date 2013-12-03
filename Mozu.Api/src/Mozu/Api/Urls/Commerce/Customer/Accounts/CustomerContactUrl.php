@@ -19,8 +19,8 @@ class CustomerContactUrl  {
 
 	/**
 		* Get Resource Url for GetAccountContact
-		* @param int $accountId 
-		* @param int $contactId 
+		* @param int $accountId Unique identifier of the customer account whose contact information is being retrieved.
+		* @param int $contactId Unique identifier of the customer account contact to retrieve.
 		* @return string Resource Url
 	*/
 	public static function getAccountContactUrl($accountId, $contactId)
@@ -33,9 +33,9 @@ class CustomerContactUrl  {
 	
 	/**
 		* Get Resource Url for GetAccountContacts
-		* @param int $accountId 
-		* @param string $filter 
-		* @param int $pageSize 
+		* @param int $accountId Unique identifier of the customer account associated with the contact information to retrieve.
+		* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
+		* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
 		* @param string $sortBy 
 		* @param int $startIndex 
 		* @return string Resource Url
@@ -53,7 +53,7 @@ class CustomerContactUrl  {
 	
 	/**
 		* Get Resource Url for AddAccountContact
-		* @param int $accountId 
+		* @param int $accountId Unique identifier of the customer account containing the new contact.
 		* @return string Resource Url
 	*/
 	public static function addAccountContactUrl($accountId)
@@ -65,8 +65,8 @@ class CustomerContactUrl  {
 	
 	/**
 		* Get Resource Url for UpdateAccountContact
-		* @param int $accountId 
-		* @param int $contactId 
+		* @param int $accountId Unique identifier of the customer account whose contact information is being updated.
+		* @param int $contactId Unique identifer of the customer account contact being updated.
 		* @return string Resource Url
 	*/
 	public static function updateAccountContactUrl($accountId, $contactId)
@@ -79,8 +79,8 @@ class CustomerContactUrl  {
 	
 	/**
 		* Get Resource Url for DeleteAccountContact
-		* @param int $accountId 
-		* @param int $contactId 
+		* @param int $accountId Unique identifier of the customer account.
+		* @param int $contactId Unique identifier of the customer account contact to delete.
 		* @return string Resource Url
 	*/
 	public static function deleteAccountContactUrl($accountId, $contactId)

@@ -14,6 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin\Products;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\Products\LocationInventoryUrl;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * 

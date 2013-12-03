@@ -15,9 +15,11 @@ namespace Mozu\Api\Resources\Commerce\Customer;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Customer\CustomerAccountClient;
 use Mozu\Api\ApiContext;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Create, view, update, and delete a contact in a customer account. A customer account may have multiple contacts for billing or shipping addresses. Each contact may also list any groups to which the contact belongs and whether the contact accepts marketing material such as newsletters or email offers.
 */
 class CustomerAccountResource {
 
@@ -28,10 +30,10 @@ class CustomerAccountResource {
 	}
 
 	/**
-	* 
+	* Retrieves a list of customer accounts.
 	*
-	* @param string $fields 
-	* @param string $filter 
+	* @param string $fields The fields to include in the response.
+	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
 	* @param int $pageSize 
 	* @param string $q 
 	* @param int $qLimit 
@@ -49,9 +51,9 @@ class CustomerAccountResource {
 	}
 	
 	/**
-	* 
+	* Retrieve details of a customer account.
 	*
-	* @param int $accountId 
+	* @param int $accountId Unique identifier of the customer account to retrieve.
 	* @return CustomerAccount 
 	*/
 	public function getAccount( $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -99,7 +101,7 @@ class CustomerAccountResource {
 	}
 	
 	/**
-	* 
+	* Creates a new customer account.
 	*
 	* @param CustomerAccount $account 
 	* @return CustomerAccount 
@@ -143,9 +145,9 @@ class CustomerAccountResource {
 	}
 	
 	/**
-	* 
+	* Updates a customer account.
 	*
-	* @param int $accountId 
+	* @param int $accountId Unique identifier of the customer account.
 	* @param CustomerAccount $account 
 	* @return CustomerAccount 
 	*/
@@ -159,9 +161,9 @@ class CustomerAccountResource {
 	}
 	
 	/**
-	* 
+	* Deletes a customer account. A customer account cannot be deleted if any orders exist, past or present.
 	*
-	* @param int $accountId 
+	* @param int $accountId Unique identifier of the customer account to delete.
 	*/
 	public function deleteAccount( $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

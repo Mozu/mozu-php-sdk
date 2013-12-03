@@ -17,84 +17,20 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Payments;
 class PaymentCard
 {
 		public $cardNumberPartOrMask;
-	public function getCardNumberPartOrMask() {
-		return $this->cardNumberPartOrMask;
-	}
-	
-	public function setCardNumberPartOrMask($cardNumberPartOrMask) {
-		$this->cardNumberPartOrMask = $cardNumberPartOrMask;
-		return $this;
-	}
 
 		public $expireMonth;
-	public function getExpireMonth() {
-		return $this->expireMonth;
-	}
-	
-	public function setExpireMonth($expireMonth) {
-		$this->expireMonth = $expireMonth;
-		return $this;
-	}
 
 		public $expireYear;
-	public function getExpireYear() {
-		return $this->expireYear;
-	}
-	
-	public function setExpireYear($expireYear) {
-		$this->expireYear = $expireYear;
-		return $this;
-	}
 
 		public $isCardInfoSaved;
-	public function getIsCardInfoSaved() {
-		return $this->isCardInfoSaved;
-	}
-	
-	public function setIsCardInfoSaved($isCardInfoSaved) {
-		$this->isCardInfoSaved = $isCardInfoSaved;
-		return $this;
-	}
 
 		public $isUsedRecurring;
-	public function getIsUsedRecurring() {
-		return $this->isUsedRecurring;
-	}
-	
-	public function setIsUsedRecurring($isUsedRecurring) {
-		$this->isUsedRecurring = $isUsedRecurring;
-		return $this;
-	}
 
 		public $nameOnCard;
-	public function getNameOnCard() {
-		return $this->nameOnCard;
-	}
-	
-	public function setNameOnCard($nameOnCard) {
-		$this->nameOnCard = $nameOnCard;
-		return $this;
-	}
 
 		public $paymentOrCardType;
-	public function getPaymentOrCardType() {
-		return $this->paymentOrCardType;
-	}
-	
-	public function setPaymentOrCardType($paymentOrCardType) {
-		$this->paymentOrCardType = $paymentOrCardType;
-		return $this;
-	}
 
 		public $paymentServiceCardId;
-	public function getPaymentServiceCardId() {
-		return $this->paymentServiceCardId;
-	}
-	
-	public function setPaymentServiceCardId($paymentServiceCardId) {
-		$this->paymentServiceCardId = $paymentServiceCardId;
-		return $this;
-	}
 
 }
 

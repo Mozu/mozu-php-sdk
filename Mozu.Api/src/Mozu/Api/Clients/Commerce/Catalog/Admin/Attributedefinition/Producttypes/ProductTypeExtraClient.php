@@ -14,16 +14,18 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin\Attributedefinition\Producttyp
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\Attributedefinition\Producttypes\ProductTypeExtraUrl;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Collection of the attributes that are extras in this product type.
 */
 class ProductTypeExtraClient {
 
 	/**
-	* 
+	* Retrieves a list of extras by providing the product type ID.
 	*
-	* @param int $productTypeId 
+	* @param int $productTypeId Identifier of the product type whose list is being retrieved.
 	* @return MozuClient
 	*/
 	public static function getExtrasClient($dataViewMode,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -39,10 +41,10 @@ class ProductTypeExtraClient {
 	}
 	
 	/**
-	* 
+	* Retrieves an extra by providing the attribute's FQN and product type ID.
 	*
-	* @param string $attributeFQN 
-	* @param int $productTypeId 
+	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
+	* @param int $productTypeId Identifier of the product type whose extra is being retrieved.
 	* @return MozuClient
 	*/
 	public static function getExtraClient($dataViewMode,  $attributeFQN,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -58,10 +60,10 @@ class ProductTypeExtraClient {
 	}
 	
 	/**
-	* 
+	* Add or create an extra.
 	*
-	* @param int $productTypeId 
-	* @param AttributeInProductType $attributeInProductType 
+	* @param int $productTypeId Identifier of the product type to add an extra.
+	* @param AttributeInProductType $attributeInProductType The properties of the attribute in product type to add or create extras.
 	* @return MozuClient
 	*/
 	public static function addExtraClient($dataViewMode, $attributeInProductType,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -77,11 +79,11 @@ class ProductTypeExtraClient {
 	}
 	
 	/**
-	* 
+	* Update an extra by providing the attribute's FQN and product type ID.
 	*
-	* @param string $attributeFQN 
-	* @param int $productTypeId 
-	* @param AttributeInProductType $attributeInProductType 
+	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
+	* @param int $productTypeId Identifier of the product type whose extra is being updated.
+	* @param AttributeInProductType $attributeInProductType The properties of the attribute in product type to update. The attributes exist as extras.
 	* @return MozuClient
 	*/
 	public static function updateExtraClient($dataViewMode, $attributeInProductType,  $attributeFQN,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -97,10 +99,10 @@ class ProductTypeExtraClient {
 	}
 	
 	/**
-	* 
+	* Delete an extra.
 	*
-	* @param string $attributeFQN 
-	* @param int $productTypeId 
+	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
+	* @param int $productTypeId Identifier of the product type whose extra is being deleted.
 	*/
 	public static function deleteExtraClient($dataViewMode,  $attributeFQN,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

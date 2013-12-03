@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\PaymentService;
 
 
 
+/**
+*	Properties of the payment gateway.
+*/
 class GatewayDefinition
 {
-		public $countryCode;
+	/**
+	*2 letter geographic code representing the country for the physical or mailing address. Currently limited to the US.
+	*/
+	public $countryCode;
 	public function getCountryCode() {
 		return $this->countryCode;
 	}
@@ -26,7 +32,10 @@ class GatewayDefinition
 		return $this;
 	}
 
-		public $id;
+	/**
+	*Unique identifier of the payment gateway definition.
+	*/
+	public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -46,7 +55,10 @@ class GatewayDefinition
 		return $this;
 	}
 
-		public $name;
+	/**
+	*Name of the payment gateway.
+	*/
+	public $name;
 	public function getName() {
 		return $this->name;
 	}
@@ -56,7 +68,10 @@ class GatewayDefinition
 		return $this;
 	}
 
-		public $prodServiceURL;
+	/**
+	*URL of the production payment service.
+	*/
+	public $prodServiceURL;
 	public function getProdServiceURL() {
 		return $this->prodServiceURL;
 	}
@@ -66,7 +81,10 @@ class GatewayDefinition
 		return $this;
 	}
 
-		public $testServiceURL;
+	/**
+	*URL of the test payment service environment.
+	*/
+	public $testServiceURL;
 	public function getTestServiceURL() {
 		return $this->testServiceURL;
 	}
@@ -76,7 +94,10 @@ class GatewayDefinition
 		return $this;
 	}
 
-		public $credentialDefinitions;
+	/**
+	*Credential fields for the payment gateway. For security purposes, Mozu does not return these credential fields.
+	*/
+	public $credentialDefinitions;
 	public function getCredentialDefinitions() {
 		return $this->credentialDefinitions;
 	}
@@ -86,7 +107,10 @@ class GatewayDefinition
 		return $this;
 	}
 
-		public $preAuthorizeDefinition;
+	/**
+	****Always private and should not be published.***
+	*/
+	public $preAuthorizeDefinition;
 	public function getPreAuthorizeDefinition() {
 		return $this->preAuthorizeDefinition;
 	}
@@ -96,7 +120,10 @@ class GatewayDefinition
 		return $this;
 	}
 
-		public $supportedCards;
+	/**
+	*The types of credit cards supported by this payment gateway.
+	*/
+	public $supportedCards;
 	public function getSupportedCards() {
 		return $this->supportedCards;
 	}

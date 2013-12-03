@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\Customer;
 
 
 
+/**
+*	Properties of a note configured for a customer account.
+*/
 class CustomerNote
 {
-		public $content;
+	/**
+	*The contents of a customer account note.
+	*/
+	public $content;
 	public function getContent() {
 		return $this->content;
 	}
@@ -26,7 +32,10 @@ class CustomerNote
 		return $this;
 	}
 
-		public $id;
+	/**
+	*Identifier of the customer account note.
+	*/
+	public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -36,7 +45,10 @@ class CustomerNote
 		return $this;
 	}
 
-		public $auditInfo;
+	/**
+	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*/
+	public $auditInfo;
 	public function getAuditInfo() {
 		return $this->auditInfo;
 	}

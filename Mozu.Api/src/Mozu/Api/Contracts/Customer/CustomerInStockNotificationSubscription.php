@@ -17,44 +17,12 @@ namespace Mozu\Api\Contracts\Customer;
 class CustomerInStockNotificationSubscription
 {
 		public $id;
-	public function getId() {
-		return $this->id;
-	}
-	
-	public function setId($id) {
-		$this->id = $id;
-		return $this;
-	}
 
 		public $locationCode;
-	public function getLocationCode() {
-		return $this->locationCode;
-	}
-	
-	public function setLocationCode($locationCode) {
-		$this->locationCode = $locationCode;
-		return $this;
-	}
 
 		public $productCode;
-	public function getProductCode() {
-		return $this->productCode;
-	}
-	
-	public function setProductCode($productCode) {
-		$this->productCode = $productCode;
-		return $this;
-	}
 
 		public $auditInfo;
-	public function getAuditInfo() {
-		return $this->auditInfo;
-	}
-	
-	public function setAuditInfo($auditInfo) {
-		$this->auditInfo = $auditInfo;
-		return $this;
-	}
 
 }
 

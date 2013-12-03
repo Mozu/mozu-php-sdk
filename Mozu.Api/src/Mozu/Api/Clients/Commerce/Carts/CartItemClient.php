@@ -14,14 +14,16 @@ namespace Mozu\Api\Clients\Commerce\Carts;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Carts\CartItemUrl;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Use the cart items subresource to manage a collection of items in an active shopping cart.
 */
 class CartItemClient {
 
 	/**
-	* 
+	* Retrieves a list of cart items including the total number of items in the cart.
 	*
 	* @return MozuClient
 	*/
@@ -37,9 +39,9 @@ class CartItemClient {
 	}
 	
 	/**
-	* 
+	* Retrieves a particular cart item by providing the cart item ID.
 	*
-	* @param string $cartItemId 
+	* @param string $cartItemId Identifier of the cart item to retrieve.
 	* @return MozuClient
 	*/
 	public static function getCartItemClient( $cartItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -54,9 +56,9 @@ class CartItemClient {
 	}
 	
 	/**
-	* 
+	* Adds an item such as product to the current shopper's cart.
 	*
-	* @param CartItem $cartItem 
+	* @param CartItem $cartItem All properties of the new cart item. The product code is required.
 	* @return MozuClient
 	*/
 	public static function addItemToCartClient($cartItem, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -71,10 +73,10 @@ class CartItemClient {
 	}
 	
 	/**
-	* 
+	* Update properties of a specific cart item.
 	*
-	* @param string $cartItemId 
-	* @param CartItem $cartItem 
+	* @param string $cartItemId Identifier of the cart item to update.
+	* @param CartItem $cartItem The properties of the cart item to update.
 	* @return MozuClient
 	*/
 	public static function updateCartItemClient($cartItem,  $cartItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -89,10 +91,10 @@ class CartItemClient {
 	}
 	
 	/**
-	* 
+	* Update the quantity of an individual cart item in the cart of a current shopper.
 	*
-	* @param string $cartItemId 
-	* @param int $quantity 
+	* @param string $cartItemId Identifier of the cart item to update quantity.
+	* @param int $quantity The number of cart items in the shopper's active cart.
 	* @return MozuClient
 	*/
 	public static function updateCartItemQuantityClient( $cartItemId,  $quantity, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -107,7 +109,7 @@ class CartItemClient {
 	}
 	
 	/**
-	* 
+	* Removes all cart items in the shopper's active cart.
 	*
 	* @return MozuClient
 	*/
@@ -123,9 +125,9 @@ class CartItemClient {
 	}
 	
 	/**
-	* 
+	* Delete a specific cart item by providing the cart item ID.
 	*
-	* @param string $cartItemId 
+	* @param string $cartItemId Identifier of the cart item to delete.
 	*/
 	public static function deleteCartItemClient( $cartItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

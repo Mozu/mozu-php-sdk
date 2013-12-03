@@ -19,8 +19,8 @@ class ProductReservationUrl  {
 
 	/**
 		* Get Resource Url for GetProductReservations
-		* @param string $filter 
-		* @param int $pageSize 
+		* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
+		* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
 		* @param string $sortBy 
 		* @param int $startIndex 
 		* @return string Resource Url
@@ -37,7 +37,7 @@ class ProductReservationUrl  {
 	
 	/**
 		* Get Resource Url for GetProductReservation
-		* @param int $productReservationId 
+		* @param int $productReservationId Unique identifier of the product reservation.
 		* @return string Resource Url
 	*/
 	public static function getProductReservationUrl($productReservationId)
@@ -48,44 +48,42 @@ class ProductReservationUrl  {
 	}
 	
 	/**
-		* Get Resource Url for AddProductReservation
+		* Get Resource Url for AddProductReservations
+		* @param bool $skipInventoryCheck 
 		* @return string Resource Url
 	*/
-	public static function addProductReservationUrl()
+	public static function addProductReservationsUrl($skipInventoryCheck)
 	{
-		$url = "/api/commerce/catalog/admin/productreservations/";
+		$url = "/api/commerce/catalog/admin/productreservations/?skipInventoryCheck={skipInventoryCheck}";
+		$url = MozuUrl::formatUrl($url, "skipInventoryCheck", $skipInventoryCheck);
 		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
 	}
 	
 	/**
-		* Get Resource Url for CommitReservation
-		* @param int $productReservationId 
-		* @param int $qty 
+		* Get Resource Url for CommitReservations
 		* @return string Resource Url
 	*/
-	public static function commitReservationUrl($productReservationId, $qty)
+	public static function commitReservationsUrl()
 	{
-		$url = "/api/commerce/catalog/admin/productreservations/{productReservationId}/commit/{qty}";
-		$url = MozuUrl::formatUrl($url, "productReservationId", $productReservationId);
-		$url = MozuUrl::formatUrl($url, "qty", $qty);
+		$url = "/api/commerce/catalog/admin/productreservations/commit";
 		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
 	}
 	
 	/**
-		* Get Resource Url for UpdateProductReservation
-		* @param int $productReservationId Unique identifier of the product reservation to update. 
+		* Get Resource Url for UpdateProductReservations
+		* @param bool $skipInventoryCheck 
 		* @return string Resource Url
 	*/
-	public static function updateProductReservationUrl($productReservationId)
+	public static function updateProductReservationsUrl($skipInventoryCheck)
 	{
-		$url = "/api/commerce/catalog/admin/productreservations/{productReservationId}";
-		$url = MozuUrl::formatUrl($url, "productReservationId", $productReservationId);
+		$url = "/api/commerce/catalog/admin/productreservations/?skipInventoryCheck={skipInventoryCheck}";
+		$url = MozuUrl::formatUrl($url, "skipInventoryCheck", $skipInventoryCheck);
 		return new MozuUrl($url, UrlLocation::TENANT_POD,"PUT") ;
 	}
 	
 	/**
 		* Get Resource Url for DeleteProductReservation
-		* @param int $productReservationId 
+		* @param int $productReservationId Unique identifier of the reservation.
 		* @return string Resource Url
 	*/
 	public static function deleteProductReservationUrl($productReservationId)

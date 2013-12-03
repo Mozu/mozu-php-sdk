@@ -14,49 +14,15 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 
+/**
+*	The value selected for a facet when indexing a product search.
+*/
 class FacetValue
 {
-		public $count;
-	public function getCount() {
-		return $this->count;
-	}
-	
-	public function setCount($count) {
-		$this->count = $count;
-		return $this;
-	}
-
-		public $filterValue;
-	public function getFilterValue() {
-		return $this->filterValue;
-	}
-	
-	public function setFilterValue($filterValue) {
-		$this->filterValue = $filterValue;
-		return $this;
-	}
-
-		public $isApplied;
-	public function getIsApplied() {
-		return $this->isApplied;
-	}
-	
-	public function setIsApplied($isApplied) {
-		$this->isApplied = $isApplied;
-		return $this;
-	}
-
-		public $label;
-	public function getLabel() {
-		return $this->label;
-	}
-	
-	public function setLabel($label) {
-		$this->label = $label;
-		return $this;
-	}
-
-		public $parentFacetValue;
+	/**
+	*If applicable, the values of any parent category facets in a hierarchy. Hierarchical facets only apply for product categories.
+	*/
+	public $parentFacetValue;
 	public function getParentFacetValue() {
 		return $this->parentFacetValue;
 	}
@@ -66,7 +32,10 @@ class FacetValue
 		return $this;
 	}
 
-		public $rangeQueryValueEnd;
+	/**
+	*The maximum value selected or entered for the facet range query.
+	*/
+	public $rangeQueryValueEnd;
 	public function getRangeQueryValueEnd() {
 		return $this->rangeQueryValueEnd;
 	}
@@ -76,7 +45,10 @@ class FacetValue
 		return $this;
 	}
 
-		public $rangeQueryValueStart;
+	/**
+	*The minimum value selected or entered for the facet range query.
+	*/
+	public $rangeQueryValueStart;
 	public function getRangeQueryValueStart() {
 		return $this->rangeQueryValueStart;
 	}
@@ -86,7 +58,10 @@ class FacetValue
 		return $this;
 	}
 
-		public $value;
+	/**
+	*String representation of the facet value selected for the product search.
+	*/
+	public $value;
 	public function getValue() {
 		return $this->value;
 	}
@@ -96,7 +71,62 @@ class FacetValue
 		return $this;
 	}
 
-		public $childrenFacetValues;
+	/**
+	*The number of facet value selections in a product search result set.
+	*/
+	public $count;
+	public function getCount() {
+		return $this->count;
+	}
+	
+	public function setCount($count) {
+		$this->count = $count;
+		return $this;
+	}
+
+	/**
+	*Submits the selected facet value as a facet value filter.
+	*/
+	public $filterValue;
+	public function getFilterValue() {
+		return $this->filterValue;
+	}
+	
+	public function setFilterValue($filterValue) {
+		$this->filterValue = $filterValue;
+		return $this;
+	}
+
+	/**
+	*If true, the facet value is applied as a filter in the storefront product search.
+	*/
+	public $isApplied;
+	public function getIsApplied() {
+		return $this->isApplied;
+	}
+	
+	public function setIsApplied($isApplied) {
+		$this->isApplied = $isApplied;
+		return $this;
+	}
+
+	/**
+	*The descriptive label of the facet value.
+	*/
+	public $label;
+	public function getLabel() {
+		return $this->label;
+	}
+	
+	public function setLabel($label) {
+		$this->label = $label;
+		return $this;
+	}
+
+	/**
+	*If applicable, the values of any subcategory facets in a hierarchy. Hierarchical facets only apply for product categories.
+	*/
+	public $childrenFacetValues;
 	public function getChildrenFacetValues() {
 		return $this->childrenFacetValues;
 	}

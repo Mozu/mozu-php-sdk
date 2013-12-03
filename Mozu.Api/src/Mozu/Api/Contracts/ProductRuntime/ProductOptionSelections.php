@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 
+/**
+*	For a product with shopper-configurable options, the properties of the product options selected by the shopper.
+*/
 class ProductOptionSelections
 {
-		public $variationProductCode;
+	/**
+	*Product code that represents the product variation selected based on the option values the shopper entered.
+	*/
+	public $variationProductCode;
 	public function getVariationProductCode() {
 		return $this->variationProductCode;
 	}
@@ -26,7 +32,10 @@ class ProductOptionSelections
 		return $this;
 	}
 
-		public $options;
+	/**
+	*List of product options and values currently selected.
+	*/
+	public $options;
 	public function getOptions() {
 		return $this->options;
 	}

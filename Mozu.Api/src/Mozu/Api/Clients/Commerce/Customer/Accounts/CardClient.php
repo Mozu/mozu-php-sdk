@@ -14,16 +14,18 @@ namespace Mozu\Api\Clients\Commerce\Customer\Accounts;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\Accounts\CardUrl;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Use the Cards subresource to manage stored credit cards for customer accounts. Mozu stores limited card data in the Customer service for expedited ordering purposes; however, the complete card data is stored in the Payment service.
 */
 class CardClient {
 
 	/**
-	* 
+	* Retrieves all stored credit cards for the customer account.
 	*
-	* @param int $accountId 
+	* @param int $accountId Unique identifier of the customer account.
 	* @return MozuClient
 	*/
 	public static function getAccountCardsClient( $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -38,10 +40,10 @@ class CardClient {
 	}
 	
 	/**
-	* 
+	* Creates a new credit card record and stores it for the customer account.
 	*
-	* @param int $accountId 
-	* @param Card $card 
+	* @param int $accountId Unique identifier of the customer account.
+	* @param Card $card Properties of the customer credit card to add to the account.
 	* @return MozuClient
 	*/
 	public static function addAccountCardClient($card,  $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -56,10 +58,10 @@ class CardClient {
 	}
 	
 	/**
-	* 
+	* Update one or more properties of a credit card defined for a customer account.
 	*
-	* @param int $accountId 
-	* @param Card $card 
+	* @param int $accountId Unique identifier of the customer account.
+	* @param Card $card Properties of the customer account credit card to update.
 	* @return MozuClient
 	*/
 	public static function updateAccountCardClient($card,  $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -74,10 +76,10 @@ class CardClient {
 	}
 	
 	/**
-	* 
+	* Removes a stored credit card from a customer account.
 	*
-	* @param int $accountId 
-	* @param string $cardId 
+	* @param int $accountId Unique identifier of the customer account.
+	* @param string $cardId Unique identifier of the credit card to delete.
 	*/
 	public static function deleteAccountCardClient( $accountId,  $cardId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

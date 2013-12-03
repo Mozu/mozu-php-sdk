@@ -8,6 +8,7 @@
 	<buildpathentry kind="src" path="vendor/phpunit/php-timer/PHP"/>
 	<buildpathentry kind="src" path="vendor/guzzle/guzzle/tests"/>
 	<buildpathentry kind="src" path="vendor/phpunit/php-text-template/Text"/>
+	<buildpathentry kind="src" path="tests"/>
 	<buildpathentry kind="src" path="vendor/symfony/event-dispatcher"/>
 	<buildpathentry kind="src" path="vendor/phpunit/phpunit/PHPUnit"/>
 	<buildpathentry kind="src" path="vendor/composer"/>

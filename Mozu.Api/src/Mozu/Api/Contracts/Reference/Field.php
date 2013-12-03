@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\Reference;
 
 
 
+/**
+*	An property that is a wrapper for additional properties pertaining to the schema such as the type, label, any associated data, an ID, and the order of the response.
+*/
 class Field
 {
-		public $id;
+	/**
+	*Identifier of the field.
+	*/
+	public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -26,7 +32,10 @@ class Field
 		return $this;
 	}
 
-		public $label;
+	/**
+	*Label for the field.
+	*/
+	public $label;
 	public function getLabel() {
 		return $this->label;
 	}
@@ -36,7 +45,10 @@ class Field
 		return $this;
 	}
 
-		public $order;
+	/**
+	*Sequence of the field.
+	*/
+	public $order;
 	public function getOrder() {
 		return $this->order;
 	}
@@ -46,7 +58,10 @@ class Field
 		return $this;
 	}
 
-		public $type;
+	/**
+	*Type of field.
+	*/
+	public $type;
 	public function getType() {
 		return $this->type;
 	}
@@ -56,7 +71,10 @@ class Field
 		return $this;
 	}
 
-		public $data;
+	/**
+	*Data for the field property.
+	*/
+	public $data;
 	public function getData() {
 		return $this->data;
 	}

@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\Content;
 
 
 
+/**
+*	The properties of a folder including the name of the parent document list it to which it belongs, its name, unique identifier, the ID of its parent folder, and the physical location path where it can be found in the folder hierarchy.
+*/
 class Folder
 {
-		public $documentListName;
+	/**
+	*The name of the document list that contains the folder.
+	*/
+	public $documentListName;
 	public function getDocumentListName() {
 		return $this->documentListName;
 	}
@@ -26,7 +32,10 @@ class Folder
 		return $this;
 	}
 
-		public $id;
+	/**
+	*Unique identifier of the folder.
+	*/
+	public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -36,7 +45,10 @@ class Folder
 		return $this;
 	}
 
-		public $name;
+	/**
+	*The name of the folder.
+	*/
+	public $name;
 	public function getName() {
 		return $this->name;
 	}
@@ -46,7 +58,10 @@ class Folder
 		return $this;
 	}
 
-		public $parentId;
+	/**
+	*If applicable, the parent folder that contains this folder.
+	*/
+	public $parentId;
 	public function getParentId() {
 		return $this->parentId;
 	}
@@ -56,7 +71,10 @@ class Folder
 		return $this;
 	}
 
-		public $path;
+	/**
+	*The content path associated with the folder.
+	*/
+	public $path;
 	public function getPath() {
 		return $this->path;
 	}

@@ -17,104 +17,24 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class ProductInCatalogInfo
 {
 		public $catalogId;
-	public function getCatalogId() {
-		return $this->catalogId;
-	}
-	
-	public function setCatalogId($catalogId) {
-		$this->catalogId = $catalogId;
-		return $this;
-	}
 
 		public $isActive;
-	public function getIsActive() {
-		return $this->isActive;
-	}
-	
-	public function setIsActive($isActive) {
-		$this->isActive = $isActive;
-		return $this;
-	}
 
 		public $isContentOverridden;
-	public function getIsContentOverridden() {
-		return $this->isContentOverridden;
-	}
-	
-	public function setIsContentOverridden($isContentOverridden) {
-		$this->isContentOverridden = $isContentOverridden;
-		return $this;
-	}
 
 		public $isPriceOverridden;
-	public function getIsPriceOverridden() {
-		return $this->isPriceOverridden;
-	}
-	
-	public function setIsPriceOverridden($isPriceOverridden) {
-		$this->isPriceOverridden = $isPriceOverridden;
-		return $this;
-	}
 
 		public $isseoContentOverridden;
-	public function getIsseoContentOverridden() {
-		return $this->isseoContentOverridden;
-	}
-	
-	public function setIsseoContentOverridden($isseoContentOverridden) {
-		$this->isseoContentOverridden = $isseoContentOverridden;
-		return $this;
-	}
 
 		public $auditInfo;
-	public function getAuditInfo() {
-		return $this->auditInfo;
-	}
-	
-	public function setAuditInfo($auditInfo) {
-		$this->auditInfo = $auditInfo;
-		return $this;
-	}
 
 		public $content;
-	public function getContent() {
-		return $this->content;
-	}
-	
-	public function setContent($content) {
-		$this->content = $content;
-		return $this;
-	}
 
 		public $price;
-	public function getPrice() {
-		return $this->price;
-	}
-	
-	public function setPrice($price) {
-		$this->price = $price;
-		return $this;
-	}
 
 		public $productCategories;
-	public function getProductCategories() {
-		return $this->productCategories;
-	}
-	
-	public function setProductCategories($productCategories) {
-		$this->productCategories = $productCategories;
-		return $this;
-	}
 
 		public $seoContent;
-	public function getSeoContent() {
-		return $this->seoContent;
-	}
-	
-	public function setSeoContent($seoContent) {
-		$this->seoContent = $seoContent;
-		return $this;
-	}
 
 }
 

@@ -14,6 +14,9 @@ namespace Mozu\Api\Contracts\PricingRuntime;
 
 
 
+/**
+*	Properties of an order for which to calculate tax. When a tax capability is enabled for a tenant, Mozu sends the TaxableOrder properties to the capability as read-only, system-supplied information.
+*/
 class TaxableOrder
 {
 		public $currencyCode;
@@ -26,7 +29,10 @@ class TaxableOrder
 		return $this;
 	}
 
-		public $handlingFee;
+	/**
+	*Handling fee associated with the order.
+	*/
+	public $handlingFee;
 	public function getHandlingFee() {
 		return $this->handlingFee;
 	}
@@ -36,7 +42,10 @@ class TaxableOrder
 		return $this;
 	}
 
-		public $orderDate;
+	/**
+	*The date and time the order was submitted.
+	*/
+	public $orderDate;
 	public function getOrderDate() {
 		return $this->orderDate;
 	}
@@ -66,7 +75,10 @@ class TaxableOrder
 		return $this;
 	}
 
-		public $shippingAmount;
+	/**
+	*The total shipping amount calculated for the order.
+	*/
+	public $shippingAmount;
 	public function getShippingAmount() {
 		return $this->shippingAmount;
 	}
@@ -86,7 +98,10 @@ class TaxableOrder
 		return $this;
 	}
 
-		public $lineItems;
+	/**
+	*The line items associated with the order.
+	*/
+	public $lineItems;
 	public function getLineItems() {
 		return $this->lineItems;
 	}
@@ -96,7 +111,10 @@ class TaxableOrder
 		return $this;
 	}
 
-		public $taxContext;
+	/**
+	*The tax properties associated with the order.
+	*/
+	public $taxContext;
 	public function getTaxContext() {
 		return $this->taxContext;
 	}

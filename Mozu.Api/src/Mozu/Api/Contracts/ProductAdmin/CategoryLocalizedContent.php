@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
+/**
+*	The container for category properties that are shown in the language specified by the locale code.
+*/
 class CategoryLocalizedContent
 {
-		public $description;
+	/**
+	*Description of the product category in the language specified by the locale code.
+	*/
+	public $description;
 	public function getDescription() {
 		return $this->description;
 	}
@@ -26,7 +32,10 @@ class CategoryLocalizedContent
 		return $this;
 	}
 
-		public $localeCode;
+	/**
+	*"Language used for the entity. Currently, only ""en-US"" is supported."
+	*/
+	public $localeCode;
 	public function getLocaleCode() {
 		return $this->localeCode;
 	}
@@ -36,7 +45,10 @@ class CategoryLocalizedContent
 		return $this;
 	}
 
-		public $metaTagDescription;
+	/**
+	*Description defined for the product category metadata, used to manage internal product information, in the language specified by the locale code.
+	*/
+	public $metaTagDescription;
 	public function getMetaTagDescription() {
 		return $this->metaTagDescription;
 	}
@@ -46,7 +58,10 @@ class CategoryLocalizedContent
 		return $this;
 	}
 
-		public $metaTagKeywords;
+	/**
+	*Keywords defined for the product category metadata, used to manage internal product information, in the language specified by the locale code.
+	*/
+	public $metaTagKeywords;
 	public function getMetaTagKeywords() {
 		return $this->metaTagKeywords;
 	}
@@ -56,7 +71,10 @@ class CategoryLocalizedContent
 		return $this;
 	}
 
-		public $metaTagTitle;
+	/**
+	*Title defined for the product category metadata, used to manage internal product information, in the language specified by the locale code.
+	*/
+	public $metaTagTitle;
 	public function getMetaTagTitle() {
 		return $this->metaTagTitle;
 	}
@@ -66,7 +84,10 @@ class CategoryLocalizedContent
 		return $this;
 	}
 
-		public $name;
+	/**
+	*The name of the product category in the language specified by the locale code.
+	*/
+	public $name;
 	public function getName() {
 		return $this->name;
 	}
@@ -76,7 +97,10 @@ class CategoryLocalizedContent
 		return $this;
 	}
 
-		public $pageTitle;
+	/**
+	*Title that appears on new product category pages, in the language specified by the locale code.
+	*/
+	public $pageTitle;
 	public function getPageTitle() {
 		return $this->pageTitle;
 	}
@@ -86,7 +110,10 @@ class CategoryLocalizedContent
 		return $this;
 	}
 
-		public $slug;
+	/**
+	*Human-readable identifier to assign to the category to generate user-friendly URLs.
+	*/
+	public $slug;
 	public function getSlug() {
 		return $this->slug;
 	}

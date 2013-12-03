@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Orders;
 
 
 
+/**
+*	The action to perform for the order.
+*/
 class OrderAction
 {
-		public $actionName;
+	/**
+	*The name of the action for the order.
+	*/
+	public $actionName;
 	public function getActionName() {
 		return $this->actionName;
 	}

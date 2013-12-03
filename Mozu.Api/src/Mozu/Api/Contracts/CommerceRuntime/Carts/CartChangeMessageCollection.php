@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Carts;
 
 
 
+/**
+*	Collection of messages logged or created each time the cart was modifed.
+*/
 class CartChangeMessageCollection
 {
-		public $capacity;
+	/**
+	*The number of commerce runtime cart change messages transactions that can exist in a collection.
+	*/
+	public $capacity;
 	public function getCapacity() {
 		return $this->capacity;
 	}
@@ -26,7 +32,10 @@ class CartChangeMessageCollection
 		return $this;
 	}
 
-		public $count;
+	/**
+	*The number of messages in the collection.
+	*/
+	public $count;
 	public function getCount() {
 		return $this->count;
 	}
@@ -36,7 +45,10 @@ class CartChangeMessageCollection
 		return $this;
 	}
 
-		public $item;
+	/**
+	*Container for an item in a collection.
+	*/
+	public $item;
 	public function getItem() {
 		return $this->item;
 	}

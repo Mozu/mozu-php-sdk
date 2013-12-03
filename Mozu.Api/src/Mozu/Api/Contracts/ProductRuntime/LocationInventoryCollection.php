@@ -17,24 +17,8 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 class LocationInventoryCollection
 {
 		public $totalCount;
-	public function getTotalCount() {
-		return $this->totalCount;
-	}
-	
-	public function setTotalCount($totalCount) {
-		$this->totalCount = $totalCount;
-		return $this;
-	}
 
 		public $items;
-	public function getItems() {
-		return $this->items;
-	}
-	
-	public function setItems($items) {
-		$this->items = $items;
-		return $this;
-	}
 
 }
 

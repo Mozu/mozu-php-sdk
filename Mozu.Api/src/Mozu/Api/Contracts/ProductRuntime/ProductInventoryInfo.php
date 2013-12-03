@@ -26,6 +26,16 @@ class ProductInventoryInfo
 		return $this;
 	}
 
+		public $onlineLocationCode;
+	public function getOnlineLocationCode() {
+		return $this->onlineLocationCode;
+	}
+	
+	public function setOnlineLocationCode($onlineLocationCode) {
+		$this->onlineLocationCode = $onlineLocationCode;
+		return $this;
+	}
+
 		public $onlineStockAvailable;
 	public function getOnlineStockAvailable() {
 		return $this->onlineStockAvailable;

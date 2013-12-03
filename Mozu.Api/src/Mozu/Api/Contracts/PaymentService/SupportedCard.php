@@ -17,24 +17,8 @@ namespace Mozu\Api\Contracts\PaymentService;
 class SupportedCard
 {
 		public $friendlyName;
-	public function getFriendlyName() {
-		return $this->friendlyName;
-	}
-	
-	public function setFriendlyName($friendlyName) {
-		$this->friendlyName = $friendlyName;
-		return $this;
-	}
 
 		public $type;
-	public function getType() {
-		return $this->type;
-	}
-	
-	public function setType($type) {
-		$this->type = $type;
-		return $this;
-	}
 
 }
 

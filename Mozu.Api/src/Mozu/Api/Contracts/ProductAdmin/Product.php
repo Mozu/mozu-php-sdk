@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
+/**
+*	Properties of the product such as product code, product name, and product price.
+*/
 class Product
 {
-		public $baseProductCode;
+	/**
+	*Merchant-generated product code for the product that any variation stems from.
+	*/
+	public $baseProductCode;
 	public function getBaseProductCode() {
 		return $this->baseProductCode;
 	}
@@ -26,7 +32,10 @@ class Product
 		return $this;
 	}
 
-		public $hasConfigurableOptions;
+	/**
+	*If true, the product has configurable options. This option means that a product is not purchasable until the shopper selects options that resolve into a product variation. Configurable options for a product are the choices a shopper makes when ordering a product. Size and color are configurable options. System-supplied and read-only.
+	*/
+	public $hasConfigurableOptions;
 	public function getHasConfigurableOptions() {
 		return $this->hasConfigurableOptions;
 	}
@@ -36,7 +45,10 @@ class Product
 		return $this;
 	}
 
-		public $hasStandAloneOptions;
+	/**
+	*If true, this product has stand alone options that a shopper can select which can exist without product variations. Stand alone options. System-supplied and read-only.
+	*/
+	public $hasStandAloneOptions;
 	public function getHasStandAloneOptions() {
 		return $this->hasStandAloneOptions;
 	}
@@ -46,7 +58,10 @@ class Product
 		return $this;
 	}
 
-		public $isPackagedStandAlone;
+	/**
+	*If true, the product must be packaged on its own and should not be jointly packaged with other products.
+	*/
+	public $isPackagedStandAlone;
 	public function getIsPackagedStandAlone() {
 		return $this->isPackagedStandAlone;
 	}
@@ -56,7 +71,10 @@ class Product
 		return $this;
 	}
 
-		public $isRecurring;
+	/**
+	*If true, the product can be purchased or fulfilled at regular intervals such as a monthly billing cycle or a digital or physical subscription.
+	*/
+	public $isRecurring;
 	public function getIsRecurring() {
 		return $this->isRecurring;
 	}
@@ -66,7 +84,10 @@ class Product
 		return $this;
 	}
 
-		public $isTaxable;
+	/**
+	*If true, the entity is subject to tax based on the relevant tax rate.
+	*/
+	public $isTaxable;
 	public function getIsTaxable() {
 		return $this->isTaxable;
 	}
@@ -76,7 +97,10 @@ class Product
 		return $this;
 	}
 
-		public $isValidForProductType;
+	/**
+	*If true, the entity is valid for the product type provided.
+	*/
+	public $isValidForProductType;
 	public function getIsValidForProductType() {
 		return $this->isValidForProductType;
 	}
@@ -86,7 +110,10 @@ class Product
 		return $this;
 	}
 
-		public $isVariation;
+	/**
+	*If true, the product in this request is a product variation of a product that has configurable options. System-supplied and read-only.
+	*/
+	public $isVariation;
 	public function getIsVariation() {
 		return $this->isVariation;
 	}
@@ -106,7 +133,10 @@ class Product
 		return $this;
 	}
 
-		public $productCode;
+	/**
+	*"Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+	*/
+	public $productCode;
 	public function getProductCode() {
 		return $this->productCode;
 	}
@@ -126,7 +156,10 @@ class Product
 		return $this;
 	}
 
-		public $productTypeId;
+	/**
+	*Identifier of the product type.
+	*/
+	public $productTypeId;
 	public function getProductTypeId() {
 		return $this->productTypeId;
 	}
@@ -136,7 +169,20 @@ class Product
 		return $this;
 	}
 
-		public $shippingClassId;
+		public $productUsage;
+	public function getProductUsage() {
+		return $this->productUsage;
+	}
+	
+	public function setProductUsage($productUsage) {
+		$this->productUsage = $productUsage;
+		return $this;
+	}
+
+	/**
+	*Identifier of the shipping class.
+	*/
+	public $shippingClassId;
 	public function getShippingClassId() {
 		return $this->shippingClassId;
 	}
@@ -146,7 +192,10 @@ class Product
 		return $this;
 	}
 
-		public $standAlonePackageType;
+	/**
+	*If the product must be packaged separately, the type of standalone package to use.
+	*/
+	public $standAlonePackageType;
 	public function getStandAlonePackageType() {
 		return $this->standAlonePackageType;
 	}
@@ -156,7 +205,10 @@ class Product
 		return $this;
 	}
 
-		public $upc;
+	/**
+	*The universal product code (UPC code) of the product.
+	*/
+	public $upc;
 	public function getUpc() {
 		return $this->upc;
 	}
@@ -166,7 +218,10 @@ class Product
 		return $this;
 	}
 
-		public $variationKey;
+	/**
+	*System-generated key that represents the attribute values that uniquely identify a specific product variation.
+	*/
+	public $variationKey;
 	public function getVariationKey() {
 		return $this->variationKey;
 	}
@@ -176,17 +231,23 @@ class Product
 		return $this;
 	}
 
-		public $packageLength;
-	public function getPackageLength() {
-		return $this->packageLength;
+	/**
+	*The list of extras set up in product admin.
+	*/
+	public $extras;
+	public function getExtras() {
+		return $this->extras;
 	}
 	
-	public function setPackageLength($packageLength) {
-		$this->packageLength = $packageLength;
+	public function setExtras($extras) {
+		$this->extras = $extras;
 		return $this;
 	}
 
-		public $applicableDiscounts;
+	/**
+	*List of discounts available for a product.
+	*/
+	public $applicableDiscounts;
 	public function getApplicableDiscounts() {
 		return $this->applicableDiscounts;
 	}
@@ -196,7 +257,10 @@ class Product
 		return $this;
 	}
 
-		public $auditInfo;
+	/**
+	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*/
+	public $auditInfo;
 	public function getAuditInfo() {
 		return $this->auditInfo;
 	}
@@ -206,23 +270,26 @@ class Product
 		return $this;
 	}
 
-		public $content;
+		public $bundledProducts;
+	public function getBundledProducts() {
+		return $this->bundledProducts;
+	}
+	
+	public function setBundledProducts($bundledProducts) {
+		$this->bundledProducts = $bundledProducts;
+		return $this;
+	}
+
+	/**
+	*Product content set in product admin.
+	*/
+	public $content;
 	public function getContent() {
 		return $this->content;
 	}
 	
 	public function setContent($content) {
 		$this->content = $content;
-		return $this;
-	}
-
-		public $extras;
-	public function getExtras() {
-		return $this->extras;
-	}
-	
-	public function setExtras($extras) {
-		$this->extras = $extras;
 		return $this;
 	}
 
@@ -236,7 +303,10 @@ class Product
 		return $this;
 	}
 
-		public $options;
+	/**
+	*The list of options set up in product admin.
+	*/
+	public $options;
 	public function getOptions() {
 		return $this->options;
 	}
@@ -246,7 +316,10 @@ class Product
 		return $this;
 	}
 
-		public $packageHeight;
+	/**
+	*Height of the package in imperial units of feet and inches.
+	*/
+	public $packageHeight;
 	public function getPackageHeight() {
 		return $this->packageHeight;
 	}
@@ -256,7 +329,23 @@ class Product
 		return $this;
 	}
 
-		public $packageWeight;
+	/**
+	*Length of the package in imperial units of feet and inches.
+	*/
+	public $packageLength;
+	public function getPackageLength() {
+		return $this->packageLength;
+	}
+	
+	public function setPackageLength($packageLength) {
+		$this->packageLength = $packageLength;
+		return $this;
+	}
+
+	/**
+	*Weight of the package in imperial units of pounds and ounces.
+	*/
+	public $packageWeight;
 	public function getPackageWeight() {
 		return $this->packageWeight;
 	}
@@ -266,7 +355,10 @@ class Product
 		return $this;
 	}
 
-		public $packageWidth;
+	/**
+	*Width of the package in imperial units of feet and inches.
+	*/
+	public $packageWidth;
 	public function getPackageWidth() {
 		return $this->packageWidth;
 	}
@@ -296,7 +388,10 @@ class Product
 		return $this;
 	}
 
-		public $properties;
+	/**
+	*The list of product properties to set in product admin.
+	*/
+	public $properties;
 	public function getProperties() {
 		return $this->properties;
 	}
@@ -316,7 +411,10 @@ class Product
 		return $this;
 	}
 
-		public $seoContent;
+	/**
+	*search engine optimized product content.
+	*/
+	public $seoContent;
 	public function getSeoContent() {
 		return $this->seoContent;
 	}
@@ -326,7 +424,10 @@ class Product
 		return $this;
 	}
 
-		public $variationOptions;
+	/**
+	*The list of product variation options that exist in product admin.
+	*/
+	public $variationOptions;
 	public function getVariationOptions() {
 		return $this->variationOptions;
 	}

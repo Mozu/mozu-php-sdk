@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../../../../../../BaseTest.php';
 
 use Mozu\Tests\BaseTest;
 use Mozu\Api\Resources\Commerce\Catalog\Admin\ProductResource;
@@ -22,6 +23,7 @@ class ProductResourceTest extends BaseTest
      */
     protected function setUp()
     {
+    	BaseTest::Auth();
     	$apiContext = new ApiContext(7804,9931,1,1);
         $this->object = new ProductResource($apiContext);
     }

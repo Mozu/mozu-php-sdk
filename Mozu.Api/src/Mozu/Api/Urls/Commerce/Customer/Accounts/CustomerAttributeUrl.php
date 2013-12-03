@@ -33,8 +33,8 @@ class CustomerAttributeUrl  {
 	
 	/**
 		* Get Resource Url for GetAccountAttribute
-		* @param int $accountId 
-		* @param int $attributeId 
+		* @param int $accountId Identifier of the customer account associated with the attribute to retrieve.
+		* @param int $attributeId Identifier of the customer account attribute to retrieve.
 		* @return string Resource Url
 	*/
 	public static function getAccountAttributeUrl($accountId, $attributeId)
@@ -47,7 +47,7 @@ class CustomerAttributeUrl  {
 	
 	/**
 		* Get Resource Url for GetAccountAttributes
-		* @param int $accountId 
+		* @param int $accountId Identifier of the customer account associated with the attributes to retrieve.
 		* @param string $filter 
 		* @param int $pageSize 
 		* @param string $sortBy 
@@ -79,7 +79,7 @@ class CustomerAttributeUrl  {
 	
 	/**
 		* Get Resource Url for UpdateAccountAttribute
-		* @param int $accountId 
+		* @param int $accountId Identifier of the customer account associated with the attribute.
 		* @return string Resource Url
 	*/
 	public static function updateAccountAttributeUrl($accountId)

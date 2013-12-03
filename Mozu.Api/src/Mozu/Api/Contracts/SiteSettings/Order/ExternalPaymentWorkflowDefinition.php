@@ -17,34 +17,10 @@ namespace Mozu\Api\Contracts\SiteSettings\Order;
 class ExternalPaymentWorkflowDefinition
 {
 		public $isEnabled;
-	public function getIsEnabled() {
-		return $this->isEnabled;
-	}
-	
-	public function setIsEnabled($isEnabled) {
-		$this->isEnabled = $isEnabled;
-		return $this;
-	}
 
 		public $name;
-	public function getName() {
-		return $this->name;
-	}
-	
-	public function setName($name) {
-		$this->name = $name;
-		return $this;
-	}
 
 		public $credentials;
-	public function getCredentials() {
-		return $this->credentials;
-	}
-	
-	public function setCredentials($credentials) {
-		$this->credentials = $credentials;
-		return $this;
-	}
 
 }
 

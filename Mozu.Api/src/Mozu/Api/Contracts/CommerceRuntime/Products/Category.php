@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Products;
 
 
 
+/**
+*	The category into which products are classified.
+*/
 class Category
 {
-		public $id;
+	/**
+	*Identifier of the category.
+	*/
+	public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -26,7 +32,10 @@ class Category
 		return $this;
 	}
 
-		public $parent;
+	/**
+	*If applicable, the parent category in the category tree.
+	*/
+	public $parent;
 	public function getParent() {
 		return $this->parent;
 	}

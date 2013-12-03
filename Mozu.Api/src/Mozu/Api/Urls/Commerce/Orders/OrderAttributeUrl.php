@@ -19,7 +19,7 @@ class OrderAttributeUrl  {
 
 	/**
 		* Get Resource Url for GetOrderAttributes
-		* @param string $orderId 
+		* @param string $orderId Identifier of the order whose order attributes are being retrieved.
 		* @return string Resource Url
 	*/
 	public static function getOrderAttributesUrl($orderId)
@@ -31,7 +31,7 @@ class OrderAttributeUrl  {
 	
 	/**
 		* Get Resource Url for CreateOrderAttributes
-		* @param string $orderId 
+		* @param string $orderId Identifier of the order whose attributes are being created.
 		* @return string Resource Url
 	*/
 	public static function createOrderAttributesUrl($orderId)
@@ -43,8 +43,8 @@ class OrderAttributeUrl  {
 	
 	/**
 		* Get Resource Url for UpdateOrderAttributes
-		* @param string $orderId 
-		* @param bool $removeMissing 
+		* @param string $orderId Identifier of the order whose order attributes are being updated.
+		* @param bool $removeMissing If true, the operation removes missing properties so that the updated order attributes will not show properties with a null value.
 		* @return string Resource Url
 	*/
 	public static function updateOrderAttributesUrl($orderId, $removeMissing)

@@ -15,9 +15,11 @@ namespace Mozu\Api\Resources\Content\Documentlists;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Content\Documentlists\FacetClient;
 use Mozu\Api\ApiContext;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Use the facets subresource to allow a merchant to add information for product indexing and searching.
 */
 class FacetResource {
 
@@ -28,10 +30,10 @@ class FacetResource {
 	}
 
 	/**
-	* 
+	* Retrieves the properties of facets that aid in indexing and searching.
 	*
-	* @param string $documentListName 
-	* @param string $propertyName 
+	* @param string $documentListName The document list associated with the facets are to retrieve.
+	* @param string $propertyName The property name associated with the facets to retrieve.
 	* @return array|Facet 
 	*/
 	public function getFacets( $documentListName,  $propertyName, Mozu\Api\Security\AuthTicket &$authTicket= null)

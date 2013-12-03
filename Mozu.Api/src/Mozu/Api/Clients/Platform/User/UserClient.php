@@ -14,16 +14,18 @@ namespace Mozu\Api\Clients\Platform\User;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Platform\User\UserUrl;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Use this resource to manage shopper accounts for your Mozu tenant.
 */
 class UserClient {
 
 	/**
-	* 
+	* Retrieves the details of a user account by supplying the user's email address.
 	*
-	* @param string $emailAddress 
+	* @param string $emailAddress The email address of the specified user.
 	* @return MozuClient
 	*/
 	public static function getUserByEmailClient( $emailAddress, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -38,9 +40,9 @@ class UserClient {
 	}
 	
 	/**
-	* 
+	* Retrieves the details of a user account by supplying the user ID.
 	*
-	* @param string $userId 
+	* @param string $userId Unique identifier of the user.
 	* @return MozuClient
 	*/
 	public static function getUserClient( $userId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -55,9 +57,9 @@ class UserClient {
 	}
 	
 	/**
-	* 
+	* Creates a new shopper user account.
 	*
-	* @param User $shopper 
+	* @param User $shopper Properties of the new shopper user account to create.
 	* @return MozuClient
 	*/
 	public static function createUserClient($shopper, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -72,9 +74,9 @@ class UserClient {
 	}
 	
 	/**
-	* 
+	* Creates a bulk collection of new shopper user accounts.
 	*
-	* @param UserCollection $users 
+	* @param UserCollection $users Properties of the new shopper user accounts to create.
 	* @return MozuClient
 	*/
 	public static function createUsersClient($users, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -89,9 +91,9 @@ class UserClient {
 	}
 	
 	/**
-	* 
+	* Logs a shopper user in to a tenant.
 	*
-	* @param UserAuthInfo $userAuthInfo 
+	* @param UserAuthInfo $userAuthInfo The authentication information required to log the user in, which consists of email address and password.
 	* @return MozuClient
 	*/
 	public static function loginClient($userAuthInfo, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -106,9 +108,9 @@ class UserClient {
 	}
 	
 	/**
-	* 
+	* Reset the shopper user password by supplying the email address.
 	*
-	* @param ResetPasswordInfo $resetPasswordInfo 
+	* @param ResetPasswordInfo $resetPasswordInfo The information required to reset the password, which consists of the user email address.
 	*/
 	public static function resetPasswordClient($resetPasswordInfo, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

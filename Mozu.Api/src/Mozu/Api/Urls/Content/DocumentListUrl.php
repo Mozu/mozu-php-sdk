@@ -19,7 +19,7 @@ class DocumentListUrl  {
 
 	/**
 		* Get Resource Url for GetDocumentLists
-		* @param int $pageSize 
+		* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
 		* @param string $sort 
 		* @param int $startIndex 
 		* @return string Resource Url
@@ -35,7 +35,7 @@ class DocumentListUrl  {
 	
 	/**
 		* Get Resource Url for GetDocumentList
-		* @param string $documentListName 
+		* @param string $documentListName The name of the document list.
 		* @return string Resource Url
 	*/
 	public static function getDocumentListUrl($documentListName)

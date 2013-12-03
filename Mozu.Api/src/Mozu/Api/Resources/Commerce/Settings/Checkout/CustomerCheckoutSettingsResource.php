@@ -15,9 +15,11 @@ namespace Mozu\Api\Resources\Commerce\Settings\Checkout;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Settings\Checkout\CustomerCheckoutSettingsClient;
 use Mozu\Api\ApiContext;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Settings for the checkout login. Choose whether or not shoppers must first login before a purchase can be processed. Choose the option for guests to purchase without logging in, prompt guests to login, or require them to login before a purchase can be completed.
 */
 class CustomerCheckoutSettingsResource {
 
@@ -28,7 +30,7 @@ class CustomerCheckoutSettingsResource {
 	}
 
 	/**
-	* 
+	* Retrieves all checkout settings defined for the site: Payment settings, such as the payment gateway ID and credentials, supported credit cards, and more; Customer Checkout settings, such as whether login is required, and any custom attributes; and Order Processing settings, such as when payment is authorized and captured, and any custom attributes.
 	*
 	* @return CustomerCheckoutSettings 
 	*/
@@ -42,9 +44,9 @@ class CustomerCheckoutSettingsResource {
 	}
 	
 	/**
-	* 
+	* Modifies existing site checkout settings. Modify Payment, Customer Checkout, and Order Processing settings in one PUT.
 	*
-	* @param CustomerCheckoutSettings $customerCheckoutSettings 
+	* @param CustomerCheckoutSettings $customerCheckoutSettings All the properties to update in the checkout settings.
 	* @return CustomerCheckoutSettings 
 	*/
 	public function updateCustomerCheckoutSettings($customerCheckoutSettings, Mozu\Api\Security\AuthTicket &$authTicket= null)

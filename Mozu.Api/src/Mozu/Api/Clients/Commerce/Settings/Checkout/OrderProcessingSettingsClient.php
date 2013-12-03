@@ -14,6 +14,7 @@ namespace Mozu\Api\Clients\Commerce\Settings\Checkout;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Settings\Checkout\OrderProcessingSettingsUrl;
+use Mozu\Api\DataViewMode;
 
 /**
 * 

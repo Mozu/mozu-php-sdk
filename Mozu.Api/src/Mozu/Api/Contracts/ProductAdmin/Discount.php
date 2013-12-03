@@ -14,39 +14,15 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
+/**
+*	Discount used to calculate SalePrice. Includes coupon code if applicable, amount of the discount, and discount savings. Discounts can be either an absolute price or a percentage off. The sale price beats any discounts.
+*/
 class Discount
 {
-		public $scope;
-	public function getScope() {
-		return $this->scope;
-	}
-	
-	public function setScope($scope) {
-		$this->scope = $scope;
-		return $this;
-	}
-
-		public $startDate;
-	public function getStartDate() {
-		return $this->startDate;
-	}
-	
-	public function setStartDate($startDate) {
-		$this->startDate = $startDate;
-		return $this;
-	}
-
-		public $status;
-	public function getStatus() {
-		return $this->status;
-	}
-	
-	public function setStatus($status) {
-		$this->status = $status;
-		return $this;
-	}
-
-		public $amount;
+	/**
+	*The integer amount of the discount. For example, an entry of "10" could represent a discount of $10.00 or a discount of 10%, depending on the type.
+	*/
+	public $amount;
 	public function getAmount() {
 		return $this->amount;
 	}
@@ -56,7 +32,10 @@ class Discount
 		return $this;
 	}
 
-		public $amountType;
+	/**
+	*The type of discount amount, such as an amount or a percentage.
+	*/
+	public $amountType;
 	public function getAmountType() {
 		return $this->amountType;
 	}
@@ -66,17 +45,10 @@ class Discount
 		return $this;
 	}
 
-		public $couponCode;
-	public function getCouponCode() {
-		return $this->couponCode;
-	}
-	
-	public function setCouponCode($couponCode) {
-		$this->couponCode = $couponCode;
-		return $this;
-	}
-
-		public $currentRedemptionCount;
+	/**
+	*The most recent number of redeemed discounts.
+	*/
+	public $currentRedemptionCount;
 	public function getCurrentRedemptionCount() {
 		return $this->currentRedemptionCount;
 	}
@@ -86,17 +58,10 @@ class Discount
 		return $this;
 	}
 
-		public $expirationDate;
-	public function getExpirationDate() {
-		return $this->expirationDate;
-	}
-	
-	public function setExpirationDate($expirationDate) {
-		$this->expirationDate = $expirationDate;
-		return $this;
-	}
-
-		public $id;
+	/**
+	*Unique identifier of the discount.
+	*/
+	public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -106,27 +71,36 @@ class Discount
 		return $this;
 	}
 
-		public $maxRedemptionCount;
-	public function getMaxRedemptionCount() {
-		return $this->maxRedemptionCount;
+	/**
+	*The scope to which the discount applies, which is "Order" for order discounts or "LineItem" for individual product discounts.
+	*/
+	public $scope;
+	public function getScope() {
+		return $this->scope;
 	}
 	
-	public function setMaxRedemptionCount($maxRedemptionCount) {
-		$this->maxRedemptionCount = $maxRedemptionCount;
+	public function setScope($scope) {
+		$this->scope = $scope;
 		return $this;
 	}
 
-		public $requiresCoupon;
-	public function getRequiresCoupon() {
-		return $this->requiresCoupon;
+	/**
+	*Current status of the product discount. Possible values are "Active", "Scheduled", or "Expired".
+	*/
+	public $status;
+	public function getStatus() {
+		return $this->status;
 	}
 	
-	public function setRequiresCoupon($requiresCoupon) {
-		$this->requiresCoupon = $requiresCoupon;
+	public function setStatus($status) {
+		$this->status = $status;
 		return $this;
 	}
 
-		public $auditInfo;
+	/**
+	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*/
+	public $auditInfo;
 	public function getAuditInfo() {
 		return $this->auditInfo;
 	}
@@ -136,7 +110,20 @@ class Discount
 		return $this;
 	}
 
-		public $content;
+		public $conditions;
+	public function getConditions() {
+		return $this->conditions;
+	}
+	
+	public function setConditions($conditions) {
+		$this->conditions = $conditions;
+		return $this;
+	}
+
+	/**
+	*Complex type that contains content for a language specified by LocaleCode.
+	*/
+	public $content;
 	public function getContent() {
 		return $this->content;
 	}
@@ -146,7 +133,10 @@ class Discount
 		return $this;
 	}
 
-		public $target;
+	/**
+	*Properties of the target object to which the discount applies, such as a product or an order.
+	*/
+	public $target;
 	public function getTarget() {
 		return $this->target;
 	}

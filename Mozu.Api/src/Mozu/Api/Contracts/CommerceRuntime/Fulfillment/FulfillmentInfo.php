@@ -17,54 +17,14 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Fulfillment;
 class FulfillmentInfo
 {
 		public $isDestinationCommercial;
-	public function getIsDestinationCommercial() {
-		return $this->isDestinationCommercial;
-	}
-	
-	public function setIsDestinationCommercial($isDestinationCommercial) {
-		$this->isDestinationCommercial = $isDestinationCommercial;
-		return $this;
-	}
 
 		public $shippingMethodCode;
-	public function getShippingMethodCode() {
-		return $this->shippingMethodCode;
-	}
-	
-	public function setShippingMethodCode($shippingMethodCode) {
-		$this->shippingMethodCode = $shippingMethodCode;
-		return $this;
-	}
 
 		public $shippingMethodName;
-	public function getShippingMethodName() {
-		return $this->shippingMethodName;
-	}
-	
-	public function setShippingMethodName($shippingMethodName) {
-		$this->shippingMethodName = $shippingMethodName;
-		return $this;
-	}
 
 		public $auditInfo;
-	public function getAuditInfo() {
-		return $this->auditInfo;
-	}
-	
-	public function setAuditInfo($auditInfo) {
-		$this->auditInfo = $auditInfo;
-		return $this;
-	}
 
 		public $fulfillmentContact;
-	public function getFulfillmentContact() {
-		return $this->fulfillmentContact;
-	}
-	
-	public function setFulfillmentContact($fulfillmentContact) {
-		$this->fulfillmentContact = $fulfillmentContact;
-		return $this;
-	}
 
 }
 

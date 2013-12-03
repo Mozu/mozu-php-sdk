@@ -15,9 +15,11 @@ namespace Mozu\Api\Resources\Commerce\Settings\Checkout;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Settings\Checkout\PaymentSettingsClient;
 use Mozu\Api\ApiContext;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Specify settings when creating payments for order checkout on the site.
 */
 class PaymentSettingsResource {
 
@@ -30,115 +32,11 @@ class PaymentSettingsResource {
 	/**
 	* 
 	*
-	* @return PaymentSettings 
-	*/
-	public function getPaymentSettings(Mozu\Api\Security\AuthTicket &$authTicket= null)
-	{
-		$mozuClient = PaymentSettingsClient::getPaymentSettingsClient($authTicket);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
-
-	}
-	
-	/**
-	* 
-	*
-	* @param string $countryCode 
-	* @return Gateway 
-	*/
-	public function getActiveGatewayForCountry( $countryCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
-	{
-		$mozuClient = PaymentSettingsClient::getActiveGatewayForCountryClient( $countryCode, $authTicket);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
-
-	}
-	
-	/**
-	* 
-	*
-	* @return array|GatewayDefinition 
-	*/
-	public function getGatewayDefinitions(Mozu\Api\Security\AuthTicket &$authTicket= null)
-	{
-		$mozuClient = PaymentSettingsClient::getGatewayDefinitionsClient($authTicket);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
-
-	}
-	
-	/**
-	* 
-	*
-	* @param string $gatewayId 
-	* @return Gateway 
-	*/
-	public function getGateway( $gatewayId, Mozu\Api\Security\AuthTicket &$authTicket= null)
-	{
-		$mozuClient = PaymentSettingsClient::getGatewayClient( $gatewayId, $authTicket);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
-
-	}
-	
-	/**
-	* 
-	*
 	* @return array|ExternalPaymentWorkflowDefinition 
 	*/
 	public function getThirdPartyPaymentWorkflows(Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$mozuClient = PaymentSettingsClient::getThirdPartyPaymentWorkflowsClient($authTicket);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
-
-	}
-	
-	/**
-	* 
-	*
-	* @param Gateway $gateway 
-	* @return Gateway 
-	*/
-	public function createGateway($gateway, Mozu\Api\Security\AuthTicket &$authTicket= null)
-	{
-		$mozuClient = PaymentSettingsClient::createGatewayClient($gateway, $authTicket);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
-
-	}
-	
-	/**
-	* 
-	*
-	* @param PaymentSettings $paymentSettings 
-	* @return PaymentSettings 
-	*/
-	public function updatePaymentSettings($paymentSettings, Mozu\Api\Security\AuthTicket &$authTicket= null)
-	{
-		$mozuClient = PaymentSettingsClient::updatePaymentSettingsClient($paymentSettings, $authTicket);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
-
-	}
-	
-	/**
-	* 
-	*
-	* @param string $gatewayId 
-	* @param Gateway $gateway 
-	* @return Gateway 
-	*/
-	public function updateGateway($gateway,  $gatewayId, Mozu\Api\Security\AuthTicket &$authTicket= null)
-	{
-		$mozuClient = PaymentSettingsClient::updateGatewayClient($gateway,  $gatewayId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

@@ -17,24 +17,8 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class PublishingScope
 {
 		public $allPending;
-	public function getAllPending() {
-		return $this->allPending;
-	}
-	
-	public function setAllPending($allPending) {
-		$this->allPending = $allPending;
-		return $this;
-	}
 
 		public $productCodes;
-	public function getProductCodes() {
-		return $this->productCodes;
-	}
-	
-	public function setProductCodes($productCodes) {
-		$this->productCodes = $productCodes;
-		return $this;
-	}
 
 }
 

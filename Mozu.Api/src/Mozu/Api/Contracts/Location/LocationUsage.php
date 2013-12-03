@@ -17,34 +17,10 @@ namespace Mozu\Api\Contracts\Location;
 class LocationUsage
 {
 		public $locationCodes;
-	public function getLocationCodes() {
-		return $this->locationCodes;
-	}
-	
-	public function setLocationCodes($locationCodes) {
-		$this->locationCodes = $locationCodes;
-		return $this;
-	}
 
 		public $locationTypeCodes;
-	public function getLocationTypeCodes() {
-		return $this->locationTypeCodes;
-	}
-	
-	public function setLocationTypeCodes($locationTypeCodes) {
-		$this->locationTypeCodes = $locationTypeCodes;
-		return $this;
-	}
 
 		public $locationUsageTypeCode;
-	public function getLocationUsageTypeCode() {
-		return $this->locationUsageTypeCode;
-	}
-	
-	public function setLocationUsageTypeCode($locationUsageTypeCode) {
-		$this->locationUsageTypeCode = $locationUsageTypeCode;
-		return $this;
-	}
 
 }
 

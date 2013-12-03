@@ -17,94 +17,22 @@ namespace Mozu\Api\Contracts\Tenant;
 class Catalog
 {
 		public $createDate;
-	public function getCreateDate() {
-		return $this->createDate;
-	}
-	
-	public function setCreateDate($createDate) {
-		$this->createDate = $createDate;
-		return $this;
-	}
 
 		public $defaultCurrencyCode;
-	public function getDefaultCurrencyCode() {
-		return $this->defaultCurrencyCode;
-	}
-	
-	public function setDefaultCurrencyCode($defaultCurrencyCode) {
-		$this->defaultCurrencyCode = $defaultCurrencyCode;
-		return $this;
-	}
 
 		public $defaultLocaleCode;
-	public function getDefaultLocaleCode() {
-		return $this->defaultLocaleCode;
-	}
-	
-	public function setDefaultLocaleCode($defaultLocaleCode) {
-		$this->defaultLocaleCode = $defaultLocaleCode;
-		return $this;
-	}
 
 		public $deleteDate;
-	public function getDeleteDate() {
-		return $this->deleteDate;
-	}
-	
-	public function setDeleteDate($deleteDate) {
-		$this->deleteDate = $deleteDate;
-		return $this;
-	}
 
 		public $id;
-	public function getId() {
-		return $this->id;
-	}
-	
-	public function setId($id) {
-		$this->id = $id;
-		return $this;
-	}
 
 		public $isDeleted;
-	public function getIsDeleted() {
-		return $this->isDeleted;
-	}
-	
-	public function setIsDeleted($isDeleted) {
-		$this->isDeleted = $isDeleted;
-		return $this;
-	}
 
 		public $masterCatalogId;
-	public function getMasterCatalogId() {
-		return $this->masterCatalogId;
-	}
-	
-	public function setMasterCatalogId($masterCatalogId) {
-		$this->masterCatalogId = $masterCatalogId;
-		return $this;
-	}
 
 		public $name;
-	public function getName() {
-		return $this->name;
-	}
-	
-	public function setName($name) {
-		$this->name = $name;
-		return $this;
-	}
 
 		public $updateDate;
-	public function getUpdateDate() {
-		return $this->updateDate;
-	}
-	
-	public function setUpdateDate($updateDate) {
-		$this->updateDate = $updateDate;
-		return $this;
-	}
 
 }
 

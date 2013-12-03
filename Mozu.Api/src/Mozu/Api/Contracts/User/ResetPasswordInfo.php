@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\User;
 
 
 
+/**
+*	Information required to reset the user's password, which consists of an email address.
+*/
 class ResetPasswordInfo
 {
-		public $emailAddress;
+	/**
+	*The email address of the specified user.
+	*/
+	public $emailAddress;
 	public function getEmailAddress() {
 		return $this->emailAddress;
 	}

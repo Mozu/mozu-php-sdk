@@ -17,24 +17,8 @@ namespace Mozu\Api\Contracts\SiteSettings\Shipping;
 class SiteShippingSignatureRequirement
 {
 		public $isSignatureRequired;
-	public function getIsSignatureRequired() {
-		return $this->isSignatureRequired;
-	}
-	
-	public function setIsSignatureRequired($isSignatureRequired) {
-		$this->isSignatureRequired = $isSignatureRequired;
-		return $this;
-	}
 
 		public $minimumValueThreshold;
-	public function getMinimumValueThreshold() {
-		return $this->minimumValueThreshold;
-	}
-	
-	public function setMinimumValueThreshold($minimumValueThreshold) {
-		$this->minimumValueThreshold = $minimumValueThreshold;
-		return $this;
-	}
 
 }
 

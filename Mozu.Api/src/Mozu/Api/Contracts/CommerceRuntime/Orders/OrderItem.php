@@ -14,6 +14,9 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Orders;
 
 
 
+/**
+*	The details associated with a specific item in an order.
+*/
 class OrderItem
 {
 		public $discountedTotal;
@@ -26,7 +29,10 @@ class OrderItem
 		return $this;
 	}
 
-		public $discountTotal;
+	/**
+	*Amount of discounts applied to an item in an order. Usually a negative dollar amount or number. System-supplied and read-only.
+	*/
+	public $discountTotal;
 	public function getDiscountTotal() {
 		return $this->discountTotal;
 	}
@@ -46,7 +52,10 @@ class OrderItem
 		return $this;
 	}
 
-		public $feeTotal;
+	/**
+	*The total monetary sum of all fees incurred for an item in an order.
+	*/
+	public $feeTotal;
 	public function getFeeTotal() {
 		return $this->feeTotal;
 	}
@@ -76,7 +85,10 @@ class OrderItem
 		return $this;
 	}
 
-		public $id;
+	/**
+	*Unique identifier of a specific item in an order.
+	*/
+	public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -86,7 +98,10 @@ class OrderItem
 		return $this;
 	}
 
-		public $isRecurring;
+	/**
+	*If true, the item in the order can be purchased or fulfilled at regular intervals such as a monthly billing cycle or a digital or physical subscription.
+	*/
+	public $isRecurring;
 	public function getIsRecurring() {
 		return $this->isRecurring;
 	}
@@ -96,7 +111,10 @@ class OrderItem
 		return $this;
 	}
 
-		public $isTaxable;
+	/**
+	*If true, the entity is subject to tax based on the relevant tax rate.
+	*/
+	public $isTaxable;
 	public function getIsTaxable() {
 		return $this->isTaxable;
 	}
@@ -106,7 +124,10 @@ class OrderItem
 		return $this;
 	}
 
-		public $itemTaxTotal;
+	/**
+	*The total amount of tax that applied to an item in an order.
+	*/
+	public $itemTaxTotal;
 	public function getItemTaxTotal() {
 		return $this->itemTaxTotal;
 	}
@@ -116,7 +137,10 @@ class OrderItem
 		return $this;
 	}
 
-		public $localeCode;
+	/**
+	*"Language used for the entity. Currently, only ""en-US"" is supported."
+	*/
+	public $localeCode;
 	public function getLocaleCode() {
 		return $this->localeCode;
 	}
@@ -126,7 +150,10 @@ class OrderItem
 		return $this;
 	}
 
-		public $originalCartItemId;
+	/**
+	*The unique identifier of the item when it was applied to a cart, prior to checkout, when the cart became an order.
+	*/
+	public $originalCartItemId;
 	public function getOriginalCartItemId() {
 		return $this->originalCartItemId;
 	}
@@ -136,7 +163,10 @@ class OrderItem
 		return $this;
 	}
 
-		public $productReservationId;
+	/**
+	*The unique identifier of the product reservation for the item in an order.
+	*/
+	public $productReservationId;
 	public function getProductReservationId() {
 		return $this->productReservationId;
 	}
@@ -146,7 +176,10 @@ class OrderItem
 		return $this;
 	}
 
-		public $quantity;
+	/**
+	*The quantity of a specific item in an order.
+	*/
+	public $quantity;
 	public function getQuantity() {
 		return $this->quantity;
 	}
@@ -156,7 +189,10 @@ class OrderItem
 		return $this;
 	}
 
-		public $shippingTaxTotal;
+	/**
+	*The total amount of sales tax incurred for shipping charges associated with this item in a cart.
+	*/
+	public $shippingTaxTotal;
 	public function getShippingTaxTotal() {
 		return $this->shippingTaxTotal;
 	}
@@ -166,7 +202,10 @@ class OrderItem
 		return $this;
 	}
 
-		public $shippingTotal;
+	/**
+	*Total amount of shipping fees associated with the specified item in the order.
+	*/
+	public $shippingTotal;
 	public function getShippingTotal() {
 		return $this->shippingTotal;
 	}
@@ -176,7 +215,10 @@ class OrderItem
 		return $this;
 	}
 
-		public $subtotal;
+	/**
+	*Amount of the item in the order without sales tax, shipping costs, and other fees.
+	*/
+	public $subtotal;
 	public function getSubtotal() {
 		return $this->subtotal;
 	}
@@ -186,7 +228,10 @@ class OrderItem
 		return $this;
 	}
 
-		public $taxableTotal;
+	/**
+	*The amount of the item in the order that is subject to tax. This amount typically represents the order item subtotal before applied discounts.
+	*/
+	public $taxableTotal;
 	public function getTaxableTotal() {
 		return $this->taxableTotal;
 	}
@@ -196,7 +241,10 @@ class OrderItem
 		return $this;
 	}
 
-		public $total;
+	/**
+	*The total monetary sum of a specific item in an order.
+	*/
+	public $total;
 	public function getTotal() {
 		return $this->total;
 	}
@@ -206,7 +254,10 @@ class OrderItem
 		return $this;
 	}
 
-		public $auditInfo;
+	/**
+	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*/
+	public $auditInfo;
 	public function getAuditInfo() {
 		return $this->auditInfo;
 	}
@@ -216,7 +267,10 @@ class OrderItem
 		return $this;
 	}
 
-		public $product;
+	/**
+	*The product properties of an item in an order.
+	*/
+	public $product;
 	public function getProduct() {
 		return $this->product;
 	}
@@ -226,7 +280,10 @@ class OrderItem
 		return $this;
 	}
 
-		public $productDiscounts;
+	/**
+	*List of product discounts that apply to the item in the order.
+	*/
+	public $productDiscounts;
 	public function getProductDiscounts() {
 		return $this->productDiscounts;
 	}
@@ -236,7 +293,10 @@ class OrderItem
 		return $this;
 	}
 
-		public $shippingDiscounts;
+	/**
+	*List of shipping discounts that apply to the item in the order.
+	*/
+	public $shippingDiscounts;
 	public function getShippingDiscounts() {
 		return $this->shippingDiscounts;
 	}
@@ -246,7 +306,10 @@ class OrderItem
 		return $this;
 	}
 
-		public $unitPrice;
+	/**
+	*Properties of the unit price associated with the order item.
+	*/
+	public $unitPrice;
 	public function getUnitPrice() {
 		return $this->unitPrice;
 	}

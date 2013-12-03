@@ -37,7 +37,7 @@ class ReturnUrl  {
 	
 	/**
 		* Get Resource Url for GetReturn
-		* @param string $returnId 
+		* @param string $returnId Returns the properties of the return specified in the request as well as system-supplied information.
 		* @return string Resource Url
 	*/
 	public static function getReturnUrl($returnId)
@@ -49,7 +49,7 @@ class ReturnUrl  {
 	
 	/**
 		* Get Resource Url for GetAvailableReturnActions
-		* @param string $returnId 
+		* @param string $returnId Retrieves a list of the actions available to perform for the specified return based on its current state.
 		* @return string Resource Url
 	*/
 	public static function getAvailableReturnActionsUrl($returnId)
@@ -61,7 +61,7 @@ class ReturnUrl  {
 	
 	/**
 		* Get Resource Url for GetPayments
-		* @param string $returnId 
+		* @param string $returnId Returns the details of the refund payment associated with the return specified in the request.
 		* @return string Resource Url
 	*/
 	public static function getPaymentsUrl($returnId)
@@ -73,8 +73,8 @@ class ReturnUrl  {
 	
 	/**
 		* Get Resource Url for GetPayment
-		* @param string $paymentId 
-		* @param string $returnId 
+		* @param string $paymentId Unique identifier of the return payment to retrieve.
+		* @param string $returnId Unique identifier of the return associated with the payment.
 		* @return string Resource Url
 	*/
 	public static function getPaymentUrl($paymentId, $returnId)
@@ -87,8 +87,8 @@ class ReturnUrl  {
 	
 	/**
 		* Get Resource Url for GetAvailablePaymentActionsForReturn
-		* @param string $paymentId 
-		* @param string $returnId 
+		* @param string $paymentId Unique identifier of the payment for which to perform the action.
+		* @param string $returnId Unique identifier of the return associated with the payment.
 		* @return string Resource Url
 	*/
 	public static function getAvailablePaymentActionsForReturnUrl($paymentId, $returnId)
@@ -111,8 +111,8 @@ class ReturnUrl  {
 	
 	/**
 		* Get Resource Url for PerformPaymentActionForReturn
-		* @param string $paymentId 
-		* @param string $returnId 
+		* @param string $paymentId Unique identifier of the return payment to update.
+		* @param string $returnId Unique identifier of the return associated with the refund payment.
 		* @return string Resource Url
 	*/
 	public static function performPaymentActionForReturnUrl($paymentId, $returnId)
@@ -125,7 +125,7 @@ class ReturnUrl  {
 	
 	/**
 		* Get Resource Url for CreatePaymentActionForReturn
-		* @param string $returnId 
+		* @param string $returnId Unique identifier of the return associated with the payment action.
 		* @return string Resource Url
 	*/
 	public static function createPaymentActionForReturnUrl($returnId)
@@ -147,7 +147,7 @@ class ReturnUrl  {
 	
 	/**
 		* Get Resource Url for UpdateReturn
-		* @param string $returnId 
+		* @param string $returnId Unique identifier of the return.
 		* @return string Resource Url
 	*/
 	public static function updateReturnUrl($returnId)
@@ -159,7 +159,7 @@ class ReturnUrl  {
 	
 	/**
 		* Get Resource Url for DeleteReturn
-		* @param string $returnId 
+		* @param string $returnId Unique identifier of the return to delete from the order.
 		* @return string Resource Url
 	*/
 	public static function deleteReturnUrl($returnId)

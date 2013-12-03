@@ -33,7 +33,7 @@ class ShipmentUrl  {
 	
 	/**
 		* Get Resource Url for GetAvailableShipmentMethods
-		* @param string $orderId 
+		* @param string $orderId Unique identifier of the order for the available shipment methods being retrieved.
 		* @return string Resource Url
 	*/
 	public static function getAvailableShipmentMethodsUrl($orderId)
@@ -45,7 +45,7 @@ class ShipmentUrl  {
 	
 	/**
 		* Get Resource Url for CreatePackageShipments
-		* @param string $orderId 
+		* @param string $orderId Unique identifier of the order for this shipment.
 		* @return string Resource Url
 	*/
 	public static function createPackageShipmentsUrl($orderId)
@@ -57,8 +57,8 @@ class ShipmentUrl  {
 	
 	/**
 		* Get Resource Url for DeleteShipment
-		* @param string $orderId 
-		* @param string $shipmentId 
+		* @param string $orderId Unique identifier of the order to cancel shipment.
+		* @param string $shipmentId Unique identifier of the shipment to cancel.
 		* @return string Resource Url
 	*/
 	public static function deleteShipmentUrl($orderId, $shipmentId)

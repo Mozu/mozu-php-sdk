@@ -15,9 +15,11 @@ namespace Mozu\Api\Resources\Commerce\Catalog\Storefront;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Catalog\Storefront\ProductClient;
 use Mozu\Api\ApiContext;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Manage shoppers' product selection process during a visit to the storefront. Update product options as shoppers pick and choose their product choices. A shopper can't add a product to a cart until all of its required options have been selected.
 */
 class ProductResource {
 
@@ -28,10 +30,10 @@ class ProductResource {
 	}
 
 	/**
-	* 
+	* Retrieves a list of products that appear on the storefront according to any specified filter criteria and sort options. A set of filter expressions representing the search parameters for a query.
 	*
-	* @param string $filter 
-	* @param int $pageSize 
+	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
+	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return ProductCollection 
@@ -62,16 +64,17 @@ class ProductResource {
 	}
 	
 	/**
-	* 
+	* Retrieves information about a single product given its product code.
 	*
-	* @param bool $allowInactive 
-	* @param string $productCode 
-	* @param string $variationProductCode 
+	* @param bool $allowInactive If true, returns an inactive product as part of the query.
+	* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+	* @param bool $skipInventoryCheck 
+	* @param string $variationProductCode Merchant-created code associated with a specific product variation. Variation product codes maintain an association with the base product code.
 	* @return Product 
 	*/
-	public function getProduct( $productCode, $allowInactive =  null, $variationProductCode =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getProduct( $productCode, $allowInactive =  null, $skipInventoryCheck =  null, $variationProductCode =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductClient::getProductClient( $productCode, $allowInactive, $variationProductCode, $authTicket);
+		$mozuClient = ProductClient::getProductClient( $productCode, $allowInactive, $skipInventoryCheck, $variationProductCode, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -79,16 +82,17 @@ class ProductResource {
 	}
 	
 	/**
-	* 
+	* Creates a new product selection. A create occurs each time a shopper selects a product option as they configure a product. Once all the required product options are configured, the product can be added to a cart.
 	*
-	* @param bool $includeOptionDetails 
-	* @param string $productCode 
-	* @param ProductOptionSelections $productOptionSelections 
+	* @param bool $includeOptionDetails If true, the response returns details about the product. If false, returns a product summary such as the product name, price, and sale price.
+	* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+	* @param bool $skipInventoryCheck 
+	* @param ProductOptionSelections $productOptionSelections For a product with shopper-configurable options, the properties of the product options selected by the shopper.
 	* @return ConfiguredProduct 
 	*/
-	public function configuredProduct($productOptionSelections,  $productCode, $includeOptionDetails =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function configuredProduct($productOptionSelections,  $productCode, $includeOptionDetails =  null, $skipInventoryCheck =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductClient::configuredProductClient($productOptionSelections,  $productCode, $includeOptionDetails, $authTicket);
+		$mozuClient = ProductClient::configuredProductClient($productOptionSelections,  $productCode, $includeOptionDetails, $skipInventoryCheck, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -96,15 +100,16 @@ class ProductResource {
 	}
 	
 	/**
-	* 
+	* Validate the final state of shopper-selected options.
 	*
-	* @param string $productCode 
-	* @param ProductOptionSelections $productOptionSelections 
+	* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+	* @param bool $skipInventoryCheck 
+	* @param ProductOptionSelections $productOptionSelections For a product with shopper-configurable options, the properties of the product options selected by the shopper.
 	* @return ProductValidationSummary 
 	*/
-	public function validateProduct($productOptionSelections,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function validateProduct($productOptionSelections,  $productCode, $skipInventoryCheck =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductClient::validateProductClient($productOptionSelections,  $productCode, $authTicket);
+		$mozuClient = ProductClient::validateProductClient($productOptionSelections,  $productCode, $skipInventoryCheck, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

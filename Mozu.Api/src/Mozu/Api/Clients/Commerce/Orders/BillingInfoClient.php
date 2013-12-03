@@ -14,17 +14,19 @@ namespace Mozu\Api\Clients\Commerce\Orders;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Orders\BillingInfoUrl;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Use the Billing Info subresource to manage the billing information stored for an order.
 */
 class BillingInfoClient {
 
 	/**
-	* 
+	* Retrieves the billing information associated with an order.
 	*
-	* @param bool $draft 
-	* @param string $orderId 
+	* @param bool $draft If true, retrieve the draft version of the order billing information, which might include uncommitted changes.
+	* @param string $orderId Unique identifier of the order.
 	* @return MozuClient
 	*/
 	public static function getBillingInfoClient( $orderId, $draft =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -39,12 +41,12 @@ class BillingInfoClient {
 	}
 	
 	/**
-	* 
+	* Updates the billing information supplied for an order.
 	*
-	* @param string $orderId 
-	* @param string $updateMode 
+	* @param string $orderId Unique identifier of the order.
+	* @param string $updateMode Specifies whether to set the billing information by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal", "ApplyToDraft", or "ApplyAndCommit".
 	* @param string $version 
-	* @param BillingInfo $billingInfo 
+	* @param BillingInfo $billingInfo The properties of the order billing information to update.
 	* @return MozuClient
 	*/
 	public static function setBillingInfoClient($billingInfo,  $orderId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)

@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\Customer;
 
 
 
+/**
+*	Contact information, including the contact's name, address, phone numbers, email addresses, and company (if supplied). Also indicates whether this is a billing, shipping, or billing and shipping contact.
+*/
 class CustomerContact
 {
-		public $accountId;
+	/**
+	*Unique identifier of the customer account.
+	*/
+	public $accountId;
 	public function getAccountId() {
 		return $this->accountId;
 	}
@@ -26,7 +32,10 @@ class CustomerContact
 		return $this;
 	}
 
-		public $companyOrOrganization;
+	/**
+	*The legal or doing business as (DBA) or tradestyle name of the business or organization. Max length: 200.
+	*/
+	public $companyOrOrganization;
 	public function getCompanyOrOrganization() {
 		return $this->companyOrOrganization;
 	}
@@ -36,7 +45,10 @@ class CustomerContact
 		return $this;
 	}
 
-		public $email;
+	/**
+	*The email address of the specified user.
+	*/
+	public $email;
 	public function getEmail() {
 		return $this->email;
 	}
@@ -56,7 +68,10 @@ class CustomerContact
 		return $this;
 	}
 
-		public $firstName;
+	/**
+	*The first name of the contact. Max length: 200.
+	*/
+	public $firstName;
 	public function getFirstName() {
 		return $this->firstName;
 	}
@@ -66,7 +81,10 @@ class CustomerContact
 		return $this;
 	}
 
-		public $id;
+	/**
+	*Identifier of the customer contact.
+	*/
+	public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -76,7 +94,10 @@ class CustomerContact
 		return $this;
 	}
 
-		public $lastNameOrSurname;
+	/**
+	*The last name or surname of the contact. Max length: 200.
+	*/
+	public $lastNameOrSurname;
 	public function getLastNameOrSurname() {
 		return $this->lastNameOrSurname;
 	}
@@ -86,7 +107,10 @@ class CustomerContact
 		return $this;
 	}
 
-		public $middleNameOrInitial;
+	/**
+	*The middle name or the first initial of the middle name of the contact. Max length: 100.
+	*/
+	public $middleNameOrInitial;
 	public function getMiddleNameOrInitial() {
 		return $this->middleNameOrInitial;
 	}
@@ -96,7 +120,10 @@ class CustomerContact
 		return $this;
 	}
 
-		public $address;
+	/**
+	*Address associated with the customer account contact.
+	*/
+	public $address;
 	public function getAddress() {
 		return $this->address;
 	}
@@ -106,7 +133,10 @@ class CustomerContact
 		return $this;
 	}
 
-		public $auditInfo;
+	/**
+	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*/
+	public $auditInfo;
 	public function getAuditInfo() {
 		return $this->auditInfo;
 	}
@@ -116,7 +146,10 @@ class CustomerContact
 		return $this;
 	}
 
-		public $phoneNumbers;
+	/**
+	*List of phone numbers associated with the customer account contact.
+	*/
+	public $phoneNumbers;
 	public function getPhoneNumbers() {
 		return $this->phoneNumbers;
 	}

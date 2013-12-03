@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\Content;
 
 
 
+/**
+*	The list of document types and related properties that define content used by the content management system (CMS).
+*/
 class DocumentList
 {
-		public $documentTypes;
+	/**
+	*A document type is a template.
+	*/
+	public $documentTypes;
 	public function getDocumentTypes() {
 		return $this->documentTypes;
 	}
@@ -36,7 +42,10 @@ class DocumentList
 		return $this;
 	}
 
-		public $name;
+	/**
+	*The name of the document list.
+	*/
+	public $name;
 	public function getName() {
 		return $this->name;
 	}

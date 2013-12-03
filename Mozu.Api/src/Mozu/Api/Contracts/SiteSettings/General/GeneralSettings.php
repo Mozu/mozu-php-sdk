@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\SiteSettings\General;
 
 
 
+/**
+*	General settings used on the storefront site.
+*/
 class GeneralSettings
 {
-		public $allowInvalidAddresses;
+	/**
+	*If true, the site allows entry of addresses not verified by an address validation service.
+	*/
+	public $allowInvalidAddresses;
 	public function getAllowInvalidAddresses() {
 		return $this->allowInvalidAddresses;
 	}
@@ -26,7 +32,10 @@ class GeneralSettings
 		return $this;
 	}
 
-		public $favIconMobilePath;
+	/**
+	*The physical directory path or URL where the mobile favicon image file is stored. The favicon icon is generally 57x57 pixels. The icon appears on a mobile website or on the mobile device's OS Home.
+	*/
+	public $favIconMobilePath;
 	public function getFavIconMobilePath() {
 		return $this->favIconMobilePath;
 	}
@@ -36,7 +45,10 @@ class GeneralSettings
 		return $this;
 	}
 
-		public $favIconPath;
+	/**
+	*The physical directory path or URL where the mobile favicon image file is stored. The favicon icon is generally 16x16 pixels. The icon appears on a a browser tab as the website's mini logo or on a browser address bar, or next to the page name in a list of bookmarks.
+	*/
+	public $favIconPath;
 	public function getFavIconPath() {
 		return $this->favIconPath;
 	}
@@ -46,7 +58,10 @@ class GeneralSettings
 		return $this;
 	}
 
-		public $googleAnalyticsCode;
+	/**
+	*The Google Analytics code associated with a particular store. This could be the web tracking code.
+	*/
+	public $googleAnalyticsCode;
 	public function getGoogleAnalyticsCode() {
 		return $this->googleAnalyticsCode;
 	}
@@ -56,7 +71,10 @@ class GeneralSettings
 		return $this;
 	}
 
-		public $isAddressValidationEnabled;
+	/**
+	*If true, a service to verify addresses as valid is enabled for the site.
+	*/
+	public $isAddressValidationEnabled;
 	public function getIsAddressValidationEnabled() {
 		return $this->isAddressValidationEnabled;
 	}
@@ -66,7 +84,10 @@ class GeneralSettings
 		return $this;
 	}
 
-		public $isGoogleAnalyticsEcommerceEnabled;
+	/**
+	*If true, the Google analytics for eCommerce is enabled for this site. If false, the analytics are not enabled.
+	*/
+	public $isGoogleAnalyticsEcommerceEnabled;
 	public function getIsGoogleAnalyticsEcommerceEnabled() {
 		return $this->isGoogleAnalyticsEcommerceEnabled;
 	}
@@ -76,7 +97,10 @@ class GeneralSettings
 		return $this;
 	}
 
-		public $isGoogleAnalyticsEnabled;
+	/**
+	*If true, enable Google analytics for this site. If false, analytics are not enabled.
+	*/
+	public $isGoogleAnalyticsEnabled;
 	public function getIsGoogleAnalyticsEnabled() {
 		return $this->isGoogleAnalyticsEnabled;
 	}
@@ -106,7 +130,10 @@ class GeneralSettings
 		return $this;
 	}
 
-		public $logoPath;
+	/**
+	*They physical directory path or URL where the website logo is stored.
+	*/
+	public $logoPath;
 	public function getLogoPath() {
 		return $this->logoPath;
 	}
@@ -116,7 +143,10 @@ class GeneralSettings
 		return $this;
 	}
 
-		public $logoText;
+	/**
+	*The tagline or text that appears when hovering over the site logo.
+	*/
+	public $logoText;
 	public function getLogoText() {
 		return $this->logoText;
 	}
@@ -126,7 +156,10 @@ class GeneralSettings
 		return $this;
 	}
 
-		public $mobileTheme;
+	/**
+	*The mobile theme is the storefront name for the theme.
+	*/
+	public $mobileTheme;
 	public function getMobileTheme() {
 		return $this->mobileTheme;
 	}
@@ -136,7 +169,10 @@ class GeneralSettings
 		return $this;
 	}
 
-		public $replyToEmailAddress;
+	/**
+	*Email address to display on email messages sent from the site.
+	*/
+	public $replyToEmailAddress;
 	public function getReplyToEmailAddress() {
 		return $this->replyToEmailAddress;
 	}
@@ -146,7 +182,10 @@ class GeneralSettings
 		return $this;
 	}
 
-		public $senderEmailAddress;
+	/**
+	*Email address to set up so that shoppers and users browsing the site can use to contact the merchant.
+	*/
+	public $senderEmailAddress;
 	public function getSenderEmailAddress() {
 		return $this->senderEmailAddress;
 	}
@@ -156,7 +195,10 @@ class GeneralSettings
 		return $this;
 	}
 
-		public $siteTimeFormat;
+	/**
+	*Choose a format to use on the site: 12-hour (hh:mm:ss tt) or 24-hour format (HH:mm:ss).
+	*/
+	public $siteTimeFormat;
 	public function getSiteTimeFormat() {
 		return $this->siteTimeFormat;
 	}
@@ -166,7 +208,10 @@ class GeneralSettings
 		return $this;
 	}
 
-		public $siteTimeZone;
+	/**
+	*Choose the time zone to use for the site.
+	*/
+	public $siteTimeZone;
 	public function getSiteTimeZone() {
 		return $this->siteTimeZone;
 	}
@@ -186,7 +231,10 @@ class GeneralSettings
 		return $this;
 	}
 
-		public $theme;
+	/**
+	*The name of the theme used on the storefront.
+	*/
+	public $theme;
 	public function getTheme() {
 		return $this->theme;
 	}
@@ -196,7 +244,10 @@ class GeneralSettings
 		return $this;
 	}
 
-		public $websiteName;
+	/**
+	*The name of the website to display on the storefront with no spaces.
+	*/
+	public $websiteName;
 	public function getWebsiteName() {
 		return $this->websiteName;
 	}
@@ -206,7 +257,10 @@ class GeneralSettings
 		return $this;
 	}
 
-		public $auditInfo;
+	/**
+	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*/
+	public $auditInfo;
 	public function getAuditInfo() {
 		return $this->auditInfo;
 	}
@@ -216,7 +270,10 @@ class GeneralSettings
 		return $this;
 	}
 
-		public $taxableTerritories;
+	/**
+	*The territories configured for the site that are subject to sales tax.
+	*/
+	public $taxableTerritories;
 	public function getTaxableTerritories() {
 		return $this->taxableTerritories;
 	}

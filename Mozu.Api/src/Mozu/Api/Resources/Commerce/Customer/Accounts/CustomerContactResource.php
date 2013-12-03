@@ -15,9 +15,11 @@ namespace Mozu\Api\Resources\Commerce\Customer\Accounts;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Customer\Accounts\CustomerContactClient;
 use Mozu\Api\ApiContext;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Merchants and customers can create, view, update, and delete a contact for a customer account. A customer account may have multiple contacts for billing and shipping addresses.
 */
 class CustomerContactResource {
 
@@ -28,10 +30,10 @@ class CustomerContactResource {
 	}
 
 	/**
-	* 
+	* Retrieves the specified contact for a customer account such as a billing or shipping contact.
 	*
-	* @param int $accountId 
-	* @param int $contactId 
+	* @param int $accountId Unique identifier of the customer account whose contact information is being retrieved.
+	* @param int $contactId Unique identifier of the customer account contact to retrieve.
 	* @return CustomerContact 
 	*/
 	public function getAccountContact( $accountId,  $contactId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -44,11 +46,11 @@ class CustomerContactResource {
 	}
 	
 	/**
-	* 
+	* Retrieves a list of contacts for a customer according to any specified filter criteria and sort options.
 	*
-	* @param int $accountId 
-	* @param string $filter 
-	* @param int $pageSize 
+	* @param int $accountId Unique identifier of the customer account associated with the contact information to retrieve.
+	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
+	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return CustomerContactCollection 
@@ -63,10 +65,10 @@ class CustomerContactResource {
 	}
 	
 	/**
-	* 
+	* Creates a new contact for a customer account such as a new shipping address.
 	*
-	* @param int $accountId 
-	* @param CustomerContact $contact 
+	* @param int $accountId Unique identifier of the customer account containing the new contact.
+	* @param CustomerContact $contact Properties of the new contact. Required properties: Contact.Email, ContactType.
 	* @return CustomerContact 
 	*/
 	public function addAccountContact($contact,  $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -79,11 +81,11 @@ class CustomerContactResource {
 	}
 	
 	/**
-	* 
+	* Updates a contact for a specified customer account such as to update addresses or change which contact is the primary contact for billing.
 	*
-	* @param int $accountId 
-	* @param int $contactId 
-	* @param CustomerContact $contact 
+	* @param int $accountId Unique identifier of the customer account whose contact information is being updated.
+	* @param int $contactId Unique identifer of the customer account contact being updated.
+	* @param CustomerContact $contact All properties the updated contact will have. Required properties: Name and email address.
 	* @return CustomerContact 
 	*/
 	public function updateAccountContact($contact,  $accountId,  $contactId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -96,10 +98,10 @@ class CustomerContactResource {
 	}
 	
 	/**
-	* 
+	* Deletes a contact for the specified customer account.
 	*
-	* @param int $accountId 
-	* @param int $contactId 
+	* @param int $accountId Unique identifier of the customer account.
+	* @param int $contactId Unique identifier of the customer account contact to delete.
 	*/
 	public function deleteAccountContact( $accountId,  $contactId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

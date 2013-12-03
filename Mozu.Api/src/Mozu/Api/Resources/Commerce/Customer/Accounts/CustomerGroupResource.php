@@ -15,9 +15,11 @@ namespace Mozu\Api\Resources\Commerce\Customer\Accounts;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Customer\Accounts\CustomerGroupClient;
 use Mozu\Api\ApiContext;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Use the groups subresource to manage customer accounts in groups. The groups are useful to manage sets of customers. A customer account can belong to several groups or none at all.
 */
 class CustomerGroupResource {
 
@@ -28,11 +30,11 @@ class CustomerGroupResource {
 	}
 
 	/**
-	* 
+	* Retrieve a list of customer groups associated with the customer account.
 	*
-	* @param int $accountId 
-	* @param string $filter 
-	* @param int $pageSize 
+	* @param int $accountId Unique identifier of the customer account.
+	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
+	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return CustomerGroupCollection 
@@ -47,10 +49,10 @@ class CustomerGroupResource {
 	}
 	
 	/**
-	* 
+	* Retrieves details of a customer account in a group.
 	*
-	* @param int $accountId 
-	* @param int $groupId 
+	* @param int $accountId Unique identifier of the customer account.
+	* @param int $groupId Unique identifier of the customer group.
 	* @return CustomerGroup 
 	*/
 	public function getAccountGroup( $accountId,  $groupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -63,10 +65,10 @@ class CustomerGroupResource {
 	}
 	
 	/**
-	* 
+	* Adds a customer account to a group.
 	*
-	* @param int $accountId 
-	* @param int $groupId 
+	* @param int $accountId Unique identifier of the customer account to add to a group.
+	* @param int $groupId Unique identifier of the customer group to add the customer to.
 	* @return CustomerGroup 
 	*/
 	public function addAccountGroup( $accountId,  $groupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -79,10 +81,10 @@ class CustomerGroupResource {
 	}
 	
 	/**
-	* 
+	* Removes a customer account from a group.
 	*
-	* @param int $accountId 
-	* @param int $groupId 
+	* @param int $accountId Unique identifier of the customer account to remove from the group.
+	* @param int $groupId Unique identifier of the customer group.
 	*/
 	public function deleteAccountGroup( $accountId,  $groupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

@@ -17,44 +17,12 @@ namespace Mozu\Api\Contracts\AppDev;
 class FolderMetadata
 {
 		public $fullPath;
-	public function getFullPath() {
-		return $this->fullPath;
-	}
-	
-	public function setFullPath($fullPath) {
-		$this->fullPath = $fullPath;
-		return $this;
-	}
 
 		public $name;
-	public function getName() {
-		return $this->name;
-	}
-	
-	public function setName($name) {
-		$this->name = $name;
-		return $this;
-	}
 
 		public $files;
-	public function getFiles() {
-		return $this->files;
-	}
-	
-	public function setFiles($files) {
-		$this->files = $files;
-		return $this;
-	}
 
 		public $subFolders;
-	public function getSubFolders() {
-		return $this->subFolders;
-	}
-	
-	public function setSubFolders($subFolders) {
-		$this->subFolders = $subFolders;
-		return $this;
-	}
 
 }
 

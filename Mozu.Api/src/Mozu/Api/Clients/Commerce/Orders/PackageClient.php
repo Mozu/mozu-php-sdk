@@ -14,17 +14,19 @@ namespace Mozu\Api\Clients\Commerce\Orders;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Orders\PackageUrl;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Use the packages subresource to manage the physical packages to ship for an order.
 */
 class PackageClient {
 
 	/**
-	* 
+	* Retrieves the details of a package of order items.
 	*
-	* @param string $orderId 
-	* @param string $packageId 
+	* @param string $orderId Unique identifier of the order associated with the package to retrieve.
+	* @param string $packageId Unique identifier of the package to retrieve.
 	* @return MozuClient
 	*/
 	public static function getPackageClient( $orderId,  $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -57,10 +59,10 @@ class PackageClient {
 	}
 	
 	/**
-	* 
+	* Retrieves the package label image supplied by the carrier.
 	*
-	* @param string $orderId 
-	* @param string $packageId 
+	* @param string $orderId Unique identifier of the order associated with the package label to retrieve.
+	* @param string $packageId Unique identifier of the package for which to retrieve the label.
 	*/
 	public static function getPackageLabelClient( $orderId,  $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
@@ -74,10 +76,10 @@ class PackageClient {
 	}
 	
 	/**
-	* 
+	* Creates a new physical package of order items.
 	*
-	* @param string $orderId 
-	* @param Package $package 
+	* @param string $orderId Unique identifier of the order associated with this package.
+	* @param Package $package Properties of the physical package of order items.
 	* @return MozuClient
 	*/
 	public static function createPackageClient($pkg,  $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -92,11 +94,11 @@ class PackageClient {
 	}
 	
 	/**
-	* 
+	* Updates one or more properties of a physical package of order items.
 	*
-	* @param string $orderId 
-	* @param string $packageId 
-	* @param Package $package 
+	* @param string $orderId Unique identifier of the order associated with the package to update.
+	* @param string $packageId Unique identifier of the package of order items to update.
+	* @param Package $package Wrapper of properties for the package of order items to update.
 	* @return MozuClient
 	*/
 	public static function updatePackageClient($pkg,  $orderId,  $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -111,10 +113,10 @@ class PackageClient {
 	}
 	
 	/**
-	* 
+	* Removes a physical package of items from the specified order.
 	*
-	* @param string $orderId 
-	* @param string $packageId 
+	* @param string $orderId Unique identifier of the order associated with the package to delete.
+	* @param string $packageId Unique identifier of the package to delete.
 	*/
 	public static function deletePackageClient( $orderId,  $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

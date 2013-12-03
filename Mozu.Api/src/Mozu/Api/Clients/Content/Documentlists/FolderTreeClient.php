@@ -14,19 +14,21 @@ namespace Mozu\Api\Clients\Content\Documentlists;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Content\Documentlists\FolderTreeUrl;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Use the folder tree subresource to view individual folders in the document hierarchy.
 */
 class FolderTreeClient {
 
 	/**
-	* 
+	* Retrieves the folder hierarchy used to organize documents in lists.
 	*
-	* @param string $documentListName 
-	* @param int $levels 
-	* @param string $rootFolderId 
-	* @param string $rootFolderPath 
+	* @param string $documentListName The name of the document list that contains this folder hierarchy.
+	* @param int $levels The number of levels in the folder hierarchy to return.
+	* @param string $rootFolderId The unique identifier of the top-level folder in the document list.
+	* @param string $rootFolderPath The location in the document hierarchy of the top-level folder in the document list.
 	* @return MozuClient
 	*/
 	public static function getFolderTreeClient( $documentListName, $levels =  null, $rootFolderId =  null, $rootFolderPath =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)

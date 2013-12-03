@@ -17,34 +17,10 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class MasterCatalog
 {
 		public $id;
-	public function getId() {
-		return $this->id;
-	}
-	
-	public function setId($id) {
-		$this->id = $id;
-		return $this;
-	}
 
 		public $name;
-	public function getName() {
-		return $this->name;
-	}
-	
-	public function setName($name) {
-		$this->name = $name;
-		return $this;
-	}
 
 		public $productPublishingMode;
-	public function getProductPublishingMode() {
-		return $this->productPublishingMode;
-	}
-	
-	public function setProductPublishingMode($productPublishingMode) {
-		$this->productPublishingMode = $productPublishingMode;
-		return $this;
-	}
 
 }
 

@@ -17,14 +17,6 @@ namespace Mozu\Api\Contracts\Customer;
 class AddressValidationResponse
 {
 		public $addressCandidates;
-	public function getAddressCandidates() {
-		return $this->addressCandidates;
-	}
-	
-	public function setAddressCandidates($addressCandidates) {
-		$this->addressCandidates = $addressCandidates;
-		return $this;
-	}
 
 }
 

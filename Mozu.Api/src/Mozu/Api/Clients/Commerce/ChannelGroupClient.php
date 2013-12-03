@@ -14,6 +14,8 @@ namespace Mozu\Api\Clients\Commerce;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\ChannelGroupUrl;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * 

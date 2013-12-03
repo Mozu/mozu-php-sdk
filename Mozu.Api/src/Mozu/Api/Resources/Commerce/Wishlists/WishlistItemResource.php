@@ -15,6 +15,8 @@ namespace Mozu\Api\Resources\Commerce\Wishlists;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Wishlists\WishlistItemClient;
 use Mozu\Api\ApiContext;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * 

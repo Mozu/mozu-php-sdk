@@ -17,24 +17,8 @@ namespace Mozu\Api\Contracts\Location;
 class Coordinates
 {
 		public $lat;
-	public function getLat() {
-		return $this->lat;
-	}
-	
-	public function setLat($lat) {
-		$this->lat = $lat;
-		return $this;
-	}
 
 		public $lng;
-	public function getLng() {
-		return $this->lng;
-	}
-	
-	public function setLng($lng) {
-		$this->lng = $lng;
-		return $this;
-	}
 
 }
 

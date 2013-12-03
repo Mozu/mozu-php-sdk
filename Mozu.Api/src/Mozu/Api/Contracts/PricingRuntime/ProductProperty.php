@@ -14,6 +14,9 @@ namespace Mozu\Api\Contracts\PricingRuntime;
 
 
 
+/**
+*	Details of a property defined for a product.
+*/
 class ProductProperty
 {
 		public $attributeFQN;
@@ -26,7 +29,10 @@ class ProductProperty
 		return $this;
 	}
 
-		public $isHidden;
+	/**
+	*If true, this product property does not appear on the storefront.
+	*/
+	public $isHidden;
 	public function getIsHidden() {
 		return $this->isHidden;
 	}
@@ -36,7 +42,10 @@ class ProductProperty
 		return $this;
 	}
 
-		public $isMultiValue;
+	/**
+	*If true, the product property has multiple values.
+	*/
+	public $isMultiValue;
 	public function getIsMultiValue() {
 		return $this->isMultiValue;
 	}
@@ -46,7 +55,10 @@ class ProductProperty
 		return $this;
 	}
 
-		public $attributeDetail;
+	/**
+	*Details of a product attribute.
+	*/
+	public $attributeDetail;
 	public function getAttributeDetail() {
 		return $this->attributeDetail;
 	}

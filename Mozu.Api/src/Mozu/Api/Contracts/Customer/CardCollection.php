@@ -14,6 +14,9 @@ namespace Mozu\Api\Contracts\Customer;
 
 
 
+/**
+*	Collection of credit cards defined for the customer account.
+*/
 class CardCollection
 {
 		public $totalCount;
@@ -26,7 +29,10 @@ class CardCollection
 		return $this;
 	}
 
-		public $items;
+	/**
+	*An array list of objects in the returned collection.
+	*/
+	public $items;
 	public function getItems() {
 		return $this->items;
 	}

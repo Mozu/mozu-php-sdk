@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
+/**
+*	The localized product search engine optimized content in the language specified by the LocaleCode.
+*/
 class ProductLocalizedSEOContent
 {
-		public $localeCode;
+	/**
+	*"Language used for the entity. Currently, only ""en-US"" is supported."
+	*/
+	public $localeCode;
 	public function getLocaleCode() {
 		return $this->localeCode;
 	}
@@ -26,7 +32,10 @@ class ProductLocalizedSEOContent
 		return $this;
 	}
 
-		public $metaTagDescription;
+	/**
+	*The description of the metatag used for the product SEO content set to the locale code language. The metadata description is used to manage information internally.
+	*/
+	public $metaTagDescription;
 	public function getMetaTagDescription() {
 		return $this->metaTagDescription;
 	}
@@ -36,7 +45,10 @@ class ProductLocalizedSEOContent
 		return $this;
 	}
 
-		public $metaTagKeywords;
+	/**
+	*The metatag keywords for the product SEO content set in the locale code language. The metatag keywords are used to manage information internally.
+	*/
+	public $metaTagKeywords;
 	public function getMetaTagKeywords() {
 		return $this->metaTagKeywords;
 	}
@@ -46,7 +58,10 @@ class ProductLocalizedSEOContent
 		return $this;
 	}
 
-		public $metaTagTitle;
+	/**
+	*The metatag title for the product SEO content set in the locale code language. The metatag title is used to manage information internally.
+	*/
+	public $metaTagTitle;
 	public function getMetaTagTitle() {
 		return $this->metaTagTitle;
 	}
@@ -56,7 +71,10 @@ class ProductLocalizedSEOContent
 		return $this;
 	}
 
-		public $seoFriendlyUrl;
+	/**
+	*The search engine optimized human-readable portion of the URL in the language of the product's locale code.
+	*/
+	public $seoFriendlyUrl;
 	public function getSeoFriendlyUrl() {
 		return $this->seoFriendlyUrl;
 	}
@@ -66,7 +84,10 @@ class ProductLocalizedSEOContent
 		return $this;
 	}
 
-		public $titleTagTitle;
+	/**
+	*Customizes the HTML title tag within the header section of the product details page for the specified product.
+	*/
+	public $titleTagTitle;
 	public function getTitleTagTitle() {
 		return $this->titleTagTitle;
 	}

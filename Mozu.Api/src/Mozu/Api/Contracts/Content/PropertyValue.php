@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\Content;
 
 
 
+/**
+*	The actual value for the content property.
+*/
 class PropertyValue
 {
-		public $propertyType;
+	/**
+	*A type of content property value.
+	*/
+	public $propertyType;
 	public function getPropertyType() {
 		return $this->propertyType;
 	}
@@ -26,7 +32,10 @@ class PropertyValue
 		return $this;
 	}
 
-		public $value;
+	/**
+	*The actual value for the content property.
+	*/
+	public $value;
 	public function getValue() {
 		return $this->value;
 	}

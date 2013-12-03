@@ -52,7 +52,7 @@ class AppAuthenticator {
 			
 	private function refreshAuthTicket() {
 		$requestData = new AuthTicketRequest();
-		$requestData->setRefreshToken($this->authTicket->refreshToken);
+		$requestData->refreshToken = $this->authTicket->refreshToken;
 		//$config = array('version' => 'v1.1','curl.options' => array(CURLOPT_PROXY => 'http://localhost:8888'));
 		$client = new Client ( $this->baseUrl );
 		$request = $client->put( AuthTicketUrl::RefreshAppAuthTicketUrl()->getUrl());
@@ -105,7 +105,7 @@ class AppAuthenticator {
 	} 
 	
 	public function getAccessToken() {
-		return static::$instance->authTicket->AccessToken;
+		return static::$instance->authTicket->accessToken;
 	}
 	
 	public function getAuthTicket() {

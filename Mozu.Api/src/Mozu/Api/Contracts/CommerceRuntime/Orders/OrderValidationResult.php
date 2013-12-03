@@ -17,34 +17,10 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Orders;
 class OrderValidationResult
 {
 		public $createdDate;
-	public function getCreatedDate() {
-		return $this->createdDate;
-	}
-	
-	public function setCreatedDate($createdDate) {
-		$this->createdDate = $createdDate;
-		return $this;
-	}
 
 		public $status;
-	public function getStatus() {
-		return $this->status;
-	}
-	
-	public function setStatus($status) {
-		$this->status = $status;
-		return $this;
-	}
 
 		public $messages;
-	public function getMessages() {
-		return $this->messages;
-	}
-	
-	public function setMessages($messages) {
-		$this->messages = $messages;
-		return $this;
-	}
 
 }
 

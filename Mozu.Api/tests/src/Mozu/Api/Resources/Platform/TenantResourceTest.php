@@ -1,5 +1,6 @@
 <?php
 
+require_once __DIR__ . '/../../../../BaseTest.php';
 use Mozu\Api\Resources\Platform\TenantResource;
 use Mozu\Api\ApiContext;
 use Mozu\Tests\BaseTest;
@@ -21,6 +22,7 @@ class TenantResourceTest extends BaseTest
      */
     protected function setUp()
     {
+    	BaseTest::Auth();
     	$this->apiContext = new ApiContext(7804);
         $this->object = new TenantResource();
     }

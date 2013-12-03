@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\Content;
 
 
 
+/**
+*	The document properties that define the content used by the content management system (CMS).
+*/
 class Document
 {
-		public $contentLength;
+	/**
+	*The character length associated with the document content.
+	*/
+	public $contentLength;
 	public function getContentLength() {
 		return $this->contentLength;
 	}
@@ -26,7 +32,10 @@ class Document
 		return $this;
 	}
 
-		public $contentMimeType;
+	/**
+	*The mime type associated with the document content, if applicable.
+	*/
+	public $contentMimeType;
 	public function getContentMimeType() {
 		return $this->contentMimeType;
 	}
@@ -36,7 +45,10 @@ class Document
 		return $this;
 	}
 
-		public $contentUpdateDate;
+	/**
+	*The date and time the most recent content update was made. UTC date/time. System-supplied and read-only.
+	*/
+	public $contentUpdateDate;
 	public function getContentUpdateDate() {
 		return $this->contentUpdateDate;
 	}
@@ -46,7 +58,10 @@ class Document
 		return $this;
 	}
 
-		public $documentListName;
+	/**
+	*The name of the document list associated with the document.
+	*/
+	public $documentListName;
 	public function getDocumentListName() {
 		return $this->documentListName;
 	}
@@ -56,7 +71,10 @@ class Document
 		return $this;
 	}
 
-		public $documentType;
+	/**
+	*The type of document used in the CMS such as "web_page" or "template" or "image_url".
+	*/
+	public $documentType;
 	public function getDocumentType() {
 		return $this->documentType;
 	}
@@ -66,7 +84,10 @@ class Document
 		return $this;
 	}
 
-		public $extension;
+	/**
+	*If applicable, the file extension associated with the document content.
+	*/
+	public $extension;
 	public function getExtension() {
 		return $this->extension;
 	}
@@ -76,7 +97,10 @@ class Document
 		return $this;
 	}
 
-		public $folderId;
+	/**
+	*Unique identifier of the folder that contains the document.
+	*/
+	public $folderId;
 	public function getFolderId() {
 		return $this->folderId;
 	}
@@ -86,7 +110,10 @@ class Document
 		return $this;
 	}
 
-		public $id;
+	/**
+	*Unique identifier of the document.
+	*/
+	public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -96,7 +123,10 @@ class Document
 		return $this;
 	}
 
-		public $insertDate;
+	/**
+	*When the document was added to the document list. System-supplied and read-only.
+	*/
+	public $insertDate;
 	public function getInsertDate() {
 		return $this->insertDate;
 	}
@@ -106,7 +136,10 @@ class Document
 		return $this;
 	}
 
-		public $name;
+	/**
+	*The name of the document, which is unique within its folder.
+	*/
+	public $name;
 	public function getName() {
 		return $this->name;
 	}
@@ -116,7 +149,10 @@ class Document
 		return $this;
 	}
 
-		public $path;
+	/**
+	*The location of the document in the document list and folder hierarchy.
+	*/
+	public $path;
 	public function getPath() {
 		return $this->path;
 	}
@@ -126,7 +162,10 @@ class Document
 		return $this;
 	}
 
-		public $publishState;
+	/**
+	*The current state of the document, which is Active, Draft, or Latest. Active documents are published and cannot be deleted. Querying Latest returns the most recent version of the document, regardless of whether it is published or a draft.
+	*/
+	public $publishState;
 	public function getPublishState() {
 		return $this->publishState;
 	}
@@ -136,7 +175,10 @@ class Document
 		return $this;
 	}
 
-		public $updateDate;
+	/**
+	*Date and time when the entity was last updated. UTC Date/Time.
+	*/
+	public $updateDate;
 	public function getUpdateDate() {
 		return $this->updateDate;
 	}
@@ -146,7 +188,10 @@ class Document
 		return $this;
 	}
 
-		public $properties;
+	/**
+	*List of properties for the given property value.
+	*/
+	public $properties;
 	public function getProperties() {
 		return $this->properties;
 	}

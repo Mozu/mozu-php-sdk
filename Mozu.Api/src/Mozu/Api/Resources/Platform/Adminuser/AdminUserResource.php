@@ -15,16 +15,18 @@ namespace Mozu\Api\Resources\Platform\Adminuser;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Platform\Adminuser\AdminUserClient;
 use Mozu\Api\ApiContext;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Displays the user accounts and account details associated with a developer or Mozu tenant administrator. Email addresses uniquely identify admin user accounts.
 */
 class AdminUserResource {
 
 	/**
-	* 
+	* Retrieves the details of the specified administrator user account.
 	*
-	* @param string $userId 
+	* @param string $userId Unique identifier of the administrator account to retrieve.
 	* @return User 
 	*/
 	public function getUser( $userId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -36,9 +38,9 @@ class AdminUserResource {
 	}
 	
 	/**
-	* 
+	* Retrieves a list of the Mozu tenants or development stores for which the specified user has an assigned role.
 	*
-	* @param string $userId 
+	* @param string $userId Unique identifier of the user whose tenant scopes you want to retrieve.
 	* @return TenantCollection 
 	*/
 	public function getTenantScopesForUser( $userId, Mozu\Api\Security\AuthTicket &$authTicket= null)

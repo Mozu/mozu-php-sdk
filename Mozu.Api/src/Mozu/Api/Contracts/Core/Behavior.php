@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\Core;
 
 
 
+/**
+*	***Always private and should not be published.***
+*/
 class Behavior
 {
-		public $categoryId;
+	/**
+	*Unique identifier for the storefront container used to organize products.
+	*/
+	public $categoryId;
 	public function getCategoryId() {
 		return $this->categoryId;
 	}
@@ -26,7 +32,10 @@ class Behavior
 		return $this;
 	}
 
-		public $id;
+	/**
+	*Identifier of the entity.
+	*/
+	public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -56,7 +65,10 @@ class Behavior
 		return $this;
 	}
 
-		public $requiresBehaviorIds;
+	/**
+	*For validation purposes, the integer value must be a list of behavior Id's.
+	*/
+	public $requiresBehaviorIds;
 	public function getRequiresBehaviorIds() {
 		return $this->requiresBehaviorIds;
 	}

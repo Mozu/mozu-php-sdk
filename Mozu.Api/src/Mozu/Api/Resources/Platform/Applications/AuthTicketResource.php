@@ -15,16 +15,18 @@ namespace Mozu\Api\Resources\Platform\Applications;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Platform\Applications\AuthTicketClient;
 use Mozu\Api\ApiContext;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Use this resource to manage authentication tickets for your applications.
 */
 class AuthTicketResource {
 
 	/**
-	* 
+	* Generate an authentication ticket for an application.
 	*
-	* @param AppAuthInfo $appAuthInfo 
+	* @param AppAuthInfo $appAuthInfo Authentication information required to generate an authentication ticket includes the application id and the shared secret.
 	* @return AuthTicket 
 	*/
 	public function authenticateApp($appAuthInfo)
@@ -36,9 +38,9 @@ class AuthTicketResource {
 	}
 	
 	/**
-	* 
+	* Refreshes the application's authentication ticket and generates a new access token by providing the refresh token string.
 	*
-	* @param AuthTicketRequest $authTicketRequest 
+	* @param AuthTicketRequest $authTicketRequest The refresh token string required to update the application authentication ticket.
 	* @return AuthTicket 
 	*/
 	public function refreshAppAuthTicket($authTicketRequest)
@@ -50,9 +52,9 @@ class AuthTicketResource {
 	}
 	
 	/**
-	* 
+	* Deletes an authentication for an application based on the specified refresh token.
 	*
-	* @param string $refreshToken 
+	* @param string $refreshToken The refresh token string from the application's authentication ticket.
 	*/
 	public function deleteAppAuthTicket( $refreshToken)
 	{

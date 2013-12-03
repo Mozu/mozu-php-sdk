@@ -17,54 +17,14 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Products;
 class ProductProperty
 {
 		public $attributeFQN;
-	public function getAttributeFQN() {
-		return $this->attributeFQN;
-	}
-	
-	public function setAttributeFQN($attributeFQN) {
-		$this->attributeFQN = $attributeFQN;
-		return $this;
-	}
 
 		public $dataType;
-	public function getDataType() {
-		return $this->dataType;
-	}
-	
-	public function setDataType($dataType) {
-		$this->dataType = $dataType;
-		return $this;
-	}
 
 		public $isMultiValue;
-	public function getIsMultiValue() {
-		return $this->isMultiValue;
-	}
-	
-	public function setIsMultiValue($isMultiValue) {
-		$this->isMultiValue = $isMultiValue;
-		return $this;
-	}
 
 		public $name;
-	public function getName() {
-		return $this->name;
-	}
-	
-	public function setName($name) {
-		$this->name = $name;
-		return $this;
-	}
 
 		public $values;
-	public function getValues() {
-		return $this->values;
-	}
-	
-	public function setValues($values) {
-		$this->values = $values;
-		return $this;
-	}
 
 }
 

@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Carts;
 
 
 
+/**
+*	Collection of items in a cart.
+*/
 class CartItemCollection
 {
-		public $totalCount;
+	/**
+	*The number of the resource entity items listed in the query collection. Signed 64-bit (8-byte) integer. System-supplied and read-only.
+	*/
+	public $totalCount;
 	public function getTotalCount() {
 		return $this->totalCount;
 	}
@@ -26,7 +32,10 @@ class CartItemCollection
 		return $this;
 	}
 
-		public $items;
+	/**
+	*An array list of objects in the returned collection.
+	*/
+	public $items;
 	public function getItems() {
 		return $this->items;
 	}

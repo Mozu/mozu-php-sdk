@@ -14,6 +14,9 @@ namespace Mozu\Api\Contracts\Event;
 
 
 
+/**
+*	When a create, read, update, or delete happens on an order, product, discount, or category.
+*/
 class Event
 {
 		public $catalogId;
@@ -26,7 +29,10 @@ class Event
 		return $this;
 	}
 
-		public $entityId;
+	/**
+	*The unique identifier of the entity that caused the event. For example, if the event is "ProductCreated", the entity ID value represents the product code of the product that was created.
+	*/
+	public $entityId;
 	public function getEntityId() {
 		return $this->entityId;
 	}
@@ -36,7 +42,10 @@ class Event
 		return $this;
 	}
 
-		public $id;
+	/**
+	*The unique identifier of the event.
+	*/
+	public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -46,7 +55,10 @@ class Event
 		return $this;
 	}
 
-		public $isTest;
+	/**
+	*If true, the event record was generated as a test request for an application.
+	*/
+	public $isTest;
 	public function getIsTest() {
 		return $this->isTest;
 	}
@@ -76,7 +88,10 @@ class Event
 		return $this;
 	}
 
-		public $tenantId;
+	/**
+	*Unique identifier of the Mozu tenant.
+	*/
+	public $tenantId;
 	public function getTenantId() {
 		return $this->tenantId;
 	}
@@ -86,7 +101,10 @@ class Event
 		return $this;
 	}
 
-		public $topic;
+	/**
+	*The type of event that was performed, such as "product.created" or "category.deleted".
+	*/
+	public $topic;
 	public function getTopic() {
 		return $this->topic;
 	}
@@ -96,7 +114,10 @@ class Event
 		return $this;
 	}
 
-		public $auditInfo;
+	/**
+	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*/
+	public $auditInfo;
 	public function getAuditInfo() {
 		return $this->auditInfo;
 	}

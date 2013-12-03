@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Orders;
 
 
 
+/**
+*	Comments and/or gift message provided by the shopper which are associated with the order.
+*/
 class ShopperNotes
 {
-		public $comments;
+	/**
+	*Shopper-entered notes for the associated order.
+	*/
+	public $comments;
 	public function getComments() {
 		return $this->comments;
 	}
@@ -26,7 +32,10 @@ class ShopperNotes
 		return $this;
 	}
 
-		public $giftMessage;
+	/**
+	*Shopper-entered gift message for the associated order.
+	*/
+	public $giftMessage;
 	public function getGiftMessage() {
 		return $this->giftMessage;
 	}

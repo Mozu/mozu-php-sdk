@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
+/**
+*	The difference between the highest price and the lowest price of the product extra values.
+*/
 class ProductExtraValueDeltaPrice
 {
-		public $currencyCode;
+	/**
+	*"3-letter ISO 4217 standard global currency code. Currently, only ""USD"" (US Dollar) is supported."
+	*/
+	public $currencyCode;
 	public function getCurrencyCode() {
 		return $this->currencyCode;
 	}
@@ -26,7 +32,10 @@ class ProductExtraValueDeltaPrice
 		return $this;
 	}
 
-		public $deltaPrice;
+	/**
+	*The difference between the highest price and the lowest price for product extra values.
+	*/
+	public $deltaPrice;
 	public function getDeltaPrice() {
 		return $this->deltaPrice;
 	}

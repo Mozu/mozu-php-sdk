@@ -14,9 +14,11 @@ namespace Mozu\Api\Clients\Commerce\Settings;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Settings\ApplicationUrl;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Use the applications subresource to update site settings for installed applications.
 */
 class ApplicationClient {
 
@@ -37,9 +39,9 @@ class ApplicationClient {
 	}
 	
 	/**
-	* 
+	* Initializes an application with the necessary configured settings.
 	*
-	* @param Application $application 
+	* @param Application $application Properties of the application to update.
 	* @return MozuClient
 	*/
 	public static function thirdPartyUpdateApplicationClient($application, Mozu\Api\Security\AuthTicket &$authTicket= null)

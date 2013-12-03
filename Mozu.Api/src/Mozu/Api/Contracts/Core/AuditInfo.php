@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\Core;
 
 
 
+/**
+*	Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+*/
 class AuditInfo
 {
-		public $createBy;
+	/**
+	*Unique identifier of the user created the resource entity. System-supplied and read-only.
+	*/
+	public $createBy;
 	public function getCreateBy() {
 		return $this->createBy;
 	}
@@ -26,7 +32,10 @@ class AuditInfo
 		return $this;
 	}
 
-		public $createDate;
+	/**
+	*Date and time when the entity was created. UTC Date/Time.
+	*/
+	public $createDate;
 	public function getCreateDate() {
 		return $this->createDate;
 	}
@@ -36,7 +45,10 @@ class AuditInfo
 		return $this;
 	}
 
-		public $updateBy;
+	/**
+	*Unique identifier of the entity who updated the resource property most recently. System-supplied and read-only.
+	*/
+	public $updateBy;
 	public function getUpdateBy() {
 		return $this->updateBy;
 	}
@@ -46,7 +58,10 @@ class AuditInfo
 		return $this;
 	}
 
-		public $updateDate;
+	/**
+	*Date and time when the entity was last updated. UTC Date/Time.
+	*/
+	public $updateDate;
 	public function getUpdateDate() {
 		return $this->updateDate;
 	}

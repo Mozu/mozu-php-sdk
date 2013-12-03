@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 
+/**
+*	Represents the values that are the product option selections for a shopper to choose when ordering a product.
+*/
 class ProductOptionValue
 {
-		public $attributeValueId;
+	/**
+	*Unique identifier of the product attribute value.
+	*/
+	public $attributeValueId;
 	public function getAttributeValueId() {
 		return $this->attributeValueId;
 	}
@@ -26,7 +32,10 @@ class ProductOptionValue
 		return $this;
 	}
 
-		public $deltaPrice;
+	/**
+	*The difference between the highest price and the lowest price.
+	*/
+	public $deltaPrice;
 	public function getDeltaPrice() {
 		return $this->deltaPrice;
 	}
@@ -36,7 +45,10 @@ class ProductOptionValue
 		return $this;
 	}
 
-		public $deltaWeight;
+	/**
+	*The difference between the highest weight and the lowest weight.
+	*/
+	public $deltaWeight;
 	public function getDeltaWeight() {
 		return $this->deltaWeight;
 	}
@@ -46,7 +58,10 @@ class ProductOptionValue
 		return $this;
 	}
 
-		public $isDefault;
+	/**
+	*If true, the product option value is the default value that the merchant supplied.
+	*/
+	public $isDefault;
 	public function getIsDefault() {
 		return $this->isDefault;
 	}
@@ -56,7 +71,10 @@ class ProductOptionValue
 		return $this;
 	}
 
-		public $isEnabled;
+	/**
+	*If true, the product option value is available for a shopper to choose. During configuration, this property will be false if the option value is invalid with other selected options.
+	*/
+	public $isEnabled;
 	public function getIsEnabled() {
 		return $this->isEnabled;
 	}
@@ -66,7 +84,10 @@ class ProductOptionValue
 		return $this;
 	}
 
-		public $isSelected;
+	/**
+	*If true, the entity is selected. If false, the entity is not selected.
+	*/
+	public $isSelected;
 	public function getIsSelected() {
 		return $this->isSelected;
 	}
@@ -76,7 +97,10 @@ class ProductOptionValue
 		return $this;
 	}
 
-		public $shopperEnteredValue;
+	/**
+	*The product attribute value entered by the shopper, if applicable.
+	*/
+	public $shopperEnteredValue;
 	public function getShopperEnteredValue() {
 		return $this->shopperEnteredValue;
 	}
@@ -86,7 +110,10 @@ class ProductOptionValue
 		return $this;
 	}
 
-		public $stringValue;
+	/**
+	*The string value entered for a product option attribute.
+	*/
+	public $stringValue;
 	public function getStringValue() {
 		return $this->stringValue;
 	}
@@ -96,7 +123,10 @@ class ProductOptionValue
 		return $this;
 	}
 
-		public $value;
+	/**
+	*The value of a product option attribute.
+	*/
+	public $value;
 	public function getValue() {
 		return $this->value;
 	}

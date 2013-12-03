@@ -17,24 +17,8 @@ namespace Mozu\Api\Contracts\Location;
 class LocationType
 {
 		public $code;
-	public function getCode() {
-		return $this->code;
-	}
-	
-	public function setCode($code) {
-		$this->code = $code;
-		return $this;
-	}
 
 		public $name;
-	public function getName() {
-		return $this->name;
-	}
-	
-	public function setName($name) {
-		$this->name = $name;
-		return $this;
-	}
 
 }
 

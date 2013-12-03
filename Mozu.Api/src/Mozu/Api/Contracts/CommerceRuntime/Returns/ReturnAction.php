@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Returns;
 
 
 
+/**
+*	Properties of an action a user can perform for a return.
+*/
 class ReturnAction
 {
-		public $actionName;
+	/**
+	*The name of the action to perform for the return.
+	*/
+	public $actionName;
 	public function getActionName() {
 		return $this->actionName;
 	}
@@ -26,7 +32,10 @@ class ReturnAction
 		return $this;
 	}
 
-		public $returnIds;
+	/**
+	*The list of returns for which to perform the action.
+	*/
+	public $returnIds;
 	public function getReturnIds() {
 		return $this->returnIds;
 	}

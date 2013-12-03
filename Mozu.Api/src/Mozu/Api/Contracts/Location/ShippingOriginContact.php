@@ -17,64 +17,16 @@ namespace Mozu\Api\Contracts\Location;
 class ShippingOriginContact
 {
 		public $companyOrOrganization;
-	public function getCompanyOrOrganization() {
-		return $this->companyOrOrganization;
-	}
-	
-	public function setCompanyOrOrganization($companyOrOrganization) {
-		$this->companyOrOrganization = $companyOrOrganization;
-		return $this;
-	}
 
 		public $email;
-	public function getEmail() {
-		return $this->email;
-	}
-	
-	public function setEmail($email) {
-		$this->email = $email;
-		return $this;
-	}
 
 		public $firstName;
-	public function getFirstName() {
-		return $this->firstName;
-	}
-	
-	public function setFirstName($firstName) {
-		$this->firstName = $firstName;
-		return $this;
-	}
 
 		public $lastNameOrSurname;
-	public function getLastNameOrSurname() {
-		return $this->lastNameOrSurname;
-	}
-	
-	public function setLastNameOrSurname($lastNameOrSurname) {
-		$this->lastNameOrSurname = $lastNameOrSurname;
-		return $this;
-	}
 
 		public $middleNameOrInitial;
-	public function getMiddleNameOrInitial() {
-		return $this->middleNameOrInitial;
-	}
-	
-	public function setMiddleNameOrInitial($middleNameOrInitial) {
-		$this->middleNameOrInitial = $middleNameOrInitial;
-		return $this;
-	}
 
 		public $phoneNumber;
-	public function getPhoneNumber() {
-		return $this->phoneNumber;
-	}
-	
-	public function setPhoneNumber($phoneNumber) {
-		$this->phoneNumber = $phoneNumber;
-		return $this;
-	}
 
 }
 

@@ -17,24 +17,8 @@ namespace Mozu\Api\Contracts\Core\ThirdParty;
 class ActiveShippingCountry
 {
 		public $activeCarriers;
-	public function getActiveCarriers() {
-		return $this->activeCarriers;
-	}
-	
-	public function setActiveCarriers($activeCarriers) {
-		$this->activeCarriers = $activeCarriers;
-		return $this;
-	}
 
 		public $countryCode;
-	public function getCountryCode() {
-		return $this->countryCode;
-	}
-	
-	public function setCountryCode($countryCode) {
-		$this->countryCode = $countryCode;
-		return $this;
-	}
 
 }
 

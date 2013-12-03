@@ -14,18 +14,20 @@ namespace Mozu\Api\Clients\Content;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Content\DocumentDraftSummaryUrl;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Use the document publishing subresource to manage and publish document drafts in the Content service.
 */
 class DocumentDraftSummaryClient {
 
 	/**
-	* 
+	* Retrieves a list of the documents currently in draft state according to any sort criteria defined.
 	*
-	* @param string $documentLists 
-	* @param int $pageSize 
-	* @param int $startIndex 
+	* @param string $documentLists Lists that contain the document drafts.
+	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+	* @param int $startIndex "Used to create paged results from a query. Indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3."
 	* @return MozuClient
 	*/
 	public static function listDocumentDraftSummariesClient($documentLists =  null, $pageSize =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -40,10 +42,10 @@ class DocumentDraftSummaryClient {
 	}
 	
 	/**
-	* 
+	* Publish one or more document drafts to live content on the site.
 	*
-	* @param string $documentLists 
-	* @param array|string $documentIds 
+	* @param string $documentLists List of document lists that contain documents to publish.
+	* @param array|string $documentIds List of unique identifiers of the document drafts to publish.
 	*/
 	public static function publishDocumentsClient($documentIds, $documentLists =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
@@ -57,10 +59,10 @@ class DocumentDraftSummaryClient {
 	}
 	
 	/**
-	* 
+	* Deletes the drafts of the specified documents. Published documents cannot be deleted.
 	*
-	* @param string $documentIds 
-	* @param string $documentLists 
+	* @param string $documentIds Unique identifiers of the documents to delete.
+	* @param string $documentLists List of document lists that contain documents to delete.
 	*/
 	public static function deleteDocumentDraftsClient( $documentIds, $documentLists =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

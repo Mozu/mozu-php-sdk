@@ -14,14 +14,16 @@ namespace Mozu\Api\Clients\Commerce;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\ReturnUrl;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Use the returns subresource to manage returned items for a completed order. Returns can include any number of items associated with the original order.
 */
 class ReturnClient {
 
 	/**
-	* 
+	* Retrieves a list of all returns according to any filter and sort criteria.
 	*
 	* @param string $filter 
 	* @param int $pageSize 
@@ -41,9 +43,9 @@ class ReturnClient {
 	}
 	
 	/**
-	* 
+	* Retrieves a list of properties for the specified return.
 	*
-	* @param string $returnId 
+	* @param string $returnId Returns the properties of the return specified in the request as well as system-supplied information.
 	* @return MozuClient
 	*/
 	public static function getReturnClient( $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -58,9 +60,9 @@ class ReturnClient {
 	}
 	
 	/**
-	* 
+	* Retrieves a list of the actions available to perform for the specified return based on its current state.
 	*
-	* @param string $returnId 
+	* @param string $returnId Retrieves a list of the actions available to perform for the specified return based on its current state.
 	* @return MozuClient
 	*/
 	public static function getAvailableReturnActionsClient( $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -75,9 +77,9 @@ class ReturnClient {
 	}
 	
 	/**
-	* 
+	* Retrieves a list of all payments submitted as part of a refund associated with a customer return.
 	*
-	* @param string $returnId 
+	* @param string $returnId Returns the details of the refund payment associated with the return specified in the request.
 	* @return MozuClient
 	*/
 	public static function getPaymentsClient( $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -92,10 +94,10 @@ class ReturnClient {
 	}
 	
 	/**
-	* 
+	* Retrieves the details of a payment submitted as part of a refund associated with a customer return.
 	*
-	* @param string $paymentId 
-	* @param string $returnId 
+	* @param string $paymentId Unique identifier of the return payment to retrieve.
+	* @param string $returnId Unique identifier of the return associated with the payment.
 	* @return MozuClient
 	*/
 	public static function getPaymentClient( $paymentId,  $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -110,10 +112,10 @@ class ReturnClient {
 	}
 	
 	/**
-	* 
+	* Retrieves a list of the payment actions available to perform for the specified return when a return results in a refund to the customer.
 	*
-	* @param string $paymentId 
-	* @param string $returnId 
+	* @param string $paymentId Unique identifier of the payment for which to perform the action.
+	* @param string $returnId Unique identifier of the return associated with the payment.
 	* @return MozuClient
 	*/
 	public static function getAvailablePaymentActionsForReturnClient( $paymentId,  $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -128,9 +130,9 @@ class ReturnClient {
 	}
 	
 	/**
-	* 
+	* Creates a return for items previously shipped in a completed order.
 	*
-	* @param Return $ret 
+	* @param Return $ret Wrapper for the properties of the return to create.
 	* @return MozuClient
 	*/
 	public static function createReturnClient($ret, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -145,11 +147,11 @@ class ReturnClient {
 	}
 	
 	/**
-	* 
+	* Updates a refund payment associated with a customer return by performing the specified action.
 	*
-	* @param string $paymentId 
-	* @param string $returnId 
-	* @param PaymentAction $action 
+	* @param string $paymentId Unique identifier of the return payment to update.
+	* @param string $returnId Unique identifier of the return associated with the refund payment.
+	* @param PaymentAction $action The payment action to perform for the refund payment.
 	* @return MozuClient
 	*/
 	public static function performPaymentActionForReturnClient($action,  $paymentId,  $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -164,10 +166,10 @@ class ReturnClient {
 	}
 	
 	/**
-	* 
+	* Creates a new payment for a return that results in a refund to the customer.
 	*
-	* @param string $returnId 
-	* @param PaymentAction $action 
+	* @param string $returnId Unique identifier of the return associated with the payment action.
+	* @param PaymentAction $action The payment action to perform for the customer return.
 	* @return MozuClient
 	*/
 	public static function createPaymentActionForReturnClient($action,  $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -182,9 +184,9 @@ class ReturnClient {
 	}
 	
 	/**
-	* 
+	* Updates the return by performing the specified action.
 	*
-	* @param ReturnAction $action 
+	* @param ReturnAction $action The name of the return action to perform, such as "Refund" or "Replace".
 	* @return MozuClient
 	*/
 	public static function performReturnActionsClient($action, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -199,10 +201,10 @@ class ReturnClient {
 	}
 	
 	/**
-	* 
+	* Updates one or more properties of a return for items previously shipped in a completed order.
 	*
-	* @param string $returnId 
-	* @param Return $ret 
+	* @param string $returnId Unique identifier of the return.
+	* @param Return $ret Wrapper for the array of properties to update for the return.
 	* @return MozuClient
 	*/
 	public static function updateReturnClient($ret,  $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -217,9 +219,9 @@ class ReturnClient {
 	}
 	
 	/**
-	* 
+	* Deletes a return previously configured for the specified order.
 	*
-	* @param string $returnId 
+	* @param string $returnId Unique identifier of the return to delete from the order.
 	*/
 	public static function deleteReturnClient( $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

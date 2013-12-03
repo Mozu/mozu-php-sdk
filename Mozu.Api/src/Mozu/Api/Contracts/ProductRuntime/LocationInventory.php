@@ -17,24 +17,8 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 class LocationInventory
 {
 		public $locationCode;
-	public function getLocationCode() {
-		return $this->locationCode;
-	}
-	
-	public function setLocationCode($locationCode) {
-		$this->locationCode = $locationCode;
-		return $this;
-	}
 
 		public $stockAvailable;
-	public function getStockAvailable() {
-		return $this->stockAvailable;
-	}
-	
-	public function setStockAvailable($stockAvailable) {
-		$this->stockAvailable = $stockAvailable;
-		return $this;
-	}
 
 }
 

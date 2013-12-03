@@ -19,7 +19,7 @@ class UserUrl  {
 
 	/**
 		* Get Resource Url for GetUserByEmail
-		* @param string $emailAddress 
+		* @param string $emailAddress The email address of the specified user.
 		* @return string Resource Url
 	*/
 	public static function getUserByEmailUrl($emailAddress)
@@ -31,7 +31,7 @@ class UserUrl  {
 	
 	/**
 		* Get Resource Url for GetUser
-		* @param string $userId 
+		* @param string $userId Unique identifier of the user.
 		* @return string Resource Url
 	*/
 	public static function getUserUrl($userId)

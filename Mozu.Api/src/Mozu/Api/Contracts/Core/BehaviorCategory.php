@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\Core;
 
 
 
+/**
+*	***Always private and should not be published.***
+*/
 class BehaviorCategory
 {
-		public $id;
+	/**
+	*Identifier of the entity.
+	*/
+	public $id;
 	public function getId() {
 		return $this->id;
 	}

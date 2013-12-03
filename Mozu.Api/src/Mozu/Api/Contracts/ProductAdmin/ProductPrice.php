@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
+/**
+*	The price of the product in the specified currency code (USD). This price can either be the sale price or the price for which the merchang intends to sell the product.
+*/
 class ProductPrice
 {
-		public $isoCurrencyCode;
+	/**
+	*"3-letter ISO 4217 standard global currency code. Currently, only ""USD"" (US Dollar) is supported."
+	*/
+	public $isoCurrencyCode;
 	public function getIsoCurrencyCode() {
 		return $this->isoCurrencyCode;
 	}
@@ -26,7 +32,10 @@ class ProductPrice
 		return $this;
 	}
 
-		public $price;
+	/**
+	*Price that the merchant intends to sell the product which is not necessarily the list price. This is the price the merchant intends to sell the product if no sale price is present.
+	*/
+	public $price;
 	public function getPrice() {
 		return $this->price;
 	}
@@ -36,7 +45,10 @@ class ProductPrice
 		return $this;
 	}
 
-		public $salePrice;
+	/**
+	*Price of the product with a discount already applied which the merchant intends to sell the product.
+	*/
+	public $salePrice;
 	public function getSalePrice() {
 		return $this->salePrice;
 	}

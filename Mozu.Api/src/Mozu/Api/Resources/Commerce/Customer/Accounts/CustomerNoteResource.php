@@ -15,9 +15,11 @@ namespace Mozu\Api\Resources\Commerce\Customer\Accounts;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Customer\Accounts\CustomerNoteClient;
 use Mozu\Api\ApiContext;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Merchants can add and view internal notes for a customer account. For example, a merchant can track a customer's interests or complaints. Only merchants can add and view notes. Customers cannot see these notes from their My Account page.
 */
 class CustomerNoteResource {
 
@@ -28,10 +30,10 @@ class CustomerNoteResource {
 	}
 
 	/**
-	* 
+	* Retrieves the contents of a particular note attached to a specified customer account.
 	*
-	* @param int $accountId 
-	* @param int $noteId 
+	* @param int $accountId Unique identifier of the customer account that contains the note being retrieved.
+	* @param int $noteId Unique identifier of a particular note to retrieve.
 	* @return CustomerNote 
 	*/
 	public function getAccountNote( $accountId,  $noteId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -44,13 +46,13 @@ class CustomerNoteResource {
 	}
 	
 	/**
-	* 
+	* Retrieves a list of notes added to a customer account according to any specified filter criteria and sort options.
 	*
-	* @param int $accountId 
-	* @param string $filter 
-	* @param int $pageSize 
-	* @param string $sortBy 
-	* @param int $startIndex 
+	* @param int $accountId Unique identifier of the customer account.
+	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
+	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+	* @param string $sortBy "The property by which to sort results and whether the results appear in ascending (a-z) order, represented by 'ASC' or in descending (z-a) order, represented by 'DESC'. The sortBy parameter follows an available property. <b>For example: sortBy=productCode+asc</b>"
+	* @param int $startIndex "Used to create paged results from a query. Indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3."
 	* @return CustomerNoteCollection 
 	*/
 	public function getAccountNotes( $accountId, $filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -63,9 +65,9 @@ class CustomerNoteResource {
 	}
 	
 	/**
-	* 
+	* Adds a new note to the specified customer account.
 	*
-	* @param int $accountId 
+	* @param int $accountId Unique identifier of the customer account for which to create the note.
 	* @param CustomerNote $note 
 	* @return CustomerNote 
 	*/
@@ -79,11 +81,11 @@ class CustomerNoteResource {
 	}
 	
 	/**
-	* 
+	* Modifies an existing note for a customer account.
 	*
-	* @param int $accountId 
-	* @param int $noteId 
-	* @param CustomerNote $note 
+	* @param int $accountId Unique identifier of the customer account note to modify.
+	* @param int $noteId Unique identifier of the note to update.
+	* @param CustomerNote $note The new content to replace the existing note.
 	* @return CustomerNote 
 	*/
 	public function updateAccountNote($note,  $accountId,  $noteId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -96,10 +98,10 @@ class CustomerNoteResource {
 	}
 	
 	/**
-	* 
+	* Removes a note from the specified customer account.
 	*
-	* @param int $accountId 
-	* @param int $noteId 
+	* @param int $accountId Unique identifier of the customer account that contains the note being deleted.
+	* @param int $noteId Unique identifier of the customer account note being deleted.
 	*/
 	public function deleteAccountNote( $accountId,  $noteId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

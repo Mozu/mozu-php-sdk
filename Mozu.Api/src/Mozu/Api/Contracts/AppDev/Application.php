@@ -17,54 +17,14 @@ namespace Mozu\Api\Contracts\AppDev;
 class Application
 {
 		public $applicationType;
-	public function getApplicationType() {
-		return $this->applicationType;
-	}
-	
-	public function setApplicationType($applicationType) {
-		$this->applicationType = $applicationType;
-		return $this;
-	}
 
 		public $id;
-	public function getId() {
-		return $this->id;
-	}
-	
-	public function setId($id) {
-		$this->id = $id;
-		return $this;
-	}
 
 		public $name;
-	public function getName() {
-		return $this->name;
-	}
-	
-	public function setName($name) {
-		$this->name = $name;
-		return $this;
-	}
 
 		public $auditInfo;
-	public function getAuditInfo() {
-		return $this->auditInfo;
-	}
-	
-	public function setAuditInfo($auditInfo) {
-		$this->auditInfo = $auditInfo;
-		return $this;
-	}
 
 		public $versions;
-	public function getVersions() {
-		return $this->versions;
-	}
-	
-	public function setVersions($versions) {
-		$this->versions = $versions;
-		return $this;
-	}
 
 }
 

@@ -17,44 +17,12 @@ namespace Mozu\Api\Contracts\Customer;
 class CommerceSummary
 {
 		public $lastOrderDate;
-	public function getLastOrderDate() {
-		return $this->lastOrderDate;
-	}
-	
-	public function setLastOrderDate($lastOrderDate) {
-		$this->lastOrderDate = $lastOrderDate;
-		return $this;
-	}
 
 		public $orderCount;
-	public function getOrderCount() {
-		return $this->orderCount;
-	}
-	
-	public function setOrderCount($orderCount) {
-		$this->orderCount = $orderCount;
-		return $this;
-	}
 
 		public $wishlistCount;
-	public function getWishlistCount() {
-		return $this->wishlistCount;
-	}
-	
-	public function setWishlistCount($wishlistCount) {
-		$this->wishlistCount = $wishlistCount;
-		return $this;
-	}
 
 		public $totalOrderAmount;
-	public function getTotalOrderAmount() {
-		return $this->totalOrderAmount;
-	}
-	
-	public function setTotalOrderAmount($totalOrderAmount) {
-		$this->totalOrderAmount = $totalOrderAmount;
-		return $this;
-	}
 
 }
 

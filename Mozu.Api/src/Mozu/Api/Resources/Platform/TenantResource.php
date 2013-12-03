@@ -15,16 +15,18 @@ namespace Mozu\Api\Resources\Platform;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Platform\TenantClient;
 use Mozu\Api\ApiContext;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Use the tenants resource to manage information about a Mozu tenant.
 */
 class TenantResource {
 
 	/**
-	* 
+	* Retrieve details about a specific tenant by providing the tenant ID.
 	*
-	* @param int $tenantId 
+	* @param int $tenantId Unique identifier of the Mozu tenant.
 	* @return Tenant 
 	*/
 	public function getTenant( $tenantId, Mozu\Api\Security\AuthTicket &$authTicket= null)

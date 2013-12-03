@@ -19,8 +19,8 @@ class PackageUrl  {
 
 	/**
 		* Get Resource Url for GetPackage
-		* @param string $orderId 
-		* @param string $packageId 
+		* @param string $orderId Unique identifier of the order associated with the package to retrieve.
+		* @param string $packageId Unique identifier of the package to retrieve.
 		* @return string Resource Url
 	*/
 	public static function getPackageUrl($orderId, $packageId)
@@ -47,8 +47,8 @@ class PackageUrl  {
 	
 	/**
 		* Get Resource Url for GetPackageLabel
-		* @param string $orderId 
-		* @param string $packageId 
+		* @param string $orderId Unique identifier of the order associated with the package label to retrieve.
+		* @param string $packageId Unique identifier of the package for which to retrieve the label.
 		* @return string Resource Url
 	*/
 	public static function getPackageLabelUrl($orderId, $packageId)
@@ -61,7 +61,7 @@ class PackageUrl  {
 	
 	/**
 		* Get Resource Url for CreatePackage
-		* @param string $orderId 
+		* @param string $orderId Unique identifier of the order associated with this package.
 		* @return string Resource Url
 	*/
 	public static function createPackageUrl($orderId)
@@ -73,8 +73,8 @@ class PackageUrl  {
 	
 	/**
 		* Get Resource Url for UpdatePackage
-		* @param string $orderId 
-		* @param string $packageId 
+		* @param string $orderId Unique identifier of the order associated with the package to update.
+		* @param string $packageId Unique identifier of the package of order items to update.
 		* @return string Resource Url
 	*/
 	public static function updatePackageUrl($orderId, $packageId)
@@ -87,8 +87,8 @@ class PackageUrl  {
 	
 	/**
 		* Get Resource Url for DeletePackage
-		* @param string $orderId 
-		* @param string $packageId 
+		* @param string $orderId Unique identifier of the order associated with the package to delete.
+		* @param string $packageId Unique identifier of the package to delete.
 		* @return string Resource Url
 	*/
 	public static function deletePackageUrl($orderId, $packageId)

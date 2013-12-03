@@ -14,17 +14,19 @@ namespace Mozu\Api\Clients\Event;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Event\EventNotificationUrl;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Use the events resource to retreive events, which are notifications about a create, read, update, or delete operation.
 */
 class EventNotificationClient {
 
 	/**
-	* 
+	* Retrieves a list of events.
 	*
-	* @param string $filter 
-	* @param int $pageSize 
+	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
+	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return MozuClient
@@ -41,9 +43,9 @@ class EventNotificationClient {
 	}
 	
 	/**
-	* 
+	* Retrieves an event by providing the event ID.
 	*
-	* @param string $eventId 
+	* @param string $eventId The unique identifier of the event being retrieved. An event is a notification about a create, read, update, or delete on an order, product, discount or category.
 	* @return MozuClient
 	*/
 	public static function getEventClient( $eventId, Mozu\Api\Security\AuthTicket &$authTicket= null)

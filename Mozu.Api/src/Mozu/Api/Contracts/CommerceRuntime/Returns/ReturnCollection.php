@@ -14,6 +14,9 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Returns;
 
 
 
+/**
+*	List of returns and the details of each return in the list.
+*/
 class ReturnCollection
 {
 		public $pageCount;

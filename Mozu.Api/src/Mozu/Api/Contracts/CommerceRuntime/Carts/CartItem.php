@@ -14,6 +14,9 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Carts;
 
 
 
+/**
+*	Properties of an item added to an active shopping cart.
+*/
 class CartItem
 {
 		public $discountedTotal;
@@ -26,7 +29,10 @@ class CartItem
 		return $this;
 	}
 
-		public $discountTotal;
+	/**
+	*The total amount discounted from an item.
+	*/
+	public $discountTotal;
 	public function getDiscountTotal() {
 		return $this->discountTotal;
 	}
@@ -46,7 +52,10 @@ class CartItem
 		return $this;
 	}
 
-		public $feeTotal;
+	/**
+	*The total amount of all fees incurred for the item.
+	*/
+	public $feeTotal;
 	public function getFeeTotal() {
 		return $this->feeTotal;
 	}
@@ -76,7 +85,10 @@ class CartItem
 		return $this;
 	}
 
-		public $id;
+	/**
+	*Unique identifier of the cart item.
+	*/
+	public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -86,7 +98,10 @@ class CartItem
 		return $this;
 	}
 
-		public $isRecurring;
+	/**
+	*If true, the item can be purchased or fulfilled at regular intervals, such as a monthly billing cycle. For example, digital or physical product subscriptions are recurring cart items.
+	*/
+	public $isRecurring;
 	public function getIsRecurring() {
 		return $this->isRecurring;
 	}
@@ -96,7 +111,10 @@ class CartItem
 		return $this;
 	}
 
-		public $isTaxable;
+	/**
+	*If true, the entity is subject to tax based on the relevant tax rate.
+	*/
+	public $isTaxable;
 	public function getIsTaxable() {
 		return $this->isTaxable;
 	}
@@ -106,7 +124,10 @@ class CartItem
 		return $this;
 	}
 
-		public $itemTaxTotal;
+	/**
+	*The total amount of tax for the item in the cart.
+	*/
+	public $itemTaxTotal;
 	public function getItemTaxTotal() {
 		return $this->itemTaxTotal;
 	}
@@ -116,7 +137,10 @@ class CartItem
 		return $this;
 	}
 
-		public $localeCode;
+	/**
+	*"Language used for the entity. Currently, only ""en-US"" is supported."
+	*/
+	public $localeCode;
 	public function getLocaleCode() {
 		return $this->localeCode;
 	}
@@ -126,7 +150,10 @@ class CartItem
 		return $this;
 	}
 
-		public $quantity;
+	/**
+	*The specified quantity of the cart item.
+	*/
+	public $quantity;
 	public function getQuantity() {
 		return $this->quantity;
 	}
@@ -136,7 +163,10 @@ class CartItem
 		return $this;
 	}
 
-		public $shippingTaxTotal;
+	/**
+	*The total amount of tax incurred on the shipping charges in the cart.
+	*/
+	public $shippingTaxTotal;
 	public function getShippingTaxTotal() {
 		return $this->shippingTaxTotal;
 	}
@@ -146,7 +176,10 @@ class CartItem
 		return $this;
 	}
 
-		public $shippingTotal;
+	/**
+	*The estimated total amount of shipping fees for the item in the cart.
+	*/
+	public $shippingTotal;
 	public function getShippingTotal() {
 		return $this->shippingTotal;
 	}
@@ -156,7 +189,10 @@ class CartItem
 		return $this;
 	}
 
-		public $subtotal;
+	/**
+	*Estimated amount of the item in the cart without sales tax, shipping costs, and other fees.
+	*/
+	public $subtotal;
 	public function getSubtotal() {
 		return $this->subtotal;
 	}
@@ -166,7 +202,10 @@ class CartItem
 		return $this;
 	}
 
-		public $taxableTotal;
+	/**
+	*The amount of the item in the cart that is subject to tax. This amount typically represents the cart item subtotal before applied discounts.
+	*/
+	public $taxableTotal;
 	public function getTaxableTotal() {
 		return $this->taxableTotal;
 	}
@@ -176,7 +215,10 @@ class CartItem
 		return $this;
 	}
 
-		public $total;
+	/**
+	*Estimated total amount of the item, including the product price, sales tax, shipping costs, and other fees.
+	*/
+	public $total;
 	public function getTotal() {
 		return $this->total;
 	}
@@ -186,7 +228,10 @@ class CartItem
 		return $this;
 	}
 
-		public $auditInfo;
+	/**
+	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*/
+	public $auditInfo;
 	public function getAuditInfo() {
 		return $this->auditInfo;
 	}
@@ -196,7 +241,10 @@ class CartItem
 		return $this;
 	}
 
-		public $product;
+	/**
+	*The properties of the associated product.
+	*/
+	public $product;
 	public function getProduct() {
 		return $this->product;
 	}
@@ -206,7 +254,10 @@ class CartItem
 		return $this;
 	}
 
-		public $productDiscounts;
+	/**
+	*List of product-level discounts projected to apply to the cart at checkout.
+	*/
+	public $productDiscounts;
 	public function getProductDiscounts() {
 		return $this->productDiscounts;
 	}
@@ -216,7 +267,10 @@ class CartItem
 		return $this;
 	}
 
-		public $shippingDiscounts;
+	/**
+	*List of shipping discounts projected to apply to the cart at checkout.
+	*/
+	public $shippingDiscounts;
 	public function getShippingDiscounts() {
 		return $this->shippingDiscounts;
 	}
@@ -226,7 +280,10 @@ class CartItem
 		return $this;
 	}
 
-		public $unitPrice;
+	/**
+	*Properties of the unit price associated with the cart item.
+	*/
+	public $unitPrice;
 	public function getUnitPrice() {
 		return $this->unitPrice;
 	}

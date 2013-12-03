@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
+/**
+*	Properties of a product category targeted for a defined discount.
+*/
 class TargetedCategory
 {
-		public $id;
+	/**
+	*Identifier of the product category associated with the targeted discount.
+	*/
+	public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -26,7 +32,10 @@ class TargetedCategory
 		return $this;
 	}
 
-		public $name;
+	/**
+	*Name of the product category associated with the targeted discount.
+	*/
+	public $name;
 	public function getName() {
 		return $this->name;
 	}

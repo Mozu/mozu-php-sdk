@@ -14,14 +14,16 @@ namespace Mozu\Api\Clients\Commerce\Settings;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Settings\GeneralSettingsUrl;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Define global site settings such as the site name, shipping and email addresses, and logo images. Block undesirable IP addresses using this resource.
 */
 class GeneralSettingsClient {
 
 	/**
-	* 
+	* Retrieve a site's general global settings.
 	*
 	* @return MozuClient
 	*/
@@ -37,9 +39,9 @@ class GeneralSettingsClient {
 	}
 	
 	/**
-	* 
+	* Updates a site's general global settings.
 	*
-	* @param GeneralSettings $generalSettings 
+	* @param GeneralSettings $generalSettings The properties of the site's general settings to update.
 	* @return MozuClient
 	*/
 	public static function updateGeneralSettingsClient($generalSettings, Mozu\Api\Security\AuthTicket &$authTicket= null)

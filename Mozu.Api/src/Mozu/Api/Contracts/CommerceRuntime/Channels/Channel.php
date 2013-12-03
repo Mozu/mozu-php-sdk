@@ -17,84 +17,20 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Channels;
 class Channel
 {
 		public $code;
-	public function getCode() {
-		return $this->code;
-	}
-	
-	public function setCode($code) {
-		$this->code = $code;
-		return $this;
-	}
 
 		public $countryCode;
-	public function getCountryCode() {
-		return $this->countryCode;
-	}
-	
-	public function setCountryCode($countryCode) {
-		$this->countryCode = $countryCode;
-		return $this;
-	}
 
 		public $groupCode;
-	public function getGroupCode() {
-		return $this->groupCode;
-	}
-	
-	public function setGroupCode($groupCode) {
-		$this->groupCode = $groupCode;
-		return $this;
-	}
 
 		public $name;
-	public function getName() {
-		return $this->name;
-	}
-	
-	public function setName($name) {
-		$this->name = $name;
-		return $this;
-	}
 
 		public $region;
-	public function getRegion() {
-		return $this->region;
-	}
-	
-	public function setRegion($region) {
-		$this->region = $region;
-		return $this;
-	}
 
 		public $siteIds;
-	public function getSiteIds() {
-		return $this->siteIds;
-	}
-	
-	public function setSiteIds($siteIds) {
-		$this->siteIds = $siteIds;
-		return $this;
-	}
 
 		public $tenantId;
-	public function getTenantId() {
-		return $this->tenantId;
-	}
-	
-	public function setTenantId($tenantId) {
-		$this->tenantId = $tenantId;
-		return $this;
-	}
 
 		public $auditInfo;
-	public function getAuditInfo() {
-		return $this->auditInfo;
-	}
-	
-	public function setAuditInfo($auditInfo) {
-		$this->auditInfo = $auditInfo;
-		return $this;
-	}
 
 }
 

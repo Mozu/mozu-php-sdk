@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\Content;
 
 
 
+/**
+*	A type of content property value.
+*/
 class PropertyValueType
 {
-		public $name;
+	/**
+	*The name of the property type value.
+	*/
+	public $name;
 	public function getName() {
 		return $this->name;
 	}
@@ -26,7 +32,10 @@ class PropertyValueType
 		return $this;
 	}
 
-		public $storageType;
+	/**
+	*The data storage type associated with this property type value.
+	*/
+	public $storageType;
 	public function getStorageType() {
 		return $this->storageType;
 	}

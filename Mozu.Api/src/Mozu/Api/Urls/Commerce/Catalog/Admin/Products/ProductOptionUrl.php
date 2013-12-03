@@ -19,7 +19,7 @@ class ProductOptionUrl  {
 
 	/**
 		* Get Resource Url for GetOptions
-		* @param string $productCode 
+		* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
 		* @return string Resource Url
 	*/
 	public static function getOptionsUrl($productCode)
@@ -31,8 +31,8 @@ class ProductOptionUrl  {
 	
 	/**
 		* Get Resource Url for GetOption
-		* @param string $attributeFQN 
-		* @param string $productCode 
+		* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
+		* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
 		* @return string Resource Url
 	*/
 	public static function getOptionUrl($attributeFQN, $productCode)
@@ -45,7 +45,7 @@ class ProductOptionUrl  {
 	
 	/**
 		* Get Resource Url for AddOption
-		* @param string $productCode 
+		* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
 		* @return string Resource Url
 	*/
 	public static function addOptionUrl($productCode)
@@ -57,8 +57,8 @@ class ProductOptionUrl  {
 	
 	/**
 		* Get Resource Url for UpdateOption
-		* @param string $attributeFQN 
-		* @param string $productCode 
+		* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
+		* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
 		* @return string Resource Url
 	*/
 	public static function updateOptionUrl($attributeFQN, $productCode)
@@ -71,8 +71,8 @@ class ProductOptionUrl  {
 	
 	/**
 		* Get Resource Url for DeleteOption
-		* @param string $attributeFQN 
-		* @param string $productCode 
+		* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
+		* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
 		* @return string Resource Url
 	*/
 	public static function deleteOptionUrl($attributeFQN, $productCode)

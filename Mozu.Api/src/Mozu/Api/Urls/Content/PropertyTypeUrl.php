@@ -19,7 +19,7 @@ class PropertyTypeUrl  {
 
 	/**
 		* Get Resource Url for GetList
-		* @param int $pageSize 
+		* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
 		* @param int $startIndex 
 		* @return string Resource Url
 	*/
@@ -33,7 +33,7 @@ class PropertyTypeUrl  {
 	
 	/**
 		* Get Resource Url for Get
-		* @param string $propertyTypeName 
+		* @param string $propertyTypeName The name of the content property type.
 		* @return string Resource Url
 	*/
 	public static function getUrl($propertyTypeName)

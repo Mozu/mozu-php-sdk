@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
+/**
+*	Localized content displayed in the storefront for this attribute.
+*/
 class AttributeLocalizedContent
 {
-		public $description;
+	/**
+	*Localized content for the description of this attribute displayed in the storefront.
+	*/
+	public $description;
 	public function getDescription() {
 		return $this->description;
 	}
@@ -26,7 +32,10 @@ class AttributeLocalizedContent
 		return $this;
 	}
 
-		public $localeCode;
+	/**
+	*"Language used for the entity. Currently, only ""en-US"" is supported."
+	*/
+	public $localeCode;
 	public function getLocaleCode() {
 		return $this->localeCode;
 	}
@@ -36,7 +45,10 @@ class AttributeLocalizedContent
 		return $this;
 	}
 
-		public $name;
+	/**
+	*Localized content for the attribute name displayed in the storefront.
+	*/
+	public $name;
 	public function getName() {
 		return $this->name;
 	}

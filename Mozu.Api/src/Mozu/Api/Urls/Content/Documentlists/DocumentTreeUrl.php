@@ -19,10 +19,10 @@ class DocumentTreeUrl  {
 
 	/**
 		* Get Resource Url for GetTreeDocumentContent
-		* @param string $documentListName 
-		* @param string $documentName 
-		* @param string $folderId 
-		* @param string $folderPath 
+		* @param string $documentListName The name of the document list associated with the document.
+		* @param string $documentName The name of the document, which is unique within its folder.
+		* @param string $folderId If applicable, the unique identifier of the folder that contains the document.
+		* @param string $folderPath If applicable, the path of the folder hierarchy location associated with the document.
 		* @return string Resource Url
 	*/
 	public static function getTreeDocumentContentUrl($documentListName, $documentName, $folderId, $folderPath)
@@ -37,10 +37,10 @@ class DocumentTreeUrl  {
 	
 	/**
 		* Get Resource Url for GetTreeDocument
-		* @param string $documentListName 
-		* @param string $documentName 
-		* @param string $folderId 
-		* @param string $folderPath 
+		* @param string $documentListName The name of the document list associated with the document.
+		* @param string $documentName The name of the document, which is unique within its folder.
+		* @param string $folderId If applicable, the unique identifier of the folder that contains the document.
+		* @param string $folderPath If applicable, the path of the folder hierarchy location that contains the document.
 		* @return string Resource Url
 	*/
 	public static function getTreeDocumentUrl($documentListName, $documentName, $folderId, $folderPath)
@@ -55,10 +55,10 @@ class DocumentTreeUrl  {
 	
 	/**
 		* Get Resource Url for UpdateTreeDocumentContent
-		* @param string $documentListName 
-		* @param string $documentName 
-		* @param string $folderId 
-		* @param string $folderPath 
+		* @param string $documentListName The name of the document list associated with the document.
+		* @param string $documentName The name of the document, which is unique within its folder.
+		* @param string $folderId If applicable, the unique identifier of the folder that contains the document.
+		* @param string $folderPath If applicable, the path of the folder hierarchy location associated with the document.
 		* @return string Resource Url
 	*/
 	public static function updateTreeDocumentContentUrl($documentListName, $documentName, $folderId, $folderPath)
@@ -73,10 +73,10 @@ class DocumentTreeUrl  {
 	
 	/**
 		* Get Resource Url for DeleteTreeDocumentContent
-		* @param string $documentListName 
-		* @param string $documentName 
-		* @param string $folderId 
-		* @param string $folderPath 
+		* @param string $documentListName The name of the document list associated with the document.
+		* @param string $documentName The name of the document, which is unique within its folder.
+		* @param string $folderId If applicable, the unique identifier of the folder that contains the document.
+		* @param string $folderPath If applicable, the path of the folder hierarchy location associated with the document.
 		* @return string Resource Url
 	*/
 	public static function deleteTreeDocumentContentUrl($documentListName, $documentName, $folderId, $folderPath)

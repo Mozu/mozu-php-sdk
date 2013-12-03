@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
+/**
+*	The list of category, price, and attribute facets defined or available for definition for the category.
+*/
 class FacetSet
 {
-		public $available;
+	/**
+	*The list of subcategories and attributes that have not been defined as facets for the category.
+	*/
+	public $available;
 	public function getAvailable() {
 		return $this->available;
 	}
@@ -26,7 +32,10 @@ class FacetSet
 		return $this;
 	}
 
-		public $configured;
+	/**
+	*The list of category, price, and attribute facets defined for the category.
+	*/
+	public $configured;
 	public function getConfigured() {
 		return $this->configured;
 	}

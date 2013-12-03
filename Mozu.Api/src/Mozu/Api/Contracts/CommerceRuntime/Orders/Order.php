@@ -14,6 +14,9 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Orders;
 
 
 
+/**
+*	All of the properties of the specified order.
+*/
 class Order
 {
 		public $acceptedDate;
@@ -26,7 +29,10 @@ class Order
 		return $this;
 	}
 
-		public $availableActions;
+	/**
+	*The available order, payment, and shipment actions a user can perform for the order.
+	*/
+	public $availableActions;
 	public function getAvailableActions() {
 		return $this->availableActions;
 	}
@@ -36,7 +42,10 @@ class Order
 		return $this;
 	}
 
-		public $cancelledDate;
+	/**
+	*Date when the order was cancelled. System-supplied and read-only.
+	*/
+	public $cancelledDate;
 	public function getCancelledDate() {
 		return $this->cancelledDate;
 	}
@@ -56,7 +65,10 @@ class Order
 		return $this;
 	}
 
-		public $closedDate;
+	/**
+	*Date when the order was closed. Closed order is an order that has been processed and the items shipped. System-supplied and read-only.
+	*/
+	public $closedDate;
 	public function getClosedDate() {
 		return $this->closedDate;
 	}
@@ -86,7 +98,10 @@ class Order
 		return $this;
 	}
 
-		public $customerAccountId;
+	/**
+	*Numeric identifer of the customer account.
+	*/
+	public $customerAccountId;
 	public function getCustomerAccountId() {
 		return $this->customerAccountId;
 	}
@@ -126,7 +141,10 @@ class Order
 		return $this;
 	}
 
-		public $discountedTotal;
+	/**
+	*The total amount of the order after all applicable discounts have been applied.
+	*/
+	public $discountedTotal;
 	public function getDiscountedTotal() {
 		return $this->discountedTotal;
 	}
@@ -136,7 +154,10 @@ class Order
 		return $this;
 	}
 
-		public $discountTotal;
+	/**
+	*Amount of discounts applied to all items in an order. Usually a negative dollar amount or number. System-supplied and read-only.
+	*/
+	public $discountTotal;
 	public function getDiscountTotal() {
 		return $this->discountTotal;
 	}
@@ -146,7 +167,10 @@ class Order
 		return $this;
 	}
 
-		public $email;
+	/**
+	*The email address of the specified user.
+	*/
+	public $email;
 	public function getEmail() {
 		return $this->email;
 	}
@@ -156,7 +180,10 @@ class Order
 		return $this;
 	}
 
-		public $expirationDate;
+	/**
+	*The date when the order will no longer be active or considered abandoned. For example, if a guest or anonymous shoppper has 14 days of inactivity, the order is considered abandoned after that period of inactivity. An order never expires for shoppers who are logged into their account. Date in UTC Date/Time. System-supplied and read-only.
+	*/
+	public $expirationDate;
 	public function getExpirationDate() {
 		return $this->expirationDate;
 	}
@@ -176,7 +203,10 @@ class Order
 		return $this;
 	}
 
-		public $feeTotal;
+	/**
+	*The monetary sum of all fees incurred in the order.
+	*/
+	public $feeTotal;
 	public function getFeeTotal() {
 		return $this->feeTotal;
 	}
@@ -196,7 +226,10 @@ class Order
 		return $this;
 	}
 
-		public $handlingAmount;
+	/**
+	*The combined price for all items in the order, including all selected options but excluding any discounts.
+	*/
+	public $handlingAmount;
 	public function getHandlingAmount() {
 		return $this->handlingAmount;
 	}
@@ -206,7 +239,10 @@ class Order
 		return $this;
 	}
 
-		public $handlingTaxTotal;
+	/**
+	*If the handling fee for the order is subject to sales tax, the total tax amount.
+	*/
+	public $handlingTaxTotal;
 	public function getHandlingTaxTotal() {
 		return $this->handlingTaxTotal;
 	}
@@ -216,7 +252,10 @@ class Order
 		return $this;
 	}
 
-		public $hasDraft;
+	/**
+	*If true, the order has a draft that may include one or more uncommitted changes to the order or its components.
+	*/
+	public $hasDraft;
 	public function getHasDraft() {
 		return $this->hasDraft;
 	}
@@ -226,7 +265,10 @@ class Order
 		return $this;
 	}
 
-		public $id;
+	/**
+	*Identifier of the order.
+	*/
+	public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -246,7 +288,10 @@ class Order
 		return $this;
 	}
 
-		public $ipAddress;
+	/**
+	*The IP address from which the order originated.
+	*/
+	public $ipAddress;
 	public function getIpAddress() {
 		return $this->ipAddress;
 	}
@@ -256,7 +301,10 @@ class Order
 		return $this;
 	}
 
-		public $isDraft;
+	/**
+	*If true, this version of the order is a draft that might contain uncommitted changes.
+	*/
+	public $isDraft;
 	public function getIsDraft() {
 		return $this->isDraft;
 	}
@@ -276,7 +324,10 @@ class Order
 		return $this;
 	}
 
-		public $isTaxExempt;
+	/**
+	*If true, the order is exempt from applied sales tax.
+	*/
+	public $isTaxExempt;
 	public function getIsTaxExempt() {
 		return $this->isTaxExempt;
 	}
@@ -286,7 +337,10 @@ class Order
 		return $this;
 	}
 
-		public $itemTaxTotal;
+	/**
+	*The total amount of tax applied to items in the order.
+	*/
+	public $itemTaxTotal;
 	public function getItemTaxTotal() {
 		return $this->itemTaxTotal;
 	}
@@ -296,7 +350,10 @@ class Order
 		return $this;
 	}
 
-		public $lastValidationDate;
+	/**
+	*The date when the order was last validated against the product catalog. Date in UTC Date/Time. System-supplied and read-only.
+	*/
+	public $lastValidationDate;
 	public function getLastValidationDate() {
 		return $this->lastValidationDate;
 	}
@@ -316,7 +373,10 @@ class Order
 		return $this;
 	}
 
-		public $orderNumber;
+	/**
+	*The order number that displays on the storefront which differs from the order ID.
+	*/
+	public $orderNumber;
 	public function getOrderNumber() {
 		return $this->orderNumber;
 	}
@@ -326,7 +386,10 @@ class Order
 		return $this;
 	}
 
-		public $originalCartId;
+	/**
+	*Identifier of the cart prior to the customer proceeding to checkout.
+	*/
+	public $originalCartId;
 	public function getOriginalCartId() {
 		return $this->originalCartId;
 	}
@@ -336,7 +399,10 @@ class Order
 		return $this;
 	}
 
-		public $parentReturnId;
+	/**
+	*If this order was created to fulfill an item replacement as part of a return merchandise authorization (RMA), the unique identifier of the return.
+	*/
+	public $parentReturnId;
 	public function getParentReturnId() {
 		return $this->parentReturnId;
 	}
@@ -346,7 +412,10 @@ class Order
 		return $this;
 	}
 
-		public $paymentStatus;
+	/**
+	*Status of the payment for the specified order.
+	*/
+	public $paymentStatus;
 	public function getPaymentStatus() {
 		return $this->paymentStatus;
 	}
@@ -356,7 +425,10 @@ class Order
 		return $this;
 	}
 
-		public $returnStatus;
+	/**
+	*Status of any returns associated with this order after it was completed.
+	*/
+	public $returnStatus;
 	public function getReturnStatus() {
 		return $this->returnStatus;
 	}
@@ -376,7 +448,10 @@ class Order
 		return $this;
 	}
 
-		public $shippingTaxTotal;
+	/**
+	*The total amount of sales tax incurred for shipping charges on the order.
+	*/
+	public $shippingTaxTotal;
 	public function getShippingTaxTotal() {
 		return $this->shippingTaxTotal;
 	}
@@ -386,7 +461,10 @@ class Order
 		return $this;
 	}
 
-		public $shippingTotal;
+	/**
+	*Amount of the shipping fees for the order.
+	*/
+	public $shippingTotal;
 	public function getShippingTotal() {
 		return $this->shippingTotal;
 	}
@@ -396,7 +474,10 @@ class Order
 		return $this;
 	}
 
-		public $siteId;
+	/**
+	*Unique identifier of the site.
+	*/
+	public $siteId;
 	public function getSiteId() {
 		return $this->siteId;
 	}
@@ -406,7 +487,10 @@ class Order
 		return $this;
 	}
 
-		public $sourceDevice;
+	/**
+	*The device from which the order originated in the case of offline orders.
+	*/
+	public $sourceDevice;
 	public function getSourceDevice() {
 		return $this->sourceDevice;
 	}
@@ -416,7 +500,10 @@ class Order
 		return $this;
 	}
 
-		public $status;
+	/**
+	*The current status of this order. Possible values are "New", "Open", "Processing", "Closed", or "Cancelled". System-supplied and read-only.
+	*/
+	public $status;
 	public function getStatus() {
 		return $this->status;
 	}
@@ -426,7 +513,10 @@ class Order
 		return $this;
 	}
 
-		public $submittedDate;
+	/**
+	*The date and time the order was submitted. System-supplied and read-only.
+	*/
+	public $submittedDate;
 	public function getSubmittedDate() {
 		return $this->submittedDate;
 	}
@@ -436,7 +526,10 @@ class Order
 		return $this;
 	}
 
-		public $subtotal;
+	/**
+	*Amount of the order without sales tax, shipping costs, and other fees.
+	*/
+	public $subtotal;
 	public function getSubtotal() {
 		return $this->subtotal;
 	}
@@ -446,7 +539,10 @@ class Order
 		return $this;
 	}
 
-		public $taxTotal;
+	/**
+	*The total monetary sum of sales tax for the order.
+	*/
+	public $taxTotal;
 	public function getTaxTotal() {
 		return $this->taxTotal;
 	}
@@ -456,7 +552,10 @@ class Order
 		return $this;
 	}
 
-		public $tenantId;
+	/**
+	*Unique identifier of the Mozu tenant.
+	*/
+	public $tenantId;
 	public function getTenantId() {
 		return $this->tenantId;
 	}
@@ -466,7 +565,10 @@ class Order
 		return $this;
 	}
 
-		public $total;
+	/**
+	*Amount of the order, including items, sales tax, shipping costs, and other fees.
+	*/
+	public $total;
 	public function getTotal() {
 		return $this->total;
 	}
@@ -476,7 +578,10 @@ class Order
 		return $this;
 	}
 
-		public $totalCollected;
+	/**
+	*The total amount collected to date for the order.
+	*/
+	public $totalCollected;
 	public function getTotalCollected() {
 		return $this->totalCollected;
 	}
@@ -516,7 +621,23 @@ class Order
 		return $this;
 	}
 
-		public $adjustment;
+	/**
+	*An array list of objects in the returned collection.
+	*/
+	public $items;
+	public function getItems() {
+		return $this->items;
+	}
+	
+	public function setItems($items) {
+		$this->items = $items;
+		return $this;
+	}
+
+	/**
+	*Properties of an ad-hoc price adjustment for an order.
+	*/
+	public $adjustment;
 	public function getAdjustment() {
 		return $this->adjustment;
 	}
@@ -526,7 +647,10 @@ class Order
 		return $this;
 	}
 
-		public $attributes;
+	/**
+	*Paged list collection of order attributes.
+	*/
+	public $attributes;
 	public function getAttributes() {
 		return $this->attributes;
 	}
@@ -536,7 +660,10 @@ class Order
 		return $this;
 	}
 
-		public $auditInfo;
+	/**
+	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*/
+	public $auditInfo;
 	public function getAuditInfo() {
 		return $this->auditInfo;
 	}
@@ -546,7 +673,10 @@ class Order
 		return $this;
 	}
 
-		public $billingInfo;
+	/**
+	*Container for the customer billing information associated with an order.
+	*/
+	public $billingInfo;
 	public function getBillingInfo() {
 		return $this->billingInfo;
 	}
@@ -556,7 +686,10 @@ class Order
 		return $this;
 	}
 
-		public $changeMessages;
+	/**
+	*Paged list of notes entered when the order was modified.
+	*/
+	public $changeMessages;
 	public function getChangeMessages() {
 		return $this->changeMessages;
 	}
@@ -576,17 +709,10 @@ class Order
 		return $this;
 	}
 
-		public $items;
-	public function getItems() {
-		return $this->items;
-	}
-	
-	public function setItems($items) {
-		$this->items = $items;
-		return $this;
-	}
-
-		public $notes;
+	/**
+	*Paged list collection of order notes.
+	*/
+	public $notes;
 	public function getNotes() {
 		return $this->notes;
 	}
@@ -596,7 +722,10 @@ class Order
 		return $this;
 	}
 
-		public $orderDiscounts;
+	/**
+	*List of order-level discounts that apply to the order.
+	*/
+	public $orderDiscounts;
 	public function getOrderDiscounts() {
 		return $this->orderDiscounts;
 	}
@@ -606,7 +735,10 @@ class Order
 		return $this;
 	}
 
-		public $packages;
+	/**
+	*Wrapper for the physical packages shipped for the specified order.
+	*/
+	public $packages;
 	public function getPackages() {
 		return $this->packages;
 	}
@@ -616,7 +748,10 @@ class Order
 		return $this;
 	}
 
-		public $payments;
+	/**
+	*Wrapper for a collection of payments associated with this order. An order can include any number of payments.
+	*/
+	public $payments;
 	public function getPayments() {
 		return $this->payments;
 	}
@@ -646,7 +781,10 @@ class Order
 		return $this;
 	}
 
-		public $shippingAdjustment;
+	/**
+	*Properties of an ad-hoc price adjustment made for an order.
+	*/
+	public $shippingAdjustment;
 	public function getShippingAdjustment() {
 		return $this->shippingAdjustment;
 	}
@@ -656,7 +794,10 @@ class Order
 		return $this;
 	}
 
-		public $shippingDiscounts;
+	/**
+	*List of shipping discounts to apply to the order.
+	*/
+	public $shippingDiscounts;
 	public function getShippingDiscounts() {
 		return $this->shippingDiscounts;
 	}
@@ -666,7 +807,10 @@ class Order
 		return $this;
 	}
 
-		public $shopperNotes;
+	/**
+	*A paged list collection of shopper notes for the order.
+	*/
+	public $shopperNotes;
 	public function getShopperNotes() {
 		return $this->shopperNotes;
 	}

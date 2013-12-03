@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
+/**
+*	A hold placed on product inventory for a particular product so that the quantity specified is set aside and available for purchase during the ordering process.
+*/
 class ProductReservation
 {
-		public $id;
+	/**
+	*Identifier of the entity.
+	*/
+	public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -36,7 +42,10 @@ class ProductReservation
 		return $this;
 	}
 
-		public $orderId;
+	/**
+	*Unique identifier of the order.
+	*/
+	public $orderId;
 	public function getOrderId() {
 		return $this->orderId;
 	}
@@ -46,7 +55,10 @@ class ProductReservation
 		return $this;
 	}
 
-		public $orderItemId;
+	/**
+	*The unique identifier of the item in the order.
+	*/
+	public $orderItemId;
 	public function getOrderItemId() {
 		return $this->orderItemId;
 	}
@@ -56,7 +68,10 @@ class ProductReservation
 		return $this;
 	}
 
-		public $productCode;
+	/**
+	*"Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+	*/
+	public $productCode;
 	public function getProductCode() {
 		return $this->productCode;
 	}
@@ -66,7 +81,10 @@ class ProductReservation
 		return $this;
 	}
 
-		public $quantity;
+	/**
+	*The quantity of items associated with the product reservation.
+	*/
+	public $quantity;
 	public function getQuantity() {
 		return $this->quantity;
 	}
@@ -76,7 +94,10 @@ class ProductReservation
 		return $this;
 	}
 
-		public $auditInfo;
+	/**
+	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*/
+	public $auditInfo;
 	public function getAuditInfo() {
 		return $this->auditInfo;
 	}

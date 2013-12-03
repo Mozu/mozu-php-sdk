@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\Core;
 
 
 
+/**
+*	Address information to supply for a contact.
+*/
 class Address
 {
-		public $address1;
+	/**
+	*Physical or mailing address line one. Usually includes the street number and street name or it could be a P.O. Box. Max length: 200.
+	*/
+	public $address1;
 	public function getAddress1() {
 		return $this->address1;
 	}
@@ -26,7 +32,10 @@ class Address
 		return $this;
 	}
 
-		public $address2;
+	/**
+	*Physical or mailing address line two. Usually supplements the main street address with apartment, floor, suite, building, or unit information. Max length: 200.
+	*/
+	public $address2;
 	public function getAddress2() {
 		return $this->address2;
 	}
@@ -36,7 +45,10 @@ class Address
 		return $this;
 	}
 
-		public $address3;
+	/**
+	*Physical or mailing address line three. Max length: 200.
+	*/
+	public $address3;
 	public function getAddress3() {
 		return $this->address3;
 	}
@@ -46,7 +58,10 @@ class Address
 		return $this;
 	}
 
-		public $address4;
+	/**
+	*Physical or mailing address line four. Max length: 200.
+	*/
+	public $address4;
 	public function getAddress4() {
 		return $this->address4;
 	}
@@ -56,7 +71,10 @@ class Address
 		return $this;
 	}
 
-		public $addressType;
+	/**
+	*The type of address, which is commercial or residential.
+	*/
+	public $addressType;
 	public function getAddressType() {
 		return $this->addressType;
 	}
@@ -66,7 +84,10 @@ class Address
 		return $this;
 	}
 
-		public $cityOrTown;
+	/**
+	*City or town for the physical or mailing address. Max length: 100.
+	*/
+	public $cityOrTown;
 	public function getCityOrTown() {
 		return $this->cityOrTown;
 	}
@@ -76,7 +97,10 @@ class Address
 		return $this;
 	}
 
-		public $countryCode;
+	/**
+	*2 letter geographic code representing the country for the physical or mailing address. Currently limited to the US.
+	*/
+	public $countryCode;
 	public function getCountryCode() {
 		return $this->countryCode;
 	}
@@ -86,7 +110,10 @@ class Address
 		return $this;
 	}
 
-		public $isValidated;
+	/**
+	*If true, the address has been verified by an address validation service.
+	*/
+	public $isValidated;
 	public function getIsValidated() {
 		return $this->isValidated;
 	}
@@ -96,7 +123,10 @@ class Address
 		return $this;
 	}
 
-		public $postalOrZipCode;
+	/**
+	*"For example, a USPS-approved ZIP code standard is ZIP+4: 12345-6789. Max length: 100."
+	*/
+	public $postalOrZipCode;
 	public function getPostalOrZipCode() {
 		return $this->postalOrZipCode;
 	}
@@ -106,7 +136,10 @@ class Address
 		return $this;
 	}
 
-		public $stateOrProvince;
+	/**
+	*2 letter geographic code representing the state for the physical or mailing address. Currently limited to the US.
+	*/
+	public $stateOrProvince;
 	public function getStateOrProvince() {
 		return $this->stateOrProvince;
 	}

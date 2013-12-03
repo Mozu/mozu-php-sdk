@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\Reference;
 
 
 
+/**
+*	The field property that describes the type of information pertaining to how the field renders and functions.
+*/
 class FieldData
 {
-		public $code;
+	/**
+	*Code of the field.
+	*/
+	public $code;
 	public function getCode() {
 		return $this->code;
 	}
@@ -26,7 +32,10 @@ class FieldData
 		return $this;
 	}
 
-		public $value;
+	/**
+	*The field value.
+	*/
+	public $value;
 	public function getValue() {
 		return $this->value;
 	}

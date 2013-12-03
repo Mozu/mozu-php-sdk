@@ -17,94 +17,22 @@ namespace Mozu\Api\Contracts\AppDev;
 class Package
 {
 		public $applicationVersionId;
-	public function getApplicationVersionId() {
-		return $this->applicationVersionId;
-	}
-	
-	public function setApplicationVersionId($applicationVersionId) {
-		$this->applicationVersionId = $applicationVersionId;
-		return $this;
-	}
 
 		public $assetFileCount;
-	public function getAssetFileCount() {
-		return $this->assetFileCount;
-	}
-	
-	public function setAssetFileCount($assetFileCount) {
-		$this->assetFileCount = $assetFileCount;
-		return $this;
-	}
 
 		public $id;
-	public function getId() {
-		return $this->id;
-	}
-	
-	public function setId($id) {
-		$this->id = $id;
-		return $this;
-	}
 
 		public $isDeleted;
-	public function getIsDeleted() {
-		return $this->isDeleted;
-	}
-	
-	public function setIsDeleted($isDeleted) {
-		$this->isDeleted = $isDeleted;
-		return $this;
-	}
 
 		public $isLocked;
-	public function getIsLocked() {
-		return $this->isLocked;
-	}
-	
-	public function setIsLocked($isLocked) {
-		$this->isLocked = $isLocked;
-		return $this;
-	}
 
 		public $isReleasePackage;
-	public function getIsReleasePackage() {
-		return $this->isReleasePackage;
-	}
-	
-	public function setIsReleasePackage($isReleasePackage) {
-		$this->isReleasePackage = $isReleasePackage;
-		return $this;
-	}
 
 		public $name;
-	public function getName() {
-		return $this->name;
-	}
-	
-	public function setName($name) {
-		$this->name = $name;
-		return $this;
-	}
 
 		public $userId;
-	public function getUserId() {
-		return $this->userId;
-	}
-	
-	public function setUserId($userId) {
-		$this->userId = $userId;
-		return $this;
-	}
 
 		public $auditInfo;
-	public function getAuditInfo() {
-		return $this->auditInfo;
-	}
-	
-	public function setAuditInfo($auditInfo) {
-		$this->auditInfo = $auditInfo;
-		return $this;
-	}
 
 }
 

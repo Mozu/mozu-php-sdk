@@ -19,7 +19,7 @@ class CardUrl  {
 
 	/**
 		* Get Resource Url for GetAccountCards
-		* @param int $accountId 
+		* @param int $accountId Unique identifier of the customer account.
 		* @return string Resource Url
 	*/
 	public static function getAccountCardsUrl($accountId)
@@ -31,7 +31,7 @@ class CardUrl  {
 	
 	/**
 		* Get Resource Url for AddAccountCard
-		* @param int $accountId 
+		* @param int $accountId Unique identifier of the customer account.
 		* @return string Resource Url
 	*/
 	public static function addAccountCardUrl($accountId)
@@ -43,7 +43,7 @@ class CardUrl  {
 	
 	/**
 		* Get Resource Url for UpdateAccountCard
-		* @param int $accountId 
+		* @param int $accountId Unique identifier of the customer account.
 		* @return string Resource Url
 	*/
 	public static function updateAccountCardUrl($accountId)
@@ -55,8 +55,8 @@ class CardUrl  {
 	
 	/**
 		* Get Resource Url for DeleteAccountCard
-		* @param int $accountId 
-		* @param string $cardId 
+		* @param int $accountId Unique identifier of the customer account.
+		* @param string $cardId Unique identifier of the credit card to delete.
 		* @return string Resource Url
 	*/
 	public static function deleteAccountCardUrl($accountId, $cardId)

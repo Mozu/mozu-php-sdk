@@ -14,6 +14,9 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
+/**
+*	A descriptive container in a storefront hierarchy to organize collections of products. Only available at the site-level when multiple sites and site groups exist.
+*/
 class Category
 {
 		public $catalogId;
@@ -26,7 +29,10 @@ class Category
 		return $this;
 	}
 
-		public $childCount;
+	/**
+	*The number of children (subcategories, for example) that stem from a parent (top-level category).
+	*/
+	public $childCount;
 	public function getChildCount() {
 		return $this->childCount;
 	}
@@ -36,7 +42,10 @@ class Category
 		return $this;
 	}
 
-		public $id;
+	/**
+	*Identifier of the entity.
+	*/
+	public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -46,7 +55,10 @@ class Category
 		return $this;
 	}
 
-		public $isDisplayed;
+	/**
+	*If true, the admin product category is displayed in the store. If true, the category is not displayed.
+	*/
+	public $isDisplayed;
 	public function getIsDisplayed() {
 		return $this->isDisplayed;
 	}
@@ -56,7 +68,10 @@ class Category
 		return $this;
 	}
 
-		public $parentCategoryId;
+	/**
+	*Identifier of the parent or top-level category.
+	*/
+	public $parentCategoryId;
 	public function getParentCategoryId() {
 		return $this->parentCategoryId;
 	}
@@ -66,7 +81,10 @@ class Category
 		return $this;
 	}
 
-		public $productCount;
+	/**
+	*The number of products in a list.
+	*/
+	public $productCount;
 	public function getProductCount() {
 		return $this->productCount;
 	}
@@ -76,7 +94,10 @@ class Category
 		return $this;
 	}
 
-		public $sequence;
+	/**
+	*The numeric value that denotes the place this entity occupies in the order of the entity list.
+	*/
+	public $sequence;
 	public function getSequence() {
 		return $this->sequence;
 	}
@@ -86,7 +107,10 @@ class Category
 		return $this;
 	}
 
-		public $auditInfo;
+	/**
+	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*/
+	public $auditInfo;
 	public function getAuditInfo() {
 		return $this->auditInfo;
 	}
@@ -96,7 +120,10 @@ class Category
 		return $this;
 	}
 
-		public $content;
+	/**
+	*Complex type that contains content for a language specified by LocaleCode.
+	*/
+	public $content;
 	public function getContent() {
 		return $this->content;
 	}

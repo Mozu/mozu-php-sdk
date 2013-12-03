@@ -14,6 +14,9 @@ namespace Mozu\Api\Contracts\Tenant;
 
 
 
+/**
+*	***Always private and should not be published.***
+*/
 class Entitlement
 {
 		public $appConfigUrl;
@@ -76,7 +79,10 @@ class Entitlement
 		return $this;
 	}
 
-		public $applicationVersionId;
+	/**
+	****Always private and should not be published.***
+	*/
+	public $applicationVersionId;
 	public function getApplicationVersionId() {
 		return $this->applicationVersionId;
 	}
@@ -86,7 +92,10 @@ class Entitlement
 		return $this;
 	}
 
-		public $createDate;
+	/**
+	*Date and time when the entity was created. UTC Date/Time.
+	*/
+	public $createDate;
 	public function getCreateDate() {
 		return $this->createDate;
 	}
@@ -136,7 +145,10 @@ class Entitlement
 		return $this;
 	}
 
-		public $id;
+	/**
+	*Identifier of the entity.
+	*/
+	public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -156,7 +168,10 @@ class Entitlement
 		return $this;
 	}
 
-		public $publishedDate;
+	/**
+	*When the document was published. System-supplied and read-only.
+	*/
+	public $publishedDate;
 	public function getPublishedDate() {
 		return $this->publishedDate;
 	}
@@ -186,7 +201,10 @@ class Entitlement
 		return $this;
 	}
 
-		public $tenantId;
+	/**
+	*Unique identifier of the Mozu tenant.
+	*/
+	public $tenantId;
 	public function getTenantId() {
 		return $this->tenantId;
 	}
@@ -196,7 +214,10 @@ class Entitlement
 		return $this;
 	}
 
-		public $updateDate;
+	/**
+	*Date and time when the entity was last updated. UTC Date/Time.
+	*/
+	public $updateDate;
 	public function getUpdateDate() {
 		return $this->updateDate;
 	}

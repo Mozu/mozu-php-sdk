@@ -26,7 +26,10 @@ class PreAuthorizeTransactionTypeDataContract
 		return $this;
 	}
 
-		public $id;
+	/**
+	*Identifier of the entity.
+	*/
+	public $id;
 	public function getId() {
 		return $this->id;
 	}

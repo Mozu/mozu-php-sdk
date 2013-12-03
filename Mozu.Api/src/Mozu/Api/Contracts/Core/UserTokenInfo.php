@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\Core;
 
 
 
+/**
+*	Information stored in the user token.
+*/
 class UserTokenInfo
 {
-		public $accessToken;
+	/**
+	*The access token associated with the user's authentication ticket.
+	*/
+	public $accessToken;
 	public function getAccessToken() {
 		return $this->accessToken;
 	}

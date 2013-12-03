@@ -17,14 +17,6 @@ namespace Mozu\Api\Contracts\Location;
 class Hours
 {
 		public $label;
-	public function getLabel() {
-		return $this->label;
-	}
-	
-	public function setLabel($label) {
-		$this->label = $label;
-		return $this;
-	}
 
 }
 

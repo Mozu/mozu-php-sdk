@@ -17,64 +17,16 @@ namespace Mozu\Api\Contracts\Tenant;
 class Tenant
 {
 		public $domain;
-	public function getDomain() {
-		return $this->domain;
-	}
-	
-	public function setDomain($domain) {
-		$this->domain = $domain;
-		return $this;
-	}
 
 		public $id;
-	public function getId() {
-		return $this->id;
-	}
-	
-	public function setId($id) {
-		$this->id = $id;
-		return $this;
-	}
 
 		public $isDevTenant;
-	public function getIsDevTenant() {
-		return $this->isDevTenant;
-	}
-	
-	public function setIsDevTenant($isDevTenant) {
-		$this->isDevTenant = $isDevTenant;
-		return $this;
-	}
 
 		public $name;
-	public function getName() {
-		return $this->name;
-	}
-	
-	public function setName($name) {
-		$this->name = $name;
-		return $this;
-	}
 
 		public $masterCatalogs;
-	public function getMasterCatalogs() {
-		return $this->masterCatalogs;
-	}
-	
-	public function setMasterCatalogs($masterCatalogs) {
-		$this->masterCatalogs = $masterCatalogs;
-		return $this;
-	}
 
 		public $sites;
-	public function getSites() {
-		return $this->sites;
-	}
-	
-	public function setSites($sites) {
-		$this->sites = $sites;
-		return $this;
-	}
 
 }
 

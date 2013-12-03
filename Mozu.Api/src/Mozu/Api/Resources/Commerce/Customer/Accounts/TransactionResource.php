@@ -15,6 +15,8 @@ namespace Mozu\Api\Resources\Commerce\Customer\Accounts;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Customer\Accounts\TransactionClient;
 use Mozu\Api\ApiContext;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * 

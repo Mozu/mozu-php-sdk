@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
+/**
+*	A product type is like a product template that can be reused in the product admin service. Assign a product type to have certain attributes.
+*/
 class AttributeInProductType
 {
-		public $attributeFQN;
+	/**
+	*"The fully qualified name of the attribute, which is a user defined attribute identifier."
+	*/
+	public $attributeFQN;
 	public function getAttributeFQN() {
 		return $this->attributeFQN;
 	}
@@ -26,7 +32,10 @@ class AttributeInProductType
 		return $this;
 	}
 
-		public $isHiddenProperty;
+	/**
+	*If true, this property is hidden on the storefront. If false, this property is not hidden from the storefront.
+	*/
+	public $isHiddenProperty;
 	public function getIsHiddenProperty() {
 		return $this->isHiddenProperty;
 	}
@@ -36,7 +45,10 @@ class AttributeInProductType
 		return $this;
 	}
 
-		public $isInheritedFromBaseType;
+	/**
+	*If true, this entity is inherited from the base type. If false, this entity is not inherited from the base type.
+	*/
+	public $isInheritedFromBaseType;
 	public function getIsInheritedFromBaseType() {
 		return $this->isInheritedFromBaseType;
 	}
@@ -46,7 +58,10 @@ class AttributeInProductType
 		return $this;
 	}
 
-		public $isMultiValueProperty;
+	/**
+	*If true, this attribute has more than one possible value.
+	*/
+	public $isMultiValueProperty;
 	public function getIsMultiValueProperty() {
 		return $this->isMultiValueProperty;
 	}
@@ -56,7 +71,10 @@ class AttributeInProductType
 		return $this;
 	}
 
-		public $isRequiredByAdmin;
+	/**
+	*If true, the entity is required by the admin. If false, the entity is not required by the admin.
+	*/
+	public $isRequiredByAdmin;
 	public function getIsRequiredByAdmin() {
 		return $this->isRequiredByAdmin;
 	}
@@ -66,7 +84,10 @@ class AttributeInProductType
 		return $this;
 	}
 
-		public $order;
+	/**
+	*The sequence of this attribute within its product type.
+	*/
+	public $order;
 	public function getOrder() {
 		return $this->order;
 	}
@@ -76,7 +97,10 @@ class AttributeInProductType
 		return $this;
 	}
 
-		public $attributeDetail;
+	/**
+	*The wrapper for the properties of the product attribute to set up or generate from the system in the product admin. Properties include namespace, attribute code, attribute sequence, site group ID, input type, value type, data type, boolean flags, and metadata key value pairs.
+	*/
+	public $attributeDetail;
 	public function getAttributeDetail() {
 		return $this->attributeDetail;
 	}
@@ -86,7 +110,10 @@ class AttributeInProductType
 		return $this;
 	}
 
-		public $vocabularyValues;
+	/**
+	*The list of vocabulary values available for the attribute associated with the product type.
+	*/
+	public $vocabularyValues;
 	public function getVocabularyValues() {
 		return $this->vocabularyValues;
 	}

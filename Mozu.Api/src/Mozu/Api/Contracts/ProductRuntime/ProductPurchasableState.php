@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 
+/**
+*	The current state of the product purchase determines whether or not the product is eligible for purchase. Products with options are only purchasable if the shopper has selected all required options. If the product is not ready for purchase, a message lists missing options that are required.
+*/
 class ProductPurchasableState
 {
-		public $isPurchasable;
+	/**
+	*If true, the entity has met all requirements and considered a purchasable entity.
+	*/
+	public $isPurchasable;
 	public function getIsPurchasable() {
 		return $this->isPurchasable;
 	}
@@ -26,7 +32,10 @@ class ProductPurchasableState
 		return $this;
 	}
 
-		public $messages;
+	/**
+	*List of messages associated with the product if the product is not ready for purchase.
+	*/
+	public $messages;
 	public function getMessages() {
 		return $this->messages;
 	}

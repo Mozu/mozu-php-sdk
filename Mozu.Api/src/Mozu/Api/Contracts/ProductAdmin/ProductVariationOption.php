@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
+/**
+*	Details of a product variation option.
+*/
 class ProductVariationOption
 {
-		public $attributeFQN;
+	/**
+	*"The fully qualified name of the attribute, which is a user defined attribute identifier."
+	*/
+	public $attributeFQN;
 	public function getAttributeFQN() {
 		return $this->attributeFQN;
 	}
@@ -26,7 +32,10 @@ class ProductVariationOption
 		return $this;
 	}
 
-		public $value;
+	/**
+	*The value of an attribute option specified for this product variation.
+	*/
+	public $value;
 	public function getValue() {
 		return $this->value;
 	}
@@ -36,7 +45,10 @@ class ProductVariationOption
 		return $this;
 	}
 
-		public $content;
+	/**
+	*Complex type that contains content for a language specified by LocaleCode.
+	*/
+	public $content;
 	public function getContent() {
 		return $this->content;
 	}

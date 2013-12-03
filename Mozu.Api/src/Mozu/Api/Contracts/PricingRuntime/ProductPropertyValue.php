@@ -17,24 +17,8 @@ namespace Mozu\Api\Contracts\PricingRuntime;
 class ProductPropertyValue
 {
 		public $stringValue;
-	public function getStringValue() {
-		return $this->stringValue;
-	}
-	
-	public function setStringValue($stringValue) {
-		$this->stringValue = $stringValue;
-		return $this;
-	}
 
 		public $value;
-	public function getValue() {
-		return $this->value;
-	}
-	
-	public function setValue($value) {
-		$this->value = $value;
-		return $this;
-	}
 
 }
 

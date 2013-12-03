@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
+/**
+*	Validates the attribute configured for the product in the storefront against the attribute configured in product admin.
+*/
 class AttributeValidation
 {
-		public $maxDateValue;
+	/**
+	* System-supplied and read-only.
+	*/
+	public $maxDateValue;
 	public function getMaxDateValue() {
 		return $this->maxDateValue;
 	}
@@ -26,7 +32,10 @@ class AttributeValidation
 		return $this;
 	}
 
-		public $maxNumericValue;
+	/**
+	*The maximum number of characters for the numeric length.
+	*/
+	public $maxNumericValue;
 	public function getMaxNumericValue() {
 		return $this->maxNumericValue;
 	}
@@ -36,7 +45,10 @@ class AttributeValidation
 		return $this;
 	}
 
-		public $maxStringLength;
+	/**
+	*The maximum number of characters for the string length.
+	*/
+	public $maxStringLength;
 	public function getMaxStringLength() {
 		return $this->maxStringLength;
 	}
@@ -46,7 +58,10 @@ class AttributeValidation
 		return $this;
 	}
 
-		public $minDateValue;
+	/**
+	* System-supplied and read-only.
+	*/
+	public $minDateValue;
 	public function getMinDateValue() {
 		return $this->minDateValue;
 	}
@@ -56,7 +71,10 @@ class AttributeValidation
 		return $this;
 	}
 
-		public $minNumericValue;
+	/**
+	*The minimum number of characters for the numeric length.
+	*/
+	public $minNumericValue;
 	public function getMinNumericValue() {
 		return $this->minNumericValue;
 	}
@@ -66,7 +84,10 @@ class AttributeValidation
 		return $this;
 	}
 
-		public $minStringLength;
+	/**
+	*The minimum character length of the string.
+	*/
+	public $minStringLength;
 	public function getMinStringLength() {
 		return $this->minStringLength;
 	}
@@ -76,7 +97,10 @@ class AttributeValidation
 		return $this;
 	}
 
-		public $regularExpression;
+	/**
+	*Regular expression used to process attribute values that require special formatting such as phone numbers.
+	*/
+	public $regularExpression;
 	public function getRegularExpression() {
 		return $this->regularExpression;
 	}

@@ -16,7 +16,10 @@ namespace Mozu\Api\Contracts\PaymentService;
 
 class GatewayCredentialFieldDefinition
 {
-		public $adminDisplayOrder;
+	/**
+	****Always private and should not be published.*** Previous ApiRefId "Mozu.PaymentService.Contracts.GatewayCredentialFieldDefinition.AdminDisplayOrder"
+	*/
+	public $adminDisplayOrder;
 	public function getAdminDisplayOrder() {
 		return $this->adminDisplayOrder;
 	}

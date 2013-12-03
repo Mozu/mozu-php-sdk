@@ -17,124 +17,28 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Fulfillment;
 class Package
 {
 		public $availableActions;
-	public function getAvailableActions() {
-		return $this->availableActions;
-	}
-	
-	public function setAvailableActions($availableActions) {
-		$this->availableActions = $availableActions;
-		return $this;
-	}
 
 		public $fulfillmentDate;
-	public function getFulfillmentDate() {
-		return $this->fulfillmentDate;
-	}
-	
-	public function setFulfillmentDate($fulfillmentDate) {
-		$this->fulfillmentDate = $fulfillmentDate;
-		return $this;
-	}
 
 		public $id;
-	public function getId() {
-		return $this->id;
-	}
-	
-	public function setId($id) {
-		$this->id = $id;
-		return $this;
-	}
 
 		public $packagingType;
-	public function getPackagingType() {
-		return $this->packagingType;
-	}
-	
-	public function setPackagingType($packagingType) {
-		$this->packagingType = $packagingType;
-		return $this;
-	}
 
 		public $shipmentId;
-	public function getShipmentId() {
-		return $this->shipmentId;
-	}
-	
-	public function setShipmentId($shipmentId) {
-		$this->shipmentId = $shipmentId;
-		return $this;
-	}
 
 		public $shippingMethodCode;
-	public function getShippingMethodCode() {
-		return $this->shippingMethodCode;
-	}
-	
-	public function setShippingMethodCode($shippingMethodCode) {
-		$this->shippingMethodCode = $shippingMethodCode;
-		return $this;
-	}
 
 		public $shippingMethodName;
-	public function getShippingMethodName() {
-		return $this->shippingMethodName;
-	}
-	
-	public function setShippingMethodName($shippingMethodName) {
-		$this->shippingMethodName = $shippingMethodName;
-		return $this;
-	}
 
 		public $status;
-	public function getStatus() {
-		return $this->status;
-	}
-	
-	public function setStatus($status) {
-		$this->status = $status;
-		return $this;
-	}
 
 		public $trackingNumber;
-	public function getTrackingNumber() {
-		return $this->trackingNumber;
-	}
-	
-	public function setTrackingNumber($trackingNumber) {
-		$this->trackingNumber = $trackingNumber;
-		return $this;
-	}
 
 		public $auditInfo;
-	public function getAuditInfo() {
-		return $this->auditInfo;
-	}
-	
-	public function setAuditInfo($auditInfo) {
-		$this->auditInfo = $auditInfo;
-		return $this;
-	}
 
 		public $items;
-	public function getItems() {
-		return $this->items;
-	}
-	
-	public function setItems($items) {
-		$this->items = $items;
-		return $this;
-	}
 
 		public $measurements;
-	public function getMeasurements() {
-		return $this->measurements;
-	}
-	
-	public function setMeasurements($measurements) {
-		$this->measurements = $measurements;
-		return $this;
-	}
 
 }
 

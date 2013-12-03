@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\PricingRuntime;
 
 
 
+/**
+*	The tax properties associated with the order.
+*/
 class TaxContext
 {
-		public $customerId;
+	/**
+	*Unique identifier of the customer.
+	*/
+	public $customerId;
 	public function getCustomerId() {
 		return $this->customerId;
 	}
@@ -26,7 +32,10 @@ class TaxContext
 		return $this;
 	}
 
-		public $taxContextId;
+	/**
+	*Unique identifier of the tax context.
+	*/
+	public $taxContextId;
 	public function getTaxContextId() {
 		return $this->taxContextId;
 	}
@@ -36,7 +45,10 @@ class TaxContext
 		return $this;
 	}
 
-		public $taxExemptId;
+	/**
+	*If the order is exempt from sales tax, the unique identifier of the tax exempt entity.
+	*/
+	public $taxExemptId;
 	public function getTaxExemptId() {
 		return $this->taxExemptId;
 	}
@@ -46,7 +58,10 @@ class TaxContext
 		return $this;
 	}
 
-		public $destinationAddress;
+	/**
+	*The address to which the order ships.
+	*/
+	public $destinationAddress;
 	public function getDestinationAddress() {
 		return $this->destinationAddress;
 	}
@@ -56,7 +71,10 @@ class TaxContext
 		return $this;
 	}
 
-		public $originAddress;
+	/**
+	*The address from which the order ships.
+	*/
+	public $originAddress;
 	public function getOriginAddress() {
 		return $this->originAddress;
 	}

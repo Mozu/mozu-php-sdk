@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 
+/**
+*	The price of the product in the specified currency code (USD). This price can either be the sale price or the price for which the merchang intends to sell the product.
+*/
 class ProductPrice
 {
-		public $price;
+	/**
+	*The price the merchant intends to charge for the product.
+	*/
+	public $price;
 	public function getPrice() {
 		return $this->price;
 	}
@@ -26,7 +32,10 @@ class ProductPrice
 		return $this;
 	}
 
-		public $salePrice;
+	/**
+	*The sale price defined for the product.
+	*/
+	public $salePrice;
 	public function getSalePrice() {
 		return $this->salePrice;
 	}
@@ -36,7 +45,10 @@ class ProductPrice
 		return $this;
 	}
 
-		public $discount;
+	/**
+	*The discount applied to the product price.
+	*/
+	public $discount;
 	public function getDiscount() {
 		return $this->discount;
 	}

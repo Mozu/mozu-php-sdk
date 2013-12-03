@@ -19,7 +19,7 @@ class AdminUserUrl  {
 
 	/**
 		* Get Resource Url for GetUser
-		* @param string $userId 
+		* @param string $userId Unique identifier of the administrator account to retrieve.
 		* @return string Resource Url
 	*/
 	public static function getUserUrl($userId)
@@ -31,7 +31,7 @@ class AdminUserUrl  {
 	
 	/**
 		* Get Resource Url for GetTenantScopesForUser
-		* @param string $userId 
+		* @param string $userId Unique identifier of the user whose tenant scopes you want to retrieve.
 		* @return string Resource Url
 	*/
 	public static function getTenantScopesForUserUrl($userId)

@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\Core;
 
 
 
+/**
+*	Properties of a user authentication ticket.
+*/
 class UserAuthTicket
 {
-		public $accessToken;
+	/**
+	*Access token for the user authentication ticket.
+	*/
+	public $accessToken;
 	public function getAccessToken() {
 		return $this->accessToken;
 	}
@@ -26,7 +32,10 @@ class UserAuthTicket
 		return $this;
 	}
 
-		public $accessTokenExpiration;
+	/**
+	*The date and time the access token expires for the user authentication ticket.
+	*/
+	public $accessTokenExpiration;
 	public function getAccessTokenExpiration() {
 		return $this->accessTokenExpiration;
 	}
@@ -36,7 +45,10 @@ class UserAuthTicket
 		return $this;
 	}
 
-		public $grantedBehaviors;
+	/**
+	*Encrypted list of behaviors associated with the user authentication ticket.
+	*/
+	public $grantedBehaviors;
 	public function getGrantedBehaviors() {
 		return $this->grantedBehaviors;
 	}
@@ -46,7 +58,10 @@ class UserAuthTicket
 		return $this;
 	}
 
-		public $refreshToken;
+	/**
+	*The refresh roken for the user authentication ticket.
+	*/
+	public $refreshToken;
 	public function getRefreshToken() {
 		return $this->refreshToken;
 	}
@@ -56,7 +71,10 @@ class UserAuthTicket
 		return $this;
 	}
 
-		public $refreshTokenExpiration;
+	/**
+	*The date and time the refresh token expires for the user authentication ticket.
+	*/
+	public $refreshTokenExpiration;
 	public function getRefreshTokenExpiration() {
 		return $this->refreshTokenExpiration;
 	}
@@ -66,7 +84,10 @@ class UserAuthTicket
 		return $this;
 	}
 
-		public $scope;
+	/**
+	*The tenant scope to which the user authentication ticket applies.
+	*/
+	public $scope;
 	public function getScope() {
 		return $this->scope;
 	}
@@ -76,7 +97,10 @@ class UserAuthTicket
 		return $this;
 	}
 
-		public $user;
+	/**
+	*Properties of the user.
+	*/
+	public $user;
 	public function getUser() {
 		return $this->user;
 	}

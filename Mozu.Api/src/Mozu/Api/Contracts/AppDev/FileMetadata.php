@@ -17,64 +17,16 @@ namespace Mozu\Api\Contracts\AppDev;
 class FileMetadata
 {
 		public $checkSum;
-	public function getCheckSum() {
-		return $this->checkSum;
-	}
-	
-	public function setCheckSum($checkSum) {
-		$this->checkSum = $checkSum;
-		return $this;
-	}
 
 		public $id;
-	public function getId() {
-		return $this->id;
-	}
-	
-	public function setId($id) {
-		$this->id = $id;
-		return $this;
-	}
 
 		public $path;
-	public function getPath() {
-		return $this->path;
-	}
-	
-	public function setPath($path) {
-		$this->path = $path;
-		return $this;
-	}
 
 		public $sizeInBytes;
-	public function getSizeInBytes() {
-		return $this->sizeInBytes;
-	}
-	
-	public function setSizeInBytes($sizeInBytes) {
-		$this->sizeInBytes = $sizeInBytes;
-		return $this;
-	}
 
 		public $type;
-	public function getType() {
-		return $this->type;
-	}
-	
-	public function setType($type) {
-		$this->type = $type;
-		return $this;
-	}
 
 		public $auditInfo;
-	public function getAuditInfo() {
-		return $this->auditInfo;
-	}
-	
-	public function setAuditInfo($auditInfo) {
-		$this->auditInfo = $auditInfo;
-		return $this;
-	}
 
 }
 

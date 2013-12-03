@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Discounts;
 
 
 
+/**
+*	"The discount currently applied to the cart or order, represented as a negative currency amount to be subtracted from the final price. If multiple discounts are applied to the same order, the Applied Discount displays the most valuable discount for the shopper."
+*/
 class AppliedDiscount
 {
-		public $couponCode;
+	/**
+	*Alphanumeric code associated with the coupon or promotion that results in a discounted price.
+	*/
+	public $couponCode;
 	public function getCouponCode() {
 		return $this->couponCode;
 	}
@@ -26,7 +32,10 @@ class AppliedDiscount
 		return $this;
 	}
 
-		public $excluded;
+	/**
+	*If true, the system ignores this discount when pricing the order.
+	*/
+	public $excluded;
 	public function getExcluded() {
 		return $this->excluded;
 	}
@@ -36,7 +45,10 @@ class AppliedDiscount
 		return $this;
 	}
 
-		public $impact;
+	/**
+	*The value of the discount applied to the cart or order, represented as a negative currency amount to apply to the original price.
+	*/
+	public $impact;
 	public function getImpact() {
 		return $this->impact;
 	}
@@ -46,7 +58,10 @@ class AppliedDiscount
 		return $this;
 	}
 
-		public $discount;
+	/**
+	*Discount currently applied to the cart or order.
+	*/
+	public $discount;
 	public function getDiscount() {
 		return $this->discount;
 	}

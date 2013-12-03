@@ -17,34 +17,10 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Orders;
 class OrderValidationMessage
 {
 		public $message;
-	public function getMessage() {
-		return $this->message;
-	}
-	
-	public function setMessage($message) {
-		$this->message = $message;
-		return $this;
-	}
 
 		public $messageType;
-	public function getMessageType() {
-		return $this->messageType;
-	}
-	
-	public function setMessageType($messageType) {
-		$this->messageType = $messageType;
-		return $this;
-	}
 
 		public $orderItemId;
-	public function getOrderItemId() {
-		return $this->orderItemId;
-	}
-	
-	public function setOrderItemId($orderItemId) {
-		$this->orderItemId = $orderItemId;
-		return $this;
-	}
 
 }
 

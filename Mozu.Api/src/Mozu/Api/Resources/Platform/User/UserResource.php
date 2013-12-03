@@ -15,9 +15,11 @@ namespace Mozu\Api\Resources\Platform\User;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Platform\User\UserClient;
 use Mozu\Api\ApiContext;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Use this resource to manage shopper accounts for your Mozu tenant.
 */
 class UserResource {
 
@@ -28,9 +30,9 @@ class UserResource {
 	}
 
 	/**
-	* 
+	* Retrieves the details of a user account by supplying the user's email address.
 	*
-	* @param string $emailAddress 
+	* @param string $emailAddress The email address of the specified user.
 	* @return User 
 	*/
 	public function getUserByEmail( $emailAddress, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -43,9 +45,9 @@ class UserResource {
 	}
 	
 	/**
-	* 
+	* Retrieves the details of a user account by supplying the user ID.
 	*
-	* @param string $userId 
+	* @param string $userId Unique identifier of the user.
 	* @return User 
 	*/
 	public function getUser( $userId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -58,9 +60,9 @@ class UserResource {
 	}
 	
 	/**
-	* 
+	* Creates a new shopper user account.
 	*
-	* @param User $shopper 
+	* @param User $shopper Properties of the new shopper user account to create.
 	* @return User 
 	*/
 	public function createUser($shopper, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -73,9 +75,9 @@ class UserResource {
 	}
 	
 	/**
-	* 
+	* Creates a bulk collection of new shopper user accounts.
 	*
-	* @param UserCollection $users 
+	* @param UserCollection $users Properties of the new shopper user accounts to create.
 	* @return UserCollection 
 	*/
 	public function createUsers($users, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -88,9 +90,9 @@ class UserResource {
 	}
 	
 	/**
-	* 
+	* Logs a shopper user in to a tenant.
 	*
-	* @param UserAuthInfo $userAuthInfo 
+	* @param UserAuthInfo $userAuthInfo The authentication information required to log the user in, which consists of email address and password.
 	* @return UserLoginResult 
 	*/
 	public function login($userAuthInfo, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -103,9 +105,9 @@ class UserResource {
 	}
 	
 	/**
-	* 
+	* Reset the shopper user password by supplying the email address.
 	*
-	* @param ResetPasswordInfo $resetPasswordInfo 
+	* @param ResetPasswordInfo $resetPasswordInfo The information required to reset the password, which consists of the user email address.
 	*/
 	public function resetPassword($resetPasswordInfo, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

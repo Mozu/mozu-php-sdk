@@ -17,34 +17,10 @@ namespace Mozu\Api\Contracts\Core\ThirdParty;
 class InitializableShippingCountryPropertyValue
 {
 		public $initialized;
-	public function getInitialized() {
-		return $this->initialized;
-	}
-	
-	public function setInitialized($initialized) {
-		$this->initialized = $initialized;
-		return $this;
-	}
 
 		public $value;
-	public function getValue() {
-		return $this->value;
-	}
-	
-	public function setValue($value) {
-		$this->value = $value;
-		return $this;
-	}
 
 		public $child;
-	public function getChild() {
-		return $this->child;
-	}
-	
-	public function setChild($child) {
-		$this->child = $child;
-		return $this;
-	}
 
 }
 

@@ -91,9 +91,15 @@ class MozuClient {
 	public function execute() {
 		$this->validateContext();
 		$this->buildClientAndRequest();
-		$response = $this->request->send ();
-		$jsonResp = $response->getBody ( true );
-		$this->result = json_decode ( $jsonResp );
+    try {
+      $response = $this->request->send ();
+      $jsonResp = $response->getBody ( true );
+      $this->result = json_decode ( $jsonResp );
+    } catch (Guzzle\Http\Exception\BadResponseException $e) {
+      $jsonResp = $e->getResponse()->getBody ( true );
+      $this->result = json_decode ( $jsonResp );
+    }
+    
 		return $this;
 	}
 
@@ -111,11 +117,17 @@ class MozuClient {
 		}
 		$this->request = $this->client->createRequest($this->mozuUrl->getVerb(), $this->mozuUrl->getUrl(), null, $this->jsonBody );
 		$this->request = $authentication->addAuthHeader($this->request);
-		$this->addHeader('Content-Type', 'application/json');
+		$this->withHeader('Content-Type', 'application/json');
 		foreach ($this->headers as $property=>$value) {
 			$this->request->setHeader($property, $value);
 		}
 		$this->request->setHeader(Headers::X_VOL_VERSION,Version::$apiVersion);
+		
+	    // turn off urlencoding so that filter and sortby params work correctly
+	    $query = $this->request->getQuery();
+	    $query->useUrlEncoding(false);
+    
+		
 	}
 		
 	private function validateContext() {
@@ -139,6 +151,8 @@ class MozuClient {
 		else
 		{
 			$authentication = AppAuthenticator::getInstance();
+			if ($authentication == null)
+			throw new \Exception("App is not initialized. Use AppAuthenticator to initialize the app.");
 			if ($authentication->getBaseUrl() == "")
 				throw new \Exception("Authentication.Instance.BaseUrl is missing");
 		

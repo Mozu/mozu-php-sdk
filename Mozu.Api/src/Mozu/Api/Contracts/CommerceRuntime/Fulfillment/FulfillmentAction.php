@@ -17,34 +17,10 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Fulfillment;
 class FulfillmentAction
 {
 		public $actionName;
-	public function getActionName() {
-		return $this->actionName;
-	}
-	
-	public function setActionName($actionName) {
-		$this->actionName = $actionName;
-		return $this;
-	}
 
 		public $packageIds;
-	public function getPackageIds() {
-		return $this->packageIds;
-	}
-	
-	public function setPackageIds($packageIds) {
-		$this->packageIds = $packageIds;
-		return $this;
-	}
 
 		public $pickupIds;
-	public function getPickupIds() {
-		return $this->pickupIds;
-	}
-	
-	public function setPickupIds($pickupIds) {
-		$this->pickupIds = $pickupIds;
-		return $this;
-	}
 
 }
 

@@ -17,24 +17,8 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Fulfillment;
 class PickupItem
 {
 		public $orderItemId;
-	public function getOrderItemId() {
-		return $this->orderItemId;
-	}
-	
-	public function setOrderItemId($orderItemId) {
-		$this->orderItemId = $orderItemId;
-		return $this;
-	}
 
 		public $quantity;
-	public function getQuantity() {
-		return $this->quantity;
-	}
-	
-	public function setQuantity($quantity) {
-		$this->quantity = $quantity;
-		return $this;
-	}
 
 }
 

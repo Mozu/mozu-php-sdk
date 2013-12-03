@@ -19,11 +19,11 @@ class ProductUrl  {
 
 	/**
 		* Get Resource Url for GetProducts
-		* @param string $filter 
+		* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
 		* @param bool $noCount 
-		* @param int $pageSize 
-		* @param string $q 
-		* @param int $qLimit 
+		* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+		* @param string $q A list of product search terms to use in the query when searching across product code and product name. Separate multiple search terms with a space character.
+		* @param int $qLimit The maximum number of search results to return in the response. You can limit any range between 1-100.
 		* @param string $sortBy 
 		* @param int $startIndex 
 		* @return string Resource Url
@@ -43,7 +43,7 @@ class ProductUrl  {
 	
 	/**
 		* Get Resource Url for GetProduct
-		* @param string $productCode 
+		* @param string $productCode Merchant-created code associated with the product such as a SKU. Max length: 30. Accepts a to z, A to Z, Ã‹-Ã˜, 0 to 9, #, semicolon, commas, apostrophes, and Spaces, but no punctuation or other characters.
 		* @return string Resource Url
 	*/
 	public static function getProductUrl($productCode)
@@ -103,7 +103,7 @@ class ProductUrl  {
 	
 	/**
 		* Get Resource Url for UpdateProduct
-		* @param string $productCode 
+		* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
 		* @return string Resource Url
 	*/
 	public static function updateProductUrl($productCode)
@@ -141,7 +141,7 @@ class ProductUrl  {
 	
 	/**
 		* Get Resource Url for DeleteProduct
-		* @param string $productCode 
+		* @param string $productCode Merchant-created code associated with the product such as a SKU.
 		* @return string Resource Url
 	*/
 	public static function deleteProductUrl($productCode)

@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
+/**
+*	Specifies what to discount such as the type of discount and which products, categories, or shipping methods are eligible for the discount. Discount types can include the percentage off, specific monetary amount, or free shipping. This parameter also specifies the minimum monetary amount that the order must meet for the discount to apply.
+*/
 class DiscountTarget
 {
-		public $includeAllProducts;
+	/**
+	*If true, the target discount applies to all products sold on the storefront. Applies only if the discount type is "Product".
+	*/
+	public $includeAllProducts;
 	public function getIncludeAllProducts() {
 		return $this->includeAllProducts;
 	}
@@ -26,27 +32,10 @@ class DiscountTarget
 		return $this;
 	}
 
-		public $minimumLifetimeValueAmount;
-	public function getMinimumLifetimeValueAmount() {
-		return $this->minimumLifetimeValueAmount;
-	}
-	
-	public function setMinimumLifetimeValueAmount($minimumLifetimeValueAmount) {
-		$this->minimumLifetimeValueAmount = $minimumLifetimeValueAmount;
-		return $this;
-	}
-
-		public $minimumOrderAmount;
-	public function getMinimumOrderAmount() {
-		return $this->minimumOrderAmount;
-	}
-	
-	public function setMinimumOrderAmount($minimumOrderAmount) {
-		$this->minimumOrderAmount = $minimumOrderAmount;
-		return $this;
-	}
-
-		public $type;
+	/**
+	*The type of target to which the discount applies, such as a product.
+	*/
+	public $type;
 	public function getType() {
 		return $this->type;
 	}
@@ -56,23 +45,16 @@ class DiscountTarget
 		return $this;
 	}
 
-		public $categories;
+	/**
+	*The product categories to which the discount can apply.
+	*/
+	public $categories;
 	public function getCategories() {
 		return $this->categories;
 	}
 	
 	public function setCategories($categories) {
 		$this->categories = $categories;
-		return $this;
-	}
-
-		public $customerGroups;
-	public function getCustomerGroups() {
-		return $this->customerGroups;
-	}
-	
-	public function setCustomerGroups($customerGroups) {
-		$this->customerGroups = $customerGroups;
 		return $this;
 	}
 
@@ -96,7 +78,10 @@ class DiscountTarget
 		return $this;
 	}
 
-		public $products;
+	/**
+	*The products to which the discount can apply.
+	*/
+	public $products;
 	public function getProducts() {
 		return $this->products;
 	}
@@ -106,7 +91,10 @@ class DiscountTarget
 		return $this;
 	}
 
-		public $shippingMethods;
+	/**
+	*The list of shipping method parameters that describe a method including the code, localized content, and audit information.
+	*/
+	public $shippingMethods;
 	public function getShippingMethods() {
 		return $this->shippingMethods;
 	}

@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
+/**
+*	The container for the language-specific name of the discount. A container exists for each supported language (LocaleCode). This parameter enables you to display the discount name in multiple languages yet manage it as a single discount internally.
+*/
 class DiscountLocalizedContent
 {
-		public $localeCode;
+	/**
+	*"Language used for the entity. Currently, only ""en-US"" is supported."
+	*/
+	public $localeCode;
 	public function getLocaleCode() {
 		return $this->localeCode;
 	}
@@ -26,7 +32,10 @@ class DiscountLocalizedContent
 		return $this;
 	}
 
-		public $name;
+	/**
+	*Name of the localized content.
+	*/
+	public $name;
 	public function getName() {
 		return $this->name;
 	}
@@ -36,7 +45,10 @@ class DiscountLocalizedContent
 		return $this;
 	}
 
-		public $auditInfo;
+	/**
+	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*/
+	public $auditInfo;
 	public function getAuditInfo() {
 		return $this->auditInfo;
 	}

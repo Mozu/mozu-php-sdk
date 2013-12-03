@@ -19,7 +19,7 @@ class TenantDataUrl  {
 
 	/**
 		* Get Resource Url for GetDBValue
-		* @param string $dbEntryQuery 
+		* @param string $dbEntryQuery The database entry query string used to retrieve the record information.
 		* @return string Resource Url
 	*/
 	public static function getDBValueUrl($dbEntryQuery)
@@ -31,7 +31,7 @@ class TenantDataUrl  {
 	
 	/**
 		* Get Resource Url for CreateDBValue
-		* @param string $dbEntryQuery 
+		* @param string $dbEntryQuery The database entry string to create.
 		* @return string Resource Url
 	*/
 	public static function createDBValueUrl($dbEntryQuery)
@@ -43,7 +43,7 @@ class TenantDataUrl  {
 	
 	/**
 		* Get Resource Url for UpdateDBValue
-		* @param string $dbEntryQuery 
+		* @param string $dbEntryQuery The database entry query string used to update the record information.
 		* @return string Resource Url
 	*/
 	public static function updateDBValueUrl($dbEntryQuery)
@@ -55,7 +55,7 @@ class TenantDataUrl  {
 	
 	/**
 		* Get Resource Url for DeleteDBValue
-		* @param string $dbEntryQuery 
+		* @param string $dbEntryQuery The database entry string to delete.
 		* @return string Resource Url
 	*/
 	public static function deleteDBValueUrl($dbEntryQuery)

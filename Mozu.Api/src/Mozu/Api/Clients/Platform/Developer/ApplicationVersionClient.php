@@ -14,6 +14,8 @@ namespace Mozu\Api\Clients\Platform\Developer;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Platform\Developer\ApplicationVersionUrl;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * 

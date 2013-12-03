@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\SiteSettings\Shipping;
 
 
 
+/**
+*	Properties of the handling fee to apply to order shipments for the site.
+*/
 class SiteShippingHandlingFee
 {
-		public $amount;
+	/**
+	*The amount of the order handling fee.
+	*/
+	public $amount;
 	public function getAmount() {
 		return $this->amount;
 	}

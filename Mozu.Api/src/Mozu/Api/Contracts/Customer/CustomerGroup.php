@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\Customer;
 
 
 
+/**
+*	A set of customers.
+*/
 class CustomerGroup
 {
-		public $id;
+	/**
+	*Identifier of the entity.
+	*/
+	public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -26,7 +32,10 @@ class CustomerGroup
 		return $this;
 	}
 
-		public $name;
+	/**
+	*Name of the customer group.
+	*/
+	public $name;
 	public function getName() {
 		return $this->name;
 	}
@@ -36,7 +45,10 @@ class CustomerGroup
 		return $this;
 	}
 
-		public $auditInfo;
+	/**
+	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*/
+	public $auditInfo;
 	public function getAuditInfo() {
 		return $this->auditInfo;
 	}

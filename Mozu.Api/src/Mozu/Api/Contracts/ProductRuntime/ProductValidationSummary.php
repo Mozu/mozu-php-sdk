@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 
+/**
+*	Summary list of the product validation in a storefront, including options selected by the shopper.
+*/
 class ProductValidationSummary
 {
-		public $isTaxable;
+	/**
+	*If true, the entity is subject to tax based on the relevant tax rate.
+	*/
+	public $isTaxable;
 	public function getIsTaxable() {
 		return $this->isTaxable;
 	}
@@ -26,7 +32,10 @@ class ProductValidationSummary
 		return $this;
 	}
 
-		public $productCode;
+	/**
+	*"Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+	*/
+	public $productCode;
 	public function getProductCode() {
 		return $this->productCode;
 	}
@@ -36,7 +45,10 @@ class ProductValidationSummary
 		return $this;
 	}
 
-		public $productName;
+	/**
+	*The descriptive brief product name.
+	*/
+	public $productName;
 	public function getProductName() {
 		return $this->productName;
 	}
@@ -46,7 +58,10 @@ class ProductValidationSummary
 		return $this;
 	}
 
-		public $productShortDescription;
+	/**
+	*Brief description of the product typically used when the product is displayed in a list or in search results.
+	*/
+	public $productShortDescription;
 	public function getProductShortDescription() {
 		return $this->productShortDescription;
 	}
@@ -56,7 +71,20 @@ class ProductValidationSummary
 		return $this;
 	}
 
-		public $variationProductCode;
+		public $productUsage;
+	public function getProductUsage() {
+		return $this->productUsage;
+	}
+	
+	public function setProductUsage($productUsage) {
+		$this->productUsage = $productUsage;
+		return $this;
+	}
+
+	/**
+	*Merchant-created code associated with a specific product variation. Variation product codes maintain an association with the base product code.
+	*/
+	public $variationProductCode;
 	public function getVariationProductCode() {
 		return $this->variationProductCode;
 	}
@@ -66,7 +94,20 @@ class ProductValidationSummary
 		return $this;
 	}
 
-		public $categories;
+		public $bundledProducts;
+	public function getBundledProducts() {
+		return $this->bundledProducts;
+	}
+	
+	public function setBundledProducts($bundledProducts) {
+		$this->bundledProducts = $bundledProducts;
+		return $this;
+	}
+
+	/**
+	*The list of product categories for the storefront.
+	*/
+	public $categories;
 	public function getCategories() {
 		return $this->categories;
 	}
@@ -76,7 +117,10 @@ class ProductValidationSummary
 		return $this;
 	}
 
-		public $image;
+	/**
+	*The image configured for the product on the storefront.
+	*/
+	public $image;
 	public function getImage() {
 		return $this->image;
 	}
@@ -96,7 +140,10 @@ class ProductValidationSummary
 		return $this;
 	}
 
-		public $measurements;
+	/**
+	*Dimensions of the packaged product.
+	*/
+	public $measurements;
 	public function getMeasurements() {
 		return $this->measurements;
 	}
@@ -106,7 +153,10 @@ class ProductValidationSummary
 		return $this;
 	}
 
-		public $price;
+	/**
+	*Price that the merchant intends to sell the product which is not necessarily the list price. This is the price the merchant intends to sell the product if no sale price is present.
+	*/
+	public $price;
 	public function getPrice() {
 		return $this->price;
 	}
@@ -116,7 +166,10 @@ class ProductValidationSummary
 		return $this;
 	}
 
-		public $properties;
+	/**
+	*The list of product properties configured in product admin.
+	*/
+	public $properties;
 	public function getProperties() {
 		return $this->properties;
 	}
@@ -126,7 +179,10 @@ class ProductValidationSummary
 		return $this;
 	}
 
-		public $purchasableState;
+	/**
+	*The current state of the product and whether or not it is available for purchasing. If the product is not eligible for purchase, the validation message is included.
+	*/
+	public $purchasableState;
 	public function getPurchasableState() {
 		return $this->purchasableState;
 	}

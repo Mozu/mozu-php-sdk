@@ -15,6 +15,8 @@ namespace Mozu\Api\Resources\Commerce\Customer;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Customer\AddressValidationRequestClient;
 use Mozu\Api\ApiContext;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * 

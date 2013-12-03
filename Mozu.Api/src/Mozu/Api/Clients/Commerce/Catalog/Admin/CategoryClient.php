@@ -14,17 +14,19 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\CategoryUrl;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Use the Categories resource to organize products and control where they appear on the storefront. Create and maintain a hierarchy of categories and subcategories where the site will store properties.
 */
 class CategoryClient {
 
 	/**
-	* 
+	* Retrieves a list of categories according to any specified filter criteria and sort options.
 	*
-	* @param string $filter 
-	* @param int $pageSize 
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product category search results by any of its properties, including its position in the category hierarchy. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return MozuClient
@@ -42,9 +44,9 @@ class CategoryClient {
 	}
 	
 	/**
-	* 
+	* Retrieves the details of a single category.
 	*
-	* @param int $categoryId 
+	* @param int $categoryId Unique identifier of the category to retrieve.
 	* @return MozuClient
 	*/
 	public static function getCategoryClient($dataViewMode,  $categoryId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -60,9 +62,9 @@ class CategoryClient {
 	}
 	
 	/**
-	* 
+	* Retrieves the subcategories of a category. This is a list of subcategories at the same level (siblings). Use a list of siblings, for example, to display the categories in a horizontal list.
 	*
-	* @param int $categoryId 
+	* @param int $categoryId Unique identifier of the category whose subcategories are retrieved.
 	* @return MozuClient
 	*/
 	public static function getChildCategoriesClient($dataViewMode,  $categoryId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -78,9 +80,9 @@ class CategoryClient {
 	}
 	
 	/**
-	* 
+	* Adds a new category to the site's category hierarchy. Specify a ParentCategoryID to determine where to locate the category in the hierarchy. If a ParentCategoryID is not specified, the new category becomes a top-level category.
 	*
-	* @param Category $category 
+	* @param Category $category Properties of the new category. Required properties: ParentCategoryID and Content.Name.
 	* @return MozuClient
 	*/
 	public static function addCategoryClient($dataViewMode, $category, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -96,11 +98,11 @@ class CategoryClient {
 	}
 	
 	/**
-	* 
+	* Modifies a category such as moving it to another location in the category tree, or changing whether it is visible on the storefront. This PUT replaces the existing resource, so be sure to include all the information to maintain for the category.
 	*
-	* @param bool $cascadeVisibility 
-	* @param int $categoryId 
-	* @param Category $category 
+	* @param bool $cascadeVisibility If true, when changing the display option for the category, change it for all subcategories also. Default: False.
+	* @param int $categoryId Unique identifier of the category to modify.
+	* @param Category $category Properties of the category to modify.
 	* @return MozuClient
 	*/
 	public static function updateCategoryClient($dataViewMode, $category,  $categoryId, $cascadeVisibility =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -116,10 +118,10 @@ class CategoryClient {
 	}
 	
 	/**
-	* 
+	* Deletes the category specified by its category ID.
 	*
-	* @param bool $cascadeDelete 
-	* @param int $categoryId 
+	* @param bool $cascadeDelete If true, any subcategories of a category are deleted when this category is deleted. Default: False.
+	* @param int $categoryId Unique identifier of the category to delete.
 	*/
 	public static function deleteCategoryByIdClient($dataViewMode,  $categoryId, $cascadeDelete =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

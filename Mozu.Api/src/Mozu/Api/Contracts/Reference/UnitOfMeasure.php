@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\Reference;
 
 
 
+/**
+*	Properties to describe the unit of measure.
+*/
 class UnitOfMeasure
 {
-		public $name;
+	/**
+	*The name of the unit of measure, such as "foot".
+	*/
+	public $name;
 	public function getName() {
 		return $this->name;
 	}
@@ -26,7 +32,10 @@ class UnitOfMeasure
 		return $this;
 	}
 
-		public $pluralName;
+	/**
+	*The plural name of the unit of measure, such as "feet".
+	*/
+	public $pluralName;
 	public function getPluralName() {
 		return $this->pluralName;
 	}
@@ -36,7 +45,10 @@ class UnitOfMeasure
 		return $this;
 	}
 
-		public $symbol;
+	/**
+	*The abbreviated symbol for the unit of measure, such as "ft".
+	*/
+	public $symbol;
 	public function getSymbol() {
 		return $this->symbol;
 	}
@@ -46,7 +58,10 @@ class UnitOfMeasure
 		return $this;
 	}
 
-		public $unitOfMeasureType;
+	/**
+	*The type of measurement, such as length or volume.
+	*/
+	public $unitOfMeasureType;
 	public function getUnitOfMeasureType() {
 		return $this->unitOfMeasureType;
 	}

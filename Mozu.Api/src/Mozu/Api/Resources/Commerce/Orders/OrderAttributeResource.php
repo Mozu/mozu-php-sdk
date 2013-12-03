@@ -15,9 +15,11 @@ namespace Mozu\Api\Resources\Commerce\Orders;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Orders\OrderAttributeClient;
 use Mozu\Api\ApiContext;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* List of attributes that describe an order. An order attribute has content localized to the locale code of the site and several other properties that uniquely identify it to associate with an order.
 */
 class OrderAttributeResource {
 
@@ -28,9 +30,9 @@ class OrderAttributeResource {
 	}
 
 	/**
-	* 
+	* Retrieves a list of order attributes.
 	*
-	* @param string $orderId 
+	* @param string $orderId Identifier of the order whose order attributes are being retrieved.
 	* @return array|OrderAttribute 
 	*/
 	public function getOrderAttributes( $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -43,10 +45,10 @@ class OrderAttributeResource {
 	}
 	
 	/**
-	* 
+	* Create a new list of order attributes by providing the order ID.
 	*
-	* @param string $orderId 
-	* @param array|OrderAttribute $orderAttributes 
+	* @param string $orderId Identifier of the order whose attributes are being created.
+	* @param array|OrderAttribute $orderAttributes The attribute properties to create to associate with the order ID.
 	* @return array|OrderAttribute 
 	*/
 	public function createOrderAttributes($orderAttributes,  $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -59,11 +61,11 @@ class OrderAttributeResource {
 	}
 	
 	/**
-	* 
+	* Update the properties of an order's attributes by providing the order ID and by removing any missing properties if removeMissing is set to true.
 	*
-	* @param string $orderId 
-	* @param bool $removeMissing 
-	* @param array|OrderAttribute $orderAttributes 
+	* @param string $orderId Identifier of the order whose order attributes are being updated.
+	* @param bool $removeMissing If true, the operation removes missing properties so that the updated order attributes will not show properties with a null value.
+	* @param array|OrderAttribute $orderAttributes List of order attributes being updated.
 	* @return array|OrderAttribute 
 	*/
 	public function updateOrderAttributes($orderAttributes,  $orderId, $removeMissing =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)

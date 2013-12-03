@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
+/**
+*	Properties of the product option to create such as attribute detail, fully qualified name, and list of product option values.
+*/
 class ProductOption
 {
-		public $attributeFQN;
+	/**
+	*"The fully qualified name of the attribute, which is a user defined attribute identifier."
+	*/
+	public $attributeFQN;
 	public function getAttributeFQN() {
 		return $this->attributeFQN;
 	}
@@ -26,7 +32,10 @@ class ProductOption
 		return $this;
 	}
 
-		public $values;
+	/**
+	*List of values for the product option. Each value includes an attribute vocabulary value detail and value object.
+	*/
+	public $values;
 	public function getValues() {
 		return $this->values;
 	}

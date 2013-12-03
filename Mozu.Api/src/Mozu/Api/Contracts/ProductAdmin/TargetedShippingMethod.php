@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
+/**
+*	Shipping method service type, such as UPS Ground or USPS Priority Mail, targeted for a defined discount.
+*/
 class TargetedShippingMethod
 {
-		public $code;
+	/**
+	*The code associated with the carrier's shipping method service type. Service type codes include a prefix that indicates the carrier. For example: FEDEX_INTERNATIONAL_STANDARD
+	*/
+	public $code;
 	public function getCode() {
 		return $this->code;
 	}
@@ -26,7 +32,10 @@ class TargetedShippingMethod
 		return $this;
 	}
 
-		public $name;
+	/**
+	*Name of the shipping method service type associated with the targeted discount.
+	*/
+	public $name;
 	public function getName() {
 		return $this->name;
 	}

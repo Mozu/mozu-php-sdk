@@ -17,24 +17,8 @@ namespace Mozu\Api\Contracts\AppDev;
 class RenameInfo
 {
 		public $newFullPath;
-	public function getNewFullPath() {
-		return $this->newFullPath;
-	}
-	
-	public function setNewFullPath($newFullPath) {
-		$this->newFullPath = $newFullPath;
-		return $this;
-	}
 
 		public $oldFullPath;
-	public function getOldFullPath() {
-		return $this->oldFullPath;
-	}
-	
-	public function setOldFullPath($oldFullPath) {
-		$this->oldFullPath = $oldFullPath;
-		return $this;
-	}
 
 }
 

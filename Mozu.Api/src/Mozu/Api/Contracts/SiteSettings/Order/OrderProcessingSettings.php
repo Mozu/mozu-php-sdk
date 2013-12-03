@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\SiteSettings\Order;
 
 
 
+/**
+*	Settings that determine how orders are processed and order payments are authorized for the site.
+*/
 class OrderProcessingSettings
 {
-		public $paymentProcessingFlowType;
+	/**
+	*Determines whether payment authorization occurs when the order is placed or when the order is shipped.
+	*/
+	public $paymentProcessingFlowType;
 	public function getPaymentProcessingFlowType() {
 		return $this->paymentProcessingFlowType;
 	}
@@ -26,7 +32,10 @@ class OrderProcessingSettings
 		return $this;
 	}
 
-		public $useOverridePriceToCalculateDiscounts;
+	/**
+	*If true, use the override price defined for products in the order to calculate discounts for the order.
+	*/
+	public $useOverridePriceToCalculateDiscounts;
 	public function getUseOverridePriceToCalculateDiscounts() {
 		return $this->useOverridePriceToCalculateDiscounts;
 	}
@@ -36,7 +45,10 @@ class OrderProcessingSettings
 		return $this;
 	}
 
-		public $auditInfo;
+	/**
+	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*/
+	public $auditInfo;
 	public function getAuditInfo() {
 		return $this->auditInfo;
 	}

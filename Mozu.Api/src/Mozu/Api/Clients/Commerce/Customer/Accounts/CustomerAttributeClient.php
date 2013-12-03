@@ -14,9 +14,11 @@ namespace Mozu\Api\Clients\Commerce\Customer\Accounts;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\Accounts\CustomerAttributeUrl;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Mozu customers and merchants can create, view, update, and delete attributes for a customer account.
 */
 class CustomerAttributeClient {
 
@@ -39,10 +41,10 @@ class CustomerAttributeClient {
 	}
 	
 	/**
-	* 
+	* Retrieves the contents of an attribute associated with the specified customer account.
 	*
-	* @param int $accountId 
-	* @param int $attributeId 
+	* @param int $accountId Identifier of the customer account associated with the attribute to retrieve.
+	* @param int $attributeId Identifier of the customer account attribute to retrieve.
 	* @return MozuClient
 	*/
 	public static function getAccountAttributeClient( $accountId,  $attributeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -57,9 +59,9 @@ class CustomerAttributeClient {
 	}
 	
 	/**
-	* 
+	* Retrieves the list of customer account attributes.
 	*
-	* @param int $accountId 
+	* @param int $accountId Identifier of the customer account associated with the attributes to retrieve.
 	* @param string $filter 
 	* @param int $pageSize 
 	* @param string $sortBy 
@@ -96,10 +98,10 @@ class CustomerAttributeClient {
 	}
 	
 	/**
-	* 
+	* Update a single customer account attribute by providing the customer account ID. This operation can optionally indicate whether or not items missing from the collection should be removed.
 	*
-	* @param int $accountId 
-	* @param CustomerAttribute $customerAccountAttribute 
+	* @param int $accountId Identifier of the customer account associated with the attribute.
+	* @param CustomerAttribute $customerAccountAttribute The properties of the customer account attribute being updated.
 	* @return MozuClient
 	*/
 	public static function updateAccountAttributeClient($customerAccountAttribute,  $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)

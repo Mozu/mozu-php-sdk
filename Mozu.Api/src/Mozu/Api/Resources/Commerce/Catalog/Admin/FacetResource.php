@@ -15,9 +15,11 @@ namespace Mozu\Api\Resources\Commerce\Catalog\Admin;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Catalog\Admin\FacetClient;
 use Mozu\Api\ApiContext;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Use the Facets resource to manage the facets shoppers use to filter product display results on a storefront. Facets can include categories, product attributes, or prices, and use either a range of values or discrete values.
 */
 class FacetResource {
 
@@ -28,10 +30,10 @@ class FacetResource {
 	}
 
 	/**
-	* 
+	* Retrieves a facet specified by its unique identifier and displays its properties.
 	*
-	* @param int $facetId 
-	* @param bool $validate 
+	* @param int $facetId Unique identifier of the facet to retrieve.
+	* @param bool $validate Validates that the product category associated with a facet is active. System-supplied and read only.
 	* @return Facet 
 	*/
 	public function getFacet($dataViewMode,  $facetId, $validate =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -44,11 +46,11 @@ class FacetResource {
 	}
 	
 	/**
-	* 
+	* Retrieves a list of the facets defined for the specified category.
 	*
-	* @param int $categoryId 
-	* @param bool $includeAvailable 
-	* @param bool $validate 
+	* @param int $categoryId Unique identifier of the category associated with the facets to retrieve.
+	* @param bool $includeAvailable If true, returns a list of the attributes and categories associated with a product type that have not been defined as a facet for the category.
+	* @param bool $validate Validates that the product category associated with a facet is active. System-supplied and read only.
 	* @return FacetSet 
 	*/
 	public function getFacetCategoryList($dataViewMode,  $categoryId, $includeAvailable =  null, $validate =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -61,9 +63,9 @@ class FacetResource {
 	}
 	
 	/**
-	* 
+	* Creates a new category, price, or attribute facet. Supply the category or attribute source to use for the facet values.
 	*
-	* @param Facet $facet 
+	* @param Facet $facet Properties of the new facet to create. Required properties: Source, FacetType, IsHidden, and CategoryId.
 	* @return Facet 
 	*/
 	public function addFacet($dataViewMode, $facet, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -76,10 +78,10 @@ class FacetResource {
 	}
 	
 	/**
-	* 
+	* Modifies one or more properties of a defined facet.
 	*
-	* @param int $facetId 
-	* @param Facet $facet 
+	* @param int $facetId Unique identifier of the facet to modify.
+	* @param Facet $facet Properties of the defined facet to modify. Required properties: Source, FacetType, IsHidden, and CategoryId.
 	* @return Facet 
 	*/
 	public function updateFacet($dataViewMode, $facet,  $facetId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -92,9 +94,9 @@ class FacetResource {
 	}
 	
 	/**
-	* 
+	* Deletes the facet specified by its unique identifier.
 	*
-	* @param int $facetId 
+	* @param int $facetId Unique identifier of the facet to delete.
 	*/
 	public function deleteFacetById($dataViewMode,  $facetId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

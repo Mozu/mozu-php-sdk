@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\Reference;
 
 
 
+/**
+*	A world date and time standard such as "Dateline Standard Time" or "UTC-12".
+*/
 class TimeZone
 {
-		public $id;
+	/**
+	*Identifier of the time zone.
+	*/
+	public $id;
 	public function getId() {
 		return $this->id;
 	}
@@ -26,7 +32,10 @@ class TimeZone
 		return $this;
 	}
 
-		public $isDaylightSavingsTime;
+	/**
+	*If true, the time zone standard observes daylight savings time advancements, for example, twice a year so that evenings have more daylight and mornings have less. If false, the time zone standard does not adhere to daylight savings changes.
+	*/
+	public $isDaylightSavingsTime;
 	public function getIsDaylightSavingsTime() {
 		return $this->isDaylightSavingsTime;
 	}
@@ -36,7 +45,10 @@ class TimeZone
 		return $this;
 	}
 
-		public $offset;
+	/**
+	*The offset associated with the time zone, such as "-12".
+	*/
+	public $offset;
 	public function getOffset() {
 		return $this->offset;
 	}

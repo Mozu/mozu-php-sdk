@@ -33,7 +33,7 @@ class DocumentTypeUrl  {
 	
 	/**
 		* Get Resource Url for Get
-		* @param string $documentTypeName 
+		* @param string $documentTypeName The documentType name being retrieved.
 		* @return string Resource Url
 	*/
 	public static function getUrl($documentTypeName)

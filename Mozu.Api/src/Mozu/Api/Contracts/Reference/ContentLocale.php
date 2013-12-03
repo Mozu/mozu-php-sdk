@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\Reference;
 
 
 
+/**
+*	The content locale indicates the language spoken and the country where the language is spoken. Currently, only code "en-US" for name "English - United States" is supported.
+*/
 class ContentLocale
 {
-		public $code;
+	/**
+	*"Language used for the entity. Currently, only ""en-US"" is supported."
+	*/
+	public $code;
 	public function getCode() {
 		return $this->code;
 	}
@@ -26,7 +32,10 @@ class ContentLocale
 		return $this;
 	}
 
-		public $name;
+	/**
+	*The name of the content locale.
+	*/
+	public $name;
 	public function getName() {
 		return $this->name;
 	}

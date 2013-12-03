@@ -14,17 +14,19 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin\Attributedefinition;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\Attributedefinition\ProductTypeUrl;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Use the Product Types resource to manage the types for your product catalog. Product types act as configuration templates, which store a set of attributes common to all products associated with that type. Unlike categories, products can only be associated with a single product type.
 */
 class ProductTypeClient {
 
 	/**
-	* 
+	* Retrieves a list of product types according to any specified filter criteria and sort options.
 	*
-	* @param string $filter 
-	* @param int $pageSize 
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product type search results by any of its properties. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). <b>For example - "filter=Name+cont+shoes"</b>
+	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return MozuClient
@@ -42,9 +44,9 @@ class ProductTypeClient {
 	}
 	
 	/**
-	* 
+	* Retrieves a product type by providing the product type ID.
 	*
-	* @param int $productTypeId 
+	* @param int $productTypeId Identifier of the product type being retrieved.
 	* @return MozuClient
 	*/
 	public static function getProductTypeClient($dataViewMode,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -60,9 +62,9 @@ class ProductTypeClient {
 	}
 	
 	/**
-	* 
+	* Add or create a new product type.
 	*
-	* @param ProductType $productType 
+	* @param ProductType $productType Add or create the product type using these properties.
 	* @return MozuClient
 	*/
 	public static function addProductTypeClient($dataViewMode, $productType, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -78,10 +80,10 @@ class ProductTypeClient {
 	}
 	
 	/**
-	* 
+	* Update a product type by providing the product type ID.
 	*
-	* @param int $productTypeId 
-	* @param ProductType $productType 
+	* @param int $productTypeId Identifier of the product type to update.
+	* @param ProductType $productType The details of the product type to update.
 	* @return MozuClient
 	*/
 	public static function updateProductTypeClient($dataViewMode, $productType,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -97,9 +99,9 @@ class ProductTypeClient {
 	}
 	
 	/**
-	* 
+	* Delete product type by providing the product type ID.
 	*
-	* @param int $productTypeId 
+	* @param int $productTypeId Identifier of the product type being deleted.
 	*/
 	public static function deleteProductTypeClient($dataViewMode,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

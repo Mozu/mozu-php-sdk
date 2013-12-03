@@ -19,8 +19,8 @@ class CustomerNoteUrl  {
 
 	/**
 		* Get Resource Url for GetAccountNote
-		* @param int $accountId 
-		* @param int $noteId 
+		* @param int $accountId Unique identifier of the customer account that contains the note being retrieved.
+		* @param int $noteId Unique identifier of a particular note to retrieve.
 		* @return string Resource Url
 	*/
 	public static function getAccountNoteUrl($accountId, $noteId)
@@ -33,11 +33,11 @@ class CustomerNoteUrl  {
 	
 	/**
 		* Get Resource Url for GetAccountNotes
-		* @param int $accountId 
-		* @param string $filter 
-		* @param int $pageSize 
-		* @param string $sortBy 
-		* @param int $startIndex 
+		* @param int $accountId Unique identifier of the customer account.
+		* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
+		* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+		* @param string $sortBy "The property by which to sort results and whether the results appear in ascending (a-z) order, represented by 'ASC' or in descending (z-a) order, represented by 'DESC'. The sortBy parameter follows an available property. <b>For example: sortBy=productCode+asc</b>"
+		* @param int $startIndex "Used to create paged results from a query. Indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3."
 		* @return string Resource Url
 	*/
 	public static function getAccountNotesUrl($accountId, $filter, $pageSize, $sortBy, $startIndex)
@@ -53,7 +53,7 @@ class CustomerNoteUrl  {
 	
 	/**
 		* Get Resource Url for AddAccountNote
-		* @param int $accountId 
+		* @param int $accountId Unique identifier of the customer account for which to create the note.
 		* @return string Resource Url
 	*/
 	public static function addAccountNoteUrl($accountId)
@@ -65,8 +65,8 @@ class CustomerNoteUrl  {
 	
 	/**
 		* Get Resource Url for UpdateAccountNote
-		* @param int $accountId 
-		* @param int $noteId 
+		* @param int $accountId Unique identifier of the customer account note to modify.
+		* @param int $noteId Unique identifier of the note to update.
 		* @return string Resource Url
 	*/
 	public static function updateAccountNoteUrl($accountId, $noteId)
@@ -79,8 +79,8 @@ class CustomerNoteUrl  {
 	
 	/**
 		* Get Resource Url for DeleteAccountNote
-		* @param int $accountId 
-		* @param int $noteId 
+		* @param int $accountId Unique identifier of the customer account that contains the note being deleted.
+		* @param int $noteId Unique identifier of the customer account note being deleted.
 		* @return string Resource Url
 	*/
 	public static function deleteAccountNoteUrl($accountId, $noteId)

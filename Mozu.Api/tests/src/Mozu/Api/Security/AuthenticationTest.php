@@ -1,9 +1,10 @@
 <?php
 
-use Mozu\Api\Security\Authentication;
+use Mozu\Api\Security\AppAuthenticator;
 use Guzzle\Http\Client;
 use Mozu\Api\Headers;
-require_once __DIR__ . '/../../../../../src/Mozu/Api/Security/Authentication.php';
+use Mozu\Api\Contracts\AppDev\AppAuthInfo;
+require_once __DIR__ . '/../../../../../src/Mozu/Api/Security/AppAuthenticator.php';
 
 /**
  * Test class for Authentication.
@@ -22,7 +23,10 @@ class AuthenticationTest extends PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->object = Authentication::initialize("3dfdd89123864b7bbda6a1d500dc1dbb","11d458cdaa8543ac8b1ba1d500dc1dbb","http://mozu-ci.com");
+    	$appAuthInfo = new AppAuthInfo();
+    	$appAuthInfo->applicationId = "[shared secret]";
+    	$appAuthInfo->sharedSecret =  "[App Id]";
+        $this->object = AppAuthenticator::initialize($appAuthInfo,"https://home.mozu.com");
     }
 
     /**
@@ -58,10 +62,10 @@ class AuthenticationTest extends PHPUnit_Framework_TestCase
     public function testGetAuthTicket()
     {
         $this->assertNotNull($this->object->getAuthTicket());
-        $this->assertNotNull($this->object->getAuthTicket()->AccessToken);
-        $this->assertNotNull($this->object->getAuthTicket()->RefreshToken);
-        $this->assertNotNull($this->object->getAuthTicket()->AccessTokenExpiration);
-        $this->assertNotNull($this->object->getAuthTicket()->RefreshTokenExpiration);
+        $this->assertNotNull($this->object->getAuthTicket()->accessToken);
+        $this->assertNotNull($this->object->getAuthTicket()->refreshToken);
+        $this->assertNotNull($this->object->getAuthTicket()->accessTokenExpiration);
+        $this->assertNotNull($this->object->getAuthTicket()->refreshTokenExpiration);
     }
 }
 ?>

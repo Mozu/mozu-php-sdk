@@ -15,9 +15,11 @@ namespace Mozu\Api\Resources\Platform;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Platform\UserDataClient;
 use Mozu\Api\ApiContext;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Use the user data subresource to store user-level data required for a third-party application in the Mozu database.
 */
 class UserDataResource {
 
@@ -28,9 +30,9 @@ class UserDataResource {
 	}
 
 	/**
-	* 
+	* Retrieves the value of a record in the Mozu database.
 	*
-	* @param string $dbEntryQuery 
+	* @param string $dbEntryQuery The database entry query string used to retrieve the record information.
 	* @return string 
 	*/
 	public function getDBValue( $dbEntryQuery, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -43,10 +45,10 @@ class UserDataResource {
 	}
 	
 	/**
-	* 
+	* Creates a new record in the Mozu database based on the information supplied in the request.
 	*
-	* @param string $dbEntryQuery 
-	* @param string $value 
+	* @param string $dbEntryQuery The database entry string to create.
+	* @param string $value The value string to create.
 	*/
 	public function createDBValue($value,  $dbEntryQuery, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
@@ -57,10 +59,10 @@ class UserDataResource {
 	}
 	
 	/**
-	* 
+	* Updates a record in the Mozu database based on the information supplied in the request.
 	*
-	* @param string $dbEntryQuery 
-	* @param string $value 
+	* @param string $dbEntryQuery The database entry query string used to update the record information.
+	* @param string $value The database value to update.
 	*/
 	public function updateDBValue($value,  $dbEntryQuery, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
@@ -71,9 +73,9 @@ class UserDataResource {
 	}
 	
 	/**
-	* 
+	* Removes a previously defined record in the Mozu database.
 	*
-	* @param string $dbEntryQuery 
+	* @param string $dbEntryQuery The database entry string to delete.
 	*/
 	public function deleteDBValue( $dbEntryQuery, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

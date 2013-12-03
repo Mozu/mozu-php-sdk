@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
+/**
+*	For range type facets, a single range of facet values. For example, a price facet might have a $0-$25 range query.
+*/
 class FacetRangeQuery
 {
-		public $rangeValueEnd;
+	/**
+	*The maximum value to use for the facet range query.
+	*/
+	public $rangeValueEnd;
 	public function getRangeValueEnd() {
 		return $this->rangeValueEnd;
 	}
@@ -26,7 +32,10 @@ class FacetRangeQuery
 		return $this;
 	}
 
-		public $rangeValueStart;
+	/**
+	*The minimum value to use for the facet range query.
+	*/
+	public $rangeValueStart;
 	public function getRangeValueStart() {
 		return $this->rangeValueStart;
 	}

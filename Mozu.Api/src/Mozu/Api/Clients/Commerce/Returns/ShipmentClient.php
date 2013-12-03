@@ -14,6 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Returns;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Returns\ShipmentUrl;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * 

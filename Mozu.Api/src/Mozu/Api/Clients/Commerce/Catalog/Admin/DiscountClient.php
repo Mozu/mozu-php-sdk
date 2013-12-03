@@ -14,17 +14,19 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\DiscountUrl;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Define and manage discounts to apply to products, product categories, or orders. The discounts can be a specified amount off the price, percentage off the price, or for free shipping. Create a coupon code that shoppers can use to redeem the discount.
 */
 class DiscountClient {
 
 	/**
-	* 
+	* Retrieves a list of discounts according to any specified filter criteria and sort options.
 	*
-	* @param string $filter 
-	* @param int $pageSize 
+	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
+	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return MozuClient
@@ -42,9 +44,9 @@ class DiscountClient {
 	}
 	
 	/**
-	* 
+	* Retrieves the details of a single discount.
 	*
-	* @param int $discountId 
+	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
 	* @return MozuClient
 	*/
 	public static function getDiscountClient($dataViewMode,  $discountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -60,9 +62,9 @@ class DiscountClient {
 	}
 	
 	/**
-	* 
+	* Retrieves the localized content specified for the specified discount.
 	*
-	* @param int $discountId 
+	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
 	* @return MozuClient
 	*/
 	public static function getDiscountContentClient($dataViewMode,  $discountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -78,7 +80,7 @@ class DiscountClient {
 	}
 	
 	/**
-	* 
+	* Generates a random code for a coupon.
 	*
 	* @return MozuClient
 	*/
@@ -95,9 +97,9 @@ class DiscountClient {
 	}
 	
 	/**
-	* 
+	* Creates a discount.
 	*
-	* @param Discount $discount 
+	* @param Discount $discount Properties of the discount to create. Required properties: Content.Name, AmountType, StartDate, and Target.Type.
 	* @return MozuClient
 	*/
 	public static function createDiscountClient($dataViewMode, $discount, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -113,9 +115,9 @@ class DiscountClient {
 	}
 	
 	/**
-	* 
+	* Redeems a discount configured in the product admin.
 	*
-	* @param Redemption $redemption 
+	* @param Redemption $redemption Properties of the product discount redemption.
 	* @return MozuClient
 	*/
 	public static function redeemDiscountClient($dataViewMode, $redemption, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -131,10 +133,10 @@ class DiscountClient {
 	}
 	
 	/**
-	* 
+	* Modifies a discount.
 	*
-	* @param int $discountId 
-	* @param Discount $discount 
+	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
+	* @param Discount $discount Properties of the discount to update. Required properties: Content.Name, AmountType, StartDate, and Target.Type. Any unspecified properties are set to null and boolean variables are set to false.
 	* @return MozuClient
 	*/
 	public static function updateDiscountClient($dataViewMode, $discount,  $discountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -150,10 +152,10 @@ class DiscountClient {
 	}
 	
 	/**
-	* 
+	* Modifies the localized content for the specified discount. Rename the discount without modifying any other discount properties.
 	*
-	* @param int $discountId 
-	* @param DiscountLocalizedContent $content 
+	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
+	* @param DiscountLocalizedContent $content New Name and/or LocaleCode. Properties of the content to update. Required property: Name.
 	* @return MozuClient
 	*/
 	public static function updateDiscountContentClient($dataViewMode, $content,  $discountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -169,9 +171,9 @@ class DiscountClient {
 	}
 	
 	/**
-	* 
+	* Deletes a discount specified by its discount ID.
 	*
-	* @param int $discountId 
+	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
 	*/
 	public static function deleteDiscountClient($dataViewMode,  $discountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
@@ -186,10 +188,10 @@ class DiscountClient {
 	}
 	
 	/**
-	* 
+	* Deletes a previous discount redemption from an order.
 	*
-	* @param int $discountId 
-	* @param int $orderNumber 
+	* @param int $discountId Unique identifier of the previously redeemed discount. System-supplied and read only.
+	* @param int $orderNumber The number of the order associated with the redeemed product discount.
 	*/
 	public static function unRedeemDiscountClient($dataViewMode, $discountId =  null, $orderNumber =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

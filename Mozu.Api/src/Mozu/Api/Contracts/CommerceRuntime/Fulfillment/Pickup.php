@@ -17,64 +17,16 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Fulfillment;
 class Pickup
 {
 		public $availableActions;
-	public function getAvailableActions() {
-		return $this->availableActions;
-	}
-	
-	public function setAvailableActions($availableActions) {
-		$this->availableActions = $availableActions;
-		return $this;
-	}
 
 		public $fulfillmentDate;
-	public function getFulfillmentDate() {
-		return $this->fulfillmentDate;
-	}
-	
-	public function setFulfillmentDate($fulfillmentDate) {
-		$this->fulfillmentDate = $fulfillmentDate;
-		return $this;
-	}
 
 		public $id;
-	public function getId() {
-		return $this->id;
-	}
-	
-	public function setId($id) {
-		$this->id = $id;
-		return $this;
-	}
 
 		public $status;
-	public function getStatus() {
-		return $this->status;
-	}
-	
-	public function setStatus($status) {
-		$this->status = $status;
-		return $this;
-	}
 
 		public $auditInfo;
-	public function getAuditInfo() {
-		return $this->auditInfo;
-	}
-	
-	public function setAuditInfo($auditInfo) {
-		$this->auditInfo = $auditInfo;
-		return $this;
-	}
 
 		public $items;
-	public function getItems() {
-		return $this->items;
-	}
-	
-	public function setItems($items) {
-		$this->items = $items;
-		return $this;
-	}
 
 }
 

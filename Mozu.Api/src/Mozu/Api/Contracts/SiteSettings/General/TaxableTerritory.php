@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\SiteSettings\General;
 
 
 
+/**
+*	Properties of the territory which is subject to sales tax.
+*/
 class TaxableTerritory
 {
-		public $countryCode;
+	/**
+	*2 letter geographic code representing the country for the physical or mailing address. Currently limited to the US.
+	*/
+	public $countryCode;
 	public function getCountryCode() {
 		return $this->countryCode;
 	}
@@ -26,7 +32,10 @@ class TaxableTerritory
 		return $this;
 	}
 
-		public $isShippingTaxable;
+	/**
+	*If true, all shipping charges for this territory are subject to sales tax.
+	*/
+	public $isShippingTaxable;
 	public function getIsShippingTaxable() {
 		return $this->isShippingTaxable;
 	}
@@ -36,7 +45,10 @@ class TaxableTerritory
 		return $this;
 	}
 
-		public $stateOrProvinceCode;
+	/**
+	*2 letter geographic code representing the state for the physical or mailing address. Currently limited to the US.
+	*/
+	public $stateOrProvinceCode;
 	public function getStateOrProvinceCode() {
 		return $this->stateOrProvinceCode;
 	}

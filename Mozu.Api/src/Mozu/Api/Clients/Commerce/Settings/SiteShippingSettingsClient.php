@@ -14,14 +14,16 @@ namespace Mozu\Api\Clients\Commerce\Settings;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Settings\SiteShippingSettingsUrl;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Use the shipping subresource to manage settings for the site shipping information, such as origin address information, carrier shipping methods, shipping rate providers, and regions available for shipping.
 */
 class SiteShippingSettingsClient {
 
 	/**
-	* 
+	* Retrieves a list of the shipping settings configured for a site.
 	*
 	* @return MozuClient
 	*/

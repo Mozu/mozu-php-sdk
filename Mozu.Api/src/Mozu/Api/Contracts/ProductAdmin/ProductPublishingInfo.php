@@ -17,34 +17,10 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class ProductPublishingInfo
 {
 		public $lastPublishedBy;
-	public function getLastPublishedBy() {
-		return $this->lastPublishedBy;
-	}
-	
-	public function setLastPublishedBy($lastPublishedBy) {
-		$this->lastPublishedBy = $lastPublishedBy;
-		return $this;
-	}
 
 		public $lastPublishedDate;
-	public function getLastPublishedDate() {
-		return $this->lastPublishedDate;
-	}
-	
-	public function setLastPublishedDate($lastPublishedDate) {
-		$this->lastPublishedDate = $lastPublishedDate;
-		return $this;
-	}
 
 		public $publishedState;
-	public function getPublishedState() {
-		return $this->publishedState;
-	}
-	
-	public function setPublishedState($publishedState) {
-		$this->publishedState = $publishedState;
-		return $this;
-	}
 
 }
 

@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\SiteSettings\Order;
 
 
 
+/**
+*	Settings used when checking out an active order.
+*/
 class CheckoutSettings
 {
-		public $customerCheckoutSettings;
+	/**
+	*Settings for the checkout login. Choose whether or not shoppers must first login before a purchase can be processed. Choose the option for guests to purchase without logging in, prompt guests to login, or require them to login before a purchase can be completed.
+	*/
+	public $customerCheckoutSettings;
 	public function getCustomerCheckoutSettings() {
 		return $this->customerCheckoutSettings;
 	}
@@ -26,7 +32,10 @@ class CheckoutSettings
 		return $this;
 	}
 
-		public $orderProcessingSettings;
+	/**
+	*Credit card payment authorization setting defined for the site. Choose whether or not the shopper's credit card is authorized and charged. Possibilities include, "authorize and charge the shopper's credit card for the full order amount when the order is placed," "authorize the shopper's credit card for the full amount when the order is placed and charge the credit card when the order is shipped," or "authorize and charge the shopper's credit card for the full amount when the order is shipped." Check on these phrases. According to Eric Swann, they may have changed]
+	*/
+	public $orderProcessingSettings;
 	public function getOrderProcessingSettings() {
 		return $this->orderProcessingSettings;
 	}
@@ -36,7 +45,10 @@ class CheckoutSettings
 		return $this;
 	}
 
-		public $paymentSettings;
+	/**
+	*Payment gateway settings defined for the site. A payment gateway is an eCommerce application service provider that authorizes payments for eBusinesses, online retailers, and other stores that have an online commerce component. Currently, only the Authorize.net gateway is supported.
+	*/
+	public $paymentSettings;
 	public function getPaymentSettings() {
 		return $this->paymentSettings;
 	}

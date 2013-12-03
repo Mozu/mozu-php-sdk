@@ -15,9 +15,11 @@ namespace Mozu\Api\Resources\Commerce\Orders;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Orders\OrderNoteClient;
 use Mozu\Api\ApiContext;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Use this subresource to manage notes associated with an active order.
 */
 class OrderNoteResource {
 
@@ -28,9 +30,9 @@ class OrderNoteResource {
 	}
 
 	/**
-	* 
+	* Retrieves a list of all notes for an order.
 	*
-	* @param string $orderId 
+	* @param string $orderId Unique identifier of the order whose notes are retrieved.
 	* @return array|OrderNote 
 	*/
 	public function getOrderNotes( $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -43,10 +45,10 @@ class OrderNoteResource {
 	}
 	
 	/**
-	* 
+	* Retrieves a specific order note from an order.
 	*
-	* @param string $noteId 
-	* @param string $orderId 
+	* @param string $noteId Unique identifier of the note text to retrieve.
+	* @param string $orderId Unique identifier of the order note to retrieve.
 	* @return OrderNote 
 	*/
 	public function getOrderNote( $noteId,  $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -59,10 +61,10 @@ class OrderNoteResource {
 	}
 	
 	/**
-	* 
+	* Adds a note to the order. This is an internal note that the merchant can add to an order.
 	*
-	* @param string $orderId 
-	* @param OrderNote $orderNote 
+	* @param string $orderId Unique identifier of the order to add a note.
+	* @param OrderNote $orderNote The Unicode alphanumeric text contained in the note. Max length: 256 characters.
 	* @return OrderNote 
 	*/
 	public function createOrderNote($orderNote,  $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -75,11 +77,11 @@ class OrderNoteResource {
 	}
 	
 	/**
-	* 
+	* Updates a specific order note for an order.
 	*
-	* @param string $noteId 
-	* @param string $orderId 
-	* @param OrderNote $orderNote 
+	* @param string $noteId Unique identifier of the note whose text is being updated.
+	* @param string $orderId Unique identifier of the order whose note is being updated.
+	* @param OrderNote $orderNote The Unicode alphanumeric text contained in the note.
 	* @return OrderNote 
 	*/
 	public function updateOrderNote($orderNote,  $noteId,  $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -92,10 +94,10 @@ class OrderNoteResource {
 	}
 	
 	/**
-	* 
+	* Deletes a specific order note on an order.
 	*
-	* @param string $noteId 
-	* @param string $orderId 
+	* @param string $noteId Unique identifier of the note text to delete.
+	* @param string $orderId Unique identifier of the order note to delete.
 	*/
 	public function deleteOrderNote( $noteId,  $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
