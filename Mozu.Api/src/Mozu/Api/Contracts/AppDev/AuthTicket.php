@@ -23,53 +23,21 @@ class AuthTicket
 	*The token that stores an encrypted list of the application's configured behaviors and authenticates the application.
 	*/
 	public $accessToken;
-	public function getAccessToken() {
-		return $this->accessToken;
-	}
-	
-	public function setAccessToken($accessToken) {
-		$this->accessToken = $accessToken;
-		return $this;
-	}
 
 	/**
-	*Date and time the access token expires. After the access token expires, refresh the authentication ticket using the Refresh Token.
+	*Date and time the access token expires. After the access token expires, refresh the authentication ticket using the refresh koken.
 	*/
 	public $accessTokenExpiration;
-	public function getAccessTokenExpiration() {
-		return $this->accessTokenExpiration;
-	}
-	
-	public function setAccessTokenExpiration($accessTokenExpiration) {
-		$this->accessTokenExpiration = $accessTokenExpiration;
-		return $this;
-	}
 
 	/**
 	*The token that refreshes the application's authentication ticket.
 	*/
 	public $refreshToken;
-	public function getRefreshToken() {
-		return $this->refreshToken;
-	}
-	
-	public function setRefreshToken($refreshToken) {
-		$this->refreshToken = $refreshToken;
-		return $this;
-	}
 
 	/**
 	*Date and time the refresh token expires. After the refresh token expires, generate a new authentication ticket.
 	*/
 	public $refreshTokenExpiration;
-	public function getRefreshTokenExpiration() {
-		return $this->refreshTokenExpiration;
-	}
-	
-	public function setRefreshTokenExpiration($refreshTokenExpiration) {
-		$this->refreshTokenExpiration = $refreshTokenExpiration;
-		return $this;
-	}
 
 }
 

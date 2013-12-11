@@ -30,15 +30,15 @@ class PropertyTypeResource {
 	}
 
 	/**
-	* Retrieve a list of the content property types.
+	* Retrieves a list of the content property types.
 	*
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param int $startIndex 
 	* @return PropertyTypeCollection 
 	*/
-	public function getList($pageSize =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getList($dataViewMode, $pageSize =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = PropertyTypeClient::getListClient($pageSize, $startIndex, $authTicket);
+		$mozuClient = PropertyTypeClient::getListClient($dataViewMode, $pageSize, $startIndex, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -46,14 +46,14 @@ class PropertyTypeResource {
 	}
 	
 	/**
-	* Retrieve the details of the content property type.
+	* Retrieves the details of the content property type.
 	*
 	* @param string $propertyTypeName The name of the content property type.
 	* @return PropertyType 
 	*/
-	public function get( $propertyTypeName, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function get($dataViewMode,  $propertyTypeName, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = PropertyTypeClient::getClient( $propertyTypeName, $authTicket);
+		$mozuClient = PropertyTypeClient::getClient($dataViewMode,  $propertyTypeName, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -61,13 +61,13 @@ class PropertyTypeResource {
 	}
 	
 	/**
-	* Retrieve the value types associated with a content property.
+	* Retrieves the value types associated with a content property.
 	*
 	* @return array|PropertyValueType 
 	*/
-	public function propertyValueTypes(Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function propertyValueTypes($dataViewMode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = PropertyTypeClient::propertyValueTypesClient($authTicket);
+		$mozuClient = PropertyTypeClient::propertyValueTypesClient($dataViewMode, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

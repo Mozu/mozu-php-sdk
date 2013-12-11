@@ -15,35 +15,19 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 /**
-*	The difference between the highest price and the lowest price of the product extra values.
+*	The properties of the price difference between the product extra and the base product.
 */
 class ProductExtraValueDeltaPrice
 {
 	/**
-	*"3-letter ISO 4217 standard global currency code. Currently, only ""USD"" (US Dollar) is supported."
+	*3-letter ISO 4217 standard global currency code. Currently, only "USD" (US Dollar) is supported.
 	*/
 	public $currencyCode;
-	public function getCurrencyCode() {
-		return $this->currencyCode;
-	}
-	
-	public function setCurrencyCode($currencyCode) {
-		$this->currencyCode = $currencyCode;
-		return $this;
-	}
 
 	/**
-	*The difference between the highest price and the lowest price for product extra values.
+	*The difference between the price associated with this product extra and the base product. For example, if a product with a defined monogram extra costs an additional $10, the DeltaPrice value is "10".
 	*/
 	public $deltaPrice;
-	public function getDeltaPrice() {
-		return $this->deltaPrice;
-	}
-	
-	public function setDeltaPrice($deltaPrice) {
-		$this->deltaPrice = $deltaPrice;
-		return $this;
-	}
 
 }
 

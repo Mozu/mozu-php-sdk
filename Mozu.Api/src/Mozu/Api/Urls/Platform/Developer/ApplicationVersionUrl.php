@@ -24,87 +24,94 @@ class ApplicationVersionUrl  {
 	public static function getAllApplicationsUrl()
 	{
 		$url = "/api/platform/developer/applications/";
-		return new MozuUrl($url, UrlLocation::HOME_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetApplication
-		* @param int $applicationId 
+		* @param int $applicationId Unique identifier of the application.
 		* @return string Resource Url
 	*/
 	public static function getApplicationUrl($applicationId)
 	{
 		$url = "/api/platform/developer/applications/{applicationId}";
-		$url = MozuUrl::formatUrl($url, "applicationId", $applicationId);
-		return new MozuUrl($url, UrlLocation::HOME_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("applicationId", $applicationId);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetApplicationVersion
-		* @param int $applicationVersionId 
+		* @param int $applicationVersionId Unique identifier of the application version. Application version IDs are unique across all applications associated with a developer account.
 		* @return string Resource Url
 	*/
 	public static function getApplicationVersionUrl($applicationVersionId)
 	{
 		$url = "/api/platform/developer/applications/applicationVersions/{applicationVersionId}";
-		$url = MozuUrl::formatUrl($url, "applicationVersionId", $applicationVersionId);
-		return new MozuUrl($url, UrlLocation::HOME_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("applicationVersionId", $applicationVersionId);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetPackages
-		* @param int $applicationVersionId 
+		* @param int $applicationVersionId Unique identifier of the application version. Application version IDs are unique across all applications associated with a developer account.
 		* @return string Resource Url
 	*/
 	public static function getPackagesUrl($applicationVersionId)
 	{
 		$url = "/api/platform/developer/applications/applicationVersions/{applicationVersionId}/packages";
-		$url = MozuUrl::formatUrl($url, "applicationVersionId", $applicationVersionId);
-		return new MozuUrl($url, UrlLocation::HOME_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("applicationVersionId", $applicationVersionId);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetPackage
-		* @param int $applicationVersionId 
-		* @param int $packageId 
+		* @param int $applicationVersionId Unique identifier of the application version associated with the package. Application version IDs are unique across all applications associated with the developer account.
+		* @param int $packageId Unique identifier of the package to retrieve.
 		* @return string Resource Url
 	*/
 	public static function getPackageUrl($applicationVersionId, $packageId)
 	{
 		$url = "/api/platform/developer/applications/applicationVersions/{applicationVersionId}/packages/{packageId}";
-		$url = MozuUrl::formatUrl($url, "applicationVersionId", $applicationVersionId);
-		$url = MozuUrl::formatUrl($url, "packageId", $packageId);
-		return new MozuUrl($url, UrlLocation::HOME_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("applicationVersionId", $applicationVersionId);
+		$url = $mozuUrl->formatUrl("packageId", $packageId);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetPackageItemsMetadata
-		* @param int $applicationVersionId 
-		* @param int $packageId 
+		* @param int $applicationVersionId Unique identifier of the application version. Application version IDs are unique across all applications associated with a developer account.
+		* @param int $packageId Unique identifier of the package.
 		* @return string Resource Url
 	*/
 	public static function getPackageItemsMetadataUrl($applicationVersionId, $packageId)
 	{
 		$url = "/api/platform/developer/applications/applicationVersions/{applicationVersionId}/packages/{packageId}/files";
-		$url = MozuUrl::formatUrl($url, "applicationVersionId", $applicationVersionId);
-		$url = MozuUrl::formatUrl($url, "packageId", $packageId);
-		return new MozuUrl($url, UrlLocation::HOME_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("applicationVersionId", $applicationVersionId);
+		$url = $mozuUrl->formatUrl("packageId", $packageId);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetPackageItemMetadata
-		* @param int $applicationVersionId 
-		* @param string $itempath 
-		* @param int $packageId 
+		* @param int $applicationVersionId Unique identifier of the application version. Application version IDs are unique across all applications associated with a developer account.
+		* @param string $itempath Complete file directory location and name of the item in the package to retrieve metadata.
+		* @param int $packageId Unique identifier of the package.
 		* @return string Resource Url
 	*/
 	public static function getPackageItemMetadataUrl($applicationVersionId, $itempath, $packageId)
 	{
 		$url = "/api/platform/developer/applications/applicationVersions/{applicationVersionId}/packages/{packageId}/files/{*itempath}";
-		$url = MozuUrl::formatUrl($url, "applicationVersionId", $applicationVersionId);
-		$url = MozuUrl::formatUrl($url, "itempath", $itempath);
-		$url = MozuUrl::formatUrl($url, "packageId", $packageId);
-		return new MozuUrl($url, UrlLocation::HOME_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("applicationVersionId", $applicationVersionId);
+		$url = $mozuUrl->formatUrl("itempath", $itempath);
+		$url = $mozuUrl->formatUrl("packageId", $packageId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -116,37 +123,40 @@ class ApplicationVersionUrl  {
 	public static function getPackageFilesZipUrl($applicationVersionId, $packageId)
 	{
 		$url = "/api/platform/developer/applications/applicationVersions/{applicationVersionId}/packages/{packageId}/zip";
-		$url = MozuUrl::formatUrl($url, "applicationVersionId", $applicationVersionId);
-		$url = MozuUrl::formatUrl($url, "packageId", $packageId);
-		return new MozuUrl($url, UrlLocation::HOME_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("applicationVersionId", $applicationVersionId);
+		$url = $mozuUrl->formatUrl("packageId", $packageId);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for AddPackage
-		* @param int $applicationVersionId 
+		* @param int $applicationVersionId Unique identifier of the application version. Application version IDs are unique across all applications associated with the developer account.
 		* @return string Resource Url
 	*/
 	public static function addPackageUrl($applicationVersionId)
 	{
 		$url = "/api/platform/developer/applications/applicationVersions/{applicationVersionId}/packages";
-		$url = MozuUrl::formatUrl($url, "applicationVersionId", $applicationVersionId);
-		return new MozuUrl($url, UrlLocation::HOME_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("applicationVersionId", $applicationVersionId);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for AddPackageFile
-		* @param int $applicationVersionId 
-		* @param string $filepath 
-		* @param int $packageId 
+		* @param int $applicationVersionId Unique identifier of the application version. Application version IDs are unique across all applications associated with a developer account.
+		* @param string $filepath The file location to which to add the package file.
+		* @param int $packageId Unique identifier of the package.
 		* @return string Resource Url
 	*/
 	public static function addPackageFileUrl($applicationVersionId, $filepath, $packageId)
 	{
 		$url = "/api/platform/developer/applications/applicationVersions/{applicationVersionId}/packages/{packageId}/files/{*filepath}";
-		$url = MozuUrl::formatUrl($url, "applicationVersionId", $applicationVersionId);
-		$url = MozuUrl::formatUrl($url, "filepath", $filepath);
-		$url = MozuUrl::formatUrl($url, "packageId", $packageId);
-		return new MozuUrl($url, UrlLocation::HOME_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("applicationVersionId", $applicationVersionId);
+		$url = $mozuUrl->formatUrl("filepath", $filepath);
+		$url = $mozuUrl->formatUrl("packageId", $packageId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -158,41 +168,44 @@ class ApplicationVersionUrl  {
 	public static function changePackageFileNameOrPathUrl($applicationVersionId, $packageId)
 	{
 		$url = "/api/platform/developer/applications/applicationVersions/{applicationVersionId}/packages/{packageId}/files/change-name-or-path";
-		$url = MozuUrl::formatUrl($url, "applicationVersionId", $applicationVersionId);
-		$url = MozuUrl::formatUrl($url, "packageId", $packageId);
-		return new MozuUrl($url, UrlLocation::HOME_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("applicationVersionId", $applicationVersionId);
+		$url = $mozuUrl->formatUrl("packageId", $packageId);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdatePackageFile
-		* @param int $applicationVersionId 
-		* @param string $filepath 
-		* @param int $packageId 
+		* @param int $applicationVersionId Unique identifier of the application version. Application version IDs are unique across all applications associated with a developer account.
+		* @param string $filepath The location path and name that identifies the package file to update.
+		* @param int $packageId The unique identifier of the package.
 		* @return string Resource Url
 	*/
 	public static function updatePackageFileUrl($applicationVersionId, $filepath, $packageId)
 	{
 		$url = "/api/platform/developer/applications/applicationVersions/{applicationVersionId}/packages/{packageId}/files/{*filepath}";
-		$url = MozuUrl::formatUrl($url, "applicationVersionId", $applicationVersionId);
-		$url = MozuUrl::formatUrl($url, "filepath", $filepath);
-		$url = MozuUrl::formatUrl($url, "packageId", $packageId);
-		return new MozuUrl($url, UrlLocation::HOME_POD,"PUT") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("applicationVersionId", $applicationVersionId);
+		$url = $mozuUrl->formatUrl("filepath", $filepath);
+		$url = $mozuUrl->formatUrl("packageId", $packageId);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for DeletePackageFile
-		* @param int $applicationVersionId 
-		* @param string $filepath 
-		* @param int $packageId 
+		* @param int $applicationVersionId Unique identifier of the application version.
+		* @param string $filepath The file path and name of the file location to delete from the package.
+		* @param int $packageId Unique identifier of the package.
 		* @return string Resource Url
 	*/
 	public static function deletePackageFileUrl($applicationVersionId, $filepath, $packageId)
 	{
 		$url = "/api/platform/developer/applications/applicationVersions/{applicationVersionId}/packages/{packageId}/files/{*filepath}";
-		$url = MozuUrl::formatUrl($url, "applicationVersionId", $applicationVersionId);
-		$url = MozuUrl::formatUrl($url, "filepath", $filepath);
-		$url = MozuUrl::formatUrl($url, "packageId", $packageId);
-		return new MozuUrl($url, UrlLocation::HOME_POD,"DELETE") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("applicationVersionId", $applicationVersionId);
+		$url = $mozuUrl->formatUrl("filepath", $filepath);
+		$url = $mozuUrl->formatUrl("packageId", $packageId);
+		return $mozuUrl;
 	}
 	
 }

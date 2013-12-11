@@ -15,117 +15,47 @@ namespace Mozu\Api\Contracts\Event;
 
 
 /**
-*	When a create, read, update, or delete happens on an order, product, discount, or category.
+*	Properties of an event the system creates each time a create, read, update, or delete operation is performed.
 */
 class Event
 {
 		public $catalogId;
-	public function getCatalogId() {
-		return $this->catalogId;
-	}
-	
-	public function setCatalogId($catalogId) {
-		$this->catalogId = $catalogId;
-		return $this;
-	}
+
+		public $correlationId;
 
 	/**
-	*The unique identifier of the entity that caused the event. For example, if the event is "ProductCreated", the entity ID value represents the product code of the product that was created.
+	*The unique identifier of the entity that caused the event. For example, if the event is "product.created", the entity ID value represents the product code of the product that was created.
 	*/
 	public $entityId;
-	public function getEntityId() {
-		return $this->entityId;
-	}
-	
-	public function setEntityId($entityId) {
-		$this->entityId = $entityId;
-		return $this;
-	}
 
 	/**
 	*The unique identifier of the event.
 	*/
 	public $id;
-	public function getId() {
-		return $this->id;
-	}
-	
-	public function setId($id) {
-		$this->id = $id;
-		return $this;
-	}
 
 	/**
 	*If true, the event record was generated as a test request for an application.
 	*/
 	public $isTest;
-	public function getIsTest() {
-		return $this->isTest;
-	}
-	
-	public function setIsTest($isTest) {
-		$this->isTest = $isTest;
-		return $this;
-	}
 
 		public $masterCatalogId;
-	public function getMasterCatalogId() {
-		return $this->masterCatalogId;
-	}
-	
-	public function setMasterCatalogId($masterCatalogId) {
-		$this->masterCatalogId = $masterCatalogId;
-		return $this;
-	}
 
 		public $siteId;
-	public function getSiteId() {
-		return $this->siteId;
-	}
-	
-	public function setSiteId($siteId) {
-		$this->siteId = $siteId;
-		return $this;
-	}
 
 	/**
 	*Unique identifier of the Mozu tenant.
 	*/
 	public $tenantId;
-	public function getTenantId() {
-		return $this->tenantId;
-	}
-	
-	public function setTenantId($tenantId) {
-		$this->tenantId = $tenantId;
-		return $this;
-	}
 
 	/**
 	*The type of event that was performed, such as "product.created" or "category.deleted".
 	*/
 	public $topic;
-	public function getTopic() {
-		return $this->topic;
-	}
-	
-	public function setTopic($topic) {
-		$this->topic = $topic;
-		return $this;
-	}
 
 	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
-	public function getAuditInfo() {
-		return $this->auditInfo;
-	}
-	
-	public function setAuditInfo($auditInfo) {
-		$this->auditInfo = $auditInfo;
-		return $this;
-	}
 
 }
 

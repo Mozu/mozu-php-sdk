@@ -23,89 +23,36 @@ class CommerceUnitPrice
 	*The original price of the item in the cart or order.
 	*/
 	public $baseAmount;
-	public function getBaseAmount() {
-		return $this->baseAmount;
-	}
-	
-	public function setBaseAmount($baseAmount) {
-		$this->baseAmount = $baseAmount;
-		return $this;
-	}
 
 	/**
 	*The calculated amount of the discount to apply.
 	*/
 	public $discountAmount;
-	public function getDiscountAmount() {
-		return $this->discountAmount;
-	}
-	
-	public function setDiscountAmount($discountAmount) {
-		$this->discountAmount = $discountAmount;
-		return $this;
-	}
 
 	/**
 	*The price of the item after all discounts are applied.
 	*/
 	public $discountedAmount;
-	public function getDiscountedAmount() {
-		return $this->discountedAmount;
-	}
-	
-	public function setDiscountedAmount($discountedAmount) {
-		$this->discountedAmount = $discountedAmount;
-		return $this;
-	}
 
-		public $extendedAmount;
-	public function getExtendedAmount() {
-		return $this->extendedAmount;
-	}
-	
-	public function setExtendedAmount($extendedAmount) {
-		$this->extendedAmount = $extendedAmount;
-		return $this;
-	}
+	/**
+	*Represents the total price of the line item extended to the shopper. This begins with the Unit Price, then uses any of the following prices if they are defined, in the following order: Override Amount, Sale Amount, List Amount.
+	*/
+	public $extendedAmount;
 
 	/**
 	*The price the item is listed for in the storefront.
 	*/
 	public $listAmount;
-	public function getListAmount() {
-		return $this->listAmount;
-	}
-	
-	public function setListAmount($listAmount) {
-		$this->listAmount = $listAmount;
-		return $this;
-	}
 
 	/**
 	*The override price of the item set by the merchant for a given order.
 	*/
 	public $overrideAmount;
-	public function getOverrideAmount() {
-		return $this->overrideAmount;
-	}
-	
-	public function setOverrideAmount($overrideAmount) {
-		$this->overrideAmount = $overrideAmount;
-		return $this;
-	}
 
 	/**
 	*The sale price set for the item.
 	*/
 	public $saleAmount;
-	public function getSaleAmount() {
-		return $this->saleAmount;
-	}
-	
-	public function setSaleAmount($saleAmount) {
-		$this->saleAmount = $saleAmount;
-		return $this;
-	}
 
 }
 

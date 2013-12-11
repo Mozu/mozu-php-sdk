@@ -23,40 +23,16 @@ class Phone
 	*Home phone number.
 	*/
 	public $home;
-	public function getHome() {
-		return $this->home;
-	}
-	
-	public function setHome($home) {
-		$this->home = $home;
-		return $this;
-	}
 
 	/**
 	*Mobile phone number.
 	*/
 	public $mobile;
-	public function getMobile() {
-		return $this->mobile;
-	}
-	
-	public function setMobile($mobile) {
-		$this->mobile = $mobile;
-		return $this;
-	}
 
 	/**
 	*Work phone number.
 	*/
 	public $work;
-	public function getWork() {
-		return $this->work;
-	}
-	
-	public function setWork($work) {
-		$this->work = $work;
-		return $this;
-	}
 
 }
 

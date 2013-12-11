@@ -23,27 +23,11 @@ class FacetRangeQuery
 	*The maximum value to use for the facet range query.
 	*/
 	public $rangeValueEnd;
-	public function getRangeValueEnd() {
-		return $this->rangeValueEnd;
-	}
-	
-	public function setRangeValueEnd($rangeValueEnd) {
-		$this->rangeValueEnd = $rangeValueEnd;
-		return $this;
-	}
 
 	/**
 	*The minimum value to use for the facet range query.
 	*/
 	public $rangeValueStart;
-	public function getRangeValueStart() {
-		return $this->rangeValueStart;
-	}
-	
-	public function setRangeValueStart($rangeValueStart) {
-		$this->rangeValueStart = $rangeValueStart;
-		return $this;
-	}
 
 }
 

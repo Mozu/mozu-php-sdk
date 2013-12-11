@@ -23,53 +23,21 @@ class UnitOfMeasure
 	*The name of the unit of measure, such as "foot".
 	*/
 	public $name;
-	public function getName() {
-		return $this->name;
-	}
-	
-	public function setName($name) {
-		$this->name = $name;
-		return $this;
-	}
 
 	/**
 	*The plural name of the unit of measure, such as "feet".
 	*/
 	public $pluralName;
-	public function getPluralName() {
-		return $this->pluralName;
-	}
-	
-	public function setPluralName($pluralName) {
-		$this->pluralName = $pluralName;
-		return $this;
-	}
 
 	/**
 	*The abbreviated symbol for the unit of measure, such as "ft".
 	*/
 	public $symbol;
-	public function getSymbol() {
-		return $this->symbol;
-	}
-	
-	public function setSymbol($symbol) {
-		$this->symbol = $symbol;
-		return $this;
-	}
 
 	/**
 	*The type of measurement, such as length or volume.
 	*/
 	public $unitOfMeasureType;
-	public function getUnitOfMeasureType() {
-		return $this->unitOfMeasureType;
-	}
-	
-	public function setUnitOfMeasureType($unitOfMeasureType) {
-		$this->unitOfMeasureType = $unitOfMeasureType;
-		return $this;
-	}
 
 }
 

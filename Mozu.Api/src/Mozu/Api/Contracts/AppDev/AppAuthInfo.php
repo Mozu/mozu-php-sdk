@@ -23,27 +23,11 @@ class AppAuthInfo
 	*Unique identifier of the application. System-supplied and read-only.
 	*/
 	public $applicationId;
-	public function getApplicationId() {
-		return $this->applicationId;
-	}
-	
-	public function setApplicationId($applicationId) {
-		$this->applicationId = $applicationId;
-		return $this;
-	}
 
 	/**
 	*System-supplied alphanumeric code used to authenticate applications. This string is only available for viewing in Mozu Dev Center.
 	*/
 	public $sharedSecret;
-	public function getSharedSecret() {
-		return $this->sharedSecret;
-	}
-	
-	public function setSharedSecret($sharedSecret) {
-		$this->sharedSecret = $sharedSecret;
-		return $this;
-	}
 
 }
 

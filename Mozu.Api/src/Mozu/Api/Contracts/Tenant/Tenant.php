@@ -14,19 +14,40 @@ namespace Mozu\Api\Contracts\Tenant;
 
 
 
+/**
+*	Properties of a tenant, which the logical grouping of all a company's sites and catalogs.
+*/
 class Tenant
 {
-		public $domain;
+	/**
+	*The domain information associated with the tenant.
+	*/
+	public $domain;
 
-		public $id;
+	/**
+	*Unique identifier of the Mozu tenant.
+	*/
+	public $id;
 
-		public $isDevTenant;
+	/**
+	*If true, the tenant represents a collection of master catalogs and catalogs for a development tenant, used by a developer account to test applications and themes.
+	*/
+	public $isDevTenant;
 
-		public $name;
+	/**
+	*The name of the tenant.
+	*/
+	public $name;
 
-		public $masterCatalogs;
+	/**
+	*Collection of master catalogs associated with the tenant.
+	*/
+	public $masterCatalogs;
 
-		public $sites;
+	/**
+	*Collection of sites associated with the tenant.
+	*/
+	public $sites;
 
 }
 

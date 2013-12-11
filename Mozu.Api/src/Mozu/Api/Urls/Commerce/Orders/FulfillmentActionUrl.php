@@ -19,14 +19,15 @@ class FulfillmentActionUrl  {
 
 	/**
 		* Get Resource Url for PerformFulfillmentAction
-		* @param string $orderId 
+		* @param string $orderId Unique identifier of the order for which to perform the fulfillment action.
 		* @return string Resource Url
 	*/
 	public static function performFulfillmentActionUrl($orderId)
 	{
 		$url = "/api/commerce/orders/{orderId}/fulfillment/actions/";
-		$url = MozuUrl::formatUrl($url, "orderId", $orderId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		return $mozuUrl;
 	}
 	
 }

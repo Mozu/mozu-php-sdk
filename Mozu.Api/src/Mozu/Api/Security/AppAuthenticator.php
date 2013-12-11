@@ -13,7 +13,8 @@ use Mozu\Api\Urls\Platform\Applications\AuthTicketUrl;
 use Guzzle\Http\Client as Client;
 use Mozu\Api\Headers;
 use Guzzle\Http\Message\Request;
-
+use Mozu\Api\Utilities\HttpHelper;
+use Guzzle\Http\Exception\ClientErrorResponseException;
 
 class AppAuthenticator {
 	private $appAuthInfo;
@@ -26,42 +27,65 @@ class AppAuthenticator {
 		$this->appAuthInfo = $appAuthInfo;
 		$this->baseUrl = $baseUrl;
 		
+		
 	}
 			
 	public static function initialize(AppAuthInfo $appAuthInfo, $baseUrl,RefreshInterval  $refreshInterval = null) {
+
+		if (!isset($appAuthInfo) || !isset($baseUrl) || trim($baseUrl) == "")
+			throw new \Exception("AppAuthInfo or BaseURL is missing");
+		
+		if (!isset($appAuthInfo->applicationId) || !isset($appAuthInfo->sharedSecret) 
+			|| trim($appAuthInfo->applicationId) == "" || trim($appAuthInfo->sharedSecret) == "")
+			throw new \Exception("Application or SharedSecret is missing");
+		
+		$parsedUrl =  parse_url($baseUrl);
+		HttpHelper::$urlScheme =$parsedUrl["scheme"];
+		
 		if (!isset(static::$instance)) {
 			static::$instance = new AppAuthenticator($appAuthInfo, $baseUrl);
 			if ($refreshInterval != null) {
 				static::$instance->refreshInterval = $refreshInterval;
 			} 
-			static::$instance->authenticateApp();
+			try {
+				static::$instance->authenticateApp();
+			} catch(\Exception $exc) {
+				static::$instance == null;
+				throw $exc;
+			}
 		}
 		return static::$instance;
 	}
 	
 	private function authenticateApp() {
-		//$config = array('version' => 'v1.1','curl.options' => array(CURLOPT_PROXY => 'http://localhost:8888'));
-		$client = new Client ( $this->baseUrl );
-		$request = $client->post( AuthTicketUrl::AuthenticateAppUrl()->getUrl());
-		$request->setBody ( json_encode($this->appAuthInfo), 'application/json' );
-		$response = $request->send();
-		$jsonResp = $response->getBody ( true );
-		static::$instance->authTicket = json_decode ( $jsonResp );
-		$this->setRefreshInterval(false);
+		try {
+			$client = new Client ( $this->baseUrl, HttpHelper::getGuzzleConfig() );
+			$request = $client->post( AuthTicketUrl::AuthenticateAppUrl()->getUrl());
+			$request->setBody ( json_encode($this->appAuthInfo), 'application/json' );
+			$response = $request->send();
+			$jsonResp = $response->getBody ( true );
+			static::$instance->authTicket = json_decode ( $jsonResp );
+			$this->setRefreshInterval(false);
+		} catch(\Exception $e) {
+			HttpHelper::checkError($e);	
+		} 
 	}
 			
 	private function refreshAuthTicket() {
-		$requestData = new AuthTicketRequest();
-		$requestData->refreshToken = $this->authTicket->refreshToken;
-		//$config = array('version' => 'v1.1','curl.options' => array(CURLOPT_PROXY => 'http://localhost:8888'));
-		$client = new Client ( $this->baseUrl );
-		$request = $client->put( AuthTicketUrl::RefreshAppAuthTicketUrl()->getUrl());
-		$request->setBody ( json_encode($requestData), 'application/json' );
-		$response = $request->send();
-		$jsonResp = $response->getBody ( true );
-		$this->authTicket = json_decode ( $jsonResp );
-		
-		$this->setRefreshInterval(true);
+		try {
+			$requestData = new AuthTicketRequest();
+			$requestData->refreshToken = $this->authTicket->refreshToken;
+			$client = new Client ( $this->baseUrl, HttpHelper::getGuzzleConfig() );
+			$request = $client->put( AuthTicketUrl::RefreshAppAuthTicketUrl()->getUrl());
+			$request->setBody ( json_encode($requestData), 'application/json' );
+			$response = $request->send();
+			$jsonResp = $response->getBody ( true );
+			$this->authTicket = json_decode ( $jsonResp );
+			
+			$this->setRefreshInterval(true);
+		} catch(\Exception $e) {
+			HttpHelper::checkError($e);
+		}
 	}
 	
 	private function setRefreshInterval($updateRefreshTokenInterval) {
@@ -115,7 +139,7 @@ class AppAuthenticator {
 	public function getBaseUrl() {
 		return static::$instance->baseUrl;
 	} 
-	
+		
 	public static function getInstance() {
 		if (static::$instance == null) {
 			//raise exception

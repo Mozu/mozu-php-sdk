@@ -19,305 +19,120 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Orders;
 */
 class OrderItem
 {
-		public $discountedTotal;
-	public function getDiscountedTotal() {
-		return $this->discountedTotal;
-	}
-	
-	public function setDiscountedTotal($discountedTotal) {
-		$this->discountedTotal = $discountedTotal;
-		return $this;
-	}
+	/**
+	*The subtotal of the order item including any applied discount calculations.
+	*/
+	public $discountedTotal;
 
 	/**
-	*Amount of discounts applied to an item in an order. Usually a negative dollar amount or number. System-supplied and read-only.
+	*Estimated amount of discounts applied to the item in the order, which is system-supplied and read-only.
 	*/
 	public $discountTotal;
-	public function getDiscountTotal() {
-		return $this->discountTotal;
-	}
-	
-	public function setDiscountTotal($discountTotal) {
-		$this->discountTotal = $discountTotal;
-		return $this;
-	}
-
-		public $extendedTotal;
-	public function getExtendedTotal() {
-		return $this->extendedTotal;
-	}
-	
-	public function setExtendedTotal($extendedTotal) {
-		$this->extendedTotal = $extendedTotal;
-		return $this;
-	}
 
 	/**
-	*The total monetary sum of all fees incurred for an item in an order.
+	*Represents the total price of the order item extended to the shopper. This begins with the Unit Price, then uses any of the following prices if they are defined, in the following order: Override Amount, Sale Amount, List Amount.
+	*/
+	public $extendedTotal;
+
+	/**
+	*The total sum of all fees incurred for an item in an order.
 	*/
 	public $feeTotal;
-	public function getFeeTotal() {
-		return $this->feeTotal;
-	}
-	
-	public function setFeeTotal($feeTotal) {
-		$this->feeTotal = $feeTotal;
-		return $this;
-	}
 
-		public $fulfillmentLocationCode;
-	public function getFulfillmentLocationCode() {
-		return $this->fulfillmentLocationCode;
-	}
-	
-	public function setFulfillmentLocationCode($fulfillmentLocationCode) {
-		$this->fulfillmentLocationCode = $fulfillmentLocationCode;
-		return $this;
-	}
+	/**
+	*Code that identifies the location used to fulfill this order item, whether via in-store pickup or direct shipment.
+	*/
+	public $fulfillmentLocationCode;
 
-		public $fulfillmentMethod;
-	public function getFulfillmentMethod() {
-		return $this->fulfillmentMethod;
-	}
-	
-	public function setFulfillmentMethod($fulfillmentMethod) {
-		$this->fulfillmentMethod = $fulfillmentMethod;
-		return $this;
-	}
+	/**
+	*The method used to fulfill the item in the order, which is "PickUp" or "Ship".
+	*/
+	public $fulfillmentMethod;
 
 	/**
 	*Unique identifier of a specific item in an order.
 	*/
 	public $id;
-	public function getId() {
-		return $this->id;
-	}
-	
-	public function setId($id) {
-		$this->id = $id;
-		return $this;
-	}
 
 	/**
-	*If true, the item in the order can be purchased or fulfilled at regular intervals such as a monthly billing cycle or a digital or physical subscription.
+	*If true, the item in the order can be purchased or fulfilled at regular intervals such as a monthly billing cycle or a digital or physical subscription. This property is reserved for future functionality and is system-supplied and read only.
 	*/
 	public $isRecurring;
-	public function getIsRecurring() {
-		return $this->isRecurring;
-	}
-	
-	public function setIsRecurring($isRecurring) {
-		$this->isRecurring = $isRecurring;
-		return $this;
-	}
 
 	/**
 	*If true, the entity is subject to tax based on the relevant tax rate.
 	*/
 	public $isTaxable;
-	public function getIsTaxable() {
-		return $this->isTaxable;
-	}
-	
-	public function setIsTaxable($isTaxable) {
-		$this->isTaxable = $isTaxable;
-		return $this;
-	}
 
 	/**
 	*The total amount of tax that applied to an item in an order.
 	*/
 	public $itemTaxTotal;
-	public function getItemTaxTotal() {
-		return $this->itemTaxTotal;
-	}
-	
-	public function setItemTaxTotal($itemTaxTotal) {
-		$this->itemTaxTotal = $itemTaxTotal;
-		return $this;
-	}
 
 	/**
-	*"Language used for the entity. Currently, only ""en-US"" is supported."
+	*Language used for the entity. Currently, only "en-US" is supported.
 	*/
 	public $localeCode;
-	public function getLocaleCode() {
-		return $this->localeCode;
-	}
-	
-	public function setLocaleCode($localeCode) {
-		$this->localeCode = $localeCode;
-		return $this;
-	}
 
 	/**
 	*The unique identifier of the item when it was applied to a cart, prior to checkout, when the cart became an order.
 	*/
 	public $originalCartItemId;
-	public function getOriginalCartItemId() {
-		return $this->originalCartItemId;
-	}
-	
-	public function setOriginalCartItemId($originalCartItemId) {
-		$this->originalCartItemId = $originalCartItemId;
-		return $this;
-	}
-
-	/**
-	*The unique identifier of the product reservation for the item in an order.
-	*/
-	public $productReservationId;
-	public function getProductReservationId() {
-		return $this->productReservationId;
-	}
-	
-	public function setProductReservationId($productReservationId) {
-		$this->productReservationId = $productReservationId;
-		return $this;
-	}
 
 	/**
 	*The quantity of a specific item in an order.
 	*/
 	public $quantity;
-	public function getQuantity() {
-		return $this->quantity;
-	}
-	
-	public function setQuantity($quantity) {
-		$this->quantity = $quantity;
-		return $this;
-	}
 
 	/**
 	*The total amount of sales tax incurred for shipping charges associated with this item in a cart.
 	*/
 	public $shippingTaxTotal;
-	public function getShippingTaxTotal() {
-		return $this->shippingTaxTotal;
-	}
-	
-	public function setShippingTaxTotal($shippingTaxTotal) {
-		$this->shippingTaxTotal = $shippingTaxTotal;
-		return $this;
-	}
 
 	/**
 	*Total amount of shipping fees associated with the specified item in the order.
 	*/
 	public $shippingTotal;
-	public function getShippingTotal() {
-		return $this->shippingTotal;
-	}
-	
-	public function setShippingTotal($shippingTotal) {
-		$this->shippingTotal = $shippingTotal;
-		return $this;
-	}
 
 	/**
 	*Amount of the item in the order without sales tax, shipping costs, and other fees.
 	*/
 	public $subtotal;
-	public function getSubtotal() {
-		return $this->subtotal;
-	}
-	
-	public function setSubtotal($subtotal) {
-		$this->subtotal = $subtotal;
-		return $this;
-	}
 
 	/**
 	*The amount of the item in the order that is subject to tax. This amount typically represents the order item subtotal before applied discounts.
 	*/
 	public $taxableTotal;
-	public function getTaxableTotal() {
-		return $this->taxableTotal;
-	}
-	
-	public function setTaxableTotal($taxableTotal) {
-		$this->taxableTotal = $taxableTotal;
-		return $this;
-	}
 
 	/**
 	*The total monetary sum of a specific item in an order.
 	*/
 	public $total;
-	public function getTotal() {
-		return $this->total;
-	}
-	
-	public function setTotal($total) {
-		$this->total = $total;
-		return $this;
-	}
 
 	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
-	public function getAuditInfo() {
-		return $this->auditInfo;
-	}
-	
-	public function setAuditInfo($auditInfo) {
-		$this->auditInfo = $auditInfo;
-		return $this;
-	}
 
 	/**
 	*The product properties of an item in an order.
 	*/
 	public $product;
-	public function getProduct() {
-		return $this->product;
-	}
-	
-	public function setProduct($product) {
-		$this->product = $product;
-		return $this;
-	}
 
 	/**
 	*List of product discounts that apply to the item in the order.
 	*/
 	public $productDiscounts;
-	public function getProductDiscounts() {
-		return $this->productDiscounts;
-	}
-	
-	public function setProductDiscounts($productDiscounts) {
-		$this->productDiscounts = $productDiscounts;
-		return $this;
-	}
 
 	/**
 	*List of shipping discounts that apply to the item in the order.
 	*/
 	public $shippingDiscounts;
-	public function getShippingDiscounts() {
-		return $this->shippingDiscounts;
-	}
-	
-	public function setShippingDiscounts($shippingDiscounts) {
-		$this->shippingDiscounts = $shippingDiscounts;
-		return $this;
-	}
 
 	/**
 	*Properties of the unit price associated with the order item.
 	*/
 	public $unitPrice;
-	public function getUnitPrice() {
-		return $this->unitPrice;
-	}
-	
-	public function setUnitPrice($unitPrice) {
-		$this->unitPrice = $unitPrice;
-		return $this;
-	}
 
 }
 

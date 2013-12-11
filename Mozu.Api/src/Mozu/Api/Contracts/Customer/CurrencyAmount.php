@@ -23,27 +23,11 @@ class CurrencyAmount
 	*The monetary amount in the specified currency locale code.
 	*/
 	public $amount;
-	public function getAmount() {
-		return $this->amount;
-	}
-	
-	public function setAmount($amount) {
-		$this->amount = $amount;
-		return $this;
-	}
 
 	/**
-	*"3-letter ISO 4217 standard global currency code. Currently, only ""USD"" (US Dollar) is supported."
+	*3-letter ISO 4217 standard global currency code. Currently, only "USD" (US Dollar) is supported.
 	*/
 	public $currencyCode;
-	public function getCurrencyCode() {
-		return $this->currencyCode;
-	}
-	
-	public function setCurrencyCode($currencyCode) {
-		$this->currencyCode = $currencyCode;
-		return $this;
-	}
 
 }
 

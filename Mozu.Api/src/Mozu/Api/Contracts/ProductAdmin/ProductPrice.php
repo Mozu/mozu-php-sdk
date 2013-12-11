@@ -20,43 +20,19 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class ProductPrice
 {
 	/**
-	*"3-letter ISO 4217 standard global currency code. Currently, only ""USD"" (US Dollar) is supported."
+	*3-letter ISO 4217 standard global currency code. Currently, only "USD" (US Dollar) is supported.
 	*/
 	public $isoCurrencyCode;
-	public function getIsoCurrencyCode() {
-		return $this->isoCurrencyCode;
-	}
-	
-	public function setIsoCurrencyCode($isoCurrencyCode) {
-		$this->isoCurrencyCode = $isoCurrencyCode;
-		return $this;
-	}
 
 	/**
 	*Price that the merchant intends to sell the product which is not necessarily the list price. This is the price the merchant intends to sell the product if no sale price is present.
 	*/
 	public $price;
-	public function getPrice() {
-		return $this->price;
-	}
-	
-	public function setPrice($price) {
-		$this->price = $price;
-		return $this;
-	}
 
 	/**
 	*Price of the product with a discount already applied which the merchant intends to sell the product.
 	*/
 	public $salePrice;
-	public function getSalePrice() {
-		return $this->salePrice;
-	}
-	
-	public function setSalePrice($salePrice) {
-		$this->salePrice = $salePrice;
-		return $this;
-	}
 
 }
 

@@ -19,110 +19,41 @@ namespace Mozu\Api\Contracts\PricingRuntime;
 */
 class TaxableOrder
 {
-		public $currencyCode;
-	public function getCurrencyCode() {
-		return $this->currencyCode;
-	}
-	
-	public function setCurrencyCode($currencyCode) {
-		$this->currencyCode = $currencyCode;
-		return $this;
-	}
+	/**
+	*3-letter ISO 4217 standard global currency code. Currently, only "USD" (US Dollar) is supported.
+	*/
+	public $currencyCode;
 
 	/**
 	*Handling fee associated with the order.
 	*/
 	public $handlingFee;
-	public function getHandlingFee() {
-		return $this->handlingFee;
-	}
-	
-	public function setHandlingFee($handlingFee) {
-		$this->handlingFee = $handlingFee;
-		return $this;
-	}
 
 	/**
 	*The date and time the order was submitted.
 	*/
 	public $orderDate;
-	public function getOrderDate() {
-		return $this->orderDate;
-	}
-	
-	public function setOrderDate($orderDate) {
-		$this->orderDate = $orderDate;
-		return $this;
-	}
 
 		public $originalDocumentCode;
-	public function getOriginalDocumentCode() {
-		return $this->originalDocumentCode;
-	}
-	
-	public function setOriginalDocumentCode($originalDocumentCode) {
-		$this->originalDocumentCode = $originalDocumentCode;
-		return $this;
-	}
 
 		public $originalOrderDate;
-	public function getOriginalOrderDate() {
-		return $this->originalOrderDate;
-	}
-	
-	public function setOriginalOrderDate($originalOrderDate) {
-		$this->originalOrderDate = $originalOrderDate;
-		return $this;
-	}
 
 	/**
 	*The total shipping amount calculated for the order.
 	*/
 	public $shippingAmount;
-	public function getShippingAmount() {
-		return $this->shippingAmount;
-	}
-	
-	public function setShippingAmount($shippingAmount) {
-		$this->shippingAmount = $shippingAmount;
-		return $this;
-	}
 
 		public $taxRequestType;
-	public function getTaxRequestType() {
-		return $this->taxRequestType;
-	}
-	
-	public function setTaxRequestType($taxRequestType) {
-		$this->taxRequestType = $taxRequestType;
-		return $this;
-	}
 
 	/**
 	*The line items associated with the order.
 	*/
 	public $lineItems;
-	public function getLineItems() {
-		return $this->lineItems;
-	}
-	
-	public function setLineItems($lineItems) {
-		$this->lineItems = $lineItems;
-		return $this;
-	}
 
 	/**
 	*The tax properties associated with the order.
 	*/
 	public $taxContext;
-	public function getTaxContext() {
-		return $this->taxContext;
-	}
-	
-	public function setTaxContext($taxContext) {
-		$this->taxContext = $taxContext;
-		return $this;
-	}
 
 }
 

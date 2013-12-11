@@ -15,7 +15,7 @@ namespace Mozu\Api\Contracts\Reference;
 
 
 /**
-*	The paged collection of all top level Internet domains that the system supports including general, USA-specific, infrastructure, and country codes. The Internet Assigned Numbers Authority (IANA) maintains this list.
+*	The paged collection of all top level internet domains that the system supports including general, USA-specific, infrastructure, and country codes. The Internet Assigned Numbers Authority (IANA) maintains this list.
 */
 class TopLevelDomainCollection
 {
@@ -23,27 +23,11 @@ class TopLevelDomainCollection
 	*An array list of objects in the returned collection.
 	*/
 	public $items;
-	public function getItems() {
-		return $this->items;
-	}
-	
-	public function setItems($items) {
-		$this->items = $items;
-		return $this;
-	}
 
 	/**
-	*The number of the resource entity items listed in the query collection. Signed 64-bit (8-byte) integer. System-supplied and read-only.
+	*The number of results listed in the query collection, represented by a signed 64-bit (8-byte) integer. This value is system-supplied and read-only.
 	*/
 	public $totalCount;
-	public function getTotalCount() {
-		return $this->totalCount;
-	}
-	
-	public function setTotalCount($totalCount) {
-		$this->totalCount = $totalCount;
-		return $this;
-	}
 
 }
 

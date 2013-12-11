@@ -24,7 +24,8 @@ class ApplicationUrl  {
 	public static function thirdPartyGetApplicationUrl()
 	{
 		$url = "/api/commerce/settings/applications/";
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		return $mozuUrl;
 	}
 	
 	/**
@@ -34,7 +35,8 @@ class ApplicationUrl  {
 	public static function thirdPartyUpdateApplicationUrl()
 	{
 		$url = "/api/commerce/settings/applications/";
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"PUT") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		return $mozuUrl;
 	}
 	
 }

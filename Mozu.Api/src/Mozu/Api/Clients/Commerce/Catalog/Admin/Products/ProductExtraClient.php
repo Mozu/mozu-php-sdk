@@ -18,14 +18,14 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* Query, create, and update product extras.
+* Use the Extras resource to configure an extra product attribute for products associated with the product type that uses the extra attribute.
 */
 class ProductExtraClient {
 
 	/**
-	* Retrieves a list of product extras.
+	* Retrieves a list of extras configured for the product according to any defined filter and sort criteria.
 	*
-	* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @return MozuClient
 	*/
 	public static function getExtrasClient($dataViewMode,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -33,18 +33,17 @@ class ProductExtraClient {
 		$url = ProductExtraUrl::getExtrasUrl($productCode);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
-;
-		if ($authTicket != null)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* Retrieves an individual product extra.
+	* Retrieves the details of an extra attribute configuration for the product specified in the request.
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-	* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @return MozuClient
 	*/
 	public static function getExtraClient($dataViewMode,  $attributeFQN,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -52,18 +51,17 @@ class ProductExtraClient {
 		$url = ProductExtraUrl::getExtraUrl($attributeFQN, $productCode);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
-;
-		if ($authTicket != null)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* Add or create an extra.
+	* Configure an extra attribute for the product specified in the request.
 	*
-	* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
-	* @param ProductExtra $productExtra Properties of the product extra to create such as the attribute detail, fully qualified name, and list of product extra values.
+	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+	* @param ProductExtra $productExtra Properties of the product extra to configure for the specified product.
 	* @return MozuClient
 	*/
 	public static function addExtraClient($dataViewMode, $productExtra,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -71,19 +69,18 @@ class ProductExtraClient {
 		$url = ProductExtraUrl::addExtraUrl($productCode);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($productExtra)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
-;
-		if ($authTicket != null)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* Update a product extra.
+	* Updates the configuration of an extra attribute for the product specified in the request.
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-	* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
-	* @param ProductExtra $productExtra Properties of the product extra to update such as the attribute detail, fully qualified name, and list of product extra values.
+	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+	* @param ProductExtra $productExtra Properties of the extra attribute to update for the specified product.
 	* @return MozuClient
 	*/
 	public static function updateExtraClient($dataViewMode, $productExtra,  $attributeFQN,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -91,26 +88,24 @@ class ProductExtraClient {
 		$url = ProductExtraUrl::updateExtraUrl($attributeFQN, $productCode);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($productExtra)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
-;
-		if ($authTicket != null)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* Delete a product extra by providing the product code and the attribute's fully qualified name.
+	* Delete a product extra configuration for the product specified in the request.
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-	* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	*/
 	public static function deleteExtraClient($dataViewMode,  $attributeFQN,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductExtraUrl::deleteExtraUrl($attributeFQN, $productCode);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
-;
-		if ($authTicket != null)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 

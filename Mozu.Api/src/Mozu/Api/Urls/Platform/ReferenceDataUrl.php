@@ -19,14 +19,15 @@ class ReferenceDataUrl  {
 
 	/**
 		* Get Resource Url for GetAddressSchema
-		* @param string $countryCode 2 letter geographic code representing the country for the physical or mailing address. Currently limited to the US.
+		* @param string $countryCode The 2-letter geographic code representing the country for the physical or mailing address. Currently limited to the US.
 		* @return string Resource Url
 	*/
 	public static function getAddressSchemaUrl($countryCode)
 	{
 		$url = "/api/platform/reference/addressschema/{countryCode}";
-		$url = MozuUrl::formatUrl($url, "countryCode", $countryCode);
-		return new MozuUrl($url, UrlLocation::HOME_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("countryCode", $countryCode);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -36,7 +37,8 @@ class ReferenceDataUrl  {
 	public static function getAddressSchemasUrl()
 	{
 		$url = "/api/platform/reference/addressschemas";
-		return new MozuUrl($url, UrlLocation::HOME_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		return $mozuUrl;
 	}
 	
 	/**
@@ -47,8 +49,9 @@ class ReferenceDataUrl  {
 	public static function getBehaviorUrl($behaviorId)
 	{
 		$url = "/api/platform/reference/behaviors/{behaviorId}";
-		$url = MozuUrl::formatUrl($url, "behaviorId", $behaviorId);
-		return new MozuUrl($url, UrlLocation::HOME_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("behaviorId", $behaviorId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -58,7 +61,8 @@ class ReferenceDataUrl  {
 	public static function getBehaviorCategoriesUrl()
 	{
 		$url = "/api/platform/reference/behaviors/categories";
-		return new MozuUrl($url, UrlLocation::HOME_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		return $mozuUrl;
 	}
 	
 	/**
@@ -69,8 +73,9 @@ class ReferenceDataUrl  {
 	public static function getBehaviorCategoryUrl($categoryId)
 	{
 		$url = "/api/platform/reference/behaviors/categories/{categoryId}";
-		$url = MozuUrl::formatUrl($url, "categoryId", $categoryId);
-		return new MozuUrl($url, UrlLocation::HOME_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("categoryId", $categoryId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -81,8 +86,9 @@ class ReferenceDataUrl  {
 	public static function getBehaviorsUrl($userType)
 	{
 		$url = "/api/platform/reference/behaviors?userType={userType}";
-		$url = MozuUrl::formatUrl($url, "userType", $userType);
-		return new MozuUrl($url, UrlLocation::HOME_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("userType", $userType);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -92,7 +98,8 @@ class ReferenceDataUrl  {
 	public static function getContentLocalesUrl()
 	{
 		$url = "/api/platform/reference/contentLocales";
-		return new MozuUrl($url, UrlLocation::HOME_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		return $mozuUrl;
 	}
 	
 	/**
@@ -102,7 +109,8 @@ class ReferenceDataUrl  {
 	public static function getCountriesUrl()
 	{
 		$url = "/api/platform/reference/countries";
-		return new MozuUrl($url, UrlLocation::HOME_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		return $mozuUrl;
 	}
 	
 	/**
@@ -112,7 +120,8 @@ class ReferenceDataUrl  {
 	public static function getCurrenciesUrl()
 	{
 		$url = "/api/platform/reference/currencies";
-		return new MozuUrl($url, UrlLocation::HOME_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		return $mozuUrl;
 	}
 	
 	/**
@@ -122,7 +131,8 @@ class ReferenceDataUrl  {
 	public static function getTimeZonesUrl()
 	{
 		$url = "/api/platform/reference/timezones";
-		return new MozuUrl($url, UrlLocation::HOME_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		return $mozuUrl;
 	}
 	
 	/**
@@ -132,19 +142,21 @@ class ReferenceDataUrl  {
 	public static function getTopLevelDomainsUrl()
 	{
 		$url = "/api/platform/reference/topleveldomains";
-		return new MozuUrl($url, UrlLocation::HOME_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetUnitsOfMeasure
-		* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
+		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 		* @return string Resource Url
 	*/
 	public static function getUnitsOfMeasureUrl($filter)
 	{
 		$url = "/api/platform/reference/unitsofmeasure?filter={filter}";
-		$url = MozuUrl::formatUrl($url, "filter", $filter);
-		return new MozuUrl($url, UrlLocation::HOME_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("filter", $filter);
+		return $mozuUrl;
 	}
 	
 }

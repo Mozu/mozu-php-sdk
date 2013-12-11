@@ -23,53 +23,21 @@ class CartSummary
 	*If true, this shopping cart is active.
 	*/
 	public $hasActiveCart;
-	public function getHasActiveCart() {
-		return $this->hasActiveCart;
-	}
-	
-	public function setHasActiveCart($hasActiveCart) {
-		$this->hasActiveCart = $hasActiveCart;
-		return $this;
-	}
 
 	/**
 	*If true, the cart's period of inactivity is past its calculated expiration date and the cart is considered abandoned.
 	*/
 	public $isExpired;
-	public function getIsExpired() {
-		return $this->isExpired;
-	}
-	
-	public function setIsExpired($isExpired) {
-		$this->isExpired = $isExpired;
-		return $this;
-	}
 
 	/**
 	*The total number of line items in the cart. Each line item can have multiple quantities.
 	*/
 	public $itemCount;
-	public function getItemCount() {
-		return $this->itemCount;
-	}
-	
-	public function setItemCount($itemCount) {
-		$this->itemCount = $itemCount;
-		return $this;
-	}
 
 	/**
 	*Estimated total amount of the cart, including items, sales tax, shipping costs, and other fees.
 	*/
 	public $total;
-	public function getTotal() {
-		return $this->total;
-	}
-	
-	public function setTotal($total) {
-		$this->total = $total;
-		return $this;
-	}
 
 }
 

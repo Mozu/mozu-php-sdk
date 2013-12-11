@@ -20,69 +20,29 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class ProductExtraValue
 {
 	/**
-	*The difference between the highest weight and the lowest weight associated with this product extra.
+	*The difference between the weight associated with this product extra and the base product. For example, if a product with a monogram weighs an extra 1/4 lb, the DeltaWeight value is "0.25".
 	*/
 	public $deltaWeight;
-	public function getDeltaWeight() {
-		return $this->deltaWeight;
-	}
-	
-	public function setDeltaWeight($deltaWeight) {
-		$this->deltaWeight = $deltaWeight;
-		return $this;
-	}
 
 	/**
-	*If true, the product extra value shows defaults.
+	*If true, the value for the product extra is selected by default. Shopper entered extras cannot be defaulted.
 	*/
 	public $isDefaulted;
-	public function getIsDefaulted() {
-		return $this->isDefaulted;
-	}
-	
-	public function setIsDefaulted($isDefaulted) {
-		$this->isDefaulted = $isDefaulted;
-		return $this;
-	}
 
 	/**
 	*Properties of a defined value for a product extra attribute.
 	*/
 	public $value;
-	public function getValue() {
-		return $this->value;
-	}
-	
-	public function setValue($value) {
-		$this->value = $value;
-		return $this;
-	}
 
 	/**
 	*Detail of the product extra attribute vocabulary value.
 	*/
 	public $attributeVocabularyValueDetail;
-	public function getAttributeVocabularyValueDetail() {
-		return $this->attributeVocabularyValueDetail;
-	}
-	
-	public function setAttributeVocabularyValueDetail($attributeVocabularyValueDetail) {
-		$this->attributeVocabularyValueDetail = $attributeVocabularyValueDetail;
-		return $this;
-	}
 
 	/**
-	*The difference between the highest price and the lowest price associated with this product extra.
+	*The difference between the price associated with this product extra and the base product. For example, if a product with a defined monogram extra costs an additional $10, the DeltaPrice value is "10".
 	*/
 	public $deltaPrice;
-	public function getDeltaPrice() {
-		return $this->deltaPrice;
-	}
-	
-	public function setDeltaPrice($deltaPrice) {
-		$this->deltaPrice = $deltaPrice;
-		return $this;
-	}
 
 }
 

@@ -23,14 +23,6 @@ class ProductCategory
 	*Unique identifier for the storefront container used to organize products.
 	*/
 	public $categoryId;
-	public function getCategoryId() {
-		return $this->categoryId;
-	}
-	
-	public function setCategoryId($categoryId) {
-		$this->categoryId = $categoryId;
-		return $this;
-	}
 
 }
 

@@ -14,17 +14,35 @@ namespace Mozu\Api\Contracts\AppDev;
 
 
 
+/**
+*	Properties of an application registered in Dev Center.
+*/
 class Application
 {
-		public $applicationType;
+	/**
+	*The type of application, which is "Capability" or "Extension."
+	*/
+	public $applicationType;
 
-		public $id;
+	/**
+	*Unique identifier of the application. The application ID is required to generate an authentication ticket.
+	*/
+	public $id;
 
-		public $name;
+	/**
+	*The name of the application.
+	*/
+	public $name;
 
-		public $auditInfo;
+	/**
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
+	*/
+	public $auditInfo;
 
-		public $versions;
+	/**
+	*Array list of the versions defined for an application.
+	*/
+	public $versions;
 
 }
 

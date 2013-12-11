@@ -23,27 +23,11 @@ class ProductOptionValue
 	*Value of the product option attribute.
 	*/
 	public $value;
-	public function getValue() {
-		return $this->value;
-	}
-	
-	public function setValue($value) {
-		$this->value = $value;
-		return $this;
-	}
 
 	/**
 	*Detailed properties of the product option attribute's vocabulary value.
 	*/
 	public $attributeVocabularyValueDetail;
-	public function getAttributeVocabularyValueDetail() {
-		return $this->attributeVocabularyValueDetail;
-	}
-	
-	public function setAttributeVocabularyValueDetail($attributeVocabularyValueDetail) {
-		$this->attributeVocabularyValueDetail = $attributeVocabularyValueDetail;
-		return $this;
-	}
 
 }
 

@@ -30,10 +30,10 @@ class ShipmentResource {
 	}
 
 	/**
-	* 
+	* Retrieves the details of the order shipment specified in the request.
 	*
-	* @param string $orderId 
-	* @param string $shipmentId 
+	* @param string $orderId Unique identifier of the order associated with the shipment to retrieve.
+	* @param string $shipmentId Unique identifier of the shipment to retrieve.
 	* @return Shipment 
 	*/
 	public function getShipment( $orderId,  $shipmentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -77,7 +77,7 @@ class ShipmentResource {
 	}
 	
 	/**
-	* Cancels a shipment.
+	* Deletes the shipment specified in the request.
 	*
 	* @param string $orderId Unique identifier of the order to cancel shipment.
 	* @param string $shipmentId Unique identifier of the shipment to cancel.

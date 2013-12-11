@@ -23,40 +23,16 @@ class AttributeVocabularyValueInProductType
 	*Sequence of the attribute value within the product type.
 	*/
 	public $order;
-	public function getOrder() {
-		return $this->order;
-	}
-	
-	public function setOrder($order) {
-		$this->order = $order;
-		return $this;
-	}
 
 	/**
 	*The vocabulary value of an attribute defined for a product type.
 	*/
 	public $value;
-	public function getValue() {
-		return $this->value;
-	}
-	
-	public function setValue($value) {
-		$this->value = $value;
-		return $this;
-	}
 
 	/**
 	*Navigates vocabulary value details for an attribute defined for a product type.
 	*/
 	public $vocabularyValueDetail;
-	public function getVocabularyValueDetail() {
-		return $this->vocabularyValueDetail;
-	}
-	
-	public function setVocabularyValueDetail($vocabularyValueDetail) {
-		$this->vocabularyValueDetail = $vocabularyValueDetail;
-		return $this;
-	}
 
 }
 

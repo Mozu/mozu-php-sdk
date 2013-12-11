@@ -19,14 +19,14 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* Use the Admin user Authtickets resource to generate and refresh authentication tickets for Mozu administrator or developer account users to access tenants or development stores.
+* Use the Admin User authentication tickets resource to generate and refresh authentication tickets that enable Mozu administrator or developer account users to access development or production tenants.
 */
 class TenantAdminUserAuthTicketResource {
 
 	/**
 	* Creates an authentication ticket for the supplied user to specify in API requests associated with the supplied tenant.
 	*
-	* @param int $tenantId Unique identifier of the Mozu tenant or development store for which to generate the user authentication ticket.
+	* @param int $tenantId Unique identifier of the development or production tenant for which to generate the user authentication ticket.
 	* @param UserAuthInfo $userAuthInfo The user authentication information required to generate the user authentication ticket, which consists of a user name and password.
 	* @return TenantAdminUserAuthTicket 
 	*/
@@ -41,7 +41,7 @@ class TenantAdminUserAuthTicketResource {
 	/**
 	* Generates a new user authentication ticket for the specified tenant by supplying the user's existing refresh token information.
 	*
-	* @param int $tenantId Unique identifier of the Mozu tenant or development store for which to refresh the authentication ticket.
+	* @param int $tenantId 
 	* @param TenantAdminUserAuthTicket $existingAuthTicket Properties of the authentication ticket to refresh. The refresh token is required to complete this request.
 	* @return TenantAdminUserAuthTicket 
 	*/

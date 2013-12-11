@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\Core\ThirdParty;
 
 
 
+/**
+*	Properties of a shipping country active for a third-party capability.
+*/
 class ActiveShippingCountry
 {
-		public $activeCarriers;
+	/**
+	*Array list of the active shipping carriers for the country.
+	*/
+	public $activeCarriers;
 
 		public $countryCode;
 

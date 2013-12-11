@@ -23,27 +23,11 @@ class TargetedShippingMethod
 	*The code associated with the carrier's shipping method service type. Service type codes include a prefix that indicates the carrier. For example: FEDEX_INTERNATIONAL_STANDARD
 	*/
 	public $code;
-	public function getCode() {
-		return $this->code;
-	}
-	
-	public function setCode($code) {
-		$this->code = $code;
-		return $this;
-	}
 
 	/**
 	*Name of the shipping method service type associated with the targeted discount.
 	*/
 	public $name;
-	public function getName() {
-		return $this->name;
-	}
-	
-	public function setName($name) {
-		$this->name = $name;
-		return $this;
-	}
 
 }
 

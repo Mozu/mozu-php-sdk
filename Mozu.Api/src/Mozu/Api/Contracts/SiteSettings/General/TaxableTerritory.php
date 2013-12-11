@@ -20,43 +20,19 @@ namespace Mozu\Api\Contracts\SiteSettings\General;
 class TaxableTerritory
 {
 	/**
-	*2 letter geographic code representing the country for the physical or mailing address. Currently limited to the US.
+	*The 2-letter geographic code representing the country for the physical or mailing address. Currently limited to the US.
 	*/
 	public $countryCode;
-	public function getCountryCode() {
-		return $this->countryCode;
-	}
-	
-	public function setCountryCode($countryCode) {
-		$this->countryCode = $countryCode;
-		return $this;
-	}
 
 	/**
 	*If true, all shipping charges for this territory are subject to sales tax.
 	*/
 	public $isShippingTaxable;
-	public function getIsShippingTaxable() {
-		return $this->isShippingTaxable;
-	}
-	
-	public function setIsShippingTaxable($isShippingTaxable) {
-		$this->isShippingTaxable = $isShippingTaxable;
-		return $this;
-	}
 
 	/**
-	*2 letter geographic code representing the state for the physical or mailing address. Currently limited to the US.
+	*The two-letter geographic code representing the state for the physical or mailing address. This is currently limited to the US.
 	*/
 	public $stateOrProvinceCode;
-	public function getStateOrProvinceCode() {
-		return $this->stateOrProvinceCode;
-	}
-	
-	public function setStateOrProvinceCode($stateOrProvinceCode) {
-		$this->stateOrProvinceCode = $stateOrProvinceCode;
-		return $this;
-	}
 
 }
 

@@ -32,8 +32,7 @@ class SiteDataClient {
 	{
 		$url = SiteDataUrl::getDBValueUrl($dbEntryQuery);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		$mozuClient->withResourceUrl($url);		return $mozuClient;
 
 	}
 	
@@ -47,8 +46,7 @@ class SiteDataClient {
 	{
 		$url = SiteDataUrl::createDBValueUrl($dbEntryQuery);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($value);
-		return $mozuClient;
+		$mozuClient->withResourceUrl($url)->withBody($value);		return $mozuClient;
 
 	}
 	
@@ -62,8 +60,7 @@ class SiteDataClient {
 	{
 		$url = SiteDataUrl::updateDBValueUrl($dbEntryQuery);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($value);
-		return $mozuClient;
+		$mozuClient->withResourceUrl($url)->withBody($value);		return $mozuClient;
 
 	}
 	
@@ -76,8 +73,7 @@ class SiteDataClient {
 	{
 		$url = SiteDataUrl::deleteDBValueUrl($dbEntryQuery);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		$mozuClient->withResourceUrl($url);		return $mozuClient;
 
 	}
 	

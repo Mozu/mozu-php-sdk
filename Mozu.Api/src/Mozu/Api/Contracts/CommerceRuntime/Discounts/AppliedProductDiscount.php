@@ -19,80 +19,35 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Discounts;
 */
 class AppliedProductDiscount
 {
-		public $couponCode;
-	public function getCouponCode() {
-		return $this->couponCode;
-	}
-	
-	public function setCouponCode($couponCode) {
-		$this->couponCode = $couponCode;
-		return $this;
-	}
+	/**
+	*Alphanumeric code associated with the coupon or promotion that results in a discounted price.
+	*/
+	public $couponCode;
 
 	/**
 	*If true, the system ignores this discount when pricing the order.
 	*/
 	public $excluded;
-	public function getExcluded() {
-		return $this->excluded;
-	}
-	
-	public function setExcluded($excluded) {
-		$this->excluded = $excluded;
-		return $this;
-	}
 
 	/**
 	*The value of the discount.
 	*/
 	public $impact;
-	public function getImpact() {
-		return $this->impact;
-	}
-	
-	public function setImpact($impact) {
-		$this->impact = $impact;
-		return $this;
-	}
 
 	/**
 	*The value of the discount for a single product unit.
 	*/
 	public $impactPerUnit;
-	public function getImpactPerUnit() {
-		return $this->impactPerUnit;
-	}
-	
-	public function setImpactPerUnit($impactPerUnit) {
-		$this->impactPerUnit = $impactPerUnit;
-		return $this;
-	}
 
 	/**
 	*The number of product units priced with the associated discount.
 	*/
 	public $productQuantity;
-	public function getProductQuantity() {
-		return $this->productQuantity;
-	}
-	
-	public function setProductQuantity($productQuantity) {
-		$this->productQuantity = $productQuantity;
-		return $this;
-	}
 
 	/**
 	*Properties of a discount applied to a product on a storefront.
 	*/
 	public $discount;
-	public function getDiscount() {
-		return $this->discount;
-	}
-	
-	public function setDiscount($discount) {
-		$this->discount = $discount;
-		return $this;
-	}
 
 }
 

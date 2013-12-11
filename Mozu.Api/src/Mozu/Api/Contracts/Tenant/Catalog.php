@@ -14,23 +14,41 @@ namespace Mozu\Api\Contracts\Tenant;
 
 
 
+/**
+*	Properties of an individual product catalog.
+*/
 class Catalog
 {
 		public $createDate;
 
-		public $defaultCurrencyCode;
+	/**
+	*The default currency code for the product catalog. Currently, only "USD" is supported.
+	*/
+	public $defaultCurrencyCode;
 
-		public $defaultLocaleCode;
+	/**
+	*The default locale code for the product catalog. Currently, only "en-US" is supported.
+	*/
+	public $defaultLocaleCode;
 
-		public $deleteDate;
+	/**
+	*The date and time the catalog was deleted.
+	*/
+	public $deleteDate;
 
 		public $id;
 
-		public $isDeleted;
+	/**
+	*If true, the catalog has been deleted.
+	*/
+	public $isDeleted;
 
 		public $masterCatalogId;
 
-		public $name;
+	/**
+	*The user-defined name of the product catalog.
+	*/
+	public $name;
 
 		public $updateDate;
 

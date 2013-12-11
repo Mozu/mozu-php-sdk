@@ -19,7 +19,7 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* 
+* Use the Location Types resource to manage the types of locations your tenant maintains, such as warehouses, physical storefronts, and kiosks.
 */
 class LocationTypeResource {
 
@@ -30,7 +30,7 @@ class LocationTypeResource {
 	}
 
 	/**
-	* 
+	* Retrieve a list of all location types defined for the tenant.
 	*
 	* @return array|LocationType 
 	*/
@@ -44,9 +44,9 @@ class LocationTypeResource {
 	}
 	
 	/**
-	* 
+	* Retrieves the details of the location type specified in the request.
 	*
-	* @param string $locationTypeCode 
+	* @param string $locationTypeCode The user-defined code that identifies the location type.
 	* @return LocationType 
 	*/
 	public function getLocationType( $locationTypeCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -59,9 +59,9 @@ class LocationTypeResource {
 	}
 	
 	/**
-	* 
+	* Creates a new location type based on the information specified in the request.
 	*
-	* @param LocationType $locationType 
+	* @param LocationType $locationType Properties of the location type to create.
 	* @return LocationType 
 	*/
 	public function addLocationType($locationType, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -74,10 +74,10 @@ class LocationTypeResource {
 	}
 	
 	/**
-	* 
+	* Updates the name of a defined location type.
 	*
-	* @param string $locationTypeCode 
-	* @param LocationType $locationType 
+	* @param string $locationTypeCode The user-defined code that identifies the location type.
+	* @param LocationType $locationType Properties of the location type to update.
 	* @return LocationType 
 	*/
 	public function updateLocationType($locationType,  $locationTypeCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -90,9 +90,9 @@ class LocationTypeResource {
 	}
 	
 	/**
-	* 
+	* Deletes the location type specified in the request.
 	*
-	* @param string $locationTypeCode 
+	* @param string $locationTypeCode User-defined code used to identify the location type.
 	*/
 	public function deleteLocationType( $locationTypeCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

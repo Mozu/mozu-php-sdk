@@ -34,8 +34,7 @@ class FacetClient {
 		$url = FacetUrl::getFacetUrl($facetId, $validate);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
-;
-		if ($authTicket != null)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -54,8 +53,7 @@ class FacetClient {
 		$url = FacetUrl::getFacetCategoryListUrl($categoryId, $includeAvailable, $validate);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
-;
-		if ($authTicket != null)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -72,8 +70,7 @@ class FacetClient {
 		$url = FacetUrl::addFacetUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($facet)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
-;
-		if ($authTicket != null)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -91,8 +88,7 @@ class FacetClient {
 		$url = FacetUrl::updateFacetUrl($facetId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($facet)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
-;
-		if ($authTicket != null)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -108,8 +104,7 @@ class FacetClient {
 		$url = FacetUrl::deleteFacetByIdUrl($facetId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
-;
-		if ($authTicket != null)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 

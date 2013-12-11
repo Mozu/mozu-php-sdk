@@ -30,7 +30,7 @@ class ApplicationResource {
 	}
 
 	/**
-	* 
+	* Retrieve the settings of a third-party application.
 	*
 	* @return Application 
 	*/

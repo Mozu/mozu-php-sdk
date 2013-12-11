@@ -15,7 +15,7 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Returns;
 
 
 /**
-*	Properties of an item associated with a return for a previously shipped order.
+*	Properties of a previously fulfilled item associated with a return.
 */
 class ReturnItem
 {
@@ -23,129 +23,58 @@ class ReturnItem
 	*Unique identifier of the item in the original completed order. All return items should be associated with a corresponding order item.
 	*/
 	public $orderItemId;
-	public function getOrderItemId() {
-		return $this->orderItemId;
-	}
-	
-	public function setOrderItemId($orderItemId) {
-		$this->orderItemId = $orderItemId;
-		return $this;
-	}
 
-		public $productLossAmount;
-	public function getProductLossAmount() {
-		return $this->productLossAmount;
-	}
-	
-	public function setProductLossAmount($productLossAmount) {
-		$this->productLossAmount = $productLossAmount;
-		return $this;
-	}
+	/**
+	*The total value of the product returned to the merchant for accounting purposes, calculated by multiplying the cost of the item by its quantity returned.
+	*/
+	public $productLossAmount;
 
-		public $productLossTaxAmount;
-	public function getProductLossTaxAmount() {
-		return $this->productLossTaxAmount;
-	}
-	
-	public function setProductLossTaxAmount($productLossTaxAmount) {
-		$this->productLossTaxAmount = $productLossTaxAmount;
-		return $this;
-	}
+	/**
+	*The total tax amount levied on the product loss amount.
+	*/
+	public $productLossTaxAmount;
 
 	/**
 	*The actual quantity received for the return item.
 	*/
 	public $quantityReceived;
-	public function getQuantityReceived() {
-		return $this->quantityReceived;
-	}
-	
-	public function setQuantityReceived($quantityReceived) {
-		$this->quantityReceived = $quantityReceived;
-		return $this;
-	}
 
 	/**
 	*The quantity of returned items that can be returned to active product stock.
 	*/
 	public $quantityRestockable;
-	public function getQuantityRestockable() {
-		return $this->quantityRestockable;
-	}
-	
-	public function setQuantityRestockable($quantityRestockable) {
-		$this->quantityRestockable = $quantityRestockable;
-		return $this;
-	}
 
 	/**
 	*The quantity of the item shipped to the shopper in the event of a return item replacement.
 	*/
 	public $quantityShipped;
-	public function getQuantityShipped() {
-		return $this->quantityShipped;
-	}
-	
-	public function setQuantityShipped($quantityShipped) {
-		$this->quantityShipped = $quantityShipped;
-		return $this;
-	}
 
-		public $shippingLossAmount;
-	public function getShippingLossAmount() {
-		return $this->shippingLossAmount;
-	}
-	
-	public function setShippingLossAmount($shippingLossAmount) {
-		$this->shippingLossAmount = $shippingLossAmount;
-		return $this;
-	}
+	/**
+	*The total value of shipping the returned product to the merchant for accounting purposes, calculated by multiplying the shipping cost of the item by its quantity returned.
+	*/
+	public $shippingLossAmount;
 
-		public $shippingLossTaxAmount;
-	public function getShippingLossTaxAmount() {
-		return $this->shippingLossTaxAmount;
-	}
-	
-	public function setShippingLossTaxAmount($shippingLossTaxAmount) {
-		$this->shippingLossTaxAmount = $shippingLossTaxAmount;
-		return $this;
-	}
+	/**
+	*The total tax amount levied on the shipping loss amount.
+	*/
+	public $shippingLossTaxAmount;
+
+		public $bundledProducts;
 
 	/**
 	*List of merchant-supplied notes associated with the return item.
 	*/
 	public $notes;
-	public function getNotes() {
-		return $this->notes;
-	}
-	
-	public function setNotes($notes) {
-		$this->notes = $notes;
-		return $this;
-	}
 
-		public $product;
-	public function getProduct() {
-		return $this->product;
-	}
-	
-	public function setProduct($product) {
-		$this->product = $product;
-		return $this;
-	}
+	/**
+	*Properties of the product definition associated with the item in the return.
+	*/
+	public $product;
 
 	/**
 	*The list of return reasons for the item and the quantity associated with each return reason.
 	*/
 	public $reasons;
-	public function getReasons() {
-		return $this->reasons;
-	}
-	
-	public function setReasons($reasons) {
-		$this->reasons = $reasons;
-		return $this;
-	}
 
 }
 

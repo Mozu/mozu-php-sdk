@@ -19,96 +19,34 @@ namespace Mozu\Api\Contracts\Content;
 */
 class DocumentDraftSummary
 {
-	/**
-	*Date when the entity was last updated. UTC Date/Time.
-	*/
-	public $activeUpdateDate;
-	public function getActiveUpdateDate() {
-		return $this->activeUpdateDate;
-	}
-	
-	public function setActiveUpdateDate($activeUpdateDate) {
-		$this->activeUpdateDate = $activeUpdateDate;
-		return $this;
-	}
+		public $activeUpdateDate;
 
 	/**
 	*Name of the document list associated with the draft.
 	*/
 	public $documentListName;
-	public function getDocumentListName() {
-		return $this->documentListName;
-	}
-	
-	public function setDocumentListName($documentListName) {
-		$this->documentListName = $documentListName;
-		return $this;
-	}
 
-	/**
-	*The most recent date the draft has been modified. System-supplied and read-only.
-	*/
-	public $draftUpdateDate;
-	public function getDraftUpdateDate() {
-		return $this->draftUpdateDate;
-	}
-	
-	public function setDraftUpdateDate($draftUpdateDate) {
-		$this->draftUpdateDate = $draftUpdateDate;
-		return $this;
-	}
+		public $draftUpdateDate;
 
 	/**
 	*Identifier of document draft.
 	*/
 	public $id;
-	public function getId() {
-		return $this->id;
-	}
-	
-	public function setId($id) {
-		$this->id = $id;
-		return $this;
-	}
 
 	/**
 	*Name of the document draft.
 	*/
 	public $name;
-	public function getName() {
-		return $this->name;
-	}
-	
-	public function setName($name) {
-		$this->name = $name;
-		return $this;
-	}
 
 	/**
 	*Whether the draft has been published.
 	*/
 	public $publishType;
-	public function getPublishType() {
-		return $this->publishType;
-	}
-	
-	public function setPublishType($publishType) {
-		$this->publishType = $publishType;
-		return $this;
-	}
 
 	/**
-	*Unique identifier of the entity who updated the resource property most recently. System-supplied and read-only.
+	*Unique identifier of the user who last modified the item. This value is system-supplied and read-only.
 	*/
 	public $updatedBy;
-	public function getUpdatedBy() {
-		return $this->updatedBy;
-	}
-	
-	public function setUpdatedBy($updatedBy) {
-		$this->updatedBy = $updatedBy;
-		return $this;
-	}
 
 }
 

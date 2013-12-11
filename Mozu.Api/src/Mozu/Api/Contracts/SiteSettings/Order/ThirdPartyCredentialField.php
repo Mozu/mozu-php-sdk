@@ -14,13 +14,25 @@ namespace Mozu\Api\Contracts\SiteSettings\Order;
 
 
 
+/**
+*	The properties of the credentials required to communicate with the external payment processor.
+*/
 class ThirdPartyCredentialField
 {
-		public $apiName;
+	/**
+	*System-supplied API name required to communicate with the external payment processor.
+	*/
+	public $apiName;
 
-		public $displayName;
+	/**
+	*System-supplied name that displays for the third party credential field.
+	*/
+	public $displayName;
 
-		public $value;
+	/**
+	*The value supplied for the third party credential.
+	*/
+	public $value;
 
 }
 

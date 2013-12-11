@@ -23,27 +23,11 @@ class PropertyValue
 	*A type of content property value.
 	*/
 	public $propertyType;
-	public function getPropertyType() {
-		return $this->propertyType;
-	}
-	
-	public function setPropertyType($propertyType) {
-		$this->propertyType = $propertyType;
-		return $this;
-	}
 
 	/**
 	*The actual value for the content property.
 	*/
 	public $value;
-	public function getValue() {
-		return $this->value;
-	}
-	
-	public function setValue($value) {
-		$this->value = $value;
-		return $this;
-	}
 
 }
 

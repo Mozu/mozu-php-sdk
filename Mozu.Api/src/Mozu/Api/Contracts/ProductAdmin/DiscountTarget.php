@@ -20,89 +20,39 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class DiscountTarget
 {
 	/**
-	*If true, the target discount applies to all products sold on the storefront. Applies only if the discount type is "Product".
+	*If true, the target discount applies to all products sold on the storefront.
 	*/
 	public $includeAllProducts;
-	public function getIncludeAllProducts() {
-		return $this->includeAllProducts;
-	}
-	
-	public function setIncludeAllProducts($includeAllProducts) {
-		$this->includeAllProducts = $includeAllProducts;
-		return $this;
-	}
 
 	/**
-	*The type of target to which the discount applies, such as a product.
+	*The type of target to which the discount applies, such as a product or shipping.
 	*/
 	public $type;
-	public function getType() {
-		return $this->type;
-	}
-	
-	public function setType($type) {
-		$this->type = $type;
-		return $this;
-	}
 
 	/**
 	*The product categories to which the discount can apply.
 	*/
 	public $categories;
-	public function getCategories() {
-		return $this->categories;
-	}
-	
-	public function setCategories($categories) {
-		$this->categories = $categories;
-		return $this;
-	}
 
-		public $excludedCategories;
-	public function getExcludedCategories() {
-		return $this->excludedCategories;
-	}
-	
-	public function setExcludedCategories($excludedCategories) {
-		$this->excludedCategories = $excludedCategories;
-		return $this;
-	}
+	/**
+	*Array list of categories to exclude for this discount.
+	*/
+	public $excludedCategories;
 
-		public $excludedProducts;
-	public function getExcludedProducts() {
-		return $this->excludedProducts;
-	}
-	
-	public function setExcludedProducts($excludedProducts) {
-		$this->excludedProducts = $excludedProducts;
-		return $this;
-	}
+	/**
+	*Array list of products to exclude for this discount.
+	*/
+	public $excludedProducts;
 
 	/**
 	*The products to which the discount can apply.
 	*/
 	public $products;
-	public function getProducts() {
-		return $this->products;
-	}
-	
-	public function setProducts($products) {
-		$this->products = $products;
-		return $this;
-	}
 
 	/**
 	*The list of shipping method parameters that describe a method including the code, localized content, and audit information.
 	*/
 	public $shippingMethods;
-	public function getShippingMethods() {
-		return $this->shippingMethods;
-	}
-	
-	public function setShippingMethods($shippingMethods) {
-		$this->shippingMethods = $shippingMethods;
-		return $this;
-	}
 
 }
 

@@ -23,14 +23,6 @@ class AuthTicketRequest
 	*The refresh token string from the application authentication ticket.
 	*/
 	public $refreshToken;
-	public function getRefreshToken() {
-		return $this->refreshToken;
-	}
-	
-	public function setRefreshToken($refreshToken) {
-		$this->refreshToken = $refreshToken;
-		return $this;
-	}
 
 }
 

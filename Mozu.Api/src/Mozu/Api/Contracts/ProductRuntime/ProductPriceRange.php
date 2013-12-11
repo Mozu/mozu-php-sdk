@@ -23,27 +23,11 @@ class ProductPriceRange
 	*The lowest possible price value for a product with options that vary the cost of the product.
 	*/
 	public $lower;
-	public function getLower() {
-		return $this->lower;
-	}
-	
-	public function setLower($lower) {
-		$this->lower = $lower;
-		return $this;
-	}
 
 	/**
 	*Thw highest possible price value for a product with options that vary the cost of the product.
 	*/
 	public $upper;
-	public function getUpper() {
-		return $this->upper;
-	}
-	
-	public function setUpper($upper) {
-		$this->upper = $upper;
-		return $this;
-	}
 
 }
 

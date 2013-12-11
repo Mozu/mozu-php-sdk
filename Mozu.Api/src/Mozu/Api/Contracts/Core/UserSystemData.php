@@ -20,134 +20,54 @@ namespace Mozu\Api\Contracts\Core;
 class UserSystemData
 {
 	/**
-	*Date and time when the entity was created. UTC Date/Time.
+	*Date and time when the entity was created, represented in UTC Date/Time.
 	*/
 	public $createdOn;
-	public function getCreatedOn() {
-		return $this->createdOn;
-	}
-	
-	public function setCreatedOn($createdOn) {
-		$this->createdOn = $createdOn;
-		return $this;
-	}
 
 	/**
 	*The number of failed authentication attempts associated with the user.
 	*/
 	public $failedLoginAttemptCount;
-	public function getFailedLoginAttemptCount() {
-		return $this->failedLoginAttemptCount;
-	}
-	
-	public function setFailedLoginAttemptCount($failedLoginAttemptCount) {
-		$this->failedLoginAttemptCount = $failedLoginAttemptCount;
-		return $this;
-	}
 
 	/**
-	*The date and time the initial login was unsuccessful. Each time a user attempts to authenticate and it fails, an update occurs on this field. System-supplied and read-only.
+	*The date and time the initial login was unsuccessful, which is system-supplied and read only. Each time user authentication fails, an update occurs on this field.
 	*/
 	public $firstFailedLoginAttemptOn;
-	public function getFirstFailedLoginAttemptOn() {
-		return $this->firstFailedLoginAttemptOn;
-	}
-	
-	public function setFirstFailedLoginAttemptOn($firstFailedLoginAttemptOn) {
-		$this->firstFailedLoginAttemptOn = $firstFailedLoginAttemptOn;
-		return $this;
-	}
 
 	/**
 	*If true, the user account is locked due to multiple failed authentication attempts.
 	*/
 	public $isLocked;
-	public function getIsLocked() {
-		return $this->isLocked;
-	}
-	
-	public function setIsLocked($isLocked) {
-		$this->isLocked = $isLocked;
-		return $this;
-	}
 
 	/**
 	*If true, the login requires a password change for increased security. If false, the login does not require a password change.
 	*/
 	public $isPasswordChangeRequired;
-	public function getIsPasswordChangeRequired() {
-		return $this->isPasswordChangeRequired;
-	}
-	
-	public function setIsPasswordChangeRequired($isPasswordChangeRequired) {
-		$this->isPasswordChangeRequired = $isPasswordChangeRequired;
-		return $this;
-	}
 
 	/**
 	*When the user's account was last locked. System-supplied and read-only.
 	*/
 	public $lastLockedOn;
-	public function getLastLockedOn() {
-		return $this->lastLockedOn;
-	}
-	
-	public function setLastLockedOn($lastLockedOn) {
-		$this->lastLockedOn = $lastLockedOn;
-		return $this;
-	}
 
 	/**
 	* When the user last logged into the store. System-supplied and read-only.
 	*/
 	public $lastLoginOn;
-	public function getLastLoginOn() {
-		return $this->lastLoginOn;
-	}
-	
-	public function setLastLoginOn($lastLoginOn) {
-		$this->lastLoginOn = $lastLoginOn;
-		return $this;
-	}
 
 	/**
 	* When the password was last modified. System-supplied and read-only.
 	*/
 	public $lastPasswordChangeOn;
-	public function getLastPasswordChangeOn() {
-		return $this->lastPasswordChangeOn;
-	}
-	
-	public function setLastPasswordChangeOn($lastPasswordChangeOn) {
-		$this->lastPasswordChangeOn = $lastPasswordChangeOn;
-		return $this;
-	}
 
 	/**
 	*The number of login attempts left for the user. The user must login successfully before this value reaches zero otherwise the account will be locked.
 	*/
 	public $remainingLoginAttempts;
-	public function getRemainingLoginAttempts() {
-		return $this->remainingLoginAttempts;
-	}
-	
-	public function setRemainingLoginAttempts($remainingLoginAttempts) {
-		$this->remainingLoginAttempts = $remainingLoginAttempts;
-		return $this;
-	}
 
 	/**
-	*Date and time when the entity was last updated. UTC Date/Time.
+	*Date and time when the entity was last updated, represented in UTC Date/Time.
 	*/
 	public $updatedOn;
-	public function getUpdatedOn() {
-		return $this->updatedOn;
-	}
-	
-	public function setUpdatedOn($updatedOn) {
-		$this->updatedOn = $updatedOn;
-		return $this;
-	}
 
 }
 

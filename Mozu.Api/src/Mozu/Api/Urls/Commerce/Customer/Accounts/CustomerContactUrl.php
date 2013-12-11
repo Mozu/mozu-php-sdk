@@ -26,16 +26,17 @@ class CustomerContactUrl  {
 	public static function getAccountContactUrl($accountId, $contactId)
 	{
 		$url = "/api/commerce/customer/accounts/{accountId}/contacts/{contactId}";
-		$url = MozuUrl::formatUrl($url, "accountId", $accountId);
-		$url = MozuUrl::formatUrl($url, "contactId", $contactId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		$url = $mozuUrl->formatUrl("contactId", $contactId);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetAccountContacts
 		* @param int $accountId Unique identifier of the customer account associated with the contact information to retrieve.
-		* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
-		* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 		* @param string $sortBy 
 		* @param int $startIndex 
 		* @return string Resource Url
@@ -43,12 +44,13 @@ class CustomerContactUrl  {
 	public static function getAccountContactsUrl($accountId, $filter, $pageSize, $sortBy, $startIndex)
 	{
 		$url = "/api/commerce/customer/accounts/{accountId}/contacts?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}";
-		$url = MozuUrl::formatUrl($url, "accountId", $accountId);
-		$url = MozuUrl::formatUrl($url, "filter", $filter);
-		$url = MozuUrl::formatUrl($url, "pageSize", $pageSize);
-		$url = MozuUrl::formatUrl($url, "sortBy", $sortBy);
-		$url = MozuUrl::formatUrl($url, "startIndex", $startIndex);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		$url = $mozuUrl->formatUrl("filter", $filter);
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -59,8 +61,9 @@ class CustomerContactUrl  {
 	public static function addAccountContactUrl($accountId)
 	{
 		$url = "/api/commerce/customer/accounts/{accountId}/contacts";
-		$url = MozuUrl::formatUrl($url, "accountId", $accountId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -72,9 +75,10 @@ class CustomerContactUrl  {
 	public static function updateAccountContactUrl($accountId, $contactId)
 	{
 		$url = "/api/commerce/customer/accounts/{accountId}/contacts/{contactId}";
-		$url = MozuUrl::formatUrl($url, "accountId", $accountId);
-		$url = MozuUrl::formatUrl($url, "contactId", $contactId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"PUT") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		$url = $mozuUrl->formatUrl("contactId", $contactId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -86,9 +90,10 @@ class CustomerContactUrl  {
 	public static function deleteAccountContactUrl($accountId, $contactId)
 	{
 		$url = "/api/commerce/customer/accounts/{accountId}/contacts/{contactId}";
-		$url = MozuUrl::formatUrl($url, "accountId", $accountId);
-		$url = MozuUrl::formatUrl($url, "contactId", $contactId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		$url = $mozuUrl->formatUrl("contactId", $contactId);
+		return $mozuUrl;
 	}
 	
 }

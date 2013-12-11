@@ -23,70 +23,22 @@ class Behavior
 	*Unique identifier for the storefront container used to organize products.
 	*/
 	public $categoryId;
-	public function getCategoryId() {
-		return $this->categoryId;
-	}
-	
-	public function setCategoryId($categoryId) {
-		$this->categoryId = $categoryId;
-		return $this;
-	}
 
 	/**
 	*Identifier of the entity.
 	*/
 	public $id;
-	public function getId() {
-		return $this->id;
-	}
-	
-	public function setId($id) {
-		$this->id = $id;
-		return $this;
-	}
 
 		public $isPrivate;
-	public function getIsPrivate() {
-		return $this->isPrivate;
-	}
-	
-	public function setIsPrivate($isPrivate) {
-		$this->isPrivate = $isPrivate;
-		return $this;
-	}
 
 		public $name;
-	public function getName() {
-		return $this->name;
-	}
-	
-	public function setName($name) {
-		$this->name = $name;
-		return $this;
-	}
 
 	/**
 	*For validation purposes, the integer value must be a list of behavior Id's.
 	*/
 	public $requiresBehaviorIds;
-	public function getRequiresBehaviorIds() {
-		return $this->requiresBehaviorIds;
-	}
-	
-	public function setRequiresBehaviorIds($requiresBehaviorIds) {
-		$this->requiresBehaviorIds = $requiresBehaviorIds;
-		return $this;
-	}
 
 		public $validUserTypes;
-	public function getValidUserTypes() {
-		return $this->validUserTypes;
-	}
-	
-	public function setValidUserTypes($validUserTypes) {
-		$this->validUserTypes = $validUserTypes;
-		return $this;
-	}
 
 }
 

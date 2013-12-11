@@ -20,30 +20,14 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class ProductVariationDeltaPrice
 {
 	/**
-	*"3-letter ISO 4217 standard global currency code. Currently, only ""USD"" (US Dollar) is supported."
+	*3-letter ISO 4217 standard global currency code. Currently, only "USD" (US Dollar) is supported.
 	*/
 	public $currencyCode;
-	public function getCurrencyCode() {
-		return $this->currencyCode;
-	}
-	
-	public function setCurrencyCode($currencyCode) {
-		$this->currencyCode = $currencyCode;
-		return $this;
-	}
 
 	/**
 	*Positive or negative decimal value that represents the difference between this variation and the base product.
 	*/
 	public $value;
-	public function getValue() {
-		return $this->value;
-	}
-	
-	public function setValue($value) {
-		$this->value = $value;
-		return $this;
-	}
 
 }
 

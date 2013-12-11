@@ -15,7 +15,7 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Returns;
 
 
 /**
-*	Properties of a return of one or more items shipped with a previously completed order.
+*	Properties of a return of one or more previously fulfilled items.
 */
 class MozuReturn
 {
@@ -23,330 +23,146 @@ class MozuReturn
 	*The actions a user can perform for the return at this time.
 	*/
 	public $availableActions;
-	public function getAvailableActions() {
-		return $this->availableActions;
-	}
-	
-	public function setAvailableActions($availableActions) {
-		$this->availableActions = $availableActions;
-		return $this;
-	}
 
-		public $channelCode;
-	public function getChannelCode() {
-		return $this->channelCode;
-	}
-	
-	public function setChannelCode($channelCode) {
-		$this->channelCode = $channelCode;
-		return $this;
-	}
+	/**
+	*The code that identifies the channel associated with the return, which is typically the same channel associated with the order.
+	*/
+	public $channelCode;
 
-		public $currencyCode;
-	public function getCurrencyCode() {
-		return $this->currencyCode;
-	}
-	
-	public function setCurrencyCode($currencyCode) {
-		$this->currencyCode = $currencyCode;
-		return $this;
-	}
+	/**
+	*3-letter ISO 4217 standard global currency code. Currently, only "USD" (US Dollar) is supported.
+	*/
+	public $currencyCode;
 
-		public $customerAccountId;
-	public function getCustomerAccountId() {
-		return $this->customerAccountId;
-	}
-	
-	public function setCustomerAccountId($customerAccountId) {
-		$this->customerAccountId = $customerAccountId;
-		return $this;
-	}
+	/**
+	*Unique identifier of the customer account associated with the return.
+	*/
+	public $customerAccountId;
 
-		public $customerInteractionType;
-	public function getCustomerInteractionType() {
-		return $this->customerInteractionType;
-	}
-	
-	public function setCustomerInteractionType($customerInteractionType) {
-		$this->customerInteractionType = $customerInteractionType;
-		return $this;
-	}
+	/**
+	*String that describes the customer interaction used to return an item. Possible values are Website, Store, Call, and Unknown.
+	*/
+	public $customerInteractionType;
 
 	/**
 	*Unique identifier of the return.
 	*/
 	public $id;
-	public function getId() {
-		return $this->id;
-	}
-	
-	public function setId($id) {
-		$this->id = $id;
-		return $this;
-	}
-
-		public $locationCode;
-	public function getLocationCode() {
-		return $this->locationCode;
-	}
-	
-	public function setLocationCode($locationCode) {
-		$this->locationCode = $locationCode;
-		return $this;
-	}
-
-		public $lossTotal;
-	public function getLossTotal() {
-		return $this->lossTotal;
-	}
-	
-	public function setLossTotal($lossTotal) {
-		$this->lossTotal = $lossTotal;
-		return $this;
-	}
 
 	/**
-	*Unique identifier of the original completed order associated with this return.
+	*The code that uniquely identifies the location where items were returned.
+	*/
+	public $locationCode;
+
+	/**
+	*The total value of the return to the merchant for accounting purposes. This total represents the combined product loss and shipping loss associated with the return.
+	*/
+	public $lossTotal;
+
+	/**
+	*If this return is associated with a previously completed order, the unique identifier of the original order.
 	*/
 	public $originalOrderId;
-	public function getOriginalOrderId() {
-		return $this->originalOrderId;
-	}
-	
-	public function setOriginalOrderId($originalOrderId) {
-		$this->originalOrderId = $originalOrderId;
-		return $this;
-	}
 
-		public $productLossTaxTotal;
-	public function getProductLossTaxTotal() {
-		return $this->productLossTaxTotal;
-	}
-	
-	public function setProductLossTaxTotal($productLossTaxTotal) {
-		$this->productLossTaxTotal = $productLossTaxTotal;
-		return $this;
-	}
+	/**
+	*The total tax amount levied on the product loss amount.
+	*/
+	public $productLossTaxTotal;
 
-		public $productLossTotal;
-	public function getProductLossTotal() {
-		return $this->productLossTotal;
-	}
-	
-	public function setProductLossTotal($productLossTotal) {
-		$this->productLossTotal = $productLossTotal;
-		return $this;
-	}
+	/**
+	*The total value of the product returned to the merchant for accounting purposes, calculated by multiplying the cost of the item by its quantity returned.
+	*/
+	public $productLossTotal;
 
 	/**
 	*If a refund action was performed for this return, the total amount refunded to the shopper. The refund amount can differ from the sum of the price of the returned items.
 	*/
 	public $refundAmount;
-	public function getRefundAmount() {
-		return $this->refundAmount;
-	}
-	
-	public function setRefundAmount($refundAmount) {
-		$this->refundAmount = $refundAmount;
-		return $this;
-	}
 
 	/**
 	*A merchant-specific identifier used to sequentially order returns.
 	*/
 	public $returnNumber;
-	public function getReturnNumber() {
-		return $this->returnNumber;
-	}
-	
-	public function setReturnNumber($returnNumber) {
-		$this->returnNumber = $returnNumber;
-		return $this;
-	}
 
 	/**
 	*Unique identifier for the order created as a result of the return. If the return results in shipping a replacement item, the order includes shipment information for the replaced items. If the return results in a refund, the order includes payment transactions to credit the shopper.
 	*/
 	public $returnOrderId;
-	public function getReturnOrderId() {
-		return $this->returnOrderId;
-	}
-	
-	public function setReturnOrderId($returnOrderId) {
-		$this->returnOrderId = $returnOrderId;
-		return $this;
-	}
 
-		public $returnType;
-	public function getReturnType() {
-		return $this->returnType;
-	}
-	
-	public function setReturnType($returnType) {
-		$this->returnType = $returnType;
-		return $this;
-	}
+	/**
+	*The type of return, which is "Refund" or "Replace".
+	*/
+	public $returnType;
 
 	/**
 	*The date by which a shopper must ship items associated with a return in an "awaiting items" state to the merchant.
 	*/
 	public $rmaDeadline;
-	public function getRmaDeadline() {
-		return $this->rmaDeadline;
-	}
-	
-	public function setRmaDeadline($rmaDeadline) {
-		$this->rmaDeadline = $rmaDeadline;
-		return $this;
-	}
 
-		public $shippingLossTaxTotal;
-	public function getShippingLossTaxTotal() {
-		return $this->shippingLossTaxTotal;
-	}
-	
-	public function setShippingLossTaxTotal($shippingLossTaxTotal) {
-		$this->shippingLossTaxTotal = $shippingLossTaxTotal;
-		return $this;
-	}
+	/**
+	*The total tax amount levied on the shipping loss amount.
+	*/
+	public $shippingLossTaxTotal;
 
-		public $shippingLossTotal;
-	public function getShippingLossTotal() {
-		return $this->shippingLossTotal;
-	}
-	
-	public function setShippingLossTotal($shippingLossTotal) {
-		$this->shippingLossTotal = $shippingLossTotal;
-		return $this;
-	}
+	/**
+	*The total value of shipping the returned product to the merchant for accounting purposes, calculated by multiplying the shipping cost of the item by its quantity returned.
+	*/
+	public $shippingLossTotal;
 
-		public $siteId;
-	public function getSiteId() {
-		return $this->siteId;
-	}
-	
-	public function setSiteId($siteId) {
-		$this->siteId = $siteId;
-		return $this;
-	}
+	/**
+	*Unique identifier of the site.
+	*/
+	public $siteId;
 
 	/**
 	*Current status of the return, such as "ReturnAuthorized".
 	*/
 	public $status;
-	public function getStatus() {
-		return $this->status;
-	}
-	
-	public function setStatus($status) {
-		$this->status = $status;
-		return $this;
-	}
 
-		public $tenantId;
-	public function getTenantId() {
-		return $this->tenantId;
-	}
-	
-	public function setTenantId($tenantId) {
-		$this->tenantId = $tenantId;
-		return $this;
-	}
+	/**
+	*Unique identifier of the Mozu tenant.
+	*/
+	public $tenantId;
 
 	/**
 	*Unique identifier of the user responsible for the return. Read only and supplied by the original order.
 	*/
 	public $userId;
-	public function getUserId() {
-		return $this->userId;
-	}
-	
-	public function setUserId($userId) {
-		$this->userId = $userId;
-		return $this;
-	}
-
-		public $visitId;
-	public function getVisitId() {
-		return $this->visitId;
-	}
-	
-	public function setVisitId($visitId) {
-		$this->visitId = $visitId;
-		return $this;
-	}
-
-		public $webSessionId;
-	public function getWebSessionId() {
-		return $this->webSessionId;
-	}
-	
-	public function setWebSessionId($webSessionId) {
-		$this->webSessionId = $webSessionId;
-		return $this;
-	}
 
 	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*The unique identifier of the customer visit associated with the return transaction.
+	*/
+	public $visitId;
+
+	/**
+	*Unique identifier of the web session in which the return was created or last modified, which is system-supplied and read only.
+	*/
+	public $webSessionId;
+
+	/**
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
-	public function getAuditInfo() {
-		return $this->auditInfo;
-	}
-	
-	public function setAuditInfo($auditInfo) {
-		$this->auditInfo = $auditInfo;
-		return $this;
-	}
 
 	/**
 	*An array list of objects in the returned collection.
 	*/
 	public $items;
-	public function getItems() {
-		return $this->items;
-	}
-	
-	public function setItems($items) {
-		$this->items = $items;
-		return $this;
-	}
 
 	/**
 	*Collection of merchant-supplied notes entered for the return.
 	*/
 	public $notes;
-	public function getNotes() {
-		return $this->notes;
-	}
-	
-	public function setNotes($notes) {
-		$this->notes = $notes;
-		return $this;
-	}
-
-		public $packages;
-	public function getPackages() {
-		return $this->packages;
-	}
-	
-	public function setPackages($packages) {
-		$this->packages = $packages;
-		return $this;
-	}
 
 	/**
-	*Array of payments associated with this return, if applicable.
+	*List of packages associated with a replacement order for a return.
+	*/
+	public $packages;
+
+	/**
+	*Array list of payments associated with this return, if applicable.
 	*/
 	public $payments;
-	public function getPayments() {
-		return $this->payments;
-	}
-	
-	public function setPayments($payments) {
-		$this->payments = $payments;
-		return $this;
-	}
 
 }
 

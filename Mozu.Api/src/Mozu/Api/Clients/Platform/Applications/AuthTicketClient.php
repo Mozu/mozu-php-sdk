@@ -32,8 +32,7 @@ class AuthTicketClient {
 	{
 		$url = AuthTicketUrl::authenticateAppUrl();
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($appAuthInfo);
-		return $mozuClient;
+		$mozuClient->withResourceUrl($url)->withBody($appAuthInfo);		return $mozuClient;
 
 	}
 	
@@ -47,8 +46,7 @@ class AuthTicketClient {
 	{
 		$url = AuthTicketUrl::refreshAppAuthTicketUrl();
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($authTicketRequest);
-		return $mozuClient;
+		$mozuClient->withResourceUrl($url)->withBody($authTicketRequest);		return $mozuClient;
 
 	}
 	
@@ -61,8 +59,7 @@ class AuthTicketClient {
 	{
 		$url = AuthTicketUrl::deleteAppAuthTicketUrl($refreshToken);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		$mozuClient->withResourceUrl($url);		return $mozuClient;
 
 	}
 	

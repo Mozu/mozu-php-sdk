@@ -24,7 +24,8 @@ class PublishingScopeUrl  {
 	public static function discardDraftsUrl()
 	{
 		$url = "/api/commerce/catalog/admin/publishing/discarddrafts";
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		return $mozuUrl;
 	}
 	
 	/**
@@ -34,7 +35,8 @@ class PublishingScopeUrl  {
 	public static function publishDraftsUrl()
 	{
 		$url = "/api/commerce/catalog/admin/publishing/publishdrafts";
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		return $mozuUrl;
 	}
 	
 }

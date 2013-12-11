@@ -31,8 +31,7 @@ class SiteShippingHandlingFeeClient {
 	{
 		$url = SiteShippingHandlingFeeUrl::getOrderHandlingFeeUrl();
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -48,8 +47,7 @@ class SiteShippingHandlingFeeClient {
 	{
 		$url = SiteShippingHandlingFeeUrl::createOrderHandlingFeeUrl();
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($orderHandlingFee);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($orderHandlingFee);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -65,8 +63,7 @@ class SiteShippingHandlingFeeClient {
 	{
 		$url = SiteShippingHandlingFeeUrl::updateOrderHandlingFeeUrl();
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($orderHandlingFee);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($orderHandlingFee);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 

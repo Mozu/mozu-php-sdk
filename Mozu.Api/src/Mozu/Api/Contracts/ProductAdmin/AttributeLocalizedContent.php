@@ -23,40 +23,16 @@ class AttributeLocalizedContent
 	*Localized content for the description of this attribute displayed in the storefront.
 	*/
 	public $description;
-	public function getDescription() {
-		return $this->description;
-	}
-	
-	public function setDescription($description) {
-		$this->description = $description;
-		return $this;
-	}
 
 	/**
-	*"Language used for the entity. Currently, only ""en-US"" is supported."
+	*Language used for the entity. Currently, only "en-US" is supported.
 	*/
 	public $localeCode;
-	public function getLocaleCode() {
-		return $this->localeCode;
-	}
-	
-	public function setLocaleCode($localeCode) {
-		$this->localeCode = $localeCode;
-		return $this;
-	}
 
 	/**
 	*Localized content for the attribute name displayed in the storefront.
 	*/
 	public $name;
-	public function getName() {
-		return $this->name;
-	}
-	
-	public function setName($name) {
-		$this->name = $name;
-		return $this;
-	}
 
 }
 

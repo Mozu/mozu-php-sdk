@@ -19,16 +19,17 @@ class PropertyTypeUrl  {
 
 	/**
 		* Get Resource Url for GetList
-		* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 		* @param int $startIndex 
 		* @return string Resource Url
 	*/
 	public static function getListUrl($pageSize, $startIndex)
 	{
 		$url = "/api/content/propertytypes/?pageSize={pageSize}&startIndex={startIndex}";
-		$url = MozuUrl::formatUrl($url, "pageSize", $pageSize);
-		$url = MozuUrl::formatUrl($url, "startIndex", $startIndex);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -39,8 +40,9 @@ class PropertyTypeUrl  {
 	public static function getUrl($propertyTypeName)
 	{
 		$url = "/api/content/propertytypes/{propertyTypeName}";
-		$url = MozuUrl::formatUrl($url, "propertyTypeName", $propertyTypeName);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("propertyTypeName", $propertyTypeName);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -50,7 +52,8 @@ class PropertyTypeUrl  {
 	public static function propertyValueTypesUrl()
 	{
 		$url = "/api/content/propertytypes/propertyvaluetypes";
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		return $mozuUrl;
 	}
 	
 }

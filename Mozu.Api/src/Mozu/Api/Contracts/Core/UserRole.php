@@ -23,66 +23,26 @@ class UserRole
 	*Unique identifier of the user role.
 	*/
 	public $roleId;
-	public function getRoleId() {
-		return $this->roleId;
-	}
-	
-	public function setRoleId($roleId) {
-		$this->roleId = $roleId;
-		return $this;
-	}
 
 	/**
 	*The name of the user role, such as "developer" or "administrator".
 	*/
 	public $roleName;
-	public function getRoleName() {
-		return $this->roleName;
-	}
-	
-	public function setRoleName($roleName) {
-		$this->roleName = $roleName;
-		return $this;
-	}
 
 	/**
 	*Unique identifier of the user the role is assigned to.
 	*/
 	public $userId;
-	public function getUserId() {
-		return $this->userId;
-	}
-	
-	public function setUserId($userId) {
-		$this->userId = $userId;
-		return $this;
-	}
 
 	/**
 	*Properties of the developer account or Mozu tenant associated with the user role.
 	*/
 	public $assignedInScope;
-	public function getAssignedInScope() {
-		return $this->assignedInScope;
-	}
-	
-	public function setAssignedInScope($assignedInScope) {
-		$this->assignedInScope = $assignedInScope;
-		return $this;
-	}
 
 	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
-	public function getAuditInfo() {
-		return $this->auditInfo;
-	}
-	
-	public function setAuditInfo($auditInfo) {
-		$this->auditInfo = $auditInfo;
-		return $this;
-	}
 
 }
 

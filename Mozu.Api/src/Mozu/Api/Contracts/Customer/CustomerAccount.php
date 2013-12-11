@@ -23,174 +23,73 @@ class CustomerAccount
 	*If true, the customer prefers to receive marketing material such as newsletters or email offers.
 	*/
 	public $acceptsMarketing;
-	public function getAcceptsMarketing() {
-		return $this->acceptsMarketing;
-	}
-	
-	public function setAcceptsMarketing($acceptsMarketing) {
-		$this->acceptsMarketing = $acceptsMarketing;
-		return $this;
-	}
 
 	/**
-	*The legal or doing business as (DBA) or tradestyle name of the business or organization. Max length: 200.
+	*The legal or doing business as (DBA) or tradestyle name of the business or organization. The maximum character length is 200.
 	*/
 	public $companyOrOrganization;
-	public function getCompanyOrOrganization() {
-		return $this->companyOrOrganization;
-	}
-	
-	public function setCompanyOrOrganization($companyOrOrganization) {
-		$this->companyOrOrganization = $companyOrOrganization;
-		return $this;
-	}
+
+		public $emailAddress;
 
 		public $externalId;
-	public function getExternalId() {
-		return $this->externalId;
-	}
-	
-	public function setExternalId($externalId) {
-		$this->externalId = $externalId;
-		return $this;
-	}
+
+		public $firstName;
 
 	/**
 	*Identifier of the entity.
 	*/
 	public $id;
-	public function getId() {
-		return $this->id;
-	}
-	
-	public function setId($id) {
-		$this->id = $id;
-		return $this;
-	}
+
+		public $lastName;
+
+		public $localeCode;
 
 	/**
 	*If true, this customer account has tax exempt status.
 	*/
 	public $taxExempt;
-	public function getTaxExempt() {
-		return $this->taxExempt;
-	}
-	
-	public function setTaxExempt($taxExempt) {
-		$this->taxExempt = $taxExempt;
-		return $this;
-	}
 
 	/**
 	*The tax identification number associated with the customer account.
 	*/
 	public $taxId;
-	public function getTaxId() {
-		return $this->taxId;
-	}
-	
-	public function setTaxId($taxId) {
-		$this->taxId = $taxId;
-		return $this;
-	}
 
 	/**
 	*Unique identifier of the user associated with the customer account.
 	*/
 	public $userId;
-	public function getUserId() {
-		return $this->userId;
-	}
-	
-	public function setUserId($userId) {
-		$this->userId = $userId;
-		return $this;
-	}
+
+		public $userName;
 
 	/**
 	*Collection of customer account attributes.
 	*/
 	public $attributes;
-	public function getAttributes() {
-		return $this->attributes;
-	}
-	
-	public function setAttributes($attributes) {
-		$this->attributes = $attributes;
-		return $this;
-	}
 
 	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
-	public function getAuditInfo() {
-		return $this->auditInfo;
-	}
-	
-	public function setAuditInfo($auditInfo) {
-		$this->auditInfo = $auditInfo;
-		return $this;
-	}
 
-		public $commerceSummary;
-	public function getCommerceSummary() {
-		return $this->commerceSummary;
-	}
-	
-	public function setCommerceSummary($commerceSummary) {
-		$this->commerceSummary = $commerceSummary;
-		return $this;
-	}
+	/**
+	*Properties of the commerce summary associated with a customer account, which includes details about the shopper's most recent order, wish lists, and total order value over time.
+	*/
+	public $commerceSummary;
 
 	/**
 	*Contact information, including the contact's name, address, phone numbers, email addresses, and company (if supplied). Also indicates whether this is a billing, shipping, or billing and shipping contact.
 	*/
 	public $contacts;
-	public function getContacts() {
-		return $this->contacts;
-	}
-	
-	public function setContacts($contacts) {
-		$this->contacts = $contacts;
-		return $this;
-	}
 
 	/**
-	*List of groups of customer account groups.
+	*List of groups associated with this customer account.
 	*/
 	public $groups;
-	public function getGroups() {
-		return $this->groups;
-	}
-	
-	public function setGroups($groups) {
-		$this->groups = $groups;
-		return $this;
-	}
-
-		public $inStockNotificationSubscriptions;
-	public function getInStockNotificationSubscriptions() {
-		return $this->inStockNotificationSubscriptions;
-	}
-	
-	public function setInStockNotificationSubscriptions($inStockNotificationSubscriptions) {
-		$this->inStockNotificationSubscriptions = $inStockNotificationSubscriptions;
-		return $this;
-	}
 
 	/**
 	*List of customer account notes.
 	*/
 	public $notes;
-	public function getNotes() {
-		return $this->notes;
-	}
-	
-	public function setNotes($notes) {
-		$this->notes = $notes;
-		return $this;
-	}
 
 }
 

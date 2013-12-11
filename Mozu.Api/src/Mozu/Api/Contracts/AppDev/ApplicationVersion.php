@@ -14,17 +14,35 @@ namespace Mozu\Api\Contracts\AppDev;
 
 
 
+/**
+*	Properties of a specific version of an application.
+*/
 class ApplicationVersion
 {
-		public $id;
+	/**
+	*Unique identifier of the application version.
+	*/
+	public $id;
 
-		public $name;
+	/**
+	*The name of the application version.
+	*/
+	public $name;
 
-		public $auditInfo;
+	/**
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
+	*/
+	public $auditInfo;
 
-		public $devPackages;
+	/**
+	*Properties of a development package of files for an application version.
+	*/
+	public $devPackages;
 
-		public $releasePackage;
+	/**
+	*Properties of a releasable package of files for an application version.
+	*/
+	public $releasePackage;
 
 }
 

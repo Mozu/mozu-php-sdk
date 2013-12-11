@@ -24,7 +24,8 @@ class GeneralSettingsUrl  {
 	public static function getGeneralSettingsUrl()
 	{
 		$url = "/api/commerce/settings/general/";
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		return $mozuUrl;
 	}
 	
 	/**
@@ -34,7 +35,8 @@ class GeneralSettingsUrl  {
 	public static function updateGeneralSettingsUrl()
 	{
 		$url = "/api/commerce/settings/general/";
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"PUT") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		return $mozuUrl;
 	}
 	
 }

@@ -19,7 +19,7 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* 
+* Use the Address Validation resource to validate addresses associated with a customer account contact.
 */
 class AddressValidationRequestResource {
 
@@ -30,9 +30,9 @@ class AddressValidationRequestResource {
 	}
 
 	/**
-	* 
+	* Validates the customer address supplied in the request.
 	*
-	* @param AddressValidationRequest $addressValidationRequest 
+	* @param AddressValidationRequest $addressValidationRequest Properties of the address to validate.
 	* @return AddressValidationResponse 
 	*/
 	public function validateAddress($addressValidationRequest, Mozu\Api\Security\AuthTicket &$authTicket= null)

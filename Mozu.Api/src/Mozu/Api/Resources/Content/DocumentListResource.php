@@ -32,14 +32,14 @@ class DocumentListResource {
 	/**
 	* Retrieves a collection of document lists.
 	*
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $sort 
 	* @param int $startIndex 
 	* @return DocumentListCollection 
 	*/
-	public function getDocumentLists($pageSize =  null, $sort =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getDocumentLists($dataViewMode, $pageSize =  null, $sort =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = DocumentListClient::getDocumentListsClient($pageSize, $sort, $startIndex, $authTicket);
+		$mozuClient = DocumentListClient::getDocumentListsClient($dataViewMode, $pageSize, $sort, $startIndex, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -52,9 +52,9 @@ class DocumentListResource {
 	* @param string $documentListName The name of the document list.
 	* @return DocumentList 
 	*/
-	public function getDocumentList( $documentListName, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getDocumentList($dataViewMode,  $documentListName, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = DocumentListClient::getDocumentListClient( $documentListName, $authTicket);
+		$mozuClient = DocumentListClient::getDocumentListClient($dataViewMode,  $documentListName, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

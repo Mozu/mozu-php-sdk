@@ -23,40 +23,16 @@ class CartChangeMessageCollection
 	*The number of commerce runtime cart change messages transactions that can exist in a collection.
 	*/
 	public $capacity;
-	public function getCapacity() {
-		return $this->capacity;
-	}
-	
-	public function setCapacity($capacity) {
-		$this->capacity = $capacity;
-		return $this;
-	}
 
 	/**
 	*The number of messages in the collection.
 	*/
 	public $count;
-	public function getCount() {
-		return $this->count;
-	}
-	
-	public function setCount($count) {
-		$this->count = $count;
-		return $this;
-	}
 
 	/**
 	*Container for an item in a collection.
 	*/
 	public $item;
-	public function getItem() {
-		return $this->item;
-	}
-	
-	public function setItem($item) {
-		$this->item = $item;
-		return $this;
-	}
 
 }
 

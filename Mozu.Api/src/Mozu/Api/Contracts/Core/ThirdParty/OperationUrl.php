@@ -14,11 +14,20 @@ namespace Mozu\Api\Contracts\Core\ThirdParty;
 
 
 
+/**
+*	Properties of a URL endpoint associated with a capability operation.
+*/
 class OperationUrl
 {
-		public $name;
+	/**
+	*The name of the URL endpoint.
+	*/
+	public $name;
 
-		public $url;
+	/**
+	*The URL endpoint address.
+	*/
+	public $url;
 
 }
 

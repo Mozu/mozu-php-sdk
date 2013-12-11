@@ -23,7 +23,7 @@ use Mozu\Api\Headers;
 class ApplicationClient {
 
 	/**
-	* 
+	* Retrieve the settings of a third-party application.
 	*
 	* @return MozuClient
 	*/
@@ -31,8 +31,7 @@ class ApplicationClient {
 	{
 		$url = ApplicationUrl::thirdPartyGetApplicationUrl();
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -48,8 +47,7 @@ class ApplicationClient {
 	{
 		$url = ApplicationUrl::thirdPartyUpdateApplicationUrl();
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($application);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($application);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 

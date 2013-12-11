@@ -20,30 +20,14 @@ namespace Mozu\Api\Contracts\Core;
 class UserAuthInfo
 {
 	/**
-	*The email address of the specified user.
+	*The email address of the specified user or the email address associated with the specified entity.
 	*/
 	public $emailAddress;
-	public function getEmailAddress() {
-		return $this->emailAddress;
-	}
-	
-	public function setEmailAddress($emailAddress) {
-		$this->emailAddress = $emailAddress;
-		return $this;
-	}
 
 	/**
 	*Password of the user.
 	*/
 	public $password;
-	public function getPassword() {
-		return $this->password;
-	}
-	
-	public function setPassword($password) {
-		$this->password = $password;
-		return $this;
-	}
 
 }
 

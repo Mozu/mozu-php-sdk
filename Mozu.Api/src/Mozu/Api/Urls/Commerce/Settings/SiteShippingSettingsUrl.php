@@ -24,7 +24,8 @@ class SiteShippingSettingsUrl  {
 	public static function getSiteShippingSettingsUrl()
 	{
 		$url = "/api/commerce/settings/shipping/";
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		return $mozuUrl;
 	}
 	
 }

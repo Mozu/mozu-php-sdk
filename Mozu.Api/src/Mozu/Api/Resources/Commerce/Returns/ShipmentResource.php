@@ -19,7 +19,7 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* 
+* Use the return shipments subresource to manage shipments for a return replacement.
 */
 class ShipmentResource {
 
@@ -30,10 +30,10 @@ class ShipmentResource {
 	}
 
 	/**
-	* 
+	* Retrieves the details of the specified return replacement shipment.
 	*
-	* @param string $returnId 
-	* @param string $shipmentId 
+	* @param string $returnId Unique identifier of the return associated with the replacement shipment to retrieve.
+	* @param string $shipmentId Unique identifier of the return replacement shipment to retrieve.
 	* @return Shipment 
 	*/
 	public function getShipment( $returnId,  $shipmentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -46,10 +46,10 @@ class ShipmentResource {
 	}
 	
 	/**
-	* 
+	* Creates a shipment from one or more packages associated with a return replacement.
 	*
-	* @param string $returnId 
-	* @param array|string $packageIds 
+	* @param string $returnId Unique identifier of the return for which to create replacement package shipments.
+	* @param array|string $packageIds List of packages in the return replacement shipment.
 	* @return array|Package 
 	*/
 	public function createPackageShipments($packageIds,  $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -62,10 +62,10 @@ class ShipmentResource {
 	}
 	
 	/**
-	* 
+	* Deletes a shipment for a return replacement.
 	*
-	* @param string $returnId 
-	* @param string $shipmentId 
+	* @param string $returnId Unique identifier of the return associated with the replacement shipment to delete.
+	* @param string $shipmentId Unique identifier of the return replacement shipment to delete.
 	*/
 	public function deleteShipment( $returnId,  $shipmentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

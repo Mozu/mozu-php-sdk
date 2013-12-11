@@ -19,40 +19,43 @@ class TransactionUrl  {
 
 	/**
 		* Get Resource Url for GetTransactions
-		* @param int $accountId 
+		* @param int $accountId Unique identifier of the customer account for which to retrieve transactions.
 		* @return string Resource Url
 	*/
 	public static function getTransactionsUrl($accountId)
 	{
 		$url = "/api/commerce/customer/accounts/{accountId}/transactions";
-		$url = MozuUrl::formatUrl($url, "accountId", $accountId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for AddTransaction
-		* @param int $accountId 
+		* @param int $accountId Unique identifier of the customer account.
 		* @return string Resource Url
 	*/
 	public static function addTransactionUrl($accountId)
 	{
 		$url = "/api/commerce/customer/accounts/{accountId}/transactions";
-		$url = MozuUrl::formatUrl($url, "accountId", $accountId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for RemoveTransaction
-		* @param int $accountId 
-		* @param string $transactionId 
+		* @param int $accountId Unique identifier of the customer account from which to delete the transaction.
+		* @param string $transactionId Unique identifier of the transaction to delete.
 		* @return string Resource Url
 	*/
 	public static function removeTransactionUrl($accountId, $transactionId)
 	{
 		$url = "/api/commerce/customer/accounts/{accountId}/transactions/{transactionId}";
-		$url = MozuUrl::formatUrl($url, "accountId", $accountId);
-		$url = MozuUrl::formatUrl($url, "transactionId", $transactionId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		$url = $mozuUrl->formatUrl("transactionId", $transactionId);
+		return $mozuUrl;
 	}
 	
 }

@@ -32,8 +32,7 @@ class AdminUserClient {
 	{
 		$url = AdminUserUrl::getUserUrl($userId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -49,8 +48,7 @@ class AdminUserClient {
 	{
 		$url = AdminUserUrl::getTenantScopesForUserUrl($userId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 

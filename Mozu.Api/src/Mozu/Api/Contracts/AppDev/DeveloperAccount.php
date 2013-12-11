@@ -14,11 +14,20 @@ namespace Mozu\Api\Contracts\AppDev;
 
 
 
+/**
+*	Properties of a developer account under which a company builds applications and themes.
+*/
 class DeveloperAccount
 {
-		public $id;
+	/**
+	*Unique identifier of the developer account.
+	*/
+	public $id;
 
-		public $name;
+	/**
+	*The name of the developer account.
+	*/
+	public $name;
 
 }
 

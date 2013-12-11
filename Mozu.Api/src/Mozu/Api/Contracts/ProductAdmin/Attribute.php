@@ -15,240 +15,96 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 /**
-*	Details of the property such as its name and description, whether it is a configurable option, and how many products have this attribute. A product detail that a merchant can define to add to the product base type. Define details, such as specifications, to describe products. Create attributes to share across several or all products in a store or stores such as price, size, weight, color, and brand. Some attributes will apply to a specific type of product or a single product, for example, screen resolution or storage capacity. Create attributes separately from products to share common attributes across products.
+*	Details of an attribute used to describe individual aspects of a product.
 */
 class Attribute
 {
 	/**
-	*The name of the product associated with this attribute as it appears in the Product Admin.
+	*The administrative name of the product attribute as it appears in Mozu Admin.
 	*/
 	public $adminName;
-	public function getAdminName() {
-		return $this->adminName;
-	}
-	
-	public function setAdminName($adminName) {
-		$this->adminName = $adminName;
-		return $this;
-	}
 
 	/**
-	*Unique identifier of the attribute. Must be unique within a namespace and cannot be changed once referenced by productTypes. This value will be generated to match the attribute sequence if it is not provided during creation.
+	*Merchant-defined identifier of the product attribute used to generate the attribute's fully qualified name.
 	*/
 	public $attributeCode;
-	public function getAttributeCode() {
-		return $this->attributeCode;
-	}
-	
-	public function setAttributeCode($attributeCode) {
-		$this->attributeCode = $attributeCode;
-		return $this;
-	}
 
 	/**
-	*Unique sequence for each attribute and data type combination created. System-supplied and read-only.
+	*Generated sequence that increments for each attribute and data type combination created. This value is system-supplied and read-only.
 	*/
 	public $attributeDataTypeSequence;
-	public function getAttributeDataTypeSequence() {
-		return $this->attributeDataTypeSequence;
-	}
-	
-	public function setAttributeDataTypeSequence($attributeDataTypeSequence) {
-		$this->attributeDataTypeSequence = $attributeDataTypeSequence;
-		return $this;
-	}
 
 	/**
-	*"The fully qualified name of the attribute, which is a user defined attribute identifier."
+	*The fully qualified name of the attribute, which is a user defined attribute identifier.
 	*/
 	public $attributeFQN;
-	public function getAttributeFQN() {
-		return $this->attributeFQN;
-	}
-	
-	public function setAttributeFQN($attributeFQN) {
-		$this->attributeFQN = $attributeFQN;
-		return $this;
-	}
 
 	/**
-	*Indicates the order position of the attribute.
+	*Generated sequence that increments for each product attribute created. This value is system-supplied and read-only.
 	*/
 	public $attributeSequence;
-	public function getAttributeSequence() {
-		return $this->attributeSequence;
-	}
-	
-	public function setAttributeSequence($attributeSequence) {
-		$this->attributeSequence = $attributeSequence;
-		return $this;
-	}
 
 	/**
-	*The data type of the attribute. There are four valid data types: "Bool", "DateTime", "Number", "String"
+	*The data type of the product attribute, which is a Bool, DateTime, Number, or String. The attribute's data type cannot be changed.
 	*/
 	public $dataType;
-	public function getDataType() {
-		return $this->dataType;
-	}
-	
-	public function setDataType($dataType) {
-		$this->dataType = $dataType;
-		return $this;
-	}
 
 	/**
-	*The storefront interface input type for this attribute such as a radio button or drop-down menu selection.
+	*The storefront interface input type for the product attribute, which is a Date, DateTime, List, TextArea, TextBox, or YesNo. The attribute's input type cannot be changed.
 	*/
 	public $inputType;
-	public function getInputType() {
-		return $this->inputType;
-	}
-	
-	public function setInputType($inputType) {
-		$this->inputType = $inputType;
-		return $this;
-	}
 
 	/**
-	*If true, this entity is marked as an optional choice.
+	*If true, the product attribute is an add-on configuration made by the shopper that does not represent a product variation, such as a monogram.
 	*/
 	public $isExtra;
-	public function getIsExtra() {
-		return $this->isExtra;
-	}
-	
-	public function setIsExtra($isExtra) {
-		$this->isExtra = $isExtra;
-		return $this;
-	}
 
 	/**
-	*If true, the entity is available as an option. If false, the entity is not available as an option.
+	*If true, the product attribute is a merchant- or shopper-configurable option, such as size or color, that represents a product variation.
 	*/
 	public $isOption;
-	public function getIsOption() {
-		return $this->isOption;
-	}
-	
-	public function setIsOption($isOption) {
-		$this->isOption = $isOption;
-		return $this;
-	}
 
 	/**
-	*If true, the entity is an available property.
+	*If true, the product attribute describes aspects of the product that do not represent an option configurable by the shopper, such as screen resolution or brand.
 	*/
 	public $isProperty;
-	public function getIsProperty() {
-		return $this->isProperty;
-	}
-	
-	public function setIsProperty($isProperty) {
-		$this->isProperty = $isProperty;
-		return $this;
-	}
 
 		public $masterCatalogId;
-	public function getMasterCatalogId() {
-		return $this->masterCatalogId;
-	}
-	
-	public function setMasterCatalogId($masterCatalogId) {
-		$this->masterCatalogId = $masterCatalogId;
-		return $this;
-	}
 
 	/**
-	*Registered namespace associated with this attribute. If no namespace was entered when the attribute was created, the tenant namespace is used.
+	*If applicable, the registered namespace associated with the product attribute, used to generate the fully qualified name. If no namespace is defined, the namespace associated with the tenant is automatically assigned.
 	*/
 	public $namespace;
-	public function getNamespace() {
-		return $this->namespace;
-	}
-	
-	public function setNamespace($namespace) {
-		$this->namespace = $namespace;
-		return $this;
-	}
 
 	/**
-	*An attribute value type is either predefined vocabulary by the admin during product attribute set up or it can be "AdminEntered" or "ShopperEntered". The difference between predefined values versus manually entered values is such that the first choice is a set of options to choose from. AdminEntered and ShopperEntered are values that are entered rather than system-supplied and are not stored in the database, but captured during a live commerce operations such as during an order.
+	*The type of value associated with the product attribute, which is ShopperEntered (the shopper selects or enters an attribute value during checkout), Predefined (the merchant sets the attribute value from a list during product attribute definition), or AdminEntered (the merchant selects or enters a value during product definition). The attribute value type cannot be changed.
 	*/
 	public $valueType;
-	public function getValueType() {
-		return $this->valueType;
-	}
-	
-	public function setValueType($valueType) {
-		$this->valueType = $valueType;
-		return $this;
-	}
 
 	/**
-	*List of metadata associated with the attribute.
+	*List of key-value pairs that store metadata associated with the product attribute.
 	*/
 	public $attributeMetadata;
-	public function getAttributeMetadata() {
-		return $this->attributeMetadata;
-	}
-	
-	public function setAttributeMetadata($attributeMetadata) {
-		$this->attributeMetadata = $attributeMetadata;
-		return $this;
-	}
 
 	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
-	public function getAuditInfo() {
-		return $this->auditInfo;
-	}
-	
-	public function setAuditInfo($auditInfo) {
-		$this->auditInfo = $auditInfo;
-		return $this;
-	}
 
 	/**
 	*Complex type that contains content for a language specified by LocaleCode.
 	*/
 	public $content;
-	public function getContent() {
-		return $this->content;
-	}
-	
-	public function setContent($content) {
-		$this->content = $content;
-		return $this;
-	}
 
 	/**
-	*Validates the attribute configured for the product in the storefront against the attribute configured in product admin.
+	*Properties of the validation of a product attribute, which contains rules that dictate what values are valid entries for product attributes.
 	*/
 	public $validation;
-	public function getValidation() {
-		return $this->validation;
-	}
-	
-	public function setValidation($validation) {
-		$this->validation = $validation;
-		return $this;
-	}
 
 	/**
-	*Container for a list of the vocabulary values for the specified attribute. For example, for a "color" attribute, vocabulary values might include "red," "green," and "blue."
+	*Array list of the defined vocabulary values for the specified product attribute. For example, for a Color attribute, vocabulary values might include black, white, and purple.
 	*/
 	public $vocabularyValues;
-	public function getVocabularyValues() {
-		return $this->vocabularyValues;
-	}
-	
-	public function setVocabularyValues($vocabularyValues) {
-		$this->vocabularyValues = $vocabularyValues;
-		return $this;
-	}
 
 }
 

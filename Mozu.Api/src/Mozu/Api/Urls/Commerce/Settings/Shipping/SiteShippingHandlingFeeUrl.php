@@ -24,7 +24,8 @@ class SiteShippingHandlingFeeUrl  {
 	public static function getOrderHandlingFeeUrl()
 	{
 		$url = "/api/commerce/settings/shipping/orderhandlingfee";
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		return $mozuUrl;
 	}
 	
 	/**
@@ -34,7 +35,8 @@ class SiteShippingHandlingFeeUrl  {
 	public static function createOrderHandlingFeeUrl()
 	{
 		$url = "/api/commerce/settings/shipping/orderhandlingfee";
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		return $mozuUrl;
 	}
 	
 	/**
@@ -44,7 +46,8 @@ class SiteShippingHandlingFeeUrl  {
 	public static function updateOrderHandlingFeeUrl()
 	{
 		$url = "/api/commerce/settings/shipping/orderhandlingfee";
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"PUT") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		return $mozuUrl;
 	}
 	
 }

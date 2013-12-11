@@ -18,44 +18,42 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* 
+* Use the Wish List Items subresource to manage items in a shopper wish list. The same product can be defined as an item in any number of wish lists for the customer account. Use the Wish Lists resource to manage shopper wish lists.
 */
 class WishlistItemClient {
 
 	/**
-	* 
+	* Retrieves the details of an item in a shopper wish list.
 	*
-	* @param string $wishlistId 
-	* @param string $wishlistItemId 
+	* @param string $wishlistId Unique identifier of the wish list item to retrieve.
+	* @param string $wishlistItemId Unique identifier of the wish list associated with the item to retrieve.
 	* @return MozuClient
 	*/
 	public static function getWishlistItemClient( $wishlistId,  $wishlistItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = WishlistItemUrl::getWishlistItemUrl($wishlistId, $wishlistItemId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Retrieves a list of items in a shopper wish list according to any specified filter and sort criteria.
 	*
-	* @param string $filter 
-	* @param int $pageSize 
-	* @param string $sortBy 
-	* @param int $startIndex 
-	* @param string $wishlistId 
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+	* @param string $wishlistId Unique identifier of the wish list associated with the items to retrieve.
 	* @return MozuClient
 	*/
 	public static function getWishlistItemsClient( $wishlistId, $filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = WishlistItemUrl::getWishlistItemsUrl($filter, $pageSize, $sortBy, $startIndex, $wishlistId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -64,88 +62,104 @@ class WishlistItemClient {
 	/**
 	* 
 	*
-	* @param string $wishlistId 
-	* @param WishlistItem $wishlistItem 
+	* @param int $customerAccountId 
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $sortBy 
+	* @param int $startIndex 
+	* @param string $wishlistName 
+	* @return MozuClient
+	*/
+	public static function getWishlistItemsByWishlistNameClient( $customerAccountId,  $wishlistName, $filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	{
+		$url = WishlistItemUrl::getWishlistItemsByWishlistNameUrl($customerAccountId, $filter, $pageSize, $sortBy, $startIndex, $wishlistName);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
+			$mozuClient = $mozuClient->withUserAuth($authTicket);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* Adds a product in a site's catalog as an item in a shopper wish list.
+	*
+	* @param string $wishlistId Unique identifier of the wish list associated with the item to add.
+	* @param WishlistItem $wishlistItem Properties of the item to add to the wish list.
 	* @return MozuClient
 	*/
 	public static function addItemToWishlistClient($wishlistItem,  $wishlistId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = WishlistItemUrl::addItemToWishlistUrl($wishlistId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($wishlistItem);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($wishlistItem);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Updates the details of an item in a shopper wish list.
 	*
-	* @param string $wishlistId 
-	* @param string $wishlistItemId 
-	* @param WishlistItem $wishlistItem 
+	* @param string $wishlistId Unique identifier of the wish list associated with the item to update.
+	* @param string $wishlistItemId Unique identifier of the item in the shopper wish list to update.
+	* @param WishlistItem $wishlistItem Properties of the shopper wish list item to update.
 	* @return MozuClient
 	*/
 	public static function updateWishlistItemClient($wishlistItem,  $wishlistId,  $wishlistItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = WishlistItemUrl::updateWishlistItemUrl($wishlistId, $wishlistItemId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($wishlistItem);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($wishlistItem);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Updates the quantity of an item in a shopper wish list.
 	*
-	* @param int $quantity 
-	* @param string $wishlistId 
-	* @param string $wishlistItemId 
+	* @param int $quantity The quantity of the item in the wish list.
+	* @param string $wishlistId Unique identifier of the wish list associated with the item quantity to update.
+	* @param string $wishlistItemId Unique identifier of the item in the wish list to update quantity.
 	* @return MozuClient
 	*/
 	public static function updateWishlistItemQuantityClient( $quantity,  $wishlistId,  $wishlistItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = WishlistItemUrl::updateWishlistItemQuantityUrl($quantity, $wishlistId, $wishlistItemId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Removes all items associated with a shopper wish list.
 	*
-	* @param string $wishlistId 
+	* @param string $wishlistId Unique identifier of the wish list associated with the items to remove.
 	* @return MozuClient
 	*/
 	public static function removeAllWishlistItemsClient( $wishlistId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = WishlistItemUrl::removeAllWishlistItemsUrl($wishlistId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Removes an item from the wish list specified in the request.
 	*
-	* @param string $wishlistId 
-	* @param string $wishlistItemId 
+	* @param string $wishlistId Unique identifier of the wish list associated with the item to remove.
+	* @param string $wishlistItemId Unique identifier of the item to remove from the shopper wish list.
 	*/
 	public static function deleteWishlistItemClient( $wishlistId,  $wishlistItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = WishlistItemUrl::deleteWishlistItemUrl($wishlistId, $wishlistItemId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 

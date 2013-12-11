@@ -23,18 +23,17 @@ use Mozu\Api\Headers;
 class ShipmentClient {
 
 	/**
-	* 
+	* Retrieves the details of the order shipment specified in the request.
 	*
-	* @param string $orderId 
-	* @param string $shipmentId 
+	* @param string $orderId Unique identifier of the order associated with the shipment to retrieve.
+	* @param string $shipmentId Unique identifier of the shipment to retrieve.
 	* @return MozuClient
 	*/
 	public static function getShipmentClient( $orderId,  $shipmentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ShipmentUrl::getShipmentUrl($orderId, $shipmentId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -50,8 +49,7 @@ class ShipmentClient {
 	{
 		$url = ShipmentUrl::getAvailableShipmentMethodsUrl($orderId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -68,15 +66,14 @@ class ShipmentClient {
 	{
 		$url = ShipmentUrl::createPackageShipmentsUrl($orderId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($packageIds);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($packageIds);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* Cancels a shipment.
+	* Deletes the shipment specified in the request.
 	*
 	* @param string $orderId Unique identifier of the order to cancel shipment.
 	* @param string $shipmentId Unique identifier of the shipment to cancel.
@@ -85,8 +82,7 @@ class ShipmentClient {
 	{
 		$url = ShipmentUrl::deleteShipmentUrl($orderId, $shipmentId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 

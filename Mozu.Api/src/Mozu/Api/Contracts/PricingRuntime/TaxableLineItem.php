@@ -23,109 +23,40 @@ class TaxableLineItem
 	*Unique identifier of the taxable line item.
 	*/
 	public $id;
-	public function getId() {
-		return $this->id;
-	}
-	
-	public function setId($id) {
-		$this->id = $id;
-		return $this;
-	}
 
 	/**
 	*If true, the line item in the order is subject to tax.
 	*/
 	public $isTaxable;
-	public function getIsTaxable() {
-		return $this->isTaxable;
-	}
-	
-	public function setIsTaxable($isTaxable) {
-		$this->isTaxable = $isTaxable;
-		return $this;
-	}
 
 	/**
 	*The sale price of the line item in the order.
 	*/
 	public $lineItemPrice;
-	public function getLineItemPrice() {
-		return $this->lineItemPrice;
-	}
-	
-	public function setLineItemPrice($lineItemPrice) {
-		$this->lineItemPrice = $lineItemPrice;
-		return $this;
-	}
 
-		public $productCode;
-	public function getProductCode() {
-		return $this->productCode;
-	}
-	
-	public function setProductCode($productCode) {
-		$this->productCode = $productCode;
-		return $this;
-	}
+	/**
+	*Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+	*/
+	public $productCode;
 
 		public $productName;
-	public function getProductName() {
-		return $this->productName;
-	}
-	
-	public function setProductName($productName) {
-		$this->productName = $productName;
-		return $this;
-	}
 
 	/**
 	*The quantity of the line item in the order.
 	*/
 	public $quantity;
-	public function getQuantity() {
-		return $this->quantity;
-	}
-	
-	public function setQuantity($quantity) {
-		$this->quantity = $quantity;
-		return $this;
-	}
 
 		public $reason;
-	public function getReason() {
-		return $this->reason;
-	}
-	
-	public function setReason($reason) {
-		$this->reason = $reason;
-		return $this;
-	}
 
 	/**
 	*The amount of shipping calculated for a line item in an order.
 	*/
 	public $shippingAmount;
-	public function getShippingAmount() {
-		return $this->shippingAmount;
-	}
-	
-	public function setShippingAmount($shippingAmount) {
-		$this->shippingAmount = $shippingAmount;
-		return $this;
-	}
 
 	/**
 	*Properties of the product that represents the line item in the order.
 	*/
 	public $productProperties;
-	public function getProductProperties() {
-		return $this->productProperties;
-	}
-	
-	public function setProductProperties($productProperties) {
-		$this->productProperties = $productProperties;
-		return $this;
-	}
 
 }
 

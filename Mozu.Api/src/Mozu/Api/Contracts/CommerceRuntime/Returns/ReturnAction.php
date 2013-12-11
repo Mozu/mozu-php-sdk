@@ -23,27 +23,11 @@ class ReturnAction
 	*The name of the action to perform for the return.
 	*/
 	public $actionName;
-	public function getActionName() {
-		return $this->actionName;
-	}
-	
-	public function setActionName($actionName) {
-		$this->actionName = $actionName;
-		return $this;
-	}
 
 	/**
 	*The list of returns for which to perform the action.
 	*/
 	public $returnIds;
-	public function getReturnIds() {
-		return $this->returnIds;
-	}
-	
-	public function setReturnIds($returnIds) {
-		$this->returnIds = $returnIds;
-		return $this;
-	}
 
 }
 

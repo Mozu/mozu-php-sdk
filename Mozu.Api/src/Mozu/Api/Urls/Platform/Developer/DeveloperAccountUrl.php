@@ -19,14 +19,15 @@ class DeveloperAccountUrl  {
 
 	/**
 		* Get Resource Url for GetDeveloperAccount
-		* @param int $accountId 
+		* @param int $accountId Unique identifier of the developer account to retrieve.
 		* @return string Resource Url
 	*/
 	public static function getDeveloperAccountUrl($accountId)
 	{
 		$url = "/api/platform/developer/accounts/{accountId}";
-		$url = MozuUrl::formatUrl($url, "accountId", $accountId);
-		return new MozuUrl($url, UrlLocation::HOME_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		return $mozuUrl;
 	}
 	
 }

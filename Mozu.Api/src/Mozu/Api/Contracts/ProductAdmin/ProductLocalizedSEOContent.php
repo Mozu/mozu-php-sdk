@@ -20,82 +20,34 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class ProductLocalizedSEOContent
 {
 	/**
-	*"Language used for the entity. Currently, only ""en-US"" is supported."
+	*Language used for the entity. Currently, only "en-US" is supported.
 	*/
 	public $localeCode;
-	public function getLocaleCode() {
-		return $this->localeCode;
-	}
-	
-	public function setLocaleCode($localeCode) {
-		$this->localeCode = $localeCode;
-		return $this;
-	}
 
 	/**
 	*The description of the metatag used for the product SEO content set to the locale code language. The metadata description is used to manage information internally.
 	*/
 	public $metaTagDescription;
-	public function getMetaTagDescription() {
-		return $this->metaTagDescription;
-	}
-	
-	public function setMetaTagDescription($metaTagDescription) {
-		$this->metaTagDescription = $metaTagDescription;
-		return $this;
-	}
 
 	/**
 	*The metatag keywords for the product SEO content set in the locale code language. The metatag keywords are used to manage information internally.
 	*/
 	public $metaTagKeywords;
-	public function getMetaTagKeywords() {
-		return $this->metaTagKeywords;
-	}
-	
-	public function setMetaTagKeywords($metaTagKeywords) {
-		$this->metaTagKeywords = $metaTagKeywords;
-		return $this;
-	}
 
 	/**
 	*The metatag title for the product SEO content set in the locale code language. The metatag title is used to manage information internally.
 	*/
 	public $metaTagTitle;
-	public function getMetaTagTitle() {
-		return $this->metaTagTitle;
-	}
-	
-	public function setMetaTagTitle($metaTagTitle) {
-		$this->metaTagTitle = $metaTagTitle;
-		return $this;
-	}
 
 	/**
 	*The search engine optimized human-readable portion of the URL in the language of the product's locale code.
 	*/
 	public $seoFriendlyUrl;
-	public function getSeoFriendlyUrl() {
-		return $this->seoFriendlyUrl;
-	}
-	
-	public function setSeoFriendlyUrl($seoFriendlyUrl) {
-		$this->seoFriendlyUrl = $seoFriendlyUrl;
-		return $this;
-	}
 
 	/**
 	*Customizes the HTML title tag within the header section of the product details page for the specified product.
 	*/
 	public $titleTagTitle;
-	public function getTitleTagTitle() {
-		return $this->titleTagTitle;
-	}
-	
-	public function setTitleTagTitle($titleTagTitle) {
-		$this->titleTagTitle = $titleTagTitle;
-		return $this;
-	}
 
 }
 

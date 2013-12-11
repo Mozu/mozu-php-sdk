@@ -14,11 +14,20 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 
+/**
+*	Properties of the active product inventory levels for a specific location.
+*/
 class LocationInventory
 {
-		public $locationCode;
+	/**
+	*User-defined code that uniquely identifies the location.
+	*/
+	public $locationCode;
 
-		public $stockAvailable;
+	/**
+	*The current level of active product stock available at the specified location.
+	*/
+	public $stockAvailable;
 
 }
 

@@ -32,8 +32,7 @@ class UserDataClient {
 	{
 		$url = UserDataUrl::getDBValueUrl($dbEntryQuery);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -49,8 +48,7 @@ class UserDataClient {
 	{
 		$url = UserDataUrl::createDBValueUrl($dbEntryQuery);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($value);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($value);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -66,8 +64,7 @@ class UserDataClient {
 	{
 		$url = UserDataUrl::updateDBValueUrl($dbEntryQuery);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($value);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($value);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -82,8 +79,7 @@ class UserDataClient {
 	{
 		$url = UserDataUrl::deleteDBValueUrl($dbEntryQuery);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 

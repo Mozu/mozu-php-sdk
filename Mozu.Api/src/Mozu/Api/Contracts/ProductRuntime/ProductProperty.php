@@ -20,69 +20,29 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 class ProductProperty
 {
 	/**
-	*"The fully qualified name of the attribute, which is a user defined attribute identifier."
+	*The fully qualified name of the attribute, which is a user defined attribute identifier.
 	*/
 	public $attributeFQN;
-	public function getAttributeFQN() {
-		return $this->attributeFQN;
-	}
-	
-	public function setAttributeFQN($attributeFQN) {
-		$this->attributeFQN = $attributeFQN;
-		return $this;
-	}
 
 	/**
 	*If true, the product property does not appear for the product in the storefront.
 	*/
 	public $isHidden;
-	public function getIsHidden() {
-		return $this->isHidden;
-	}
-	
-	public function setIsHidden($isHidden) {
-		$this->isHidden = $isHidden;
-		return $this;
-	}
 
 	/**
 	*If true, the product property can have more than one selected value.
 	*/
 	public $isMultiValue;
-	public function getIsMultiValue() {
-		return $this->isMultiValue;
-	}
-	
-	public function setIsMultiValue($isMultiValue) {
-		$this->isMultiValue = $isMultiValue;
-		return $this;
-	}
 
 	/**
 	*Details of the attribute defined as a product property.
 	*/
 	public $attributeDetail;
-	public function getAttributeDetail() {
-		return $this->attributeDetail;
-	}
-	
-	public function setAttributeDetail($attributeDetail) {
-		$this->attributeDetail = $attributeDetail;
-		return $this;
-	}
 
 	/**
 	*List of values defined for the product property attribute.
 	*/
 	public $values;
-	public function getValues() {
-		return $this->values;
-	}
-	
-	public function setValues($values) {
-		$this->values = $values;
-		return $this;
-	}
 
 }
 

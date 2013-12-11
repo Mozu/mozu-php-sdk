@@ -26,9 +26,10 @@ class DocumentTypeUrl  {
 	public static function listUrl($pageSize, $startIndex)
 	{
 		$url = "/api/content/documenttypes/?pageSize={pageSize}&startIndex={startIndex}";
-		$url = MozuUrl::formatUrl($url, "pageSize", $pageSize);
-		$url = MozuUrl::formatUrl($url, "startIndex", $startIndex);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -39,8 +40,9 @@ class DocumentTypeUrl  {
 	public static function getUrl($documentTypeName)
 	{
 		$url = "/api/content/documenttypes/{documentTypeName}";
-		$url = MozuUrl::formatUrl($url, "documentTypeName", $documentTypeName);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("documentTypeName", $documentTypeName);
+		return $mozuUrl;
 	}
 	
 }

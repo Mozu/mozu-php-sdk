@@ -17,37 +17,13 @@ namespace Mozu\Api\Contracts\PaymentService;
 class PreAuthorizeTransactionTypeDataContract
 {
 		public $description;
-	public function getDescription() {
-		return $this->description;
-	}
-	
-	public function setDescription($description) {
-		$this->description = $description;
-		return $this;
-	}
 
 	/**
 	*Identifier of the entity.
 	*/
 	public $id;
-	public function getId() {
-		return $this->id;
-	}
-	
-	public function setId($id) {
-		$this->id = $id;
-		return $this;
-	}
 
 		public $type;
-	public function getType() {
-		return $this->type;
-	}
-	
-	public function setType($type) {
-		$this->type = $type;
-		return $this;
-	}
 
 }
 

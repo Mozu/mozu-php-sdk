@@ -23,40 +23,16 @@ class ProductPropertyValue
 	*Value details for a product property attribute.
 	*/
 	public $value;
-	public function getValue() {
-		return $this->value;
-	}
-	
-	public function setValue($value) {
-		$this->value = $value;
-		return $this;
-	}
 
 	/**
 	*Details of the vocabulary value for predefined product property attributes.
 	*/
 	public $attributeVocabularyValueDetail;
-	public function getAttributeVocabularyValueDetail() {
-		return $this->attributeVocabularyValueDetail;
-	}
-	
-	public function setAttributeVocabularyValueDetail($attributeVocabularyValueDetail) {
-		$this->attributeVocabularyValueDetail = $attributeVocabularyValueDetail;
-		return $this;
-	}
 
 	/**
 	*Content of the product property value.
 	*/
 	public $content;
-	public function getContent() {
-		return $this->content;
-	}
-	
-	public function setContent($content) {
-		$this->content = $content;
-		return $this;
-	}
 
 }
 

@@ -23,76 +23,31 @@ class PaymentGatewayInteraction
 	*If required by the payment gateway, the authorization code of the transaction.
 	*/
 	public $gatewayAuthCode;
-	public function getGatewayAuthCode() {
-		return $this->gatewayAuthCode;
-	}
-	
-	public function setGatewayAuthCode($gatewayAuthCode) {
-		$this->gatewayAuthCode = $gatewayAuthCode;
-		return $this;
-	}
 
 	/**
 	*AVS codes supplied by the payment gateway.
 	*/
 	public $gatewayAVSCodes;
-	public function getGatewayAVSCodes() {
-		return $this->gatewayAVSCodes;
-	}
-	
-	public function setGatewayAVSCodes($gatewayAVSCodes) {
-		$this->gatewayAVSCodes = $gatewayAVSCodes;
-		return $this;
-	}
 
 	/**
 	*CVV2 codes supplied by the payment gateway.
 	*/
 	public $gatewayCVV2Codes;
-	public function getGatewayCVV2Codes() {
-		return $this->gatewayCVV2Codes;
-	}
-	
-	public function setGatewayCVV2Codes($gatewayCVV2Codes) {
-		$this->gatewayCVV2Codes = $gatewayCVV2Codes;
-		return $this;
-	}
 
-		public $gatewayInteractionId;
-	public function getGatewayInteractionId() {
-		return $this->gatewayInteractionId;
-	}
-	
-	public function setGatewayInteractionId($gatewayInteractionId) {
-		$this->gatewayInteractionId = $gatewayInteractionId;
-		return $this;
-	}
+	/**
+	*Unique identifier of the payment interaction from the payment gateway.
+	*/
+	public $gatewayInteractionId;
 
 	/**
 	*Response code from the gateway associated with the payment interaction. For example, if the gateway returns "Not Authorized," an interaction for voiding the payment transaction would result.
 	*/
 	public $gatewayResponseCode;
-	public function getGatewayResponseCode() {
-		return $this->gatewayResponseCode;
-	}
-	
-	public function setGatewayResponseCode($gatewayResponseCode) {
-		$this->gatewayResponseCode = $gatewayResponseCode;
-		return $this;
-	}
 
 	/**
 	*Unique identifier of the gateway transaction associated with the payment interaction.
 	*/
 	public $gatewayTransactionId;
-	public function getGatewayTransactionId() {
-		return $this->gatewayTransactionId;
-	}
-	
-	public function setGatewayTransactionId($gatewayTransactionId) {
-		$this->gatewayTransactionId = $gatewayTransactionId;
-		return $this;
-	}
 
 }
 

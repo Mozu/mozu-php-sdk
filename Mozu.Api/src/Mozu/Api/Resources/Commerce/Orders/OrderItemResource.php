@@ -67,8 +67,8 @@ class OrderItemResource {
 	*
 	* @param string $orderId Unique identifier of the order for which to add the item.
 	* @param bool $skipInventoryCheck 
-	* @param string $updateMode Specifies whether to add the item by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal", "ApplyToDraft", or "ApplyAndCommit".
-	* @param string $version 
+	* @param string $updateMode Specifies whether to add the item by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 	* @param OrderItem $orderItem The properties of the item to create in the existing order.
 	* @return Order 
 	*/
@@ -87,8 +87,8 @@ class OrderItemResource {
 	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
 	* @param string $orderId Unique identifier of the order associated with the item discount.
 	* @param string $orderItemId Unique identifier of the item in the order.
-	* @param string $updateMode Specifies whether to change the item discount by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal", "ApplyToDraft", or "ApplyAndCommit".
-	* @param string $version 
+	* @param string $updateMode Specifies whether to change the item discount by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 	* @param AppliedDiscount $discount Properties of the discount to modify for the order item.
 	* @return Order 
 	*/
@@ -102,13 +102,13 @@ class OrderItemResource {
 	}
 	
 	/**
-	* Override the price of an individual product in the specified order.
+	* Override the price of an individual product on a line item in the specified order.
 	*
 	* @param string $orderId Unique identifier of the order containing the item to price override.
 	* @param string $orderItemId Unique identifier of the item in the order to price override.
 	* @param decimal $price The override price to specify for this item in the specified order.
-	* @param string $updateMode Specifies whether to change the product price by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal", "ApplyToDraft", or "ApplyAndCommit".
-	* @param string $version 
+	* @param string $updateMode Specifies whether to change the product price by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 	* @return Order 
 	*/
 	public function updateItemProductPrice( $orderId,  $orderItemId,  $price, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -126,8 +126,8 @@ class OrderItemResource {
 	* @param string $orderId Unique identifier of the order containing the item to update quantity.
 	* @param string $orderItemId Unique identifier of the item in the order to update quantity.
 	* @param int $quantity The quantity of the item in the order to update.
-	* @param string $updateMode Specifies whether to change the item quantity by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal", "ApplyToDraft", or "ApplyAndCommit".
-	* @param string $version 
+	* @param string $updateMode Specifies whether to change the item quantity by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 	* @return Order 
 	*/
 	public function updateItemQuantity( $orderId,  $orderItemId,  $quantity, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -144,8 +144,8 @@ class OrderItemResource {
 	*
 	* @param string $orderId Unique identifier of the order with the item to remove.
 	* @param string $orderItemId Unique identifier of the item to remove from the order.
-	* @param string $updateMode Specifies whether to remove the item by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committoing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal", "ApplyToDraft", or "ApplyAndCommit".
-	* @param string $version 
+	* @param string $updateMode Specifies whether to remove the item by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 	* @return Order 
 	*/
 	public function deleteOrderItem( $orderId,  $orderItemId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)

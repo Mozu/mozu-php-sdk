@@ -23,19 +23,19 @@ use Mozu\Api\Headers;
 class DocumentDraftSummaryClient {
 
 	/**
-	* Retrieves a list of the documents currently in draft state according to any sort criteria defined.
+	* Retrieves a list of the documents currently in draft state, according to any defined filter and sort criteria.
 	*
 	* @param string $documentLists Lists that contain the document drafts.
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
-	* @param int $startIndex "Used to create paged results from a query. Indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3."
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return MozuClient
 	*/
-	public static function listDocumentDraftSummariesClient($documentLists =  null, $pageSize =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function listDocumentDraftSummariesClient($dataViewMode, $documentLists =  null, $pageSize =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = DocumentDraftSummaryUrl::listDocumentDraftSummariesUrl($documentLists, $pageSize, $startIndex);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -47,12 +47,12 @@ class DocumentDraftSummaryClient {
 	* @param string $documentLists List of document lists that contain documents to publish.
 	* @param array|string $documentIds List of unique identifiers of the document drafts to publish.
 	*/
-	public static function publishDocumentsClient($documentIds, $documentLists =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function publishDocumentsClient($dataViewMode, $documentIds, $documentLists =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = DocumentDraftSummaryUrl::publishDocumentsUrl($documentLists);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($documentIds);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($documentIds)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -64,12 +64,12 @@ class DocumentDraftSummaryClient {
 	* @param string $documentIds Unique identifiers of the documents to delete.
 	* @param string $documentLists List of document lists that contain documents to delete.
 	*/
-	public static function deleteDocumentDraftsClient( $documentIds, $documentLists =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteDocumentDraftsClient($dataViewMode,  $documentIds, $documentLists =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = DocumentDraftSummaryUrl::deleteDocumentDraftsUrl($documentIds, $documentLists);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 

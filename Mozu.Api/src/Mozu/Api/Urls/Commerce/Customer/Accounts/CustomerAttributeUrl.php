@@ -18,31 +18,18 @@ use Mozu\Api\UrlLocation;
 class CustomerAttributeUrl  {
 
 	/**
-		* Get Resource Url for GetAccountAttributeByFqn
-		* @param int $accountId 
+		* Get Resource Url for GetAccountAttribute
+		* @param int $accountId Identifier of the customer account associated with the attribute to retrieve.
 		* @param string $attributeFQN 
 		* @return string Resource Url
 	*/
-	public static function getAccountAttributeByFqnUrl($accountId, $attributeFQN)
+	public static function getAccountAttributeUrl($accountId, $attributeFQN)
 	{
 		$url = "/api/commerce/customer/accounts/{accountId}/attributes/{attributeFQN}";
-		$url = MozuUrl::formatUrl($url, "accountId", $accountId);
-		$url = MozuUrl::formatUrl($url, "attributeFQN", $attributeFQN);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
-	}
-	
-	/**
-		* Get Resource Url for GetAccountAttribute
-		* @param int $accountId Identifier of the customer account associated with the attribute to retrieve.
-		* @param int $attributeId Identifier of the customer account attribute to retrieve.
-		* @return string Resource Url
-	*/
-	public static function getAccountAttributeUrl($accountId, $attributeId)
-	{
-		$url = "/api/commerce/customer/accounts/{accountId}/attributes/{attributeId}";
-		$url = MozuUrl::formatUrl($url, "accountId", $accountId);
-		$url = MozuUrl::formatUrl($url, "attributeId", $attributeId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -57,36 +44,41 @@ class CustomerAttributeUrl  {
 	public static function getAccountAttributesUrl($accountId, $filter, $pageSize, $sortBy, $startIndex)
 	{
 		$url = "/api/commerce/customer/accounts/{accountId}/attributes?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}";
-		$url = MozuUrl::formatUrl($url, "accountId", $accountId);
-		$url = MozuUrl::formatUrl($url, "filter", $filter);
-		$url = MozuUrl::formatUrl($url, "pageSize", $pageSize);
-		$url = MozuUrl::formatUrl($url, "sortBy", $sortBy);
-		$url = MozuUrl::formatUrl($url, "startIndex", $startIndex);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		$url = $mozuUrl->formatUrl("filter", $filter);
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for AddAccountAttribute
-		* @param int $accountId 
+		* @param int $accountId Unique identifier of the customer account.
 		* @return string Resource Url
 	*/
 	public static function addAccountAttributeUrl($accountId)
 	{
 		$url = "/api/commerce/customer/accounts/{accountId}/attributes";
-		$url = MozuUrl::formatUrl($url, "accountId", $accountId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdateAccountAttribute
 		* @param int $accountId Identifier of the customer account associated with the attribute.
+		* @param bool $removeMissing If true, remove the items missing from the collection.
 		* @return string Resource Url
 	*/
-	public static function updateAccountAttributeUrl($accountId)
+	public static function updateAccountAttributeUrl($accountId, $removeMissing)
 	{
-		$url = "/api/commerce/customer/accounts/{accountId}/attributes";
-		$url = MozuUrl::formatUrl($url, "accountId", $accountId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"PUT") ;
+		$url = "/api/commerce/customer/accounts/{accountId}/attributes?removeMissing={removeMissing}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		$url = $mozuUrl->formatUrl("removeMissing", $removeMissing);
+		return $mozuUrl;
 	}
 	
 }

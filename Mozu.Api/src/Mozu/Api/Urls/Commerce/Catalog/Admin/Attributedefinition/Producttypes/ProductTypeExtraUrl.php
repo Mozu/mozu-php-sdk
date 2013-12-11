@@ -19,68 +19,73 @@ class ProductTypeExtraUrl  {
 
 	/**
 		* Get Resource Url for GetExtras
-		* @param int $productTypeId Identifier of the product type whose list is being retrieved.
+		* @param int $productTypeId Identifier of the product type.
 		* @return string Resource Url
 	*/
 	public static function getExtrasUrl($productTypeId)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/producttypes/{productTypeId}/Extras";
-		$url = MozuUrl::formatUrl($url, "productTypeId", $productTypeId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("productTypeId", $productTypeId);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetExtra
-		* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
+		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 		* @param int $productTypeId Identifier of the product type whose extra is being retrieved.
 		* @return string Resource Url
 	*/
 	public static function getExtraUrl($attributeFQN, $productTypeId)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/producttypes/{productTypeId}/Extras/{attributeFQN}";
-		$url = MozuUrl::formatUrl($url, "attributeFQN", $attributeFQN);
-		$url = MozuUrl::formatUrl($url, "productTypeId", $productTypeId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("productTypeId", $productTypeId);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for AddExtra
-		* @param int $productTypeId Identifier of the product type to add an extra.
+		* @param int $productTypeId Identifier of the product type.
 		* @return string Resource Url
 	*/
 	public static function addExtraUrl($productTypeId)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/producttypes/{productTypeId}/Extras";
-		$url = MozuUrl::formatUrl($url, "productTypeId", $productTypeId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("productTypeId", $productTypeId);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdateExtra
-		* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-		* @param int $productTypeId Identifier of the product type whose extra is being updated.
+		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+		* @param int $productTypeId Identifier of the product type.
 		* @return string Resource Url
 	*/
 	public static function updateExtraUrl($attributeFQN, $productTypeId)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/producttypes/{productTypeId}/Extras/{attributeFQN}";
-		$url = MozuUrl::formatUrl($url, "attributeFQN", $attributeFQN);
-		$url = MozuUrl::formatUrl($url, "productTypeId", $productTypeId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"PUT") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("productTypeId", $productTypeId);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for DeleteExtra
-		* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-		* @param int $productTypeId Identifier of the product type whose extra is being deleted.
+		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+		* @param int $productTypeId Identifier of the product type.
 		* @return string Resource Url
 	*/
 	public static function deleteExtraUrl($attributeFQN, $productTypeId)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/producttypes/{productTypeId}/Extras/{attributeFQN}";
-		$url = MozuUrl::formatUrl($url, "attributeFQN", $attributeFQN);
-		$url = MozuUrl::formatUrl($url, "productTypeId", $productTypeId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("productTypeId", $productTypeId);
+		return $mozuUrl;
 	}
 	
 }

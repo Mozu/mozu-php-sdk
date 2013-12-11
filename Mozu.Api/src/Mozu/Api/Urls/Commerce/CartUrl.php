@@ -19,14 +19,15 @@ class CartUrl  {
 
 	/**
 		* Get Resource Url for GetCart
-		* @param string $cartId Identifier of the cart being retrieved.
+		* @param string $cartId Identifier of the cart to retrieve.
 		* @return string Resource Url
 	*/
 	public static function getCartUrl($cartId)
 	{
 		$url = "/api/commerce/carts/{cartId}";
-		$url = MozuUrl::formatUrl($url, "cartId", $cartId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("cartId", $cartId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -36,7 +37,8 @@ class CartUrl  {
 	public static function getOrCreateCartUrl()
 	{
 		$url = "/api/commerce/carts/current";
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		return $mozuUrl;
 	}
 	
 	/**
@@ -46,7 +48,8 @@ class CartUrl  {
 	public static function getCartSummaryUrl()
 	{
 		$url = "/api/commerce/carts/summary";
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		return $mozuUrl;
 	}
 	
 	/**
@@ -57,8 +60,9 @@ class CartUrl  {
 	public static function getUserCartUrl($userId)
 	{
 		$url = "/api/commerce/carts/user/{userId}";
-		$url = MozuUrl::formatUrl($url, "userId", $userId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("userId", $userId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -69,8 +73,9 @@ class CartUrl  {
 	public static function getUserCartSummaryUrl($userId)
 	{
 		$url = "/api/commerce/carts/user/{userId}/summary";
-		$url = MozuUrl::formatUrl($url, "userId", $userId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("userId", $userId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -80,19 +85,21 @@ class CartUrl  {
 	public static function updateCartUrl()
 	{
 		$url = "/api/commerce/carts/current";
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"PUT") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for DeleteCart
-		* @param string $cartId Identifier of the cart being deleted.
+		* @param string $cartId Identifier of the cart to delete.
 		* @return string Resource Url
 	*/
 	public static function deleteCartUrl($cartId)
 	{
 		$url = "/api/commerce/carts/{cartId}";
-		$url = MozuUrl::formatUrl($url, "cartId", $cartId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("cartId", $cartId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -102,7 +109,8 @@ class CartUrl  {
 	public static function deleteCurrentCartUrl()
 	{
 		$url = "/api/commerce/carts/current";
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		return $mozuUrl;
 	}
 	
 }

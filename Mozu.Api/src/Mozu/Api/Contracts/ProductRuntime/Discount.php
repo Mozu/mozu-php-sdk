@@ -19,41 +19,20 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 */
 class Discount
 {
-		public $discountId;
-	public function getDiscountId() {
-		return $this->discountId;
-	}
-	
-	public function setDiscountId($discountId) {
-		$this->discountId = $discountId;
-		return $this;
-	}
+	/**
+	*Unique identifier of the discount. System-supplied and read only.
+	*/
+	public $discountId;
 
 	/**
 	*The date and time when the product discount will no longer be active. Date in UTC Date/Time. System-supplied and read-only.
 	*/
 	public $expirationDate;
-	public function getExpirationDate() {
-		return $this->expirationDate;
-	}
-	
-	public function setExpirationDate($expirationDate) {
-		$this->expirationDate = $expirationDate;
-		return $this;
-	}
 
 	/**
 	*The name assigned for the product discount.
 	*/
 	public $name;
-	public function getName() {
-		return $this->name;
-	}
-	
-	public function setName($name) {
-		$this->name = $name;
-		return $this;
-	}
 
 }
 

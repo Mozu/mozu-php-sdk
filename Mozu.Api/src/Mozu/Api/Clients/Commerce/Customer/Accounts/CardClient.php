@@ -32,8 +32,24 @@ class CardClient {
 	{
 		$url = CardUrl::getAccountCardsUrl($accountId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
+			$mozuClient = $mozuClient->withUserAuth($authTicket);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* 
+	*
+	* @param int $accountId 
+	* @param string $cardId 
+	* @return MozuClient
+	*/
+	public static function getAccountCardClient( $accountId,  $cardId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	{
+		$url = CardUrl::getAccountCardUrl($accountId, $cardId);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -50,8 +66,7 @@ class CardClient {
 	{
 		$url = CardUrl::addAccountCardUrl($accountId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($card);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($card);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -61,15 +76,15 @@ class CardClient {
 	* Update one or more properties of a credit card defined for a customer account.
 	*
 	* @param int $accountId Unique identifier of the customer account.
+	* @param string $cardId 
 	* @param Card $card Properties of the customer account credit card to update.
 	* @return MozuClient
 	*/
-	public static function updateAccountCardClient($card,  $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateAccountCardClient($card,  $accountId,  $cardId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$url = CardUrl::updateAccountCardUrl($accountId);
+		$url = CardUrl::updateAccountCardUrl($accountId, $cardId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($card);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($card);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -85,8 +100,7 @@ class CardClient {
 	{
 		$url = CardUrl::deleteAccountCardUrl($accountId, $cardId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 

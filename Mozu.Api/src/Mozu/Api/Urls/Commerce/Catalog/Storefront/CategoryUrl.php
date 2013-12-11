@@ -19,8 +19,8 @@ class CategoryUrl  {
 
 	/**
 		* Get Resource Url for GetCategories
-		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product category search results by any of its properties, including its position in the category hierarchy. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). <b>For example - "filter=IsDisplayed+eq+true"</b>
-		* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product category search results by any of its properties, including its position in the category hierarchy. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 		* @param string $sortBy 
 		* @param int $startIndex 
 		* @return string Resource Url
@@ -28,11 +28,12 @@ class CategoryUrl  {
 	public static function getCategoriesUrl($filter, $pageSize, $sortBy, $startIndex)
 	{
 		$url = "/api/commerce/catalog/storefront/categories/?filter={filter}&startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}";
-		$url = MozuUrl::formatUrl($url, "filter", $filter);
-		$url = MozuUrl::formatUrl($url, "pageSize", $pageSize);
-		$url = MozuUrl::formatUrl($url, "sortBy", $sortBy);
-		$url = MozuUrl::formatUrl($url, "startIndex", $startIndex);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("filter", $filter);
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -44,9 +45,10 @@ class CategoryUrl  {
 	public static function getCategoryUrl($allowInactive, $categoryId)
 	{
 		$url = "/api/commerce/catalog/storefront/categories/{categoryId}?allowInactive={allowInactive}";
-		$url = MozuUrl::formatUrl($url, "allowInactive", $allowInactive);
-		$url = MozuUrl::formatUrl($url, "categoryId", $categoryId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("allowInactive", $allowInactive);
+		$url = $mozuUrl->formatUrl("categoryId", $categoryId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -56,7 +58,8 @@ class CategoryUrl  {
 	public static function getCategoryTreeUrl()
 	{
 		$url = "/api/commerce/catalog/storefront/categories/tree";
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		return $mozuUrl;
 	}
 	
 }

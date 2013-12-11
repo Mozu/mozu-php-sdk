@@ -19,68 +19,73 @@ class ProductTypeOptionUrl  {
 
 	/**
 		* Get Resource Url for GetOptions
-		* @param int $productTypeId Identifier of the product type options to retrieve.
+		* @param int $productTypeId Identifier of the product type to retrieve.
 		* @return string Resource Url
 	*/
 	public static function getOptionsUrl($productTypeId)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/producttypes/{productTypeId}/Options";
-		$url = MozuUrl::formatUrl($url, "productTypeId", $productTypeId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("productTypeId", $productTypeId);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetOption
-		* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-		* @param int $productTypeId The identifier of the product option type of the option being retrieved.
+		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+		* @param int $productTypeId The identifier of the product type.
 		* @return string Resource Url
 	*/
 	public static function getOptionUrl($attributeFQN, $productTypeId)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/producttypes/{productTypeId}/Options/{attributeFQN}";
-		$url = MozuUrl::formatUrl($url, "attributeFQN", $attributeFQN);
-		$url = MozuUrl::formatUrl($url, "productTypeId", $productTypeId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("productTypeId", $productTypeId);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for AddOption
-		* @param int $productTypeId Identifier of the product type where an attribute which exists as an option is being added.
+		* @param int $productTypeId Identifier of the product type.
 		* @return string Resource Url
 	*/
 	public static function addOptionUrl($productTypeId)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/producttypes/{productTypeId}/Options";
-		$url = MozuUrl::formatUrl($url, "productTypeId", $productTypeId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("productTypeId", $productTypeId);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdateOption
-		* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-		* @param int $productTypeId Identifier of the product type whose attribute that exists as an option to update.
+		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+		* @param int $productTypeId Identifier of the product type.
 		* @return string Resource Url
 	*/
 	public static function updateOptionUrl($attributeFQN, $productTypeId)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/producttypes/{productTypeId}/Options/{attributeFQN}";
-		$url = MozuUrl::formatUrl($url, "attributeFQN", $attributeFQN);
-		$url = MozuUrl::formatUrl($url, "productTypeId", $productTypeId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"PUT") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("productTypeId", $productTypeId);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for DeleteOption
-		* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-		* @param int $productTypeId Identifier of the product type option to delete.
+		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+		* @param int $productTypeId Identifier of the product type.
 		* @return string Resource Url
 	*/
 	public static function deleteOptionUrl($attributeFQN, $productTypeId)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/producttypes/{productTypeId}/Options/{attributeFQN}";
-		$url = MozuUrl::formatUrl($url, "attributeFQN", $attributeFQN);
-		$url = MozuUrl::formatUrl($url, "productTypeId", $productTypeId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("productTypeId", $productTypeId);
+		return $mozuUrl;
 	}
 	
 }

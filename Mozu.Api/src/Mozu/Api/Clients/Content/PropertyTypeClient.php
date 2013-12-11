@@ -23,51 +23,51 @@ use Mozu\Api\Headers;
 class PropertyTypeClient {
 
 	/**
-	* Retrieve a list of the content property types.
+	* Retrieves a list of the content property types.
 	*
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getListClient($pageSize =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getListClient($dataViewMode, $pageSize =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = PropertyTypeUrl::getListUrl($pageSize, $startIndex);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* Retrieve the details of the content property type.
+	* Retrieves the details of the content property type.
 	*
 	* @param string $propertyTypeName The name of the content property type.
 	* @return MozuClient
 	*/
-	public static function getClient( $propertyTypeName, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getClient($dataViewMode,  $propertyTypeName, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = PropertyTypeUrl::getUrl($propertyTypeName);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* Retrieve the value types associated with a content property.
+	* Retrieves the value types associated with a content property.
 	*
 	* @return MozuClient
 	*/
-	public static function propertyValueTypesClient(Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function propertyValueTypesClient($dataViewMode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = PropertyTypeUrl::propertyValueTypesUrl();
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 

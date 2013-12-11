@@ -19,20 +19,21 @@ class ReturnUrl  {
 
 	/**
 		* Get Resource Url for GetReturns
-		* @param string $filter 
-		* @param int $pageSize 
-		* @param string $sortBy 
-		* @param int $startIndex 
+		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+		* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
+		* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 		* @return string Resource Url
 	*/
 	public static function getReturnsUrl($filter, $pageSize, $sortBy, $startIndex)
 	{
 		$url = "/api/commerce/returns/?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}";
-		$url = MozuUrl::formatUrl($url, "filter", $filter);
-		$url = MozuUrl::formatUrl($url, "pageSize", $pageSize);
-		$url = MozuUrl::formatUrl($url, "sortBy", $sortBy);
-		$url = MozuUrl::formatUrl($url, "startIndex", $startIndex);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("filter", $filter);
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -43,8 +44,9 @@ class ReturnUrl  {
 	public static function getReturnUrl($returnId)
 	{
 		$url = "/api/commerce/returns/{returnId}";
-		$url = MozuUrl::formatUrl($url, "returnId", $returnId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("returnId", $returnId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -55,8 +57,9 @@ class ReturnUrl  {
 	public static function getAvailableReturnActionsUrl($returnId)
 	{
 		$url = "/api/commerce/returns/{returnId}/actions";
-		$url = MozuUrl::formatUrl($url, "returnId", $returnId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("returnId", $returnId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -67,8 +70,9 @@ class ReturnUrl  {
 	public static function getPaymentsUrl($returnId)
 	{
 		$url = "/api/commerce/returns/{returnId}/payments";
-		$url = MozuUrl::formatUrl($url, "returnId", $returnId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("returnId", $returnId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -80,9 +84,10 @@ class ReturnUrl  {
 	public static function getPaymentUrl($paymentId, $returnId)
 	{
 		$url = "/api/commerce/returns/{returnId}/payments/{paymentId}";
-		$url = MozuUrl::formatUrl($url, "paymentId", $paymentId);
-		$url = MozuUrl::formatUrl($url, "returnId", $returnId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("paymentId", $paymentId);
+		$url = $mozuUrl->formatUrl("returnId", $returnId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -94,9 +99,10 @@ class ReturnUrl  {
 	public static function getAvailablePaymentActionsForReturnUrl($paymentId, $returnId)
 	{
 		$url = "/api/commerce/returns/{returnId}/payments/{paymentId}/actions";
-		$url = MozuUrl::formatUrl($url, "paymentId", $paymentId);
-		$url = MozuUrl::formatUrl($url, "returnId", $returnId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("paymentId", $paymentId);
+		$url = $mozuUrl->formatUrl("returnId", $returnId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -106,7 +112,8 @@ class ReturnUrl  {
 	public static function createReturnUrl()
 	{
 		$url = "/api/commerce/returns/";
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		return $mozuUrl;
 	}
 	
 	/**
@@ -118,9 +125,10 @@ class ReturnUrl  {
 	public static function performPaymentActionForReturnUrl($paymentId, $returnId)
 	{
 		$url = "/api/commerce/returns/{returnId}/payments/{paymentId}/actions";
-		$url = MozuUrl::formatUrl($url, "paymentId", $paymentId);
-		$url = MozuUrl::formatUrl($url, "returnId", $returnId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("paymentId", $paymentId);
+		$url = $mozuUrl->formatUrl("returnId", $returnId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -131,8 +139,9 @@ class ReturnUrl  {
 	public static function createPaymentActionForReturnUrl($returnId)
 	{
 		$url = "/api/commerce/returns/{returnId}/payments/actions";
-		$url = MozuUrl::formatUrl($url, "returnId", $returnId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("returnId", $returnId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -142,7 +151,8 @@ class ReturnUrl  {
 	public static function performReturnActionsUrl()
 	{
 		$url = "/api/commerce/returns/actions";
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		return $mozuUrl;
 	}
 	
 	/**
@@ -153,20 +163,22 @@ class ReturnUrl  {
 	public static function updateReturnUrl($returnId)
 	{
 		$url = "/api/commerce/returns/{returnId}";
-		$url = MozuUrl::formatUrl($url, "returnId", $returnId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"PUT") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("returnId", $returnId);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for DeleteReturn
-		* @param string $returnId Unique identifier of the return to delete from the order.
+		* @param string $returnId Unique identifier of the return to delete.
 		* @return string Resource Url
 	*/
 	public static function deleteReturnUrl($returnId)
 	{
 		$url = "/api/commerce/returns/{returnId}";
-		$url = MozuUrl::formatUrl($url, "returnId", $returnId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("returnId", $returnId);
+		return $mozuUrl;
 	}
 	
 }

@@ -25,8 +25,9 @@ class TenantDataUrl  {
 	public static function getDBValueUrl($dbEntryQuery)
 	{
 		$url = "/api/platform/tenantdata/{*dbEntryQuery}";
-		$url = MozuUrl::formatUrl($url, "dbEntryQuery", $dbEntryQuery);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("dbEntryQuery", $dbEntryQuery);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -37,8 +38,9 @@ class TenantDataUrl  {
 	public static function createDBValueUrl($dbEntryQuery)
 	{
 		$url = "/api/platform/tenantdata/{*dbEntryQuery}";
-		$url = MozuUrl::formatUrl($url, "dbEntryQuery", $dbEntryQuery);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("dbEntryQuery", $dbEntryQuery);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -49,8 +51,9 @@ class TenantDataUrl  {
 	public static function updateDBValueUrl($dbEntryQuery)
 	{
 		$url = "/api/platform/tenantdata/{*dbEntryQuery}";
-		$url = MozuUrl::formatUrl($url, "dbEntryQuery", $dbEntryQuery);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"PUT") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("dbEntryQuery", $dbEntryQuery);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -61,8 +64,9 @@ class TenantDataUrl  {
 	public static function deleteDBValueUrl($dbEntryQuery)
 	{
 		$url = "/api/platform/tenantdata/{*dbEntryQuery}";
-		$url = MozuUrl::formatUrl($url, "dbEntryQuery", $dbEntryQuery);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("dbEntryQuery", $dbEntryQuery);
+		return $mozuUrl;
 	}
 	
 }

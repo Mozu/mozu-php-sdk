@@ -36,9 +36,9 @@ class FolderResource {
 	* @param string $folderId The unique identifier of the folder to retrieve.
 	* @return Folder 
 	*/
-	public function getFolder( $documentListName,  $folderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getFolder($dataViewMode,  $documentListName,  $folderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = FolderClient::getFolderClient( $documentListName,  $folderId, $authTicket);
+		$mozuClient = FolderClient::getFolderClient($dataViewMode,  $documentListName,  $folderId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -49,15 +49,15 @@ class FolderResource {
 	* Retrieve a list of content folders according to any filter and sort criteria.
 	*
 	* @param string $documentListName The name of the document list that contains this folder.
-	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
-	* @param string $sort "The property by which to sort results and whether the results appear in ascending (a-z) order, represented by 'ASC' or in descending (z-a) order, represented by 'DESC'. The sortBy parameter follows an available property. <b>For example: sortBy=productCode+asc</b>"
-	* @param int $startIndex "Used to create paged results from a query. Indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3."
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $sort The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return FolderCollection 
 	*/
-	public function getFolders( $documentListName,  $filter, $pageSize =  null, $sort =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getFolders($dataViewMode,  $documentListName,  $filter, $pageSize =  null, $sort =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = FolderClient::getFoldersClient( $documentListName,  $filter, $pageSize, $sort, $startIndex, $authTicket);
+		$mozuClient = FolderClient::getFoldersClient($dataViewMode,  $documentListName,  $filter, $pageSize, $sort, $startIndex, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -71,9 +71,9 @@ class FolderResource {
 	* @param Folder $folder The name of the newly created folder.
 	* @return Folder 
 	*/
-	public function createFolder($folder,  $documentListName, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function createFolder($dataViewMode, $folder,  $documentListName, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = FolderClient::createFolderClient($folder,  $documentListName, $authTicket);
+		$mozuClient = FolderClient::createFolderClient($dataViewMode, $folder,  $documentListName, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -88,9 +88,9 @@ class FolderResource {
 	* @param Folder $folder Properties of the folder to update.
 	* @return Folder 
 	*/
-	public function updateFolder($folder,  $documentListName,  $folderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateFolder($dataViewMode, $folder,  $documentListName,  $folderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = FolderClient::updateFolderClient($folder,  $documentListName,  $folderId, $authTicket);
+		$mozuClient = FolderClient::updateFolderClient($dataViewMode, $folder,  $documentListName,  $folderId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -103,9 +103,9 @@ class FolderResource {
 	* @param string $documentListName The name of the document list associated with the folder to delete.
 	* @param string $folderId The unique identifier of the folder to delete.
 	*/
-	public function deleteFolder( $documentListName,  $folderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deleteFolder($dataViewMode,  $documentListName,  $folderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = FolderClient::deleteFolderClient( $documentListName,  $folderId, $authTicket);
+		$mozuClient = FolderClient::deleteFolderClient($dataViewMode,  $documentListName,  $folderId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

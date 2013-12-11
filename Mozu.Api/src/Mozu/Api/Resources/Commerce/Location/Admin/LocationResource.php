@@ -19,7 +19,7 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* 
+* Use the Locations resource to manage each physical location associated with a tenant. Locations enable tenants to associate a physical address with product inventory, provide a store finder for in-store pickup, or both. Locations that support inventory can use both direct ship and in-store pickup fulfillment types.
 */
 class LocationResource {
 
@@ -30,12 +30,12 @@ class LocationResource {
 	}
 
 	/**
-	* 
+	* Retrieves a list of all locations associated with a tenant, according to any filter and sort criteria specified in the request.
 	*
-	* @param string $filter 
-	* @param int $pageSize 
-	* @param string $sortBy 
-	* @param int $startIndex 
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return LocationCollection 
 	*/
 	public function getLocations($filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -48,9 +48,9 @@ class LocationResource {
 	}
 	
 	/**
-	* 
+	* Retrieves the details of the location specified in the request by location code.
 	*
-	* @param string $locationCode 
+	* @param string $locationCode The merchant-defined code of the location to retrieve.
 	* @return Location 
 	*/
 	public function getLocation( $locationCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -63,9 +63,9 @@ class LocationResource {
 	}
 	
 	/**
-	* 
+	* Creates a new physical location for the tenant specified in the request header.
 	*
-	* @param Location $location 
+	* @param Location $location Properties of the location to create.
 	* @return Location 
 	*/
 	public function addLocation($location, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -78,10 +78,10 @@ class LocationResource {
 	}
 	
 	/**
-	* 
+	* Updates one or more details of a the location specified in the request by location code.
 	*
-	* @param string $locationCode 
-	* @param Location $location 
+	* @param string $locationCode The merchant-defined code associated with the location to update.
+	* @param Location $location Properties of the location to update.
 	* @return Location 
 	*/
 	public function updateLocation($location,  $locationCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -94,9 +94,9 @@ class LocationResource {
 	}
 	
 	/**
-	* 
+	* Deletes the location specified in the request.
 	*
-	* @param string $locationCode 
+	* @param string $locationCode The merchant-defined code of the location to delete.
 	*/
 	public function deleteLocation( $locationCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

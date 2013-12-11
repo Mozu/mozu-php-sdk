@@ -23,53 +23,21 @@ class Discount
 	*The date and time at which the discount can no longer be applied to a product or order.
 	*/
 	public $expirationDate;
-	public function getExpirationDate() {
-		return $this->expirationDate;
-	}
-	
-	public function setExpirationDate($expirationDate) {
-		$this->expirationDate = $expirationDate;
-		return $this;
-	}
 
 	/**
 	*Unique identifier of the discount.
 	*/
 	public $id;
-	public function getId() {
-		return $this->id;
-	}
-	
-	public function setId($id) {
-		$this->id = $id;
-		return $this;
-	}
 
 	/**
 	*List of cart or order items to which the discount applies, if applicable.
 	*/
 	public $itemIds;
-	public function getItemIds() {
-		return $this->itemIds;
-	}
-	
-	public function setItemIds($itemIds) {
-		$this->itemIds = $itemIds;
-		return $this;
-	}
 
 	/**
 	*The name of the discount, in the language specified by the LocaleCode of the storefront.
 	*/
 	public $name;
-	public function getName() {
-		return $this->name;
-	}
-	
-	public function setName($name) {
-		$this->name = $name;
-		return $this;
-	}
 
 }
 

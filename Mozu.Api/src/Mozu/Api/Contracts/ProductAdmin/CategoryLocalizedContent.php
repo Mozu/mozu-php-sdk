@@ -23,115 +23,46 @@ class CategoryLocalizedContent
 	*Description of the product category in the language specified by the locale code.
 	*/
 	public $description;
-	public function getDescription() {
-		return $this->description;
-	}
-	
-	public function setDescription($description) {
-		$this->description = $description;
-		return $this;
-	}
 
 	/**
-	*"Language used for the entity. Currently, only ""en-US"" is supported."
+	*Language used for the entity. Currently, only "en-US" is supported.
 	*/
 	public $localeCode;
-	public function getLocaleCode() {
-		return $this->localeCode;
-	}
-	
-	public function setLocaleCode($localeCode) {
-		$this->localeCode = $localeCode;
-		return $this;
-	}
 
 	/**
 	*Description defined for the product category metadata, used to manage internal product information, in the language specified by the locale code.
 	*/
 	public $metaTagDescription;
-	public function getMetaTagDescription() {
-		return $this->metaTagDescription;
-	}
-	
-	public function setMetaTagDescription($metaTagDescription) {
-		$this->metaTagDescription = $metaTagDescription;
-		return $this;
-	}
 
 	/**
 	*Keywords defined for the product category metadata, used to manage internal product information, in the language specified by the locale code.
 	*/
 	public $metaTagKeywords;
-	public function getMetaTagKeywords() {
-		return $this->metaTagKeywords;
-	}
-	
-	public function setMetaTagKeywords($metaTagKeywords) {
-		$this->metaTagKeywords = $metaTagKeywords;
-		return $this;
-	}
 
 	/**
 	*Title defined for the product category metadata, used to manage internal product information, in the language specified by the locale code.
 	*/
 	public $metaTagTitle;
-	public function getMetaTagTitle() {
-		return $this->metaTagTitle;
-	}
-	
-	public function setMetaTagTitle($metaTagTitle) {
-		$this->metaTagTitle = $metaTagTitle;
-		return $this;
-	}
 
 	/**
 	*The name of the product category in the language specified by the locale code.
 	*/
 	public $name;
-	public function getName() {
-		return $this->name;
-	}
-	
-	public function setName($name) {
-		$this->name = $name;
-		return $this;
-	}
 
 	/**
 	*Title that appears on new product category pages, in the language specified by the locale code.
 	*/
 	public $pageTitle;
-	public function getPageTitle() {
-		return $this->pageTitle;
-	}
-	
-	public function setPageTitle($pageTitle) {
-		$this->pageTitle = $pageTitle;
-		return $this;
-	}
 
 	/**
 	*Human-readable identifier to assign to the category to generate user-friendly URLs.
 	*/
 	public $slug;
-	public function getSlug() {
-		return $this->slug;
-	}
-	
-	public function setSlug($slug) {
-		$this->slug = $slug;
-		return $this;
-	}
 
-		public $categoryImages;
-	public function getCategoryImages() {
-		return $this->categoryImages;
-	}
-	
-	public function setCategoryImages($categoryImages) {
-		$this->categoryImages = $categoryImages;
-		return $this;
-	}
+	/**
+	*Array of localized product category images in the language specified by the LocaleCode.
+	*/
+	public $categoryImages;
 
 }
 

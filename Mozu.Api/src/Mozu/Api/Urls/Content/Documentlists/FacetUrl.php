@@ -19,16 +19,17 @@ class FacetUrl  {
 
 	/**
 		* Get Resource Url for GetFacets
-		* @param string $documentListName The document list associated with the facets are to retrieve.
+		* @param string $documentListName The document list associated with the facets to retrieve.
 		* @param string $propertyName The property name associated with the facets to retrieve.
 		* @return string Resource Url
 	*/
 	public static function getFacetsUrl($documentListName, $propertyName)
 	{
 		$url = "/api/content/documentlists/{documentListName}/facets/{propertyName}";
-		$url = MozuUrl::formatUrl($url, "documentListName", $documentListName);
-		$url = MozuUrl::formatUrl($url, "propertyName", $propertyName);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("documentListName", $documentListName);
+		$url = $mozuUrl->formatUrl("propertyName", $propertyName);
+		return $mozuUrl;
 	}
 	
 }

@@ -20,56 +20,26 @@ namespace Mozu\Api\Contracts\Core;
 class UserProfile
 {
 	/**
-	*The email address of the specified user.
+	*The email address of the specified user or the email address associated with the specified entity.
 	*/
 	public $emailAddress;
-	public function getEmailAddress() {
-		return $this->emailAddress;
-	}
-	
-	public function setEmailAddress($emailAddress) {
-		$this->emailAddress = $emailAddress;
-		return $this;
-	}
 
 	/**
-	*The first name of the contact. Max length: 200.
+	*The first name of the contact. The maximum character length is 200.
 	*/
 	public $firstName;
-	public function getFirstName() {
-		return $this->firstName;
-	}
-	
-	public function setFirstName($firstName) {
-		$this->firstName = $firstName;
-		return $this;
-	}
 
 	/**
-	*The last name or surname of the contact. Max length: 200.
+	*The last name or surname of the contact. The maximum character length is 200.
 	*/
 	public $lastName;
-	public function getLastName() {
-		return $this->lastName;
-	}
-	
-	public function setLastName($lastName) {
-		$this->lastName = $lastName;
-		return $this;
-	}
 
 	/**
 	*Identifier of the user.
 	*/
 	public $userId;
-	public function getUserId() {
-		return $this->userId;
-	}
-	
-	public function setUserId($userId) {
-		$this->userId = $userId;
-		return $this;
-	}
+
+		public $userName;
 
 }
 

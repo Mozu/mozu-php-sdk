@@ -14,17 +14,32 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
+/**
+*	Array list of inventory definitions that manage the stock level of products at a given location.
+*/
 class LocationInventoryCollection
 {
-		public $pageCount;
+	/**
+	*The number of pages returned based on the startIndex and pageSize values specified. This value is system-supplied and read-only.
+	*/
+	public $pageCount;
 
-		public $pageSize;
+	/**
+	*The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	*/
+	public $pageSize;
 
-		public $startIndex;
+	/**
+	*When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+	*/
+	public $startIndex;
 
 		public $totalCount;
 
-		public $items;
+	/**
+	*An array list of objects in the returned collection.
+	*/
+	public $items;
 
 }
 

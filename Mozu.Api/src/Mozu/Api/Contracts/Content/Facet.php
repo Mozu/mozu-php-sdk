@@ -23,27 +23,11 @@ class Facet
 	*The number of facet results.
 	*/
 	public $count;
-	public function getCount() {
-		return $this->count;
-	}
-	
-	public function setCount($count) {
-		$this->count = $count;
-		return $this;
-	}
 
 	/**
 	*The name of the facet.
 	*/
 	public $name;
-	public function getName() {
-		return $this->name;
-	}
-	
-	public function setName($name) {
-		$this->name = $name;
-		return $this;
-	}
 
 }
 

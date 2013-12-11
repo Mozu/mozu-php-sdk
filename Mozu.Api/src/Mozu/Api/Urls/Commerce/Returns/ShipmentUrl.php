@@ -19,42 +19,45 @@ class ShipmentUrl  {
 
 	/**
 		* Get Resource Url for GetShipment
-		* @param string $returnId 
-		* @param string $shipmentId 
+		* @param string $returnId Unique identifier of the return associated with the replacement shipment to retrieve.
+		* @param string $shipmentId Unique identifier of the return replacement shipment to retrieve.
 		* @return string Resource Url
 	*/
 	public static function getShipmentUrl($returnId, $shipmentId)
 	{
 		$url = "/api/commerce/returns/{returnId}/shipments/{shipmentId}";
-		$url = MozuUrl::formatUrl($url, "returnId", $returnId);
-		$url = MozuUrl::formatUrl($url, "shipmentId", $shipmentId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("returnId", $returnId);
+		$url = $mozuUrl->formatUrl("shipmentId", $shipmentId);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for CreatePackageShipments
-		* @param string $returnId 
+		* @param string $returnId Unique identifier of the return for which to create replacement package shipments.
 		* @return string Resource Url
 	*/
 	public static function createPackageShipmentsUrl($returnId)
 	{
 		$url = "/api/commerce/returns/{returnId}/shipments";
-		$url = MozuUrl::formatUrl($url, "returnId", $returnId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("returnId", $returnId);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for DeleteShipment
-		* @param string $returnId 
-		* @param string $shipmentId 
+		* @param string $returnId Unique identifier of the return associated with the replacement shipment to delete.
+		* @param string $shipmentId Unique identifier of the return replacement shipment to delete.
 		* @return string Resource Url
 	*/
 	public static function deleteShipmentUrl($returnId, $shipmentId)
 	{
 		$url = "/api/commerce/returns/{returnId}/shipments/{shipmentId}";
-		$url = MozuUrl::formatUrl($url, "returnId", $returnId);
-		$url = MozuUrl::formatUrl($url, "shipmentId", $shipmentId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("returnId", $returnId);
+		$url = $mozuUrl->formatUrl("shipmentId", $shipmentId);
+		return $mozuUrl;
 	}
 	
 }

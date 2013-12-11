@@ -28,11 +28,12 @@ class FolderTreeUrl  {
 	public static function getFolderTreeUrl($documentListName, $levels, $rootFolderId, $rootFolderPath)
 	{
 		$url = "/api/content/documentlists/{documentListName}/foldertree?levels={levels}&rootFolderId={rootFolderId}&rootFolderPath={rootFolderPath}";
-		$url = MozuUrl::formatUrl($url, "documentListName", $documentListName);
-		$url = MozuUrl::formatUrl($url, "levels", $levels);
-		$url = MozuUrl::formatUrl($url, "rootFolderId", $rootFolderId);
-		$url = MozuUrl::formatUrl($url, "rootFolderPath", $rootFolderPath);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("documentListName", $documentListName);
+		$url = $mozuUrl->formatUrl("levels", $levels);
+		$url = $mozuUrl->formatUrl("rootFolderId", $rootFolderId);
+		$url = $mozuUrl->formatUrl("rootFolderPath", $rootFolderPath);
+		return $mozuUrl;
 	}
 	
 }

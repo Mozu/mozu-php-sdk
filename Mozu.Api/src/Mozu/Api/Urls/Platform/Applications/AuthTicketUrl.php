@@ -24,7 +24,8 @@ class AuthTicketUrl  {
 	public static function authenticateAppUrl()
 	{
 		$url = "/api/platform/applications/authtickets/";
-		return new MozuUrl($url, UrlLocation::HOME_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"POST", false) ;
+		return $mozuUrl;
 	}
 	
 	/**
@@ -34,7 +35,8 @@ class AuthTicketUrl  {
 	public static function refreshAppAuthTicketUrl()
 	{
 		$url = "/api/platform/applications/authtickets/refresh-ticket";
-		return new MozuUrl($url, UrlLocation::HOME_POD,"PUT") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"PUT", false) ;
+		return $mozuUrl;
 	}
 	
 	/**
@@ -45,8 +47,9 @@ class AuthTicketUrl  {
 	public static function deleteAppAuthTicketUrl($refreshToken)
 	{
 		$url = "/api/platform/applications/authtickets/{refreshToken}";
-		$url = MozuUrl::formatUrl($url, "refreshToken", $refreshToken);
-		return new MozuUrl($url, UrlLocation::HOME_POD,"DELETE") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("refreshToken", $refreshToken);
+		return $mozuUrl;
 	}
 	
 }

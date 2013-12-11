@@ -17,54 +17,18 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Products;
 class BundledProduct
 {
 		public $description;
-	public function getDescription() {
-		return $this->description;
-	}
-	
-	public function setDescription($description) {
-		$this->description = $description;
-		return $this;
-	}
+
+		public $isPackagedStandAlone;
 
 		public $name;
-	public function getName() {
-		return $this->name;
-	}
-	
-	public function setName($name) {
-		$this->name = $name;
-		return $this;
-	}
 
 		public $productCode;
-	public function getProductCode() {
-		return $this->productCode;
-	}
-	
-	public function setProductCode($productCode) {
-		$this->productCode = $productCode;
-		return $this;
-	}
 
-		public $qty;
-	public function getQty() {
-		return $this->qty;
-	}
-	
-	public function setQty($qty) {
-		$this->qty = $qty;
-		return $this;
-	}
+		public $productReservationId;
+
+		public $quantity;
 
 		public $measurements;
-	public function getMeasurements() {
-		return $this->measurements;
-	}
-	
-	public function setMeasurements($measurements) {
-		$this->measurements = $measurements;
-		return $this;
-	}
 
 }
 

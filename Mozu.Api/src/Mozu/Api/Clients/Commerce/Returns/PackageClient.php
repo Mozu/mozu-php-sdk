@@ -18,94 +18,90 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* 
+* Use the return packages subresource to manage physical packages used to ship return replacement items.
 */
 class PackageClient {
 
 	/**
-	* 
+	* Retrieves the details of a package of return replacement items.
 	*
-	* @param string $packageId 
-	* @param string $returnId 
+	* @param string $packageId Unique identifier of the return replacement package to retrieve.
+	* @param string $returnId Unique identifier of the return associated with the replacement package to retrieve.
 	* @return MozuClient
 	*/
 	public static function getPackageClient( $packageId,  $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = PackageUrl::getPackageUrl($packageId, $returnId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Retrieves the package label image supplied by the carrier for a return replacement.
 	*
-	* @param string $packageId 
-	* @param string $returnId 
+	* @param string $packageId Unique identifier of the return replacement package for which to retrieve the label.
+	* @param string $returnId Unique identifier of the return associated with the replacement package label to retrieve.
+	* @return MozuClient
 	*/
 	public static function getPackageLabelClient( $packageId,  $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = PackageUrl::getPackageLabelUrl($packageId, $returnId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Creates a new physical package of return replacement items.
 	*
-	* @param string $returnId 
-	* @param Package $package 
+	* @param string $returnId Unique identifier of the return for which to create a replacement package.
+	* @param Package $package Properties of the physical package for a return replacement.
 	* @return MozuClient
 	*/
 	public static function createPackageClient($pkg,  $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = PackageUrl::createPackageUrl($returnId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($pkg);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($pkg);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Updates one or more properties of a package associated with a return replacement.
 	*
-	* @param string $packageId 
-	* @param string $returnId 
-	* @param Package $package 
+	* @param string $packageId Unique identifier of the return replacement package to update.
+	* @param string $returnId Unique identifier of the return associated with the replacement package to update.
+	* @param Package $package Properties of the return replacement package to update.
 	* @return MozuClient
 	*/
 	public static function updatePackageClient($pkg,  $packageId,  $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = PackageUrl::updatePackageUrl($packageId, $returnId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($pkg);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($pkg);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Deletes a package associated with a return replacement.
 	*
-	* @param string $packageId 
-	* @param string $returnId 
+	* @param string $packageId Unique identifier of the return replacement package to delete.
+	* @param string $returnId Unique identifier of the return associated with the replacement package to delete.
 	*/
 	public static function deletePackageClient( $packageId,  $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = PackageUrl::deletePackageUrl($packageId, $returnId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
