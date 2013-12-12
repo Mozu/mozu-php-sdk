@@ -23,27 +23,11 @@ class FieldData
 	*Code of the field.
 	*/
 	public $code;
-	public function getCode() {
-		return $this->code;
-	}
-	
-	public function setCode($code) {
-		$this->code = $code;
-		return $this;
-	}
 
 	/**
 	*The field value.
 	*/
 	public $value;
-	public function getValue() {
-		return $this->value;
-	}
-	
-	public function setValue($value) {
-		$this->value = $value;
-		return $this;
-	}
 
 }
 

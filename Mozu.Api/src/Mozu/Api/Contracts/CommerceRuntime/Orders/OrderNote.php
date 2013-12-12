@@ -15,7 +15,7 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Orders;
 
 
 /**
-*	For a customer, the order note could be a comment or a gift message. For a merchant, the order note is internal only for administrative purposes and not available to the customer.
+*	Properties of an order note for a merchant, which is internal only for administrative purposes and not available to the shopper.
 */
 class OrderNote
 {
@@ -23,40 +23,16 @@ class OrderNote
 	*Unique identifier of the order note.
 	*/
 	public $id;
-	public function getId() {
-		return $this->id;
-	}
-	
-	public function setId($id) {
-		$this->id = $id;
-		return $this;
-	}
 
 	/**
 	*The text content of the order note.
 	*/
 	public $text;
-	public function getText() {
-		return $this->text;
-	}
-	
-	public function setText($text) {
-		$this->text = $text;
-		return $this;
-	}
 
 	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
-	public function getAuditInfo() {
-		return $this->auditInfo;
-	}
-	
-	public function setAuditInfo($auditInfo) {
-		$this->auditInfo = $auditInfo;
-		return $this;
-	}
 
 }
 

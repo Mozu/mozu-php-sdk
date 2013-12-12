@@ -20,30 +20,14 @@ namespace Mozu\Api\Contracts\Content;
 class LocalizedString
 {
 	/**
-	*"Language used for the entity. Currently, only ""en-US"" is supported."
+	*Language used for the entity. Currently, only "en-US" is supported.
 	*/
 	public $locale;
-	public function getLocale() {
-		return $this->locale;
-	}
-	
-	public function setLocale($locale) {
-		$this->locale = $locale;
-		return $this;
-	}
 
 	/**
 	*Value for the localized string.
 	*/
 	public $value;
-	public function getValue() {
-		return $this->value;
-	}
-	
-	public function setValue($value) {
-		$this->value = $value;
-		return $this;
-	}
 
 }
 

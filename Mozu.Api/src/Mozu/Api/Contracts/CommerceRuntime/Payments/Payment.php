@@ -23,157 +23,61 @@ class Payment
 	*The total monetary amount collected in this payment transaction for the order.
 	*/
 	public $amountCollected;
-	public function getAmountCollected() {
-		return $this->amountCollected;
-	}
-	
-	public function setAmountCollected($amountCollected) {
-		$this->amountCollected = $amountCollected;
-		return $this;
-	}
 
 	/**
-	*If the payment transaction is a shopper credit, the total monetary amount credited in this payment transaction for the order.
+	*If the payment transaction is a shopper store credit, the total monetary amount credited in this payment transaction for the order.
 	*/
 	public $amountCredited;
-	public function getAmountCredited() {
-		return $this->amountCredited;
-	}
-	
-	public function setAmountCredited($amountCredited) {
-		$this->amountCredited = $amountCredited;
-		return $this;
-	}
 
 	/**
 	*The actions a user can perform for a payment at this time.
 	*/
 	public $availableActions;
-	public function getAvailableActions() {
-		return $this->availableActions;
-	}
-	
-	public function setAvailableActions($availableActions) {
-		$this->availableActions = $availableActions;
-		return $this;
-	}
 
 	/**
 	*Unique identifier of the payment transaction.
 	*/
 	public $id;
-	public function getId() {
-		return $this->id;
-	}
-	
-	public function setId($id) {
-		$this->id = $id;
-		return $this;
-	}
 
 	/**
 	*If true, the payment transaction occurs at regular intervals such as a monthly billing cycle or a digital or physical subscription.
 	*/
 	public $isRecurring;
-	public function getIsRecurring() {
-		return $this->isRecurring;
-	}
-	
-	public function setIsRecurring($isRecurring) {
-		$this->isRecurring = $isRecurring;
-		return $this;
-	}
 
 	/**
 	*Unique identifier of the order associated with the payment.
 	*/
 	public $orderId;
-	public function getOrderId() {
-		return $this->orderId;
-	}
-	
-	public function setOrderId($orderId) {
-		$this->orderId = $orderId;
-		return $this;
-	}
 
 	/**
 	*The transaction ID supplied by the payment service to associate with this order payment.
 	*/
 	public $paymentServiceTransactionId;
-	public function getPaymentServiceTransactionId() {
-		return $this->paymentServiceTransactionId;
-	}
-	
-	public function setPaymentServiceTransactionId($paymentServiceTransactionId) {
-		$this->paymentServiceTransactionId = $paymentServiceTransactionId;
-		return $this;
-	}
 
 	/**
-	*The type of payment transaction performed, either check or credit card. Paypal and additional payment types will be supported in a future release.
+	*The type of payment transaction performed, such as check, credit card, or PayPal Express. Additional payment types will be supported in future releases.
 	*/
 	public $paymentType;
-	public function getPaymentType() {
-		return $this->paymentType;
-	}
-	
-	public function setPaymentType($paymentType) {
-		$this->paymentType = $paymentType;
-		return $this;
-	}
 
 	/**
 	*Current status of the payment transaction for the order.
 	*/
 	public $status;
-	public function getStatus() {
-		return $this->status;
-	}
-	
-	public function setStatus($status) {
-		$this->status = $status;
-		return $this;
-	}
 
 	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
-	public function getAuditInfo() {
-		return $this->auditInfo;
-	}
-	
-	public function setAuditInfo($auditInfo) {
-		$this->auditInfo = $auditInfo;
-		return $this;
-	}
 
 	/**
-	*The billing information associates with this payment.
+	*Properties of the customer billing information associated with this payment.
 	*/
 	public $billingInfo;
-	public function getBillingInfo() {
-		return $this->billingInfo;
-	}
-	
-	public function setBillingInfo($billingInfo) {
-		$this->billingInfo = $billingInfo;
-		return $this;
-	}
 
 	/**
 	*Container for the interactions associated with the payment, which includes details for each action performed for the payment.
 	*/
 	public $interactions;
-	public function getInteractions() {
-		return $this->interactions;
-	}
-	
-	public function setInteractions($interactions) {
-		$this->interactions = $interactions;
-		return $this;
-	}
 
 }
 

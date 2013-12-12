@@ -29,12 +29,12 @@ class DocumentTypeClient {
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function listClient($pageSize =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function listClient($dataViewMode, $pageSize =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = DocumentTypeUrl::listUrl($pageSize, $startIndex);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -46,12 +46,12 @@ class DocumentTypeClient {
 	* @param string $documentTypeName The documentType name being retrieved.
 	* @return MozuClient
 	*/
-	public static function getClient( $documentTypeName, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getClient($dataViewMode,  $documentTypeName, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = DocumentTypeUrl::getUrl($documentTypeName);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 

@@ -23,53 +23,21 @@ class Gateway
 	*If true, the credential fields for the gateway are configured with valid values. For security purposes, Mozu does not return the credential fields for the gateway subresource.
 	*/
 	public $areGatewayCredentialFieldsSet;
-	public function getAreGatewayCredentialFieldsSet() {
-		return $this->areGatewayCredentialFieldsSet;
-	}
-	
-	public function setAreGatewayCredentialFieldsSet($areGatewayCredentialFieldsSet) {
-		$this->areGatewayCredentialFieldsSet = $areGatewayCredentialFieldsSet;
-		return $this;
-	}
 
 	/**
 	*The types of credit cards the merchant supports using this payment gateway.
 	*/
 	public $supportedCards;
-	public function getSupportedCards() {
-		return $this->supportedCards;
-	}
-	
-	public function setSupportedCards($supportedCards) {
-		$this->supportedCards = $supportedCards;
-		return $this;
-	}
 
 	/**
 	*Account information associated with the specified payment gateway.
 	*/
 	public $gatewayAccount;
-	public function getGatewayAccount() {
-		return $this->gatewayAccount;
-	}
-	
-	public function setGatewayAccount($gatewayAccount) {
-		$this->gatewayAccount = $gatewayAccount;
-		return $this;
-	}
 
 	/**
 	*Properties of the payment gateway definition.
 	*/
 	public $gatewayDefinition;
-	public function getGatewayDefinition() {
-		return $this->gatewayDefinition;
-	}
-	
-	public function setGatewayDefinition($gatewayDefinition) {
-		$this->gatewayDefinition = $gatewayDefinition;
-		return $this;
-	}
 
 }
 

@@ -14,11 +14,17 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Fulfillment;
 
 
 
+/**
+*	Properties of an item shipped in a physical package.
+*/
 class PackageItem
 {
-		public $orderItemId;
+		public $productCode;
 
-		public $quantity;
+	/**
+	*The quantity of an item shipped in the specified package.
+	*/
+	public $quantity;
 
 }
 

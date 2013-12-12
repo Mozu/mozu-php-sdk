@@ -19,25 +19,15 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Payments;
 */
 class PaymentCollection
 {
-		public $totalCount;
-	public function getTotalCount() {
-		return $this->totalCount;
-	}
-	
-	public function setTotalCount($totalCount) {
-		$this->totalCount = $totalCount;
-		return $this;
-	}
+	/**
+	*The number of results listed in the query collection, represented by a signed 64-bit (8-byte) integer. This value is system-supplied and read-only.
+	*/
+	public $totalCount;
 
-		public $items;
-	public function getItems() {
-		return $this->items;
-	}
-	
-	public function setItems($items) {
-		$this->items = $items;
-		return $this;
-	}
+	/**
+	*An array list of objects in the returned collection.
+	*/
+	public $items;
 
 }
 

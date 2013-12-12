@@ -9,6 +9,9 @@ use Mozu\Api\Security\AppAuthenticator;
 use Mozu\Api\Headers;
 use Mozu\Api\Resources\Platform\TenantResource;
 use Mozu\Api\Security\UserAuthenticator;
+use Mozu\Api\Security\CustomerAuthenticator;
+use Mozu\Api\Utilities\HttpHelper;
+use Mozu\Api\Security\AuthenticationScope;
 
 class MozuClient {
 	private $baseAddress;
@@ -20,24 +23,24 @@ class MozuClient {
 	private $jsonBody = null;
 	private $request = null;
 	private $result = null;
-
+	private $response = null;
+	private $isStreamContent = false;
 	
 	public function withBaseUrl($baseUrl) {
 		$this->baseUrl = $baseUrl;
 		return $this;
 	}
-	
-	/*public function withVerb($verb) {
-		$this->verb = $verb;
-		return $this;
-	}*/
+
 	
 	public function withUserAuth(Mozu\Api\Security\AuthTicket &$authTicket) {
-		
-		$authenticationProfile = UserAuthenticator::ensureAuthTicket($authTicket);
-		if ($authenticationProfile != null)
+		$newTicket = null;
+		if ($authTicket->authenticationScope == AuthenticationScope::Customer)
+			$newTicket = CustomerAuthenticator::ensureAuthTicket($authTicket);
+		else
+			$newTicket = UserAuthenticator::ensureAuthTicket($authTicket);
+		if ($newTicket != null)
 		{
-			$authTicket = $authenticationProfile->getAuthTicket();
+			$authTicket = $newTicket;
 		}
 		
 		_headers.Add(Headers::X_VOL_USER_CLAIMS, $authTicket->getAccessToken());
@@ -71,11 +74,21 @@ class MozuClient {
 	
 	public function withBody($body) {
 		$this->jsonBody = json_encode ( $body );
+		$this->isStreamContent = false;
+		return $this;
+	}
+	
+	public function withStreamBody($body) {
+		$this->jsonBody = $body;
+		$this->isStreamContent = true;
 		return $this;
 	}
 	
 	public function getResult() {
-		return $this->result;
+		if (strpos($this->response->getContentType(),"json") != false)
+			return  json_decode ( $this->response->getBody(true) );
+		else
+			return $this->response->getBody();
 	}
 	
 	public function getHttpClient() {
@@ -91,22 +104,17 @@ class MozuClient {
 	public function execute() {
 		$this->validateContext();
 		$this->buildClientAndRequest();
-    try {
-      $response = $this->request->send ();
-      $jsonResp = $response->getBody ( true );
-      $this->result = json_decode ( $jsonResp );
-    } catch (Guzzle\Http\Exception\BadResponseException $e) {
-      $jsonResp = $e->getResponse()->getBody ( true );
-      $this->result = json_decode ( $jsonResp );
-    }
+	    try {
+	      $this->response = $this->request->send ();
+	    } catch (\Exception $e) {
+	    	HttpHelper::checkError($e);
+	    }
     
 		return $this;
 	}
 
 	private function buildClientAndRequest() {
-		$config = array('version' => 'v1.1','curl.options' => array(CURLOPT_PROXY => 'http://localhost:8888'));
-		//$config = null;
-		$this->client = new Client ( $this->baseAddress, $config);
+		$this->client = new Client ( $this->baseAddress, HttpHelper::getGuzzleConfig());
 		$authentication = AppAuthenticator::getInstance();
 		if (!isset($authentication)) {
 			throw new \Exception("Authentication is not initailized");
@@ -117,7 +125,8 @@ class MozuClient {
 		}
 		$this->request = $this->client->createRequest($this->mozuUrl->getVerb(), $this->mozuUrl->getUrl(), null, $this->jsonBody );
 		$this->request = $authentication->addAuthHeader($this->request);
-		$this->withHeader('Content-Type', 'application/json');
+		if (!$this->isStreamContent)
+			$this->withHeader('Content-Type', 'application/json');
 		foreach ($this->headers as $property=>$value) {
 			$this->request->setHeader($property, $value);
 		}
@@ -136,17 +145,18 @@ class MozuClient {
 			if ($this->apiContext->getTenantId() < 0)
 				throw new \Exception("TenantId is missing");
 		
-			if ($this->apiContext->getTenantUrl() == "")
+			if (trim($this->apiContext->getTenantUrl()) == "")
 			{
 				$tenantResource = new TenantResource();
+				
 				$tenant = $tenantResource->getTenant($this->apiContext->getTenantId());
 		
 				if ($tenant == null)
 					throw new \Exception("Tenant " . $apiContext->getTenantId() . " Not found");
-				$this->baseAddress = $this->apiContext->GetUrl($tenant->domain);
+				$this->baseAddress = HttpHelper::getUrl($tenant->domain);
 			}
 			else
-				$this->baseAddress = $this->apiContext->getTenantUrl();
+				$this->baseAddress = HttpHelper::getUrl($this->apiContext->getTenantUrl());
 		}
 		else
 		{

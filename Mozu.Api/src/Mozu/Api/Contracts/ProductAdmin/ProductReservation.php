@@ -23,89 +23,36 @@ class ProductReservation
 	*Identifier of the entity.
 	*/
 	public $id;
-	public function getId() {
-		return $this->id;
-	}
-	
-	public function setId($id) {
-		$this->id = $id;
-		return $this;
-	}
 
-		public $locationCode;
-	public function getLocationCode() {
-		return $this->locationCode;
-	}
-	
-	public function setLocationCode($locationCode) {
-		$this->locationCode = $locationCode;
-		return $this;
-	}
+	/**
+	*Code that identifies the location associated with this product reservation.
+	*/
+	public $locationCode;
 
 	/**
 	*Unique identifier of the order.
 	*/
 	public $orderId;
-	public function getOrderId() {
-		return $this->orderId;
-	}
-	
-	public function setOrderId($orderId) {
-		$this->orderId = $orderId;
-		return $this;
-	}
 
 	/**
 	*The unique identifier of the item in the order.
 	*/
 	public $orderItemId;
-	public function getOrderItemId() {
-		return $this->orderItemId;
-	}
-	
-	public function setOrderItemId($orderItemId) {
-		$this->orderItemId = $orderItemId;
-		return $this;
-	}
 
 	/**
-	*"Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+	*Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	*/
 	public $productCode;
-	public function getProductCode() {
-		return $this->productCode;
-	}
-	
-	public function setProductCode($productCode) {
-		$this->productCode = $productCode;
-		return $this;
-	}
 
 	/**
 	*The quantity of items associated with the product reservation.
 	*/
 	public $quantity;
-	public function getQuantity() {
-		return $this->quantity;
-	}
-	
-	public function setQuantity($quantity) {
-		$this->quantity = $quantity;
-		return $this;
-	}
 
 	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
-	public function getAuditInfo() {
-		return $this->auditInfo;
-	}
-	
-	public function setAuditInfo($auditInfo) {
-		$this->auditInfo = $auditInfo;
-		return $this;
-	}
 
 }
 

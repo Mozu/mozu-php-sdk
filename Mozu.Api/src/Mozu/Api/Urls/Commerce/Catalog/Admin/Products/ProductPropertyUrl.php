@@ -19,68 +19,73 @@ class ProductPropertyUrl  {
 
 	/**
 		* Get Resource Url for GetProperties
-		* @param string $productCode Identifies the product for which a list of properties is being retrieved.
+		* @param string $productCode 
 		* @return string Resource Url
 	*/
 	public static function getPropertiesUrl($productCode)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/Properties";
-		$url = MozuUrl::formatUrl($url, "productCode", $productCode);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetProperty
-		* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-		* @param string $productCode Identifies the product for which a single property is being retrieved.
+		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+		* @param string $productCode 
 		* @return string Resource Url
 	*/
 	public static function getPropertyUrl($attributeFQN, $productCode)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/Properties/{attributeFQN}";
-		$url = MozuUrl::formatUrl($url, "attributeFQN", $attributeFQN);
-		$url = MozuUrl::formatUrl($url, "productCode", $productCode);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for AddProperty
-		* @param string $productCode The merchant-created code that uniquely identifies the product such as a SKU or item number. Identifies the product for which a new property is created.
+		* @param string $productCode 
 		* @return string Resource Url
 	*/
 	public static function addPropertyUrl($productCode)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/Properties";
-		$url = MozuUrl::formatUrl($url, "productCode", $productCode);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdateProperty
-		* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-		* @param string $productCode Identifies the product for which a list of properties is being updated.
+		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+		* @param string $productCode 
 		* @return string Resource Url
 	*/
 	public static function updatePropertyUrl($attributeFQN, $productCode)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/Properties/{attributeFQN}";
-		$url = MozuUrl::formatUrl($url, "attributeFQN", $attributeFQN);
-		$url = MozuUrl::formatUrl($url, "productCode", $productCode);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"PUT") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for DeleteProperty
-		* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-		* @param string $productCode Identifies the product for which a new property is being deleted.
+		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+		* @param string $productCode 
 		* @return string Resource Url
 	*/
 	public static function deletePropertyUrl($attributeFQN, $productCode)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/Properties/{attributeFQN}";
-		$url = MozuUrl::formatUrl($url, "attributeFQN", $attributeFQN);
-		$url = MozuUrl::formatUrl($url, "productCode", $productCode);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		return $mozuUrl;
 	}
 	
 }

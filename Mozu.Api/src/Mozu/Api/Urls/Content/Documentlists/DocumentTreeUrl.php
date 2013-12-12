@@ -28,11 +28,12 @@ class DocumentTreeUrl  {
 	public static function getTreeDocumentContentUrl($documentListName, $documentName, $folderId, $folderPath)
 	{
 		$url = "/api/content/documentlists/{documentListName}/documentTree/{documentName}/content?folderPath={folderPath}&folderId={folderId}";
-		$url = MozuUrl::formatUrl($url, "documentListName", $documentListName);
-		$url = MozuUrl::formatUrl($url, "documentName", $documentName);
-		$url = MozuUrl::formatUrl($url, "folderId", $folderId);
-		$url = MozuUrl::formatUrl($url, "folderPath", $folderPath);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("documentListName", $documentListName);
+		$url = $mozuUrl->formatUrl("documentName", $documentName);
+		$url = $mozuUrl->formatUrl("folderId", $folderId);
+		$url = $mozuUrl->formatUrl("folderPath", $folderPath);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -46,11 +47,12 @@ class DocumentTreeUrl  {
 	public static function getTreeDocumentUrl($documentListName, $documentName, $folderId, $folderPath)
 	{
 		$url = "/api/content/documentlists/{documentListName}/documentTree/{documentName}?folderPath={folderPath}&folderId={folderId}";
-		$url = MozuUrl::formatUrl($url, "documentListName", $documentListName);
-		$url = MozuUrl::formatUrl($url, "documentName", $documentName);
-		$url = MozuUrl::formatUrl($url, "folderId", $folderId);
-		$url = MozuUrl::formatUrl($url, "folderPath", $folderPath);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("documentListName", $documentListName);
+		$url = $mozuUrl->formatUrl("documentName", $documentName);
+		$url = $mozuUrl->formatUrl("folderId", $folderId);
+		$url = $mozuUrl->formatUrl("folderPath", $folderPath);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -64,11 +66,12 @@ class DocumentTreeUrl  {
 	public static function updateTreeDocumentContentUrl($documentListName, $documentName, $folderId, $folderPath)
 	{
 		$url = "/api/content/documentlists/{documentListName}/documentTree/{documentName}/content?folderPath={folderPath}&folderId={folderId}";
-		$url = MozuUrl::formatUrl($url, "documentListName", $documentListName);
-		$url = MozuUrl::formatUrl($url, "documentName", $documentName);
-		$url = MozuUrl::formatUrl($url, "folderId", $folderId);
-		$url = MozuUrl::formatUrl($url, "folderPath", $folderPath);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"PUT") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("documentListName", $documentListName);
+		$url = $mozuUrl->formatUrl("documentName", $documentName);
+		$url = $mozuUrl->formatUrl("folderId", $folderId);
+		$url = $mozuUrl->formatUrl("folderPath", $folderPath);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -82,11 +85,12 @@ class DocumentTreeUrl  {
 	public static function deleteTreeDocumentContentUrl($documentListName, $documentName, $folderId, $folderPath)
 	{
 		$url = "/api/content/documentlists/{documentListName}/documentTree/{documentName}/content?folderPath={folderPath}&folderId={folderId}";
-		$url = MozuUrl::formatUrl($url, "documentListName", $documentListName);
-		$url = MozuUrl::formatUrl($url, "documentName", $documentName);
-		$url = MozuUrl::formatUrl($url, "folderId", $folderId);
-		$url = MozuUrl::formatUrl($url, "folderPath", $folderPath);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("documentListName", $documentListName);
+		$url = $mozuUrl->formatUrl("documentName", $documentName);
+		$url = $mozuUrl->formatUrl("folderId", $folderId);
+		$url = $mozuUrl->formatUrl("folderPath", $folderPath);
+		return $mozuUrl;
 	}
 	
 }

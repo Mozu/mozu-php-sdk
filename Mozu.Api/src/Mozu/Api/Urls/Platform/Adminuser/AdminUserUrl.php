@@ -25,8 +25,9 @@ class AdminUserUrl  {
 	public static function getUserUrl($userId)
 	{
 		$url = "/api/platform/adminuser/accounts/{userId}";
-		$url = MozuUrl::formatUrl($url, "userId", $userId);
-		return new MozuUrl($url, UrlLocation::HOME_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("userId", $userId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -37,8 +38,9 @@ class AdminUserUrl  {
 	public static function getTenantScopesForUserUrl($userId)
 	{
 		$url = "/api/platform/adminuser/accounts/{userId}/tenants";
-		$url = MozuUrl::formatUrl($url, "userId", $userId);
-		return new MozuUrl($url, UrlLocation::HOME_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("userId", $userId);
+		return $mozuUrl;
 	}
 	
 }

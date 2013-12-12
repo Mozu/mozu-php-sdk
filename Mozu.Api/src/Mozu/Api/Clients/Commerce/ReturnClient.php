@@ -18,25 +18,24 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* Use the returns subresource to manage returned items for a completed order. Returns can include any number of items associated with the original order.
+* Use the returns subresource to manage returned items that were previously fufilled. Returns can include any number of items associated with an original Mozu order. Each return must either be associated with an original order or a product definition to represent each returned item.
 */
 class ReturnClient {
 
 	/**
 	* Retrieves a list of all returns according to any filter and sort criteria.
 	*
-	* @param string $filter 
-	* @param int $pageSize 
-	* @param string $sortBy 
-	* @param int $startIndex 
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return MozuClient
 	*/
 	public static function getReturnsClient($filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ReturnUrl::getReturnsUrl($filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -52,8 +51,7 @@ class ReturnClient {
 	{
 		$url = ReturnUrl::getReturnUrl($returnId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -69,8 +67,7 @@ class ReturnClient {
 	{
 		$url = ReturnUrl::getAvailableReturnActionsUrl($returnId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -86,8 +83,7 @@ class ReturnClient {
 	{
 		$url = ReturnUrl::getPaymentsUrl($returnId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -104,8 +100,7 @@ class ReturnClient {
 	{
 		$url = ReturnUrl::getPaymentUrl($paymentId, $returnId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -122,15 +117,14 @@ class ReturnClient {
 	{
 		$url = ReturnUrl::getAvailablePaymentActionsForReturnUrl($paymentId, $returnId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* Creates a return for items previously shipped in a completed order.
+	* Creates a return for previously fulfilled items. Each return must either be associated with an original order or a product definition to represent each returned item.
 	*
 	* @param Return $ret Wrapper for the properties of the return to create.
 	* @return MozuClient
@@ -139,8 +133,7 @@ class ReturnClient {
 	{
 		$url = ReturnUrl::createReturnUrl();
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($ret);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($ret);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -158,8 +151,7 @@ class ReturnClient {
 	{
 		$url = ReturnUrl::performPaymentActionForReturnUrl($paymentId, $returnId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($action);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($action);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -176,8 +168,7 @@ class ReturnClient {
 	{
 		$url = ReturnUrl::createPaymentActionForReturnUrl($returnId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($action);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($action);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -193,8 +184,7 @@ class ReturnClient {
 	{
 		$url = ReturnUrl::performReturnActionsUrl();
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($action);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($action);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -211,24 +201,22 @@ class ReturnClient {
 	{
 		$url = ReturnUrl::updateReturnUrl($returnId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($ret);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($ret);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* Deletes a return previously configured for the specified order.
+	* Deletes the return specified in the request.
 	*
-	* @param string $returnId Unique identifier of the return to delete from the order.
+	* @param string $returnId Unique identifier of the return to delete.
 	*/
 	public static function deleteReturnClient( $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ReturnUrl::deleteReturnUrl($returnId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 

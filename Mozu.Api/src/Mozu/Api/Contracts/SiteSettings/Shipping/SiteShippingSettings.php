@@ -20,40 +20,19 @@ namespace Mozu\Api\Contracts\SiteSettings\Shipping;
 class SiteShippingSettings
 {
 	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
-	public function getAuditInfo() {
-		return $this->auditInfo;
-	}
-	
-	public function setAuditInfo($auditInfo) {
-		$this->auditInfo = $auditInfo;
-		return $this;
-	}
 
 	/**
 	*The combined price for all items in the order, including all selected options but excluding any discounts.
 	*/
 	public $orderHandlingFee;
-	public function getOrderHandlingFee() {
-		return $this->orderHandlingFee;
-	}
-	
-	public function setOrderHandlingFee($orderHandlingFee) {
-		$this->orderHandlingFee = $orderHandlingFee;
-		return $this;
-	}
 
-		public $signatureRequirement;
-	public function getSignatureRequirement() {
-		return $this->signatureRequirement;
-	}
-	
-	public function setSignatureRequirement($signatureRequirement) {
-		$this->signatureRequirement = $signatureRequirement;
-		return $this;
-	}
+	/**
+	*Properties of the package signature requirements for the site.
+	*/
+	public $signatureRequirement;
 
 }
 

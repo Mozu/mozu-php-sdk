@@ -23,27 +23,11 @@ class FolderTree
 	*The name of the folder.
 	*/
 	public $folder;
-	public function getFolder() {
-		return $this->folder;
-	}
-	
-	public function setFolder($folder) {
-		$this->folder = $folder;
-		return $this;
-	}
 
 	/**
 	*The subfolders contained within a folder.
 	*/
 	public $children;
-	public function getChildren() {
-		return $this->children;
-	}
-	
-	public function setChildren($children) {
-		$this->children = $children;
-		return $this;
-	}
 
 }
 

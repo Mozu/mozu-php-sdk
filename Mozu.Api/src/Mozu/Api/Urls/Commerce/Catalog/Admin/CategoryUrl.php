@@ -20,7 +20,7 @@ class CategoryUrl  {
 	/**
 		* Get Resource Url for GetCategories
 		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product category search results by any of its properties, including its position in the category hierarchy. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-		* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 		* @param string $sortBy 
 		* @param int $startIndex 
 		* @return string Resource Url
@@ -28,11 +28,12 @@ class CategoryUrl  {
 	public static function getCategoriesUrl($filter, $pageSize, $sortBy, $startIndex)
 	{
 		$url = "/api/commerce/catalog/admin/categories/?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}";
-		$url = MozuUrl::formatUrl($url, "filter", $filter);
-		$url = MozuUrl::formatUrl($url, "pageSize", $pageSize);
-		$url = MozuUrl::formatUrl($url, "sortBy", $sortBy);
-		$url = MozuUrl::formatUrl($url, "startIndex", $startIndex);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("filter", $filter);
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -43,8 +44,9 @@ class CategoryUrl  {
 	public static function getCategoryUrl($categoryId)
 	{
 		$url = "/api/commerce/catalog/admin/categories/{categoryId}";
-		$url = MozuUrl::formatUrl($url, "categoryId", $categoryId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("categoryId", $categoryId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -55,8 +57,9 @@ class CategoryUrl  {
 	public static function getChildCategoriesUrl($categoryId)
 	{
 		$url = "/api/commerce/catalog/admin/categories/{categoryId}/children";
-		$url = MozuUrl::formatUrl($url, "categoryId", $categoryId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("categoryId", $categoryId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -66,7 +69,8 @@ class CategoryUrl  {
 	public static function addCategoryUrl()
 	{
 		$url = "/api/commerce/catalog/admin/categories/";
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		return $mozuUrl;
 	}
 	
 	/**
@@ -78,9 +82,10 @@ class CategoryUrl  {
 	public static function updateCategoryUrl($cascadeVisibility, $categoryId)
 	{
 		$url = "/api/commerce/catalog/admin/categories/{categoryId}?cascadeVisibility={cascadeVisibility}";
-		$url = MozuUrl::formatUrl($url, "cascadeVisibility", $cascadeVisibility);
-		$url = MozuUrl::formatUrl($url, "categoryId", $categoryId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"PUT") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("cascadeVisibility", $cascadeVisibility);
+		$url = $mozuUrl->formatUrl("categoryId", $categoryId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -92,9 +97,10 @@ class CategoryUrl  {
 	public static function deleteCategoryByIdUrl($cascadeDelete, $categoryId)
 	{
 		$url = "/api/commerce/catalog/admin/categories/{categoryId}/?cascadeDelete={cascadeDelete}";
-		$url = MozuUrl::formatUrl($url, "cascadeDelete", $cascadeDelete);
-		$url = MozuUrl::formatUrl($url, "categoryId", $categoryId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("cascadeDelete", $cascadeDelete);
+		$url = $mozuUrl->formatUrl("categoryId", $categoryId);
+		return $mozuUrl;
 	}
 	
 }

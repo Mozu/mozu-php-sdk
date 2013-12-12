@@ -23,27 +23,11 @@ class SearchSuggestion
 	*The query term entered by the shopper.
 	*/
 	public $query;
-	public function getQuery() {
-		return $this->query;
-	}
-	
-	public function setQuery($query) {
-		$this->query = $query;
-		return $this;
-	}
 
 	/**
 	*The term suggestions to return based on the specified query value.
 	*/
 	public $suggestions;
-	public function getSuggestions() {
-		return $this->suggestions;
-	}
-	
-	public function setSuggestions($suggestions) {
-		$this->suggestions = $suggestions;
-		return $this;
-	}
 
 }
 

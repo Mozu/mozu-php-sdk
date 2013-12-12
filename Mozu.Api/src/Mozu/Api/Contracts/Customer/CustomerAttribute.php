@@ -19,67 +19,25 @@ namespace Mozu\Api\Contracts\Customer;
 */
 class CustomerAttribute
 {
-		public $attributeDefinitionId;
-	public function getAttributeDefinitionId() {
-		return $this->attributeDefinitionId;
-	}
-	
-	public function setAttributeDefinitionId($attributeDefinitionId) {
-		$this->attributeDefinitionId = $attributeDefinitionId;
-		return $this;
-	}
+	/**
+	*Unique identifier of the attribute definition.
+	*/
+	public $attributeDefinitionId;
 
 	/**
-	*"The fully qualified name of the attribute, which is a user defined attribute identifier."
+	*The fully qualified name of the attribute, which is a user defined attribute identifier.
 	*/
 	public $fullyQualifiedName;
-	public function getFullyQualifiedName() {
-		return $this->fullyQualifiedName;
-	}
-	
-	public function setFullyQualifiedName($fullyQualifiedName) {
-		$this->fullyQualifiedName = $fullyQualifiedName;
-		return $this;
-	}
-
-	/**
-	*Unique identifier of the customer account attribute.
-	*/
-	public $id;
-	public function getId() {
-		return $this->id;
-	}
-	
-	public function setId($id) {
-		$this->id = $id;
-		return $this;
-	}
 
 	/**
 	*List of values for the attribute.
 	*/
 	public $values;
-	public function getValues() {
-		return $this->values;
-	}
-	
-	public function setValues($values) {
-		$this->values = $values;
-		return $this;
-	}
 
 	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
-	public function getAuditInfo() {
-		return $this->auditInfo;
-	}
-	
-	public function setAuditInfo($auditInfo) {
-		$this->auditInfo = $auditInfo;
-		return $this;
-	}
 
 }
 

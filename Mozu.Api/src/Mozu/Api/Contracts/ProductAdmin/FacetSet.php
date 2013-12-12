@@ -23,27 +23,11 @@ class FacetSet
 	*The list of subcategories and attributes that have not been defined as facets for the category.
 	*/
 	public $available;
-	public function getAvailable() {
-		return $this->available;
-	}
-	
-	public function setAvailable($available) {
-		$this->available = $available;
-		return $this;
-	}
 
 	/**
 	*The list of category, price, and attribute facets defined for the category.
 	*/
 	public $configured;
-	public function getConfigured() {
-		return $this->configured;
-	}
-	
-	public function setConfigured($configured) {
-		$this->configured = $configured;
-		return $this;
-	}
 
 }
 

@@ -19,8 +19,8 @@ class DiscountUrl  {
 
 	/**
 		* Get Resource Url for GetDiscounts
-		* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
-		* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 		* @param string $sortBy 
 		* @param int $startIndex 
 		* @return string Resource Url
@@ -28,11 +28,12 @@ class DiscountUrl  {
 	public static function getDiscountsUrl($filter, $pageSize, $sortBy, $startIndex)
 	{
 		$url = "/api/commerce/catalog/admin/discounts/?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}";
-		$url = MozuUrl::formatUrl($url, "filter", $filter);
-		$url = MozuUrl::formatUrl($url, "pageSize", $pageSize);
-		$url = MozuUrl::formatUrl($url, "sortBy", $sortBy);
-		$url = MozuUrl::formatUrl($url, "startIndex", $startIndex);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("filter", $filter);
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -43,8 +44,9 @@ class DiscountUrl  {
 	public static function getDiscountUrl($discountId)
 	{
 		$url = "/api/commerce/catalog/admin/discounts/{discountId}";
-		$url = MozuUrl::formatUrl($url, "discountId", $discountId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("discountId", $discountId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -55,8 +57,9 @@ class DiscountUrl  {
 	public static function getDiscountContentUrl($discountId)
 	{
 		$url = "/api/commerce/catalog/admin/discounts/{discountId}/content";
-		$url = MozuUrl::formatUrl($url, "discountId", $discountId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("discountId", $discountId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -66,7 +69,8 @@ class DiscountUrl  {
 	public static function generateRandomCouponUrl()
 	{
 		$url = "/api/commerce/catalog/admin/discounts/generate-random-coupon";
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		return $mozuUrl;
 	}
 	
 	/**
@@ -76,7 +80,8 @@ class DiscountUrl  {
 	public static function createDiscountUrl()
 	{
 		$url = "/api/commerce/catalog/admin/discounts/";
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		return $mozuUrl;
 	}
 	
 	/**
@@ -86,7 +91,8 @@ class DiscountUrl  {
 	public static function redeemDiscountUrl()
 	{
 		$url = "/api/commerce/catalog/admin/discounts/Redeem";
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		return $mozuUrl;
 	}
 	
 	/**
@@ -97,8 +103,9 @@ class DiscountUrl  {
 	public static function updateDiscountUrl($discountId)
 	{
 		$url = "/api/commerce/catalog/admin/discounts/{discountId}";
-		$url = MozuUrl::formatUrl($url, "discountId", $discountId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"PUT") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("discountId", $discountId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -109,8 +116,9 @@ class DiscountUrl  {
 	public static function updateDiscountContentUrl($discountId)
 	{
 		$url = "/api/commerce/catalog/admin/discounts/{discountId}/content";
-		$url = MozuUrl::formatUrl($url, "discountId", $discountId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"PUT") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("discountId", $discountId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -121,8 +129,9 @@ class DiscountUrl  {
 	public static function deleteDiscountUrl($discountId)
 	{
 		$url = "/api/commerce/catalog/admin/discounts/{discountId}";
-		$url = MozuUrl::formatUrl($url, "discountId", $discountId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("discountId", $discountId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -134,9 +143,10 @@ class DiscountUrl  {
 	public static function unRedeemDiscountUrl($discountId, $orderNumber)
 	{
 		$url = "/api/commerce/catalog/admin/discounts/{discountId}/Unredeem/{orderNumber}";
-		$url = MozuUrl::formatUrl($url, "discountId", $discountId);
-		$url = MozuUrl::formatUrl($url, "orderNumber", $orderNumber);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("discountId", $discountId);
+		$url = $mozuUrl->formatUrl("orderNumber", $orderNumber);
+		return $mozuUrl;
 	}
 	
 }

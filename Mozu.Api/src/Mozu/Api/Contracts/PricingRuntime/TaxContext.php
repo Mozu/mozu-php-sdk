@@ -23,66 +23,26 @@ class TaxContext
 	*Unique identifier of the customer.
 	*/
 	public $customerId;
-	public function getCustomerId() {
-		return $this->customerId;
-	}
-	
-	public function setCustomerId($customerId) {
-		$this->customerId = $customerId;
-		return $this;
-	}
 
 	/**
 	*Unique identifier of the tax context.
 	*/
 	public $taxContextId;
-	public function getTaxContextId() {
-		return $this->taxContextId;
-	}
-	
-	public function setTaxContextId($taxContextId) {
-		$this->taxContextId = $taxContextId;
-		return $this;
-	}
 
 	/**
 	*If the order is exempt from sales tax, the unique identifier of the tax exempt entity.
 	*/
 	public $taxExemptId;
-	public function getTaxExemptId() {
-		return $this->taxExemptId;
-	}
-	
-	public function setTaxExemptId($taxExemptId) {
-		$this->taxExemptId = $taxExemptId;
-		return $this;
-	}
 
 	/**
 	*The address to which the order ships.
 	*/
 	public $destinationAddress;
-	public function getDestinationAddress() {
-		return $this->destinationAddress;
-	}
-	
-	public function setDestinationAddress($destinationAddress) {
-		$this->destinationAddress = $destinationAddress;
-		return $this;
-	}
 
 	/**
 	*The address from which the order ships.
 	*/
 	public $originAddress;
-	public function getOriginAddress() {
-		return $this->originAddress;
-	}
-	
-	public function setOriginAddress($originAddress) {
-		$this->originAddress = $originAddress;
-		return $this;
-	}
 
 }
 

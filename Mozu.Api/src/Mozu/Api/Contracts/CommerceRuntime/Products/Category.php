@@ -23,27 +23,11 @@ class Category
 	*Identifier of the category.
 	*/
 	public $id;
-	public function getId() {
-		return $this->id;
-	}
-	
-	public function setId($id) {
-		$this->id = $id;
-		return $this;
-	}
 
 	/**
 	*If applicable, the parent category in the category tree.
 	*/
 	public $parent;
-	public function getParent() {
-		return $this->parent;
-	}
-	
-	public function setParent($parent) {
-		$this->parent = $parent;
-		return $this;
-	}
 
 }
 

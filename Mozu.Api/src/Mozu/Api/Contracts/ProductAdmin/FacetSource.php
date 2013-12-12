@@ -23,66 +23,26 @@ class FacetSource
 	*If true, the facet allows for values that consist of one or more ranges, such as 0-100, 100-200, and 200-300.
 	*/
 	public $allowsRangeQuery;
-	public function getAllowsRangeQuery() {
-		return $this->allowsRangeQuery;
-	}
-	
-	public function setAllowsRangeQuery($allowsRangeQuery) {
-		$this->allowsRangeQuery = $allowsRangeQuery;
-		return $this;
-	}
 
 	/**
 	*The data type associated with the attribute or category that generates the facet, such as bool or string.
 	*/
 	public $dataType;
-	public function getDataType() {
-		return $this->dataType;
-	}
-	
-	public function setDataType($dataType) {
-		$this->dataType = $dataType;
-		return $this;
-	}
 
 	/**
 	*Identifier of the facet source, which is attribute, category, or price. For attribute facets, the AttributeFQN.
 	*/
 	public $id;
-	public function getId() {
-		return $this->id;
-	}
-	
-	public function setId($id) {
-		$this->id = $id;
-		return $this;
-	}
 
 	/**
 	*System-supplied and read-only name of the associated facet source.
 	*/
 	public $name;
-	public function getName() {
-		return $this->name;
-	}
-	
-	public function setName($name) {
-		$this->name = $name;
-		return $this;
-	}
 
 	/**
 	*The source type for the facet, either "Attribute" or "Element". Category and price facets are elements.
 	*/
 	public $type;
-	public function getType() {
-		return $this->type;
-	}
-	
-	public function setType($type) {
-		$this->type = $type;
-		return $this;
-	}
 
 }
 

@@ -32,7 +32,7 @@ class DiscountTargetResource {
 	/**
 	* Retrieves the discount target, that is which products, categories, or shipping methods are eligible for the discount.
 	*
-	* @param int $discountId 
+	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
 	* @return DiscountTarget 
 	*/
 	public function getDiscountTarget($dataViewMode,  $discountId, Mozu\Api\Security\AuthTicket &$authTicket= null)

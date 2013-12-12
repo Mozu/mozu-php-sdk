@@ -29,12 +29,12 @@ class FolderClient {
 	* @param string $folderId The unique identifier of the folder to retrieve.
 	* @return MozuClient
 	*/
-	public static function getFolderClient( $documentListName,  $folderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getFolderClient($dataViewMode,  $documentListName,  $folderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = FolderUrl::getFolderUrl($documentListName, $folderId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -44,18 +44,18 @@ class FolderClient {
 	* Retrieve a list of content folders according to any filter and sort criteria.
 	*
 	* @param string $documentListName The name of the document list that contains this folder.
-	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
-	* @param string $sort "The property by which to sort results and whether the results appear in ascending (a-z) order, represented by 'ASC' or in descending (z-a) order, represented by 'DESC'. The sortBy parameter follows an available property. <b>For example: sortBy=productCode+asc</b>"
-	* @param int $startIndex "Used to create paged results from a query. Indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3."
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $sort The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return MozuClient
 	*/
-	public static function getFoldersClient( $documentListName,  $filter, $pageSize =  null, $sort =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getFoldersClient($dataViewMode,  $documentListName,  $filter, $pageSize =  null, $sort =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = FolderUrl::getFoldersUrl($documentListName, $filter, $pageSize, $sort, $startIndex);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -68,12 +68,12 @@ class FolderClient {
 	* @param Folder $folder The name of the newly created folder.
 	* @return MozuClient
 	*/
-	public static function createFolderClient($folder,  $documentListName, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function createFolderClient($dataViewMode, $folder,  $documentListName, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = FolderUrl::createFolderUrl($documentListName);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($folder);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($folder)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -87,12 +87,12 @@ class FolderClient {
 	* @param Folder $folder Properties of the folder to update.
 	* @return MozuClient
 	*/
-	public static function updateFolderClient($folder,  $documentListName,  $folderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateFolderClient($dataViewMode, $folder,  $documentListName,  $folderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = FolderUrl::updateFolderUrl($documentListName, $folderId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($folder);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($folder)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -104,12 +104,12 @@ class FolderClient {
 	* @param string $documentListName The name of the document list associated with the folder to delete.
 	* @param string $folderId The unique identifier of the folder to delete.
 	*/
-	public static function deleteFolderClient( $documentListName,  $folderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteFolderClient($dataViewMode,  $documentListName,  $folderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = FolderUrl::deleteFolderUrl($documentListName, $folderId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 

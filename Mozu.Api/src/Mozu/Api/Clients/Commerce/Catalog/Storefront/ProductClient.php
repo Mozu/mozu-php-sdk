@@ -18,15 +18,15 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* Manage shoppers' product selection process during a visit to the storefront. Update product options as shoppers pick and choose their product choices. A shopper can't add a product to a cart until all of its required options have been selected.
+* Manage shoppers' product selection process during a visit to the storefront. Update product options as shoppers pick and choose their product choices. A shopper cannot add a product to a cart until all of its required options have been selected.
 */
 class ProductClient {
 
 	/**
-	* Retrieves a list of products that appear on the storefront according to any specified filter criteria and sort options. A set of filter expressions representing the search parameters for a query.
+	* Retrieves a list of products that appear on the storefront according to any specified filter criteria and sort options.
 	*
-	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return MozuClient
@@ -35,26 +35,24 @@ class ProductClient {
 	{
 		$url = ProductUrl::getProductsUrl($filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Retrieves the active inventory level information associated with the product or location specified in the request.
 	*
-	* @param string $locationCodes 
-	* @param string $productCode 
+	* @param string $locationCodes Array of location codes for which to retrieve product inventory information.
+	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @return MozuClient
 	*/
 	public static function getProductInventoryClient( $productCode, $locationCodes =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductUrl::getProductInventoryUrl($locationCodes, $productCode);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -64,7 +62,7 @@ class ProductClient {
 	* Retrieves information about a single product given its product code.
 	*
 	* @param bool $allowInactive If true, returns an inactive product as part of the query.
-	* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @param bool $skipInventoryCheck 
 	* @param string $variationProductCode Merchant-created code associated with a specific product variation. Variation product codes maintain an association with the base product code.
 	* @return MozuClient
@@ -73,8 +71,7 @@ class ProductClient {
 	{
 		$url = ProductUrl::getProductUrl($allowInactive, $productCode, $skipInventoryCheck, $variationProductCode);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -84,7 +81,7 @@ class ProductClient {
 	* Creates a new product selection. A create occurs each time a shopper selects a product option as they configure a product. Once all the required product options are configured, the product can be added to a cart.
 	*
 	* @param bool $includeOptionDetails If true, the response returns details about the product. If false, returns a product summary such as the product name, price, and sale price.
-	* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @param bool $skipInventoryCheck 
 	* @param ProductOptionSelections $productOptionSelections For a product with shopper-configurable options, the properties of the product options selected by the shopper.
 	* @return MozuClient
@@ -93,8 +90,7 @@ class ProductClient {
 	{
 		$url = ProductUrl::configuredProductUrl($includeOptionDetails, $productCode, $skipInventoryCheck);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($productOptionSelections);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($productOptionSelections);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -103,7 +99,7 @@ class ProductClient {
 	/**
 	* Validate the final state of shopper-selected options.
 	*
-	* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @param bool $skipInventoryCheck 
 	* @param ProductOptionSelections $productOptionSelections For a product with shopper-configurable options, the properties of the product options selected by the shopper.
 	* @return MozuClient
@@ -112,8 +108,7 @@ class ProductClient {
 	{
 		$url = ProductUrl::validateProductUrl($productCode, $skipInventoryCheck);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($productOptionSelections);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($productOptionSelections);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 

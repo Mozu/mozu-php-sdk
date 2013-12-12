@@ -32,13 +32,13 @@ class FacetResource {
 	/**
 	* Retrieves the properties of facets that aid in indexing and searching.
 	*
-	* @param string $documentListName The document list associated with the facets are to retrieve.
+	* @param string $documentListName The document list associated with the facets to retrieve.
 	* @param string $propertyName The property name associated with the facets to retrieve.
 	* @return array|Facet 
 	*/
-	public function getFacets( $documentListName,  $propertyName, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getFacets($dataViewMode,  $documentListName,  $propertyName, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = FacetClient::getFacetsClient( $documentListName,  $propertyName, $authTicket);
+		$mozuClient = FacetClient::getFacetsClient($dataViewMode,  $documentListName,  $propertyName, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

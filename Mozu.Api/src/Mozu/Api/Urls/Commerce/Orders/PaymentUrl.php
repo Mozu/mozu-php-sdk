@@ -25,8 +25,9 @@ class PaymentUrl  {
 	public static function getPaymentsUrl($orderId)
 	{
 		$url = "/api/commerce/orders/{orderId}/payments/";
-		$url = MozuUrl::formatUrl($url, "orderId", $orderId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -38,9 +39,10 @@ class PaymentUrl  {
 	public static function getPaymentUrl($orderId, $paymentId)
 	{
 		$url = "/api/commerce/orders/{orderId}/payments/{paymentId}";
-		$url = MozuUrl::formatUrl($url, "orderId", $orderId);
-		$url = MozuUrl::formatUrl($url, "paymentId", $paymentId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("paymentId", $paymentId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -52,9 +54,10 @@ class PaymentUrl  {
 	public static function getAvailablePaymentActionsUrl($orderId, $paymentId)
 	{
 		$url = "/api/commerce/orders/{orderId}/payments/{paymentId}/actions";
-		$url = MozuUrl::formatUrl($url, "orderId", $orderId);
-		$url = MozuUrl::formatUrl($url, "paymentId", $paymentId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("paymentId", $paymentId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -66,9 +69,10 @@ class PaymentUrl  {
 	public static function performPaymentActionUrl($orderId, $paymentId)
 	{
 		$url = "/api/commerce/orders/{orderId}/payments/{paymentId}/actions";
-		$url = MozuUrl::formatUrl($url, "orderId", $orderId);
-		$url = MozuUrl::formatUrl($url, "paymentId", $paymentId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("paymentId", $paymentId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -79,8 +83,9 @@ class PaymentUrl  {
 	public static function createPaymentActionUrl($orderId)
 	{
 		$url = "/api/commerce/orders/{orderId}/payments/actions";
-		$url = MozuUrl::formatUrl($url, "orderId", $orderId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		return $mozuUrl;
 	}
 	
 }

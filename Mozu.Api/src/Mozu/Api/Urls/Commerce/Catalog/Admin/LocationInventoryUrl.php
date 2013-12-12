@@ -19,74 +19,79 @@ class LocationInventoryUrl  {
 
 	/**
 		* Get Resource Url for GetLocationInventory
-		* @param string $locationCode 
-		* @param string $productCode 
+		* @param string $locationCode User-defined code that uniquely identifies the location.
+		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 		* @return string Resource Url
 	*/
 	public static function getLocationInventoryUrl($locationCode, $productCode)
 	{
 		$url = "/api/commerce/catalog/admin/locationinventory/{LocationCode}/{ProductCode}";
-		$url = MozuUrl::formatUrl($url, "locationCode", $locationCode);
-		$url = MozuUrl::formatUrl($url, "productCode", $productCode);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("locationCode", $locationCode);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetLocationInventories
-		* @param string $filter 
-		* @param string $locationCode 
-		* @param int $pageSize 
-		* @param string $sortBy 
-		* @param int $startIndex 
+		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+		* @param string $locationCode User-defined code that uniquely identifies the location.
+		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+		* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
+		* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 		* @return string Resource Url
 	*/
 	public static function getLocationInventoriesUrl($filter, $locationCode, $pageSize, $sortBy, $startIndex)
 	{
 		$url = "/api/commerce/catalog/admin/locationinventory/{LocationCode}?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}";
-		$url = MozuUrl::formatUrl($url, "filter", $filter);
-		$url = MozuUrl::formatUrl($url, "locationCode", $locationCode);
-		$url = MozuUrl::formatUrl($url, "pageSize", $pageSize);
-		$url = MozuUrl::formatUrl($url, "sortBy", $sortBy);
-		$url = MozuUrl::formatUrl($url, "startIndex", $startIndex);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("filter", $filter);
+		$url = $mozuUrl->formatUrl("locationCode", $locationCode);
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for AddLocationInventory
-		* @param string $locationCode 
+		* @param string $locationCode User-defined code that uniquely identifies the location.
 		* @return string Resource Url
 	*/
 	public static function addLocationInventoryUrl($locationCode)
 	{
 		$url = "/api/commerce/catalog/admin/locationinventory/{LocationCode}";
-		$url = MozuUrl::formatUrl($url, "locationCode", $locationCode);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("locationCode", $locationCode);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdateLocationInventory
-		* @param string $locationCode 
+		* @param string $locationCode User-defined code that uniquely identifies the location.
 		* @return string Resource Url
 	*/
 	public static function updateLocationInventoryUrl($locationCode)
 	{
 		$url = "/api/commerce/catalog/admin/locationinventory/{locationCode}";
-		$url = MozuUrl::formatUrl($url, "locationCode", $locationCode);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"PUT") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("locationCode", $locationCode);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for DeleteLocationInventory
-		* @param string $locationCode 
-		* @param string $productCode 
+		* @param string $locationCode User-defined code that uniquely identifies the location.
+		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 		* @return string Resource Url
 	*/
 	public static function deleteLocationInventoryUrl($locationCode, $productCode)
 	{
 		$url = "/api/commerce/catalog/admin/locationinventory/{LocationCode}/{ProductCode}";
-		$url = MozuUrl::formatUrl($url, "locationCode", $locationCode);
-		$url = MozuUrl::formatUrl($url, "productCode", $productCode);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("locationCode", $locationCode);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		return $mozuUrl;
 	}
 	
 }

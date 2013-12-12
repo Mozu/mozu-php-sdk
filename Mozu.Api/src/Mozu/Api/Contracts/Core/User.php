@@ -20,121 +20,49 @@ namespace Mozu\Api\Contracts\Core;
 class User
 {
 	/**
-	*The email address of the specified user.
+	*The email address of the specified user or the email address associated with the specified entity.
 	*/
 	public $emailAddress;
-	public function getEmailAddress() {
-		return $this->emailAddress;
-	}
-	
-	public function setEmailAddress($emailAddress) {
-		$this->emailAddress = $emailAddress;
-		return $this;
-	}
 
 	/**
-	*The first name of the contact. Max length: 200.
+	*The first name of the contact. The maximum character length is 200.
 	*/
 	public $firstName;
-	public function getFirstName() {
-		return $this->firstName;
-	}
-	
-	public function setFirstName($firstName) {
-		$this->firstName = $firstName;
-		return $this;
-	}
 
 	/**
 	*Identifier of the user.
 	*/
 	public $id;
-	public function getId() {
-		return $this->id;
-	}
-	
-	public function setId($id) {
-		$this->id = $id;
-		return $this;
-	}
 
 	/**
 	*If true, the user is an active user.
 	*/
 	public $isActive;
-	public function getIsActive() {
-		return $this->isActive;
-	}
-	
-	public function setIsActive($isActive) {
-		$this->isActive = $isActive;
-		return $this;
-	}
 
 	/**
-	*The last name or surname of the contact. Max length: 200.
+	*The last name or surname of the contact. The maximum character length is 200.
 	*/
 	public $lastName;
-	public function getLastName() {
-		return $this->lastName;
-	}
-	
-	public function setLastName($lastName) {
-		$this->lastName = $lastName;
-		return $this;
-	}
 
 	/**
-	*"Language used for the entity. Currently, only ""en-US"" is supported."
+	*Language used for the entity. Currently, only "en-US" is supported.
 	*/
 	public $localeCode;
-	public function getLocaleCode() {
-		return $this->localeCode;
-	}
-	
-	public function setLocaleCode($localeCode) {
-		$this->localeCode = $localeCode;
-		return $this;
-	}
 
 	/**
 	*The user password.
 	*/
 	public $password;
-	public function getPassword() {
-		return $this->password;
-	}
-	
-	public function setPassword($password) {
-		$this->password = $password;
-		return $this;
-	}
 
 	/**
 	*Collection of roles assigned to the user.
 	*/
 	public $roles;
-	public function getRoles() {
-		return $this->roles;
-	}
-	
-	public function setRoles($roles) {
-		$this->roles = $roles;
-		return $this;
-	}
 
 	/**
 	*Collection of system-supplied data about the user.
 	*/
 	public $systemData;
-	public function getSystemData() {
-		return $this->systemData;
-	}
-	
-	public function setSystemData($systemData) {
-		$this->systemData = $systemData;
-		return $this;
-	}
 
 }
 

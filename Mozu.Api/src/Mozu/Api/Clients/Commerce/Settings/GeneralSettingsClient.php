@@ -31,8 +31,7 @@ class GeneralSettingsClient {
 	{
 		$url = GeneralSettingsUrl::getGeneralSettingsUrl();
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -48,8 +47,7 @@ class GeneralSettingsClient {
 	{
 		$url = GeneralSettingsUrl::updateGeneralSettingsUrl();
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($generalSettings);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($generalSettings);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 

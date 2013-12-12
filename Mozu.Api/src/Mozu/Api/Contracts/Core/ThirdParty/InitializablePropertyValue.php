@@ -14,11 +14,20 @@ namespace Mozu\Api\Contracts\Core\ThirdParty;
 
 
 
+/**
+*	Properties of a value that can be initialized for a capability property.
+*/
 class InitializablePropertyValue
 {
-		public $initialized;
+	/**
+	*If true, the property value is initialized.
+	*/
+	public $initialized;
 
-		public $value;
+	/**
+	*Value of the initializable third-party capability property.
+	*/
+	public $value;
 
 }
 

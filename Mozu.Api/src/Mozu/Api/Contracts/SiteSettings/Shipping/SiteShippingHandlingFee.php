@@ -23,14 +23,6 @@ class SiteShippingHandlingFee
 	*The amount of the order handling fee.
 	*/
 	public $amount;
-	public function getAmount() {
-		return $this->amount;
-	}
-	
-	public function setAmount($amount) {
-		$this->amount = $amount;
-		return $this;
-	}
 
 }
 

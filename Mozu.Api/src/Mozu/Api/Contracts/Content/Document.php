@@ -20,186 +20,74 @@ namespace Mozu\Api\Contracts\Content;
 class Document
 {
 	/**
+	*Date and time when the entity was last updated, represented in UTC Date/Time.
+	*/
+	public $updateDate;
+
+	/**
 	*The character length associated with the document content.
 	*/
 	public $contentLength;
-	public function getContentLength() {
-		return $this->contentLength;
-	}
-	
-	public function setContentLength($contentLength) {
-		$this->contentLength = $contentLength;
-		return $this;
-	}
 
 	/**
 	*The mime type associated with the document content, if applicable.
 	*/
 	public $contentMimeType;
-	public function getContentMimeType() {
-		return $this->contentMimeType;
-	}
-	
-	public function setContentMimeType($contentMimeType) {
-		$this->contentMimeType = $contentMimeType;
-		return $this;
-	}
 
 	/**
 	*The date and time the most recent content update was made. UTC date/time. System-supplied and read-only.
 	*/
 	public $contentUpdateDate;
-	public function getContentUpdateDate() {
-		return $this->contentUpdateDate;
-	}
-	
-	public function setContentUpdateDate($contentUpdateDate) {
-		$this->contentUpdateDate = $contentUpdateDate;
-		return $this;
-	}
 
 	/**
 	*The name of the document list associated with the document.
 	*/
 	public $documentListName;
-	public function getDocumentListName() {
-		return $this->documentListName;
-	}
-	
-	public function setDocumentListName($documentListName) {
-		$this->documentListName = $documentListName;
-		return $this;
-	}
 
 	/**
 	*The type of document used in the CMS such as "web_page" or "template" or "image_url".
 	*/
 	public $documentType;
-	public function getDocumentType() {
-		return $this->documentType;
-	}
-	
-	public function setDocumentType($documentType) {
-		$this->documentType = $documentType;
-		return $this;
-	}
 
 	/**
 	*If applicable, the file extension associated with the document content.
 	*/
 	public $extension;
-	public function getExtension() {
-		return $this->extension;
-	}
-	
-	public function setExtension($extension) {
-		$this->extension = $extension;
-		return $this;
-	}
 
 	/**
 	*Unique identifier of the folder that contains the document.
 	*/
 	public $folderId;
-	public function getFolderId() {
-		return $this->folderId;
-	}
-	
-	public function setFolderId($folderId) {
-		$this->folderId = $folderId;
-		return $this;
-	}
 
 	/**
 	*Unique identifier of the document.
 	*/
 	public $id;
-	public function getId() {
-		return $this->id;
-	}
-	
-	public function setId($id) {
-		$this->id = $id;
-		return $this;
-	}
 
 	/**
 	*When the document was added to the document list. System-supplied and read-only.
 	*/
 	public $insertDate;
-	public function getInsertDate() {
-		return $this->insertDate;
-	}
-	
-	public function setInsertDate($insertDate) {
-		$this->insertDate = $insertDate;
-		return $this;
-	}
 
 	/**
 	*The name of the document, which is unique within its folder.
 	*/
 	public $name;
-	public function getName() {
-		return $this->name;
-	}
-	
-	public function setName($name) {
-		$this->name = $name;
-		return $this;
-	}
 
 	/**
 	*The location of the document in the document list and folder hierarchy.
 	*/
 	public $path;
-	public function getPath() {
-		return $this->path;
-	}
-	
-	public function setPath($path) {
-		$this->path = $path;
-		return $this;
-	}
 
 	/**
 	*The current state of the document, which is Active, Draft, or Latest. Active documents are published and cannot be deleted. Querying Latest returns the most recent version of the document, regardless of whether it is published or a draft.
 	*/
 	public $publishState;
-	public function getPublishState() {
-		return $this->publishState;
-	}
-	
-	public function setPublishState($publishState) {
-		$this->publishState = $publishState;
-		return $this;
-	}
-
-	/**
-	*Date and time when the entity was last updated. UTC Date/Time.
-	*/
-	public $updateDate;
-	public function getUpdateDate() {
-		return $this->updateDate;
-	}
-	
-	public function setUpdateDate($updateDate) {
-		$this->updateDate = $updateDate;
-		return $this;
-	}
 
 	/**
 	*List of properties for the given property value.
 	*/
 	public $properties;
-	public function getProperties() {
-		return $this->properties;
-	}
-	
-	public function setProperties($properties) {
-		$this->properties = $properties;
-		return $this;
-	}
 
 }
 

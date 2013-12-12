@@ -23,102 +23,41 @@ class CategoryContent
 	*The localized description of the category to display on a storefront.
 	*/
 	public $description;
-	public function getDescription() {
-		return $this->description;
-	}
-	
-	public function setDescription($description) {
-		$this->description = $description;
-		return $this;
-	}
 
 	/**
 	*Defined description of the metadata used to manage product information internally, such as search engine optimization.
 	*/
 	public $metaTagDescription;
-	public function getMetaTagDescription() {
-		return $this->metaTagDescription;
-	}
-	
-	public function setMetaTagDescription($metaTagDescription) {
-		$this->metaTagDescription = $metaTagDescription;
-		return $this;
-	}
 
 	/**
 	*Defined keywords of the metadata used to manage product information internally, such as search engine optimization.
 	*/
 	public $metaTagKeywords;
-	public function getMetaTagKeywords() {
-		return $this->metaTagKeywords;
-	}
-	
-	public function setMetaTagKeywords($metaTagKeywords) {
-		$this->metaTagKeywords = $metaTagKeywords;
-		return $this;
-	}
 
 	/**
 	*Defined title of the metadata used to manage product information internally, such as search engine optimization.
 	*/
 	public $metaTagTitle;
-	public function getMetaTagTitle() {
-		return $this->metaTagTitle;
-	}
-	
-	public function setMetaTagTitle($metaTagTitle) {
-		$this->metaTagTitle = $metaTagTitle;
-		return $this;
-	}
 
 	/**
 	*Name of the product category.
 	*/
 	public $name;
-	public function getName() {
-		return $this->name;
-	}
-	
-	public function setName($name) {
-		$this->name = $name;
-		return $this;
-	}
 
 	/**
 	*Title that appears on the top of new pages associated with the product category on the storefront.
 	*/
 	public $pageTitle;
-	public function getPageTitle() {
-		return $this->pageTitle;
-	}
-	
-	public function setPageTitle($pageTitle) {
-		$this->pageTitle = $pageTitle;
-		return $this;
-	}
 
 	/**
 	*Human-readable identifier to associated with a product category to create friendly URLs.
 	*/
 	public $slug;
-	public function getSlug() {
-		return $this->slug;
-	}
-	
-	public function setSlug($slug) {
-		$this->slug = $slug;
-		return $this;
-	}
 
-		public $categoryImages;
-	public function getCategoryImages() {
-		return $this->categoryImages;
-	}
-	
-	public function setCategoryImages($categoryImages) {
-		$this->categoryImages = $categoryImages;
-		return $this;
-	}
+	/**
+	*Array list of image media associated with the product category.
+	*/
+	public $categoryImages;
 
 }
 

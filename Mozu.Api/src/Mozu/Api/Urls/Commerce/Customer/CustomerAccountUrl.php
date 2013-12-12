@@ -20,10 +20,10 @@ class CustomerAccountUrl  {
 	/**
 		* Get Resource Url for GetAccounts
 		* @param string $fields The fields to include in the response.
-		* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
+		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 		* @param int $pageSize 
-		* @param string $q 
-		* @param int $qLimit 
+		* @param string $q A list of customer account search terms to use in the query when searching across customer name and email. Separate multiple search terms with a space character.
+		* @param int $qLimit The maximum number of search results to return in the response. You can limit any range between 1-100.
 		* @param string $sortBy 
 		* @param int $startIndex 
 		* @return string Resource Url
@@ -31,14 +31,15 @@ class CustomerAccountUrl  {
 	public static function getAccountsUrl($fields, $filter, $pageSize, $q, $qLimit, $sortBy, $startIndex)
 	{
 		$url = "/api/commerce/customer/accounts/?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}&fields={fields}&q={q}&qLimit={qLimit}";
-		$url = MozuUrl::formatUrl($url, "fields", $fields);
-		$url = MozuUrl::formatUrl($url, "filter", $filter);
-		$url = MozuUrl::formatUrl($url, "pageSize", $pageSize);
-		$url = MozuUrl::formatUrl($url, "q", $q);
-		$url = MozuUrl::formatUrl($url, "qLimit", $qLimit);
-		$url = MozuUrl::formatUrl($url, "sortBy", $sortBy);
-		$url = MozuUrl::formatUrl($url, "startIndex", $startIndex);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("fields", $fields);
+		$url = $mozuUrl->formatUrl("filter", $filter);
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("q", $q);
+		$url = $mozuUrl->formatUrl("qLimit", $qLimit);
+		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -49,42 +50,48 @@ class CustomerAccountUrl  {
 	public static function getAccountUrl($accountId)
 	{
 		$url = "/api/commerce/customer/accounts/{accountId}";
-		$url = MozuUrl::formatUrl($url, "accountId", $accountId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		return $mozuUrl;
 	}
 	
 	/**
-		* Get Resource Url for GetInStockNotification
+		* Get Resource Url for GetLoginState
 		* @param int $accountId 
-		* @param int $inStockNotificationSubscriptionId 
 		* @return string Resource Url
 	*/
-	public static function getInStockNotificationUrl($accountId, $inStockNotificationSubscriptionId)
+	public static function getLoginStateUrl($accountId)
 	{
-		$url = "/api/commerce/customer/accounts/{accountId}/instocknotifications/{inStockNotificationSubscriptionId}";
-		$url = MozuUrl::formatUrl($url, "accountId", $accountId);
-		$url = MozuUrl::formatUrl($url, "inStockNotificationSubscriptionId", $inStockNotificationSubscriptionId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$url = "/api/commerce/customer/accounts/{accountId}/loginstate";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		return $mozuUrl;
 	}
 	
 	/**
-		* Get Resource Url for GetInStockNotifications
-		* @param int $accountId 
-		* @param string $filter 
-		* @param int $pageSize 
-		* @param string $sortBy 
-		* @param int $startIndex 
+		* Get Resource Url for GetLoginStateByEmailAddress
+		* @param string $emailAddress 
 		* @return string Resource Url
 	*/
-	public static function getInStockNotificationsUrl($accountId, $filter, $pageSize, $sortBy, $startIndex)
+	public static function getLoginStateByEmailAddressUrl($emailAddress)
 	{
-		$url = "/api/commerce/customer/accounts/{accountId}/instocknotifications?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}";
-		$url = MozuUrl::formatUrl($url, "accountId", $accountId);
-		$url = MozuUrl::formatUrl($url, "filter", $filter);
-		$url = MozuUrl::formatUrl($url, "pageSize", $pageSize);
-		$url = MozuUrl::formatUrl($url, "sortBy", $sortBy);
-		$url = MozuUrl::formatUrl($url, "startIndex", $startIndex);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$url = "/api/commerce/customer/accounts/loginstate?emailAddress={emailAddress}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("emailAddress", $emailAddress);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for GetLoginStateByUserName
+		* @param string $userName 
+		* @return string Resource Url
+	*/
+	public static function getLoginStateByUserNameUrl($userName)
+	{
+		$url = "/api/commerce/customer/accounts/loginstate?userName={userName}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("userName", $userName);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -94,19 +101,21 @@ class CustomerAccountUrl  {
 	public static function addAccountUrl()
 	{
 		$url = "/api/commerce/customer/accounts/";
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		return $mozuUrl;
 	}
 	
 	/**
-		* Get Resource Url for AddInStockNotification
+		* Get Resource Url for AddLoginToExistingCustomer
 		* @param int $accountId 
 		* @return string Resource Url
 	*/
-	public static function addInStockNotificationUrl($accountId)
+	public static function addLoginToExistingCustomerUrl($accountId)
 	{
-		$url = "/api/commerce/customer/accounts/{accountId}/instocknotifications";
-		$url = MozuUrl::formatUrl($url, "accountId", $accountId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$url = "/api/commerce/customer/accounts/{accountId}/Create-Login";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -117,8 +126,68 @@ class CustomerAccountUrl  {
 	public static function recomputeCustomerLifetimeValueUrl($accountId)
 	{
 		$url = "/api/commerce/customer/accounts/{accountId}/recomputelifetimevalue";
-		$url = MozuUrl::formatUrl($url, "accountId", $accountId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for SetLoginLocked
+		* @param int $accountId 
+		* @return string Resource Url
+	*/
+	public static function setLoginLockedUrl($accountId)
+	{
+		$url = "/api/commerce/customer/accounts/{accountId}/Set-Login-Locked";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for SetPasswordChangeRequired
+		* @param int $accountId 
+		* @return string Resource Url
+	*/
+	public static function setPasswordChangeRequiredUrl($accountId)
+	{
+		$url = "/api/commerce/customer/accounts/{accountId}/Set-Password-Change-Required";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for AddAccountAndLogin
+		* @return string Resource Url
+	*/
+	public static function addAccountAndLoginUrl()
+	{
+		$url = "/api/commerce/customer/accounts/Add-Account-And-Login";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for AddAccounts
+		* @return string Resource Url
+	*/
+	public static function addAccountsUrl()
+	{
+		$url = "/api/commerce/customer/accounts/Bulk";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for ResetPassword
+		* @return string Resource Url
+	*/
+	public static function resetPasswordUrl()
+	{
+		$url = "/api/commerce/customer/accounts/Reset-Password";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		return $mozuUrl;
 	}
 	
 	/**
@@ -129,8 +198,9 @@ class CustomerAccountUrl  {
 	public static function updateAccountUrl($accountId)
 	{
 		$url = "/api/commerce/customer/accounts/{accountId}";
-		$url = MozuUrl::formatUrl($url, "accountId", $accountId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"PUT") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -141,22 +211,9 @@ class CustomerAccountUrl  {
 	public static function deleteAccountUrl($accountId)
 	{
 		$url = "/api/commerce/customer/accounts/{accountId}";
-		$url = MozuUrl::formatUrl($url, "accountId", $accountId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE") ;
-	}
-	
-	/**
-		* Get Resource Url for DeleteInStockNotificationSubscription
-		* @param int $accountId 
-		* @param int $inStockNotificationSubscriptionId 
-		* @return string Resource Url
-	*/
-	public static function deleteInStockNotificationSubscriptionUrl($accountId, $inStockNotificationSubscriptionId)
-	{
-		$url = "/api/commerce/customer/accounts/{accountId}/instocknotifications/{inStockNotificationSubscriptionId}";
-		$url = MozuUrl::formatUrl($url, "accountId", $accountId);
-		$url = MozuUrl::formatUrl($url, "inStockNotificationSubscriptionId", $inStockNotificationSubscriptionId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		return $mozuUrl;
 	}
 	
 }

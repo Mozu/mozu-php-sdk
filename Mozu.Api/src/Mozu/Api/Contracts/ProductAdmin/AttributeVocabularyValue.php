@@ -23,40 +23,16 @@ class AttributeVocabularyValue
 	*The actual vocabulary value.
 	*/
 	public $value;
-	public function getValue() {
-		return $this->value;
-	}
-	
-	public function setValue($value) {
-		$this->value = $value;
-		return $this;
-	}
 
 	/**
 	*The number that denotes the order of the entity value within a list of entity values.
 	*/
 	public $valueSequence;
-	public function getValueSequence() {
-		return $this->valueSequence;
-	}
-	
-	public function setValueSequence($valueSequence) {
-		$this->valueSequence = $valueSequence;
-		return $this;
-	}
 
 	/**
 	*Complex type that contains content for a language specified by LocaleCode.
 	*/
 	public $content;
-	public function getContent() {
-		return $this->content;
-	}
-	
-	public function setContent($content) {
-		$this->content = $content;
-		return $this;
-	}
 
 }
 

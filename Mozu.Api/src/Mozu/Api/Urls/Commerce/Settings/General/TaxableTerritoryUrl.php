@@ -24,7 +24,8 @@ class TaxableTerritoryUrl  {
 	public static function getTaxableTerritoriesUrl()
 	{
 		$url = "/api/commerce/settings/general/taxableterritories";
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		return $mozuUrl;
 	}
 	
 	/**
@@ -34,7 +35,8 @@ class TaxableTerritoryUrl  {
 	public static function addTaxableTerritoryUrl()
 	{
 		$url = "/api/commerce/settings/general/taxableterritories";
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		return $mozuUrl;
 	}
 	
 	/**
@@ -44,7 +46,8 @@ class TaxableTerritoryUrl  {
 	public static function updateTaxableTerritoriesUrl()
 	{
 		$url = "/api/commerce/settings/general/taxableterritories";
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"PUT") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		return $mozuUrl;
 	}
 	
 }

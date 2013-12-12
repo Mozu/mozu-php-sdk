@@ -32,8 +32,7 @@ class PaymentClient {
 	{
 		$url = PaymentUrl::getPaymentsUrl($orderId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -50,8 +49,7 @@ class PaymentClient {
 	{
 		$url = PaymentUrl::getPaymentUrl($orderId, $paymentId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -68,8 +66,7 @@ class PaymentClient {
 	{
 		$url = PaymentUrl::getAvailablePaymentActionsUrl($orderId, $paymentId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -87,8 +84,7 @@ class PaymentClient {
 	{
 		$url = PaymentUrl::performPaymentActionUrl($orderId, $paymentId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($action);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($action);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -105,8 +101,7 @@ class PaymentClient {
 	{
 		$url = PaymentUrl::createPaymentActionUrl($orderId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($action);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($action);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 

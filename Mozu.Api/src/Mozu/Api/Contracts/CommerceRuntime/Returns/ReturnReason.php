@@ -23,27 +23,11 @@ class ReturnReason
 	*The quantity of the item returned for the specified reason.
 	*/
 	public $quantity;
-	public function getQuantity() {
-		return $this->quantity;
-	}
-	
-	public function setQuantity($quantity) {
-		$this->quantity = $quantity;
-		return $this;
-	}
 
 	/**
 	*The reason for which an item is returned to the merchant.
 	*/
 	public $reason;
-	public function getReason() {
-		return $this->reason;
-	}
-	
-	public function setReason($reason) {
-		$this->reason = $reason;
-		return $this;
-	}
 
 }
 

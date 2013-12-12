@@ -19,97 +19,42 @@ namespace Mozu\Api\Contracts\SiteSettings\Application;
 */
 class Application
 {
-		public $appId;
-	public function getAppId() {
-		return $this->appId;
-	}
-	
-	public function setAppId($appId) {
-		$this->appId = $appId;
-		return $this;
-	}
+	/**
+	*The unique identifier of the application in Mozu Dev Center.
+	*/
+	public $appId;
 
 	/**
-	*If true, the application is enabled for the tenant. System-supplied and read only.
+	*If true, the application is enabled for the tenant. System-supplied and read-only.
 	*/
 	public $enabled;
-	public function getEnabled() {
-		return $this->enabled;
-	}
-	
-	public function setEnabled($enabled) {
-		$this->enabled = $enabled;
-		return $this;
-	}
 
 	/**
 	*If true, the third party application settings have been configured and the application is initialized.
 	*/
 	public $initialized;
-	public function getInitialized() {
-		return $this->initialized;
-	}
-	
-	public function setInitialized($initialized) {
-		$this->initialized = $initialized;
-		return $this;
-	}
 
 		public $isExtension;
-	public function getIsExtension() {
-		return $this->isExtension;
-	}
-	
-	public function setIsExtension($isExtension) {
-		$this->isExtension = $isExtension;
-		return $this;
-	}
 
 	/**
-	*URL of the application's setting configuration user interface. System-supplied and read only.
+	*URL of the application's setting configuration user interface, supplied by the capability developer in Dev Center.
 	*/
 	public $uiConfigurationUrl;
-	public function getUiConfigurationUrl() {
-		return $this->uiConfigurationUrl;
-	}
-	
-	public function setUiConfigurationUrl($uiConfigurationUrl) {
-		$this->uiConfigurationUrl = $uiConfigurationUrl;
-		return $this;
-	}
 
-		public $auditInfo;
-	public function getAuditInfo() {
-		return $this->auditInfo;
-	}
-	
-	public function setAuditInfo($auditInfo) {
-		$this->auditInfo = $auditInfo;
-		return $this;
-	}
+	/**
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
+	*/
+	public $auditInfo;
 
 	/**
 	*List of capabilities installed in a tenant.
 	*/
 	public $capabilities;
-	public function getCapabilities() {
-		return $this->capabilities;
-	}
-	
-	public function setCapabilities($capabilities) {
-		$this->capabilities = $capabilities;
-		return $this;
-	}
 
-		public $entitlement;
-	public function getEntitlement() {
-		return $this->entitlement;
-	}
-	
-	public function setEntitlement($entitlement) {
-		$this->entitlement = $entitlement;
-		return $this;
-	}
+	/**
+	*Properties of the application entitlement record, including the merchant it is licensed to and the duration of the license.
+	*/
+	public $entitlement;
 
 }
 

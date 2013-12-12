@@ -4,6 +4,7 @@ namespace Mozu\Api;
 
 use Mozu\Api\Contracts\Tenant\Tenant;
 use Mozu\Api\Helpers\SignatureResolver;
+use Mozu\Api\Security\AppAuthenticator;
 
 interface iApiContext 
 {
@@ -19,7 +20,6 @@ interface iApiContext
 	public function getAppAuthTicket();
 	public function getUserAuth();
 		
-	public function getUrl($domain);
 }
 
 class ApiContext implements iApiContext {
@@ -83,11 +83,11 @@ class ApiContext implements iApiContext {
 	private function setContextByTenant($tenant) {
 	 	$this->tenant = $tenant;
 	 	$this->tenantId = $tenant->id;
-	 	$this->tenantUrl = $this->getUrl($tenant->domain);
-	 	 
-	 	if (count($this->tenant->sites) == 1) {
-	 		$this->siteId = $tenant->sites[0]->id;
-	 	}
+	 	$this->tenantUrl = $tenant->domain;
+	 	 echo($this->tenantUrl);
+	 	//if (count($this->tenant->sites) == 1) {
+	 	//	$this->siteId = $tenant->sites[0]->id;
+	 	//}
 	 	 
 	 	if ( ($this->masterCatalogId == null || $this->masterCatalogId <=0) && count($tenant->masterCatalogs) == 1 ) {
 	 		$this->masterCatalogId = $tenant->masterCatalogs[0]->id;
@@ -135,10 +135,6 @@ class ApiContext implements iApiContext {
 
 	public function getUserAuth() {
 		return $this->userAuth;
-	}
-
-	public function getUrl($domain) {
-		return "http://" . $domain;
 	}
 
 }

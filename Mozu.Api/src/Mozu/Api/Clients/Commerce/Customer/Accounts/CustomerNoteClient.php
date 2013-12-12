@@ -33,8 +33,7 @@ class CustomerNoteClient {
 	{
 		$url = CustomerNoteUrl::getAccountNoteUrl($accountId, $noteId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -44,18 +43,17 @@ class CustomerNoteClient {
 	* Retrieves a list of notes added to a customer account according to any specified filter criteria and sort options.
 	*
 	* @param int $accountId Unique identifier of the customer account.
-	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
-	* @param string $sortBy "The property by which to sort results and whether the results appear in ascending (a-z) order, represented by 'ASC' or in descending (z-a) order, represented by 'DESC'. The sortBy parameter follows an available property. <b>For example: sortBy=productCode+asc</b>"
-	* @param int $startIndex "Used to create paged results from a query. Indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3."
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return MozuClient
 	*/
 	public static function getAccountNotesClient( $accountId, $filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CustomerNoteUrl::getAccountNotesUrl($accountId, $filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -65,15 +63,14 @@ class CustomerNoteClient {
 	* Adds a new note to the specified customer account.
 	*
 	* @param int $accountId Unique identifier of the customer account for which to create the note.
-	* @param CustomerNote $note 
+	* @param CustomerNote $note Properties of the customer account note to create.
 	* @return MozuClient
 	*/
 	public static function addAccountNoteClient($note,  $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CustomerNoteUrl::addAccountNoteUrl($accountId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($note);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($note);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -91,8 +88,7 @@ class CustomerNoteClient {
 	{
 		$url = CustomerNoteUrl::updateAccountNoteUrl($accountId, $noteId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($note);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($note);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -108,8 +104,7 @@ class CustomerNoteClient {
 	{
 		$url = CustomerNoteUrl::deleteAccountNoteUrl($accountId, $noteId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 

@@ -19,26 +19,28 @@ class TenantAdminUserAuthTicketUrl  {
 
 	/**
 		* Get Resource Url for CreateUserAuthTicket
-		* @param int $tenantId Unique identifier of the Mozu tenant or development store for which to generate the user authentication ticket.
+		* @param int $tenantId Unique identifier of the development or production tenant for which to generate the user authentication ticket.
 		* @return string Resource Url
 	*/
 	public static function createUserAuthTicketUrl($tenantId)
 	{
 		$url = "/api/platform/adminuser/authtickets/tenants?tenantId={tenantId}";
-		$url = MozuUrl::formatUrl($url, "tenantId", $tenantId);
-		return new MozuUrl($url, UrlLocation::HOME_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("tenantId", $tenantId);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for RefreshAuthTicket
-		* @param int $tenantId Unique identifier of the Mozu tenant or development store for which to refresh the authentication ticket.
+		* @param int $tenantId 
 		* @return string Resource Url
 	*/
 	public static function refreshAuthTicketUrl($tenantId)
 	{
 		$url = "/api/platform/adminuser/authtickets/tenants?tenantId={tenantId}";
-		$url = MozuUrl::formatUrl($url, "tenantId", $tenantId);
-		return new MozuUrl($url, UrlLocation::HOME_POD,"PUT") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("tenantId", $tenantId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -49,8 +51,9 @@ class TenantAdminUserAuthTicketUrl  {
 	public static function deleteUserAuthTicketUrl($refreshToken)
 	{
 		$url = "/api/platform/adminuser/authtickets/?refreshToken={refreshToken}";
-		$url = MozuUrl::formatUrl($url, "refreshToken", $refreshToken);
-		return new MozuUrl($url, UrlLocation::HOME_POD,"DELETE") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("refreshToken", $refreshToken);
+		return $mozuUrl;
 	}
 	
 }

@@ -31,8 +31,7 @@ class CartItemClient {
 	{
 		$url = CartItemUrl::getCartItemsUrl();
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -48,15 +47,14 @@ class CartItemClient {
 	{
 		$url = CartItemUrl::getCartItemUrl($cartItemId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* Adds an item such as product to the current shopper's cart.
+	* Adds a product to the current shopper's cart.
 	*
 	* @param CartItem $cartItem All properties of the new cart item. The product code is required.
 	* @return MozuClient
@@ -65,15 +63,14 @@ class CartItemClient {
 	{
 		$url = CartItemUrl::addItemToCartUrl();
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($cartItem);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($cartItem);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* Update properties of a specific cart item.
+	* Update the product or product quantity of an item in the current shopper's cart.
 	*
 	* @param string $cartItemId Identifier of the cart item to update.
 	* @param CartItem $cartItem The properties of the cart item to update.
@@ -83,15 +80,14 @@ class CartItemClient {
 	{
 		$url = CartItemUrl::updateCartItemUrl($cartItemId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($cartItem);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($cartItem);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* Update the quantity of an individual cart item in the cart of a current shopper.
+	* Update the quantity of an individual cart item in the cart of the current shopper.
 	*
 	* @param string $cartItemId Identifier of the cart item to update quantity.
 	* @param int $quantity The number of cart items in the shopper's active cart.
@@ -101,15 +97,14 @@ class CartItemClient {
 	{
 		$url = CartItemUrl::updateCartItemQuantityUrl($cartItemId, $quantity);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* Removes all cart items in the shopper's active cart.
+	* Removes all items in the current shopper's active cart.
 	*
 	* @return MozuClient
 	*/
@@ -117,15 +112,14 @@ class CartItemClient {
 	{
 		$url = CartItemUrl::removeAllCartItemsUrl();
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* Delete a specific cart item by providing the cart item ID.
+	* Deletes a specific cart item by providing the cart item ID.
 	*
 	* @param string $cartItemId Identifier of the cart item to delete.
 	*/
@@ -133,8 +127,7 @@ class CartItemClient {
 	{
 		$url = CartItemUrl::deleteCartItemUrl($cartItemId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 

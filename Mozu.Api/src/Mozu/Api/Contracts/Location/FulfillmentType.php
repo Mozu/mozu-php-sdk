@@ -14,11 +14,20 @@ namespace Mozu\Api\Contracts\Location;
 
 
 
+/**
+*	Properties of a method used to fulfill items for an order. Fulfillment types are system-supplied, and include direct ship (DS) or in-store pickup (SP) at this time.
+*/
 class FulfillmentType
 {
-		public $code;
+	/**
+	*The system-supplied code that identifies the fulfillment type, which is "DS" for direct ship or "SP" for in-store pickup.
+	*/
+	public $code;
 
-		public $name;
+	/**
+	*The system-supplied name of the fulfillment type, which is "Direct Ship" or "In Store Pickup".
+	*/
+	public $name;
 
 }
 

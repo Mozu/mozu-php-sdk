@@ -17,14 +17,6 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class ProductDiscountCondition
 {
 		public $productCode;
-	public function getProductCode() {
-		return $this->productCode;
-	}
-	
-	public function setProductCode($productCode) {
-		$this->productCode = $productCode;
-		return $this;
-	}
 
 }
 

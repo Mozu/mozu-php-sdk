@@ -19,7 +19,7 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* 
+* Use the Master Catalog resource to view details of the master catalogs associated with a tenant and to manage the product publishing mode for each master catalog.
 */
 class MasterCatalogResource {
 
@@ -30,7 +30,7 @@ class MasterCatalogResource {
 	}
 
 	/**
-	* 
+	* Retrieve the details of all master catalog associated with a tenant.
 	*
 	* @return MasterCatalogCollection 
 	*/
@@ -44,7 +44,7 @@ class MasterCatalogResource {
 	}
 	
 	/**
-	* 
+	* Retrieve the details of the master catalog specified in the request.
 	*
 	* @param int $masterCatalogId 
 	* @return MasterCatalog 
@@ -59,10 +59,10 @@ class MasterCatalogResource {
 	}
 	
 	/**
-	* 
+	* Updates the product publishing mode for the master catalog specified in the request.
 	*
 	* @param int $masterCatalogId 
-	* @param MasterCatalog $masterCatalog 
+	* @param MasterCatalog $masterCatalog Properties of the master catalog to update, which consists of the product publishing mode. Possible values are "Pending" which saves product updates in draft mode until they are published, and "Live" which publishes all product changes immediately.
 	* @return MasterCatalog 
 	*/
 	public function updateMasterCatalog($dataViewMode, $masterCatalog,  $masterCatalogId, Mozu\Api\Security\AuthTicket &$authTicket= null)

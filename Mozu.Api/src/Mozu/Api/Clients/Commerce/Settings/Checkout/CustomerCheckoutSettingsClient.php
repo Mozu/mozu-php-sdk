@@ -31,8 +31,7 @@ class CustomerCheckoutSettingsClient {
 	{
 		$url = CustomerCheckoutSettingsUrl::getCustomerCheckoutSettingsUrl();
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -48,8 +47,7 @@ class CustomerCheckoutSettingsClient {
 	{
 		$url = CustomerCheckoutSettingsUrl::updateCustomerCheckoutSettingsUrl();
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($customerCheckoutSettings);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($customerCheckoutSettings);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 

@@ -31,8 +31,7 @@ class TaxableTerritoryClient {
 	{
 		$url = TaxableTerritoryUrl::getTaxableTerritoriesUrl();
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -48,8 +47,7 @@ class TaxableTerritoryClient {
 	{
 		$url = TaxableTerritoryUrl::addTaxableTerritoryUrl();
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($taxableTerritory);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($taxableTerritory);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -65,8 +63,7 @@ class TaxableTerritoryClient {
 	{
 		$url = TaxableTerritoryUrl::updateTaxableTerritoriesUrl();
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($taxableterritories);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($taxableterritories);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 

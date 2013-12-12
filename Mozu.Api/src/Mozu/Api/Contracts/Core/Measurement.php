@@ -23,27 +23,11 @@ class Measurement
 	*The unit of measurement, such as length or weight.
 	*/
 	public $unit;
-	public function getUnit() {
-		return $this->unit;
-	}
-	
-	public function setUnit($unit) {
-		$this->unit = $unit;
-		return $this;
-	}
 
 	/**
 	*The value of the measured unit.
 	*/
 	public $value;
-	public function getValue() {
-		return $this->value;
-	}
-	
-	public function setValue($value) {
-		$this->value = $value;
-		return $this;
-	}
 
 }
 

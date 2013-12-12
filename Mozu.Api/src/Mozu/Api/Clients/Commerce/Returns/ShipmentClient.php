@@ -18,58 +18,55 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* 
+* Use the return shipments subresource to manage shipments for a return replacement.
 */
 class ShipmentClient {
 
 	/**
-	* 
+	* Retrieves the details of the specified return replacement shipment.
 	*
-	* @param string $returnId 
-	* @param string $shipmentId 
+	* @param string $returnId Unique identifier of the return associated with the replacement shipment to retrieve.
+	* @param string $shipmentId Unique identifier of the return replacement shipment to retrieve.
 	* @return MozuClient
 	*/
 	public static function getShipmentClient( $returnId,  $shipmentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ShipmentUrl::getShipmentUrl($returnId, $shipmentId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Creates a shipment from one or more packages associated with a return replacement.
 	*
-	* @param string $returnId 
-	* @param array|string $packageIds 
+	* @param string $returnId Unique identifier of the return for which to create replacement package shipments.
+	* @param array|string $packageIds List of packages in the return replacement shipment.
 	* @return MozuClient
 	*/
 	public static function createPackageShipmentsClient($packageIds,  $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ShipmentUrl::createPackageShipmentsUrl($returnId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($packageIds);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($packageIds);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Deletes a shipment for a return replacement.
 	*
-	* @param string $returnId 
-	* @param string $shipmentId 
+	* @param string $returnId Unique identifier of the return associated with the replacement shipment to delete.
+	* @param string $shipmentId Unique identifier of the return replacement shipment to delete.
 	*/
 	public static function deleteShipmentClient( $returnId,  $shipmentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ShipmentUrl::deleteShipmentUrl($returnId, $shipmentId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 

@@ -26,9 +26,10 @@ class FacetUrl  {
 	public static function getFacetUrl($facetId, $validate)
 	{
 		$url = "/api/commerce/catalog/admin/facets/{facetId}?validate={validate}";
-		$url = MozuUrl::formatUrl($url, "facetId", $facetId);
-		$url = MozuUrl::formatUrl($url, "validate", $validate);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("facetId", $facetId);
+		$url = $mozuUrl->formatUrl("validate", $validate);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -41,10 +42,11 @@ class FacetUrl  {
 	public static function getFacetCategoryListUrl($categoryId, $includeAvailable, $validate)
 	{
 		$url = "/api/commerce/catalog/admin/facets/category/{categoryId}?includAvaliable={includeAvailable}&validate={validate}";
-		$url = MozuUrl::formatUrl($url, "categoryId", $categoryId);
-		$url = MozuUrl::formatUrl($url, "includeAvailable", $includeAvailable);
-		$url = MozuUrl::formatUrl($url, "validate", $validate);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("categoryId", $categoryId);
+		$url = $mozuUrl->formatUrl("includeAvailable", $includeAvailable);
+		$url = $mozuUrl->formatUrl("validate", $validate);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -54,7 +56,8 @@ class FacetUrl  {
 	public static function addFacetUrl()
 	{
 		$url = "/api/commerce/catalog/admin/facets/";
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		return $mozuUrl;
 	}
 	
 	/**
@@ -65,8 +68,9 @@ class FacetUrl  {
 	public static function updateFacetUrl($facetId)
 	{
 		$url = "/api/commerce/catalog/admin/facets/{facetId}";
-		$url = MozuUrl::formatUrl($url, "facetId", $facetId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"PUT") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("facetId", $facetId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -77,8 +81,9 @@ class FacetUrl  {
 	public static function deleteFacetByIdUrl($facetId)
 	{
 		$url = "/api/commerce/catalog/admin/facets/{facetId}";
-		$url = MozuUrl::formatUrl($url, "facetId", $facetId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("facetId", $facetId);
+		return $mozuUrl;
 	}
 	
 }

@@ -14,50 +14,27 @@ namespace Mozu\Api\Contracts\PaymentService;
 
 
 
+/**
+*	Properties of the credential fields associated with the payment gateway.
+*/
 class GatewayCredentialFieldDefinition
 {
 	/**
-	****Always private and should not be published.*** Previous ApiRefId "Mozu.PaymentService.Contracts.GatewayCredentialFieldDefinition.AdminDisplayOrder"
+	*The sequential display order of the gateway in Mozu Admin.
 	*/
 	public $adminDisplayOrder;
-	public function getAdminDisplayOrder() {
-		return $this->adminDisplayOrder;
-	}
-	
-	public function setAdminDisplayOrder($adminDisplayOrder) {
-		$this->adminDisplayOrder = $adminDisplayOrder;
-		return $this;
-	}
 
-		public $displayName;
-	public function getDisplayName() {
-		return $this->displayName;
-	}
-	
-	public function setDisplayName($displayName) {
-		$this->displayName = $displayName;
-		return $this;
-	}
+	/**
+	*The name that displays for the payment gateway.
+	*/
+	public $displayName;
 
-		public $name;
-	public function getName() {
-		return $this->name;
-	}
-	
-	public function setName($name) {
-		$this->name = $name;
-		return $this;
-	}
+	/**
+	*The localizable name of the payment gateway.
+	*/
+	public $name;
 
 		public $volusionStoreName;
-	public function getVolusionStoreName() {
-		return $this->volusionStoreName;
-	}
-	
-	public function setVolusionStoreName($volusionStoreName) {
-		$this->volusionStoreName = $volusionStoreName;
-		return $this;
-	}
 
 }
 

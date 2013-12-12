@@ -18,25 +18,24 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* Merchants create, view, update and delete groups. Groups are useful to manage sets of customers, for example, to offer discounts to particular groups or assign VIP status to a set of customers. A customer account can have several groups or none at all.
+* Use the Groups resource to manage customer groups that enable a merchant to manage sets of customers and target discounts for these groups. After a customer group is defined, you can associate any number of customer accounts with the group.
 */
 class CustomerGroupClient {
 
 	/**
 	* Retrieves a list of all customer groups defined for the site according to any specified filter criteria and sort options.
 	*
-	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
-	* @param string $sortBy "The property by which to sort results and whether the results appear in ascending (a-z) order, represented by 'ASC' or in descending (z-a) order, represented by 'DESC'. The sortBy parameter follows an available property. <b>For example: sortBy=productCode+asc</b>"
-	* @param int $startIndex "Used to create paged results from a query. Indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3."
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return MozuClient
 	*/
 	public static function getGroupsClient($filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CustomerGroupUrl::getGroupsUrl($filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -52,8 +51,7 @@ class CustomerGroupClient {
 	{
 		$url = CustomerGroupUrl::getGroupUrl($groupId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -62,33 +60,31 @@ class CustomerGroupClient {
 	/**
 	* Creates a new customer group. New customer groups do not have any associated customer accounts.
 	*
-	* @param CustomerGroup $group 
+	* @param CustomerGroup $group Properties of the customer group to add.
 	* @return MozuClient
 	*/
 	public static function addGroupClient($group, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CustomerGroupUrl::addGroupUrl();
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($group);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($group);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* Changes the name of an existing customer group.
+	* Updates the name of a defined customer group.
 	*
 	* @param int $groupId Identifier of the customer group to update.
-	* @param CustomerGroup $group 
+	* @param CustomerGroup $group Properties of the customer group to update.
 	* @return MozuClient
 	*/
 	public static function updateGroupClient($group,  $groupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CustomerGroupUrl::updateGroupUrl($groupId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($group);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($group);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -103,8 +99,7 @@ class CustomerGroupClient {
 	{
 		$url = CustomerGroupUrl::deleteGroupUrl($groupId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 

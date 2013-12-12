@@ -19,14 +19,15 @@ class DiscountTargetUrl  {
 
 	/**
 		* Get Resource Url for GetDiscountTarget
-		* @param int $discountId 
+		* @param int $discountId Unique identifier of the discount. System-supplied and read only.
 		* @return string Resource Url
 	*/
 	public static function getDiscountTargetUrl($discountId)
 	{
 		$url = "/api/commerce/catalog/admin/discounts/{discountId}/target";
-		$url = MozuUrl::formatUrl($url, "discountId", $discountId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("discountId", $discountId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -37,8 +38,9 @@ class DiscountTargetUrl  {
 	public static function updateDiscountTargetUrl($discountId)
 	{
 		$url = "/api/commerce/catalog/admin/discounts/{discountId}/target";
-		$url = MozuUrl::formatUrl($url, "discountId", $discountId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"PUT") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("discountId", $discountId);
+		return $mozuUrl;
 	}
 	
 }

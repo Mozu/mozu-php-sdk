@@ -23,27 +23,11 @@ class PropertyValueType
 	*The name of the property type value.
 	*/
 	public $name;
-	public function getName() {
-		return $this->name;
-	}
-	
-	public function setName($name) {
-		$this->name = $name;
-		return $this;
-	}
 
 	/**
 	*The data storage type associated with this property type value.
 	*/
 	public $storageType;
-	public function getStorageType() {
-		return $this->storageType;
-	}
-	
-	public function setStorageType($storageType) {
-		$this->storageType = $storageType;
-		return $this;
-	}
 
 }
 

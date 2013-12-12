@@ -23,213 +23,73 @@ class Product
 	*Short description of the product in the language specified in the locale code for the storefront.
 	*/
 	public $description;
-	public function getDescription() {
-		return $this->description;
-	}
-	
-	public function setDescription($description) {
-		$this->description = $description;
-		return $this;
-	}
 
 	/**
 	*The alternate image description defined for the product, in the language specified in the locale code for the storefront.
 	*/
 	public $imageAlternateText;
-	public function getImageAlternateText() {
-		return $this->imageAlternateText;
-	}
-	
-	public function setImageAlternateText($imageAlternateText) {
-		$this->imageAlternateText = $imageAlternateText;
-		return $this;
-	}
 
-	/**
-	*The URL of the image file associated with a product on a storefront.
-	*/
-	public $imagePath;
-	public function getImagePath() {
-		return $this->imagePath;
-	}
-	
-	public function setImagePath($imagePath) {
-		$this->imagePath = $imagePath;
-		return $this;
-	}
+		public $imageUrl;
+
+		public $isPackagedStandAlone;
 
 	/**
 	*If true, the product can be purchased or fulfilled at regular intervals such as a monthly billing cycle or a digital or physical subscription.
 	*/
 	public $isRecurring;
-	public function getIsRecurring() {
-		return $this->isRecurring;
-	}
-	
-	public function setIsRecurring($isRecurring) {
-		$this->isRecurring = $isRecurring;
-		return $this;
-	}
 
 	/**
 	*If true, the entity is subject to sales tax based on the relevant tax rate.
 	*/
 	public $isTaxable;
-	public function getIsTaxable() {
-		return $this->isTaxable;
-	}
-	
-	public function setIsTaxable($isTaxable) {
-		$this->isTaxable = $isTaxable;
-		return $this;
-	}
 
 	/**
 	*The name of the product that appears on the storefront.
 	*/
 	public $name;
-	public function getName() {
-		return $this->name;
-	}
-	
-	public function setName($name) {
-		$this->name = $name;
-		return $this;
-	}
 
 	/**
-	*"Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+	*Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	*/
 	public $productCode;
-	public function getProductCode() {
-		return $this->productCode;
-	}
-	
-	public function setProductCode($productCode) {
-		$this->productCode = $productCode;
-		return $this;
-	}
+
+		public $productReservationId;
 
 	/**
 	*The product type template associated with the product on the storefront.
 	*/
 	public $productType;
-	public function getProductType() {
-		return $this->productType;
-	}
-	
-	public function setProductType($productType) {
-		$this->productType = $productType;
-		return $this;
-	}
 
 		public $productUsage;
-	public function getProductUsage() {
-		return $this->productUsage;
-	}
-	
-	public function setProductUsage($productUsage) {
-		$this->productUsage = $productUsage;
-		return $this;
-	}
-
-	/**
-	*If true, the product cannot be shipped in combination with other products.
-	*/
-	public $shipsByItself;
-	public function getShipsByItself() {
-		return $this->shipsByItself;
-	}
-	
-	public function setShipsByItself($shipsByItself) {
-		$this->shipsByItself = $shipsByItself;
-		return $this;
-	}
 
 	/**
 	*Merchant-created code associated with a specific product variation. Variation product codes maintain an association with the base product code.
 	*/
 	public $variationProductCode;
-	public function getVariationProductCode() {
-		return $this->variationProductCode;
-	}
-	
-	public function setVariationProductCode($variationProductCode) {
-		$this->variationProductCode = $variationProductCode;
-		return $this;
-	}
 
 		public $bundledProducts;
-	public function getBundledProducts() {
-		return $this->bundledProducts;
-	}
-	
-	public function setBundledProducts($bundledProducts) {
-		$this->bundledProducts = $bundledProducts;
-		return $this;
-	}
 
 	/**
 	*The list of all categories associated with the product.
 	*/
 	public $categories;
-	public function getCategories() {
-		return $this->categories;
-	}
-	
-	public function setCategories($categories) {
-		$this->categories = $categories;
-		return $this;
-	}
 
 	/**
 	*Dimensions of the packaged product.
 	*/
 	public $measurements;
-	public function getMeasurements() {
-		return $this->measurements;
-	}
-	
-	public function setMeasurements($measurements) {
-		$this->measurements = $measurements;
-		return $this;
-	}
 
 	/**
 	*The list of option attributes configured for the product.
 	*/
 	public $options;
-	public function getOptions() {
-		return $this->options;
-	}
-	
-	public function setOptions($options) {
-		$this->options = $options;
-		return $this;
-	}
 
 	/**
 	*The price of the product that appears on the storefront including any applied discounts.
 	*/
 	public $price;
-	public function getPrice() {
-		return $this->price;
-	}
-	
-	public function setPrice($price) {
-		$this->price = $price;
-		return $this;
-	}
 
 		public $properties;
-	public function getProperties() {
-		return $this->properties;
-	}
-	
-	public function setProperties($properties) {
-		$this->properties = $properties;
-		return $this;
-	}
 
 }
 

@@ -23,79 +23,33 @@ class Card
 	*The masked credit card number part returned from the payment gateway.
 	*/
 	public $cardNumberPart;
-	public function getCardNumberPart() {
-		return $this->cardNumberPart;
-	}
-	
-	public function setCardNumberPart($cardNumberPart) {
-		$this->cardNumberPart = $cardNumberPart;
-		return $this;
-	}
 
 	/**
 	*The type of credit card, such as Visa or Amex.
 	*/
 	public $cardType;
-	public function getCardType() {
-		return $this->cardType;
-	}
-	
-	public function setCardType($cardType) {
-		$this->cardType = $cardType;
-		return $this;
-	}
+
+		public $contactId;
 
 	/**
 	*The two-digit month the credit card expires.
 	*/
 	public $expireMonth;
-	public function getExpireMonth() {
-		return $this->expireMonth;
-	}
-	
-	public function setExpireMonth($expireMonth) {
-		$this->expireMonth = $expireMonth;
-		return $this;
-	}
 
 	/**
 	*The four-digit year the credit card expires.
 	*/
 	public $expireYear;
-	public function getExpireYear() {
-		return $this->expireYear;
-	}
-	
-	public function setExpireYear($expireYear) {
-		$this->expireYear = $expireYear;
-		return $this;
-	}
 
 	/**
 	*Unique ID of the credit card for the customer account. This identifier is separate from the credit card number.
 	*/
 	public $id;
-	public function getId() {
-		return $this->id;
-	}
-	
-	public function setId($id) {
-		$this->id = $id;
-		return $this;
-	}
 
 	/**
 	*The name printed on the credit card.
 	*/
 	public $nameOnCard;
-	public function getNameOnCard() {
-		return $this->nameOnCard;
-	}
-	
-	public function setNameOnCard($nameOnCard) {
-		$this->nameOnCard = $nameOnCard;
-		return $this;
-	}
 
 }
 

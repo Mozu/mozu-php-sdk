@@ -30,8 +30,8 @@ class ProductSearchResultUrl  {
 		* @param string $facetTemplate The facet template to use on the storefront. A template displays all facets associated with the template on the storefront product search. Currently, only category-level facet templates are available.
 		* @param string $facetTemplateSubset Display a subset of the facets defined in the template specified in facetTemplate parameter.
 		* @param string $facetValueFilter The facet values to apply to the filter.
-		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product search results by any of its properties, including product code, type, category, and name. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). <b>For example - "filter=categoryId+eq+12"</b>
-		* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product search results by any of its properties, including product code, type, category, and name. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=categoryId+eq+12"
+		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 		* @param string $query The terms to search on.
 		* @param string $sortBy 
 		* @param int $startIndex 
@@ -39,38 +39,40 @@ class ProductSearchResultUrl  {
 	*/
 	public static function searchUrl($facet, $facetFieldRangeQuery, $facetHierDepth, $facetHierPrefix, $facetHierValue, $facetPageSize, $facetSettings, $facetStartIndex, $facetTemplate, $facetTemplateSubset, $facetValueFilter, $filter, $pageSize, $query, $sortBy, $startIndex)
 	{
-		$url = "/api/commerce/catalog/storefront/productsearch/searchz/?query={query}&filter={filter}&facetTemplate={facetTemplate}&facetTemplateSubset={facetTemplateSubset}&facet={facet}&facetFieldRangeQuery={facetFieldRangeQuery}&facetHierPrefix={facetHierPrefix}&facetHierValue={facetHierValue}&facetHierDepth={facetHierDepth}&facetStartIndex={facetStartIndex}&facetPageSize={facetPageSize}&facetSettings={facetSettings}&facetValueFilter={facetValueFilter}&sortBy={sortBy}&pageSize={pageSize}&startIndex={startIndex}";
-		$url = MozuUrl::formatUrl($url, "facet", $facet);
-		$url = MozuUrl::formatUrl($url, "facetFieldRangeQuery", $facetFieldRangeQuery);
-		$url = MozuUrl::formatUrl($url, "facetHierDepth", $facetHierDepth);
-		$url = MozuUrl::formatUrl($url, "facetHierPrefix", $facetHierPrefix);
-		$url = MozuUrl::formatUrl($url, "facetHierValue", $facetHierValue);
-		$url = MozuUrl::formatUrl($url, "facetPageSize", $facetPageSize);
-		$url = MozuUrl::formatUrl($url, "facetSettings", $facetSettings);
-		$url = MozuUrl::formatUrl($url, "facetStartIndex", $facetStartIndex);
-		$url = MozuUrl::formatUrl($url, "facetTemplate", $facetTemplate);
-		$url = MozuUrl::formatUrl($url, "facetTemplateSubset", $facetTemplateSubset);
-		$url = MozuUrl::formatUrl($url, "facetValueFilter", $facetValueFilter);
-		$url = MozuUrl::formatUrl($url, "filter", $filter);
-		$url = MozuUrl::formatUrl($url, "pageSize", $pageSize);
-		$url = MozuUrl::formatUrl($url, "query", $query);
-		$url = MozuUrl::formatUrl($url, "sortBy", $sortBy);
-		$url = MozuUrl::formatUrl($url, "startIndex", $startIndex);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$url = "/api/commerce/catalog/storefront/productsearch/search/?query={query}&filter={filter}&facetTemplate={facetTemplate}&facetTemplateSubset={facetTemplateSubset}&facet={facet}&facetFieldRangeQuery={facetFieldRangeQuery}&facetHierPrefix={facetHierPrefix}&facetHierValue={facetHierValue}&facetHierDepth={facetHierDepth}&facetStartIndex={facetStartIndex}&facetPageSize={facetPageSize}&facetSettings={facetSettings}&facetValueFilter={facetValueFilter}&sortBy={sortBy}&pageSize={pageSize}&startIndex={startIndex}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("facet", $facet);
+		$url = $mozuUrl->formatUrl("facetFieldRangeQuery", $facetFieldRangeQuery);
+		$url = $mozuUrl->formatUrl("facetHierDepth", $facetHierDepth);
+		$url = $mozuUrl->formatUrl("facetHierPrefix", $facetHierPrefix);
+		$url = $mozuUrl->formatUrl("facetHierValue", $facetHierValue);
+		$url = $mozuUrl->formatUrl("facetPageSize", $facetPageSize);
+		$url = $mozuUrl->formatUrl("facetSettings", $facetSettings);
+		$url = $mozuUrl->formatUrl("facetStartIndex", $facetStartIndex);
+		$url = $mozuUrl->formatUrl("facetTemplate", $facetTemplate);
+		$url = $mozuUrl->formatUrl("facetTemplateSubset", $facetTemplateSubset);
+		$url = $mozuUrl->formatUrl("facetValueFilter", $facetValueFilter);
+		$url = $mozuUrl->formatUrl("filter", $filter);
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("query", $query);
+		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for Suggest
-		* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 		* @param string $q Text that the shopper is currently entering.
 		* @return string Resource Url
 	*/
 	public static function suggestUrl($pageSize, $q)
 	{
 		$url = "/api/commerce/catalog/storefront/productsearch/suggest?q={q}&pageSize={pageSize}";
-		$url = MozuUrl::formatUrl($url, "pageSize", $pageSize);
-		$url = MozuUrl::formatUrl($url, "q", $q);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("q", $q);
+		return $mozuUrl;
 	}
 	
 }

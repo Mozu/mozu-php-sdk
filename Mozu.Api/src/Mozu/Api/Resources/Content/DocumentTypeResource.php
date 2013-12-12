@@ -36,29 +36,29 @@ class DocumentTypeResource {
 	* @param int $startIndex 
 	* @return DocumentTypeCollection 
 	*/
-	/*public function list($pageSize =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	/*public function list($dataViewMode, $pageSize =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = DocumentTypeClient::listClient($pageSize, $startIndex, $authTicket);
+		$mozuClient = DocumentTypeClient::listClient($dataViewMode, $pageSize, $startIndex, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
-	}*/
-	
+	}
+	*/
 	/**
 	* Retrieves an existing DocumentType.
 	*
 	* @param string $documentTypeName The documentType name being retrieved.
 	* @return DocumentType 
 	*/
-	/*public function get( $documentTypeName, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function get($dataViewMode,  $documentTypeName, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = DocumentTypeClient::getClient( $documentTypeName, $authTicket);
+		$mozuClient = DocumentTypeClient::getClient($dataViewMode,  $documentTypeName, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
-	}*/
+	}
 	
 	
 }

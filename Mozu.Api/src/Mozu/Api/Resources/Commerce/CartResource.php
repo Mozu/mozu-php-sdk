@@ -19,7 +19,7 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* Use the Carts resource to manage storefront shopping carts as items are added and removed. Each time a shopper's cart is modified, the Carts resource updates estimated prices, discounts, tax, and shipping.
+* Use the Carts resource to manage storefront shopping carts as items are added and removed. Each time a shopper's cart is modified, the Carts resource updates the estimated total with any applicable discounts.
 */
 class CartResource {
 
@@ -30,9 +30,9 @@ class CartResource {
 	}
 
 	/**
-	* Retrieve a cart specified by its cart ID.
+	* Retrieves the cart specified in the request.
 	*
-	* @param string $cartId Identifier of the cart being retrieved.
+	* @param string $cartId Identifier of the cart to retrieve.
 	* @return Cart 
 	*/
 	public function getCart( $cartId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -59,7 +59,7 @@ class CartResource {
 	}
 	
 	/**
-	* Retrieves the number of items in the active cart and the status of the cart such as whether or not it has expired. Only an anonymous user's cart (guest that does not log in) that is emptied and idle will expire after 14 days. Note that the expiration counter is renewed each time action is made to the cart. For shoppers or users that are logged in, the cart does not expire.
+	* Retrieves summary information associated with the cart of the current shopper, including the number of items, the current total, and whether the cart has expired. All anonymous idle carts that do not proceed to checkout expire after 14 days.
 	*
 	* @return CartSummary 
 	*/
@@ -73,7 +73,7 @@ class CartResource {
 	}
 	
 	/**
-	* Retrieve a user's cart by specifying the user ID.
+	* Retrieves the cart of the user specified in the request.
 	*
 	* @param string $userId Unique identifier of the user whose cart you want to retrieve.
 	* @return Cart 
@@ -88,7 +88,7 @@ class CartResource {
 	}
 	
 	/**
-	* Retrieves the current status of the specified user's cart, including the number of items in the active cart.
+	* Retrieves summary information associated with the cart of user specified in the request, including the number of items in the cart, the current total, and whether the cart has expired. All anonymous idle carts that do not proceed to checkout expire after 14 days.
 	*
 	* @param string $userId Unique identifier of the user whose cart details you want to retrieve.
 	* @return CartSummary 
@@ -118,9 +118,9 @@ class CartResource {
 	}
 	
 	/**
-	* Delete the cart specified by its cart ID.
+	* Deletes the cart specified in the request.
 	*
-	* @param string $cartId Identifier of the cart being deleted.
+	* @param string $cartId Identifier of the cart to delete.
 	*/
 	public function deleteCart( $cartId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

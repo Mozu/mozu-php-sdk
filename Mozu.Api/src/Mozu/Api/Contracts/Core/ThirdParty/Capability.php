@@ -14,37 +14,89 @@ namespace Mozu\Api\Contracts\Core\ThirdParty;
 
 
 
+/**
+*	Properties of a capability application installed in a tenant.
+*/
 class Capability
 {
-		public $activeCreditTypes;
+	/**
+	*Array list of credit types active for the capability.
+	*/
+	public $activeCreditTypes;
 
-		public $activeShoppingCountries;
+	/**
+	*Array list of the countries for which this capability can actively shop.
+	*/
+	public $activeShoppingCountries;
 
-		public $capabilityMode;
+		public $appHashKey;
 
-		public $capabilityType;
+		public $appId;
 
-		public $enabled;
+	/**
+	*The enablement mode of the capability.
+	*/
+	public $capabilityMode;
 
-		public $id;
+	/**
+	*The capability type installed in the tenant.
+	*/
+	public $capabilityType;
 
-		public $initialized;
+	/**
+	*If true, the capability is enabled in the installed tenant.
+	*/
+	public $enabled;
 
-		public $scopeId;
+	/**
+	*Unique identifier of the capability.
+	*/
+	public $id;
 
-		public $scopeType;
+	/**
+	*If true, the application is initialized with the defined settings.
+	*/
+	public $initialized;
 
-		public $activeShippingCountries;
+	/**
+	*Unique identifier of the developer account or tenant associated for which the capability is entitled.
+	*/
+	public $scopeId;
 
-		public $auditInfo;
+	/**
+	*The type of scope for which the tenant is entitled, which is developer or tenant.
+	*/
+	public $scopeType;
 
-		public $operationUrls;
+	/**
+	*Array list of the countries to which this capability can actively ship.
+	*/
+	public $activeShippingCountries;
 
-		public $supportedCreditTypes;
+	/**
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
+	*/
+	public $auditInfo;
 
-		public $supportedShippingCountries;
+	/**
+	*Array list of URL endpoints for the operations associated with this capability.
+	*/
+	public $operationUrls;
 
-		public $supportedShoppingCountries;
+	/**
+	*Array list of credit types this capability supports.
+	*/
+	public $supportedCreditTypes;
+
+	/**
+	*Array list of countries this capability supports for shipping.
+	*/
+	public $supportedShippingCountries;
+
+	/**
+	*Array list of countries this capability supports for shopping.
+	*/
+	public $supportedShoppingCountries;
 
 }
 

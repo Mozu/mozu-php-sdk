@@ -23,118 +23,46 @@ class TenantAdminUserAuthTicket
 	*Alphanumeric string used to authenticate the user in API request headers.
 	*/
 	public $accessToken;
-	public function getAccessToken() {
-		return $this->accessToken;
-	}
-	
-	public function setAccessToken($accessToken) {
-		$this->accessToken = $accessToken;
-		return $this;
-	}
 
 	/**
 	*The date and time the user access token expires.
 	*/
 	public $accessTokenExpiration;
-	public function getAccessTokenExpiration() {
-		return $this->accessTokenExpiration;
-	}
-	
-	public function setAccessTokenExpiration($accessTokenExpiration) {
-		$this->accessTokenExpiration = $accessTokenExpiration;
-		return $this;
-	}
 
 	/**
-	*Date and time when the entity was created. UTC Date/Time.
+	*Date and time when the entity was created, represented in UTC Date/Time.
 	*/
 	public $createdOn;
-	public function getCreatedOn() {
-		return $this->createdOn;
-	}
-	
-	public function setCreatedOn($createdOn) {
-		$this->createdOn = $createdOn;
-		return $this;
-	}
 
 	/**
 	*Collection of behaviors encrypted in the user authentication ticket. Behaviors are granted to users as part of the role assigned for the given tenant or developer account.
 	*/
 	public $grantedBehaviors;
-	public function getGrantedBehaviors() {
-		return $this->grantedBehaviors;
-	}
-	
-	public function setGrantedBehaviors($grantedBehaviors) {
-		$this->grantedBehaviors = $grantedBehaviors;
-		return $this;
-	}
 
 	/**
 	*Alphanumeric string used to generate a new user authentication ticket after the access token expires.
 	*/
 	public $refreshToken;
-	public function getRefreshToken() {
-		return $this->refreshToken;
-	}
-	
-	public function setRefreshToken($refreshToken) {
-		$this->refreshToken = $refreshToken;
-		return $this;
-	}
 
 	/**
 	*The date and time the user refresh token expires.
 	*/
 	public $refreshTokenExpiration;
-	public function getRefreshTokenExpiration() {
-		return $this->refreshTokenExpiration;
-	}
-	
-	public function setRefreshTokenExpiration($refreshTokenExpiration) {
-		$this->refreshTokenExpiration = $refreshTokenExpiration;
-		return $this;
-	}
 
 	/**
 	*Collection of tenants for which the user authentication ticket grants access.
 	*/
 	public $availableTenants;
-	public function getAvailableTenants() {
-		return $this->availableTenants;
-	}
-	
-	public function setAvailableTenants($availableTenants) {
-		$this->availableTenants = $availableTenants;
-		return $this;
-	}
 
 	/**
 	*Tenant information associated with the user authentication ticket.
 	*/
 	public $tenant;
-	public function getTenant() {
-		return $this->tenant;
-	}
-	
-	public function setTenant($tenant) {
-		$this->tenant = $tenant;
-		return $this;
-	}
 
 	/**
 	*User information associated with the authentication ticket.
 	*/
 	public $user;
-	public function getUser() {
-		return $this->user;
-	}
-	
-	public function setUser($user) {
-		$this->user = $user;
-		return $this;
-	}
 
 }
 

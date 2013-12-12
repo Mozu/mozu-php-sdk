@@ -19,68 +19,73 @@ class ProductOptionUrl  {
 
 	/**
 		* Get Resource Url for GetOptions
-		* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 		* @return string Resource Url
 	*/
 	public static function getOptionsUrl($productCode)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/Options";
-		$url = MozuUrl::formatUrl($url, "productCode", $productCode);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetOption
-		* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-		* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 		* @return string Resource Url
 	*/
 	public static function getOptionUrl($attributeFQN, $productCode)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/Options/{attributeFQN}";
-		$url = MozuUrl::formatUrl($url, "attributeFQN", $attributeFQN);
-		$url = MozuUrl::formatUrl($url, "productCode", $productCode);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for AddOption
-		* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 		* @return string Resource Url
 	*/
 	public static function addOptionUrl($productCode)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/Options";
-		$url = MozuUrl::formatUrl($url, "productCode", $productCode);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdateOption
-		* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-		* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 		* @return string Resource Url
 	*/
 	public static function updateOptionUrl($attributeFQN, $productCode)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/Options/{attributeFQN}";
-		$url = MozuUrl::formatUrl($url, "attributeFQN", $attributeFQN);
-		$url = MozuUrl::formatUrl($url, "productCode", $productCode);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"PUT") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for DeleteOption
-		* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-		* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 		* @return string Resource Url
 	*/
 	public static function deleteOptionUrl($attributeFQN, $productCode)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/Options/{attributeFQN}";
-		$url = MozuUrl::formatUrl($url, "attributeFQN", $attributeFQN);
-		$url = MozuUrl::formatUrl($url, "productCode", $productCode);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		return $mozuUrl;
 	}
 	
 }

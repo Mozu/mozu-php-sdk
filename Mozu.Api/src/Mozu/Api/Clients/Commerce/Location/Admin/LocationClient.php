@@ -18,93 +18,88 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* 
+* Use the Locations resource to manage each physical location associated with a tenant. Locations enable tenants to associate a physical address with product inventory, provide a store finder for in-store pickup, or both. Locations that support inventory can use both direct ship and in-store pickup fulfillment types.
 */
 class LocationClient {
 
 	/**
-	* 
+	* Retrieves a list of all locations associated with a tenant, according to any filter and sort criteria specified in the request.
 	*
-	* @param string $filter 
-	* @param int $pageSize 
-	* @param string $sortBy 
-	* @param int $startIndex 
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return MozuClient
 	*/
 	public static function getLocationsClient($filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = LocationUrl::getLocationsUrl($filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Retrieves the details of the location specified in the request by location code.
 	*
-	* @param string $locationCode 
+	* @param string $locationCode The merchant-defined code of the location to retrieve.
 	* @return MozuClient
 	*/
 	public static function getLocationClient( $locationCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = LocationUrl::getLocationUrl($locationCode);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Creates a new physical location for the tenant specified in the request header.
 	*
-	* @param Location $location 
+	* @param Location $location Properties of the location to create.
 	* @return MozuClient
 	*/
 	public static function addLocationClient($location, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = LocationUrl::addLocationUrl();
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($location);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($location);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Updates one or more details of a the location specified in the request by location code.
 	*
-	* @param string $locationCode 
-	* @param Location $location 
+	* @param string $locationCode The merchant-defined code associated with the location to update.
+	* @param Location $location Properties of the location to update.
 	* @return MozuClient
 	*/
 	public static function updateLocationClient($location,  $locationCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = LocationUrl::updateLocationUrl($locationCode);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($location);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($location);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Deletes the location specified in the request.
 	*
-	* @param string $locationCode 
+	* @param string $locationCode The merchant-defined code of the location to delete.
 	*/
 	public static function deleteLocationClient( $locationCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = LocationUrl::deleteLocationUrl($locationCode);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 

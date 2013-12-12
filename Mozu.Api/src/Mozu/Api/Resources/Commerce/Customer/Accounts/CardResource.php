@@ -45,6 +45,22 @@ class CardResource {
 	}
 	
 	/**
+	* 
+	*
+	* @param int $accountId 
+	* @param string $cardId 
+	* @return Card 
+	*/
+	public function getAccountCard( $accountId,  $cardId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	{
+		$mozuClient = CardClient::getAccountCardClient( $accountId,  $cardId, $authTicket);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+	/**
 	* Creates a new credit card record and stores it for the customer account.
 	*
 	* @param int $accountId Unique identifier of the customer account.
@@ -64,12 +80,13 @@ class CardResource {
 	* Update one or more properties of a credit card defined for a customer account.
 	*
 	* @param int $accountId Unique identifier of the customer account.
+	* @param string $cardId 
 	* @param Card $card Properties of the customer account credit card to update.
 	* @return Card 
 	*/
-	public function updateAccountCard($card,  $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateAccountCard($card,  $accountId,  $cardId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CardClient::updateAccountCardClient($card,  $accountId, $authTicket);
+		$mozuClient = CardClient::updateAccountCardClient($card,  $accountId,  $cardId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

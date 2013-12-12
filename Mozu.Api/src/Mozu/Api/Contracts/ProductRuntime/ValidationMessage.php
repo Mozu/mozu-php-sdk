@@ -23,53 +23,21 @@ class ValidationMessage
 	*The contents of the message displayed to the user when the product validation failure occurs.
 	*/
 	public $message;
-	public function getMessage() {
-		return $this->message;
-	}
-	
-	public function setMessage($message) {
-		$this->message = $message;
-		return $this;
-	}
 
 	/**
 	*The severity level of the product validation failure.
 	*/
 	public $severity;
-	public function getSeverity() {
-		return $this->severity;
-	}
-	
-	public function setSeverity($severity) {
-		$this->severity = $severity;
-		return $this;
-	}
 
 	/**
 	*The entity that triggered the product validation.
 	*/
 	public $source;
-	public function getSource() {
-		return $this->source;
-	}
-	
-	public function setSource($source) {
-		$this->source = $source;
-		return $this;
-	}
 
 	/**
 	*Unique identifier of the entity that triggered the validation.
 	*/
 	public $sourceId;
-	public function getSourceId() {
-		return $this->sourceId;
-	}
-	
-	public function setSourceId($sourceId) {
-		$this->sourceId = $sourceId;
-		return $this;
-	}
 
 }
 

@@ -23,27 +23,11 @@ class FacetValidity
 	*If true, the facet source is valid for its associated category.
 	*/
 	public $isValid;
-	public function getIsValid() {
-		return $this->isValid;
-	}
-	
-	public function setIsValid($isValid) {
-		$this->isValid = $isValid;
-		return $this;
-	}
 
 	/**
 	*Code associated with a reason for facet validation to return false for its associated category.
 	*/
 	public $reasonCode;
-	public function getReasonCode() {
-		return $this->reasonCode;
-	}
-	
-	public function setReasonCode($reasonCode) {
-		$this->reasonCode = $reasonCode;
-		return $this;
-	}
 
 }
 

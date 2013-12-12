@@ -15,7 +15,7 @@ namespace Mozu\Api\Contracts\Core;
 
 
 /**
-*	Properties of the scope in which a user operates, which represents a developer account or Mozu tenant.
+*	Properties of the scope in which a user operates, which represents a developer account or Mozu production tenant.
 */
 class UserScope
 {
@@ -23,37 +23,16 @@ class UserScope
 	*Identifier of the scope, which represents a developer account ID or tenant ID.
 	*/
 	public $id;
-	public function getId() {
-		return $this->id;
-	}
-	
-	public function setId($id) {
-		$this->id = $id;
-		return $this;
-	}
-
-		public $name;
-	public function getName() {
-		return $this->name;
-	}
-	
-	public function setName($name) {
-		$this->name = $name;
-		return $this;
-	}
 
 	/**
-	*The type of scope, which is a developer account or tenant.
+	*The name of the developer account or tenant.
+	*/
+	public $name;
+
+	/**
+	*The type of scope, which is a developer account or production tenant.
 	*/
 	public $type;
-	public function getType() {
-		return $this->type;
-	}
-	
-	public function setType($type) {
-		$this->type = $type;
-		return $this;
-	}
 
 }
 

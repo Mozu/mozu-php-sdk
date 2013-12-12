@@ -26,29 +26,31 @@ class FolderUrl  {
 	public static function getFolderUrl($documentListName, $folderId)
 	{
 		$url = "/api/content/documentlists/{documentListName}/folders/{folderId}";
-		$url = MozuUrl::formatUrl($url, "documentListName", $documentListName);
-		$url = MozuUrl::formatUrl($url, "folderId", $folderId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("documentListName", $documentListName);
+		$url = $mozuUrl->formatUrl("folderId", $folderId);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetFolders
 		* @param string $documentListName The name of the document list that contains this folder.
-		* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
-		* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
-		* @param string $sort "The property by which to sort results and whether the results appear in ascending (a-z) order, represented by 'ASC' or in descending (z-a) order, represented by 'DESC'. The sortBy parameter follows an available property. <b>For example: sortBy=productCode+asc</b>"
-		* @param int $startIndex "Used to create paged results from a query. Indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3."
+		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+		* @param string $sort The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
+		* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 		* @return string Resource Url
 	*/
 	public static function getFoldersUrl($documentListName, $filter, $pageSize, $sort, $startIndex)
 	{
 		$url = "/api/content/documentlists/{documentListName}/folders?filter={filter}&pageSize={pageSize}&startIndex={startIndex}&sortBy={sort}";
-		$url = MozuUrl::formatUrl($url, "documentListName", $documentListName);
-		$url = MozuUrl::formatUrl($url, "filter", $filter);
-		$url = MozuUrl::formatUrl($url, "pageSize", $pageSize);
-		$url = MozuUrl::formatUrl($url, "sort", $sort);
-		$url = MozuUrl::formatUrl($url, "startIndex", $startIndex);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("documentListName", $documentListName);
+		$url = $mozuUrl->formatUrl("filter", $filter);
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("sort", $sort);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -59,8 +61,9 @@ class FolderUrl  {
 	public static function createFolderUrl($documentListName)
 	{
 		$url = "/api/content/documentlists/{documentListName}/folders";
-		$url = MozuUrl::formatUrl($url, "documentListName", $documentListName);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("documentListName", $documentListName);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -72,9 +75,10 @@ class FolderUrl  {
 	public static function updateFolderUrl($documentListName, $folderId)
 	{
 		$url = "/api/content/documentlists/{documentListName}/folders/{folderId}";
-		$url = MozuUrl::formatUrl($url, "documentListName", $documentListName);
-		$url = MozuUrl::formatUrl($url, "folderId", $folderId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"PUT") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("documentListName", $documentListName);
+		$url = $mozuUrl->formatUrl("folderId", $folderId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -86,9 +90,10 @@ class FolderUrl  {
 	public static function deleteFolderUrl($documentListName, $folderId)
 	{
 		$url = "/api/content/documentlists/{documentListName}/folders/{folderId}";
-		$url = MozuUrl::formatUrl($url, "documentListName", $documentListName);
-		$url = MozuUrl::formatUrl($url, "folderId", $folderId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("documentListName", $documentListName);
+		$url = $mozuUrl->formatUrl("folderId", $folderId);
+		return $mozuUrl;
 	}
 	
 }

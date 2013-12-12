@@ -25,7 +25,7 @@ class DiscountTargetClient {
 	/**
 	* Retrieves the discount target, that is which products, categories, or shipping methods are eligible for the discount.
 	*
-	* @param int $discountId 
+	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
 	* @return MozuClient
 	*/
 	public static function getDiscountTargetClient($dataViewMode,  $discountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -33,8 +33,7 @@ class DiscountTargetClient {
 		$url = DiscountTargetUrl::getDiscountTargetUrl($discountId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
-;
-		if ($authTicket != null)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -52,8 +51,7 @@ class DiscountTargetClient {
 		$url = DiscountTargetUrl::updateDiscountTargetUrl($discountId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($discountTarget)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
-;
-		if ($authTicket != null)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 

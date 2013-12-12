@@ -24,7 +24,8 @@ class CustomerCheckoutSettingsUrl  {
 	public static function getCustomerCheckoutSettingsUrl()
 	{
 		$url = "/api/commerce/settings/checkout/customercheckoutsettings";
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		return $mozuUrl;
 	}
 	
 	/**
@@ -34,7 +35,8 @@ class CustomerCheckoutSettingsUrl  {
 	public static function updateCustomerCheckoutSettingsUrl()
 	{
 		$url = "/api/commerce/settings/checkout/customercheckoutsettings";
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"PUT") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		return $mozuUrl;
 	}
 	
 }

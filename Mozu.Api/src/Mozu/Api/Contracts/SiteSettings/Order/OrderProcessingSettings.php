@@ -23,40 +23,16 @@ class OrderProcessingSettings
 	*Determines whether payment authorization occurs when the order is placed or when the order is shipped.
 	*/
 	public $paymentProcessingFlowType;
-	public function getPaymentProcessingFlowType() {
-		return $this->paymentProcessingFlowType;
-	}
-	
-	public function setPaymentProcessingFlowType($paymentProcessingFlowType) {
-		$this->paymentProcessingFlowType = $paymentProcessingFlowType;
-		return $this;
-	}
 
 	/**
 	*If true, use the override price defined for products in the order to calculate discounts for the order.
 	*/
 	public $useOverridePriceToCalculateDiscounts;
-	public function getUseOverridePriceToCalculateDiscounts() {
-		return $this->useOverridePriceToCalculateDiscounts;
-	}
-	
-	public function setUseOverridePriceToCalculateDiscounts($useOverridePriceToCalculateDiscounts) {
-		$this->useOverridePriceToCalculateDiscounts = $useOverridePriceToCalculateDiscounts;
-		return $this;
-	}
 
 	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
-	public function getAuditInfo() {
-		return $this->auditInfo;
-	}
-	
-	public function setAuditInfo($auditInfo) {
-		$this->auditInfo = $auditInfo;
-		return $this;
-	}
 
 }
 

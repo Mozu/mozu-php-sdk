@@ -23,105 +23,41 @@ class DocumentType
 	*User-defined description of the document type.
 	*/
 	public $description;
-	public function getDescription() {
-		return $this->description;
-	}
-	
-	public function setDescription($description) {
-		$this->description = $description;
-		return $this;
-	}
 
 	/**
 	*The name that displays for the document type.
 	*/
 	public $displayName;
-	public function getDisplayName() {
-		return $this->displayName;
-	}
-	
-	public function setDisplayName($displayName) {
-		$this->displayName = $displayName;
-		return $this;
-	}
 
 	/**
 	*The document type scope specifies where the the template can be used such as "Global".
 	*/
 	public $documentTypeScope;
-	public function getDocumentTypeScope() {
-		return $this->documentTypeScope;
-	}
-	
-	public function setDocumentTypeScope($documentTypeScope) {
-		$this->documentTypeScope = $documentTypeScope;
-		return $this;
-	}
 
 	/**
 	*The name of the document type.
 	*/
 	public $name;
-	public function getName() {
-		return $this->name;
-	}
-	
-	public function setName($name) {
-		$this->name = $name;
-		return $this;
-	}
 
 	/**
 	*If applicable, the name of the parent document type.
 	*/
 	public $parentTypeName;
-	public function getParentTypeName() {
-		return $this->parentTypeName;
-	}
-	
-	public function setParentTypeName($parentTypeName) {
-		$this->parentTypeName = $parentTypeName;
-		return $this;
-	}
 
 	/**
 	*List of content entity descriptions localized to the site or site group's default language.
 	*/
 	public $localizedDescriptions;
-	public function getLocalizedDescriptions() {
-		return $this->localizedDescriptions;
-	}
-	
-	public function setLocalizedDescriptions($localizedDescriptions) {
-		$this->localizedDescriptions = $localizedDescriptions;
-		return $this;
-	}
 
 	/**
 	*List of content entity display names localized to the site or site group's default language.
 	*/
 	public $localizedDisplayNames;
-	public function getLocalizedDisplayNames() {
-		return $this->localizedDisplayNames;
-	}
-	
-	public function setLocalizedDisplayNames($localizedDisplayNames) {
-		$this->localizedDisplayNames = $localizedDisplayNames;
-		return $this;
-	}
 
 	/**
 	*List of content property types associated with the document type.
 	*/
 	public $propertyTypes;
-	public function getPropertyTypes() {
-		return $this->propertyTypes;
-	}
-	
-	public function setPropertyTypes($propertyTypes) {
-		$this->propertyTypes = $propertyTypes;
-		return $this;
-	}
 
 }
 

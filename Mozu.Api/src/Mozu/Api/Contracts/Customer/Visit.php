@@ -14,31 +14,70 @@ namespace Mozu\Api\Contracts\Customer;
 
 
 
+/**
+*	Properties of a customer visit to one of a company's sites.
+*/
 class Visit
 {
-		public $accountId;
+	/**
+	*Unique identifier of the customer account associated with the visit.
+	*/
+	public $accountId;
 
-		public $browserLocationCode;
+	/**
+	*If the customer visit is made online, the location code associated with the website visited.
+	*/
+	public $browserLocationCode;
 
-		public $date;
+	/**
+	*The date and time of the customer visit.
+	*/
+	public $date;
 
-		public $id;
+	/**
+	*Unique identifier of the customer visit.
+	*/
+	public $id;
 
-		public $locationCode;
+	/**
+	*If the customer visit is made in person and associated with a defined location, the code that identifies the location.
+	*/
+	public $locationCode;
 
-		public $type;
+	/**
+	*The type of customer visit, which is "Website," "Store," "Call," or "Unknown."
+	*/
+	public $type;
 
-		public $userId;
+	/**
+	*The user ID of the customer who visited the site.
+	*/
+	public $userId;
 
-		public $webReferrer;
+	/**
+	*The HTTP_Referrer that initiatied the visit started. If the shopper was not referred from another source, this value is null.
+	*/
+	public $webReferrer;
 
-		public $webSessionId;
+	/**
+	*If the visit was made online, the identifier of the web session associated with the visit, which is system-supplied and read only.
+	*/
+	public $webSessionId;
 
-		public $webSiteId;
+	/**
+	*Unique identifier of the site.
+	*/
+	public $webSiteId;
 
-		public $webUserAgent;
+	/**
+	*The user agent string for the browser.
+	*/
+	public $webUserAgent;
 
-		public $transactions;
+	/**
+	*Array list of transactions the customer performed during the visit. A customer can perform multiple transactions in a single visit, or the visit can have no associated transactions.
+	*/
+	public $transactions;
 
 }
 

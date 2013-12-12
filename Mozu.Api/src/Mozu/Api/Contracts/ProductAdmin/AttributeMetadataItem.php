@@ -23,27 +23,11 @@ class AttributeMetadataItem
 	*User-defined key for attribute metadata.
 	*/
 	public $key;
-	public function getKey() {
-		return $this->key;
-	}
-	
-	public function setKey($key) {
-		$this->key = $key;
-		return $this;
-	}
 
 	/**
 	*Value for the user-defined key.
 	*/
 	public $value;
-	public function getValue() {
-		return $this->value;
-	}
-	
-	public function setValue($value) {
-		$this->value = $value;
-		return $this;
-	}
 
 }
 

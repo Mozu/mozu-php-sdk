@@ -19,7 +19,7 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* 
+* Use the return packages subresource to manage physical packages used to ship return replacement items.
 */
 class PackageResource {
 
@@ -30,10 +30,10 @@ class PackageResource {
 	}
 
 	/**
-	* 
+	* Retrieves the details of a package of return replacement items.
 	*
-	* @param string $packageId 
-	* @param string $returnId 
+	* @param string $packageId Unique identifier of the return replacement package to retrieve.
+	* @param string $returnId Unique identifier of the return associated with the replacement package to retrieve.
 	* @return Package 
 	*/
 	public function getPackage( $packageId,  $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -46,24 +46,26 @@ class PackageResource {
 	}
 	
 	/**
-	* 
+	* Retrieves the package label image supplied by the carrier for a return replacement.
 	*
-	* @param string $packageId 
-	* @param string $returnId 
+	* @param string $packageId Unique identifier of the return replacement package for which to retrieve the label.
+	* @param string $returnId Unique identifier of the return associated with the replacement package label to retrieve.
+	* @return Stream 
 	*/
 	public function getPackageLabel( $packageId,  $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$mozuClient = PackageClient::getPackageLabelClient( $packageId,  $returnId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 	/**
-	* 
+	* Creates a new physical package of return replacement items.
 	*
-	* @param string $returnId 
-	* @param Package $package 
+	* @param string $returnId Unique identifier of the return for which to create a replacement package.
+	* @param Package $package Properties of the physical package for a return replacement.
 	* @return Package 
 	*/
 	public function createPackage($pkg,  $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -76,11 +78,11 @@ class PackageResource {
 	}
 	
 	/**
-	* 
+	* Updates one or more properties of a package associated with a return replacement.
 	*
-	* @param string $packageId 
-	* @param string $returnId 
-	* @param Package $package 
+	* @param string $packageId Unique identifier of the return replacement package to update.
+	* @param string $returnId Unique identifier of the return associated with the replacement package to update.
+	* @param Package $package Properties of the return replacement package to update.
 	* @return Package 
 	*/
 	public function updatePackage($pkg,  $packageId,  $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -93,10 +95,10 @@ class PackageResource {
 	}
 	
 	/**
-	* 
+	* Deletes a package associated with a return replacement.
 	*
-	* @param string $packageId 
-	* @param string $returnId 
+	* @param string $packageId Unique identifier of the return replacement package to delete.
+	* @param string $returnId Unique identifier of the return associated with the replacement package to delete.
 	*/
 	public function deletePackage( $packageId,  $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

@@ -17,14 +17,6 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class CategoryDiscountCondition
 {
 		public $categoryId;
-	public function getCategoryId() {
-		return $this->categoryId;
-	}
-	
-	public function setCategoryId($categoryId) {
-		$this->categoryId = $categoryId;
-		return $this;
-	}
 
 }
 

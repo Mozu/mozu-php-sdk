@@ -19,7 +19,7 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* 
+* Use the Product Publishing resource to publish or discard pending changes to product definitions in the master catalog.
 */
 class PublishingScopeResource {
 
@@ -30,9 +30,9 @@ class PublishingScopeResource {
 	}
 
 	/**
-	* 
+	* Deletes the draft version of product changes for each product code specified in the request.
 	*
-	* @param PublishingScope $publishScope 
+	* @param PublishingScope $publishScope Properties of the pending product changes to include in this operation.
 	*/
 	public function discardDrafts($dataViewMode, $publishScope, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
@@ -43,9 +43,9 @@ class PublishingScopeResource {
 	}
 	
 	/**
-	* 
+	* Publishes the draft version of product changes for each product code specified in the request, and changes the product publish state to "live".
 	*
-	* @param PublishingScope $publishScope 
+	* @param PublishingScope $publishScope Properties of the pending product changes to include in this operation.
 	*/
 	public function publishDrafts($dataViewMode, $publishScope, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

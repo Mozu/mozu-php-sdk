@@ -38,9 +38,9 @@ class FolderTreeResource {
 	* @param string $rootFolderPath The location in the document hierarchy of the top-level folder in the document list.
 	* @return FolderTree 
 	*/
-	public function getFolderTree( $documentListName, $levels =  null, $rootFolderId =  null, $rootFolderPath =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getFolderTree($dataViewMode,  $documentListName, $levels =  null, $rootFolderId =  null, $rootFolderPath =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = FolderTreeClient::getFolderTreeClient( $documentListName, $levels, $rootFolderId, $rootFolderPath, $authTicket);
+		$mozuClient = FolderTreeClient::getFolderTreeClient($dataViewMode,  $documentListName, $levels, $rootFolderId, $rootFolderPath, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

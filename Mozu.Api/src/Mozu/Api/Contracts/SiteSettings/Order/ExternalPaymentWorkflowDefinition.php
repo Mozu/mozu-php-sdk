@@ -14,13 +14,25 @@ namespace Mozu\Api\Contracts\SiteSettings\Order;
 
 
 
+/**
+*	Properties of an external payment processing workflow defined for the site. At this time, only PayPal Express is supported.
+*/
 class ExternalPaymentWorkflowDefinition
 {
-		public $isEnabled;
+	/**
+	*If true, the associated external payment workflow definition is enabled for the site.
+	*/
+	public $isEnabled;
 
-		public $name;
+	/**
+	*The name of the external payment workflow definition.
+	*/
+	public $name;
 
-		public $credentials;
+	/**
+	*The credential fields required to communicate with the external payment processor.
+	*/
+	public $credentials;
 
 }
 

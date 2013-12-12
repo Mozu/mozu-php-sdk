@@ -19,279 +19,115 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Carts;
 */
 class CartItem
 {
-		public $discountedTotal;
-	public function getDiscountedTotal() {
-		return $this->discountedTotal;
-	}
-	
-	public function setDiscountedTotal($discountedTotal) {
-		$this->discountedTotal = $discountedTotal;
-		return $this;
-	}
+	/**
+	*The subtotal of the cart item including any applied discount calculations.
+	*/
+	public $discountedTotal;
 
 	/**
-	*The total amount discounted from an item.
+	*Estimated amount of discounts applied to the item in the cart, which is system-supplied and read-only.
 	*/
 	public $discountTotal;
-	public function getDiscountTotal() {
-		return $this->discountTotal;
-	}
-	
-	public function setDiscountTotal($discountTotal) {
-		$this->discountTotal = $discountTotal;
-		return $this;
-	}
 
-		public $extendedTotal;
-	public function getExtendedTotal() {
-		return $this->extendedTotal;
-	}
-	
-	public function setExtendedTotal($extendedTotal) {
-		$this->extendedTotal = $extendedTotal;
-		return $this;
-	}
+	/**
+	*Represents the total price of the cart item extended to the shopper. This begins with the Unit Price, then uses any of the following prices if they are defined, in the following order: Override Amount, Sale Amount, List Amount.
+	*/
+	public $extendedTotal;
 
 	/**
 	*The total amount of all fees incurred for the item.
 	*/
 	public $feeTotal;
-	public function getFeeTotal() {
-		return $this->feeTotal;
-	}
-	
-	public function setFeeTotal($feeTotal) {
-		$this->feeTotal = $feeTotal;
-		return $this;
-	}
 
-		public $fulfillmentLocationCode;
-	public function getFulfillmentLocationCode() {
-		return $this->fulfillmentLocationCode;
-	}
-	
-	public function setFulfillmentLocationCode($fulfillmentLocationCode) {
-		$this->fulfillmentLocationCode = $fulfillmentLocationCode;
-		return $this;
-	}
+	/**
+	*The location code associated with the location where this cart item will be fulfilled.
+	*/
+	public $fulfillmentLocationCode;
 
-		public $fulfillmentMethod;
-	public function getFulfillmentMethod() {
-		return $this->fulfillmentMethod;
-	}
-	
-	public function setFulfillmentMethod($fulfillmentMethod) {
-		$this->fulfillmentMethod = $fulfillmentMethod;
-		return $this;
-	}
+	/**
+	*The method used to fulfill this cart item, which is direct ship or in-store pickup.
+	*/
+	public $fulfillmentMethod;
 
 	/**
 	*Unique identifier of the cart item.
 	*/
 	public $id;
-	public function getId() {
-		return $this->id;
-	}
-	
-	public function setId($id) {
-		$this->id = $id;
-		return $this;
-	}
 
 	/**
-	*If true, the item can be purchased or fulfilled at regular intervals, such as a monthly billing cycle. For example, digital or physical product subscriptions are recurring cart items.
+	*If true, the item can be purchased or fulfilled at regular intervals, such as a monthly billing cycle. For example, digital or physical product subscriptions are recurring cart items. This property is not used at this time and is reserved for future functionality.
 	*/
 	public $isRecurring;
-	public function getIsRecurring() {
-		return $this->isRecurring;
-	}
-	
-	public function setIsRecurring($isRecurring) {
-		$this->isRecurring = $isRecurring;
-		return $this;
-	}
 
 	/**
 	*If true, the entity is subject to tax based on the relevant tax rate.
 	*/
 	public $isTaxable;
-	public function getIsTaxable() {
-		return $this->isTaxable;
-	}
-	
-	public function setIsTaxable($isTaxable) {
-		$this->isTaxable = $isTaxable;
-		return $this;
-	}
 
 	/**
 	*The total amount of tax for the item in the cart.
 	*/
 	public $itemTaxTotal;
-	public function getItemTaxTotal() {
-		return $this->itemTaxTotal;
-	}
-	
-	public function setItemTaxTotal($itemTaxTotal) {
-		$this->itemTaxTotal = $itemTaxTotal;
-		return $this;
-	}
 
 	/**
-	*"Language used for the entity. Currently, only ""en-US"" is supported."
+	*Language used for the entity. Currently, only "en-US" is supported.
 	*/
 	public $localeCode;
-	public function getLocaleCode() {
-		return $this->localeCode;
-	}
-	
-	public function setLocaleCode($localeCode) {
-		$this->localeCode = $localeCode;
-		return $this;
-	}
 
 	/**
 	*The specified quantity of the cart item.
 	*/
 	public $quantity;
-	public function getQuantity() {
-		return $this->quantity;
-	}
-	
-	public function setQuantity($quantity) {
-		$this->quantity = $quantity;
-		return $this;
-	}
 
 	/**
 	*The total amount of tax incurred on the shipping charges in the cart.
 	*/
 	public $shippingTaxTotal;
-	public function getShippingTaxTotal() {
-		return $this->shippingTaxTotal;
-	}
-	
-	public function setShippingTaxTotal($shippingTaxTotal) {
-		$this->shippingTaxTotal = $shippingTaxTotal;
-		return $this;
-	}
 
 	/**
 	*The estimated total amount of shipping fees for the item in the cart.
 	*/
 	public $shippingTotal;
-	public function getShippingTotal() {
-		return $this->shippingTotal;
-	}
-	
-	public function setShippingTotal($shippingTotal) {
-		$this->shippingTotal = $shippingTotal;
-		return $this;
-	}
 
 	/**
 	*Estimated amount of the item in the cart without sales tax, shipping costs, and other fees.
 	*/
 	public $subtotal;
-	public function getSubtotal() {
-		return $this->subtotal;
-	}
-	
-	public function setSubtotal($subtotal) {
-		$this->subtotal = $subtotal;
-		return $this;
-	}
 
 	/**
-	*The amount of the item in the cart that is subject to tax. This amount typically represents the cart item subtotal before applied discounts.
+	*The amount of the item in the cart that is subject to tax.
 	*/
 	public $taxableTotal;
-	public function getTaxableTotal() {
-		return $this->taxableTotal;
-	}
-	
-	public function setTaxableTotal($taxableTotal) {
-		$this->taxableTotal = $taxableTotal;
-		return $this;
-	}
 
 	/**
 	*Estimated total amount of the item, including the product price, sales tax, shipping costs, and other fees.
 	*/
 	public $total;
-	public function getTotal() {
-		return $this->total;
-	}
-	
-	public function setTotal($total) {
-		$this->total = $total;
-		return $this;
-	}
 
 	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
-	public function getAuditInfo() {
-		return $this->auditInfo;
-	}
-	
-	public function setAuditInfo($auditInfo) {
-		$this->auditInfo = $auditInfo;
-		return $this;
-	}
 
 	/**
 	*The properties of the associated product.
 	*/
 	public $product;
-	public function getProduct() {
-		return $this->product;
-	}
-	
-	public function setProduct($product) {
-		$this->product = $product;
-		return $this;
-	}
 
 	/**
-	*List of product-level discounts projected to apply to the cart at checkout.
+	*List of product-level discounts projected to apply to the cart item at checkout.
 	*/
 	public $productDiscounts;
-	public function getProductDiscounts() {
-		return $this->productDiscounts;
-	}
-	
-	public function setProductDiscounts($productDiscounts) {
-		$this->productDiscounts = $productDiscounts;
-		return $this;
-	}
 
 	/**
-	*List of shipping discounts projected to apply to the cart at checkout.
+	*List of shipping discounts projected to apply to the cart item at checkout.
 	*/
 	public $shippingDiscounts;
-	public function getShippingDiscounts() {
-		return $this->shippingDiscounts;
-	}
-	
-	public function setShippingDiscounts($shippingDiscounts) {
-		$this->shippingDiscounts = $shippingDiscounts;
-		return $this;
-	}
 
 	/**
 	*Properties of the unit price associated with the cart item.
 	*/
 	public $unitPrice;
-	public function getUnitPrice() {
-		return $this->unitPrice;
-	}
-	
-	public function setUnitPrice($unitPrice) {
-		$this->unitPrice = $unitPrice;
-		return $this;
-	}
 
 }
 

@@ -3,6 +3,7 @@ require_once __DIR__ . '/../../../../../../BaseTest.php';
 
 use Mozu\Tests\BaseTest;
 use Mozu\Api\Resources\Commerce\Catalog\Admin\ProductResource;
+use Mozu\Api\Resources\Platform\TenantResource;
 use Mozu\Api\ApiContext;
 use Mozu\Api\DataViewMode;
 
@@ -23,8 +24,10 @@ class ProductResourceTest extends BaseTest
      */
     protected function setUp()
     {
-    	BaseTest::Auth();
-    	$apiContext = new ApiContext(7804,9931,1,1);
+    	$tenantResource = new TenantResource();
+    	$tenant = $tenantResource->getTenant($this->tenantId);
+    	
+    	$apiContext = new ApiContext($tenant);
         $this->object = new ProductResource($apiContext);
     }
 
@@ -43,104 +46,9 @@ class ProductResourceTest extends BaseTest
     public function testGetProducts()
     {
        $productCollection = $this->object->getProducts(DataViewMode::LIVE, null,FALSE, null, null, null, null, null);
-       var_dump($productCollection);
+       //var_dump($productCollection);
     }
 
-    /**
-     * @covers Mozu\Api\Resources\Commerce\Catalog\Admin\ProductResource::getProduct
-     * @todo Implement testGetProduct().
-     */
-    public function testGetProduct()
-    {
-    }
-
-    /**
-     * @covers Mozu\Api\Resources\Commerce\Catalog\Admin\ProductResource::getProductInSites
-     * @todo Implement testGetProductInSites().
-     */
-    public function testGetProductInSites()
-    {
-    }
-
-    /**
-     * @covers Mozu\Api\Resources\Commerce\Catalog\Admin\ProductResource::getProductInSite
-     * @todo Implement testGetProductInSite().
-     */
-    public function testGetProductInSite()
-    {
-       
-    }
-
-    /**
-     * @covers Mozu\Api\Resources\Commerce\Catalog\Admin\ProductResource::addProduct
-     * @todo Implement testAddProduct().
-     */
-    public function testAddProduct()
-    {
-        
-    }
-
-    /**
-     * @covers Mozu\Api\Resources\Commerce\Catalog\Admin\ProductResource::addProductInSite
-     * @todo Implement testAddProductInSite().
-     */
-    public function testAddProductInSite()
-    {
-       
-    }
-
-    /**
-     * @covers Mozu\Api\Resources\Commerce\Catalog\Admin\ProductResource::updateProductStock
-     * @todo Implement testUpdateProductStock().
-     */
-    public function testUpdateProductStock()
-    {
-       
-    }
-
-    /**
-     * @covers Mozu\Api\Resources\Commerce\Catalog\Admin\ProductResource::updateProduct
-     * @todo Implement testUpdateProduct().
-     */
-    public function testUpdateProduct()
-    {
-      
-    }
-
-    /**
-     * @covers Mozu\Api\Resources\Commerce\Catalog\Admin\ProductResource::updateProductInSites
-     * @todo Implement testUpdateProductInSites().
-     */
-    public function testUpdateProductInSites()
-    {
-       
-    }
-
-    /**
-     * @covers Mozu\Api\Resources\Commerce\Catalog\Admin\ProductResource::updateProductInSite
-     * @todo Implement testUpdateProductInSite().
-     */
-    public function testUpdateProductInSite()
-    {
-       
-    }
-
-    /**
-     * @covers Mozu\Api\Resources\Commerce\Catalog\Admin\ProductResource::deleteProduct
-     * @todo Implement testDeleteProduct().
-     */
-    public function testDeleteProduct()
-    {
-       
-    }
-
-    /**
-     * @covers Mozu\Api\Resources\Commerce\Catalog\Admin\ProductResource::deleteProductInSite
-     * @todo Implement testDeleteProductInSite().
-     */
-    public function testDeleteProductInSite()
-    {
-        
-    }
+    
 }
 ?>

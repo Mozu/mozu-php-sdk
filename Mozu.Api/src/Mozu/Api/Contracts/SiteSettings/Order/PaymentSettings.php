@@ -23,50 +23,21 @@ class PaymentSettings
 	*Settings that provide for the ability to pay for an order by mail.
 	*/
 	public $payByMail;
-	public function getPayByMail() {
-		return $this->payByMail;
-	}
-	
-	public function setPayByMail($payByMail) {
-		$this->payByMail = $payByMail;
-		return $this;
-	}
 
 	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
-	public function getAuditInfo() {
-		return $this->auditInfo;
-	}
-	
-	public function setAuditInfo($auditInfo) {
-		$this->auditInfo = $auditInfo;
-		return $this;
-	}
 
-		public $externalPaymentWorkflowDefinitions;
-	public function getExternalPaymentWorkflowDefinitions() {
-		return $this->externalPaymentWorkflowDefinitions;
-	}
-	
-	public function setExternalPaymentWorkflowDefinitions($externalPaymentWorkflowDefinitions) {
-		$this->externalPaymentWorkflowDefinitions = $externalPaymentWorkflowDefinitions;
-		return $this;
-	}
+	/**
+	*The external payment workflwo definitions configured for the site's payment settings. At this time, only PayPal Express is supported.
+	*/
+	public $externalPaymentWorkflowDefinitions;
 
 	/**
 	*List of name and account information for a payment gateway. Additional payment gateway providers will be supported in future releases.
 	*/
 	public $gateways;
-	public function getGateways() {
-		return $this->gateways;
-	}
-	
-	public function setGateways($gateways) {
-		$this->gateways = $gateways;
-		return $this;
-	}
 
 }
 

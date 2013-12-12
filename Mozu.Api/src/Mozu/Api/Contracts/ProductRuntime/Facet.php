@@ -23,53 +23,21 @@ class Facet
 	*The type of facet. Valid values are "range," which enables creation of a range of values, or "value," which populates the facet values based on the associated attribute or category.
 	*/
 	public $facetType;
-	public function getFacetType() {
-		return $this->facetType;
-	}
-	
-	public function setFacetType($facetType) {
-		$this->facetType = $facetType;
-		return $this;
-	}
 
 	/**
 	*The field name associated with the facet.
 	*/
 	public $field;
-	public function getField() {
-		return $this->field;
-	}
-	
-	public function setField($field) {
-		$this->field = $field;
-		return $this;
-	}
 
 	/**
 	*The descriptive label for the facet.
 	*/
 	public $label;
-	public function getLabel() {
-		return $this->label;
-	}
-	
-	public function setLabel($label) {
-		$this->label = $label;
-		return $this;
-	}
 
 	/**
 	*The values associated with the facet.
 	*/
 	public $values;
-	public function getValues() {
-		return $this->values;
-	}
-	
-	public function setValues($values) {
-		$this->values = $values;
-		return $this;
-	}
 
 }
 

@@ -23,27 +23,11 @@ class ShippingDiscount
 	*Carrier-supplied code that represents the shipping method service type associated with the shipping discount.
 	*/
 	public $methodCode;
-	public function getMethodCode() {
-		return $this->methodCode;
-	}
-	
-	public function setMethodCode($methodCode) {
-		$this->methodCode = $methodCode;
-		return $this;
-	}
 
 	/**
 	*Properties of the shipping discount.
 	*/
 	public $discount;
-	public function getDiscount() {
-		return $this->discount;
-	}
-	
-	public function setDiscount($discount) {
-		$this->discount = $discount;
-		return $this;
-	}
 
 }
 

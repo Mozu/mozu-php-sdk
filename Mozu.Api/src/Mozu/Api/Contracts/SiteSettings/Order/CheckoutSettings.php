@@ -23,40 +23,16 @@ class CheckoutSettings
 	*Settings for the checkout login. Choose whether or not shoppers must first login before a purchase can be processed. Choose the option for guests to purchase without logging in, prompt guests to login, or require them to login before a purchase can be completed.
 	*/
 	public $customerCheckoutSettings;
-	public function getCustomerCheckoutSettings() {
-		return $this->customerCheckoutSettings;
-	}
-	
-	public function setCustomerCheckoutSettings($customerCheckoutSettings) {
-		$this->customerCheckoutSettings = $customerCheckoutSettings;
-		return $this;
-	}
 
 	/**
-	*Credit card payment authorization setting defined for the site. Choose whether or not the shopper's credit card is authorized and charged. Possibilities include, "authorize and charge the shopper's credit card for the full order amount when the order is placed," "authorize the shopper's credit card for the full amount when the order is placed and charge the credit card when the order is shipped," or "authorize and charge the shopper's credit card for the full amount when the order is shipped." Check on these phrases. According to Eric Swann, they may have changed]
+	*Credit card payment authorization setting defined for the site for order processing.
 	*/
 	public $orderProcessingSettings;
-	public function getOrderProcessingSettings() {
-		return $this->orderProcessingSettings;
-	}
-	
-	public function setOrderProcessingSettings($orderProcessingSettings) {
-		$this->orderProcessingSettings = $orderProcessingSettings;
-		return $this;
-	}
 
 	/**
 	*Payment gateway settings defined for the site. A payment gateway is an eCommerce application service provider that authorizes payments for eBusinesses, online retailers, and other stores that have an online commerce component. Currently, only the Authorize.net gateway is supported.
 	*/
 	public $paymentSettings;
-	public function getPaymentSettings() {
-		return $this->paymentSettings;
-	}
-	
-	public function setPaymentSettings($paymentSettings) {
-		$this->paymentSettings = $paymentSettings;
-		return $this;
-	}
 
 }
 

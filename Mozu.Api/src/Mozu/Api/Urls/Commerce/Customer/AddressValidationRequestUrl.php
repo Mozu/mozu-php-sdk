@@ -24,7 +24,8 @@ class AddressValidationRequestUrl  {
 	public static function validateAddressUrl()
 	{
 		$url = "/api/commerce/customer/addressvalidation/";
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		return $mozuUrl;
 	}
 	
 }

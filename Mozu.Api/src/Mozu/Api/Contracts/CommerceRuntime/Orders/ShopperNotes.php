@@ -23,27 +23,11 @@ class ShopperNotes
 	*Shopper-entered notes for the associated order.
 	*/
 	public $comments;
-	public function getComments() {
-		return $this->comments;
-	}
-	
-	public function setComments($comments) {
-		$this->comments = $comments;
-		return $this;
-	}
 
 	/**
 	*Shopper-entered gift message for the associated order.
 	*/
 	public $giftMessage;
-	public function getGiftMessage() {
-		return $this->giftMessage;
-	}
-	
-	public function setGiftMessage($giftMessage) {
-		$this->giftMessage = $giftMessage;
-		return $this;
-	}
 
 }
 

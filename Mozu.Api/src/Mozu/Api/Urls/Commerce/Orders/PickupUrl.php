@@ -19,70 +19,75 @@ class PickupUrl  {
 
 	/**
 		* Get Resource Url for GetPickup
-		* @param string $orderId 
-		* @param string $pickupId 
+		* @param string $orderId Unique identifier of the order associated with the pickup.
+		* @param string $pickupId Unique identifier of the pickup to retrieve.
 		* @return string Resource Url
 	*/
 	public static function getPickupUrl($orderId, $pickupId)
 	{
 		$url = "/api/commerce/orders/{orderId}/pickups/{pickupId}";
-		$url = MozuUrl::formatUrl($url, "orderId", $orderId);
-		$url = MozuUrl::formatUrl($url, "pickupId", $pickupId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("pickupId", $pickupId);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetAvailablePickupFulfillmentActions
-		* @param string $orderId 
-		* @param string $pickupId 
+		* @param string $orderId Unique identifier of the order associated with the pickup.
+		* @param string $pickupId Unique identifier of the pickup for which to retrieve available actions.
 		* @return string Resource Url
 	*/
 	public static function getAvailablePickupFulfillmentActionsUrl($orderId, $pickupId)
 	{
 		$url = "/api/commerce/orders/{orderId}/pickups/{pickupId}/actions";
-		$url = MozuUrl::formatUrl($url, "orderId", $orderId);
-		$url = MozuUrl::formatUrl($url, "pickupId", $pickupId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("pickupId", $pickupId);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for CreatePickup
-		* @param string $orderId 
+		* @param string $orderId Unique identifier of the order.
 		* @return string Resource Url
 	*/
 	public static function createPickupUrl($orderId)
 	{
 		$url = "/api/commerce/orders/{orderId}/pickups";
-		$url = MozuUrl::formatUrl($url, "orderId", $orderId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdatePickup
-		* @param string $orderId 
-		* @param string $pickupId 
+		* @param string $orderId Unique identifier of the order associated with the in-store pickup.
+		* @param string $pickupId Unique identifier of the pickup to update.
 		* @return string Resource Url
 	*/
 	public static function updatePickupUrl($orderId, $pickupId)
 	{
 		$url = "/api/commerce/orders/{orderId}/pickups/{pickupId}";
-		$url = MozuUrl::formatUrl($url, "orderId", $orderId);
-		$url = MozuUrl::formatUrl($url, "pickupId", $pickupId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"PUT") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("pickupId", $pickupId);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for DeletePickup
-		* @param string $orderId 
-		* @param string $pickupId 
+		* @param string $orderId Unique identifier of the order associated with the pickup.
+		* @param string $pickupId Unique identifier of the pickup to remove.
 		* @return string Resource Url
 	*/
 	public static function deletePickupUrl($orderId, $pickupId)
 	{
 		$url = "/api/commerce/orders/{orderId}/pickups/{pickupId}";
-		$url = MozuUrl::formatUrl($url, "orderId", $orderId);
-		$url = MozuUrl::formatUrl($url, "pickupId", $pickupId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("pickupId", $pickupId);
+		return $mozuUrl;
 	}
 	
 }

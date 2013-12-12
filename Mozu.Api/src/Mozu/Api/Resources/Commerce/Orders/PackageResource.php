@@ -46,10 +46,10 @@ class PackageResource {
 	}
 	
 	/**
-	* 
+	* Retrieves a list of the actions available to perform for a package associated with order fulfillment.
 	*
-	* @param string $orderId 
-	* @param string $packageId 
+	* @param string $orderId Unique identifier of the order associated with the package fulfillment.
+	* @param string $packageId Unique identifier of the package associated with the fulfillment actions to retrieve.
 	* @return array|string 
 	*/
 	public function getAvailablePackageFulfillmentActions( $orderId,  $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -66,12 +66,14 @@ class PackageResource {
 	*
 	* @param string $orderId Unique identifier of the order associated with the package label to retrieve.
 	* @param string $packageId Unique identifier of the package for which to retrieve the label.
+	* @return Stream 
 	*/
 	public function getPackageLabel( $orderId,  $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$mozuClient = PackageClient::getPackageLabelClient( $orderId,  $packageId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	

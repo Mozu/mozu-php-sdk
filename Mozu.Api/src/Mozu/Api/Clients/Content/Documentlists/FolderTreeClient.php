@@ -31,12 +31,12 @@ class FolderTreeClient {
 	* @param string $rootFolderPath The location in the document hierarchy of the top-level folder in the document list.
 	* @return MozuClient
 	*/
-	public static function getFolderTreeClient( $documentListName, $levels =  null, $rootFolderId =  null, $rootFolderPath =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getFolderTreeClient($dataViewMode,  $documentListName, $levels =  null, $rootFolderId =  null, $rootFolderPath =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = FolderTreeUrl::getFolderTreeUrl($documentListName, $levels, $rootFolderId, $rootFolderPath);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 

@@ -23,27 +23,11 @@ class ProductOptionSelections
 	*Product code that represents the product variation selected based on the option values the shopper entered.
 	*/
 	public $variationProductCode;
-	public function getVariationProductCode() {
-		return $this->variationProductCode;
-	}
-	
-	public function setVariationProductCode($variationProductCode) {
-		$this->variationProductCode = $variationProductCode;
-		return $this;
-	}
 
 	/**
 	*List of product options and values currently selected.
 	*/
 	public $options;
-	public function getOptions() {
-		return $this->options;
-	}
-	
-	public function setOptions($options) {
-		$this->options = $options;
-		return $this;
-	}
 
 }
 

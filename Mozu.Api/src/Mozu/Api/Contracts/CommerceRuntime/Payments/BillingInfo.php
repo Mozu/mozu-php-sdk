@@ -15,84 +15,36 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Payments;
 
 
 /**
-*	Properties of the billing information entered for a payment.
+*	Properties of the billing information entered for an order during checkout.
 */
 class BillingInfo
 {
 	/**
-	*If true, the customer's shipping address is the same as the customer's billing address.
+	*If true, the system overrides the customer's billing address information with the supplied fulfillment information. 
 	*/
 	public $isSameBillingShippingAddress;
-	public function getIsSameBillingShippingAddress() {
-		return $this->isSameBillingShippingAddress;
-	}
-	
-	public function setIsSameBillingShippingAddress($isSameBillingShippingAddress) {
-		$this->isSameBillingShippingAddress = $isSameBillingShippingAddress;
-		return $this;
-	}
 
 	/**
-	*The type of payment, such as credit card or check. Additional payment types such as PayPal will be supported in future releases.
+	*The type of payment, such as credit card, check, or PayPal Express. Additional payment types will be supported in future releases.
 	*/
 	public $paymentType;
-	public function getPaymentType() {
-		return $this->paymentType;
-	}
-	
-	public function setPaymentType($paymentType) {
-		$this->paymentType = $paymentType;
-		return $this;
-	}
 
 		public $storeCreditCode;
-	public function getStoreCreditCode() {
-		return $this->storeCreditCode;
-	}
-	
-	public function setStoreCreditCode($storeCreditCode) {
-		$this->storeCreditCode = $storeCreditCode;
-		return $this;
-	}
 
 	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
-	public function getAuditInfo() {
-		return $this->auditInfo;
-	}
-	
-	public function setAuditInfo($auditInfo) {
-		$this->auditInfo = $auditInfo;
-		return $this;
-	}
 
 	/**
-	*The cardholder's billing address.
+	*The cardholder's billing contact information, including addresses.
 	*/
 	public $billingContact;
-	public function getBillingContact() {
-		return $this->billingContact;
-	}
-	
-	public function setBillingContact($billingContact) {
-		$this->billingContact = $billingContact;
-		return $this;
-	}
 
 	/**
 	*If the customer is paying by card, the credit card information.
 	*/
 	public $card;
-	public function getCard() {
-		return $this->card;
-	}
-	
-	public function setCard($card) {
-		$this->card = $card;
-		return $this;
-	}
 
 }
 

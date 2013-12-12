@@ -15,58 +15,29 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Orders;
 
 
 /**
-*	A characteristic of an order.
+*	Properties of an attribute applied to an order.
 */
 class OrderAttribute
 {
-		public $attributeDefinitionId;
-	public function getAttributeDefinitionId() {
-		return $this->attributeDefinitionId;
-	}
-	
-	public function setAttributeDefinitionId($attributeDefinitionId) {
-		$this->attributeDefinitionId = $attributeDefinitionId;
-		return $this;
-	}
+	/**
+	*Unique identifier of the order attribute definition.
+	*/
+	public $attributeDefinitionId;
 
 	/**
-	*The fully qualified name of the attribute.
+	*The fully qualified name of the attribute, which is a user defined attribute identifier.
 	*/
 	public $fullyQualifiedName;
-	public function getFullyQualifiedName() {
-		return $this->fullyQualifiedName;
-	}
-	
-	public function setFullyQualifiedName($fullyQualifiedName) {
-		$this->fullyQualifiedName = $fullyQualifiedName;
-		return $this;
-	}
 
 	/**
-	*The values of the order attribute.
+	*The values defined for the order attribute.
 	*/
 	public $values;
-	public function getValues() {
-		return $this->values;
-	}
-	
-	public function setValues($values) {
-		$this->values = $values;
-		return $this;
-	}
 
 	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
-	public function getAuditInfo() {
-		return $this->auditInfo;
-	}
-	
-	public function setAuditInfo($auditInfo) {
-		$this->auditInfo = $auditInfo;
-		return $this;
-	}
 
 }
 

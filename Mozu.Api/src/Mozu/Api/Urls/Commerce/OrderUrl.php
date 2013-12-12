@@ -19,10 +19,10 @@ class OrderUrl  {
 
 	/**
 		* Get Resource Url for GetOrders
-		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter an order's search results by any of its properties, including status, contact information, or total. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). <b>For example - "filter=Status+eq+Submitted"</b>
-		* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
-		* @param string $q 
-		* @param int $qLimit 
+		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter an order's search results by any of its properties, including status, contact information, or total. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=Status+eq+Submitted"
+		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+		* @param string $q A list of order search terms to use in the query when searching across order number and the name or email of the billing contact. Separate multiple search terms with a space character.
+		* @param int $qLimit The maximum number of search results to return in the response. You can limit any range between 1-100.
 		* @param string $sortBy 
 		* @param int $startIndex 
 		* @return string Resource Url
@@ -30,13 +30,14 @@ class OrderUrl  {
 	public static function getOrdersUrl($filter, $pageSize, $q, $qLimit, $sortBy, $startIndex)
 	{
 		$url = "/api/commerce/orders/?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}&q={q}&qLimit={qLimit}";
-		$url = MozuUrl::formatUrl($url, "filter", $filter);
-		$url = MozuUrl::formatUrl($url, "pageSize", $pageSize);
-		$url = MozuUrl::formatUrl($url, "q", $q);
-		$url = MozuUrl::formatUrl($url, "qLimit", $qLimit);
-		$url = MozuUrl::formatUrl($url, "sortBy", $sortBy);
-		$url = MozuUrl::formatUrl($url, "startIndex", $startIndex);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("filter", $filter);
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("q", $q);
+		$url = $mozuUrl->formatUrl("qLimit", $qLimit);
+		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -47,8 +48,9 @@ class OrderUrl  {
 	public static function getAvailableActionsUrl($orderId)
 	{
 		$url = "/api/commerce/orders/{orderId}/actions";
-		$url = MozuUrl::formatUrl($url, "orderId", $orderId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -59,8 +61,9 @@ class OrderUrl  {
 	public static function getTaxableOrdersUrl($orderId)
 	{
 		$url = "/api/commerce/orders/{orderId}/taxableorders";
-		$url = MozuUrl::formatUrl($url, "orderId", $orderId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -72,9 +75,10 @@ class OrderUrl  {
 	public static function getOrderUrl($draft, $orderId)
 	{
 		$url = "/api/commerce/orders/{orderId}?draft={draft}";
-		$url = MozuUrl::formatUrl($url, "draft", $draft);
-		$url = MozuUrl::formatUrl($url, "orderId", $orderId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("draft", $draft);
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -84,7 +88,8 @@ class OrderUrl  {
 	public static function createOrderUrl()
 	{
 		$url = "/api/commerce/orders/";
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		return $mozuUrl;
 	}
 	
 	/**
@@ -95,8 +100,9 @@ class OrderUrl  {
 	public static function createOrderFromCartUrl($cartId)
 	{
 		$url = "/api/commerce/orders/?cartId={cartId}";
-		$url = MozuUrl::formatUrl($url, "cartId", $cartId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("cartId", $cartId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -107,68 +113,73 @@ class OrderUrl  {
 	public static function performOrderActionUrl($orderId)
 	{
 		$url = "/api/commerce/orders/{orderId}/actions";
-		$url = MozuUrl::formatUrl($url, "orderId", $orderId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdateOrderDiscount
 		* @param int $discountId Unique identifier of the discount. System-supplied and read only.
 		* @param string $orderId Unique identifier of the order discount. System-supplied and read only.
-		* @param string $updateMode Specifies whether to modify the discount by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal", "ApplyToDraft", or "ApplyAndCommit".
-		* @param string $version 
+		* @param string $updateMode Specifies whether to modify the discount by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+		* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 		* @return string Resource Url
 	*/
 	public static function updateOrderDiscountUrl($discountId, $orderId, $updateMode, $version)
 	{
 		$url = "/api/commerce/orders/{orderId}/discounts/{discountId}?updatemode={updateMode}&version={version}";
-		$url = MozuUrl::formatUrl($url, "discountId", $discountId);
-		$url = MozuUrl::formatUrl($url, "orderId", $orderId);
-		$url = MozuUrl::formatUrl($url, "updateMode", $updateMode);
-		$url = MozuUrl::formatUrl($url, "version", $version);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"PUT") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("discountId", $discountId);
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("updateMode", $updateMode);
+		$url = $mozuUrl->formatUrl("version", $version);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for DeleteOrderDraft
 		* @param string $orderId Unique identifier of the order associated with the draft to delete.
-		* @param string $version The version of the order draft to delete.
+		* @param string $version If applicable, the version of the order draft to delete.
 		* @return string Resource Url
 	*/
 	public static function deleteOrderDraftUrl($orderId, $version)
 	{
 		$url = "/api/commerce/orders/{orderId}/draft?version={version}";
-		$url = MozuUrl::formatUrl($url, "orderId", $orderId);
-		$url = MozuUrl::formatUrl($url, "version", $version);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"PUT") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("version", $version);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for ChangeOrderUserId
-		* @param string $orderId 
+		* @param string $orderId Unique identifier of the order.
 		* @return string Resource Url
 	*/
 	public static function changeOrderUserIdUrl($orderId)
 	{
 		$url = "/api/commerce/orders/{orderId}/users";
-		$url = MozuUrl::formatUrl($url, "orderId", $orderId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"PUT") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdateOrder
 		* @param string $orderId Unique identifier of the order to update.
-		* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal", "ApplyToDraft", or "ApplyAndCommit".
-		* @param string $version 
+		* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+		* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 		* @return string Resource Url
 	*/
 	public static function updateOrderUrl($orderId, $updateMode, $version)
 	{
 		$url = "/api/commerce/orders/{orderId}?updatemode={updateMode}&version={version}";
-		$url = MozuUrl::formatUrl($url, "orderId", $orderId);
-		$url = MozuUrl::formatUrl($url, "updateMode", $updateMode);
-		$url = MozuUrl::formatUrl($url, "version", $version);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"PUT") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("updateMode", $updateMode);
+		$url = $mozuUrl->formatUrl("version", $version);
+		return $mozuUrl;
 	}
 	
 }

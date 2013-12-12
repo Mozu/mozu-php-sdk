@@ -20,108 +20,44 @@ namespace Mozu\Api\Contracts\Core;
 class Contact
 {
 	/**
-	*The legal or doing business as (DBA) or tradestyle name of the business or organization. Max length: 200.
+	*The legal or doing business as (DBA) or tradestyle name of the business or organization. The maximum character length is 200.
 	*/
 	public $companyOrOrganization;
-	public function getCompanyOrOrganization() {
-		return $this->companyOrOrganization;
-	}
-	
-	public function setCompanyOrOrganization($companyOrOrganization) {
-		$this->companyOrOrganization = $companyOrOrganization;
-		return $this;
-	}
 
 	/**
-	*The email address of the specified user.
+	*The email address of the specified user or the email address associated with the specified entity.
 	*/
 	public $email;
-	public function getEmail() {
-		return $this->email;
-	}
-	
-	public function setEmail($email) {
-		$this->email = $email;
-		return $this;
-	}
 
 	/**
-	*The first name of the contact. Max length: 200.
+	*The first name of the contact. The maximum character length is 200.
 	*/
 	public $firstName;
-	public function getFirstName() {
-		return $this->firstName;
-	}
-	
-	public function setFirstName($firstName) {
-		$this->firstName = $firstName;
-		return $this;
-	}
 
 	/**
 	*Identifier of the contact.
 	*/
 	public $id;
-	public function getId() {
-		return $this->id;
-	}
-	
-	public function setId($id) {
-		$this->id = $id;
-		return $this;
-	}
 
 	/**
-	*The last name or surname of the contact. Max length: 200.
+	*The last name or surname of the contact. The maximum character length is 200.
 	*/
 	public $lastNameOrSurname;
-	public function getLastNameOrSurname() {
-		return $this->lastNameOrSurname;
-	}
-	
-	public function setLastNameOrSurname($lastNameOrSurname) {
-		$this->lastNameOrSurname = $lastNameOrSurname;
-		return $this;
-	}
 
 	/**
-	*The middle name or the first initial of the middle name of the contact. Max length: 100.
+	*The middle name or the first initial of the middle name of the contact. The maximum character length is 100.
 	*/
 	public $middleNameOrInitial;
-	public function getMiddleNameOrInitial() {
-		return $this->middleNameOrInitial;
-	}
-	
-	public function setMiddleNameOrInitial($middleNameOrInitial) {
-		$this->middleNameOrInitial = $middleNameOrInitial;
-		return $this;
-	}
 
 	/**
 	*Address information for the contact.
 	*/
 	public $address;
-	public function getAddress() {
-		return $this->address;
-	}
-	
-	public function setAddress($address) {
-		$this->address = $address;
-		return $this;
-	}
 
 	/**
 	*List of phone numbers associated with the customer account contact.
 	*/
 	public $phoneNumbers;
-	public function getPhoneNumbers() {
-		return $this->phoneNumbers;
-	}
-	
-	public function setPhoneNumbers($phoneNumbers) {
-		$this->phoneNumbers = $phoneNumbers;
-		return $this;
-	}
 
 }
 

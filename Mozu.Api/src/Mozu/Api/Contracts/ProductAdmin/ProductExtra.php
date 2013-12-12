@@ -15,61 +15,29 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 /**
-*	Properties of the product extra to create such as the attribute detail, fully qualified name, and list of product extra values. Setting up product extras in Product Admin allows for shopper-entered information such as th initials on a monogram.
+*	Properties of an extra attribute to defined for a product that is associated with a product type that uses the extra. Setting up extras for a product enables shopper-entered information, such as initials for a monogram.
 */
 class ProductExtra
 {
 	/**
-	*"The fully qualified name of the attribute, which is a user defined attribute identifier."
+	*The fully qualified name of the attribute, which is a user defined attribute identifier.
 	*/
 	public $attributeFQN;
-	public function getAttributeFQN() {
-		return $this->attributeFQN;
-	}
-	
-	public function setAttributeFQN($attributeFQN) {
-		$this->attributeFQN = $attributeFQN;
-		return $this;
-	}
 
 	/**
-	*If true, the property has several selections.
+	*If true, the shopper can select more than one value from a predefined list for this extra.
 	*/
 	public $isMultiSelect;
-	public function getIsMultiSelect() {
-		return $this->isMultiSelect;
-	}
-	
-	public function setIsMultiSelect($isMultiSelect) {
-		$this->isMultiSelect = $isMultiSelect;
-		return $this;
-	}
 
 	/**
-	*If true, the product extra is required for the request to return a valid response.
+	*If true, the shopper must select the product extra and specify a value for it during checkout.
 	*/
 	public $isRequired;
-	public function getIsRequired() {
-		return $this->isRequired;
-	}
-	
-	public function setIsRequired($isRequired) {
-		$this->isRequired = $isRequired;
-		return $this;
-	}
 
 	/**
-	*The list of values that populate a product extra as set in the Admin for the Storefront.
+	*The list of predefined values a shopper can select for the product when defining this extra.
 	*/
 	public $values;
-	public function getValues() {
-		return $this->values;
-	}
-	
-	public function setValues($values) {
-		$this->values = $values;
-		return $this;
-	}
 
 }
 

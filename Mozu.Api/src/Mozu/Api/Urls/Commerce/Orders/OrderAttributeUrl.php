@@ -19,40 +19,43 @@ class OrderAttributeUrl  {
 
 	/**
 		* Get Resource Url for GetOrderAttributes
-		* @param string $orderId Identifier of the order whose order attributes are being retrieved.
+		* @param string $orderId Unique identifier of the order for which to retrieve a list of defined attributes.
 		* @return string Resource Url
 	*/
 	public static function getOrderAttributesUrl($orderId)
 	{
 		$url = "/api/commerce/orders/{orderId}/attributes";
-		$url = MozuUrl::formatUrl($url, "orderId", $orderId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for CreateOrderAttributes
-		* @param string $orderId Identifier of the order whose attributes are being created.
+		* @param string $orderId Unique identifier of the order for which to assign the attributes.
 		* @return string Resource Url
 	*/
 	public static function createOrderAttributesUrl($orderId)
 	{
 		$url = "/api/commerce/orders/{orderId}/attributes";
-		$url = MozuUrl::formatUrl($url, "orderId", $orderId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdateOrderAttributes
-		* @param string $orderId Identifier of the order whose order attributes are being updated.
+		* @param string $orderId Identifier of the order for which to update attributes.
 		* @param bool $removeMissing If true, the operation removes missing properties so that the updated order attributes will not show properties with a null value.
 		* @return string Resource Url
 	*/
 	public static function updateOrderAttributesUrl($orderId, $removeMissing)
 	{
 		$url = "/api/commerce/orders/{orderId}/attributes?removeMissing={removeMissing}";
-		$url = MozuUrl::formatUrl($url, "orderId", $orderId);
-		$url = MozuUrl::formatUrl($url, "removeMissing", $removeMissing);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"PUT") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("removeMissing", $removeMissing);
+		return $mozuUrl;
 	}
 	
 }

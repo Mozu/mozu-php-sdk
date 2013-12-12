@@ -23,14 +23,6 @@ class OrderAction
 	*The name of the action for the order.
 	*/
 	public $actionName;
-	public function getActionName() {
-		return $this->actionName;
-	}
-	
-	public function setActionName($actionName) {
-		$this->actionName = $actionName;
-		return $this;
-	}
 
 }
 

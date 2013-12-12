@@ -19,12 +19,12 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* 
+* Use the Applications resource to manage the applications associated with a developer account.
 */
 class ApplicationVersionResource {
 
 	/**
-	* 
+	* Retrieves the list of applications associated with the developer account scoped to the user claim specified in the request.
 	*
 	* @return ApplicationCollection 
 	*/
@@ -37,9 +37,9 @@ class ApplicationVersionResource {
 	}
 	
 	/**
-	* 
+	* Retrieves the details of the application specified in the request. The application specified in the request must be associated with the developer account scoped to the user claim specified in the request header, otherwise the operation returns an error.
 	*
-	* @param int $applicationId 
+	* @param int $applicationId Unique identifier of the application.
 	* @return Application 
 	*/
 	public function getApplication($applicationId =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -51,9 +51,9 @@ class ApplicationVersionResource {
 	}
 	
 	/**
-	* 
+	* Retrieves the details of a specific version of an application associated with the developer account scoped to the user claim specified in the request.
 	*
-	* @param int $applicationVersionId 
+	* @param int $applicationVersionId Unique identifier of the application version. Application version IDs are unique across all applications associated with a developer account.
 	* @return ApplicationVersion 
 	*/
 	public function getApplicationVersion( $applicationVersionId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -65,9 +65,9 @@ class ApplicationVersionResource {
 	}
 	
 	/**
-	* 
+	* Retrieves a list of the package definitions created for an application version, including all development packages and release packages. The application must be associated with the developer account scoped to the user claim specified in the request.
 	*
-	* @param int $applicationVersionId 
+	* @param int $applicationVersionId Unique identifier of the application version. Application version IDs are unique across all applications associated with a developer account.
 	* @return PackageCollection 
 	*/
 	public function getPackages( $applicationVersionId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -79,10 +79,10 @@ class ApplicationVersionResource {
 	}
 	
 	/**
-	* 
+	* Retrieves the details of a package definition associated with an application version. The application ust be associated with the developer account scoped to the user claim specified in the request. 
 	*
-	* @param int $applicationVersionId 
-	* @param int $packageId 
+	* @param int $applicationVersionId Unique identifier of the application version associated with the package. Application version IDs are unique across all applications associated with the developer account.
+	* @param int $packageId Unique identifier of the package to retrieve.
 	* @return Package 
 	*/
 	public function getPackage( $applicationVersionId,  $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -94,10 +94,10 @@ class ApplicationVersionResource {
 	}
 	
 	/**
-	* 
+	* Retrieves the metadata for items in a package associated with an application version, including a list of all files and subfolders. The application must be associated with the developer account acoped to the user claim specified in the request.
 	*
-	* @param int $applicationVersionId 
-	* @param int $packageId 
+	* @param int $applicationVersionId Unique identifier of the application version. Application version IDs are unique across all applications associated with a developer account.
+	* @param int $packageId Unique identifier of the package.
 	* @return FolderMetadata 
 	*/
 	public function getPackageItemsMetadata( $applicationVersionId,  $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -109,11 +109,11 @@ class ApplicationVersionResource {
 	}
 	
 	/**
-	* 
+	* Retrieves the metadata of a file in a package for an application version. The application must be associated with the developer account scoped to the user claim specified in the request.
 	*
-	* @param int $applicationVersionId 
-	* @param string $itempath 
-	* @param int $packageId 
+	* @param int $applicationVersionId Unique identifier of the application version. Application version IDs are unique across all applications associated with a developer account.
+	* @param string $itempath Complete file directory location and name of the item in the package to retrieve metadata.
+	* @param int $packageId Unique identifier of the package.
 	* @return FileMetadata 
 	*/
 	public function getPackageItemMetadata( $applicationVersionId,  $itempath,  $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -129,19 +129,21 @@ class ApplicationVersionResource {
 	*
 	* @param int $applicationVersionId 
 	* @param int $packageId 
+	* @return Stream 
 	*/
 	public function getPackageFilesZip( $applicationVersionId,  $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$mozuClient = ApplicationVersionClient::getPackageFilesZipClient( $applicationVersionId,  $packageId, $authTicket);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 	/**
-	* 
+	* Creates a new development or release package for the application version specified in the request.
 	*
-	* @param int $applicationVersionId 
-	* @param Package $package 
+	* @param int $applicationVersionId Unique identifier of the application version. Application version IDs are unique across all applications associated with the developer account.
+	* @param Package $package Properties of the development or release package to define.
 	* @return Package 
 	*/
 	public function addPackage($pkg,  $applicationVersionId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -153,12 +155,12 @@ class ApplicationVersionResource {
 	}
 	
 	/**
-	* 
+	* Uploads a file to a defined package for an application version in the file location specified in the request.
 	*
-	* @param int $applicationVersionId 
-	* @param string $filepath 
-	* @param int $packageId 
-	* @param Stream $stream 
+	* @param int $applicationVersionId Unique identifier of the application version. Application version IDs are unique across all applications associated with a developer account.
+	* @param string $filepath The file location to which to add the package file.
+	* @param int $packageId Unique identifier of the package.
+	* @param Stream $stream The contents of the package file to upload, which requires a content-type value of "application/octet-stream" in the request header.
 	* @return FileMetadata 
 	*/
 	public function addPackageFile($stream,  $applicationVersionId,  $filepath,  $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -186,12 +188,12 @@ class ApplicationVersionResource {
 	}
 	
 	/**
-	* 
+	* Updates one or more properties of a file in a package associated with an application version.
 	*
-	* @param int $applicationVersionId 
-	* @param string $filepath 
-	* @param int $packageId 
-	* @param Stream $stream 
+	* @param int $applicationVersionId Unique identifier of the application version. Application version IDs are unique across all applications associated with a developer account.
+	* @param string $filepath The location path and name that identifies the package file to update.
+	* @param int $packageId The unique identifier of the package.
+	* @param Stream $stream The contents of the package file to update, which requires a content-type value of "application/octet-stream" in the request header.
 	* @return FileMetadata 
 	*/
 	public function updatePackageFile($stream,  $applicationVersionId,  $filepath,  $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -203,11 +205,11 @@ class ApplicationVersionResource {
 	}
 	
 	/**
-	* 
+	* Deletes the specified file from a package associated with an application version.
 	*
-	* @param int $applicationVersionId 
-	* @param string $filepath 
-	* @param int $packageId 
+	* @param int $applicationVersionId Unique identifier of the application version.
+	* @param string $filepath The file path and name of the file location to delete from the package.
+	* @param int $packageId Unique identifier of the package.
 	*/
 	public function deletePackageFile( $applicationVersionId,  $filepath,  $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{

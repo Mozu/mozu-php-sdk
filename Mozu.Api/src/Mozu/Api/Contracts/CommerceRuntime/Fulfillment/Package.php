@@ -14,31 +14,70 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Fulfillment;
 
 
 
+/**
+*	Properties of a physical package shipped for an order.
+*/
 class Package
 {
-		public $availableActions;
+	/**
+	*The actions that a user can perform for a package at this time.
+	*/
+	public $availableActions;
 
-		public $fulfillmentDate;
+	/**
+	*The date and time the package shipped to the customer.
+	*/
+	public $fulfillmentDate;
 
-		public $id;
+	/**
+	*Unique identifier of a package.
+	*/
+	public $id;
 
-		public $packagingType;
+	/**
+	*The package type associated with this physical package. Possible values include Tube, Letter, Pak, Small Box (carrier_box_small), Medium Box (carrier_box_medium), Large Box (carrier_box_large), or Custom.
+	*/
+	public $packagingType;
 
-		public $shipmentId;
+	/**
+	*Unique identifier of the shipment associated with this package.
+	*/
+	public $shipmentId;
 
-		public $shippingMethodCode;
+	/**
+	*The code associated with the carrier's shipping method service type. Service type codes include a prefix that indicates the carrier. For example: FEDEX_INTERNATIONAL_STANDARD
+	*/
+	public $shippingMethodCode;
 
-		public $shippingMethodName;
+	/**
+	*Name of the shipping method associated with the package. For example: UPS Ground or 2nd Day Air.
+	*/
+	public $shippingMethodName;
 
-		public $status;
+	/**
+	*Status of the package, which is "Fulfilled" or "NotFulfilled".
+	*/
+	public $status;
 
-		public $trackingNumber;
+	/**
+	*Tracking number for the package supplied by the carrier.
+	*/
+	public $trackingNumber;
 
-		public $auditInfo;
+	/**
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
+	*/
+	public $auditInfo;
 
-		public $items;
+	/**
+	*An array list of objects in the returned collection.
+	*/
+	public $items;
 
-		public $measurements;
+	/**
+	*Dimensional properties of the package.
+	*/
+	public $measurements;
 
 }
 

@@ -23,53 +23,21 @@ class PackageMeasurements
 	*Height of the package in imperial units of feet and inches.
 	*/
 	public $height;
-	public function getHeight() {
-		return $this->height;
-	}
-	
-	public function setHeight($height) {
-		$this->height = $height;
-		return $this;
-	}
 
 	/**
 	*Length of the package in imperial units of feet and inches.
 	*/
 	public $length;
-	public function getLength() {
-		return $this->length;
-	}
-	
-	public function setLength($length) {
-		$this->length = $length;
-		return $this;
-	}
 
 	/**
 	*Weight of the package in imperial units of pounds and ounces.
 	*/
 	public $weight;
-	public function getWeight() {
-		return $this->weight;
-	}
-	
-	public function setWeight($weight) {
-		$this->weight = $weight;
-		return $this;
-	}
 
 	/**
 	*Width of the package in imperial units of feet and inches.
 	*/
 	public $width;
-	public function getWidth() {
-		return $this->width;
-	}
-	
-	public function setWidth($width) {
-		$this->width = $width;
-		return $this;
-	}
 
 }
 

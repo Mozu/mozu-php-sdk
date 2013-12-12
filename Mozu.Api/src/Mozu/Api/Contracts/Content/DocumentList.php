@@ -23,47 +23,21 @@ class DocumentList
 	*A document type is a template.
 	*/
 	public $documentTypes;
-	public function getDocumentTypes() {
-		return $this->documentTypes;
-	}
-	
-	public function setDocumentTypes($documentTypes) {
-		$this->documentTypes = $documentTypes;
-		return $this;
-	}
 
-		public $enablePublishing;
-	public function getEnablePublishing() {
-		return $this->enablePublishing;
-	}
-	
-	public function setEnablePublishing($enablePublishing) {
-		$this->enablePublishing = $enablePublishing;
-		return $this;
-	}
+	/**
+	*If true, publishing of draft documents in this document list is enabled for the site. If false, all document changes are immediately published in live mode.
+	*/
+	public $enablePublishing;
 
 	/**
 	*The name of the document list.
 	*/
 	public $name;
-	public function getName() {
-		return $this->name;
-	}
-	
-	public function setName($name) {
-		$this->name = $name;
-		return $this;
-	}
 
-		public $supportsPublishing;
-	public function getSupportsPublishing() {
-		return $this->supportsPublishing;
-	}
-	
-	public function setSupportsPublishing($supportsPublishing) {
-		$this->supportsPublishing = $supportsPublishing;
-		return $this;
-	}
+	/**
+	*If true, changes documents in this list can be saved as drafts until they are published to the site. If false, all document changes are immediately published in live mode. System-supplied and read only.
+	*/
+	public $supportsPublishing;
 
 }
 

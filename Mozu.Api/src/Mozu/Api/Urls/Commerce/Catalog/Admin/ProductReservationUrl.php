@@ -19,8 +19,8 @@ class ProductReservationUrl  {
 
 	/**
 		* Get Resource Url for GetProductReservations
-		* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
-		* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 		* @param string $sortBy 
 		* @param int $startIndex 
 		* @return string Resource Url
@@ -28,11 +28,12 @@ class ProductReservationUrl  {
 	public static function getProductReservationsUrl($filter, $pageSize, $sortBy, $startIndex)
 	{
 		$url = "/api/commerce/catalog/admin/productreservations/?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}";
-		$url = MozuUrl::formatUrl($url, "filter", $filter);
-		$url = MozuUrl::formatUrl($url, "pageSize", $pageSize);
-		$url = MozuUrl::formatUrl($url, "sortBy", $sortBy);
-		$url = MozuUrl::formatUrl($url, "startIndex", $startIndex);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("filter", $filter);
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -43,8 +44,9 @@ class ProductReservationUrl  {
 	public static function getProductReservationUrl($productReservationId)
 	{
 		$url = "/api/commerce/catalog/admin/productreservations/{productReservationId}";
-		$url = MozuUrl::formatUrl($url, "productReservationId", $productReservationId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("productReservationId", $productReservationId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -55,8 +57,9 @@ class ProductReservationUrl  {
 	public static function addProductReservationsUrl($skipInventoryCheck)
 	{
 		$url = "/api/commerce/catalog/admin/productreservations/?skipInventoryCheck={skipInventoryCheck}";
-		$url = MozuUrl::formatUrl($url, "skipInventoryCheck", $skipInventoryCheck);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("skipInventoryCheck", $skipInventoryCheck);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -66,7 +69,8 @@ class ProductReservationUrl  {
 	public static function commitReservationsUrl()
 	{
 		$url = "/api/commerce/catalog/admin/productreservations/commit";
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"POST") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		return $mozuUrl;
 	}
 	
 	/**
@@ -77,8 +81,9 @@ class ProductReservationUrl  {
 	public static function updateProductReservationsUrl($skipInventoryCheck)
 	{
 		$url = "/api/commerce/catalog/admin/productreservations/?skipInventoryCheck={skipInventoryCheck}";
-		$url = MozuUrl::formatUrl($url, "skipInventoryCheck", $skipInventoryCheck);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"PUT") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("skipInventoryCheck", $skipInventoryCheck);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -89,8 +94,9 @@ class ProductReservationUrl  {
 	public static function deleteProductReservationUrl($productReservationId)
 	{
 		$url = "/api/commerce/catalog/admin/productreservations/{productReservationId}";
-		$url = MozuUrl::formatUrl($url, "productReservationId", $productReservationId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("productReservationId", $productReservationId);
+		return $mozuUrl;
 	}
 	
 }

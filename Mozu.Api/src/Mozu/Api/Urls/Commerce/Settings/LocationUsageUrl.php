@@ -24,31 +24,34 @@ class LocationUsageUrl  {
 	public static function getLocationUsagesUrl()
 	{
 		$url = "/api/commerce/settings/locationUsages/";
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetLocationUsage
-		* @param string $code 
+		* @param string $code Code that identifies the location usage type, which is "DS" for direct ship, "SP" for in-store pickup, or "storeFinder" for store finder.
 		* @return string Resource Url
 	*/
 	public static function getLocationUsageUrl($code)
 	{
 		$url = "/api/commerce/settings/locationUsages/{code}";
-		$url = MozuUrl::formatUrl($url, "code", $code);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("code", $code);
+		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdateLocationUsage
-		* @param string $code 
+		* @param string $code Code that identifies the location usage type, which is "DS" for direct ship, "SP" for in-store pickup, or "storeFinder" for store finder.
 		* @return string Resource Url
 	*/
 	public static function updateLocationUsageUrl($code)
 	{
 		$url = "/api/commerce/settings/locationUsages/{code}";
-		$url = MozuUrl::formatUrl($url, "code", $code);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"PUT") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("code", $code);
+		return $mozuUrl;
 	}
 	
 }

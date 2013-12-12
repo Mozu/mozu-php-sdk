@@ -24,7 +24,8 @@ class MasterCatalogUrl  {
 	public static function getMasterCatalogsUrl()
 	{
 		$url = "/api/commerce/catalog/admin/mastercatalogs/";
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		return $mozuUrl;
 	}
 	
 	/**
@@ -35,8 +36,9 @@ class MasterCatalogUrl  {
 	public static function getMasterCatalogUrl($masterCatalogId)
 	{
 		$url = "/api/commerce/catalog/admin/mastercatalogs/{masterCatalogId}";
-		$url = MozuUrl::formatUrl($url, "masterCatalogId", $masterCatalogId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"GET") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("masterCatalogId", $masterCatalogId);
+		return $mozuUrl;
 	}
 	
 	/**
@@ -47,8 +49,9 @@ class MasterCatalogUrl  {
 	public static function updateMasterCatalogUrl($masterCatalogId)
 	{
 		$url = "/api/commerce/catalog/admin/mastercatalogs/{masterCatalogId}";
-		$url = MozuUrl::formatUrl($url, "masterCatalogId", $masterCatalogId);
-		return new MozuUrl($url, UrlLocation::TENANT_POD,"PUT") ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("masterCatalogId", $masterCatalogId);
+		return $mozuUrl;
 	}
 	
 }

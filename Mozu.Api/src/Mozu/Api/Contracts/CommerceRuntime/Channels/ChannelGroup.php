@@ -14,15 +14,30 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Channels;
 
 
 
+/**
+*	Properties of a group of channels that share common information.
+*/
 class ChannelGroup
 {
-		public $code;
+	/**
+	*User-defined code that identifies the channel group.
+	*/
+	public $code;
 
-		public $name;
+	/**
+	*User-defined name of the channel group.
+	*/
+	public $name;
 
-		public $tenantId;
+	/**
+	*Unique identifier of the Mozu tenant.
+	*/
+	public $tenantId;
 
-		public $auditInfo;
+	/**
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
+	*/
+	public $auditInfo;
 
 }
 

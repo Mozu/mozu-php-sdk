@@ -23,11 +23,11 @@ use Mozu\Api\Headers;
 class AdjustmentClient {
 
 	/**
-	* Modify the amount charged for shipping the specified order.
+	* Applies a shipping adjustment to the specified order.
 	*
 	* @param string $orderId Unique identifier of the order associated with the shipping adjustment.
-	* @param string $updateMode Specifies whether to apply the shipping adjustment by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal", "ApplyToDraft", or "ApplyAndCommit".
-	* @param string $version 
+	* @param string $updateMode Specifies whether to apply the shipping adjustment by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 	* @param Adjustment $adjustment Properties of the shipping adjustment to apply to the order.
 	* @return MozuClient
 	*/
@@ -35,8 +35,7 @@ class AdjustmentClient {
 	{
 		$url = AdjustmentUrl::applyShippingAdjustmentUrl($orderId, $updateMode, $version);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($adjustment);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($adjustment);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -46,8 +45,8 @@ class AdjustmentClient {
 	* Applies a price adjustment to the specified order.
 	*
 	* @param string $orderId Unique identifier of the order for which to apply the adjustment.
-	* @param string $updateMode Specifies whether to apply the adjustment by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal", "ApplyToDraft", or "ApplyAndCommit".
-	* @param string $version 
+	* @param string $updateMode Specifies whether to apply the adjustment by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 	* @param Adjustment $adjustment Properties of the price adjustment to apply to the order.
 	* @return MozuClient
 	*/
@@ -55,27 +54,25 @@ class AdjustmentClient {
 	{
 		$url = AdjustmentUrl::applyAdjustmentUrl($orderId, $updateMode, $version);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($adjustment);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url)->withBody($adjustment);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Removes a shipping adjustment previously applied to an order or draft.
 	*
-	* @param string $orderId 
-	* @param string $updateMode Specifies whether to remove the shipping adjustment by updating the original order, updating the order in draft mode, or updating the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal", "ApplyToDraft", or "ApplyAndCommit".
-	* @param string $version 
+	* @param string $orderId Unique identifier of the order with the applied shipping adjustment.
+	* @param string $updateMode Specifies whether to remove the shipping adjustment by updating the original order, updating the order in draft mode, or updating the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 	* @return MozuClient
 	*/
 	public static function removeShippingAdjustmentClient( $orderId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = AdjustmentUrl::removeShippingAdjustmentUrl($orderId, $updateMode, $version);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -85,16 +82,15 @@ class AdjustmentClient {
 	* Removes a price adjustment from the specified order.
 	*
 	* @param string $orderId Unique identifier of the order for which to delete the adjustment.
-	* @param string $updateMode Specifies whether to remove the adjustment by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal", "ApplyToDraft", or "ApplyAndCommit".
-	* @param string $version 
+	* @param string $updateMode Specifies whether to remove the adjustment by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 	* @return MozuClient
 	*/
 	public static function removeAdjustmentClient( $orderId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = AdjustmentUrl::removeAdjustmentUrl($orderId, $updateMode, $version);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 

@@ -19,14 +19,14 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* 
+* Use the Developer Accounts resource to retrieve details about the developer account a company uses to test applications and themes.
 */
 class DeveloperAccountResource {
 
 	/**
-	* 
+	* Retrieves the details of the developer account specified in the request.
 	*
-	* @param int $accountId 
+	* @param int $accountId Unique identifier of the developer account to retrieve.
 	* @return DeveloperAccount 
 	*/
 	public function getDeveloperAccount($accountId =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)

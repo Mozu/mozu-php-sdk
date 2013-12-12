@@ -20,44 +20,12 @@ class PreAuthorizeDefinition
 	*Identifier of the entity.
 	*/
 	public $id;
-	public function getId() {
-		return $this->id;
-	}
-	
-	public function setId($id) {
-		$this->id = $id;
-		return $this;
-	}
 
 		public $preAuthorizeProdUrl;
-	public function getPreAuthorizeProdUrl() {
-		return $this->preAuthorizeProdUrl;
-	}
-	
-	public function setPreAuthorizeProdUrl($preAuthorizeProdUrl) {
-		$this->preAuthorizeProdUrl = $preAuthorizeProdUrl;
-		return $this;
-	}
 
 		public $preAuthorizeTestUrl;
-	public function getPreAuthorizeTestUrl() {
-		return $this->preAuthorizeTestUrl;
-	}
-	
-	public function setPreAuthorizeTestUrl($preAuthorizeTestUrl) {
-		$this->preAuthorizeTestUrl = $preAuthorizeTestUrl;
-		return $this;
-	}
 
 		public $type;
-	public function getType() {
-		return $this->type;
-	}
-	
-	public function setType($type) {
-		$this->type = $type;
-		return $this;
-	}
 
 }
 

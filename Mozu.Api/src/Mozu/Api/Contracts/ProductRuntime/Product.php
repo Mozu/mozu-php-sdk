@@ -15,277 +15,115 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 /**
-*	Properties of the product that appears on the site storefront.
+*	Properties of the product that appears on a designated storefront.
 */
 class Product
 {
 	/**
-	*Date and time when the entity was created. UTC Date/Time.
+	*Date and time when the entity was created, represented in UTC Date/Time.
 	*/
 	public $createDate;
-	public function getCreateDate() {
-		return $this->createDate;
-	}
-	
-	public function setCreateDate($createDate) {
-		$this->createDate = $createDate;
-		return $this;
-	}
 
 	/**
 	*If true, the product is marked as available for sale. Setting a product to IsActive = false will prevent it from being shown on the customer facing storefront.
 	*/
 	public $isActive;
-	public function getIsActive() {
-		return $this->isActive;
-	}
-	
-	public function setIsActive($isActive) {
-		$this->isActive = $isActive;
-		return $this;
-	}
+
+		public $isPackagedStandAlone;
 
 	/**
 	*If true, the product can be purchased or fulfilled at regular intervals such as a monthly billing cycle or a digital or physical subscription.
 	*/
 	public $isRecurring;
-	public function getIsRecurring() {
-		return $this->isRecurring;
-	}
-	
-	public function setIsRecurring($isRecurring) {
-		$this->isRecurring = $isRecurring;
-		return $this;
-	}
 
 	/**
 	*If true, the entity is subject to tax based on the relevant tax rate.
 	*/
 	public $isTaxable;
-	public function getIsTaxable() {
-		return $this->isTaxable;
-	}
-	
-	public function setIsTaxable($isTaxable) {
-		$this->isTaxable = $isTaxable;
-		return $this;
-	}
 
 	/**
-	*"Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+	*Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	*/
 	public $productCode;
-	public function getProductCode() {
-		return $this->productCode;
-	}
-	
-	public function setProductCode($productCode) {
-		$this->productCode = $productCode;
-		return $this;
-	}
 
-		public $productSequence;
-	public function getProductSequence() {
-		return $this->productSequence;
-	}
-	
-	public function setProductSequence($productSequence) {
-		$this->productSequence = $productSequence;
-		return $this;
-	}
+	/**
+	*Integer that represents the sequential order of the product.
+	*/
+	public $productSequence;
 
 	/**
 	*A product type is like a product template that can be reused.
 	*/
 	public $productType;
-	public function getProductType() {
-		return $this->productType;
-	}
-	
-	public function setProductType($productType) {
-		$this->productType = $productType;
-		return $this;
-	}
 
 		public $productUsage;
-	public function getProductUsage() {
-		return $this->productUsage;
-	}
-	
-	public function setProductUsage($productUsage) {
-		$this->productUsage = $productUsage;
-		return $this;
-	}
 
-		public $publishState;
-	public function getPublishState() {
-		return $this->publishState;
-	}
-	
-	public function setPublishState($publishState) {
-		$this->publishState = $publishState;
-		return $this;
-	}
+	/**
+	*The publishing state of the product definition in the master catalog, which is "New", "Draft", or "Live".
+	*/
+	public $publishState;
 
 	/**
 	*The universal product code (UPC code) of the product.
 	*/
 	public $upc;
-	public function getUpc() {
-		return $this->upc;
-	}
-	
-	public function setUpc($upc) {
-		$this->upc = $upc;
-		return $this;
-	}
 
-		public $variationProductCode;
-	public function getVariationProductCode() {
-		return $this->variationProductCode;
-	}
-	
-	public function setVariationProductCode($variationProductCode) {
-		$this->variationProductCode = $variationProductCode;
-		return $this;
-	}
+	/**
+	*Product code that represents the product variation selected based on the option values the shopper entered.
+	*/
+	public $variationProductCode;
 
 	/**
 	*List of shipping discounts that can be applied to the product.
 	*/
 	public $availableShippingDiscounts;
-	public function getAvailableShippingDiscounts() {
-		return $this->availableShippingDiscounts;
-	}
-	
-	public function setAvailableShippingDiscounts($availableShippingDiscounts) {
-		$this->availableShippingDiscounts = $availableShippingDiscounts;
-		return $this;
-	}
 
 		public $bundledProducts;
-	public function getBundledProducts() {
-		return $this->bundledProducts;
-	}
-	
-	public function setBundledProducts($bundledProducts) {
-		$this->bundledProducts = $bundledProducts;
-		return $this;
-	}
 
 	/**
 	*List of categories associated with the product.
 	*/
 	public $categories;
-	public function getCategories() {
-		return $this->categories;
-	}
-	
-	public function setCategories($categories) {
-		$this->categories = $categories;
-		return $this;
-	}
 
 	/**
 	*Complex type that contains content for a language specified by LocaleCode.
 	*/
 	public $content;
-	public function getContent() {
-		return $this->content;
-	}
-	
-	public function setContent($content) {
-		$this->content = $content;
-		return $this;
-	}
 
-		public $inventoryInfo;
-	public function getInventoryInfo() {
-		return $this->inventoryInfo;
-	}
-	
-	public function setInventoryInfo($inventoryInfo) {
-		$this->inventoryInfo = $inventoryInfo;
-		return $this;
-	}
+	/**
+	*Array of active inventory level information associated with the product.
+	*/
+	public $inventoryInfo;
 
 	/**
 	*Dimensions of the packaged product.
 	*/
 	public $measurements;
-	public function getMeasurements() {
-		return $this->measurements;
-	}
-	
-	public function setMeasurements($measurements) {
-		$this->measurements = $measurements;
-		return $this;
-	}
 
 	/**
 	*The list of options set up in product admin.
 	*/
 	public $options;
-	public function getOptions() {
-		return $this->options;
-	}
-	
-	public function setOptions($options) {
-		$this->options = $options;
-		return $this;
-	}
 
 	/**
 	*Price that the merchant intends to sell the product which is not necessarily the list price. This is the price the merchant intends to sell the product if no sale price is present.
 	*/
 	public $price;
-	public function getPrice() {
-		return $this->price;
-	}
-	
-	public function setPrice($price) {
-		$this->price = $price;
-		return $this;
-	}
 
 	/**
 	*For products with options that vary the cost of the product, the range between lowest and highest possible price of the product based on the current selection of options.
 	*/
 	public $priceRange;
-	public function getPriceRange() {
-		return $this->priceRange;
-	}
-	
-	public function setPriceRange($priceRange) {
-		$this->priceRange = $priceRange;
-		return $this;
-	}
 
 	/**
 	*The list of product properties set up in product admin.
 	*/
 	public $properties;
-	public function getProperties() {
-		return $this->properties;
-	}
-	
-	public function setProperties($properties) {
-		$this->properties = $properties;
-		return $this;
-	}
 
 	/**
 	*The current state of the configured product determines whether or not the product is eligible for purchase. Products with options are only purchasable if the shopper has selected all required options. If the product is not ready for purchase, a message lists missing options that are required.
 	*/
 	public $purchasableState;
-	public function getPurchasableState() {
-		return $this->purchasableState;
-	}
-	
-	public function setPurchasableState($purchasableState) {
-		$this->purchasableState = $purchasableState;
-		return $this;
-	}
 
 }
 

@@ -19,7 +19,7 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* Use the groups subresource to manage customer accounts in groups. The groups are useful to manage sets of customers. A customer account can belong to several groups or none at all.
+* Use the Groups subresource to associate customer accounts with groups. A customer account can have associations with any number of groups. Customer groups are useful for organizing sets of customers and targeting special customer group discounts.
 */
 class CustomerGroupResource {
 
@@ -33,8 +33,8 @@ class CustomerGroupResource {
 	* Retrieve a list of customer groups associated with the customer account.
 	*
 	* @param int $accountId Unique identifier of the customer account.
-	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return CustomerGroupCollection 

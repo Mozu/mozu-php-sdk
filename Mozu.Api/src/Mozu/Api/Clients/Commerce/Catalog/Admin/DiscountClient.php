@@ -25,8 +25,8 @@ class DiscountClient {
 	/**
 	* Retrieves a list of discounts according to any specified filter criteria and sort options.
 	*
-	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return MozuClient
@@ -36,8 +36,7 @@ class DiscountClient {
 		$url = DiscountUrl::getDiscountsUrl($filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
-;
-		if ($authTicket != null)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -54,8 +53,7 @@ class DiscountClient {
 		$url = DiscountUrl::getDiscountUrl($discountId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
-;
-		if ($authTicket != null)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -72,8 +70,7 @@ class DiscountClient {
 		$url = DiscountUrl::getDiscountContentUrl($discountId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
-;
-		if ($authTicket != null)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -89,8 +86,7 @@ class DiscountClient {
 		$url = DiscountUrl::generateRandomCouponUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
-;
-		if ($authTicket != null)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -107,8 +103,7 @@ class DiscountClient {
 		$url = DiscountUrl::createDiscountUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($discount)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
-;
-		if ($authTicket != null)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -125,8 +120,7 @@ class DiscountClient {
 		$url = DiscountUrl::redeemDiscountUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($redemption)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
-;
-		if ($authTicket != null)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -144,8 +138,7 @@ class DiscountClient {
 		$url = DiscountUrl::updateDiscountUrl($discountId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($discount)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
-;
-		if ($authTicket != null)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -163,8 +156,7 @@ class DiscountClient {
 		$url = DiscountUrl::updateDiscountContentUrl($discountId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($content)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
-;
-		if ($authTicket != null)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -180,8 +172,7 @@ class DiscountClient {
 		$url = DiscountUrl::deleteDiscountUrl($discountId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
-;
-		if ($authTicket != null)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -198,8 +189,7 @@ class DiscountClient {
 		$url = DiscountUrl::unRedeemDiscountUrl($discountId, $orderNumber);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
-;
-		if ($authTicket != null)
+;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 

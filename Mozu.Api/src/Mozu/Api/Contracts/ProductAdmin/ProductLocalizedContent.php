@@ -20,69 +20,29 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class ProductLocalizedContent
 {
 	/**
-	*"Language used for the entity. Currently, only ""en-US"" is supported."
+	*Language used for the entity. Currently, only "en-US" is supported.
 	*/
 	public $localeCode;
-	public function getLocaleCode() {
-		return $this->localeCode;
-	}
-	
-	public function setLocaleCode($localeCode) {
-		$this->localeCode = $localeCode;
-		return $this;
-	}
 
 	/**
 	*More detailed or full product description typically used for a product details page.
 	*/
 	public $productFullDescription;
-	public function getProductFullDescription() {
-		return $this->productFullDescription;
-	}
-	
-	public function setProductFullDescription($productFullDescription) {
-		$this->productFullDescription = $productFullDescription;
-		return $this;
-	}
 
 	/**
 	*The descriptive brief product name.
 	*/
 	public $productName;
-	public function getProductName() {
-		return $this->productName;
-	}
-	
-	public function setProductName($productName) {
-		$this->productName = $productName;
-		return $this;
-	}
 
 	/**
 	*Brief description of the product typically used when the product is displayed in a list or in search results.
 	*/
 	public $productShortDescription;
-	public function getProductShortDescription() {
-		return $this->productShortDescription;
-	}
-	
-	public function setProductShortDescription($productShortDescription) {
-		$this->productShortDescription = $productShortDescription;
-		return $this;
-	}
 
 	/**
 	*List of product images associated with a product.
 	*/
 	public $productImages;
-	public function getProductImages() {
-		return $this->productImages;
-	}
-	
-	public function setProductImages($productImages) {
-		$this->productImages = $productImages;
-		return $this;
-	}
 
 }
 
