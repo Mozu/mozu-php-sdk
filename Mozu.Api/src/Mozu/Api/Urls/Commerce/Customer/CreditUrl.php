@@ -74,6 +74,19 @@ class CreditUrl  {
 	}
 	
 	/**
+		* Get Resource Url for AssociateCreditToShopper
+		* @param string $code 
+		* @return string Resource Url
+	*/
+	public static function associateCreditToShopperUrl($code)
+	{
+		$url = "/api/commerce/customer/credits/{code}/associate-to-shopper";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("code", $code);
+		return $mozuUrl;
+	}
+	
+	/**
 		* Get Resource Url for DeleteCredit
 		* @param string $code User-defined code of the store credit to delete.
 		* @return string Resource Url

@@ -41,9 +41,9 @@ class ProductTypeVariationResource {
 	* @param array|ProductOption $productOptionsIn The product option attributes configured for this product type.
 	* @return ProductVariationPagedCollection 
 	*/
-	public function generateProductVariations($dataViewMode, $productOptionsIn,  $productTypeId, $filter =  null, $pageSize =  null, $productCode =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function generateProductVariations($dataViewMode, $productOptionsIn, $productTypeId, $productCode =  null, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductTypeVariationClient::generateProductVariationsClient($dataViewMode, $productOptionsIn,  $productTypeId, $filter, $pageSize, $productCode, $sortBy, $startIndex, $authTicket);
+		$mozuClient = ProductTypeVariationClient::generateProductVariationsClient($dataViewMode, $productOptionsIn, $productTypeId, $productCode, $startIndex, $pageSize, $sortBy, $filter, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

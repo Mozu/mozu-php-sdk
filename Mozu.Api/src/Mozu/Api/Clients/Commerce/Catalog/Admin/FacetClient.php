@@ -29,7 +29,7 @@ class FacetClient {
 	* @param bool $validate Validates that the product category associated with a facet is active. System-supplied and read only.
 	* @return MozuClient
 	*/
-	public static function getFacetClient($dataViewMode,  $facetId, $validate =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getFacetClient($dataViewMode, $facetId, $validate =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = FacetUrl::getFacetUrl($facetId, $validate);
 		$mozuClient = new MozuClient();
@@ -48,7 +48,7 @@ class FacetClient {
 	* @param bool $validate Validates that the product category associated with a facet is active. System-supplied and read only.
 	* @return MozuClient
 	*/
-	public static function getFacetCategoryListClient($dataViewMode,  $categoryId, $includeAvailable =  null, $validate =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getFacetCategoryListClient($dataViewMode, $categoryId, $includeAvailable =  null, $validate =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = FacetUrl::getFacetCategoryListUrl($categoryId, $includeAvailable, $validate);
 		$mozuClient = new MozuClient();
@@ -83,7 +83,7 @@ class FacetClient {
 	* @param Facet $facet Properties of the defined facet to modify. Required properties: Source, FacetType, IsHidden, and CategoryId.
 	* @return MozuClient
 	*/
-	public static function updateFacetClient($dataViewMode, $facet,  $facetId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateFacetClient($dataViewMode, $facet, $facetId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = FacetUrl::updateFacetUrl($facetId);
 		$mozuClient = new MozuClient();
@@ -99,7 +99,7 @@ class FacetClient {
 	*
 	* @param int $facetId Unique identifier of the facet to delete.
 	*/
-	public static function deleteFacetByIdClient($dataViewMode,  $facetId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteFacetByIdClient($dataViewMode, $facetId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = FacetUrl::deleteFacetByIdUrl($facetId);
 		$mozuClient = new MozuClient();

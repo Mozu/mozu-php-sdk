@@ -38,9 +38,9 @@ class CategoryResource {
 	* @param int $startIndex 
 	* @return CategoryPagedCollection 
 	*/
-	public function getCategories($filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getCategories($filter =  null, $startIndex =  null, $pageSize =  null, $sortBy =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CategoryClient::getCategoriesClient($filter, $pageSize, $sortBy, $startIndex, $authTicket);
+		$mozuClient = CategoryClient::getCategoriesClient($filter, $startIndex, $pageSize, $sortBy, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -54,9 +54,9 @@ class CategoryResource {
 	* @param int $categoryId Unique identifier for the storefront container used to organize products.
 	* @return Category 
 	*/
-	public function getCategory( $categoryId, $allowInactive =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getCategory($categoryId, $allowInactive =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CategoryClient::getCategoryClient( $categoryId, $allowInactive, $authTicket);
+		$mozuClient = CategoryClient::getCategoryClient($categoryId, $allowInactive, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

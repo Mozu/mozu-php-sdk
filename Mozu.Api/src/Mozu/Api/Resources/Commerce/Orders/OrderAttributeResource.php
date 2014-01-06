@@ -35,9 +35,9 @@ class OrderAttributeResource {
 	* @param string $orderId Unique identifier of the order for which to retrieve a list of defined attributes.
 	* @return array|OrderAttribute 
 	*/
-	public function getOrderAttributes( $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getOrderAttributes($orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = OrderAttributeClient::getOrderAttributesClient( $orderId, $authTicket);
+		$mozuClient = OrderAttributeClient::getOrderAttributesClient($orderId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -51,9 +51,9 @@ class OrderAttributeResource {
 	* @param array|OrderAttribute $orderAttributes The list of attributes to associate with the order, and the properties of each attribute to define for the order.
 	* @return array|OrderAttribute 
 	*/
-	public function createOrderAttributes($orderAttributes,  $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function createOrderAttributes($orderAttributes, $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = OrderAttributeClient::createOrderAttributesClient($orderAttributes,  $orderId, $authTicket);
+		$mozuClient = OrderAttributeClient::createOrderAttributesClient($orderAttributes, $orderId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -68,9 +68,9 @@ class OrderAttributeResource {
 	* @param array|OrderAttribute $orderAttributes List of order attributes to update, including the properties of each defined attribute in the list.
 	* @return array|OrderAttribute 
 	*/
-	public function updateOrderAttributes($orderAttributes,  $orderId, $removeMissing =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateOrderAttributes($orderAttributes, $orderId, $removeMissing =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = OrderAttributeClient::updateOrderAttributesClient($orderAttributes,  $orderId, $removeMissing, $authTicket);
+		$mozuClient = OrderAttributeClient::updateOrderAttributesClient($orderAttributes, $orderId, $removeMissing, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

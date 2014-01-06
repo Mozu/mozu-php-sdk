@@ -20,6 +20,13 @@ namespace Mozu\Api\Contracts\PricingRuntime;
 class TaxableOrder
 {
 	/**
+	*The total shipping amount calculated for the order.
+	*/
+	public $shippingAmount;
+
+		public $taxRequestType;
+
+	/**
 	*3-letter ISO 4217 standard global currency code. Currently, only "USD" (US Dollar) is supported.
 	*/
 	public $currencyCode;
@@ -37,13 +44,6 @@ class TaxableOrder
 		public $originalDocumentCode;
 
 		public $originalOrderDate;
-
-	/**
-	*The total shipping amount calculated for the order.
-	*/
-	public $shippingAmount;
-
-		public $taxRequestType;
 
 	/**
 	*The line items associated with the order.

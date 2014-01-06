@@ -31,7 +31,7 @@ class CreditClient {
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return MozuClient
 	*/
-	public static function getCreditsClient($filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getCreditsClient($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CreditUrl::getCreditsUrl($filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
@@ -47,7 +47,7 @@ class CreditClient {
 	* @param string $code User-defined code that identifies the store credit to retrieve.
 	* @return MozuClient
 	*/
-	public static function getCreditClient( $code, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getCreditClient($code, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CreditUrl::getCreditUrl($code);
 		$mozuClient = new MozuClient();
@@ -80,7 +80,7 @@ class CreditClient {
 	* @param Credit $credit Properties of the store credit to update.
 	* @return MozuClient
 	*/
-	public static function updateCreditClient($credit,  $code, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateCreditClient($credit, $code, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CreditUrl::updateCreditUrl($code);
 		$mozuClient = new MozuClient();
@@ -91,11 +91,27 @@ class CreditClient {
 	}
 	
 	/**
+	* 
+	*
+	* @param string $code 
+	* @return MozuClient
+	*/
+	public static function associateCreditToShopperClient($code, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	{
+		$url = CreditUrl::associateCreditToShopperUrl($code);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url);		if ($authTicket != null)
+			$mozuClient = $mozuClient->withUserAuth($authTicket);
+		return $mozuClient;
+
+	}
+	
+	/**
 	* Deletes a store credit previously applied to a customer account.
 	*
 	* @param string $code User-defined code of the store credit to delete.
 	*/
-	public static function deleteCreditClient( $code, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteCreditClient($code, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CreditUrl::deleteCreditUrl($code);
 		$mozuClient = new MozuClient();

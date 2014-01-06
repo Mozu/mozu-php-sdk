@@ -28,7 +28,7 @@ class ProductExtraClient {
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @return MozuClient
 	*/
-	public static function getExtrasClient($dataViewMode,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getExtrasClient($dataViewMode, $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductExtraUrl::getExtrasUrl($productCode);
 		$mozuClient = new MozuClient();
@@ -46,7 +46,7 @@ class ProductExtraClient {
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @return MozuClient
 	*/
-	public static function getExtraClient($dataViewMode,  $attributeFQN,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getExtraClient($dataViewMode, $productCode, $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductExtraUrl::getExtraUrl($attributeFQN, $productCode);
 		$mozuClient = new MozuClient();
@@ -64,7 +64,7 @@ class ProductExtraClient {
 	* @param ProductExtra $productExtra Properties of the product extra to configure for the specified product.
 	* @return MozuClient
 	*/
-	public static function addExtraClient($dataViewMode, $productExtra,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function addExtraClient($dataViewMode, $productExtra, $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductExtraUrl::addExtraUrl($productCode);
 		$mozuClient = new MozuClient();
@@ -83,7 +83,7 @@ class ProductExtraClient {
 	* @param ProductExtra $productExtra Properties of the extra attribute to update for the specified product.
 	* @return MozuClient
 	*/
-	public static function updateExtraClient($dataViewMode, $productExtra,  $attributeFQN,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateExtraClient($dataViewMode, $productExtra, $productCode, $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductExtraUrl::updateExtraUrl($attributeFQN, $productCode);
 		$mozuClient = new MozuClient();
@@ -100,7 +100,7 @@ class ProductExtraClient {
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	*/
-	public static function deleteExtraClient($dataViewMode,  $attributeFQN,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteExtraClient($dataViewMode, $productCode, $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductExtraUrl::deleteExtraUrl($attributeFQN, $productCode);
 		$mozuClient = new MozuClient();

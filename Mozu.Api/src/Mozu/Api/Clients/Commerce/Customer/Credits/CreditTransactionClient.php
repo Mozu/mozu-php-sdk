@@ -32,7 +32,7 @@ class CreditTransactionClient {
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return MozuClient
 	*/
-	public static function getTransactionsClient( $code, $filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getTransactionsClient($code, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CreditTransactionUrl::getTransactionsUrl($code, $filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
@@ -49,7 +49,7 @@ class CreditTransactionClient {
 	* @param CreditTransaction $creditTransaction Properties of the transaction to create for the customer credit.
 	* @return MozuClient
 	*/
-	public static function addTransactionClient($creditTransaction,  $code, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function addTransactionClient($creditTransaction, $code, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CreditTransactionUrl::addTransactionUrl($code);
 		$mozuClient = new MozuClient();

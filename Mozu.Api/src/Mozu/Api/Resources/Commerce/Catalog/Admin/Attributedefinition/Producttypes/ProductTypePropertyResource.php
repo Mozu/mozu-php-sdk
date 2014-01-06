@@ -35,9 +35,9 @@ class ProductTypePropertyResource {
 	* @param int $productTypeId Identifier of the product type.
 	* @return array|AttributeInProductType 
 	*/
-	public function getProperties($dataViewMode,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getProperties($dataViewMode, $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductTypePropertyClient::getPropertiesClient($dataViewMode,  $productTypeId, $authTicket);
+		$mozuClient = ProductTypePropertyClient::getPropertiesClient($dataViewMode, $productTypeId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -51,9 +51,9 @@ class ProductTypePropertyResource {
 	* @param int $productTypeId Identifier of the product type.
 	* @return AttributeInProductType 
 	*/
-	public function getProperty($dataViewMode,  $attributeFQN,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getProperty($dataViewMode, $productTypeId, $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductTypePropertyClient::getPropertyClient($dataViewMode,  $attributeFQN,  $productTypeId, $authTicket);
+		$mozuClient = ProductTypePropertyClient::getPropertyClient($dataViewMode, $productTypeId, $attributeFQN, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -67,9 +67,9 @@ class ProductTypePropertyResource {
 	* @param AttributeInProductType $attributeInProductType Properties of the property attribute to define for the specified product type.
 	* @return AttributeInProductType 
 	*/
-	public function addProperty($dataViewMode, $attributeInProductType,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function addProperty($dataViewMode, $attributeInProductType, $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductTypePropertyClient::addPropertyClient($dataViewMode, $attributeInProductType,  $productTypeId, $authTicket);
+		$mozuClient = ProductTypePropertyClient::addPropertyClient($dataViewMode, $attributeInProductType, $productTypeId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -84,9 +84,9 @@ class ProductTypePropertyResource {
 	* @param AttributeInProductType $attributeInProductType Properties of the property attribute to define for the product type.
 	* @return AttributeInProductType 
 	*/
-	public function updateProperty($dataViewMode, $attributeInProductType,  $attributeFQN,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateProperty($dataViewMode, $attributeInProductType, $productTypeId, $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductTypePropertyClient::updatePropertyClient($dataViewMode, $attributeInProductType,  $attributeFQN,  $productTypeId, $authTicket);
+		$mozuClient = ProductTypePropertyClient::updatePropertyClient($dataViewMode, $attributeInProductType, $productTypeId, $attributeFQN, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -99,9 +99,9 @@ class ProductTypePropertyResource {
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @param int $productTypeId Identifier of the product type.
 	*/
-	public function deleteProperty($dataViewMode,  $attributeFQN,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deleteProperty($dataViewMode, $productTypeId, $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductTypePropertyClient::deletePropertyClient($dataViewMode,  $attributeFQN,  $productTypeId, $authTicket);
+		$mozuClient = ProductTypePropertyClient::deletePropertyClient($dataViewMode, $productTypeId, $attributeFQN, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

@@ -41,9 +41,9 @@ class ProductResource {
 	* @param int $startIndex 
 	* @return ProductCollection 
 	*/
-	public function getProducts($dataViewMode, $filter =  null, $noCount =  null, $pageSize =  null, $q =  null, $qLimit =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getProducts($dataViewMode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $q =  null, $qLimit =  null, $noCount =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductClient::getProductsClient($dataViewMode, $filter, $noCount, $pageSize, $q, $qLimit, $sortBy, $startIndex, $authTicket);
+		$mozuClient = ProductClient::getProductsClient($dataViewMode, $startIndex, $pageSize, $sortBy, $filter, $q, $qLimit, $noCount, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -56,9 +56,9 @@ class ProductResource {
 	* @param string $productCode Merchant-created code associated with the product such as a SKU. Max length: 30. Accepts a to z, A to Z, Ãƒâ€¹-ÃƒËœ, 0 to 9, #, semicolon, commas, apostrophes, and Spaces, but no punctuation or other characters.
 	* @return Product 
 	*/
-	public function getProduct($dataViewMode,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getProduct($dataViewMode, $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductClient::getProductClient($dataViewMode,  $productCode, $authTicket);
+		$mozuClient = ProductClient::getProductClient($dataViewMode, $productCode, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -71,9 +71,9 @@ class ProductResource {
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @return array|ProductInCatalogInfo 
 	*/
-	public function getProductInCatalogs($dataViewMode,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getProductInCatalogs($dataViewMode, $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductClient::getProductInCatalogsClient($dataViewMode,  $productCode, $authTicket);
+		$mozuClient = ProductClient::getProductInCatalogsClient($dataViewMode, $productCode, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -87,9 +87,9 @@ class ProductResource {
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @return ProductInCatalogInfo 
 	*/
-	public function getProductInCatalog($dataViewMode,  $catalogId,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getProductInCatalog($dataViewMode, $productCode, $catalogId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductClient::getProductInCatalogClient($dataViewMode,  $catalogId,  $productCode, $authTicket);
+		$mozuClient = ProductClient::getProductInCatalogClient($dataViewMode, $productCode, $catalogId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -118,9 +118,9 @@ class ProductResource {
 	* @param ProductInCatalogInfo $productInCatalogInfoIn Properties of the product to define for the specific catalog association.
 	* @return ProductInCatalogInfo 
 	*/
-	public function addProductInCatalog($dataViewMode, $productInCatalogInfoIn,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function addProductInCatalog($dataViewMode, $productInCatalogInfoIn, $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductClient::addProductInCatalogClient($dataViewMode, $productInCatalogInfoIn,  $productCode, $authTicket);
+		$mozuClient = ProductClient::addProductInCatalogClient($dataViewMode, $productInCatalogInfoIn, $productCode, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -134,9 +134,9 @@ class ProductResource {
 	* @param Product $product Properties of the product definition to update in the master catalog.
 	* @return Product 
 	*/
-	public function updateProduct($dataViewMode, $product,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateProduct($dataViewMode, $product, $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductClient::updateProductClient($dataViewMode, $product,  $productCode, $authTicket);
+		$mozuClient = ProductClient::updateProductClient($dataViewMode, $product, $productCode, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -150,9 +150,9 @@ class ProductResource {
 	* @param array|ProductInCatalogInfo $productInCatalogsIn Properties of the product to update for each associated catalog.
 	* @return array|ProductInCatalogInfo 
 	*/
-	public function updateProductInCatalogs($dataViewMode, $productInCatalogsIn,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateProductInCatalogs($dataViewMode, $productInCatalogsIn, $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductClient::updateProductInCatalogsClient($dataViewMode, $productInCatalogsIn,  $productCode, $authTicket);
+		$mozuClient = ProductClient::updateProductInCatalogsClient($dataViewMode, $productInCatalogsIn, $productCode, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -167,9 +167,9 @@ class ProductResource {
 	* @param ProductInCatalogInfo $productInCatalogInfoIn Properties of the product associated with the catalog specified in the request.
 	* @return ProductInCatalogInfo 
 	*/
-	public function updateProductInCatalog($dataViewMode, $productInCatalogInfoIn,  $catalogId,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateProductInCatalog($dataViewMode, $productInCatalogInfoIn, $productCode, $catalogId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductClient::updateProductInCatalogClient($dataViewMode, $productInCatalogInfoIn,  $catalogId,  $productCode, $authTicket);
+		$mozuClient = ProductClient::updateProductInCatalogClient($dataViewMode, $productInCatalogInfoIn, $productCode, $catalogId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -181,9 +181,9 @@ class ProductResource {
 	*
 	* @param string $productCode 
 	*/
-	public function deleteProduct($dataViewMode,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deleteProduct($dataViewMode, $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductClient::deleteProductClient($dataViewMode,  $productCode, $authTicket);
+		$mozuClient = ProductClient::deleteProductClient($dataViewMode, $productCode, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 
@@ -195,9 +195,9 @@ class ProductResource {
 	* @param int $catalogId 
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	*/
-	public function deleteProductInCatalog($dataViewMode,  $catalogId,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deleteProductInCatalog($dataViewMode, $productCode, $catalogId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductClient::deleteProductInCatalogClient($dataViewMode,  $catalogId,  $productCode, $authTicket);
+		$mozuClient = ProductClient::deleteProductInCatalogClient($dataViewMode, $productCode, $catalogId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

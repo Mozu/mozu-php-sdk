@@ -36,9 +36,9 @@ class WishlistItemResource {
 	* @param string $wishlistItemId Unique identifier of the wish list associated with the item to retrieve.
 	* @return WishlistItem 
 	*/
-	public function getWishlistItem( $wishlistId,  $wishlistItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getWishlistItem($wishlistId, $wishlistItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = WishlistItemClient::getWishlistItemClient( $wishlistId,  $wishlistItemId, $authTicket);
+		$mozuClient = WishlistItemClient::getWishlistItemClient($wishlistId, $wishlistItemId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -55,9 +55,9 @@ class WishlistItemResource {
 	* @param string $wishlistId Unique identifier of the wish list associated with the items to retrieve.
 	* @return WishlistItemCollection 
 	*/
-	public function getWishlistItems( $wishlistId, $filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getWishlistItems($wishlistId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = WishlistItemClient::getWishlistItemsClient( $wishlistId, $filter, $pageSize, $sortBy, $startIndex, $authTicket);
+		$mozuClient = WishlistItemClient::getWishlistItemsClient($wishlistId, $startIndex, $pageSize, $sortBy, $filter, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -75,9 +75,9 @@ class WishlistItemResource {
 	* @param string $wishlistName 
 	* @return WishlistItemCollection 
 	*/
-	public function getWishlistItemsByWishlistName( $customerAccountId,  $wishlistName, $filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getWishlistItemsByWishlistName($customerAccountId, $wishlistName, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = WishlistItemClient::getWishlistItemsByWishlistNameClient( $customerAccountId,  $wishlistName, $filter, $pageSize, $sortBy, $startIndex, $authTicket);
+		$mozuClient = WishlistItemClient::getWishlistItemsByWishlistNameClient($customerAccountId, $wishlistName, $startIndex, $pageSize, $sortBy, $filter, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -91,9 +91,9 @@ class WishlistItemResource {
 	* @param WishlistItem $wishlistItem Properties of the item to add to the wish list.
 	* @return WishlistItem 
 	*/
-	public function addItemToWishlist($wishlistItem,  $wishlistId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function addItemToWishlist($wishlistItem, $wishlistId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = WishlistItemClient::addItemToWishlistClient($wishlistItem,  $wishlistId, $authTicket);
+		$mozuClient = WishlistItemClient::addItemToWishlistClient($wishlistItem, $wishlistId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -108,9 +108,9 @@ class WishlistItemResource {
 	* @param WishlistItem $wishlistItem Properties of the shopper wish list item to update.
 	* @return WishlistItem 
 	*/
-	public function updateWishlistItem($wishlistItem,  $wishlistId,  $wishlistItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateWishlistItem($wishlistItem, $wishlistId, $wishlistItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = WishlistItemClient::updateWishlistItemClient($wishlistItem,  $wishlistId,  $wishlistItemId, $authTicket);
+		$mozuClient = WishlistItemClient::updateWishlistItemClient($wishlistItem, $wishlistId, $wishlistItemId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -125,9 +125,9 @@ class WishlistItemResource {
 	* @param string $wishlistItemId Unique identifier of the item in the wish list to update quantity.
 	* @return WishlistItem 
 	*/
-	public function updateWishlistItemQuantity( $quantity,  $wishlistId,  $wishlistItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateWishlistItemQuantity($wishlistId, $wishlistItemId, $quantity, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = WishlistItemClient::updateWishlistItemQuantityClient( $quantity,  $wishlistId,  $wishlistItemId, $authTicket);
+		$mozuClient = WishlistItemClient::updateWishlistItemQuantityClient($wishlistId, $wishlistItemId, $quantity, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -140,9 +140,9 @@ class WishlistItemResource {
 	* @param string $wishlistId Unique identifier of the wish list associated with the items to remove.
 	* @return Wishlist 
 	*/
-	public function removeAllWishlistItems( $wishlistId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function removeAllWishlistItems($wishlistId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = WishlistItemClient::removeAllWishlistItemsClient( $wishlistId, $authTicket);
+		$mozuClient = WishlistItemClient::removeAllWishlistItemsClient($wishlistId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -155,9 +155,9 @@ class WishlistItemResource {
 	* @param string $wishlistId Unique identifier of the wish list associated with the item to remove.
 	* @param string $wishlistItemId Unique identifier of the item to remove from the shopper wish list.
 	*/
-	public function deleteWishlistItem( $wishlistId,  $wishlistItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deleteWishlistItem($wishlistId, $wishlistItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = WishlistItemClient::deleteWishlistItemClient( $wishlistId,  $wishlistItemId, $authTicket);
+		$mozuClient = WishlistItemClient::deleteWishlistItemClient($wishlistId, $wishlistItemId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

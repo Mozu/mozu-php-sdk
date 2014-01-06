@@ -36,9 +36,9 @@ class ProductVariationResource {
 	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
 	* @return ProductVariation 
 	*/
-	public function getProductVariation($dataViewMode,  $productCode,  $variationKey, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getProductVariation($dataViewMode, $productCode, $variationKey, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductVariationClient::getProductVariationClient($dataViewMode,  $productCode,  $variationKey, $authTicket);
+		$mozuClient = ProductVariationClient::getProductVariationClient($dataViewMode, $productCode, $variationKey, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -55,9 +55,9 @@ class ProductVariationResource {
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return ProductVariationPagedCollection 
 	*/
-	public function getProductVariations($dataViewMode,  $productCode, $filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getProductVariations($dataViewMode, $productCode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductVariationClient::getProductVariationsClient($dataViewMode,  $productCode, $filter, $pageSize, $sortBy, $startIndex, $authTicket);
+		$mozuClient = ProductVariationClient::getProductVariationsClient($dataViewMode, $productCode, $startIndex, $pageSize, $sortBy, $filter, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -71,9 +71,9 @@ class ProductVariationResource {
 	* @param ProductVariationCollection $productVariations Wrapper for the collection of variations configured for the specified product code.
 	* @return ProductVariationCollection 
 	*/
-	public function updateProductVariations($dataViewMode, $productVariations,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateProductVariations($dataViewMode, $productVariations, $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductVariationClient::updateProductVariationsClient($dataViewMode, $productVariations,  $productCode, $authTicket);
+		$mozuClient = ProductVariationClient::updateProductVariationsClient($dataViewMode, $productVariations, $productCode, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -88,9 +88,9 @@ class ProductVariationResource {
 	* @param ProductVariation $productVariation Wrapper for the properties of the specified product variation.
 	* @return ProductVariation 
 	*/
-	public function updateProductVariation($dataViewMode, $productVariation,  $productCode,  $variationKey, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateProductVariation($dataViewMode, $productVariation, $productCode, $variationKey, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductVariationClient::updateProductVariationClient($dataViewMode, $productVariation,  $productCode,  $variationKey, $authTicket);
+		$mozuClient = ProductVariationClient::updateProductVariationClient($dataViewMode, $productVariation, $productCode, $variationKey, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -103,9 +103,9 @@ class ProductVariationResource {
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
 	*/
-	public function deleteProductVariation($dataViewMode,  $productCode,  $variationKey, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deleteProductVariation($dataViewMode, $productCode, $variationKey, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductVariationClient::deleteProductVariationClient($dataViewMode,  $productCode,  $variationKey, $authTicket);
+		$mozuClient = ProductVariationClient::deleteProductVariationClient($dataViewMode, $productCode, $variationKey, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

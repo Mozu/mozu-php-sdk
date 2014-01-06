@@ -38,9 +38,9 @@ class CreditResource {
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return CreditCollection 
 	*/
-	public function getCredits($filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getCredits($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CreditClient::getCreditsClient($filter, $pageSize, $sortBy, $startIndex, $authTicket);
+		$mozuClient = CreditClient::getCreditsClient($startIndex, $pageSize, $sortBy, $filter, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -53,9 +53,9 @@ class CreditResource {
 	* @param string $code User-defined code that identifies the store credit to retrieve.
 	* @return Credit 
 	*/
-	public function getCredit( $code, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getCredit($code, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CreditClient::getCreditClient( $code, $authTicket);
+		$mozuClient = CreditClient::getCreditClient($code, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -84,9 +84,24 @@ class CreditResource {
 	* @param Credit $credit Properties of the store credit to update.
 	* @return Credit 
 	*/
-	public function updateCredit($credit,  $code, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateCredit($credit, $code, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CreditClient::updateCreditClient($credit,  $code, $authTicket);
+		$mozuClient = CreditClient::updateCreditClient($credit, $code, $authTicket);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $code 
+	* @return Credit 
+	*/
+	public function associateCreditToShopper($code, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	{
+		$mozuClient = CreditClient::associateCreditToShopperClient($code, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -98,9 +113,9 @@ class CreditResource {
 	*
 	* @param string $code User-defined code of the store credit to delete.
 	*/
-	public function deleteCredit( $code, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deleteCredit($code, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CreditClient::deleteCreditClient( $code, $authTicket);
+		$mozuClient = CreditClient::deleteCreditClient($code, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

@@ -31,7 +31,7 @@ class ProductReservationClient {
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getProductReservationsClient($dataViewMode, $filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getProductReservationsClient($dataViewMode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductReservationUrl::getProductReservationsUrl($filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
@@ -48,7 +48,7 @@ class ProductReservationClient {
 	* @param int $productReservationId Unique identifier of the product reservation.
 	* @return MozuClient
 	*/
-	public static function getProductReservationClient($dataViewMode,  $productReservationId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getProductReservationClient($dataViewMode, $productReservationId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductReservationUrl::getProductReservationUrl($productReservationId);
 		$mozuClient = new MozuClient();
@@ -116,7 +116,7 @@ class ProductReservationClient {
 	*
 	* @param int $productReservationId Unique identifier of the reservation.
 	*/
-	public static function deleteProductReservationClient($dataViewMode,  $productReservationId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteProductReservationClient($dataViewMode, $productReservationId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductReservationUrl::deleteProductReservationUrl($productReservationId);
 		$mozuClient = new MozuClient();

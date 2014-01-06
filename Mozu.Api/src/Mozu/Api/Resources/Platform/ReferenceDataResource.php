@@ -56,9 +56,9 @@ class ReferenceDataResource {
 	* @param int $behaviorId ***Always private and should not be published.***
 	* @return Behavior 
 	*/
-	public function getBehavior( $behaviorId)
+	public function getBehavior($behaviorId)
 	{
-		$mozuClient = ReferenceDataClient::getBehaviorClient( $behaviorId);
+		$mozuClient = ReferenceDataClient::getBehaviorClient($behaviorId);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
@@ -83,9 +83,9 @@ class ReferenceDataResource {
 	* @param int $categoryId ***Always private and should not be published.***
 	* @return BehaviorCategory 
 	*/
-	public function getBehaviorCategory( $categoryId)
+	public function getBehaviorCategory($categoryId)
 	{
-		$mozuClient = ReferenceDataClient::getBehaviorCategoryClient( $categoryId);
+		$mozuClient = ReferenceDataClient::getBehaviorCategoryClient($categoryId);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 

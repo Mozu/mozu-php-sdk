@@ -35,9 +35,9 @@ class PaymentResource {
 	* @param string $orderId Unique identifier of the order.
 	* @return PaymentCollection 
 	*/
-	public function getPayments( $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getPayments($orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = PaymentClient::getPaymentsClient( $orderId, $authTicket);
+		$mozuClient = PaymentClient::getPaymentsClient($orderId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -51,9 +51,9 @@ class PaymentResource {
 	* @param string $paymentId Unique identifier of the payment transaction submitted for the order.
 	* @return Payment 
 	*/
-	public function getPayment( $orderId,  $paymentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getPayment($orderId, $paymentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = PaymentClient::getPaymentClient( $orderId,  $paymentId, $authTicket);
+		$mozuClient = PaymentClient::getPaymentClient($orderId, $paymentId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -67,9 +67,9 @@ class PaymentResource {
 	* @param string $paymentId Unique identifer of the payment for which to retrieve available actions.
 	* @return array|string 
 	*/
-	public function getAvailablePaymentActions( $orderId,  $paymentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getAvailablePaymentActions($orderId, $paymentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = PaymentClient::getAvailablePaymentActionsClient( $orderId,  $paymentId, $authTicket);
+		$mozuClient = PaymentClient::getAvailablePaymentActionsClient($orderId, $paymentId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -84,9 +84,9 @@ class PaymentResource {
 	* @param PaymentAction $action The action to perform for the payment. Possible values are AuthAndCapture, AuthorizePayment, CapturePayment, VoidPayment, CreditPayment, RequestCheck, ApplyCheck, DeclineCheck.
 	* @return Order 
 	*/
-	public function performPaymentAction($action,  $orderId,  $paymentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function performPaymentAction($action, $orderId, $paymentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = PaymentClient::performPaymentActionClient($action,  $orderId,  $paymentId, $authTicket);
+		$mozuClient = PaymentClient::performPaymentActionClient($action, $orderId, $paymentId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -100,9 +100,9 @@ class PaymentResource {
 	* @param PaymentAction $action To action to perform for the newly created payment. Possible values are AuthAndCapture, AuthorizePayment, CapturePayment, VoidPayment, CreditPayment, RequestCheck, ApplyCheck, DeclineCheck.
 	* @return Order 
 	*/
-	public function createPaymentAction($action,  $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function createPaymentAction($action, $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = PaymentClient::createPaymentActionClient($action,  $orderId, $authTicket);
+		$mozuClient = PaymentClient::createPaymentActionClient($action, $orderId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

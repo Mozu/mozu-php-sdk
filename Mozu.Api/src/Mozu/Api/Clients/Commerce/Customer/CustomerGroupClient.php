@@ -31,7 +31,7 @@ class CustomerGroupClient {
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return MozuClient
 	*/
-	public static function getGroupsClient($filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getGroupsClient($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CustomerGroupUrl::getGroupsUrl($filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
@@ -47,7 +47,7 @@ class CustomerGroupClient {
 	* @param int $groupId Identifier of the customer group to retrieve.
 	* @return MozuClient
 	*/
-	public static function getGroupClient( $groupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getGroupClient($groupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CustomerGroupUrl::getGroupUrl($groupId);
 		$mozuClient = new MozuClient();
@@ -80,7 +80,7 @@ class CustomerGroupClient {
 	* @param CustomerGroup $group Properties of the customer group to update.
 	* @return MozuClient
 	*/
-	public static function updateGroupClient($group,  $groupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateGroupClient($group, $groupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CustomerGroupUrl::updateGroupUrl($groupId);
 		$mozuClient = new MozuClient();
@@ -95,7 +95,7 @@ class CustomerGroupClient {
 	*
 	* @param int $groupId Identifier of the customer group to delete.
 	*/
-	public static function deleteGroupClient( $groupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteGroupClient($groupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CustomerGroupUrl::deleteGroupUrl($groupId);
 		$mozuClient = new MozuClient();

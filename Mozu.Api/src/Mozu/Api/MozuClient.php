@@ -18,7 +18,7 @@ class MozuClient {
 	private $httpResponseMessage = null;
 	private $baseUrl = "";
 	private $mozuUrl = "";
-	private $apiContext = "";
+	private $apiContext = null;
 	private $headers = array();
 	private $jsonBody = null;
 	private $request = null;
@@ -107,7 +107,7 @@ class MozuClient {
 	    try {
 	      $this->response = $this->request->send ();
 	    } catch (\Exception $e) {
-	    	HttpHelper::checkError($e);
+	    	 HttpHelper::checkError($e, $this->apiContext);
 	    }
     
 		return $this;

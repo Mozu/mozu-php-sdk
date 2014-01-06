@@ -36,9 +36,9 @@ class FacetResource {
 	* @param bool $validate Validates that the product category associated with a facet is active. System-supplied and read only.
 	* @return Facet 
 	*/
-	public function getFacet($dataViewMode,  $facetId, $validate =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getFacet($dataViewMode, $facetId, $validate =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = FacetClient::getFacetClient($dataViewMode,  $facetId, $validate, $authTicket);
+		$mozuClient = FacetClient::getFacetClient($dataViewMode, $facetId, $validate, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -53,9 +53,9 @@ class FacetResource {
 	* @param bool $validate Validates that the product category associated with a facet is active. System-supplied and read only.
 	* @return FacetSet 
 	*/
-	public function getFacetCategoryList($dataViewMode,  $categoryId, $includeAvailable =  null, $validate =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getFacetCategoryList($dataViewMode, $categoryId, $includeAvailable =  null, $validate =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = FacetClient::getFacetCategoryListClient($dataViewMode,  $categoryId, $includeAvailable, $validate, $authTicket);
+		$mozuClient = FacetClient::getFacetCategoryListClient($dataViewMode, $categoryId, $includeAvailable, $validate, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -84,9 +84,9 @@ class FacetResource {
 	* @param Facet $facet Properties of the defined facet to modify. Required properties: Source, FacetType, IsHidden, and CategoryId.
 	* @return Facet 
 	*/
-	public function updateFacet($dataViewMode, $facet,  $facetId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateFacet($dataViewMode, $facet, $facetId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = FacetClient::updateFacetClient($dataViewMode, $facet,  $facetId, $authTicket);
+		$mozuClient = FacetClient::updateFacetClient($dataViewMode, $facet, $facetId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -98,9 +98,9 @@ class FacetResource {
 	*
 	* @param int $facetId Unique identifier of the facet to delete.
 	*/
-	public function deleteFacetById($dataViewMode,  $facetId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deleteFacetById($dataViewMode, $facetId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = FacetClient::deleteFacetByIdClient($dataViewMode,  $facetId, $authTicket);
+		$mozuClient = FacetClient::deleteFacetByIdClient($dataViewMode, $facetId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

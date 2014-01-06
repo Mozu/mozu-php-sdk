@@ -35,9 +35,9 @@ class UserDataResource {
 	* @param string $dbEntryQuery The database entry query string used to retrieve the record information.
 	* @return string 
 	*/
-	public function getDBValue( $dbEntryQuery, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getDBValue($dbEntryQuery, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = UserDataClient::getDBValueClient( $dbEntryQuery, $authTicket);
+		$mozuClient = UserDataClient::getDBValueClient($dbEntryQuery, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -50,9 +50,9 @@ class UserDataResource {
 	* @param string $dbEntryQuery The database entry string to create.
 	* @param string $value The value string to create.
 	*/
-	public function createDBValue($value,  $dbEntryQuery, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function createDBValue($value, $dbEntryQuery, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = UserDataClient::createDBValueClient($value,  $dbEntryQuery, $authTicket);
+		$mozuClient = UserDataClient::createDBValueClient($value, $dbEntryQuery, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 
@@ -64,9 +64,9 @@ class UserDataResource {
 	* @param string $dbEntryQuery The database entry query string used to update the record information.
 	* @param string $value The database value to update.
 	*/
-	public function updateDBValue($value,  $dbEntryQuery, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateDBValue($value, $dbEntryQuery, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = UserDataClient::updateDBValueClient($value,  $dbEntryQuery, $authTicket);
+		$mozuClient = UserDataClient::updateDBValueClient($value, $dbEntryQuery, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 
@@ -77,9 +77,9 @@ class UserDataResource {
 	*
 	* @param string $dbEntryQuery The database entry string to delete.
 	*/
-	public function deleteDBValue( $dbEntryQuery, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deleteDBValue($dbEntryQuery, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = UserDataClient::deleteDBValueClient( $dbEntryQuery, $authTicket);
+		$mozuClient = UserDataClient::deleteDBValueClient($dbEntryQuery, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

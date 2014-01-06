@@ -44,7 +44,7 @@ class CustomerAuthTicketClient {
 	* @param string $refreshToken 
 	* @return MozuClient
 	*/
-	public static function refreshUserAuthTicketClient( $refreshToken, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function refreshUserAuthTicketClient($refreshToken, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CustomerAuthTicketUrl::refreshUserAuthTicketUrl($refreshToken);
 		$mozuClient = new MozuClient();

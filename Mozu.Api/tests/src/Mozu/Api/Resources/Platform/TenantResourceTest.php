@@ -44,7 +44,12 @@ class TenantResourceTest extends BaseTest
     {
     	printf("Reading tenant...");
     	$this->assertSame($this->tenantId, $this->apiContext->getTenantId());
-      	$tenant = $this->object->getTenant($this->apiContext->getTenantId());
+    	try{
+	      	$tenant = $this->object->getTenant(0);
+    	} catch(ApiException $apiException) {
+    		var_dump($apiException);
+    	}
+    	
       	$this->assertSame($tenant->id, $this->apiContext->getTenantId());
    	
       	$newApiContext = new ApiContext($tenant);

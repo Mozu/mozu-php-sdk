@@ -38,9 +38,9 @@ class VisitResource {
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return VisitCollection 
 	*/
-	public function getVisits($filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getVisits($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = VisitClient::getVisitsClient($filter, $pageSize, $sortBy, $startIndex, $authTicket);
+		$mozuClient = VisitClient::getVisitsClient($startIndex, $pageSize, $sortBy, $filter, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -53,9 +53,9 @@ class VisitResource {
 	* @param string $visitId Unique identifier of the customer visit to retrieve.
 	* @return Visit 
 	*/
-	public function getVisit( $visitId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getVisit($visitId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = VisitClient::getVisitClient( $visitId, $authTicket);
+		$mozuClient = VisitClient::getVisitClient($visitId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -84,9 +84,9 @@ class VisitResource {
 	* @param Visit $visit Properties of the customer visit to update.
 	* @return Visit 
 	*/
-	public function updateVisit($visit,  $visitId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateVisit($visit, $visitId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = VisitClient::updateVisitClient($visit,  $visitId, $authTicket);
+		$mozuClient = VisitClient::updateVisitClient($visit, $visitId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

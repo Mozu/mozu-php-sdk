@@ -28,7 +28,7 @@ class ProductPropertyClient {
 	* @param string $productCode 
 	* @return MozuClient
 	*/
-	public static function getPropertiesClient($dataViewMode,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getPropertiesClient($dataViewMode, $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductPropertyUrl::getPropertiesUrl($productCode);
 		$mozuClient = new MozuClient();
@@ -46,7 +46,7 @@ class ProductPropertyClient {
 	* @param string $productCode 
 	* @return MozuClient
 	*/
-	public static function getPropertyClient($dataViewMode,  $attributeFQN,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getPropertyClient($dataViewMode, $productCode, $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductPropertyUrl::getPropertyUrl($attributeFQN, $productCode);
 		$mozuClient = new MozuClient();
@@ -64,7 +64,7 @@ class ProductPropertyClient {
 	* @param ProductProperty $productProperty Properties of the property attribute to configure for a product.
 	* @return MozuClient
 	*/
-	public static function addPropertyClient($dataViewMode, $productProperty,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function addPropertyClient($dataViewMode, $productProperty, $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductPropertyUrl::addPropertyUrl($productCode);
 		$mozuClient = new MozuClient();
@@ -83,7 +83,7 @@ class ProductPropertyClient {
 	* @param ProductProperty $productProperty Details of the property attribute to update for the product configuration.
 	* @return MozuClient
 	*/
-	public static function updatePropertyClient($dataViewMode, $productProperty,  $attributeFQN,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updatePropertyClient($dataViewMode, $productProperty, $productCode, $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductPropertyUrl::updatePropertyUrl($attributeFQN, $productCode);
 		$mozuClient = new MozuClient();
@@ -100,7 +100,7 @@ class ProductPropertyClient {
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @param string $productCode 
 	*/
-	public static function deletePropertyClient($dataViewMode,  $attributeFQN,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deletePropertyClient($dataViewMode, $productCode, $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductPropertyUrl::deletePropertyUrl($attributeFQN, $productCode);
 		$mozuClient = new MozuClient();

@@ -38,9 +38,9 @@ class CategoryResource {
 	* @param int $startIndex 
 	* @return CategoryPagedCollection 
 	*/
-	public function getCategories($dataViewMode, $filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getCategories($dataViewMode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CategoryClient::getCategoriesClient($dataViewMode, $filter, $pageSize, $sortBy, $startIndex, $authTicket);
+		$mozuClient = CategoryClient::getCategoriesClient($dataViewMode, $startIndex, $pageSize, $sortBy, $filter, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -53,9 +53,9 @@ class CategoryResource {
 	* @param int $categoryId Unique identifier of the category to retrieve.
 	* @return Category 
 	*/
-	public function getCategory($dataViewMode,  $categoryId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getCategory($dataViewMode, $categoryId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CategoryClient::getCategoryClient($dataViewMode,  $categoryId, $authTicket);
+		$mozuClient = CategoryClient::getCategoryClient($dataViewMode, $categoryId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -68,9 +68,9 @@ class CategoryResource {
 	* @param int $categoryId Unique identifier of the category whose subcategories are retrieved.
 	* @return CategoryCollection 
 	*/
-	public function getChildCategories($dataViewMode,  $categoryId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getChildCategories($dataViewMode, $categoryId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CategoryClient::getChildCategoriesClient($dataViewMode,  $categoryId, $authTicket);
+		$mozuClient = CategoryClient::getChildCategoriesClient($dataViewMode, $categoryId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -100,9 +100,9 @@ class CategoryResource {
 	* @param Category $category Properties of the category to modify.
 	* @return Category 
 	*/
-	public function updateCategory($dataViewMode, $category,  $categoryId, $cascadeVisibility =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateCategory($dataViewMode, $category, $categoryId, $cascadeVisibility =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CategoryClient::updateCategoryClient($dataViewMode, $category,  $categoryId, $cascadeVisibility, $authTicket);
+		$mozuClient = CategoryClient::updateCategoryClient($dataViewMode, $category, $categoryId, $cascadeVisibility, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -115,9 +115,9 @@ class CategoryResource {
 	* @param bool $cascadeDelete If true, any subcategories of a category are deleted when this category is deleted. Default: False.
 	* @param int $categoryId Unique identifier of the category to delete.
 	*/
-	public function deleteCategoryById($dataViewMode,  $categoryId, $cascadeDelete =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deleteCategoryById($dataViewMode, $categoryId, $cascadeDelete =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CategoryClient::deleteCategoryByIdClient($dataViewMode,  $categoryId, $cascadeDelete, $authTicket);
+		$mozuClient = CategoryClient::deleteCategoryByIdClient($dataViewMode, $categoryId, $cascadeDelete, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

@@ -18,40 +18,32 @@ use Mozu\Api\UrlLocation;
 class DocumentTreeUrl  {
 
 	/**
-		* Get Resource Url for GetTreeDocumentContent
+		* Get Resource Url for GetTreeDocument
 		* @param string $documentListName The name of the document list associated with the document.
 		* @param string $documentName The name of the document, which is unique within its folder.
-		* @param string $folderId If applicable, the unique identifier of the folder that contains the document.
-		* @param string $folderPath If applicable, the path of the folder hierarchy location associated with the document.
 		* @return string Resource Url
 	*/
-	public static function getTreeDocumentContentUrl($documentListName, $documentName, $folderId, $folderPath)
+	public static function getTreeDocumentUrl($documentListName, $documentName)
 	{
-		$url = "/api/content/documentlists/{documentListName}/documentTree/{documentName}/content?folderPath={folderPath}&folderId={folderId}";
+		$url = "/api/content/documentlists/{documentListName}/documentTree/{documentName}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
 		$url = $mozuUrl->formatUrl("documentListName", $documentListName);
 		$url = $mozuUrl->formatUrl("documentName", $documentName);
-		$url = $mozuUrl->formatUrl("folderId", $folderId);
-		$url = $mozuUrl->formatUrl("folderPath", $folderPath);
 		return $mozuUrl;
 	}
 	
 	/**
-		* Get Resource Url for GetTreeDocument
+		* Get Resource Url for GetTreeDocumentContent
 		* @param string $documentListName The name of the document list associated with the document.
 		* @param string $documentName The name of the document, which is unique within its folder.
-		* @param string $folderId If applicable, the unique identifier of the folder that contains the document.
-		* @param string $folderPath If applicable, the path of the folder hierarchy location that contains the document.
 		* @return string Resource Url
 	*/
-	public static function getTreeDocumentUrl($documentListName, $documentName, $folderId, $folderPath)
+	public static function getTreeDocumentContentUrl($documentListName, $documentName)
 	{
-		$url = "/api/content/documentlists/{documentListName}/documentTree/{documentName}?folderPath={folderPath}&folderId={folderId}";
+		$url = "/api/content/documentlists/{documentListName}/documentTree/{documentName}/content";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
 		$url = $mozuUrl->formatUrl("documentListName", $documentListName);
 		$url = $mozuUrl->formatUrl("documentName", $documentName);
-		$url = $mozuUrl->formatUrl("folderId", $folderId);
-		$url = $mozuUrl->formatUrl("folderPath", $folderPath);
 		return $mozuUrl;
 	}
 	
@@ -59,18 +51,14 @@ class DocumentTreeUrl  {
 		* Get Resource Url for UpdateTreeDocumentContent
 		* @param string $documentListName The name of the document list associated with the document.
 		* @param string $documentName The name of the document, which is unique within its folder.
-		* @param string $folderId If applicable, the unique identifier of the folder that contains the document.
-		* @param string $folderPath If applicable, the path of the folder hierarchy location associated with the document.
 		* @return string Resource Url
 	*/
-	public static function updateTreeDocumentContentUrl($documentListName, $documentName, $folderId, $folderPath)
+	public static function updateTreeDocumentContentUrl($documentListName, $documentName)
 	{
 		$url = "/api/content/documentlists/{documentListName}/documentTree/{documentName}/content?folderPath={folderPath}&folderId={folderId}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
 		$url = $mozuUrl->formatUrl("documentListName", $documentListName);
 		$url = $mozuUrl->formatUrl("documentName", $documentName);
-		$url = $mozuUrl->formatUrl("folderId", $folderId);
-		$url = $mozuUrl->formatUrl("folderPath", $folderPath);
 		return $mozuUrl;
 	}
 	
@@ -78,18 +66,14 @@ class DocumentTreeUrl  {
 		* Get Resource Url for DeleteTreeDocumentContent
 		* @param string $documentListName The name of the document list associated with the document.
 		* @param string $documentName The name of the document, which is unique within its folder.
-		* @param string $folderId If applicable, the unique identifier of the folder that contains the document.
-		* @param string $folderPath If applicable, the path of the folder hierarchy location associated with the document.
 		* @return string Resource Url
 	*/
-	public static function deleteTreeDocumentContentUrl($documentListName, $documentName, $folderId, $folderPath)
+	public static function deleteTreeDocumentContentUrl($documentListName, $documentName)
 	{
 		$url = "/api/content/documentlists/{documentListName}/documentTree/{documentName}/content?folderPath={folderPath}&folderId={folderId}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
 		$url = $mozuUrl->formatUrl("documentListName", $documentListName);
 		$url = $mozuUrl->formatUrl("documentName", $documentName);
-		$url = $mozuUrl->formatUrl("folderId", $folderId);
-		$url = $mozuUrl->formatUrl("folderPath", $folderPath);
 		return $mozuUrl;
 	}
 	

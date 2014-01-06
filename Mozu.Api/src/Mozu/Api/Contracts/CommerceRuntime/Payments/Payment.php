@@ -29,6 +29,8 @@ class Payment
 	*/
 	public $amountCredited;
 
+		public $amountRequested;
+
 	/**
 	*The actions a user can perform for a payment at this time.
 	*/

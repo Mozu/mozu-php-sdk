@@ -31,7 +31,7 @@ class AttributeTypeRuleClient {
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getAttributeTypeRulesClient($dataViewMode, $filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getAttributeTypeRulesClient($dataViewMode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = AttributeTypeRuleUrl::getAttributeTypeRulesUrl($filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();

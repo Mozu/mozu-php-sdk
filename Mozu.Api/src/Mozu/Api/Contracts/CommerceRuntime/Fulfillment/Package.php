@@ -29,6 +29,8 @@ class Package
 	*/
 	public $fulfillmentDate;
 
+		public $fulfillmentLocationCode;
+
 	/**
 	*Unique identifier of a package.
 	*/

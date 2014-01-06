@@ -56,9 +56,9 @@ class AuthTicketResource {
 	*
 	* @param string $refreshToken The refresh token string from the application's authentication ticket.
 	*/
-	public function deleteAppAuthTicket( $refreshToken)
+	public function deleteAppAuthTicket($refreshToken)
 	{
-		$mozuClient = AuthTicketClient::deleteAppAuthTicketClient( $refreshToken);
+		$mozuClient = AuthTicketClient::deleteAppAuthTicketClient($refreshToken);
 		$mozuClient->execute();
 
 	}

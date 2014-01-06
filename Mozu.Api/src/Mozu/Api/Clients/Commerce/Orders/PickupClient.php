@@ -29,7 +29,7 @@ class PickupClient {
 	* @param string $pickupId Unique identifier of the pickup to retrieve.
 	* @return MozuClient
 	*/
-	public static function getPickupClient( $orderId,  $pickupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getPickupClient($orderId, $pickupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = PickupUrl::getPickupUrl($orderId, $pickupId);
 		$mozuClient = new MozuClient();
@@ -46,7 +46,7 @@ class PickupClient {
 	* @param string $pickupId Unique identifier of the pickup for which to retrieve available actions.
 	* @return MozuClient
 	*/
-	public static function getAvailablePickupFulfillmentActionsClient( $orderId,  $pickupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getAvailablePickupFulfillmentActionsClient($orderId, $pickupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = PickupUrl::getAvailablePickupFulfillmentActionsUrl($orderId, $pickupId);
 		$mozuClient = new MozuClient();
@@ -63,7 +63,7 @@ class PickupClient {
 	* @param Pickup $pickup Properties of the in-store pickup to create.
 	* @return MozuClient
 	*/
-	public static function createPickupClient($pickup,  $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function createPickupClient($pickup, $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = PickupUrl::createPickupUrl($orderId);
 		$mozuClient = new MozuClient();
@@ -81,7 +81,7 @@ class PickupClient {
 	* @param Pickup $pickup Properties of the in-store pickup to update.
 	* @return MozuClient
 	*/
-	public static function updatePickupClient($pickup,  $orderId,  $pickupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updatePickupClient($pickup, $orderId, $pickupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = PickupUrl::updatePickupUrl($orderId, $pickupId);
 		$mozuClient = new MozuClient();
@@ -97,7 +97,7 @@ class PickupClient {
 	* @param string $orderId Unique identifier of the order associated with the pickup.
 	* @param string $pickupId Unique identifier of the pickup to remove.
 	*/
-	public static function deletePickupClient( $orderId,  $pickupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deletePickupClient($orderId, $pickupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = PickupUrl::deletePickupUrl($orderId, $pickupId);
 		$mozuClient = new MozuClient();

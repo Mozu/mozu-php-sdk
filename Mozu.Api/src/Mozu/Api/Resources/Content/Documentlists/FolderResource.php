@@ -36,9 +36,9 @@ class FolderResource {
 	* @param string $folderId The unique identifier of the folder to retrieve.
 	* @return Folder 
 	*/
-	public function getFolder($dataViewMode,  $documentListName,  $folderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getFolder($dataViewMode, $documentListName, $folderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = FolderClient::getFolderClient($dataViewMode,  $documentListName,  $folderId, $authTicket);
+		$mozuClient = FolderClient::getFolderClient($dataViewMode, $documentListName, $folderId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -55,9 +55,9 @@ class FolderResource {
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return FolderCollection 
 	*/
-	public function getFolders($dataViewMode,  $documentListName,  $filter, $pageSize =  null, $sort =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getFolders($dataViewMode, $documentListName, $filter, $pageSize =  null, $startIndex =  null, $sort =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = FolderClient::getFoldersClient($dataViewMode,  $documentListName,  $filter, $pageSize, $sort, $startIndex, $authTicket);
+		$mozuClient = FolderClient::getFoldersClient($dataViewMode, $documentListName, $filter, $pageSize, $startIndex, $sort, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -71,9 +71,9 @@ class FolderResource {
 	* @param Folder $folder The name of the newly created folder.
 	* @return Folder 
 	*/
-	public function createFolder($dataViewMode, $folder,  $documentListName, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function createFolder($dataViewMode, $folder, $documentListName, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = FolderClient::createFolderClient($dataViewMode, $folder,  $documentListName, $authTicket);
+		$mozuClient = FolderClient::createFolderClient($dataViewMode, $folder, $documentListName, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -88,9 +88,9 @@ class FolderResource {
 	* @param Folder $folder Properties of the folder to update.
 	* @return Folder 
 	*/
-	public function updateFolder($dataViewMode, $folder,  $documentListName,  $folderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateFolder($dataViewMode, $folder, $documentListName, $folderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = FolderClient::updateFolderClient($dataViewMode, $folder,  $documentListName,  $folderId, $authTicket);
+		$mozuClient = FolderClient::updateFolderClient($dataViewMode, $folder, $documentListName, $folderId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -103,9 +103,9 @@ class FolderResource {
 	* @param string $documentListName The name of the document list associated with the folder to delete.
 	* @param string $folderId The unique identifier of the folder to delete.
 	*/
-	public function deleteFolder($dataViewMode,  $documentListName,  $folderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deleteFolder($dataViewMode, $documentListName, $folderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = FolderClient::deleteFolderClient($dataViewMode,  $documentListName,  $folderId, $authTicket);
+		$mozuClient = FolderClient::deleteFolderClient($dataViewMode, $documentListName, $folderId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

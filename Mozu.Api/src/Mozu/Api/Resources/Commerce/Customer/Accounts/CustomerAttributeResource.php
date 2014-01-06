@@ -36,9 +36,9 @@ class CustomerAttributeResource {
 	* @param string $attributeFQN 
 	* @return CustomerAttribute 
 	*/
-	public function getAccountAttribute( $accountId,  $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getAccountAttribute($accountId, $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CustomerAttributeClient::getAccountAttributeClient( $accountId,  $attributeFQN, $authTicket);
+		$mozuClient = CustomerAttributeClient::getAccountAttributeClient($accountId, $attributeFQN, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -55,9 +55,9 @@ class CustomerAttributeResource {
 	* @param int $startIndex 
 	* @return CustomerAttributeCollection 
 	*/
-	public function getAccountAttributes( $accountId, $filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getAccountAttributes($accountId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CustomerAttributeClient::getAccountAttributesClient( $accountId, $filter, $pageSize, $sortBy, $startIndex, $authTicket);
+		$mozuClient = CustomerAttributeClient::getAccountAttributesClient($accountId, $startIndex, $pageSize, $sortBy, $filter, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -71,9 +71,9 @@ class CustomerAttributeResource {
 	* @param CustomerAttribute $customerAccountAttribute Properties of the customer account attribute to create.
 	* @return CustomerAttribute 
 	*/
-	public function addAccountAttribute($customerAccountAttribute,  $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function addAccountAttribute($customerAccountAttribute, $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CustomerAttributeClient::addAccountAttributeClient($customerAccountAttribute,  $accountId, $authTicket);
+		$mozuClient = CustomerAttributeClient::addAccountAttributeClient($customerAccountAttribute, $accountId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -88,9 +88,9 @@ class CustomerAttributeResource {
 	* @param CustomerAttribute $customerAccountAttribute The properties of the customer account attribute to update.
 	* @return CustomerAttribute 
 	*/
-	public function updateAccountAttribute($customerAccountAttribute,  $accountId, $removeMissing =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateAccountAttribute($customerAccountAttribute, $accountId, $removeMissing =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CustomerAttributeClient::updateAccountAttributeClient($customerAccountAttribute,  $accountId, $removeMissing, $authTicket);
+		$mozuClient = CustomerAttributeClient::updateAccountAttributeClient($customerAccountAttribute, $accountId, $removeMissing, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

@@ -57,19 +57,21 @@ class CustomerContact
 	public $middleNameOrInitial;
 
 	/**
-	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
-	*/
-	public $auditInfo;
-
-	/**
 	*Address associated with the customer account contact.
 	*/
 	public $address;
 
 	/**
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
+	*/
+	public $auditInfo;
+
+	/**
 	*List of phone numbers associated with the customer account contact.
 	*/
 	public $phoneNumbers;
+
+		public $types;
 
 }
 

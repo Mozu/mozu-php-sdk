@@ -49,9 +49,9 @@ class LocationUsageResource {
 	* @param string $code Code that identifies the location usage type, which is "DS" for direct ship, "SP" for in-store pickup, or "storeFinder" for store finder.
 	* @return LocationUsage 
 	*/
-	public function getLocationUsage( $code, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getLocationUsage($code, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = LocationUsageClient::getLocationUsageClient( $code, $authTicket);
+		$mozuClient = LocationUsageClient::getLocationUsageClient($code, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -65,9 +65,9 @@ class LocationUsageResource {
 	* @param LocationUsage $usage Properties of the location usage type to update.
 	* @return LocationUsage 
 	*/
-	public function updateLocationUsage($usage,  $code, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateLocationUsage($usage, $code, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = LocationUsageClient::updateLocationUsageClient($usage,  $code, $authTicket);
+		$mozuClient = LocationUsageClient::updateLocationUsageClient($usage, $code, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

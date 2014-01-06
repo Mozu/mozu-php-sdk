@@ -37,32 +37,32 @@ class MozuUrl {
 	public function formatUrl($paramName, $value ) {
 		$paramName = strtolower($paramName);
 		$this->url = str_replace("{". $paramName ."}", $value, $this->url);
-
+		
 		$this->url = str_replace("{*". $paramName ."}", ($value == null ? "" : $value), $this->url);
 
 		$removeString = "&" . $paramName . "=";
 		if ($value == null and strpos($this->url,$removeString) != false) {
 			$this->url = str_replace($removeString, "", $this->url);
 		}
-						
-		$removeString = "" . $paramName . "=";
+
+		$removeString = "{" . $paramName . "}=";
 		if ($value == null and strpos($this->url,$removeString) != false) {
 			$this->url = str_replace($removeString, "", $this->url);
 		}
-				
+		
 		$removeString = "/?";
 		if ( static::endsWith($this->url, $removeString)) {
 			$this->url = str_replace($removeString, "", $this->url);
 		}
-				
+		
 		if ( static::endsWith($this->url, $removeString . "&")) {
 			$this->url = str_replace($removeString . "&", "", $this->url);
 		}
-				
+		
 		if ( static::endsWith($this->url, "&")) {
 			$this->url = str_replace("&", "", $this->url);
 		}
-				
+		
 		if (strpos($this->url, "/?&") != false) {
 			$this->url = str_replace("/?&", "/?", $this->url);
 		}

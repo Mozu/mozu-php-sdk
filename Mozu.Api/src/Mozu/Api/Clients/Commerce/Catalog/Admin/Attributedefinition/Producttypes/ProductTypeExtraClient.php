@@ -28,7 +28,7 @@ class ProductTypeExtraClient {
 	* @param int $productTypeId Identifier of the product type.
 	* @return MozuClient
 	*/
-	public static function getExtrasClient($dataViewMode,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getExtrasClient($dataViewMode, $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductTypeExtraUrl::getExtrasUrl($productTypeId);
 		$mozuClient = new MozuClient();
@@ -46,7 +46,7 @@ class ProductTypeExtraClient {
 	* @param int $productTypeId Identifier of the product type whose extra is being retrieved.
 	* @return MozuClient
 	*/
-	public static function getExtraClient($dataViewMode,  $attributeFQN,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getExtraClient($dataViewMode, $productTypeId, $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductTypeExtraUrl::getExtraUrl($attributeFQN, $productTypeId);
 		$mozuClient = new MozuClient();
@@ -64,7 +64,7 @@ class ProductTypeExtraClient {
 	* @param AttributeInProductType $attributeInProductType The properties of the extra attribute definition for this product type assignment.
 	* @return MozuClient
 	*/
-	public static function addExtraClient($dataViewMode, $attributeInProductType,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function addExtraClient($dataViewMode, $attributeInProductType, $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductTypeExtraUrl::addExtraUrl($productTypeId);
 		$mozuClient = new MozuClient();
@@ -83,7 +83,7 @@ class ProductTypeExtraClient {
 	* @param AttributeInProductType $attributeInProductType The properties of the extra attribute definition to update for the product type.
 	* @return MozuClient
 	*/
-	public static function updateExtraClient($dataViewMode, $attributeInProductType,  $attributeFQN,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateExtraClient($dataViewMode, $attributeInProductType, $productTypeId, $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductTypeExtraUrl::updateExtraUrl($attributeFQN, $productTypeId);
 		$mozuClient = new MozuClient();
@@ -100,7 +100,7 @@ class ProductTypeExtraClient {
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @param int $productTypeId Identifier of the product type.
 	*/
-	public static function deleteExtraClient($dataViewMode,  $attributeFQN,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteExtraClient($dataViewMode, $productTypeId, $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductTypeExtraUrl::deleteExtraUrl($attributeFQN, $productTypeId);
 		$mozuClient = new MozuClient();

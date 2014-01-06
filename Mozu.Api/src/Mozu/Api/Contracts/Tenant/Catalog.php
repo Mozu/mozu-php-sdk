@@ -19,6 +19,11 @@ namespace Mozu\Api\Contracts\Tenant;
 */
 class Catalog
 {
+	/**
+	*If true, the catalog has been deleted.
+	*/
+	public $isDeleted;
+
 		public $createDate;
 
 	/**
@@ -37,11 +42,6 @@ class Catalog
 	public $deleteDate;
 
 		public $id;
-
-	/**
-	*If true, the catalog has been deleted.
-	*/
-	public $isDeleted;
 
 		public $masterCatalogId;
 

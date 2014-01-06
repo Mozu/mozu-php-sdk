@@ -32,9 +32,9 @@ class EventNotificationResource {
 	* @param int $startIndex 
 	* @return EventCollection 
 	*/
-	public function getEvents($filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getEvents($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = EventNotificationClient::getEventsClient($filter, $pageSize, $sortBy, $startIndex, $authTicket);
+		$mozuClient = EventNotificationClient::getEventsClient($startIndex, $pageSize, $sortBy, $filter, $authTicket);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
@@ -46,9 +46,9 @@ class EventNotificationResource {
 	* @param string $eventId The unique identifier of the event being retrieved. An event is a notification about a create, read, update, or delete on an order, product, discount or category.
 	* @return Event 
 	*/
-	public function getEvent( $eventId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getEvent($eventId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = EventNotificationClient::getEventClient( $eventId, $authTicket);
+		$mozuClient = EventNotificationClient::getEventClient($eventId, $authTicket);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 

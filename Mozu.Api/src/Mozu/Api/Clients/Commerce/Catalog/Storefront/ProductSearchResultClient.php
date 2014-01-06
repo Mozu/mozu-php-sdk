@@ -43,7 +43,7 @@ class ProductSearchResultClient {
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function searchClient($facet =  null, $facetFieldRangeQuery =  null, $facetHierDepth =  null, $facetHierPrefix =  null, $facetHierValue =  null, $facetPageSize =  null, $facetSettings =  null, $facetStartIndex =  null, $facetTemplate =  null, $facetTemplateSubset =  null, $facetValueFilter =  null, $filter =  null, $pageSize =  null, $query =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function searchClient($query =  null, $filter =  null, $facetTemplate =  null, $facetTemplateSubset =  null, $facet =  null, $facetFieldRangeQuery =  null, $facetHierPrefix =  null, $facetHierValue =  null, $facetHierDepth =  null, $facetStartIndex =  null, $facetPageSize =  null, $facetSettings =  null, $facetValueFilter =  null, $sortBy =  null, $pageSize =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductSearchResultUrl::searchUrl($facet, $facetFieldRangeQuery, $facetHierDepth, $facetHierPrefix, $facetHierValue, $facetPageSize, $facetSettings, $facetStartIndex, $facetTemplate, $facetTemplateSubset, $facetValueFilter, $filter, $pageSize, $query, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
@@ -60,7 +60,7 @@ class ProductSearchResultClient {
 	* @param string $q Text that the shopper is currently entering.
 	* @return MozuClient
 	*/
-	public static function suggestClient($pageSize =  null, $q =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function suggestClient($q =  null, $pageSize =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductSearchResultUrl::suggestUrl($pageSize, $q);
 		$mozuClient = new MozuClient();

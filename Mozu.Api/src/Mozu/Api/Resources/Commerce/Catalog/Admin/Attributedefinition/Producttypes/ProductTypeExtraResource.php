@@ -35,9 +35,9 @@ class ProductTypeExtraResource {
 	* @param int $productTypeId Identifier of the product type.
 	* @return array|AttributeInProductType 
 	*/
-	public function getExtras($dataViewMode,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getExtras($dataViewMode, $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductTypeExtraClient::getExtrasClient($dataViewMode,  $productTypeId, $authTicket);
+		$mozuClient = ProductTypeExtraClient::getExtrasClient($dataViewMode, $productTypeId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -51,9 +51,9 @@ class ProductTypeExtraResource {
 	* @param int $productTypeId Identifier of the product type whose extra is being retrieved.
 	* @return AttributeInProductType 
 	*/
-	public function getExtra($dataViewMode,  $attributeFQN,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getExtra($dataViewMode, $productTypeId, $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductTypeExtraClient::getExtraClient($dataViewMode,  $attributeFQN,  $productTypeId, $authTicket);
+		$mozuClient = ProductTypeExtraClient::getExtraClient($dataViewMode, $productTypeId, $attributeFQN, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -67,9 +67,9 @@ class ProductTypeExtraResource {
 	* @param AttributeInProductType $attributeInProductType The properties of the extra attribute definition for this product type assignment.
 	* @return AttributeInProductType 
 	*/
-	public function addExtra($dataViewMode, $attributeInProductType,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function addExtra($dataViewMode, $attributeInProductType, $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductTypeExtraClient::addExtraClient($dataViewMode, $attributeInProductType,  $productTypeId, $authTicket);
+		$mozuClient = ProductTypeExtraClient::addExtraClient($dataViewMode, $attributeInProductType, $productTypeId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -84,9 +84,9 @@ class ProductTypeExtraResource {
 	* @param AttributeInProductType $attributeInProductType The properties of the extra attribute definition to update for the product type.
 	* @return AttributeInProductType 
 	*/
-	public function updateExtra($dataViewMode, $attributeInProductType,  $attributeFQN,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateExtra($dataViewMode, $attributeInProductType, $productTypeId, $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductTypeExtraClient::updateExtraClient($dataViewMode, $attributeInProductType,  $attributeFQN,  $productTypeId, $authTicket);
+		$mozuClient = ProductTypeExtraClient::updateExtraClient($dataViewMode, $attributeInProductType, $productTypeId, $attributeFQN, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -99,9 +99,9 @@ class ProductTypeExtraResource {
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @param int $productTypeId Identifier of the product type.
 	*/
-	public function deleteExtra($dataViewMode,  $attributeFQN,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deleteExtra($dataViewMode, $productTypeId, $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductTypeExtraClient::deleteExtraClient($dataViewMode,  $attributeFQN,  $productTypeId, $authTicket);
+		$mozuClient = ProductTypeExtraClient::deleteExtraClient($dataViewMode, $productTypeId, $attributeFQN, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

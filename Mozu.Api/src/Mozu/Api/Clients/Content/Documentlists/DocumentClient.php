@@ -29,7 +29,7 @@ class DocumentClient {
 	* @param string $documentListName The name of the document list associated with the document to retrieve.
 	* @return MozuClient
 	*/
-	public static function getDocumentClient($dataViewMode,  $documentId,  $documentListName, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getDocumentClient($dataViewMode, $documentListName, $documentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = DocumentUrl::getDocumentUrl($documentId, $documentListName);
 		$mozuClient = new MozuClient();
@@ -47,7 +47,7 @@ class DocumentClient {
 	* @param string $documentListName The name of the document list associated with the document.
 	* @return MozuClient
 	*/
-	public static function getDocumentContentClient($dataViewMode,  $documentId,  $documentListName, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getDocumentContentClient($dataViewMode, $documentListName, $documentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = DocumentUrl::getDocumentContentUrl($documentId, $documentListName);
 		$mozuClient = new MozuClient();
@@ -68,7 +68,7 @@ class DocumentClient {
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return MozuClient
 	*/
-	public static function getDocumentsClient($dataViewMode,  $documentListName, $filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getDocumentsClient($dataViewMode, $documentListName, $filter =  null, $sortBy =  null, $pageSize =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = DocumentUrl::getDocumentsUrl($documentListName, $filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
@@ -86,7 +86,7 @@ class DocumentClient {
 	* @param Document $document The descriptive name of the newly created document.
 	* @return MozuClient
 	*/
-	public static function createDocumentClient($dataViewMode, $document,  $documentListName, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function createDocumentClient($dataViewMode, $document, $documentListName, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = DocumentUrl::createDocumentUrl($documentListName);
 		$mozuClient = new MozuClient();
@@ -105,7 +105,7 @@ class DocumentClient {
 	* @param Document $document Properties of the document to update.
 	* @return MozuClient
 	*/
-	public static function updateDocumentClient($dataViewMode, $document,  $documentId,  $documentListName, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateDocumentClient($dataViewMode, $document, $documentListName, $documentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = DocumentUrl::updateDocumentUrl($documentId, $documentListName);
 		$mozuClient = new MozuClient();
@@ -123,7 +123,7 @@ class DocumentClient {
 	* @param string $documentListName The name of the document list associated with the document.
 	* @param Stream $stream 
 	*/
-	public static function updateDocumentContentClient($dataViewMode, $stream,  $documentId,  $documentListName, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateDocumentContentClient($dataViewMode, $stream, $documentListName, $documentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = DocumentUrl::updateDocumentContentUrl($documentId, $documentListName);
 		$mozuClient = new MozuClient();
@@ -140,7 +140,7 @@ class DocumentClient {
 	* @param string $documentId Identifier of the document being deleted.
 	* @param string $documentListName The name of the document list associated with the document list being deleted.
 	*/
-	public static function deleteDocumentClient($dataViewMode,  $documentId,  $documentListName, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteDocumentClient($dataViewMode, $documentListName, $documentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = DocumentUrl::deleteDocumentUrl($documentId, $documentListName);
 		$mozuClient = new MozuClient();
@@ -157,7 +157,7 @@ class DocumentClient {
 	* @param string $documentId Unique identifier of the document.
 	* @param string $documentListName The name of the document list associated with the document.
 	*/
-	public static function deleteDocumentContentClient($dataViewMode,  $documentId,  $documentListName, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteDocumentContentClient($dataViewMode, $documentListName, $documentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = DocumentUrl::deleteDocumentContentUrl($documentId, $documentListName);
 		$mozuClient = new MozuClient();

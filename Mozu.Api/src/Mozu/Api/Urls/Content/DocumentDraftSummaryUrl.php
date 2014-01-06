@@ -35,6 +35,19 @@ class DocumentDraftSummaryUrl  {
 	}
 	
 	/**
+		* Get Resource Url for DeleteDocumentDrafts
+		* @param string $documentLists List of document lists that contain documents to delete.
+		* @return string Resource Url
+	*/
+	public static function deleteDocumentDraftsUrl($documentLists)
+	{
+		$url = "/api/content/documentpublishing/draft?documentLists={documentLists}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("documentLists", $documentLists);
+		return $mozuUrl;
+	}
+	
+	/**
 		* Get Resource Url for PublishDocuments
 		* @param string $documentLists List of document lists that contain documents to publish.
 		* @return string Resource Url
@@ -43,21 +56,6 @@ class DocumentDraftSummaryUrl  {
 	{
 		$url = "/api/content/documentpublishing/active?documentLists={documentLists}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
-		$url = $mozuUrl->formatUrl("documentLists", $documentLists);
-		return $mozuUrl;
-	}
-	
-	/**
-		* Get Resource Url for DeleteDocumentDrafts
-		* @param string $documentIds Unique identifiers of the documents to delete.
-		* @param string $documentLists List of document lists that contain documents to delete.
-		* @return string Resource Url
-	*/
-	public static function deleteDocumentDraftsUrl($documentIds, $documentLists)
-	{
-		$url = "/api/content/documentpublishing/draft?documentLists={documentLists}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
-		$url = $mozuUrl->formatUrl("documentIds", $documentIds);
 		$url = $mozuUrl->formatUrl("documentLists", $documentLists);
 		return $mozuUrl;
 	}

@@ -38,9 +38,9 @@ class ChannelResource {
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return ChannelCollection 
 	*/
-	public function getChannels($filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getChannels($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ChannelClient::getChannelsClient($filter, $pageSize, $sortBy, $startIndex, $authTicket);
+		$mozuClient = ChannelClient::getChannelsClient($startIndex, $pageSize, $sortBy, $filter, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -53,9 +53,9 @@ class ChannelResource {
 	* @param string $code User-defined code that identifies the channel to retrieve.
 	* @return Channel 
 	*/
-	public function getChannel( $code, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getChannel($code, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ChannelClient::getChannelClient( $code, $authTicket);
+		$mozuClient = ChannelClient::getChannelClient($code, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -84,9 +84,9 @@ class ChannelResource {
 	* @param Channel $channel Properties of a the channel to update.
 	* @return Channel 
 	*/
-	public function updateChannel($channel,  $code, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateChannel($channel, $code, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ChannelClient::updateChannelClient($channel,  $code, $authTicket);
+		$mozuClient = ChannelClient::updateChannelClient($channel, $code, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -98,9 +98,9 @@ class ChannelResource {
 	*
 	* @param string $code User-defined code that identifies the channel to delete.
 	*/
-	public function deleteChannel( $code, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deleteChannel($code, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ChannelClient::deleteChannelClient( $code, $authTicket);
+		$mozuClient = ChannelClient::deleteChannelClient($code, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

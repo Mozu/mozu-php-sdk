@@ -29,7 +29,7 @@ class BillingInfoClient {
 	* @param string $orderId Unique identifier of the order.
 	* @return MozuClient
 	*/
-	public static function getBillingInfoClient( $orderId, $draft =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getBillingInfoClient($orderId, $draft =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = BillingInfoUrl::getBillingInfoUrl($draft, $orderId);
 		$mozuClient = new MozuClient();
@@ -48,7 +48,7 @@ class BillingInfoClient {
 	* @param BillingInfo $billingInfo The properties of the order billing information to update.
 	* @return MozuClient
 	*/
-	public static function setBillingInfoClient($billingInfo,  $orderId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function setBillingInfoClient($billingInfo, $orderId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = BillingInfoUrl::setBillingInfoUrl($orderId, $updateMode, $version);
 		$mozuClient = new MozuClient();

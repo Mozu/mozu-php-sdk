@@ -28,7 +28,7 @@ class ProductTypeOptionClient {
 	* @param int $productTypeId Identifier of the product type to retrieve.
 	* @return MozuClient
 	*/
-	public static function getOptionsClient($dataViewMode,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getOptionsClient($dataViewMode, $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductTypeOptionUrl::getOptionsUrl($productTypeId);
 		$mozuClient = new MozuClient();
@@ -46,7 +46,7 @@ class ProductTypeOptionClient {
 	* @param int $productTypeId The identifier of the product type.
 	* @return MozuClient
 	*/
-	public static function getOptionClient($dataViewMode,  $attributeFQN,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getOptionClient($dataViewMode, $productTypeId, $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductTypeOptionUrl::getOptionUrl($attributeFQN, $productTypeId);
 		$mozuClient = new MozuClient();
@@ -64,7 +64,7 @@ class ProductTypeOptionClient {
 	* @param AttributeInProductType $attributeInProductType Properties of the option attribute to define for the specified product type.
 	* @return MozuClient
 	*/
-	public static function addOptionClient($dataViewMode, $attributeInProductType,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function addOptionClient($dataViewMode, $attributeInProductType, $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductTypeOptionUrl::addOptionUrl($productTypeId);
 		$mozuClient = new MozuClient();
@@ -83,7 +83,7 @@ class ProductTypeOptionClient {
 	* @param AttributeInProductType $attributeInProductType Properties of the option product attribute to define for the specified product type.
 	* @return MozuClient
 	*/
-	public static function updateOptionClient($dataViewMode, $attributeInProductType,  $attributeFQN,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateOptionClient($dataViewMode, $attributeInProductType, $productTypeId, $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductTypeOptionUrl::updateOptionUrl($attributeFQN, $productTypeId);
 		$mozuClient = new MozuClient();
@@ -100,7 +100,7 @@ class ProductTypeOptionClient {
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @param int $productTypeId Identifier of the product type.
 	*/
-	public static function deleteOptionClient($dataViewMode,  $attributeFQN,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteOptionClient($dataViewMode, $productTypeId, $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductTypeOptionUrl::deleteOptionUrl($attributeFQN, $productTypeId);
 		$mozuClient = new MozuClient();

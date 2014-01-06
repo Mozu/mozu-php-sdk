@@ -41,9 +41,9 @@ class CustomerAccountResource {
 	* @param int $startIndex 
 	* @return CustomerAccountCollection 
 	*/
-	public function getAccounts($fields =  null, $filter =  null, $pageSize =  null, $q =  null, $qLimit =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getAccounts($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $fields =  null, $q =  null, $qLimit =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CustomerAccountClient::getAccountsClient($fields, $filter, $pageSize, $q, $qLimit, $sortBy, $startIndex, $authTicket);
+		$mozuClient = CustomerAccountClient::getAccountsClient($startIndex, $pageSize, $sortBy, $filter, $fields, $q, $qLimit, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -56,9 +56,9 @@ class CustomerAccountResource {
 	* @param int $accountId Unique identifier of the customer account to retrieve.
 	* @return CustomerAccount 
 	*/
-	public function getAccount( $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getAccount($accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CustomerAccountClient::getAccountClient( $accountId, $authTicket);
+		$mozuClient = CustomerAccountClient::getAccountClient($accountId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -71,9 +71,9 @@ class CustomerAccountResource {
 	* @param int $accountId 
 	* @return LoginState 
 	*/
-	public function getLoginState( $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getLoginState($accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CustomerAccountClient::getLoginStateClient( $accountId, $authTicket);
+		$mozuClient = CustomerAccountClient::getLoginStateClient($accountId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -86,9 +86,9 @@ class CustomerAccountResource {
 	* @param string $emailAddress 
 	* @return LoginState 
 	*/
-	public function getLoginStateByEmailAddress( $emailAddress, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getLoginStateByEmailAddress($emailAddress, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CustomerAccountClient::getLoginStateByEmailAddressClient( $emailAddress, $authTicket);
+		$mozuClient = CustomerAccountClient::getLoginStateByEmailAddressClient($emailAddress, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -101,9 +101,9 @@ class CustomerAccountResource {
 	* @param string $userName 
 	* @return LoginState 
 	*/
-	public function getLoginStateByUserName( $userName, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getLoginStateByUserName($userName, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CustomerAccountClient::getLoginStateByUserNameClient( $userName, $authTicket);
+		$mozuClient = CustomerAccountClient::getLoginStateByUserNameClient($userName, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -132,9 +132,9 @@ class CustomerAccountResource {
 	* @param CustomerLoginInfo $customerAuthInfo 
 	* @return CustomerAuthTicket 
 	*/
-	public function addLoginToExistingCustomer($customerAuthInfo,  $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function addLoginToExistingCustomer($customerAuthInfo, $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CustomerAccountClient::addLoginToExistingCustomerClient($customerAuthInfo,  $accountId, $authTicket);
+		$mozuClient = CustomerAccountClient::addLoginToExistingCustomerClient($customerAuthInfo, $accountId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -146,9 +146,9 @@ class CustomerAccountResource {
 	*
 	* @param int $accountId 
 	*/
-	public function recomputeCustomerLifetimeValue( $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function recomputeCustomerLifetimeValue($accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CustomerAccountClient::recomputeCustomerLifetimeValueClient( $accountId, $authTicket);
+		$mozuClient = CustomerAccountClient::recomputeCustomerLifetimeValueClient($accountId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 
@@ -160,9 +160,9 @@ class CustomerAccountResource {
 	* @param int $accountId 
 	* @param bool $isLocked 
 	*/
-	public function setLoginLocked($isLocked,  $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function setLoginLocked($isLocked, $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CustomerAccountClient::setLoginLockedClient($isLocked,  $accountId, $authTicket);
+		$mozuClient = CustomerAccountClient::setLoginLockedClient($isLocked, $accountId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 
@@ -174,9 +174,9 @@ class CustomerAccountResource {
 	* @param int $accountId 
 	* @param bool $isPasswordChangeRequired 
 	*/
-	public function setPasswordChangeRequired($isPasswordChangeRequired,  $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function setPasswordChangeRequired($isPasswordChangeRequired, $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CustomerAccountClient::setPasswordChangeRequiredClient($isPasswordChangeRequired,  $accountId, $authTicket);
+		$mozuClient = CustomerAccountClient::setPasswordChangeRequiredClient($isPasswordChangeRequired, $accountId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 
@@ -232,9 +232,9 @@ class CustomerAccountResource {
 	* @param CustomerAccount $account Properties of the customer account to update.
 	* @return CustomerAccount 
 	*/
-	public function updateAccount($account,  $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateAccount($account, $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CustomerAccountClient::updateAccountClient($account,  $accountId, $authTicket);
+		$mozuClient = CustomerAccountClient::updateAccountClient($account, $accountId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -246,9 +246,9 @@ class CustomerAccountResource {
 	*
 	* @param int $accountId Unique identifier of the customer account to delete.
 	*/
-	public function deleteAccount( $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deleteAccount($accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CustomerAccountClient::deleteAccountClient( $accountId, $authTicket);
+		$mozuClient = CustomerAccountClient::deleteAccountClient($accountId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

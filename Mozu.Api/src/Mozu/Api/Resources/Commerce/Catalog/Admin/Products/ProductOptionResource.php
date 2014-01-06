@@ -35,9 +35,9 @@ class ProductOptionResource {
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @return array|ProductOption 
 	*/
-	public function getOptions($dataViewMode,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getOptions($dataViewMode, $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductOptionClient::getOptionsClient($dataViewMode,  $productCode, $authTicket);
+		$mozuClient = ProductOptionClient::getOptionsClient($dataViewMode, $productCode, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -51,9 +51,9 @@ class ProductOptionResource {
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @return ProductOption 
 	*/
-	public function getOption($dataViewMode,  $attributeFQN,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getOption($dataViewMode, $productCode, $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductOptionClient::getOptionClient($dataViewMode,  $attributeFQN,  $productCode, $authTicket);
+		$mozuClient = ProductOptionClient::getOptionClient($dataViewMode, $productCode, $attributeFQN, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -67,9 +67,9 @@ class ProductOptionResource {
 	* @param ProductOption $productOption Properties of the option attribute to define for the product.
 	* @return ProductOption 
 	*/
-	public function addOption($dataViewMode, $productOption,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function addOption($dataViewMode, $productOption, $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductOptionClient::addOptionClient($dataViewMode, $productOption,  $productCode, $authTicket);
+		$mozuClient = ProductOptionClient::addOptionClient($dataViewMode, $productOption, $productCode, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -84,9 +84,9 @@ class ProductOptionResource {
 	* @param ProductOption $productOption Properties of the product option attribute configuration to update.
 	* @return ProductOption 
 	*/
-	public function updateOption($dataViewMode, $productOption,  $attributeFQN,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateOption($dataViewMode, $productOption, $productCode, $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductOptionClient::updateOptionClient($dataViewMode, $productOption,  $attributeFQN,  $productCode, $authTicket);
+		$mozuClient = ProductOptionClient::updateOptionClient($dataViewMode, $productOption, $productCode, $attributeFQN, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -99,9 +99,9 @@ class ProductOptionResource {
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	*/
-	public function deleteOption($dataViewMode,  $attributeFQN,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deleteOption($dataViewMode, $productCode, $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductOptionClient::deleteOptionClient($dataViewMode,  $attributeFQN,  $productCode, $authTicket);
+		$mozuClient = ProductOptionClient::deleteOptionClient($dataViewMode, $productCode, $attributeFQN, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

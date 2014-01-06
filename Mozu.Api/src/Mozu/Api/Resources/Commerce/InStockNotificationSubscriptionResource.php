@@ -38,9 +38,9 @@ class InStockNotificationSubscriptionResource {
 	* @param int $startIndex 
 	* @return InStockNotificationSubscriptionCollection 
 	*/
-	public function getInStockNotificationSubscriptions($filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getInStockNotificationSubscriptions($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = InStockNotificationSubscriptionClient::getInStockNotificationSubscriptionsClient($filter, $pageSize, $sortBy, $startIndex, $authTicket);
+		$mozuClient = InStockNotificationSubscriptionClient::getInStockNotificationSubscriptionsClient($startIndex, $pageSize, $sortBy, $filter, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -53,9 +53,9 @@ class InStockNotificationSubscriptionResource {
 	* @param int $id 
 	* @return InStockNotificationSubscription 
 	*/
-	public function getInStockNotificationSubscription( $id, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getInStockNotificationSubscription($id, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = InStockNotificationSubscriptionClient::getInStockNotificationSubscriptionClient( $id, $authTicket);
+		$mozuClient = InStockNotificationSubscriptionClient::getInStockNotificationSubscriptionClient($id, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -82,9 +82,9 @@ class InStockNotificationSubscriptionResource {
 	*
 	* @param int $id 
 	*/
-	public function deleteInStockNotificationSubscription( $id, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deleteInStockNotificationSubscription($id, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = InStockNotificationSubscriptionClient::deleteInStockNotificationSubscriptionClient( $id, $authTicket);
+		$mozuClient = InStockNotificationSubscriptionClient::deleteInStockNotificationSubscriptionClient($id, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

@@ -28,7 +28,7 @@ class AdminUserClient {
 	* @param string $userId Unique identifier of the administrator account to retrieve.
 	* @return MozuClient
 	*/
-	public static function getUserClient( $userId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getUserClient($userId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = AdminUserUrl::getUserUrl($userId);
 		$mozuClient = new MozuClient();
@@ -44,7 +44,7 @@ class AdminUserClient {
 	* @param string $userId Unique identifier of the user whose tenant scopes you want to retrieve.
 	* @return MozuClient
 	*/
-	public static function getTenantScopesForUserClient( $userId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getTenantScopesForUserClient($userId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = AdminUserUrl::getTenantScopesForUserUrl($userId);
 		$mozuClient = new MozuClient();

@@ -36,9 +36,9 @@ class CustomerNoteResource {
 	* @param int $noteId Unique identifier of a particular note to retrieve.
 	* @return CustomerNote 
 	*/
-	public function getAccountNote( $accountId,  $noteId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getAccountNote($accountId, $noteId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CustomerNoteClient::getAccountNoteClient( $accountId,  $noteId, $authTicket);
+		$mozuClient = CustomerNoteClient::getAccountNoteClient($accountId, $noteId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -55,9 +55,9 @@ class CustomerNoteResource {
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return CustomerNoteCollection 
 	*/
-	public function getAccountNotes( $accountId, $filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getAccountNotes($accountId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CustomerNoteClient::getAccountNotesClient( $accountId, $filter, $pageSize, $sortBy, $startIndex, $authTicket);
+		$mozuClient = CustomerNoteClient::getAccountNotesClient($accountId, $startIndex, $pageSize, $sortBy, $filter, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -71,9 +71,9 @@ class CustomerNoteResource {
 	* @param CustomerNote $note Properties of the customer account note to create.
 	* @return CustomerNote 
 	*/
-	public function addAccountNote($note,  $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function addAccountNote($note, $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CustomerNoteClient::addAccountNoteClient($note,  $accountId, $authTicket);
+		$mozuClient = CustomerNoteClient::addAccountNoteClient($note, $accountId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -88,9 +88,9 @@ class CustomerNoteResource {
 	* @param CustomerNote $note The new content to replace the existing note.
 	* @return CustomerNote 
 	*/
-	public function updateAccountNote($note,  $accountId,  $noteId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateAccountNote($note, $accountId, $noteId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CustomerNoteClient::updateAccountNoteClient($note,  $accountId,  $noteId, $authTicket);
+		$mozuClient = CustomerNoteClient::updateAccountNoteClient($note, $accountId, $noteId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -103,9 +103,9 @@ class CustomerNoteResource {
 	* @param int $accountId Unique identifier of the customer account that contains the note being deleted.
 	* @param int $noteId Unique identifier of the customer account note being deleted.
 	*/
-	public function deleteAccountNote( $accountId,  $noteId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deleteAccountNote($accountId, $noteId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CustomerNoteClient::deleteAccountNoteClient( $accountId,  $noteId, $authTicket);
+		$mozuClient = CustomerNoteClient::deleteAccountNoteClient($accountId, $noteId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

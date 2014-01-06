@@ -20,16 +20,14 @@ class DocumentListUrl  {
 	/**
 		* Get Resource Url for GetDocumentLists
 		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-		* @param string $sort 
 		* @param int $startIndex 
 		* @return string Resource Url
 	*/
-	public static function getDocumentListsUrl($pageSize, $sort, $startIndex)
+	public static function getDocumentListsUrl($pageSize, $startIndex)
 	{
-		$url = "/api/content/documentlists/?pageSize={pageSize}&startIndex={startIndex}&sortBy={sort}";
+		$url = "/api/content/documentlists/?pageSize={pageSize}&startIndex={startIndex}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
 		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
-		$url = $mozuUrl->formatUrl("sort", $sort);
 		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
 		return $mozuUrl;
 	}

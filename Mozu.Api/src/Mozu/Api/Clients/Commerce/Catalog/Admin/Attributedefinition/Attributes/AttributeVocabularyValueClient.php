@@ -28,7 +28,7 @@ class AttributeVocabularyValueClient {
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @return MozuClient
 	*/
-	public static function getAttributeVocabularyValuesClient($dataViewMode,  $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getAttributeVocabularyValuesClient($dataViewMode, $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = AttributeVocabularyValueUrl::getAttributeVocabularyValuesUrl($attributeFQN);
 		$mozuClient = new MozuClient();
@@ -46,7 +46,7 @@ class AttributeVocabularyValueClient {
 	* @param string $value The actual unique value of the attribute vocabulary to retrieve. A single attribute must have a unique value and match the attribute's data type. If a string value returns null, the system will generate a value. The actual string content displayed shoud be stored as "Content" and actual content is required for string values.
 	* @return MozuClient
 	*/
-	public static function getAttributeVocabularyValueClient($dataViewMode,  $attributeFQN,  $value, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getAttributeVocabularyValueClient($dataViewMode, $attributeFQN, $value, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = AttributeVocabularyValueUrl::getAttributeVocabularyValueUrl($attributeFQN, $value);
 		$mozuClient = new MozuClient();
@@ -64,7 +64,7 @@ class AttributeVocabularyValueClient {
 	* @param AttributeVocabularyValue $attributeVocabularyValue The predefined vocabulary value to add to the attribute content.
 	* @return MozuClient
 	*/
-	public static function addAttributeVocabularyValueClient($dataViewMode, $attributeVocabularyValue,  $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function addAttributeVocabularyValueClient($dataViewMode, $attributeVocabularyValue, $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = AttributeVocabularyValueUrl::addAttributeVocabularyValueUrl($attributeFQN);
 		$mozuClient = new MozuClient();
@@ -82,7 +82,7 @@ class AttributeVocabularyValueClient {
 	* @param array|AttributeVocabularyValue $vocabularyValues The actual vocabulary values for the attribute being updated.
 	* @return MozuClient
 	*/
-	public static function updateAttributeVocabularyValuesClient($dataViewMode, $vocabularyValues,  $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateAttributeVocabularyValuesClient($dataViewMode, $vocabularyValues, $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = AttributeVocabularyValueUrl::updateAttributeVocabularyValuesUrl($attributeFQN);
 		$mozuClient = new MozuClient();
@@ -101,7 +101,7 @@ class AttributeVocabularyValueClient {
 	* @param AttributeVocabularyValue $attributeVocabularyValue The predefined vocabulary value to add to the attribute content to update.
 	* @return MozuClient
 	*/
-	public static function updateAttributeVocabularyValueClient($dataViewMode, $attributeVocabularyValue,  $attributeFQN,  $value, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateAttributeVocabularyValueClient($dataViewMode, $attributeVocabularyValue, $attributeFQN, $value, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = AttributeVocabularyValueUrl::updateAttributeVocabularyValueUrl($attributeFQN, $value);
 		$mozuClient = new MozuClient();
@@ -118,7 +118,7 @@ class AttributeVocabularyValueClient {
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @param string $value The actual unique value of the attribute vocabulary to delete. A single attribute must have a unique value and match the attribute's data type. If a string value returns null, the system will generate a value. The actual string content displayed shoud be stored as "Content" and actual content is required for string values.
 	*/
-	public static function deleteAttributeVocabularyValueClient($dataViewMode,  $attributeFQN,  $value, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteAttributeVocabularyValueClient($dataViewMode, $attributeFQN, $value, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = AttributeVocabularyValueUrl::deleteAttributeVocabularyValueUrl($attributeFQN, $value);
 		$mozuClient = new MozuClient();

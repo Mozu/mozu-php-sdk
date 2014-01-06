@@ -29,7 +29,7 @@ class WishlistItemClient {
 	* @param string $wishlistItemId Unique identifier of the wish list associated with the item to retrieve.
 	* @return MozuClient
 	*/
-	public static function getWishlistItemClient( $wishlistId,  $wishlistItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getWishlistItemClient($wishlistId, $wishlistItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = WishlistItemUrl::getWishlistItemUrl($wishlistId, $wishlistItemId);
 		$mozuClient = new MozuClient();
@@ -49,7 +49,7 @@ class WishlistItemClient {
 	* @param string $wishlistId Unique identifier of the wish list associated with the items to retrieve.
 	* @return MozuClient
 	*/
-	public static function getWishlistItemsClient( $wishlistId, $filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getWishlistItemsClient($wishlistId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = WishlistItemUrl::getWishlistItemsUrl($filter, $pageSize, $sortBy, $startIndex, $wishlistId);
 		$mozuClient = new MozuClient();
@@ -70,7 +70,7 @@ class WishlistItemClient {
 	* @param string $wishlistName 
 	* @return MozuClient
 	*/
-	public static function getWishlistItemsByWishlistNameClient( $customerAccountId,  $wishlistName, $filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getWishlistItemsByWishlistNameClient($customerAccountId, $wishlistName, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = WishlistItemUrl::getWishlistItemsByWishlistNameUrl($customerAccountId, $filter, $pageSize, $sortBy, $startIndex, $wishlistName);
 		$mozuClient = new MozuClient();
@@ -87,7 +87,7 @@ class WishlistItemClient {
 	* @param WishlistItem $wishlistItem Properties of the item to add to the wish list.
 	* @return MozuClient
 	*/
-	public static function addItemToWishlistClient($wishlistItem,  $wishlistId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function addItemToWishlistClient($wishlistItem, $wishlistId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = WishlistItemUrl::addItemToWishlistUrl($wishlistId);
 		$mozuClient = new MozuClient();
@@ -105,7 +105,7 @@ class WishlistItemClient {
 	* @param WishlistItem $wishlistItem Properties of the shopper wish list item to update.
 	* @return MozuClient
 	*/
-	public static function updateWishlistItemClient($wishlistItem,  $wishlistId,  $wishlistItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateWishlistItemClient($wishlistItem, $wishlistId, $wishlistItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = WishlistItemUrl::updateWishlistItemUrl($wishlistId, $wishlistItemId);
 		$mozuClient = new MozuClient();
@@ -123,7 +123,7 @@ class WishlistItemClient {
 	* @param string $wishlistItemId Unique identifier of the item in the wish list to update quantity.
 	* @return MozuClient
 	*/
-	public static function updateWishlistItemQuantityClient( $quantity,  $wishlistId,  $wishlistItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateWishlistItemQuantityClient($wishlistId, $wishlistItemId, $quantity, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = WishlistItemUrl::updateWishlistItemQuantityUrl($quantity, $wishlistId, $wishlistItemId);
 		$mozuClient = new MozuClient();
@@ -139,7 +139,7 @@ class WishlistItemClient {
 	* @param string $wishlistId Unique identifier of the wish list associated with the items to remove.
 	* @return MozuClient
 	*/
-	public static function removeAllWishlistItemsClient( $wishlistId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function removeAllWishlistItemsClient($wishlistId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = WishlistItemUrl::removeAllWishlistItemsUrl($wishlistId);
 		$mozuClient = new MozuClient();
@@ -155,7 +155,7 @@ class WishlistItemClient {
 	* @param string $wishlistId Unique identifier of the wish list associated with the item to remove.
 	* @param string $wishlistItemId Unique identifier of the item to remove from the shopper wish list.
 	*/
-	public static function deleteWishlistItemClient( $wishlistId,  $wishlistItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteWishlistItemClient($wishlistId, $wishlistItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = WishlistItemUrl::deleteWishlistItemUrl($wishlistId, $wishlistItemId);
 		$mozuClient = new MozuClient();

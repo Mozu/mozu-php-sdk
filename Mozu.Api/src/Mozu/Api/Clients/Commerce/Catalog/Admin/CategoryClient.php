@@ -31,7 +31,7 @@ class CategoryClient {
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getCategoriesClient($dataViewMode, $filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getCategoriesClient($dataViewMode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CategoryUrl::getCategoriesUrl($filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
@@ -48,7 +48,7 @@ class CategoryClient {
 	* @param int $categoryId Unique identifier of the category to retrieve.
 	* @return MozuClient
 	*/
-	public static function getCategoryClient($dataViewMode,  $categoryId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getCategoryClient($dataViewMode, $categoryId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CategoryUrl::getCategoryUrl($categoryId);
 		$mozuClient = new MozuClient();
@@ -65,7 +65,7 @@ class CategoryClient {
 	* @param int $categoryId Unique identifier of the category whose subcategories are retrieved.
 	* @return MozuClient
 	*/
-	public static function getChildCategoriesClient($dataViewMode,  $categoryId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getChildCategoriesClient($dataViewMode, $categoryId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CategoryUrl::getChildCategoriesUrl($categoryId);
 		$mozuClient = new MozuClient();
@@ -101,7 +101,7 @@ class CategoryClient {
 	* @param Category $category Properties of the category to modify.
 	* @return MozuClient
 	*/
-	public static function updateCategoryClient($dataViewMode, $category,  $categoryId, $cascadeVisibility =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateCategoryClient($dataViewMode, $category, $categoryId, $cascadeVisibility =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CategoryUrl::updateCategoryUrl($cascadeVisibility, $categoryId);
 		$mozuClient = new MozuClient();
@@ -118,7 +118,7 @@ class CategoryClient {
 	* @param bool $cascadeDelete If true, any subcategories of a category are deleted when this category is deleted. Default: False.
 	* @param int $categoryId Unique identifier of the category to delete.
 	*/
-	public static function deleteCategoryByIdClient($dataViewMode,  $categoryId, $cascadeDelete =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteCategoryByIdClient($dataViewMode, $categoryId, $cascadeDelete =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CategoryUrl::deleteCategoryByIdUrl($cascadeDelete, $categoryId);
 		$mozuClient = new MozuClient();

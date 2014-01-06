@@ -37,9 +37,9 @@ class OrderItemResource {
 	* @param string $orderItemId Unique identifier of the order item details to retrieve.
 	* @return OrderItem 
 	*/
-	public function getOrderItem( $orderId,  $orderItemId, $draft =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getOrderItem($orderId, $orderItemId, $draft =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = OrderItemClient::getOrderItemClient( $orderId,  $orderItemId, $draft, $authTicket);
+		$mozuClient = OrderItemClient::getOrderItemClient($orderId, $orderItemId, $draft, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -53,9 +53,9 @@ class OrderItemResource {
 	* @param string $orderId Unique identifier of the order items to retrieve.
 	* @return OrderItemCollection 
 	*/
-	public function getOrderItems( $orderId, $draft =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getOrderItems($orderId, $draft =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = OrderItemClient::getOrderItemsClient( $orderId, $draft, $authTicket);
+		$mozuClient = OrderItemClient::getOrderItemsClient($orderId, $draft, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -72,9 +72,9 @@ class OrderItemResource {
 	* @param OrderItem $orderItem The properties of the item to create in the existing order.
 	* @return Order 
 	*/
-	public function createOrderItem($orderItem,  $orderId, $skipInventoryCheck =  null, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function createOrderItem($orderItem, $orderId, $updateMode =  null, $version =  null, $skipInventoryCheck =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = OrderItemClient::createOrderItemClient($orderItem,  $orderId, $skipInventoryCheck, $updateMode, $version, $authTicket);
+		$mozuClient = OrderItemClient::createOrderItemClient($orderItem, $orderId, $updateMode, $version, $skipInventoryCheck, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -92,9 +92,28 @@ class OrderItemResource {
 	* @param AppliedDiscount $discount Properties of the discount to modify for the order item.
 	* @return Order 
 	*/
-	public function updateOrderItemDiscount($discount,  $discountId,  $orderId,  $orderItemId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateOrderItemDiscount($discount, $orderId, $orderItemId, $discountId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = OrderItemClient::updateOrderItemDiscountClient($discount,  $discountId,  $orderId,  $orderItemId, $updateMode, $version, $authTicket);
+		$mozuClient = OrderItemClient::updateOrderItemDiscountClient($discount, $orderId, $orderItemId, $discountId, $updateMode, $version, $authTicket);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $orderId 
+	* @param string $orderItemId 
+	* @param string $updateMode 
+	* @param string $version 
+	* @param OrderItem $orderItem 
+	* @return Order 
+	*/
+	public function updateItemFulfillment($orderItem, $orderId, $orderItemId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	{
+		$mozuClient = OrderItemClient::updateItemFulfillmentClient($orderItem, $orderId, $orderItemId, $updateMode, $version, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -111,9 +130,9 @@ class OrderItemResource {
 	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 	* @return Order 
 	*/
-	public function updateItemProductPrice( $orderId,  $orderItemId,  $price, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateItemProductPrice($orderId, $orderItemId, $price, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = OrderItemClient::updateItemProductPriceClient( $orderId,  $orderItemId,  $price, $updateMode, $version, $authTicket);
+		$mozuClient = OrderItemClient::updateItemProductPriceClient($orderId, $orderItemId, $price, $updateMode, $version, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -130,9 +149,9 @@ class OrderItemResource {
 	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 	* @return Order 
 	*/
-	public function updateItemQuantity( $orderId,  $orderItemId,  $quantity, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateItemQuantity($orderId, $orderItemId, $quantity, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = OrderItemClient::updateItemQuantityClient( $orderId,  $orderItemId,  $quantity, $updateMode, $version, $authTicket);
+		$mozuClient = OrderItemClient::updateItemQuantityClient($orderId, $orderItemId, $quantity, $updateMode, $version, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -148,9 +167,9 @@ class OrderItemResource {
 	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 	* @return Order 
 	*/
-	public function deleteOrderItem( $orderId,  $orderItemId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deleteOrderItem($orderId, $orderItemId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = OrderItemClient::deleteOrderItemClient( $orderId,  $orderItemId, $updateMode, $version, $authTicket);
+		$mozuClient = OrderItemClient::deleteOrderItemClient($orderId, $orderItemId, $updateMode, $version, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

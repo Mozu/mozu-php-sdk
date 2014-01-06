@@ -20,6 +20,26 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Payments;
 class PaymentInteraction
 {
 	/**
+	*Unique identifier of the order associated with this payment interaction.
+	*/
+	public $orderId;
+
+	/**
+	*The status of the payment prior to the interaction being performed, which enables manual rollback of previous transactions.
+	*/
+	public $paymentEntryStatus;
+
+	/**
+	*Unique identifier of the payment associated with this transaction.
+	*/
+	public $paymentId;
+
+	/**
+	*Unique identifier of previous interaction that this payment interaction is modifying. For example, when refunding a payment, the crediting interaction would reference the capture interaction.
+	*/
+	public $paymentTransactionInteractionIdReference;
+
+	/**
 	*The status of this payment interaction. Possible values are New, Authorized, Captured, Declined, Failed, Voided, Credited, CheckRequested, or RolledBack.
 	*/
 	public $status;
@@ -98,26 +118,6 @@ class PaymentInteraction
 	*Note content entered for a payment interaction.
 	*/
 	public $note;
-
-	/**
-	*Unique identifier of the order associated with this payment interaction.
-	*/
-	public $orderId;
-
-	/**
-	*The status of the payment prior to the interaction being performed, which enables manual rollback of previous transactions.
-	*/
-	public $paymentEntryStatus;
-
-	/**
-	*Unique identifier of the payment associated with this transaction.
-	*/
-	public $paymentId;
-
-	/**
-	*Unique identifier of previous interaction that this payment interaction is modifying. For example, when refunding a payment, the crediting interaction would reference the capture interaction.
-	*/
-	public $paymentTransactionInteractionIdReference;
 
 	/**
 	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.

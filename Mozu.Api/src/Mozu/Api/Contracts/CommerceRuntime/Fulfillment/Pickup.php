@@ -29,6 +29,8 @@ class Pickup
 	*/
 	public $fulfillmentDate;
 
+		public $fulfillmentLocationCode;
+
 	/**
 	*Unique identifier of the in-store pickup.
 	*/

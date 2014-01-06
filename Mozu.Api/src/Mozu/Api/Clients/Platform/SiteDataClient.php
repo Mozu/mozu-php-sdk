@@ -28,7 +28,7 @@ class SiteDataClient {
 	* @param string $dbEntryQuery The database entry query string used to retrieve the record information.
 	* @return MozuClient
 	*/
-	public static function getDBValueClient( $dbEntryQuery)
+	public static function getDBValueClient($dbEntryQuery)
 	{
 		$url = SiteDataUrl::getDBValueUrl($dbEntryQuery);
 		$mozuClient = new MozuClient();
@@ -42,7 +42,7 @@ class SiteDataClient {
 	* @param string $dbEntryQuery The database entry string to create.
 	* @param string $value The value string to create.
 	*/
-	public static function createDBValueClient($value,  $dbEntryQuery)
+	public static function createDBValueClient($value, $dbEntryQuery)
 	{
 		$url = SiteDataUrl::createDBValueUrl($dbEntryQuery);
 		$mozuClient = new MozuClient();
@@ -56,7 +56,7 @@ class SiteDataClient {
 	* @param string $dbEntryQuery The database entry query string used to update the record information.
 	* @param string $value The database value to update.
 	*/
-	public static function updateDBValueClient($value,  $dbEntryQuery)
+	public static function updateDBValueClient($value, $dbEntryQuery)
 	{
 		$url = SiteDataUrl::updateDBValueUrl($dbEntryQuery);
 		$mozuClient = new MozuClient();
@@ -69,7 +69,7 @@ class SiteDataClient {
 	*
 	* @param string $dbEntryQuery The database entry string to delete.
 	*/
-	public static function deleteDBValueClient( $dbEntryQuery)
+	public static function deleteDBValueClient($dbEntryQuery)
 	{
 		$url = SiteDataUrl::deleteDBValueUrl($dbEntryQuery);
 		$mozuClient = new MozuClient();

@@ -38,9 +38,9 @@ class AdjustmentResource {
 	* @param Adjustment $adjustment Properties of the shipping adjustment to apply to the order.
 	* @return Order 
 	*/
-	public function applyShippingAdjustment($adjustment,  $orderId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function applyShippingAdjustment($adjustment, $orderId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = AdjustmentClient::applyShippingAdjustmentClient($adjustment,  $orderId, $updateMode, $version, $authTicket);
+		$mozuClient = AdjustmentClient::applyShippingAdjustmentClient($adjustment, $orderId, $updateMode, $version, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -56,9 +56,9 @@ class AdjustmentResource {
 	* @param Adjustment $adjustment Properties of the price adjustment to apply to the order.
 	* @return Order 
 	*/
-	public function applyAdjustment($adjustment,  $orderId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function applyAdjustment($adjustment, $orderId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = AdjustmentClient::applyAdjustmentClient($adjustment,  $orderId, $updateMode, $version, $authTicket);
+		$mozuClient = AdjustmentClient::applyAdjustmentClient($adjustment, $orderId, $updateMode, $version, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -73,9 +73,9 @@ class AdjustmentResource {
 	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 	* @return Order 
 	*/
-	public function removeShippingAdjustment( $orderId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function removeShippingAdjustment($orderId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = AdjustmentClient::removeShippingAdjustmentClient( $orderId, $updateMode, $version, $authTicket);
+		$mozuClient = AdjustmentClient::removeShippingAdjustmentClient($orderId, $updateMode, $version, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -90,9 +90,9 @@ class AdjustmentResource {
 	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 	* @return Order 
 	*/
-	public function removeAdjustment( $orderId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function removeAdjustment($orderId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = AdjustmentClient::removeAdjustmentClient( $orderId, $updateMode, $version, $authTicket);
+		$mozuClient = AdjustmentClient::removeAdjustmentClient($orderId, $updateMode, $version, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

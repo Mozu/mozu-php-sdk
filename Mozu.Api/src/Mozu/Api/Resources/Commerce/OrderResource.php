@@ -40,9 +40,9 @@ class OrderResource {
 	* @param int $startIndex 
 	* @return OrderCollection 
 	*/
-	public function getOrders($filter =  null, $pageSize =  null, $q =  null, $qLimit =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getOrders($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $q =  null, $qLimit =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = OrderClient::getOrdersClient($filter, $pageSize, $q, $qLimit, $sortBy, $startIndex, $authTicket);
+		$mozuClient = OrderClient::getOrdersClient($startIndex, $pageSize, $sortBy, $filter, $q, $qLimit, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -55,9 +55,9 @@ class OrderResource {
 	* @param string $orderId Unique identifier of the available order actions to get.
 	* @return array|string 
 	*/
-	public function getAvailableActions( $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getAvailableActions($orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = OrderClient::getAvailableActionsClient( $orderId, $authTicket);
+		$mozuClient = OrderClient::getAvailableActionsClient($orderId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -70,9 +70,9 @@ class OrderResource {
 	* @param string $orderId 
 	* @return array|TaxableOrder 
 	*/
-	public function getTaxableOrders( $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getTaxableOrders($orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = OrderClient::getTaxableOrdersClient( $orderId, $authTicket);
+		$mozuClient = OrderClient::getTaxableOrdersClient($orderId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -86,9 +86,9 @@ class OrderResource {
 	* @param string $orderId Unique identifier of the order details to get.
 	* @return Order 
 	*/
-	public function getOrder( $orderId, $draft =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getOrder($orderId, $draft =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = OrderClient::getOrderClient( $orderId, $draft, $authTicket);
+		$mozuClient = OrderClient::getOrderClient($orderId, $draft, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -116,9 +116,9 @@ class OrderResource {
 	* @param string $cartId Unique identifier of the cart. This is the original cart ID expressed as a GUID.
 	* @return Order 
 	*/
-	public function createOrderFromCart( $cartId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function createOrderFromCart($cartId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = OrderClient::createOrderFromCartClient( $cartId, $authTicket);
+		$mozuClient = OrderClient::createOrderFromCartClient($cartId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -132,9 +132,9 @@ class OrderResource {
 	* @param OrderAction $action Action to perform, which can be "CreateOrder," "SubmitOrder," "SetOrderAsProcessing," "CloseOrder," or "CancelOrder."
 	* @return Order 
 	*/
-	public function performOrderAction($action,  $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function performOrderAction($action, $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = OrderClient::performOrderActionClient($action,  $orderId, $authTicket);
+		$mozuClient = OrderClient::performOrderActionClient($action, $orderId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -151,9 +151,9 @@ class OrderResource {
 	* @param AppliedDiscount $discount Properties of the order discount to update.
 	* @return Order 
 	*/
-	public function updateOrderDiscount($discount,  $discountId,  $orderId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateOrderDiscount($discount, $orderId, $discountId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = OrderClient::updateOrderDiscountClient($discount,  $discountId,  $orderId, $updateMode, $version, $authTicket);
+		$mozuClient = OrderClient::updateOrderDiscountClient($discount, $orderId, $discountId, $updateMode, $version, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -166,9 +166,9 @@ class OrderResource {
 	* @param string $orderId Unique identifier of the order associated with the draft to delete.
 	* @param string $version If applicable, the version of the order draft to delete.
 	*/
-	public function deleteOrderDraft( $orderId, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deleteOrderDraft($orderId, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = OrderClient::deleteOrderDraftClient( $orderId, $version, $authTicket);
+		$mozuClient = OrderClient::deleteOrderDraftClient($orderId, $version, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 
@@ -180,9 +180,9 @@ class OrderResource {
 	* @param string $orderId Unique identifier of the order.
 	* @return Order 
 	*/
-	public function changeOrderUserId( $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function changeOrderUserId($orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = OrderClient::changeOrderUserIdClient( $orderId, $authTicket);
+		$mozuClient = OrderClient::changeOrderUserIdClient($orderId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -198,9 +198,9 @@ class OrderResource {
 	* @param Order $order The properties of the order to update.
 	* @return Order 
 	*/
-	public function updateOrder($order,  $orderId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateOrder($order, $orderId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = OrderClient::updateOrderClient($order,  $orderId, $updateMode, $version, $authTicket);
+		$mozuClient = OrderClient::updateOrderClient($order, $orderId, $updateMode, $version, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

@@ -34,6 +34,8 @@ class LocationUsage
 	*/
 	public $locationUsageTypeCode;
 
+		public $auditInfo;
+
 }
 
 ?>

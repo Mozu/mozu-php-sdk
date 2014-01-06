@@ -29,7 +29,7 @@ class LocationInventoryClient {
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @return MozuClient
 	*/
-	public static function getLocationInventoryClient($dataViewMode,  $locationCode,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getLocationInventoryClient($dataViewMode, $locationCode, $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = LocationInventoryUrl::getLocationInventoryUrl($locationCode, $productCode);
 		$mozuClient = new MozuClient();
@@ -50,7 +50,7 @@ class LocationInventoryClient {
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return MozuClient
 	*/
-	public static function getLocationInventoriesClient($dataViewMode,  $locationCode, $filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getLocationInventoriesClient($dataViewMode, $locationCode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = LocationInventoryUrl::getLocationInventoriesUrl($filter, $locationCode, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
@@ -68,7 +68,7 @@ class LocationInventoryClient {
 	* @param array|LocationInventory $locationInventoryList Array list of product inventory definitions for all associated locations. For each location inventory in the list, define the productCode and stockOnHand values.
 	* @return MozuClient
 	*/
-	public static function addLocationInventoryClient($dataViewMode, $locationInventoryList,  $locationCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function addLocationInventoryClient($dataViewMode, $locationInventoryList, $locationCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = LocationInventoryUrl::addLocationInventoryUrl($locationCode);
 		$mozuClient = new MozuClient();
@@ -86,7 +86,7 @@ class LocationInventoryClient {
 	* @param array|LocationInventoryAdjustment $locationInventoryAdjustments 
 	* @return MozuClient
 	*/
-	public static function updateLocationInventoryClient($dataViewMode, $locationInventoryAdjustments,  $locationCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateLocationInventoryClient($dataViewMode, $locationInventoryAdjustments, $locationCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = LocationInventoryUrl::updateLocationInventoryUrl($locationCode);
 		$mozuClient = new MozuClient();
@@ -103,7 +103,7 @@ class LocationInventoryClient {
 	* @param string $locationCode User-defined code that uniquely identifies the location.
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	*/
-	public static function deleteLocationInventoryClient($dataViewMode,  $locationCode,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteLocationInventoryClient($dataViewMode, $locationCode, $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = LocationInventoryUrl::deleteLocationInventoryUrl($locationCode, $productCode);
 		$mozuClient = new MozuClient();

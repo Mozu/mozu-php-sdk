@@ -30,11 +30,28 @@ class DocumentDraftSummaryClient {
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return MozuClient
 	*/
-	public static function listDocumentDraftSummariesClient($dataViewMode, $documentLists =  null, $pageSize =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function listDocumentDraftSummariesClient($dataViewMode, $pageSize =  null, $startIndex =  null, $documentLists =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = DocumentDraftSummaryUrl::listDocumentDraftSummariesUrl($documentLists, $pageSize, $startIndex);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
+;		if ($authTicket != null)
+			$mozuClient = $mozuClient->withUserAuth($authTicket);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* Deletes the drafts of the specified documents. Published documents cannot be deleted.
+	*
+	* @param string $documentLists List of document lists that contain documents to delete.
+	* @param array|string $documentIds Unique identifiers of the documents to delete.
+	*/
+	public static function deleteDocumentDraftsClient($dataViewMode, $documentIds, $documentLists =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	{
+		$url = DocumentDraftSummaryUrl::deleteDocumentDraftsUrl($documentLists);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withBody($documentIds)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
@@ -52,23 +69,6 @@ class DocumentDraftSummaryClient {
 		$url = DocumentDraftSummaryUrl::publishDocumentsUrl($documentLists);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($documentIds)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
-;		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($authTicket);
-		return $mozuClient;
-
-	}
-	
-	/**
-	* Deletes the drafts of the specified documents. Published documents cannot be deleted.
-	*
-	* @param string $documentIds Unique identifiers of the documents to delete.
-	* @param string $documentLists List of document lists that contain documents to delete.
-	*/
-	public static function deleteDocumentDraftsClient($dataViewMode,  $documentIds, $documentLists =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
-	{
-		$url = DocumentDraftSummaryUrl::deleteDocumentDraftsUrl($documentIds, $documentLists);
-		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;

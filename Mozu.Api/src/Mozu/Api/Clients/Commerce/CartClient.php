@@ -28,7 +28,7 @@ class CartClient {
 	* @param string $cartId Identifier of the cart to retrieve.
 	* @return MozuClient
 	*/
-	public static function getCartClient( $cartId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getCartClient($cartId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CartUrl::getCartUrl($cartId);
 		$mozuClient = new MozuClient();
@@ -74,7 +74,7 @@ class CartClient {
 	* @param string $userId Unique identifier of the user whose cart you want to retrieve.
 	* @return MozuClient
 	*/
-	public static function getUserCartClient( $userId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getUserCartClient($userId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CartUrl::getUserCartUrl($userId);
 		$mozuClient = new MozuClient();
@@ -90,7 +90,7 @@ class CartClient {
 	* @param string $userId Unique identifier of the user whose cart details you want to retrieve.
 	* @return MozuClient
 	*/
-	public static function getUserCartSummaryClient( $userId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getUserCartSummaryClient($userId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CartUrl::getUserCartSummaryUrl($userId);
 		$mozuClient = new MozuClient();
@@ -121,7 +121,7 @@ class CartClient {
 	*
 	* @param string $cartId Identifier of the cart to delete.
 	*/
-	public static function deleteCartClient( $cartId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteCartClient($cartId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CartUrl::deleteCartUrl($cartId);
 		$mozuClient = new MozuClient();

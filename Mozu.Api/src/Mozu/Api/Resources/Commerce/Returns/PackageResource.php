@@ -36,9 +36,9 @@ class PackageResource {
 	* @param string $returnId Unique identifier of the return associated with the replacement package to retrieve.
 	* @return Package 
 	*/
-	public function getPackage( $packageId,  $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getPackage($returnId, $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = PackageClient::getPackageClient( $packageId,  $returnId, $authTicket);
+		$mozuClient = PackageClient::getPackageClient($returnId, $packageId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -52,9 +52,9 @@ class PackageResource {
 	* @param string $returnId Unique identifier of the return associated with the replacement package label to retrieve.
 	* @return Stream 
 	*/
-	public function getPackageLabel( $packageId,  $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getPackageLabel($returnId, $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = PackageClient::getPackageLabelClient( $packageId,  $returnId, $authTicket);
+		$mozuClient = PackageClient::getPackageLabelClient($returnId, $packageId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -68,9 +68,9 @@ class PackageResource {
 	* @param Package $package Properties of the physical package for a return replacement.
 	* @return Package 
 	*/
-	public function createPackage($pkg,  $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function createPackage($pkg, $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = PackageClient::createPackageClient($pkg,  $returnId, $authTicket);
+		$mozuClient = PackageClient::createPackageClient($pkg, $returnId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -85,9 +85,9 @@ class PackageResource {
 	* @param Package $package Properties of the return replacement package to update.
 	* @return Package 
 	*/
-	public function updatePackage($pkg,  $packageId,  $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updatePackage($pkg, $returnId, $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = PackageClient::updatePackageClient($pkg,  $packageId,  $returnId, $authTicket);
+		$mozuClient = PackageClient::updatePackageClient($pkg, $returnId, $packageId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -100,9 +100,9 @@ class PackageResource {
 	* @param string $packageId Unique identifier of the return replacement package to delete.
 	* @param string $returnId Unique identifier of the return associated with the replacement package to delete.
 	*/
-	public function deletePackage( $packageId,  $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deletePackage($returnId, $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = PackageClient::deletePackageClient( $packageId,  $returnId, $authTicket);
+		$mozuClient = PackageClient::deletePackageClient($returnId, $packageId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

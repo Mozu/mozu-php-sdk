@@ -36,9 +36,9 @@ class CustomerContactResource {
 	* @param int $contactId Unique identifier of the customer account contact to retrieve.
 	* @return CustomerContact 
 	*/
-	public function getAccountContact( $accountId,  $contactId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getAccountContact($accountId, $contactId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CustomerContactClient::getAccountContactClient( $accountId,  $contactId, $authTicket);
+		$mozuClient = CustomerContactClient::getAccountContactClient($accountId, $contactId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -55,9 +55,9 @@ class CustomerContactResource {
 	* @param int $startIndex 
 	* @return CustomerContactCollection 
 	*/
-	public function getAccountContacts( $accountId, $filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getAccountContacts($accountId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CustomerContactClient::getAccountContactsClient( $accountId, $filter, $pageSize, $sortBy, $startIndex, $authTicket);
+		$mozuClient = CustomerContactClient::getAccountContactsClient($accountId, $startIndex, $pageSize, $sortBy, $filter, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -71,9 +71,9 @@ class CustomerContactResource {
 	* @param CustomerContact $contact Properties of the new contact. Required properties: Contact.Email, ContactType.
 	* @return CustomerContact 
 	*/
-	public function addAccountContact($contact,  $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function addAccountContact($contact, $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CustomerContactClient::addAccountContactClient($contact,  $accountId, $authTicket);
+		$mozuClient = CustomerContactClient::addAccountContactClient($contact, $accountId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -88,9 +88,9 @@ class CustomerContactResource {
 	* @param CustomerContact $contact All properties the updated contact will have. Required properties: Name and email address.
 	* @return CustomerContact 
 	*/
-	public function updateAccountContact($contact,  $accountId,  $contactId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateAccountContact($contact, $accountId, $contactId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CustomerContactClient::updateAccountContactClient($contact,  $accountId,  $contactId, $authTicket);
+		$mozuClient = CustomerContactClient::updateAccountContactClient($contact, $accountId, $contactId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -103,9 +103,9 @@ class CustomerContactResource {
 	* @param int $accountId Unique identifier of the customer account.
 	* @param int $contactId Unique identifier of the customer account contact to delete.
 	*/
-	public function deleteAccountContact( $accountId,  $contactId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deleteAccountContact($accountId, $contactId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CustomerContactClient::deleteAccountContactClient( $accountId,  $contactId, $authTicket);
+		$mozuClient = CustomerContactClient::deleteAccountContactClient($accountId, $contactId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

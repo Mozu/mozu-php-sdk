@@ -28,7 +28,7 @@ class CardClient {
 	* @param int $accountId Unique identifier of the customer account.
 	* @return MozuClient
 	*/
-	public static function getAccountCardsClient( $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getAccountCardsClient($accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CardUrl::getAccountCardsUrl($accountId);
 		$mozuClient = new MozuClient();
@@ -45,7 +45,7 @@ class CardClient {
 	* @param string $cardId 
 	* @return MozuClient
 	*/
-	public static function getAccountCardClient( $accountId,  $cardId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getAccountCardClient($accountId, $cardId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CardUrl::getAccountCardUrl($accountId, $cardId);
 		$mozuClient = new MozuClient();
@@ -62,7 +62,7 @@ class CardClient {
 	* @param Card $card Properties of the customer credit card to add to the account.
 	* @return MozuClient
 	*/
-	public static function addAccountCardClient($card,  $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function addAccountCardClient($card, $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CardUrl::addAccountCardUrl($accountId);
 		$mozuClient = new MozuClient();
@@ -80,7 +80,7 @@ class CardClient {
 	* @param Card $card Properties of the customer account credit card to update.
 	* @return MozuClient
 	*/
-	public static function updateAccountCardClient($card,  $accountId,  $cardId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateAccountCardClient($card, $accountId, $cardId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CardUrl::updateAccountCardUrl($accountId, $cardId);
 		$mozuClient = new MozuClient();
@@ -96,7 +96,7 @@ class CardClient {
 	* @param int $accountId Unique identifier of the customer account.
 	* @param string $cardId Unique identifier of the credit card to delete.
 	*/
-	public static function deleteAccountCardClient( $accountId,  $cardId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteAccountCardClient($accountId, $cardId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CardUrl::deleteAccountCardUrl($accountId, $cardId);
 		$mozuClient = new MozuClient();

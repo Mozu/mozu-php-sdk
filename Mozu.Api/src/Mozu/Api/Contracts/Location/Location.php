@@ -64,6 +64,8 @@ class Location
 	*/
 	public $address;
 
+		public $auditInfo;
+
 	/**
 	*List of order fulfillment types associated with this location. The location can have fulfillment types of direct ship (DS), in-store pickup (SP), or both.
 	*/

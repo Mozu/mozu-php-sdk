@@ -38,9 +38,9 @@ class AttributeResource {
 	* @param int $startIndex 
 	* @return AttributeCollection 
 	*/
-	public function getAttributes($dataViewMode, $filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getAttributes($dataViewMode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = AttributeClient::getAttributesClient($dataViewMode, $filter, $pageSize, $sortBy, $startIndex, $authTicket);
+		$mozuClient = AttributeClient::getAttributesClient($dataViewMode, $startIndex, $pageSize, $sortBy, $filter, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -53,9 +53,9 @@ class AttributeResource {
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @return Attribute 
 	*/
-	public function getAttribute($dataViewMode,  $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getAttribute($dataViewMode, $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = AttributeClient::getAttributeClient($dataViewMode,  $attributeFQN, $authTicket);
+		$mozuClient = AttributeClient::getAttributeClient($dataViewMode, $attributeFQN, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -84,9 +84,9 @@ class AttributeResource {
 	* @param Attribute $attribute Any properties of the attribute that to update.
 	* @return Attribute 
 	*/
-	public function updateAttribute($dataViewMode, $attribute,  $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateAttribute($dataViewMode, $attribute, $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = AttributeClient::updateAttributeClient($dataViewMode, $attribute,  $attributeFQN, $authTicket);
+		$mozuClient = AttributeClient::updateAttributeClient($dataViewMode, $attribute, $attributeFQN, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -98,9 +98,9 @@ class AttributeResource {
 	*
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	*/
-	public function deleteAttribute($dataViewMode,  $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deleteAttribute($dataViewMode, $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = AttributeClient::deleteAttributeClient($dataViewMode,  $attributeFQN, $authTicket);
+		$mozuClient = AttributeClient::deleteAttributeClient($dataViewMode, $attributeFQN, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

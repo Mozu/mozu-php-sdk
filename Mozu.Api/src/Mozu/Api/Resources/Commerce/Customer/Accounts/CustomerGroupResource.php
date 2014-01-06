@@ -39,9 +39,9 @@ class CustomerGroupResource {
 	* @param int $startIndex 
 	* @return CustomerGroupCollection 
 	*/
-	public function getAccountGroups( $accountId, $filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getAccountGroups($accountId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CustomerGroupClient::getAccountGroupsClient( $accountId, $filter, $pageSize, $sortBy, $startIndex, $authTicket);
+		$mozuClient = CustomerGroupClient::getAccountGroupsClient($accountId, $startIndex, $pageSize, $sortBy, $filter, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -55,9 +55,9 @@ class CustomerGroupResource {
 	* @param int $groupId Unique identifier of the customer group.
 	* @return CustomerGroup 
 	*/
-	public function getAccountGroup( $accountId,  $groupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getAccountGroup($accountId, $groupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CustomerGroupClient::getAccountGroupClient( $accountId,  $groupId, $authTicket);
+		$mozuClient = CustomerGroupClient::getAccountGroupClient($accountId, $groupId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -71,9 +71,9 @@ class CustomerGroupResource {
 	* @param int $groupId Unique identifier of the customer group to add the customer to.
 	* @return CustomerGroup 
 	*/
-	public function addAccountGroup( $accountId,  $groupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function addAccountGroup($accountId, $groupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CustomerGroupClient::addAccountGroupClient( $accountId,  $groupId, $authTicket);
+		$mozuClient = CustomerGroupClient::addAccountGroupClient($accountId, $groupId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -86,9 +86,9 @@ class CustomerGroupResource {
 	* @param int $accountId Unique identifier of the customer account to remove from the group.
 	* @param int $groupId Unique identifier of the customer group.
 	*/
-	public function deleteAccountGroup( $accountId,  $groupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deleteAccountGroup($accountId, $groupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CustomerGroupClient::deleteAccountGroupClient( $accountId,  $groupId, $authTicket);
+		$mozuClient = CustomerGroupClient::deleteAccountGroupClient($accountId, $groupId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

@@ -58,9 +58,9 @@ class TenantAdminUserAuthTicketResource {
 	*
 	* @param string $refreshToken Refresh token string associated with the user authentication ticket.
 	*/
-	public function deleteUserAuthTicket( $refreshToken, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deleteUserAuthTicket($refreshToken, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = TenantAdminUserAuthTicketClient::deleteUserAuthTicketClient( $refreshToken, $authTicket);
+		$mozuClient = TenantAdminUserAuthTicketClient::deleteUserAuthTicketClient($refreshToken, $authTicket);
 		$mozuClient->execute();
 
 	}

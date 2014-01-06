@@ -29,7 +29,7 @@ class FolderClient {
 	* @param string $folderId The unique identifier of the folder to retrieve.
 	* @return MozuClient
 	*/
-	public static function getFolderClient($dataViewMode,  $documentListName,  $folderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getFolderClient($dataViewMode, $documentListName, $folderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = FolderUrl::getFolderUrl($documentListName, $folderId);
 		$mozuClient = new MozuClient();
@@ -50,7 +50,7 @@ class FolderClient {
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return MozuClient
 	*/
-	public static function getFoldersClient($dataViewMode,  $documentListName,  $filter, $pageSize =  null, $sort =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getFoldersClient($dataViewMode, $documentListName, $filter, $pageSize =  null, $startIndex =  null, $sort =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = FolderUrl::getFoldersUrl($documentListName, $filter, $pageSize, $sort, $startIndex);
 		$mozuClient = new MozuClient();
@@ -68,7 +68,7 @@ class FolderClient {
 	* @param Folder $folder The name of the newly created folder.
 	* @return MozuClient
 	*/
-	public static function createFolderClient($dataViewMode, $folder,  $documentListName, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function createFolderClient($dataViewMode, $folder, $documentListName, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = FolderUrl::createFolderUrl($documentListName);
 		$mozuClient = new MozuClient();
@@ -87,7 +87,7 @@ class FolderClient {
 	* @param Folder $folder Properties of the folder to update.
 	* @return MozuClient
 	*/
-	public static function updateFolderClient($dataViewMode, $folder,  $documentListName,  $folderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateFolderClient($dataViewMode, $folder, $documentListName, $folderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = FolderUrl::updateFolderUrl($documentListName, $folderId);
 		$mozuClient = new MozuClient();
@@ -104,7 +104,7 @@ class FolderClient {
 	* @param string $documentListName The name of the document list associated with the folder to delete.
 	* @param string $folderId The unique identifier of the folder to delete.
 	*/
-	public static function deleteFolderClient($dataViewMode,  $documentListName,  $folderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteFolderClient($dataViewMode, $documentListName, $folderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = FolderUrl::deleteFolderUrl($documentListName, $folderId);
 		$mozuClient = new MozuClient();

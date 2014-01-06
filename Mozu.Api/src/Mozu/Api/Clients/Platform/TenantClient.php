@@ -28,7 +28,7 @@ class TenantClient {
 	* @param int $tenantId Unique identifier of the Mozu tenant.
 	* @return MozuClient
 	*/
-	public static function getTenantClient( $tenantId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getTenantClient($tenantId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = TenantUrl::getTenantUrl($tenantId);
 		$mozuClient = new MozuClient();

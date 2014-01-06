@@ -35,9 +35,9 @@ class TenantDataResource {
 	* @param string $dbEntryQuery The database entry query string used to retrieve the record information.
 	* @return string 
 	*/
-	public function getDBValue( $dbEntryQuery)
+	public function getDBValue($dbEntryQuery)
 	{
-		$mozuClient = TenantDataClient::getDBValueClient( $dbEntryQuery);
+		$mozuClient = TenantDataClient::getDBValueClient($dbEntryQuery);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -50,9 +50,9 @@ class TenantDataResource {
 	* @param string $dbEntryQuery The database entry string to create.
 	* @param string $value The value string to create.
 	*/
-	public function createDBValue($value,  $dbEntryQuery)
+	public function createDBValue($value, $dbEntryQuery)
 	{
-		$mozuClient = TenantDataClient::createDBValueClient($value,  $dbEntryQuery);
+		$mozuClient = TenantDataClient::createDBValueClient($value, $dbEntryQuery);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 
@@ -64,9 +64,9 @@ class TenantDataResource {
 	* @param string $dbEntryQuery The database entry query string used to update the record information.
 	* @param string $value The database value to update.
 	*/
-	public function updateDBValue($value,  $dbEntryQuery)
+	public function updateDBValue($value, $dbEntryQuery)
 	{
-		$mozuClient = TenantDataClient::updateDBValueClient($value,  $dbEntryQuery);
+		$mozuClient = TenantDataClient::updateDBValueClient($value, $dbEntryQuery);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 
@@ -77,9 +77,9 @@ class TenantDataResource {
 	*
 	* @param string $dbEntryQuery The database entry string to delete.
 	*/
-	public function deleteDBValue( $dbEntryQuery)
+	public function deleteDBValue($dbEntryQuery)
 	{
-		$mozuClient = TenantDataClient::deleteDBValueClient( $dbEntryQuery);
+		$mozuClient = TenantDataClient::deleteDBValueClient($dbEntryQuery);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

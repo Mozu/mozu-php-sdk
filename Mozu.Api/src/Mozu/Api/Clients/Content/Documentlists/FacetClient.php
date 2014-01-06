@@ -29,7 +29,7 @@ class FacetClient {
 	* @param string $propertyName The property name associated with the facets to retrieve.
 	* @return MozuClient
 	*/
-	public static function getFacetsClient($dataViewMode,  $documentListName,  $propertyName, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getFacetsClient($dataViewMode, $documentListName, $propertyName, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = FacetUrl::getFacetsUrl($documentListName, $propertyName);
 		$mozuClient = new MozuClient();

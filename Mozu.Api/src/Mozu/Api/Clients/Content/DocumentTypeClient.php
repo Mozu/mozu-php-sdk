@@ -46,7 +46,7 @@ class DocumentTypeClient {
 	* @param string $documentTypeName The documentType name being retrieved.
 	* @return MozuClient
 	*/
-	public static function getClient($dataViewMode,  $documentTypeName, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getClient($dataViewMode, $documentTypeName, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = DocumentTypeUrl::getUrl($documentTypeName);
 		$mozuClient = new MozuClient();

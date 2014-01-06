@@ -29,7 +29,7 @@ class ProductVariationClient {
 	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
 	* @return MozuClient
 	*/
-	public static function getProductVariationClient($dataViewMode,  $productCode,  $variationKey, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getProductVariationClient($dataViewMode, $productCode, $variationKey, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductVariationUrl::getProductVariationUrl($productCode, $variationKey);
 		$mozuClient = new MozuClient();
@@ -50,7 +50,7 @@ class ProductVariationClient {
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return MozuClient
 	*/
-	public static function getProductVariationsClient($dataViewMode,  $productCode, $filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getProductVariationsClient($dataViewMode, $productCode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductVariationUrl::getProductVariationsUrl($filter, $pageSize, $productCode, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
@@ -68,7 +68,7 @@ class ProductVariationClient {
 	* @param ProductVariationCollection $productVariations Wrapper for the collection of variations configured for the specified product code.
 	* @return MozuClient
 	*/
-	public static function updateProductVariationsClient($dataViewMode, $productVariations,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateProductVariationsClient($dataViewMode, $productVariations, $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductVariationUrl::updateProductVariationsUrl($productCode);
 		$mozuClient = new MozuClient();
@@ -87,7 +87,7 @@ class ProductVariationClient {
 	* @param ProductVariation $productVariation Wrapper for the properties of the specified product variation.
 	* @return MozuClient
 	*/
-	public static function updateProductVariationClient($dataViewMode, $productVariation,  $productCode,  $variationKey, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateProductVariationClient($dataViewMode, $productVariation, $productCode, $variationKey, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductVariationUrl::updateProductVariationUrl($productCode, $variationKey);
 		$mozuClient = new MozuClient();
@@ -104,7 +104,7 @@ class ProductVariationClient {
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
 	*/
-	public static function deleteProductVariationClient($dataViewMode,  $productCode,  $variationKey, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteProductVariationClient($dataViewMode, $productCode, $variationKey, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductVariationUrl::deleteProductVariationUrl($productCode, $variationKey);
 		$mozuClient = new MozuClient();

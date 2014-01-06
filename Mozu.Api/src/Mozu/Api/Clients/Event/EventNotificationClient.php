@@ -31,7 +31,7 @@ class EventNotificationClient {
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getEventsClient($filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getEventsClient($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = EventNotificationUrl::getEventsUrl($filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
@@ -47,7 +47,7 @@ class EventNotificationClient {
 	* @param string $eventId The unique identifier of the event being retrieved. An event is a notification about a create, read, update, or delete on an order, product, discount or category.
 	* @return MozuClient
 	*/
-	public static function getEventClient( $eventId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getEventClient($eventId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = EventNotificationUrl::getEventUrl($eventId);
 		$mozuClient = new MozuClient();

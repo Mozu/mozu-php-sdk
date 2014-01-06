@@ -55,7 +55,7 @@ class ReferenceDataClient {
 	* @param int $behaviorId ***Always private and should not be published.***
 	* @return MozuClient
 	*/
-	public static function getBehaviorClient( $behaviorId)
+	public static function getBehaviorClient($behaviorId)
 	{
 		$url = ReferenceDataUrl::getBehaviorUrl($behaviorId);
 		$mozuClient = new MozuClient();
@@ -82,7 +82,7 @@ class ReferenceDataClient {
 	* @param int $categoryId ***Always private and should not be published.***
 	* @return MozuClient
 	*/
-	public static function getBehaviorCategoryClient( $categoryId)
+	public static function getBehaviorCategoryClient($categoryId)
 	{
 		$url = ReferenceDataUrl::getBehaviorCategoryUrl($categoryId);
 		$mozuClient = new MozuClient();

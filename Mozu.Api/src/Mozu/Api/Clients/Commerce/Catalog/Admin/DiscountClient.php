@@ -31,7 +31,7 @@ class DiscountClient {
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getDiscountsClient($dataViewMode, $filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getDiscountsClient($dataViewMode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = DiscountUrl::getDiscountsUrl($filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
@@ -48,7 +48,7 @@ class DiscountClient {
 	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
 	* @return MozuClient
 	*/
-	public static function getDiscountClient($dataViewMode,  $discountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getDiscountClient($dataViewMode, $discountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = DiscountUrl::getDiscountUrl($discountId);
 		$mozuClient = new MozuClient();
@@ -65,7 +65,7 @@ class DiscountClient {
 	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
 	* @return MozuClient
 	*/
-	public static function getDiscountContentClient($dataViewMode,  $discountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getDiscountContentClient($dataViewMode, $discountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = DiscountUrl::getDiscountContentUrl($discountId);
 		$mozuClient = new MozuClient();
@@ -133,7 +133,7 @@ class DiscountClient {
 	* @param Discount $discount Properties of the discount to update. Required properties: Content.Name, AmountType, StartDate, and Target.Type. Any unspecified properties are set to null and boolean variables are set to false.
 	* @return MozuClient
 	*/
-	public static function updateDiscountClient($dataViewMode, $discount,  $discountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateDiscountClient($dataViewMode, $discount, $discountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = DiscountUrl::updateDiscountUrl($discountId);
 		$mozuClient = new MozuClient();
@@ -151,7 +151,7 @@ class DiscountClient {
 	* @param DiscountLocalizedContent $content New Name and/or LocaleCode. Properties of the content to update. Required property: Name.
 	* @return MozuClient
 	*/
-	public static function updateDiscountContentClient($dataViewMode, $content,  $discountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateDiscountContentClient($dataViewMode, $content, $discountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = DiscountUrl::updateDiscountContentUrl($discountId);
 		$mozuClient = new MozuClient();
@@ -167,7 +167,7 @@ class DiscountClient {
 	*
 	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
 	*/
-	public static function deleteDiscountClient($dataViewMode,  $discountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteDiscountClient($dataViewMode, $discountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = DiscountUrl::deleteDiscountUrl($discountId);
 		$mozuClient = new MozuClient();

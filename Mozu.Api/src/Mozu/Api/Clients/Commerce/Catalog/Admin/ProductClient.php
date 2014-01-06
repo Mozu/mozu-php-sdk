@@ -34,7 +34,7 @@ class ProductClient {
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getProductsClient($dataViewMode, $filter =  null, $noCount =  null, $pageSize =  null, $q =  null, $qLimit =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getProductsClient($dataViewMode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $q =  null, $qLimit =  null, $noCount =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductUrl::getProductsUrl($filter, $noCount, $pageSize, $q, $qLimit, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
@@ -51,7 +51,7 @@ class ProductClient {
 	* @param string $productCode Merchant-created code associated with the product such as a SKU. Max length: 30. Accepts a to z, A to Z, Ãƒâ€¹-ÃƒËœ, 0 to 9, #, semicolon, commas, apostrophes, and Spaces, but no punctuation or other characters.
 	* @return MozuClient
 	*/
-	public static function getProductClient($dataViewMode,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getProductClient($dataViewMode, $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductUrl::getProductUrl($productCode);
 		$mozuClient = new MozuClient();
@@ -68,7 +68,7 @@ class ProductClient {
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @return MozuClient
 	*/
-	public static function getProductInCatalogsClient($dataViewMode,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getProductInCatalogsClient($dataViewMode, $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductUrl::getProductInCatalogsUrl($productCode);
 		$mozuClient = new MozuClient();
@@ -86,7 +86,7 @@ class ProductClient {
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @return MozuClient
 	*/
-	public static function getProductInCatalogClient($dataViewMode,  $catalogId,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getProductInCatalogClient($dataViewMode, $productCode, $catalogId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductUrl::getProductInCatalogUrl($catalogId, $productCode);
 		$mozuClient = new MozuClient();
@@ -121,7 +121,7 @@ class ProductClient {
 	* @param ProductInCatalogInfo $productInCatalogInfoIn Properties of the product to define for the specific catalog association.
 	* @return MozuClient
 	*/
-	public static function addProductInCatalogClient($dataViewMode, $productInCatalogInfoIn,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function addProductInCatalogClient($dataViewMode, $productInCatalogInfoIn, $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductUrl::addProductInCatalogUrl($productCode);
 		$mozuClient = new MozuClient();
@@ -139,7 +139,7 @@ class ProductClient {
 	* @param Product $product Properties of the product definition to update in the master catalog.
 	* @return MozuClient
 	*/
-	public static function updateProductClient($dataViewMode, $product,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateProductClient($dataViewMode, $product, $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductUrl::updateProductUrl($productCode);
 		$mozuClient = new MozuClient();
@@ -157,7 +157,7 @@ class ProductClient {
 	* @param array|ProductInCatalogInfo $productInCatalogsIn Properties of the product to update for each associated catalog.
 	* @return MozuClient
 	*/
-	public static function updateProductInCatalogsClient($dataViewMode, $productInCatalogsIn,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateProductInCatalogsClient($dataViewMode, $productInCatalogsIn, $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductUrl::updateProductInCatalogsUrl($productCode);
 		$mozuClient = new MozuClient();
@@ -176,7 +176,7 @@ class ProductClient {
 	* @param ProductInCatalogInfo $productInCatalogInfoIn Properties of the product associated with the catalog specified in the request.
 	* @return MozuClient
 	*/
-	public static function updateProductInCatalogClient($dataViewMode, $productInCatalogInfoIn,  $catalogId,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateProductInCatalogClient($dataViewMode, $productInCatalogInfoIn, $productCode, $catalogId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductUrl::updateProductInCatalogUrl($catalogId, $productCode);
 		$mozuClient = new MozuClient();
@@ -192,7 +192,7 @@ class ProductClient {
 	*
 	* @param string $productCode 
 	*/
-	public static function deleteProductClient($dataViewMode,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteProductClient($dataViewMode, $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductUrl::deleteProductUrl($productCode);
 		$mozuClient = new MozuClient();
@@ -209,7 +209,7 @@ class ProductClient {
 	* @param int $catalogId 
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	*/
-	public static function deleteProductInCatalogClient($dataViewMode,  $catalogId,  $productCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteProductInCatalogClient($dataViewMode, $productCode, $catalogId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductUrl::deleteProductInCatalogUrl($catalogId, $productCode);
 		$mozuClient = new MozuClient();

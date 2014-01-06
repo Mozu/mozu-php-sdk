@@ -106,7 +106,7 @@ class ApplicationVersionUrl  {
 	*/
 	public static function getPackageItemMetadataUrl($applicationVersionId, $itempath, $packageId)
 	{
-		$url = "/api/platform/developer/applications/applicationVersions/{applicationVersionId}/packages/{packageId}/files/{*itempath}";
+		$url = "/api/platform/developer/applications/applicationVersions/{applicationVersionId}/packages/{packageId}/files/?itemPath={itempath}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
 		$url = $mozuUrl->formatUrl("applicationVersionId", $applicationVersionId);
 		$url = $mozuUrl->formatUrl("itempath", $itempath);
@@ -143,23 +143,6 @@ class ApplicationVersionUrl  {
 	}
 	
 	/**
-		* Get Resource Url for AddPackageFile
-		* @param int $applicationVersionId Unique identifier of the application version. Application version IDs are unique across all applications associated with a developer account.
-		* @param string $filepath The file location to which to add the package file.
-		* @param int $packageId Unique identifier of the package.
-		* @return string Resource Url
-	*/
-	public static function addPackageFileUrl($applicationVersionId, $filepath, $packageId)
-	{
-		$url = "/api/platform/developer/applications/applicationVersions/{applicationVersionId}/packages/{packageId}/files/{*filepath}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"POST", false) ;
-		$url = $mozuUrl->formatUrl("applicationVersionId", $applicationVersionId);
-		$url = $mozuUrl->formatUrl("filepath", $filepath);
-		$url = $mozuUrl->formatUrl("packageId", $packageId);
-		return $mozuUrl;
-	}
-	
-	/**
 		* Get Resource Url for ChangePackageFileNameOrPath
 		* @param int $applicationVersionId 
 		* @param int $packageId 
@@ -175,6 +158,23 @@ class ApplicationVersionUrl  {
 	}
 	
 	/**
+		* Get Resource Url for AddPackageFile
+		* @param int $applicationVersionId Unique identifier of the application version. Application version IDs are unique across all applications associated with a developer account.
+		* @param string $filepath The file location to which to add the package file.
+		* @param int $packageId Unique identifier of the package.
+		* @return string Resource Url
+	*/
+	public static function addPackageFileUrl($applicationVersionId, $filepath, $packageId)
+	{
+		$url = "/api/platform/developer/applications/applicationVersions/{applicationVersionId}/packages/{packageId}/files?filePath={filepath}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("applicationVersionId", $applicationVersionId);
+		$url = $mozuUrl->formatUrl("filepath", $filepath);
+		$url = $mozuUrl->formatUrl("packageId", $packageId);
+		return $mozuUrl;
+	}
+	
+	/**
 		* Get Resource Url for UpdatePackageFile
 		* @param int $applicationVersionId Unique identifier of the application version. Application version IDs are unique across all applications associated with a developer account.
 		* @param string $filepath The location path and name that identifies the package file to update.
@@ -183,7 +183,7 @@ class ApplicationVersionUrl  {
 	*/
 	public static function updatePackageFileUrl($applicationVersionId, $filepath, $packageId)
 	{
-		$url = "/api/platform/developer/applications/applicationVersions/{applicationVersionId}/packages/{packageId}/files/{*filepath}";
+		$url = "/api/platform/developer/applications/applicationVersions/{applicationVersionId}/packages/{packageId}/files?filePath={filepath}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"PUT", false) ;
 		$url = $mozuUrl->formatUrl("applicationVersionId", $applicationVersionId);
 		$url = $mozuUrl->formatUrl("filepath", $filepath);
@@ -200,7 +200,7 @@ class ApplicationVersionUrl  {
 	*/
 	public static function deletePackageFileUrl($applicationVersionId, $filepath, $packageId)
 	{
-		$url = "/api/platform/developer/applications/applicationVersions/{applicationVersionId}/packages/{packageId}/files/{*filepath}";
+		$url = "/api/platform/developer/applications/applicationVersions/{applicationVersionId}/packages/{packageId}/files?filePath={filepath}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"DELETE", false) ;
 		$url = $mozuUrl->formatUrl("applicationVersionId", $applicationVersionId);
 		$url = $mozuUrl->formatUrl("filepath", $filepath);
