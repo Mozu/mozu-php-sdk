@@ -20,38 +20,6 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class Product
 {
 	/**
-	*Integer that represents the sequential order of the product.
-	*/
-	public $productSequence;
-
-	/**
-	*Identifier of the product type.
-	*/
-	public $productTypeId;
-
-		public $productUsage;
-
-	/**
-	*Identifier of the shipping class.
-	*/
-	public $shippingClassId;
-
-	/**
-	*If the product must be packaged separately, the type of standalone package to use.
-	*/
-	public $standAlonePackageType;
-
-	/**
-	*The universal product code (UPC code) of the product.
-	*/
-	public $upc;
-
-	/**
-	*System-generated key that represents the attribute values that uniquely identify a specific product variation.
-	*/
-	public $variationKey;
-
-	/**
 	*Merchant-generated product code for the product that any variation stems from.
 	*/
 	public $baseProductCode;
@@ -97,6 +65,38 @@ class Product
 	*Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	*/
 	public $productCode;
+
+	/**
+	*Integer that represents the sequential order of the product.
+	*/
+	public $productSequence;
+
+	/**
+	*Identifier of the product type.
+	*/
+	public $productTypeId;
+
+		public $productUsage;
+
+	/**
+	*Identifier of the shipping class.
+	*/
+	public $shippingClassId;
+
+	/**
+	*If the product must be packaged separately, the type of standalone package to use.
+	*/
+	public $standAlonePackageType;
+
+	/**
+	*The universal product code (UPC code) of the product.
+	*/
+	public $upc;
+
+	/**
+	*System-generated key that represents the attribute values that uniquely identify a specific product variation.
+	*/
+	public $variationKey;
 
 	/**
 	*List of discounts available for a product.

@@ -18,6 +18,8 @@ class CustomerLoginInfo
 {
 		public $emailAddress;
 
+		public $isImport;
+
 		public $password;
 
 		public $username;

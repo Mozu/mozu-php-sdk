@@ -20,6 +20,11 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Products;
 class Product
 {
 	/**
+	*Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+	*/
+	public $productCode;
+
+	/**
 	*Short description of the product in the language specified in the locale code for the storefront.
 	*/
 	public $description;
@@ -61,11 +66,6 @@ class Product
 	*Merchant-created code associated with a specific product variation. Variation product codes maintain an association with the base product code.
 	*/
 	public $variationProductCode;
-
-	/**
-	*Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	*/
-	public $productCode;
 
 		public $bundledProducts;
 
