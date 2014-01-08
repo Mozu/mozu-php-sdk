@@ -57,7 +57,7 @@ class DeveloperAdminUserAuthTicketClient {
 	*
 	* @param string $refreshToken Refresh token string associated with the developer account authentication ticket.
 	*/
-	public static function deleteUserAuthTicketClient( $refreshToken)
+	public static function deleteUserAuthTicketClient($refreshToken)
 	{
 		$url = DeveloperAdminUserAuthTicketUrl::deleteUserAuthTicketUrl($refreshToken);
 		$mozuClient = new MozuClient();

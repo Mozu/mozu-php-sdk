@@ -38,9 +38,9 @@ class ProductReservationResource {
 	* @param int $startIndex 
 	* @return ProductReservationCollection 
 	*/
-	public function getProductReservations($dataViewMode, $filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getProductReservations($dataViewMode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductReservationClient::getProductReservationsClient($dataViewMode, $filter, $pageSize, $sortBy, $startIndex, $authTicket);
+		$mozuClient = ProductReservationClient::getProductReservationsClient($dataViewMode, $startIndex, $pageSize, $sortBy, $filter, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -53,9 +53,9 @@ class ProductReservationResource {
 	* @param int $productReservationId Unique identifier of the product reservation.
 	* @return ProductReservation 
 	*/
-	public function getProductReservation($dataViewMode,  $productReservationId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getProductReservation($dataViewMode, $productReservationId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductReservationClient::getProductReservationClient($dataViewMode,  $productReservationId, $authTicket);
+		$mozuClient = ProductReservationClient::getProductReservationClient($dataViewMode, $productReservationId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -112,9 +112,9 @@ class ProductReservationResource {
 	*
 	* @param int $productReservationId Unique identifier of the reservation.
 	*/
-	public function deleteProductReservation($dataViewMode,  $productReservationId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deleteProductReservation($dataViewMode, $productReservationId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductReservationClient::deleteProductReservationClient($dataViewMode,  $productReservationId, $authTicket);
+		$mozuClient = ProductReservationClient::deleteProductReservationClient($dataViewMode, $productReservationId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

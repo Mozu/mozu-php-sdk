@@ -46,7 +46,7 @@ class PropertyTypeClient {
 	* @param string $propertyTypeName The name of the content property type.
 	* @return MozuClient
 	*/
-	public static function getClient($dataViewMode,  $propertyTypeName, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getClient($dataViewMode, $propertyTypeName, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = PropertyTypeUrl::getUrl($propertyTypeName);
 		$mozuClient = new MozuClient();

@@ -35,9 +35,9 @@ class CardResource {
 	* @param int $accountId Unique identifier of the customer account.
 	* @return CardCollection 
 	*/
-	public function getAccountCards( $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getAccountCards($accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CardClient::getAccountCardsClient( $accountId, $authTicket);
+		$mozuClient = CardClient::getAccountCardsClient($accountId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -51,9 +51,9 @@ class CardResource {
 	* @param string $cardId 
 	* @return Card 
 	*/
-	public function getAccountCard( $accountId,  $cardId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getAccountCard($accountId, $cardId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CardClient::getAccountCardClient( $accountId,  $cardId, $authTicket);
+		$mozuClient = CardClient::getAccountCardClient($accountId, $cardId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -67,9 +67,9 @@ class CardResource {
 	* @param Card $card Properties of the customer credit card to add to the account.
 	* @return Card 
 	*/
-	public function addAccountCard($card,  $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function addAccountCard($card, $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CardClient::addAccountCardClient($card,  $accountId, $authTicket);
+		$mozuClient = CardClient::addAccountCardClient($card, $accountId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -84,9 +84,9 @@ class CardResource {
 	* @param Card $card Properties of the customer account credit card to update.
 	* @return Card 
 	*/
-	public function updateAccountCard($card,  $accountId,  $cardId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateAccountCard($card, $accountId, $cardId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CardClient::updateAccountCardClient($card,  $accountId,  $cardId, $authTicket);
+		$mozuClient = CardClient::updateAccountCardClient($card, $accountId, $cardId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -99,9 +99,9 @@ class CardResource {
 	* @param int $accountId Unique identifier of the customer account.
 	* @param string $cardId Unique identifier of the credit card to delete.
 	*/
-	public function deleteAccountCard( $accountId,  $cardId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deleteAccountCard($accountId, $cardId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CardClient::deleteAccountCardClient( $accountId,  $cardId, $authTicket);
+		$mozuClient = CardClient::deleteAccountCardClient($accountId, $cardId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

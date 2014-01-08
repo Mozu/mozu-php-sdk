@@ -36,9 +36,9 @@ class FulfillmentInfoResource {
 	* @param string $orderId Unique identifier of the order.
 	* @return FulfillmentInfo 
 	*/
-	public function getFulfillmentInfo( $orderId, $draft =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getFulfillmentInfo($orderId, $draft =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = FulfillmentInfoClient::getFulfillmentInfoClient( $orderId, $draft, $authTicket);
+		$mozuClient = FulfillmentInfoClient::getFulfillmentInfoClient($orderId, $draft, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -54,9 +54,9 @@ class FulfillmentInfoResource {
 	* @param FulfillmentInfo $fulfillmentInfo Array list of fulfillment information associated with an order.
 	* @return FulfillmentInfo 
 	*/
-	public function setFulFillmentInfo($fulfillmentInfo,  $orderId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function setFulFillmentInfo($fulfillmentInfo, $orderId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = FulfillmentInfoClient::setFulFillmentInfoClient($fulfillmentInfo,  $orderId, $updateMode, $version, $authTicket);
+		$mozuClient = FulfillmentInfoClient::setFulFillmentInfoClient($fulfillmentInfo, $orderId, $updateMode, $version, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

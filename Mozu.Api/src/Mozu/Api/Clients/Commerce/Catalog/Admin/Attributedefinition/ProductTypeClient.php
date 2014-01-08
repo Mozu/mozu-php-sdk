@@ -31,7 +31,7 @@ class ProductTypeClient {
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getProductTypesClient($dataViewMode, $filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getProductTypesClient($dataViewMode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductTypeUrl::getProductTypesUrl($filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
@@ -48,7 +48,7 @@ class ProductTypeClient {
 	* @param int $productTypeId Identifier of the product type to retrieve.
 	* @return MozuClient
 	*/
-	public static function getProductTypeClient($dataViewMode,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getProductTypeClient($dataViewMode, $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductTypeUrl::getProductTypeUrl($productTypeId);
 		$mozuClient = new MozuClient();
@@ -83,7 +83,7 @@ class ProductTypeClient {
 	* @param ProductType $productType The details of the product type to update.
 	* @return MozuClient
 	*/
-	public static function updateProductTypeClient($dataViewMode, $productType,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateProductTypeClient($dataViewMode, $productType, $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductTypeUrl::updateProductTypeUrl($productTypeId);
 		$mozuClient = new MozuClient();
@@ -99,7 +99,7 @@ class ProductTypeClient {
 	*
 	* @param int $productTypeId Identifier of the product type to delete.
 	*/
-	public static function deleteProductTypeClient($dataViewMode,  $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteProductTypeClient($dataViewMode, $productTypeId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductTypeUrl::deleteProductTypeUrl($productTypeId);
 		$mozuClient = new MozuClient();

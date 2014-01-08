@@ -36,9 +36,9 @@ class FacetResource {
 	* @param string $propertyName The property name associated with the facets to retrieve.
 	* @return array|Facet 
 	*/
-	public function getFacets($dataViewMode,  $documentListName,  $propertyName, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getFacets($dataViewMode, $documentListName, $propertyName, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = FacetClient::getFacetsClient($dataViewMode,  $documentListName,  $propertyName, $authTicket);
+		$mozuClient = FacetClient::getFacetsClient($dataViewMode, $documentListName, $propertyName, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

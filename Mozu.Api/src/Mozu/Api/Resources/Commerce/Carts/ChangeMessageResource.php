@@ -60,9 +60,9 @@ class ChangeMessageResource {
 	*
 	* @param string $messageId Identifier of the message to remove from the cart.
 	*/
-	public function removeMessage( $messageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function removeMessage($messageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ChangeMessageClient::removeMessageClient( $messageId, $authTicket);
+		$mozuClient = ChangeMessageClient::removeMessageClient($messageId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

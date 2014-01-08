@@ -20,11 +20,6 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class Product
 {
 	/**
-	*System-generated key that represents the attribute values that uniquely identify a specific product variation.
-	*/
-	public $variationKey;
-
-	/**
 	*Merchant-generated product code for the product that any variation stems from.
 	*/
 	public $baseProductCode;
@@ -97,6 +92,11 @@ class Product
 	*The universal product code (UPC code) of the product.
 	*/
 	public $upc;
+
+	/**
+	*System-generated key that represents the attribute values that uniquely identify a specific product variation.
+	*/
+	public $variationKey;
 
 	/**
 	*List of discounts available for a product.

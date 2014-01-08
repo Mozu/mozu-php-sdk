@@ -43,17 +43,17 @@ class DocumentTypeResource {
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
-	}
-	*/
+	}*/
+	
 	/**
 	* Retrieves an existing DocumentType.
 	*
 	* @param string $documentTypeName The documentType name being retrieved.
 	* @return DocumentType 
 	*/
-	public function get($dataViewMode,  $documentTypeName, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function get($dataViewMode, $documentTypeName, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = DocumentTypeClient::getClient($dataViewMode,  $documentTypeName, $authTicket);
+		$mozuClient = DocumentTypeClient::getClient($dataViewMode, $documentTypeName, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

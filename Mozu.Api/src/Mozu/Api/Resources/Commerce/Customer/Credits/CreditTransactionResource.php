@@ -39,9 +39,9 @@ class CreditTransactionResource {
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return CreditTransactionCollection 
 	*/
-	public function getTransactions( $code, $filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getTransactions($code, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CreditTransactionClient::getTransactionsClient( $code, $filter, $pageSize, $sortBy, $startIndex, $authTicket);
+		$mozuClient = CreditTransactionClient::getTransactionsClient($code, $startIndex, $pageSize, $sortBy, $filter, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -55,9 +55,9 @@ class CreditTransactionResource {
 	* @param CreditTransaction $creditTransaction Properties of the transaction to create for the customer credit.
 	* @return CreditTransaction 
 	*/
-	public function addTransaction($creditTransaction,  $code, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function addTransaction($creditTransaction, $code, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CreditTransactionClient::addTransactionClient($creditTransaction,  $code, $authTicket);
+		$mozuClient = CreditTransactionClient::addTransactionClient($creditTransaction, $code, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

@@ -36,9 +36,9 @@ class ShipmentResource {
 	* @param string $shipmentId Unique identifier of the return replacement shipment to retrieve.
 	* @return Shipment 
 	*/
-	public function getShipment( $returnId,  $shipmentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getShipment($returnId, $shipmentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ShipmentClient::getShipmentClient( $returnId,  $shipmentId, $authTicket);
+		$mozuClient = ShipmentClient::getShipmentClient($returnId, $shipmentId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -52,9 +52,9 @@ class ShipmentResource {
 	* @param array|string $packageIds List of packages in the return replacement shipment.
 	* @return array|Package 
 	*/
-	public function createPackageShipments($packageIds,  $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function createPackageShipments($packageIds, $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ShipmentClient::createPackageShipmentsClient($packageIds,  $returnId, $authTicket);
+		$mozuClient = ShipmentClient::createPackageShipmentsClient($packageIds, $returnId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -67,9 +67,9 @@ class ShipmentResource {
 	* @param string $returnId Unique identifier of the return associated with the replacement shipment to delete.
 	* @param string $shipmentId Unique identifier of the return replacement shipment to delete.
 	*/
-	public function deleteShipment( $returnId,  $shipmentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deleteShipment($returnId, $shipmentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ShipmentClient::deleteShipmentClient( $returnId,  $shipmentId, $authTicket);
+		$mozuClient = ShipmentClient::deleteShipmentClient($returnId, $shipmentId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

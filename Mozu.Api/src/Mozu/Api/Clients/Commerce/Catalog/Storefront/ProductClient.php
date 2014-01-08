@@ -31,7 +31,7 @@ class ProductClient {
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getProductsClient($filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getProductsClient($filter =  null, $startIndex =  null, $pageSize =  null, $sortBy =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductUrl::getProductsUrl($filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
@@ -48,7 +48,7 @@ class ProductClient {
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @return MozuClient
 	*/
-	public static function getProductInventoryClient( $productCode, $locationCodes =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getProductInventoryClient($productCode, $locationCodes =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductUrl::getProductInventoryUrl($locationCodes, $productCode);
 		$mozuClient = new MozuClient();
@@ -67,7 +67,7 @@ class ProductClient {
 	* @param string $variationProductCode Merchant-created code associated with a specific product variation. Variation product codes maintain an association with the base product code.
 	* @return MozuClient
 	*/
-	public static function getProductClient( $productCode, $allowInactive =  null, $skipInventoryCheck =  null, $variationProductCode =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getProductClient($productCode, $variationProductCode =  null, $allowInactive =  null, $skipInventoryCheck =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductUrl::getProductUrl($allowInactive, $productCode, $skipInventoryCheck, $variationProductCode);
 		$mozuClient = new MozuClient();
@@ -86,7 +86,7 @@ class ProductClient {
 	* @param ProductOptionSelections $productOptionSelections For a product with shopper-configurable options, the properties of the product options selected by the shopper.
 	* @return MozuClient
 	*/
-	public static function configuredProductClient($productOptionSelections,  $productCode, $includeOptionDetails =  null, $skipInventoryCheck =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function configuredProductClient($productOptionSelections, $productCode, $includeOptionDetails =  null, $skipInventoryCheck =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductUrl::configuredProductUrl($includeOptionDetails, $productCode, $skipInventoryCheck);
 		$mozuClient = new MozuClient();
@@ -104,7 +104,7 @@ class ProductClient {
 	* @param ProductOptionSelections $productOptionSelections For a product with shopper-configurable options, the properties of the product options selected by the shopper.
 	* @return MozuClient
 	*/
-	public static function validateProductClient($productOptionSelections,  $productCode, $skipInventoryCheck =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function validateProductClient($productOptionSelections, $productCode, $skipInventoryCheck =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductUrl::validateProductUrl($productCode, $skipInventoryCheck);
 		$mozuClient = new MozuClient();

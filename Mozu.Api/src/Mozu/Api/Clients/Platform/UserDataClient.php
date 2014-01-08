@@ -28,7 +28,7 @@ class UserDataClient {
 	* @param string $dbEntryQuery The database entry query string used to retrieve the record information.
 	* @return MozuClient
 	*/
-	public static function getDBValueClient( $dbEntryQuery, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getDBValueClient($dbEntryQuery, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = UserDataUrl::getDBValueUrl($dbEntryQuery);
 		$mozuClient = new MozuClient();
@@ -44,7 +44,7 @@ class UserDataClient {
 	* @param string $dbEntryQuery The database entry string to create.
 	* @param string $value The value string to create.
 	*/
-	public static function createDBValueClient($value,  $dbEntryQuery, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function createDBValueClient($value, $dbEntryQuery, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = UserDataUrl::createDBValueUrl($dbEntryQuery);
 		$mozuClient = new MozuClient();
@@ -60,7 +60,7 @@ class UserDataClient {
 	* @param string $dbEntryQuery The database entry query string used to update the record information.
 	* @param string $value The database value to update.
 	*/
-	public static function updateDBValueClient($value,  $dbEntryQuery, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateDBValueClient($value, $dbEntryQuery, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = UserDataUrl::updateDBValueUrl($dbEntryQuery);
 		$mozuClient = new MozuClient();
@@ -75,7 +75,7 @@ class UserDataClient {
 	*
 	* @param string $dbEntryQuery The database entry string to delete.
 	*/
-	public static function deleteDBValueClient( $dbEntryQuery, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteDBValueClient($dbEntryQuery, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = UserDataUrl::deleteDBValueUrl($dbEntryQuery);
 		$mozuClient = new MozuClient();

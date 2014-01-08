@@ -36,9 +36,9 @@ class DocumentResource {
 	* @param string $documentListName The name of the document list associated with the document to retrieve.
 	* @return Document 
 	*/
-	public function getDocument($dataViewMode,  $documentId,  $documentListName, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getDocument($dataViewMode, $documentListName, $documentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = DocumentClient::getDocumentClient($dataViewMode,  $documentId,  $documentListName, $authTicket);
+		$mozuClient = DocumentClient::getDocumentClient($dataViewMode, $documentListName, $documentId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -52,9 +52,9 @@ class DocumentResource {
 	* @param string $documentListName The name of the document list associated with the document.
 	* @return Stream 
 	*/
-	public function getDocumentContent($dataViewMode,  $documentId,  $documentListName, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getDocumentContent($dataViewMode, $documentListName, $documentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = DocumentClient::getDocumentContentClient($dataViewMode,  $documentId,  $documentListName, $authTicket);
+		$mozuClient = DocumentClient::getDocumentContentClient($dataViewMode, $documentListName, $documentId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -71,9 +71,9 @@ class DocumentResource {
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return DocumentCollection 
 	*/
-	public function getDocuments($dataViewMode,  $documentListName, $filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getDocuments($dataViewMode, $documentListName, $filter =  null, $sortBy =  null, $pageSize =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = DocumentClient::getDocumentsClient($dataViewMode,  $documentListName, $filter, $pageSize, $sortBy, $startIndex, $authTicket);
+		$mozuClient = DocumentClient::getDocumentsClient($dataViewMode, $documentListName, $filter, $sortBy, $pageSize, $startIndex, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -87,9 +87,9 @@ class DocumentResource {
 	* @param Document $document The descriptive name of the newly created document.
 	* @return Document 
 	*/
-	public function createDocument($dataViewMode, $document,  $documentListName, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function createDocument($dataViewMode, $document, $documentListName, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = DocumentClient::createDocumentClient($dataViewMode, $document,  $documentListName, $authTicket);
+		$mozuClient = DocumentClient::createDocumentClient($dataViewMode, $document, $documentListName, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -104,9 +104,9 @@ class DocumentResource {
 	* @param Document $document Properties of the document to update.
 	* @return Document 
 	*/
-	public function updateDocument($dataViewMode, $document,  $documentId,  $documentListName, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateDocument($dataViewMode, $document, $documentListName, $documentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = DocumentClient::updateDocumentClient($dataViewMode, $document,  $documentId,  $documentListName, $authTicket);
+		$mozuClient = DocumentClient::updateDocumentClient($dataViewMode, $document, $documentListName, $documentId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -120,9 +120,9 @@ class DocumentResource {
 	* @param string $documentListName The name of the document list associated with the document.
 	* @param Stream $stream 
 	*/
-	public function updateDocumentContent($dataViewMode, $stream,  $documentId,  $documentListName, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateDocumentContent($dataViewMode, $stream, $documentListName, $documentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = DocumentClient::updateDocumentContentClient($dataViewMode, $stream,  $documentId,  $documentListName, $authTicket);
+		$mozuClient = DocumentClient::updateDocumentContentClient($dataViewMode, $stream, $documentListName, $documentId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 
@@ -134,9 +134,9 @@ class DocumentResource {
 	* @param string $documentId Identifier of the document being deleted.
 	* @param string $documentListName The name of the document list associated with the document list being deleted.
 	*/
-	public function deleteDocument($dataViewMode,  $documentId,  $documentListName, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deleteDocument($dataViewMode, $documentListName, $documentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = DocumentClient::deleteDocumentClient($dataViewMode,  $documentId,  $documentListName, $authTicket);
+		$mozuClient = DocumentClient::deleteDocumentClient($dataViewMode, $documentListName, $documentId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 
@@ -148,9 +148,9 @@ class DocumentResource {
 	* @param string $documentId Unique identifier of the document.
 	* @param string $documentListName The name of the document list associated with the document.
 	*/
-	public function deleteDocumentContent($dataViewMode,  $documentId,  $documentListName, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deleteDocumentContent($dataViewMode, $documentListName, $documentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = DocumentClient::deleteDocumentContentClient($dataViewMode,  $documentId,  $documentListName, $authTicket);
+		$mozuClient = DocumentClient::deleteDocumentContentClient($dataViewMode, $documentListName, $documentId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

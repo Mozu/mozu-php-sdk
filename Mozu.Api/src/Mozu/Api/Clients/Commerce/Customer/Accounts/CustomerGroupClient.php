@@ -32,7 +32,7 @@ class CustomerGroupClient {
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getAccountGroupsClient( $accountId, $filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getAccountGroupsClient($accountId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CustomerGroupUrl::getAccountGroupsUrl($accountId, $filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
@@ -49,7 +49,7 @@ class CustomerGroupClient {
 	* @param int $groupId Unique identifier of the customer group.
 	* @return MozuClient
 	*/
-	public static function getAccountGroupClient( $accountId,  $groupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getAccountGroupClient($accountId, $groupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CustomerGroupUrl::getAccountGroupUrl($accountId, $groupId);
 		$mozuClient = new MozuClient();
@@ -66,7 +66,7 @@ class CustomerGroupClient {
 	* @param int $groupId Unique identifier of the customer group to add the customer to.
 	* @return MozuClient
 	*/
-	public static function addAccountGroupClient( $accountId,  $groupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function addAccountGroupClient($accountId, $groupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CustomerGroupUrl::addAccountGroupUrl($accountId, $groupId);
 		$mozuClient = new MozuClient();
@@ -82,7 +82,7 @@ class CustomerGroupClient {
 	* @param int $accountId Unique identifier of the customer account to remove from the group.
 	* @param int $groupId Unique identifier of the customer group.
 	*/
-	public static function deleteAccountGroupClient( $accountId,  $groupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteAccountGroupClient($accountId, $groupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CustomerGroupUrl::deleteAccountGroupUrl($accountId, $groupId);
 		$mozuClient = new MozuClient();

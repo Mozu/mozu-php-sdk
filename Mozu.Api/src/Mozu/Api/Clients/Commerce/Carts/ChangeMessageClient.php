@@ -56,7 +56,7 @@ class ChangeMessageClient {
 	*
 	* @param string $messageId Identifier of the message to remove from the cart.
 	*/
-	public static function removeMessageClient( $messageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function removeMessageClient($messageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ChangeMessageUrl::removeMessageUrl($messageId);
 		$mozuClient = new MozuClient();

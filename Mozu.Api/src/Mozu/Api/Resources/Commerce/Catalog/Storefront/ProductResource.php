@@ -38,9 +38,9 @@ class ProductResource {
 	* @param int $startIndex 
 	* @return ProductCollection 
 	*/
-	public function getProducts($filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getProducts($filter =  null, $startIndex =  null, $pageSize =  null, $sortBy =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductClient::getProductsClient($filter, $pageSize, $sortBy, $startIndex, $authTicket);
+		$mozuClient = ProductClient::getProductsClient($filter, $startIndex, $pageSize, $sortBy, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -54,9 +54,9 @@ class ProductResource {
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @return LocationInventoryCollection 
 	*/
-	public function getProductInventory( $productCode, $locationCodes =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getProductInventory($productCode, $locationCodes =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductClient::getProductInventoryClient( $productCode, $locationCodes, $authTicket);
+		$mozuClient = ProductClient::getProductInventoryClient($productCode, $locationCodes, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -72,9 +72,9 @@ class ProductResource {
 	* @param string $variationProductCode Merchant-created code associated with a specific product variation. Variation product codes maintain an association with the base product code.
 	* @return Product 
 	*/
-	public function getProduct( $productCode, $allowInactive =  null, $skipInventoryCheck =  null, $variationProductCode =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getProduct($productCode, $variationProductCode =  null, $allowInactive =  null, $skipInventoryCheck =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductClient::getProductClient( $productCode, $allowInactive, $skipInventoryCheck, $variationProductCode, $authTicket);
+		$mozuClient = ProductClient::getProductClient($productCode, $variationProductCode, $allowInactive, $skipInventoryCheck, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -90,9 +90,9 @@ class ProductResource {
 	* @param ProductOptionSelections $productOptionSelections For a product with shopper-configurable options, the properties of the product options selected by the shopper.
 	* @return ConfiguredProduct 
 	*/
-	public function configuredProduct($productOptionSelections,  $productCode, $includeOptionDetails =  null, $skipInventoryCheck =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function configuredProduct($productOptionSelections, $productCode, $includeOptionDetails =  null, $skipInventoryCheck =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductClient::configuredProductClient($productOptionSelections,  $productCode, $includeOptionDetails, $skipInventoryCheck, $authTicket);
+		$mozuClient = ProductClient::configuredProductClient($productOptionSelections, $productCode, $includeOptionDetails, $skipInventoryCheck, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -107,9 +107,9 @@ class ProductResource {
 	* @param ProductOptionSelections $productOptionSelections For a product with shopper-configurable options, the properties of the product options selected by the shopper.
 	* @return ProductValidationSummary 
 	*/
-	public function validateProduct($productOptionSelections,  $productCode, $skipInventoryCheck =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function validateProduct($productOptionSelections, $productCode, $skipInventoryCheck =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductClient::validateProductClient($productOptionSelections,  $productCode, $skipInventoryCheck, $authTicket);
+		$mozuClient = ProductClient::validateProductClient($productOptionSelections, $productCode, $skipInventoryCheck, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

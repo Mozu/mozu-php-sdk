@@ -36,9 +36,9 @@ class PackageResource {
 	* @param string $packageId Unique identifier of the package to retrieve.
 	* @return Package 
 	*/
-	public function getPackage( $orderId,  $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getPackage($orderId, $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = PackageClient::getPackageClient( $orderId,  $packageId, $authTicket);
+		$mozuClient = PackageClient::getPackageClient($orderId, $packageId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -52,9 +52,9 @@ class PackageResource {
 	* @param string $packageId Unique identifier of the package associated with the fulfillment actions to retrieve.
 	* @return array|string 
 	*/
-	public function getAvailablePackageFulfillmentActions( $orderId,  $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getAvailablePackageFulfillmentActions($orderId, $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = PackageClient::getAvailablePackageFulfillmentActionsClient( $orderId,  $packageId, $authTicket);
+		$mozuClient = PackageClient::getAvailablePackageFulfillmentActionsClient($orderId, $packageId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -68,9 +68,9 @@ class PackageResource {
 	* @param string $packageId Unique identifier of the package for which to retrieve the label.
 	* @return Stream 
 	*/
-	public function getPackageLabel( $orderId,  $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getPackageLabel($orderId, $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = PackageClient::getPackageLabelClient( $orderId,  $packageId, $authTicket);
+		$mozuClient = PackageClient::getPackageLabelClient($orderId, $packageId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -84,9 +84,9 @@ class PackageResource {
 	* @param Package $package Properties of the physical package of order items.
 	* @return Package 
 	*/
-	public function createPackage($pkg,  $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function createPackage($pkg, $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = PackageClient::createPackageClient($pkg,  $orderId, $authTicket);
+		$mozuClient = PackageClient::createPackageClient($pkg, $orderId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -101,9 +101,9 @@ class PackageResource {
 	* @param Package $package Wrapper of properties for the package of order items to update.
 	* @return Package 
 	*/
-	public function updatePackage($pkg,  $orderId,  $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updatePackage($pkg, $orderId, $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = PackageClient::updatePackageClient($pkg,  $orderId,  $packageId, $authTicket);
+		$mozuClient = PackageClient::updatePackageClient($pkg, $orderId, $packageId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -116,9 +116,9 @@ class PackageResource {
 	* @param string $orderId Unique identifier of the order associated with the package to delete.
 	* @param string $packageId Unique identifier of the package to delete.
 	*/
-	public function deletePackage( $orderId,  $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deletePackage($orderId, $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = PackageClient::deletePackageClient( $orderId,  $packageId, $authTicket);
+		$mozuClient = PackageClient::deletePackageClient($orderId, $packageId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

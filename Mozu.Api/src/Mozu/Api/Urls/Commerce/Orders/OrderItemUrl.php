@@ -90,6 +90,25 @@ class OrderItemUrl  {
 	}
 	
 	/**
+		* Get Resource Url for UpdateItemFulfillment
+		* @param string $orderId 
+		* @param string $orderItemId 
+		* @param string $updateMode 
+		* @param string $version 
+		* @return string Resource Url
+	*/
+	public static function updateItemFulfillmentUrl($orderId, $orderItemId, $updateMode, $version)
+	{
+		$url = "/api/commerce/orders/{orderId}/items/{orderItemId}/fulfillment?updatemode={updateMode}&version={version}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("orderItemId", $orderItemId);
+		$url = $mozuUrl->formatUrl("updateMode", $updateMode);
+		$url = $mozuUrl->formatUrl("version", $version);
+		return $mozuUrl;
+	}
+	
+	/**
 		* Get Resource Url for UpdateItemProductPrice
 		* @param string $orderId Unique identifier of the order containing the item to price override.
 		* @param string $orderItemId Unique identifier of the item in the order to price override.

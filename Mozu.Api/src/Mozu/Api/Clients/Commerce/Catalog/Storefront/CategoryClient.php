@@ -31,7 +31,7 @@ class CategoryClient {
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getCategoriesClient($filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getCategoriesClient($filter =  null, $startIndex =  null, $pageSize =  null, $sortBy =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CategoryUrl::getCategoriesUrl($filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
@@ -48,7 +48,7 @@ class CategoryClient {
 	* @param int $categoryId Unique identifier for the storefront container used to organize products.
 	* @return MozuClient
 	*/
-	public static function getCategoryClient( $categoryId, $allowInactive =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getCategoryClient($categoryId, $allowInactive =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CategoryUrl::getCategoryUrl($allowInactive, $categoryId);
 		$mozuClient = new MozuClient();

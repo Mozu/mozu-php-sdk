@@ -20,11 +20,6 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class Discount
 {
 	/**
-	*Current status of the product discount. Possible values are "Active", "Scheduled", or "Expired".
-	*/
-	public $status;
-
-	/**
 	*The integer amount of the discount. For example, an entry of "10" could represent a discount of $10.00 or a discount of 10%, depending on the type.
 	*/
 	public $amount;
@@ -48,6 +43,11 @@ class Discount
 	*The scope to which the discount applies, which is "Order" for order discounts or "LineItem" for individual product discounts.
 	*/
 	public $scope;
+
+	/**
+	*Current status of the product discount. Possible values are "Active", "Scheduled", or "Expired".
+	*/
+	public $status;
 
 	/**
 	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.

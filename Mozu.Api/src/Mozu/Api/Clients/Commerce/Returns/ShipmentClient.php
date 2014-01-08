@@ -29,7 +29,7 @@ class ShipmentClient {
 	* @param string $shipmentId Unique identifier of the return replacement shipment to retrieve.
 	* @return MozuClient
 	*/
-	public static function getShipmentClient( $returnId,  $shipmentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getShipmentClient($returnId, $shipmentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ShipmentUrl::getShipmentUrl($returnId, $shipmentId);
 		$mozuClient = new MozuClient();
@@ -46,7 +46,7 @@ class ShipmentClient {
 	* @param array|string $packageIds List of packages in the return replacement shipment.
 	* @return MozuClient
 	*/
-	public static function createPackageShipmentsClient($packageIds,  $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function createPackageShipmentsClient($packageIds, $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ShipmentUrl::createPackageShipmentsUrl($returnId);
 		$mozuClient = new MozuClient();
@@ -62,7 +62,7 @@ class ShipmentClient {
 	* @param string $returnId Unique identifier of the return associated with the replacement shipment to delete.
 	* @param string $shipmentId Unique identifier of the return replacement shipment to delete.
 	*/
-	public static function deleteShipmentClient( $returnId,  $shipmentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteShipmentClient($returnId, $shipmentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ShipmentUrl::deleteShipmentUrl($returnId, $shipmentId);
 		$mozuClient = new MozuClient();

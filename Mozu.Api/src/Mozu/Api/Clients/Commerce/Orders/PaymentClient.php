@@ -28,7 +28,7 @@ class PaymentClient {
 	* @param string $orderId Unique identifier of the order.
 	* @return MozuClient
 	*/
-	public static function getPaymentsClient( $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getPaymentsClient($orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = PaymentUrl::getPaymentsUrl($orderId);
 		$mozuClient = new MozuClient();
@@ -45,7 +45,7 @@ class PaymentClient {
 	* @param string $paymentId Unique identifier of the payment transaction submitted for the order.
 	* @return MozuClient
 	*/
-	public static function getPaymentClient( $orderId,  $paymentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getPaymentClient($orderId, $paymentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = PaymentUrl::getPaymentUrl($orderId, $paymentId);
 		$mozuClient = new MozuClient();
@@ -62,7 +62,7 @@ class PaymentClient {
 	* @param string $paymentId Unique identifer of the payment for which to retrieve available actions.
 	* @return MozuClient
 	*/
-	public static function getAvailablePaymentActionsClient( $orderId,  $paymentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getAvailablePaymentActionsClient($orderId, $paymentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = PaymentUrl::getAvailablePaymentActionsUrl($orderId, $paymentId);
 		$mozuClient = new MozuClient();
@@ -80,7 +80,7 @@ class PaymentClient {
 	* @param PaymentAction $action The action to perform for the payment. Possible values are AuthAndCapture, AuthorizePayment, CapturePayment, VoidPayment, CreditPayment, RequestCheck, ApplyCheck, DeclineCheck.
 	* @return MozuClient
 	*/
-	public static function performPaymentActionClient($action,  $orderId,  $paymentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function performPaymentActionClient($action, $orderId, $paymentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = PaymentUrl::performPaymentActionUrl($orderId, $paymentId);
 		$mozuClient = new MozuClient();
@@ -97,7 +97,7 @@ class PaymentClient {
 	* @param PaymentAction $action To action to perform for the newly created payment. Possible values are AuthAndCapture, AuthorizePayment, CapturePayment, VoidPayment, CreditPayment, RequestCheck, ApplyCheck, DeclineCheck.
 	* @return MozuClient
 	*/
-	public static function createPaymentActionClient($action,  $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function createPaymentActionClient($action, $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = PaymentUrl::createPaymentActionUrl($orderId);
 		$mozuClient = new MozuClient();

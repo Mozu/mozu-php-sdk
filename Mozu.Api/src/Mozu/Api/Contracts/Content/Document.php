@@ -20,11 +20,6 @@ namespace Mozu\Api\Contracts\Content;
 class Document
 {
 	/**
-	*Date and time when the entity was last updated, represented in UTC Date/Time.
-	*/
-	public $updateDate;
-
-	/**
 	*The character length associated with the document content.
 	*/
 	public $contentLength;
@@ -55,11 +50,6 @@ class Document
 	public $extension;
 
 	/**
-	*Unique identifier of the folder that contains the document.
-	*/
-	public $folderId;
-
-	/**
 	*Unique identifier of the document.
 	*/
 	public $id;
@@ -75,14 +65,14 @@ class Document
 	public $name;
 
 	/**
-	*The location of the document in the document list and folder hierarchy.
-	*/
-	public $path;
-
-	/**
 	*The current state of the document, which is Active, Draft, or Latest. Active documents are published and cannot be deleted. Querying Latest returns the most recent version of the document, regardless of whether it is published or a draft.
 	*/
 	public $publishState;
+
+	/**
+	*Date and time when the entity was last updated, represented in UTC Date/Time.
+	*/
+	public $updateDate;
 
 	/**
 	*List of properties for the given property value.

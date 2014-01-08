@@ -29,7 +29,7 @@ class PackageClient {
 	* @param string $returnId Unique identifier of the return associated with the replacement package to retrieve.
 	* @return MozuClient
 	*/
-	public static function getPackageClient( $packageId,  $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getPackageClient($returnId, $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = PackageUrl::getPackageUrl($packageId, $returnId);
 		$mozuClient = new MozuClient();
@@ -46,7 +46,7 @@ class PackageClient {
 	* @param string $returnId Unique identifier of the return associated with the replacement package label to retrieve.
 	* @return MozuClient
 	*/
-	public static function getPackageLabelClient( $packageId,  $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getPackageLabelClient($returnId, $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = PackageUrl::getPackageLabelUrl($packageId, $returnId);
 		$mozuClient = new MozuClient();
@@ -63,7 +63,7 @@ class PackageClient {
 	* @param Package $package Properties of the physical package for a return replacement.
 	* @return MozuClient
 	*/
-	public static function createPackageClient($pkg,  $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function createPackageClient($pkg, $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = PackageUrl::createPackageUrl($returnId);
 		$mozuClient = new MozuClient();
@@ -81,7 +81,7 @@ class PackageClient {
 	* @param Package $package Properties of the return replacement package to update.
 	* @return MozuClient
 	*/
-	public static function updatePackageClient($pkg,  $packageId,  $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updatePackageClient($pkg, $returnId, $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = PackageUrl::updatePackageUrl($packageId, $returnId);
 		$mozuClient = new MozuClient();
@@ -97,7 +97,7 @@ class PackageClient {
 	* @param string $packageId Unique identifier of the return replacement package to delete.
 	* @param string $returnId Unique identifier of the return associated with the replacement package to delete.
 	*/
-	public static function deletePackageClient( $packageId,  $returnId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deletePackageClient($returnId, $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = PackageUrl::deletePackageUrl($packageId, $returnId);
 		$mozuClient = new MozuClient();

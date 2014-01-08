@@ -40,9 +40,9 @@ class WishlistResource {
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return WishlistCollection 
 	*/
-	public function getWishlists($filter =  null, $pageSize =  null, $q =  null, $qLimit =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getWishlists($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $q =  null, $qLimit =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = WishlistClient::getWishlistsClient($filter, $pageSize, $q, $qLimit, $sortBy, $startIndex, $authTicket);
+		$mozuClient = WishlistClient::getWishlistsClient($startIndex, $pageSize, $sortBy, $filter, $q, $qLimit, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -55,9 +55,9 @@ class WishlistResource {
 	* @param string $wishlistId Unique identifier of the shopper wish list to retrieve.
 	* @return Wishlist 
 	*/
-	public function getWishlist( $wishlistId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getWishlist($wishlistId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = WishlistClient::getWishlistClient( $wishlistId, $authTicket);
+		$mozuClient = WishlistClient::getWishlistClient($wishlistId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -71,9 +71,9 @@ class WishlistResource {
 	* @param string $wishlistName 
 	* @return Wishlist 
 	*/
-	public function getWishlistByName( $customerAccountId,  $wishlistName, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getWishlistByName($customerAccountId, $wishlistName, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = WishlistClient::getWishlistByNameClient( $customerAccountId,  $wishlistName, $authTicket);
+		$mozuClient = WishlistClient::getWishlistByNameClient($customerAccountId, $wishlistName, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -102,9 +102,9 @@ class WishlistResource {
 	* @param Wishlist $wishlist Properties of the shopper wish list to update.
 	* @return Wishlist 
 	*/
-	public function updateWishlist($wishlist,  $wishlistId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateWishlist($wishlist, $wishlistId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = WishlistClient::updateWishlistClient($wishlist,  $wishlistId, $authTicket);
+		$mozuClient = WishlistClient::updateWishlistClient($wishlist, $wishlistId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -116,9 +116,9 @@ class WishlistResource {
 	*
 	* @param string $wishlistId Unique identifier of the wish list to delete.
 	*/
-	public function deleteWishlist( $wishlistId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deleteWishlist($wishlistId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = WishlistClient::deleteWishlistClient( $wishlistId, $authTicket);
+		$mozuClient = WishlistClient::deleteWishlistClient($wishlistId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

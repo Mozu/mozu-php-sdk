@@ -29,9 +29,9 @@ class TenantResource {
 	* @param int $tenantId Unique identifier of the Mozu tenant.
 	* @return Tenant 
 	*/
-	public function getTenant( $tenantId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getTenant($tenantId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = TenantClient::getTenantClient( $tenantId, $authTicket);
+		$mozuClient = TenantClient::getTenantClient($tenantId, $authTicket);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 

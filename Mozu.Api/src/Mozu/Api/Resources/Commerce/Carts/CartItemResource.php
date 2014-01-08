@@ -49,9 +49,9 @@ class CartItemResource {
 	* @param string $cartItemId Identifier of the cart item to retrieve.
 	* @return CartItem 
 	*/
-	public function getCartItem( $cartItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getCartItem($cartItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CartItemClient::getCartItemClient( $cartItemId, $authTicket);
+		$mozuClient = CartItemClient::getCartItemClient($cartItemId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -80,9 +80,9 @@ class CartItemResource {
 	* @param CartItem $cartItem The properties of the cart item to update.
 	* @return CartItem 
 	*/
-	public function updateCartItem($cartItem,  $cartItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateCartItem($cartItem, $cartItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CartItemClient::updateCartItemClient($cartItem,  $cartItemId, $authTicket);
+		$mozuClient = CartItemClient::updateCartItemClient($cartItem, $cartItemId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -96,9 +96,9 @@ class CartItemResource {
 	* @param int $quantity The number of cart items in the shopper's active cart.
 	* @return CartItem 
 	*/
-	public function updateCartItemQuantity( $cartItemId,  $quantity, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateCartItemQuantity($cartItemId, $quantity, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CartItemClient::updateCartItemQuantityClient( $cartItemId,  $quantity, $authTicket);
+		$mozuClient = CartItemClient::updateCartItemQuantityClient($cartItemId, $quantity, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -124,9 +124,9 @@ class CartItemResource {
 	*
 	* @param string $cartItemId Identifier of the cart item to delete.
 	*/
-	public function deleteCartItem( $cartItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deleteCartItem($cartItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CartItemClient::deleteCartItemClient( $cartItemId, $authTicket);
+		$mozuClient = CartItemClient::deleteCartItemClient($cartItemId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

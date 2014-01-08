@@ -28,7 +28,7 @@ class DiscountTargetClient {
 	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
 	* @return MozuClient
 	*/
-	public static function getDiscountTargetClient($dataViewMode,  $discountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getDiscountTargetClient($dataViewMode, $discountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = DiscountTargetUrl::getDiscountTargetUrl($discountId);
 		$mozuClient = new MozuClient();
@@ -46,7 +46,7 @@ class DiscountTargetClient {
 	* @param DiscountTarget $discountTarget Properties of the discount target to modify. Required properties: Target.Type. Any unspecified properties are set to null and boolean variables to false.
 	* @return MozuClient
 	*/
-	public static function updateDiscountTargetClient($dataViewMode, $discountTarget,  $discountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateDiscountTargetClient($dataViewMode, $discountTarget, $discountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = DiscountTargetUrl::updateDiscountTargetUrl($discountId);
 		$mozuClient = new MozuClient();

@@ -38,9 +38,9 @@ class CustomerGroupResource {
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return CustomerGroupCollection 
 	*/
-	public function getGroups($filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getGroups($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CustomerGroupClient::getGroupsClient($filter, $pageSize, $sortBy, $startIndex, $authTicket);
+		$mozuClient = CustomerGroupClient::getGroupsClient($startIndex, $pageSize, $sortBy, $filter, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -53,9 +53,9 @@ class CustomerGroupResource {
 	* @param int $groupId Identifier of the customer group to retrieve.
 	* @return CustomerGroup 
 	*/
-	public function getGroup( $groupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getGroup($groupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CustomerGroupClient::getGroupClient( $groupId, $authTicket);
+		$mozuClient = CustomerGroupClient::getGroupClient($groupId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -84,9 +84,9 @@ class CustomerGroupResource {
 	* @param CustomerGroup $group Properties of the customer group to update.
 	* @return CustomerGroup 
 	*/
-	public function updateGroup($group,  $groupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateGroup($group, $groupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CustomerGroupClient::updateGroupClient($group,  $groupId, $authTicket);
+		$mozuClient = CustomerGroupClient::updateGroupClient($group, $groupId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -98,9 +98,9 @@ class CustomerGroupResource {
 	*
 	* @param int $groupId Identifier of the customer group to delete.
 	*/
-	public function deleteGroup( $groupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deleteGroup($groupId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CustomerGroupClient::deleteGroupClient( $groupId, $authTicket);
+		$mozuClient = CustomerGroupClient::deleteGroupClient($groupId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

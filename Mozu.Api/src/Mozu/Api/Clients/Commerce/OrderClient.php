@@ -33,7 +33,7 @@ class OrderClient {
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getOrdersClient($filter =  null, $pageSize =  null, $q =  null, $qLimit =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getOrdersClient($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $q =  null, $qLimit =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = OrderUrl::getOrdersUrl($filter, $pageSize, $q, $qLimit, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
@@ -49,7 +49,7 @@ class OrderClient {
 	* @param string $orderId Unique identifier of the available order actions to get.
 	* @return MozuClient
 	*/
-	public static function getAvailableActionsClient( $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getAvailableActionsClient($orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = OrderUrl::getAvailableActionsUrl($orderId);
 		$mozuClient = new MozuClient();
@@ -65,7 +65,7 @@ class OrderClient {
 	* @param string $orderId 
 	* @return MozuClient
 	*/
-	public static function getTaxableOrdersClient( $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getTaxableOrdersClient($orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = OrderUrl::getTaxableOrdersUrl($orderId);
 		$mozuClient = new MozuClient();
@@ -82,7 +82,7 @@ class OrderClient {
 	* @param string $orderId Unique identifier of the order details to get.
 	* @return MozuClient
 	*/
-	public static function getOrderClient( $orderId, $draft =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getOrderClient($orderId, $draft =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = OrderUrl::getOrderUrl($draft, $orderId);
 		$mozuClient = new MozuClient();
@@ -114,7 +114,7 @@ class OrderClient {
 	* @param string $cartId Unique identifier of the cart. This is the original cart ID expressed as a GUID.
 	* @return MozuClient
 	*/
-	public static function createOrderFromCartClient( $cartId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function createOrderFromCartClient($cartId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = OrderUrl::createOrderFromCartUrl($cartId);
 		$mozuClient = new MozuClient();
@@ -131,7 +131,7 @@ class OrderClient {
 	* @param OrderAction $action Action to perform, which can be "CreateOrder," "SubmitOrder," "SetOrderAsProcessing," "CloseOrder," or "CancelOrder."
 	* @return MozuClient
 	*/
-	public static function performOrderActionClient($action,  $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function performOrderActionClient($action, $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = OrderUrl::performOrderActionUrl($orderId);
 		$mozuClient = new MozuClient();
@@ -151,7 +151,7 @@ class OrderClient {
 	* @param AppliedDiscount $discount Properties of the order discount to update.
 	* @return MozuClient
 	*/
-	public static function updateOrderDiscountClient($discount,  $discountId,  $orderId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateOrderDiscountClient($discount, $orderId, $discountId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = OrderUrl::updateOrderDiscountUrl($discountId, $orderId, $updateMode, $version);
 		$mozuClient = new MozuClient();
@@ -167,7 +167,7 @@ class OrderClient {
 	* @param string $orderId Unique identifier of the order associated with the draft to delete.
 	* @param string $version If applicable, the version of the order draft to delete.
 	*/
-	public static function deleteOrderDraftClient( $orderId, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteOrderDraftClient($orderId, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = OrderUrl::deleteOrderDraftUrl($orderId, $version);
 		$mozuClient = new MozuClient();
@@ -183,7 +183,7 @@ class OrderClient {
 	* @param string $orderId Unique identifier of the order.
 	* @return MozuClient
 	*/
-	public static function changeOrderUserIdClient( $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function changeOrderUserIdClient($orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = OrderUrl::changeOrderUserIdUrl($orderId);
 		$mozuClient = new MozuClient();
@@ -202,7 +202,7 @@ class OrderClient {
 	* @param Order $order The properties of the order to update.
 	* @return MozuClient
 	*/
-	public static function updateOrderClient($order,  $orderId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateOrderClient($order, $orderId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = OrderUrl::updateOrderUrl($orderId, $updateMode, $version);
 		$mozuClient = new MozuClient();

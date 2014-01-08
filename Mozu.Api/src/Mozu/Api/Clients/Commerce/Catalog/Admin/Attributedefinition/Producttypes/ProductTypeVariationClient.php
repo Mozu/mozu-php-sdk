@@ -34,7 +34,7 @@ class ProductTypeVariationClient {
 	* @param array|ProductOption $productOptionsIn The product option attributes configured for this product type.
 	* @return MozuClient
 	*/
-	public static function generateProductVariationsClient($dataViewMode, $productOptionsIn,  $productTypeId, $filter =  null, $pageSize =  null, $productCode =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function generateProductVariationsClient($dataViewMode, $productOptionsIn, $productTypeId, $productCode =  null, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ProductTypeVariationUrl::generateProductVariationsUrl($filter, $pageSize, $productCode, $productTypeId, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();

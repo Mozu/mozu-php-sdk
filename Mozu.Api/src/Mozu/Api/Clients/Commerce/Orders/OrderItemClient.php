@@ -30,7 +30,7 @@ class OrderItemClient {
 	* @param string $orderItemId Unique identifier of the order item details to retrieve.
 	* @return MozuClient
 	*/
-	public static function getOrderItemClient( $orderId,  $orderItemId, $draft =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getOrderItemClient($orderId, $orderItemId, $draft =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = OrderItemUrl::getOrderItemUrl($draft, $orderId, $orderItemId);
 		$mozuClient = new MozuClient();
@@ -47,7 +47,7 @@ class OrderItemClient {
 	* @param string $orderId Unique identifier of the order items to retrieve.
 	* @return MozuClient
 	*/
-	public static function getOrderItemsClient( $orderId, $draft =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getOrderItemsClient($orderId, $draft =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = OrderItemUrl::getOrderItemsUrl($draft, $orderId);
 		$mozuClient = new MozuClient();
@@ -67,7 +67,7 @@ class OrderItemClient {
 	* @param OrderItem $orderItem The properties of the item to create in the existing order.
 	* @return MozuClient
 	*/
-	public static function createOrderItemClient($orderItem,  $orderId, $skipInventoryCheck =  null, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function createOrderItemClient($orderItem, $orderId, $updateMode =  null, $version =  null, $skipInventoryCheck =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = OrderItemUrl::createOrderItemUrl($orderId, $skipInventoryCheck, $updateMode, $version);
 		$mozuClient = new MozuClient();
@@ -88,11 +88,31 @@ class OrderItemClient {
 	* @param AppliedDiscount $discount Properties of the discount to modify for the order item.
 	* @return MozuClient
 	*/
-	public static function updateOrderItemDiscountClient($discount,  $discountId,  $orderId,  $orderItemId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateOrderItemDiscountClient($discount, $orderId, $orderItemId, $discountId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = OrderItemUrl::updateOrderItemDiscountUrl($discountId, $orderId, $orderItemId, $updateMode, $version);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($discount);		if ($authTicket != null)
+			$mozuClient = $mozuClient->withUserAuth($authTicket);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $orderId 
+	* @param string $orderItemId 
+	* @param string $updateMode 
+	* @param string $version 
+	* @param OrderItem $orderItem 
+	* @return MozuClient
+	*/
+	public static function updateItemFulfillmentClient($orderItem, $orderId, $orderItemId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	{
+		$url = OrderItemUrl::updateItemFulfillmentUrl($orderId, $orderItemId, $updateMode, $version);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withBody($orderItem);		if ($authTicket != null)
 			$mozuClient = $mozuClient->withUserAuth($authTicket);
 		return $mozuClient;
 
@@ -108,7 +128,7 @@ class OrderItemClient {
 	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 	* @return MozuClient
 	*/
-	public static function updateItemProductPriceClient( $orderId,  $orderItemId,  $price, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateItemProductPriceClient($orderId, $orderItemId, $price, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = OrderItemUrl::updateItemProductPriceUrl($orderId, $orderItemId, $price, $updateMode, $version);
 		$mozuClient = new MozuClient();
@@ -128,7 +148,7 @@ class OrderItemClient {
 	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 	* @return MozuClient
 	*/
-	public static function updateItemQuantityClient( $orderId,  $orderItemId,  $quantity, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateItemQuantityClient($orderId, $orderItemId, $quantity, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = OrderItemUrl::updateItemQuantityUrl($orderId, $orderItemId, $quantity, $updateMode, $version);
 		$mozuClient = new MozuClient();
@@ -147,7 +167,7 @@ class OrderItemClient {
 	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 	* @return MozuClient
 	*/
-	public static function deleteOrderItemClient( $orderId,  $orderItemId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteOrderItemClient($orderId, $orderItemId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = OrderItemUrl::deleteOrderItemUrl($orderId, $orderItemId, $updateMode, $version);
 		$mozuClient = new MozuClient();

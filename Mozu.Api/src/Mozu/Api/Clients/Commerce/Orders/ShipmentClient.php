@@ -29,7 +29,7 @@ class ShipmentClient {
 	* @param string $shipmentId Unique identifier of the shipment to retrieve.
 	* @return MozuClient
 	*/
-	public static function getShipmentClient( $orderId,  $shipmentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getShipmentClient($orderId, $shipmentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ShipmentUrl::getShipmentUrl($orderId, $shipmentId);
 		$mozuClient = new MozuClient();
@@ -45,7 +45,7 @@ class ShipmentClient {
 	* @param string $orderId Unique identifier of the order for the available shipment methods being retrieved.
 	* @return MozuClient
 	*/
-	public static function getAvailableShipmentMethodsClient( $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getAvailableShipmentMethodsClient($orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ShipmentUrl::getAvailableShipmentMethodsUrl($orderId);
 		$mozuClient = new MozuClient();
@@ -62,7 +62,7 @@ class ShipmentClient {
 	* @param array|string $packageIds List of unique identifiers for each package associated with this shipment. Not all packages must belong to the same shipment.
 	* @return MozuClient
 	*/
-	public static function createPackageShipmentsClient($packageIds,  $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function createPackageShipmentsClient($packageIds, $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ShipmentUrl::createPackageShipmentsUrl($orderId);
 		$mozuClient = new MozuClient();
@@ -78,7 +78,7 @@ class ShipmentClient {
 	* @param string $orderId Unique identifier of the order to cancel shipment.
 	* @param string $shipmentId Unique identifier of the shipment to cancel.
 	*/
-	public static function deleteShipmentClient( $orderId,  $shipmentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteShipmentClient($orderId, $shipmentId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ShipmentUrl::deleteShipmentUrl($orderId, $shipmentId);
 		$mozuClient = new MozuClient();

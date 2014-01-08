@@ -21,6 +21,10 @@ class Order
 {
 		public $acceptedDate;
 
+		public $amountAvailableForRefund;
+
+		public $amountRemainingForPayment;
+
 	/**
 	*The available order, payment, and shipment actions a user can perform for the order.
 	*/
@@ -113,6 +117,8 @@ class Order
 	*/
 	public $handlingTaxTotal;
 
+		public $handlingTotal;
+
 	/**
 	*If true, the order has a draft that may include one or more uncommitted changes to the order or its components.
 	*/
@@ -134,6 +140,8 @@ class Order
 	*If true, this version of the order is a draft that might contain uncommitted changes.
 	*/
 	public $isDraft;
+
+		public $isEligibleForReturns;
 
 	/**
 	*If true, this order was submitted using an external system, and the order record was imported into Mozu.

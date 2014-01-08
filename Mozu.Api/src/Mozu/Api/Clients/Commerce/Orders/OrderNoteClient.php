@@ -28,7 +28,7 @@ class OrderNoteClient {
 	* @param string $orderId Unique identifier of the order.
 	* @return MozuClient
 	*/
-	public static function getOrderNotesClient( $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getOrderNotesClient($orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = OrderNoteUrl::getOrderNotesUrl($orderId);
 		$mozuClient = new MozuClient();
@@ -45,7 +45,7 @@ class OrderNoteClient {
 	* @param string $orderId Unique identifier of the order associated with the note.
 	* @return MozuClient
 	*/
-	public static function getOrderNoteClient( $noteId,  $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getOrderNoteClient($orderId, $noteId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = OrderNoteUrl::getOrderNoteUrl($noteId, $orderId);
 		$mozuClient = new MozuClient();
@@ -62,7 +62,7 @@ class OrderNoteClient {
 	* @param OrderNote $orderNote The alphanumeric text contained in the note. The maximum length is 256 characters.
 	* @return MozuClient
 	*/
-	public static function createOrderNoteClient($orderNote,  $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function createOrderNoteClient($orderNote, $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = OrderNoteUrl::createOrderNoteUrl($orderId);
 		$mozuClient = new MozuClient();
@@ -80,7 +80,7 @@ class OrderNoteClient {
 	* @param OrderNote $orderNote The content of the order note. The maximum length is 256 characters.
 	* @return MozuClient
 	*/
-	public static function updateOrderNoteClient($orderNote,  $noteId,  $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateOrderNoteClient($orderNote, $orderId, $noteId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = OrderNoteUrl::updateOrderNoteUrl($noteId, $orderId);
 		$mozuClient = new MozuClient();
@@ -96,7 +96,7 @@ class OrderNoteClient {
 	* @param string $noteId Unique identifier of the order note to delete.
 	* @param string $orderId Unique identifier of the order associated with the note.
 	*/
-	public static function deleteOrderNoteClient( $noteId,  $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteOrderNoteClient($orderId, $noteId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = OrderNoteUrl::deleteOrderNoteUrl($noteId, $orderId);
 		$mozuClient = new MozuClient();

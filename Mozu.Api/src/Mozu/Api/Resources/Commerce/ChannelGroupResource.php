@@ -38,9 +38,9 @@ class ChannelGroupResource {
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return ChannelGroupCollection 
 	*/
-	public function getChannelGroups($filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getChannelGroups($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ChannelGroupClient::getChannelGroupsClient($filter, $pageSize, $sortBy, $startIndex, $authTicket);
+		$mozuClient = ChannelGroupClient::getChannelGroupsClient($startIndex, $pageSize, $sortBy, $filter, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -53,9 +53,9 @@ class ChannelGroupResource {
 	* @param string $code The code that uniquely identifies the channel group.
 	* @return ChannelGroup 
 	*/
-	public function getChannelGroup( $code, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getChannelGroup($code, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ChannelGroupClient::getChannelGroupClient( $code, $authTicket);
+		$mozuClient = ChannelGroupClient::getChannelGroupClient($code, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -84,9 +84,9 @@ class ChannelGroupResource {
 	* @param ChannelGroup $channelGroup Properties of the channel group to update.
 	* @return ChannelGroup 
 	*/
-	public function updateChannelGroup($channelGroup,  $code, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateChannelGroup($channelGroup, $code, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ChannelGroupClient::updateChannelGroupClient($channelGroup,  $code, $authTicket);
+		$mozuClient = ChannelGroupClient::updateChannelGroupClient($channelGroup, $code, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -98,9 +98,9 @@ class ChannelGroupResource {
 	*
 	* @param string $code User-defined code that uniqely identifies the channel group.
 	*/
-	public function deleteChannelGroup( $code, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deleteChannelGroup($code, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ChannelGroupClient::deleteChannelGroupClient( $code, $authTicket);
+		$mozuClient = ChannelGroupClient::deleteChannelGroupClient($code, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

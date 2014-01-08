@@ -38,9 +38,9 @@ class AppliedDiscountResource {
 	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 	* @return Order 
 	*/
-	public function applyCoupon( $couponCode,  $orderId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function applyCoupon($orderId, $couponCode, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = AppliedDiscountClient::applyCouponClient( $couponCode,  $orderId, $updateMode, $version, $authTicket);
+		$mozuClient = AppliedDiscountClient::applyCouponClient($orderId, $couponCode, $updateMode, $version, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -56,9 +56,9 @@ class AppliedDiscountResource {
 	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 	* @return Order 
 	*/
-	public function removeCoupon( $couponCode,  $orderId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function removeCoupon($orderId, $couponCode, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = AppliedDiscountClient::removeCouponClient( $couponCode,  $orderId, $updateMode, $version, $authTicket);
+		$mozuClient = AppliedDiscountClient::removeCouponClient($orderId, $couponCode, $updateMode, $version, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -73,9 +73,9 @@ class AppliedDiscountResource {
 	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 	* @return Order 
 	*/
-	public function removeCoupons( $orderId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function removeCoupons($orderId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = AppliedDiscountClient::removeCouponsClient( $orderId, $updateMode, $version, $authTicket);
+		$mozuClient = AppliedDiscountClient::removeCouponsClient($orderId, $updateMode, $version, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

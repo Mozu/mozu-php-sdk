@@ -32,7 +32,7 @@ class CreditAuditEntryClient {
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return MozuClient
 	*/
-	public static function getAuditEntriesClient( $code, $filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getAuditEntriesClient($code, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CreditAuditEntryUrl::getAuditEntriesUrl($code, $filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();

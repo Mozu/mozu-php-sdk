@@ -31,7 +31,7 @@ class AttributeClient {
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getAttributesClient($dataViewMode, $filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getAttributesClient($dataViewMode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = AttributeUrl::getAttributesUrl($filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
@@ -48,7 +48,7 @@ class AttributeClient {
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @return MozuClient
 	*/
-	public static function getAttributeClient($dataViewMode,  $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getAttributeClient($dataViewMode, $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = AttributeUrl::getAttributeUrl($attributeFQN);
 		$mozuClient = new MozuClient();
@@ -83,7 +83,7 @@ class AttributeClient {
 	* @param Attribute $attribute Any properties of the attribute that to update.
 	* @return MozuClient
 	*/
-	public static function updateAttributeClient($dataViewMode, $attribute,  $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateAttributeClient($dataViewMode, $attribute, $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = AttributeUrl::updateAttributeUrl($attributeFQN);
 		$mozuClient = new MozuClient();
@@ -99,7 +99,7 @@ class AttributeClient {
 	*
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	*/
-	public static function deleteAttributeClient($dataViewMode,  $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteAttributeClient($dataViewMode, $attributeFQN, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = AttributeUrl::deleteAttributeUrl($attributeFQN);
 		$mozuClient = new MozuClient();

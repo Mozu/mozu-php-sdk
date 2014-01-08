@@ -43,7 +43,7 @@ class MasterCatalogClient {
 	* @param int $masterCatalogId 
 	* @return MozuClient
 	*/
-	public static function getMasterCatalogClient($dataViewMode,  $masterCatalogId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getMasterCatalogClient($dataViewMode, $masterCatalogId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = MasterCatalogUrl::getMasterCatalogUrl($masterCatalogId);
 		$mozuClient = new MozuClient();
@@ -61,7 +61,7 @@ class MasterCatalogClient {
 	* @param MasterCatalog $masterCatalog Properties of the master catalog to update, which consists of the product publishing mode. Possible values are "Pending" which saves product updates in draft mode until they are published, and "Live" which publishes all product changes immediately.
 	* @return MozuClient
 	*/
-	public static function updateMasterCatalogClient($dataViewMode, $masterCatalog,  $masterCatalogId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateMasterCatalogClient($dataViewMode, $masterCatalog, $masterCatalogId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = MasterCatalogUrl::updateMasterCatalogUrl($masterCatalogId);
 		$mozuClient = new MozuClient();

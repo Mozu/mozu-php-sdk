@@ -35,9 +35,9 @@ class CartResource {
 	* @param string $cartId Identifier of the cart to retrieve.
 	* @return Cart 
 	*/
-	public function getCart( $cartId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getCart($cartId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CartClient::getCartClient( $cartId, $authTicket);
+		$mozuClient = CartClient::getCartClient($cartId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -78,9 +78,9 @@ class CartResource {
 	* @param string $userId Unique identifier of the user whose cart you want to retrieve.
 	* @return Cart 
 	*/
-	public function getUserCart( $userId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getUserCart($userId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CartClient::getUserCartClient( $userId, $authTicket);
+		$mozuClient = CartClient::getUserCartClient($userId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -93,9 +93,9 @@ class CartResource {
 	* @param string $userId Unique identifier of the user whose cart details you want to retrieve.
 	* @return CartSummary 
 	*/
-	public function getUserCartSummary( $userId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getUserCartSummary($userId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CartClient::getUserCartSummaryClient( $userId, $authTicket);
+		$mozuClient = CartClient::getUserCartSummaryClient($userId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -122,9 +122,9 @@ class CartResource {
 	*
 	* @param string $cartId Identifier of the cart to delete.
 	*/
-	public function deleteCart( $cartId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deleteCart($cartId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CartClient::deleteCartClient( $cartId, $authTicket);
+		$mozuClient = CartClient::deleteCartClient($cartId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

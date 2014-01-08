@@ -31,7 +31,7 @@ class VisitClient {
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return MozuClient
 	*/
-	public static function getVisitsClient($filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getVisitsClient($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = VisitUrl::getVisitsUrl($filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
@@ -47,7 +47,7 @@ class VisitClient {
 	* @param string $visitId Unique identifier of the customer visit to retrieve.
 	* @return MozuClient
 	*/
-	public static function getVisitClient( $visitId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getVisitClient($visitId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = VisitUrl::getVisitUrl($visitId);
 		$mozuClient = new MozuClient();
@@ -80,7 +80,7 @@ class VisitClient {
 	* @param Visit $visit Properties of the customer visit to update.
 	* @return MozuClient
 	*/
-	public static function updateVisitClient($visit,  $visitId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateVisitClient($visit, $visitId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = VisitUrl::updateVisitUrl($visitId);
 		$mozuClient = new MozuClient();

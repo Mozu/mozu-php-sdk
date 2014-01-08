@@ -35,9 +35,9 @@ class TransactionResource {
 	* @param int $accountId Unique identifier of the customer account for which to retrieve transactions.
 	* @return array|Transaction 
 	*/
-	public function getTransactions( $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getTransactions($accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = TransactionClient::getTransactionsClient( $accountId, $authTicket);
+		$mozuClient = TransactionClient::getTransactionsClient($accountId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -51,9 +51,9 @@ class TransactionResource {
 	* @param Transaction $transaction Properties of the transaction to create for the customer account.
 	* @return Transaction 
 	*/
-	public function addTransaction($transaction,  $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function addTransaction($transaction, $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = TransactionClient::addTransactionClient($transaction,  $accountId, $authTicket);
+		$mozuClient = TransactionClient::addTransactionClient($transaction, $accountId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -66,9 +66,9 @@ class TransactionResource {
 	* @param int $accountId Unique identifier of the customer account from which to delete the transaction.
 	* @param string $transactionId Unique identifier of the transaction to delete.
 	*/
-	public function removeTransaction( $accountId,  $transactionId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function removeTransaction($accountId, $transactionId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = TransactionClient::removeTransactionClient( $accountId,  $transactionId, $authTicket);
+		$mozuClient = TransactionClient::removeTransactionClient($accountId, $transactionId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

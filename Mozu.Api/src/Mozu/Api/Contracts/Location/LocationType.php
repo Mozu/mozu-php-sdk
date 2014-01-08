@@ -29,6 +29,8 @@ class LocationType
 	*/
 	public $name;
 
+		public $auditInfo;
+
 }
 
 ?>

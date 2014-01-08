@@ -50,9 +50,9 @@ class ProductSearchResultResource {
 	* @param int $startIndex 
 	* @return ProductSearchResult 
 	*/
-	public function search($facet =  null, $facetFieldRangeQuery =  null, $facetHierDepth =  null, $facetHierPrefix =  null, $facetHierValue =  null, $facetPageSize =  null, $facetSettings =  null, $facetStartIndex =  null, $facetTemplate =  null, $facetTemplateSubset =  null, $facetValueFilter =  null, $filter =  null, $pageSize =  null, $query =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function search($query =  null, $filter =  null, $facetTemplate =  null, $facetTemplateSubset =  null, $facet =  null, $facetFieldRangeQuery =  null, $facetHierPrefix =  null, $facetHierValue =  null, $facetHierDepth =  null, $facetStartIndex =  null, $facetPageSize =  null, $facetSettings =  null, $facetValueFilter =  null, $sortBy =  null, $pageSize =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductSearchResultClient::searchClient($facet, $facetFieldRangeQuery, $facetHierDepth, $facetHierPrefix, $facetHierValue, $facetPageSize, $facetSettings, $facetStartIndex, $facetTemplate, $facetTemplateSubset, $facetValueFilter, $filter, $pageSize, $query, $sortBy, $startIndex, $authTicket);
+		$mozuClient = ProductSearchResultClient::searchClient($query, $filter, $facetTemplate, $facetTemplateSubset, $facet, $facetFieldRangeQuery, $facetHierPrefix, $facetHierValue, $facetHierDepth, $facetStartIndex, $facetPageSize, $facetSettings, $facetValueFilter, $sortBy, $pageSize, $startIndex, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -66,9 +66,9 @@ class ProductSearchResultResource {
 	* @param string $q Text that the shopper is currently entering.
 	* @return SearchSuggestion 
 	*/
-	public function suggest($pageSize =  null, $q =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function suggest($q =  null, $pageSize =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ProductSearchResultClient::suggestClient($pageSize, $q, $authTicket);
+		$mozuClient = ProductSearchResultClient::suggestClient($q, $pageSize, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

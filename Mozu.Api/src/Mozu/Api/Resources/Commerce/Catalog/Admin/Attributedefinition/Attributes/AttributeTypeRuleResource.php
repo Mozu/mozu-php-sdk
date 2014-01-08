@@ -38,9 +38,9 @@ class AttributeTypeRuleResource {
 	* @param int $startIndex 
 	* @return AttributeTypeRuleCollection 
 	*/
-	public function getAttributeTypeRules($dataViewMode, $filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getAttributeTypeRules($dataViewMode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = AttributeTypeRuleClient::getAttributeTypeRulesClient($dataViewMode, $filter, $pageSize, $sortBy, $startIndex, $authTicket);
+		$mozuClient = AttributeTypeRuleClient::getAttributeTypeRulesClient($dataViewMode, $startIndex, $pageSize, $sortBy, $filter, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

@@ -28,7 +28,7 @@ class OrderAttributeClient {
 	* @param string $orderId Unique identifier of the order for which to retrieve a list of defined attributes.
 	* @return MozuClient
 	*/
-	public static function getOrderAttributesClient( $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getOrderAttributesClient($orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = OrderAttributeUrl::getOrderAttributesUrl($orderId);
 		$mozuClient = new MozuClient();
@@ -45,7 +45,7 @@ class OrderAttributeClient {
 	* @param array|OrderAttribute $orderAttributes The list of attributes to associate with the order, and the properties of each attribute to define for the order.
 	* @return MozuClient
 	*/
-	public static function createOrderAttributesClient($orderAttributes,  $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function createOrderAttributesClient($orderAttributes, $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = OrderAttributeUrl::createOrderAttributesUrl($orderId);
 		$mozuClient = new MozuClient();
@@ -63,7 +63,7 @@ class OrderAttributeClient {
 	* @param array|OrderAttribute $orderAttributes List of order attributes to update, including the properties of each defined attribute in the list.
 	* @return MozuClient
 	*/
-	public static function updateOrderAttributesClient($orderAttributes,  $orderId, $removeMissing =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateOrderAttributesClient($orderAttributes, $orderId, $removeMissing =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = OrderAttributeUrl::updateOrderAttributesUrl($orderId, $removeMissing);
 		$mozuClient = new MozuClient();

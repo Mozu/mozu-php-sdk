@@ -36,9 +36,9 @@ class BillingInfoResource {
 	* @param string $orderId Unique identifier of the order.
 	* @return BillingInfo 
 	*/
-	public function getBillingInfo( $orderId, $draft =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getBillingInfo($orderId, $draft =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = BillingInfoClient::getBillingInfoClient( $orderId, $draft, $authTicket);
+		$mozuClient = BillingInfoClient::getBillingInfoClient($orderId, $draft, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -54,9 +54,9 @@ class BillingInfoResource {
 	* @param BillingInfo $billingInfo The properties of the order billing information to update.
 	* @return BillingInfo 
 	*/
-	public function setBillingInfo($billingInfo,  $orderId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function setBillingInfo($billingInfo, $orderId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = BillingInfoClient::setBillingInfoClient($billingInfo,  $orderId, $updateMode, $version, $authTicket);
+		$mozuClient = BillingInfoClient::setBillingInfoClient($billingInfo, $orderId, $updateMode, $version, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

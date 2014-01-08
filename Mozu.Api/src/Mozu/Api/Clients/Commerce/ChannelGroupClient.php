@@ -31,7 +31,7 @@ class ChannelGroupClient {
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return MozuClient
 	*/
-	public static function getChannelGroupsClient($filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getChannelGroupsClient($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ChannelGroupUrl::getChannelGroupsUrl($filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
@@ -47,7 +47,7 @@ class ChannelGroupClient {
 	* @param string $code The code that uniquely identifies the channel group.
 	* @return MozuClient
 	*/
-	public static function getChannelGroupClient( $code, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getChannelGroupClient($code, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ChannelGroupUrl::getChannelGroupUrl($code);
 		$mozuClient = new MozuClient();
@@ -80,7 +80,7 @@ class ChannelGroupClient {
 	* @param ChannelGroup $channelGroup Properties of the channel group to update.
 	* @return MozuClient
 	*/
-	public static function updateChannelGroupClient($channelGroup,  $code, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateChannelGroupClient($channelGroup, $code, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ChannelGroupUrl::updateChannelGroupUrl($code);
 		$mozuClient = new MozuClient();
@@ -95,7 +95,7 @@ class ChannelGroupClient {
 	*
 	* @param string $code User-defined code that uniqely identifies the channel group.
 	*/
-	public static function deleteChannelGroupClient( $code, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteChannelGroupClient($code, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = ChannelGroupUrl::deleteChannelGroupUrl($code);
 		$mozuClient = new MozuClient();

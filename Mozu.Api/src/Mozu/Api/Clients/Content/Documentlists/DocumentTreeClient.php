@@ -23,17 +23,15 @@ use Mozu\Api\Headers;
 class DocumentTreeClient {
 
 	/**
-	* Retrieve the content associated with the document, such as a product image or PDF specifications file.
+	* Retrieves a document based on its document list and folder path in the document hierarchy.
 	*
 	* @param string $documentListName The name of the document list associated with the document.
 	* @param string $documentName The name of the document, which is unique within its folder.
-	* @param string $folderId If applicable, the unique identifier of the folder that contains the document.
-	* @param string $folderPath If applicable, the path of the folder hierarchy location associated with the document.
 	* @return MozuClient
 	*/
-	public static function getTreeDocumentContentClient($dataViewMode,  $documentListName,  $documentName, $folderId =  null, $folderPath =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getTreeDocumentClient($dataViewMode, $documentListName, $documentName, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$url = DocumentTreeUrl::getTreeDocumentContentUrl($documentListName, $documentName, $folderId, $folderPath);
+		$url = DocumentTreeUrl::getTreeDocumentUrl($documentListName, $documentName);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;		if ($authTicket != null)
@@ -43,17 +41,15 @@ class DocumentTreeClient {
 	}
 	
 	/**
-	* Retrieves a document based on its document list and folder path in the document hierarchy.
+	* Retrieve the content associated with the document, such as a product image or PDF specifications file.
 	*
 	* @param string $documentListName The name of the document list associated with the document.
 	* @param string $documentName The name of the document, which is unique within its folder.
-	* @param string $folderId If applicable, the unique identifier of the folder that contains the document.
-	* @param string $folderPath If applicable, the path of the folder hierarchy location that contains the document.
 	* @return MozuClient
 	*/
-	public static function getTreeDocumentClient($dataViewMode,  $documentListName,  $documentName, $folderId =  null, $folderPath =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getTreeDocumentContentClient($dataViewMode, $documentListName, $documentName, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$url = DocumentTreeUrl::getTreeDocumentUrl($documentListName, $documentName, $folderId, $folderPath);
+		$url = DocumentTreeUrl::getTreeDocumentContentUrl($documentListName, $documentName);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;		if ($authTicket != null)
@@ -67,13 +63,11 @@ class DocumentTreeClient {
 	*
 	* @param string $documentListName The name of the document list associated with the document.
 	* @param string $documentName The name of the document, which is unique within its folder.
-	* @param string $folderId If applicable, the unique identifier of the folder that contains the document.
-	* @param string $folderPath If applicable, the path of the folder hierarchy location associated with the document.
 	* @param Stream $stream 
 	*/
-	public static function updateTreeDocumentContentClient($dataViewMode, $stream,  $documentListName,  $documentName, $folderId =  null, $folderPath =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateTreeDocumentContentClient($dataViewMode, $stream, $documentListName, $documentName, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$url = DocumentTreeUrl::updateTreeDocumentContentUrl($documentListName, $documentName, $folderId, $folderPath);
+		$url = DocumentTreeUrl::updateTreeDocumentContentUrl($documentListName, $documentName);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withStreamBody($stream)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;		if ($authTicket != null)
@@ -87,13 +81,11 @@ class DocumentTreeClient {
 	*
 	* @param string $documentListName The name of the document list associated with the document.
 	* @param string $documentName The name of the document, which is unique within its folder.
-	* @param string $folderId If applicable, the unique identifier of the folder that contains the document.
-	* @param string $folderPath If applicable, the path of the folder hierarchy location associated with the document.
 	* @param Stream $stream 
 	*/
-	public static function deleteTreeDocumentContentClient($dataViewMode, $stream,  $documentListName,  $documentName, $folderId =  null, $folderPath =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteTreeDocumentContentClient($dataViewMode, $stream, $documentListName, $documentName, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$url = DocumentTreeUrl::deleteTreeDocumentContentUrl($documentListName, $documentName, $folderId, $folderPath);
+		$url = DocumentTreeUrl::deleteTreeDocumentContentUrl($documentListName, $documentName);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withStreamBody($stream)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)
 ;		if ($authTicket != null)

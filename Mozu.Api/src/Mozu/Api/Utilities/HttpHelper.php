@@ -2,6 +2,8 @@
 namespace Mozu\Api\Utilities;
 
 use Mozu\Api\Utilities\Proxy;
+use Mozu\Api\ApiException;
+use Mozu\Api\iApiContext;
 
 class HttpHelper {
 
@@ -16,13 +18,20 @@ class HttpHelper {
 		return $config;
 	}
 	
-	public static function checkError(\Exception $e) {
-		echo (get_class($e));
+	public static function checkError(\Exception $e, iApiContext $apiContext = null) {
 		switch(get_class($e)) {
 			case "Guzzle\Http\Exception\BadResponseException":
 			case "Guzzle\Http\Exception\ClientErrorResponseException":
-				$jsonResp = $e->getResponse()->getBody ( true );
-				throw new \Exception(json_decode ( $jsonResp )->exceptionDetail->message, $e->getResponse()->getStatusCode());
+				$resp = $e->getResponse()->getBody ( true );
+				$jsonResponse = json_decode ( $resp );
+				$message = (get_class($jsonResponse) == "stdClass" ? $jsonResponse->exceptionDetail->message : $resp);
+				$apiException = new ApiException($message, $e->getResponse()->getStatusCode());
+				$apiException->correlationId =  $e->getResponse()->getHeader("x-vol-correlation")->toArray()[0];
+				$apiException->apiContext = $apiContext;
+				$apiException->exceptionDetail = $jsonResponse->exceptionDetail;
+				$apiException->items = $jsonResponse->items;
+				var_dump($apiException);
+				throw $apiException;
 				break;
 			default:
 				throw $e;

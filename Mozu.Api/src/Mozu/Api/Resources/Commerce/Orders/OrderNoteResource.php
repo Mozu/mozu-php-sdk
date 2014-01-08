@@ -35,9 +35,9 @@ class OrderNoteResource {
 	* @param string $orderId Unique identifier of the order.
 	* @return array|OrderNote 
 	*/
-	public function getOrderNotes( $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getOrderNotes($orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = OrderNoteClient::getOrderNotesClient( $orderId, $authTicket);
+		$mozuClient = OrderNoteClient::getOrderNotesClient($orderId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -51,9 +51,9 @@ class OrderNoteResource {
 	* @param string $orderId Unique identifier of the order associated with the note.
 	* @return OrderNote 
 	*/
-	public function getOrderNote( $noteId,  $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getOrderNote($orderId, $noteId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = OrderNoteClient::getOrderNoteClient( $noteId,  $orderId, $authTicket);
+		$mozuClient = OrderNoteClient::getOrderNoteClient($orderId, $noteId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -67,9 +67,9 @@ class OrderNoteResource {
 	* @param OrderNote $orderNote The alphanumeric text contained in the note. The maximum length is 256 characters.
 	* @return OrderNote 
 	*/
-	public function createOrderNote($orderNote,  $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function createOrderNote($orderNote, $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = OrderNoteClient::createOrderNoteClient($orderNote,  $orderId, $authTicket);
+		$mozuClient = OrderNoteClient::createOrderNoteClient($orderNote, $orderId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -84,9 +84,9 @@ class OrderNoteResource {
 	* @param OrderNote $orderNote The content of the order note. The maximum length is 256 characters.
 	* @return OrderNote 
 	*/
-	public function updateOrderNote($orderNote,  $noteId,  $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updateOrderNote($orderNote, $orderId, $noteId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = OrderNoteClient::updateOrderNoteClient($orderNote,  $noteId,  $orderId, $authTicket);
+		$mozuClient = OrderNoteClient::updateOrderNoteClient($orderNote, $orderId, $noteId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -99,9 +99,9 @@ class OrderNoteResource {
 	* @param string $noteId Unique identifier of the order note to delete.
 	* @param string $orderId Unique identifier of the order associated with the note.
 	*/
-	public function deleteOrderNote( $noteId,  $orderId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deleteOrderNote($orderId, $noteId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = OrderNoteClient::deleteOrderNoteClient( $noteId,  $orderId, $authTicket);
+		$mozuClient = OrderNoteClient::deleteOrderNoteClient($orderId, $noteId, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

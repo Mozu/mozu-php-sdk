@@ -29,7 +29,7 @@ class CustomerNoteClient {
 	* @param int $noteId Unique identifier of a particular note to retrieve.
 	* @return MozuClient
 	*/
-	public static function getAccountNoteClient( $accountId,  $noteId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getAccountNoteClient($accountId, $noteId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CustomerNoteUrl::getAccountNoteUrl($accountId, $noteId);
 		$mozuClient = new MozuClient();
@@ -49,7 +49,7 @@ class CustomerNoteClient {
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return MozuClient
 	*/
-	public static function getAccountNotesClient( $accountId, $filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getAccountNotesClient($accountId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CustomerNoteUrl::getAccountNotesUrl($accountId, $filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
@@ -66,7 +66,7 @@ class CustomerNoteClient {
 	* @param CustomerNote $note Properties of the customer account note to create.
 	* @return MozuClient
 	*/
-	public static function addAccountNoteClient($note,  $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function addAccountNoteClient($note, $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CustomerNoteUrl::addAccountNoteUrl($accountId);
 		$mozuClient = new MozuClient();
@@ -84,7 +84,7 @@ class CustomerNoteClient {
 	* @param CustomerNote $note The new content to replace the existing note.
 	* @return MozuClient
 	*/
-	public static function updateAccountNoteClient($note,  $accountId,  $noteId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateAccountNoteClient($note, $accountId, $noteId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CustomerNoteUrl::updateAccountNoteUrl($accountId, $noteId);
 		$mozuClient = new MozuClient();
@@ -100,7 +100,7 @@ class CustomerNoteClient {
 	* @param int $accountId Unique identifier of the customer account that contains the note being deleted.
 	* @param int $noteId Unique identifier of the customer account note being deleted.
 	*/
-	public static function deleteAccountNoteClient( $accountId,  $noteId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteAccountNoteClient($accountId, $noteId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CustomerNoteUrl::deleteAccountNoteUrl($accountId, $noteId);
 		$mozuClient = new MozuClient();

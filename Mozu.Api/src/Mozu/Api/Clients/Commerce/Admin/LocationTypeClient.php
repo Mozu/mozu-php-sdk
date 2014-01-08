@@ -10,20 +10,20 @@
 * </auto-generated>
 */
 
-namespace Mozu\Api\Clients\Commerce\Location\Admin;
+namespace Mozu\Api\Clients\Commerce\Admin;
 
 use Mozu\Api\MozuClient;
-use Mozu\Api\Urls\Commerce\Location\Admin\LocationTypeUrl;
+use Mozu\Api\Urls\Commerce\Admin\LocationTypeUrl;
 use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* Use the Location Types resource to manage the types of locations your tenant maintains, such as warehouses, physical storefronts, and kiosks.
+* 
 */
 class LocationTypeClient {
 
 	/**
-	* Retrieve a list of all location types defined for the tenant.
+	* 
 	*
 	* @return MozuClient
 	*/
@@ -38,12 +38,12 @@ class LocationTypeClient {
 	}
 	
 	/**
-	* Retrieves the details of the location type specified in the request.
+	* 
 	*
-	* @param string $locationTypeCode The user-defined code that identifies the location type.
+	* @param string $locationTypeCode 
 	* @return MozuClient
 	*/
-	public static function getLocationTypeClient( $locationTypeCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getLocationTypeClient($locationTypeCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = LocationTypeUrl::getLocationTypeUrl($locationTypeCode);
 		$mozuClient = new MozuClient();
@@ -54,9 +54,9 @@ class LocationTypeClient {
 	}
 	
 	/**
-	* Creates a new location type based on the information specified in the request.
+	* 
 	*
-	* @param LocationType $locationType Properties of the location type to create.
+	* @param LocationType $locationType 
 	* @return MozuClient
 	*/
 	public static function addLocationTypeClient($locationType, Mozu\Api\Security\AuthTicket &$authTicket= null)
@@ -70,13 +70,13 @@ class LocationTypeClient {
 	}
 	
 	/**
-	* Updates the name of a defined location type.
+	* 
 	*
-	* @param string $locationTypeCode The user-defined code that identifies the location type.
-	* @param LocationType $locationType Properties of the location type to update.
+	* @param string $locationTypeCode 
+	* @param LocationType $locationType 
 	* @return MozuClient
 	*/
-	public static function updateLocationTypeClient($locationType,  $locationTypeCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateLocationTypeClient($locationType, $locationTypeCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = LocationTypeUrl::updateLocationTypeUrl($locationTypeCode);
 		$mozuClient = new MozuClient();
@@ -87,11 +87,11 @@ class LocationTypeClient {
 	}
 	
 	/**
-	* Deletes the location type specified in the request.
+	* 
 	*
-	* @param string $locationTypeCode User-defined code used to identify the location type.
+	* @param string $locationTypeCode 
 	*/
-	public static function deleteLocationTypeClient( $locationTypeCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteLocationTypeClient($locationTypeCode, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = LocationTypeUrl::deleteLocationTypeUrl($locationTypeCode);
 		$mozuClient = new MozuClient();

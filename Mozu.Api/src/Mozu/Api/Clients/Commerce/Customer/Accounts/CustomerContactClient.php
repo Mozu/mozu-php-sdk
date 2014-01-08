@@ -29,7 +29,7 @@ class CustomerContactClient {
 	* @param int $contactId Unique identifier of the customer account contact to retrieve.
 	* @return MozuClient
 	*/
-	public static function getAccountContactClient( $accountId,  $contactId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getAccountContactClient($accountId, $contactId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CustomerContactUrl::getAccountContactUrl($accountId, $contactId);
 		$mozuClient = new MozuClient();
@@ -49,7 +49,7 @@ class CustomerContactClient {
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getAccountContactsClient( $accountId, $filter =  null, $pageSize =  null, $sortBy =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getAccountContactsClient($accountId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CustomerContactUrl::getAccountContactsUrl($accountId, $filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
@@ -66,7 +66,7 @@ class CustomerContactClient {
 	* @param CustomerContact $contact Properties of the new contact. Required properties: Contact.Email, ContactType.
 	* @return MozuClient
 	*/
-	public static function addAccountContactClient($contact,  $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function addAccountContactClient($contact, $accountId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CustomerContactUrl::addAccountContactUrl($accountId);
 		$mozuClient = new MozuClient();
@@ -84,7 +84,7 @@ class CustomerContactClient {
 	* @param CustomerContact $contact All properties the updated contact will have. Required properties: Name and email address.
 	* @return MozuClient
 	*/
-	public static function updateAccountContactClient($contact,  $accountId,  $contactId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateAccountContactClient($contact, $accountId, $contactId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CustomerContactUrl::updateAccountContactUrl($accountId, $contactId);
 		$mozuClient = new MozuClient();
@@ -100,7 +100,7 @@ class CustomerContactClient {
 	* @param int $accountId Unique identifier of the customer account.
 	* @param int $contactId Unique identifier of the customer account contact to delete.
 	*/
-	public static function deleteAccountContactClient( $accountId,  $contactId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteAccountContactClient($accountId, $contactId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CustomerContactUrl::deleteAccountContactUrl($accountId, $contactId);
 		$mozuClient = new MozuClient();

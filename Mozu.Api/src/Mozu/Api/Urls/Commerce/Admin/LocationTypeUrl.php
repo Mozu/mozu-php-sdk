@@ -10,7 +10,7 @@
 */
 
 
-namespace Mozu\Api\Urls\Commerce\Location\Admin;
+namespace Mozu\Api\Urls\Commerce\Admin;
 
 use Mozu\Api\MozuUrl;
 use Mozu\Api\UrlLocation;
@@ -23,19 +23,19 @@ class LocationTypeUrl  {
 	*/
 	public static function getLocationTypesUrl()
 	{
-		$url = "/api/commerce/location/admin/locationtypes/";
+		$url = "/api/commerce/admin/locationtypes/";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetLocationType
-		* @param string $locationTypeCode The user-defined code that identifies the location type.
+		* @param string $locationTypeCode 
 		* @return string Resource Url
 	*/
 	public static function getLocationTypeUrl($locationTypeCode)
 	{
-		$url = "/api/commerce/location/admin/locationtypes/{locationTypeCode}";
+		$url = "/api/commerce/admin/locationtypes/{locationTypeCode}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
 		$url = $mozuUrl->formatUrl("locationTypeCode", $locationTypeCode);
 		return $mozuUrl;
@@ -47,19 +47,19 @@ class LocationTypeUrl  {
 	*/
 	public static function addLocationTypeUrl()
 	{
-		$url = "/api/commerce/location/admin/locationtypes/";
+		$url = "/api/commerce/admin/locationtypes/";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdateLocationType
-		* @param string $locationTypeCode The user-defined code that identifies the location type.
+		* @param string $locationTypeCode 
 		* @return string Resource Url
 	*/
 	public static function updateLocationTypeUrl($locationTypeCode)
 	{
-		$url = "/api/commerce/location/admin/locationtypes/{locationTypeCode}";
+		$url = "/api/commerce/admin/locationtypes/{locationTypeCode}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
 		$url = $mozuUrl->formatUrl("locationTypeCode", $locationTypeCode);
 		return $mozuUrl;
@@ -67,12 +67,12 @@ class LocationTypeUrl  {
 	
 	/**
 		* Get Resource Url for DeleteLocationType
-		* @param string $locationTypeCode User-defined code used to identify the location type.
+		* @param string $locationTypeCode 
 		* @return string Resource Url
 	*/
 	public static function deleteLocationTypeUrl($locationTypeCode)
 	{
-		$url = "/api/commerce/location/admin/locationtypes/{locationTypeCode}";
+		$url = "/api/commerce/admin/locationtypes/{locationTypeCode}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
 		$url = $mozuUrl->formatUrl("locationTypeCode", $locationTypeCode);
 		return $mozuUrl;

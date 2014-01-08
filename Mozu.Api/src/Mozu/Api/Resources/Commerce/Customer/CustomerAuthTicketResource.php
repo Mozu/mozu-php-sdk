@@ -50,9 +50,9 @@ class CustomerAuthTicketResource {
 	* @param string $refreshToken 
 	* @return CustomerAuthTicket 
 	*/
-	public function refreshUserAuthTicket( $refreshToken, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function refreshUserAuthTicket($refreshToken, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = CustomerAuthTicketClient::refreshUserAuthTicketClient( $refreshToken, $authTicket);
+		$mozuClient = CustomerAuthTicketClient::refreshUserAuthTicketClient($refreshToken, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

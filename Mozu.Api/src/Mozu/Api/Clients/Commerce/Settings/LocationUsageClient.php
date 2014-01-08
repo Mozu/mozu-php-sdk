@@ -43,7 +43,7 @@ class LocationUsageClient {
 	* @param string $code Code that identifies the location usage type, which is "DS" for direct ship, "SP" for in-store pickup, or "storeFinder" for store finder.
 	* @return MozuClient
 	*/
-	public static function getLocationUsageClient( $code, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getLocationUsageClient($code, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = LocationUsageUrl::getLocationUsageUrl($code);
 		$mozuClient = new MozuClient();
@@ -60,7 +60,7 @@ class LocationUsageClient {
 	* @param LocationUsage $usage Properties of the location usage type to update.
 	* @return MozuClient
 	*/
-	public static function updateLocationUsageClient($usage,  $code, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateLocationUsageClient($usage, $code, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = LocationUsageUrl::updateLocationUsageUrl($code);
 		$mozuClient = new MozuClient();

@@ -51,9 +51,9 @@ class PropertyTypeResource {
 	* @param string $propertyTypeName The name of the content property type.
 	* @return PropertyType 
 	*/
-	public function get($dataViewMode,  $propertyTypeName, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function get($dataViewMode, $propertyTypeName, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = PropertyTypeClient::getClient($dataViewMode,  $propertyTypeName, $authTicket);
+		$mozuClient = PropertyTypeClient::getClient($dataViewMode, $propertyTypeName, $authTicket);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

@@ -43,7 +43,7 @@ class CartItemClient {
 	* @param string $cartItemId Identifier of the cart item to retrieve.
 	* @return MozuClient
 	*/
-	public static function getCartItemClient( $cartItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function getCartItemClient($cartItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CartItemUrl::getCartItemUrl($cartItemId);
 		$mozuClient = new MozuClient();
@@ -76,7 +76,7 @@ class CartItemClient {
 	* @param CartItem $cartItem The properties of the cart item to update.
 	* @return MozuClient
 	*/
-	public static function updateCartItemClient($cartItem,  $cartItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateCartItemClient($cartItem, $cartItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CartItemUrl::updateCartItemUrl($cartItemId);
 		$mozuClient = new MozuClient();
@@ -93,7 +93,7 @@ class CartItemClient {
 	* @param int $quantity The number of cart items in the shopper's active cart.
 	* @return MozuClient
 	*/
-	public static function updateCartItemQuantityClient( $cartItemId,  $quantity, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function updateCartItemQuantityClient($cartItemId, $quantity, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CartItemUrl::updateCartItemQuantityUrl($cartItemId, $quantity);
 		$mozuClient = new MozuClient();
@@ -123,7 +123,7 @@ class CartItemClient {
 	*
 	* @param string $cartItemId Identifier of the cart item to delete.
 	*/
-	public static function deleteCartItemClient( $cartItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public static function deleteCartItemClient($cartItemId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
 		$url = CartItemUrl::deleteCartItemUrl($cartItemId);
 		$mozuClient = new MozuClient();

@@ -56,9 +56,9 @@ class ApplicationVersionResource {
 	* @param int $applicationVersionId Unique identifier of the application version. Application version IDs are unique across all applications associated with a developer account.
 	* @return ApplicationVersion 
 	*/
-	public function getApplicationVersion( $applicationVersionId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getApplicationVersion($applicationVersionId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ApplicationVersionClient::getApplicationVersionClient( $applicationVersionId, $authTicket);
+		$mozuClient = ApplicationVersionClient::getApplicationVersionClient($applicationVersionId, $authTicket);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
@@ -70,9 +70,9 @@ class ApplicationVersionResource {
 	* @param int $applicationVersionId Unique identifier of the application version. Application version IDs are unique across all applications associated with a developer account.
 	* @return PackageCollection 
 	*/
-	public function getPackages( $applicationVersionId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getPackages($applicationVersionId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ApplicationVersionClient::getPackagesClient( $applicationVersionId, $authTicket);
+		$mozuClient = ApplicationVersionClient::getPackagesClient($applicationVersionId, $authTicket);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
@@ -85,9 +85,9 @@ class ApplicationVersionResource {
 	* @param int $packageId Unique identifier of the package to retrieve.
 	* @return Package 
 	*/
-	public function getPackage( $applicationVersionId,  $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getPackage($applicationVersionId, $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ApplicationVersionClient::getPackageClient( $applicationVersionId,  $packageId, $authTicket);
+		$mozuClient = ApplicationVersionClient::getPackageClient($applicationVersionId, $packageId, $authTicket);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
@@ -100,9 +100,9 @@ class ApplicationVersionResource {
 	* @param int $packageId Unique identifier of the package.
 	* @return FolderMetadata 
 	*/
-	public function getPackageItemsMetadata( $applicationVersionId,  $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getPackageItemsMetadata($applicationVersionId, $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ApplicationVersionClient::getPackageItemsMetadataClient( $applicationVersionId,  $packageId, $authTicket);
+		$mozuClient = ApplicationVersionClient::getPackageItemsMetadataClient($applicationVersionId, $packageId, $authTicket);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
@@ -116,9 +116,9 @@ class ApplicationVersionResource {
 	* @param int $packageId Unique identifier of the package.
 	* @return FileMetadata 
 	*/
-	public function getPackageItemMetadata( $applicationVersionId,  $itempath,  $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getPackageItemMetadata($applicationVersionId, $packageId, $itempath, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ApplicationVersionClient::getPackageItemMetadataClient( $applicationVersionId,  $itempath,  $packageId, $authTicket);
+		$mozuClient = ApplicationVersionClient::getPackageItemMetadataClient($applicationVersionId, $packageId, $itempath, $authTicket);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
@@ -131,9 +131,9 @@ class ApplicationVersionResource {
 	* @param int $packageId 
 	* @return Stream 
 	*/
-	public function getPackageFilesZip( $applicationVersionId,  $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function getPackageFilesZip($applicationVersionId, $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ApplicationVersionClient::getPackageFilesZipClient( $applicationVersionId,  $packageId, $authTicket);
+		$mozuClient = ApplicationVersionClient::getPackageFilesZipClient($applicationVersionId, $packageId, $authTicket);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
@@ -146,9 +146,25 @@ class ApplicationVersionResource {
 	* @param Package $package Properties of the development or release package to define.
 	* @return Package 
 	*/
-	public function addPackage($pkg,  $applicationVersionId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function addPackage($pkg, $applicationVersionId, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ApplicationVersionClient::addPackageClient($pkg,  $applicationVersionId, $authTicket);
+		$mozuClient = ApplicationVersionClient::addPackageClient($pkg, $applicationVersionId, $authTicket);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param int $applicationVersionId 
+	* @param int $packageId 
+	* @param RenameInfo $renameInfo 
+	* @return FileMetadata 
+	*/
+	public function changePackageFileNameOrPath($renameInfo, $applicationVersionId, $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	{
+		$mozuClient = ApplicationVersionClient::changePackageFileNameOrPathClient($renameInfo, $applicationVersionId, $packageId, $authTicket);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
@@ -163,25 +179,9 @@ class ApplicationVersionResource {
 	* @param Stream $stream The contents of the package file to upload, which requires a content-type value of "application/octet-stream" in the request header.
 	* @return FileMetadata 
 	*/
-	public function addPackageFile($stream,  $applicationVersionId,  $filepath,  $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function addPackageFile($stream, $applicationVersionId, $packageId, $filepath, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ApplicationVersionClient::addPackageFileClient($stream,  $applicationVersionId,  $filepath,  $packageId, $authTicket);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
-
-	}
-	
-	/**
-	* 
-	*
-	* @param int $applicationVersionId 
-	* @param int $packageId 
-	* @param RenameInfo $renameInfo 
-	* @return FileMetadata 
-	*/
-	public function changePackageFileNameOrPath($renameInfo,  $applicationVersionId,  $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
-	{
-		$mozuClient = ApplicationVersionClient::changePackageFileNameOrPathClient($renameInfo,  $applicationVersionId,  $packageId, $authTicket);
+		$mozuClient = ApplicationVersionClient::addPackageFileClient($stream, $applicationVersionId, $packageId, $filepath, $authTicket);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
@@ -196,9 +196,9 @@ class ApplicationVersionResource {
 	* @param Stream $stream The contents of the package file to update, which requires a content-type value of "application/octet-stream" in the request header.
 	* @return FileMetadata 
 	*/
-	public function updatePackageFile($stream,  $applicationVersionId,  $filepath,  $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function updatePackageFile($stream, $applicationVersionId, $packageId, $filepath, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ApplicationVersionClient::updatePackageFileClient($stream,  $applicationVersionId,  $filepath,  $packageId, $authTicket);
+		$mozuClient = ApplicationVersionClient::updatePackageFileClient($stream, $applicationVersionId, $packageId, $filepath, $authTicket);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
@@ -211,9 +211,9 @@ class ApplicationVersionResource {
 	* @param string $filepath The file path and name of the file location to delete from the package.
 	* @param int $packageId Unique identifier of the package.
 	*/
-	public function deletePackageFile( $applicationVersionId,  $filepath,  $packageId, Mozu\Api\Security\AuthTicket &$authTicket= null)
+	public function deletePackageFile($applicationVersionId, $packageId, $filepath, Mozu\Api\Security\AuthTicket &$authTicket= null)
 	{
-		$mozuClient = ApplicationVersionClient::deletePackageFileClient( $applicationVersionId,  $filepath,  $packageId, $authTicket);
+		$mozuClient = ApplicationVersionClient::deletePackageFileClient($applicationVersionId, $packageId, $filepath, $authTicket);
 		$mozuClient->execute();
 
 	}
