@@ -50,7 +50,7 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
     
     public function loadSettings() {
     	$settings = parse_ini_file("/../../../settings.ini", true);
-    	var_dump($settings);
+    	
     	$this->environment = $settings["config"]["environment"];
     	$this->applicationId = $settings[$this->environment]["applicationId"];
     	$this->sharedSecret = $settings[$this->environment]["sharedSecret"];

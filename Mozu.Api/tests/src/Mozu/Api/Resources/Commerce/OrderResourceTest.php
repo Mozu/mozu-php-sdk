@@ -6,6 +6,7 @@ use Mozu\Tests\BaseTest;
 use Mozu\Api\ApiContext;
 use Mozu\Api\DataViewMode;
 use Mozu\Api\Resources\Commerce\OrderResource;
+use Mozu\Api\ApiException;
 
 /**
  * Test class for DocumentResource.
@@ -43,19 +44,32 @@ class OrderResourceTest extends BaseTest
 	 * @covers Mozu\Api\Resources\Content\Documentlists\DocumentResource::getDocumentContent
 	 * @todo Implement testGetDocumentContent().
 	 */
-	/*public function testGetOrders()
+	public function testGetOrders()
 	{
 		//$filters = urlencode("Status+eq+Accepted");
 		//$orders = $this->object->getOrders($filters);
-		$filters = urlencode("Status+eq+Accepted");
-		$orders = $this->object->getOrders($filters,100, null, null, null, 0);
+		$filters = urlencode("submittedDate+gt+2013-12-15T12:21:24z");
+		$orders = $this->object->getOrders('0',100, null,$filters, null, null);
 		//var_dump($orders);
-	}*/
-	
-	
-	public function testGetOrder() {
-		$orders = $this->object->getOrder(false,"2");
 	}
+	
+	
+	
+	
+	/*public function testGetOrder() {
+		try{
+			$orders = $this->object->getOrder("2",false);
+		} catch(ApiException $ex) {
+			var_dump($ex->getMessage());
+			var_dump($ex->getCorrelationId());
+			
+		}
+	}
+	
+	public function testGetOrder1() {
+		$order = $this->object->getOrder("03cf384c4fdce0aee42bc16800001e7c", true);
+		var_dump($order->submittedDate);
+	}*/
 
 }
 ?>
