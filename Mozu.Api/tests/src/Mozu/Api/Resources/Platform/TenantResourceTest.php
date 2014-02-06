@@ -4,6 +4,7 @@ require_once __DIR__ . '/../../../../BaseTest.php';
 use Mozu\Api\Resources\Platform\TenantResource;
 use Mozu\Api\ApiContext;
 use Mozu\Tests\BaseTest;
+use Mozu\Api\ApiException;
 
 /**
  * Test class for TenantResource.
@@ -46,14 +47,17 @@ class TenantResourceTest extends BaseTest
     	$this->assertSame($this->tenantId, $this->apiContext->getTenantId());
     	try{
 	      	$tenant = $this->object->getTenant(0);
+
+	      	$this->assertSame($tenant->id, $this->apiContext->getTenantId());
+	      	
+	      	$newApiContext = new ApiContext($tenant);
+	      	$this->assertSame($this->apiContext->getTenantId(), $newApiContext->getTenantId());
+	      	
     	} catch(ApiException $apiException) {
     		var_dump($apiException);
     	}
     	
-      	$this->assertSame($tenant->id, $this->apiContext->getTenantId());
-   	
-      	$newApiContext = new ApiContext($tenant);
-      	$this->assertSame($this->apiContext->getTenantId(), $newApiContext->getTenantId());
+    	 
     }
 }
 ?>

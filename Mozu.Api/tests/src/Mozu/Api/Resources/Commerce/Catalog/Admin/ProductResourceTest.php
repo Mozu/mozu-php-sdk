@@ -6,6 +6,7 @@ use Mozu\Api\Resources\Commerce\Catalog\Admin\ProductResource;
 use Mozu\Api\Resources\Platform\TenantResource;
 use Mozu\Api\ApiContext;
 use Mozu\Api\DataViewMode;
+use Mozu\Api\ApiException;
 
 /**
  * Test class for ProductResource.
@@ -45,7 +46,11 @@ class ProductResourceTest extends BaseTest
      */
     public function testGetProducts()
     {
-       $productCollection = $this->object->getProducts(DataViewMode::LIVE, null,FALSE, null, null, null, null, null);
+    	try {
+	       $productCollection = $this->object->getProducts(DataViewMode::LIVE, 0, 200, null, "productCode eq AC-1", null, null, null);
+    	} catch(ApiException $ex) {
+    		echo $ex->getMessage();
+    	}
        //var_dump($productCollection);
     }
 
