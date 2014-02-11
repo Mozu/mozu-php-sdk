@@ -7,19 +7,25 @@ PHP SDK for the full v1 Mozu Api
 Usage:
 
 <B>Authenticating an Application with server provided refresh interval tokens</B><br>
-AppAuthenticator::initialize("[AppID]","[Shared Secret]","[Mozu URL]");<br>
+$appAuthInfo = new AppAuthInfo();<br>
+$appAuthInfo->sharedSecret = [sharedSecret];<br>
+$appAuthInfo->applicationId = [applicationId];<br>
+AppAuthenticator::initialize($appAuthInfo,"https://home.mozu.com",null);<br>
 <br>
-<B>Authenticating an Application with Custom refresh token intervals</B><br>
-$refreshInterval = new RefreshInterval();<br>
-$currentTime = time();<br>
-<br>
-//In Seconds<br>
-$refreshInterval->setAccessTokenExpirationInterval($currentTime+5)<br> 
-	->setRefreshTokenExpirationInterval($currentTime+20);<br>
-AppAuthenticator::initialize("[AppID]","[Shared Secret]","[Mozu URL]", $refreshInterval);<br>
-<br>
-<B>Querying for tenants</B><br>
-$apiContext = new ApiContext();<br>
-$apiContext->setBaseUrl(parent::$baseUrl);<br>
+<B>Get Tenant Information</B><br>
 $tenantResource = new TenantResource();<br>
 $tenant = $tenantResource->getTenant([tenantId]);<br>
+<br>
+<B>Get Products</B><br>
+$apiContext = new ApiContext($tenant);
+$productResource = new ProductResource($apiContext);
+$productCollection = $this->object->getProducts(DataViewMode::LIVE, 0, 200, null, null, null, null, null);
+<br>
+<B>Get Orders - Filter by date</B><br>
+$orderResource = new OrderResource($apiContext);<br>
+$filters = urlencode("submittedDate+gt+2013-12-15T12:21:24z");<br>
+$orders = $orderResource->getOrders('0',100, null,$filters, null, null);<br>
+
+
+<br>
+See Mozu.Api\Tests for more examples
