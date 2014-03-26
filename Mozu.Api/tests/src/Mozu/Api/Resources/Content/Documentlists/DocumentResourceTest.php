@@ -50,8 +50,8 @@ class DocumentResourceTest extends BaseTest
 
     
    	public function testUpdateDocumentContent() {
-   		$file = file_get_contents("d:\halo.jpg");
-   		$this->object->updateDocumentContent(DataViewMode::LIVE, $file, "9c363f6e-117b-4bf5-94a1-270359d933c5", "files");
+   		$file = file_get_contents("D:\Seismic\images\SAHDL102-0.jpg");
+   		$this->object->updateDocumentContent(DataViewMode::LIVE, $file, "9c363f6e-117b-4bf5-94a1-270359d933c5", "files", "image/jpg");
    	}
 }
 ?>
