@@ -14,5 +14,6 @@
         const X_VOL_USER_CLAIMS 	= "x-vol-user-claims";
         const X_VOL_VERSION 		= "x-vol-version";
         const X_VOL_DATAVIEW_MODE 	= "x-vol-dataview-mode";
+        const CONTENT_TYPE			= "Content-Type";
 	}
 ?>

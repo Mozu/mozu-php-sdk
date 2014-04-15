@@ -25,6 +25,7 @@ class MozuClient {
 	private $result = null;
 	private $response = null;
 	private $isStreamContent = false;
+	private $contentType = null;
 	
 	public function withBaseUrl($baseUrl) {
 		$this->baseUrl = $baseUrl;
@@ -97,7 +98,10 @@ class MozuClient {
 	}
 	
 	public function withHeader($header, $value) {
-		$this->headers = array_merge($this->headers, array($header=>$value));
+		if ($header == Headers::CONTENT_TYPE)
+			$this->contentType = $value;
+		else
+			$this->headers = array_merge($this->headers, array($header=>$value));
 		return $this;
 	}
 	
@@ -131,6 +135,10 @@ class MozuClient {
 			$this->request->setHeader($property, $value);
 		}
 		$this->request->setHeader(Headers::X_VOL_VERSION,Version::$apiVersion);
+		
+		if ($contentType != null) {
+			$this->request->setHeader(Headers::CONTENT_TYPE,$contentType);
+		}
 		
 	    // turn off urlencoding so that filter and sortby params work correctly
 	    $query = $this->request->getQuery();
