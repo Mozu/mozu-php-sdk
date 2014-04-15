@@ -18,29 +18,27 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* Use the variations resource to manage product variations for a specific product type based on the attributes defined for the product type, such as size or color.
+* Use the variations resource to preview possible product variations for a specific product type based on the option attributes defined for the product type, such as size or color.
 */
 class ProductTypeVariationClient {
 
 	/**
-	* Creates the combinations of variations available for this product type.
+	* Generates the variations possible for a product associated with the product type based on the option values supplied in the request.
 	*
-	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $productCode 
 	* @param int $productTypeId Unique identifier of the product type.
-	* @param string $sortBy "The property by which to sort results and whether the results appear in ascending (a-z) order, represented by 'ASC' or in descending (z-a) order, represented by 'DESC'. The sortBy parameter follows an available property. <b>For example: sortBy=productCode+asc</b>"
-	* @param int $startIndex "Used to create paged results from a query. Indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3."
-	* @param array|ProductOption $productOptionsIn The product options configured for this product type.
+	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+	* @param array|ProductOption $productOptionsIn The product option attributes configured for this product type.
 	* @return MozuClient
 	*/
-	public static function generateProductVariationsClient($dataViewMode, $productOptionsIn, $productTypeId, $productCode =  null, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function generateProductVariationsClient($dataViewMode, $productOptionsIn, $productTypeId, $productCode =  null, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
 	{
 		$url = ProductTypeVariationUrl::generateProductVariationsUrl($filter, $pageSize, $productCode, $productTypeId, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($productOptionsIn)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

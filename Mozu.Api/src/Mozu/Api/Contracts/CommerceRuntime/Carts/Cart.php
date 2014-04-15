@@ -15,27 +15,36 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Carts;
 
 
 /**
-*	Properties of an active shopping cart.
+*	Properties of a shopping cart.
 */
 class Cart
 {
-		public $channelCode;
+	/**
+	*Code that identifies the channel associated with the site where the shopping cart was created.
+	*/
+	public $channelCode;
 
 		public $couponCodes;
 
 		public $currencyCode;
 
-		public $customerInteractionType;
-
-		public $discountedSubtotal;
+	/**
+	*The type of customer interaction used to create this shopping cart. Possible values are Website, Call, Store, or Unknown.
+	*/
+	public $customerInteractionType;
 
 	/**
-	*The estimated total of the cart after all discounts have been applied.
+	*The aggregate total for all items in the cart, including costs associated with shopper-defined options or extras and any applied discounts.
+	*/
+	public $discountedSubtotal;
+
+	/**
+	*The subtotal of the cart including any applied discount calculations.
 	*/
 	public $discountedTotal;
 
 	/**
-	*Estimated amount of discounts applied to all items in the cart. Usually a negative dollar amount or number. System-supplied and read-only.
+	*Estimated amount of discounts applied to all items in the cart, which is system-supplied and read-only.
 	*/
 	public $discountTotal;
 
@@ -69,7 +78,10 @@ class Cart
 	*/
 	public $lastValidationDate;
 
-		public $shippingSubTotal;
+	/**
+	*The shipping subtotal amount calculated without any applied discounts.
+	*/
+	public $shippingSubTotal;
 
 	/**
 	*The total amount of tax incurred on the shipping charges in the cart.
@@ -77,7 +89,7 @@ class Cart
 	public $shippingTaxTotal;
 
 	/**
-	*The total shipping amount estimated for the cart.
+	*The total shipping amount estimated for the cart, including tax.
 	*/
 	public $shippingTotal;
 
@@ -111,12 +123,18 @@ class Cart
 	*/
 	public $userId;
 
-		public $visitId;
-
-		public $webSessionId;
+	/**
+	*Unique identifier of the customer visit in which the cart was created or last modified.
+	*/
+	public $visitId;
 
 	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*Unique identifier of the web session in which the cart was created or last modified.
+	*/
+	public $webSessionId;
+
+	/**
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
 
@@ -125,7 +143,12 @@ class Cart
 	*/
 	public $changeMessages;
 
-		public $fulfillmentInfo;
+	/**
+	*Properties of the information required to fulfill this cart.
+	*/
+	public $fulfillmentInfo;
+
+		public $invalidCoupons;
 
 	/**
 	*An array list of objects in the returned collection.

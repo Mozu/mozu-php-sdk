@@ -25,7 +25,7 @@ class AuthTicket
 	public $accessToken;
 
 	/**
-	*Date and time the access token expires. After the access token expires, refresh the authentication ticket using the Refresh Token.
+	*Date and time the access token expires. After the access token expires, refresh the authentication ticket using the refresh koken.
 	*/
 	public $accessTokenExpiration;
 

@@ -20,7 +20,7 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 class ProductProperty
 {
 	/**
-	*"The fully qualified name of the attribute, which is a user defined attribute identifier."
+	*The fully qualified name of the attribute, which is a user defined attribute identifier.
 	*/
 	public $attributeFQN;
 

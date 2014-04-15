@@ -23,7 +23,7 @@ use Mozu\Api\Headers;
 */
 class UserDataResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -35,9 +35,9 @@ class UserDataResource {
 	* @param string $dbEntryQuery The database entry query string used to retrieve the record information.
 	* @return string 
 	*/
-	public function getDBValue($dbEntryQuery, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getDBValue($dbEntryQuery)
 	{
-		$mozuClient = UserDataClient::getDBValueClient($dbEntryQuery, $userAuthTicket);
+		$mozuClient = UserDataClient::getDBValueClient($dbEntryQuery);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -50,9 +50,9 @@ class UserDataResource {
 	* @param string $dbEntryQuery The database entry string to create.
 	* @param string $value The value string to create.
 	*/
-	public function createDBValue($value, $dbEntryQuery, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function createDBValue($value, $dbEntryQuery)
 	{
-		$mozuClient = UserDataClient::createDBValueClient($value, $dbEntryQuery, $userAuthTicket);
+		$mozuClient = UserDataClient::createDBValueClient($value, $dbEntryQuery);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 
@@ -64,9 +64,9 @@ class UserDataResource {
 	* @param string $dbEntryQuery The database entry query string used to update the record information.
 	* @param string $value The database value to update.
 	*/
-	public function updateDBValue($value, $dbEntryQuery, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function updateDBValue($value, $dbEntryQuery)
 	{
-		$mozuClient = UserDataClient::updateDBValueClient($value, $dbEntryQuery, $userAuthTicket);
+		$mozuClient = UserDataClient::updateDBValueClient($value, $dbEntryQuery);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 
@@ -77,9 +77,9 @@ class UserDataResource {
 	*
 	* @param string $dbEntryQuery The database entry string to delete.
 	*/
-	public function deleteDBValue($dbEntryQuery, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function deleteDBValue($dbEntryQuery)
 	{
-		$mozuClient = UserDataClient::deleteDBValueClient($dbEntryQuery, $userAuthTicket);
+		$mozuClient = UserDataClient::deleteDBValueClient($dbEntryQuery);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

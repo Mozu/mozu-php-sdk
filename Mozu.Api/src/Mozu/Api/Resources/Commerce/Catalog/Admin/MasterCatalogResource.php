@@ -19,24 +19,24 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* 
+* Use the Master Catalog resource to view details of the master catalogs associated with a tenant and to manage the product publishing mode for each master catalog.
 */
 class MasterCatalogResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
 	/**
-	* 
+	* Retrieve the details of all master catalog associated with a tenant.
 	*
 	* @return MasterCatalogCollection 
 	*/
-	public function getMasterCatalogs(Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getMasterCatalogs()
 	{
-		$mozuClient = MasterCatalogClient::getMasterCatalogsClient($userAuthTicket);
+		$mozuClient = MasterCatalogClient::getMasterCatalogsClient();
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -44,14 +44,14 @@ class MasterCatalogResource {
 	}
 	
 	/**
-	* 
+	* Retrieve the details of the master catalog specified in the request.
 	*
 	* @param int $masterCatalogId 
 	* @return MasterCatalog 
 	*/
-	public function getMasterCatalog($dataViewMode, $masterCatalogId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getMasterCatalog($dataViewMode, $masterCatalogId)
 	{
-		$mozuClient = MasterCatalogClient::getMasterCatalogClient($dataViewMode, $masterCatalogId, $userAuthTicket);
+		$mozuClient = MasterCatalogClient::getMasterCatalogClient($dataViewMode, $masterCatalogId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -59,15 +59,15 @@ class MasterCatalogResource {
 	}
 	
 	/**
-	* 
+	* Updates the product publishing mode for the master catalog specified in the request.
 	*
 	* @param int $masterCatalogId 
-	* @param MasterCatalog $masterCatalog 
+	* @param MasterCatalog $masterCatalog Properties of the master catalog to update, which consists of the product publishing mode. Possible values are "Pending" which saves product updates in draft mode until they are published, and "Live" which publishes all product changes immediately.
 	* @return MasterCatalog 
 	*/
-	public function updateMasterCatalog($dataViewMode, $masterCatalog, $masterCatalogId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function updateMasterCatalog($dataViewMode, $masterCatalog, $masterCatalogId)
 	{
-		$mozuClient = MasterCatalogClient::updateMasterCatalogClient($dataViewMode, $masterCatalog, $masterCatalogId, $userAuthTicket);
+		$mozuClient = MasterCatalogClient::updateMasterCatalogClient($dataViewMode, $masterCatalog, $masterCatalogId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

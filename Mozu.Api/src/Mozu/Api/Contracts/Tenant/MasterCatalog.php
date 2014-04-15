@@ -14,21 +14,39 @@ namespace Mozu\Api\Contracts\Tenant;
 
 
 
+/**
+*	Properties of a master product catalog defined for a tenant. All catalogs and sites associated with a master catalog share product definitions.
+*/
 class MasterCatalog
 {
 		public $createDate;
 
-		public $defaultCurrencyCode;
+	/**
+	*The default three-letter ISO currency code associated with this master catalog. At this time, only "USD" is supported.
+	*/
+	public $defaultCurrencyCode;
 
-		public $defaultLocaleCode;
+	/**
+	*The default locale code associated with this master catalog. At this time, only "en-US" is supported.
+	*/
+	public $defaultLocaleCode;
 
-		public $deleteDate;
+	/**
+	*The date and time the master catalog was deleted.
+	*/
+	public $deleteDate;
 
 		public $id;
 
-		public $isDeleted;
+	/**
+	*If true, this master catalog and its associated catalogs have been deleted from the tenant.
+	*/
+	public $isDeleted;
 
-		public $name;
+	/**
+	*User-defined name of the master catalog.
+	*/
+	public $name;
 
 		public $status;
 
@@ -36,7 +54,10 @@ class MasterCatalog
 
 		public $updateDate;
 
-		public $catalogs;
+	/**
+	*Collection of product catalogs that use product definitions from the master catalog.
+	*/
+	public $catalogs;
 
 }
 

@@ -36,20 +36,18 @@ class ProductSearchResultClient {
 	* @param string $facetTemplate The facet template to use on the storefront. A template displays all facets associated with the template on the storefront product search. Currently, only category-level facet templates are available.
 	* @param string $facetTemplateSubset Display a subset of the facets defined in the template specified in facetTemplate parameter.
 	* @param string $facetValueFilter The facet values to apply to the filter.
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product search results by any of its properties, including product code, type, category, and name. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). <b>For example - "filter=categoryId+eq+12"</b>
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product search results by any of its properties, including product code, type, category, and name. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=categoryId+eq+12"
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $query The terms to search on.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function searchClient($query =  null, $filter =  null, $facetTemplate =  null, $facetTemplateSubset =  null, $facet =  null, $facetFieldRangeQuery =  null, $facetHierPrefix =  null, $facetHierValue =  null, $facetHierDepth =  null, $facetStartIndex =  null, $facetPageSize =  null, $facetSettings =  null, $facetValueFilter =  null, $sortBy =  null, $pageSize =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function searchClient($query =  null, $filter =  null, $facetTemplate =  null, $facetTemplateSubset =  null, $facet =  null, $facetFieldRangeQuery =  null, $facetHierPrefix =  null, $facetHierValue =  null, $facetHierDepth =  null, $facetStartIndex =  null, $facetPageSize =  null, $facetSettings =  null, $facetValueFilter =  null, $sortBy =  null, $pageSize =  null, $startIndex =  null)
 	{
 		$url = ProductSearchResultUrl::searchUrl($facet, $facetFieldRangeQuery, $facetHierDepth, $facetHierPrefix, $facetHierValue, $facetPageSize, $facetSettings, $facetStartIndex, $facetTemplate, $facetTemplateSubset, $facetValueFilter, $filter, $pageSize, $query, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -57,17 +55,15 @@ class ProductSearchResultClient {
 	/**
 	* Suggests possible search terms as the shopper enters search text.
 	*
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $q Text that the shopper is currently entering.
 	* @return MozuClient
 	*/
-	public static function suggestClient($q =  null, $pageSize =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function suggestClient($q =  null, $pageSize =  null)
 	{
 		$url = ProductSearchResultUrl::suggestUrl($pageSize, $q);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

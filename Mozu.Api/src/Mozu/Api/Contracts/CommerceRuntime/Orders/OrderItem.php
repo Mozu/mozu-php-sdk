@@ -19,23 +19,40 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Orders;
 */
 class OrderItem
 {
-		public $discountedTotal;
+	/**
+	*Total amount of shipping fees associated with the specified item in the order.
+	*/
+	public $shippingTotal;
 
 	/**
-	*Amount of discounts applied to an item in an order. Usually a negative dollar amount or number. System-supplied and read-only.
+	*The subtotal of the order item including any applied discount calculations.
+	*/
+	public $discountedTotal;
+
+	/**
+	*Estimated amount of discounts applied to the item in the order, which is system-supplied and read-only.
 	*/
 	public $discountTotal;
 
-		public $extendedTotal;
+	/**
+	*Represents the total price of the order item extended to the shopper. This begins with the Unit Price, then uses any of the following prices if they are defined, in the following order: Override Amount, Sale Amount, List Amount.
+	*/
+	public $extendedTotal;
 
 	/**
-	*The total monetary sum of all fees incurred for an item in an order.
+	*The total sum of all fees incurred for an item in an order.
 	*/
 	public $feeTotal;
 
-		public $fulfillmentLocationCode;
+	/**
+	*Code that identifies the location used to fulfill this order item, whether via in-store pickup or direct shipment.
+	*/
+	public $fulfillmentLocationCode;
 
-		public $fulfillmentMethod;
+	/**
+	*The method used to fulfill the item in the order, which is "PickUp" or "Ship".
+	*/
+	public $fulfillmentMethod;
 
 	/**
 	*Unique identifier of a specific item in an order.
@@ -43,7 +60,7 @@ class OrderItem
 	public $id;
 
 	/**
-	*If true, the item in the order can be purchased or fulfilled at regular intervals such as a monthly billing cycle or a digital or physical subscription.
+	*If true, the item in the order can be purchased or fulfilled at regular intervals such as a monthly billing cycle or a digital or physical subscription. This property is reserved for future functionality and is system-supplied and read only.
 	*/
 	public $isRecurring;
 
@@ -58,7 +75,7 @@ class OrderItem
 	public $itemTaxTotal;
 
 	/**
-	*"Language used for the entity. Currently, only ""en-US"" is supported."
+	*Language used for the entity. Currently, only "en-US" is supported.
 	*/
 	public $localeCode;
 
@@ -78,11 +95,6 @@ class OrderItem
 	public $shippingTaxTotal;
 
 	/**
-	*Total amount of shipping fees associated with the specified item in the order.
-	*/
-	public $shippingTotal;
-
-	/**
 	*Amount of the item in the order without sales tax, shipping costs, and other fees.
 	*/
 	public $subtotal;
@@ -98,7 +110,7 @@ class OrderItem
 	public $total;
 
 	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
 

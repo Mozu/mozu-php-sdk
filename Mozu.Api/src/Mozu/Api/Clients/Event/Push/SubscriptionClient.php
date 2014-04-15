@@ -31,13 +31,11 @@ class SubscriptionClient {
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getSubscriptionsClient($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getSubscriptionsClient($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
 	{
 		$url = SubscriptionUrl::getSubscriptionsUrl($filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

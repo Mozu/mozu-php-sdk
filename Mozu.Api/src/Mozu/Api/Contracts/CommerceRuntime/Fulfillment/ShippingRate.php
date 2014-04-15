@@ -14,19 +14,40 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Fulfillment;
 
 
 
+/**
+*	Properties of an estimated shipping rate for a shipment.
+*/
 class ShippingRate
 {
-		public $currencyCode;
+	/**
+	*3-letter ISO 4217 standard global currency code. Currently, only "USD" (US Dollar) is supported.
+	*/
+	public $currencyCode;
 
-		public $isValid;
+	/**
+	*If true, the estimated shipping rate is valid.
+	*/
+	public $isValid;
 
-		public $messages;
+	/**
+	*Array list of validation messages associated with the shipping rate.
+	*/
+	public $messages;
 
-		public $price;
+	/**
+	*The amount the company and the shopper pay for shipping based on the current rate. Depending on any company discounts or fees, the price the company pays for shipping may differ from what the shopper pays.
+	*/
+	public $price;
 
-		public $shippingMethodCode;
+	/**
+	*The code that identifies the service type shipping method, such as FED_EX_INTERNATIONAL.
+	*/
+	public $shippingMethodCode;
 
-		public $shippingMethodName;
+	/**
+	*The name of the shipping method associated with the estimated rate, such as "UPS Ground".
+	*/
+	public $shippingMethodName;
 
 }
 

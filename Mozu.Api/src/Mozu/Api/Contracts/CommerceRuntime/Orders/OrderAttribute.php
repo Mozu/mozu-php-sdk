@@ -15,24 +15,27 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Orders;
 
 
 /**
-*	A characteristic of an order.
+*	Properties of an attribute applied to an order.
 */
 class OrderAttribute
 {
-		public $attributeDefinitionId;
+	/**
+	*Unique identifier of the order attribute definition.
+	*/
+	public $attributeDefinitionId;
 
 	/**
-	*The fully qualified name of the attribute.
+	*The fully qualified name of the attribute, which is a user defined attribute identifier.
 	*/
 	public $fullyQualifiedName;
 
 	/**
-	*The values of the order attribute.
+	*The values defined for the order attribute.
 	*/
 	public $values;
 
 	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
 

@@ -25,7 +25,7 @@ class CategoryLocalizedContent
 	public $description;
 
 	/**
-	*"Language used for the entity. Currently, only ""en-US"" is supported."
+	*Language used for the entity. Currently, only "en-US" is supported.
 	*/
 	public $localeCode;
 
@@ -59,7 +59,10 @@ class CategoryLocalizedContent
 	*/
 	public $slug;
 
-		public $categoryImages;
+	/**
+	*Array of localized product category images in the language specified by the LocaleCode.
+	*/
+	public $categoryImages;
 
 }
 

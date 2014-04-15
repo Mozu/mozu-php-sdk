@@ -14,79 +14,181 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Wishlists;
 
 
 
+/**
+*	Properties of a shopper wish list defined for a site, associated with a customer account.
+*/
 class Wishlist
 {
-		public $channelCode;
+	/**
+	*Unique identifier of the channel associated with the wish list.
+	*/
+	public $channelCode;
 
-		public $currencyCode;
+	/**
+	*3-letter ISO 4217 standard global currency code. Currently, only "USD" (US Dollar) is supported.
+	*/
+	public $currencyCode;
 
-		public $customerAccountId;
+	/**
+	*Unique identifier of the customer account associated with the wish list.
+	*/
+	public $customerAccountId;
 
-		public $customerInteractionType;
+	/**
+	*The interaction type the shopper uses to create the wish list, wich is Website, Store, Call, or Unknown. This property is not used at this time and is reserved for future functionality.
+	*/
+	public $customerInteractionType;
 
-		public $discountedSubtotal;
+	/**
+	*The discounted subtotal of items in the wish list. This property value is not calculated at this time and is reserved for future functionality.
+	*/
+	public $discountedSubtotal;
 
-		public $discountedTotal;
+	/**
+	*The subtotal of the cart including any applied discount calculations. This property value is not calculated at this time and is reserved for future functionality.
+	*/
+	public $discountedTotal;
 
-		public $discountTotal;
+	/**
+	*Estimated amount of discounts applied to all items in the wish list, which is system-supplied and read-only.                                This property value is not calculated at this time and is reserved for future functionality.
+	*/
+	public $discountTotal;
 
-		public $expirationDate;
+	/**
+	*The date and time this wish list expires. This property value is not calculated at this time and is reserved for future functionality.
+	*/
+	public $expirationDate;
 
 		public $externalId;
 
-		public $feeTotal;
+	/**
+	*The fee total of items in the wish list. This property value is not calculated at this time and is reserved for future functionality.
+	*/
+	public $feeTotal;
 
-		public $handlingTaxTotal;
+	/**
+	*The tax amount levied against the handling fee for items in the wish list. This property value is not calculated at this time and is reserved for future functionality.
+	*/
+	public $handlingTaxTotal;
 
-		public $id;
+	/**
+	*Unique identifier of this shopper wish list. System-supplied and read only.
+	*/
+	public $id;
 
 		public $importDate;
 
 		public $isImport;
 
-		public $itemTaxTotal;
+	/**
+	*The total amount of tax for items in the wish list. This property value is not calculated at this time and is reserved for future functionality.
+	*/
+	public $itemTaxTotal;
 
-		public $lastValidationDate;
+	/**
+	*The date and time the wish list was last validated against the product catalog.
+	*/
+	public $lastValidationDate;
 
-		public $name;
+	/**
+	*The user-defined name of the shopper wish list. The name defined for a wish list does not have to be unique.
+	*/
+	public $name;
 
-		public $privacyType;
+	/**
+	*The type of privacy to apply to this wish list. Possible values are "Private" which makes the wish list viewable only to the shopper, "DirectShare" which makes the wish list viewable only to people with whom the shopper shares the wish list link, or "Public" which makes the wish list available to everyone. At this time, the system treats all shopper wish lists as "Public" regardless of the defined privacy type.
+	*/
+	public $privacyType;
 
-		public $shippingSubTotal;
+	/**
+	*The subtotaled shipping amount for items in the wish list. This property value is not calculated at this time and is reserved for future functionality.
+	*/
+	public $shippingSubTotal;
 
-		public $shippingTaxTotal;
+	/**
+	*The total amount of tax levied against shipping charges for items in the wish list. This property value is not calculated at this time and is reserved for future functionality.
+	*/
+	public $shippingTaxTotal;
 
-		public $shippingTotal;
+	/**
+	*The total shipping costs for items in the wish list. This property value is not calculated at this time and is reserved for future functionality.
+	*/
+	public $shippingTotal;
 
-		public $siteId;
+	/**
+	*Unique identifier of the site.
+	*/
+	public $siteId;
 
-		public $sortOrder;
+	/**
+	*The integer that represents the sequential order of this wish list in the customer's collection of wish lists.
+	*/
+	public $sortOrder;
 
-		public $subtotal;
+	/**
+	*The subtotal of items in the wish list. This property value is not calculated at this time and is reserved for future functionality.
+	*/
+	public $subtotal;
 
-		public $taxTotal;
+	/**
+	*The total tax amount for items in the wish list. This property value is not calculated at this time and is reserved for future functionality.
+	*/
+	public $taxTotal;
 
-		public $tenantId;
+	/**
+	*Unique identifier of the Mozu tenant.
+	*/
+	public $tenantId;
 
-		public $total;
+	/**
+	*The total amount of items in the wish list. This property value is not calculated at this time and is reserved for future functionality. If a site's structure distinguishes between wish list types, the site uses the value in this property to categorize the wish lists.
+	*/
+	public $total;
 
-		public $typeTag;
+	/**
+	*User-defined string that defines the type of wish list to define, such as wish list, baby registry, or Christmas list.
+	*/
+	public $typeTag;
 
-		public $version;
+	/**
+	*System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
+	*/
+	public $version;
 
-		public $visitId;
+	/**
+	*Unique identifier of the customer visit in which the wish list was created or last modified. System-supplied and read only.
+	*/
+	public $visitId;
 
-		public $webSessionId;
+	/**
+	*Unique identifier of the web session in which the wish list was created or last modified. System-supplied and read only.
+	*/
+	public $webSessionId;
 
-		public $auditInfo;
+	/**
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
+	*/
+	public $auditInfo;
 
-		public $changeMessages;
+	/**
+	*Collection of change messages logged for each modification to a shopper wish list. System-supplied and read only.
+	*/
+	public $changeMessages;
 
-		public $fulfillmentInfo;
+	/**
+	*Properties that determine how items in the wish list are fulfilled.
+	*/
+	public $fulfillmentInfo;
 
-		public $items;
+	/**
+	*An array list of objects in the returned collection.
+	*/
+	public $items;
 
-		public $orderDiscounts;
+	/**
+	*Any order discounts that apply to items in the wish list. This property is not used at this time and is reserved for future functionality.
+	*/
+	public $orderDiscounts;
 
 }
 

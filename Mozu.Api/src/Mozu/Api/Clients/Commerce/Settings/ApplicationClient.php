@@ -23,17 +23,15 @@ use Mozu\Api\Headers;
 class ApplicationClient {
 
 	/**
-	* 
+	* Retrieve the settings of a third-party application.
 	*
 	* @return MozuClient
 	*/
-	public static function thirdPartyGetApplicationClient(Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function thirdPartyGetApplicationClient()
 	{
 		$url = ApplicationUrl::thirdPartyGetApplicationUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -44,13 +42,11 @@ class ApplicationClient {
 	* @param Application $application Properties of the application to update.
 	* @return MozuClient
 	*/
-	public static function thirdPartyUpdateApplicationClient($application, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function thirdPartyUpdateApplicationClient($application)
 	{
 		$url = ApplicationUrl::thirdPartyUpdateApplicationUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($application);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

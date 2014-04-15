@@ -23,7 +23,7 @@ use Mozu\Api\Headers;
 */
 class ProductReservationResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -32,15 +32,15 @@ class ProductReservationResource {
 	/**
 	* Retrieves a list of product reservations according to any specified filter criteria and sort options.
 	*
-	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return ProductReservationCollection 
 	*/
-	public function getProductReservations($dataViewMode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getProductReservations($dataViewMode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
 	{
-		$mozuClient = ProductReservationClient::getProductReservationsClient($dataViewMode, $startIndex, $pageSize, $sortBy, $filter, $userAuthTicket);
+		$mozuClient = ProductReservationClient::getProductReservationsClient($dataViewMode, $startIndex, $pageSize, $sortBy, $filter);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -53,9 +53,9 @@ class ProductReservationResource {
 	* @param int $productReservationId Unique identifier of the product reservation.
 	* @return ProductReservation 
 	*/
-	public function getProductReservation($dataViewMode, $productReservationId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getProductReservation($dataViewMode, $productReservationId)
 	{
-		$mozuClient = ProductReservationClient::getProductReservationClient($dataViewMode, $productReservationId, $userAuthTicket);
+		$mozuClient = ProductReservationClient::getProductReservationClient($dataViewMode, $productReservationId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -69,9 +69,9 @@ class ProductReservationResource {
 	* @param array|ProductReservation $productReservations 
 	* @return array|ProductReservation 
 	*/
-	public function addProductReservations($dataViewMode, $productReservations, $skipInventoryCheck =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function addProductReservations($dataViewMode, $productReservations, $skipInventoryCheck =  null)
 	{
-		$mozuClient = ProductReservationClient::addProductReservationsClient($dataViewMode, $productReservations, $skipInventoryCheck, $userAuthTicket);
+		$mozuClient = ProductReservationClient::addProductReservationsClient($dataViewMode, $productReservations, $skipInventoryCheck);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -83,9 +83,9 @@ class ProductReservationResource {
 	*
 	* @param array|ProductReservation $productReservations 
 	*/
-	public function commitReservations($dataViewMode, $productReservations, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function commitReservations($dataViewMode, $productReservations)
 	{
-		$mozuClient = ProductReservationClient::commitReservationsClient($dataViewMode, $productReservations, $userAuthTicket);
+		$mozuClient = ProductReservationClient::commitReservationsClient($dataViewMode, $productReservations);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 
@@ -98,9 +98,9 @@ class ProductReservationResource {
 	* @param array|ProductReservation $productReservations 
 	* @return array|ProductReservation 
 	*/
-	public function updateProductReservations($dataViewMode, $productReservations, $skipInventoryCheck =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function updateProductReservations($dataViewMode, $productReservations, $skipInventoryCheck =  null)
 	{
-		$mozuClient = ProductReservationClient::updateProductReservationsClient($dataViewMode, $productReservations, $skipInventoryCheck, $userAuthTicket);
+		$mozuClient = ProductReservationClient::updateProductReservationsClient($dataViewMode, $productReservations, $skipInventoryCheck);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -112,9 +112,9 @@ class ProductReservationResource {
 	*
 	* @param int $productReservationId Unique identifier of the reservation.
 	*/
-	public function deleteProductReservation($dataViewMode, $productReservationId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function deleteProductReservation($dataViewMode, $productReservationId)
 	{
-		$mozuClient = ProductReservationClient::deleteProductReservationClient($dataViewMode, $productReservationId, $userAuthTicket);
+		$mozuClient = ProductReservationClient::deleteProductReservationClient($dataViewMode, $productReservationId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

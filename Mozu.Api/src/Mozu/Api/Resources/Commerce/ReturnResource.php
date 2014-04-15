@@ -19,11 +19,11 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* Use the returns subresource to manage returned items for a completed order. Returns can include any number of items associated with the original order.
+* Use the returns subresource to manage returned items that were previously fufilled. Returns can include any number of items associated with an original Mozu order. Each return must either be associated with an original order or a product definition to represent each returned item.
 */
 class ReturnResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -32,15 +32,15 @@ class ReturnResource {
 	/**
 	* Retrieves a list of all returns according to any filter and sort criteria.
 	*
-	* @param string $filter 
-	* @param int $pageSize 
-	* @param string $sortBy 
-	* @param int $startIndex 
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return ReturnCollection 
 	*/
-	public function getReturns($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getReturns($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
 	{
-		$mozuClient = ReturnClient::getReturnsClient($startIndex, $pageSize, $sortBy, $filter, $userAuthTicket);
+		$mozuClient = ReturnClient::getReturnsClient($startIndex, $pageSize, $sortBy, $filter);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -53,9 +53,9 @@ class ReturnResource {
 	* @param string $returnId Returns the properties of the return specified in the request as well as system-supplied information.
 	* @return Return 
 	*/
-	public function getReturn($returnId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getReturn($returnId)
 	{
-		$mozuClient = ReturnClient::getReturnClient($returnId, $userAuthTicket);
+		$mozuClient = ReturnClient::getReturnClient($returnId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -68,9 +68,9 @@ class ReturnResource {
 	* @param string $returnId Retrieves a list of the actions available to perform for the specified return based on its current state.
 	* @return array|string 
 	*/
-	public function getAvailableReturnActions($returnId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getAvailableReturnActions($returnId)
 	{
-		$mozuClient = ReturnClient::getAvailableReturnActionsClient($returnId, $userAuthTicket);
+		$mozuClient = ReturnClient::getAvailableReturnActionsClient($returnId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -83,9 +83,9 @@ class ReturnResource {
 	* @param string $returnId Returns the details of the refund payment associated with the return specified in the request.
 	* @return PaymentCollection 
 	*/
-	public function getPayments($returnId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getPayments($returnId)
 	{
-		$mozuClient = ReturnClient::getPaymentsClient($returnId, $userAuthTicket);
+		$mozuClient = ReturnClient::getPaymentsClient($returnId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -99,9 +99,9 @@ class ReturnResource {
 	* @param string $returnId Unique identifier of the return associated with the payment.
 	* @return Payment 
 	*/
-	public function getPayment($returnId, $paymentId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getPayment($returnId, $paymentId)
 	{
-		$mozuClient = ReturnClient::getPaymentClient($returnId, $paymentId, $userAuthTicket);
+		$mozuClient = ReturnClient::getPaymentClient($returnId, $paymentId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -115,9 +115,9 @@ class ReturnResource {
 	* @param string $returnId Unique identifier of the return associated with the payment.
 	* @return array|string 
 	*/
-	public function getAvailablePaymentActionsForReturn($returnId, $paymentId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getAvailablePaymentActionsForReturn($returnId, $paymentId)
 	{
-		$mozuClient = ReturnClient::getAvailablePaymentActionsForReturnClient($returnId, $paymentId, $userAuthTicket);
+		$mozuClient = ReturnClient::getAvailablePaymentActionsForReturnClient($returnId, $paymentId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -125,14 +125,14 @@ class ReturnResource {
 	}
 	
 	/**
-	* Creates a return for items previously shipped in a completed order.
+	* Creates a return for previously fulfilled items. Each return must either be associated with an original order or a product definition to represent each returned item.
 	*
 	* @param Return $ret Wrapper for the properties of the return to create.
 	* @return Return 
 	*/
-	public function createReturn($ret, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function createReturn($ret)
 	{
-		$mozuClient = ReturnClient::createReturnClient($ret, $userAuthTicket);
+		$mozuClient = ReturnClient::createReturnClient($ret);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -147,9 +147,9 @@ class ReturnResource {
 	* @param PaymentAction $action The payment action to perform for the refund payment.
 	* @return Return 
 	*/
-	public function performPaymentActionForReturn($action, $returnId, $paymentId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function performPaymentActionForReturn($action, $returnId, $paymentId)
 	{
-		$mozuClient = ReturnClient::performPaymentActionForReturnClient($action, $returnId, $paymentId, $userAuthTicket);
+		$mozuClient = ReturnClient::performPaymentActionForReturnClient($action, $returnId, $paymentId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -163,9 +163,9 @@ class ReturnResource {
 	* @param PaymentAction $action The payment action to perform for the customer return.
 	* @return Return 
 	*/
-	public function createPaymentActionForReturn($action, $returnId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function createPaymentActionForReturn($action, $returnId)
 	{
-		$mozuClient = ReturnClient::createPaymentActionForReturnClient($action, $returnId, $userAuthTicket);
+		$mozuClient = ReturnClient::createPaymentActionForReturnClient($action, $returnId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -178,9 +178,9 @@ class ReturnResource {
 	* @param ReturnAction $action The name of the return action to perform, such as "Refund" or "Replace".
 	* @return ReturnCollection 
 	*/
-	public function performReturnActions($action, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function performReturnActions($action)
 	{
-		$mozuClient = ReturnClient::performReturnActionsClient($action, $userAuthTicket);
+		$mozuClient = ReturnClient::performReturnActionsClient($action);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -194,9 +194,9 @@ class ReturnResource {
 	* @param Return $ret Wrapper for the array of properties to update for the return.
 	* @return Return 
 	*/
-	public function updateReturn($ret, $returnId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function updateReturn($ret, $returnId)
 	{
-		$mozuClient = ReturnClient::updateReturnClient($ret, $returnId, $userAuthTicket);
+		$mozuClient = ReturnClient::updateReturnClient($ret, $returnId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -204,13 +204,13 @@ class ReturnResource {
 	}
 	
 	/**
-	* Deletes a return previously configured for the specified order.
+	* Deletes the return specified in the request.
 	*
-	* @param string $returnId Unique identifier of the return to delete from the order.
+	* @param string $returnId Unique identifier of the return to delete.
 	*/
-	public function deleteReturn($returnId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function deleteReturn($returnId)
 	{
-		$mozuClient = ReturnClient::deleteReturnClient($returnId, $userAuthTicket);
+		$mozuClient = ReturnClient::deleteReturnClient($returnId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

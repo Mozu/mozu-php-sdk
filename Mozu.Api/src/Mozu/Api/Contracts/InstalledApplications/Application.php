@@ -16,15 +16,15 @@ namespace Mozu\Api\Contracts\InstalledApplications;
 
 class Application
 {
-		public $isExtension;
-
-		public $uiConfigurationUrl;
-
 		public $appId;
 
 		public $enabled;
 
 		public $initialized;
+
+		public $isExtension;
+
+		public $uiConfigurationUrl;
 
 		public $capabilities;
 

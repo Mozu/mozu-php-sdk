@@ -19,25 +19,25 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* 
+* Use the Address Validation resource to validate addresses associated with a customer account contact.
 */
 class AddressValidationRequestResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
 	/**
-	* 
+	* Validates the customer address supplied in the request.
 	*
-	* @param AddressValidationRequest $addressValidationRequest 
+	* @param AddressValidationRequest $addressValidationRequest Properties of the address to validate.
 	* @return AddressValidationResponse 
 	*/
-	public function validateAddress($addressValidationRequest, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function validateAddress($addressValidationRequest)
 	{
-		$mozuClient = AddressValidationRequestClient::validateAddressClient($addressValidationRequest, $userAuthTicket);
+		$mozuClient = AddressValidationRequestClient::validateAddressClient($addressValidationRequest);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

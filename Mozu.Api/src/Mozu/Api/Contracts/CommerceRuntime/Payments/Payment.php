@@ -25,7 +25,7 @@ class Payment
 	public $amountCollected;
 
 	/**
-	*If the payment transaction is a shopper credit, the total monetary amount credited in this payment transaction for the order.
+	*If the payment transaction is a shopper store credit, the total monetary amount credited in this payment transaction for the order.
 	*/
 	public $amountCredited;
 
@@ -57,7 +57,7 @@ class Payment
 	public $paymentServiceTransactionId;
 
 	/**
-	*The type of payment transaction performed, either check or credit card. Paypal and additional payment types will be supported in a future release.
+	*The type of payment transaction performed, such as check, credit card, or PayPal Express. Additional payment types will be supported in future releases.
 	*/
 	public $paymentType;
 
@@ -67,12 +67,12 @@ class Payment
 	public $status;
 
 	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
 
 	/**
-	*The billing information associates with this payment.
+	*Properties of the customer billing information associated with this payment.
 	*/
 	public $billingInfo;
 

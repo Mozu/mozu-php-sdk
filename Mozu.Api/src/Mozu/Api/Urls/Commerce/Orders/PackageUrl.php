@@ -34,8 +34,8 @@ class PackageUrl  {
 	
 	/**
 		* Get Resource Url for GetAvailablePackageFulfillmentActions
-		* @param string $orderId 
-		* @param string $packageId 
+		* @param string $orderId Unique identifier of the order associated with the package fulfillment.
+		* @param string $packageId Unique identifier of the package associated with the fulfillment actions to retrieve.
 		* @return string Resource Url
 	*/
 	public static function getAvailablePackageFulfillmentActionsUrl($orderId, $packageId)

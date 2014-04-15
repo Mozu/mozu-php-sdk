@@ -19,10 +19,13 @@ namespace Mozu\Api\Contracts\Customer;
 */
 class CustomerAttribute
 {
-		public $attributeDefinitionId;
+	/**
+	*Unique identifier of the attribute definition.
+	*/
+	public $attributeDefinitionId;
 
 	/**
-	*"The fully qualified name of the attribute, which is a user defined attribute identifier."
+	*The fully qualified name of the attribute, which is a user defined attribute identifier.
 	*/
 	public $fullyQualifiedName;
 
@@ -32,7 +35,7 @@ class CustomerAttribute
 	public $values;
 
 	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
 

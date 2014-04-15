@@ -18,6 +18,17 @@ use Mozu\Api\UrlLocation;
 class CustomerAuthTicketUrl  {
 
 	/**
+		* Get Resource Url for CreateAnonymousShopperAuthTicket
+		* @return string Resource Url
+	*/
+	public static function createAnonymousShopperAuthTicketUrl()
+	{
+		$url = "/api/commerce/customer/authtickets/anonymousshopper";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		return $mozuUrl;
+	}
+	
+	/**
 		* Get Resource Url for CreateUserAuthTicket
 		* @return string Resource Url
 	*/

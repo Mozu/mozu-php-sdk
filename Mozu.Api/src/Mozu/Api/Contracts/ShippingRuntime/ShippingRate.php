@@ -14,21 +14,42 @@ namespace Mozu\Api\Contracts\ShippingRuntime;
 
 
 
+/**
+*	Properties of a shipping rate calculated for a specified carrier.
+*/
 class ShippingRate
 {
-		public $amount;
+	/**
+	*The total calculated shipping amount requested for the package or shipment.
+	*/
+	public $amount;
 
-		public $code;
+	/**
+	*The carrier-defined alphanumeric code associated with this shipping rate.
+	*/
+	public $code;
 
 		public $daysInTransit;
 
-		public $content;
+	/**
+	*Localized content for a shipping rate based on the defined locale code.
+	*/
+	public $content;
 
-		public $customAttributes;
+	/**
+	*Collection of carrier-specific key-value attribute pairs required to retrieve a shipping rate request.
+	*/
+	public $customAttributes;
 
-		public $messages;
+	/**
+	*Array list of success/failure messages associated with the shipping rate validation.
+	*/
+	public $messages;
 
-		public $shippingItemRates;
+	/**
+	*Properties of a calculated shipping rate for individual line items in a shipment.
+	*/
+	public $shippingItemRates;
 
 }
 

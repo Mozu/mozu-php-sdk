@@ -23,15 +23,22 @@ use Mozu\Api\Headers;
 */
 class TenantResource {
 
+		private $apiContext;
+	public function __construct(ApiContext $apiContext) 
+	{
+		$this->apiContext = $apiContext;
+	}
+
 	/**
 	* Retrieve details about a specific tenant by providing the tenant ID.
 	*
 	* @param int $tenantId Unique identifier of the Mozu tenant.
 	* @return Tenant 
 	*/
-	public function getTenant($tenantId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getTenant($tenantId)
 	{
-		$mozuClient = TenantClient::getTenantClient($tenantId, $userAuthTicket);
+		$mozuClient = TenantClient::getTenantClient($tenantId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 

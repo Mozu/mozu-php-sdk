@@ -27,13 +27,11 @@ class LocationTypeClient {
 	*
 	* @return MozuClient
 	*/
-	public static function getLocationTypesClient(Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getLocationTypesClient()
 	{
 		$url = LocationTypeUrl::getLocationTypesUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -44,13 +42,11 @@ class LocationTypeClient {
 	* @param string $locationTypeCode 
 	* @return MozuClient
 	*/
-	public static function getLocationTypeClient($locationTypeCode, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getLocationTypeClient($locationTypeCode)
 	{
 		$url = LocationTypeUrl::getLocationTypeUrl($locationTypeCode);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -61,13 +57,11 @@ class LocationTypeClient {
 	* @param LocationType $locationType 
 	* @return MozuClient
 	*/
-	public static function addLocationTypeClient($locationType, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function addLocationTypeClient($locationType)
 	{
 		$url = LocationTypeUrl::addLocationTypeUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($locationType);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -79,13 +73,11 @@ class LocationTypeClient {
 	* @param LocationType $locationType 
 	* @return MozuClient
 	*/
-	public static function updateLocationTypeClient($locationType, $locationTypeCode, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function updateLocationTypeClient($locationType, $locationTypeCode)
 	{
 		$url = LocationTypeUrl::updateLocationTypeUrl($locationTypeCode);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($locationType);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -95,13 +87,11 @@ class LocationTypeClient {
 	*
 	* @param string $locationTypeCode 
 	*/
-	public static function deleteLocationTypeClient($locationTypeCode, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function deleteLocationTypeClient($locationTypeCode)
 	{
 		$url = LocationTypeUrl::deleteLocationTypeUrl($locationTypeCode);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

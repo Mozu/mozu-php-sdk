@@ -15,12 +15,12 @@ namespace Mozu\Api\Contracts\Reference;
 
 
 /**
-*	The structure of postal addresses based on the country specified. Since addresses vary from country to country, this schema allows a flexible storage structure.
+*	Describes the structure of postal addresses based on the country specified. Because addresses vary from country to country, this schema allows a flexible storage structure.
 */
 class AddressSchema
 {
 	/**
-	*2 letter geographic code representing the country for the physical or mailing address. Currently limited to the US.
+	*The 2-letter geographic code representing the country for the physical or mailing address. Currently limited to the US.
 	*/
 	public $countryCode;
 

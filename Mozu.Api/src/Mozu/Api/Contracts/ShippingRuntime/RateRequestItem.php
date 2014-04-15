@@ -14,15 +14,30 @@ namespace Mozu\Api\Contracts\ShippingRuntime;
 
 
 
+/**
+*	Properties of an item for which to calculate a shipping rate.
+*/
 class RateRequestItem
 {
-		public $itemId;
+	/**
+	*Unique identifier of the item to ship, for which to calculate a shipping rate.
+	*/
+	public $itemId;
 
-		public $quantity;
+	/**
+	*Quantity of the item for which to calculate the shipping rate.
+	*/
+	public $quantity;
 
-		public $shipsByItself;
+	/**
+	*If true, this item must ship separately from other items in a shipment.
+	*/
+	public $shipsByItself;
 
-		public $unitMeasurements;
+	/**
+	*The measured weight and dimensions of the item to ship.
+	*/
+	public $unitMeasurements;
 
 }
 

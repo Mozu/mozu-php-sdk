@@ -19,22 +19,29 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* Use the events resource to retreive events, which are notifications about a create, read, update, or delete operation.
+* Use the events resource to retrieve events, which are notifications about a create, read, update, or delete operation.
 */
 class EventNotificationResource {
+
+		private $apiContext;
+	public function __construct(ApiContext $apiContext) 
+	{
+		$this->apiContext = $apiContext;
+	}
 
 	/**
 	* Retrieves a list of events.
 	*
-	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return EventCollection 
 	*/
-	public function getEvents($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getEvents($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
 	{
-		$mozuClient = EventNotificationClient::getEventsClient($startIndex, $pageSize, $sortBy, $filter, $userAuthTicket);
+		$mozuClient = EventNotificationClient::getEventsClient($startIndex, $pageSize, $sortBy, $filter);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
@@ -46,9 +53,10 @@ class EventNotificationResource {
 	* @param string $eventId The unique identifier of the event being retrieved. An event is a notification about a create, read, update, or delete on an order, product, discount or category.
 	* @return Event 
 	*/
-	public function getEvent($eventId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getEvent($eventId)
 	{
-		$mozuClient = EventNotificationClient::getEventClient($eventId, $userAuthTicket);
+		$mozuClient = EventNotificationClient::getEventClient($eventId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 

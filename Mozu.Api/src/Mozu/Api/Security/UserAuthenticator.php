@@ -27,7 +27,13 @@ class UserAuthenticator {
 	public static function ensureAuthTicket(UserAuthTicket $authTicket)
 	{
 		$dateTimeNow = new DateTime();
-		if ($dateTimeNow >= $authTicket->getAccessTokenExpiration())
+		$accessTokenExpiration = strtotime($authTicket->accessTokenExpiration);
+		$accessTokenExpiratonDate =  new DateTime("@$accessTokenExpiration");
+		
+		echo $dateTimeNow->format('Y-m-d H:i:s');
+		echo $accessTokenExpiratonDate->format('Y-m-d H:i:s');
+		
+		if ($dateTimeNow >= $accessTokenExpiratonDate)
 			return static::refreshUserAuthTicket($authTicket);
 	
 		return null;

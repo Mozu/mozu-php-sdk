@@ -25,7 +25,7 @@ class CustomerAccount
 	public $acceptsMarketing;
 
 	/**
-	*The legal or doing business as (DBA) or tradestyle name of the business or organization. Max length: 200.
+	*The legal or doing business as (DBA) or tradestyle name of the business or organization. The maximum character length is 200.
 	*/
 	public $companyOrOrganization;
 
@@ -69,11 +69,14 @@ class CustomerAccount
 	public $attributes;
 
 	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
 
-		public $commerceSummary;
+	/**
+	*Properties of the commerce summary associated with a customer account, which includes details about the shopper's most recent order, wish lists, and total order value over time.
+	*/
+	public $commerceSummary;
 
 	/**
 	*Contact information, including the contact's name, address, phone numbers, email addresses, and company (if supplied). Also indicates whether this is a billing, shipping, or billing and shipping contact.

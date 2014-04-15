@@ -18,15 +18,15 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* 
+* Use this resource to manage authentication tickets for your developer account.
 */
 class DeveloperAdminUserAuthTicketClient {
 
 	/**
-	* 
+	* Generate an authentication ticket for a developer account.
 	*
-	* @param int $developerAccountId 
-	* @param UserAuthInfo $userAuthInfo 
+	* @param int $developerAccountId Unique identifier of the developer account.
+	* @param UserAuthInfo $userAuthInfo The user authentication information required to generate the developer account user authentication ticket, which consists of a user name and password.
 	* @return MozuClient
 	*/
 	public static function createDeveloperUserAuthTicketClient($userAuthInfo, $developerAccountId =  null)
@@ -39,10 +39,10 @@ class DeveloperAdminUserAuthTicketClient {
 	}
 	
 	/**
-	* 
+	* Generates a new developer account authentication ticket for the specified tenant by supplying the defined refresh token information.
 	*
-	* @param int $developerAccountId 
-	* @param DeveloperAdminUserAuthTicket $existingAuthTicket 
+	* @param int $developerAccountId Unique identifier of the developer account.
+	* @param DeveloperAdminUserAuthTicket $existingAuthTicket Properties of the authentication ticket to refresh. The refresh token is required to complete this request.
 	* @return MozuClient
 	*/
 	public static function refreshDeveloperAuthTicketClient($existingAuthTicket, $developerAccountId =  null)
@@ -55,9 +55,9 @@ class DeveloperAdminUserAuthTicketClient {
 	}
 	
 	/**
-	* 
+	* Deletes the authentication ticket for the developer account by supplying the refresh token.
 	*
-	* @param string $refreshToken 
+	* @param string $refreshToken Refresh token string associated with the developer account authentication ticket.
 	*/
 	public static function deleteUserAuthTicketClient($refreshToken)
 	{

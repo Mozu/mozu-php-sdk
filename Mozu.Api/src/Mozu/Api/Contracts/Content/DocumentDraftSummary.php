@@ -19,20 +19,14 @@ namespace Mozu\Api\Contracts\Content;
 */
 class DocumentDraftSummary
 {
-	/**
-	*Date when the entity was last updated. UTC Date/Time.
-	*/
-	public $activeUpdateDate;
+		public $activeUpdateDate;
 
 	/**
 	*Name of the document list associated with the draft.
 	*/
 	public $documentListName;
 
-	/**
-	*The most recent date the draft has been modified. System-supplied and read-only.
-	*/
-	public $draftUpdateDate;
+		public $draftUpdateDate;
 
 	/**
 	*Identifier of document draft.
@@ -50,7 +44,7 @@ class DocumentDraftSummary
 	public $publishType;
 
 	/**
-	*Unique identifier of the entity who updated the resource property most recently. System-supplied and read-only.
+	*Unique identifier of the user who last modified the item. This value is system-supplied and read-only.
 	*/
 	public $updatedBy;
 

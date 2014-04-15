@@ -14,19 +14,40 @@ namespace Mozu\Api\Contracts\AppDev;
 
 
 
+/**
+*	Properties of the metadata associated with a file or subfolder in a development or release package associated with an application version.
+*/
 class FileMetadata
 {
-		public $checkSum;
+	/**
+	*Checksum function used to validate the local version of the file against the version on the server.
+	*/
+	public $checkSum;
 
-		public $id;
+	/**
+	*Unique identifier of the file.
+	*/
+	public $id;
 
-		public $path;
+	/**
+	*The path and file name that represents the file location.
+	*/
+	public $path;
 
-		public $sizeInBytes;
+	/**
+	*The total size of the package file, in bytes.
+	*/
+	public $sizeInBytes;
 
-		public $type;
+	/**
+	*The type of file in the package.
+	*/
+	public $type;
 
-		public $auditInfo;
+	/**
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
+	*/
+	public $auditInfo;
 
 }
 

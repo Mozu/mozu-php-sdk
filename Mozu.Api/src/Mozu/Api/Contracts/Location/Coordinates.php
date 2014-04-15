@@ -14,11 +14,20 @@ namespace Mozu\Api\Contracts\Location;
 
 
 
+/**
+*	Properties of the geographical coordinates associated with a specific location.
+*/
 class Coordinates
 {
-		public $lat;
+	/**
+	*The latitude coordinate of the location.
+	*/
+	public $lat;
 
-		public $lng;
+	/**
+	*The longitude coordinate of the location.
+	*/
+	public $lng;
 
 }
 

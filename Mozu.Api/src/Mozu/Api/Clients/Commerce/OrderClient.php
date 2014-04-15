@@ -18,28 +18,26 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* Manage order processing, payment, and shipping. Includes getting customer payment details, shipping address and selected shipment method, processing payment transactions, and, once paid, shipping the order to the shopper.
+* Use the Orders resource to manage all components of order processing, payment, and fulfillment.
 */
 class OrderClient {
 
 	/**
 	* Retrieves a list of orders according to any specified filter criteria and sort options.
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter an order's search results by any of its properties, including status, contact information, or total. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). <b>For example - "filter=Status+eq+Submitted"</b>
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
-	* @param string $q 
-	* @param int $qLimit 
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter an order's search results by any of its properties, including status, contact information, or total. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=Status+eq+Submitted"
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $q A list of order search terms to use in the query when searching across order number and the name or email of the billing contact. Separate multiple search terms with a space character.
+	* @param int $qLimit The maximum number of search results to return in the response. You can limit any range between 1-100.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getOrdersClient($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $q =  null, $qLimit =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getOrdersClient($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $q =  null, $qLimit =  null)
 	{
 		$url = OrderUrl::getOrdersUrl($filter, $pageSize, $q, $qLimit, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -50,13 +48,11 @@ class OrderClient {
 	* @param string $orderId Unique identifier of the available order actions to get.
 	* @return MozuClient
 	*/
-	public static function getAvailableActionsClient($orderId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getAvailableActionsClient($orderId)
 	{
 		$url = OrderUrl::getAvailableActionsUrl($orderId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -67,13 +63,11 @@ class OrderClient {
 	* @param string $orderId 
 	* @return MozuClient
 	*/
-	public static function getTaxableOrdersClient($orderId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getTaxableOrdersClient($orderId)
 	{
 		$url = OrderUrl::getTaxableOrdersUrl($orderId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -85,13 +79,11 @@ class OrderClient {
 	* @param string $orderId Unique identifier of the order details to get.
 	* @return MozuClient
 	*/
-	public static function getOrderClient($orderId, $draft =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getOrderClient($orderId, $draft =  null)
 	{
 		$url = OrderUrl::getOrderUrl($draft, $orderId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -102,13 +94,11 @@ class OrderClient {
 	* @param Order $order All properties of the order to place.
 	* @return MozuClient
 	*/
-	public static function createOrderClient($order, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function createOrderClient($order)
 	{
 		$url = OrderUrl::createOrderUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($order);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -119,13 +109,11 @@ class OrderClient {
 	* @param string $cartId Unique identifier of the cart. This is the original cart ID expressed as a GUID.
 	* @return MozuClient
 	*/
-	public static function createOrderFromCartClient($cartId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function createOrderFromCartClient($cartId)
 	{
 		$url = OrderUrl::createOrderFromCartUrl($cartId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -137,13 +125,11 @@ class OrderClient {
 	* @param OrderAction $action Action to perform, which can be "CreateOrder," "SubmitOrder," "SetOrderAsProcessing," "CloseOrder," or "CancelOrder."
 	* @return MozuClient
 	*/
-	public static function performOrderActionClient($action, $orderId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function performOrderActionClient($action, $orderId)
 	{
 		$url = OrderUrl::performOrderActionUrl($orderId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($action);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -153,18 +139,16 @@ class OrderClient {
 	*
 	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
 	* @param string $orderId Unique identifier of the order discount. System-supplied and read only.
-	* @param string $updateMode Specifies whether to modify the discount by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal", "ApplyToDraft", or "ApplyAndCommit".
-	* @param string $version 
+	* @param string $updateMode Specifies whether to modify the discount by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 	* @param AppliedDiscount $discount Properties of the order discount to update.
 	* @return MozuClient
 	*/
-	public static function updateOrderDiscountClient($discount, $orderId, $discountId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function updateOrderDiscountClient($discount, $orderId, $discountId, $updateMode =  null, $version =  null)
 	{
 		$url = OrderUrl::updateOrderDiscountUrl($discountId, $orderId, $updateMode, $version);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($discount);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -173,32 +157,28 @@ class OrderClient {
 	* Deletes the current draft version of the order, which also deletes any uncommitted changes made to the order in draft mode.
 	*
 	* @param string $orderId Unique identifier of the order associated with the draft to delete.
-	* @param string $version The version of the order draft to delete.
+	* @param string $version If applicable, the version of the order draft to delete.
 	*/
-	public static function deleteOrderDraftClient($orderId, $version =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function deleteOrderDraftClient($orderId, $version =  null)
 	{
 		$url = OrderUrl::deleteOrderDraftUrl($orderId, $version);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Updates the user ID of the shopper who placed the order to the current user.
 	*
-	* @param string $orderId 
+	* @param string $orderId Unique identifier of the order.
 	* @return MozuClient
 	*/
-	public static function changeOrderUserIdClient($orderId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function changeOrderUserIdClient($orderId)
 	{
 		$url = OrderUrl::changeOrderUserIdUrl($orderId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -207,18 +187,16 @@ class OrderClient {
 	* Updates the specified order when additional order information, such as shipping or billing information, is modified during the checkout process.
 	*
 	* @param string $orderId Unique identifier of the order to update.
-	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal", "ApplyToDraft", or "ApplyAndCommit".
-	* @param string $version 
+	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 	* @param Order $order The properties of the order to update.
 	* @return MozuClient
 	*/
-	public static function updateOrderClient($order, $orderId, $updateMode =  null, $version =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function updateOrderClient($order, $orderId, $updateMode =  null, $version =  null)
 	{
 		$url = OrderUrl::updateOrderUrl($orderId, $updateMode, $version);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($order);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

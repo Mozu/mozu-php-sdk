@@ -14,11 +14,20 @@ namespace Mozu\Api\Contracts\PricingRuntime;
 
 
 
+/**
+*	Properties of a value for a product property.
+*/
 class ProductPropertyValue
 {
-		public $stringValue;
+	/**
+	*If the product property value is a text entry, the string value of the product property.
+	*/
+	public $stringValue;
 
-		public $value;
+	/**
+	*If the product property value is selected from a list of possible values, the selected value.
+	*/
+	public $value;
 
 }
 

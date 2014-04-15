@@ -23,7 +23,7 @@ use Mozu\Api\Headers;
 */
 class AppliedDiscountResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -36,9 +36,9 @@ class AppliedDiscountResource {
 	* @param string $couponCode 
 	* @return Cart 
 	*/
-	public function applyCoupon($cartId, $couponCode, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function applyCoupon($cartId, $couponCode)
 	{
-		$mozuClient = AppliedDiscountClient::applyCouponClient($cartId, $couponCode, $userAuthTicket);
+		$mozuClient = AppliedDiscountClient::applyCouponClient($cartId, $couponCode);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -51,9 +51,9 @@ class AppliedDiscountResource {
 	* @param string $cartId 
 	* @return Cart 
 	*/
-	public function removeCoupons($cartId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function removeCoupons($cartId)
 	{
-		$mozuClient = AppliedDiscountClient::removeCouponsClient($cartId, $userAuthTicket);
+		$mozuClient = AppliedDiscountClient::removeCouponsClient($cartId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -67,9 +67,9 @@ class AppliedDiscountResource {
 	* @param string $couponCode 
 	* @return Cart 
 	*/
-	public function removeCoupon($cartId, $couponCode, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function removeCoupon($cartId, $couponCode)
 	{
-		$mozuClient = AppliedDiscountClient::removeCouponClient($cartId, $couponCode, $userAuthTicket);
+		$mozuClient = AppliedDiscountClient::removeCouponClient($cartId, $couponCode);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

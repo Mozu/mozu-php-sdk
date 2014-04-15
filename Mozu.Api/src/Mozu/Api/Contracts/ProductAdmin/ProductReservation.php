@@ -24,7 +24,10 @@ class ProductReservation
 	*/
 	public $id;
 
-		public $locationCode;
+	/**
+	*Code that identifies the location associated with this product reservation.
+	*/
+	public $locationCode;
 
 	/**
 	*Unique identifier of the order.
@@ -37,7 +40,7 @@ class ProductReservation
 	public $orderItemId;
 
 	/**
-	*"Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+	*Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	*/
 	public $productCode;
 
@@ -47,7 +50,7 @@ class ProductReservation
 	public $quantity;
 
 	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
 

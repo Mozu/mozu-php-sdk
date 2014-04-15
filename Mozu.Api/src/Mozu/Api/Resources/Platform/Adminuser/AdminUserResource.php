@@ -23,15 +23,22 @@ use Mozu\Api\Headers;
 */
 class AdminUserResource {
 
+		private $apiContext;
+	public function __construct(ApiContext $apiContext) 
+	{
+		$this->apiContext = $apiContext;
+	}
+
 	/**
 	* Retrieves the details of the specified administrator user account.
 	*
 	* @param string $userId Unique identifier of the administrator account to retrieve.
 	* @return User 
 	*/
-	public function getUser($userId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getUser($userId)
 	{
-		$mozuClient = AdminUserClient::getUserClient($userId, $userAuthTicket);
+		$mozuClient = AdminUserClient::getUserClient($userId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
@@ -43,9 +50,10 @@ class AdminUserResource {
 	* @param string $userId Unique identifier of the user whose tenant scopes you want to retrieve.
 	* @return TenantCollection 
 	*/
-	public function getTenantScopesForUser($userId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getTenantScopesForUser($userId)
 	{
-		$mozuClient = AdminUserClient::getTenantScopesForUserClient($userId, $userAuthTicket);
+		$mozuClient = AdminUserClient::getTenantScopesForUserClient($userId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 

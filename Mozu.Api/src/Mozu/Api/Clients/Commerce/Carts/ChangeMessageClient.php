@@ -18,22 +18,20 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* System messages for live carts to notify the shopper about a product price or inventory change. System-supplied and read-only. For example: Product price is reduced due to a buy one, get one 50% off (BOGO) sale. A message may appear if the product is out of stock during the cart shopping process.
+* Use the Cart Messages resource to retrieve messages for live carts that the system logs when a product's price or inventory level changes.
 */
 class ChangeMessageClient {
 
 	/**
-	* Retrieves messages to and from the current shopper. These are messages supplied by the system to notify the shopper of price increases or decreases or product unavailability.
+	* Retrieves the messages associated with the current shopper's cart.
 	*
 	* @return MozuClient
 	*/
-	public static function getMessagesClient(Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getMessagesClient()
 	{
 		$url = ChangeMessageUrl::getMessagesUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -42,13 +40,11 @@ class ChangeMessageClient {
 	* Deletes all messages associated with the cart of the current shopper.
 	*
 	*/
-	public static function removeAllMessagesClient(Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function removeAllMessagesClient()
 	{
 		$url = ChangeMessageUrl::removeAllMessagesUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -58,13 +54,11 @@ class ChangeMessageClient {
 	*
 	* @param string $messageId Identifier of the message to remove from the cart.
 	*/
-	public static function removeMessageClient($messageId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function removeMessageClient($messageId)
 	{
 		$url = ChangeMessageUrl::removeMessageUrl($messageId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

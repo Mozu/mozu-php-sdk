@@ -23,7 +23,7 @@ use Mozu\Api\Headers;
 */
 class CheckoutSettingsResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -34,9 +34,9 @@ class CheckoutSettingsResource {
 	*
 	* @return CheckoutSettings 
 	*/
-	public function getCheckoutSettings(Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getCheckoutSettings()
 	{
-		$mozuClient = CheckoutSettingsClient::getCheckoutSettingsClient($userAuthTicket);
+		$mozuClient = CheckoutSettingsClient::getCheckoutSettingsClient();
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

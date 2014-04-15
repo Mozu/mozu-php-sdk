@@ -19,7 +19,10 @@ namespace Mozu\Api\Contracts\PricingRuntime;
 */
 class ProductProperty
 {
-		public $attributeFQN;
+	/**
+	*The fully qualified name of the attribute, which is a user defined attribute identifier.
+	*/
+	public $attributeFQN;
 
 	/**
 	*If true, this product property does not appear on the storefront.
@@ -36,7 +39,10 @@ class ProductProperty
 	*/
 	public $attributeDetail;
 
-		public $values;
+	/**
+	*List of values predefined for the product property attribute.
+	*/
+	public $values;
 
 }
 

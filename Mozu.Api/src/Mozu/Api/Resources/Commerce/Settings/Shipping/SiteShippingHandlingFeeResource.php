@@ -23,7 +23,7 @@ use Mozu\Api\Headers;
 */
 class SiteShippingHandlingFeeResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -34,9 +34,9 @@ class SiteShippingHandlingFeeResource {
 	*
 	* @return SiteShippingHandlingFee 
 	*/
-	public function getOrderHandlingFee(Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getOrderHandlingFee()
 	{
-		$mozuClient = SiteShippingHandlingFeeClient::getOrderHandlingFeeClient($userAuthTicket);
+		$mozuClient = SiteShippingHandlingFeeClient::getOrderHandlingFeeClient();
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -49,9 +49,9 @@ class SiteShippingHandlingFeeResource {
 	* @param SiteShippingHandlingFee $orderHandlingFee Properties of the order handling fee to assess for order shipment.
 	* @return SiteShippingHandlingFee 
 	*/
-	public function createOrderHandlingFee($orderHandlingFee, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function createOrderHandlingFee($orderHandlingFee)
 	{
-		$mozuClient = SiteShippingHandlingFeeClient::createOrderHandlingFeeClient($orderHandlingFee, $userAuthTicket);
+		$mozuClient = SiteShippingHandlingFeeClient::createOrderHandlingFeeClient($orderHandlingFee);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -64,9 +64,9 @@ class SiteShippingHandlingFeeResource {
 	* @param SiteShippingHandlingFee $orderHandlingFee The combined price for all items in the order, including all selected options but excluding any discounts.
 	* @return SiteShippingHandlingFee 
 	*/
-	public function updateOrderHandlingFee($orderHandlingFee, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function updateOrderHandlingFee($orderHandlingFee)
 	{
-		$mozuClient = SiteShippingHandlingFeeClient::updateOrderHandlingFeeClient($orderHandlingFee, $userAuthTicket);
+		$mozuClient = SiteShippingHandlingFeeClient::updateOrderHandlingFeeClient($orderHandlingFee);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

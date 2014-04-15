@@ -14,13 +14,25 @@ namespace Mozu\Api\Contracts\ShippingRuntime;
 
 
 
+/**
+*	Arrayed list of calculated shipping rates for the specified carrier.
+*/
 class CarrierRatesResponse
 {
-		public $carrierId;
+	/**
+	*Unique identifier of the shipping carrier.
+	*/
+	public $carrierId;
 
-		public $customAttributes;
+	/**
+	*Collection of carrier-specific key-value attribute pairs required to retrieve a shipping rate request.
+	*/
+	public $customAttributes;
 
-		public $shippingRates;
+	/**
+	*Array list of calculated shipping rates for the specified carrier.
+	*/
+	public $shippingRates;
 
 }
 

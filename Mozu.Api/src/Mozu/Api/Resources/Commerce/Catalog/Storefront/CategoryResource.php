@@ -23,7 +23,7 @@ use Mozu\Api\Headers;
 */
 class CategoryResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -32,15 +32,15 @@ class CategoryResource {
 	/**
 	* Retrieves a list of categories according to any specified filter criteria and sort options.
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product category search results by any of its properties, including its position in the category hierarchy. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). <b>For example - "filter=IsDisplayed+eq+true"</b>
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product category search results by any of its properties, including its position in the category hierarchy. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return CategoryPagedCollection 
 	*/
-	public function getCategories($filter =  null, $startIndex =  null, $pageSize =  null, $sortBy =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getCategories($filter =  null, $startIndex =  null, $pageSize =  null, $sortBy =  null)
 	{
-		$mozuClient = CategoryClient::getCategoriesClient($filter, $startIndex, $pageSize, $sortBy, $userAuthTicket);
+		$mozuClient = CategoryClient::getCategoriesClient($filter, $startIndex, $pageSize, $sortBy);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -54,9 +54,9 @@ class CategoryResource {
 	* @param int $categoryId Unique identifier for the storefront container used to organize products.
 	* @return Category 
 	*/
-	public function getCategory($categoryId, $allowInactive =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getCategory($categoryId, $allowInactive =  null)
 	{
-		$mozuClient = CategoryClient::getCategoryClient($categoryId, $allowInactive, $userAuthTicket);
+		$mozuClient = CategoryClient::getCategoryClient($categoryId, $allowInactive);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -68,9 +68,9 @@ class CategoryResource {
 	*
 	* @return CategoryCollection 
 	*/
-	public function getCategoryTree(Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getCategoryTree()
 	{
-		$mozuClient = CategoryClient::getCategoryTreeClient($userAuthTicket);
+		$mozuClient = CategoryClient::getCategoryTreeClient();
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

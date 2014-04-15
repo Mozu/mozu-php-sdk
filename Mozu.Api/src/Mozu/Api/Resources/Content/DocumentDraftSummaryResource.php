@@ -23,23 +23,23 @@ use Mozu\Api\Headers;
 */
 class DocumentDraftSummaryResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
 	/**
-	* Retrieves a list of the documents currently in draft state according to any sort criteria defined.
+	* Retrieves a list of the documents currently in draft state, according to any defined filter and sort criteria.
 	*
 	* @param string $documentLists Lists that contain the document drafts.
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
-	* @param int $startIndex "Used to create paged results from a query. Indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3."
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return DocumentDraftSummaryPagedCollection 
 	*/
-	public function listDocumentDraftSummaries($dataViewMode, $pageSize =  null, $startIndex =  null, $documentLists =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function listDocumentDraftSummaries($dataViewMode, $pageSize =  null, $startIndex =  null, $documentLists =  null)
 	{
-		$mozuClient = DocumentDraftSummaryClient::listDocumentDraftSummariesClient($dataViewMode, $pageSize, $startIndex, $documentLists, $userAuthTicket);
+		$mozuClient = DocumentDraftSummaryClient::listDocumentDraftSummariesClient($dataViewMode, $pageSize, $startIndex, $documentLists);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -52,9 +52,9 @@ class DocumentDraftSummaryResource {
 	* @param string $documentLists List of document lists that contain documents to delete.
 	* @param array|string $documentIds Unique identifiers of the documents to delete.
 	*/
-	public function deleteDocumentDrafts($dataViewMode, $documentIds, $documentLists =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function deleteDocumentDrafts($dataViewMode, $documentIds, $documentLists =  null)
 	{
-		$mozuClient = DocumentDraftSummaryClient::deleteDocumentDraftsClient($dataViewMode, $documentIds, $documentLists, $userAuthTicket);
+		$mozuClient = DocumentDraftSummaryClient::deleteDocumentDraftsClient($dataViewMode, $documentIds, $documentLists);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 
@@ -66,9 +66,9 @@ class DocumentDraftSummaryResource {
 	* @param string $documentLists List of document lists that contain documents to publish.
 	* @param array|string $documentIds List of unique identifiers of the document drafts to publish.
 	*/
-	public function publishDocuments($dataViewMode, $documentIds, $documentLists =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function publishDocuments($dataViewMode, $documentIds, $documentLists =  null)
 	{
-		$mozuClient = DocumentDraftSummaryClient::publishDocumentsClient($dataViewMode, $documentIds, $documentLists, $userAuthTicket);
+		$mozuClient = DocumentDraftSummaryClient::publishDocumentsClient($dataViewMode, $documentIds, $documentLists);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

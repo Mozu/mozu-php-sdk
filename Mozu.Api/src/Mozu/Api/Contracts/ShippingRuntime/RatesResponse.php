@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\ShippingRuntime;
 
 
 
+/**
+*	Properties of the calculated shipping rate based on the information supplied in the request.
+*/
 class RatesResponse
 {
-		public $rates;
+	/**
+	*Arrayed list of calculated shipping rates for each assocuated carrier.
+	*/
+	public $rates;
 
 }
 

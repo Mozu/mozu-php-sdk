@@ -18,8 +18,18 @@ interface iApiContext
 	public function getCorrelationId();
 	public function getHMACSha256();
 	public function getAppAuthTicket();
-	public function getUserAuth();
-		
+	public function getUserAuthTicket();
+
+	public function getTenant();
+	
+	public function setTenantId($tenantId);
+	public function setSiteId($siteId);
+	public function setMasterCatalogId($masterCatalogId);
+	public function setCatalogId($catalogId);
+	
+	public function setHMACSha256($hmacSha256);
+	public function setAppAuthTicket($appAuthTicket);
+	public function setUserAuthTicket($userAuthTicket);
 }
 
 class ApiContext implements iApiContext {
@@ -34,7 +44,7 @@ class ApiContext implements iApiContext {
 	private $hmacSha256=null;
 	
 	private $tenant = null;
-	private $userAuth = null;
+	private $userAuthTicket = null;
 	private $appAuthTicket=null;
 	
 	private $constructor_signatures = array(
@@ -133,10 +143,49 @@ class ApiContext implements iApiContext {
 		return $this->appAuthTicket;
 	}
 
-	public function getUserAuth() {
-		return $this->userAuth;
+	public function getUserAuthTicket() {
+		return $this->userAuthTicket;
 	}
-
+	
+	public function getTenant() {
+		return $this->tenant;
+	}
+	
+	public function setTenantId($tenantId) {
+		$this->tenantId = $tenantId;
+		return $this;
+	}
+	
+	public function setSiteId($siteId) {
+		$this->siteId = $siteId;
+		return $this;
+	}
+	
+	public function setMasterCatalogId($masterCatalogId) {
+		$this->masterCatalogId = $masterCatalogId;
+		return $this;
+	}
+	
+	public function setCatalogId($catalogId) {
+		$this->catalogId = $catalogId;
+		return $this;
+	}
+	
+	public function setHmacSha256($hmacSha256) {
+		$this->hmacSha256 = $hmacSha256;
+		return $this;
+	}
+	
+	public function setUserAuthTicket($userAuthTicket) {
+		$this->userAuthTicket = $userAuthTicket;
+		return $this;
+	}
+	
+	public function setAppAuthTicket($appAuthTicket) {
+		$this->appAuthTicket = $appAuthTicket;
+		return $this;
+	}
+	
 }
 
 ?>

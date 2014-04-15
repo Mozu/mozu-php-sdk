@@ -31,13 +31,11 @@ class InStockNotificationSubscriptionClient {
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getInStockNotificationSubscriptionsClient($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getInStockNotificationSubscriptionsClient($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
 	{
 		$url = InStockNotificationSubscriptionUrl::getInStockNotificationSubscriptionsUrl($filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -48,13 +46,11 @@ class InStockNotificationSubscriptionClient {
 	* @param int $id 
 	* @return MozuClient
 	*/
-	public static function getInStockNotificationSubscriptionClient($id, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getInStockNotificationSubscriptionClient($id)
 	{
 		$url = InStockNotificationSubscriptionUrl::getInStockNotificationSubscriptionUrl($id);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -65,13 +61,11 @@ class InStockNotificationSubscriptionClient {
 	* @param InStockNotificationSubscription $inStockNotificationSubscription 
 	* @return MozuClient
 	*/
-	public static function addInStockNotificationSubscriptionClient($inStockNotificationSubscription, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function addInStockNotificationSubscriptionClient($inStockNotificationSubscription)
 	{
 		$url = InStockNotificationSubscriptionUrl::addInStockNotificationSubscriptionUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($inStockNotificationSubscription);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -81,13 +75,11 @@ class InStockNotificationSubscriptionClient {
 	*
 	* @param int $id 
 	*/
-	public static function deleteInStockNotificationSubscriptionClient($id, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function deleteInStockNotificationSubscriptionClient($id)
 	{
 		$url = InStockNotificationSubscriptionUrl::deleteInStockNotificationSubscriptionUrl($id);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

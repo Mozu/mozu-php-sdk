@@ -29,13 +29,11 @@ class PropertyTypeClient {
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getPropertyTypesClient($dataViewMode, $pageSize =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getPropertyTypesClient($dataViewMode, $pageSize =  null, $startIndex =  null)
 	{
 		$url = PropertyTypeUrl::getPropertyTypesUrl($pageSize, $startIndex);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -46,29 +44,25 @@ class PropertyTypeClient {
 	* @param string $propertyTypeName 
 	* @return MozuClient
 	*/
-	public static function getPropertyTypeClient($dataViewMode, $propertyTypeName, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getPropertyTypeClient($dataViewMode, $propertyTypeName)
 	{
 		$url = PropertyTypeUrl::getPropertyTypeUrl($propertyTypeName);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* Retrieve the value types associated with a content property.
+	* Retrieves the value types associated with a content property.
 	*
 	* @return MozuClient
 	*/
-	public static function propertyValueTypesClient($dataViewMode, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function propertyValueTypesClient($dataViewMode)
 	{
 		$url = PropertyTypeUrl::propertyValueTypesUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

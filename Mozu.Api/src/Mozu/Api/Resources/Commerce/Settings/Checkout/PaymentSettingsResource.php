@@ -23,20 +23,20 @@ use Mozu\Api\Headers;
 */
 class PaymentSettingsResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
 	/**
-	* 
+	* Retrieves the details of the third-party payment service workflows configured for the site.
 	*
 	* @return array|ExternalPaymentWorkflowDefinition 
 	*/
-	public function getThirdPartyPaymentWorkflows(Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getThirdPartyPaymentWorkflows()
 	{
-		$mozuClient = PaymentSettingsClient::getThirdPartyPaymentWorkflowsClient($userAuthTicket);
+		$mozuClient = PaymentSettingsClient::getThirdPartyPaymentWorkflowsClient();
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

@@ -15,7 +15,7 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 /**
-*	A descriptive container in a storefront hierarchy to organize collections of products. Only available at the site-level when multiple sites and site groups exist.
+*	A descriptive container in a storefront hierarchy to organize collections of products.
 */
 class Category
 {
@@ -52,7 +52,7 @@ class Category
 	public $sequence;
 
 	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
 

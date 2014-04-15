@@ -15,7 +15,7 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 /**
-*	The price of the product in the specified currency code (USD). This price can either be the sale price or the price for which the merchang intends to sell the product.
+*	The price of the product in the specified currency code (USD). This price can either be the sale price or the price for which the merchant intends to sell the product.
 */
 class ProductPrice
 {

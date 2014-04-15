@@ -18,60 +18,54 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* List of attributes that describe an order. An order attribute has content localized to the locale code of the site and several other properties that uniquely identify it to associate with an order.
+* Use the Order Attributes resource to define how an order attribute definition applies to a specific order.
 */
 class OrderAttributeClient {
 
 	/**
-	* Retrieves a list of order attributes.
+	* Retrieves a list of the attributes defined for the order specified in the request.
 	*
-	* @param string $orderId Identifier of the order whose order attributes are being retrieved.
+	* @param string $orderId Unique identifier of the order for which to retrieve a list of defined attributes.
 	* @return MozuClient
 	*/
-	public static function getOrderAttributesClient($orderId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getOrderAttributesClient($orderId)
 	{
 		$url = OrderAttributeUrl::getOrderAttributesUrl($orderId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* Create a new list of order attributes by providing the order ID.
+	* Applies a list of attributes to the order specified in the request and defines a value for each attribute in the request body.
 	*
-	* @param string $orderId Identifier of the order whose attributes are being created.
-	* @param array|OrderAttribute $orderAttributes The attribute properties to create to associate with the order ID.
+	* @param string $orderId Unique identifier of the order for which to assign the attributes.
+	* @param array|OrderAttribute $orderAttributes The list of attributes to associate with the order, and the properties of each attribute to define for the order.
 	* @return MozuClient
 	*/
-	public static function createOrderAttributesClient($orderAttributes, $orderId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function createOrderAttributesClient($orderAttributes, $orderId)
 	{
 		$url = OrderAttributeUrl::createOrderAttributesUrl($orderId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($orderAttributes);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* Update the properties of an order's attributes by providing the order ID and by removing any missing properties if removeMissing is set to true.
+	* Updates one or more properties of an attribute defined for the order specified in the request.
 	*
-	* @param string $orderId Identifier of the order whose order attributes are being updated.
+	* @param string $orderId Identifier of the order for which to update attributes.
 	* @param bool $removeMissing If true, the operation removes missing properties so that the updated order attributes will not show properties with a null value.
-	* @param array|OrderAttribute $orderAttributes List of order attributes being updated.
+	* @param array|OrderAttribute $orderAttributes List of order attributes to update, including the properties of each defined attribute in the list.
 	* @return MozuClient
 	*/
-	public static function updateOrderAttributesClient($orderAttributes, $orderId, $removeMissing =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function updateOrderAttributesClient($orderAttributes, $orderId, $removeMissing =  null)
 	{
 		$url = OrderAttributeUrl::updateOrderAttributesUrl($orderId, $removeMissing);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($orderAttributes);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

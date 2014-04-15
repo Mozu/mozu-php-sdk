@@ -6,7 +6,9 @@ use Mozu\Api\iApiContext;
 class ApiException extends \RuntimeException {
 	private $correlationId;
 	private $apiContext;
-	private $exceptionDetail;
+	private $additionalErrorData;
+	private $errorCode;
+	private $applicationName;
 	private $items;
 	
 	public function __construct($message,  $code) {
@@ -22,10 +24,7 @@ class ApiException extends \RuntimeException {
 		return $this->apiContext;
 	}	
 	
-	public function getExceptionDetail() {
-		return $this->exceptionDetail;
-	}
-	
+
 	public function getItems() {
 		return $this->items;
 	}
@@ -39,13 +38,38 @@ class ApiException extends \RuntimeException {
 		$this->apiContext = $apiContext;
 	}
 	
-	public function setExceptionDetail($exceptionDetail) {
-		$this->exceptionDetail = $exceptionDetail;
-	}
-	
 	public function setItems($items) {
 		$this->items = $items;
 	}
+	
+	public function getAdditionalErrorData() {
+		return $this->additionalErrorData;
+	}
+	
+	public function setAdditionalErrorData($additionalErrorData) {
+		$this->additionalErrorData = $additionalErrorData;
+		return $this;
+	}
+	
+	public function getErrorCode() {
+		return $this->errorCode;
+	}
+	
+	public function setErrorCode($errorCode) {
+		$this->errorCode = $errorCode;
+		return $this;
+	}
+	
+	public function getApplicationName() {
+		return $this->applicationName;
+	}
+	
+	public function setApplicationName($applicationName) {
+		$this->applicationName = $applicationName;
+		return $this;
+	}
+	
+	
 	
 }
 

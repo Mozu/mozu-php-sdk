@@ -20,11 +20,11 @@ class CustomerAccountUrl  {
 	/**
 		* Get Resource Url for GetAccounts
 		* @param string $fields The fields to include in the response.
-		* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
+		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 		* @param bool $isAnonymous 
 		* @param int $pageSize 
-		* @param string $q 
-		* @param int $qLimit 
+		* @param string $q A list of customer account search terms to use in the query when searching across customer name and email. Separate multiple search terms with a space character.
+		* @param int $qLimit The maximum number of search results to return in the response. You can limit any range between 1-100.
 		* @param string $sortBy 
 		* @param int $startIndex 
 		* @return string Resource Url

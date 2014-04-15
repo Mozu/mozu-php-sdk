@@ -29,7 +29,10 @@ class PaymentInteraction
 	*/
 	public $checkNumber;
 
-		public $currencyCode;
+	/**
+	*3-letter ISO 4217 standard global currency code. Currently, only "USD" (US Dollar) is supported.
+	*/
+	public $currencyCode;
 
 	/**
 	*If required by the payment gateway, the authorization code of the transaction.
@@ -55,6 +58,8 @@ class PaymentInteraction
 	*Response code from the gateway associated with the payment interaction. For example, if the gateway returns "Not Authorized," an interaction for voiding the payment transaction would result.
 	*/
 	public $gatewayResponseCode;
+
+		public $gatewayResponseText;
 
 	/**
 	*Unique identifier of the gateway transaction associated with the payment interaction.
@@ -96,7 +101,10 @@ class PaymentInteraction
 	*/
 	public $orderId;
 
-		public $paymentEntryStatus;
+	/**
+	*The status of the payment prior to the interaction being performed, which enables manual rollback of previous transactions.
+	*/
+	public $paymentEntryStatus;
 
 	/**
 	*Unique identifier of the payment associated with this transaction.
@@ -109,12 +117,12 @@ class PaymentInteraction
 	public $paymentTransactionInteractionIdReference;
 
 	/**
-	*The status of this payment interaction. Possible values are "Success" or "Failure".
+	*The status of this payment interaction. Possible values are New, Authorized, Captured, Declined, Failed, Voided, Credited, CheckRequested, or RolledBack.
 	*/
 	public $status;
 
 	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
 

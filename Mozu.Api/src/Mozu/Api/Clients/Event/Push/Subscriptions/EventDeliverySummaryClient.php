@@ -29,13 +29,11 @@ class EventDeliverySummaryClient {
 	* @param string $subscriptionId 
 	* @return MozuClient
 	*/
-	public static function getDeliveryAttemptSummaryClient($subscriptionId, $id =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getDeliveryAttemptSummaryClient($subscriptionId, $id =  null)
 	{
 		$url = EventDeliverySummaryUrl::getDeliveryAttemptSummaryUrl($id, $subscriptionId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -50,13 +48,11 @@ class EventDeliverySummaryClient {
 	* @param string $subscriptionId 
 	* @return MozuClient
 	*/
-	public static function getDeliveryAttemptSummariesClient($subscriptionId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getDeliveryAttemptSummariesClient($subscriptionId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
 	{
 		$url = EventDeliverySummaryUrl::getDeliveryAttemptSummariesUrl($filter, $pageSize, $sortBy, $startIndex, $subscriptionId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

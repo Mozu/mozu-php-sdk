@@ -30,7 +30,7 @@ class AttributeTypeRule
 	public $attributeInputType;
 
 	/**
-	*Describes how an attribute will be used. Valid types are "Extra", "Option", and "Property"
+	*Describes how an attribute will be used. Valid types are "Extra", "Option", and "Property".
 	*/
 	public $attributeUsageType;
 

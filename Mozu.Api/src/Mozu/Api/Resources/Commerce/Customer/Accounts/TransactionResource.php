@@ -19,25 +19,25 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* 
+* Use the Customer Account Transactions resource to manage the transactions associated with a customer account.
 */
 class TransactionResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
 	/**
-	* 
+	* Retrieves a list of transactions associated with the customer account specified in the request.
 	*
-	* @param int $accountId 
+	* @param int $accountId Unique identifier of the customer account for which to retrieve transactions.
 	* @return array|Transaction 
 	*/
-	public function getTransactions($accountId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getTransactions($accountId)
 	{
-		$mozuClient = TransactionClient::getTransactionsClient($accountId, $userAuthTicket);
+		$mozuClient = TransactionClient::getTransactionsClient($accountId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -45,15 +45,15 @@ class TransactionResource {
 	}
 	
 	/**
-	* 
+	* Creates a new transaction for the customer account specified in the request.
 	*
-	* @param int $accountId 
-	* @param Transaction $transaction 
+	* @param int $accountId Unique identifier of the customer account.
+	* @param Transaction $transaction Properties of the transaction to create for the customer account.
 	* @return Transaction 
 	*/
-	public function addTransaction($transaction, $accountId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function addTransaction($transaction, $accountId)
 	{
-		$mozuClient = TransactionClient::addTransactionClient($transaction, $accountId, $userAuthTicket);
+		$mozuClient = TransactionClient::addTransactionClient($transaction, $accountId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -61,14 +61,14 @@ class TransactionResource {
 	}
 	
 	/**
-	* 
+	* Deletes a transaction from the customer account specified in the request.
 	*
-	* @param int $accountId 
-	* @param string $transactionId 
+	* @param int $accountId Unique identifier of the customer account from which to delete the transaction.
+	* @param string $transactionId Unique identifier of the transaction to delete.
 	*/
-	public function removeTransaction($accountId, $transactionId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function removeTransaction($accountId, $transactionId)
 	{
-		$mozuClient = TransactionClient::removeTransactionClient($accountId, $transactionId, $userAuthTicket);
+		$mozuClient = TransactionClient::removeTransactionClient($accountId, $transactionId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

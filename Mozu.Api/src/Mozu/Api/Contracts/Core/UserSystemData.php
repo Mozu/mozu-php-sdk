@@ -20,7 +20,7 @@ namespace Mozu\Api\Contracts\Core;
 class UserSystemData
 {
 	/**
-	*Date and time when the entity was created. UTC Date/Time.
+	*Date and time when the entity was created, represented in UTC Date/Time.
 	*/
 	public $createdOn;
 
@@ -30,7 +30,7 @@ class UserSystemData
 	public $failedLoginAttemptCount;
 
 	/**
-	*The date and time the initial login was unsuccessful. Each time a user attempts to authenticate and it fails, an update occurs on this field. System-supplied and read-only.
+	*The date and time the initial login was unsuccessful, which is system-supplied and read only. Each time user authentication fails, an update occurs on this field.
 	*/
 	public $firstFailedLoginAttemptOn;
 
@@ -65,7 +65,7 @@ class UserSystemData
 	public $remainingLoginAttempts;
 
 	/**
-	*Date and time when the entity was last updated. UTC Date/Time.
+	*Date and time when the entity was last updated, represented in UTC Date/Time.
 	*/
 	public $updatedOn;
 

@@ -14,13 +14,25 @@ namespace Mozu\Api\Contracts\ShippingRuntime;
 
 
 
+/**
+*	Properties of a shipping rate calculated for a line item in a shipment.
+*/
 class ShippingItemRate
 {
-		public $amount;
+	/**
+	*The calculated shipping amount for an item in a shipment.
+	*/
+	public $amount;
 
-		public $itemId;
+	/**
+	*Unique identifier of the item for which to calculate a shipping rate.
+	*/
+	public $itemId;
 
-		public $quantity;
+	/**
+	*The quantity of the line item for which to calculate shipping.
+	*/
+	public $quantity;
 
 }
 

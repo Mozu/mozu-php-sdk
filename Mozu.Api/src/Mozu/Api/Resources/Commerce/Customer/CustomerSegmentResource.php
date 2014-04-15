@@ -23,7 +23,7 @@ use Mozu\Api\Headers;
 */
 class CustomerSegmentResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -38,9 +38,9 @@ class CustomerSegmentResource {
 	* @param int $startIndex 
 	* @return CustomerSegmentCollection 
 	*/
-	public function getSegments($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getSegments($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
 	{
-		$mozuClient = CustomerSegmentClient::getSegmentsClient($startIndex, $pageSize, $sortBy, $filter, $userAuthTicket);
+		$mozuClient = CustomerSegmentClient::getSegmentsClient($startIndex, $pageSize, $sortBy, $filter);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -53,9 +53,9 @@ class CustomerSegmentResource {
 	* @param int $id 
 	* @return CustomerSegment 
 	*/
-	public function getSegment($id, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getSegment($id)
 	{
-		$mozuClient = CustomerSegmentClient::getSegmentClient($id, $userAuthTicket);
+		$mozuClient = CustomerSegmentClient::getSegmentClient($id);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -68,9 +68,9 @@ class CustomerSegmentResource {
 	* @param CustomerSegment $segment 
 	* @return CustomerSegment 
 	*/
-	public function addSegment($segment, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function addSegment($segment)
 	{
-		$mozuClient = CustomerSegmentClient::addSegmentClient($segment, $userAuthTicket);
+		$mozuClient = CustomerSegmentClient::addSegmentClient($segment);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -83,9 +83,9 @@ class CustomerSegmentResource {
 	* @param int $accountIds 
 	* @param int $id 
 	*/
-	public function addSegmentAccounts($accountIds, $id, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function addSegmentAccounts($accountIds, $id)
 	{
-		$mozuClient = CustomerSegmentClient::addSegmentAccountsClient($accountIds, $id, $userAuthTicket);
+		$mozuClient = CustomerSegmentClient::addSegmentAccountsClient($accountIds, $id);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 
@@ -98,9 +98,9 @@ class CustomerSegmentResource {
 	* @param CustomerSegment $segment 
 	* @return CustomerSegment 
 	*/
-	public function updateSegment($segment, $id, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function updateSegment($segment, $id)
 	{
-		$mozuClient = CustomerSegmentClient::updateSegmentClient($segment, $id, $userAuthTicket);
+		$mozuClient = CustomerSegmentClient::updateSegmentClient($segment, $id);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -112,9 +112,9 @@ class CustomerSegmentResource {
 	*
 	* @param int $id 
 	*/
-	public function deleteSegment($id, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function deleteSegment($id)
 	{
-		$mozuClient = CustomerSegmentClient::deleteSegmentClient($id, $userAuthTicket);
+		$mozuClient = CustomerSegmentClient::deleteSegmentClient($id);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 
@@ -126,9 +126,9 @@ class CustomerSegmentResource {
 	* @param int $accountIds 
 	* @param int $id 
 	*/
-	public function deleteSegmentAccounts($accountIds, $id, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function deleteSegmentAccounts($accountIds, $id)
 	{
-		$mozuClient = CustomerSegmentClient::deleteSegmentAccountsClient($accountIds, $id, $userAuthTicket);
+		$mozuClient = CustomerSegmentClient::deleteSegmentAccountsClient($accountIds, $id);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

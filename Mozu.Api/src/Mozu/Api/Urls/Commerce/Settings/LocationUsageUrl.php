@@ -30,7 +30,7 @@ class LocationUsageUrl  {
 	
 	/**
 		* Get Resource Url for GetLocationUsage
-		* @param string $code 
+		* @param string $code Code that identifies the location usage type, which is "DS" for direct ship, "SP" for in-store pickup, or "storeFinder" for store finder.
 		* @return string Resource Url
 	*/
 	public static function getLocationUsageUrl($code)
@@ -43,7 +43,7 @@ class LocationUsageUrl  {
 	
 	/**
 		* Get Resource Url for UpdateLocationUsage
-		* @param string $code 
+		* @param string $code Code that identifies the location usage type, which is "DS" for direct ship, "SP" for in-store pickup, or "storeFinder" for store finder.
 		* @return string Resource Url
 	*/
 	public static function updateLocationUsageUrl($code)

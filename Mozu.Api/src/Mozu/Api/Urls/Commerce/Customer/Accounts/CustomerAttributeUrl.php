@@ -55,7 +55,7 @@ class CustomerAttributeUrl  {
 	
 	/**
 		* Get Resource Url for AddAccountAttribute
-		* @param int $accountId 
+		* @param int $accountId Unique identifier of the customer account.
 		* @return string Resource Url
 	*/
 	public static function addAccountAttributeUrl($accountId)
@@ -69,15 +69,30 @@ class CustomerAttributeUrl  {
 	/**
 		* Get Resource Url for UpdateAccountAttribute
 		* @param int $accountId Identifier of the customer account associated with the attribute.
-		* @param bool $removeMissing If true, remove the items missing from the collection. If false, do not remove items missing from the collection.
+		* @param string $attributeFQN 
 		* @return string Resource Url
 	*/
-	public static function updateAccountAttributeUrl($accountId, $removeMissing)
+	public static function updateAccountAttributeUrl($accountId, $attributeFQN)
 	{
-		$url = "/api/commerce/customer/accounts/{accountId}/attributes?removeMissing={removeMissing}";
+		$url = "/api/commerce/customer/accounts/{accountId}/attributes/{attributeFQN}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
 		$url = $mozuUrl->formatUrl("accountId", $accountId);
-		$url = $mozuUrl->formatUrl("removeMissing", $removeMissing);
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for DeleteAccountAttribute
+		* @param int $accountId 
+		* @param string $attributeFQN 
+		* @return string Resource Url
+	*/
+	public static function deleteAccountAttributeUrl($accountId, $attributeFQN)
+	{
+		$url = "/api/commerce/customer/accounts/{accountId}/attributes/{attributeFQN}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
 		return $mozuUrl;
 	}
 	

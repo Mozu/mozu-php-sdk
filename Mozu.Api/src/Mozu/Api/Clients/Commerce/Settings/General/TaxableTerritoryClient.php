@@ -27,13 +27,11 @@ class TaxableTerritoryClient {
 	*
 	* @return MozuClient
 	*/
-	public static function getTaxableTerritoriesClient(Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getTaxableTerritoriesClient()
 	{
 		$url = TaxableTerritoryUrl::getTaxableTerritoriesUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -44,13 +42,11 @@ class TaxableTerritoryClient {
 	* @param TaxableTerritory $taxableTerritory Properties of the taxable territory to create.
 	* @return MozuClient
 	*/
-	public static function addTaxableTerritoryClient($taxableTerritory, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function addTaxableTerritoryClient($taxableTerritory)
 	{
 		$url = TaxableTerritoryUrl::addTaxableTerritoryUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($taxableTerritory);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -61,13 +57,11 @@ class TaxableTerritoryClient {
 	* @param array|TaxableTerritory $taxableterritories Properties of the taxable territories to update.
 	* @return MozuClient
 	*/
-	public static function updateTaxableTerritoriesClient($taxableterritories, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function updateTaxableTerritoriesClient($taxableterritories)
 	{
 		$url = TaxableTerritoryUrl::updateTaxableTerritoriesUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($taxableterritories);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

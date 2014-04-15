@@ -23,7 +23,7 @@ use Mozu\Api\Headers;
 */
 class CustomerAuthTicketResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -32,12 +32,26 @@ class CustomerAuthTicketResource {
 	/**
 	* 
 	*
+	* @return Stream 
+	*/
+	public function createAnonymousShopperAuthTicket()
+	{
+		$mozuClient = CustomerAuthTicketClient::createAnonymousShopperAuthTicketClient();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+	/**
+	* 
+	*
 	* @param CustomerUserAuthInfo $userAuthInfo 
 	* @return CustomerAuthTicket 
 	*/
-	public function createUserAuthTicket($userAuthInfo, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function createUserAuthTicket($userAuthInfo)
 	{
-		$mozuClient = CustomerAuthTicketClient::createUserAuthTicketClient($userAuthInfo, $userAuthTicket);
+		$mozuClient = CustomerAuthTicketClient::createUserAuthTicketClient($userAuthInfo);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -50,9 +64,9 @@ class CustomerAuthTicketResource {
 	* @param string $refreshToken 
 	* @return CustomerAuthTicket 
 	*/
-	public function refreshUserAuthTicket($refreshToken, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function refreshUserAuthTicket($refreshToken)
 	{
-		$mozuClient = CustomerAuthTicketClient::refreshUserAuthTicketClient($refreshToken, $userAuthTicket);
+		$mozuClient = CustomerAuthTicketClient::refreshUserAuthTicketClient($refreshToken);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

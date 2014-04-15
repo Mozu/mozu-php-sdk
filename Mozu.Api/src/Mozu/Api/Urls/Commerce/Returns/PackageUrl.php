@@ -19,8 +19,8 @@ class PackageUrl  {
 
 	/**
 		* Get Resource Url for GetPackage
-		* @param string $packageId 
-		* @param string $returnId 
+		* @param string $packageId Unique identifier of the return replacement package to retrieve.
+		* @param string $returnId Unique identifier of the return associated with the replacement package to retrieve.
 		* @return string Resource Url
 	*/
 	public static function getPackageUrl($packageId, $returnId)
@@ -34,8 +34,8 @@ class PackageUrl  {
 	
 	/**
 		* Get Resource Url for GetPackageLabel
-		* @param string $packageId 
-		* @param string $returnId 
+		* @param string $packageId Unique identifier of the return replacement package for which to retrieve the label.
+		* @param string $returnId Unique identifier of the return associated with the replacement package label to retrieve.
 		* @return string Resource Url
 	*/
 	public static function getPackageLabelUrl($packageId, $returnId)
@@ -49,7 +49,7 @@ class PackageUrl  {
 	
 	/**
 		* Get Resource Url for CreatePackage
-		* @param string $returnId 
+		* @param string $returnId Unique identifier of the return for which to create a replacement package.
 		* @return string Resource Url
 	*/
 	public static function createPackageUrl($returnId)
@@ -62,8 +62,8 @@ class PackageUrl  {
 	
 	/**
 		* Get Resource Url for UpdatePackage
-		* @param string $packageId 
-		* @param string $returnId 
+		* @param string $packageId Unique identifier of the return replacement package to update.
+		* @param string $returnId Unique identifier of the return associated with the replacement package to update.
 		* @return string Resource Url
 	*/
 	public static function updatePackageUrl($packageId, $returnId)
@@ -77,8 +77,8 @@ class PackageUrl  {
 	
 	/**
 		* Get Resource Url for DeletePackage
-		* @param string $packageId 
-		* @param string $returnId 
+		* @param string $packageId Unique identifier of the return replacement package to delete.
+		* @param string $returnId Unique identifier of the return associated with the replacement package to delete.
 		* @return string Resource Url
 	*/
 	public static function deletePackageUrl($packageId, $returnId)

@@ -20,17 +20,17 @@ namespace Mozu\Api\Contracts\Core;
 class UserProfile
 {
 	/**
-	*The email address of the specified user.
+	*The email address of the specified user or the email address associated with the specified entity.
 	*/
 	public $emailAddress;
 
 	/**
-	*The first name of the contact. Max length: 200.
+	*The first name of the contact. The maximum character length is 200.
 	*/
 	public $firstName;
 
 	/**
-	*The last name or surname of the contact. Max length: 200.
+	*The last name or surname of the contact. The maximum character length is 200.
 	*/
 	public $lastName;
 

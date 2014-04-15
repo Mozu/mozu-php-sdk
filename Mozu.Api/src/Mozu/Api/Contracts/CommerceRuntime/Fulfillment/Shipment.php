@@ -14,27 +14,60 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Fulfillment;
 
 
 
+/**
+*	Properties of a shipment used to ship order items to a shopper. A shipment can include any number of packages.
+*/
 class Shipment
 {
-		public $cost;
+	/**
+	*Total cost of shipping the shipment to the shopper.
+	*/
+	public $cost;
 
-		public $currencyCode;
+	/**
+	*3-letter ISO 4217 standard global currency code. Currently, only "USD" (US Dollar) is supported.
+	*/
+	public $currencyCode;
 
-		public $id;
+	/**
+	*Unique identifier of the shipment.
+	*/
+	public $id;
 
-		public $packageIds;
+	/**
+	*Array list of identifiers that represent the packages in this shipment.
+	*/
+	public $packageIds;
 
-		public $shippingMethodCode;
+	/**
+	*Code that identifies the service type method used to perform the shipment, such as UPS_GROUND.
+	*/
+	public $shippingMethodCode;
 
-		public $signatureRequired;
+	/**
+	*If true, a shopper signature is required to deliver this shipment.
+	*/
+	public $signatureRequired;
 
-		public $trackingNumber;
+	/**
+	*The shipping tracking number supplied by the shipping provider to track the shipment.
+	*/
+	public $trackingNumber;
 
-		public $auditInfo;
+	/**
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
+	*/
+	public $auditInfo;
 
-		public $destinationAddress;
+	/**
+	*The address to which to shipment will ship.
+	*/
+	public $destinationAddress;
 
-		public $originAddress;
+	/**
+	*The address from which the shipment will ship.
+	*/
+	public $originAddress;
 
 }
 

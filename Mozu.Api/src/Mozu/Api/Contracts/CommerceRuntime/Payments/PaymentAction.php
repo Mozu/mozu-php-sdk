@@ -29,14 +29,20 @@ class PaymentAction
 	*/
 	public $amount;
 
-		public $cancelUrl;
+	/**
+	*The URL provided to cancel payments submitted using PayPal Express or another non-gateway payment provider.
+	*/
+	public $cancelUrl;
 
 	/**
 	*If applicable, the check number associated with the payment action.
 	*/
 	public $checkNumber;
 
-		public $currencyCode;
+	/**
+	*3-letter ISO 4217 standard global currency code. Currently, only "USD" (US Dollar) is supported.
+	*/
+	public $currencyCode;
 
 	/**
 	*Date and time the payment gateway interaction was performed.
@@ -48,7 +54,10 @@ class PaymentAction
 	*/
 	public $referenceSourcePaymentId;
 
-		public $returnUrl;
+	/**
+	*The URL provided to redirect users who submit payments using PayPal Express or another non-gateway payment provider.
+	*/
+	public $returnUrl;
 
 	/**
 	*Properties of a manually performed interaction with the payment gateway.

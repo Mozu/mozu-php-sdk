@@ -14,15 +14,30 @@ namespace Mozu\Api\Contracts\AppDev;
 
 
 
+/**
+*	Metadata associated with a folder in a package of files for an application version.
+*/
 class FolderMetadata
 {
-		public $fullPath;
+	/**
+	*The directory of the file location of the folder in the package.
+	*/
+	public $fullPath;
 
-		public $name;
+	/**
+	*The name of the folder.
+	*/
+	public $name;
 
-		public $files;
+	/**
+	*Array list of files in the folder.
+	*/
+	public $files;
 
-		public $subFolders;
+	/**
+	*Array list of subfolders stored in this folder.
+	*/
+	public $subFolders;
 
 }
 

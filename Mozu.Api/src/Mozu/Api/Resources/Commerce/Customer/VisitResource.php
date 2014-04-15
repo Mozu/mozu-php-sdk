@@ -19,28 +19,28 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* 
+* Use the Visits resource to manage all visits a customer makes to a tenant's sites and measure the level of transactions a customer performs during a unique visit for customer account analytics. Companies can track customer visits by site (including online and in-person interactions), the transactions a customer performs during the visit, and the device type associated with the visit, if any.
 */
 class VisitResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
 	/**
-	* 
+	* Retrieves a list of customer visits according to any filter or sort criteria specified in the request.
 	*
-	* @param string $filter 
-	* @param int $pageSize 
-	* @param string $sortBy 
-	* @param int $startIndex 
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return VisitCollection 
 	*/
-	public function getVisits($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getVisits($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
 	{
-		$mozuClient = VisitClient::getVisitsClient($startIndex, $pageSize, $sortBy, $filter, $userAuthTicket);
+		$mozuClient = VisitClient::getVisitsClient($startIndex, $pageSize, $sortBy, $filter);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -48,14 +48,14 @@ class VisitResource {
 	}
 	
 	/**
-	* 
+	* Retrieves the details of the customer visit specified in the request.
 	*
-	* @param string $visitId 
+	* @param string $visitId Unique identifier of the customer visit to retrieve.
 	* @return Visit 
 	*/
-	public function getVisit($visitId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getVisit($visitId)
 	{
-		$mozuClient = VisitClient::getVisitClient($visitId, $userAuthTicket);
+		$mozuClient = VisitClient::getVisitClient($visitId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -63,14 +63,14 @@ class VisitResource {
 	}
 	
 	/**
-	* 
+	* Creates a new visit for the customer account specified in the request.
 	*
-	* @param Visit $visit 
+	* @param Visit $visit Properties of the visit to add to the customer account.
 	* @return Visit 
 	*/
-	public function addVisit($visit, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function addVisit($visit)
 	{
-		$mozuClient = VisitClient::addVisitClient($visit, $userAuthTicket);
+		$mozuClient = VisitClient::addVisitClient($visit);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -78,15 +78,15 @@ class VisitResource {
 	}
 	
 	/**
-	* 
+	* Updates one or more properties of a defined customer visit.
 	*
-	* @param string $visitId 
-	* @param Visit $visit 
+	* @param string $visitId Unique identifier of the customer visit to update.
+	* @param Visit $visit Properties of the customer visit to update.
 	* @return Visit 
 	*/
-	public function updateVisit($visit, $visitId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function updateVisit($visit, $visitId)
 	{
-		$mozuClient = VisitClient::updateVisitClient($visit, $visitId, $userAuthTicket);
+		$mozuClient = VisitClient::updateVisitClient($visit, $visitId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

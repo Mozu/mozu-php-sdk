@@ -19,23 +19,35 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Carts;
 */
 class CartItem
 {
-		public $discountedTotal;
+	/**
+	*The subtotal of the cart item including any applied discount calculations.
+	*/
+	public $discountedTotal;
 
 	/**
-	*The total amount discounted from an item.
+	*Estimated amount of discounts applied to the item in the cart, which is system-supplied and read-only.
 	*/
 	public $discountTotal;
 
-		public $extendedTotal;
+	/**
+	*Represents the total price of the cart item extended to the shopper. This begins with the Unit Price, then uses any of the following prices if they are defined, in the following order: Override Amount, Sale Amount, List Amount.
+	*/
+	public $extendedTotal;
 
 	/**
 	*The total amount of all fees incurred for the item.
 	*/
 	public $feeTotal;
 
-		public $fulfillmentLocationCode;
+	/**
+	*The location code associated with the location where this cart item will be fulfilled.
+	*/
+	public $fulfillmentLocationCode;
 
-		public $fulfillmentMethod;
+	/**
+	*The method used to fulfill this cart item, which is direct ship or in-store pickup.
+	*/
+	public $fulfillmentMethod;
 
 	/**
 	*Unique identifier of the cart item.
@@ -43,7 +55,7 @@ class CartItem
 	public $id;
 
 	/**
-	*If true, the item can be purchased or fulfilled at regular intervals, such as a monthly billing cycle. For example, digital or physical product subscriptions are recurring cart items.
+	*If true, the item can be purchased or fulfilled at regular intervals, such as a monthly billing cycle. For example, digital or physical product subscriptions are recurring cart items. This property is not used at this time and is reserved for future functionality.
 	*/
 	public $isRecurring;
 
@@ -58,7 +70,7 @@ class CartItem
 	public $itemTaxTotal;
 
 	/**
-	*"Language used for the entity. Currently, only ""en-US"" is supported."
+	*Language used for the entity. Currently, only "en-US" is supported.
 	*/
 	public $localeCode;
 
@@ -83,7 +95,7 @@ class CartItem
 	public $subtotal;
 
 	/**
-	*The amount of the item in the cart that is subject to tax. This amount typically represents the cart item subtotal before applied discounts.
+	*The amount of the item in the cart that is subject to tax.
 	*/
 	public $taxableTotal;
 
@@ -93,7 +105,7 @@ class CartItem
 	public $total;
 
 	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
 
@@ -103,12 +115,12 @@ class CartItem
 	public $product;
 
 	/**
-	*List of product-level discounts projected to apply to the cart at checkout.
+	*List of product-level discounts projected to apply to the cart item at checkout.
 	*/
 	public $productDiscounts;
 
 	/**
-	*List of shipping discounts projected to apply to the cart at checkout.
+	*List of shipping discounts projected to apply to the cart item at checkout.
 	*/
 	public $shippingDiscounts;
 

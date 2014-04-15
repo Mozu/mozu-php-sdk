@@ -23,7 +23,7 @@ use Mozu\Api\Headers;
 */
 class FacetResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -32,13 +32,13 @@ class FacetResource {
 	/**
 	* Retrieves the properties of facets that aid in indexing and searching.
 	*
-	* @param string $documentListName The document list associated with the facets are to retrieve.
+	* @param string $documentListName The document list associated with the facets to retrieve.
 	* @param string $propertyName The property name associated with the facets to retrieve.
 	* @return array|Facet 
 	*/
-	public function getFacets($dataViewMode, $documentListName, $propertyName, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getFacets($dataViewMode, $documentListName, $propertyName)
 	{
-		$mozuClient = FacetClient::getFacetsClient($dataViewMode, $documentListName, $propertyName, $userAuthTicket);
+		$mozuClient = FacetClient::getFacetsClient($dataViewMode, $documentListName, $propertyName);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

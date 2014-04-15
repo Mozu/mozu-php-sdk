@@ -14,11 +14,17 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Fulfillment;
 
 
 
+/**
+*	Properties of an item in an in-store pickup.
+*/
 class PickupItem
 {
 		public $productCode;
 
-		public $quantity;
+	/**
+	*The quantity of the item in the in-store pickup.
+	*/
+	public $quantity;
 
 }
 

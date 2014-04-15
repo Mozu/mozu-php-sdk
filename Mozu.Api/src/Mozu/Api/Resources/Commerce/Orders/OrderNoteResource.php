@@ -19,11 +19,11 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* Use this subresource to manage notes associated with an active order.
+* Use the Order Notes subresource to manage merchant-level notes associated with an active order.
 */
 class OrderNoteResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -32,12 +32,12 @@ class OrderNoteResource {
 	/**
 	* Retrieves a list of all notes for an order.
 	*
-	* @param string $orderId Unique identifier of the order whose notes are retrieved.
+	* @param string $orderId Unique identifier of the order.
 	* @return array|OrderNote 
 	*/
-	public function getOrderNotes($orderId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getOrderNotes($orderId)
 	{
-		$mozuClient = OrderNoteClient::getOrderNotesClient($orderId, $userAuthTicket);
+		$mozuClient = OrderNoteClient::getOrderNotesClient($orderId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -45,15 +45,15 @@ class OrderNoteResource {
 	}
 	
 	/**
-	* Retrieves a specific order note from an order.
+	* Retrieves the details of a specific order note.
 	*
-	* @param string $noteId Unique identifier of the note text to retrieve.
-	* @param string $orderId Unique identifier of the order note to retrieve.
+	* @param string $noteId Unique identifier of the order note to retrieve.
+	* @param string $orderId Unique identifier of the order associated with the note.
 	* @return OrderNote 
 	*/
-	public function getOrderNote($orderId, $noteId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getOrderNote($orderId, $noteId)
 	{
-		$mozuClient = OrderNoteClient::getOrderNoteClient($orderId, $noteId, $userAuthTicket);
+		$mozuClient = OrderNoteClient::getOrderNoteClient($orderId, $noteId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -61,15 +61,15 @@ class OrderNoteResource {
 	}
 	
 	/**
-	* Adds a note to the order. This is an internal note that the merchant can add to an order.
+	* Creates a new merchant note for the specified order.
 	*
-	* @param string $orderId Unique identifier of the order to add a note.
-	* @param OrderNote $orderNote The Unicode alphanumeric text contained in the note. Max length: 256 characters.
+	* @param string $orderId Unique identifier of the order for which to add a note.
+	* @param OrderNote $orderNote The alphanumeric text contained in the note. The maximum length is 256 characters.
 	* @return OrderNote 
 	*/
-	public function createOrderNote($orderNote, $orderId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function createOrderNote($orderNote, $orderId)
 	{
-		$mozuClient = OrderNoteClient::createOrderNoteClient($orderNote, $orderId, $userAuthTicket);
+		$mozuClient = OrderNoteClient::createOrderNoteClient($orderNote, $orderId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -77,16 +77,16 @@ class OrderNoteResource {
 	}
 	
 	/**
-	* Updates a specific order note for an order.
+	* Updates a specific note for an order.
 	*
-	* @param string $noteId Unique identifier of the note whose text is being updated.
-	* @param string $orderId Unique identifier of the order whose note is being updated.
-	* @param OrderNote $orderNote The Unicode alphanumeric text contained in the note.
+	* @param string $noteId Unique identifier of the order note.
+	* @param string $orderId Unique identifier of the order.
+	* @param OrderNote $orderNote The content of the order note. The maximum length is 256 characters.
 	* @return OrderNote 
 	*/
-	public function updateOrderNote($orderNote, $orderId, $noteId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function updateOrderNote($orderNote, $orderId, $noteId)
 	{
-		$mozuClient = OrderNoteClient::updateOrderNoteClient($orderNote, $orderId, $noteId, $userAuthTicket);
+		$mozuClient = OrderNoteClient::updateOrderNoteClient($orderNote, $orderId, $noteId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -94,14 +94,14 @@ class OrderNoteResource {
 	}
 	
 	/**
-	* Deletes a specific order note on an order.
+	* Deletes the specified order note.
 	*
-	* @param string $noteId Unique identifier of the note text to delete.
-	* @param string $orderId Unique identifier of the order note to delete.
+	* @param string $noteId Unique identifier of the order note to delete.
+	* @param string $orderId Unique identifier of the order associated with the note.
 	*/
-	public function deleteOrderNote($orderId, $noteId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function deleteOrderNote($orderId, $noteId)
 	{
-		$mozuClient = OrderNoteClient::deleteOrderNoteClient($orderId, $noteId, $userAuthTicket);
+		$mozuClient = OrderNoteClient::deleteOrderNoteClient($orderId, $noteId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

@@ -19,28 +19,28 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* 
+* Use the Channel Groups resource to manage groups of channels with common information.
 */
 class ChannelGroupResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
 	/**
-	* 
+	* Retrieves a list of defined channel groups according to any filter and sort criteria specified in the request.
 	*
-	* @param string $filter 
-	* @param int $pageSize 
-	* @param string $sortBy 
-	* @param int $startIndex 
+	* @param string $filter FilterSetAll
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return ChannelGroupCollection 
 	*/
-	public function getChannelGroups($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getChannelGroups($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
 	{
-		$mozuClient = ChannelGroupClient::getChannelGroupsClient($startIndex, $pageSize, $sortBy, $filter, $userAuthTicket);
+		$mozuClient = ChannelGroupClient::getChannelGroupsClient($startIndex, $pageSize, $sortBy, $filter);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -48,14 +48,14 @@ class ChannelGroupResource {
 	}
 	
 	/**
-	* 
+	* Retrieves the details of a defined channel group.
 	*
-	* @param string $code 
+	* @param string $code The code that uniquely identifies the channel group.
 	* @return ChannelGroup 
 	*/
-	public function getChannelGroup($code, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getChannelGroup($code)
 	{
-		$mozuClient = ChannelGroupClient::getChannelGroupClient($code, $userAuthTicket);
+		$mozuClient = ChannelGroupClient::getChannelGroupClient($code);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -63,14 +63,14 @@ class ChannelGroupResource {
 	}
 	
 	/**
-	* 
+	* Creates a new group of channels with common information.
 	*
-	* @param ChannelGroup $channelGroup 
+	* @param ChannelGroup $channelGroup Properties of the channel group to create.
 	* @return ChannelGroup 
 	*/
-	public function createChannelGroup($channelGroup, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function createChannelGroup($channelGroup)
 	{
-		$mozuClient = ChannelGroupClient::createChannelGroupClient($channelGroup, $userAuthTicket);
+		$mozuClient = ChannelGroupClient::createChannelGroupClient($channelGroup);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -78,15 +78,15 @@ class ChannelGroupResource {
 	}
 	
 	/**
-	* 
+	* Updates one or more properties of a defined channel group.
 	*
-	* @param string $code 
-	* @param ChannelGroup $channelGroup 
+	* @param string $code Code that identifies the channel group.
+	* @param ChannelGroup $channelGroup Properties of the channel group to update.
 	* @return ChannelGroup 
 	*/
-	public function updateChannelGroup($channelGroup, $code, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function updateChannelGroup($channelGroup, $code)
 	{
-		$mozuClient = ChannelGroupClient::updateChannelGroupClient($channelGroup, $code, $userAuthTicket);
+		$mozuClient = ChannelGroupClient::updateChannelGroupClient($channelGroup, $code);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -94,13 +94,13 @@ class ChannelGroupResource {
 	}
 	
 	/**
-	* 
+	* Deletes a defined group of channels, which removes the group association with each channel in the group but does not delete the channel definitions themselves.
 	*
-	* @param string $code 
+	* @param string $code User-defined code that uniqely identifies the channel group.
 	*/
-	public function deleteChannelGroup($code, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function deleteChannelGroup($code)
 	{
-		$mozuClient = ChannelGroupClient::deleteChannelGroupClient($code, $userAuthTicket);
+		$mozuClient = ChannelGroupClient::deleteChannelGroupClient($code);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

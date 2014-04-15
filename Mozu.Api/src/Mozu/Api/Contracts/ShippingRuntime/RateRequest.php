@@ -14,6 +14,9 @@ namespace Mozu\Api\Contracts\ShippingRuntime;
 
 
 
+/**
+*	Properties required to request a shipping rate calculation.
+*/
 class RateRequest
 {
 		public $carrierIds;

@@ -19,29 +19,29 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* 
+* Use the Product Location Inventory resource to manage the levels of active product inventory to maintain across defined locations at the product level.
 */
 class LocationInventoryResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
 	/**
-	* 
+	* Retrieves all locations for which a product has inventory defined and displays the inventory definition properties of each location.
 	*
-	* @param string $filter 
-	* @param int $pageSize 
-	* @param string $productCode 
-	* @param string $sortBy 
-	* @param int $startIndex 
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return LocationInventoryCollection 
 	*/
-	public function getLocationInventories($dataViewMode, $productCode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getLocationInventories($dataViewMode, $productCode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
 	{
-		$mozuClient = LocationInventoryClient::getLocationInventoriesClient($dataViewMode, $productCode, $startIndex, $pageSize, $sortBy, $filter, $userAuthTicket);
+		$mozuClient = LocationInventoryClient::getLocationInventoriesClient($dataViewMode, $productCode, $startIndex, $pageSize, $sortBy, $filter);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -49,15 +49,15 @@ class LocationInventoryResource {
 	}
 	
 	/**
-	* 
+	* Retrieves the details of the inventory of the product in the location specified in the request.
 	*
-	* @param string $locationCode 
+	* @param string $locationCode User-defined code that identifies the location.
 	* @param string $productCode 
 	* @return LocationInventory 
 	*/
-	public function getLocationInventory($dataViewMode, $productCode, $locationCode, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getLocationInventory($dataViewMode, $productCode, $locationCode)
 	{
-		$mozuClient = LocationInventoryClient::getLocationInventoryClient($dataViewMode, $productCode, $locationCode, $userAuthTicket);
+		$mozuClient = LocationInventoryClient::getLocationInventoryClient($dataViewMode, $productCode, $locationCode);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -65,15 +65,15 @@ class LocationInventoryResource {
 	}
 	
 	/**
-	* 
+	* Creates a new location inventory definition for the product code specified in the request.
 	*
-	* @param string $productCode 
-	* @param array|LocationInventory $locationInventoryList 
+	* @param string $productCode ProductCodeBase
+	* @param array|LocationInventory $locationInventoryList Array list of the location inventory definitions associated with the product code specified in the request. For each location, you must define the locationCode value and the stockOnHand value. All other properties in the array are system-supplied and read only.
 	* @return array|LocationInventory 
 	*/
-	public function addLocationInventory($dataViewMode, $locationInventoryList, $productCode, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function addLocationInventory($dataViewMode, $locationInventoryList, $productCode)
 	{
-		$mozuClient = LocationInventoryClient::addLocationInventoryClient($dataViewMode, $locationInventoryList, $productCode, $userAuthTicket);
+		$mozuClient = LocationInventoryClient::addLocationInventoryClient($dataViewMode, $locationInventoryList, $productCode);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -81,15 +81,15 @@ class LocationInventoryResource {
 	}
 	
 	/**
-	* 
+	* Updates the current level of stock at each location associated with the product code specified in the request.
 	*
-	* @param string $productCode 
+	* @param string $productCode The product code of the product for which to update active stock on hand inventory at a specified location.
 	* @param array|LocationInventoryAdjustment $locationInventoryAdjustments 
 	* @return array|LocationInventory 
 	*/
-	public function updateLocationInventory($dataViewMode, $locationInventoryAdjustments, $productCode, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function updateLocationInventory($dataViewMode, $locationInventoryAdjustments, $productCode)
 	{
-		$mozuClient = LocationInventoryClient::updateLocationInventoryClient($dataViewMode, $locationInventoryAdjustments, $productCode, $userAuthTicket);
+		$mozuClient = LocationInventoryClient::updateLocationInventoryClient($dataViewMode, $locationInventoryAdjustments, $productCode);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -97,14 +97,14 @@ class LocationInventoryResource {
 	}
 	
 	/**
-	* 
+	* Deletes the location inventory definition for the product code specified in the request.
 	*
-	* @param string $locationCode 
-	* @param string $productCode 
+	* @param string $locationCode The code that identifies the location for which to delete product inventory.
+	* @param string $productCode The product code for which to delete a location's inventory.
 	*/
-	public function deleteLocationInventory($dataViewMode, $productCode, $locationCode, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function deleteLocationInventory($dataViewMode, $productCode, $locationCode)
 	{
-		$mozuClient = LocationInventoryClient::deleteLocationInventoryClient($dataViewMode, $productCode, $locationCode, $userAuthTicket);
+		$mozuClient = LocationInventoryClient::deleteLocationInventoryClient($dataViewMode, $productCode, $locationCode);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

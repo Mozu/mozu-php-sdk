@@ -23,7 +23,7 @@ use Mozu\Api\Headers;
 */
 class CustomerSegmentResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -39,9 +39,9 @@ class CustomerSegmentResource {
 	* @param int $startIndex 
 	* @return CustomerSegmentCollection 
 	*/
-	public function getAccountSegments($accountId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getAccountSegments($accountId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
 	{
-		$mozuClient = CustomerSegmentClient::getAccountSegmentsClient($accountId, $startIndex, $pageSize, $sortBy, $filter, $userAuthTicket);
+		$mozuClient = CustomerSegmentClient::getAccountSegmentsClient($accountId, $startIndex, $pageSize, $sortBy, $filter);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

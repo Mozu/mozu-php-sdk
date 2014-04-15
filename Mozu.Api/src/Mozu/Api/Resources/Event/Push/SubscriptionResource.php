@@ -23,7 +23,7 @@ use Mozu\Api\Headers;
 */
 class SubscriptionResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -38,9 +38,9 @@ class SubscriptionResource {
 	* @param int $startIndex 
 	* @return SubscriptionCollection 
 	*/
-	public function getSubscriptions($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getSubscriptions($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
 	{
-		$mozuClient = SubscriptionClient::getSubscriptionsClient($startIndex, $pageSize, $sortBy, $filter, $userAuthTicket);
+		$mozuClient = SubscriptionClient::getSubscriptionsClient($startIndex, $pageSize, $sortBy, $filter);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

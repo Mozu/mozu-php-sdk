@@ -25,11 +25,14 @@ class PaymentSettings
 	public $payByMail;
 
 	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
 
-		public $externalPaymentWorkflowDefinitions;
+	/**
+	*The external payment workflwo definitions configured for the site's payment settings. At this time, only PayPal Express is supported.
+	*/
+	public $externalPaymentWorkflowDefinitions;
 
 	/**
 	*List of name and account information for a payment gateway. Additional payment gateway providers will be supported in future releases.

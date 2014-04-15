@@ -42,7 +42,7 @@ class Product
 	public $isPackagedStandAlone;
 
 	/**
-	*If true, the product can be purchased or fulfilled at regular intervals such as a monthly billing cycle or a digital or physical subscription.
+	*If true, the product can be purchased or fulfilled at regular intervals such as a monthly billing cycle or a digital or physical subscription. This property is reserved for future functionality and is system-supplied and read only.
 	*/
 	public $isRecurring;
 
@@ -64,11 +64,14 @@ class Product
 		public $masterCatalogId;
 
 	/**
-	*"Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+	*Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	*/
 	public $productCode;
 
-		public $productSequence;
+	/**
+	*Integer that represents the sequential order of the product.
+	*/
+	public $productSequence;
 
 	/**
 	*Identifier of the product type.
@@ -103,7 +106,7 @@ class Product
 	public $applicableDiscounts;
 
 	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
 
@@ -119,7 +122,10 @@ class Product
 	*/
 	public $extras;
 
-		public $inventoryInfo;
+	/**
+	*Properties of the inventory levels manages for the product.
+	*/
+	public $inventoryInfo;
 
 	/**
 	*The list of options set up in product admin.
@@ -150,14 +156,20 @@ class Product
 
 		public $pricingBehavior;
 
-		public $productInCatalogs;
+	/**
+	*Properties defined for a product as they appear in its associated catalogs.
+	*/
+	public $productInCatalogs;
 
 	/**
 	*The list of product properties to set in product admin.
 	*/
 	public $properties;
 
-		public $publishingInfo;
+	/**
+	*Properties of the product publishing settings for the associated product.
+	*/
+	public $publishingInfo;
 
 	/**
 	*search engine optimized product content.

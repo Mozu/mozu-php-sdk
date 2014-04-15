@@ -23,19 +23,17 @@ use Mozu\Api\Headers;
 class ShipmentClient {
 
 	/**
-	* 
+	* Retrieves the details of the order shipment specified in the request.
 	*
-	* @param string $orderId 
-	* @param string $shipmentId 
+	* @param string $orderId Unique identifier of the order associated with the shipment to retrieve.
+	* @param string $shipmentId Unique identifier of the shipment to retrieve.
 	* @return MozuClient
 	*/
-	public static function getShipmentClient($orderId, $shipmentId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getShipmentClient($orderId, $shipmentId)
 	{
 		$url = ShipmentUrl::getShipmentUrl($orderId, $shipmentId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -46,13 +44,11 @@ class ShipmentClient {
 	* @param string $orderId Unique identifier of the order for the available shipment methods being retrieved.
 	* @return MozuClient
 	*/
-	public static function getAvailableShipmentMethodsClient($orderId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getAvailableShipmentMethodsClient($orderId)
 	{
 		$url = ShipmentUrl::getAvailableShipmentMethodsUrl($orderId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -64,30 +60,26 @@ class ShipmentClient {
 	* @param array|string $packageIds List of unique identifiers for each package associated with this shipment. Not all packages must belong to the same shipment.
 	* @return MozuClient
 	*/
-	public static function createPackageShipmentsClient($packageIds, $orderId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function createPackageShipmentsClient($packageIds, $orderId)
 	{
 		$url = ShipmentUrl::createPackageShipmentsUrl($orderId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($packageIds);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* Cancels a shipment.
+	* Deletes the shipment specified in the request.
 	*
 	* @param string $orderId Unique identifier of the order to cancel shipment.
 	* @param string $shipmentId Unique identifier of the shipment to cancel.
 	*/
-	public static function deleteShipmentClient($orderId, $shipmentId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function deleteShipmentClient($orderId, $shipmentId)
 	{
 		$url = ShipmentUrl::deleteShipmentUrl($orderId, $shipmentId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

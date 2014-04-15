@@ -14,11 +14,20 @@ namespace Mozu\Api\Contracts\AdminUser;
 
 
 
+/**
+*	Properties of a developer account used to build a company's applications and themes.
+*/
 class DeveloperAccount
 {
-		public $id;
+	/**
+	*Unique identifier of the developer account.
+	*/
+	public $id;
 
-		public $name;
+	/**
+	*The name of the developer account.
+	*/
+	public $name;
 
 }
 

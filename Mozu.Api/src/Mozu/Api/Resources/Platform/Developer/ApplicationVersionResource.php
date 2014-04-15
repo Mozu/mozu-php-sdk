@@ -19,106 +19,119 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* 
+* Use the Applications resource to manage the applications associated with a developer account.
 */
 class ApplicationVersionResource {
 
+		private $apiContext;
+	public function __construct(ApiContext $apiContext) 
+	{
+		$this->apiContext = $apiContext;
+	}
+
 	/**
-	* 
+	* Retrieves the list of applications associated with the developer account scoped to the user claim specified in the request.
 	*
 	* @return ApplicationCollection 
 	*/
-	public function getAllApplications(Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getAllApplications()
 	{
-		$mozuClient = ApplicationVersionClient::getAllApplicationsClient($userAuthTicket);
+		$mozuClient = ApplicationVersionClient::getAllApplicationsClient();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
 	}
 	
 	/**
-	* 
+	* Retrieves the details of the application specified in the request. The application specified in the request must be associated with the developer account scoped to the user claim specified in the request header, otherwise the operation returns an error.
 	*
-	* @param int $applicationId 
+	* @param int $applicationId Unique identifier of the application.
 	* @return Application 
 	*/
-	public function getApplication($applicationId =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getApplication($applicationId =  null)
 	{
-		$mozuClient = ApplicationVersionClient::getApplicationClient($applicationId, $userAuthTicket);
+		$mozuClient = ApplicationVersionClient::getApplicationClient($applicationId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
 	}
 	
 	/**
-	* 
+	* Retrieves the details of a specific version of an application associated with the developer account scoped to the user claim specified in the request.
 	*
-	* @param int $applicationVersionId 
+	* @param int $applicationVersionId Unique identifier of the application version. Application version IDs are unique across all applications associated with a developer account.
 	* @return ApplicationVersion 
 	*/
-	public function getApplicationVersion($applicationVersionId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getApplicationVersion($applicationVersionId)
 	{
-		$mozuClient = ApplicationVersionClient::getApplicationVersionClient($applicationVersionId, $userAuthTicket);
+		$mozuClient = ApplicationVersionClient::getApplicationVersionClient($applicationVersionId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
 	}
 	
 	/**
-	* 
+	* Retrieves a list of the package definitions created for an application version, including all development packages and release packages. The application must be associated with the developer account scoped to the user claim specified in the request.
 	*
-	* @param int $applicationVersionId 
+	* @param int $applicationVersionId Unique identifier of the application version. Application version IDs are unique across all applications associated with a developer account.
 	* @return PackageCollection 
 	*/
-	public function getPackages($applicationVersionId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getPackages($applicationVersionId)
 	{
-		$mozuClient = ApplicationVersionClient::getPackagesClient($applicationVersionId, $userAuthTicket);
+		$mozuClient = ApplicationVersionClient::getPackagesClient($applicationVersionId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
 	}
 	
 	/**
-	* 
+	* Retrieves the details of a package definition associated with an application version. The application ust be associated with the developer account scoped to the user claim specified in the request. 
 	*
-	* @param int $applicationVersionId 
-	* @param int $packageId 
+	* @param int $applicationVersionId Unique identifier of the application version associated with the package. Application version IDs are unique across all applications associated with the developer account.
+	* @param int $packageId Unique identifier of the package to retrieve.
 	* @return Package 
 	*/
-	public function getPackage($applicationVersionId, $packageId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getPackage($applicationVersionId, $packageId)
 	{
-		$mozuClient = ApplicationVersionClient::getPackageClient($applicationVersionId, $packageId, $userAuthTicket);
+		$mozuClient = ApplicationVersionClient::getPackageClient($applicationVersionId, $packageId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
 	}
 	
 	/**
-	* 
+	* Retrieves the metadata for items in a package associated with an application version, including a list of all files and subfolders. The application must be associated with the developer account acoped to the user claim specified in the request.
 	*
-	* @param int $applicationVersionId 
-	* @param int $packageId 
+	* @param int $applicationVersionId Unique identifier of the application version. Application version IDs are unique across all applications associated with a developer account.
+	* @param int $packageId Unique identifier of the package.
 	* @return FolderMetadata 
 	*/
-	public function getPackageItemsMetadata($applicationVersionId, $packageId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getPackageItemsMetadata($applicationVersionId, $packageId)
 	{
-		$mozuClient = ApplicationVersionClient::getPackageItemsMetadataClient($applicationVersionId, $packageId, $userAuthTicket);
+		$mozuClient = ApplicationVersionClient::getPackageItemsMetadataClient($applicationVersionId, $packageId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
 	}
 	
 	/**
-	* 
+	* Retrieves the metadata of a file in a package for an application version. The application must be associated with the developer account scoped to the user claim specified in the request.
 	*
-	* @param int $applicationVersionId 
-	* @param string $itempath 
-	* @param int $packageId 
+	* @param int $applicationVersionId Unique identifier of the application version. Application version IDs are unique across all applications associated with a developer account.
+	* @param string $itempath Complete file directory location and name of the item in the package to retrieve metadata.
+	* @param int $packageId Unique identifier of the package.
 	* @return FileMetadata 
 	*/
-	public function getPackageItemMetadata($applicationVersionId, $packageId, $itempath, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getPackageItemMetadata($applicationVersionId, $packageId, $itempath)
 	{
-		$mozuClient = ApplicationVersionClient::getPackageItemMetadataClient($applicationVersionId, $packageId, $itempath, $userAuthTicket);
+		$mozuClient = ApplicationVersionClient::getPackageItemMetadataClient($applicationVersionId, $packageId, $itempath);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
@@ -131,24 +144,26 @@ class ApplicationVersionResource {
 	* @param int $packageId 
 	* @return Stream 
 	*/
-	public function getPackageFilesZip($applicationVersionId, $packageId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getPackageFilesZip($applicationVersionId, $packageId)
 	{
-		$mozuClient = ApplicationVersionClient::getPackageFilesZipClient($applicationVersionId, $packageId, $userAuthTicket);
+		$mozuClient = ApplicationVersionClient::getPackageFilesZipClient($applicationVersionId, $packageId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
 	}
 	
 	/**
-	* 
+	* Creates a new development or release package for the application version specified in the request.
 	*
-	* @param int $applicationVersionId 
-	* @param Package $package 
+	* @param int $applicationVersionId Unique identifier of the application version. Application version IDs are unique across all applications associated with the developer account.
+	* @param Package $package Properties of the development or release package to define.
 	* @return Package 
 	*/
-	public function addPackage($pkg, $applicationVersionId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function addPackage($pkg, $applicationVersionId)
 	{
-		$mozuClient = ApplicationVersionClient::addPackageClient($pkg, $applicationVersionId, $userAuthTicket);
+		$mozuClient = ApplicationVersionClient::addPackageClient($pkg, $applicationVersionId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
@@ -162,58 +177,62 @@ class ApplicationVersionResource {
 	* @param RenameInfo $renameInfo 
 	* @return FileMetadata 
 	*/
-	public function changePackageFileNameOrPath($renameInfo, $applicationVersionId, $packageId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function changePackageFileNameOrPath($renameInfo, $applicationVersionId, $packageId)
 	{
-		$mozuClient = ApplicationVersionClient::changePackageFileNameOrPathClient($renameInfo, $applicationVersionId, $packageId, $userAuthTicket);
+		$mozuClient = ApplicationVersionClient::changePackageFileNameOrPathClient($renameInfo, $applicationVersionId, $packageId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
 	}
 	
 	/**
-	* 
+	* Uploads a file to a defined package for an application version in the file location specified in the request.
 	*
-	* @param int $applicationVersionId 
-	* @param string $filepath 
-	* @param int $packageId 
-	* @param Stream $stream 
+	* @param int $applicationVersionId Unique identifier of the application version. Application version IDs are unique across all applications associated with a developer account.
+	* @param string $filepath The file location to which to add the package file.
+	* @param int $packageId Unique identifier of the package.
+	* @param Stream $stream The contents of the package file to upload, which requires a content-type value of "application/octet-stream" in the request header.
 	* @return FileMetadata 
 	*/
-	public function addPackageFile($stream, $applicationVersionId, $packageId, $filepath, $contentType= null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function addPackageFile($stream, $applicationVersionId, $packageId, $filepath, $contentType= null)
 	{
-		$mozuClient = ApplicationVersionClient::addPackageFileClient($stream, $applicationVersionId, $packageId, $filepath, $contentType, $userAuthTicket);
+		$mozuClient = ApplicationVersionClient::addPackageFileClient($stream, $applicationVersionId, $packageId, $filepath, $contentType);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
 	}
 	
 	/**
-	* 
+	* Updates one or more properties of a file in a package associated with an application version.
 	*
-	* @param int $applicationVersionId 
-	* @param string $filepath 
-	* @param int $packageId 
-	* @param Stream $stream 
+	* @param int $applicationVersionId Unique identifier of the application version. Application version IDs are unique across all applications associated with a developer account.
+	* @param string $filepath The location path and name that identifies the package file to update.
+	* @param int $packageId The unique identifier of the package.
+	* @param Stream $stream The contents of the package file to update, which requires a content-type value of "application/octet-stream" in the request header.
 	* @return FileMetadata 
 	*/
-	public function updatePackageFile($stream, $applicationVersionId, $packageId, $filepath, $contentType= null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function updatePackageFile($stream, $applicationVersionId, $packageId, $filepath, $contentType= null)
 	{
-		$mozuClient = ApplicationVersionClient::updatePackageFileClient($stream, $applicationVersionId, $packageId, $filepath, $contentType, $userAuthTicket);
+		$mozuClient = ApplicationVersionClient::updatePackageFileClient($stream, $applicationVersionId, $packageId, $filepath, $contentType);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
 	}
 	
 	/**
-	* 
+	* Deletes the specified file from a package associated with an application version.
 	*
-	* @param int $applicationVersionId 
-	* @param string $filepath 
-	* @param int $packageId 
+	* @param int $applicationVersionId Unique identifier of the application version.
+	* @param string $filepath The file path and name of the file location to delete from the package.
+	* @param int $packageId Unique identifier of the package.
 	*/
-	public function deletePackageFile($applicationVersionId, $packageId, $filepath, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function deletePackageFile($applicationVersionId, $packageId, $filepath)
 	{
-		$mozuClient = ApplicationVersionClient::deletePackageFileClient($applicationVersionId, $packageId, $filepath, $userAuthTicket);
+		$mozuClient = ApplicationVersionClient::deletePackageFileClient($applicationVersionId, $packageId, $filepath);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 
 	}

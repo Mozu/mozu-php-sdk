@@ -25,17 +25,15 @@ class FacetClient {
 	/**
 	* Retrieves the properties of facets that aid in indexing and searching.
 	*
-	* @param string $documentListName The document list associated with the facets are to retrieve.
+	* @param string $documentListName The document list associated with the facets to retrieve.
 	* @param string $propertyName The property name associated with the facets to retrieve.
 	* @return MozuClient
 	*/
-	public static function getFacetsClient($dataViewMode, $documentListName, $propertyName, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getFacetsClient($dataViewMode, $documentListName, $propertyName)
 	{
 		$url = FacetUrl::getFacetsUrl($documentListName, $propertyName);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

@@ -14,11 +14,20 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
+/**
+*	Describes the scope of the product publishing update, which can include individual product codes or all pending changes.
+*/
 class PublishingScope
 {
-		public $allPending;
+	/**
+	*If true, publish or discard all pending product changes in the master catalog.
+	*/
+	public $allPending;
 
-		public $productCodes;
+	/**
+	*Array list of product codes for each pending product change you want to publish or delete.
+	*/
+	public $productCodes;
 
 }
 

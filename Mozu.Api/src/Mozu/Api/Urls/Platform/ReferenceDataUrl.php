@@ -19,7 +19,7 @@ class ReferenceDataUrl  {
 
 	/**
 		* Get Resource Url for GetAddressSchema
-		* @param string $countryCode 2 letter geographic code representing the country for the physical or mailing address. Currently limited to the US.
+		* @param string $countryCode The 2-letter geographic code representing the country for the physical or mailing address. Currently limited to the US.
 		* @return string Resource Url
 	*/
 	public static function getAddressSchemaUrl($countryCode)
@@ -148,7 +148,7 @@ class ReferenceDataUrl  {
 	
 	/**
 		* Get Resource Url for GetUnitsOfMeasure
-		* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
+		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 		* @return string Resource Url
 	*/
 	public static function getUnitsOfMeasureUrl($filter)

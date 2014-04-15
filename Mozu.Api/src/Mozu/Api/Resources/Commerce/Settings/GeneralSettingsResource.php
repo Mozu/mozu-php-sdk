@@ -23,7 +23,7 @@ use Mozu\Api\Headers;
 */
 class GeneralSettingsResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -34,9 +34,9 @@ class GeneralSettingsResource {
 	*
 	* @return GeneralSettings 
 	*/
-	public function getGeneralSettings(Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getGeneralSettings()
 	{
-		$mozuClient = GeneralSettingsClient::getGeneralSettingsClient($userAuthTicket);
+		$mozuClient = GeneralSettingsClient::getGeneralSettingsClient();
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -49,9 +49,9 @@ class GeneralSettingsResource {
 	* @param GeneralSettings $generalSettings The properties of the site's general settings to update.
 	* @return GeneralSettings 
 	*/
-	public function updateGeneralSettings($generalSettings, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function updateGeneralSettings($generalSettings)
 	{
-		$mozuClient = GeneralSettingsClient::updateGeneralSettingsClient($generalSettings, $userAuthTicket);
+		$mozuClient = GeneralSettingsClient::updateGeneralSettingsClient($generalSettings);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

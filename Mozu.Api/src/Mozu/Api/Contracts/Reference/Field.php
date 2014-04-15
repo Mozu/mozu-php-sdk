@@ -15,7 +15,7 @@ namespace Mozu\Api\Contracts\Reference;
 
 
 /**
-*	An property that is a wrapper for additional properties pertaining to the schema such as the type, label, any associated data, an ID, and the order of the response.
+*	A property that is a wrapper for additional properties pertaining to the schema such as the type, label, any associated data, an ID, and the order of the response.
 */
 class Field
 {

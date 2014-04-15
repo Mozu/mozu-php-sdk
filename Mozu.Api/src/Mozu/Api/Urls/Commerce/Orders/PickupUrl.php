@@ -19,8 +19,8 @@ class PickupUrl  {
 
 	/**
 		* Get Resource Url for GetPickup
-		* @param string $orderId 
-		* @param string $pickupId 
+		* @param string $orderId Unique identifier of the order associated with the pickup.
+		* @param string $pickupId Unique identifier of the pickup to retrieve.
 		* @return string Resource Url
 	*/
 	public static function getPickupUrl($orderId, $pickupId)
@@ -34,8 +34,8 @@ class PickupUrl  {
 	
 	/**
 		* Get Resource Url for GetAvailablePickupFulfillmentActions
-		* @param string $orderId 
-		* @param string $pickupId 
+		* @param string $orderId Unique identifier of the order associated with the pickup.
+		* @param string $pickupId Unique identifier of the pickup for which to retrieve available actions.
 		* @return string Resource Url
 	*/
 	public static function getAvailablePickupFulfillmentActionsUrl($orderId, $pickupId)
@@ -49,7 +49,7 @@ class PickupUrl  {
 	
 	/**
 		* Get Resource Url for CreatePickup
-		* @param string $orderId 
+		* @param string $orderId Unique identifier of the order.
 		* @return string Resource Url
 	*/
 	public static function createPickupUrl($orderId)
@@ -62,8 +62,8 @@ class PickupUrl  {
 	
 	/**
 		* Get Resource Url for UpdatePickup
-		* @param string $orderId 
-		* @param string $pickupId 
+		* @param string $orderId Unique identifier of the order associated with the in-store pickup.
+		* @param string $pickupId Unique identifier of the pickup to update.
 		* @return string Resource Url
 	*/
 	public static function updatePickupUrl($orderId, $pickupId)
@@ -77,8 +77,8 @@ class PickupUrl  {
 	
 	/**
 		* Get Resource Url for DeletePickup
-		* @param string $orderId 
-		* @param string $pickupId 
+		* @param string $orderId Unique identifier of the order associated with the pickup.
+		* @param string $pickupId Unique identifier of the pickup to remove.
 		* @return string Resource Url
 	*/
 	public static function deletePickupUrl($orderId, $pickupId)

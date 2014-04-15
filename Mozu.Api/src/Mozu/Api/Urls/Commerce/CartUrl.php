@@ -19,7 +19,7 @@ class CartUrl  {
 
 	/**
 		* Get Resource Url for GetCart
-		* @param string $cartId Identifier of the cart being retrieved.
+		* @param string $cartId Identifier of the cart to retrieve.
 		* @return string Resource Url
 	*/
 	public static function getCartUrl($cartId)
@@ -91,7 +91,7 @@ class CartUrl  {
 	
 	/**
 		* Get Resource Url for DeleteCart
-		* @param string $cartId Identifier of the cart being deleted.
+		* @param string $cartId Identifier of the cart to delete.
 		* @return string Resource Url
 	*/
 	public static function deleteCartUrl($cartId)

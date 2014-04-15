@@ -20,12 +20,12 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class DiscountTarget
 {
 	/**
-	*If true, the target discount applies to all products sold on the storefront. Applies only if the discount type is "Product".
+	*If true, the target discount applies to all products sold on the storefront.
 	*/
 	public $includeAllProducts;
 
 	/**
-	*The type of target to which the discount applies, such as a product.
+	*The type of target to which the discount applies, such as a product or shipping.
 	*/
 	public $type;
 
@@ -34,9 +34,15 @@ class DiscountTarget
 	*/
 	public $categories;
 
-		public $excludedCategories;
+	/**
+	*Array list of categories to exclude for this discount.
+	*/
+	public $excludedCategories;
 
-		public $excludedProducts;
+	/**
+	*Array list of products to exclude for this discount.
+	*/
+	public $excludedProducts;
 
 	/**
 	*The products to which the discount can apply.

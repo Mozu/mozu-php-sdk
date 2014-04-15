@@ -19,24 +19,24 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* System messages for live carts to notify the shopper about a product price or inventory change. System-supplied and read-only. For example: Product price is reduced due to a buy one, get one 50% off (BOGO) sale. A message may appear if the product is out of stock during the cart shopping process.
+* Use the Cart Messages resource to retrieve messages for live carts that the system logs when a product's price or inventory level changes.
 */
 class ChangeMessageResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
 	/**
-	* Retrieves messages to and from the current shopper. These are messages supplied by the system to notify the shopper of price increases or decreases or product unavailability.
+	* Retrieves the messages associated with the current shopper's cart.
 	*
 	* @return CartChangeMessageCollection 
 	*/
-	public function getMessages(Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getMessages()
 	{
-		$mozuClient = ChangeMessageClient::getMessagesClient($userAuthTicket);
+		$mozuClient = ChangeMessageClient::getMessagesClient();
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -47,9 +47,9 @@ class ChangeMessageResource {
 	* Deletes all messages associated with the cart of the current shopper.
 	*
 	*/
-	public function removeAllMessages(Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function removeAllMessages()
 	{
-		$mozuClient = ChangeMessageClient::removeAllMessagesClient($userAuthTicket);
+		$mozuClient = ChangeMessageClient::removeAllMessagesClient();
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 
@@ -60,9 +60,9 @@ class ChangeMessageResource {
 	*
 	* @param string $messageId Identifier of the message to remove from the cart.
 	*/
-	public function removeMessage($messageId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function removeMessage($messageId)
 	{
-		$mozuClient = ChangeMessageClient::removeMessageClient($messageId, $userAuthTicket);
+		$mozuClient = ChangeMessageClient::removeMessageClient($messageId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

@@ -14,11 +14,20 @@ namespace Mozu\Api\Contracts\PaymentService;
 
 
 
+/**
+*	Properties of a supported credit card for the site's payment gateway.
+*/
 class SupportedCard
 {
-		public $friendlyName;
+	/**
+	*Company-defined friendly name that identifies the supported card.
+	*/
+	public $friendlyName;
 
-		public $type;
+	/**
+	*The card type of the supported payment card, such as Visa or Amex.
+	*/
+	public $type;
 
 }
 

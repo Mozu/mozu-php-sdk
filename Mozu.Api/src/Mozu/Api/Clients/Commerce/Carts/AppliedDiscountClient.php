@@ -29,13 +29,11 @@ class AppliedDiscountClient {
 	* @param string $couponCode 
 	* @return MozuClient
 	*/
-	public static function applyCouponClient($cartId, $couponCode, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function applyCouponClient($cartId, $couponCode)
 	{
 		$url = AppliedDiscountUrl::applyCouponUrl($cartId, $couponCode);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -46,13 +44,11 @@ class AppliedDiscountClient {
 	* @param string $cartId 
 	* @return MozuClient
 	*/
-	public static function removeCouponsClient($cartId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function removeCouponsClient($cartId)
 	{
 		$url = AppliedDiscountUrl::removeCouponsUrl($cartId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -64,13 +60,11 @@ class AppliedDiscountClient {
 	* @param string $couponCode 
 	* @return MozuClient
 	*/
-	public static function removeCouponClient($cartId, $couponCode, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function removeCouponClient($cartId, $couponCode)
 	{
 		$url = AppliedDiscountUrl::removeCouponUrl($cartId, $couponCode);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

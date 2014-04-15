@@ -19,7 +19,7 @@ class DeveloperAdminUserAuthTicketUrl  {
 
 	/**
 		* Get Resource Url for CreateDeveloperUserAuthTicket
-		* @param int $developerAccountId 
+		* @param int $developerAccountId Unique identifier of the developer account.
 		* @return string Resource Url
 	*/
 	public static function createDeveloperUserAuthTicketUrl($developerAccountId)
@@ -32,7 +32,7 @@ class DeveloperAdminUserAuthTicketUrl  {
 	
 	/**
 		* Get Resource Url for RefreshDeveloperAuthTicket
-		* @param int $developerAccountId 
+		* @param int $developerAccountId Unique identifier of the developer account.
 		* @return string Resource Url
 	*/
 	public static function refreshDeveloperAuthTicketUrl($developerAccountId)
@@ -45,7 +45,7 @@ class DeveloperAdminUserAuthTicketUrl  {
 	
 	/**
 		* Get Resource Url for DeleteUserAuthTicket
-		* @param string $refreshToken 
+		* @param string $refreshToken Refresh token string associated with the developer account authentication ticket.
 		* @return string Resource Url
 	*/
 	public static function deleteUserAuthTicketUrl($refreshToken)

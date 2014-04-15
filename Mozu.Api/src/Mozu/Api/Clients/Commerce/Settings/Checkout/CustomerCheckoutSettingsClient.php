@@ -27,13 +27,11 @@ class CustomerCheckoutSettingsClient {
 	*
 	* @return MozuClient
 	*/
-	public static function getCustomerCheckoutSettingsClient(Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getCustomerCheckoutSettingsClient()
 	{
 		$url = CustomerCheckoutSettingsUrl::getCustomerCheckoutSettingsUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -44,13 +42,11 @@ class CustomerCheckoutSettingsClient {
 	* @param CustomerCheckoutSettings $customerCheckoutSettings All the properties to update in the checkout settings.
 	* @return MozuClient
 	*/
-	public static function updateCustomerCheckoutSettingsClient($customerCheckoutSettings, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function updateCustomerCheckoutSettingsClient($customerCheckoutSettings)
 	{
 		$url = CustomerCheckoutSettingsUrl::updateCustomerCheckoutSettingsUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($customerCheckoutSettings);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

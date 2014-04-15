@@ -19,7 +19,7 @@ class ProductExtraUrl  {
 
 	/**
 		* Get Resource Url for GetExtras
-		* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 		* @return string Resource Url
 	*/
 	public static function getExtrasUrl($productCode)
@@ -32,8 +32,8 @@ class ProductExtraUrl  {
 	
 	/**
 		* Get Resource Url for GetExtra
-		* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-		* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 		* @return string Resource Url
 	*/
 	public static function getExtraUrl($attributeFQN, $productCode)
@@ -47,7 +47,7 @@ class ProductExtraUrl  {
 	
 	/**
 		* Get Resource Url for AddExtra
-		* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 		* @return string Resource Url
 	*/
 	public static function addExtraUrl($productCode)
@@ -60,8 +60,8 @@ class ProductExtraUrl  {
 	
 	/**
 		* Get Resource Url for UpdateExtra
-		* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-		* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 		* @return string Resource Url
 	*/
 	public static function updateExtraUrl($attributeFQN, $productCode)
@@ -75,8 +75,8 @@ class ProductExtraUrl  {
 	
 	/**
 		* Get Resource Url for DeleteExtra
-		* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-		* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 		* @return string Resource Url
 	*/
 	public static function deleteExtraUrl($attributeFQN, $productCode)

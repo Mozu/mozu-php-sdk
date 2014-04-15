@@ -19,7 +19,7 @@ class DiscountTargetUrl  {
 
 	/**
 		* Get Resource Url for GetDiscountTarget
-		* @param int $discountId 
+		* @param int $discountId Unique identifier of the discount. System-supplied and read only.
 		* @return string Resource Url
 	*/
 	public static function getDiscountTargetUrl($discountId)

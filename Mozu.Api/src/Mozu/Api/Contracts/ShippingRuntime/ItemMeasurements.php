@@ -14,17 +14,35 @@ namespace Mozu\Api\Contracts\ShippingRuntime;
 
 
 
+/**
+*	Measured weight and dimensions of the packaged item to be shipped.
+*/
 class ItemMeasurements
 {
-		public $girth;
+	/**
+	*Girth of the package in imperial units of feet and inches.
+	*/
+	public $girth;
 
-		public $height;
+	/**
+	*Height of the package in imperial units of feet and inches.
+	*/
+	public $height;
 
-		public $length;
+	/**
+	*Length of the package in imperial units of feet and inches.
+	*/
+	public $length;
 
-		public $weight;
+	/**
+	*Weight of the package in imperial units of pounds and ounces.
+	*/
+	public $weight;
 
-		public $width;
+	/**
+	*Width of the package in imperial units of feet and inches.
+	*/
+	public $width;
 
 }
 

@@ -41,7 +41,7 @@ class FacetUrl  {
 	*/
 	public static function getFacetCategoryListUrl($categoryId, $includeAvailable, $validate)
 	{
-		$url = "/api/commerce/catalog/admin/facets/category/{categoryId}?includAvaliable={includeAvailable}&validate={validate}";
+		$url = "/api/commerce/catalog/admin/facets/category/{categoryId}?includeAvaliable={includeAvailable}&validate={validate}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
 		$url = $mozuUrl->formatUrl("categoryId", $categoryId);
 		$url = $mozuUrl->formatUrl("includeAvailable", $includeAvailable);

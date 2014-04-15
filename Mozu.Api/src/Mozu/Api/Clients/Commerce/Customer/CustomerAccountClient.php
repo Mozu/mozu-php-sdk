@@ -18,7 +18,7 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* Create, view, update, and delete a contact in a customer account. A customer account may have multiple contacts for billing or shipping addresses. Each contact may also list any groups to which the contact belongs and whether the contact accepts marketing material such as newsletters or email offers.
+* Use the Customer Accounts resource to manage the components of shopper accounts, including attributes, contact information, company notes, and groups associated with the customer account.
 */
 class CustomerAccountClient {
 
@@ -26,22 +26,20 @@ class CustomerAccountClient {
 	* Retrieves a list of customer accounts.
 	*
 	* @param string $fields The fields to include in the response.
-	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 	* @param bool $isAnonymous 
 	* @param int $pageSize 
-	* @param string $q 
-	* @param int $qLimit 
+	* @param string $q A list of customer account search terms to use in the query when searching across customer name and email. Separate multiple search terms with a space character.
+	* @param int $qLimit The maximum number of search results to return in the response. You can limit any range between 1-100.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getAccountsClient($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $fields =  null, $q =  null, $qLimit =  null, $isAnonymous =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getAccountsClient($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $fields =  null, $q =  null, $qLimit =  null, $isAnonymous =  null)
 	{
 		$url = CustomerAccountUrl::getAccountsUrl($fields, $filter, $isAnonymous, $pageSize, $q, $qLimit, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -52,13 +50,11 @@ class CustomerAccountClient {
 	* @param int $accountId Unique identifier of the customer account to retrieve.
 	* @return MozuClient
 	*/
-	public static function getAccountClient($accountId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getAccountClient($accountId)
 	{
 		$url = CustomerAccountUrl::getAccountUrl($accountId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -69,30 +65,26 @@ class CustomerAccountClient {
 	* @param int $accountId 
 	* @return MozuClient
 	*/
-	public static function getLoginStateClient($accountId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getLoginStateClient($accountId)
 	{
 		$url = CustomerAccountUrl::getLoginStateUrl($accountId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* Creates a new customer account.
+	* Creates a new customer account based on the information specified in the request.
 	*
-	* @param CustomerAccount $account 
+	* @param CustomerAccount $account Properties of the customer account to update.
 	* @return MozuClient
 	*/
-	public static function addAccountClient($account, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function addAccountClient($account)
 	{
 		$url = CustomerAccountUrl::addAccountUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($account);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -103,13 +95,11 @@ class CustomerAccountClient {
 	* @param int $accountId 
 	* @param PasswordInfo $passwordInfo 
 	*/
-	public static function changePasswordClient($passwordInfo, $accountId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function changePasswordClient($passwordInfo, $accountId)
 	{
 		$url = CustomerAccountUrl::changePasswordUrl($accountId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($passwordInfo);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -121,13 +111,11 @@ class CustomerAccountClient {
 	* @param CustomerLoginInfo $customerAuthInfo 
 	* @return MozuClient
 	*/
-	public static function addLoginToExistingCustomerClient($customerAuthInfo, $accountId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function addLoginToExistingCustomerClient($customerAuthInfo, $accountId)
 	{
 		$url = CustomerAccountUrl::addLoginToExistingCustomerUrl($accountId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($customerAuthInfo);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -137,13 +125,11 @@ class CustomerAccountClient {
 	*
 	* @param int $accountId 
 	*/
-	public static function recomputeCustomerLifetimeValueClient($accountId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function recomputeCustomerLifetimeValueClient($accountId)
 	{
 		$url = CustomerAccountUrl::recomputeCustomerLifetimeValueUrl($accountId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -154,13 +140,11 @@ class CustomerAccountClient {
 	* @param int $accountId 
 	* @param bool $isLocked 
 	*/
-	public static function setLoginLockedClient($isLocked, $accountId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function setLoginLockedClient($isLocked, $accountId)
 	{
 		$url = CustomerAccountUrl::setLoginLockedUrl($accountId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($isLocked);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -171,13 +155,11 @@ class CustomerAccountClient {
 	* @param int $accountId 
 	* @param bool $isPasswordChangeRequired 
 	*/
-	public static function setPasswordChangeRequiredClient($isPasswordChangeRequired, $accountId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function setPasswordChangeRequiredClient($isPasswordChangeRequired, $accountId)
 	{
 		$url = CustomerAccountUrl::setPasswordChangeRequiredUrl($accountId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($isPasswordChangeRequired);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -188,13 +170,11 @@ class CustomerAccountClient {
 	* @param CustomerAccountAndAuthInfo $accountAndAuthInfo 
 	* @return MozuClient
 	*/
-	public static function addAccountAndLoginClient($accountAndAuthInfo, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function addAccountAndLoginClient($accountAndAuthInfo)
 	{
 		$url = CustomerAccountUrl::addAccountAndLoginUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($accountAndAuthInfo);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -205,13 +185,11 @@ class CustomerAccountClient {
 	* @param array|CustomerAccountAndAuthInfo $customers 
 	* @return MozuClient
 	*/
-	public static function addAccountsClient($customers, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function addAccountsClient($customers)
 	{
 		$url = CustomerAccountUrl::addAccountsUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($customers);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -222,13 +200,11 @@ class CustomerAccountClient {
 	* @param string $emailAddress 
 	* @return MozuClient
 	*/
-	public static function getLoginStateByEmailAddressClient($emailAddress, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getLoginStateByEmailAddressClient($emailAddress)
 	{
 		$url = CustomerAccountUrl::getLoginStateByEmailAddressUrl($emailAddress);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -239,13 +215,11 @@ class CustomerAccountClient {
 	* @param string $userName 
 	* @return MozuClient
 	*/
-	public static function getLoginStateByUserNameClient($userName, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getLoginStateByUserNameClient($userName)
 	{
 		$url = CustomerAccountUrl::getLoginStateByUserNameUrl($userName);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -255,13 +229,11 @@ class CustomerAccountClient {
 	*
 	* @param ResetPasswordInfo $resetPasswordInfo 
 	*/
-	public static function resetPasswordClient($resetPasswordInfo, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function resetPasswordClient($resetPasswordInfo)
 	{
 		$url = CustomerAccountUrl::resetPasswordUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($resetPasswordInfo);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -270,16 +242,14 @@ class CustomerAccountClient {
 	* Updates a customer account.
 	*
 	* @param int $accountId Unique identifier of the customer account.
-	* @param CustomerAccount $account 
+	* @param CustomerAccount $account Properties of the customer account to update.
 	* @return MozuClient
 	*/
-	public static function updateAccountClient($account, $accountId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function updateAccountClient($account, $accountId)
 	{
 		$url = CustomerAccountUrl::updateAccountUrl($accountId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($account);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -289,13 +259,11 @@ class CustomerAccountClient {
 	*
 	* @param int $accountId Unique identifier of the customer account to delete.
 	*/
-	public static function deleteAccountClient($accountId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function deleteAccountClient($accountId)
 	{
 		$url = CustomerAccountUrl::deleteAccountUrl($accountId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

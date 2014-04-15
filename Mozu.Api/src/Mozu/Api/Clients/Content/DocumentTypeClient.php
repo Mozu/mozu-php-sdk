@@ -29,13 +29,11 @@ class DocumentTypeClient {
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getDocumentTypesClient($dataViewMode, $pageSize =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getDocumentTypesClient($dataViewMode, $pageSize =  null, $startIndex =  null)
 	{
 		$url = DocumentTypeUrl::getDocumentTypesUrl($pageSize, $startIndex);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -46,13 +44,11 @@ class DocumentTypeClient {
 	* @param string $documentTypeName 
 	* @return MozuClient
 	*/
-	public static function getDocumentTypeClient($dataViewMode, $documentTypeName, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getDocumentTypeClient($dataViewMode, $documentTypeName)
 	{
 		$url = DocumentTypeUrl::getDocumentTypeUrl($documentTypeName);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

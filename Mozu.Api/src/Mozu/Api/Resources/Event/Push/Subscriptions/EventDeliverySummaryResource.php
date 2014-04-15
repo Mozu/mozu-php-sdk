@@ -23,7 +23,7 @@ use Mozu\Api\Headers;
 */
 class EventDeliverySummaryResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -36,9 +36,9 @@ class EventDeliverySummaryResource {
 	* @param string $subscriptionId 
 	* @return EventDeliverySummary 
 	*/
-	public function getDeliveryAttemptSummary($subscriptionId, $id =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getDeliveryAttemptSummary($subscriptionId, $id =  null)
 	{
-		$mozuClient = EventDeliverySummaryClient::getDeliveryAttemptSummaryClient($subscriptionId, $id, $userAuthTicket);
+		$mozuClient = EventDeliverySummaryClient::getDeliveryAttemptSummaryClient($subscriptionId, $id);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -55,9 +55,9 @@ class EventDeliverySummaryResource {
 	* @param string $subscriptionId 
 	* @return EventDeliverySummaryCollection 
 	*/
-	public function getDeliveryAttemptSummaries($subscriptionId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getDeliveryAttemptSummaries($subscriptionId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
 	{
-		$mozuClient = EventDeliverySummaryClient::getDeliveryAttemptSummariesClient($subscriptionId, $startIndex, $pageSize, $sortBy, $filter, $userAuthTicket);
+		$mozuClient = EventDeliverySummaryClient::getDeliveryAttemptSummariesClient($subscriptionId, $startIndex, $pageSize, $sortBy, $filter);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

@@ -26,7 +26,7 @@ class HttpHelper {
 				//var_dump ($e);
 				$resp = $e->getResponse()->getBody ( true );
 				$jsonResponse = json_decode ( $resp );
-				$message = (get_class($jsonResponse) == "stdClass" ? $jsonResponse->exceptionDetail->message : $e->getResponse()->getReasonPhrase());
+				$message = (get_class($jsonResponse) == "stdClass" ? $jsonResponse->message : $e->getResponse()->getReasonPhrase());
 				$apiException = new ApiException($message, $e->getResponse()->getStatusCode());
 				$header = (string)$e->getResponse()->getHeader("x-vol-correlation");
 				
@@ -35,7 +35,9 @@ class HttpHelper {
 				}
 				$apiException->setApiContext($apiContext);
 				if ($jsonResponse != null) {
-					$apiException->setExceptionDetail($jsonResponse->exceptionDetail);
+					$apiException->setAdditionalErrorData($jsonResponse->additionalErrorData);
+					$apiException->setErrorCode($jsonResponse->errorCode);
+					$apiException->setApplicationName($jsonResponse->applicationName);
 					$apiException->setItems($jsonResponse->items);
 				}
 				throw $apiException;

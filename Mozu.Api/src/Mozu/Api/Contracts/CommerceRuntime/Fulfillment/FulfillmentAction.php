@@ -14,13 +14,25 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Fulfillment;
 
 
 
+/**
+*	Properties of an action to perform when fulfilling an item in an order, whether through in-store pickup or direct shipping.
+*/
 class FulfillmentAction
 {
-		public $actionName;
+	/**
+	*The name of the fulfillment action to perform, which is "Ship" or "PickUp".
+	*/
+	public $actionName;
 
-		public $packageIds;
+	/**
+	*Array list of packages for which to perform the fulfillment action.
+	*/
+	public $packageIds;
 
-		public $pickupIds;
+	/**
+	*Array list of in-store pickups for which to perform the fulfillment action.
+	*/
+	public $pickupIds;
 
 }
 

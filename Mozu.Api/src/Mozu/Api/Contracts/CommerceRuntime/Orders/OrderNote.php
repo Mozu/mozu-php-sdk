@@ -15,7 +15,7 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Orders;
 
 
 /**
-*	For a customer, the order note could be a comment or a gift message. For a merchant, the order note is internal only for administrative purposes and not available to the customer.
+*	Properties of an order note for a merchant, which is internal only for administrative purposes and not available to the shopper.
 */
 class OrderNote
 {
@@ -30,7 +30,7 @@ class OrderNote
 	public $text;
 
 	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
 

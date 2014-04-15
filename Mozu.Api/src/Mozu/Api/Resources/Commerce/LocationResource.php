@@ -23,7 +23,7 @@ use Mozu\Api\Headers;
 */
 class LocationResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -35,9 +35,9 @@ class LocationResource {
 	* @param string $code 
 	* @return Location 
 	*/
-	public function getLocation($code, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getLocation($code)
 	{
-		$mozuClient = LocationClient::getLocationClient($code, $userAuthTicket);
+		$mozuClient = LocationClient::getLocationClient($code);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -51,9 +51,9 @@ class LocationResource {
 	* @param string $locationUsageType 
 	* @return Location 
 	*/
-	public function getLocationInUsageType($locationUsageType, $code, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getLocationInUsageType($locationUsageType, $code)
 	{
-		$mozuClient = LocationClient::getLocationInUsageTypeClient($locationUsageType, $code, $userAuthTicket);
+		$mozuClient = LocationClient::getLocationInUsageTypeClient($locationUsageType, $code);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -70,9 +70,9 @@ class LocationResource {
 	* @param int $startIndex 
 	* @return LocationCollection 
 	*/
-	public function getLocationsInUsageType($locationUsageType, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getLocationsInUsageType($locationUsageType, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
 	{
-		$mozuClient = LocationClient::getLocationsInUsageTypeClient($locationUsageType, $startIndex, $pageSize, $sortBy, $filter, $userAuthTicket);
+		$mozuClient = LocationClient::getLocationsInUsageTypeClient($locationUsageType, $startIndex, $pageSize, $sortBy, $filter);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -84,9 +84,9 @@ class LocationResource {
 	*
 	* @return Location 
 	*/
-	public function getDirectShipLocation(Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getDirectShipLocation()
 	{
-		$mozuClient = LocationClient::getDirectShipLocationClient($userAuthTicket);
+		$mozuClient = LocationClient::getDirectShipLocationClient();
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -99,9 +99,9 @@ class LocationResource {
 	* @param string $code 
 	* @return Location 
 	*/
-	public function getInStorePickupLocation($code, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getInStorePickupLocation($code)
 	{
-		$mozuClient = LocationClient::getInStorePickupLocationClient($code, $userAuthTicket);
+		$mozuClient = LocationClient::getInStorePickupLocationClient($code);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -117,9 +117,9 @@ class LocationResource {
 	* @param int $startIndex 
 	* @return LocationCollection 
 	*/
-	public function getInStorePickupLocations($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getInStorePickupLocations($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
 	{
-		$mozuClient = LocationClient::getInStorePickupLocationsClient($startIndex, $pageSize, $sortBy, $filter, $userAuthTicket);
+		$mozuClient = LocationClient::getInStorePickupLocationsClient($startIndex, $pageSize, $sortBy, $filter);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

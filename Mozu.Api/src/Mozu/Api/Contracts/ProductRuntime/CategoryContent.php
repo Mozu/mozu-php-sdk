@@ -54,7 +54,10 @@ class CategoryContent
 	*/
 	public $slug;
 
-		public $categoryImages;
+	/**
+	*Array list of image media associated with the product category.
+	*/
+	public $categoryImages;
 
 }
 

@@ -42,13 +42,19 @@ class ProductLocalizedImage
 	public $imageUrl;
 
 	/**
-	*"Language used for the entity. Currently, only ""en-US"" is supported."
+	*Language used for the entity. Currently, only "en-US" is supported.
 	*/
 	public $localeCode;
 
-		public $mediaType;
+	/**
+	*Type of media specification required to successfully render the image, video, or other content for the product.
+	*/
+	public $mediaType;
 
-		public $sequence;
+	/**
+	*Integer that represents the order of the localized product image in the sequence.
+	*/
+	public $sequence;
 
 	/**
 	*The physical link or URL of the product video. The physical path name is set in the language specified by the LocaleCode.

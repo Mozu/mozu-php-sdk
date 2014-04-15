@@ -19,7 +19,7 @@ class ProductPropertyUrl  {
 
 	/**
 		* Get Resource Url for GetProperties
-		* @param string $productCode Identifies the product for which a list of properties is being retrieved.
+		* @param string $productCode 
 		* @return string Resource Url
 	*/
 	public static function getPropertiesUrl($productCode)
@@ -32,8 +32,8 @@ class ProductPropertyUrl  {
 	
 	/**
 		* Get Resource Url for GetProperty
-		* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-		* @param string $productCode Identifies the product for which a single property is being retrieved.
+		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+		* @param string $productCode 
 		* @return string Resource Url
 	*/
 	public static function getPropertyUrl($attributeFQN, $productCode)
@@ -47,7 +47,7 @@ class ProductPropertyUrl  {
 	
 	/**
 		* Get Resource Url for AddProperty
-		* @param string $productCode The merchant-created code that uniquely identifies the product such as a SKU or item number. Identifies the product for which a new property is created.
+		* @param string $productCode 
 		* @return string Resource Url
 	*/
 	public static function addPropertyUrl($productCode)
@@ -60,8 +60,8 @@ class ProductPropertyUrl  {
 	
 	/**
 		* Get Resource Url for UpdateProperty
-		* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-		* @param string $productCode Identifies the product for which a list of properties is being updated.
+		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+		* @param string $productCode 
 		* @return string Resource Url
 	*/
 	public static function updatePropertyUrl($attributeFQN, $productCode)
@@ -75,8 +75,8 @@ class ProductPropertyUrl  {
 	
 	/**
 		* Get Resource Url for DeleteProperty
-		* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-		* @param string $productCode Identifies the product for which a new property is being deleted.
+		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+		* @param string $productCode 
 		* @return string Resource Url
 	*/
 	public static function deletePropertyUrl($attributeFQN, $productCode)

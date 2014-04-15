@@ -27,13 +27,11 @@ class CartItemClient {
 	*
 	* @return MozuClient
 	*/
-	public static function getCartItemsClient(Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getCartItemsClient()
 	{
 		$url = CartItemUrl::getCartItemsUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -44,98 +42,86 @@ class CartItemClient {
 	* @param string $cartItemId Identifier of the cart item to retrieve.
 	* @return MozuClient
 	*/
-	public static function getCartItemClient($cartItemId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getCartItemClient($cartItemId)
 	{
 		$url = CartItemUrl::getCartItemUrl($cartItemId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* Adds an item such as product to the current shopper's cart.
+	* Adds a product to the current shopper's cart.
 	*
 	* @param CartItem $cartItem All properties of the new cart item. The product code is required.
 	* @return MozuClient
 	*/
-	public static function addItemToCartClient($cartItem, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function addItemToCartClient($cartItem)
 	{
 		$url = CartItemUrl::addItemToCartUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($cartItem);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* Update properties of a specific cart item.
+	* Update the product or product quantity of an item in the current shopper's cart.
 	*
 	* @param string $cartItemId Identifier of the cart item to update.
 	* @param CartItem $cartItem The properties of the cart item to update.
 	* @return MozuClient
 	*/
-	public static function updateCartItemClient($cartItem, $cartItemId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function updateCartItemClient($cartItem, $cartItemId)
 	{
 		$url = CartItemUrl::updateCartItemUrl($cartItemId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($cartItem);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* Update the quantity of an individual cart item in the cart of a current shopper.
+	* Update the quantity of an individual cart item in the cart of the current shopper.
 	*
 	* @param string $cartItemId Identifier of the cart item to update quantity.
 	* @param int $quantity The number of cart items in the shopper's active cart.
 	* @return MozuClient
 	*/
-	public static function updateCartItemQuantityClient($cartItemId, $quantity, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function updateCartItemQuantityClient($cartItemId, $quantity)
 	{
 		$url = CartItemUrl::updateCartItemQuantityUrl($cartItemId, $quantity);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* Removes all cart items in the shopper's active cart.
+	* Removes all items in the current shopper's active cart.
 	*
 	* @return MozuClient
 	*/
-	public static function removeAllCartItemsClient(Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function removeAllCartItemsClient()
 	{
 		$url = CartItemUrl::removeAllCartItemsUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* Delete a specific cart item by providing the cart item ID.
+	* Deletes a specific cart item by providing the cart item ID.
 	*
 	* @param string $cartItemId Identifier of the cart item to delete.
 	*/
-	public static function deleteCartItemClient($cartItemId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function deleteCartItemClient($cartItemId)
 	{
 		$url = CartItemUrl::deleteCartItemUrl($cartItemId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

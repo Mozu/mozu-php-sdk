@@ -15,29 +15,29 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Payments;
 
 
 /**
-*	Properties of the billing information entered for a payment.
+*	Properties of the billing information entered for an order during checkout.
 */
 class BillingInfo
 {
 	/**
-	*If true, the customer's shipping address is the same as the customer's billing address.
+	*If true, the system overrides the customer's billing address information with the supplied fulfillment information. 
 	*/
 	public $isSameBillingShippingAddress;
 
 	/**
-	*The type of payment, such as credit card or check. Additional payment types such as PayPal will be supported in future releases.
+	*The type of payment, such as credit card, check, or PayPal Express. Additional payment types will be supported in future releases.
 	*/
 	public $paymentType;
 
 		public $storeCreditCode;
 
 	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
 
 	/**
-	*The cardholder's billing address.
+	*The cardholder's billing contact information, including addresses.
 	*/
 	public $billingContact;
 

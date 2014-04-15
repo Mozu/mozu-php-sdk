@@ -18,95 +18,85 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* Query, create, and update product options.
+* Use the Options resource to configure the option attributes and vocabulary values for an individual product associated with the product type that uses the option attribute. Options are used to generate variations of a product.
 */
 class ProductOptionClient {
 
 	/**
-	* Retrieves a list of options by providing the product type ID.
+	* Retrieves a list of all option attributes configured for the product specified in the request.
 	*
-	* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @return MozuClient
 	*/
-	public static function getOptionsClient($dataViewMode, $productCode, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getOptionsClient($dataViewMode, $productCode)
 	{
 		$url = ProductOptionUrl::getOptionsUrl($productCode);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* Retrieves the catalog option by providing the product type ID and the attribute's fully qualified name.
+	* Retrieves the details of an option attribute configuration for the specified product.
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-	* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @return MozuClient
 	*/
-	public static function getOptionClient($dataViewMode, $productCode, $attributeFQN, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getOptionClient($dataViewMode, $productCode, $attributeFQN)
 	{
 		$url = ProductOptionUrl::getOptionUrl($attributeFQN, $productCode);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* Adds or creates a product option.
+	* Configures an option attribute for the product specified in the request.
 	*
-	* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
-	* @param ProductOption $productOption The product option being added or created.
+	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+	* @param ProductOption $productOption Properties of the option attribute to define for the product.
 	* @return MozuClient
 	*/
-	public static function addOptionClient($dataViewMode, $productOption, $productCode, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function addOptionClient($dataViewMode, $productOption, $productCode)
 	{
 		$url = ProductOptionUrl::addOptionUrl($productCode);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($productOption)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* Updates a product option by providing the product type ID and the attribute's fully qualified name. There is also a request body to supply additional information.
+	* Updates one or more properties of an option attribute configured for a product.
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-	* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
-	* @param ProductOption $productOption The product option being updated.
+	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+	* @param ProductOption $productOption Properties of the product option attribute configuration to update.
 	* @return MozuClient
 	*/
-	public static function updateOptionClient($dataViewMode, $productOption, $productCode, $attributeFQN, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function updateOptionClient($dataViewMode, $productOption, $productCode, $attributeFQN)
 	{
 		$url = ProductOptionUrl::updateOptionUrl($attributeFQN, $productCode);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($productOption)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* Deletes the catalog option by providing the product type ID and the attribute's fully qualified name.
+	* Deletes the configuration of an option attribute for the product specified in the request.
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-	* @param string $productCode "Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	*/
-	public static function deleteOptionClient($dataViewMode, $productCode, $attributeFQN, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function deleteOptionClient($dataViewMode, $productCode, $attributeFQN)
 	{
 		$url = ProductOptionUrl::deleteOptionUrl($attributeFQN, $productCode);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

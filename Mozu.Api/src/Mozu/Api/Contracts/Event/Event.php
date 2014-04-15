@@ -15,7 +15,7 @@ namespace Mozu\Api\Contracts\Event;
 
 
 /**
-*	When a create, read, update, or delete happens on an order, product, discount, or category.
+*	Properties of an event the system creates each time a create, read, update, or delete operation is performed.
 */
 class Event
 {
@@ -24,7 +24,7 @@ class Event
 		public $correlationId;
 
 	/**
-	*The unique identifier of the entity that caused the event. For example, if the event is "ProductCreated", the entity ID value represents the product code of the product that was created.
+	*The unique identifier of the entity that caused the event. For example, if the event is "product.created", the entity ID value represents the product code of the product that was created.
 	*/
 	public $entityId;
 
@@ -53,7 +53,7 @@ class Event
 	public $topic;
 
 	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
 

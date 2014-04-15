@@ -23,7 +23,7 @@ use Mozu\Api\Headers;
 */
 class SiteShippingSettingsResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -34,9 +34,9 @@ class SiteShippingSettingsResource {
 	*
 	* @return SiteShippingSettings 
 	*/
-	public function getSiteShippingSettings(Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getSiteShippingSettings()
 	{
-		$mozuClient = SiteShippingSettingsClient::getSiteShippingSettingsClient($userAuthTicket);
+		$mozuClient = SiteShippingSettingsClient::getSiteShippingSettingsClient();
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

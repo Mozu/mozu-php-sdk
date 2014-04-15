@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\Location;
 
 
 
+/**
+*	Container for the label that describes the range of operating hours for a location.
+*/
 class Hours
 {
-		public $label;
+	/**
+	*Label that describes the range of operating hours for a location. For example - {"Label": "10:00 AM - 6:00 PM"}
+	*/
+	public $label;
 
 }
 

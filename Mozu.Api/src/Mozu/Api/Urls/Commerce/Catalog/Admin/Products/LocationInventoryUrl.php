@@ -19,11 +19,11 @@ class LocationInventoryUrl  {
 
 	/**
 		* Get Resource Url for GetLocationInventories
-		* @param string $filter 
-		* @param int $pageSize 
-		* @param string $productCode 
-		* @param string $sortBy 
-		* @param int $startIndex 
+		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+		* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
+		* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 		* @return string Resource Url
 	*/
 	public static function getLocationInventoriesUrl($filter, $pageSize, $productCode, $sortBy, $startIndex)
@@ -40,7 +40,7 @@ class LocationInventoryUrl  {
 	
 	/**
 		* Get Resource Url for GetLocationInventory
-		* @param string $locationCode 
+		* @param string $locationCode User-defined code that identifies the location.
 		* @param string $productCode 
 		* @return string Resource Url
 	*/
@@ -55,7 +55,7 @@ class LocationInventoryUrl  {
 	
 	/**
 		* Get Resource Url for AddLocationInventory
-		* @param string $productCode 
+		* @param string $productCode ProductCodeBase
 		* @return string Resource Url
 	*/
 	public static function addLocationInventoryUrl($productCode)
@@ -68,7 +68,7 @@ class LocationInventoryUrl  {
 	
 	/**
 		* Get Resource Url for UpdateLocationInventory
-		* @param string $productCode 
+		* @param string $productCode The product code of the product for which to update active stock on hand inventory at a specified location.
 		* @return string Resource Url
 	*/
 	public static function updateLocationInventoryUrl($productCode)
@@ -81,8 +81,8 @@ class LocationInventoryUrl  {
 	
 	/**
 		* Get Resource Url for DeleteLocationInventory
-		* @param string $locationCode 
-		* @param string $productCode 
+		* @param string $locationCode The code that identifies the location for which to delete product inventory.
+		* @param string $productCode The product code for which to delete a location's inventory.
 		* @return string Resource Url
 	*/
 	public static function deleteLocationInventoryUrl($locationCode, $productCode)

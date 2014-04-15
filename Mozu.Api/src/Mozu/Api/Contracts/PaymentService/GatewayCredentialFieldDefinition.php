@@ -14,16 +14,25 @@ namespace Mozu\Api\Contracts\PaymentService;
 
 
 
+/**
+*	Properties of the credential fields associated with the payment gateway.
+*/
 class GatewayCredentialFieldDefinition
 {
 	/**
-	****Always private and should not be published.*** Previous ApiRefId "Mozu.PaymentService.Contracts.GatewayCredentialFieldDefinition.AdminDisplayOrder"
+	*The sequential display order of the gateway in Mozu Admin.
 	*/
 	public $adminDisplayOrder;
 
-		public $displayName;
+	/**
+	*The name that displays for the payment gateway.
+	*/
+	public $displayName;
 
-		public $name;
+	/**
+	*The localizable name of the payment gateway.
+	*/
+	public $name;
 
 		public $volusionStoreName;
 

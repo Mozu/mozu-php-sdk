@@ -14,53 +14,125 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Wishlists;
 
 
 
+/**
+*	Properties of an item in a shopper wish list.
+*/
 class WishlistItem
 {
-		public $comments;
+	/**
+	*Shopper-entered comments for an item in a wish list.
+	*/
+	public $comments;
 
-		public $discountedTotal;
+	/**
+	*The subtotal of the wishlist item including any applied discount calculations. This property value is not calculated at this time and is reserved for future functionality.
+	*/
+	public $discountedTotal;
 
-		public $discountTotal;
+	/**
+	*Estimated amount of discounts applied to the item in the wish list, which is system-supplied and read-only.                      This property value is not calculated at this time and is reserved for future functionality.
+	*/
+	public $discountTotal;
 
-		public $extendedTotal;
+	/**
+	*The extended total of an item in a wish list. This property value is not calculated at this time and is reserved for future functionality.
+	*/
+	public $extendedTotal;
 
-		public $feeTotal;
+	/**
+	*The fee total of an item in a wish list. This property value is not calculated at this time and is reserved for future functionality.
+	*/
+	public $feeTotal;
 
-		public $id;
+	/**
+	*Unique identifier of an item in a shopper wish list.
+	*/
+	public $id;
 
-		public $isRecurring;
+	/**
+	*If true, the item in the wish list is a recurring purchase, such as a subscription. This property is reserved for future use and is system-supplied and read only.
+	*/
+	public $isRecurring;
 
-		public $isTaxable;
+	/**
+	*If true, the item in a wish list is subject to sales tax.
+	*/
+	public $isTaxable;
 
-		public $itemTaxTotal;
+	/**
+	*The total sales tax of the item in the wish list. This property value is not calculated at this time, and is reserved for future functionality.
+	*/
+	public $itemTaxTotal;
 
-		public $localeCode;
+	/**
+	*Language used for the entity. Currently, only "en-US" is supported.
+	*/
+	public $localeCode;
 
-		public $priorityType;
+	/**
+	*User-defined string that indicates the priority of an item in a wish list. Possible values are Lowest, Low, Medium, High, and Highest.
+	*/
+	public $priorityType;
 
-		public $purchasableStatusType;
+	/**
+	*The status of the item that indicates whether an item in a wish list can be purchased. Possible values are "Purchasable" which indicates the item can be purchased, "NotPurchasable" which indicates the item is out of stock or otherwise unavailable, or "Missing" which indicates the item has been deleted from the catalog since it was added to the wish list.
+	*/
+	public $purchasableStatusType;
 
-		public $quantity;
+	/**
+	*The quantity of an item in a shopper wish list.
+	*/
+	public $quantity;
 
-		public $shippingTaxTotal;
+	/**
+	*The total amount of tax levied against shipping charges for an item in a wish list. This property is not calculated at this time and is reserved for future functionality.
+	*/
+	public $shippingTaxTotal;
 
-		public $shippingTotal;
+	/**
+	*The total amount of shipping for an item in a wish list. This property is not calculated at this time and is reserved for future functionality.
+	*/
+	public $shippingTotal;
 
-		public $subtotal;
+	/**
+	*The subtotal of an item in a wish list. This property is not calculated at this time and is reserved for future functionality.
+	*/
+	public $subtotal;
 
-		public $taxableTotal;
+	/**
+	*The taxable total of an item in a wish list. This property is not calculated at this time and is reserved for future functionality.
+	*/
+	public $taxableTotal;
 
-		public $total;
+	/**
+	*The total of an item in a wish list. This property is not calculated at this time and is reserved for future functionality.
+	*/
+	public $total;
 
-		public $auditInfo;
+	/**
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
+	*/
+	public $auditInfo;
 
-		public $product;
+	/**
+	*The properties of the product associated with an item in a wish list.
+	*/
+	public $product;
 
-		public $productDiscounts;
+	/**
+	*Array of product discounts applicable to an item in a wish list. This property is not used at this time and is reserved for future functionality.
+	*/
+	public $productDiscounts;
 
-		public $shippingDiscounts;
+	/**
+	*Array of shipping discounts applicable for an item in a wish list. This property is not used at this time and is reserved for future functionality.
+	*/
+	public $shippingDiscounts;
 
-		public $unitPrice;
+	/**
+	*The unit price of an item in a wish list. This property is not calculated at this time and is reserved for future functionality.
+	*/
+	public $unitPrice;
 
 }
 

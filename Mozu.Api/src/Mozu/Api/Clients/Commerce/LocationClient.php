@@ -28,13 +28,11 @@ class LocationClient {
 	* @param string $code 
 	* @return MozuClient
 	*/
-	public static function getLocationClient($code, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getLocationClient($code)
 	{
 		$url = LocationUrl::getLocationUrl($code);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -46,13 +44,11 @@ class LocationClient {
 	* @param string $locationUsageType 
 	* @return MozuClient
 	*/
-	public static function getLocationInUsageTypeClient($locationUsageType, $code, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getLocationInUsageTypeClient($locationUsageType, $code)
 	{
 		$url = LocationUrl::getLocationInUsageTypeUrl($code, $locationUsageType);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -67,13 +63,11 @@ class LocationClient {
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getLocationsInUsageTypeClient($locationUsageType, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getLocationsInUsageTypeClient($locationUsageType, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
 	{
 		$url = LocationUrl::getLocationsInUsageTypeUrl($filter, $locationUsageType, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -83,13 +77,11 @@ class LocationClient {
 	*
 	* @return MozuClient
 	*/
-	public static function getDirectShipLocationClient(Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getDirectShipLocationClient()
 	{
 		$url = LocationUrl::getDirectShipLocationUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -100,13 +92,11 @@ class LocationClient {
 	* @param string $code 
 	* @return MozuClient
 	*/
-	public static function getInStorePickupLocationClient($code, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getInStorePickupLocationClient($code)
 	{
 		$url = LocationUrl::getInStorePickupLocationUrl($code);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -120,13 +110,11 @@ class LocationClient {
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getInStorePickupLocationsClient($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getInStorePickupLocationsClient($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
 	{
 		$url = LocationUrl::getInStorePickupLocationsUrl($filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

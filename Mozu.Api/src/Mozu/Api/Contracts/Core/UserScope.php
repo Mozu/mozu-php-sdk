@@ -15,7 +15,7 @@ namespace Mozu\Api\Contracts\Core;
 
 
 /**
-*	Properties of the scope in which a user operates, which represents a developer account or Mozu tenant.
+*	Properties of the scope in which a user operates, which represents a developer account or Mozu production tenant.
 */
 class UserScope
 {
@@ -24,10 +24,13 @@ class UserScope
 	*/
 	public $id;
 
-		public $name;
+	/**
+	*The name of the developer account or tenant.
+	*/
+	public $name;
 
 	/**
-	*The type of scope, which is a developer account or tenant.
+	*The type of scope, which is a developer account or production tenant.
 	*/
 	public $type;
 

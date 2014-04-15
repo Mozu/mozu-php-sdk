@@ -14,13 +14,25 @@ namespace Mozu\Api\Contracts\ShippingRuntime;
 
 
 
+/**
+*	Properties of a success/failure message notification associated with validating a shipping rate.
+*/
 class ShippingRateValidationMessage
 {
-		public $helpLink;
+	/**
+	*URL displayed with the shipping validation message that links to help information.
+	*/
+	public $helpLink;
 
-		public $message;
+	/**
+	*Content of the shipping rate validation message.
+	*/
+	public $message;
 
-		public $severity;
+	/**
+	*Severity level of the shipping rate validation failure.
+	*/
+	public $severity;
 
 }
 

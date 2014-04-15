@@ -22,7 +22,7 @@ class ChangeMessage
 		public $amount;
 
 	/**
-	*Date and time when the entity was created. UTC Date/Time.
+	*Date and time when the entity was created, represented in UTC Date/Time.
 	*/
 	public $createDate;
 

@@ -27,13 +27,11 @@ class CheckoutSettingsClient {
 	*
 	* @return MozuClient
 	*/
-	public static function getCheckoutSettingsClient(Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getCheckoutSettingsClient()
 	{
 		$url = CheckoutSettingsUrl::getCheckoutSettingsUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

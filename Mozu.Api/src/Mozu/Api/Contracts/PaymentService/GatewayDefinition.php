@@ -20,7 +20,7 @@ namespace Mozu\Api\Contracts\PaymentService;
 class GatewayDefinition
 {
 	/**
-	*2 letter geographic code representing the country for the physical or mailing address. Currently limited to the US.
+	*The 2-letter geographic code representing the country for the physical or mailing address. Currently limited to the US.
 	*/
 	public $countryCode;
 
@@ -29,7 +29,10 @@ class GatewayDefinition
 	*/
 	public $id;
 
-		public $integrationImplTypeName;
+	/**
+	*The implementing type name of the integration with the payment gateway.
+	*/
+	public $integrationImplTypeName;
 
 	/**
 	*Name of the payment gateway.
@@ -52,7 +55,7 @@ class GatewayDefinition
 	public $credentialDefinitions;
 
 	/**
-	****Always private and should not be published.***
+	*Definition of the preauthorization gateway.
 	*/
 	public $preAuthorizeDefinition;
 

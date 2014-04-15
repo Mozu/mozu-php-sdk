@@ -23,7 +23,7 @@ use Mozu\Api\Headers;
 */
 class DiscountTargetResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -32,12 +32,12 @@ class DiscountTargetResource {
 	/**
 	* Retrieves the discount target, that is which products, categories, or shipping methods are eligible for the discount.
 	*
-	* @param int $discountId 
+	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
 	* @return DiscountTarget 
 	*/
-	public function getDiscountTarget($dataViewMode, $discountId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getDiscountTarget($dataViewMode, $discountId)
 	{
-		$mozuClient = DiscountTargetClient::getDiscountTargetClient($dataViewMode, $discountId, $userAuthTicket);
+		$mozuClient = DiscountTargetClient::getDiscountTargetClient($dataViewMode, $discountId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -51,9 +51,9 @@ class DiscountTargetResource {
 	* @param DiscountTarget $discountTarget Properties of the discount target to modify. Required properties: Target.Type. Any unspecified properties are set to null and boolean variables to false.
 	* @return DiscountTarget 
 	*/
-	public function updateDiscountTarget($dataViewMode, $discountTarget, $discountId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function updateDiscountTarget($dataViewMode, $discountTarget, $discountId)
 	{
-		$mozuClient = DiscountTargetClient::updateDiscountTargetClient($dataViewMode, $discountTarget, $discountId, $userAuthTicket);
+		$mozuClient = DiscountTargetClient::updateDiscountTargetClient($dataViewMode, $discountTarget, $discountId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

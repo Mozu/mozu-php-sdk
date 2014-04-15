@@ -23,7 +23,7 @@ use Mozu\Api\Headers;
 */
 class CategoryResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -33,14 +33,14 @@ class CategoryResource {
 	* Retrieves a list of categories according to any specified filter criteria and sort options.
 	*
 	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product category search results by any of its properties, including its position in the category hierarchy. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return CategoryPagedCollection 
 	*/
-	public function getCategories($dataViewMode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getCategories($dataViewMode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
 	{
-		$mozuClient = CategoryClient::getCategoriesClient($dataViewMode, $startIndex, $pageSize, $sortBy, $filter, $userAuthTicket);
+		$mozuClient = CategoryClient::getCategoriesClient($dataViewMode, $startIndex, $pageSize, $sortBy, $filter);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -53,9 +53,9 @@ class CategoryResource {
 	* @param int $categoryId Unique identifier of the category to retrieve.
 	* @return Category 
 	*/
-	public function getCategory($dataViewMode, $categoryId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getCategory($dataViewMode, $categoryId)
 	{
-		$mozuClient = CategoryClient::getCategoryClient($dataViewMode, $categoryId, $userAuthTicket);
+		$mozuClient = CategoryClient::getCategoryClient($dataViewMode, $categoryId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -68,9 +68,9 @@ class CategoryResource {
 	* @param int $categoryId Unique identifier of the category whose subcategories are retrieved.
 	* @return CategoryCollection 
 	*/
-	public function getChildCategories($dataViewMode, $categoryId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getChildCategories($dataViewMode, $categoryId)
 	{
-		$mozuClient = CategoryClient::getChildCategoriesClient($dataViewMode, $categoryId, $userAuthTicket);
+		$mozuClient = CategoryClient::getChildCategoriesClient($dataViewMode, $categoryId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -83,9 +83,9 @@ class CategoryResource {
 	* @param Category $category Properties of the new category. Required properties: ParentCategoryID and Content.Name.
 	* @return Category 
 	*/
-	public function addCategory($dataViewMode, $category, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function addCategory($dataViewMode, $category)
 	{
-		$mozuClient = CategoryClient::addCategoryClient($dataViewMode, $category, $userAuthTicket);
+		$mozuClient = CategoryClient::addCategoryClient($dataViewMode, $category);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -100,9 +100,9 @@ class CategoryResource {
 	* @param Category $category Properties of the category to modify.
 	* @return Category 
 	*/
-	public function updateCategory($dataViewMode, $category, $categoryId, $cascadeVisibility =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function updateCategory($dataViewMode, $category, $categoryId, $cascadeVisibility =  null)
 	{
-		$mozuClient = CategoryClient::updateCategoryClient($dataViewMode, $category, $categoryId, $cascadeVisibility, $userAuthTicket);
+		$mozuClient = CategoryClient::updateCategoryClient($dataViewMode, $category, $categoryId, $cascadeVisibility);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -115,9 +115,9 @@ class CategoryResource {
 	* @param bool $cascadeDelete If true, any subcategories of a category are deleted when this category is deleted. Default: False.
 	* @param int $categoryId Unique identifier of the category to delete.
 	*/
-	public function deleteCategoryById($dataViewMode, $categoryId, $cascadeDelete =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function deleteCategoryById($dataViewMode, $categoryId, $cascadeDelete =  null)
 	{
-		$mozuClient = CategoryClient::deleteCategoryByIdClient($dataViewMode, $categoryId, $cascadeDelete, $userAuthTicket);
+		$mozuClient = CategoryClient::deleteCategoryByIdClient($dataViewMode, $categoryId, $cascadeDelete);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

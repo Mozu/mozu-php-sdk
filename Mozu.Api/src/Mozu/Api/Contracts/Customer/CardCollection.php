@@ -19,7 +19,10 @@ namespace Mozu\Api\Contracts\Customer;
 */
 class CardCollection
 {
-		public $totalCount;
+	/**
+	*The number of results listed in the query collection, represented by a signed 64-bit (8-byte) integer. This value is system-supplied and read-only.
+	*/
+	public $totalCount;
 
 	/**
 	*An array list of objects in the returned collection.

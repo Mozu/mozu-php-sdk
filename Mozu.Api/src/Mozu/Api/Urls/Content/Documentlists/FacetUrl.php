@@ -19,7 +19,7 @@ class FacetUrl  {
 
 	/**
 		* Get Resource Url for GetFacets
-		* @param string $documentListName The document list associated with the facets are to retrieve.
+		* @param string $documentListName The document list associated with the facets to retrieve.
 		* @param string $propertyName The property name associated with the facets to retrieve.
 		* @return string Resource Url
 	*/

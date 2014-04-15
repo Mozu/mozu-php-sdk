@@ -23,7 +23,7 @@ use Mozu\Api\Headers;
 */
 class DiscountResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -32,15 +32,15 @@ class DiscountResource {
 	/**
 	* Retrieves a list of discounts according to any specified filter criteria and sort options.
 	*
-	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return DiscountCollection 
 	*/
-	public function getDiscounts($dataViewMode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getDiscounts($dataViewMode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
 	{
-		$mozuClient = DiscountClient::getDiscountsClient($dataViewMode, $startIndex, $pageSize, $sortBy, $filter, $userAuthTicket);
+		$mozuClient = DiscountClient::getDiscountsClient($dataViewMode, $startIndex, $pageSize, $sortBy, $filter);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -53,9 +53,9 @@ class DiscountResource {
 	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
 	* @return Discount 
 	*/
-	public function getDiscount($dataViewMode, $discountId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getDiscount($dataViewMode, $discountId)
 	{
-		$mozuClient = DiscountClient::getDiscountClient($dataViewMode, $discountId, $userAuthTicket);
+		$mozuClient = DiscountClient::getDiscountClient($dataViewMode, $discountId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -68,9 +68,9 @@ class DiscountResource {
 	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
 	* @return DiscountLocalizedContent 
 	*/
-	public function getDiscountContent($dataViewMode, $discountId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getDiscountContent($dataViewMode, $discountId)
 	{
-		$mozuClient = DiscountClient::getDiscountContentClient($dataViewMode, $discountId, $userAuthTicket);
+		$mozuClient = DiscountClient::getDiscountContentClient($dataViewMode, $discountId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -82,9 +82,9 @@ class DiscountResource {
 	*
 	* @return string 
 	*/
-	public function generateRandomCoupon($dataViewMode, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function generateRandomCoupon($dataViewMode)
 	{
-		$mozuClient = DiscountClient::generateRandomCouponClient($dataViewMode, $userAuthTicket);
+		$mozuClient = DiscountClient::generateRandomCouponClient($dataViewMode);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -97,9 +97,9 @@ class DiscountResource {
 	* @param Discount $discount Properties of the discount to create. Required properties: Content.Name, AmountType, StartDate, and Target.Type.
 	* @return Discount 
 	*/
-	public function createDiscount($dataViewMode, $discount, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function createDiscount($dataViewMode, $discount)
 	{
-		$mozuClient = DiscountClient::createDiscountClient($dataViewMode, $discount, $userAuthTicket);
+		$mozuClient = DiscountClient::createDiscountClient($dataViewMode, $discount);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -113,9 +113,9 @@ class DiscountResource {
 	* @param Discount $discount Properties of the discount to update. Required properties: Content.Name, AmountType, StartDate, and Target.Type. Any unspecified properties are set to null and boolean variables are set to false.
 	* @return Discount 
 	*/
-	public function updateDiscount($dataViewMode, $discount, $discountId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function updateDiscount($dataViewMode, $discount, $discountId)
 	{
-		$mozuClient = DiscountClient::updateDiscountClient($dataViewMode, $discount, $discountId, $userAuthTicket);
+		$mozuClient = DiscountClient::updateDiscountClient($dataViewMode, $discount, $discountId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -129,9 +129,9 @@ class DiscountResource {
 	* @param DiscountLocalizedContent $content New Name and/or LocaleCode. Properties of the content to update. Required property: Name.
 	* @return DiscountLocalizedContent 
 	*/
-	public function updateDiscountContent($dataViewMode, $content, $discountId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function updateDiscountContent($dataViewMode, $content, $discountId)
 	{
-		$mozuClient = DiscountClient::updateDiscountContentClient($dataViewMode, $content, $discountId, $userAuthTicket);
+		$mozuClient = DiscountClient::updateDiscountContentClient($dataViewMode, $content, $discountId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -143,9 +143,9 @@ class DiscountResource {
 	*
 	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
 	*/
-	public function deleteDiscount($dataViewMode, $discountId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function deleteDiscount($dataViewMode, $discountId)
 	{
-		$mozuClient = DiscountClient::deleteDiscountClient($dataViewMode, $discountId, $userAuthTicket);
+		$mozuClient = DiscountClient::deleteDiscountClient($dataViewMode, $discountId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

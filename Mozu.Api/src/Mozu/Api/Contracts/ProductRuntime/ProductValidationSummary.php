@@ -31,7 +31,7 @@ class ProductValidationSummary
 		public $mfgPartNumber;
 
 	/**
-	*"Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+	*Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	*/
 	public $productCode;
 
@@ -66,7 +66,10 @@ class ProductValidationSummary
 	*/
 	public $image;
 
-		public $inventoryInfo;
+	/**
+	*Properties of the active inventory level of the associated product.
+	*/
+	public $inventoryInfo;
 
 	/**
 	*Dimensions of the packaged product.

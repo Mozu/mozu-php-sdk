@@ -29,13 +29,11 @@ class DocumentTreeClient {
 	* @param string $documentName The name of the document, which is unique within its folder.
 	* @return MozuClient
 	*/
-	public static function getTreeDocumentClient($dataViewMode, $documentListName, $documentName, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getTreeDocumentClient($dataViewMode, $documentListName, $documentName)
 	{
 		$url = DocumentTreeUrl::getTreeDocumentUrl($documentListName, $documentName);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -47,13 +45,11 @@ class DocumentTreeClient {
 	* @param string $documentName The name of the document, which is unique within its folder.
 	* @return MozuClient
 	*/
-	public static function getTreeDocumentContentClient($dataViewMode, $documentListName, $documentName, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getTreeDocumentContentClient($dataViewMode, $documentListName, $documentName)
 	{
 		$url = DocumentTreeUrl::getTreeDocumentContentUrl($documentListName, $documentName);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -65,13 +61,11 @@ class DocumentTreeClient {
 	* @param string $documentName The name of the document, which is unique within its folder.
 	* @param Stream $stream 
 	*/
-	public static function updateTreeDocumentContentClient($dataViewMode, $stream, $documentListName, $documentName, $contentType= null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function updateTreeDocumentContentClient($dataViewMode, $stream, $documentListName, $documentName, $contentType= null)
 	{
 		$url = DocumentTreeUrl::updateTreeDocumentContentUrl($documentListName, $documentName);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withStreamBody($stream)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)->withHeader(Headers::CONTENT_TYPE ,$contentType);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -83,13 +77,11 @@ class DocumentTreeClient {
 	* @param string $documentName The name of the document, which is unique within its folder.
 	* @param Stream $stream 
 	*/
-	public static function deleteTreeDocumentContentClient($dataViewMode, $stream, $documentListName, $documentName, $contentType= null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function deleteTreeDocumentContentClient($dataViewMode, $stream, $documentListName, $documentName, $contentType= null)
 	{
 		$url = DocumentTreeUrl::deleteTreeDocumentContentUrl($documentListName, $documentName);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withStreamBody($stream)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode)->withHeader(Headers::CONTENT_TYPE ,$contentType);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

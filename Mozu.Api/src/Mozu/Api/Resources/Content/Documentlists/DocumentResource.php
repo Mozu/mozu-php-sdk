@@ -23,22 +23,22 @@ use Mozu\Api\Headers;
 */
 class DocumentResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
 	/**
-	* Get a specific document within the specified document list by providing the document ID.
+	* Retrieves a specific document within the specified document list by providing the document ID.
 	*
 	* @param string $documentId Identifier of the document being retrieved.
 	* @param string $documentListName The name of the document list associated with the document to retrieve.
 	* @return Document 
 	*/
-	public function getDocument($dataViewMode, $documentListName, $documentId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getDocument($dataViewMode, $documentListName, $documentId)
 	{
-		$mozuClient = DocumentClient::getDocumentClient($dataViewMode, $documentListName, $documentId, $userAuthTicket);
+		$mozuClient = DocumentClient::getDocumentClient($dataViewMode, $documentListName, $documentId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -52,9 +52,9 @@ class DocumentResource {
 	* @param string $documentListName The name of the document list associated with the document.
 	* @return Stream 
 	*/
-	public function getDocumentContent($dataViewMode, $documentListName, $documentId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getDocumentContent($dataViewMode, $documentListName, $documentId)
 	{
-		$mozuClient = DocumentClient::getDocumentContentClient($dataViewMode, $documentListName, $documentId, $userAuthTicket);
+		$mozuClient = DocumentClient::getDocumentContentClient($dataViewMode, $documentListName, $documentId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -65,15 +65,15 @@ class DocumentResource {
 	* Retrieves a collection of documents according to any filter and sort criteria.
 	*
 	* @param string $documentListName The name of the document list.
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter a document's search results by any of its properties, including its name or folder path. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). <b>For example - "filter=Name+sw+Events"</b>
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
-	* @param string $sortBy "The property by which to sort results and whether the results appear in ascending (a-z) order, represented by 'ASC' or in descending (z-a) order, represented by 'DESC'. The sortBy parameter follows an available property. <b>For example: sortBy=productCode+asc</b>"
-	* @param int $startIndex "Used to create paged results from a query. Indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3."
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter a document's search results by any of its properties, including its name or folder path. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=Name+sw+Events"
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return DocumentCollection 
 	*/
-	public function getDocuments($dataViewMode, $documentListName, $filter =  null, $sortBy =  null, $pageSize =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getDocuments($dataViewMode, $documentListName, $filter =  null, $sortBy =  null, $pageSize =  null, $startIndex =  null)
 	{
-		$mozuClient = DocumentClient::getDocumentsClient($dataViewMode, $documentListName, $filter, $sortBy, $pageSize, $startIndex, $userAuthTicket);
+		$mozuClient = DocumentClient::getDocumentsClient($dataViewMode, $documentListName, $filter, $sortBy, $pageSize, $startIndex);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -87,9 +87,9 @@ class DocumentResource {
 	* @param Document $document The descriptive name of the newly created document.
 	* @return Document 
 	*/
-	public function createDocument($dataViewMode, $document, $documentListName, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function createDocument($dataViewMode, $document, $documentListName)
 	{
-		$mozuClient = DocumentClient::createDocumentClient($dataViewMode, $document, $documentListName, $userAuthTicket);
+		$mozuClient = DocumentClient::createDocumentClient($dataViewMode, $document, $documentListName);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -104,9 +104,9 @@ class DocumentResource {
 	* @param Document $document Properties of the document to update.
 	* @return Document 
 	*/
-	public function updateDocument($dataViewMode, $document, $documentListName, $documentId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function updateDocument($dataViewMode, $document, $documentListName, $documentId)
 	{
-		$mozuClient = DocumentClient::updateDocumentClient($dataViewMode, $document, $documentListName, $documentId, $userAuthTicket);
+		$mozuClient = DocumentClient::updateDocumentClient($dataViewMode, $document, $documentListName, $documentId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -120,23 +120,23 @@ class DocumentResource {
 	* @param string $documentListName The name of the document list associated with the document.
 	* @param Stream $stream 
 	*/
-	public function updateDocumentContent($dataViewMode, $stream, $documentListName, $documentId, $contentType= null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function updateDocumentContent($dataViewMode, $stream, $documentListName, $documentId, $contentType= null)
 	{
-		$mozuClient = DocumentClient::updateDocumentContentClient($dataViewMode, $stream, $documentListName, $documentId, $contentType, $userAuthTicket);
+		$mozuClient = DocumentClient::updateDocumentContentClient($dataViewMode, $stream, $documentListName, $documentId, $contentType);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 
 	}
 	
 	/**
-	* Deletes a specific document based on the specified documentId.
+	* Deletes a specific document based on the specified document ID.
 	*
 	* @param string $documentId Identifier of the document being deleted.
 	* @param string $documentListName The name of the document list associated with the document list being deleted.
 	*/
-	public function deleteDocument($dataViewMode, $documentListName, $documentId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function deleteDocument($dataViewMode, $documentListName, $documentId)
 	{
-		$mozuClient = DocumentClient::deleteDocumentClient($dataViewMode, $documentListName, $documentId, $userAuthTicket);
+		$mozuClient = DocumentClient::deleteDocumentClient($dataViewMode, $documentListName, $documentId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 
@@ -148,9 +148,9 @@ class DocumentResource {
 	* @param string $documentId Unique identifier of the document.
 	* @param string $documentListName The name of the document list associated with the document.
 	*/
-	public function deleteDocumentContent($dataViewMode, $documentListName, $documentId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function deleteDocumentContent($dataViewMode, $documentListName, $documentId)
 	{
-		$mozuClient = DocumentClient::deleteDocumentContentClient($dataViewMode, $documentListName, $documentId, $userAuthTicket);
+		$mozuClient = DocumentClient::deleteDocumentContentClient($dataViewMode, $documentListName, $documentId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

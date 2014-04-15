@@ -23,17 +23,15 @@ use Mozu\Api\Headers;
 class PaymentSettingsClient {
 
 	/**
-	* 
+	* Retrieves the details of the third-party payment service workflows configured for the site.
 	*
 	* @return MozuClient
 	*/
-	public static function getThirdPartyPaymentWorkflowsClient(Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getThirdPartyPaymentWorkflowsClient()
 	{
 		$url = PaymentSettingsUrl::getThirdPartyPaymentWorkflowsUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

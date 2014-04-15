@@ -23,6 +23,12 @@ use Mozu\Api\Headers;
 */
 class AuthTicketResource {
 
+		private $apiContext;
+	public function __construct(ApiContext $apiContext) 
+	{
+		$this->apiContext = $apiContext;
+	}
+
 	/**
 	* Generate an authentication ticket for an application.
 	*
@@ -32,6 +38,7 @@ class AuthTicketResource {
 	public function authenticateApp($appAuthInfo)
 	{
 		$mozuClient = AuthTicketClient::authenticateAppClient($appAuthInfo);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
@@ -46,6 +53,7 @@ class AuthTicketResource {
 	public function refreshAppAuthTicket($authTicketRequest)
 	{
 		$mozuClient = AuthTicketClient::refreshAppAuthTicketClient($authTicketRequest);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
@@ -59,6 +67,7 @@ class AuthTicketResource {
 	public function deleteAppAuthTicket($refreshToken)
 	{
 		$mozuClient = AuthTicketClient::deleteAppAuthTicketClient($refreshToken);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 
 	}

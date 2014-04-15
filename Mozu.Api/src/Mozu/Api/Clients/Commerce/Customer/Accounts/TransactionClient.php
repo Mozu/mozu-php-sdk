@@ -18,58 +18,52 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* 
+* Use the Customer Account Transactions resource to manage the transactions associated with a customer account.
 */
 class TransactionClient {
 
 	/**
-	* 
+	* Retrieves a list of transactions associated with the customer account specified in the request.
 	*
-	* @param int $accountId 
+	* @param int $accountId Unique identifier of the customer account for which to retrieve transactions.
 	* @return MozuClient
 	*/
-	public static function getTransactionsClient($accountId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getTransactionsClient($accountId)
 	{
 		$url = TransactionUrl::getTransactionsUrl($accountId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Creates a new transaction for the customer account specified in the request.
 	*
-	* @param int $accountId 
-	* @param Transaction $transaction 
+	* @param int $accountId Unique identifier of the customer account.
+	* @param Transaction $transaction Properties of the transaction to create for the customer account.
 	* @return MozuClient
 	*/
-	public static function addTransactionClient($transaction, $accountId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function addTransactionClient($transaction, $accountId)
 	{
 		$url = TransactionUrl::addTransactionUrl($accountId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($transaction);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Deletes a transaction from the customer account specified in the request.
 	*
-	* @param int $accountId 
-	* @param string $transactionId 
+	* @param int $accountId Unique identifier of the customer account from which to delete the transaction.
+	* @param string $transactionId Unique identifier of the transaction to delete.
 	*/
-	public static function removeTransactionClient($accountId, $transactionId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function removeTransactionClient($accountId, $transactionId)
 	{
 		$url = TransactionUrl::removeTransactionUrl($accountId, $transactionId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

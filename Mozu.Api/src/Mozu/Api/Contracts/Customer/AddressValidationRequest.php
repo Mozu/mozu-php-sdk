@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\Customer;
 
 
 
+/**
+*	Properties of the address to validate.
+*/
 class AddressValidationRequest
 {
-		public $address;
+	/**
+	*Properties of the address to validate.
+	*/
+	public $address;
 
 }
 

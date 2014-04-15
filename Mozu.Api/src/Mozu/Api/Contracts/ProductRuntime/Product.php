@@ -15,12 +15,12 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 /**
-*	Properties of the product that appears on the site storefront.
+*	Properties of the product that appears on a designated storefront.
 */
 class Product
 {
 	/**
-	*Date and time when the entity was created. UTC Date/Time.
+	*Date and time when the entity was created, represented in UTC Date/Time.
 	*/
 	public $createDate;
 
@@ -45,12 +45,17 @@ class Product
 
 		public $mfgPartNumber;
 
+		public $mfgPartNumbers;
+
 	/**
-	*"Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only."
+	*Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	*/
 	public $productCode;
 
-		public $productSequence;
+	/**
+	*Integer that represents the sequential order of the product.
+	*/
+	public $productSequence;
 
 	/**
 	*A product type is like a product template that can be reused.
@@ -59,14 +64,22 @@ class Product
 
 		public $productUsage;
 
-		public $publishState;
+	/**
+	*The publishing state of the product definition in the master catalog, which is "New", "Draft", or "Live".
+	*/
+	public $publishState;
 
 	/**
 	*The universal product code (UPC code) of the product.
 	*/
 	public $upc;
 
-		public $variationProductCode;
+		public $upCs;
+
+	/**
+	*Product code that represents the product variation selected based on the option values the shopper entered.
+	*/
+	public $variationProductCode;
 
 	/**
 	*List of shipping discounts that can be applied to the product.
@@ -85,7 +98,10 @@ class Product
 	*/
 	public $content;
 
-		public $inventoryInfo;
+	/**
+	*Array of active inventory level information associated with the product.
+	*/
+	public $inventoryInfo;
 
 	/**
 	*Dimensions of the packaged product.

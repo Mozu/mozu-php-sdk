@@ -24,14 +24,20 @@ class DocumentList
 	*/
 	public $documentTypes;
 
-		public $enablePublishing;
+	/**
+	*If true, publishing of draft documents in this document list is enabled for the site. If false, all document changes are immediately published in live mode.
+	*/
+	public $enablePublishing;
 
 	/**
 	*The name of the document list.
 	*/
 	public $name;
 
-		public $supportsPublishing;
+	/**
+	*If true, changes documents in this list can be saved as drafts until they are published to the site. If false, all document changes are immediately published in live mode. System-supplied and read only.
+	*/
+	public $supportsPublishing;
 
 }
 

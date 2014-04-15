@@ -19,8 +19,8 @@ class ShipmentUrl  {
 
 	/**
 		* Get Resource Url for GetShipment
-		* @param string $orderId 
-		* @param string $shipmentId 
+		* @param string $orderId Unique identifier of the order associated with the shipment to retrieve.
+		* @param string $shipmentId Unique identifier of the shipment to retrieve.
 		* @return string Resource Url
 	*/
 	public static function getShipmentUrl($orderId, $shipmentId)

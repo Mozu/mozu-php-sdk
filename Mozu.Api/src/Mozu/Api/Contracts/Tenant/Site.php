@@ -14,27 +14,46 @@ namespace Mozu\Api\Contracts\Tenant;
 
 
 
+/**
+*	Properties of a site associated with a tenant.
+*/
 class Site
 {
 		public $catalogId;
 
 		public $countryCode;
 
-		public $createDate;
+	/**
+	*3-letter ISO 4217 standard global currency code. Currently, only "USD" (US Dollar) is supported.
+	*/
+	public $currencyCode;
 
-		public $currencyCode;
-
-		public $domain;
+	/**
+	*The domain associated with the site.
+	*/
+	public $domain;
 
 		public $id;
 
-		public $localeCode;
+	/**
+	*Language used for the entity. Currently, only "en-US" is supported.
+	*/
+	public $localeCode;
 
-		public $name;
+	/**
+	*The name of the site.
+	*/
+	public $name;
 
-		public $primaryCustomDomain;
+	/**
+	*The primary custom domain of the site.
+	*/
+	public $primaryCustomDomain;
 
-		public $tenantId;
+	/**
+	*Unique identifier of the Mozu tenant.
+	*/
+	public $tenantId;
 
 }
 

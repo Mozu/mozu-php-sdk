@@ -14,13 +14,25 @@ namespace Mozu\Api\Contracts\Core\ThirdParty;
 
 
 
+/**
+*	Property value that can be initialized for a capability that uses shipping countries.
+*/
 class InitializableShippingCountryPropertyValue
 {
-		public $initialized;
+	/**
+	*If true, the property value is initialized.
+	*/
+	public $initialized;
 
-		public $value;
+	/**
+	*Value of the initializable third-party capability property.
+	*/
+	public $value;
 
-		public $child;
+	/**
+	*Child value in a hierarchy of shipping country properties.
+	*/
+	public $child;
 
 }
 

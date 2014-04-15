@@ -23,7 +23,7 @@ use Mozu\Api\Headers;
 */
 class PropertyTypeResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -36,9 +36,9 @@ class PropertyTypeResource {
 	* @param int $startIndex 
 	* @return PropertyTypeCollection 
 	*/
-	public function getPropertyTypes($dataViewMode, $pageSize =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getPropertyTypes($dataViewMode, $pageSize =  null, $startIndex =  null)
 	{
-		$mozuClient = PropertyTypeClient::getPropertyTypesClient($dataViewMode, $pageSize, $startIndex, $userAuthTicket);
+		$mozuClient = PropertyTypeClient::getPropertyTypesClient($dataViewMode, $pageSize, $startIndex);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -51,9 +51,9 @@ class PropertyTypeResource {
 	* @param string $propertyTypeName 
 	* @return PropertyType 
 	*/
-	public function getPropertyType($dataViewMode, $propertyTypeName, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getPropertyType($dataViewMode, $propertyTypeName)
 	{
-		$mozuClient = PropertyTypeClient::getPropertyTypeClient($dataViewMode, $propertyTypeName, $userAuthTicket);
+		$mozuClient = PropertyTypeClient::getPropertyTypeClient($dataViewMode, $propertyTypeName);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -61,13 +61,13 @@ class PropertyTypeResource {
 	}
 	
 	/**
-	* Retrieve the value types associated with a content property.
+	* Retrieves the value types associated with a content property.
 	*
 	* @return array|PropertyValueType 
 	*/
-	public function propertyValueTypes($dataViewMode, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function propertyValueTypes($dataViewMode)
 	{
-		$mozuClient = PropertyTypeClient::propertyValueTypesClient($dataViewMode, $userAuthTicket);
+		$mozuClient = PropertyTypeClient::propertyValueTypesClient($dataViewMode);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

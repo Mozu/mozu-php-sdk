@@ -19,7 +19,7 @@ class ProductTypeExtraUrl  {
 
 	/**
 		* Get Resource Url for GetExtras
-		* @param int $productTypeId Identifier of the product type whose list is being retrieved.
+		* @param int $productTypeId Identifier of the product type.
 		* @return string Resource Url
 	*/
 	public static function getExtrasUrl($productTypeId)
@@ -32,7 +32,7 @@ class ProductTypeExtraUrl  {
 	
 	/**
 		* Get Resource Url for GetExtra
-		* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
+		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 		* @param int $productTypeId Identifier of the product type whose extra is being retrieved.
 		* @return string Resource Url
 	*/
@@ -47,7 +47,7 @@ class ProductTypeExtraUrl  {
 	
 	/**
 		* Get Resource Url for AddExtra
-		* @param int $productTypeId Identifier of the product type to add an extra.
+		* @param int $productTypeId Identifier of the product type.
 		* @return string Resource Url
 	*/
 	public static function addExtraUrl($productTypeId)
@@ -60,8 +60,8 @@ class ProductTypeExtraUrl  {
 	
 	/**
 		* Get Resource Url for UpdateExtra
-		* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-		* @param int $productTypeId Identifier of the product type whose extra is being updated.
+		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+		* @param int $productTypeId Identifier of the product type.
 		* @return string Resource Url
 	*/
 	public static function updateExtraUrl($attributeFQN, $productTypeId)
@@ -75,8 +75,8 @@ class ProductTypeExtraUrl  {
 	
 	/**
 		* Get Resource Url for DeleteExtra
-		* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
-		* @param int $productTypeId Identifier of the product type whose extra is being deleted.
+		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+		* @param int $productTypeId Identifier of the product type.
 		* @return string Resource Url
 	*/
 	public static function deleteExtraUrl($attributeFQN, $productTypeId)

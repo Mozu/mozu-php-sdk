@@ -14,35 +14,77 @@ namespace Mozu\Api\Contracts\Location;
 
 
 
+/**
+*	Properties of a physical location a tenant uses to manage inventory and fulfills orders, provide store finder functionality, or both..
+*/
 class Location
 {
-		public $code;
+	/**
+	*User-defined code to assign to this location.
+	*/
+	public $code;
 
-		public $description;
+	/**
+	*User-defined description of this location.
+	*/
+	public $description;
 
-		public $fax;
+	/**
+	*The fax number associated with this location.
+	*/
+	public $fax;
 
-		public $name;
+	/**
+	*The user-defined name of the location.
+	*/
+	public $name;
 
-		public $note;
+	/**
+	*Any tenant-defined notes associated with this location.
+	*/
+	public $note;
 
-		public $phone;
+	/**
+	*The phone number associated with this location.
+	*/
+	public $phone;
 
-		public $supportsInventory;
+	/**
+	*If true, this location maintains its own product inventory. If the location uses the direct ship fulfillment type, it must also support inventory.
+	*/
+	public $supportsInventory;
 
-		public $tags;
+	/**
+	*List of tenant-defined tags associated with this location.
+	*/
+	public $tags;
 
-		public $address;
+	/**
+	*The physical address properties of the location.
+	*/
+	public $address;
 
 		public $auditInfo;
 
-		public $fulfillmentTypes;
+	/**
+	*List of order fulfillment types associated with this location. The location can have fulfillment types of direct ship (DS), in-store pickup (SP), or both.
+	*/
+	public $fulfillmentTypes;
 
-		public $geo;
+	/**
+	*The geographical coordinates associated with this location.
+	*/
+	public $geo;
 
-		public $locationTypes;
+	/**
+	*List of location types associated with this location. You can associate individual locations with any number of location types.
+	*/
+	public $locationTypes;
 
-		public $regularHours;
+	/**
+	*List of standard operating hours for each day of the week this location is open for shopper business.
+	*/
+	public $regularHours;
 
 		public $shippingOriginContact;
 

@@ -25,16 +25,28 @@ class CustomerAuthTicketClient {
 	/**
 	* 
 	*
+	* @return MozuClient
+	*/
+	public static function createAnonymousShopperAuthTicketClient()
+	{
+		$url = CustomerAuthTicketUrl::createAnonymousShopperAuthTicketUrl();
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* 
+	*
 	* @param CustomerUserAuthInfo $userAuthInfo 
 	* @return MozuClient
 	*/
-	public static function createUserAuthTicketClient($userAuthInfo, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function createUserAuthTicketClient($userAuthInfo)
 	{
 		$url = CustomerAuthTicketUrl::createUserAuthTicketUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($userAuthInfo);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -45,13 +57,11 @@ class CustomerAuthTicketClient {
 	* @param string $refreshToken 
 	* @return MozuClient
 	*/
-	public static function refreshUserAuthTicketClient($refreshToken, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function refreshUserAuthTicketClient($refreshToken)
 	{
 		$url = CustomerAuthTicketUrl::refreshUserAuthTicketUrl($refreshToken);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

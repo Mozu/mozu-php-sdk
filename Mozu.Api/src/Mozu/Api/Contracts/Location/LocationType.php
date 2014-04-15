@@ -14,11 +14,20 @@ namespace Mozu\Api\Contracts\Location;
 
 
 
+/**
+*	Properties of a type of physical location, such as warehouse or kiosk. Location types enable tenants to group similar locations for filtering and location usage type definition.
+*/
 class LocationType
 {
-		public $code;
+	/**
+	*User-defined identifying code for the location type.
+	*/
+	public $code;
 
-		public $name;
+	/**
+	*The name of the location type.
+	*/
+	public $name;
 
 		public $auditInfo;
 

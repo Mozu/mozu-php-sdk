@@ -25,19 +25,17 @@ class ProductReservationClient {
 	/**
 	* Retrieves a list of product reservations according to any specified filter criteria and sort options.
 	*
-	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getProductReservationsClient($dataViewMode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getProductReservationsClient($dataViewMode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
 	{
 		$url = ProductReservationUrl::getProductReservationsUrl($filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -48,13 +46,11 @@ class ProductReservationClient {
 	* @param int $productReservationId Unique identifier of the product reservation.
 	* @return MozuClient
 	*/
-	public static function getProductReservationClient($dataViewMode, $productReservationId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getProductReservationClient($dataViewMode, $productReservationId)
 	{
 		$url = ProductReservationUrl::getProductReservationUrl($productReservationId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -66,13 +62,11 @@ class ProductReservationClient {
 	* @param array|ProductReservation $productReservations 
 	* @return MozuClient
 	*/
-	public static function addProductReservationsClient($dataViewMode, $productReservations, $skipInventoryCheck =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function addProductReservationsClient($dataViewMode, $productReservations, $skipInventoryCheck =  null)
 	{
 		$url = ProductReservationUrl::addProductReservationsUrl($skipInventoryCheck);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($productReservations)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -82,13 +76,11 @@ class ProductReservationClient {
 	*
 	* @param array|ProductReservation $productReservations 
 	*/
-	public static function commitReservationsClient($dataViewMode, $productReservations, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function commitReservationsClient($dataViewMode, $productReservations)
 	{
 		$url = ProductReservationUrl::commitReservationsUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($productReservations)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -100,13 +92,11 @@ class ProductReservationClient {
 	* @param array|ProductReservation $productReservations 
 	* @return MozuClient
 	*/
-	public static function updateProductReservationsClient($dataViewMode, $productReservations, $skipInventoryCheck =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function updateProductReservationsClient($dataViewMode, $productReservations, $skipInventoryCheck =  null)
 	{
 		$url = ProductReservationUrl::updateProductReservationsUrl($skipInventoryCheck);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($productReservations)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -116,13 +106,11 @@ class ProductReservationClient {
 	*
 	* @param int $productReservationId Unique identifier of the reservation.
 	*/
-	public static function deleteProductReservationClient($dataViewMode, $productReservationId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function deleteProductReservationClient($dataViewMode, $productReservationId)
 	{
 		$url = ProductReservationUrl::deleteProductReservationUrl($productReservationId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

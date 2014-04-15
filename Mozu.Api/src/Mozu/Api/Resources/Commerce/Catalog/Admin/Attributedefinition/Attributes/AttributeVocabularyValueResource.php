@@ -23,7 +23,7 @@ use Mozu\Api\Headers;
 */
 class AttributeVocabularyValueResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -32,12 +32,12 @@ class AttributeVocabularyValueResource {
 	/**
 	* Retrieves a list of attribute vocabulary values. To target a query, use one or several valid optional response groups.
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
+	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @return array|AttributeVocabularyValue 
 	*/
-	public function getAttributeVocabularyValues($dataViewMode, $attributeFQN, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getAttributeVocabularyValues($dataViewMode, $attributeFQN)
 	{
-		$mozuClient = AttributeVocabularyValueClient::getAttributeVocabularyValuesClient($dataViewMode, $attributeFQN, $userAuthTicket);
+		$mozuClient = AttributeVocabularyValueClient::getAttributeVocabularyValuesClient($dataViewMode, $attributeFQN);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -47,13 +47,13 @@ class AttributeVocabularyValueResource {
 	/**
 	* Retrieves an attribute vocabulary value by providing the attribute FQN and value.
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
+	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @param string $value The actual unique value of the attribute vocabulary to retrieve. A single attribute must have a unique value and match the attribute's data type. If a string value returns null, the system will generate a value. The actual string content displayed shoud be stored as "Content" and actual content is required for string values.
 	* @return AttributeVocabularyValue 
 	*/
-	public function getAttributeVocabularyValue($dataViewMode, $attributeFQN, $value, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getAttributeVocabularyValue($dataViewMode, $attributeFQN, $value)
 	{
-		$mozuClient = AttributeVocabularyValueClient::getAttributeVocabularyValueClient($dataViewMode, $attributeFQN, $value, $userAuthTicket);
+		$mozuClient = AttributeVocabularyValueClient::getAttributeVocabularyValueClient($dataViewMode, $attributeFQN, $value);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -63,13 +63,13 @@ class AttributeVocabularyValueResource {
 	/**
 	* Adds a new attribute vocabulary value.
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
+	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @param AttributeVocabularyValue $attributeVocabularyValue The predefined vocabulary value to add to the attribute content.
 	* @return AttributeVocabularyValue 
 	*/
-	public function addAttributeVocabularyValue($dataViewMode, $attributeVocabularyValue, $attributeFQN, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function addAttributeVocabularyValue($dataViewMode, $attributeVocabularyValue, $attributeFQN)
 	{
-		$mozuClient = AttributeVocabularyValueClient::addAttributeVocabularyValueClient($dataViewMode, $attributeVocabularyValue, $attributeFQN, $userAuthTicket);
+		$mozuClient = AttributeVocabularyValueClient::addAttributeVocabularyValueClient($dataViewMode, $attributeVocabularyValue, $attributeFQN);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -79,13 +79,13 @@ class AttributeVocabularyValueResource {
 	/**
 	* Update existing vocabulary values for an attribute.
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
+	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @param array|AttributeVocabularyValue $vocabularyValues The actual vocabulary values for the attribute being updated.
 	* @return array|AttributeVocabularyValue 
 	*/
-	public function updateAttributeVocabularyValues($dataViewMode, $vocabularyValues, $attributeFQN, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function updateAttributeVocabularyValues($dataViewMode, $vocabularyValues, $attributeFQN)
 	{
-		$mozuClient = AttributeVocabularyValueClient::updateAttributeVocabularyValuesClient($dataViewMode, $vocabularyValues, $attributeFQN, $userAuthTicket);
+		$mozuClient = AttributeVocabularyValueClient::updateAttributeVocabularyValuesClient($dataViewMode, $vocabularyValues, $attributeFQN);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -95,14 +95,14 @@ class AttributeVocabularyValueResource {
 	/**
 	* Updates existing attribute vocabulary values.
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
+	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @param string $value The actual unique value of the attribute vocabulary value to update. A single attribute must have a unique value and match the attribute's data type. If a string value returns null, the system will generate a value. The actual string content displayed shoud be stored as "Content" and actual content is required for string values.
 	* @param AttributeVocabularyValue $attributeVocabularyValue The predefined vocabulary value to add to the attribute content to update.
 	* @return AttributeVocabularyValue 
 	*/
-	public function updateAttributeVocabularyValue($dataViewMode, $attributeVocabularyValue, $attributeFQN, $value, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function updateAttributeVocabularyValue($dataViewMode, $attributeVocabularyValue, $attributeFQN, $value)
 	{
-		$mozuClient = AttributeVocabularyValueClient::updateAttributeVocabularyValueClient($dataViewMode, $attributeVocabularyValue, $attributeFQN, $value, $userAuthTicket);
+		$mozuClient = AttributeVocabularyValueClient::updateAttributeVocabularyValueClient($dataViewMode, $attributeVocabularyValue, $attributeFQN, $value);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -112,12 +112,12 @@ class AttributeVocabularyValueResource {
 	/**
 	* Deletes an attribute's vocabulary value.
 	*
-	* @param string $attributeFQN "The fully qualified name of the attribute, which is a user defined attribute identifier."
+	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @param string $value The actual unique value of the attribute vocabulary to delete. A single attribute must have a unique value and match the attribute's data type. If a string value returns null, the system will generate a value. The actual string content displayed shoud be stored as "Content" and actual content is required for string values.
 	*/
-	public function deleteAttributeVocabularyValue($dataViewMode, $attributeFQN, $value, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function deleteAttributeVocabularyValue($dataViewMode, $attributeFQN, $value)
 	{
-		$mozuClient = AttributeVocabularyValueClient::deleteAttributeVocabularyValueClient($dataViewMode, $attributeFQN, $value, $userAuthTicket);
+		$mozuClient = AttributeVocabularyValueClient::deleteAttributeVocabularyValueClient($dataViewMode, $attributeFQN, $value);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

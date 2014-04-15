@@ -19,10 +19,13 @@ namespace Mozu\Api\Contracts\SiteSettings\Application;
 */
 class Application
 {
-		public $appId;
+	/**
+	*The unique identifier of the application in Mozu Dev Center.
+	*/
+	public $appId;
 
 	/**
-	*If true, the application is enabled for the tenant. System-supplied and read only.
+	*If true, the application is enabled for the tenant. System-supplied and read-only.
 	*/
 	public $enabled;
 
@@ -34,7 +37,7 @@ class Application
 		public $isExtension;
 
 	/**
-	*URL of the application's setting configuration user interface. System-supplied and read only.
+	*URL of the application's setting configuration user interface, supplied by the capability developer in Dev Center.
 	*/
 	public $uiConfigurationUrl;
 

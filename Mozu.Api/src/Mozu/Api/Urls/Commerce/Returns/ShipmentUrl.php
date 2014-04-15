@@ -19,8 +19,8 @@ class ShipmentUrl  {
 
 	/**
 		* Get Resource Url for GetShipment
-		* @param string $returnId 
-		* @param string $shipmentId 
+		* @param string $returnId Unique identifier of the return associated with the replacement shipment to retrieve.
+		* @param string $shipmentId Unique identifier of the return replacement shipment to retrieve.
 		* @return string Resource Url
 	*/
 	public static function getShipmentUrl($returnId, $shipmentId)
@@ -34,7 +34,7 @@ class ShipmentUrl  {
 	
 	/**
 		* Get Resource Url for CreatePackageShipments
-		* @param string $returnId 
+		* @param string $returnId Unique identifier of the return for which to create replacement package shipments.
 		* @return string Resource Url
 	*/
 	public static function createPackageShipmentsUrl($returnId)
@@ -47,8 +47,8 @@ class ShipmentUrl  {
 	
 	/**
 		* Get Resource Url for DeleteShipment
-		* @param string $returnId 
-		* @param string $shipmentId 
+		* @param string $returnId Unique identifier of the return associated with the replacement shipment to delete.
+		* @param string $shipmentId Unique identifier of the return replacement shipment to delete.
 		* @return string Resource Url
 	*/
 	public static function deleteShipmentUrl($returnId, $shipmentId)

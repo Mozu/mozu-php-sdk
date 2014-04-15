@@ -29,31 +29,27 @@ class PackageClient {
 	* @param string $packageId Unique identifier of the package to retrieve.
 	* @return MozuClient
 	*/
-	public static function getPackageClient($orderId, $packageId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getPackageClient($orderId, $packageId)
 	{
 		$url = PackageUrl::getPackageUrl($orderId, $packageId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Retrieves a list of the actions available to perform for a package associated with order fulfillment.
 	*
-	* @param string $orderId 
-	* @param string $packageId 
+	* @param string $orderId Unique identifier of the order associated with the package fulfillment.
+	* @param string $packageId Unique identifier of the package associated with the fulfillment actions to retrieve.
 	* @return MozuClient
 	*/
-	public static function getAvailablePackageFulfillmentActionsClient($orderId, $packageId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getAvailablePackageFulfillmentActionsClient($orderId, $packageId)
 	{
 		$url = PackageUrl::getAvailablePackageFulfillmentActionsUrl($orderId, $packageId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -65,13 +61,11 @@ class PackageClient {
 	* @param string $packageId Unique identifier of the package for which to retrieve the label.
 	* @return MozuClient
 	*/
-	public static function getPackageLabelClient($orderId, $packageId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getPackageLabelClient($orderId, $packageId)
 	{
 		$url = PackageUrl::getPackageLabelUrl($orderId, $packageId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -83,13 +77,11 @@ class PackageClient {
 	* @param Package $package Properties of the physical package of order items.
 	* @return MozuClient
 	*/
-	public static function createPackageClient($pkg, $orderId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function createPackageClient($pkg, $orderId)
 	{
 		$url = PackageUrl::createPackageUrl($orderId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($pkg);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -102,13 +94,11 @@ class PackageClient {
 	* @param Package $package Wrapper of properties for the package of order items to update.
 	* @return MozuClient
 	*/
-	public static function updatePackageClient($pkg, $orderId, $packageId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function updatePackageClient($pkg, $orderId, $packageId)
 	{
 		$url = PackageUrl::updatePackageUrl($orderId, $packageId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($pkg);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -119,13 +109,11 @@ class PackageClient {
 	* @param string $orderId Unique identifier of the order associated with the package to delete.
 	* @param string $packageId Unique identifier of the package to delete.
 	*/
-	public static function deletePackageClient($orderId, $packageId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function deletePackageClient($orderId, $packageId)
 	{
 		$url = PackageUrl::deletePackageUrl($orderId, $packageId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

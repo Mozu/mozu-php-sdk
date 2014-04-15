@@ -23,7 +23,7 @@ use Mozu\Api\Headers;
 */
 class CustomerContactResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -36,9 +36,9 @@ class CustomerContactResource {
 	* @param int $contactId Unique identifier of the customer account contact to retrieve.
 	* @return CustomerContact 
 	*/
-	public function getAccountContact($accountId, $contactId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getAccountContact($accountId, $contactId)
 	{
-		$mozuClient = CustomerContactClient::getAccountContactClient($accountId, $contactId, $userAuthTicket);
+		$mozuClient = CustomerContactClient::getAccountContactClient($accountId, $contactId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -49,15 +49,15 @@ class CustomerContactResource {
 	* Retrieves a list of contacts for a customer according to any specified filter criteria and sort options.
 	*
 	* @param int $accountId Unique identifier of the customer account associated with the contact information to retrieve.
-	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return CustomerContactCollection 
 	*/
-	public function getAccountContacts($accountId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getAccountContacts($accountId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
 	{
-		$mozuClient = CustomerContactClient::getAccountContactsClient($accountId, $startIndex, $pageSize, $sortBy, $filter, $userAuthTicket);
+		$mozuClient = CustomerContactClient::getAccountContactsClient($accountId, $startIndex, $pageSize, $sortBy, $filter);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -71,9 +71,9 @@ class CustomerContactResource {
 	* @param CustomerContact $contact Properties of the new contact. Required properties: Contact.Email, ContactType.
 	* @return CustomerContact 
 	*/
-	public function addAccountContact($contact, $accountId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function addAccountContact($contact, $accountId)
 	{
-		$mozuClient = CustomerContactClient::addAccountContactClient($contact, $accountId, $userAuthTicket);
+		$mozuClient = CustomerContactClient::addAccountContactClient($contact, $accountId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -88,9 +88,9 @@ class CustomerContactResource {
 	* @param CustomerContact $contact All properties the updated contact will have. Required properties: Name and email address.
 	* @return CustomerContact 
 	*/
-	public function updateAccountContact($contact, $accountId, $contactId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function updateAccountContact($contact, $accountId, $contactId)
 	{
-		$mozuClient = CustomerContactClient::updateAccountContactClient($contact, $accountId, $contactId, $userAuthTicket);
+		$mozuClient = CustomerContactClient::updateAccountContactClient($contact, $accountId, $contactId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -103,9 +103,9 @@ class CustomerContactResource {
 	* @param int $accountId Unique identifier of the customer account.
 	* @param int $contactId Unique identifier of the customer account contact to delete.
 	*/
-	public function deleteAccountContact($accountId, $contactId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function deleteAccountContact($accountId, $contactId)
 	{
-		$mozuClient = CustomerContactClient::deleteAccountContactClient($accountId, $contactId, $userAuthTicket);
+		$mozuClient = CustomerContactClient::deleteAccountContactClient($accountId, $contactId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

@@ -14,23 +14,47 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Channels;
 
 
 
+/**
+*	Properties of a channel used to divide a company into logical business divisions, such as "US Retail," "US Online," or "Amazon." All sites and orders are associated with a channel.
+*/
 class Channel
 {
-		public $code;
+	/**
+	*User-defined code that uniquely identifies the channel.
+	*/
+	public $code;
 
 		public $countryCode;
 
-		public $groupCode;
+	/**
+	*User-defined code that identifies the channel group.
+	*/
+	public $groupCode;
 
-		public $name;
+	/**
+	*User-defined name of the channel.
+	*/
+	public $name;
 
-		public $region;
+	/**
+	*The geographical region associated with this channel. This region could represent any geographical entity from a state to a continent.
+	*/
+	public $region;
 
-		public $siteIds;
+	/**
+	*Array list of site identifiers associated with this channel. Each tenant site must have a channel association.
+	*/
+	public $siteIds;
 
-		public $tenantId;
+	/**
+	*Unique identifier of the Mozu tenant.
+	*/
+	public $tenantId;
 
-		public $auditInfo;
+	/**
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
+	*/
+	public $auditInfo;
 
 }
 

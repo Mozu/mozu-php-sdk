@@ -23,15 +23,22 @@ use Mozu\Api\Headers;
 */
 class ReferenceDataResource {
 
+		private $apiContext;
+	public function __construct(ApiContext $apiContext) 
+	{
+		$this->apiContext = $apiContext;
+	}
+
 	/**
 	* Retrieves a specific address schema based on the country code provided. This operation allows the creation of custom shipping and billing address fields.
 	*
-	* @param string $countryCode 2 letter geographic code representing the country for the physical or mailing address. Currently limited to the US.
+	* @param string $countryCode The 2-letter geographic code representing the country for the physical or mailing address. Currently limited to the US.
 	* @return AddressSchema 
 	*/
 	public function getAddressSchema($countryCode =  null)
 	{
 		$mozuClient = ReferenceDataClient::getAddressSchemaClient($countryCode);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
@@ -45,6 +52,7 @@ class ReferenceDataResource {
 	public function getAddressSchemas()
 	{
 		$mozuClient = ReferenceDataClient::getAddressSchemasClient();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
@@ -59,6 +67,7 @@ class ReferenceDataResource {
 	public function getBehavior($behaviorId)
 	{
 		$mozuClient = ReferenceDataClient::getBehaviorClient($behaviorId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
@@ -72,6 +81,7 @@ class ReferenceDataResource {
 	public function getBehaviorCategories()
 	{
 		$mozuClient = ReferenceDataClient::getBehaviorCategoriesClient();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
@@ -86,6 +96,7 @@ class ReferenceDataResource {
 	public function getBehaviorCategory($categoryId)
 	{
 		$mozuClient = ReferenceDataClient::getBehaviorCategoryClient($categoryId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
@@ -100,19 +111,21 @@ class ReferenceDataResource {
 	public function getBehaviors($userType =  null)
 	{
 		$mozuClient = ReferenceDataClient::getBehaviorsClient($userType);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
 	}
 	
 	/**
-	* Retrieves the entire list of content locales that the system supports. The content locales indicate the language used and the country where the language is used. Just because the system supports the content locale does not mean that the site or site group supports the language. For example,currently only "en-US" is supported.
+	* Retrieves the list of content locales the system supports. Content locales indicate the language used and the country where the language is used.
 	*
 	* @return ContentLocaleCollection 
 	*/
 	public function getContentLocales()
 	{
 		$mozuClient = ReferenceDataClient::getContentLocalesClient();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
@@ -126,6 +139,7 @@ class ReferenceDataResource {
 	public function getCountries()
 	{
 		$mozuClient = ReferenceDataClient::getCountriesClient();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
@@ -139,6 +153,7 @@ class ReferenceDataResource {
 	public function getCurrencies()
 	{
 		$mozuClient = ReferenceDataClient::getCurrenciesClient();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
@@ -152,33 +167,36 @@ class ReferenceDataResource {
 	public function getTimeZones()
 	{
 		$mozuClient = ReferenceDataClient::getTimeZonesClient();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
 	}
 	
 	/**
-	* Retrieves the entire list of top-level Internet domains that the system supports.
+	* Retrieves the entire list of top-level internet domains that the system supports.
 	*
 	* @return TopLevelDomainCollection 
 	*/
 	public function getTopLevelDomains()
 	{
 		$mozuClient = ReferenceDataClient::getTopLevelDomainsClient();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 
 	}
 	
 	/**
-	* Retrieves the entire list of units of measure that the system supports.
+	* Retrieves an array list of all units of measure the system supports.
 	*
-	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 	* @return UnitOfMeasureCollection 
 	*/
 	public function getUnitsOfMeasure($filter =  null)
 	{
 		$mozuClient = ReferenceDataClient::getUnitsOfMeasureClient($filter);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
 

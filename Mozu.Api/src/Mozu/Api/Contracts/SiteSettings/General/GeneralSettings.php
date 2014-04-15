@@ -54,12 +54,18 @@ class GeneralSettings
 	*/
 	public $isGoogleAnalyticsEnabled;
 
-		public $isMozuWebSite;
-
-		public $isWishlistCreationEnabled;
+	/**
+	*If true, this site represents a Mozu-hosted web storefront.
+	*/
+	public $isMozuWebSite;
 
 	/**
-	*They physical directory path or URL where the website logo is stored.
+	*If true, shoppers on this site can create customer wish lists.
+	*/
+	public $isWishlistCreationEnabled;
+
+	/**
+	*The physical directory path or URL where the website logo is stored.
 	*/
 	public $logoPath;
 
@@ -95,7 +101,10 @@ class GeneralSettings
 
 		public $tabletTheme;
 
-		public $templateSiteId;
+	/**
+	*Unique identifier of the tenant site that site uses to render content for the shopper. For example, if this site represents a third-party sales channel such as Amazon but the company wants to send shopper emails, this value represents the Mozu-hosted web storefront site that maintains this content.
+	*/
+	public $templateSiteId;
 
 	/**
 	*The name of the theme used on the storefront.
@@ -108,7 +117,7 @@ class GeneralSettings
 	public $websiteName;
 
 	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
 

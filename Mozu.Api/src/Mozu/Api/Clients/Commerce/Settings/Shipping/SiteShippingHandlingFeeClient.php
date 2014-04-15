@@ -27,13 +27,11 @@ class SiteShippingHandlingFeeClient {
 	*
 	* @return MozuClient
 	*/
-	public static function getOrderHandlingFeeClient(Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getOrderHandlingFeeClient()
 	{
 		$url = SiteShippingHandlingFeeUrl::getOrderHandlingFeeUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -44,13 +42,11 @@ class SiteShippingHandlingFeeClient {
 	* @param SiteShippingHandlingFee $orderHandlingFee Properties of the order handling fee to assess for order shipment.
 	* @return MozuClient
 	*/
-	public static function createOrderHandlingFeeClient($orderHandlingFee, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function createOrderHandlingFeeClient($orderHandlingFee)
 	{
 		$url = SiteShippingHandlingFeeUrl::createOrderHandlingFeeUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($orderHandlingFee);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -61,13 +57,11 @@ class SiteShippingHandlingFeeClient {
 	* @param SiteShippingHandlingFee $orderHandlingFee The combined price for all items in the order, including all selected options but excluding any discounts.
 	* @return MozuClient
 	*/
-	public static function updateOrderHandlingFeeClient($orderHandlingFee, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function updateOrderHandlingFeeClient($orderHandlingFee)
 	{
 		$url = SiteShippingHandlingFeeUrl::updateOrderHandlingFeeUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($orderHandlingFee);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

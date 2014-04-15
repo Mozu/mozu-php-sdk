@@ -20,7 +20,7 @@ namespace Mozu\Api\Contracts\Content;
 class LocalizedString
 {
 	/**
-	*"Language used for the entity. Currently, only ""en-US"" is supported."
+	*Language used for the entity. Currently, only "en-US" is supported.
 	*/
 	public $locale;
 

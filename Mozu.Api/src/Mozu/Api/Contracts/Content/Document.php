@@ -70,7 +70,7 @@ class Document
 	public $publishState;
 
 	/**
-	*Date and time when the entity was last updated. UTC Date/Time.
+	*Date and time when the entity was last updated, represented in UTC Date/Time.
 	*/
 	public $updateDate;
 

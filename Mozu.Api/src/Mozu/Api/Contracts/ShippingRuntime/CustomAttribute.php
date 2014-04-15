@@ -14,13 +14,25 @@ namespace Mozu\Api\Contracts\ShippingRuntime;
 
 
 
+/**
+*	Properties of a custom attribute used to integrate with a shipping provider, which consists of an array of necessary key-value pairs.
+*/
 class CustomAttribute
 {
-		public $key;
+	/**
+	*Key required for a custom attribute associated with a shipping provider integration, as part of a key-value pair.
+	*/
+	public $key;
 
-		public $value;
+	/**
+	*Value for a custom attribute associated with a shipping provider integration, as part of a key-value pair.
+	*/
+	public $value;
 
-		public $childAttributes;
+	/**
+	*Collection of child attributes associated with a shipping provider integration.
+	*/
+	public $childAttributes;
 
 }
 

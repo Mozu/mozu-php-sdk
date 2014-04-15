@@ -19,7 +19,10 @@ namespace Mozu\Api\Contracts\PricingRuntime;
 */
 class TaxableOrder
 {
-		public $currencyCode;
+	/**
+	*3-letter ISO 4217 standard global currency code. Currently, only "USD" (US Dollar) is supported.
+	*/
+	public $currencyCode;
 
 	/**
 	*Handling fee associated with the order.

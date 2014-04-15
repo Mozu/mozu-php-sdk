@@ -25,19 +25,17 @@ class CategoryClient {
 	/**
 	* Retrieves a list of categories according to any specified filter criteria and sort options.
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product category search results by any of its properties, including its position in the category hierarchy. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). <b>For example - "filter=IsDisplayed+eq+true"</b>
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product category search results by any of its properties, including its position in the category hierarchy. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getCategoriesClient($filter =  null, $startIndex =  null, $pageSize =  null, $sortBy =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getCategoriesClient($filter =  null, $startIndex =  null, $pageSize =  null, $sortBy =  null)
 	{
 		$url = CategoryUrl::getCategoriesUrl($filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -49,13 +47,11 @@ class CategoryClient {
 	* @param int $categoryId Unique identifier for the storefront container used to organize products.
 	* @return MozuClient
 	*/
-	public static function getCategoryClient($categoryId, $allowInactive =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getCategoryClient($categoryId, $allowInactive =  null)
 	{
 		$url = CategoryUrl::getCategoryUrl($allowInactive, $categoryId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -65,13 +61,11 @@ class CategoryClient {
 	*
 	* @return MozuClient
 	*/
-	public static function getCategoryTreeClient(Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getCategoryTreeClient()
 	{
 		$url = CategoryUrl::getCategoryTreeUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

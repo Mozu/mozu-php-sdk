@@ -23,7 +23,7 @@ use Mozu\Api\Headers;
 */
 class ProductTypeResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -32,15 +32,15 @@ class ProductTypeResource {
 	/**
 	* Retrieves a list of product types according to any specified filter criteria and sort options.
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product type search results by any of its properties. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). <b>For example - "filter=Name+cont+shoes"</b>
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product type search results by any of its properties. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=Name+cont+shoes"
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return ProductTypeCollection 
 	*/
-	public function getProductTypes($dataViewMode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getProductTypes($dataViewMode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
 	{
-		$mozuClient = ProductTypeClient::getProductTypesClient($dataViewMode, $startIndex, $pageSize, $sortBy, $filter, $userAuthTicket);
+		$mozuClient = ProductTypeClient::getProductTypesClient($dataViewMode, $startIndex, $pageSize, $sortBy, $filter);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -48,14 +48,14 @@ class ProductTypeResource {
 	}
 	
 	/**
-	* Retrieves a product type by providing the product type ID.
+	* Retrieves the details of the product type specified in the request.
 	*
-	* @param int $productTypeId Identifier of the product type being retrieved.
+	* @param int $productTypeId Identifier of the product type to retrieve.
 	* @return ProductType 
 	*/
-	public function getProductType($dataViewMode, $productTypeId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getProductType($dataViewMode, $productTypeId)
 	{
-		$mozuClient = ProductTypeClient::getProductTypeClient($dataViewMode, $productTypeId, $userAuthTicket);
+		$mozuClient = ProductTypeClient::getProductTypeClient($dataViewMode, $productTypeId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -63,14 +63,14 @@ class ProductTypeResource {
 	}
 	
 	/**
-	* Add or create a new product type.
+	* Creates a new product type based on the information supplied in the request.
 	*
-	* @param ProductType $productType Add or create the product type using these properties.
+	* @param ProductType $productType Properties of the product type to create.
 	* @return ProductType 
 	*/
-	public function addProductType($dataViewMode, $productType, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function addProductType($dataViewMode, $productType)
 	{
-		$mozuClient = ProductTypeClient::addProductTypeClient($dataViewMode, $productType, $userAuthTicket);
+		$mozuClient = ProductTypeClient::addProductTypeClient($dataViewMode, $productType);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -78,15 +78,15 @@ class ProductTypeResource {
 	}
 	
 	/**
-	* Update a product type by providing the product type ID.
+	* Updates one or more properties of a product type.
 	*
 	* @param int $productTypeId Identifier of the product type to update.
 	* @param ProductType $productType The details of the product type to update.
 	* @return ProductType 
 	*/
-	public function updateProductType($dataViewMode, $productType, $productTypeId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function updateProductType($dataViewMode, $productType, $productTypeId)
 	{
-		$mozuClient = ProductTypeClient::updateProductTypeClient($dataViewMode, $productType, $productTypeId, $userAuthTicket);
+		$mozuClient = ProductTypeClient::updateProductTypeClient($dataViewMode, $productType, $productTypeId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -94,13 +94,13 @@ class ProductTypeResource {
 	}
 	
 	/**
-	* Delete product type by providing the product type ID.
+	* Deletes the product type by providing the product type ID.
 	*
-	* @param int $productTypeId Identifier of the product type being deleted.
+	* @param int $productTypeId Identifier of the product type to delete.
 	*/
-	public function deleteProductType($dataViewMode, $productTypeId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function deleteProductType($dataViewMode, $productTypeId)
 	{
-		$mozuClient = ProductTypeClient::deleteProductTypeClient($dataViewMode, $productTypeId, $userAuthTicket);
+		$mozuClient = ProductTypeClient::deleteProductTypeClient($dataViewMode, $productTypeId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

@@ -28,13 +28,11 @@ class ObjectClient {
 	* @param RateRequest $rateRequest 
 	* @return MozuClient
 	*/
-	public static function getRatesClient($rateRequest, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getRatesClient($rateRequest)
 	{
 		$url = ObjectUrl::getRatesUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($rateRequest);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

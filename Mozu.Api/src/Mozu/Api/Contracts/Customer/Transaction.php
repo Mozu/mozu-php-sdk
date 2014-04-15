@@ -14,19 +14,40 @@ namespace Mozu\Api\Contracts\Customer;
 
 
 
+/**
+*	Properties of a transaction performed by a customer account. The system creates a transaction each time the customer submits an order, returns an item, picks up items for an order, or manages items on a wish list.
+*/
 class Transaction
 {
-		public $amount;
+	/**
+	*If applicable, the amount of the transaction.
+	*/
+	public $amount;
 
-		public $date;
+	/**
+	*The date and time the customer transaction occurred.
+	*/
+	public $date;
 
-		public $interactionType;
+	/**
+	*The type of interaction the customer used to perform the transaction, which is "Website," "Call," "Store," or "Unknown."
+	*/
+	public $interactionType;
 
-		public $transactionId;
+	/**
+	*The unique identifier of the transaction.
+	*/
+	public $transactionId;
 
-		public $transactionType;
+	/**
+	*The type of transaction the customer performed, which is "Order," "Return," "OrderPickup," or "Wishlist."
+	*/
+	public $transactionType;
 
-		public $visitId;
+	/**
+	*Unique identifier of the customer visit associated with the transaction. Customers can perform multiple transactions in the same visit.
+	*/
+	public $visitId;
 
 }
 

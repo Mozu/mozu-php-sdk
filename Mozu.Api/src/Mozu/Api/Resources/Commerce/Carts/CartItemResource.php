@@ -23,7 +23,7 @@ use Mozu\Api\Headers;
 */
 class CartItemResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -34,9 +34,9 @@ class CartItemResource {
 	*
 	* @return CartItemCollection 
 	*/
-	public function getCartItems(Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getCartItems()
 	{
-		$mozuClient = CartItemClient::getCartItemsClient($userAuthTicket);
+		$mozuClient = CartItemClient::getCartItemsClient();
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -49,9 +49,9 @@ class CartItemResource {
 	* @param string $cartItemId Identifier of the cart item to retrieve.
 	* @return CartItem 
 	*/
-	public function getCartItem($cartItemId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getCartItem($cartItemId)
 	{
-		$mozuClient = CartItemClient::getCartItemClient($cartItemId, $userAuthTicket);
+		$mozuClient = CartItemClient::getCartItemClient($cartItemId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -59,14 +59,14 @@ class CartItemResource {
 	}
 	
 	/**
-	* Adds an item such as product to the current shopper's cart.
+	* Adds a product to the current shopper's cart.
 	*
 	* @param CartItem $cartItem All properties of the new cart item. The product code is required.
 	* @return CartItem 
 	*/
-	public function addItemToCart($cartItem, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function addItemToCart($cartItem)
 	{
-		$mozuClient = CartItemClient::addItemToCartClient($cartItem, $userAuthTicket);
+		$mozuClient = CartItemClient::addItemToCartClient($cartItem);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -74,15 +74,15 @@ class CartItemResource {
 	}
 	
 	/**
-	* Update properties of a specific cart item.
+	* Update the product or product quantity of an item in the current shopper's cart.
 	*
 	* @param string $cartItemId Identifier of the cart item to update.
 	* @param CartItem $cartItem The properties of the cart item to update.
 	* @return CartItem 
 	*/
-	public function updateCartItem($cartItem, $cartItemId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function updateCartItem($cartItem, $cartItemId)
 	{
-		$mozuClient = CartItemClient::updateCartItemClient($cartItem, $cartItemId, $userAuthTicket);
+		$mozuClient = CartItemClient::updateCartItemClient($cartItem, $cartItemId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -90,15 +90,15 @@ class CartItemResource {
 	}
 	
 	/**
-	* Update the quantity of an individual cart item in the cart of a current shopper.
+	* Update the quantity of an individual cart item in the cart of the current shopper.
 	*
 	* @param string $cartItemId Identifier of the cart item to update quantity.
 	* @param int $quantity The number of cart items in the shopper's active cart.
 	* @return CartItem 
 	*/
-	public function updateCartItemQuantity($cartItemId, $quantity, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function updateCartItemQuantity($cartItemId, $quantity)
 	{
-		$mozuClient = CartItemClient::updateCartItemQuantityClient($cartItemId, $quantity, $userAuthTicket);
+		$mozuClient = CartItemClient::updateCartItemQuantityClient($cartItemId, $quantity);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -106,13 +106,13 @@ class CartItemResource {
 	}
 	
 	/**
-	* Removes all cart items in the shopper's active cart.
+	* Removes all items in the current shopper's active cart.
 	*
 	* @return Cart 
 	*/
-	public function removeAllCartItems(Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function removeAllCartItems()
 	{
-		$mozuClient = CartItemClient::removeAllCartItemsClient($userAuthTicket);
+		$mozuClient = CartItemClient::removeAllCartItemsClient();
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -120,13 +120,13 @@ class CartItemResource {
 	}
 	
 	/**
-	* Delete a specific cart item by providing the cart item ID.
+	* Deletes a specific cart item by providing the cart item ID.
 	*
 	* @param string $cartItemId Identifier of the cart item to delete.
 	*/
-	public function deleteCartItem($cartItemId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function deleteCartItem($cartItemId)
 	{
-		$mozuClient = CartItemClient::deleteCartItemClient($cartItemId, $userAuthTicket);
+		$mozuClient = CartItemClient::deleteCartItemClient($cartItemId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

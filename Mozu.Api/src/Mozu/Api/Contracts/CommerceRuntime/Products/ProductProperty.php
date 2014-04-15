@@ -14,17 +14,35 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Products;
 
 
 
+/**
+*	Details of a property attribute defined for a product.
+*/
 class ProductProperty
 {
-		public $attributeFQN;
+	/**
+	*The fully qualified name of the attribute, which is a user defined attribute identifier.
+	*/
+	public $attributeFQN;
 
-		public $dataType;
+	/**
+	*The data type of the property attribute, which is Bool, DateTime, Number, or String.
+	*/
+	public $dataType;
 
-		public $isMultiValue;
+	/**
+	*If true, the product property can have more than one value.
+	*/
+	public $isMultiValue;
 
-		public $name;
+	/**
+	*The name of the product property.
+	*/
+	public $name;
 
-		public $values;
+	/**
+	*The list of possible values for the product property.
+	*/
+	public $values;
 
 }
 

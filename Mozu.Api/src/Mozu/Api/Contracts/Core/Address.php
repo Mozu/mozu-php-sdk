@@ -45,12 +45,12 @@ class Address
 	public $addressType;
 
 	/**
-	*City or town for the physical or mailing address. Max length: 100.
+	*City or town for the physical or mailing address. The maximum character length is 100.
 	*/
 	public $cityOrTown;
 
 	/**
-	*2 letter geographic code representing the country for the physical or mailing address. Currently limited to the US.
+	*The 2-letter geographic code representing the country for the physical or mailing address. Currently limited to the US.
 	*/
 	public $countryCode;
 
@@ -60,12 +60,12 @@ class Address
 	public $isValidated;
 
 	/**
-	*"For example, a USPS-approved ZIP code standard is ZIP+4: 12345-6789. Max length: 100."
+	*The postal or zip code for the address. For example, a USPS-approved ZIP code standard is ZIP+4: 12345-6789. The maximum character length is 100.
 	*/
 	public $postalOrZipCode;
 
 	/**
-	*2 letter geographic code representing the state for the physical or mailing address. Currently limited to the US.
+	*The two-letter geographic code representing the state for the physical or mailing address. This is currently limited to the US.
 	*/
 	public $stateOrProvince;
 

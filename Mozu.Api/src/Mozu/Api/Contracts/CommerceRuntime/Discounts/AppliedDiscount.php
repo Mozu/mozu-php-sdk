@@ -15,7 +15,7 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Discounts;
 
 
 /**
-*	"The discount currently applied to the cart or order, represented as a negative currency amount to be subtracted from the final price. If multiple discounts are applied to the same order, the Applied Discount displays the most valuable discount for the shopper."
+*	The discount currently applied to the cart or order, represented as a negative currency amount to be subtracted from the final price. If multiple discounts are applied to the same order, the Applied Discount displays the most valuable discount for the shopper.
 */
 class AppliedDiscount
 {

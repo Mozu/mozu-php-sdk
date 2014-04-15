@@ -19,28 +19,74 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* 
+* Use the Customer Credits resource to manage the store credit associated with a customer account. Store credit can represent a static amount the customer can redeem at any of the tenant's sites, or a gift card registered for a customer account. At this time, gift card functionality is reserved for future use.
 */
 class CreditResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
 	/**
-	* 
+	* Retrieves a list of store credits applied to customer accounts, according any filter and sort criteria specified in the request.
 	*
-	* @param string $filter 
-	* @param int $pageSize 
-	* @param string $sortBy 
-	* @param int $startIndex 
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return CreditCollection 
 	*/
-	public function getCredits($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getCredits($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
 	{
-		$mozuClient = CreditClient::getCreditsClient($startIndex, $pageSize, $sortBy, $filter, $userAuthTicket);
+		$mozuClient = CreditClient::getCreditsClient($startIndex, $pageSize, $sortBy, $filter);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+	/**
+	* Retrieves the details of a store credit applied to a customer account.
+	*
+	* @param string $code User-defined code that identifies the store credit to retrieve.
+	* @return Credit 
+	*/
+	public function getCredit($code)
+	{
+		$mozuClient = CreditClient::getCreditClient($code);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+	/**
+	* Creates a new store credit for the customer account specified in the request.
+	*
+	* @param Credit $credit Properties of the store credit to create.
+	* @return Credit 
+	*/
+	public function addCredit($credit)
+	{
+		$mozuClient = CreditClient::addCreditClient($credit);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+	/**
+	* Updates one or more properties of a defined store credit applied to a customer account.
+	*
+	* @param string $code User-defined code of the store credit to update.
+	* @param Credit $credit Properties of the store credit to update.
+	* @return Credit 
+	*/
+	public function updateCredit($credit, $code)
+	{
+		$mozuClient = CreditClient::updateCreditClient($credit, $code);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -53,9 +99,9 @@ class CreditResource {
 	* @param string $code 
 	* @return Credit 
 	*/
-	public function getCredit($code, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function associateCreditToShopper($code)
 	{
-		$mozuClient = CreditClient::getCreditClient($code, $userAuthTicket);
+		$mozuClient = CreditClient::associateCreditToShopperClient($code);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -63,59 +109,13 @@ class CreditResource {
 	}
 	
 	/**
-	* 
+	* Deletes a store credit previously applied to a customer account.
 	*
-	* @param Credit $credit 
-	* @return Credit 
+	* @param string $code User-defined code of the store credit to delete.
 	*/
-	public function addCredit($credit, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function deleteCredit($code)
 	{
-		$mozuClient = CreditClient::addCreditClient($credit, $userAuthTicket);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
-
-	}
-	
-	/**
-	* 
-	*
-	* @param string $code 
-	* @param Credit $credit 
-	* @return Credit 
-	*/
-	public function updateCredit($credit, $code, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
-	{
-		$mozuClient = CreditClient::updateCreditClient($credit, $code, $userAuthTicket);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
-
-	}
-	
-	/**
-	* 
-	*
-	* @param string $code 
-	* @return Credit 
-	*/
-	public function associateCreditToShopper($code, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
-	{
-		$mozuClient = CreditClient::associateCreditToShopperClient($code, $userAuthTicket);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
-
-	}
-	
-	/**
-	* 
-	*
-	* @param string $code 
-	*/
-	public function deleteCredit($code, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
-	{
-		$mozuClient = CreditClient::deleteCreditClient($code, $userAuthTicket);
+		$mozuClient = CreditClient::deleteCreditClient($code);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

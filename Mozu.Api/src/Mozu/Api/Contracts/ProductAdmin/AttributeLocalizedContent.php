@@ -25,7 +25,7 @@ class AttributeLocalizedContent
 	public $description;
 
 	/**
-	*"Language used for the entity. Currently, only ""en-US"" is supported."
+	*Language used for the entity. Currently, only "en-US" is supported.
 	*/
 	public $localeCode;
 

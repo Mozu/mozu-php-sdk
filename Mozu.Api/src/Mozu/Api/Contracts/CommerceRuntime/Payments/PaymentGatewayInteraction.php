@@ -34,12 +34,17 @@ class PaymentGatewayInteraction
 	*/
 	public $gatewayCVV2Codes;
 
-		public $gatewayInteractionId;
+	/**
+	*Unique identifier of the payment interaction from the payment gateway.
+	*/
+	public $gatewayInteractionId;
 
 	/**
 	*Response code from the gateway associated with the payment interaction. For example, if the gateway returns "Not Authorized," an interaction for voiding the payment transaction would result.
 	*/
 	public $gatewayResponseCode;
+
+		public $gatewayResponseText;
 
 	/**
 	*Unique identifier of the gateway transaction associated with the payment interaction.

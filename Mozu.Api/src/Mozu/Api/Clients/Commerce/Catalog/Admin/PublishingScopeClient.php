@@ -18,38 +18,34 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* 
+* Use the Product Publishing resource to publish or discard pending changes to product definitions in the master catalog.
 */
 class PublishingScopeClient {
 
 	/**
-	* 
+	* Deletes the draft version of product changes for each product code specified in the request.
 	*
-	* @param PublishingScope $publishScope 
+	* @param PublishingScope $publishScope Properties of the pending product changes to include in this operation.
 	*/
-	public static function discardDraftsClient($dataViewMode, $publishScope, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function discardDraftsClient($dataViewMode, $publishScope)
 	{
 		$url = PublishingScopeUrl::discardDraftsUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($publishScope)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Publishes the draft version of product changes for each product code specified in the request, and changes the product publish state to "live".
 	*
-	* @param PublishingScope $publishScope 
+	* @param PublishingScope $publishScope Properties of the pending product changes to include in this operation.
 	*/
-	public static function publishDraftsClient($dataViewMode, $publishScope, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function publishDraftsClient($dataViewMode, $publishScope)
 	{
 		$url = PublishingScopeUrl::publishDraftsUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($publishScope)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

@@ -14,17 +14,35 @@ namespace Mozu\Api\Contracts\Customer\Credit;
 
 
 
+/**
+*	Properties of a transaction performed for a customer credit that update the remaining balance of the credit.
+*/
 class CreditTransaction
 {
-		public $comments;
+	/**
+	*Comments entered for a transaction. Depending on the interface, these comments might be visible to authorized shoppers and users.
+	*/
+	public $comments;
 
-		public $id;
+	/**
+	*Unique identifier of the customer credit transaction.
+	*/
+	public $id;
 
-		public $impactAmount;
+	/**
+	*The amount to apply to the credit balance. The defined transaction type determines whether this amount represents a positive or negative integer.
+	*/
+	public $impactAmount;
 
-		public $transactionType;
+	/**
+	*The type of transaction to perform for the customer credit. To decrease the balance, set this parameter to "Debit". To increase the balance, set this parameter to "Credit".
+	*/
+	public $transactionType;
 
-		public $auditInfo;
+	/**
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
+	*/
+	public $auditInfo;
 
 }
 

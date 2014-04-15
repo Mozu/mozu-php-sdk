@@ -23,7 +23,7 @@ use Mozu\Api\Headers;
 */
 class DocumentTypeResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -36,9 +36,9 @@ class DocumentTypeResource {
 	* @param int $startIndex 
 	* @return DocumentTypeCollection 
 	*/
-	public function getDocumentTypes($dataViewMode, $pageSize =  null, $startIndex =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getDocumentTypes($dataViewMode, $pageSize =  null, $startIndex =  null)
 	{
-		$mozuClient = DocumentTypeClient::getDocumentTypesClient($dataViewMode, $pageSize, $startIndex, $userAuthTicket);
+		$mozuClient = DocumentTypeClient::getDocumentTypesClient($dataViewMode, $pageSize, $startIndex);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -51,9 +51,9 @@ class DocumentTypeResource {
 	* @param string $documentTypeName 
 	* @return DocumentType 
 	*/
-	public function getDocumentType($dataViewMode, $documentTypeName, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getDocumentType($dataViewMode, $documentTypeName)
 	{
-		$mozuClient = DocumentTypeClient::getDocumentTypeClient($dataViewMode, $documentTypeName, $userAuthTicket);
+		$mozuClient = DocumentTypeClient::getDocumentTypeClient($dataViewMode, $documentTypeName);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

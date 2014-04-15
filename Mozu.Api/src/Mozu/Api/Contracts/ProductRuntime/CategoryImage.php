@@ -14,21 +14,42 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 
+/**
+*	Properties of an image or other media file associated with a product category.
+*/
 class CategoryImage
 {
-		public $altText;
+	/**
+	*Descriptive text associated with the image or video that appears on the web storefront.
+	*/
+	public $altText;
 
 		public $cmsId;
 
-		public $imageLabel;
+	/**
+	*Image title that appears on the web storefront, set to the language specified by the site's LocaleCode.
+	*/
+	public $imageLabel;
 
-		public $imageUrl;
+	/**
+	*URL of the product category image.
+	*/
+	public $imageUrl;
 
-		public $mediaType;
+	/**
+	*Type of media specification required to successfully render the image, video, or other category content.
+	*/
+	public $mediaType;
 
-		public $sequence;
+	/**
+	*Integer that represents the sequential order of the category image in the collection.
+	*/
+	public $sequence;
 
-		public $videoUrl;
+	/**
+	*The link or URL of the product category video. The file path name is set in the language specified by the LocaleCode.
+	*/
+	public $videoUrl;
 
 }
 

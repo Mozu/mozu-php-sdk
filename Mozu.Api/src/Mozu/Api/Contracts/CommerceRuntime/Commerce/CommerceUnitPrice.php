@@ -20,21 +20,14 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Commerce;
 class CommerceUnitPrice
 {
 	/**
-	*The original price of the item in the cart or order.
-	*/
-	public $baseAmount;
-
-	/**
 	*The calculated amount of the discount to apply.
 	*/
 	public $discountAmount;
 
 	/**
-	*The price of the item after all discounts are applied.
+	*Represents the total price of the line item extended to the shopper. This begins with the Unit Price, then uses any of the following prices if they are defined, in the following order: Override Amount, Sale Amount, List Amount.
 	*/
-	public $discountedAmount;
-
-		public $extendedAmount;
+	public $extendedAmount;
 
 	/**
 	*The price the item is listed for in the storefront.

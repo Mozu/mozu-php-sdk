@@ -19,7 +19,7 @@ class TenantAdminUserAuthTicketUrl  {
 
 	/**
 		* Get Resource Url for CreateUserAuthTicket
-		* @param int $tenantId Unique identifier of the Mozu tenant or development store for which to generate the user authentication ticket.
+		* @param int $tenantId Unique identifier of the development or production tenant for which to generate the user authentication ticket.
 		* @return string Resource Url
 	*/
 	public static function createUserAuthTicketUrl($tenantId)
@@ -32,7 +32,7 @@ class TenantAdminUserAuthTicketUrl  {
 	
 	/**
 		* Get Resource Url for RefreshAuthTicket
-		* @param int $tenantId Unique identifier of the Mozu tenant or development store for which to refresh the authentication ticket.
+		* @param int $tenantId 
 		* @return string Resource Url
 	*/
 	public static function refreshAuthTicketUrl($tenantId)

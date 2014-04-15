@@ -28,13 +28,11 @@ class ApplicationClient {
 	* @param string $appId 
 	* @return MozuClient
 	*/
-	public static function getApplicationClient($appId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getApplicationClient($appId)
 	{
 		$url = ApplicationUrl::getApplicationUrl($appId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -46,13 +44,11 @@ class ApplicationClient {
 	* @param Application $application 
 	* @return MozuClient
 	*/
-	public static function updateApplicationClient($application, $appId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function updateApplicationClient($application, $appId)
 	{
 		$url = ApplicationUrl::updateApplicationUrl($appId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($application);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

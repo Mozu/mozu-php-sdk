@@ -23,7 +23,7 @@ use Mozu\Api\Headers;
 */
 class ObjectResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -35,9 +35,9 @@ class ObjectResource {
 	* @param RateRequest $rateRequest 
 	* @return RatesResponse 
 	*/
-	public function getRates($rateRequest, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getRates($rateRequest)
 	{
-		$mozuClient = ObjectClient::getRatesClient($rateRequest, $userAuthTicket);
+		$mozuClient = ObjectClient::getRatesClient($rateRequest);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

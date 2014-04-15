@@ -15,7 +15,7 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Returns;
 
 
 /**
-*	Properties of an item associated with a return for a previously shipped order.
+*	Properties of a previously fulfilled item associated with a return.
 */
 class ReturnItem
 {
@@ -24,9 +24,15 @@ class ReturnItem
 	*/
 	public $orderItemId;
 
-		public $productLossAmount;
+	/**
+	*The total value of the product returned to the merchant for accounting purposes, calculated by multiplying the cost of the item by its quantity returned.
+	*/
+	public $productLossAmount;
 
-		public $productLossTaxAmount;
+	/**
+	*The total tax amount levied on the product loss amount.
+	*/
+	public $productLossTaxAmount;
 
 	/**
 	*The actual quantity received for the return item.
@@ -43,9 +49,15 @@ class ReturnItem
 	*/
 	public $quantityShipped;
 
-		public $shippingLossAmount;
+	/**
+	*The total value of shipping the returned product to the merchant for accounting purposes, calculated by multiplying the shipping cost of the item by its quantity returned.
+	*/
+	public $shippingLossAmount;
 
-		public $shippingLossTaxAmount;
+	/**
+	*The total tax amount levied on the shipping loss amount.
+	*/
+	public $shippingLossTaxAmount;
 
 		public $bundledProducts;
 
@@ -54,7 +66,10 @@ class ReturnItem
 	*/
 	public $notes;
 
-		public $product;
+	/**
+	*Properties of the product definition associated with the item in the return.
+	*/
+	public $product;
 
 	/**
 	*The list of return reasons for the item and the quantity associated with each return reason.

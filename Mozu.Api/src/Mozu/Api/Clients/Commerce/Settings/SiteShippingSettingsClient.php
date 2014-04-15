@@ -27,13 +27,11 @@ class SiteShippingSettingsClient {
 	*
 	* @return MozuClient
 	*/
-	public static function getSiteShippingSettingsClient(Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getSiteShippingSettingsClient()
 	{
 		$url = SiteShippingSettingsUrl::getSiteShippingSettingsUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

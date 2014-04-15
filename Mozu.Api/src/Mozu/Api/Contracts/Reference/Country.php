@@ -15,12 +15,12 @@ namespace Mozu\Api\Contracts\Reference;
 
 
 /**
-*	2-letter code and corresponding country name that the system supports.
+*	The 2-letter code and corresponding country name that the system supports.
 */
 class Country
 {
 	/**
-	*2 letter geographic code representing the country for the physical or mailing address. Currently limited to the US.
+	*The 2-letter geographic code representing the country for the physical or mailing address. Currently limited to the US.
 	*/
 	public $code;
 

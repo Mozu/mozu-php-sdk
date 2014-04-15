@@ -27,13 +27,11 @@ class GeneralSettingsClient {
 	*
 	* @return MozuClient
 	*/
-	public static function getGeneralSettingsClient(Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getGeneralSettingsClient()
 	{
 		$url = GeneralSettingsUrl::getGeneralSettingsUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -44,13 +42,11 @@ class GeneralSettingsClient {
 	* @param GeneralSettings $generalSettings The properties of the site's general settings to update.
 	* @return MozuClient
 	*/
-	public static function updateGeneralSettingsClient($generalSettings, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function updateGeneralSettingsClient($generalSettings)
 	{
 		$url = GeneralSettingsUrl::updateGeneralSettingsUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($generalSettings);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

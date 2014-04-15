@@ -19,7 +19,10 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 */
 class Discount
 {
-		public $discountId;
+	/**
+	*Unique identifier of the discount. System-supplied and read only.
+	*/
+	public $discountId;
 
 	/**
 	*The date and time when the product discount will no longer be active. Date in UTC Date/Time. System-supplied and read-only.

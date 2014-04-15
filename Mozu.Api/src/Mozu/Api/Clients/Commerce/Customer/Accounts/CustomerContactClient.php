@@ -29,13 +29,11 @@ class CustomerContactClient {
 	* @param int $contactId Unique identifier of the customer account contact to retrieve.
 	* @return MozuClient
 	*/
-	public static function getAccountContactClient($accountId, $contactId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getAccountContactClient($accountId, $contactId)
 	{
 		$url = CustomerContactUrl::getAccountContactUrl($accountId, $contactId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -44,19 +42,17 @@ class CustomerContactClient {
 	* Retrieves a list of contacts for a customer according to any specified filter criteria and sort options.
 	*
 	* @param int $accountId Unique identifier of the customer account associated with the contact information to retrieve.
-	* @param string $filter "A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - ""filter=IsDisplayed+eq+true"""
-	* @param int $pageSize Used to create paged results from a query. Specifies the number of results to display on each page. Maximum: 200.
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getAccountContactsClient($accountId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getAccountContactsClient($accountId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
 	{
 		$url = CustomerContactUrl::getAccountContactsUrl($accountId, $filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -68,13 +64,11 @@ class CustomerContactClient {
 	* @param CustomerContact $contact Properties of the new contact. Required properties: Contact.Email, ContactType.
 	* @return MozuClient
 	*/
-	public static function addAccountContactClient($contact, $accountId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function addAccountContactClient($contact, $accountId)
 	{
 		$url = CustomerContactUrl::addAccountContactUrl($accountId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($contact);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -87,13 +81,11 @@ class CustomerContactClient {
 	* @param CustomerContact $contact All properties the updated contact will have. Required properties: Name and email address.
 	* @return MozuClient
 	*/
-	public static function updateAccountContactClient($contact, $accountId, $contactId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function updateAccountContactClient($contact, $accountId, $contactId)
 	{
 		$url = CustomerContactUrl::updateAccountContactUrl($accountId, $contactId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($contact);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -104,13 +96,11 @@ class CustomerContactClient {
 	* @param int $accountId Unique identifier of the customer account.
 	* @param int $contactId Unique identifier of the customer account contact to delete.
 	*/
-	public static function deleteAccountContactClient($accountId, $contactId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function deleteAccountContactClient($accountId, $contactId)
 	{
 		$url = CustomerContactUrl::deleteAccountContactUrl($accountId, $contactId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

@@ -19,26 +19,26 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* 
+* Use the Pickups resource to organize items submitted in an order into pickups that enable the shopper to fulfill the order items using the in-store pickup method.
 */
 class PickupResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
 	/**
-	* 
+	* Retrieves the details of the in-store pickup specified in the request.
 	*
-	* @param string $orderId 
-	* @param string $pickupId 
+	* @param string $orderId Unique identifier of the order associated with the pickup.
+	* @param string $pickupId Unique identifier of the pickup to retrieve.
 	* @return Pickup 
 	*/
-	public function getPickup($orderId, $pickupId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getPickup($orderId, $pickupId)
 	{
-		$mozuClient = PickupClient::getPickupClient($orderId, $pickupId, $userAuthTicket);
+		$mozuClient = PickupClient::getPickupClient($orderId, $pickupId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -46,15 +46,15 @@ class PickupResource {
 	}
 	
 	/**
-	* 
+	* Retrieves a list of the actions available to perform for the pickup specified in the request.
 	*
-	* @param string $orderId 
-	* @param string $pickupId 
+	* @param string $orderId Unique identifier of the order associated with the pickup.
+	* @param string $pickupId Unique identifier of the pickup for which to retrieve available actions.
 	* @return array|string 
 	*/
-	public function getAvailablePickupFulfillmentActions($orderId, $pickupId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getAvailablePickupFulfillmentActions($orderId, $pickupId)
 	{
-		$mozuClient = PickupClient::getAvailablePickupFulfillmentActionsClient($orderId, $pickupId, $userAuthTicket);
+		$mozuClient = PickupClient::getAvailablePickupFulfillmentActionsClient($orderId, $pickupId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -62,15 +62,15 @@ class PickupResource {
 	}
 	
 	/**
-	* 
+	* Create a new pickup for the order specified in the request for in-store fufillment.
 	*
-	* @param string $orderId 
-	* @param Pickup $pickup 
+	* @param string $orderId Unique identifier of the order.
+	* @param Pickup $pickup Properties of the in-store pickup to create.
 	* @return Pickup 
 	*/
-	public function createPickup($pickup, $orderId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function createPickup($pickup, $orderId)
 	{
-		$mozuClient = PickupClient::createPickupClient($pickup, $orderId, $userAuthTicket);
+		$mozuClient = PickupClient::createPickupClient($pickup, $orderId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -78,16 +78,16 @@ class PickupResource {
 	}
 	
 	/**
-	* 
+	* Updates one or more details of a defined in-store pickup.
 	*
-	* @param string $orderId 
-	* @param string $pickupId 
-	* @param Pickup $pickup 
+	* @param string $orderId Unique identifier of the order associated with the in-store pickup.
+	* @param string $pickupId Unique identifier of the pickup to update.
+	* @param Pickup $pickup Properties of the in-store pickup to update.
 	* @return Pickup 
 	*/
-	public function updatePickup($pickup, $orderId, $pickupId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function updatePickup($pickup, $orderId, $pickupId)
 	{
-		$mozuClient = PickupClient::updatePickupClient($pickup, $orderId, $pickupId, $userAuthTicket);
+		$mozuClient = PickupClient::updatePickupClient($pickup, $orderId, $pickupId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -95,14 +95,14 @@ class PickupResource {
 	}
 	
 	/**
-	* 
+	* Removes a pickup previously defined for order item in-store pickup fulfillment.
 	*
-	* @param string $orderId 
-	* @param string $pickupId 
+	* @param string $orderId Unique identifier of the order associated with the pickup.
+	* @param string $pickupId Unique identifier of the pickup to remove.
 	*/
-	public function deletePickup($orderId, $pickupId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function deletePickup($orderId, $pickupId)
 	{
-		$mozuClient = PickupClient::deletePickupClient($orderId, $pickupId, $userAuthTicket);
+		$mozuClient = PickupClient::deletePickupClient($orderId, $pickupId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 

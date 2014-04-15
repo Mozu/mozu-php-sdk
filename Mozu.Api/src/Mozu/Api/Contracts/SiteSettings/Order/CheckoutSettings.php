@@ -25,7 +25,7 @@ class CheckoutSettings
 	public $customerCheckoutSettings;
 
 	/**
-	*Credit card payment authorization setting defined for the site. Choose whether or not the shopper's credit card is authorized and charged. Possibilities include, "authorize and charge the shopper's credit card for the full order amount when the order is placed," "authorize the shopper's credit card for the full amount when the order is placed and charge the credit card when the order is shipped," or "authorize and charge the shopper's credit card for the full amount when the order is shipped." Check on these phrases. According to Eric Swann, they may have changed]
+	*Credit card payment authorization setting defined for the site for order processing.
 	*/
 	public $orderProcessingSettings;
 

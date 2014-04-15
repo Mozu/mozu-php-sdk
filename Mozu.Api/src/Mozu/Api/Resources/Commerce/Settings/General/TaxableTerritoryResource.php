@@ -23,7 +23,7 @@ use Mozu\Api\Headers;
 */
 class TaxableTerritoryResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -34,9 +34,9 @@ class TaxableTerritoryResource {
 	*
 	* @return array|TaxableTerritory 
 	*/
-	public function getTaxableTerritories(Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getTaxableTerritories()
 	{
-		$mozuClient = TaxableTerritoryClient::getTaxableTerritoriesClient($userAuthTicket);
+		$mozuClient = TaxableTerritoryClient::getTaxableTerritoriesClient();
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -49,9 +49,9 @@ class TaxableTerritoryResource {
 	* @param TaxableTerritory $taxableTerritory Properties of the taxable territory to create.
 	* @return TaxableTerritory 
 	*/
-	public function addTaxableTerritory($taxableTerritory, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function addTaxableTerritory($taxableTerritory)
 	{
-		$mozuClient = TaxableTerritoryClient::addTaxableTerritoryClient($taxableTerritory, $userAuthTicket);
+		$mozuClient = TaxableTerritoryClient::addTaxableTerritoryClient($taxableTerritory);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -64,9 +64,9 @@ class TaxableTerritoryResource {
 	* @param array|TaxableTerritory $taxableterritories Properties of the taxable territories to update.
 	* @return array|TaxableTerritory 
 	*/
-	public function updateTaxableTerritories($taxableterritories, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function updateTaxableTerritories($taxableterritories)
 	{
-		$mozuClient = TaxableTerritoryClient::updateTaxableTerritoriesClient($taxableterritories, $userAuthTicket);
+		$mozuClient = TaxableTerritoryClient::updateTaxableTerritoriesClient($taxableterritories);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

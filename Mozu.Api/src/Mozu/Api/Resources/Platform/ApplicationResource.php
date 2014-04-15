@@ -23,7 +23,7 @@ use Mozu\Api\Headers;
 */
 class ApplicationResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -35,9 +35,9 @@ class ApplicationResource {
 	* @param string $appId 
 	* @return Application 
 	*/
-	public function getApplication($appId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getApplication($appId)
 	{
-		$mozuClient = ApplicationClient::getApplicationClient($appId, $userAuthTicket);
+		$mozuClient = ApplicationClient::getApplicationClient($appId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -51,9 +51,9 @@ class ApplicationResource {
 	* @param Application $application 
 	* @return Application 
 	*/
-	public function updateApplication($application, $appId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function updateApplication($application, $appId)
 	{
-		$mozuClient = ApplicationClient::updateApplicationClient($application, $appId, $userAuthTicket);
+		$mozuClient = ApplicationClient::updateApplicationClient($application, $appId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

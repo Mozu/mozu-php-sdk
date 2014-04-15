@@ -15,7 +15,7 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Orders;
 
 
 /**
-*	All of the properties of the specified order.
+*	Properties of an order, including its components.
 */
 class Order
 {
@@ -37,45 +37,63 @@ class Order
 	*/
 	public $cancelledDate;
 
-		public $channelCode;
+	/**
+	*Code that identifies the channel associated with the site where the order was submitted.
+	*/
+	public $channelCode;
 
 	/**
 	*Date when the order was closed. Closed order is an order that has been processed and the items shipped. System-supplied and read-only.
 	*/
 	public $closedDate;
 
-		public $couponCodes;
+	/**
+	*Array list of coupon codes associated with an order submitted using an external system. Mozu populates this list during the order import process.
+	*/
+	public $couponCodes;
 
-		public $currencyCode;
+	/**
+	*3-letter ISO 4217 standard global currency code. Currently, only "USD" (US Dollar) is supported.
+	*/
+	public $currencyCode;
 
 	/**
 	*Numeric identifer of the customer account.
 	*/
 	public $customerAccountId;
 
-		public $customerInteractionType;
-
-		public $customerTaxId;
-
-		public $discountedSubtotal;
+	/**
+	*The type of interaction the shopper used to submit the order. Possibel values are Website, Call, Store, or Unknown.
+	*/
+	public $customerInteractionType;
 
 	/**
-	*The total amount of the order after all applicable discounts have been applied.
+	*The tax identification number (TIN) of the customer who submitted the order. If the customer who submitted the order has a customer account defined for the tenant, the system sets this value when the order is submitted.
+	*/
+	public $customerTaxId;
+
+	/**
+	*The aggregate total for all line items in the order, including costs associated with shopper-defined options or extras and any applied discounts.
+	*/
+	public $discountedSubtotal;
+
+	/**
+	*The subtotal of the order including any applied discount calculations.
 	*/
 	public $discountedTotal;
 
 	/**
-	*Amount of discounts applied to all items in an order. Usually a negative dollar amount or number. System-supplied and read-only.
+	*Estimated amount of discounts applied to all items in the order, which is system-supplied and read-only.
 	*/
 	public $discountTotal;
 
 	/**
-	*The email address of the specified user.
+	*The email address of the specified user or the email address associated with the specified entity.
 	*/
 	public $email;
 
 	/**
-	*The date when the order will no longer be active or considered abandoned. For example, if a guest or anonymous shoppper has 14 days of inactivity, the order is considered abandoned after that period of inactivity. An order never expires for shoppers who are logged into their account. Date in UTC Date/Time. System-supplied and read-only.
+	*The date when the order will no longer be active or considered abandoned. For example, if a guest or anonymous shopper has 14 days of inactivity, the order is considered abandoned after that period of inactivity. An order never expires for shoppers who are logged into their account. Date in UTC Date/Time. System-supplied and read-only.
 	*/
 	public $expirationDate;
 
@@ -86,7 +104,10 @@ class Order
 	*/
 	public $feeTotal;
 
-		public $fulfillmentStatus;
+	/**
+	*The current fulfillment status of the order, which is "Fulfilled," "NotFulfilled," or "PartiallyFulfilled." The order is considered fulfilled when all packages are shipped or all pickups are picked up.
+	*/
+	public $fulfillmentStatus;
 
 	/**
 	*The combined price for all items in the order, including all selected options but excluding any discounts.
@@ -106,7 +127,7 @@ class Order
 	public $hasDraft;
 
 	/**
-	*Identifier of the order.
+	*Unique identifier of the order.
 	*/
 	public $id;
 
@@ -124,7 +145,10 @@ class Order
 
 		public $isEligibleForReturns;
 
-		public $isImport;
+	/**
+	*If true, this order was submitted using an external system, and the order record was imported into Mozu.
+	*/
+	public $isImport;
 
 	/**
 	*If true, the order is exempt from applied sales tax.
@@ -141,7 +165,10 @@ class Order
 	*/
 	public $lastValidationDate;
 
-		public $locationCode;
+	/**
+	*The unique code that identifies the location where the order was submitted.
+	*/
+	public $locationCode;
 
 	/**
 	*The order number that displays on the storefront which differs from the order ID.
@@ -168,7 +195,10 @@ class Order
 	*/
 	public $returnStatus;
 
-		public $shippingSubTotal;
+	/**
+	*The shipping subtotal amount calculated without any applied discounts.
+	*/
+	public $shippingSubTotal;
 
 	/**
 	*The total amount of sales tax incurred for shipping charges on the order.
@@ -225,11 +255,20 @@ class Order
 	*/
 	public $totalCollected;
 
-		public $version;
+	/**
+	*The current version number of the order.
+	*/
+	public $version;
 
-		public $visitId;
+	/**
+	*Unique identifier of the customer visit in which the order was created or last updated.
+	*/
+	public $visitId;
 
-		public $webSessionId;
+	/**
+	*Unique identifier of the web session in which the order was created or last updated.
+	*/
+	public $webSessionId;
 
 	/**
 	*Properties of an ad-hoc price adjustment for an order.
@@ -242,7 +281,7 @@ class Order
 	public $attributes;
 
 	/**
-	*Identifier and datetime stamp information recorded when creating or updating a resource entity. System-supplied and read-only.
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
 
@@ -256,7 +295,12 @@ class Order
 	*/
 	public $changeMessages;
 
-		public $fulfillmentInfo;
+	/**
+	*Properties of the item fulfillment information associated with the order. Shoppers can fulfill order items using in-store pickup or direct shipping.
+	*/
+	public $fulfillmentInfo;
+
+		public $invalidCoupons;
 
 	/**
 	*An array list of objects in the returned collection.
@@ -274,7 +318,7 @@ class Order
 	public $orderDiscounts;
 
 	/**
-	*Wrapper for the physical packages shipped for the specified order.
+	*Array list of physical packages shipped for the specified order.
 	*/
 	public $packages;
 
@@ -283,9 +327,15 @@ class Order
 	*/
 	public $payments;
 
-		public $pickups;
+	/**
+	*Array list of the in-store pickups defined for the order.
+	*/
+	public $pickups;
 
-		public $shipments;
+	/**
+	*Array list of the shipments defined to fulfill items in this order using the direct ship fulfillment method.
+	*/
+	public $shipments;
 
 	/**
 	*Properties of an ad-hoc price adjustment made for an order.

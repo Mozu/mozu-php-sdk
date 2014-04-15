@@ -23,7 +23,7 @@ use Mozu\Api\Headers;
 */
 class SiteDataResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;

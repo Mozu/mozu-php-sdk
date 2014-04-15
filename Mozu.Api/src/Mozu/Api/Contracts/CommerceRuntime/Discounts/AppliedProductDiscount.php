@@ -21,7 +21,10 @@ class AppliedProductDiscount
 {
 		public $appliesToSalePrice;
 
-		public $couponCode;
+	/**
+	*Alphanumeric code associated with the coupon or promotion that results in a discounted price.
+	*/
+	public $couponCode;
 
 	/**
 	*If true, the system ignores this discount when pricing the order.

@@ -14,11 +14,20 @@ namespace Mozu\Api\Contracts\ShippingRuntime;
 
 
 
+/**
+*	The name of the shipping rate in the language specified by the defined locale code.
+*/
 class ShippingRateLocalizedContent
 {
-		public $localeCode;
+	/**
+	*Language used for the entity. Currently, only "en-US" is supported.
+	*/
+	public $localeCode;
 
-		public $name;
+	/**
+	*The name of the shipping rate in the language specified by the defined locale code.
+	*/
+	public $name;
 
 }
 

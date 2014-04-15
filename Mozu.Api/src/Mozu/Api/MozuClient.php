@@ -33,18 +33,21 @@ class MozuClient {
 	}
 
 	
-	public function withUserAuth(Mozu\Api\Security\AuthTicket &$authTicket) {
+	private function setUserAuth() {
 		$newTicket = null;
-		if ($authTicket->authenticationScope == AuthenticationScope::Customer)
+		$authTicket = $this->apiContext->getUserAuthTicket();
+		if ($authTicket->authenticationScope == AuthenticationScope::CUSTOMER)
 			$newTicket = CustomerAuthenticator::ensureAuthTicket($authTicket);
 		else
 			$newTicket = UserAuthenticator::ensureAuthTicket($authTicket);
 		if ($newTicket != null)
 		{
-			$authTicket = $newTicket;
+			$authTicket = $newTicket->authTicket;
 		}
 		
-		_headers.Add(Headers::X_VOL_USER_CLAIMS, $authTicket->getAccessToken());
+		var_dump($authTicket);
+		$this->withHeader(Headers::X_VOL_USER_CLAIMS, $authTicket->accessToken);
+		$this->apiContext->setUserAuthTicket($authTicket);
 		return $this;
 	}
 	
@@ -127,6 +130,12 @@ class MozuClient {
 		if ($this->mozuUrl->getVerb()== ""  || $this->mozuUrl->getUrl() == "" ) {
 			throw new \Exception("Verb or Resource Url is missing in MozuUrl");
 		}
+		
+		if ($this->apiContext != null && $this->apiContext->getUserAuthTicket() != null) {
+			echo "Setting user Auth";
+			$this->setUserAuth();
+		}
+		
 		$this->request = $this->client->createRequest($this->mozuUrl->getVerb(), $this->mozuUrl->getUrl(), null, $this->jsonBody );
 		$this->request = $authentication->addAuthHeader($this->request);
 		if (!$this->isStreamContent)
@@ -136,8 +145,8 @@ class MozuClient {
 		}
 		$this->request->setHeader(Headers::X_VOL_VERSION,Version::$apiVersion);
 		
-		if ($contentType != null) {
-			$this->request->setHeader(Headers::CONTENT_TYPE,$contentType);
+		if ($this->contentType != null) {
+			$this->request->setHeader(Headers::CONTENT_TYPE,$this->contentType);
 		}
 		
 	    // turn off urlencoding so that filter and sortby params work correctly

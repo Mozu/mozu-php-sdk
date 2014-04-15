@@ -14,25 +14,52 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
+/**
+*	The localized product category image in the language specified by the LocaleCode.
+*/
 class CategoryLocalizedImage
 {
-		public $altText;
+	/**
+	*Descriptive text associated with the image or video that appears on the web  storefront.
+	*/
+	public $altText;
 
 		public $cmsId;
 
-		public $id;
+	/**
+	*Identifier of the localized product category image.
+	*/
+	public $id;
 
-		public $imageLabel;
+	/**
+	*Image title that appears on the web storefront set to the language specified by the site's LocaleCode.
+	*/
+	public $imageLabel;
 
-		public $imageUrl;
+	/**
+	*URL of the product category image.
+	*/
+	public $imageUrl;
 
-		public $localeCode;
+	/**
+	*Language used for the entity. Currently, only "en-US" is supported.
+	*/
+	public $localeCode;
 
-		public $mediaType;
+	/**
+	*Type of media specification required to successfully render the image, video, or other media content for the product category.
+	*/
+	public $mediaType;
 
-		public $sequence;
+	/**
+	*Integer that represents the sequential order of this category image or video.
+	*/
+	public $sequence;
 
-		public $videoUrl;
+	/**
+	*The URL of the product category video. The path name is set in the language specified by the LocaleCode.
+	*/
+	public $videoUrl;
 
 }
 

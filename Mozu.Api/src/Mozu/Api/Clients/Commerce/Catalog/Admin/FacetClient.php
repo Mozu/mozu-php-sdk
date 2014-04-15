@@ -29,13 +29,11 @@ class FacetClient {
 	* @param bool $validate Validates that the product category associated with a facet is active. System-supplied and read only.
 	* @return MozuClient
 	*/
-	public static function getFacetClient($dataViewMode, $facetId, $validate =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getFacetClient($dataViewMode, $facetId, $validate =  null)
 	{
 		$url = FacetUrl::getFacetUrl($facetId, $validate);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -48,13 +46,11 @@ class FacetClient {
 	* @param bool $validate Validates that the product category associated with a facet is active. System-supplied and read only.
 	* @return MozuClient
 	*/
-	public static function getFacetCategoryListClient($dataViewMode, $categoryId, $includeAvailable =  null, $validate =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getFacetCategoryListClient($dataViewMode, $categoryId, $includeAvailable =  null, $validate =  null)
 	{
 		$url = FacetUrl::getFacetCategoryListUrl($categoryId, $includeAvailable, $validate);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -65,13 +61,11 @@ class FacetClient {
 	* @param Facet $facet Properties of the new facet to create. Required properties: Source, FacetType, IsHidden, and CategoryId.
 	* @return MozuClient
 	*/
-	public static function addFacetClient($dataViewMode, $facet, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function addFacetClient($dataViewMode, $facet)
 	{
 		$url = FacetUrl::addFacetUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($facet)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -83,13 +77,11 @@ class FacetClient {
 	* @param Facet $facet Properties of the defined facet to modify. Required properties: Source, FacetType, IsHidden, and CategoryId.
 	* @return MozuClient
 	*/
-	public static function updateFacetClient($dataViewMode, $facet, $facetId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function updateFacetClient($dataViewMode, $facet, $facetId)
 	{
 		$url = FacetUrl::updateFacetUrl($facetId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($facet)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -99,13 +91,11 @@ class FacetClient {
 	*
 	* @param int $facetId Unique identifier of the facet to delete.
 	*/
-	public static function deleteFacetByIdClient($dataViewMode, $facetId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function deleteFacetByIdClient($dataViewMode, $facetId)
 	{
 		$url = FacetUrl::deleteFacetByIdUrl($facetId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}

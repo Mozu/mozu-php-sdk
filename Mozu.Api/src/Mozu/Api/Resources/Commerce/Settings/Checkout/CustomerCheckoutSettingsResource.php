@@ -23,7 +23,7 @@ use Mozu\Api\Headers;
 */
 class CustomerCheckoutSettingsResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -34,9 +34,9 @@ class CustomerCheckoutSettingsResource {
 	*
 	* @return CustomerCheckoutSettings 
 	*/
-	public function getCustomerCheckoutSettings(Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function getCustomerCheckoutSettings()
 	{
-		$mozuClient = CustomerCheckoutSettingsClient::getCustomerCheckoutSettingsClient($userAuthTicket);
+		$mozuClient = CustomerCheckoutSettingsClient::getCustomerCheckoutSettingsClient();
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -49,9 +49,9 @@ class CustomerCheckoutSettingsResource {
 	* @param CustomerCheckoutSettings $customerCheckoutSettings All the properties to update in the checkout settings.
 	* @return CustomerCheckoutSettings 
 	*/
-	public function updateCustomerCheckoutSettings($customerCheckoutSettings, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public function updateCustomerCheckoutSettings($customerCheckoutSettings)
 	{
-		$mozuClient = CustomerCheckoutSettingsClient::updateCustomerCheckoutSettingsClient($customerCheckoutSettings, $userAuthTicket);
+		$mozuClient = CustomerCheckoutSettingsClient::updateCustomerCheckoutSettingsClient($customerCheckoutSettings);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

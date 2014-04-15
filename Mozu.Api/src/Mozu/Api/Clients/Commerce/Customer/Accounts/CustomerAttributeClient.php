@@ -18,7 +18,7 @@ use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
 /**
-* Mozu customers and merchants can create, view, update, and delete attributes for a customer account.
+* Use the Attributes subresource to manage the attributes used to uniquely identify shopper accounts, such as gender or age.
 */
 class CustomerAttributeClient {
 
@@ -29,13 +29,11 @@ class CustomerAttributeClient {
 	* @param string $attributeFQN 
 	* @return MozuClient
 	*/
-	public static function getAccountAttributeClient($accountId, $attributeFQN, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getAccountAttributeClient($accountId, $attributeFQN)
 	{
 		$url = CustomerAttributeUrl::getAccountAttributeUrl($accountId, $attributeFQN);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
 		return $mozuClient;
 
 	}
@@ -50,13 +48,44 @@ class CustomerAttributeClient {
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getAccountAttributesClient($accountId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function getAccountAttributesClient($accountId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
 	{
 		$url = CustomerAttributeUrl::getAccountAttributesUrl($accountId, $filter, $pageSize, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* Applies a defined attribute to the customer account specified in the request and assigns a value to the customer attribute.
+	*
+	* @param int $accountId Unique identifier of the customer account.
+	* @param CustomerAttribute $attribute 
+	* @return MozuClient
+	*/
+	public static function addAccountAttributeClient($attribute, $accountId)
+	{
+		$url = CustomerAttributeUrl::addAccountAttributeUrl($accountId);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withBody($attribute);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* Updates one or more details of a customer account attribute.
+	*
+	* @param int $accountId Identifier of the customer account associated with the attribute.
+	* @param string $attributeFQN 
+	* @param CustomerAttribute $attribute 
+	* @return MozuClient
+	*/
+	public static function updateAccountAttributeClient($attribute, $accountId, $attributeFQN)
+	{
+		$url = CustomerAttributeUrl::updateAccountAttributeUrl($accountId, $attributeFQN);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withBody($attribute);
 		return $mozuClient;
 
 	}
@@ -65,35 +94,13 @@ class CustomerAttributeClient {
 	* 
 	*
 	* @param int $accountId 
-	* @param CustomerAttribute $customerAccountAttribute 
-	* @return MozuClient
+	* @param string $attributeFQN 
 	*/
-	public static function addAccountAttributeClient($customerAccountAttribute, $accountId, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
+	public static function deleteAccountAttributeClient($accountId, $attributeFQN)
 	{
-		$url = CustomerAttributeUrl::addAccountAttributeUrl($accountId);
+		$url = CustomerAttributeUrl::deleteAccountAttributeUrl($accountId, $attributeFQN);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($customerAccountAttribute);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
-		return $mozuClient;
-
-	}
-	
-	/**
-	* Update a single customer account attribute by providing the customer account ID. This operation can optionally indicate whether or not items missing from the collection should be removed.
-	*
-	* @param int $accountId Identifier of the customer account associated with the attribute.
-	* @param bool $removeMissing If true, remove the items missing from the collection. If false, do not remove items missing from the collection.
-	* @param CustomerAttribute $customerAccountAttribute The properties of the customer account attribute being updated.
-	* @return MozuClient
-	*/
-	public static function updateAccountAttributeClient($customerAccountAttribute, $accountId, $removeMissing =  null, Mozu\Api\Security\AuthTicket &$userAuthTicket= null)
-	{
-		$url = CustomerAttributeUrl::updateAccountAttributeUrl($accountId, $removeMissing);
-		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($customerAccountAttribute);
-		if ($authTicket != null)
-			$mozuClient = $mozuClient->withUserAuth($userAuthTicket);
+		$mozuClient->withResourceUrl($url);
 		return $mozuClient;
 
 	}
