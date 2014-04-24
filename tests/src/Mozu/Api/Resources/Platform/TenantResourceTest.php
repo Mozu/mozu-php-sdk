@@ -23,10 +23,7 @@ class TenantResourceTest extends BaseTest
      */
     protected function setUp()
     {
-    	echo("Tenant ID : ". $this->tenantId . "\n");
-    	$this->apiContext = new ApiContext($this->tenantId);
-    	var_dump($this->apiContext);
-        $this->object = new TenantResource();
+        $this->object = new TenantResource(new ApiContext());
     }
 
     /**
@@ -44,15 +41,10 @@ class TenantResourceTest extends BaseTest
     public function testGetTenant()
     {
     	printf("Reading tenant...");
-    	$this->assertSame($this->tenantId, $this->apiContext->getTenantId());
     	try{
-	      	$tenant = $this->object->getTenant(0);
+	      	$tenant = $this->object->getTenant($this->tenantId);
 
-	      	$this->assertSame($tenant->id, $this->apiContext->getTenantId());
-	      	
-	      	$newApiContext = new ApiContext($tenant);
-	      	$this->assertSame($this->apiContext->getTenantId(), $newApiContext->getTenantId());
-	      	
+	      	$this->assertSame($tenant->id, $this->tenantId);
     	} catch(ApiException $apiException) {
     		var_dump($apiException);
     	}

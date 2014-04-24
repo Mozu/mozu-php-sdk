@@ -24,7 +24,7 @@ class ProductResourceTest extends BaseTest
      */
     protected function setUp()
     {
-    	$apiContext = new ApiContext($this->tenantId,2362,1,1);
+    	$apiContext = new ApiContext($this->tenantId,$this->siteId,1,1);
         $this->object = new ProductResource($apiContext);
     }
 
@@ -42,7 +42,7 @@ class ProductResourceTest extends BaseTest
      */
     public function testGetProducts()
     {
-       $productInventoryCollection = $this->object->getProductInventory("1001");
+       $productInventoryCollection = $this->object->getProductInventory("AC-99");
        var_dump($productInventoryCollection);
     }
 

@@ -1,5 +1,5 @@
 {
-	"name" : "mozu/mozu.api.sdk",
+	"name" : "mozu/api",
 	"description" : "SDK for Mozu Rest APIs",
 	"type" : "library",
 	"homepage" : "https://developer.mozu.com/sdks",
@@ -16,10 +16,5 @@
 		"psr-0" : {
 			"Mozu" : "src"
 		}
-	},
-	"extra": {
-        "branch-alias": {
-            "master": "1.7-dev"
-        }
-    }
+	}
 }
