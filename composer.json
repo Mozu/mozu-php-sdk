@@ -16,10 +16,6 @@
 		"psr-0" : {
 			"Mozu" : "src"
 		}
-	},
-	"extra": {
-        "branch-alias": {
-            "master": "1.7-dev"
-        }
+	}
     }
 }
