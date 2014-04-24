@@ -1,5 +1,5 @@
 {
-	"name" : "mozu/mozu.api.sdk",
+	"name" : "mozu/mozu.api",
 	"description" : "SDK for Mozu Rest APIs",
 	"type" : "library",
 	"homepage" : "https://developer.mozu.com/sdks",
