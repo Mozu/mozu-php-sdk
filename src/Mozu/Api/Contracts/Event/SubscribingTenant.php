@@ -14,13 +14,17 @@ namespace Mozu\Api\Contracts\Event;
 
 
 
-class SubscribingSite
+class SubscribingTenant
 {
 		public $isActive;
 
-		public $siteId;
+		public $subscribingContextLevelType;
+
+		public $tenantId;
 
 		public $auditInfo;
+
+		public $subscribingSites;
 
 }
 

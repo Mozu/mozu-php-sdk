@@ -80,12 +80,13 @@ class CategoryResource {
 	/**
 	* Adds a new category to the site's category hierarchy. Specify a ParentCategoryID to determine where to locate the category in the hierarchy. If a ParentCategoryID is not specified, the new category becomes a top-level category.
 	*
+	* @param bool $incrementSequence 
 	* @param Category $category Properties of the new category. Required properties: ParentCategoryID and Content.Name.
 	* @return Category 
 	*/
-	public function addCategory($dataViewMode, $category)
+	public function addCategory($dataViewMode, $category, $incrementSequence =  null)
 	{
-		$mozuClient = CategoryClient::addCategoryClient($dataViewMode, $category);
+		$mozuClient = CategoryClient::addCategoryClient($dataViewMode, $category, $incrementSequence);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

@@ -20,11 +20,6 @@ namespace Mozu\Api\Contracts\PricingRuntime;
 class TaxableLineItem
 {
 	/**
-	*The quantity of the line item in the order.
-	*/
-	public $quantity;
-
-	/**
 	*Unique identifier of the taxable line item.
 	*/
 	public $id;
@@ -45,6 +40,11 @@ class TaxableLineItem
 	public $productCode;
 
 		public $productName;
+
+	/**
+	*The quantity of the line item in the order.
+	*/
+	public $quantity;
 
 		public $reason;
 

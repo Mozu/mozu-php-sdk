@@ -62,15 +62,13 @@ class CustomerSegmentUrl  {
 	
 	/**
 		* Get Resource Url for AddSegmentAccounts
-		* @param int $accountIds 
 		* @param int $id 
 		* @return string Resource Url
 	*/
-	public static function addSegmentAccountsUrl($accountIds, $id)
+	public static function addSegmentAccountsUrl($id)
 	{
 		$url = "/api/commerce/customer/segments/{id}/accounts";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
-		$url = $mozuUrl->formatUrl("accountIds", $accountIds);
 		$url = $mozuUrl->formatUrl("id", $id);
 		return $mozuUrl;
 	}
@@ -103,15 +101,13 @@ class CustomerSegmentUrl  {
 	
 	/**
 		* Get Resource Url for DeleteSegmentAccounts
-		* @param int $accountIds 
 		* @param int $id 
 		* @return string Resource Url
 	*/
-	public static function deleteSegmentAccountsUrl($accountIds, $id)
+	public static function deleteSegmentAccountsUrl($id)
 	{
 		$url = "/api/commerce/customer/segments/{id}/accounts";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
-		$url = $mozuUrl->formatUrl("accountIds", $accountIds);
 		$url = $mozuUrl->formatUrl("id", $id);
 		return $mozuUrl;
 	}

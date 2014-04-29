@@ -73,14 +73,14 @@ class CustomerSegmentClient {
 	/**
 	* 
 	*
-	* @param int $accountIds 
 	* @param int $id 
+	* @param array|int $accountIds 
 	*/
 	public static function addSegmentAccountsClient($accountIds, $id)
 	{
-		$url = CustomerSegmentUrl::addSegmentAccountsUrl($accountIds, $id);
+		$url = CustomerSegmentUrl::addSegmentAccountsUrl($id);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url)->withBody($accountIds);
 		return $mozuClient;
 
 	}
@@ -118,14 +118,14 @@ class CustomerSegmentClient {
 	/**
 	* 
 	*
-	* @param int $accountIds 
 	* @param int $id 
+	* @param array|int $accountIds 
 	*/
 	public static function deleteSegmentAccountsClient($accountIds, $id)
 	{
-		$url = CustomerSegmentUrl::deleteSegmentAccountsUrl($accountIds, $id);
+		$url = CustomerSegmentUrl::deleteSegmentAccountsUrl($id);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url)->withBody($accountIds);
 		return $mozuClient;
 
 	}

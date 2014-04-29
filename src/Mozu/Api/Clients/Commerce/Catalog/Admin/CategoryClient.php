@@ -73,12 +73,13 @@ class CategoryClient {
 	/**
 	* Adds a new category to the site's category hierarchy. Specify a ParentCategoryID to determine where to locate the category in the hierarchy. If a ParentCategoryID is not specified, the new category becomes a top-level category.
 	*
+	* @param bool $incrementSequence 
 	* @param Category $category Properties of the new category. Required properties: ParentCategoryID and Content.Name.
 	* @return MozuClient
 	*/
-	public static function addCategoryClient($dataViewMode, $category)
+	public static function addCategoryClient($dataViewMode, $category, $incrementSequence =  null)
 	{
-		$url = CategoryUrl::addCategoryUrl();
+		$url = CategoryUrl::addCategoryUrl($incrementSequence);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($category)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
 		return $mozuClient;

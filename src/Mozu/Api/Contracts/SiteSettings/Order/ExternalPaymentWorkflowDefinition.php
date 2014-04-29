@@ -20,14 +20,14 @@ namespace Mozu\Api\Contracts\SiteSettings\Order;
 class ExternalPaymentWorkflowDefinition
 {
 	/**
-	*If true, the associated external payment workflow definition is enabled for the site.
-	*/
-	public $isEnabled;
-
-	/**
 	*The name of the external payment workflow definition.
 	*/
 	public $name;
+
+	/**
+	*If true, the associated external payment workflow definition is enabled for the site.
+	*/
+	public $isEnabled;
 
 	/**
 	*The credential fields required to communicate with the external payment processor.

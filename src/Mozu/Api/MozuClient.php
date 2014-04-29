@@ -1,8 +1,6 @@
 <?php
 
 namespace Mozu\Api;
-
-require_once __DIR__ . '/../../../vendor/autoload.php';
 use Mozu\Api\iApiContext;
 use Guzzle\Service\Client as Client;
 use Mozu\Api\Security\AppAuthenticator;

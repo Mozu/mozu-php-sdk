@@ -20,11 +20,6 @@ namespace Mozu\Api\Contracts\Reference;
 class Field
 {
 	/**
-	*Identifier of the field.
-	*/
-	public $id;
-
-	/**
 	*Label for the field.
 	*/
 	public $label;
@@ -33,6 +28,11 @@ class Field
 	*Sequence of the field.
 	*/
 	public $order;
+
+	/**
+	*Identifier of the field.
+	*/
+	public $id;
 
 	/**
 	*Type of field.

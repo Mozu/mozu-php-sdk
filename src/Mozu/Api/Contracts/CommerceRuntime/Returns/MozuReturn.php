@@ -20,6 +20,11 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Returns;
 class MozuReturn
 {
 	/**
+	*Unique identifier of the Mozu tenant.
+	*/
+	public $tenantId;
+
+	/**
 	*The actions a user can perform for the return at this time.
 	*/
 	public $availableActions;
@@ -118,11 +123,6 @@ class MozuReturn
 	*Current status of the return, such as "ReturnAuthorized".
 	*/
 	public $status;
-
-	/**
-	*Unique identifier of the Mozu tenant.
-	*/
-	public $tenantId;
 
 	/**
 	*Unique identifier of the user responsible for the return. Read only and supplied by the original order.

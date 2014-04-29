@@ -16,6 +16,14 @@ namespace Mozu\Api\Contracts\Event;
 
 class Subscription
 {
+		public $apiVersion;
+
+		public $appId;
+
+		public $confirmed;
+
+		public $contentType;
+
 		public $createBy;
 
 		public $createDate;
@@ -36,15 +44,7 @@ class Subscription
 
 		public $updateDate;
 
-		public $apiVersion;
-
-		public $appId;
-
-		public $confirmed;
-
-		public $contentType;
-
-		public $subscribingSites;
+		public $subscribingTenants;
 
 }
 

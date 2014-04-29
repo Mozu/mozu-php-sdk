@@ -50,11 +50,11 @@ class Catalog
 	*/
 	public $name;
 
-		public $status;
-
 		public $tenantId;
 
 		public $updateDate;
+
+		public $status;
 
 }
 

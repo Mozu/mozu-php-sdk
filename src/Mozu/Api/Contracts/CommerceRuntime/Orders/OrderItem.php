@@ -20,11 +20,6 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Orders;
 class OrderItem
 {
 	/**
-	*Total amount of shipping fees associated with the specified item in the order.
-	*/
-	public $shippingTotal;
-
-	/**
 	*The subtotal of the order item including any applied discount calculations.
 	*/
 	public $discountedTotal;
@@ -93,6 +88,11 @@ class OrderItem
 	*The total amount of sales tax incurred for shipping charges associated with this item in a cart.
 	*/
 	public $shippingTaxTotal;
+
+	/**
+	*Total amount of shipping fees associated with the specified item in the order.
+	*/
+	public $shippingTotal;
 
 	/**
 	*Amount of the item in the order without sales tax, shipping costs, and other fees.

@@ -68,12 +68,13 @@ class LocationInventoryResource {
 	* Creates an array of product inventory definitions for the location specified in the request. When adding a new inventory definition, you must specify the productCode and stockOnHand value in each array you define. All other properties are system-supplied and read only.
 	*
 	* @param string $locationCode User-defined code that uniquely identifies the location.
+	* @param bool $performUpserts 
 	* @param array|LocationInventory $locationInventoryList Array list of product inventory definitions for all associated locations. For each location inventory in the list, define the productCode and stockOnHand values.
 	* @return array|LocationInventory 
 	*/
-	public function addLocationInventory($dataViewMode, $locationInventoryList, $locationCode)
+	public function addLocationInventory($dataViewMode, $locationInventoryList, $locationCode, $performUpserts =  null)
 	{
-		$mozuClient = LocationInventoryClient::addLocationInventoryClient($dataViewMode, $locationInventoryList, $locationCode);
+		$mozuClient = LocationInventoryClient::addLocationInventoryClient($dataViewMode, $locationInventoryList, $locationCode, $performUpserts);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();

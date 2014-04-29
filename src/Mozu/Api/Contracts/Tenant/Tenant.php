@@ -40,14 +40,14 @@ class Tenant
 	public $name;
 
 	/**
-	*Collection of sites associated with the tenant.
-	*/
-	public $sites;
-
-	/**
 	*Collection of master catalogs associated with the tenant.
 	*/
 	public $masterCatalogs;
+
+	/**
+	*Collection of sites associated with the tenant.
+	*/
+	public $sites;
 
 }
 

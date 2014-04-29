@@ -1,6 +1,5 @@
 <?php 
 namespace Mozu\Api\Security;
-require_once __DIR__ . '/../../../../vendor/autoload.php';
 
 use DateTime;
 use Mozu\Api\Security\UserAuthTicket;

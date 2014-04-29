@@ -20,11 +20,6 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Commerce;
 class CommerceUnitPrice
 {
 	/**
-	*The calculated amount of the discount to apply.
-	*/
-	public $discountAmount;
-
-	/**
 	*Represents the total price of the line item extended to the shopper. This begins with the Unit Price, then uses any of the following prices if they are defined, in the following order: Override Amount, Sale Amount, List Amount.
 	*/
 	public $extendedAmount;

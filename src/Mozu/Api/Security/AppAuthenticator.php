@@ -2,8 +2,6 @@
 
 namespace Mozu\Api\Security;
 
-require_once __DIR__ . '/../../../../vendor/autoload.php';
-
 use DateTime;
 use Mozu\Api\Contracts\AppDev\AppAuthInfo;
 use Mozu\Api\Contracts\AppDev\AuthTicketRequest;

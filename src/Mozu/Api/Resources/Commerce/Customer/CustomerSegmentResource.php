@@ -80,8 +80,8 @@ class CustomerSegmentResource {
 	/**
 	* 
 	*
-	* @param int $accountIds 
 	* @param int $id 
+	* @param array|int $accountIds 
 	*/
 	public function addSegmentAccounts($accountIds, $id)
 	{
@@ -123,8 +123,8 @@ class CustomerSegmentResource {
 	/**
 	* 
 	*
-	* @param int $accountIds 
 	* @param int $id 
+	* @param array|int $accountIds 
 	*/
 	public function deleteSegmentAccounts($accountIds, $id)
 	{

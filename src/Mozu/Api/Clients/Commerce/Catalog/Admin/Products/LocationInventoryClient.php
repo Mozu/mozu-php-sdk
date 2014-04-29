@@ -60,13 +60,14 @@ class LocationInventoryClient {
 	/**
 	* Creates a new location inventory definition for the product code specified in the request.
 	*
+	* @param bool $performUpserts 
 	* @param string $productCode ProductCodeBase
 	* @param array|LocationInventory $locationInventoryList Array list of the location inventory definitions associated with the product code specified in the request. For each location, you must define the locationCode value and the stockOnHand value. All other properties in the array are system-supplied and read only.
 	* @return MozuClient
 	*/
-	public static function addLocationInventoryClient($dataViewMode, $locationInventoryList, $productCode)
+	public static function addLocationInventoryClient($dataViewMode, $locationInventoryList, $productCode, $performUpserts =  null)
 	{
-		$url = LocationInventoryUrl::addLocationInventoryUrl($productCode);
+		$url = LocationInventoryUrl::addLocationInventoryUrl($performUpserts, $productCode);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($locationInventoryList)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
 		return $mozuClient;

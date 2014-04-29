@@ -56,13 +56,15 @@ class LocationInventoryUrl  {
 	/**
 		* Get Resource Url for AddLocationInventory
 		* @param string $locationCode User-defined code that uniquely identifies the location.
+		* @param bool $performUpserts 
 		* @return string Resource Url
 	*/
-	public static function addLocationInventoryUrl($locationCode)
+	public static function addLocationInventoryUrl($locationCode, $performUpserts)
 	{
-		$url = "/api/commerce/catalog/admin/locationinventory/{locationCode}";
+		$url = "/api/commerce/catalog/admin/locationinventory/{locationCode}?performUpserts={performUpserts}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
 		$url = $mozuUrl->formatUrl("locationCode", $locationCode);
+		$url = $mozuUrl->formatUrl("performUpserts", $performUpserts);
 		return $mozuUrl;
 	}
 	

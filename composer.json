@@ -3,7 +3,11 @@
 	"description" : "SDK for Mozu Rest APIs",
 	"type" : "library",
 	"homepage" : "https://developer.mozu.com/sdks",
-	"keywords" : ["Mozu","API","SDK"],
+	"keywords" : [
+		"Mozu",
+		"API",
+		"SDK"
+	],
 	"license" : "MIT",
 	"require" : {
 		"guzzle/guzzle" : ">=3.7.3@stable",
@@ -14,7 +18,12 @@
 	},
 	"autoload" : {
 		"psr-0" : {
-			"Mozu" : "src"
+			"Mozu" : "src/"
 		}
-	}
+	},
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.7.x-dev"
+        }
+    }
 }

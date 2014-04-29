@@ -64,12 +64,14 @@ class CategoryUrl  {
 	
 	/**
 		* Get Resource Url for AddCategory
+		* @param bool $incrementSequence 
 		* @return string Resource Url
 	*/
-	public static function addCategoryUrl()
+	public static function addCategoryUrl($incrementSequence)
 	{
-		$url = "/api/commerce/catalog/admin/categories/";
+		$url = "/api/commerce/catalog/admin/categories/?incrementSequence={incrementSequence}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("incrementSequence", $incrementSequence);
 		return $mozuUrl;
 	}
 	
