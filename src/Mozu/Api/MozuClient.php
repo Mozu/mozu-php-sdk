@@ -162,7 +162,7 @@ class MozuClient {
 		
 			if (trim($this->apiContext->getTenantUrl()) == "")
 			{
-				$tenantResource = new TenantResource();
+				$tenantResource = new TenantResource(new ApiContext());
 				
 				$tenant = $tenantResource->getTenant($this->apiContext->getTenantId());
 		
