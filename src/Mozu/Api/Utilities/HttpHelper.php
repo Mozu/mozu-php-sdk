@@ -61,7 +61,7 @@ class HttpHelper {
             case "Guzzle\Http\Exception\ClientErrorResponseException":
                 $message = $e->getResponse()->getReasonPhrase();
                 $code = $e->getResponse()->getStatusCode();
-                $response = $e->getResponse();
+                $response = $e->getResponse(TRUE);
                 $jsonResponse = json_decode($response);
                 if (empty($message) || empty($code)) {
                     throw $e;
@@ -90,21 +90,28 @@ class HttpHelper {
             
             case "Guzzle\Http\Exception\ServerErrorResponseException":
                 // var_dump ($e);
-                $resp = $e->getResponse()->getBody(true);
-                $jsonResponse = json_decode($resp);
-                $message = (get_class($jsonResponse) == "stdClass" ? $jsonResponse->message : $e->getResponse()->getReasonPhrase());
+                $code = $e->getResponse()->getStatusCode();
+                $response = $e->getResponse()->getBody(TRUE);
+                $jsonResponse = json_decode($response);
+                $message = $e->getResponse()->getReasonPhrase();
                 $apiException = new ApiException($message, $e->getResponse()->getStatusCode());
                 $header = (string)$e->getResponse()->getHeader("x-vol-correlation");
-                
-                if ($header != null) {
+                if (!empty($header)) {
                     $apiException->setCorrelationId($header);
                 }
-                $apiException->setApiContext($apiContext);
-                if ($jsonResponse != null) {
-                    $apiException->setAdditionalErrorData($jsonResponse->additionalErrorData);
-                    $apiException->setErrorCode($jsonResponse->errorCode);
-                    $apiException->setApplicationName($jsonResponse->applicationName);
-                    $apiException->setItems($jsonResponse->items);
+                if (!empty($jsonResponse)) {
+                    if (isset($jsonResponse->additionalErrorData)) {
+                        $apiException->setAdditionalErrorData($jsonResponse->additionalErrorData);
+                    }
+                    if (isset($jsonResponse->errorCode)) {
+                        $apiException->setErrorCode($jsonResponse->errorCode);
+                    }
+                    if (isset($jsonResponse->applicationName)) {
+                        $apiException->setApplicationName($jsonResponse->applicationName);
+                    }
+                    if (isset($jsonResponse->items)) {
+                        $apiException->setItems($jsonResponse->items);
+                    }
                 }
                 throw $apiException;
                 break;
