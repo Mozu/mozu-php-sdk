@@ -49,7 +49,7 @@ class ProductResourceTest extends BaseTest
     	try {
 	       $productCollection = $this->object->getProducts(DataViewMode::LIVE, 0, 200, null, "productCode eq AC-1", null, null, null);
     	} catch(ApiException $ex) {
-    		echo $ex->getMessage();
+    		//echo $ex->getMessage();
     	}
        //var_dump($productCollection);
     }

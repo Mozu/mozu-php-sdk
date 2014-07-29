@@ -42,7 +42,7 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
     	try{
 	    	AppAuthenticator::initialize($appAuthInfo,$this->baseUrl, $refreshInterval);
     	} catch(\Exception $e) {
-    		echo("Exception : code - " . $e->getCode() . " message - " . $e->getMessage() . "\n" );
+    		//echo("Exception : code - " . $e->getCode() . " message - " . $e->getMessage() . "\n" );
     		throw $e;
     	}
     }

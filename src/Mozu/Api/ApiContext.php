@@ -94,7 +94,7 @@ class ApiContext implements iApiContext {
 	 	$this->tenant = $tenant;
 	 	$this->tenantId = $tenant->id;
 	 	$this->tenantUrl = $tenant->domain;
-	 	 echo($this->tenantUrl);
+	 	 //echo($this->tenantUrl);
 	 	//if (count($this->tenant->sites) == 1) {
 	 	//	$this->siteId = $tenant->sites[0]->id;
 	 	//}
