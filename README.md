@@ -3,6 +3,7 @@ php-mozu-api
 
 PHP SDK for the full v1 Mozu Api
 
+PackageGist: https://packagist.org/packages/mozu/api
 
 Usage:
 
