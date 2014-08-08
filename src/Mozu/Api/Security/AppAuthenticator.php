@@ -104,8 +104,8 @@ class AppAuthenticator {
 				->setAccessTokenExpiration($accessTokenExpiration)
 				->setRefreshTokenExpiration($refreshTokenExpiration);
 		
-		echo "Access Token Expiration - " . $this->refreshInterval->getAccessTokenExpiration()->format('Y-m-d H:i:s') . "\n";
-		echo "Refresh Token Expiration - " .$this->refreshInterval->getRefreshTokenExpiration()->format('Y-m-d H:i:s'). "\n";
+		//echo "Access Token Expiration - " . $this->refreshInterval->getAccessTokenExpiration()->format('Y-m-d H:i:s') . "\n";
+		//echo "Refresh Token Expiration - " .$this->refreshInterval->getRefreshTokenExpiration()->format('Y-m-d H:i:s'). "\n";
 	}
 	
 	public function addAuthHeader(Request $request) {
@@ -119,7 +119,7 @@ class AppAuthenticator {
 
 	private function ensureAuthTicket() {
 		$dateTimeNow = new DateTime();
-		echo  ($dateTimeNow >= $this->refreshInterval->getRefreshTokenExpiration());
+		//echo  ($dateTimeNow >= $this->refreshInterval->getRefreshTokenExpiration());
 		if ($this->authTicket == null || $dateTimeNow >= $this->refreshInterval->getRefreshTokenExpiration())
 			$this->authenticateApp();
 		else if ($dateTimeNow >= $this->refreshInterval->getAccessTokenExpiration())

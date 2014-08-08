@@ -130,7 +130,7 @@ class MozuClient {
 		}
 		
 		if ($this->apiContext != null && $this->apiContext->getUserAuthTicket() != null) {
-			echo "Setting user Auth";
+			//echo "Setting user Auth";
 			$this->setUserAuth();
 		}
 		
