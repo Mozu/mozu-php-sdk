@@ -69,8 +69,9 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
 
         MozuConfig::setBaseUrl($this->baseUrl);
     	
-    	if (!empty($proxy_host) && !empty($proxy_port))
+    	if ($proxy_host && $proxy_port) {
     		Proxy::initialize($proxy_host, $proxy_port);
+			}
     }
    
  }
