@@ -29,6 +29,8 @@ class ProductPropertyValue
 	*/
 	public $value;
 
+		public $displayInfo;
+
 }
 
 ?>

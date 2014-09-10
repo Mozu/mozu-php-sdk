@@ -25,11 +25,19 @@ class Pickup
 	public $availableActions;
 
 	/**
+	*The specific code that represents pickup.
+	*/
+	public $code;
+
+	/**
 	*The date and time the customer picked up the order items.
 	*/
 	public $fulfillmentDate;
 
-		public $fulfillmentLocationCode;
+	/**
+	*The location code that represents the location where the shopper will fulfill this pickup.
+	*/
+	public $fulfillmentLocationCode;
 
 	/**
 	*Unique identifier of the in-store pickup.
@@ -46,7 +54,10 @@ class Pickup
 	*/
 	public $auditInfo;
 
-		public $changeMessages;
+	/**
+	*List of change messages associated with the pickup.
+	*/
+	public $changeMessages;
 
 	/**
 	*An array list of objects in the returned collection.

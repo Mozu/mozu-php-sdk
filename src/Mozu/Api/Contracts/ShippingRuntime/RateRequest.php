@@ -19,25 +19,55 @@ namespace Mozu\Api\Contracts\ShippingRuntime;
 */
 class RateRequest
 {
-		public $carrierIds;
+	/**
+	*List of shipping carriers for which to retrieve shipping rate information.
+	*/
+	public $carrierIds;
 
-		public $estimatedShipmentDate;
+	/**
+	*The date and time the shipment will be shipped to the shopper.
+	*/
+	public $estimatedShipmentDate;
 
-		public $isDestinationAddressCommercial;
+	/**
+	*If true, the destination address associated with the shipping rate request is a commercial address.
+	*/
+	public $isDestinationAddressCommercial;
 
-		public $isoCurrencyCode;
+	/**
+	*3-letter ISO 4217 standard global currency code. Currently, only "USD" (US Dollar) is supported.
+	*/
+	public $isoCurrencyCode;
 
-		public $orderTotal;
+	/**
+	*The total amount of the order used to calculate the shipping rate estimate.
+	*/
+	public $orderTotal;
 
-		public $shippingServiceTypes;
+	/**
+	*The shipping methods associated with this request.
+	*/
+	public $shippingServiceTypes;
 
-		public $customAttributes;
+	/**
+	*List of key-value pairs that represent custom attributes associated with the request.
+	*/
+	public $customAttributes;
 
-		public $destinationAddress;
+	/**
+	*The physical address to which the shipment will ship.
+	*/
+	public $destinationAddress;
 
-		public $items;
+	/**
+	*List of items to include in the shipping rate request.
+	*/
+	public $items;
 
-		public $originAddress;
+	/**
+	*The physical address from which the shipment will ship.
+	*/
+	public $originAddress;
 
 }
 

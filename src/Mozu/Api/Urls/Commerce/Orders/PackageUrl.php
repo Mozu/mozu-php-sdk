@@ -18,21 +18,6 @@ use Mozu\Api\UrlLocation;
 class PackageUrl  {
 
 	/**
-		* Get Resource Url for GetPackage
-		* @param string $orderId Unique identifier of the order associated with the package to retrieve.
-		* @param string $packageId Unique identifier of the package to retrieve.
-		* @return string Resource Url
-	*/
-	public static function getPackageUrl($orderId, $packageId)
-	{
-		$url = "/api/commerce/orders/{orderId}/packages/{packageId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("orderId", $orderId);
-		$url = $mozuUrl->formatUrl("packageId", $packageId);
-		return $mozuUrl;
-	}
-	
-	/**
 		* Get Resource Url for GetAvailablePackageFulfillmentActions
 		* @param string $orderId Unique identifier of the order associated with the package fulfillment.
 		* @param string $packageId Unique identifier of the package associated with the fulfillment actions to retrieve.
@@ -41,9 +26,10 @@ class PackageUrl  {
 	public static function getAvailablePackageFulfillmentActionsUrl($orderId, $packageId)
 	{
 		$url = "/api/commerce/orders/{orderId}/packages/{packageId}/actions";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("orderId", $orderId);
-		$url = $mozuUrl->formatUrl("packageId", $packageId);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("orderId", $orderId)
+				->formatUrl("packageId", $packageId);
+
 		return $mozuUrl;
 	}
 	
@@ -56,22 +42,44 @@ class PackageUrl  {
 	public static function getPackageLabelUrl($orderId, $packageId)
 	{
 		$url = "/api/commerce/orders/{orderId}/packages/{packageId}/label";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("orderId", $orderId);
-		$url = $mozuUrl->formatUrl("packageId", $packageId);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("orderId", $orderId)
+				->formatUrl("packageId", $packageId);
+
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for GetPackage
+		* @param string $orderId Unique identifier of the order associated with the package to retrieve.
+		* @param string $packageId Unique identifier of the package to retrieve.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @return string Resource Url
+	*/
+	public static function getPackageUrl($orderId, $packageId, $responseFields)
+	{
+		$url = "/api/commerce/orders/{orderId}/packages/{packageId}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("orderId", $orderId)
+				->formatUrl("packageId", $packageId)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for CreatePackage
 		* @param string $orderId Unique identifier of the order associated with this package.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function createPackageUrl($orderId)
+	public static function createPackageUrl($orderId, $responseFields)
 	{
-		$url = "/api/commerce/orders/{orderId}/packages";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
-		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = "/api/commerce/orders/{orderId}/packages?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("orderId", $orderId)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
@@ -79,14 +87,17 @@ class PackageUrl  {
 		* Get Resource Url for UpdatePackage
 		* @param string $orderId Unique identifier of the order associated with the package to update.
 		* @param string $packageId Unique identifier of the package of order items to update.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function updatePackageUrl($orderId, $packageId)
+	public static function updatePackageUrl($orderId, $packageId, $responseFields)
 	{
-		$url = "/api/commerce/orders/{orderId}/packages/{packageId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
-		$url = $mozuUrl->formatUrl("orderId", $orderId);
-		$url = $mozuUrl->formatUrl("packageId", $packageId);
+		$url = "/api/commerce/orders/{orderId}/packages/{packageId}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
+		$mozuUrl->formatUrl("orderId", $orderId)
+				->formatUrl("packageId", $packageId)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
@@ -99,9 +110,10 @@ class PackageUrl  {
 	public static function deletePackageUrl($orderId, $packageId)
 	{
 		$url = "/api/commerce/orders/{orderId}/packages/{packageId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
-		$url = $mozuUrl->formatUrl("orderId", $orderId);
-		$url = $mozuUrl->formatUrl("packageId", $packageId);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
+		$mozuUrl->formatUrl("orderId", $orderId)
+				->formatUrl("packageId", $packageId);
+
 		return $mozuUrl;
 	}
 	

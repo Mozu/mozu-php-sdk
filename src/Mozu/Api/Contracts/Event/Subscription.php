@@ -44,7 +44,10 @@ class Subscription
 
 		public $updateDate;
 
-		public $subscribingTenants;
+	/**
+	*This is a tenant that is associated with a subscription.
+	*/
+	public $subscribingTenants;
 
 }
 

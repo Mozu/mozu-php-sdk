@@ -20,14 +20,14 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 class AppliedDiscount
 {
 	/**
-	*Alphanumeric code associated with the coupon or promotion that results in a discounted price.
-	*/
-	public $couponCode;
-
-	/**
 	*The value of the discount applied to the product, represented as a negative currency amount to apply to the original price.
 	*/
 	public $impact;
+
+	/**
+	*Alphanumeric code associated with the coupon or promotion that results in a discounted price.
+	*/
+	public $couponCode;
 
 	/**
 	*Properties of the discount currently applied to the product.

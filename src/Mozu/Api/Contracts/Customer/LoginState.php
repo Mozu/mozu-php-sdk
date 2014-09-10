@@ -14,27 +14,60 @@ namespace Mozu\Api\Contracts\Customer;
 
 
 
+/**
+*	Properties of the login state of a customer account.
+*/
 class LoginState
 {
-		public $createdOn;
+	/**
+	*Date and time when the entity was created, represented in UTC Date/Time.
+	*/
+	public $createdOn;
 
-		public $failedLoginAttemptCount;
+	/**
+	*The total number of times the customer account has unsuccessfully attempted to log in.
+	*/
+	public $failedLoginAttemptCount;
 
-		public $firstFailedLoginAttemptOn;
+	/**
+	*The date and time the customer's first unsuccessful attempt to log in was recorded.
+	*/
+	public $firstFailedLoginAttemptOn;
 
-		public $isLocked;
+	/**
+	*If true, the customer account is locked and the customer cannot log in.
+	*/
+	public $isLocked;
 
-		public $isPasswordChangeRequired;
+	/**
+	*If true, the customer account user must change the password for the account.
+	*/
+	public $isPasswordChangeRequired;
 
-		public $lastLockedOn;
+	/**
+	*The date and time the customer account was most recently locked.
+	*/
+	public $lastLockedOn;
 
-		public $lastLoginOn;
+	/**
+	*The date and time the customer account last logged in.
+	*/
+	public $lastLoginOn;
 
-		public $lastPasswordChangeOn;
+	/**
+	*The date and the time the user associated with the customer account last changed the account password.
+	*/
+	public $lastPasswordChangeOn;
 
-		public $remainingLoginAttempts;
+	/**
+	*The remaining number of login attempts the customer can perform before the system locks the customer account.
+	*/
+	public $remainingLoginAttempts;
 
-		public $updatedOn;
+	/**
+	*Date and time when the entity was last updated, represented in UTC Date/Time.
+	*/
+	public $updatedOn;
 
 }
 

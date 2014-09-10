@@ -15,16 +15,13 @@ namespace Mozu\Api\Contracts\Content;
 
 
 /**
-*	A high level description of the document draft.
+*	Summary properties of an unpublished document draft.
 */
 class DocumentDraftSummary
 {
 		public $activeUpdateDate;
 
-	/**
-	*Name of the document list associated with the draft.
-	*/
-	public $documentListName;
+		public $documentTypeFQN;
 
 		public $draftUpdateDate;
 
@@ -32,6 +29,8 @@ class DocumentDraftSummary
 	*Identifier of document draft.
 	*/
 	public $id;
+
+		public $listFQN;
 
 	/**
 	*Name of the document draft.

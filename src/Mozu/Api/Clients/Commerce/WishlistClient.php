@@ -14,8 +14,10 @@ namespace Mozu\Api\Clients\Commerce;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\WishlistUrl;
-use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\CommerceRuntime\Wishlists\Wishlist;
+use Mozu\Api\Contracts\CommerceRuntime\Wishlists\WishlistCollection;
 
 /**
 * Use the Wish Lists resource to manage the shopper wish lists of products associated with a customer account. Although customer accounts are managed at the tenant level, the system stores shopper wish lists at the site level. This enables the same customer to have wish lists for each of a merchant's sites. Use the Wish List Items resource to manage items in a wish list.
@@ -29,78 +31,78 @@ class WishlistClient {
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $q A list of search terms to use in the query when searching across wish list name. Separate multiple search terms with a space character.
 	* @param int $qLimit The maximum number of search results to return in the response. You can limit any range between 1-100.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return MozuClient
 	*/
-	public static function getWishlistsClient($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $q =  null, $qLimit =  null)
+	public static function getWishlistsClient($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $q =  null, $qLimit =  null, $responseFields =  null)
 	{
-		$url = WishlistUrl::getWishlistsUrl($filter, $pageSize, $q, $qLimit, $sortBy, $startIndex);
+		$url = WishlistUrl::getWishlistsUrl($filter, $pageSize, $q, $qLimit, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
 	/**
 	* Retrieves the details of the shopper wish list specified in the request.
 	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $wishlistId Unique identifier of the shopper wish list to retrieve.
 	* @return MozuClient
 	*/
-	public static function getWishlistClient($wishlistId)
+	public static function getWishlistClient($wishlistId, $responseFields =  null)
 	{
-		$url = WishlistUrl::getWishlistUrl($wishlistId);
+		$url = WishlistUrl::getWishlistUrl($responseFields, $wishlistId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
 	/**
-	* 
+	* Retrieves the details of a wish list by supplying the wish list name.
 	*
-	* @param int $customerAccountId 
-	* @param string $wishlistName 
+	* @param int $customerAccountId The unique identifier of the customer account for which to retrieve wish lists.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $wishlistName The name of the wish list to retrieve.
 	* @return MozuClient
 	*/
-	public static function getWishlistByNameClient($customerAccountId, $wishlistName)
+	public static function getWishlistByNameClient($customerAccountId, $wishlistName, $responseFields =  null)
 	{
-		$url = WishlistUrl::getWishlistByNameUrl($customerAccountId, $wishlistName);
+		$url = WishlistUrl::getWishlistByNameUrl($customerAccountId, $responseFields, $wishlistName);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
 	/**
 	* Creates a new shopper wish list for the associated customer account. Although customer accounts are maintained at the tenant level, the system stores wish lists at the site level. Newly created wish lists do not have any items.
 	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param Wishlist $wishlist Properties of the wish list to create.
 	* @return MozuClient
 	*/
-	public static function createWishlistClient($wishlist)
+	public static function createWishlistClient($wishlist, $responseFields =  null)
 	{
-		$url = WishlistUrl::createWishlistUrl();
+		$url = WishlistUrl::createWishlistUrl($responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($wishlist);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($wishlist);
 
 	}
 	
 	/**
 	* Updates one or more properties of a shopper wish list defined for a customer account.
 	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $wishlistId Unique identifier of the shopper wish list to update.
 	* @param Wishlist $wishlist Properties of the shopper wish list to update.
 	* @return MozuClient
 	*/
-	public static function updateWishlistClient($wishlist, $wishlistId)
+	public static function updateWishlistClient($wishlist, $wishlistId, $responseFields =  null)
 	{
-		$url = WishlistUrl::updateWishlistUrl($wishlistId);
+		$url = WishlistUrl::updateWishlistUrl($responseFields, $wishlistId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($wishlist);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($wishlist);
 
 	}
 	
@@ -108,13 +110,13 @@ class WishlistClient {
 	* Deletes the shopper wish list specified in the request and all items associated with it.
 	*
 	* @param string $wishlistId Unique identifier of the wish list to delete.
+	* @return MozuClient
 	*/
 	public static function deleteWishlistClient($wishlistId)
 	{
 		$url = WishlistUrl::deleteWishlistUrl($wishlistId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	

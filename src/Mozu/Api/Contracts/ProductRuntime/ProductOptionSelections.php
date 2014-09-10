@@ -25,7 +25,7 @@ class ProductOptionSelections
 	public $variationProductCode;
 
 	/**
-	*List of product options and values currently selected.
+	*List of option attributes associated with the product and the associated values currently defined for this product configuration.
 	*/
 	public $options;
 

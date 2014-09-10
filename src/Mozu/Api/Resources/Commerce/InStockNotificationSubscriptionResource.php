@@ -12,81 +12,87 @@
 
 namespace Mozu\Api\Resources\Commerce;
 
-use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\InStockNotificationSubscriptionClient;
 use Mozu\Api\ApiContext;
-use Mozu\Api\DataViewMode;
-use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\Customer\InStockNotificationSubscription;
+use Mozu\Api\Contracts\Customer\InStockNotificationSubscriptionCollection;
 
 /**
-* 
+* Use the Customer In-Stock Notification Subscription resource to manage the subscriptions customer accounts use to send product notifications. This resource can send a notification when a product in a catalog returns to a site's active inventory after it is out of stock, or when a new product becomes available for the first time.
 */
 class InStockNotificationSubscriptionResource {
 
-		private $apiContext;
+	private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
+	
+
 	/**
-	* 
+	* Retrieves a list of in-stock notification subscriptions.
 	*
-	* @param string $filter 
-	* @param int $pageSize 
-	* @param string $sortBy 
-	* @param int $startIndex 
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return InStockNotificationSubscriptionCollection 
 	*/
-	public function getInStockNotificationSubscriptions($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
+	public function getInStockNotificationSubscriptions($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
-		$mozuClient = InStockNotificationSubscriptionClient::getInStockNotificationSubscriptionsClient($startIndex, $pageSize, $sortBy, $filter);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = InStockNotificationSubscriptionClient::getInStockNotificationSubscriptionsClient($startIndex, $pageSize, $sortBy, $filter, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
-	* 
+	* Retrieves the details of a subscription that sends a push notification when a product is available in a site's active stock.
 	*
-	* @param int $id 
+	* @param int $id Unique identifier of the in-stock notification subscription to retrieve.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return InStockNotificationSubscription 
 	*/
-	public function getInStockNotificationSubscription($id)
+	public function getInStockNotificationSubscription($id, $responseFields =  null)
 	{
-		$mozuClient = InStockNotificationSubscriptionClient::getInStockNotificationSubscriptionClient($id);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = InStockNotificationSubscriptionClient::getInStockNotificationSubscriptionClient($id, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
-	* 
+	* Creates a new subscription that notifies the customer when the product specified in the request is available in the active inventory of the defined location.
 	*
-	* @param InStockNotificationSubscription $inStockNotificationSubscription 
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param InStockNotificationSubscription $inStockNotificationSubscription Properties of a subscription that sends the customer a notification when a product is available in a site's active stock.
 	* @return InStockNotificationSubscription 
 	*/
-	public function addInStockNotificationSubscription($inStockNotificationSubscription)
+	public function addInStockNotificationSubscription($inStockNotificationSubscription, $responseFields =  null)
 	{
-		$mozuClient = InStockNotificationSubscriptionClient::addInStockNotificationSubscriptionClient($inStockNotificationSubscription);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = InStockNotificationSubscriptionClient::addInStockNotificationSubscriptionClient($inStockNotificationSubscription, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
-	* 
+	* Deletes a subscription for a customer in-stock notification.
 	*
-	* @param int $id 
+	* @param int $id Unique identifier of the customer in-stock notification subscription to delete.
+	* @return void
 	*/
 	public function deleteInStockNotificationSubscription($id)
 	{
 		$mozuClient = InStockNotificationSubscriptionClient::deleteInStockNotificationSubscriptionClient($id);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
+		$mozuClient->withContext($this->apiContext)
+				->execute();
 
 	}
 	

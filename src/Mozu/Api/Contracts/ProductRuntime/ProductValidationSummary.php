@@ -19,16 +19,27 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 */
 class ProductValidationSummary
 {
-		public $fulfillmentTypesSupported;
+	/**
+	*List of fulfillment types that the product supports.
+	*/
+	public $fulfillmentTypesSupported;
 
-		public $isPackagedStandAlone;
+		public $goodsType;
+
+	/**
+	*If true, this product should not be packaged with other items and should ship by itself.
+	*/
+	public $isPackagedStandAlone;
 
 	/**
 	*If true, the entity is subject to tax based on the relevant tax rate.
 	*/
 	public $isTaxable;
 
-		public $mfgPartNumber;
+	/**
+	*The manufacturer's part number for the product.
+	*/
+	public $mfgPartNumber;
 
 	/**
 	*Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
@@ -45,16 +56,27 @@ class ProductValidationSummary
 	*/
 	public $productShortDescription;
 
-		public $productUsage;
+		public $productType;
 
-		public $upc;
+	/**
+	*The usage type of this product, which is Standard (a single product without configurable options), Configurable (a product that includes configurable option attributes), Bundle (a collection of products sold as a single entity), or Component (an invididual product that represents a component in a bundle).
+	*/
+	public $productUsage;
+
+	/**
+	*The universal product code defined for the product.
+	*/
+	public $upc;
 
 	/**
 	*Merchant-created code associated with a specific product variation. Variation product codes maintain an association with the base product code.
 	*/
 	public $variationProductCode;
 
-		public $bundledProducts;
+	/**
+	*Properties of a collection of component products that make up a single product bundle with its own product code.
+	*/
+	public $bundledProducts;
 
 	/**
 	*The list of product categories for the storefront.
@@ -81,7 +103,10 @@ class ProductValidationSummary
 	*/
 	public $price;
 
-		public $pricingBehavior;
+	/**
+	*Properties that describe the behavior the system uses when determining the price of the product.
+	*/
+	public $pricingBehavior;
 
 	/**
 	*The list of product properties configured in product admin.

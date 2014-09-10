@@ -19,7 +19,15 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Fulfillment;
 */
 class PackageItem
 {
-		public $productCode;
+	/**
+	*This specifies the type of fulfillment item.
+	*/
+	public $fulfillmentItemType;
+
+	/**
+	*Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+	*/
+	public $productCode;
 
 	/**
 	*The quantity of an item shipped in the specified package.

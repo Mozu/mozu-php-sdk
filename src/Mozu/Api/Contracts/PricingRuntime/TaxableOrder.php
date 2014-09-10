@@ -34,16 +34,25 @@ class TaxableOrder
 	*/
 	public $orderDate;
 
-		public $originalDocumentCode;
+	/**
+	*The unique identifier of the original order, used to track order changes for tax purposes.
+	*/
+	public $originalDocumentCode;
 
-		public $originalOrderDate;
+	/**
+	*The date and time the original order was placed.
+	*/
+	public $originalOrderDate;
 
 	/**
 	*The total shipping amount calculated for the order.
 	*/
 	public $shippingAmount;
 
-		public $taxRequestType;
+	/**
+	*The type of request for which to tax this entity, which is "Order" or "Return."
+	*/
+	public $taxRequestType;
 
 	/**
 	*The line items associated with the order.

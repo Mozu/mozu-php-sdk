@@ -12,51 +12,55 @@
 
 namespace Mozu\Api\Resources\Commerce\Customer\Accounts;
 
-use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Customer\Accounts\CardClient;
 use Mozu\Api\ApiContext;
-use Mozu\Api\DataViewMode;
-use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\Customer\Card;
+use Mozu\Api\Contracts\Customer\CardCollection;
 
 /**
 * Use the Cards subresource to manage stored credit cards for customer accounts. Mozu stores limited card data in the Customer service for expedited ordering purposes; however, the complete card data is stored in the Payment service.
 */
 class CardResource {
 
-		private $apiContext;
+	private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
+	
+
 	/**
-	* Retrieves all stored credit cards for the customer account.
+	* Retrieves the details of a credit card stored with a customer account billing contact.
 	*
 	* @param int $accountId Unique identifier of the customer account.
-	* @return CardCollection 
+	* @param string $cardId Unique identifier of the card associated with the customer account billing contact.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Card 
 	*/
-	public function getAccountCards($accountId)
+	public function getAccountCard($accountId, $cardId, $responseFields =  null)
 	{
-		$mozuClient = CardClient::getAccountCardsClient($accountId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = CardClient::getAccountCardClient($accountId, $cardId, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
-	* 
+	* Retrieves all stored credit cards for the customer account.
 	*
-	* @param int $accountId 
-	* @param string $cardId 
-	* @return Card 
+	* @param int $accountId Unique identifier of the customer account.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return CardCollection 
 	*/
-	public function getAccountCard($accountId, $cardId)
+	public function getAccountCards($accountId, $responseFields =  null)
 	{
-		$mozuClient = CardClient::getAccountCardClient($accountId, $cardId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = CardClient::getAccountCardsClient($accountId, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -64,15 +68,16 @@ class CardResource {
 	* Creates a new credit card record and stores it for the customer account.
 	*
 	* @param int $accountId Unique identifier of the customer account.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param Card $card Properties of the customer credit card to add to the account.
 	* @return Card 
 	*/
-	public function addAccountCard($card, $accountId)
+	public function addAccountCard($card, $accountId, $responseFields =  null)
 	{
-		$mozuClient = CardClient::addAccountCardClient($card, $accountId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = CardClient::addAccountCardClient($card, $accountId, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -80,16 +85,17 @@ class CardResource {
 	* Update one or more properties of a credit card defined for a customer account.
 	*
 	* @param int $accountId Unique identifier of the customer account.
-	* @param string $cardId 
+	* @param string $cardId Unique identifier of the credit card.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param Card $card Properties of the customer account credit card to update.
 	* @return Card 
 	*/
-	public function updateAccountCard($card, $accountId, $cardId)
+	public function updateAccountCard($card, $accountId, $cardId, $responseFields =  null)
 	{
-		$mozuClient = CardClient::updateAccountCardClient($card, $accountId, $cardId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = CardClient::updateAccountCardClient($card, $accountId, $cardId, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -98,12 +104,13 @@ class CardResource {
 	*
 	* @param int $accountId Unique identifier of the customer account.
 	* @param string $cardId Unique identifier of the credit card to delete.
+	* @return void
 	*/
 	public function deleteAccountCard($accountId, $cardId)
 	{
 		$mozuClient = CardClient::deleteAccountCardClient($accountId, $cardId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
+		$mozuClient->withContext($this->apiContext)
+				->execute();
 
 	}
 	

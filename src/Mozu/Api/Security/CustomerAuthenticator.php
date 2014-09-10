@@ -2,6 +2,7 @@
 namespace Mozu\Api\Security;
 
 use DateTime;
+use Mozu\Api\ApiContext;
 use Mozu\Api\Security\UserAuthTicket;
 use Mozu\Api\Security\Scope;
 use Mozu\Api\Security\AuthenticationScope;
@@ -27,7 +28,7 @@ class CustomerAuthenticator {
 	
 	private static function getAuthUrl($tenantId)
 	{
-		$tenantResource = new TenantResource();
+		$tenantResource = new TenantResource(new ApiContext());
 		$tenant = $tenantResource->GetTenant($tenantId);
 		return HttpHelper::getUrl($tenant->domain);
 	}
@@ -36,14 +37,14 @@ class CustomerAuthenticator {
 	{
 		try {
 			$authentication = AppAuthenticator::getInstance();
-			$resourceUrl = CustomerAuthTicketUrl::refreshUserAuthTicketUrl($authTicket->refreshToken)->getUrl();
+			$resourceUrl = CustomerAuthTicketUrl::refreshUserAuthTicketUrl($authTicket->refreshToken,null)->getUrl();
 	
 				
 			$client = new Client ( static::getAuthUrl($authTicket->tenantId), HttpHelper::getGuzzleConfig() );
 			$request = $client->put( $resourceUrl  );
 			$request->setBody ( json_encode($authTicket), 'application/json' );
 			$authentication->addAuthHeader($request);
-			$request->setHeader(Headers::X_VOL_SITE, $siteId);
+			$request->setHeader(Headers::X_VOL_SITE, $authTicket->siteId);
 			$response = $request->send();
 			$jsonResp = $response->getBody ( true );
 			$authResponse = json_decode ( $jsonResp );
@@ -58,7 +59,7 @@ class CustomerAuthenticator {
 	{
 		try {
 			$authentication = AppAuthenticator::getInstance();
-			$resourceUrl = CustomerAuthTicketUrl::createUserAuthTicketUrl()->getUrl();
+			$resourceUrl = CustomerAuthTicketUrl::createUserAuthTicketUrl(null)->getUrl();
 	
 			$client = new Client ( static::getAuthUrl($tenantId), HttpHelper::getGuzzleConfig() );
 			$request = $client->post( $resourceUrl  );

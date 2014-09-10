@@ -19,20 +19,9 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Carts;
 */
 class CartChangeMessageCollection
 {
-	/**
-	*The number of commerce runtime cart change messages transactions that can exist in a collection.
-	*/
-	public $capacity;
+		public $totalCount;
 
-	/**
-	*The number of messages in the collection.
-	*/
-	public $count;
-
-	/**
-	*Container for an item in a collection.
-	*/
-	public $item;
+		public $items;
 
 }
 

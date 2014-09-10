@@ -30,6 +30,11 @@ class ProductExtraValue
 	public $isDefaulted;
 
 	/**
+	*When setting up the extra on a parent product, you can specify a quantity. You can have an extra that is a quantity > 1 of another product.
+	*/
+	public $quantity;
+
+	/**
 	*Properties of a defined value for a product extra attribute.
 	*/
 	public $value;
@@ -43,6 +48,8 @@ class ProductExtraValue
 	*The difference between the price associated with this product extra and the base product. For example, if a product with a defined monogram extra costs an additional $10, the DeltaPrice value is "10".
 	*/
 	public $deltaPrice;
+
+		public $localizedDeltaPrice;
 
 }
 

@@ -20,6 +20,11 @@ namespace Mozu\Api\Contracts\SiteSettings\Order;
 class OrderProcessingSettings
 {
 	/**
+	*Abandoned order threshold in minutes indicates the number of minutes until a pending order is considered abandoned.
+	*/
+	public $abandonedOrderThresholdInMinutes;
+
+	/**
 	*Determines whether payment authorization occurs when the order is placed or when the order is shipped.
 	*/
 	public $paymentProcessingFlowType;

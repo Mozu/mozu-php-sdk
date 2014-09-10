@@ -14,17 +14,35 @@ namespace Mozu\Api\Contracts\PricingRuntime\ThirdParty;
 
 
 
+/**
+*	Properties of the tax context applicable for line items in an order.
+*/
 class ItemTaxContext
 {
-		public $id;
+	/**
+	*Unique identifier of the line item in the order.
+	*/
+	public $id;
 
-		public $productCode;
+	/**
+	*Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+	*/
+	public $productCode;
 
-		public $quantity;
+	/**
+	*Quantity of the line item in the order.
+	*/
+	public $quantity;
 
-		public $shippingTax;
+	/**
+	*Amount of tax applied to shipping costs for the line item in the order.
+	*/
+	public $shippingTax;
 
-		public $tax;
+	/**
+	*The total tax amount applied to the line item in the order, minus any shipping taxes.
+	*/
+	public $tax;
 
 }
 

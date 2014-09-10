@@ -35,7 +35,7 @@ class Wishlist
 	public $customerAccountId;
 
 	/**
-	*The interaction type the shopper uses to create the wish list, wich is Website, Store, Call, or Unknown. This property is not used at this time and is reserved for future functionality.
+	*The interaction type the shopper uses to create the wish list, which is Website, Store, Call, or Unknown. This property is not used at this time and is reserved for future functionality.
 	*/
 	public $customerInteractionType;
 
@@ -50,7 +50,7 @@ class Wishlist
 	public $discountedTotal;
 
 	/**
-	*Estimated amount of discounts applied to all items in the wish list, which is system-supplied and read-only.                                This property value is not calculated at this time and is reserved for future functionality.
+	*Estimated amount of discounts applied to all items in the wish list, which is system-supplied and read-only.   This property value is not calculated at this time and is reserved for future functionality.
 	*/
 	public $discountTotal;
 
@@ -59,7 +59,10 @@ class Wishlist
 	*/
 	public $expirationDate;
 
-		public $externalId;
+	/**
+	*The identifier an external program uses to identify the Mozu wish list.
+	*/
+	public $externalId;
 
 	/**
 	*The fee total of items in the wish list. This property value is not calculated at this time and is reserved for future functionality.
@@ -76,9 +79,15 @@ class Wishlist
 	*/
 	public $id;
 
-		public $importDate;
+	/**
+	*If this wish list was imported from an external program, the date and time the wish list was imported.
+	*/
+	public $importDate;
 
-		public $isImport;
+	/**
+	*If true, this wish list was imported from an external program.
+	*/
+	public $isImport;
 
 	/**
 	*The total amount of tax for items in the wish list. This property value is not calculated at this time and is reserved for future functionality.

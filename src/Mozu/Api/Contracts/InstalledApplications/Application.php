@@ -14,19 +14,40 @@ namespace Mozu\Api\Contracts\InstalledApplications;
 
 
 
+/**
+*	Properties of an application installed in a tenant.
+*/
 class Application
 {
-		public $appId;
+	/**
+	*The unique identifier of the application in Mozu Dev Center.
+	*/
+	public $appId;
 
-		public $enabled;
+	/**
+	*If true, the application is enabled for the tenant. System-supplied and read-only.
+	*/
+	public $enabled;
 
-		public $initialized;
+	/**
+	*If true, the third party application settings have been configured and the application is initialized.
+	*/
+	public $initialized;
 
-		public $isExtension;
+	/**
+	*If true, the application type is Extension.
+	*/
+	public $isExtension;
 
-		public $uiConfigurationUrl;
+	/**
+	*The URL defined for the application that represents the configuration website for the capability.
+	*/
+	public $uiConfigurationUrl;
 
-		public $capabilities;
+	/**
+	*List of capabilities installed in a tenant.
+	*/
+	public $capabilities;
 
 }
 

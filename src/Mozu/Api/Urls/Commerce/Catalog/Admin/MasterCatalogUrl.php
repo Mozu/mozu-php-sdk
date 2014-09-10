@@ -19,38 +19,47 @@ class MasterCatalogUrl  {
 
 	/**
 		* Get Resource Url for GetMasterCatalogs
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function getMasterCatalogsUrl()
+	public static function getMasterCatalogsUrl($responseFields)
 	{
-		$url = "/api/commerce/catalog/admin/mastercatalogs/";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = "/api/commerce/catalog/admin/mastercatalogs/?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetMasterCatalog
-		* @param int $masterCatalogId 
+		* @param int $masterCatalogId The unique identifier of the master catalog associated with the entity.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function getMasterCatalogUrl($masterCatalogId)
+	public static function getMasterCatalogUrl($masterCatalogId, $responseFields)
 	{
-		$url = "/api/commerce/catalog/admin/mastercatalogs/{masterCatalogId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("masterCatalogId", $masterCatalogId);
+		$url = "/api/commerce/catalog/admin/mastercatalogs/{masterCatalogId}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("masterCatalogId", $masterCatalogId)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdateMasterCatalog
 		* @param int $masterCatalogId 
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function updateMasterCatalogUrl($masterCatalogId)
+	public static function updateMasterCatalogUrl($masterCatalogId, $responseFields)
 	{
-		$url = "/api/commerce/catalog/admin/mastercatalogs/{masterCatalogId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
-		$url = $mozuUrl->formatUrl("masterCatalogId", $masterCatalogId);
+		$url = "/api/commerce/catalog/admin/mastercatalogs/{masterCatalogId}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
+		$mozuUrl->formatUrl("masterCatalogId", $masterCatalogId)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	

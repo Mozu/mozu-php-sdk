@@ -12,22 +12,25 @@
 
 namespace Mozu\Api\Resources\Commerce\Catalog\Admin\Attributedefinition\Producttypes;
 
-use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Catalog\Admin\Attributedefinition\Producttypes\ProductTypePropertyClient;
 use Mozu\Api\ApiContext;
-use Mozu\Api\DataViewMode;
-use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\ProductAdmin\AttributeInProductType;
 
 /**
 * Use the Properties subresource to define how property product attributes are used for a specific product type. Product attribute definitions are unique for each associated product type.
 */
 class ProductTypePropertyResource {
 
-		private $apiContext;
-	public function __construct(ApiContext $apiContext) 
+	private $apiContext;
+	private $dataViewMode;
+	public function __construct(ApiContext $apiContext, $dataViewMode) 
 	{
 		$this->apiContext = $apiContext;
+		$this->dataViewMode = $dataViewMode;
 	}
+
+	
 
 	/**
 	* Retrieves a list of product property attributes defined for a product type.
@@ -35,12 +38,12 @@ class ProductTypePropertyResource {
 	* @param int $productTypeId Identifier of the product type.
 	* @return array|AttributeInProductType 
 	*/
-	public function getProperties($dataViewMode, $productTypeId)
+	public function getProperties($productTypeId)
 	{
-		$mozuClient = ProductTypePropertyClient::getPropertiesClient($dataViewMode, $productTypeId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = ProductTypePropertyClient::getPropertiesClient($this->dataViewMode, $productTypeId);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -49,14 +52,15 @@ class ProductTypePropertyResource {
 	*
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @param int $productTypeId Identifier of the product type.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return AttributeInProductType 
 	*/
-	public function getProperty($dataViewMode, $productTypeId, $attributeFQN)
+	public function getProperty($productTypeId, $attributeFQN, $responseFields =  null)
 	{
-		$mozuClient = ProductTypePropertyClient::getPropertyClient($dataViewMode, $productTypeId, $attributeFQN);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = ProductTypePropertyClient::getPropertyClient($this->dataViewMode, $productTypeId, $attributeFQN, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -64,15 +68,16 @@ class ProductTypePropertyResource {
 	* Assigns a property attribute to the specified product type, according to the information defined in the request.
 	*
 	* @param int $productTypeId Identifier of the product type.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param AttributeInProductType $attributeInProductType Properties of the property attribute to define for the specified product type.
 	* @return AttributeInProductType 
 	*/
-	public function addProperty($dataViewMode, $attributeInProductType, $productTypeId)
+	public function addProperty($attributeInProductType, $productTypeId, $responseFields =  null)
 	{
-		$mozuClient = ProductTypePropertyClient::addPropertyClient($dataViewMode, $attributeInProductType, $productTypeId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = ProductTypePropertyClient::addPropertyClient($this->dataViewMode, $attributeInProductType, $productTypeId, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -81,15 +86,16 @@ class ProductTypePropertyResource {
 	*
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @param int $productTypeId Identifier of the product type.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param AttributeInProductType $attributeInProductType Properties of the property attribute to define for the product type.
 	* @return AttributeInProductType 
 	*/
-	public function updateProperty($dataViewMode, $attributeInProductType, $productTypeId, $attributeFQN)
+	public function updateProperty($attributeInProductType, $productTypeId, $attributeFQN, $responseFields =  null)
 	{
-		$mozuClient = ProductTypePropertyClient::updatePropertyClient($dataViewMode, $attributeInProductType, $productTypeId, $attributeFQN);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = ProductTypePropertyClient::updatePropertyClient($this->dataViewMode, $attributeInProductType, $productTypeId, $attributeFQN, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -98,12 +104,13 @@ class ProductTypePropertyResource {
 	*
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @param int $productTypeId Identifier of the product type.
+	* @return void
 	*/
-	public function deleteProperty($dataViewMode, $productTypeId, $attributeFQN)
+	public function deleteProperty($productTypeId, $attributeFQN)
 	{
-		$mozuClient = ProductTypePropertyClient::deletePropertyClient($dataViewMode, $productTypeId, $attributeFQN);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
+		$mozuClient = ProductTypePropertyClient::deletePropertyClient($this->dataViewMode, $productTypeId, $attributeFQN);
+		$mozuClient->withContext($this->apiContext)
+				->execute();
 
 	}
 	

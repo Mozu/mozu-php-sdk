@@ -15,7 +15,7 @@ namespace Mozu\Api\Contracts\Location;
 
 
 /**
-*	Properties of a physical location a tenant uses to manage inventory and fulfills orders, provide store finder functionality, or both..
+*	Properties of a physical location a tenant uses to manage inventory and fulfills orders, provide store finder functionality, or both.
 */
 class Location
 {
@@ -86,7 +86,10 @@ class Location
 	*/
 	public $regularHours;
 
-		public $shippingOriginContact;
+	/**
+	*Properties of a fulfillment contact for the shipping origin address associated with a location.
+	*/
+	public $shippingOriginContact;
 
 }
 

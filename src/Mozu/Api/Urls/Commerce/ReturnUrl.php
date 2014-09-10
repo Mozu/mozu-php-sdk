@@ -21,72 +21,69 @@ class ReturnUrl  {
 		* Get Resource Url for GetReturns
 		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
 		* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 		* @return string Resource Url
 	*/
-	public static function getReturnsUrl($filter, $pageSize, $sortBy, $startIndex)
+	public static function getReturnsUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex)
 	{
-		$url = "/api/commerce/returns/?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("filter", $filter);
-		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
-		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
-		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
-		return $mozuUrl;
-	}
-	
-	/**
-		* Get Resource Url for GetReturn
-		* @param string $returnId Returns the properties of the return specified in the request as well as system-supplied information.
-		* @return string Resource Url
-	*/
-	public static function getReturnUrl($returnId)
-	{
-		$url = "/api/commerce/returns/{returnId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("returnId", $returnId);
+		$url = "/api/commerce/returns/?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}&responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("filter", $filter)
+				->formatUrl("pageSize", $pageSize)
+				->formatUrl("responseFields", $responseFields)
+				->formatUrl("sortBy", $sortBy)
+				->formatUrl("startIndex", $startIndex);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetAvailableReturnActions
-		* @param string $returnId Retrieves a list of the actions available to perform for the specified return based on its current state.
+		* @param string $returnId Unique identifier of the return for which to retrieve available actions.
 		* @return string Resource Url
 	*/
 	public static function getAvailableReturnActionsUrl($returnId)
 	{
 		$url = "/api/commerce/returns/{returnId}/actions";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("returnId", $returnId);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("returnId", $returnId);
+
 		return $mozuUrl;
 	}
 	
 	/**
-		* Get Resource Url for GetPayments
-		* @param string $returnId Returns the details of the refund payment associated with the return specified in the request.
+		* Get Resource Url for GetReturnItem
+		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $returnId 
+		* @param string $returnItemId 
 		* @return string Resource Url
 	*/
-	public static function getPaymentsUrl($returnId)
+	public static function getReturnItemUrl($responseFields, $returnId, $returnItemId)
 	{
-		$url = "/api/commerce/returns/{returnId}/payments";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("returnId", $returnId);
+		$url = "/api/commerce/returns/{returnId}/items/{returnItemId}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields)
+				->formatUrl("returnId", $returnId)
+				->formatUrl("returnItemId", $returnItemId);
+
 		return $mozuUrl;
 	}
 	
 	/**
-		* Get Resource Url for GetPayment
-		* @param string $paymentId Unique identifier of the return payment to retrieve.
-		* @param string $returnId Unique identifier of the return associated with the payment.
+		* Get Resource Url for GetReturnItems
+		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $returnId 
 		* @return string Resource Url
 	*/
-	public static function getPaymentUrl($paymentId, $returnId)
+	public static function getReturnItemsUrl($responseFields, $returnId)
 	{
-		$url = "/api/commerce/returns/{returnId}/payments/{paymentId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("paymentId", $paymentId);
-		$url = $mozuUrl->formatUrl("returnId", $returnId);
+		$url = "/api/commerce/returns/{returnId}/items?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields)
+				->formatUrl("returnId", $returnId);
+
 		return $mozuUrl;
 	}
 	
@@ -99,72 +96,170 @@ class ReturnUrl  {
 	public static function getAvailablePaymentActionsForReturnUrl($paymentId, $returnId)
 	{
 		$url = "/api/commerce/returns/{returnId}/payments/{paymentId}/actions";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("paymentId", $paymentId);
-		$url = $mozuUrl->formatUrl("returnId", $returnId);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("paymentId", $paymentId)
+				->formatUrl("returnId", $returnId);
+
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for GetPayment
+		* @param string $paymentId Unique identifier of the return payment to retrieve.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $returnId Unique identifier of the return associated with the payment.
+		* @return string Resource Url
+	*/
+	public static function getPaymentUrl($paymentId, $responseFields, $returnId)
+	{
+		$url = "/api/commerce/returns/{returnId}/payments/{paymentId}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("paymentId", $paymentId)
+				->formatUrl("responseFields", $responseFields)
+				->formatUrl("returnId", $returnId);
+
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for GetPayments
+		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $returnId Returns the details of the refund payment associated with the return specified in the request.
+		* @return string Resource Url
+	*/
+	public static function getPaymentsUrl($responseFields, $returnId)
+	{
+		$url = "/api/commerce/returns/{returnId}/payments?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields)
+				->formatUrl("returnId", $returnId);
+
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for GetReturn
+		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $returnId Returns the properties of the return specified in the request as well as system-supplied information.
+		* @return string Resource Url
+	*/
+	public static function getReturnUrl($responseFields, $returnId)
+	{
+		$url = "/api/commerce/returns/{returnId}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields)
+				->formatUrl("returnId", $returnId);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for CreateReturn
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function createReturnUrl()
+	public static function createReturnUrl($responseFields)
 	{
-		$url = "/api/commerce/returns/";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = "/api/commerce/returns/?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields);
+
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for CreateReturnItem
+		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $returnId 
+		* @return string Resource Url
+	*/
+	public static function createReturnItemUrl($responseFields, $returnId)
+	{
+		$url = "/api/commerce/returns/{returnId}/items?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields)
+				->formatUrl("returnId", $returnId);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for PerformPaymentActionForReturn
 		* @param string $paymentId Unique identifier of the return payment to update.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param string $returnId Unique identifier of the return associated with the refund payment.
 		* @return string Resource Url
 	*/
-	public static function performPaymentActionForReturnUrl($paymentId, $returnId)
+	public static function performPaymentActionForReturnUrl($paymentId, $responseFields, $returnId)
 	{
-		$url = "/api/commerce/returns/{returnId}/payments/{paymentId}/actions";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
-		$url = $mozuUrl->formatUrl("paymentId", $paymentId);
-		$url = $mozuUrl->formatUrl("returnId", $returnId);
+		$url = "/api/commerce/returns/{returnId}/payments/{paymentId}/actions?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("paymentId", $paymentId)
+				->formatUrl("responseFields", $responseFields)
+				->formatUrl("returnId", $returnId);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for CreatePaymentActionForReturn
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param string $returnId Unique identifier of the return associated with the payment action.
 		* @return string Resource Url
 	*/
-	public static function createPaymentActionForReturnUrl($returnId)
+	public static function createPaymentActionForReturnUrl($responseFields, $returnId)
 	{
-		$url = "/api/commerce/returns/{returnId}/payments/actions";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
-		$url = $mozuUrl->formatUrl("returnId", $returnId);
+		$url = "/api/commerce/returns/{returnId}/payments/actions?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields)
+				->formatUrl("returnId", $returnId);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for PerformReturnActions
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function performReturnActionsUrl()
+	public static function performReturnActionsUrl($responseFields)
 	{
-		$url = "/api/commerce/returns/actions";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = "/api/commerce/returns/actions?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdateReturn
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param string $returnId Unique identifier of the return.
 		* @return string Resource Url
 	*/
-	public static function updateReturnUrl($returnId)
+	public static function updateReturnUrl($responseFields, $returnId)
 	{
-		$url = "/api/commerce/returns/{returnId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
-		$url = $mozuUrl->formatUrl("returnId", $returnId);
+		$url = "/api/commerce/returns/{returnId}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields)
+				->formatUrl("returnId", $returnId);
+
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for DeleteOrderItem
+		* @param string $returnId 
+		* @param string $returnItemId 
+		* @return string Resource Url
+	*/
+	public static function deleteOrderItemUrl($returnId, $returnItemId)
+	{
+		$url = "/api/commerce/returns/{orderId}/items/{orderItemId}?updatemode={updateMode}&version={version}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
+		$mozuUrl->formatUrl("returnId", $returnId)
+				->formatUrl("returnItemId", $returnItemId);
+
 		return $mozuUrl;
 	}
 	
@@ -176,8 +271,9 @@ class ReturnUrl  {
 	public static function deleteReturnUrl($returnId)
 	{
 		$url = "/api/commerce/returns/{returnId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
-		$url = $mozuUrl->formatUrl("returnId", $returnId);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
+		$mozuUrl->formatUrl("returnId", $returnId);
+
 		return $mozuUrl;
 	}
 	

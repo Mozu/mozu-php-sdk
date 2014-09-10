@@ -12,34 +12,36 @@
 
 namespace Mozu\Api\Resources\Commerce\Settings;
 
-use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Settings\SiteShippingSettingsClient;
 use Mozu\Api\ApiContext;
-use Mozu\Api\DataViewMode;
-use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\SiteSettings\Shipping\SiteShippingSettings;
 
 /**
 * Use the shipping subresource to manage settings for the site shipping information, such as origin address information, carrier shipping methods, shipping rate providers, and regions available for shipping.
 */
 class SiteShippingSettingsResource {
 
-		private $apiContext;
+	private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
+	
+
 	/**
 	* Retrieves a list of the shipping settings configured for a site.
 	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return SiteShippingSettings 
 	*/
-	public function getSiteShippingSettings()
+	public function getSiteShippingSettings($responseFields =  null)
 	{
-		$mozuClient = SiteShippingSettingsClient::getSiteShippingSettingsClient();
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = SiteShippingSettingsClient::getSiteShippingSettingsClient($responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	

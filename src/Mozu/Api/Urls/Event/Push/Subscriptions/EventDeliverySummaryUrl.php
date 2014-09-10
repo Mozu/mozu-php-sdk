@@ -19,37 +19,43 @@ class EventDeliverySummaryUrl  {
 
 	/**
 		* Get Resource Url for GetDeliveryAttemptSummary
-		* @param int $id 
-		* @param string $subscriptionId 
+		* @param int $id This parameter is the unique identifer for an event attempt delivery summary.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $subscriptionId This operation paramenter is the unique identifer for a subscription.
 		* @return string Resource Url
 	*/
-	public static function getDeliveryAttemptSummaryUrl($id, $subscriptionId)
+	public static function getDeliveryAttemptSummaryUrl($id, $responseFields, $subscriptionId)
 	{
-		$url = "/api/event/push/subscriptions/{subscriptionId}/deliveryattempts/{id}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("id", $id);
-		$url = $mozuUrl->formatUrl("subscriptionId", $subscriptionId);
+		$url = "/api/event/push/subscriptions/{subscriptionId}/deliveryattempts/{id}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("id", $id)
+				->formatUrl("responseFields", $responseFields)
+				->formatUrl("subscriptionId", $subscriptionId);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetDeliveryAttemptSummaries
-		* @param string $filter 
+		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 		* @param int $pageSize 
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param string $sortBy 
 		* @param int $startIndex 
 		* @param string $subscriptionId 
 		* @return string Resource Url
 	*/
-	public static function getDeliveryAttemptSummariesUrl($filter, $pageSize, $sortBy, $startIndex, $subscriptionId)
+	public static function getDeliveryAttemptSummariesUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex, $subscriptionId)
 	{
-		$url = "/api/event/push/subscriptions/{subscriptionId}/deliveryattempts?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("filter", $filter);
-		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
-		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
-		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
-		$url = $mozuUrl->formatUrl("subscriptionId", $subscriptionId);
+		$url = "/api/event/push/subscriptions/{subscriptionId}/deliveryattempts?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}&responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("filter", $filter)
+				->formatUrl("pageSize", $pageSize)
+				->formatUrl("responseFields", $responseFields)
+				->formatUrl("sortBy", $sortBy)
+				->formatUrl("startIndex", $startIndex)
+				->formatUrl("subscriptionId", $subscriptionId);
+
 		return $mozuUrl;
 	}
 	

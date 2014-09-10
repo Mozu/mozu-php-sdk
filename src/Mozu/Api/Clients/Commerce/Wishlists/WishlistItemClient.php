@@ -14,8 +14,11 @@ namespace Mozu\Api\Clients\Commerce\Wishlists;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Wishlists\WishlistItemUrl;
-use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\CommerceRuntime\Wishlists\WishlistItem;
+use Mozu\Api\Contracts\CommerceRuntime\Wishlists\WishlistItemCollection;
+use Mozu\Api\Contracts\CommerceRuntime\Wishlists\Wishlist;
 
 /**
 * Use the Wish List Items subresource to manage items in a shopper wish list. The same product can be defined as an item in any number of wish lists for the customer account. Use the Wish Lists resource to manage shopper wish lists.
@@ -25,16 +28,16 @@ class WishlistItemClient {
 	/**
 	* Retrieves the details of an item in a shopper wish list.
 	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $wishlistId Unique identifier of the wish list item to retrieve.
 	* @param string $wishlistItemId Unique identifier of the wish list associated with the item to retrieve.
 	* @return MozuClient
 	*/
-	public static function getWishlistItemClient($wishlistId, $wishlistItemId)
+	public static function getWishlistItemClient($wishlistId, $wishlistItemId, $responseFields =  null)
 	{
-		$url = WishlistItemUrl::getWishlistItemUrl($wishlistId, $wishlistItemId);
+		$url = WishlistItemUrl::getWishlistItemUrl($responseFields, $wishlistId, $wishlistItemId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
@@ -43,70 +46,53 @@ class WishlistItemClient {
 	*
 	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @param string $wishlistId Unique identifier of the wish list associated with the items to retrieve.
 	* @return MozuClient
 	*/
-	public static function getWishlistItemsClient($wishlistId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
+	public static function getWishlistItemsClient($wishlistId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
-		$url = WishlistItemUrl::getWishlistItemsUrl($filter, $pageSize, $sortBy, $startIndex, $wishlistId);
+		$url = WishlistItemUrl::getWishlistItemsUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex, $wishlistId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
 	/**
-	* 
+	* Retrieve a list of items in a customer wish list by supplying the wish list name.
 	*
-	* @param int $customerAccountId 
-	* @param string $filter 
-	* @param int $pageSize 
-	* @param string $sortBy 
-	* @param int $startIndex 
-	* @param string $wishlistName 
+	* @param int $customerAccountId The unique identifier of the customer account associated with the wish list.
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+	* @param string $wishlistName The name of the wish list that contains the items to retrieve.
 	* @return MozuClient
 	*/
-	public static function getWishlistItemsByWishlistNameClient($customerAccountId, $wishlistName, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
+	public static function getWishlistItemsByWishlistNameClient($customerAccountId, $wishlistName, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
-		$url = WishlistItemUrl::getWishlistItemsByWishlistNameUrl($customerAccountId, $filter, $pageSize, $sortBy, $startIndex, $wishlistName);
+		$url = WishlistItemUrl::getWishlistItemsByWishlistNameUrl($customerAccountId, $filter, $pageSize, $responseFields, $sortBy, $startIndex, $wishlistName);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
 	/**
 	* Adds a product in a site's catalog as an item in a shopper wish list.
 	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $wishlistId Unique identifier of the wish list associated with the item to add.
 	* @param WishlistItem $wishlistItem Properties of the item to add to the wish list.
 	* @return MozuClient
 	*/
-	public static function addItemToWishlistClient($wishlistItem, $wishlistId)
+	public static function addItemToWishlistClient($wishlistItem, $wishlistId, $responseFields =  null)
 	{
-		$url = WishlistItemUrl::addItemToWishlistUrl($wishlistId);
+		$url = WishlistItemUrl::addItemToWishlistUrl($responseFields, $wishlistId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($wishlistItem);
-		return $mozuClient;
-
-	}
-	
-	/**
-	* Updates the details of an item in a shopper wish list.
-	*
-	* @param string $wishlistId Unique identifier of the wish list associated with the item to update.
-	* @param string $wishlistItemId Unique identifier of the item in the shopper wish list to update.
-	* @param WishlistItem $wishlistItem Properties of the shopper wish list item to update.
-	* @return MozuClient
-	*/
-	public static function updateWishlistItemClient($wishlistItem, $wishlistId, $wishlistItemId)
-	{
-		$url = WishlistItemUrl::updateWishlistItemUrl($wishlistId, $wishlistItemId);
-		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($wishlistItem);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($wishlistItem);
 
 	}
 	
@@ -114,16 +100,33 @@ class WishlistItemClient {
 	* Updates the quantity of an item in a shopper wish list.
 	*
 	* @param int $quantity The quantity of the item in the wish list.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $wishlistId Unique identifier of the wish list associated with the item quantity to update.
 	* @param string $wishlistItemId Unique identifier of the item in the wish list to update quantity.
 	* @return MozuClient
 	*/
-	public static function updateWishlistItemQuantityClient($wishlistId, $wishlistItemId, $quantity)
+	public static function updateWishlistItemQuantityClient($wishlistId, $wishlistItemId, $quantity, $responseFields =  null)
 	{
-		$url = WishlistItemUrl::updateWishlistItemQuantityUrl($quantity, $wishlistId, $wishlistItemId);
+		$url = WishlistItemUrl::updateWishlistItemQuantityUrl($quantity, $responseFields, $wishlistId, $wishlistItemId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
+
+	}
+	
+	/**
+	* Updates the details of an item in a shopper wish list.
+	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $wishlistId Unique identifier of the wish list associated with the item to update.
+	* @param string $wishlistItemId Unique identifier of the item in the shopper wish list to update.
+	* @param WishlistItem $wishlistItem Properties of the shopper wish list item to update.
+	* @return MozuClient
+	*/
+	public static function updateWishlistItemClient($wishlistItem, $wishlistId, $wishlistItemId, $responseFields =  null)
+	{
+		$url = WishlistItemUrl::updateWishlistItemUrl($responseFields, $wishlistId, $wishlistItemId);
+		$mozuClient = new MozuClient();
+		return $mozuClient->withResourceUrl($url)->withBody($wishlistItem);
 
 	}
 	
@@ -137,8 +140,7 @@ class WishlistItemClient {
 	{
 		$url = WishlistItemUrl::removeAllWishlistItemsUrl($wishlistId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
@@ -147,13 +149,13 @@ class WishlistItemClient {
 	*
 	* @param string $wishlistId Unique identifier of the wish list associated with the item to remove.
 	* @param string $wishlistItemId Unique identifier of the item to remove from the shopper wish list.
+	* @return MozuClient
 	*/
 	public static function deleteWishlistItemClient($wishlistId, $wishlistItemId)
 	{
 		$url = WishlistItemUrl::deleteWishlistItemUrl($wishlistId, $wishlistItemId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	

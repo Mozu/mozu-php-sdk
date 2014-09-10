@@ -34,6 +34,8 @@ class RateRequestItem
 	*/
 	public $shipsByItself;
 
+		public $productSummaries;
+
 	/**
 	*The measured weight and dimensions of the item to ship.
 	*/

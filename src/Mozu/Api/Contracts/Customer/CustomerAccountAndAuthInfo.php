@@ -14,13 +14,25 @@ namespace Mozu\Api\Contracts\Customer;
 
 
 
+/**
+*	The authentication information associated with a customer account.
+*/
 class CustomerAccountAndAuthInfo
 {
-		public $isImport;
+	/**
+	*If true, this customer account and its associated data was imported from an external source.
+	*/
+	public $isImport;
 
-		public $password;
+	/**
+	*The password required to authenticate this customer account.
+	*/
+	public $password;
 
-		public $account;
+	/**
+	*The unique identifier of the customer account.
+	*/
+	public $account;
 
 }
 

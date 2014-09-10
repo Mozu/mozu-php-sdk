@@ -15,16 +15,19 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 /**
-*	Properties of the product such as product code, product name, and product price.
+*	Properties of a product in a master catalog. Product properties include discounts, localizable content, inventory information, attribute configurations, price data, and the catalogs associated with a product.
 */
 class Product
 {
 	/**
-	*Merchant-generated product code for the product that any variation stems from.
+	*Product code defined by the tenant administrator to use as a base prefix when generating product codes for any variations of this product.
 	*/
 	public $baseProductCode;
 
-		public $fulfillmentTypesSupported;
+	/**
+	*Describes the types of fulfillment that are supported for this product. A product can support direct ship, in-store pickup, or both. Supported fulfillment types are defined at the master catalog level. Client administrators cannot override the supported fulfillment types at the catalog level.
+	*/
+	public $fulfillmentTypesSupported;
 
 	/**
 	*If true, the product has configurable options. This option means that a product is not purchasable until the shopper selects options that resolve into a product variation. Configurable options for a product are the choices a shopper makes when ordering a product. Size and color are configurable options. System-supplied and read-only.
@@ -32,7 +35,7 @@ class Product
 	public $hasConfigurableOptions;
 
 	/**
-	*If true, this product has stand alone options that a shopper can select which can exist without product variations. Stand alone options. System-supplied and read-only.
+	*If true, this product has standalone options that a shopper can select without configuring a defined product variations. System-supplied and read only.
 	*/
 	public $hasStandAloneOptions;
 
@@ -47,21 +50,24 @@ class Product
 	public $isRecurring;
 
 	/**
-	*If true, the entity is subject to tax based on the relevant tax rate.
+	*If true, the entity is subject to sales tax based on the relevant tax rate.
 	*/
 	public $isTaxable;
 
 	/**
-	*If true, the entity is valid for the product type provided.
+	*If true, this product is valid for the assigned product type.
 	*/
 	public $isValidForProductType;
 
 	/**
-	*If true, the product in this request is a product variation of a product that has configurable options. System-supplied and read-only.
+	*If true, this configured product represents a product variation defined with configurable options. System-supplied and read only.
 	*/
 	public $isVariation;
 
-		public $masterCatalogId;
+	/**
+	*The unique identifier of the master catalog associated with the entity.
+	*/
+	public $masterCatalogId;
 
 	/**
 	*Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
@@ -74,11 +80,14 @@ class Product
 	public $productSequence;
 
 	/**
-	*Identifier of the product type.
+	*Unique identifier of the product type assigned for this product. Tenant administrators can only define one product type per product.
 	*/
 	public $productTypeId;
 
-		public $productUsage;
+	/**
+	*The usage type that applies to this product, which is Standard (a single product without configurable options), Configurable (a product that includes configurable option attributes), Bundle (a collection of products sold as a single entity), or Component (an invididual product that represents a component in a bundle).
+	*/
+	public $productUsage;
 
 	/**
 	*Identifier of the shipping class.
@@ -91,7 +100,7 @@ class Product
 	public $standAlonePackageType;
 
 	/**
-	*The universal product code (UPC code) of the product.
+	*The universal product code associated with the product. The UPC of a product is unique across all sales channels.
 	*/
 	public $upc;
 
@@ -110,15 +119,15 @@ class Product
 	*/
 	public $auditInfo;
 
-		public $bundledProducts;
-
 	/**
-	*Product content set in product admin.
+	*Properties of a collection of component products that make up a single product bundle with its own product code. Tenants can define product bundles for any product type that supports the Bundle product usage.
 	*/
-	public $content;
+	public $bundledProducts;
+
+		public $content;
 
 	/**
-	*The list of extras set up in product admin.
+	*List of extra product attributes defined for this product.
 	*/
 	public $extras;
 
@@ -128,7 +137,7 @@ class Product
 	public $inventoryInfo;
 
 	/**
-	*The list of options set up in product admin.
+	*List of option product attributes defined for this product.
 	*/
 	public $options;
 
@@ -152,9 +161,15 @@ class Product
 	*/
 	public $packageWidth;
 
-		public $price;
+	/**
+	*Unit price that the client intends to sell the product if no sale price is set.
+	*/
+	public $price;
 
-		public $pricingBehavior;
+	/**
+	*Describes the behavior the system uses when determining the price of the product.
+	*/
+	public $pricingBehavior;
 
 	/**
 	*Properties defined for a product as they appear in its associated catalogs.
@@ -162,7 +177,7 @@ class Product
 	public $productInCatalogs;
 
 	/**
-	*The list of product properties to set in product admin.
+	*List of property product attributes defined for this product.
 	*/
 	public $properties;
 
@@ -172,14 +187,17 @@ class Product
 	public $publishingInfo;
 
 	/**
-	*search engine optimized product content.
+	*The search engine optimized content defined for this product.
 	*/
 	public $seoContent;
 
-		public $supplierInfo;
+	/**
+	*Supplier-defined properties assigned for the product.
+	*/
+	public $supplierInfo;
 
 	/**
-	*The list of product variation options that exist in product admin.
+	*The list of product variation configurations defined for this product based on its available product option attributes.
 	*/
 	public $variationOptions;
 

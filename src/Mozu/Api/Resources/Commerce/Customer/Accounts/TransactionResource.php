@@ -12,22 +12,23 @@
 
 namespace Mozu\Api\Resources\Commerce\Customer\Accounts;
 
-use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Customer\Accounts\TransactionClient;
 use Mozu\Api\ApiContext;
-use Mozu\Api\DataViewMode;
-use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\Customer\Transaction;
 
 /**
 * Use the Customer Account Transactions resource to manage the transactions associated with a customer account.
 */
 class TransactionResource {
 
-		private $apiContext;
+	private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
+
+	
 
 	/**
 	* Retrieves a list of transactions associated with the customer account specified in the request.
@@ -38,9 +39,9 @@ class TransactionResource {
 	public function getTransactions($accountId)
 	{
 		$mozuClient = TransactionClient::getTransactionsClient($accountId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -48,15 +49,16 @@ class TransactionResource {
 	* Creates a new transaction for the customer account specified in the request.
 	*
 	* @param int $accountId Unique identifier of the customer account.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param Transaction $transaction Properties of the transaction to create for the customer account.
 	* @return Transaction 
 	*/
-	public function addTransaction($transaction, $accountId)
+	public function addTransaction($transaction, $accountId, $responseFields =  null)
 	{
-		$mozuClient = TransactionClient::addTransactionClient($transaction, $accountId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = TransactionClient::addTransactionClient($transaction, $accountId, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -65,12 +67,13 @@ class TransactionResource {
 	*
 	* @param int $accountId Unique identifier of the customer account from which to delete the transaction.
 	* @param string $transactionId Unique identifier of the transaction to delete.
+	* @return void
 	*/
 	public function removeTransaction($accountId, $transactionId)
 	{
 		$mozuClient = TransactionClient::removeTransactionClient($accountId, $transactionId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
+		$mozuClient->withContext($this->apiContext)
+				->execute();
 
 	}
 	

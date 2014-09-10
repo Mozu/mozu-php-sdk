@@ -20,15 +20,18 @@ class FacetUrl  {
 	/**
 		* Get Resource Url for GetFacet
 		* @param int $facetId Unique identifier of the facet to retrieve.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param bool $validate Validates that the product category associated with a facet is active. System-supplied and read only.
 		* @return string Resource Url
 	*/
-	public static function getFacetUrl($facetId, $validate)
+	public static function getFacetUrl($facetId, $responseFields, $validate)
 	{
-		$url = "/api/commerce/catalog/admin/facets/{facetId}?validate={validate}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("facetId", $facetId);
-		$url = $mozuUrl->formatUrl("validate", $validate);
+		$url = "/api/commerce/catalog/admin/facets/{facetId}?validate={validate}&responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("facetId", $facetId)
+				->formatUrl("responseFields", $responseFields)
+				->formatUrl("validate", $validate);
+
 		return $mozuUrl;
 	}
 	
@@ -36,40 +39,49 @@ class FacetUrl  {
 		* Get Resource Url for GetFacetCategoryList
 		* @param int $categoryId Unique identifier of the category associated with the facets to retrieve.
 		* @param bool $includeAvailable If true, returns a list of the attributes and categories associated with a product type that have not been defined as a facet for the category.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param bool $validate Validates that the product category associated with a facet is active. System-supplied and read only.
 		* @return string Resource Url
 	*/
-	public static function getFacetCategoryListUrl($categoryId, $includeAvailable, $validate)
+	public static function getFacetCategoryListUrl($categoryId, $includeAvailable, $responseFields, $validate)
 	{
-		$url = "/api/commerce/catalog/admin/facets/category/{categoryId}?includeAvaliable={includeAvailable}&validate={validate}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("categoryId", $categoryId);
-		$url = $mozuUrl->formatUrl("includeAvailable", $includeAvailable);
-		$url = $mozuUrl->formatUrl("validate", $validate);
+		$url = "/api/commerce/catalog/admin/facets/category/{categoryId}?includeAvailable={includeAvailable}&validate={validate}&responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("categoryId", $categoryId)
+				->formatUrl("includeAvailable", $includeAvailable)
+				->formatUrl("responseFields", $responseFields)
+				->formatUrl("validate", $validate);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for AddFacet
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function addFacetUrl()
+	public static function addFacetUrl($responseFields)
 	{
-		$url = "/api/commerce/catalog/admin/facets/";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = "/api/commerce/catalog/admin/facets/?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdateFacet
 		* @param int $facetId Unique identifier of the facet to modify.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function updateFacetUrl($facetId)
+	public static function updateFacetUrl($facetId, $responseFields)
 	{
-		$url = "/api/commerce/catalog/admin/facets/{facetId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
-		$url = $mozuUrl->formatUrl("facetId", $facetId);
+		$url = "/api/commerce/catalog/admin/facets/{facetId}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
+		$mozuUrl->formatUrl("facetId", $facetId)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
@@ -81,8 +93,9 @@ class FacetUrl  {
 	public static function deleteFacetByIdUrl($facetId)
 	{
 		$url = "/api/commerce/catalog/admin/facets/{facetId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
-		$url = $mozuUrl->formatUrl("facetId", $facetId);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
+		$mozuUrl->formatUrl("facetId", $facetId);
+
 		return $mozuUrl;
 	}
 	

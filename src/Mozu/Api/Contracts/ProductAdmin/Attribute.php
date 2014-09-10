@@ -69,7 +69,10 @@ class Attribute
 	*/
 	public $isProperty;
 
-		public $masterCatalogId;
+	/**
+	*The unique identifier of the master catalog associated with the entity.
+	*/
+	public $masterCatalogId;
 
 	/**
 	*If applicable, the registered namespace associated with the product attribute, used to generate the fully qualified name. If no namespace is defined, the namespace associated with the tenant is automatically assigned.
@@ -95,6 +98,13 @@ class Attribute
 	*Complex type that contains content for a language specified by LocaleCode.
 	*/
 	public $content;
+
+		public $localizedContent;
+
+	/**
+	*This API type provides the search and indexing settings for the attribute.
+	*/
+	public $searchSettings;
 
 	/**
 	*Properties of the validation of a product attribute, which contains rules that dictate what values are valid entries for product attributes.

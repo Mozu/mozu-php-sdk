@@ -12,97 +12,104 @@
 
 namespace Mozu\Api\Resources\Commerce\Admin;
 
-use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Admin\LocationClient;
 use Mozu\Api\ApiContext;
-use Mozu\Api\DataViewMode;
-use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\Location\Location;
+use Mozu\Api\Contracts\Location\LocationCollection;
 
 /**
-* 
+* Use the Locations resource to manage each physical location associated with a tenant. Locations enable tenants to associate a physical address with product inventory, provide a store finder for in-store pickup, or both. Locations that support inventory can use both direct ship and in-store pickup fulfillment types.
 */
 class LocationResource {
 
-		private $apiContext;
+	private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
+	
+
 	/**
-	* 
+	* Retrieves a list of all locations associated with a tenant, according to any filter and sort criteria specified in the request.
 	*
-	* @param string $filter 
-	* @param int $pageSize 
-	* @param string $sortBy 
-	* @param int $startIndex 
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return LocationCollection 
 	*/
-	public function getLocations($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
+	public function getLocations($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
-		$mozuClient = LocationClient::getLocationsClient($startIndex, $pageSize, $sortBy, $filter);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = LocationClient::getLocationsClient($startIndex, $pageSize, $sortBy, $filter, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
-	* 
+	* Retrieves the details of the location specified in the request by location code.
 	*
-	* @param string $locationCode 
+	* @param string $locationCode The merchant-defined code of the location to retrieve.
+	* @param string $responseFields 
 	* @return Location 
 	*/
-	public function getLocation($locationCode)
+	public function getLocation($locationCode, $responseFields =  null)
 	{
-		$mozuClient = LocationClient::getLocationClient($locationCode);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = LocationClient::getLocationClient($locationCode, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
-	* 
+	* Creates a new physical location for the tenant specified in the request header.
 	*
-	* @param Location $location 
+	* @param string $responseFields 
+	* @param Location $location Properties of the location to create.
 	* @return Location 
 	*/
-	public function addLocation($location)
+	public function addLocation($location, $responseFields =  null)
 	{
-		$mozuClient = LocationClient::addLocationClient($location);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = LocationClient::addLocationClient($location, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
-	* 
+	* Updates one or more details of a the location specified in the request by location code.
 	*
-	* @param string $locationCode 
-	* @param Location $location 
+	* @param string $locationCode The merchant-defined code associated with the location to update.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param Location $location Properties of the location to update.
 	* @return Location 
 	*/
-	public function updateLocation($location, $locationCode)
+	public function updateLocation($location, $locationCode, $responseFields =  null)
 	{
-		$mozuClient = LocationClient::updateLocationClient($location, $locationCode);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = LocationClient::updateLocationClient($location, $locationCode, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
-	* 
+	* Deletes the location specified in the request.
 	*
-	* @param string $locationCode 
+	* @param string $locationCode The merchant-defined code of the location to delete.
+	* @return void
 	*/
 	public function deleteLocation($locationCode)
 	{
 		$mozuClient = LocationClient::deleteLocationClient($locationCode);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
+		$mozuClient->withContext($this->apiContext)
+				->execute();
 
 	}
 	

@@ -20,11 +20,9 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class ProductVariation
 {
 	/**
-	*The difference between the base weight for a product and this variation of the product, which can be a positive or negative decimal value.
+	*Describes the types of fulfillment that are supported for this product variation. A variation can support direct ship, in-store pickup, or both. Supported fulfillment types are defined at the master catalog level. Client administrators cannot override the supported fulfillment types at the catalog level.
 	*/
-	public $deltaWeight;
-
-		public $fulfillmentTypesSupported;
+	public $fulfillmentTypesSupported;
 
 	/**
 	*If true, this variation of this product is marked available for sale.
@@ -32,11 +30,14 @@ class ProductVariation
 	public $isActive;
 
 	/**
-	*If true, the production variation is no longer available for sale. For example, if a merchant stops selling all "small" shirts, all product variations with the "small" option are set to IsOrphan. System-supplied and read-only.
+	*If true, the production variation is no longer available for sale. For example, if a client stops selling all "small" shirts, all product variations with the "small" option are set to IsOrphan. System-supplied and read only.
 	*/
 	public $isOrphan;
 
-		public $upc;
+	/**
+	*The universal product code associated with the product variation. The UPC of a product is unique across all sales channels.
+	*/
+	public $upc;
 
 	/**
 	*If true, one or more product variations are configured for the specified product code.
@@ -54,16 +55,26 @@ class ProductVariation
 	public $variationProductCode;
 
 	/**
+	*The difference between the base weight for a product and this variation of the product, which can be a positive or negative decimal value.
+	*/
+	public $deltaWeight;
+
+	/**
 	*The difference between the base price for the product and this variation of the product, which can be a positive or negative decimal value. For example, if the base price for a t-shirt product is $10, but the XL variation should cost $12, the DeltaPrice value should be "2". However, if the XS variation should only cost $8, the DeltaPrice value should be "-2".
 	*/
 	public $deltaPrice;
+
+		public $localizedDeltaPrice;
 
 	/**
 	*Wrapper for the list of option attributes configured for the product variation.
 	*/
 	public $options;
 
-		public $supplierInfo;
+	/**
+	*Supplier-defined properties assigned for the product variation.
+	*/
+	public $supplierInfo;
 
 }
 

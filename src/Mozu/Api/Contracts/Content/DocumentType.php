@@ -19,45 +19,24 @@ namespace Mozu\Api\Contracts\Content;
 */
 class DocumentType
 {
-	/**
-	*User-defined description of the document type.
-	*/
-	public $description;
+		public $adminName;
 
-	/**
-	*The name that displays for the document type.
-	*/
-	public $displayName;
+		public $documentTypeFQN;
 
-	/**
-	*The document type scope specifies where the the template can be used such as "Global".
-	*/
-	public $documentTypeScope;
+		public $installationPackage;
 
 	/**
 	*The name of the document type.
 	*/
 	public $name;
 
-	/**
-	*If applicable, the name of the parent document type.
-	*/
-	public $parentTypeName;
+		public $namespace;
 
-	/**
-	*List of content entity descriptions localized to the site or site group's default language.
-	*/
-	public $localizedDescriptions;
+		public $version;
 
-	/**
-	*List of content entity display names localized to the site or site group's default language.
-	*/
-	public $localizedDisplayNames;
+		public $metadata;
 
-	/**
-	*List of content property types associated with the document type.
-	*/
-	public $propertyTypes;
+		public $properties;
 
 }
 

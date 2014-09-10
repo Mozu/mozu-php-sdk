@@ -34,15 +34,7 @@ class Document
 	*/
 	public $contentUpdateDate;
 
-	/**
-	*The name of the document list associated with the document.
-	*/
-	public $documentListName;
-
-	/**
-	*The type of document used in the CMS such as "web_page" or "template" or "image_url".
-	*/
-	public $documentType;
+		public $documentTypeFQN;
 
 	/**
 	*If applicable, the file extension associated with the document content.
@@ -58,6 +50,8 @@ class Document
 	*When the document was added to the document list. System-supplied and read-only.
 	*/
 	public $insertDate;
+
+		public $listFQN;
 
 	/**
 	*The name of the document, which is unique within its folder.
