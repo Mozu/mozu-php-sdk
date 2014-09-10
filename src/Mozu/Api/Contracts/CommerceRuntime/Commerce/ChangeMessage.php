@@ -19,7 +19,10 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Commerce;
 */
 class ChangeMessage
 {
-		public $amount;
+	/**
+	*The order or item amount changed, if applicable.
+	*/
+	public $amount;
 
 	/**
 	*Date and time when the entity was created, represented in UTC Date/Time.
@@ -61,9 +64,15 @@ class ChangeMessage
 	*/
 	public $subjectType;
 
-		public $success;
+	/**
+	*If true, the change associated with the message executed successfully.
+	*/
+	public $success;
 
-		public $userId;
+	/**
+	*The unique identifier of the user who initiated the change.
+	*/
+	public $userId;
 
 	/**
 	*The action associated with this message. For example, if the price of a product changes, the verb could be "Increased" or "Decreased". If the product is no longer available, the verb could be "Invalidated". System-supplied and read-only.

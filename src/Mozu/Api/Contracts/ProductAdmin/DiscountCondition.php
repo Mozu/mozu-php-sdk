@@ -14,33 +14,95 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
+/**
+*	Properties of the conditions that must be met for a discount to apply to an order.
+*/
 class DiscountCondition
 {
-		public $couponCode;
+	/**
+	*If the discount is a coupon, the code required to redeem the coupon.
+	*/
+	public $couponCode;
 
-		public $expirationDate;
+	/**
+	*The date and time on which the discount expires and cannot be redeemed.
+	*/
+	public $expirationDate;
 
-		public $maxRedemptionCount;
+	/**
+	*Specifies maximum number of redemptions allowed for each order. If null, it defaults to unlimited.
+	*/
+	public $maximumRedemptionsPerOrder;
 
-		public $minimumLifetimeValueAmount;
+	/**
+	*The maximum number of times the discount can be redeemed.
+	*/
+	public $maxRedemptionCount;
 
-		public $minimumOrderAmount;
+	/**
+	*This pecifies the minimum amount that must be purchased in the combined categories defined in IncludedCategories. This amount is calculated before discounting and it is not used if IncludedCategories is empty.
+	*/
+	public $minimumCategorySubtotalBeforeDiscounts;
 
-		public $requiresAuthenticatedUser;
+	/**
+	*The minimum customer lifetime value amount required to redeem this discount.
+	*/
+	public $minimumLifetimeValueAmount;
 
-		public $requiresCoupon;
+	/**
+	*The minimum order amount required to redeem this discount.
+	*/
+	public $minimumOrderAmount;
 
-		public $startDate;
+	/**
+	*This specifies the minimum quantity of products in the categories specified in IncludedCategories, which must be purchased to qualify for the associated discount. This defaults to 1 if  null, and IncludedCategories has values.
+	*/
+	public $minimumQuantityProductsRequiredInCategories;
 
-		public $customerSegments;
+	/**
+	*This specifies the minimum quantity of products in the specified IncludedProducts that must be purchased to qualify for the associated discount. This defaults to 1 if  null, and IncludedProducts has values.
+	*/
+	public $minimumQuantityRequiredProducts;
 
-		public $excludedCategories;
+	/**
+	*If true, only authenticated users can redeem the discount. If false, anonymous users can redeem the discount.
+	*/
+	public $requiresAuthenticatedUser;
 
-		public $excludedProducts;
+	/**
+	*If true, redemption of this discount requires entry of a coupon code.
+	*/
+	public $requiresCoupon;
 
-		public $includedCategories;
+	/**
+	*The earliest date and time this discount can be redeemed.
+	*/
+	public $startDate;
 
-		public $includedProducts;
+	/**
+	*List of customer segments associated with the discount. Shoppers who are members of an associated customer segment can redeem this discount.
+	*/
+	public $customerSegments;
+
+	/**
+	*List of the product categories that are not eligible for the discount.
+	*/
+	public $excludedCategories;
+
+	/**
+	*List of the products that are not eligible for the discount.
+	*/
+	public $excludedProducts;
+
+	/**
+	*List of product categories that are eligible for the discount.
+	*/
+	public $includedCategories;
+
+	/**
+	*List of products that are eligible for the discount.
+	*/
+	public $includedProducts;
 
 }
 

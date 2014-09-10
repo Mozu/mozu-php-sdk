@@ -12,34 +12,37 @@
 
 namespace Mozu\Api\Resources\Commerce\Settings;
 
-use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Settings\LocationUsageClient;
 use Mozu\Api\ApiContext;
-use Mozu\Api\DataViewMode;
-use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\Location\LocationUsage;
+use Mozu\Api\Contracts\Location\LocationUsageCollection;
 
 /**
 * Use the Location Usages resource to define the locations and location types that interact with the specified site. The system creates three default location usage types for each site after provisioning a new tenant - one for direct ship (DS), one for in-store pickup (SP), and one for store finder (storeFinder). Each site can only use a single location for the direct ship location usage type, and the location must support the direct ship fulfillment type (DS). For the in-store pickup location usage type, each site can use one or more location types. The location service identifies all locations of the specified type that support the in-store pickup fulfillment type (SP). For the store finder location usage type, each site can use one or more location types. The location service identifies all locations of the type. Locations configured for the store finder type do not typically maintain inventory. You cannot create additional location usage types at this time.
 */
 class LocationUsageResource {
 
-		private $apiContext;
+	private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
+	
+
 	/**
 	* Retrieves the configured site location usages for the location usage code specified in the request.
 	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return LocationUsageCollection 
 	*/
-	public function getLocationUsages()
+	public function getLocationUsages($responseFields =  null)
 	{
-		$mozuClient = LocationUsageClient::getLocationUsagesClient();
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = LocationUsageClient::getLocationUsagesClient($responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -47,14 +50,15 @@ class LocationUsageResource {
 	* Retrieves the location usages for the site specified in the request header.
 	*
 	* @param string $code Code that identifies the location usage type, which is "DS" for direct ship, "SP" for in-store pickup, or "storeFinder" for store finder.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return LocationUsage 
 	*/
-	public function getLocationUsage($code)
+	public function getLocationUsage($code, $responseFields =  null)
 	{
-		$mozuClient = LocationUsageClient::getLocationUsageClient($code);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = LocationUsageClient::getLocationUsageClient($code, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -62,15 +66,16 @@ class LocationUsageResource {
 	* Updates the location usage for the site based on the location usage code specified in the request.
 	*
 	* @param string $code Code that identifies the location usage type, which is "DS" for direct ship, "SP" for in-store pickup, or "storeFinder" for store finder.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param LocationUsage $usage Properties of the location usage type to update.
 	* @return LocationUsage 
 	*/
-	public function updateLocationUsage($usage, $code)
+	public function updateLocationUsage($usage, $code, $responseFields =  null)
 	{
-		$mozuClient = LocationUsageClient::updateLocationUsageClient($usage, $code);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = LocationUsageClient::updateLocationUsageClient($usage, $code, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	

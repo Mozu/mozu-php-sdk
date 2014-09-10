@@ -25,6 +25,11 @@ class FulfillmentAction
 	public $actionName;
 
 	/**
+	*The digital package ID identifies the package to update on the order.
+	*/
+	public $digitalPackageIds;
+
+	/**
 	*Array list of packages for which to perform the fulfillment action.
 	*/
 	public $packageIds;

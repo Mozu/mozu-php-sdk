@@ -14,11 +14,14 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Storefront;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Storefront\CategoryUrl;
-use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
+use Mozu\Api\Contracts\ProductRuntime\Category;
+use Mozu\Api\Contracts\ProductRuntime\CategoryCollection;
+use Mozu\Api\Contracts\ProductRuntime\CategoryPagedCollection;
+
 /**
-* Get the product category hierarchy as it appears to shoppers who are browsing the storefront. The hierarchy can be returned as a flat list or as a category tree.
+* Use the Storefront Categories resource to view the product category hierarchy as it appears to shoppers who are browsing the storefront. The hierarchy can be returned as a flat list or as a category tree.
 */
 class CategoryClient {
 
@@ -27,16 +30,16 @@ class CategoryClient {
 	*
 	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product category search results by any of its properties, including its position in the category hierarchy. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $responseFields 
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getCategoriesClient($filter =  null, $startIndex =  null, $pageSize =  null, $sortBy =  null)
+	public static function getCategoriesClient($filter =  null, $startIndex =  null, $pageSize =  null, $sortBy =  null, $responseFields =  null)
 	{
-		$url = CategoryUrl::getCategoriesUrl($filter, $pageSize, $sortBy, $startIndex);
+		$url = CategoryUrl::getCategoriesUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
@@ -45,28 +48,28 @@ class CategoryClient {
 	*
 	* @param bool $allowInactive If true, allow inactive categories to be retrieved in the category list response. If false, the categories retrieved will not include ones marked inactive.
 	* @param int $categoryId Unique identifier for the storefront container used to organize products.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
-	public static function getCategoryClient($categoryId, $allowInactive =  null)
+	public static function getCategoryClient($categoryId, $allowInactive =  null, $responseFields =  null)
 	{
-		$url = CategoryUrl::getCategoryUrl($allowInactive, $categoryId);
+		$url = CategoryUrl::getCategoryUrl($allowInactive, $categoryId, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
 	/**
 	* Retrieves the list of product categories that appear on the storefront organized in a hierarchical format. Hidden categories do not appear in the list.
 	*
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
-	public static function getCategoryTreeClient()
+	public static function getCategoryTreeClient($responseFields =  null)
 	{
-		$url = CategoryUrl::getCategoryTreeUrl();
+		$url = CategoryUrl::getCategoryTreeUrl($responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	

@@ -14,6 +14,9 @@ namespace Mozu\Api\Contracts\PaymentService;
 
 
 
+/**
+*	Definition of the preauthorization gateway.
+*/
 class PreAuthorizeDefinition
 {
 	/**
@@ -21,11 +24,20 @@ class PreAuthorizeDefinition
 	*/
 	public $id;
 
-		public $preAuthorizeProdUrl;
+	/**
+	*The product environment URL associated with the preauthorization gateway.
+	*/
+	public $preAuthorizeProdUrl;
 
-		public $preAuthorizeTestUrl;
+	/**
+	*The test environment URL associated with the preauthorization gateway.
+	*/
+	public $preAuthorizeTestUrl;
 
-		public $type;
+	/**
+	*The type of preauthorization gateway.
+	*/
+	public $type;
 
 }
 

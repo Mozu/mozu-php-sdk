@@ -14,19 +14,40 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Orders;
 
 
 
+/**
+*	Properties of the resulting order validation performed by an order validation capability.
+*/
 class OrderValidationResult
 {
-		public $createdDate;
+	/**
+	*Date and time when the entity was created, represented in UTC Date/Time.
+	*/
+	public $createdDate;
 
-		public $status;
+	/**
+	*The status returned from the order validation capability for the order specified in the request, which is Pass, Fail, Error, or Review.
+	*/
+	public $status;
 
-		public $validationId;
+	/**
+	*Read-only identifier defined by the order validation capability that uniquely identifies this validation operation.
+	*/
+	public $validationId;
 
-		public $validatorName;
+	/**
+	*Read-only name of this order validator supplied by the capability.
+	*/
+	public $validatorName;
 
-		public $validatorType;
+	/**
+	*The type of order validator supplied by the capability. At this time, the only supported validator type is Fraud.
+	*/
+	public $validatorType;
 
-		public $messages;
+	/**
+	*Collection of messages returned by the order validation capability.
+	*/
+	public $messages;
 
 }
 

@@ -19,13 +19,25 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Orders;
 */
 class Order
 {
-		public $acceptedDate;
+	/**
+	*The date and time the order was accepted by the tenant.
+	*/
+	public $acceptedDate;
 
-		public $acceptsMarketing;
+	/**
+	*If true, the customer account associated with the order is opted in to receive marketing materials.
+	*/
+	public $acceptsMarketing;
 
-		public $amountAvailableForRefund;
+	/**
+	*The amount of the order the shopper can receive in the event of a return. This amount represents the amount captured at the time the order was submitted, not when the order was returned.
+	*/
+	public $amountAvailableForRefund;
 
-		public $amountRemainingForPayment;
+	/**
+	*The total amount of the order not currently associated with a payment. The shopper must create one or more payments to satisfy this amount before the order can be fully paid.
+	*/
+	public $amountRemainingForPayment;
 
 	/**
 	*The available order, payment, and shipment actions a user can perform for the order.
@@ -63,7 +75,7 @@ class Order
 	public $customerAccountId;
 
 	/**
-	*The type of interaction the shopper used to submit the order. Possibel values are Website, Call, Store, or Unknown.
+	*The type of interaction the shopper used to submit the order. Possible values are Website, Call, Store, or Unknown.
 	*/
 	public $customerInteractionType;
 
@@ -97,7 +109,10 @@ class Order
 	*/
 	public $expirationDate;
 
-		public $externalId;
+	/**
+	*Unique identifier used by an external program to identify a Mozu order.
+	*/
+	public $externalId;
 
 	/**
 	*The monetary sum of all fees incurred in the order.
@@ -114,12 +129,17 @@ class Order
 	*/
 	public $handlingAmount;
 
+		public $handlingSubTotal;
+
 	/**
 	*If the handling fee for the order is subject to sales tax, the total tax amount.
 	*/
 	public $handlingTaxTotal;
 
-		public $handlingTotal;
+	/**
+	*This total represents the handling amount value with any applied discounts.
+	*/
+	public $handlingTotal;
 
 	/**
 	*If true, the order has a draft that may include one or more uncommitted changes to the order or its components.
@@ -131,7 +151,10 @@ class Order
 	*/
 	public $id;
 
-		public $importDate;
+	/**
+	*If the order was imported from an external program, the date and time the order was imported into Mozu.
+	*/
+	public $importDate;
 
 	/**
 	*The IP address from which the order originated.
@@ -143,7 +166,10 @@ class Order
 	*/
 	public $isDraft;
 
-		public $isEligibleForReturns;
+	/**
+	*If true, the shopper can return any of the items in this order to the tenant.
+	*/
+	public $isEligibleForReturns;
 
 	/**
 	*If true, this order was submitted using an external system, and the order record was imported into Mozu.
@@ -221,7 +247,7 @@ class Order
 	public $sourceDevice;
 
 	/**
-	*The current status of this order. Possible values are "New", "Open", "Processing", "Closed", or "Cancelled". System-supplied and read-only.
+	*The current status of this order. Possible values are "Pending", "Submitted", "Processing", "Pending Review", "Closed", or "Cancelled". System-supplied and read-only.
 	*/
 	public $status;
 
@@ -254,6 +280,11 @@ class Order
 	*The total amount collected to date for the order.
 	*/
 	public $totalCollected;
+
+	/**
+	*This specifies the order type. This means, was this order placed online or offline? Online means shopper created the order at checkout, offline means the order was a phone order.
+	*/
+	public $type;
 
 	/**
 	*The current version number of the order.
@@ -296,11 +327,21 @@ class Order
 	public $changeMessages;
 
 	/**
+	*Specifies the fulfillment of digital packages associated with this order.
+	*/
+	public $digitalPackages;
+
+	/**
 	*Properties of the item fulfillment information associated with the order. Shoppers can fulfill order items using in-store pickup or direct shipping.
 	*/
 	public $fulfillmentInfo;
 
-		public $invalidCoupons;
+		public $handlingDiscounts;
+
+	/**
+	*List of invalid coupon codes the shopper entered for the order.
+	*/
+	public $invalidCoupons;
 
 	/**
 	*An array list of objects in the returned collection.
@@ -352,7 +393,10 @@ class Order
 	*/
 	public $shopperNotes;
 
-		public $validationResults;
+	/**
+	*Response returned by an order validation capability application.
+	*/
+	public $validationResults;
 
 }
 

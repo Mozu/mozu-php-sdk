@@ -39,7 +39,10 @@ class UserProfile
 	*/
 	public $userId;
 
-		public $userName;
+	/**
+	*The user name associated with the user profile.
+	*/
+	public $userName;
 
 }
 

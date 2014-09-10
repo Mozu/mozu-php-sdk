@@ -19,29 +19,65 @@ class DocumentTypeUrl  {
 
 	/**
 		* Get Resource Url for GetDocumentTypes
-		* @param int $pageSize 
-		* @param int $startIndex 
+		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 		* @return string Resource Url
 	*/
-	public static function getDocumentTypesUrl($pageSize, $startIndex)
+	public static function getDocumentTypesUrl($pageSize, $responseFields, $startIndex)
 	{
-		$url = "/api/content/documenttypes/?pageSize={pageSize}&startIndex={startIndex}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
-		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
+		$url = "/api/content/documenttypes/?pageSize={pageSize}&startIndex={startIndex}&responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("pageSize", $pageSize)
+				->formatUrl("responseFields", $responseFields)
+				->formatUrl("startIndex", $startIndex);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetDocumentType
-		* @param string $documentTypeName 
+		* @param string $documentTypeName The name of the document type to retrieve.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function getDocumentTypeUrl($documentTypeName)
+	public static function getDocumentTypeUrl($documentTypeName, $responseFields)
 	{
-		$url = "/api/content/documenttypes/{documentTypeName}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("documentTypeName", $documentTypeName);
+		$url = "/api/content/documenttypes/{documentTypeName}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("documentTypeName", $documentTypeName)
+				->formatUrl("responseFields", $responseFields);
+
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for CreateDocumentType
+		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @return string Resource Url
+	*/
+	public static function createDocumentTypeUrl($responseFields)
+	{
+		$url = "/api/content/documenttypes/?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields);
+
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for UpdateDocumentType
+		* @param string $documentTypeName 
+		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @return string Resource Url
+	*/
+	public static function updateDocumentTypeUrl($documentTypeName, $responseFields)
+	{
+		$url = "/api/content/documenttypes/{documentTypeName}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
+		$mozuUrl->formatUrl("documentTypeName", $documentTypeName)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	

@@ -24,6 +24,8 @@ class Transaction
 	*/
 	public $amount;
 
+		public $currencyCode;
+
 	/**
 	*The date and time the customer transaction occurred.
 	*/

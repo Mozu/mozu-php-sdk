@@ -15,7 +15,7 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 /**
-*	Properties of a defined product discount.
+*	Properties of a defined product, order, or shipping discount.
 */
 class Discount
 {
@@ -25,14 +25,17 @@ class Discount
 	public $discountId;
 
 	/**
-	*The date and time when the product discount will no longer be active. Date in UTC Date/Time. System-supplied and read-only.
+	*The date and time the discount can no longer be redeemed. Date in UTC Date/Time. System-supplied and read only.
 	*/
 	public $expirationDate;
 
-		public $friendlyDescription;
+	/**
+	*Client-defined description that displays for the shopper on the web storefront.
+	*/
+	public $friendlyDescription;
 
 	/**
-	*The name assigned for the product discount.
+	*The localizable name assigned for the product discount.
 	*/
 	public $name;
 

@@ -24,7 +24,10 @@ class ProductInventoryInfo
 	*/
 	public $manageStock;
 
-		public $onlineLocationCode;
+	/**
+	*The location code for the direct ship location associated with the available online stock.
+	*/
+	public $onlineLocationCode;
 
 	/**
 	*The current number of products that are available for purchase.

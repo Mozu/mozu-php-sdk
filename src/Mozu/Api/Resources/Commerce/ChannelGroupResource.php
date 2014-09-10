@@ -12,38 +12,41 @@
 
 namespace Mozu\Api\Resources\Commerce;
 
-use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\ChannelGroupClient;
 use Mozu\Api\ApiContext;
-use Mozu\Api\DataViewMode;
-use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\CommerceRuntime\Channels\ChannelGroup;
+use Mozu\Api\Contracts\CommerceRuntime\Channels\ChannelGroupCollection;
 
 /**
 * Use the Channel Groups resource to manage groups of channels with common information.
 */
 class ChannelGroupResource {
 
-		private $apiContext;
+	private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
+	
+
 	/**
 	* Retrieves a list of defined channel groups according to any filter and sort criteria specified in the request.
 	*
-	* @param string $filter FilterSetAll
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return ChannelGroupCollection 
 	*/
-	public function getChannelGroups($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
+	public function getChannelGroups($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
-		$mozuClient = ChannelGroupClient::getChannelGroupsClient($startIndex, $pageSize, $sortBy, $filter);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = ChannelGroupClient::getChannelGroupsClient($startIndex, $pageSize, $sortBy, $filter, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -51,29 +54,31 @@ class ChannelGroupResource {
 	* Retrieves the details of a defined channel group.
 	*
 	* @param string $code The code that uniquely identifies the channel group.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return ChannelGroup 
 	*/
-	public function getChannelGroup($code)
+	public function getChannelGroup($code, $responseFields =  null)
 	{
-		$mozuClient = ChannelGroupClient::getChannelGroupClient($code);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = ChannelGroupClient::getChannelGroupClient($code, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
 	* Creates a new group of channels with common information.
 	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param ChannelGroup $channelGroup Properties of the channel group to create.
 	* @return ChannelGroup 
 	*/
-	public function createChannelGroup($channelGroup)
+	public function createChannelGroup($channelGroup, $responseFields =  null)
 	{
-		$mozuClient = ChannelGroupClient::createChannelGroupClient($channelGroup);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = ChannelGroupClient::createChannelGroupClient($channelGroup, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -81,15 +86,16 @@ class ChannelGroupResource {
 	* Updates one or more properties of a defined channel group.
 	*
 	* @param string $code Code that identifies the channel group.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param ChannelGroup $channelGroup Properties of the channel group to update.
 	* @return ChannelGroup 
 	*/
-	public function updateChannelGroup($channelGroup, $code)
+	public function updateChannelGroup($channelGroup, $code, $responseFields =  null)
 	{
-		$mozuClient = ChannelGroupClient::updateChannelGroupClient($channelGroup, $code);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = ChannelGroupClient::updateChannelGroupClient($channelGroup, $code, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -97,12 +103,13 @@ class ChannelGroupResource {
 	* Deletes a defined group of channels, which removes the group association with each channel in the group but does not delete the channel definitions themselves.
 	*
 	* @param string $code User-defined code that uniqely identifies the channel group.
+	* @return void
 	*/
 	public function deleteChannelGroup($code)
 	{
 		$mozuClient = ChannelGroupClient::deleteChannelGroupClient($code);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
+		$mozuClient->withContext($this->apiContext)
+				->execute();
 
 	}
 	

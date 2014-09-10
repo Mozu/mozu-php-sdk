@@ -14,21 +14,65 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Products;
 
 
 
+/**
+*	Properties of a component product in a product bundle. A product bundle can represent either a collection of multiple products sold as a single entity, or a collection of the same product sold as a package. For example, a 10-pack of socks.
+*/
 class BundledProduct
 {
-		public $description;
+	/**
+	*The credit value of the bundled product.
+	*/
+	public $creditValue;
 
-		public $isPackagedStandAlone;
+	/**
+	*The description defined for a component product in a product bundle. System-supplied and read only.
+	*/
+	public $description;
 
-		public $name;
+	/**
+	*The type of goods in a bundled product. For example: physical, digital, or digital credit.
+	*/
+	public $goodsType;
 
-		public $productCode;
+	/**
+	*If true, this product cannot be shipped in a package with other items and must ship in a package by itself.
+	*/
+	public $isPackagedStandAlone;
 
-		public $productReservationId;
+	/**
+	*The name of a component product in a product bundle. System-supplied and read only.
+	*/
+	public $name;
 
-		public $quantity;
+	/**
+	*The fully qualified name of the attribute, which is a user defined attribute identifier.
+	*/
+	public $optionAttributeFQN;
 
-		public $measurements;
+	/**
+	*The value of the bundled product.
+	*/
+	public $optionValue;
+
+	/**
+	*Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+	*/
+	public $productCode;
+
+	/**
+	*Unique identifier of the product reservation associated with the component product in a product bundle. System-supplied and read only.
+	*/
+	public $productReservationId;
+
+	/**
+	*The quantity of a component product in its product bundle. System-supplied and read only.
+	*/
+	public $quantity;
+
+	/**
+	*Dimensions of the packaged product.
+	*/
+	public $measurements;
 
 }
 

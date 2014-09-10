@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
+/**
+*	Properties of a customer segment used to group sets of customers for targeted reporting and discounts.
+*/
 class CustomerSegment
 {
-		public $id;
+	/**
+	*Unique identifier of the customer segment.
+	*/
+	public $id;
 
 }
 

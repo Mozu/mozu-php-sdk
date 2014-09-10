@@ -14,8 +14,9 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin\Attributedefinition\Attributes
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\Attributedefinition\Attributes\AttributeTypeRuleUrl;
-use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\ProductAdmin\AttributeTypeRuleCollection;
 
 /**
 * Type rules are subresources of product attributes which could be specifications that can be shared across products in a store or assigned to specific products. Attribute type rules provide definitions of how attribute types will appear on the user interface.
@@ -27,16 +28,16 @@ class AttributeTypeRuleClient {
 	*
 	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getAttributeTypeRulesClient($dataViewMode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
+	public static function getAttributeTypeRulesClient($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
-		$url = AttributeTypeRuleUrl::getAttributeTypeRulesUrl($filter, $pageSize, $sortBy, $startIndex);
+		$url = AttributeTypeRuleUrl::getAttributeTypeRulesUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	

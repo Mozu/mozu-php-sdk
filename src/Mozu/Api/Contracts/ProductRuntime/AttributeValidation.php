@@ -20,7 +20,7 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 class AttributeValidation
 {
 	/**
-	* System-supplied and read-only.
+	*System-supplied and read-only.
 	*/
 	public $maxDateValue;
 
@@ -35,7 +35,7 @@ class AttributeValidation
 	public $maxStringLength;
 
 	/**
-	* System-supplied and read-only.
+	*System-supplied and read-only.
 	*/
 	public $minDateValue;
 

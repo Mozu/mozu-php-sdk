@@ -12,22 +12,26 @@
 
 namespace Mozu\Api\Resources\Commerce\Orders;
 
-use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Orders\OrderItemClient;
 use Mozu\Api\ApiContext;
-use Mozu\Api\DataViewMode;
-use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\CommerceRuntime\Orders\OrderItem;
+use Mozu\Api\Contracts\CommerceRuntime\Discounts\AppliedDiscount;
+use Mozu\Api\Contracts\CommerceRuntime\Orders\Order;
+use Mozu\Api\Contracts\CommerceRuntime\Orders\OrderItemCollection;
 
 /**
 * Use this subresource to retrieve details about items in an active order.
 */
 class OrderItemResource {
 
-		private $apiContext;
+	private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
+
+	
 
 	/**
 	* Retrieves the details of a single order item.
@@ -35,14 +39,15 @@ class OrderItemResource {
 	* @param bool $draft If true, retrieve the draft version of this order item, which might include uncommitted changes to the order item, the order, or other order components.
 	* @param string $orderId Unique identifier of the order item to retrieve.
 	* @param string $orderItemId Unique identifier of the order item details to retrieve.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return OrderItem 
 	*/
-	public function getOrderItem($orderId, $orderItemId, $draft =  null)
+	public function getOrderItem($orderId, $orderItemId, $draft =  null, $responseFields =  null)
 	{
-		$mozuClient = OrderItemClient::getOrderItemClient($orderId, $orderItemId, $draft);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = OrderItemClient::getOrderItemClient($orderId, $orderItemId, $draft, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -51,33 +56,35 @@ class OrderItemResource {
 	*
 	* @param bool $draft If true, retrieve the draft version of the order's items, which might include uncommitted changes to one or more order items, the order itself, or other order components.
 	* @param string $orderId Unique identifier of the order items to retrieve.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return OrderItemCollection 
 	*/
-	public function getOrderItems($orderId, $draft =  null)
+	public function getOrderItems($orderId, $draft =  null, $responseFields =  null)
 	{
-		$mozuClient = OrderItemClient::getOrderItemsClient($orderId, $draft);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = OrderItemClient::getOrderItemsClient($orderId, $draft, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
-	* Adds a new item to an existing order.
+	* Adds a new item to a defined order.
 	*
 	* @param string $orderId Unique identifier of the order for which to add the item.
-	* @param bool $skipInventoryCheck 
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param bool $skipInventoryCheck If true, do not validate the product inventory when adding this item to the order.
 	* @param string $updateMode Specifies whether to add the item by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
 	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 	* @param OrderItem $orderItem The properties of the item to create in the existing order.
 	* @return Order 
 	*/
-	public function createOrderItem($orderItem, $orderId, $updateMode =  null, $version =  null, $skipInventoryCheck =  null)
+	public function createOrderItem($orderItem, $orderId, $updateMode =  null, $version =  null, $skipInventoryCheck =  null, $responseFields =  null)
 	{
-		$mozuClient = OrderItemClient::createOrderItemClient($orderItem, $orderId, $updateMode, $version, $skipInventoryCheck);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = OrderItemClient::createOrderItemClient($orderItem, $orderId, $updateMode, $version, $skipInventoryCheck, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -87,36 +94,38 @@ class OrderItemResource {
 	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
 	* @param string $orderId Unique identifier of the order associated with the item discount.
 	* @param string $orderItemId Unique identifier of the item in the order.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $updateMode Specifies whether to change the item discount by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
 	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 	* @param AppliedDiscount $discount Properties of the discount to modify for the order item.
 	* @return Order 
 	*/
-	public function updateOrderItemDiscount($discount, $orderId, $orderItemId, $discountId, $updateMode =  null, $version =  null)
+	public function updateOrderItemDiscount($discount, $orderId, $orderItemId, $discountId, $updateMode =  null, $version =  null, $responseFields =  null)
 	{
-		$mozuClient = OrderItemClient::updateOrderItemDiscountClient($discount, $orderId, $orderItemId, $discountId, $updateMode, $version);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = OrderItemClient::updateOrderItemDiscountClient($discount, $orderId, $orderItemId, $discountId, $updateMode, $version, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
-	* 
+	* Updates the item fulfillment information for the order specified in the request.
 	*
-	* @param string $orderId 
-	* @param string $orderItemId 
-	* @param string $updateMode 
-	* @param string $version 
-	* @param OrderItem $orderItem 
+	* @param string $orderId Unique identifier of the order.
+	* @param string $orderItemId Unique identifier of the item in the order.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $updateMode Specifies whether to apply the coupon by updating the original order, updating the order in draft mode, or updating the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
+	* @param OrderItem $orderItem Properties of the order item to update for fulfillment.
 	* @return Order 
 	*/
-	public function updateItemFulfillment($orderItem, $orderId, $orderItemId, $updateMode =  null, $version =  null)
+	public function updateItemFulfillment($orderItem, $orderId, $orderItemId, $updateMode =  null, $version =  null, $responseFields =  null)
 	{
-		$mozuClient = OrderItemClient::updateItemFulfillmentClient($orderItem, $orderId, $orderItemId, $updateMode, $version);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = OrderItemClient::updateItemFulfillmentClient($orderItem, $orderId, $orderItemId, $updateMode, $version, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -125,17 +134,18 @@ class OrderItemResource {
 	*
 	* @param string $orderId Unique identifier of the order containing the item to price override.
 	* @param string $orderItemId Unique identifier of the item in the order to price override.
-	* @param decimal $price The override price to specify for this item in the specified order.
+	* @param float $price The override price to specify for this item in the specified order.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $updateMode Specifies whether to change the product price by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
 	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 	* @return Order 
 	*/
-	public function updateItemProductPrice($orderId, $orderItemId, $price, $updateMode =  null, $version =  null)
+	public function updateItemProductPrice($orderId, $orderItemId, $price, $updateMode =  null, $version =  null, $responseFields =  null)
 	{
-		$mozuClient = OrderItemClient::updateItemProductPriceClient($orderId, $orderItemId, $price, $updateMode, $version);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = OrderItemClient::updateItemProductPriceClient($orderId, $orderItemId, $price, $updateMode, $version, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -145,21 +155,22 @@ class OrderItemResource {
 	* @param string $orderId Unique identifier of the order containing the item to update quantity.
 	* @param string $orderItemId Unique identifier of the item in the order to update quantity.
 	* @param int $quantity The quantity of the item in the order to update.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $updateMode Specifies whether to change the item quantity by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
 	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 	* @return Order 
 	*/
-	public function updateItemQuantity($orderId, $orderItemId, $quantity, $updateMode =  null, $version =  null)
+	public function updateItemQuantity($orderId, $orderItemId, $quantity, $updateMode =  null, $version =  null, $responseFields =  null)
 	{
-		$mozuClient = OrderItemClient::updateItemQuantityClient($orderId, $orderItemId, $quantity, $updateMode, $version);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = OrderItemClient::updateItemQuantityClient($orderId, $orderItemId, $quantity, $updateMode, $version, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
-	* Removes a previously added item from an existing order.
+	* Removes a previously added item from a defined order.
 	*
 	* @param string $orderId Unique identifier of the order with the item to remove.
 	* @param string $orderItemId Unique identifier of the item to remove from the order.
@@ -170,9 +181,9 @@ class OrderItemResource {
 	public function deleteOrderItem($orderId, $orderItemId, $updateMode =  null, $version =  null)
 	{
 		$mozuClient = OrderItemClient::deleteOrderItemClient($orderId, $orderItemId, $updateMode, $version);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	

@@ -14,16 +14,25 @@ namespace Mozu\Api\Contracts\PaymentService;
 
 
 
+/**
+*	The type of preauthorization gateway.
+*/
 class PreAuthorizeTransactionTypeDataContract
 {
-		public $description;
+	/**
+	*Description of the preauthorization transaction type.
+	*/
+	public $description;
 
 	/**
 	*Identifier of the entity.
 	*/
 	public $id;
 
-		public $type;
+	/**
+	*The type of preauthorization transaction.
+	*/
+	public $type;
 
 }
 

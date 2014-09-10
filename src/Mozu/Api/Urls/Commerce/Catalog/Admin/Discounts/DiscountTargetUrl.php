@@ -20,26 +20,32 @@ class DiscountTargetUrl  {
 	/**
 		* Get Resource Url for GetDiscountTarget
 		* @param int $discountId Unique identifier of the discount. System-supplied and read only.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function getDiscountTargetUrl($discountId)
+	public static function getDiscountTargetUrl($discountId, $responseFields)
 	{
-		$url = "/api/commerce/catalog/admin/discounts/{discountId}/target";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("discountId", $discountId);
+		$url = "/api/commerce/catalog/admin/discounts/{discountId}/target?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("discountId", $discountId)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdateDiscountTarget
 		* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function updateDiscountTargetUrl($discountId)
+	public static function updateDiscountTargetUrl($discountId, $responseFields)
 	{
-		$url = "/api/commerce/catalog/admin/discounts/{discountId}/target";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
-		$url = $mozuUrl->formatUrl("discountId", $discountId);
+		$url = "/api/commerce/catalog/admin/discounts/{discountId}/target?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
+		$mozuUrl->formatUrl("discountId", $discountId)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	

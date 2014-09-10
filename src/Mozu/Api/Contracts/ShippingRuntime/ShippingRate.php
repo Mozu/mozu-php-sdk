@@ -29,7 +29,10 @@ class ShippingRate
 	*/
 	public $code;
 
-		public $daysInTransit;
+	/**
+	*The number of days the shipment will spend between the origin address and the destination address.
+	*/
+	public $daysInTransit;
 
 	/**
 	*Localized content for a shipping rate based on the defined locale code.

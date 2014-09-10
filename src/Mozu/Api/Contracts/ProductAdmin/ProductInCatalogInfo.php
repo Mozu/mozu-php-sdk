@@ -19,7 +19,10 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 */
 class ProductInCatalogInfo
 {
-		public $catalogId;
+	/**
+	*The unique identifier of the catalog of products used by a site.
+	*/
+	public $catalogId;
 
 	/**
 	*If true, the product is actively available (for sale) in the associated catalog.

@@ -19,7 +19,12 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 */
 class MasterCatalog
 {
-		public $id;
+	/**
+	*The unique identifier of the master catalog associated with the entity.
+	*/
+	public $id;
+
+		public $isDeleted;
 
 	/**
 	*The name of the master catalog.

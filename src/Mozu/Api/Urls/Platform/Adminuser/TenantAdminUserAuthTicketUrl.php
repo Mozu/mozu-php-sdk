@@ -19,27 +19,33 @@ class TenantAdminUserAuthTicketUrl  {
 
 	/**
 		* Get Resource Url for CreateUserAuthTicket
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param int $tenantId Unique identifier of the development or production tenant for which to generate the user authentication ticket.
 		* @return string Resource Url
 	*/
-	public static function createUserAuthTicketUrl($tenantId)
+	public static function createUserAuthTicketUrl($responseFields, $tenantId)
 	{
-		$url = "/api/platform/adminuser/authtickets/tenants?tenantId={tenantId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"POST", false) ;
-		$url = $mozuUrl->formatUrl("tenantId", $tenantId);
+		$url = "/api/platform/adminuser/authtickets/tenants?tenantId={tenantId}&responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"POST", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields)
+				->formatUrl("tenantId", $tenantId);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for RefreshAuthTicket
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param int $tenantId 
 		* @return string Resource Url
 	*/
-	public static function refreshAuthTicketUrl($tenantId)
+	public static function refreshAuthTicketUrl($responseFields, $tenantId)
 	{
-		$url = "/api/platform/adminuser/authtickets/tenants?tenantId={tenantId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"PUT", false) ;
-		$url = $mozuUrl->formatUrl("tenantId", $tenantId);
+		$url = "/api/platform/adminuser/authtickets/tenants?tenantId={tenantId}&responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"PUT", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields)
+				->formatUrl("tenantId", $tenantId);
+
 		return $mozuUrl;
 	}
 	
@@ -51,8 +57,9 @@ class TenantAdminUserAuthTicketUrl  {
 	public static function deleteUserAuthTicketUrl($refreshToken)
 	{
 		$url = "/api/platform/adminuser/authtickets/?refreshToken={refreshToken}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"DELETE", false) ;
-		$url = $mozuUrl->formatUrl("refreshToken", $refreshToken);
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"DELETE", false);
+		$mozuUrl->formatUrl("refreshToken", $refreshToken);
+
 		return $mozuUrl;
 	}
 	

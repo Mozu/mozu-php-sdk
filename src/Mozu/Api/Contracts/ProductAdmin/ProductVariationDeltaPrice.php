@@ -20,11 +20,19 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class ProductVariationDeltaPrice
 {
 	/**
+	*The credit amount for the product.
+	*/
+	public $creditValue;
+
+	/**
 	*3-letter ISO 4217 standard global currency code. Currently, only "USD" (US Dollar) is supported.
 	*/
 	public $currencyCode;
 
-		public $msrp;
+	/**
+	*The manufacturer's suggested retail price, as defined by the supplier.
+	*/
+	public $msrp;
 
 	/**
 	*Positive or negative decimal value that represents the difference between this variation and the base product.

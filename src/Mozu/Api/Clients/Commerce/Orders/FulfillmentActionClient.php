@@ -14,8 +14,10 @@ namespace Mozu\Api\Clients\Commerce\Orders;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Orders\FulfillmentActionUrl;
-use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\CommerceRuntime\Fulfillment\FulfillmentAction;
+use Mozu\Api\Contracts\CommerceRuntime\Orders\Order;
 
 /**
 * Use the Fulfillment resource to manage shipments or pickups of collections of packages for an order.
@@ -26,15 +28,15 @@ class FulfillmentActionClient {
 	* Sets the fulfillment action to "Ship" or "PickUp". To ship an order or prepare it for in-store pickup, the order must have a customer name, the "Open" or "OpenAndProcessing" status. To ship the order, it must also have the full shipping address and shipping method. Shipping all packages or picking up all pickups for an order will complete a paid order.
 	*
 	* @param string $orderId Unique identifier of the order for which to perform the fulfillment action.
+	* @param string $responseFields Updated order with a new fulfillment status resulting from the action supplied in the request.
 	* @param FulfillmentAction $action The action to perform for the order fulfillment.
 	* @return MozuClient
 	*/
-	public static function performFulfillmentActionClient($action, $orderId)
+	public static function performFulfillmentActionClient($action, $orderId, $responseFields =  null)
 	{
-		$url = FulfillmentActionUrl::performFulfillmentActionUrl($orderId);
+		$url = FulfillmentActionUrl::performFulfillmentActionUrl($orderId, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($action);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($action);
 
 	}
 	

@@ -39,7 +39,10 @@ class CartSummary
 	*/
 	public $total;
 
-		public $totalQuantity;
+	/**
+	*The combined total quantity across all items in the cart.
+	*/
+	public $totalQuantity;
 
 }
 

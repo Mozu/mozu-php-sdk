@@ -12,51 +12,53 @@
 
 namespace Mozu\Api\Resources\Commerce\Orders;
 
-use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Orders\OrderValidationResultClient;
 use Mozu\Api\ApiContext;
-use Mozu\Api\DataViewMode;
-use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\CommerceRuntime\Orders\OrderValidationResult;
 
 /**
-* 
+* Manage the results of order validation.
 */
 class OrderValidationResultResource {
 
-		private $apiContext;
+	private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
+	
+
 	/**
-	* 
+	* Retrieves a list of the validation results associated with the order.
 	*
-	* @param string $orderId 
+	* @param string $orderId Unique identifier of the order.
 	* @return array|OrderValidationResult 
 	*/
 	public function getValidationResults($orderId)
 	{
 		$mozuClient = OrderValidationResultClient::getValidationResultsClient($orderId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
-	* 
+	* Add a new order validation result to a submitted order.
 	*
-	* @param string $orderId 
-	* @param OrderValidationResult $validationResult 
+	* @param string $orderId Unique identifier of the order.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param OrderValidationResult $validationResult Properties of the validation result to add for the order.
 	* @return OrderValidationResult 
 	*/
-	public function addValidationResult($validationResult, $orderId)
+	public function addValidationResult($validationResult, $orderId, $responseFields =  null)
 	{
-		$mozuClient = OrderValidationResultClient::addValidationResultClient($validationResult, $orderId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = OrderValidationResultClient::addValidationResultClient($validationResult, $orderId, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	

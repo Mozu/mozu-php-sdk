@@ -14,8 +14,10 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin\Attributedefinition\Producttyp
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\Attributedefinition\Producttypes\ProductTypeVariationUrl;
-use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\ProductAdmin\ProductOption;
+use Mozu\Api\Contracts\ProductAdmin\ProductVariationPagedCollection;
 
 /**
 * Use the variations resource to preview possible product variations for a specific product type based on the option attributes defined for the product type, such as size or color.
@@ -29,17 +31,17 @@ class ProductTypeVariationClient {
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $productCode 
 	* @param int $productTypeId Unique identifier of the product type.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @param array|ProductOption $productOptionsIn The product option attributes configured for this product type.
 	* @return MozuClient
 	*/
-	public static function generateProductVariationsClient($dataViewMode, $productOptionsIn, $productTypeId, $productCode =  null, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
+	public static function generateProductVariationsClient($productOptionsIn, $productTypeId, $productCode =  null, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
-		$url = ProductTypeVariationUrl::generateProductVariationsUrl($filter, $pageSize, $productCode, $productTypeId, $sortBy, $startIndex);
+		$url = ProductTypeVariationUrl::generateProductVariationsUrl($filter, $pageSize, $productCode, $productTypeId, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($productOptionsIn)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($productOptionsIn);
 
 	}
 	

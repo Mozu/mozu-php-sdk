@@ -14,8 +14,10 @@ namespace Mozu\Api\Clients\Event\Push\Subscriptions;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Event\Push\Subscriptions\EventDeliverySummaryUrl;
-use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\Event\EventDeliverySummaryCollection;
+use Mozu\Api\Contracts\Event\EventDeliverySummary;
 
 /**
 * 
@@ -23,37 +25,37 @@ use Mozu\Api\Headers;
 class EventDeliverySummaryClient {
 
 	/**
-	* 
+	* This operation method is the external/public event entity used specifically in pull/poll event scenarios.
 	*
-	* @param int $id 
-	* @param string $subscriptionId 
+	* @param int $id This parameter is the unique identifer for an event attempt delivery summary.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $subscriptionId This operation paramenter is the unique identifer for a subscription.
 	* @return MozuClient
 	*/
-	public static function getDeliveryAttemptSummaryClient($subscriptionId, $id =  null)
+	public static function getDeliveryAttemptSummaryClient($subscriptionId, $id =  null, $responseFields =  null)
 	{
-		$url = EventDeliverySummaryUrl::getDeliveryAttemptSummaryUrl($id, $subscriptionId);
+		$url = EventDeliverySummaryUrl::getDeliveryAttemptSummaryUrl($id, $responseFields, $subscriptionId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
 	/**
 	* 
 	*
-	* @param string $filter 
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 	* @param int $pageSize 
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @param string $subscriptionId 
 	* @return MozuClient
 	*/
-	public static function getDeliveryAttemptSummariesClient($subscriptionId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
+	public static function getDeliveryAttemptSummariesClient($subscriptionId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
-		$url = EventDeliverySummaryUrl::getDeliveryAttemptSummariesUrl($filter, $pageSize, $sortBy, $startIndex, $subscriptionId);
+		$url = EventDeliverySummaryUrl::getDeliveryAttemptSummariesUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex, $subscriptionId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	

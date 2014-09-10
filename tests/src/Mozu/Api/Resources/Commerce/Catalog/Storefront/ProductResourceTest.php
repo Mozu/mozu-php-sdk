@@ -1,9 +1,12 @@
 <?php
+
+namespace Mozu\Api\Resource\Commerce\Catalog\Storefront;
+
 require_once __DIR__ . '/../../../../../../BaseTest.php';
 
+use Mozu\Api\ApiException;
 use Mozu\Tests\BaseTest;
 use Mozu\Api\Resources\Commerce\Catalog\Storefront\ProductResource;
-use Mozu\Api\Resources\Platform\TenantResource;
 use Mozu\Api\ApiContext;
 use Mozu\Api\DataViewMode;
 
@@ -25,7 +28,7 @@ class ProductResourceTest extends BaseTest
     protected function setUp()
     {
     	$apiContext = new ApiContext($this->tenantId,$this->siteId,1,1);
-        $this->object = new ProductResource($apiContext);
+        $this->object = new ProductResource($apiContext, DataViewMode::LIVE);
     }
 
     /**
@@ -42,8 +45,13 @@ class ProductResourceTest extends BaseTest
      */
     public function testGetProducts()
     {
-       $productInventoryCollection = $this->object->getProductInventory("AC-99");
-       var_dump($productInventoryCollection);
+        try {
+            $productInventoryCollection = $this->object->getProductInventory("AC-99");
+            $this->assertNotEmpty($productInventoryCollection);
+        } catch(ApiException $exc) {
+            $this->fail($exc->getMessage());
+        }
+
     }
 
     

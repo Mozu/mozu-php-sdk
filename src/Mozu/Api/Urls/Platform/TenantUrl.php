@@ -19,14 +19,17 @@ class TenantUrl  {
 
 	/**
 		* Get Resource Url for GetTenant
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param int $tenantId Unique identifier of the Mozu tenant.
 		* @return string Resource Url
 	*/
-	public static function getTenantUrl($tenantId)
+	public static function getTenantUrl($responseFields, $tenantId)
 	{
-		$url = "/api/platform/tenants/{tenantId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("tenantId", $tenantId);
+		$url = "/api/platform/tenants/{tenantId}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields)
+				->formatUrl("tenantId", $tenantId);
+
 		return $mozuUrl;
 	}
 	

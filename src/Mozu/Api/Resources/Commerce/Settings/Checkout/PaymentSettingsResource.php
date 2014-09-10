@@ -12,22 +12,23 @@
 
 namespace Mozu\Api\Resources\Commerce\Settings\Checkout;
 
-use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Settings\Checkout\PaymentSettingsClient;
 use Mozu\Api\ApiContext;
-use Mozu\Api\DataViewMode;
-use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\SiteSettings\Order\ExternalPaymentWorkflowDefinition;
 
 /**
-* Specify settings when creating payments for order checkout on the site.
+* Use the Payment Settings resource to specify settings when creating payments for order checkout on the site.
 */
 class PaymentSettingsResource {
 
-		private $apiContext;
+	private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
+
+	
 
 	/**
 	* Retrieves the details of the third-party payment service workflows configured for the site.
@@ -37,9 +38,9 @@ class PaymentSettingsResource {
 	public function getThirdPartyPaymentWorkflows()
 	{
 		$mozuClient = PaymentSettingsClient::getThirdPartyPaymentWorkflowsClient();
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	

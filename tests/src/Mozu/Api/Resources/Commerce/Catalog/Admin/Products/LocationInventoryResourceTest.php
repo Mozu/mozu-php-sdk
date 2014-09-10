@@ -1,8 +1,9 @@
 <?php
-
+namespace Mozu\Api\Resource\Commerce\Catalog\Products;
 
 require_once __DIR__ . '/../../../../../../../BaseTest.php';
 
+use Mozu\Api\ApiException;
 use Mozu\Tests\BaseTest;
 use Mozu\Api\Resources\Commerce\Catalog\Admin\ProductResource;
 use Mozu\Api\Resources\Platform\TenantResource;
@@ -27,12 +28,8 @@ class LocationInventoryResourceTest extends BaseTest
      */
     protected function setUp()
     {
-    	//$tenantResource = new TenantResource();
-    	//$tenant = $tenantResource->getTenant($this->tenantId);
-    	
     	$apiContext = new ApiContext($this->tenantId,0,1,1);
-        $this->object = new LocationInventoryResource($apiContext);
-        
+        $this->object = new LocationInventoryResource($apiContext,DataViewMode::LIVE);
     }
 
     /**
@@ -49,8 +46,12 @@ class LocationInventoryResourceTest extends BaseTest
      */
     public function testGetInventory()
     {
-       $inventoryInventoryCollection = $this->object->getLocationInventories(DataViewMode::PENDING,"1001");
-       var_dump($inventoryInventoryCollection);
+        try{
+            $inventoryInventoryCollection = $this->object->getLocationInventories("1001");
+            $this->assertNotEmpty($inventoryInventoryCollection);
+        } catch(ApiException $exc) {
+            $this->fail($exc->getMessage());
+        }
     }
 
     

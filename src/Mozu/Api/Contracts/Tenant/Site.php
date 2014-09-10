@@ -19,7 +19,10 @@ namespace Mozu\Api\Contracts\Tenant;
 */
 class Site
 {
-		public $catalogId;
+	/**
+	*The unique identifier of the catalog of products used by a site.
+	*/
+	public $catalogId;
 
 		public $countryCode;
 

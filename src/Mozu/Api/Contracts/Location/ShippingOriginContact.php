@@ -14,19 +14,40 @@ namespace Mozu\Api\Contracts\Location;
 
 
 
+/**
+*	Properties of a fulfillment contact for the shipping origin address associated with a location.
+*/
 class ShippingOriginContact
 {
-		public $companyOrOrganization;
+	/**
+	*The legal or doing business as (DBA) or tradestyle name of the business or organization. The maximum character length is 200.
+	*/
+	public $companyOrOrganization;
 
-		public $email;
+	/**
+	*The email address of the specified user or the email address associated with the specified entity.
+	*/
+	public $email;
 
-		public $firstName;
+	/**
+	*The first name of the shipping origin contact.
+	*/
+	public $firstName;
 
-		public $lastNameOrSurname;
+	/**
+	*The last name of the shipping origin contact.
+	*/
+	public $lastNameOrSurname;
 
-		public $middleNameOrInitial;
+	/**
+	*The middle name or middle initial of the shipping origin contact.
+	*/
+	public $middleNameOrInitial;
 
-		public $phoneNumber;
+	/**
+	*Collection of phone numbers associated with the shipping origin contact.
+	*/
+	public $phoneNumber;
 
 }
 

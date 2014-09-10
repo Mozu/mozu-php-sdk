@@ -34,6 +34,8 @@ class AttributeVocabularyValue
 	*/
 	public $content;
 
+		public $localizedContent;
+
 }
 
 ?>

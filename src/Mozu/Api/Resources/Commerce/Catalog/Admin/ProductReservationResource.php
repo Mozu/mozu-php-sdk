@@ -12,38 +12,43 @@
 
 namespace Mozu\Api\Resources\Commerce\Catalog\Admin;
 
-use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Catalog\Admin\ProductReservationClient;
 use Mozu\Api\ApiContext;
-use Mozu\Api\DataViewMode;
-use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\ProductAdmin\ProductReservation;
+use Mozu\Api\Contracts\ProductAdmin\ProductReservationCollection;
 
 /**
 * Temporarily hold a product from inventory while a shopper is filling out payment information. Create a product reservation when a shopper proceeds to check out and then release the reservation when the order process is complete.
 */
 class ProductReservationResource {
 
-		private $apiContext;
-	public function __construct(ApiContext $apiContext) 
+	private $apiContext;
+	private $dataViewMode;
+	public function __construct(ApiContext $apiContext, $dataViewMode) 
 	{
 		$this->apiContext = $apiContext;
+		$this->dataViewMode = $dataViewMode;
 	}
+
+	
 
 	/**
 	* Retrieves a list of product reservations according to any specified filter criteria and sort options.
 	*
 	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return ProductReservationCollection 
 	*/
-	public function getProductReservations($dataViewMode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
+	public function getProductReservations($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
-		$mozuClient = ProductReservationClient::getProductReservationsClient($dataViewMode, $startIndex, $pageSize, $sortBy, $filter);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = ProductReservationClient::getProductReservationsClient($this->dataViewMode, $startIndex, $pageSize, $sortBy, $filter, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -51,59 +56,61 @@ class ProductReservationResource {
 	* Retrieves the details of a product reservation.
 	*
 	* @param int $productReservationId Unique identifier of the product reservation.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return ProductReservation 
 	*/
-	public function getProductReservation($dataViewMode, $productReservationId)
+	public function getProductReservation($productReservationId, $responseFields =  null)
 	{
-		$mozuClient = ProductReservationClient::getProductReservationClient($dataViewMode, $productReservationId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = ProductReservationClient::getProductReservationClient($this->dataViewMode, $productReservationId, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
-	* 
+	* Creates a new product reservation for a product. This action places a hold on the product inventory for the quantity specified during the ordering process.
 	*
-	* @param bool $skipInventoryCheck 
-	* @param array|ProductReservation $productReservations 
+	* @param bool $skipInventoryCheck If true, skip the process to validate inventory when creating this product reservation.
+	* @param array|ProductReservation $productReservations Details of the product reservations to add.
 	* @return array|ProductReservation 
 	*/
-	public function addProductReservations($dataViewMode, $productReservations, $skipInventoryCheck =  null)
+	public function addProductReservations($productReservations, $skipInventoryCheck =  null)
 	{
-		$mozuClient = ProductReservationClient::addProductReservationsClient($dataViewMode, $productReservations, $skipInventoryCheck);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = ProductReservationClient::addProductReservationsClient($this->dataViewMode, $productReservations, $skipInventoryCheck);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
-	* 
+	* Commits a product reservation to decrement the product's inventory by the quantity specified then release the reservation once the order process completed successfully.
 	*
-	* @param array|ProductReservation $productReservations 
+	* @param array|ProductReservation $productReservations List of unique identifiers of the reservations to commit.
+	* @return void
 	*/
-	public function commitReservations($dataViewMode, $productReservations)
+	public function commitReservations($productReservations)
 	{
-		$mozuClient = ProductReservationClient::commitReservationsClient($dataViewMode, $productReservations);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
+		$mozuClient = ProductReservationClient::commitReservationsClient($this->dataViewMode, $productReservations);
+		$mozuClient->withContext($this->apiContext)
+				->execute();
 
 	}
 	
 	/**
-	* 
+	* Updates an existing product reservation for a product.
 	*
-	* @param bool $skipInventoryCheck 
-	* @param array|ProductReservation $productReservations 
+	* @param bool $skipInventoryCheck If true, skip the inventory validation process when updating this product reservation.
+	* @param array|ProductReservation $productReservations Properties of the product reservations to update.
 	* @return array|ProductReservation 
 	*/
-	public function updateProductReservations($dataViewMode, $productReservations, $skipInventoryCheck =  null)
+	public function updateProductReservations($productReservations, $skipInventoryCheck =  null)
 	{
-		$mozuClient = ProductReservationClient::updateProductReservationsClient($dataViewMode, $productReservations, $skipInventoryCheck);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = ProductReservationClient::updateProductReservationsClient($this->dataViewMode, $productReservations, $skipInventoryCheck);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -111,12 +118,13 @@ class ProductReservationResource {
 	* Deletes a product reservation. For example, delete a reservation when an order is not processed to return the product quantity back to inventory.
 	*
 	* @param int $productReservationId Unique identifier of the reservation.
+	* @return void
 	*/
-	public function deleteProductReservation($dataViewMode, $productReservationId)
+	public function deleteProductReservation($productReservationId)
 	{
-		$mozuClient = ProductReservationClient::deleteProductReservationClient($dataViewMode, $productReservationId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
+		$mozuClient = ProductReservationClient::deleteProductReservationClient($this->dataViewMode, $productReservationId);
+		$mozuClient->withContext($this->apiContext)
+				->execute();
 
 	}
 	

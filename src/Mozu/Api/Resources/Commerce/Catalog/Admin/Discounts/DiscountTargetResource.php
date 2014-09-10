@@ -12,35 +12,39 @@
 
 namespace Mozu\Api\Resources\Commerce\Catalog\Admin\Discounts;
 
-use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Catalog\Admin\Discounts\DiscountTargetClient;
 use Mozu\Api\ApiContext;
-use Mozu\Api\DataViewMode;
-use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\ProductAdmin\DiscountTarget;
 
 /**
 * Retrieves and modifies the products, categories, and shipping methods eligible for discounts in the form of a fixed dollar amount, percentage off a product price, or free shipping.
 */
 class DiscountTargetResource {
 
-		private $apiContext;
-	public function __construct(ApiContext $apiContext) 
+	private $apiContext;
+	private $dataViewMode;
+	public function __construct(ApiContext $apiContext, $dataViewMode) 
 	{
 		$this->apiContext = $apiContext;
+		$this->dataViewMode = $dataViewMode;
 	}
+
+	
 
 	/**
 	* Retrieves the discount target, that is which products, categories, or shipping methods are eligible for the discount.
 	*
 	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return DiscountTarget 
 	*/
-	public function getDiscountTarget($dataViewMode, $discountId)
+	public function getDiscountTarget($discountId, $responseFields =  null)
 	{
-		$mozuClient = DiscountTargetClient::getDiscountTargetClient($dataViewMode, $discountId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = DiscountTargetClient::getDiscountTargetClient($this->dataViewMode, $discountId, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -48,15 +52,16 @@ class DiscountTargetResource {
 	* Modifies properties of the discount target, for example, the dollar amount, or precentage off the price.
 	*
 	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param DiscountTarget $discountTarget Properties of the discount target to modify. Required properties: Target.Type. Any unspecified properties are set to null and boolean variables to false.
 	* @return DiscountTarget 
 	*/
-	public function updateDiscountTarget($dataViewMode, $discountTarget, $discountId)
+	public function updateDiscountTarget($discountTarget, $discountId, $responseFields =  null)
 	{
-		$mozuClient = DiscountTargetClient::updateDiscountTargetClient($dataViewMode, $discountTarget, $discountId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = DiscountTargetClient::updateDiscountTargetClient($discountTarget, $discountId, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
