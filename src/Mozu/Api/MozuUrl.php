@@ -2,7 +2,6 @@
 
 namespace Mozu\Api;
 
-use Mozu\Api\UrlLocation;
 
 class MozuUrl {
 	private $url;
@@ -77,7 +76,7 @@ class MozuUrl {
 			$this->url = str_replace("/?&", "/?", $this->url);
 		}
 		//echo $this->url . "\n";
-		return $this->url;
+		return $this;
 	}
 			
 	private static function endswith($string, $test) {

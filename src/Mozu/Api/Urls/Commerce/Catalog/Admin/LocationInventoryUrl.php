@@ -21,14 +21,17 @@ class LocationInventoryUrl  {
 		* Get Resource Url for GetLocationInventory
 		* @param string $locationCode User-defined code that uniquely identifies the location.
 		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function getLocationInventoryUrl($locationCode, $productCode)
+	public static function getLocationInventoryUrl($locationCode, $productCode, $responseFields)
 	{
-		$url = "/api/commerce/catalog/admin/locationinventory/{locationCode}/{productCode}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("locationCode", $locationCode);
-		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = "/api/commerce/catalog/admin/locationinventory/{locationCode}/{productCode}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("locationCode", $locationCode)
+				->formatUrl("productCode", $productCode)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
@@ -37,19 +40,22 @@ class LocationInventoryUrl  {
 		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 		* @param string $locationCode User-defined code that uniquely identifies the location.
 		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
 		* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 		* @return string Resource Url
 	*/
-	public static function getLocationInventoriesUrl($filter, $locationCode, $pageSize, $sortBy, $startIndex)
+	public static function getLocationInventoriesUrl($filter, $locationCode, $pageSize, $responseFields, $sortBy, $startIndex)
 	{
-		$url = "/api/commerce/catalog/admin/locationinventory/{locationCode}?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("filter", $filter);
-		$url = $mozuUrl->formatUrl("locationCode", $locationCode);
-		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
-		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
-		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
+		$url = "/api/commerce/catalog/admin/locationinventory/{locationCode}?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}&responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("filter", $filter)
+				->formatUrl("locationCode", $locationCode)
+				->formatUrl("pageSize", $pageSize)
+				->formatUrl("responseFields", $responseFields)
+				->formatUrl("sortBy", $sortBy)
+				->formatUrl("startIndex", $startIndex);
+
 		return $mozuUrl;
 	}
 	
@@ -62,9 +68,10 @@ class LocationInventoryUrl  {
 	public static function addLocationInventoryUrl($locationCode, $performUpserts)
 	{
 		$url = "/api/commerce/catalog/admin/locationinventory/{locationCode}?performUpserts={performUpserts}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
-		$url = $mozuUrl->formatUrl("locationCode", $locationCode);
-		$url = $mozuUrl->formatUrl("performUpserts", $performUpserts);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("locationCode", $locationCode)
+				->formatUrl("performUpserts", $performUpserts);
+
 		return $mozuUrl;
 	}
 	
@@ -76,8 +83,9 @@ class LocationInventoryUrl  {
 	public static function updateLocationInventoryUrl($locationCode)
 	{
 		$url = "/api/commerce/catalog/admin/locationinventory/{locationCode}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
-		$url = $mozuUrl->formatUrl("locationCode", $locationCode);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
+		$mozuUrl->formatUrl("locationCode", $locationCode);
+
 		return $mozuUrl;
 	}
 	
@@ -90,9 +98,10 @@ class LocationInventoryUrl  {
 	public static function deleteLocationInventoryUrl($locationCode, $productCode)
 	{
 		$url = "/api/commerce/catalog/admin/locationinventory/{locationCode}/{productCode}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
-		$url = $mozuUrl->formatUrl("locationCode", $locationCode);
-		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
+		$mozuUrl->formatUrl("locationCode", $locationCode)
+				->formatUrl("productCode", $productCode);
+
 		return $mozuUrl;
 	}
 	

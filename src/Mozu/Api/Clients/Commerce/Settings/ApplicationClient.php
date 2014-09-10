@@ -14,40 +14,41 @@ namespace Mozu\Api\Clients\Commerce\Settings;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Settings\ApplicationUrl;
-use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
+use Mozu\Api\Contracts\SiteSettings\Application\Application;
+
 /**
-* Use the applications subresource to update site settings for installed applications.
+* Use the Applications resource to update site-specific settings for installed applications.
 */
 class ApplicationClient {
 
 	/**
 	* Retrieve the settings of a third-party application.
 	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
-	public static function thirdPartyGetApplicationClient()
+	public static function thirdPartyGetApplicationClient($responseFields =  null)
 	{
-		$url = ApplicationUrl::thirdPartyGetApplicationUrl();
+		$url = ApplicationUrl::thirdPartyGetApplicationUrl($responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
 	/**
 	* Initializes an application with the necessary configured settings.
 	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param Application $application Properties of the application to update.
 	* @return MozuClient
 	*/
-	public static function thirdPartyUpdateApplicationClient($application)
+	public static function thirdPartyUpdateApplicationClient($application, $responseFields =  null)
 	{
-		$url = ApplicationUrl::thirdPartyUpdateApplicationUrl();
+		$url = ApplicationUrl::thirdPartyUpdateApplicationUrl($responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($application);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($application);
 
 	}
 	

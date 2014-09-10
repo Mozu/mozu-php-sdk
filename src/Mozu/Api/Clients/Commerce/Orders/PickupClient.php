@@ -14,30 +14,15 @@ namespace Mozu\Api\Clients\Commerce\Orders;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Orders\PickupUrl;
-use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\CommerceRuntime\Fulfillment\Pickup;
 
 /**
 * Use the Pickups resource to organize items submitted in an order into pickups that enable the shopper to fulfill the order items using the in-store pickup method.
 */
 class PickupClient {
 
-	/**
-	* Retrieves the details of the in-store pickup specified in the request.
-	*
-	* @param string $orderId Unique identifier of the order associated with the pickup.
-	* @param string $pickupId Unique identifier of the pickup to retrieve.
-	* @return MozuClient
-	*/
-	public static function getPickupClient($orderId, $pickupId)
-	{
-		$url = PickupUrl::getPickupUrl($orderId, $pickupId);
-		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
-
-	}
-	
 	/**
 	* Retrieves a list of the actions available to perform for the pickup specified in the request.
 	*
@@ -49,8 +34,23 @@ class PickupClient {
 	{
 		$url = PickupUrl::getAvailablePickupFulfillmentActionsUrl($orderId, $pickupId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
+
+	}
+	
+	/**
+	* Retrieves the details of the in-store pickup specified in the request.
+	*
+	* @param string $orderId Unique identifier of the order associated with the pickup.
+	* @param string $pickupId Unique identifier of the pickup to retrieve.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return MozuClient
+	*/
+	public static function getPickupClient($orderId, $pickupId, $responseFields =  null)
+	{
+		$url = PickupUrl::getPickupUrl($orderId, $pickupId, $responseFields);
+		$mozuClient = new MozuClient();
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
@@ -58,15 +58,15 @@ class PickupClient {
 	* Create a new pickup for the order specified in the request for in-store fufillment.
 	*
 	* @param string $orderId Unique identifier of the order.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param Pickup $pickup Properties of the in-store pickup to create.
 	* @return MozuClient
 	*/
-	public static function createPickupClient($pickup, $orderId)
+	public static function createPickupClient($pickup, $orderId, $responseFields =  null)
 	{
-		$url = PickupUrl::createPickupUrl($orderId);
+		$url = PickupUrl::createPickupUrl($orderId, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($pickup);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($pickup);
 
 	}
 	
@@ -75,15 +75,15 @@ class PickupClient {
 	*
 	* @param string $orderId Unique identifier of the order associated with the in-store pickup.
 	* @param string $pickupId Unique identifier of the pickup to update.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param Pickup $pickup Properties of the in-store pickup to update.
 	* @return MozuClient
 	*/
-	public static function updatePickupClient($pickup, $orderId, $pickupId)
+	public static function updatePickupClient($pickup, $orderId, $pickupId, $responseFields =  null)
 	{
-		$url = PickupUrl::updatePickupUrl($orderId, $pickupId);
+		$url = PickupUrl::updatePickupUrl($orderId, $pickupId, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($pickup);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($pickup);
 
 	}
 	
@@ -92,13 +92,13 @@ class PickupClient {
 	*
 	* @param string $orderId Unique identifier of the order associated with the pickup.
 	* @param string $pickupId Unique identifier of the pickup to remove.
+	* @return MozuClient
 	*/
 	public static function deletePickupClient($orderId, $pickupId)
 	{
 		$url = PickupUrl::deletePickupUrl($orderId, $pickupId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	

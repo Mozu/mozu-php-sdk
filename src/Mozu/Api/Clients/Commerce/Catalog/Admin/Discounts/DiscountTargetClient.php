@@ -14,8 +14,10 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin\Discounts;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\Discounts\DiscountTargetUrl;
-use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
+use Mozu\Api\DataViewMode;
+
+use Mozu\Api\Contracts\ProductAdmin\DiscountTarget;
 
 /**
 * Retrieves and modifies the products, categories, and shipping methods eligible for discounts in the form of a fixed dollar amount, percentage off a product price, or free shipping.
@@ -25,15 +27,16 @@ class DiscountTargetClient {
 	/**
 	* Retrieves the discount target, that is which products, categories, or shipping methods are eligible for the discount.
 	*
+	* @param DataViewMode $dataViewMode
 	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
-	public static function getDiscountTargetClient($dataViewMode, $discountId)
+	public static function getDiscountTargetClient($dataViewMode, $discountId, $responseFields =  null)
 	{
-		$url = DiscountTargetUrl::getDiscountTargetUrl($discountId);
+		$url = DiscountTargetUrl::getDiscountTargetUrl($discountId, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
 
 	}
 	
@@ -41,15 +44,15 @@ class DiscountTargetClient {
 	* Modifies properties of the discount target, for example, the dollar amount, or precentage off the price.
 	*
 	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param DiscountTarget $discountTarget Properties of the discount target to modify. Required properties: Target.Type. Any unspecified properties are set to null and boolean variables to false.
 	* @return MozuClient
 	*/
-	public static function updateDiscountTargetClient($dataViewMode, $discountTarget, $discountId)
+	public static function updateDiscountTargetClient($discountTarget, $discountId, $responseFields =  null)
 	{
-		$url = DiscountTargetUrl::updateDiscountTargetUrl($discountId);
+		$url = DiscountTargetUrl::updateDiscountTargetUrl($discountId, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($discountTarget)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($discountTarget);
 
 	}
 	

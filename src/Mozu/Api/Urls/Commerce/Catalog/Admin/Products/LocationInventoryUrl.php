@@ -22,49 +22,56 @@ class LocationInventoryUrl  {
 		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
 		* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 		* @return string Resource Url
 	*/
-	public static function getLocationInventoriesUrl($filter, $pageSize, $productCode, $sortBy, $startIndex)
+	public static function getLocationInventoriesUrl($filter, $pageSize, $productCode, $responseFields, $sortBy, $startIndex)
 	{
-		$url = "/api/commerce/catalog/admin/products/{ProductCode}/LocationInventory/?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("filter", $filter);
-		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
-		$url = $mozuUrl->formatUrl("productCode", $productCode);
-		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
-		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
+		$url = "/api/commerce/catalog/admin/products/{ProductCode}/LocationInventory/?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}&responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("filter", $filter)
+				->formatUrl("pageSize", $pageSize)
+				->formatUrl("productCode", $productCode)
+				->formatUrl("responseFields", $responseFields)
+				->formatUrl("sortBy", $sortBy)
+				->formatUrl("startIndex", $startIndex);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetLocationInventory
 		* @param string $locationCode User-defined code that identifies the location.
-		* @param string $productCode 
+		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function getLocationInventoryUrl($locationCode, $productCode)
+	public static function getLocationInventoryUrl($locationCode, $productCode, $responseFields)
 	{
-		$url = "/api/commerce/catalog/admin/products/{ProductCode}/LocationInventory/{LocationCode}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("locationCode", $locationCode);
-		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = "/api/commerce/catalog/admin/products/{ProductCode}/LocationInventory/{LocationCode}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("locationCode", $locationCode)
+				->formatUrl("productCode", $productCode)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for AddLocationInventory
-		* @param bool $performUpserts 
-		* @param string $productCode ProductCodeBase
+		* @param bool $performUpserts The performUpserts query string parameter lets the service perform an update if the record already exists instead of throwing an already exists conflict exception. PerformUpserts=true means it updates if the record already exists. By default, no value specified means that the service assumes PerformUpserts=false.
+		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 		* @return string Resource Url
 	*/
 	public static function addLocationInventoryUrl($performUpserts, $productCode)
 	{
 		$url = "/api/commerce/catalog/admin/products/{ProductCode}/LocationInventory?performUpserts={performUpserts}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
-		$url = $mozuUrl->formatUrl("performUpserts", $performUpserts);
-		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("performUpserts", $performUpserts)
+				->formatUrl("productCode", $productCode);
+
 		return $mozuUrl;
 	}
 	
@@ -76,8 +83,9 @@ class LocationInventoryUrl  {
 	public static function updateLocationInventoryUrl($productCode)
 	{
 		$url = "/api/commerce/catalog/admin/products/{ProductCode}/LocationInventory";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
-		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
+		$mozuUrl->formatUrl("productCode", $productCode);
+
 		return $mozuUrl;
 	}
 	
@@ -90,9 +98,10 @@ class LocationInventoryUrl  {
 	public static function deleteLocationInventoryUrl($locationCode, $productCode)
 	{
 		$url = "/api/commerce/catalog/admin/products/{ProductCode}/LocationInventory/{LocationCode}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
-		$url = $mozuUrl->formatUrl("locationCode", $locationCode);
-		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
+		$mozuUrl->formatUrl("locationCode", $locationCode)
+				->formatUrl("productCode", $productCode);
+
 		return $mozuUrl;
 	}
 	

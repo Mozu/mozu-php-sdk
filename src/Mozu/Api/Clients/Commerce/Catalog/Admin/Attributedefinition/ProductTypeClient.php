@@ -14,8 +14,11 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin\Attributedefinition;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\Attributedefinition\ProductTypeUrl;
-use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
+use Mozu\Api\DataViewMode;
+
+use Mozu\Api\Contracts\ProductAdmin\ProductType;
+use Mozu\Api\Contracts\ProductAdmin\ProductTypeCollection;
 
 /**
 * Use the Product Types resource to manage the types for your product catalog. Product types act as configuration templates, which store a set of attributes common to all products associated with that type. Unlike categories, products can only be associated with a single product type.
@@ -25,78 +28,83 @@ class ProductTypeClient {
 	/**
 	* Retrieves a list of product types according to any specified filter criteria and sort options.
 	*
+	* @param DataViewMode $dataViewMode
 	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product type search results by any of its properties. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=Name+cont+shoes"
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getProductTypesClient($dataViewMode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
+	public static function getProductTypesClient($dataViewMode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
-		$url = ProductTypeUrl::getProductTypesUrl($filter, $pageSize, $sortBy, $startIndex);
+		$url = ProductTypeUrl::getProductTypesUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
 
 	}
 	
 	/**
 	* Retrieves the details of the product type specified in the request.
 	*
+	* @param DataViewMode $dataViewMode
 	* @param int $productTypeId Identifier of the product type to retrieve.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
-	public static function getProductTypeClient($dataViewMode, $productTypeId)
+	public static function getProductTypeClient($dataViewMode, $productTypeId, $responseFields =  null)
 	{
-		$url = ProductTypeUrl::getProductTypeUrl($productTypeId);
+		$url = ProductTypeUrl::getProductTypeUrl($productTypeId, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
 
 	}
 	
 	/**
 	* Creates a new product type based on the information supplied in the request.
 	*
+	* @param DataViewMode $dataViewMode
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param ProductType $productType Properties of the product type to create.
 	* @return MozuClient
 	*/
-	public static function addProductTypeClient($dataViewMode, $productType)
+	public static function addProductTypeClient($dataViewMode, $productType, $responseFields =  null)
 	{
-		$url = ProductTypeUrl::addProductTypeUrl();
+		$url = ProductTypeUrl::addProductTypeUrl($responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($productType)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($productType)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
 
 	}
 	
 	/**
 	* Updates one or more properties of a product type.
 	*
+	* @param DataViewMode $dataViewMode
 	* @param int $productTypeId Identifier of the product type to update.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param ProductType $productType The details of the product type to update.
 	* @return MozuClient
 	*/
-	public static function updateProductTypeClient($dataViewMode, $productType, $productTypeId)
+	public static function updateProductTypeClient($dataViewMode, $productType, $productTypeId, $responseFields =  null)
 	{
-		$url = ProductTypeUrl::updateProductTypeUrl($productTypeId);
+		$url = ProductTypeUrl::updateProductTypeUrl($productTypeId, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($productType)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($productType)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
 
 	}
 	
 	/**
 	* Deletes the product type by providing the product type ID.
 	*
+	* @param DataViewMode $dataViewMode
 	* @param int $productTypeId Identifier of the product type to delete.
+	* @return MozuClient
 	*/
 	public static function deleteProductTypeClient($dataViewMode, $productTypeId)
 	{
 		$url = ProductTypeUrl::deleteProductTypeUrl($productTypeId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
 
 	}
 	

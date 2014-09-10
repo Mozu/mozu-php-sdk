@@ -12,22 +12,26 @@
 
 namespace Mozu\Api\Resources\Commerce\Catalog\Admin\Products;
 
-use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Catalog\Admin\Products\ProductPropertyClient;
 use Mozu\Api\ApiContext;
-use Mozu\Api\DataViewMode;
-use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\ProductAdmin\ProductProperty;
+use Mozu\Api\Contracts\ProductAdmin\ProductPropertyValueLocalizedContent;
 
 /**
 * Use the Properties resource to configure a property attribute for an individual product associated with a product type that uses the property attribute, as well as set property values for the product.
 */
 class ProductPropertyResource {
 
-		private $apiContext;
-	public function __construct(ApiContext $apiContext) 
+	private $apiContext;
+	private $dataViewMode;
+	public function __construct(ApiContext $apiContext, $dataViewMode) 
 	{
 		$this->apiContext = $apiContext;
+		$this->dataViewMode = $dataViewMode;
 	}
+
+	
 
 	/**
 	* Retrieves a list of the property attributes configured for the product specified in the request.
@@ -35,12 +39,48 @@ class ProductPropertyResource {
 	* @param string $productCode 
 	* @return array|ProductProperty 
 	*/
-	public function getProperties($dataViewMode, $productCode)
+	public function getProperties($productCode)
 	{
-		$mozuClient = ProductPropertyClient::getPropertiesClient($dataViewMode, $productCode);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = ProductPropertyClient::getPropertiesClient($this->dataViewMode, $productCode);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $attributeFQN 
+	* @param string $productCode 
+	* @param string $value 
+	* @return array|ProductPropertyValueLocalizedContent 
+	*/
+	public function getPropertyValueLocalizedContents($productCode, $attributeFQN, $value)
+	{
+		$mozuClient = ProductPropertyClient::getPropertyValueLocalizedContentsClient($this->dataViewMode, $productCode, $attributeFQN, $value);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $attributeFQN 
+	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
+	* @param string $productCode 
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $value 
+	* @return ProductPropertyValueLocalizedContent 
+	*/
+	public function getPropertyValueLocalizedContent($productCode, $attributeFQN, $value, $localeCode, $responseFields =  null)
+	{
+		$mozuClient = ProductPropertyClient::getPropertyValueLocalizedContentClient($this->dataViewMode, $productCode, $attributeFQN, $value, $localeCode, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -48,15 +88,35 @@ class ProductPropertyResource {
 	* Retrieves the details of a property attribute configuration for the product specified in the request.
 	*
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-	* @param string $productCode 
+	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return ProductProperty 
 	*/
-	public function getProperty($dataViewMode, $productCode, $attributeFQN)
+	public function getProperty($productCode, $attributeFQN, $responseFields =  null)
 	{
-		$mozuClient = ProductPropertyClient::getPropertyClient($dataViewMode, $productCode, $attributeFQN);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = ProductPropertyClient::getPropertyClient($this->dataViewMode, $productCode, $attributeFQN, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $attributeFQN 
+	* @param string $productCode 
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $value 
+	* @param ProductPropertyValueLocalizedContent $localizedContent Use this field to include those fields which are not included by default.
+	* @return ProductPropertyValueLocalizedContent 
+	*/
+	public function addPropertyValueLocalizedContent($localizedContent, $productCode, $attributeFQN, $value, $responseFields =  null)
+	{
+		$mozuClient = ProductPropertyClient::addPropertyValueLocalizedContentClient($this->dataViewMode, $localizedContent, $productCode, $attributeFQN, $value, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -64,15 +124,54 @@ class ProductPropertyResource {
 	* Configures a property attribute for the product specified in the request.
 	*
 	* @param string $productCode 
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param ProductProperty $productProperty Properties of the property attribute to configure for a product.
 	* @return ProductProperty 
 	*/
-	public function addProperty($dataViewMode, $productProperty, $productCode)
+	public function addProperty($productProperty, $productCode, $responseFields =  null)
 	{
-		$mozuClient = ProductPropertyClient::addPropertyClient($dataViewMode, $productProperty, $productCode);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = ProductPropertyClient::addPropertyClient($this->dataViewMode, $productProperty, $productCode, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $attributeFQN 
+	* @param string $productCode 
+	* @param string $value 
+	* @param array|ProductPropertyValueLocalizedContent $localizedContent 
+	* @return array|ProductPropertyValueLocalizedContent 
+	*/
+	public function updatePropertyValueLocalizedContents($localizedContent, $productCode, $attributeFQN, $value)
+	{
+		$mozuClient = ProductPropertyClient::updatePropertyValueLocalizedContentsClient($this->dataViewMode, $localizedContent, $productCode, $attributeFQN, $value);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $attributeFQN 
+	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
+	* @param string $productCode 
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $value 
+	* @param ProductPropertyValueLocalizedContent $localizedContent 
+	* @return ProductPropertyValueLocalizedContent 
+	*/
+	public function updatePropertyValueLocalizedContent($localizedContent, $productCode, $attributeFQN, $value, $localeCode, $responseFields =  null)
+	{
+		$mozuClient = ProductPropertyClient::updatePropertyValueLocalizedContentClient($this->dataViewMode, $localizedContent, $productCode, $attributeFQN, $value, $localeCode, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -81,15 +180,16 @@ class ProductPropertyResource {
 	*
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @param string $productCode 
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param ProductProperty $productProperty Details of the property attribute to update for the product configuration.
 	* @return ProductProperty 
 	*/
-	public function updateProperty($dataViewMode, $productProperty, $productCode, $attributeFQN)
+	public function updateProperty($productProperty, $productCode, $attributeFQN, $responseFields =  null)
 	{
-		$mozuClient = ProductPropertyClient::updatePropertyClient($dataViewMode, $productProperty, $productCode, $attributeFQN);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = ProductPropertyClient::updatePropertyClient($this->dataViewMode, $productProperty, $productCode, $attributeFQN, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -98,12 +198,30 @@ class ProductPropertyResource {
 	*
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @param string $productCode 
+	* @return void
 	*/
-	public function deleteProperty($dataViewMode, $productCode, $attributeFQN)
+	public function deleteProperty($productCode, $attributeFQN)
 	{
-		$mozuClient = ProductPropertyClient::deletePropertyClient($dataViewMode, $productCode, $attributeFQN);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
+		$mozuClient = ProductPropertyClient::deletePropertyClient($this->dataViewMode, $productCode, $attributeFQN);
+		$mozuClient->withContext($this->apiContext)
+				->execute();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $attributeFQN 
+	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
+	* @param string $productCode 
+	* @param string $value 
+	* @return void
+	*/
+	public function deletePropertyValueLocalizedContent($productCode, $attributeFQN, $value, $localeCode)
+	{
+		$mozuClient = ProductPropertyClient::deletePropertyValueLocalizedContentClient($this->dataViewMode, $productCode, $attributeFQN, $value, $localeCode);
+		$mozuClient->withContext($this->apiContext)
+				->execute();
 
 	}
 	

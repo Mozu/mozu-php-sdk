@@ -19,25 +19,11 @@ namespace Mozu\Api\Contracts\Content;
 */
 class PropertyType
 {
-	/**
-	*Description of the content property type.
-	*/
-	public $description;
+		public $adminName;
 
-	/**
-	*The display name of the content property type.
-	*/
-	public $displayName;
+		public $dataType;
 
-	/**
-	*The template display details of the property type.
-	*/
-	public $displayTemplate;
-
-	/**
-	*The template edit details of the property type.
-	*/
-	public $editTemplate;
+		public $installationPackage;
 
 	/**
 	*If true, this entity can be grouped.
@@ -45,19 +31,9 @@ class PropertyType
 	public $isAggregatable;
 
 	/**
-	*If true, the property type has several values. If false, the property type can only have one value.
-	*/
-	public $isMultiValued;
-
-	/**
 	*If true, the entity can be searched. If false, the entity cannot be searched.
 	*/
 	public $isQueryable;
-
-	/**
-	*If true, the entity is required for the request to return a valid response.
-	*/
-	public $isRequired;
 
 	/**
 	*If true, the property type results are sortable. If false, the property type results cannot be sorted by any options.
@@ -69,25 +45,11 @@ class PropertyType
 	*/
 	public $name;
 
-	/**
-	*Regular expression used for data validation.
-	*/
-	public $regex;
+		public $namespace;
 
-	/**
-	*List of content entity descriptions localized to the site or site group's default language.
-	*/
-	public $localizedDescriptions;
+		public $propertyTypeFQN;
 
-	/**
-	*List of content entity display names localized to the site or site group's default language.
-	*/
-	public $localizedDisplayNames;
-
-	/**
-	*Wrapper for property value type.
-	*/
-	public $propertyValueType;
+		public $version;
 
 }
 

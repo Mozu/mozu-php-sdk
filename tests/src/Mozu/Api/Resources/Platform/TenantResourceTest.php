@@ -1,5 +1,7 @@
 <?php
 
+namespace Mozu\Api\Resource\Platform;
+
 require_once __DIR__ . '/../../../../BaseTest.php';
 use Mozu\Api\Resources\Platform\TenantResource;
 use Mozu\Api\ApiContext;
@@ -40,13 +42,12 @@ class TenantResourceTest extends BaseTest
      */
     public function testGetTenant()
     {
-    	printf("Reading tenant...");
     	try{
 	      	$tenant = $this->object->getTenant($this->tenantId);
 
 	      	$this->assertSame($tenant->id, $this->tenantId);
     	} catch(ApiException $apiException) {
-    		var_dump($apiException);
+    		$this->fail($apiException->getMessage());
     	}
     	
     	 

@@ -14,30 +14,15 @@ namespace Mozu\Api\Clients\Commerce\Returns;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Returns\PackageUrl;
-use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
+use Mozu\Api\Contracts\CommerceRuntime\Fulfillment\Package;
+
 /**
-* Use the return packages subresource to manage physical packages used to ship return replacement items.
+* Use the Return Packages subresource to manage physical packages used to ship return replacement items.
 */
 class PackageClient {
 
-	/**
-	* Retrieves the details of a package of return replacement items.
-	*
-	* @param string $packageId Unique identifier of the return replacement package to retrieve.
-	* @param string $returnId Unique identifier of the return associated with the replacement package to retrieve.
-	* @return MozuClient
-	*/
-	public static function getPackageClient($returnId, $packageId)
-	{
-		$url = PackageUrl::getPackageUrl($packageId, $returnId);
-		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
-
-	}
-	
 	/**
 	* Retrieves the package label image supplied by the carrier for a return replacement.
 	*
@@ -49,24 +34,39 @@ class PackageClient {
 	{
 		$url = PackageUrl::getPackageLabelUrl($packageId, $returnId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
+
+	}
+	
+	/**
+	* Retrieves the details of a package of return replacement items.
+	*
+	* @param string $packageId Unique identifier of the return replacement package to retrieve.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $returnId Unique identifier of the return associated with the replacement package to retrieve.
+	* @return MozuClient
+	*/
+	public static function getPackageClient($returnId, $packageId, $responseFields =  null)
+	{
+		$url = PackageUrl::getPackageUrl($packageId, $responseFields, $returnId);
+		$mozuClient = new MozuClient();
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
 	/**
 	* Creates a new physical package of return replacement items.
 	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $returnId Unique identifier of the return for which to create a replacement package.
 	* @param Package $package Properties of the physical package for a return replacement.
 	* @return MozuClient
 	*/
-	public static function createPackageClient($pkg, $returnId)
+	public static function createPackageClient($pkg, $returnId, $responseFields =  null)
 	{
-		$url = PackageUrl::createPackageUrl($returnId);
+		$url = PackageUrl::createPackageUrl($responseFields, $returnId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($pkg);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($pkg);
 
 	}
 	
@@ -74,16 +74,16 @@ class PackageClient {
 	* Updates one or more properties of a package associated with a return replacement.
 	*
 	* @param string $packageId Unique identifier of the return replacement package to update.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $returnId Unique identifier of the return associated with the replacement package to update.
 	* @param Package $package Properties of the return replacement package to update.
 	* @return MozuClient
 	*/
-	public static function updatePackageClient($pkg, $returnId, $packageId)
+	public static function updatePackageClient($pkg, $returnId, $packageId, $responseFields =  null)
 	{
-		$url = PackageUrl::updatePackageUrl($packageId, $returnId);
+		$url = PackageUrl::updatePackageUrl($packageId, $responseFields, $returnId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($pkg);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($pkg);
 
 	}
 	
@@ -92,13 +92,13 @@ class PackageClient {
 	*
 	* @param string $packageId Unique identifier of the return replacement package to delete.
 	* @param string $returnId Unique identifier of the return associated with the replacement package to delete.
+	* @return MozuClient
 	*/
 	public static function deletePackageClient($returnId, $packageId)
 	{
 		$url = PackageUrl::deletePackageUrl($packageId, $returnId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	

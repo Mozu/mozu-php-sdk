@@ -1,9 +1,9 @@
 <?php
 
+
+
+
 use Mozu\Api\Security\AppAuthenticator;
-use Guzzle\Http\Client;
-use Mozu\Api\Headers;
-use Mozu\Api\Contracts\AppDev\AppAuthInfo;
 use Mozu\Tests\BaseTest;
 require_once __DIR__ . '/../../../../../src/Mozu/Api/Security/AppAuthenticator.php';
 require_once __DIR__ . '/../../../BaseTest.php';
@@ -13,9 +13,7 @@ require_once __DIR__ . '/../../../BaseTest.php';
  */
 class AuthenticationTest extends BaseTest
 {
-    /**
-     * @var Authentication
-     */
+
     protected $object;
 
     /**

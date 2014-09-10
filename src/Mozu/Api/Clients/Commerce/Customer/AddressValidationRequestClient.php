@@ -14,8 +14,10 @@ namespace Mozu\Api\Clients\Commerce\Customer;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\AddressValidationRequestUrl;
-use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\Customer\AddressValidationRequest;
+use Mozu\Api\Contracts\Customer\AddressValidationResponse;
 
 /**
 * Use the Address Validation resource to validate addresses associated with a customer account contact.
@@ -25,15 +27,15 @@ class AddressValidationRequestClient {
 	/**
 	* Validates the customer address supplied in the request.
 	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param AddressValidationRequest $addressValidationRequest Properties of the address to validate.
 	* @return MozuClient
 	*/
-	public static function validateAddressClient($addressValidationRequest)
+	public static function validateAddressClient($addressValidationRequest, $responseFields =  null)
 	{
-		$url = AddressValidationRequestUrl::validateAddressUrl();
+		$url = AddressValidationRequestUrl::validateAddressUrl($responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($addressValidationRequest);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($addressValidationRequest);
 
 	}
 	

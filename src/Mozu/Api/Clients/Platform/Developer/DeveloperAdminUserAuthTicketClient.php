@@ -14,8 +14,10 @@ namespace Mozu\Api\Clients\Platform\Developer;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Platform\Developer\DeveloperAdminUserAuthTicketUrl;
-use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\Core\UserAuthInfo;
+use Mozu\Api\Contracts\AdminUser\DeveloperAdminUserAuthTicket;
 
 /**
 * Use this resource to manage authentication tickets for your developer account.
@@ -26,15 +28,15 @@ class DeveloperAdminUserAuthTicketClient {
 	* Generate an authentication ticket for a developer account.
 	*
 	* @param int $developerAccountId Unique identifier of the developer account.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param UserAuthInfo $userAuthInfo The user authentication information required to generate the developer account user authentication ticket, which consists of a user name and password.
 	* @return MozuClient
 	*/
-	public static function createDeveloperUserAuthTicketClient($userAuthInfo, $developerAccountId =  null)
+	public static function createDeveloperUserAuthTicketClient($userAuthInfo, $developerAccountId =  null, $responseFields =  null)
 	{
-		$url = DeveloperAdminUserAuthTicketUrl::createDeveloperUserAuthTicketUrl($developerAccountId);
+		$url = DeveloperAdminUserAuthTicketUrl::createDeveloperUserAuthTicketUrl($developerAccountId, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($userAuthInfo);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($userAuthInfo);
 
 	}
 	
@@ -42,15 +44,15 @@ class DeveloperAdminUserAuthTicketClient {
 	* Generates a new developer account authentication ticket for the specified tenant by supplying the defined refresh token information.
 	*
 	* @param int $developerAccountId Unique identifier of the developer account.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param DeveloperAdminUserAuthTicket $existingAuthTicket Properties of the authentication ticket to refresh. The refresh token is required to complete this request.
 	* @return MozuClient
 	*/
-	public static function refreshDeveloperAuthTicketClient($existingAuthTicket, $developerAccountId =  null)
+	public static function refreshDeveloperAuthTicketClient($existingAuthTicket, $developerAccountId =  null, $responseFields =  null)
 	{
-		$url = DeveloperAdminUserAuthTicketUrl::refreshDeveloperAuthTicketUrl($developerAccountId);
+		$url = DeveloperAdminUserAuthTicketUrl::refreshDeveloperAuthTicketUrl($developerAccountId, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($existingAuthTicket);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($existingAuthTicket);
 
 	}
 	
@@ -58,13 +60,13 @@ class DeveloperAdminUserAuthTicketClient {
 	* Deletes the authentication ticket for the developer account by supplying the refresh token.
 	*
 	* @param string $refreshToken Refresh token string associated with the developer account authentication ticket.
+	* @return MozuClient
 	*/
 	public static function deleteUserAuthTicketClient($refreshToken)
 	{
 		$url = DeveloperAdminUserAuthTicketUrl::deleteUserAuthTicketUrl($refreshToken);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	

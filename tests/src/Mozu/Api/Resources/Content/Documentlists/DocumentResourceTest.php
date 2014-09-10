@@ -1,7 +1,10 @@
 <?php
 
+namespace Mozu\Api\Resources\Content\Documentlists;
+
 require_once __DIR__ . '/../../../../../BaseTest.php';
 
+use Mozu\Api\ApiException;
 use Mozu\Tests\BaseTest;
 use Mozu\Api\ApiContext;
 use Mozu\Api\DataViewMode;
@@ -25,7 +28,7 @@ class DocumentResourceTest extends BaseTest
     protected function setUp()
     {
     	$apiContext = new ApiContext($this->tenantId, 0, 1, 1);
-        $this->object = new DocumentResource($apiContext);
+        $this->object = new DocumentResource($apiContext, DataViewMode::LIVE);
         
     }
 
@@ -44,14 +47,24 @@ class DocumentResourceTest extends BaseTest
      */
     public function testGetDocumentContent()
     {
-       $content = $this->object->getDocumentContent(DataViewMode::LIVE, "9c363f6e-117b-4bf5-94a1-270359d933c5", "files");
-       file_put_contents ("d:\phpdownload.jpg" , $content);
+        try{
+            $content = $this->object->getDocumentContent("9c363f6e-117b-4bf5-94a1-270359d933c5", "files");
+            file_put_contents ("d:\phpdownload.jpg" , $content);
+        } catch(ApiException $ex) {
+            $this->fail($ex->getMessage());
+        }
+
     }
 
     
    	public function testUpdateDocumentContent() {
-   		$file = file_get_contents("D:\Seismic\images\SAHDL102-0.jpg");
-   		$this->object->updateDocumentContent(DataViewMode::LIVE, $file, "9c363f6e-117b-4bf5-94a1-270359d933c5", "files", "image/jpg");
+        try{
+            $file = file_get_contents("D:\Seismic\images\SAHDL102-0.jpg");
+            $this->object->updateDocumentContent(DataViewMode::LIVE, $file, "9c363f6e-117b-4bf5-94a1-270359d933c5", "files", "image/jpg");
+        } catch(ApiException $ex) {
+            $this->fail($ex->getMessage());
+        }
+
    	}
 }
 ?>

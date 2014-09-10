@@ -12,38 +12,43 @@
 
 namespace Mozu\Api\Resources\Commerce\Catalog\Admin\Attributedefinition;
 
-use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Catalog\Admin\Attributedefinition\ProductTypeClient;
 use Mozu\Api\ApiContext;
-use Mozu\Api\DataViewMode;
-use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\ProductAdmin\ProductType;
+use Mozu\Api\Contracts\ProductAdmin\ProductTypeCollection;
 
 /**
 * Use the Product Types resource to manage the types for your product catalog. Product types act as configuration templates, which store a set of attributes common to all products associated with that type. Unlike categories, products can only be associated with a single product type.
 */
 class ProductTypeResource {
 
-		private $apiContext;
-	public function __construct(ApiContext $apiContext) 
+	private $apiContext;
+	private $dataViewMode;
+	public function __construct(ApiContext $apiContext, $dataViewMode) 
 	{
 		$this->apiContext = $apiContext;
+		$this->dataViewMode = $dataViewMode;
 	}
+
+	
 
 	/**
 	* Retrieves a list of product types according to any specified filter criteria and sort options.
 	*
 	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product type search results by any of its properties. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=Name+cont+shoes"
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return ProductTypeCollection 
 	*/
-	public function getProductTypes($dataViewMode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
+	public function getProductTypes($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
-		$mozuClient = ProductTypeClient::getProductTypesClient($dataViewMode, $startIndex, $pageSize, $sortBy, $filter);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = ProductTypeClient::getProductTypesClient($this->dataViewMode, $startIndex, $pageSize, $sortBy, $filter, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -51,29 +56,31 @@ class ProductTypeResource {
 	* Retrieves the details of the product type specified in the request.
 	*
 	* @param int $productTypeId Identifier of the product type to retrieve.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return ProductType 
 	*/
-	public function getProductType($dataViewMode, $productTypeId)
+	public function getProductType($productTypeId, $responseFields =  null)
 	{
-		$mozuClient = ProductTypeClient::getProductTypeClient($dataViewMode, $productTypeId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = ProductTypeClient::getProductTypeClient($this->dataViewMode, $productTypeId, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
 	* Creates a new product type based on the information supplied in the request.
 	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param ProductType $productType Properties of the product type to create.
 	* @return ProductType 
 	*/
-	public function addProductType($dataViewMode, $productType)
+	public function addProductType($productType, $responseFields =  null)
 	{
-		$mozuClient = ProductTypeClient::addProductTypeClient($dataViewMode, $productType);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = ProductTypeClient::addProductTypeClient($this->dataViewMode, $productType, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -81,15 +88,16 @@ class ProductTypeResource {
 	* Updates one or more properties of a product type.
 	*
 	* @param int $productTypeId Identifier of the product type to update.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param ProductType $productType The details of the product type to update.
 	* @return ProductType 
 	*/
-	public function updateProductType($dataViewMode, $productType, $productTypeId)
+	public function updateProductType($productType, $productTypeId, $responseFields =  null)
 	{
-		$mozuClient = ProductTypeClient::updateProductTypeClient($dataViewMode, $productType, $productTypeId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = ProductTypeClient::updateProductTypeClient($this->dataViewMode, $productType, $productTypeId, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -97,12 +105,13 @@ class ProductTypeResource {
 	* Deletes the product type by providing the product type ID.
 	*
 	* @param int $productTypeId Identifier of the product type to delete.
+	* @return void
 	*/
-	public function deleteProductType($dataViewMode, $productTypeId)
+	public function deleteProductType($productTypeId)
 	{
-		$mozuClient = ProductTypeClient::deleteProductTypeClient($dataViewMode, $productTypeId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
+		$mozuClient = ProductTypeClient::deleteProductTypeClient($this->dataViewMode, $productTypeId);
+		$mozuClient->withContext($this->apiContext)
+				->execute();
 
 	}
 	

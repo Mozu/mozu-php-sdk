@@ -14,17 +14,35 @@ namespace Mozu\Api\Contracts\Event;
 
 
 
+/**
+*	This specifies if a tenant is associated with a subscription.
+*/
 class SubscribingTenant
 {
-		public $isActive;
+	/**
+	*This specifies if the subscription is active at the tenant level. If the subscription context is at the tenant level, this property is used over the site level.
+	*/
+	public $isActive;
 
-		public $subscribingContextLevelType;
+	/**
+	*This specifies the type of subscribing context, which is derived from the state of the subscription. If any subscribing sites exist; for example, a subscription that is not at the tenant level, then the value will be 'site'.
+	*/
+	public $subscribingContextLevelType;
 
-		public $tenantId;
+	/**
+	*This specifies the tenant identifier.
+	*/
+	public $tenantId;
 
-		public $auditInfo;
+	/**
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
+	*/
+	public $auditInfo;
 
-		public $subscribingSites;
+	/**
+	*This specifies the subscribing sites.
+	*/
+	public $subscribingSites;
 
 }
 

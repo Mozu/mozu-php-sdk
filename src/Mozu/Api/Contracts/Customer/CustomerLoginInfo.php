@@ -14,15 +14,30 @@ namespace Mozu\Api\Contracts\Customer;
 
 
 
+/**
+*	The login information for a customer account.
+*/
 class CustomerLoginInfo
 {
-		public $emailAddress;
+	/**
+	*The email address associated with the customer login.
+	*/
+	public $emailAddress;
 
-		public $isImport;
+	/**
+	*If true, this customer account data was imported from an external program.
+	*/
+	public $isImport;
 
-		public $password;
+	/**
+	*The password associated with the customer login.
+	*/
+	public $password;
 
-		public $username;
+	/**
+	*The user name associated with the customer login.
+	*/
+	public $username;
 
 }
 

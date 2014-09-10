@@ -14,19 +14,40 @@ namespace Mozu\Api\Contracts\Customer;
 
 
 
+/**
+*	Properties of an authentication ticket generated for a customer account.
+*/
 class CustomerAuthTicket
 {
-		public $accessToken;
+	/**
+	*Access token string that enables authentication for the customer account.
+	*/
+	public $accessToken;
 
-		public $accessTokenExpiration;
+	/**
+	*The date and time the access token expires.
+	*/
+	public $accessTokenExpiration;
 
-		public $refreshToken;
+	/**
+	*Refresh token string used to generate a new access token after expiration for a customer account authentication ticket.
+	*/
+	public $refreshToken;
 
-		public $refreshTokenExpiration;
+	/**
+	*The date and time the refresh token expires.
+	*/
+	public $refreshTokenExpiration;
 
-		public $userId;
+	/**
+	*User ID associated with the customer account authentication ticket.
+	*/
+	public $userId;
 
-		public $customerAccount;
+	/**
+	*Properties of the customer account associated with the authentication ticket.
+	*/
+	public $customerAccount;
 
 }
 

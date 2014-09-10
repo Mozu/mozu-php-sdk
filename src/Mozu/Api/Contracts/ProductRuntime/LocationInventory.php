@@ -24,6 +24,8 @@ class LocationInventory
 	*/
 	public $locationCode;
 
+		public $productCode;
+
 	/**
 	*The current level of active product stock available at the specified location.
 	*/

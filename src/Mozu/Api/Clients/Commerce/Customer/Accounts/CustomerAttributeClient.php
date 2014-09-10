@@ -14,8 +14,10 @@ namespace Mozu\Api\Clients\Commerce\Customer\Accounts;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\Accounts\CustomerAttributeUrl;
-use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\Customer\CustomerAttribute;
+use Mozu\Api\Contracts\Customer\CustomerAttributeCollection;
 
 /**
 * Use the Attributes subresource to manage the attributes used to uniquely identify shopper accounts, such as gender or age.
@@ -26,15 +28,15 @@ class CustomerAttributeClient {
 	* Retrieves the contents of an attribute associated with the specified customer account.
 	*
 	* @param int $accountId Identifier of the customer account associated with the attribute to retrieve.
-	* @param string $attributeFQN 
+	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
-	public static function getAccountAttributeClient($accountId, $attributeFQN)
+	public static function getAccountAttributeClient($accountId, $attributeFQN, $responseFields =  null)
 	{
-		$url = CustomerAttributeUrl::getAccountAttributeUrl($accountId, $attributeFQN);
+		$url = CustomerAttributeUrl::getAccountAttributeUrl($accountId, $attributeFQN, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
@@ -44,16 +46,16 @@ class CustomerAttributeClient {
 	* @param int $accountId Identifier of the customer account associated with the attributes to retrieve.
 	* @param string $filter 
 	* @param int $pageSize 
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getAccountAttributesClient($accountId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
+	public static function getAccountAttributesClient($accountId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
-		$url = CustomerAttributeUrl::getAccountAttributesUrl($accountId, $filter, $pageSize, $sortBy, $startIndex);
+		$url = CustomerAttributeUrl::getAccountAttributesUrl($accountId, $filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
@@ -61,15 +63,15 @@ class CustomerAttributeClient {
 	* Applies a defined attribute to the customer account specified in the request and assigns a value to the customer attribute.
 	*
 	* @param int $accountId Unique identifier of the customer account.
-	* @param CustomerAttribute $attribute 
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param CustomerAttribute $attribute The attribute to add to the customer account.
 	* @return MozuClient
 	*/
-	public static function addAccountAttributeClient($attribute, $accountId)
+	public static function addAccountAttributeClient($attribute, $accountId, $responseFields =  null)
 	{
-		$url = CustomerAttributeUrl::addAccountAttributeUrl($accountId);
+		$url = CustomerAttributeUrl::addAccountAttributeUrl($accountId, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($attribute);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($attribute);
 
 	}
 	
@@ -77,31 +79,31 @@ class CustomerAttributeClient {
 	* Updates one or more details of a customer account attribute.
 	*
 	* @param int $accountId Identifier of the customer account associated with the attribute.
-	* @param string $attributeFQN 
-	* @param CustomerAttribute $attribute 
+	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param CustomerAttribute $attribute Properties of the customer account attribute to update.
 	* @return MozuClient
 	*/
-	public static function updateAccountAttributeClient($attribute, $accountId, $attributeFQN)
+	public static function updateAccountAttributeClient($attribute, $accountId, $attributeFQN, $responseFields =  null)
 	{
-		$url = CustomerAttributeUrl::updateAccountAttributeUrl($accountId, $attributeFQN);
+		$url = CustomerAttributeUrl::updateAccountAttributeUrl($accountId, $attributeFQN, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($attribute);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($attribute);
 
 	}
 	
 	/**
-	* 
+	* Removes the attribute specified in the request from the customer account.
 	*
-	* @param int $accountId 
-	* @param string $attributeFQN 
+	* @param int $accountId Unique identifier of the customer account.
+	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @return MozuClient
 	*/
 	public static function deleteAccountAttributeClient($accountId, $attributeFQN)
 	{
 		$url = CustomerAttributeUrl::deleteAccountAttributeUrl($accountId, $attributeFQN);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	

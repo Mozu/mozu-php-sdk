@@ -44,7 +44,10 @@ class PaymentGatewayInteraction
 	*/
 	public $gatewayResponseCode;
 
-		public $gatewayResponseText;
+	/**
+	*Textual message returned by the payment gateway.
+	*/
+	public $gatewayResponseText;
 
 	/**
 	*Unique identifier of the gateway transaction associated with the payment interaction.

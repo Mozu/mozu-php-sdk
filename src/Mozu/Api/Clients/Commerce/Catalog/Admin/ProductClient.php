@@ -14,53 +14,44 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\ProductUrl;
-use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
+use Mozu\Api\DataViewMode;
+
+use Mozu\Api\Contracts\ProductAdmin\ProductInCatalogInfo;
+use Mozu\Api\Contracts\ProductAdmin\Product;
+use Mozu\Api\Contracts\ProductAdmin\ProductCollection;
 
 /**
-* Use this resource to create products, view the attributes associated with existing products, and determine which sites feature a specific product.
+* Use the Product Administration resource to create new product definitions in the master catalog and determine which catalogs will feature products. You can also assign attribute values for defined products, manage product-level location inventory, and configure the variations of a product.
 */
 class ProductClient {
 
 	/**
 	* Retrieves a list of products according to any specified facets, filter criteria, and sort options.
 	*
+	* @param DataViewMode $dataViewMode
 	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 	* @param bool $noCount If true, the operation does not return the TotalCount number of results.
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $q A list of product search terms to use in the query when searching across product code and product name. Separate multiple search terms with a space character.
 	* @param int $qLimit The maximum number of search results to return in the response. You can limit any range between 1-100.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getProductsClient($dataViewMode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $q =  null, $qLimit =  null, $noCount =  null)
+	public static function getProductsClient($dataViewMode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $q =  null, $qLimit =  null, $noCount =  null, $responseFields =  null)
 	{
-		$url = ProductUrl::getProductsUrl($filter, $noCount, $pageSize, $q, $qLimit, $sortBy, $startIndex);
+		$url = ProductUrl::getProductsUrl($filter, $noCount, $pageSize, $q, $qLimit, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
-
-	}
-	
-	/**
-	* Retrieves an existing product.
-	*
-	* @param string $productCode Merchant-created code associated with the product such as a SKU. Max length: 30. Accepts a to z, A to Z, Ãƒâ€¹-ÃƒËœ, 0 to 9, #, semicolon, commas, apostrophes, and Spaces, but no punctuation or other characters.
-	* @return MozuClient
-	*/
-	public static function getProductClient($dataViewMode, $productCode)
-	{
-		$url = ProductUrl::getProductUrl($productCode);
-		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
 
 	}
 	
 	/**
 	* Retrieves a product that is associated with one or more specific catalogs.
 	*
+	* @param DataViewMode $dataViewMode
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @return MozuClient
 	*/
@@ -68,77 +59,80 @@ class ProductClient {
 	{
 		$url = ProductUrl::getProductInCatalogsUrl($productCode);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
 
 	}
 	
 	/**
 	* Retrieves the details of a product associated with a specific catalog.
 	*
-	* @param int $catalogId 
+	* @param DataViewMode $dataViewMode
+	* @param int $catalogId The unique identifier of the catalog of products used by a site.
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
-	public static function getProductInCatalogClient($dataViewMode, $productCode, $catalogId)
+	public static function getProductInCatalogClient($dataViewMode, $productCode, $catalogId, $responseFields =  null)
 	{
-		$url = ProductUrl::getProductInCatalogUrl($catalogId, $productCode);
+		$url = ProductUrl::getProductInCatalogUrl($catalogId, $productCode, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+
+	}
+	
+	/**
+	* Retrieves the details of a product definition.
+	*
+	* @param DataViewMode $dataViewMode
+	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return MozuClient
+	*/
+	public static function getProductClient($dataViewMode, $productCode, $responseFields =  null)
+	{
+		$url = ProductUrl::getProductUrl($productCode, $responseFields);
+		$mozuClient = new MozuClient();
+		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
 
 	}
 	
 	/**
 	* Creates a new product definition in the specified master catalog.
 	*
+	* @param DataViewMode $dataViewMode
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param Product $product Properties of the new product. You must supply values for the product code, product name, and price.
 	* @return MozuClient
 	*/
-	public static function addProductClient($dataViewMode, $product)
+	public static function addProductClient($dataViewMode, $product, $responseFields =  null)
 	{
-		$url = ProductUrl::addProductUrl();
+		$url = ProductUrl::addProductUrl($responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($product)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($product)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
 
 	}
 	
 	/**
 	* Associates a new product defined in the master catalog with a specific catalog.
 	*
+	* @param DataViewMode $dataViewMode
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param ProductInCatalogInfo $productInCatalogInfoIn Properties of the product to define for the specific catalog association.
 	* @return MozuClient
 	*/
-	public static function addProductInCatalogClient($dataViewMode, $productInCatalogInfoIn, $productCode)
+	public static function addProductInCatalogClient($dataViewMode, $productInCatalogInfoIn, $productCode, $responseFields =  null)
 	{
-		$url = ProductUrl::addProductInCatalogUrl($productCode);
+		$url = ProductUrl::addProductInCatalogUrl($productCode, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($productInCatalogInfoIn)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
-
-	}
-	
-	/**
-	* Updates one or more properties of a product definition in a master catalog.
-	*
-	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @param Product $product Properties of the product definition to update in the master catalog.
-	* @return MozuClient
-	*/
-	public static function updateProductClient($dataViewMode, $product, $productCode)
-	{
-		$url = ProductUrl::updateProductUrl($productCode);
-		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($product)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($productInCatalogInfoIn)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
 
 	}
 	
 	/**
 	* Updates the properties of a product specific to each catalog associated with the product.
 	*
+	* @param DataViewMode $dataViewMode
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @param array|ProductInCatalogInfo $productInCatalogsIn Properties of the product to update for each associated catalog.
 	* @return MozuClient
@@ -147,54 +141,73 @@ class ProductClient {
 	{
 		$url = ProductUrl::updateProductInCatalogsUrl($productCode);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($productInCatalogsIn)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($productInCatalogsIn)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
 
 	}
 	
 	/**
 	* Updates one or more properties of a product associated with a specific catalog.
 	*
-	* @param int $catalogId 
+	* @param DataViewMode $dataViewMode
+	* @param int $catalogId The unique identifier of the catalog of products used by a site.
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param ProductInCatalogInfo $productInCatalogInfoIn Properties of the product associated with the catalog specified in the request.
 	* @return MozuClient
 	*/
-	public static function updateProductInCatalogClient($dataViewMode, $productInCatalogInfoIn, $productCode, $catalogId)
+	public static function updateProductInCatalogClient($dataViewMode, $productInCatalogInfoIn, $productCode, $catalogId, $responseFields =  null)
 	{
-		$url = ProductUrl::updateProductInCatalogUrl($catalogId, $productCode);
+		$url = ProductUrl::updateProductInCatalogUrl($catalogId, $productCode, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($productInCatalogInfoIn)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($productInCatalogInfoIn)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+
+	}
+	
+	/**
+	* Updates one or more properties of a product definition in a master catalog.
+	*
+	* @param DataViewMode $dataViewMode
+	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param Product $product Properties of the product definition to update in the master catalog.
+	* @return MozuClient
+	*/
+	public static function updateProductClient($dataViewMode, $product, $productCode, $responseFields =  null)
+	{
+		$url = ProductUrl::updateProductUrl($productCode, $responseFields);
+		$mozuClient = new MozuClient();
+		return $mozuClient->withResourceUrl($url)->withBody($product)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
 
 	}
 	
 	/**
 	* Deletes the specified product from a master catalog.
 	*
+	* @param DataViewMode $dataViewMode
 	* @param string $productCode 
+	* @return MozuClient
 	*/
 	public static function deleteProductClient($dataViewMode, $productCode)
 	{
 		$url = ProductUrl::deleteProductUrl($productCode);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
 
 	}
 	
 	/**
 	* Removes the product association defined for a specific catalog.
 	*
-	* @param int $catalogId 
+	* @param DataViewMode $dataViewMode
+	* @param int $catalogId The unique identifier of the catalog of products used by a site.
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+	* @return MozuClient
 	*/
 	public static function deleteProductInCatalogClient($dataViewMode, $productCode, $catalogId)
 	{
 		$url = ProductUrl::deleteProductInCatalogUrl($catalogId, $productCode);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
 
 	}
 	

@@ -20,13 +20,16 @@ class SiteDataUrl  {
 	/**
 		* Get Resource Url for GetDBValue
 		* @param string $dbEntryQuery The database entry query string used to retrieve the record information.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function getDBValueUrl($dbEntryQuery)
+	public static function getDBValueUrl($dbEntryQuery, $responseFields)
 	{
-		$url = "/api/platform/sitedata/{*dbEntryQuery}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("dbEntryQuery", $dbEntryQuery);
+		$url = "/api/platform/sitedata/{*dbEntryQuery}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("dbEntryQuery", $dbEntryQuery)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
@@ -38,8 +41,9 @@ class SiteDataUrl  {
 	public static function createDBValueUrl($dbEntryQuery)
 	{
 		$url = "/api/platform/sitedata/{*dbEntryQuery}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
-		$url = $mozuUrl->formatUrl("dbEntryQuery", $dbEntryQuery);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("dbEntryQuery", $dbEntryQuery);
+
 		return $mozuUrl;
 	}
 	
@@ -51,8 +55,9 @@ class SiteDataUrl  {
 	public static function updateDBValueUrl($dbEntryQuery)
 	{
 		$url = "/api/platform/sitedata/{*dbEntryQuery}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
-		$url = $mozuUrl->formatUrl("dbEntryQuery", $dbEntryQuery);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
+		$mozuUrl->formatUrl("dbEntryQuery", $dbEntryQuery);
+
 		return $mozuUrl;
 	}
 	
@@ -64,8 +69,9 @@ class SiteDataUrl  {
 	public static function deleteDBValueUrl($dbEntryQuery)
 	{
 		$url = "/api/platform/sitedata/{*dbEntryQuery}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
-		$url = $mozuUrl->formatUrl("dbEntryQuery", $dbEntryQuery);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
+		$mozuUrl->formatUrl("dbEntryQuery", $dbEntryQuery);
+
 		return $mozuUrl;
 	}
 	

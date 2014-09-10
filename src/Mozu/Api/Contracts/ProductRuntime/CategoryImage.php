@@ -24,7 +24,10 @@ class CategoryImage
 	*/
 	public $altText;
 
-		public $cmsId;
+	/**
+	*The identifier of the category image in the Mozu CMS. Supply a value for either the CMS ID or Image URL parameter.
+	*/
+	public $cmsId;
 
 	/**
 	*Image title that appears on the web storefront, set to the language specified by the site's LocaleCode.

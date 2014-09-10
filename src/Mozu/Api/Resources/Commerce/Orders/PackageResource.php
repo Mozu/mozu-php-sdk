@@ -12,39 +12,24 @@
 
 namespace Mozu\Api\Resources\Commerce\Orders;
 
-use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Orders\PackageClient;
 use Mozu\Api\ApiContext;
-use Mozu\Api\DataViewMode;
-use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\CommerceRuntime\Fulfillment\Package;
 
 /**
-* Use the packages subresource to manage the physical packages to ship for an order.
+* Use the Packages subresource to manage the physical packages to ship for an order.
 */
 class PackageResource {
 
-		private $apiContext;
+	private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
-	/**
-	* Retrieves the details of a package of order items.
-	*
-	* @param string $orderId Unique identifier of the order associated with the package to retrieve.
-	* @param string $packageId Unique identifier of the package to retrieve.
-	* @return Package 
-	*/
-	public function getPackage($orderId, $packageId)
-	{
-		$mozuClient = PackageClient::getPackageClient($orderId, $packageId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
-
-	}
 	
+
 	/**
 	* Retrieves a list of the actions available to perform for a package associated with order fulfillment.
 	*
@@ -55,9 +40,9 @@ class PackageResource {
 	public function getAvailablePackageFulfillmentActions($orderId, $packageId)
 	{
 		$mozuClient = PackageClient::getAvailablePackageFulfillmentActionsClient($orderId, $packageId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -71,9 +56,26 @@ class PackageResource {
 	public function getPackageLabel($orderId, $packageId)
 	{
 		$mozuClient = PackageClient::getPackageLabelClient($orderId, $packageId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
+
+	}
+	
+	/**
+	* Retrieves the details of a package of order items.
+	*
+	* @param string $orderId Unique identifier of the order associated with the package to retrieve.
+	* @param string $packageId Unique identifier of the package to retrieve.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Package 
+	*/
+	public function getPackage($orderId, $packageId, $responseFields =  null)
+	{
+		$mozuClient = PackageClient::getPackageClient($orderId, $packageId, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -81,15 +83,16 @@ class PackageResource {
 	* Creates a new physical package of order items.
 	*
 	* @param string $orderId Unique identifier of the order associated with this package.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param Package $package Properties of the physical package of order items.
 	* @return Package 
 	*/
-	public function createPackage($pkg, $orderId)
+	public function createPackage($pkg, $orderId, $responseFields =  null)
 	{
-		$mozuClient = PackageClient::createPackageClient($pkg, $orderId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = PackageClient::createPackageClient($pkg, $orderId, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -98,15 +101,16 @@ class PackageResource {
 	*
 	* @param string $orderId Unique identifier of the order associated with the package to update.
 	* @param string $packageId Unique identifier of the package of order items to update.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param Package $package Wrapper of properties for the package of order items to update.
 	* @return Package 
 	*/
-	public function updatePackage($pkg, $orderId, $packageId)
+	public function updatePackage($pkg, $orderId, $packageId, $responseFields =  null)
 	{
-		$mozuClient = PackageClient::updatePackageClient($pkg, $orderId, $packageId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = PackageClient::updatePackageClient($pkg, $orderId, $packageId, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -115,12 +119,13 @@ class PackageResource {
 	*
 	* @param string $orderId Unique identifier of the order associated with the package to delete.
 	* @param string $packageId Unique identifier of the package to delete.
+	* @return void
 	*/
 	public function deletePackage($orderId, $packageId)
 	{
 		$mozuClient = PackageClient::deletePackageClient($orderId, $packageId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
+		$mozuClient->withContext($this->apiContext)
+				->execute();
 
 	}
 	

@@ -19,15 +19,9 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 */
 class SearchSuggestion
 {
-	/**
-	*The query term entered by the shopper.
-	*/
-	public $query;
+		public $suggestion;
 
-	/**
-	*The term suggestions to return based on the specified query value.
-	*/
-	public $suggestions;
+		public $suggestionType;
 
 }
 

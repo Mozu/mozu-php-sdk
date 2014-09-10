@@ -75,7 +75,7 @@ class GeneralSettings
 	public $logoText;
 
 	/**
-	*The mobile theme is the storefront name for the theme.
+	*The name of the theme to use when viewing this website on a mobile device.
 	*/
 	public $mobileTheme;
 
@@ -99,7 +99,10 @@ class GeneralSettings
 	*/
 	public $siteTimeZone;
 
-		public $tabletTheme;
+	/**
+	*The name of the theme to use when viewing the website on a mobile device.
+	*/
+	public $tabletTheme;
 
 	/**
 	*Unique identifier of the tenant site that site uses to render content for the shopper. For example, if this site represents a third-party sales channel such as Amazon but the company wants to send shopper emails, this value represents the Mozu-hosted web storefront site that maintains this content.

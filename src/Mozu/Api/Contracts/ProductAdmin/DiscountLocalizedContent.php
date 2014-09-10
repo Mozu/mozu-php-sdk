@@ -19,7 +19,10 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 */
 class DiscountLocalizedContent
 {
-		public $friendlyDescription;
+	/**
+	*The localizable, shopper-facing description defined for the discount.
+	*/
+	public $friendlyDescription;
 
 	/**
 	*Language used for the entity. Currently, only "en-US" is supported.
@@ -27,7 +30,7 @@ class DiscountLocalizedContent
 	public $localeCode;
 
 	/**
-	*Name of the localized content.
+	*The localizable name of the discount.
 	*/
 	public $name;
 

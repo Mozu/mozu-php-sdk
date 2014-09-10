@@ -25,11 +25,21 @@ class Package
 	public $availableActions;
 
 	/**
+	*The code of the product to be fulfilled.
+	*/
+	public $code;
+
+	/**
 	*The date and time the package shipped to the customer.
 	*/
 	public $fulfillmentDate;
 
-		public $fulfillmentLocationCode;
+	/**
+	*The location code that represents the location from which this package will ship.
+	*/
+	public $fulfillmentLocationCode;
+
+		public $hasLabel;
 
 	/**
 	*Unique identifier of a package.
@@ -71,7 +81,10 @@ class Package
 	*/
 	public $auditInfo;
 
-		public $changeMessages;
+	/**
+	*List of change messages associated with the package.
+	*/
+	public $changeMessages;
 
 	/**
 	*An array list of objects in the returned collection.

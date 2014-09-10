@@ -23,20 +23,23 @@ class OrderUrl  {
 		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 		* @param string $q A list of order search terms to use in the query when searching across order number and the name or email of the billing contact. Separate multiple search terms with a space character.
 		* @param int $qLimit The maximum number of search results to return in the response. You can limit any range between 1-100.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param string $sortBy 
 		* @param int $startIndex 
 		* @return string Resource Url
 	*/
-	public static function getOrdersUrl($filter, $pageSize, $q, $qLimit, $sortBy, $startIndex)
+	public static function getOrdersUrl($filter, $pageSize, $q, $qLimit, $responseFields, $sortBy, $startIndex)
 	{
-		$url = "/api/commerce/orders/?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}&q={q}&qLimit={qLimit}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("filter", $filter);
-		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
-		$url = $mozuUrl->formatUrl("q", $q);
-		$url = $mozuUrl->formatUrl("qLimit", $qLimit);
-		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
-		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
+		$url = "/api/commerce/orders/?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}&q={q}&qLimit={qLimit}&responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("filter", $filter)
+				->formatUrl("pageSize", $pageSize)
+				->formatUrl("q", $q)
+				->formatUrl("qLimit", $qLimit)
+				->formatUrl("responseFields", $responseFields)
+				->formatUrl("sortBy", $sortBy)
+				->formatUrl("startIndex", $startIndex);
+
 		return $mozuUrl;
 	}
 	
@@ -48,21 +51,23 @@ class OrderUrl  {
 	public static function getAvailableActionsUrl($orderId)
 	{
 		$url = "/api/commerce/orders/{orderId}/actions";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("orderId", $orderId);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetTaxableOrders
-		* @param string $orderId 
+		* @param string $orderId Unique identifier of the order to retrieve.
 		* @return string Resource Url
 	*/
 	public static function getTaxableOrdersUrl($orderId)
 	{
 		$url = "/api/commerce/orders/{orderId}/taxableorders";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("orderId", $orderId);
+
 		return $mozuUrl;
 	}
 	
@@ -70,51 +75,63 @@ class OrderUrl  {
 		* Get Resource Url for GetOrder
 		* @param bool $draft If true, retrieve the draft version of the order, which might include uncommitted changes to the order or its components.
 		* @param string $orderId Unique identifier of the order details to get.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function getOrderUrl($draft, $orderId)
+	public static function getOrderUrl($draft, $orderId, $responseFields)
 	{
-		$url = "/api/commerce/orders/{orderId}?draft={draft}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("draft", $draft);
-		$url = $mozuUrl->formatUrl("orderId", $orderId);
-		return $mozuUrl;
-	}
-	
-	/**
-		* Get Resource Url for CreateOrder
-		* @return string Resource Url
-	*/
-	public static function createOrderUrl()
-	{
-		$url = "/api/commerce/orders/";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = "/api/commerce/orders/{orderId}?draft={draft}&responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("draft", $draft)
+				->formatUrl("orderId", $orderId)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for CreateOrderFromCart
 		* @param string $cartId Unique identifier of the cart. This is the original cart ID expressed as a GUID.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function createOrderFromCartUrl($cartId)
+	public static function createOrderFromCartUrl($cartId, $responseFields)
 	{
-		$url = "/api/commerce/orders/?cartId={cartId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
-		$url = $mozuUrl->formatUrl("cartId", $cartId);
+		$url = "/api/commerce/orders/?cartId={cartId}&responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("cartId", $cartId)
+				->formatUrl("responseFields", $responseFields);
+
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for CreateOrder
+		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @return string Resource Url
+	*/
+	public static function createOrderUrl($responseFields)
+	{
+		$url = "/api/commerce/orders/?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for PerformOrderAction
 		* @param string $orderId Unique identifier of the order.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function performOrderActionUrl($orderId)
+	public static function performOrderActionUrl($orderId, $responseFields)
 	{
-		$url = "/api/commerce/orders/{orderId}/actions";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
-		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = "/api/commerce/orders/{orderId}/actions?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("orderId", $orderId)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
@@ -122,18 +139,21 @@ class OrderUrl  {
 		* Get Resource Url for UpdateOrderDiscount
 		* @param int $discountId Unique identifier of the discount. System-supplied and read only.
 		* @param string $orderId Unique identifier of the order discount. System-supplied and read only.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param string $updateMode Specifies whether to modify the discount by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
 		* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 		* @return string Resource Url
 	*/
-	public static function updateOrderDiscountUrl($discountId, $orderId, $updateMode, $version)
+	public static function updateOrderDiscountUrl($discountId, $orderId, $responseFields, $updateMode, $version)
 	{
-		$url = "/api/commerce/orders/{orderId}/discounts/{discountId}?updatemode={updateMode}&version={version}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
-		$url = $mozuUrl->formatUrl("discountId", $discountId);
-		$url = $mozuUrl->formatUrl("orderId", $orderId);
-		$url = $mozuUrl->formatUrl("updateMode", $updateMode);
-		$url = $mozuUrl->formatUrl("version", $version);
+		$url = "/api/commerce/orders/{orderId}/discounts/{discountId}?updatemode={updateMode}&version={version}&responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
+		$mozuUrl->formatUrl("discountId", $discountId)
+				->formatUrl("orderId", $orderId)
+				->formatUrl("responseFields", $responseFields)
+				->formatUrl("updateMode", $updateMode)
+				->formatUrl("version", $version);
+
 		return $mozuUrl;
 	}
 	
@@ -146,39 +166,46 @@ class OrderUrl  {
 	public static function deleteOrderDraftUrl($orderId, $version)
 	{
 		$url = "/api/commerce/orders/{orderId}/draft?version={version}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
-		$url = $mozuUrl->formatUrl("orderId", $orderId);
-		$url = $mozuUrl->formatUrl("version", $version);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
+		$mozuUrl->formatUrl("orderId", $orderId)
+				->formatUrl("version", $version);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for ChangeOrderUserId
 		* @param string $orderId Unique identifier of the order.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function changeOrderUserIdUrl($orderId)
+	public static function changeOrderUserIdUrl($orderId, $responseFields)
 	{
-		$url = "/api/commerce/orders/{orderId}/users";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
-		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = "/api/commerce/orders/{orderId}/users?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
+		$mozuUrl->formatUrl("orderId", $orderId)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdateOrder
 		* @param string $orderId Unique identifier of the order to update.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
 		* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 		* @return string Resource Url
 	*/
-	public static function updateOrderUrl($orderId, $updateMode, $version)
+	public static function updateOrderUrl($orderId, $responseFields, $updateMode, $version)
 	{
-		$url = "/api/commerce/orders/{orderId}?updatemode={updateMode}&version={version}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
-		$url = $mozuUrl->formatUrl("orderId", $orderId);
-		$url = $mozuUrl->formatUrl("updateMode", $updateMode);
-		$url = $mozuUrl->formatUrl("version", $version);
+		$url = "/api/commerce/orders/{orderId}?updatemode={updateMode}&version={version}&responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
+		$mozuUrl->formatUrl("orderId", $orderId)
+				->formatUrl("responseFields", $responseFields)
+				->formatUrl("updateMode", $updateMode)
+				->formatUrl("version", $version);
+
 		return $mozuUrl;
 	}
 	

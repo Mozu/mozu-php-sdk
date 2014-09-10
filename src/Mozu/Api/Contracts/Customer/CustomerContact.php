@@ -34,7 +34,10 @@ class CustomerContact
 	*/
 	public $email;
 
-		public $faxNumber;
+	/**
+	*The fax number associated with the customer account.
+	*/
+	public $faxNumber;
 
 	/**
 	*The first name of the contact. The maximum character length is 200.
@@ -46,6 +49,8 @@ class CustomerContact
 	*/
 	public $id;
 
+		public $label;
+
 	/**
 	*The last name or surname of the contact. The maximum character length is 200.
 	*/
@@ -55,6 +60,11 @@ class CustomerContact
 	*The middle name or the first initial of the middle name of the contact. The maximum character length is 100.
 	*/
 	public $middleNameOrInitial;
+
+	/**
+	*List of the types associated with a customer contact, such as Billing or Fulfillment.
+	*/
+	public $types;
 
 	/**
 	*Address associated with the customer account contact.
@@ -70,8 +80,6 @@ class CustomerContact
 	*List of phone numbers associated with the customer account contact.
 	*/
 	public $phoneNumbers;
-
-		public $types;
 
 }
 

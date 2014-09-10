@@ -14,16 +14,17 @@ namespace Mozu\Api\Clients\Commerce\Admin;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Admin\LocationTypeUrl;
-use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
+use Mozu\Api\Contracts\Location\LocationType;
+
 /**
-* 
+* Use the Location Types resource to manage the types of locations your tenant maintains, such as warehouses, physical storefronts, and kiosks.
 */
 class LocationTypeClient {
 
 	/**
-	* 
+	* Retrieve a list of all location types defined for the tenant.
 	*
 	* @return MozuClient
 	*/
@@ -31,68 +32,67 @@ class LocationTypeClient {
 	{
 		$url = LocationTypeUrl::getLocationTypesUrl();
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
 	/**
-	* 
+	* Retrieves the details of the location type specified in the request.
 	*
-	* @param string $locationTypeCode 
+	* @param string $locationTypeCode The user-defined code that identifies the location type.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
-	public static function getLocationTypeClient($locationTypeCode)
+	public static function getLocationTypeClient($locationTypeCode, $responseFields =  null)
 	{
-		$url = LocationTypeUrl::getLocationTypeUrl($locationTypeCode);
+		$url = LocationTypeUrl::getLocationTypeUrl($locationTypeCode, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
 	/**
-	* 
+	* Creates a new location type based on the information specified in the request.
 	*
-	* @param LocationType $locationType 
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param LocationType $locationType Properties of the location type to create.
 	* @return MozuClient
 	*/
-	public static function addLocationTypeClient($locationType)
+	public static function addLocationTypeClient($locationType, $responseFields =  null)
 	{
-		$url = LocationTypeUrl::addLocationTypeUrl();
+		$url = LocationTypeUrl::addLocationTypeUrl($responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($locationType);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($locationType);
 
 	}
 	
 	/**
-	* 
+	* Updates the name of a defined location type.
 	*
-	* @param string $locationTypeCode 
-	* @param LocationType $locationType 
+	* @param string $locationTypeCode The user-defined code that identifies the location type.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param LocationType $locationType Properties of the location type to update.
 	* @return MozuClient
 	*/
-	public static function updateLocationTypeClient($locationType, $locationTypeCode)
+	public static function updateLocationTypeClient($locationType, $locationTypeCode, $responseFields =  null)
 	{
-		$url = LocationTypeUrl::updateLocationTypeUrl($locationTypeCode);
+		$url = LocationTypeUrl::updateLocationTypeUrl($locationTypeCode, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($locationType);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($locationType);
 
 	}
 	
 	/**
-	* 
+	* Deletes the location type specified in the request.
 	*
-	* @param string $locationTypeCode 
+	* @param string $locationTypeCode User-defined code used to identify the location type.
+	* @return MozuClient
 	*/
 	public static function deleteLocationTypeClient($locationTypeCode)
 	{
 		$url = LocationTypeUrl::deleteLocationTypeUrl($locationTypeCode);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	

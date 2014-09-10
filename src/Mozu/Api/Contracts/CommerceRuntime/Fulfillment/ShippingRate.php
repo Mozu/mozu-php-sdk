@@ -49,6 +49,8 @@ class ShippingRate
 	*/
 	public $shippingMethodName;
 
+		public $shippingZoneCode;
+
 }
 
 ?>

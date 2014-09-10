@@ -14,8 +14,10 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\MasterCatalogUrl;
-use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\ProductAdmin\MasterCatalog;
+use Mozu\Api\Contracts\ProductAdmin\MasterCatalogCollection;
 
 /**
 * Use the Master Catalog resource to view details of the master catalogs associated with a tenant and to manage the product publishing mode for each master catalog.
@@ -25,29 +27,29 @@ class MasterCatalogClient {
 	/**
 	* Retrieve the details of all master catalog associated with a tenant.
 	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
-	public static function getMasterCatalogsClient()
+	public static function getMasterCatalogsClient($responseFields =  null)
 	{
-		$url = MasterCatalogUrl::getMasterCatalogsUrl();
+		$url = MasterCatalogUrl::getMasterCatalogsUrl($responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
 	/**
 	* Retrieve the details of the master catalog specified in the request.
 	*
-	* @param int $masterCatalogId 
+	* @param int $masterCatalogId The unique identifier of the master catalog associated with the entity.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
-	public static function getMasterCatalogClient($dataViewMode, $masterCatalogId)
+	public static function getMasterCatalogClient($masterCatalogId, $responseFields =  null)
 	{
-		$url = MasterCatalogUrl::getMasterCatalogUrl($masterCatalogId);
+		$url = MasterCatalogUrl::getMasterCatalogUrl($masterCatalogId, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
@@ -55,15 +57,15 @@ class MasterCatalogClient {
 	* Updates the product publishing mode for the master catalog specified in the request.
 	*
 	* @param int $masterCatalogId 
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param MasterCatalog $masterCatalog Properties of the master catalog to update, which consists of the product publishing mode. Possible values are "Pending" which saves product updates in draft mode until they are published, and "Live" which publishes all product changes immediately.
 	* @return MozuClient
 	*/
-	public static function updateMasterCatalogClient($dataViewMode, $masterCatalog, $masterCatalogId)
+	public static function updateMasterCatalogClient($masterCatalog, $masterCatalogId, $responseFields =  null)
 	{
-		$url = MasterCatalogUrl::updateMasterCatalogUrl($masterCatalogId);
+		$url = MasterCatalogUrl::updateMasterCatalogUrl($masterCatalogId, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($masterCatalog)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($masterCatalog);
 
 	}
 	

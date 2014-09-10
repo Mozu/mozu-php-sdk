@@ -19,7 +19,15 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Products;
 */
 class ProductPrice
 {
-		public $msrp;
+	/**
+	*The credit value when the product happens to be a gift card or similar product.
+	*/
+	public $creditValue;
+
+	/**
+	*The manufacturer's suggested retail price for the product.
+	*/
+	public $msrp;
 
 	/**
 	*The price the merchant charges for a product on a storefront if no sales price is defined.
@@ -31,7 +39,10 @@ class ProductPrice
 	*/
 	public $salePrice;
 
-		public $tenantOverridePrice;
+	/**
+	*The override price defined by the tenant for this cart or order item.
+	*/
+	public $tenantOverridePrice;
 
 }
 
