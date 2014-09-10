@@ -24,7 +24,10 @@ class AttributeLocalizedContent
 	*/
 	public $localeCode;
 
-		public $value;
+	/**
+	*The localized value defined for the attribute.
+	*/
+	public $value;
 
 }
 

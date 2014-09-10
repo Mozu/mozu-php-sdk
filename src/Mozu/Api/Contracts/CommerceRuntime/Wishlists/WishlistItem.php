@@ -30,7 +30,7 @@ class WishlistItem
 	public $discountedTotal;
 
 	/**
-	*Estimated amount of discounts applied to the item in the wish list, which is system-supplied and read-only.                      This property value is not calculated at this time and is reserved for future functionality.
+	*Estimated amount of discounts applied to the item in the wish list, which is system-supplied and read-only.  This property value is not calculated at this time and is reserved for future functionality.
 	*/
 	public $discountTotal;
 
@@ -43,6 +43,8 @@ class WishlistItem
 	*The fee total of an item in a wish list. This property value is not calculated at this time and is reserved for future functionality.
 	*/
 	public $feeTotal;
+
+		public $handlingAmount;
 
 	/**
 	*Unique identifier of an item in a shopper wish list.
@@ -118,6 +120,11 @@ class WishlistItem
 	*The properties of the product associated with an item in a wish list.
 	*/
 	public $product;
+
+	/**
+	*List of product discounts that apply to the item in the wishlist.
+	*/
+	public $productDiscount;
 
 	/**
 	*Array of product discounts applicable to an item in a wish list. This property is not used at this time and is reserved for future functionality.

@@ -12,38 +12,41 @@
 
 namespace Mozu\Api\Resources\Event;
 
-use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Event\EventNotificationClient;
 use Mozu\Api\ApiContext;
-use Mozu\Api\DataViewMode;
-use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\Event\Event;
+use Mozu\Api\Contracts\Event\EventCollection;
 
 /**
-* Use the events resource to retrieve events, which are notifications about a create, read, update, or delete operation.
+* Events are notifications Mozu publishes to the application when a create, read, update, or delete operation is performed. If the application subscribes to the event, you can use the Events resource to query for recent events Mozu published to your application or events that were not published successfully.
 */
 class EventNotificationResource {
 
-		private $apiContext;
+	private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
+
+	
 
 	/**
 	* Retrieves a list of events.
 	*
 	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return EventCollection 
 	*/
-	public function getEvents($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
+	public function getEvents($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
-		$mozuClient = EventNotificationClient::getEventsClient($startIndex, $pageSize, $sortBy, $filter);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = EventNotificationClient::getEventsClient($startIndex, $pageSize, $sortBy, $filter, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -51,14 +54,15 @@ class EventNotificationResource {
 	* Retrieves an event by providing the event ID.
 	*
 	* @param string $eventId The unique identifier of the event being retrieved. An event is a notification about a create, read, update, or delete on an order, product, discount or category.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return Event 
 	*/
-	public function getEvent($eventId)
+	public function getEvent($eventId, $responseFields =  null)
 	{
-		$mozuClient = EventNotificationClient::getEventClient($eventId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = EventNotificationClient::getEventClient($eventId, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	

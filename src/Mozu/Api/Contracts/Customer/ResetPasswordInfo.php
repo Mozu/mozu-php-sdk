@@ -14,11 +14,20 @@ namespace Mozu\Api\Contracts\Customer;
 
 
 
+/**
+*	Information required to reset the password for a customer account.
+*/
 class ResetPasswordInfo
 {
-		public $emailAddress;
+	/**
+	*The email address of the specified user or the email address associated with the specified entity.
+	*/
+	public $emailAddress;
 
-		public $userName;
+	/**
+	*User name of the user associated with the customer account.
+	*/
+	public $userName;
 
 }
 

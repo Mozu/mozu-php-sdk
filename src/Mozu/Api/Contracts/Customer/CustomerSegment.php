@@ -14,15 +14,30 @@ namespace Mozu\Api\Contracts\Customer;
 
 
 
+/**
+*	The Customer Segment object includes properties of a defined customer segment used to group customer accounts.
+*/
 class CustomerSegment
 {
-		public $code;
+	/**
+	*The user-defined code assigned for the customer segment.
+	*/
+	public $code;
 
-		public $description;
+	/**
+	*Description of the customer segment.
+	*/
+	public $description;
 
-		public $id;
+	/**
+	*Unique identifier of the customer segment. System-supplied and read only.
+	*/
+	public $id;
 
-		public $name;
+	/**
+	*Name of the customer segment.
+	*/
+	public $name;
 
 		public $auditInfo;
 

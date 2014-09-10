@@ -20,6 +20,11 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Returns;
 class ReturnItem
 {
 	/**
+	*Unique identifier of the return whose items you want to get.
+	*/
+	public $id;
+
+	/**
 	*Unique identifier of the item in the original completed order. All return items should be associated with a corresponding order item.
 	*/
 	public $orderItemId;
@@ -59,7 +64,10 @@ class ReturnItem
 	*/
 	public $shippingLossTaxAmount;
 
-		public $bundledProducts;
+	/**
+	*Properties of a collection of component products that make up a single returned product bundle with its own product code.
+	*/
+	public $bundledProducts;
 
 	/**
 	*List of merchant-supplied notes associated with the return item.

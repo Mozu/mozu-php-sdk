@@ -19,7 +19,10 @@ namespace Mozu\Api\Contracts\Core\Extensible;
 */
 class AttributeVocabularyValue
 {
-		public $isHidden;
+	/**
+	*If true, the attribute vocabulary value does not appear in the list when defining a value for the attribute.
+	*/
+	public $isHidden;
 
 	/**
 	*The numeric order of a vocabulary value defined for an extensible attribute.

@@ -14,11 +14,20 @@ namespace Mozu\Api\Contracts\Customer;
 
 
 
+/**
+*	Properties of a type of contact associated with a customer account, such as Billing or Fulfillment.
+*/
 class ContactType
 {
-		public $isPrimary;
+	/**
+	*If true, this is the primary contact of this contact type.
+	*/
+	public $isPrimary;
 
-		public $name;
+	/**
+	*The name of this contact type.
+	*/
+	public $name;
 
 }
 

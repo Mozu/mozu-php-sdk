@@ -39,14 +39,20 @@ class TaxableLineItem
 	*/
 	public $productCode;
 
-		public $productName;
+	/**
+	*The name of the product that represents a line item in a taxable order.
+	*/
+	public $productName;
 
 	/**
 	*The quantity of the line item in the order.
 	*/
 	public $quantity;
 
-		public $reason;
+	/**
+	*The reason the item is either taxed or returned.
+	*/
+	public $reason;
 
 	/**
 	*The amount of shipping calculated for a line item in an order.

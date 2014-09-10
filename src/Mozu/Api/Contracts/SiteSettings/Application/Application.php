@@ -34,7 +34,10 @@ class Application
 	*/
 	public $initialized;
 
-		public $isExtension;
+	/**
+	*If true, the application type is Extension.
+	*/
+	public $isExtension;
 
 	/**
 	*URL of the application's setting configuration user interface, supplied by the capability developer in Dev Center.

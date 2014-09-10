@@ -12,51 +12,56 @@
 
 namespace Mozu\Api\Resources\Commerce\Orders;
 
-use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Orders\ShipmentClient;
 use Mozu\Api\ApiContext;
-use Mozu\Api\DataViewMode;
-use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\CommerceRuntime\Fulfillment\Shipment;
+use Mozu\Api\Contracts\CommerceRuntime\Fulfillment\ShippingRate;
+use Mozu\Api\Contracts\CommerceRuntime\Fulfillment\Package;
 
 /**
 * Use the shipments resource to manage shipments of collections of packages for an order.
 */
 class ShipmentResource {
 
-		private $apiContext;
+	private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
+	
+
 	/**
 	* Retrieves the details of the order shipment specified in the request.
 	*
 	* @param string $orderId Unique identifier of the order associated with the shipment to retrieve.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $shipmentId Unique identifier of the shipment to retrieve.
 	* @return Shipment 
 	*/
-	public function getShipment($orderId, $shipmentId)
+	public function getShipment($orderId, $shipmentId, $responseFields =  null)
 	{
-		$mozuClient = ShipmentClient::getShipmentClient($orderId, $shipmentId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = ShipmentClient::getShipmentClient($orderId, $shipmentId, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
 	* Retrieves the available shipping methods applicable to the order. Typically used to display available shipping method options on the checkout page.
 	*
+	* @param bool $draft 
 	* @param string $orderId Unique identifier of the order for the available shipment methods being retrieved.
 	* @return array|ShippingRate 
 	*/
-	public function getAvailableShipmentMethods($orderId)
+	public function getAvailableShipmentMethods($orderId, $draft =  null)
 	{
-		$mozuClient = ShipmentClient::getAvailableShipmentMethodsClient($orderId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = ShipmentClient::getAvailableShipmentMethodsClient($orderId, $draft);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -70,9 +75,9 @@ class ShipmentResource {
 	public function createPackageShipments($packageIds, $orderId)
 	{
 		$mozuClient = ShipmentClient::createPackageShipmentsClient($packageIds, $orderId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -81,12 +86,13 @@ class ShipmentResource {
 	*
 	* @param string $orderId Unique identifier of the order to cancel shipment.
 	* @param string $shipmentId Unique identifier of the shipment to cancel.
+	* @return void
 	*/
 	public function deleteShipment($orderId, $shipmentId)
 	{
 		$mozuClient = ShipmentClient::deleteShipmentClient($orderId, $shipmentId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
+		$mozuClient->withContext($this->apiContext)
+				->execute();
 
 	}
 	

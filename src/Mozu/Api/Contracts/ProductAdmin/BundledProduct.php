@@ -14,23 +14,55 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
+/**
+*	Properties of a component product in a product bundle. A product bundle can represent either a collection of multiple products sold as a single entity, or a collection of the same product sold as a package. For example, a 10-pack of socks.
+*/
 class BundledProduct
 {
-		public $productCode;
+	/**
+	*Indicates the fulfillment types that the product supports.
+	*/
+	public $fulfillmentTypesSupported;
 
-		public $productName;
+	/**
+	*Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+	*/
+	public $productCode;
 
-		public $quantity;
+	/**
+	*The read-only name of the component in a bundled product.
+	*/
+	public $productName;
 
-		public $packageHeight;
+	/**
+	*The quantity of an individual component product in a bundle. For example, if a product bundle represents a 10-pack of socks, the quantity value for the bundled product would be 10.
+	*/
+	public $quantity;
 
-		public $packageLength;
+	/**
+	*Height of the bundle package in imperial units of feet and inches.
+	*/
+	public $packageHeight;
 
-		public $packageWeight;
+	/**
+	*Length of the bundle package in imperial units of feet and inches.
+	*/
+	public $packageLength;
 
-		public $packageWidth;
+	/**
+	*Weight of the bundle package in imperial units of pounds and ounces.
+	*/
+	public $packageWeight;
 
-		public $price;
+	/**
+	*Width of the bundle package in imperial units of feet and inches.
+	*/
+	public $packageWidth;
+
+	/**
+	*The price of the bundled product set for the tenant.
+	*/
+	public $price;
 
 }
 

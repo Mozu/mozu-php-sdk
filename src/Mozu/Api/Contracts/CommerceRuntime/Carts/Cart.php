@@ -24,9 +24,15 @@ class Cart
 	*/
 	public $channelCode;
 
-		public $couponCodes;
+	/**
+	*The coupon codes applied to the cart. When the customer proceeds to checkout, the coupons applied to the cart apply to the order.
+	*/
+	public $couponCodes;
 
-		public $currencyCode;
+	/**
+	*3-letter ISO 4217 standard global currency code. Currently, only "USD" (US Dollar) is supported.
+	*/
+	public $currencyCode;
 
 	/**
 	*The type of customer interaction used to create this shopping cart. Possible values are Website, Call, Store, or Unknown.
@@ -148,7 +154,10 @@ class Cart
 	*/
 	public $fulfillmentInfo;
 
-		public $invalidCoupons;
+	/**
+	*The list of invalid coupons the shopper attempted to enter for the cart.
+	*/
+	public $invalidCoupons;
 
 	/**
 	*An array list of objects in the returned collection.

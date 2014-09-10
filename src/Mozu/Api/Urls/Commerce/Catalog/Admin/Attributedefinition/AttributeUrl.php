@@ -21,55 +21,67 @@ class AttributeUrl  {
 		* Get Resource Url for GetAttributes
 		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param string $sortBy 
 		* @param int $startIndex 
 		* @return string Resource Url
 	*/
-	public static function getAttributesUrl($filter, $pageSize, $sortBy, $startIndex)
+	public static function getAttributesUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex)
 	{
-		$url = "/api/commerce/catalog/admin/attributedefinition/attributes/?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("filter", $filter);
-		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
-		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
-		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
+		$url = "/api/commerce/catalog/admin/attributedefinition/attributes/?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}&responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("filter", $filter)
+				->formatUrl("pageSize", $pageSize)
+				->formatUrl("responseFields", $responseFields)
+				->formatUrl("sortBy", $sortBy)
+				->formatUrl("startIndex", $startIndex);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetAttribute
 		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function getAttributeUrl($attributeFQN)
+	public static function getAttributeUrl($attributeFQN, $responseFields)
 	{
-		$url = "/api/commerce/catalog/admin/attributedefinition/attributes/{attributeFQN}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = "/api/commerce/catalog/admin/attributedefinition/attributes/{attributeFQN}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for AddAttribute
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function addAttributeUrl()
+	public static function addAttributeUrl($responseFields)
 	{
-		$url = "/api/commerce/catalog/admin/attributedefinition/attributes/";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = "/api/commerce/catalog/admin/attributedefinition/attributes/?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdateAttribute
 		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function updateAttributeUrl($attributeFQN)
+	public static function updateAttributeUrl($attributeFQN, $responseFields)
 	{
-		$url = "/api/commerce/catalog/admin/attributedefinition/attributes/{attributeFQN}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
-		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = "/api/commerce/catalog/admin/attributedefinition/attributes/{attributeFQN}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
+		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
@@ -81,8 +93,9 @@ class AttributeUrl  {
 	public static function deleteAttributeUrl($attributeFQN)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/attributes/{attributeFQN}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
-		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
+		$mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+
 		return $mozuUrl;
 	}
 	

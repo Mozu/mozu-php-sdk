@@ -14,7 +14,9 @@ interface iApiContext
 	public function getSiteUrl();
 	public function getMasterCatalogId();
 	public function getCatalogId();
-	
+	public function getLocale();
+    public function getCurrency();
+
 	public function getCorrelationId();
 	public function getHMACSha256();
 	public function getAppAuthTicket();
@@ -26,7 +28,8 @@ interface iApiContext
 	public function setSiteId($siteId);
 	public function setMasterCatalogId($masterCatalogId);
 	public function setCatalogId($catalogId);
-	
+	public function setLocale($locale);
+    public function setCurrency($currency);
 	public function setHMACSha256($hmacSha256);
 	public function setAppAuthTicket($appAuthTicket);
 	public function setUserAuthTicket($userAuthTicket);
@@ -34,7 +37,6 @@ interface iApiContext
 
 class ApiContext implements iApiContext {
 	private $tenantId = 0;
-	private $siteGroupId = null;
 	private $siteId = null;
 	private $masterCatalogId = null;
 	private $catalogId = null;
@@ -42,7 +44,8 @@ class ApiContext implements iApiContext {
 	private $siteUrl=null;
 	private $correlationId=null;
 	private $hmacSha256=null;
-	
+	private $locale=null;
+    private $currency=null;
 	private $tenant = null;
 	private $userAuthTicket = null;
 	private $appAuthTicket=null;
@@ -150,7 +153,15 @@ class ApiContext implements iApiContext {
 	public function getTenant() {
 		return $this->tenant;
 	}
-	
+
+    public function getLocale() {
+        return $this->locale;
+    }
+
+    public function getCurrency() {
+        return $this->currency;
+    }
+
 	public function setTenantId($tenantId) {
 		$this->tenantId = $tenantId;
 		return $this;
@@ -185,7 +196,16 @@ class ApiContext implements iApiContext {
 		$this->appAuthTicket = $appAuthTicket;
 		return $this;
 	}
-	
+
+    public function setLocale($locale) {
+        $this->locale = $locale;
+        return $this;
+    }
+
+    public function setCurrency($currency) {
+        $this->currency = $currency;
+        return $this;
+    }
 }
 
 ?>

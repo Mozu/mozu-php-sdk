@@ -14,8 +14,9 @@ namespace Mozu\Api\Clients\Commerce\Customer\Accounts;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\Accounts\TransactionUrl;
-use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\Customer\Transaction;
 
 /**
 * Use the Customer Account Transactions resource to manage the transactions associated with a customer account.
@@ -32,8 +33,7 @@ class TransactionClient {
 	{
 		$url = TransactionUrl::getTransactionsUrl($accountId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
@@ -41,15 +41,15 @@ class TransactionClient {
 	* Creates a new transaction for the customer account specified in the request.
 	*
 	* @param int $accountId Unique identifier of the customer account.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param Transaction $transaction Properties of the transaction to create for the customer account.
 	* @return MozuClient
 	*/
-	public static function addTransactionClient($transaction, $accountId)
+	public static function addTransactionClient($transaction, $accountId, $responseFields =  null)
 	{
-		$url = TransactionUrl::addTransactionUrl($accountId);
+		$url = TransactionUrl::addTransactionUrl($accountId, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($transaction);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($transaction);
 
 	}
 	
@@ -58,13 +58,13 @@ class TransactionClient {
 	*
 	* @param int $accountId Unique identifier of the customer account from which to delete the transaction.
 	* @param string $transactionId Unique identifier of the transaction to delete.
+	* @return MozuClient
 	*/
 	public static function removeTransactionClient($accountId, $transactionId)
 	{
 		$url = TransactionUrl::removeTransactionUrl($accountId, $transactionId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	

@@ -12,53 +12,44 @@
 
 namespace Mozu\Api\Resources\Commerce\Catalog\Admin;
 
-use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Catalog\Admin\DiscountClient;
 use Mozu\Api\ApiContext;
-use Mozu\Api\DataViewMode;
-use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\ProductAdmin\Discount;
+use Mozu\Api\Contracts\ProductAdmin\DiscountLocalizedContent;
+use Mozu\Api\Contracts\ProductAdmin\DiscountCollection;
 
 /**
 * Define and manage discounts to apply to products, product categories, or orders. The discounts can be a specified amount off the price, percentage off the price, or for free shipping. Create a coupon code that shoppers can use to redeem the discount.
 */
 class DiscountResource {
 
-		private $apiContext;
-	public function __construct(ApiContext $apiContext) 
+	private $apiContext;
+	private $dataViewMode;
+	public function __construct(ApiContext $apiContext, $dataViewMode) 
 	{
 		$this->apiContext = $apiContext;
+		$this->dataViewMode = $dataViewMode;
 	}
+
+	
 
 	/**
 	* Retrieves a list of discounts according to any specified filter criteria and sort options.
 	*
 	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return DiscountCollection 
 	*/
-	public function getDiscounts($dataViewMode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
+	public function getDiscounts($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
-		$mozuClient = DiscountClient::getDiscountsClient($dataViewMode, $startIndex, $pageSize, $sortBy, $filter);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
-
-	}
-	
-	/**
-	* Retrieves the details of a single discount.
-	*
-	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
-	* @return Discount 
-	*/
-	public function getDiscount($dataViewMode, $discountId)
-	{
-		$mozuClient = DiscountClient::getDiscountClient($dataViewMode, $discountId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = DiscountClient::getDiscountsClient($this->dataViewMode, $startIndex, $pageSize, $sortBy, $filter, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -66,75 +57,96 @@ class DiscountResource {
 	* Retrieves the localized content specified for the specified discount.
 	*
 	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return DiscountLocalizedContent 
 	*/
-	public function getDiscountContent($dataViewMode, $discountId)
+	public function getDiscountContent($discountId, $responseFields =  null)
 	{
-		$mozuClient = DiscountClient::getDiscountContentClient($dataViewMode, $discountId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = DiscountClient::getDiscountContentClient($this->dataViewMode, $discountId, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
+
+	}
+	
+	/**
+	* Retrieves the details of a single discount.
+	*
+	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Discount 
+	*/
+	public function getDiscount($discountId, $responseFields =  null)
+	{
+		$mozuClient = DiscountClient::getDiscountClient($this->dataViewMode, $discountId, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
 	* Generates a random code for a coupon.
 	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return string 
 	*/
-	public function generateRandomCoupon($dataViewMode)
+	public function generateRandomCoupon($responseFields =  null)
 	{
-		$mozuClient = DiscountClient::generateRandomCouponClient($dataViewMode);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = DiscountClient::generateRandomCouponClient($responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
-	* Creates a discount.
+	* Creates a new discount or coupon to apply to a product, category, order, or shipping.
 	*
-	* @param Discount $discount Properties of the discount to create. Required properties: Content.Name, AmountType, StartDate, and Target.Type.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param Discount $discount Properties of the discount to create. You must specify the discount name, amount type, start date, and target.
 	* @return Discount 
 	*/
-	public function createDiscount($dataViewMode, $discount)
+	public function createDiscount($discount, $responseFields =  null)
 	{
-		$mozuClient = DiscountClient::createDiscountClient($dataViewMode, $discount);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = DiscountClient::createDiscountClient($discount, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
-	* Modifies a discount.
+	* Updates the localizable content for the specified discount or rename the discount without modifying its other properties.
 	*
 	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
-	* @param Discount $discount Properties of the discount to update. Required properties: Content.Name, AmountType, StartDate, and Target.Type. Any unspecified properties are set to null and boolean variables are set to false.
-	* @return Discount 
-	*/
-	public function updateDiscount($dataViewMode, $discount, $discountId)
-	{
-		$mozuClient = DiscountClient::updateDiscountClient($dataViewMode, $discount, $discountId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
-
-	}
-	
-	/**
-	* Modifies the localized content for the specified discount. Rename the discount without modifying any other discount properties.
-	*
-	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
-	* @param DiscountLocalizedContent $content New Name and/or LocaleCode. Properties of the content to update. Required property: Name.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param DiscountLocalizedContent $content The discount content to update, including the discount name.
 	* @return DiscountLocalizedContent 
 	*/
-	public function updateDiscountContent($dataViewMode, $content, $discountId)
+	public function updateDiscountContent($content, $discountId, $responseFields =  null)
 	{
-		$mozuClient = DiscountClient::updateDiscountContentClient($dataViewMode, $content, $discountId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = DiscountClient::updateDiscountContentClient($content, $discountId, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
+
+	}
+	
+	/**
+	* Updates one or more properties of a defined discount.
+	*
+	* @param int $discountId Unique identifier of the discount to update.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param Discount $discount Properties of the discount to update.
+	* @return Discount 
+	*/
+	public function updateDiscount($discount, $discountId, $responseFields =  null)
+	{
+		$mozuClient = DiscountClient::updateDiscountClient($discount, $discountId, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -142,12 +154,13 @@ class DiscountResource {
 	* Deletes a discount specified by its discount ID.
 	*
 	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
+	* @return void
 	*/
-	public function deleteDiscount($dataViewMode, $discountId)
+	public function deleteDiscount($discountId)
 	{
-		$mozuClient = DiscountClient::deleteDiscountClient($dataViewMode, $discountId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
+		$mozuClient = DiscountClient::deleteDiscountClient($discountId);
+		$mozuClient->withContext($this->apiContext)
+				->execute();
 
 	}
 	

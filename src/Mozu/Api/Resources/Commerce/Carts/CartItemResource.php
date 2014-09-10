@@ -12,80 +12,70 @@
 
 namespace Mozu\Api\Resources\Commerce\Carts;
 
-use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Carts\CartItemClient;
 use Mozu\Api\ApiContext;
-use Mozu\Api\DataViewMode;
-use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\CommerceRuntime\Carts\CartItem;
+use Mozu\Api\Contracts\CommerceRuntime\Carts\CartItemCollection;
+use Mozu\Api\Contracts\CommerceRuntime\Carts\Cart;
 
 /**
-* Use the cart items subresource to manage a collection of items in an active shopping cart.
+* Use the Cart Items subresource to manage a collection of items in an active shopping cart.
 */
 class CartItemResource {
 
-		private $apiContext;
+	private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
-	/**
-	* Retrieves a list of cart items including the total number of items in the cart.
-	*
-	* @return CartItemCollection 
-	*/
-	public function getCartItems()
-	{
-		$mozuClient = CartItemClient::getCartItemsClient();
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
-
-	}
 	
+
 	/**
 	* Retrieves a particular cart item by providing the cart item ID.
 	*
 	* @param string $cartItemId Identifier of the cart item to retrieve.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return CartItem 
 	*/
-	public function getCartItem($cartItemId)
+	public function getCartItem($cartItemId, $responseFields =  null)
 	{
-		$mozuClient = CartItemClient::getCartItemClient($cartItemId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = CartItemClient::getCartItemClient($cartItemId, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
+
+	}
+	
+	/**
+	* Retrieves a list of cart items including the total number of items in the cart.
+	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return CartItemCollection 
+	*/
+	public function getCartItems($responseFields =  null)
+	{
+		$mozuClient = CartItemClient::getCartItemsClient($responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
 	* Adds a product to the current shopper's cart.
 	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param CartItem $cartItem All properties of the new cart item. The product code is required.
 	* @return CartItem 
 	*/
-	public function addItemToCart($cartItem)
+	public function addItemToCart($cartItem, $responseFields =  null)
 	{
-		$mozuClient = CartItemClient::addItemToCartClient($cartItem);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
-
-	}
-	
-	/**
-	* Update the product or product quantity of an item in the current shopper's cart.
-	*
-	* @param string $cartItemId Identifier of the cart item to update.
-	* @param CartItem $cartItem The properties of the cart item to update.
-	* @return CartItem 
-	*/
-	public function updateCartItem($cartItem, $cartItemId)
-	{
-		$mozuClient = CartItemClient::updateCartItemClient($cartItem, $cartItemId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = CartItemClient::addItemToCartClient($cartItem, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -94,14 +84,32 @@ class CartItemResource {
 	*
 	* @param string $cartItemId Identifier of the cart item to update quantity.
 	* @param int $quantity The number of cart items in the shopper's active cart.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return CartItem 
 	*/
-	public function updateCartItemQuantity($cartItemId, $quantity)
+	public function updateCartItemQuantity($cartItemId, $quantity, $responseFields =  null)
 	{
-		$mozuClient = CartItemClient::updateCartItemQuantityClient($cartItemId, $quantity);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = CartItemClient::updateCartItemQuantityClient($cartItemId, $quantity, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
+
+	}
+	
+	/**
+	* Update the product or product quantity of an item in the current shopper's cart.
+	*
+	* @param string $cartItemId Identifier of the cart item to update.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param CartItem $cartItem The properties of the cart item to update.
+	* @return CartItem 
+	*/
+	public function updateCartItem($cartItem, $cartItemId, $responseFields =  null)
+	{
+		$mozuClient = CartItemClient::updateCartItemClient($cartItem, $cartItemId, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -113,9 +121,9 @@ class CartItemResource {
 	public function removeAllCartItems()
 	{
 		$mozuClient = CartItemClient::removeAllCartItemsClient();
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -123,12 +131,13 @@ class CartItemResource {
 	* Deletes a specific cart item by providing the cart item ID.
 	*
 	* @param string $cartItemId Identifier of the cart item to delete.
+	* @return void
 	*/
 	public function deleteCartItem($cartItemId)
 	{
 		$mozuClient = CartItemClient::deleteCartItemClient($cartItemId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
+		$mozuClient->withContext($this->apiContext)
+				->execute();
 
 	}
 	

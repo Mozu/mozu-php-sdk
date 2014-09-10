@@ -14,42 +14,42 @@ namespace Mozu\Api\Clients\Commerce\Orders;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Orders\OrderValidationResultUrl;
-use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
+use Mozu\Api\Contracts\CommerceRuntime\Orders\OrderValidationResult;
+
 /**
-* 
+* Manage the results of order validation.
 */
 class OrderValidationResultClient {
 
 	/**
-	* 
+	* Retrieves a list of the validation results associated with the order.
 	*
-	* @param string $orderId 
+	* @param string $orderId Unique identifier of the order.
 	* @return MozuClient
 	*/
 	public static function getValidationResultsClient($orderId)
 	{
 		$url = OrderValidationResultUrl::getValidationResultsUrl($orderId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
 	/**
-	* 
+	* Add a new order validation result to a submitted order.
 	*
-	* @param string $orderId 
-	* @param OrderValidationResult $validationResult 
+	* @param string $orderId Unique identifier of the order.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param OrderValidationResult $validationResult Properties of the validation result to add for the order.
 	* @return MozuClient
 	*/
-	public static function addValidationResultClient($validationResult, $orderId)
+	public static function addValidationResultClient($validationResult, $orderId, $responseFields =  null)
 	{
-		$url = OrderValidationResultUrl::addValidationResultUrl($orderId);
+		$url = OrderValidationResultUrl::addValidationResultUrl($orderId, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($validationResult);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($validationResult);
 
 	}
 	

@@ -34,6 +34,8 @@ class ProductPropertyValue
 	*/
 	public $content;
 
+		public $localizedContent;
+
 }
 
 ?>

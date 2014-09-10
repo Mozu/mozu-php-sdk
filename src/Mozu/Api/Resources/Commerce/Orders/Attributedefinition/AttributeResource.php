@@ -12,68 +12,73 @@
 
 namespace Mozu\Api\Resources\Commerce\Orders\Attributedefinition;
 
-use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Orders\Attributedefinition\AttributeClient;
 use Mozu\Api\ApiContext;
-use Mozu\Api\DataViewMode;
-use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\Core\Extensible\AttributeCollection;
+use Mozu\Api\Contracts\Core\Extensible\AttributeVocabularyValue;
+use Mozu\Api\Contracts\Core\Extensible\Attribute;
 
 /**
 * Use the Order Attribute Definition resource to manage the attributes that uniquely describe orders, such as the associated shopping season or "How did you hear about us?". Merchants can display order attributes on the order summary, the order confirmation page, invoices, or packing slips.
 */
 class AttributeResource {
 
-		private $apiContext;
+	private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
+
+	
 
 	/**
 	* Retrieves a list of order attributes according to any filter criteria or sort options.
 	*
 	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return AttributeCollection 
 	*/
-	public function getAttributes($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
+	public function getAttributes($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
-		$mozuClient = AttributeClient::getAttributesClient($startIndex, $pageSize, $sortBy, $filter);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = AttributeClient::getAttributesClient($startIndex, $pageSize, $sortBy, $filter, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
+
+	}
+	
+	/**
+	* Returns the list of vocabulary values defined for the order attribute specified in the request.
+	*
+	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @return array|AttributeVocabularyValue 
+	*/
+	public function getAttributeVocabularyValues($attributeFQN)
+	{
+		$mozuClient = AttributeClient::getAttributeVocabularyValuesClient($attributeFQN);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
 	* Retrieves the details of the order attribute specified in the request.
 	*
-	* @param string $attributeFQN 
+	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return Attribute 
 	*/
-	public function getAttribute($attributeFQN)
+	public function getAttribute($attributeFQN, $responseFields =  null)
 	{
-		$mozuClient = AttributeClient::getAttributeClient($attributeFQN);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
-
-	}
-	
-	/**
-	* 
-	*
-	* @param string $attributeFQN 
-	* @return array|AttributeVocabularyValue 
-	*/
-	public function getAttributeVocabularyValues($attributeFQN)
-	{
-		$mozuClient = AttributeClient::getAttributeVocabularyValuesClient($attributeFQN);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = AttributeClient::getAttributeClient($attributeFQN, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	

@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
+/**
+*	Properties of the conditions that must be met for a discount to apply to a product category.
+*/
 class CategoryDiscountCondition
 {
-		public $categoryId;
+	/**
+	*The unique identifier of the product category associated with the discount.
+	*/
+	public $categoryId;
 
 }
 

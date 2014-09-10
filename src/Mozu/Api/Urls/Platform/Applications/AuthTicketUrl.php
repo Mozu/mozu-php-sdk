@@ -19,23 +19,29 @@ class AuthTicketUrl  {
 
 	/**
 		* Get Resource Url for AuthenticateApp
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function authenticateAppUrl()
+	public static function authenticateAppUrl($responseFields)
 	{
-		$url = "/api/platform/applications/authtickets/";
-		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"POST", false) ;
+		$url = "/api/platform/applications/authtickets/?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"POST", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for RefreshAppAuthTicket
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function refreshAppAuthTicketUrl()
+	public static function refreshAppAuthTicketUrl($responseFields)
 	{
-		$url = "/api/platform/applications/authtickets/refresh-ticket";
-		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"PUT", false) ;
+		$url = "/api/platform/applications/authtickets/refresh-ticket?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"PUT", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
@@ -47,8 +53,9 @@ class AuthTicketUrl  {
 	public static function deleteAppAuthTicketUrl($refreshToken)
 	{
 		$url = "/api/platform/applications/authtickets/{refreshToken}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"DELETE", false) ;
-		$url = $mozuUrl->formatUrl("refreshToken", $refreshToken);
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"DELETE", false);
+		$mozuUrl->formatUrl("refreshToken", $refreshToken);
+
 		return $mozuUrl;
 	}
 	

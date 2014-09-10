@@ -14,35 +14,80 @@ namespace Mozu\Api\Contracts\SiteSettings\Application;
 
 
 
+/**
+*	Properties of a capability application installed in a tenant.
+*/
 class Capability
 {
-		public $activeCreditTypes;
+	/**
+	*Array list of credit types active for the capability.
+	*/
+	public $activeCreditTypes;
 
-		public $activeShoppingCountries;
+	/**
+	*Array list of the countries for which this capability can actively shop.
+	*/
+	public $activeShoppingCountries;
 
-		public $capabilityMode;
+	/**
+	*The enablement mode of the capability.
+	*/
+	public $capabilityMode;
 
-		public $capabilityType;
+	/**
+	*The capability type installed in the tenant.
+	*/
+	public $capabilityType;
 
-		public $enabled;
+	/**
+	*If true, the capability is enabled in the installed tenant.
+	*/
+	public $enabled;
 
-		public $id;
+	/**
+	*Unique identifier of the capability.
+	*/
+	public $id;
 
-		public $initialized;
+	/**
+	*If true, the application is initialized with the defined settings.
+	*/
+	public $initialized;
 
-		public $scopeId;
+	/**
+	*Unique identifier of the developer account or tenant associated for which the capability is entitled.
+	*/
+	public $scopeId;
 
-		public $scopeType;
+	/**
+	*The type of scope for which the tenant is entitled, which is developer or tenant.
+	*/
+	public $scopeType;
 
-		public $activeShippingCountries;
+	/**
+	*Array list of the countries to which this capability can actively ship.
+	*/
+	public $activeShippingCountries;
 
-		public $operationUrls;
+	/**
+	*Array list of URL endpoints for the operations associated with this capability.
+	*/
+	public $operationUrls;
 
-		public $supportedCreditTypes;
+	/**
+	*Array list of credit types this capability supports.
+	*/
+	public $supportedCreditTypes;
 
-		public $supportedShippingCountries;
+	/**
+	*Array list of countries this capability supports for shipping.
+	*/
+	public $supportedShippingCountries;
 
-		public $supportedShoppingCountries;
+	/**
+	*Array list of countries this capability supports for shopping.
+	*/
+	public $supportedShoppingCountries;
 
 }
 

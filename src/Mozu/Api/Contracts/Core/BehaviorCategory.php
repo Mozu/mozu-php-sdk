@@ -15,16 +15,19 @@ namespace Mozu\Api\Contracts\Core;
 
 
 /**
-*	***Always private and should not be published.***
+*	Properties of a category of application behaviors.
 */
 class BehaviorCategory
 {
 	/**
-	*Identifier of the entity.
+	*Unique identifier of the behavior.
 	*/
 	public $id;
 
-		public $name;
+	/**
+	*The name of the behavior.
+	*/
+	public $name;
 
 }
 

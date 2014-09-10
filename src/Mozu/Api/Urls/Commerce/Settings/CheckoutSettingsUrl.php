@@ -19,12 +19,15 @@ class CheckoutSettingsUrl  {
 
 	/**
 		* Get Resource Url for GetCheckoutSettings
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function getCheckoutSettingsUrl()
+	public static function getCheckoutSettingsUrl($responseFields)
 	{
-		$url = "/api/commerce/settings/checkout/";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = "/api/commerce/settings/checkout/?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	

@@ -14,30 +14,15 @@ namespace Mozu\Api\Clients\Commerce\Orders;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Orders\PackageUrl;
-use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
+use Mozu\Api\Contracts\CommerceRuntime\Fulfillment\Package;
+
 /**
-* Use the packages subresource to manage the physical packages to ship for an order.
+* Use the Packages subresource to manage the physical packages to ship for an order.
 */
 class PackageClient {
 
-	/**
-	* Retrieves the details of a package of order items.
-	*
-	* @param string $orderId Unique identifier of the order associated with the package to retrieve.
-	* @param string $packageId Unique identifier of the package to retrieve.
-	* @return MozuClient
-	*/
-	public static function getPackageClient($orderId, $packageId)
-	{
-		$url = PackageUrl::getPackageUrl($orderId, $packageId);
-		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
-
-	}
-	
 	/**
 	* Retrieves a list of the actions available to perform for a package associated with order fulfillment.
 	*
@@ -49,8 +34,7 @@ class PackageClient {
 	{
 		$url = PackageUrl::getAvailablePackageFulfillmentActionsUrl($orderId, $packageId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
@@ -65,8 +49,23 @@ class PackageClient {
 	{
 		$url = PackageUrl::getPackageLabelUrl($orderId, $packageId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
+
+	}
+	
+	/**
+	* Retrieves the details of a package of order items.
+	*
+	* @param string $orderId Unique identifier of the order associated with the package to retrieve.
+	* @param string $packageId Unique identifier of the package to retrieve.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return MozuClient
+	*/
+	public static function getPackageClient($orderId, $packageId, $responseFields =  null)
+	{
+		$url = PackageUrl::getPackageUrl($orderId, $packageId, $responseFields);
+		$mozuClient = new MozuClient();
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
@@ -74,15 +73,15 @@ class PackageClient {
 	* Creates a new physical package of order items.
 	*
 	* @param string $orderId Unique identifier of the order associated with this package.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param Package $package Properties of the physical package of order items.
 	* @return MozuClient
 	*/
-	public static function createPackageClient($pkg, $orderId)
+	public static function createPackageClient($pkg, $orderId, $responseFields =  null)
 	{
-		$url = PackageUrl::createPackageUrl($orderId);
+		$url = PackageUrl::createPackageUrl($orderId, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($pkg);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($pkg);
 
 	}
 	
@@ -91,15 +90,15 @@ class PackageClient {
 	*
 	* @param string $orderId Unique identifier of the order associated with the package to update.
 	* @param string $packageId Unique identifier of the package of order items to update.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param Package $package Wrapper of properties for the package of order items to update.
 	* @return MozuClient
 	*/
-	public static function updatePackageClient($pkg, $orderId, $packageId)
+	public static function updatePackageClient($pkg, $orderId, $packageId, $responseFields =  null)
 	{
-		$url = PackageUrl::updatePackageUrl($orderId, $packageId);
+		$url = PackageUrl::updatePackageUrl($orderId, $packageId, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($pkg);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($pkg);
 
 	}
 	
@@ -108,13 +107,13 @@ class PackageClient {
 	*
 	* @param string $orderId Unique identifier of the order associated with the package to delete.
 	* @param string $packageId Unique identifier of the package to delete.
+	* @return MozuClient
 	*/
 	public static function deletePackageClient($orderId, $packageId)
 	{
 		$url = PackageUrl::deletePackageUrl($orderId, $packageId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	

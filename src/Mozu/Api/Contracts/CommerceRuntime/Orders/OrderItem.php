@@ -45,9 +45,11 @@ class OrderItem
 	public $fulfillmentLocationCode;
 
 	/**
-	*The method used to fulfill the item in the order, which is "PickUp" or "Ship".
+	*The method used to fulfill the item in the order, which is "PickUp" or "Ship". The fulfillment method for the order depends on the supported fulfillment types defined for the product.
 	*/
 	public $fulfillmentMethod;
+
+		public $handlingAmount;
 
 	/**
 	*Unique identifier of a specific item in an order.
@@ -118,6 +120,11 @@ class OrderItem
 	*The product properties of an item in an order.
 	*/
 	public $product;
+
+	/**
+	*The discount that applies to the product.
+	*/
+	public $productDiscount;
 
 	/**
 	*List of product discounts that apply to the item in the order.

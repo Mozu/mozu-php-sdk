@@ -14,16 +14,18 @@ namespace Mozu\Api\Clients\Commerce\Customer;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\CustomerAuthTicketUrl;
-use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
+use Mozu\Api\Contracts\Customer\CustomerUserAuthInfo;
+use Mozu\Api\Contracts\Customer\CustomerAuthTicket;
+
 /**
-* 
+* Use the Customer Authentication Tickets resource to generate and refresh authentication tickets for customer accounts.
 */
 class CustomerAuthTicketClient {
 
 	/**
-	* 
+	* Creates an authentication ticket for an anonymous shopper user.
 	*
 	* @return MozuClient
 	*/
@@ -31,38 +33,37 @@ class CustomerAuthTicketClient {
 	{
 		$url = CustomerAuthTicketUrl::createAnonymousShopperAuthTicketUrl();
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
 	/**
-	* 
+	* Generates a new authentication ticket for a customer account.
 	*
-	* @param CustomerUserAuthInfo $userAuthInfo 
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param CustomerUserAuthInfo $userAuthInfo The authentication information required to generate an authetication ticket for a user, which consists of a user name and password.
 	* @return MozuClient
 	*/
-	public static function createUserAuthTicketClient($userAuthInfo)
+	public static function createUserAuthTicketClient($userAuthInfo, $responseFields =  null)
 	{
-		$url = CustomerAuthTicketUrl::createUserAuthTicketUrl();
+		$url = CustomerAuthTicketUrl::createUserAuthTicketUrl($responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($userAuthInfo);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($userAuthInfo);
 
 	}
 	
 	/**
-	* 
+	* Refreshes an existing authentication ticket for a customer account by providing the refresh token string.
 	*
-	* @param string $refreshToken 
+	* @param string $refreshToken The refresh token string required to refresh a user's authentication ticket.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
-	public static function refreshUserAuthTicketClient($refreshToken)
+	public static function refreshUserAuthTicketClient($refreshToken, $responseFields =  null)
 	{
-		$url = CustomerAuthTicketUrl::refreshUserAuthTicketUrl($refreshToken);
+		$url = CustomerAuthTicketUrl::refreshUserAuthTicketUrl($refreshToken, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	

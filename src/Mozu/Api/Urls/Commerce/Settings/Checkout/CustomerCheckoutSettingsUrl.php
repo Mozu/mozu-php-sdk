@@ -19,23 +19,29 @@ class CustomerCheckoutSettingsUrl  {
 
 	/**
 		* Get Resource Url for GetCustomerCheckoutSettings
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function getCustomerCheckoutSettingsUrl()
+	public static function getCustomerCheckoutSettingsUrl($responseFields)
 	{
-		$url = "/api/commerce/settings/checkout/customercheckoutsettings";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = "/api/commerce/settings/checkout/customercheckoutsettings?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdateCustomerCheckoutSettings
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function updateCustomerCheckoutSettingsUrl()
+	public static function updateCustomerCheckoutSettingsUrl($responseFields)
 	{
-		$url = "/api/commerce/settings/checkout/customercheckoutsettings";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = "/api/commerce/settings/checkout/customercheckoutsettings?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	

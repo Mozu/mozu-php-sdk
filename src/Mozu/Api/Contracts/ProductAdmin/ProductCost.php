@@ -14,11 +14,20 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
+/**
+*	The cost a client pays the supplier to stock the product.
+*/
 class ProductCost
 {
-		public $cost;
+	/**
+	*The amount paid by the client to stock the product.
+	*/
+	public $cost;
 
-		public $isoCurrencyCode;
+	/**
+	*3-letter ISO 4217 standard global currency code. Currently, only "USD" (US Dollar) is supported.
+	*/
+	public $isoCurrencyCode;
 
 }
 

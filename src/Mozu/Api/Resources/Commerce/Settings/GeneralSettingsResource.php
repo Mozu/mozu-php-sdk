@@ -12,49 +12,52 @@
 
 namespace Mozu\Api\Resources\Commerce\Settings;
 
-use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Settings\GeneralSettingsClient;
 use Mozu\Api\ApiContext;
-use Mozu\Api\DataViewMode;
-use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\SiteSettings\General\GeneralSettings;
 
 /**
 * Define global site settings such as the site name, shipping and email addresses, and logo images. Block undesirable IP addresses using this resource.
 */
 class GeneralSettingsResource {
 
-		private $apiContext;
+	private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
+	
+
 	/**
 	* Retrieve a site's general global settings.
 	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return GeneralSettings 
 	*/
-	public function getGeneralSettings()
+	public function getGeneralSettings($responseFields =  null)
 	{
-		$mozuClient = GeneralSettingsClient::getGeneralSettingsClient();
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = GeneralSettingsClient::getGeneralSettingsClient($responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
 	* Updates a site's general global settings.
 	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param GeneralSettings $generalSettings The properties of the site's general settings to update.
 	* @return GeneralSettings 
 	*/
-	public function updateGeneralSettings($generalSettings)
+	public function updateGeneralSettings($generalSettings, $responseFields =  null)
 	{
-		$mozuClient = GeneralSettingsClient::updateGeneralSettingsClient($generalSettings);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = GeneralSettingsClient::updateGeneralSettingsClient($generalSettings, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	

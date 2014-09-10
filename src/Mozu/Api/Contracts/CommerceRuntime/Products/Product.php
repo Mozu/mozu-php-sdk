@@ -24,22 +24,45 @@ class Product
 	*/
 	public $description;
 
-		public $discountsRestricted;
+	/**
+	*If true, the system cannot apply any discounts to this product. Discount restrictions are defined at the master catalog level. Client administrators cannot override discount restrictions at the catalog level, but they can limit the restriction to a defined time interval.
+	*/
+	public $discountsRestricted;
 
-		public $discountsRestrictedEndDate;
+	/**
+	*The date and time on which the discount restriction period ends.
+	*/
+	public $discountsRestrictedEndDate;
 
-		public $discountsRestrictedStartDate;
+	/**
+	*The date and time on which the discount restriction period starts.
+	*/
+	public $discountsRestrictedStartDate;
 
-		public $fulfillmentTypesSupported;
+	/**
+	*List of fulfillment types that the product supports.
+	*/
+	public $fulfillmentTypesSupported;
+
+	/**
+	*The type of goods of a product. For example: physical, digital, or digital credit.
+	*/
+	public $goodsType;
 
 	/**
 	*The alternate image description defined for the product, in the language specified in the locale code for the storefront.
 	*/
 	public $imageAlternateText;
 
-		public $imageUrl;
+	/**
+	*The URL of the image file associated with a product on a storefront.
+	*/
+	public $imageUrl;
 
-		public $isPackagedStandAlone;
+	/**
+	*If true, this product cannot ship in a package with other items and must ship in a package by itself.
+	*/
+	public $isPackagedStandAlone;
 
 	/**
 	*If true, the product can be purchased or fulfilled at regular intervals such as a monthly billing cycle or a digital or physical subscription.
@@ -51,7 +74,10 @@ class Product
 	*/
 	public $isTaxable;
 
-		public $mfgPartNumber;
+	/**
+	*The manufacturer's part number for the product.
+	*/
+	public $mfgPartNumber;
 
 	/**
 	*The name of the product that appears on the storefront.
@@ -63,23 +89,35 @@ class Product
 	*/
 	public $productCode;
 
-		public $productReservationId;
+	/**
+	*The unique identifier of the product reservation created for this item in the cart or order.
+	*/
+	public $productReservationId;
 
 	/**
 	*The product type template associated with the product on the storefront.
 	*/
 	public $productType;
 
-		public $productUsage;
+	/**
+	*The usage type that applies to this product, which is Standard (a single product without configurable options), Configurable (a product that includes configurable option attributes), Bundle (a collection of products sold as a single entity), or Component (an invididual product that represents a component in a bundle).
+	*/
+	public $productUsage;
 
-		public $upc;
+	/**
+	*The universal product code defined for the product.
+	*/
+	public $upc;
 
 	/**
 	*Merchant-created code associated with a specific product variation. Variation product codes maintain an association with the base product code.
 	*/
 	public $variationProductCode;
 
-		public $bundledProducts;
+	/**
+	*Collection of component products that make up a single product bundle with its own product code, added to a cart or order.
+	*/
+	public $bundledProducts;
 
 	/**
 	*The list of all categories associated with the product.
@@ -101,7 +139,10 @@ class Product
 	*/
 	public $price;
 
-		public $properties;
+	/**
+	*Collection of property attributes defined for the item in the cart or order.
+	*/
+	public $properties;
 
 }
 
