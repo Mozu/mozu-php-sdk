@@ -1,6 +1,8 @@
 <?php
 
 namespace Mozu\Api;
+
+use Logger;
 use Guzzle\Service\Client as Client;
 use Mozu\Api\Security\AppAuthenticator;
 use Mozu\Api\Resources\Platform\TenantResource;
@@ -20,6 +22,11 @@ class MozuClient {
 	private $response = null;
 	private $isStreamContent = false;
 	private $contentType = null;
+    private $logger = null;
+
+    function __construct() {
+        $this->logger = Logger::getLogger("MozuClient");
+    }
 
 	public function withBaseUrl($baseUrl) {
 		$this->baseUrl = $baseUrl;
