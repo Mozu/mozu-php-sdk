@@ -180,7 +180,7 @@ class MozuClient {
 		{
 			$authentication = AppAuthenticator::getInstance();
 			if ($authentication == null)
-			throw new \Exception("App is not initialized. Use AppAuthenticator to initialize the app.");
+			    throw new \Exception("App is not initialized. Use AppAuthenticator to initialize the app.");
 			if ($authentication->getBaseUrl() == "")
 				throw new \Exception("Authentication.Instance.BaseUrl is missing");
 		
