@@ -21,14 +21,17 @@ class CustomerContactUrl  {
 		* Get Resource Url for GetAccountContact
 		* @param int $accountId Unique identifier of the customer account whose contact information is being retrieved.
 		* @param int $contactId Unique identifier of the customer account contact to retrieve.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function getAccountContactUrl($accountId, $contactId)
+	public static function getAccountContactUrl($accountId, $contactId, $responseFields)
 	{
-		$url = "/api/commerce/customer/accounts/{accountId}/contacts/{contactId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("accountId", $accountId);
-		$url = $mozuUrl->formatUrl("contactId", $contactId);
+		$url = "/api/commerce/customer/accounts/{accountId}/contacts/{contactId}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("accountId", $accountId)
+				->formatUrl("contactId", $contactId)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
@@ -37,32 +40,38 @@ class CustomerContactUrl  {
 		* @param int $accountId Unique identifier of the customer account associated with the contact information to retrieve.
 		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param string $sortBy 
 		* @param int $startIndex 
 		* @return string Resource Url
 	*/
-	public static function getAccountContactsUrl($accountId, $filter, $pageSize, $sortBy, $startIndex)
+	public static function getAccountContactsUrl($accountId, $filter, $pageSize, $responseFields, $sortBy, $startIndex)
 	{
-		$url = "/api/commerce/customer/accounts/{accountId}/contacts?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("accountId", $accountId);
-		$url = $mozuUrl->formatUrl("filter", $filter);
-		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
-		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
-		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
+		$url = "/api/commerce/customer/accounts/{accountId}/contacts?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}&responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("accountId", $accountId)
+				->formatUrl("filter", $filter)
+				->formatUrl("pageSize", $pageSize)
+				->formatUrl("responseFields", $responseFields)
+				->formatUrl("sortBy", $sortBy)
+				->formatUrl("startIndex", $startIndex);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for AddAccountContact
 		* @param int $accountId Unique identifier of the customer account containing the new contact.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function addAccountContactUrl($accountId)
+	public static function addAccountContactUrl($accountId, $responseFields)
 	{
-		$url = "/api/commerce/customer/accounts/{accountId}/contacts";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
-		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		$url = "/api/commerce/customer/accounts/{accountId}/contacts?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("accountId", $accountId)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
@@ -70,14 +79,17 @@ class CustomerContactUrl  {
 		* Get Resource Url for UpdateAccountContact
 		* @param int $accountId Unique identifier of the customer account whose contact information is being updated.
 		* @param int $contactId Unique identifer of the customer account contact being updated.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function updateAccountContactUrl($accountId, $contactId)
+	public static function updateAccountContactUrl($accountId, $contactId, $responseFields)
 	{
-		$url = "/api/commerce/customer/accounts/{accountId}/contacts/{contactId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
-		$url = $mozuUrl->formatUrl("accountId", $accountId);
-		$url = $mozuUrl->formatUrl("contactId", $contactId);
+		$url = "/api/commerce/customer/accounts/{accountId}/contacts/{contactId}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
+		$mozuUrl->formatUrl("accountId", $accountId)
+				->formatUrl("contactId", $contactId)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
@@ -90,9 +102,10 @@ class CustomerContactUrl  {
 	public static function deleteAccountContactUrl($accountId, $contactId)
 	{
 		$url = "/api/commerce/customer/accounts/{accountId}/contacts/{contactId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
-		$url = $mozuUrl->formatUrl("accountId", $accountId);
-		$url = $mozuUrl->formatUrl("contactId", $contactId);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
+		$mozuUrl->formatUrl("accountId", $accountId)
+				->formatUrl("contactId", $contactId);
+
 		return $mozuUrl;
 	}
 	

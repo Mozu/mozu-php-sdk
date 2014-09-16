@@ -25,21 +25,25 @@ class TransactionUrl  {
 	public static function getTransactionsUrl($accountId)
 	{
 		$url = "/api/commerce/customer/accounts/{accountId}/transactions";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("accountId", $accountId);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for AddTransaction
 		* @param int $accountId Unique identifier of the customer account.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function addTransactionUrl($accountId)
+	public static function addTransactionUrl($accountId, $responseFields)
 	{
-		$url = "/api/commerce/customer/accounts/{accountId}/transactions";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
-		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		$url = "/api/commerce/customer/accounts/{accountId}/transactions?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("accountId", $accountId)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
@@ -52,9 +56,10 @@ class TransactionUrl  {
 	public static function removeTransactionUrl($accountId, $transactionId)
 	{
 		$url = "/api/commerce/customer/accounts/{accountId}/transactions/{transactionId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
-		$url = $mozuUrl->formatUrl("accountId", $accountId);
-		$url = $mozuUrl->formatUrl("transactionId", $transactionId);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
+		$mozuUrl->formatUrl("accountId", $accountId)
+				->formatUrl("transactionId", $transactionId);
+
 		return $mozuUrl;
 	}
 	

@@ -20,7 +20,12 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class ProductType
 {
 	/**
-	*Identifier of the entity.
+	*The type of goods for this product.
+	*/
+	public $goodsType;
+
+	/**
+	*Unique identifier of the product type.
 	*/
 	public $id;
 
@@ -29,10 +34,13 @@ class ProductType
 	*/
 	public $isBaseProductType;
 
-		public $masterCatalogId;
+	/**
+	*The unique identifier of the master catalog associated with the entity.
+	*/
+	public $masterCatalogId;
 
 	/**
-	*Name of the product type, such as "Shoes" or "TVs".
+	*Name of the product type, such as "Shoes" or "TVs."
 	*/
 	public $name;
 
@@ -41,7 +49,10 @@ class ProductType
 	*/
 	public $productCount;
 
-		public $productUsages;
+	/**
+	*List of product usages that describe how products of this type are used. Products of this type can be Standard (a single product without configurable options), Configurable (a product that includes configurable option attributes), Bundle (a collection of products sold as a single entity), or Component (an invididual product that represents a component in a bundle). Product type usages cannot be both Bundle and Configurable.
+	*/
+	public $productUsages;
 
 	/**
 	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.

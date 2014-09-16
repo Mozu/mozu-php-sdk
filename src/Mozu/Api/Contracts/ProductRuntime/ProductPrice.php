@@ -19,25 +19,42 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 */
 class ProductPrice
 {
-		public $catalogListPrice;
+	/**
+	*The list price of the product in the catalog.
+	*/
+	public $catalogListPrice;
 
-		public $catalogSalePrice;
+	/**
+	*The sale price defined for the product in the catalog.
+	*/
+	public $catalogSalePrice;
 
-		public $msrp;
+		public $creditValue;
+
+	/**
+	*The manufacturer's suggested retail price for the product.
+	*/
+	public $msrp;
 
 	/**
 	*The price the merchant intends to charge for the product.
 	*/
 	public $price;
 
-		public $priceType;
+	/**
+	*The price type that displays on the storefront website for the Price field, which is List, MAP, or CatalogSalePrice
+	*/
+	public $priceType;
 
 	/**
 	*The sale price defined for the product.
 	*/
 	public $salePrice;
 
-		public $salePriceType;
+	/**
+	*The price type that displays on the storefront website for the Sale Price field, which is CatalogSalePrice, DiscountedList, or DiscountedCatalogSalePrice
+	*/
+	public $salePriceType;
 
 	/**
 	*The discount applied to the product price.

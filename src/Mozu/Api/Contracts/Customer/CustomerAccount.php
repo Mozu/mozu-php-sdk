@@ -29,22 +29,40 @@ class CustomerAccount
 	*/
 	public $companyOrOrganization;
 
-		public $emailAddress;
+	/**
+	*The email address associated with the customer account.
+	*/
+	public $emailAddress;
 
-		public $externalId;
+	/**
+	*Unique identifier an external system uses to identify this customer account.
+	*/
+	public $externalId;
 
-		public $firstName;
+	/**
+	*The first name associated with the customer account.
+	*/
+	public $firstName;
 
 	/**
 	*Identifier of the entity.
 	*/
 	public $id;
 
-		public $isAnonymous;
+	/**
+	*If true, this customer account represents an anonymous shopper.
+	*/
+	public $isAnonymous;
 
-		public $lastName;
+	/**
+	*The last name associated with the customer account.
+	*/
+	public $lastName;
 
-		public $localeCode;
+	/**
+	*Language used for the entity. Currently, only "en-US" is supported.
+	*/
+	public $localeCode;
 
 	/**
 	*If true, this customer account has tax exempt status.
@@ -57,11 +75,14 @@ class CustomerAccount
 	public $taxId;
 
 	/**
-	*Unique identifier of the user associated with the customer account.
+	*Unique identifier of the user associated with the customer account. All customer accounts must have a defined user ID. If the shopper user is anonymous, the user ID represents a system-generated user ID string.
 	*/
 	public $userId;
 
-		public $userName;
+	/**
+	*The user name of the user associated with the customer account.
+	*/
+	public $userName;
 
 	/**
 	*Collection of customer account attributes.
@@ -88,7 +109,10 @@ class CustomerAccount
 	*/
 	public $notes;
 
-		public $segments;
+	/**
+	*List of customer segments associated with the customer account. Customer accounts can be members of any number of segments.
+	*/
+	public $segments;
 
 }
 

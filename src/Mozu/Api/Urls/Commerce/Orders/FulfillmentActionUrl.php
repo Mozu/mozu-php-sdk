@@ -20,13 +20,16 @@ class FulfillmentActionUrl  {
 	/**
 		* Get Resource Url for PerformFulfillmentAction
 		* @param string $orderId Unique identifier of the order for which to perform the fulfillment action.
+		* @param string $responseFields Updated order with a new fulfillment status resulting from the action supplied in the request.
 		* @return string Resource Url
 	*/
-	public static function performFulfillmentActionUrl($orderId)
+	public static function performFulfillmentActionUrl($orderId, $responseFields)
 	{
-		$url = "/api/commerce/orders/{orderId}/fulfillment/actions/";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
-		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = "/api/commerce/orders/{orderId}/fulfillment/actions/?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("orderId", $orderId)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	

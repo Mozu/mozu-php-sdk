@@ -34,7 +34,10 @@ class GatewayCredentialFieldDefinition
 	*/
 	public $name;
 
-		public $volusionStoreName;
+	/**
+	*The name of the Volusion store.
+	*/
+	public $volusionStoreName;
 
 }
 

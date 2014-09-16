@@ -24,7 +24,10 @@ class ProductImage
 	*/
 	public $altText;
 
-		public $cmsId;
+	/**
+	*The identifier of the product image in the Mozu CMS. Supply a value for either the CMS ID or the Image URL parameter.
+	*/
+	public $cmsId;
 
 	/**
 	*Image title that appears on the storefront.

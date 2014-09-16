@@ -39,6 +39,8 @@ class ValidationMessage
 	*/
 	public $sourceId;
 
+		public $validationType;
+
 }
 
 ?>

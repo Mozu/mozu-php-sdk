@@ -24,7 +24,7 @@ class PaymentSettingsUrl  {
 	public static function getThirdPartyPaymentWorkflowsUrl()
 	{
 		$url = "/api/commerce/settings/checkout/paymentsettings/thirdpartyworkflows";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
 		return $mozuUrl;
 	}
 	

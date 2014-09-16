@@ -19,27 +19,31 @@ class OrderValidationResultUrl  {
 
 	/**
 		* Get Resource Url for GetValidationResults
-		* @param string $orderId 
+		* @param string $orderId Unique identifier of the order.
 		* @return string Resource Url
 	*/
 	public static function getValidationResultsUrl($orderId)
 	{
 		$url = "/api/commerce/orders/{orderId}/validationresults";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("orderId", $orderId);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for AddValidationResult
-		* @param string $orderId 
+		* @param string $orderId Unique identifier of the order.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function addValidationResultUrl($orderId)
+	public static function addValidationResultUrl($orderId, $responseFields)
 	{
-		$url = "/api/commerce/orders/{orderId}/validationresults";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
-		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = "/api/commerce/orders/{orderId}/validationresults?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
+		$mozuUrl->formatUrl("orderId", $orderId)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	

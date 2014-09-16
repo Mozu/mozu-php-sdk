@@ -24,14 +24,22 @@ class Product
 	*/
 	public $createDate;
 
-		public $fulfillmentTypesSupported;
+	/**
+	*The list of fulfillment types the product supports.
+	*/
+	public $fulfillmentTypesSupported;
+
+		public $goodsType;
 
 	/**
 	*If true, the product is marked as available for sale. Setting a product to IsActive = false will prevent it from being shown on the customer facing storefront.
 	*/
 	public $isActive;
 
-		public $isPackagedStandAlone;
+	/**
+	*If true, this product cannot ship in a package with other products and must ship in a package by itself.
+	*/
+	public $isPackagedStandAlone;
 
 	/**
 	*If true, the product can be purchased or fulfilled at regular intervals such as a monthly billing cycle or a digital or physical subscription.
@@ -43,9 +51,15 @@ class Product
 	*/
 	public $isTaxable;
 
-		public $mfgPartNumber;
+	/**
+	*The manufacturer part number defined for the product.
+	*/
+	public $mfgPartNumber;
 
-		public $mfgPartNumbers;
+	/**
+	*The list of manufacturer part numbers defined for the product.
+	*/
+	public $mfgPartNumbers;
 
 	/**
 	*Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
@@ -62,7 +76,10 @@ class Product
 	*/
 	public $productType;
 
-		public $productUsage;
+	/**
+	*The usage type that applies to this product, which is Standard (a single product without configurable options), Configurable (a product that includes configurable option attributes), Bundle (a collection of products sold as a single entity), or Component (an invididual product that represents a component in a bundle).
+	*/
+	public $productUsage;
 
 	/**
 	*The publishing state of the product definition in the master catalog, which is "New", "Draft", or "Live".
@@ -70,11 +87,14 @@ class Product
 	public $publishState;
 
 	/**
-	*The universal product code (UPC code) of the product.
+	*The universal product code associated with the product. The UPC of a product is unique across all sales channels.
 	*/
 	public $upc;
 
-		public $upCs;
+	/**
+	*The list of universal product codes defined for the product.
+	*/
+	public $upCs;
 
 	/**
 	*Product code that represents the product variation selected based on the option values the shopper entered.
@@ -86,7 +106,10 @@ class Product
 	*/
 	public $availableShippingDiscounts;
 
-		public $bundledProducts;
+	/**
+	*Properties of a collection of component products that make up a single product bundle with its own product code.
+	*/
+	public $bundledProducts;
 
 	/**
 	*List of categories associated with the product.
@@ -114,7 +137,7 @@ class Product
 	public $options;
 
 	/**
-	*Price that the merchant intends to sell the product which is not necessarily the list price. This is the price the merchant intends to sell the product if no sale price is present.
+	*Unit price that the tenant intends to sell the product if no sale price is set.
 	*/
 	public $price;
 
@@ -123,10 +146,13 @@ class Product
 	*/
 	public $priceRange;
 
-		public $pricingBehavior;
+	/**
+	*Describes the behavior the system uses when determining the price of the product.
+	*/
+	public $pricingBehavior;
 
 	/**
-	*The list of product properties set up in product admin.
+	*The list of product property attributes defined for the product.
 	*/
 	public $properties;
 

@@ -12,49 +12,52 @@
 
 namespace Mozu\Api\Resources\Commerce\Settings\Checkout;
 
-use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Settings\Checkout\CustomerCheckoutSettingsClient;
 use Mozu\Api\ApiContext;
-use Mozu\Api\DataViewMode;
-use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\SiteSettings\Order\CustomerCheckoutSettings;
 
 /**
-* Settings for the checkout login. Choose whether or not shoppers must first login before a purchase can be processed. Choose the option for guests to purchase without logging in, prompt guests to login, or require them to login before a purchase can be completed.
+* Use the Customer Checkout Settings resource to define login settings that apply when shoppers proceed to checkout.
 */
 class CustomerCheckoutSettingsResource {
 
-		private $apiContext;
+	private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
+	
+
 	/**
 	* Retrieves all checkout settings defined for the site: Payment settings, such as the payment gateway ID and credentials, supported credit cards, and more; Customer Checkout settings, such as whether login is required, and any custom attributes; and Order Processing settings, such as when payment is authorized and captured, and any custom attributes.
 	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return CustomerCheckoutSettings 
 	*/
-	public function getCustomerCheckoutSettings()
+	public function getCustomerCheckoutSettings($responseFields =  null)
 	{
-		$mozuClient = CustomerCheckoutSettingsClient::getCustomerCheckoutSettingsClient();
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = CustomerCheckoutSettingsClient::getCustomerCheckoutSettingsClient($responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
 	* Modifies existing site checkout settings. Modify Payment, Customer Checkout, and Order Processing settings in one PUT.
 	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param CustomerCheckoutSettings $customerCheckoutSettings All the properties to update in the checkout settings.
 	* @return CustomerCheckoutSettings 
 	*/
-	public function updateCustomerCheckoutSettings($customerCheckoutSettings)
+	public function updateCustomerCheckoutSettings($customerCheckoutSettings, $responseFields =  null)
 	{
-		$mozuClient = CustomerCheckoutSettingsClient::updateCustomerCheckoutSettingsClient($customerCheckoutSettings);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = CustomerCheckoutSettingsClient::updateCustomerCheckoutSettingsClient($customerCheckoutSettings, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	

@@ -19,7 +19,10 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 */
 class TargetedProduct
 {
-		public $productCode;
+	/**
+	*Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+	*/
+	public $productCode;
 
 }
 

@@ -19,12 +19,15 @@ class SiteShippingSettingsUrl  {
 
 	/**
 		* Get Resource Url for GetSiteShippingSettings
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function getSiteShippingSettingsUrl()
+	public static function getSiteShippingSettingsUrl($responseFields)
 	{
-		$url = "/api/commerce/settings/shipping/";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = "/api/commerce/settings/shipping/?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	

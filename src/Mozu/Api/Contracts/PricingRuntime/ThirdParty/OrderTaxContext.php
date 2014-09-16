@@ -14,15 +14,30 @@ namespace Mozu\Api\Contracts\PricingRuntime\ThirdParty;
 
 
 
+/**
+*	Properties of the tax context applicable for the order.
+*/
 class OrderTaxContext
 {
-		public $handlingFeeTax;
+	/**
+	*Tax amount applied to the handling fee defined for orders on this site.
+	*/
+	public $handlingFeeTax;
 
-		public $orderTax;
+	/**
+	*Tax amount applied to the order.
+	*/
+	public $orderTax;
 
-		public $shippingTax;
+	/**
+	*Tax amount applied to the shipping costs on the order.
+	*/
+	public $shippingTax;
 
-		public $itemTaxContexts;
+	/**
+	*Properties of the tax context applicable for line items in an order.
+	*/
+	public $itemTaxContexts;
 
 }
 

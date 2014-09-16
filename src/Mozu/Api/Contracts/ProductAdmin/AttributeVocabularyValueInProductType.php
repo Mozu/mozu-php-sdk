@@ -29,6 +29,8 @@ class AttributeVocabularyValueInProductType
 	*/
 	public $value;
 
+		public $displayInfo;
+
 	/**
 	*Navigates vocabulary value details for an attribute defined for a product type.
 	*/

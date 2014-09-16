@@ -14,59 +14,61 @@ namespace Mozu\Api\Clients\Commerce\Customer\Attributedefinition;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\Attributedefinition\AttributeUrl;
-use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
+use Mozu\Api\Contracts\Core\Extensible\Attribute;
+use Mozu\Api\Contracts\Core\Extensible\AttributeCollection;
+use Mozu\Api\Contracts\Core\Extensible\AttributeVocabularyValue;
+
 /**
-* 
+* Use the Customer Attribute Definition resource to manage the attributes to define for your shoppers.
 */
 class AttributeClient {
 
 	/**
-	* 
+	* Retrieves a list of customer attributes according to any filter and sort criteria specified in the request.
 	*
-	* @param string $filter 
-	* @param int $pageSize 
-	* @param string $sortBy 
-	* @param int $startIndex 
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return MozuClient
 	*/
-	public static function getAttributesClient($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
+	public static function getAttributesClient($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
-		$url = AttributeUrl::getAttributesUrl($filter, $pageSize, $sortBy, $startIndex);
+		$url = AttributeUrl::getAttributesUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
 	/**
-	* 
+	* Retrieve a list of the vocabulary values defined for the customer attribute specified in the request.
 	*
-	* @param string $attributeFQN 
-	* @return MozuClient
-	*/
-	public static function getAttributeClient($attributeFQN)
-	{
-		$url = AttributeUrl::getAttributeUrl($attributeFQN);
-		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
-
-	}
-	
-	/**
-	* 
-	*
-	* @param string $attributeFQN 
+	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @return MozuClient
 	*/
 	public static function getAttributeVocabularyValuesClient($attributeFQN)
 	{
 		$url = AttributeUrl::getAttributeVocabularyValuesUrl($attributeFQN);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
+
+	}
+	
+	/**
+	* Retrieve a customer attribute definition by supplying its fully qualified name.
+	*
+	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return MozuClient
+	*/
+	public static function getAttributeClient($attributeFQN, $responseFields =  null)
+	{
+		$url = AttributeUrl::getAttributeUrl($attributeFQN, $responseFields);
+		$mozuClient = new MozuClient();
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	

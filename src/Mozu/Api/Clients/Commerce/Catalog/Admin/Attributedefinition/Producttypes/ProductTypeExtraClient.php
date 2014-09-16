@@ -14,8 +14,10 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin\Attributedefinition\Producttyp
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\Attributedefinition\Producttypes\ProductTypeExtraUrl;
-use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
+use Mozu\Api\DataViewMode;
+
+use Mozu\Api\Contracts\ProductAdmin\AttributeInProductType;
 
 /**
 * Use the Extras subresource to define how a product attribute classified as an "extra" is used for a specific product type. Product attribute defintions are unique for each associated product type.
@@ -25,6 +27,7 @@ class ProductTypeExtraClient {
 	/**
 	* Retrieves a list of extra attributes defined for the specified product type.
 	*
+	* @param DataViewMode $dataViewMode
 	* @param int $productTypeId Identifier of the product type.
 	* @return MozuClient
 	*/
@@ -32,72 +35,75 @@ class ProductTypeExtraClient {
 	{
 		$url = ProductTypeExtraUrl::getExtrasUrl($productTypeId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
 
 	}
 	
 	/**
 	* Retrieves the details of an extra attribute definition for the specified product type.
 	*
+	* @param DataViewMode $dataViewMode
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @param int $productTypeId Identifier of the product type whose extra is being retrieved.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
-	public static function getExtraClient($dataViewMode, $productTypeId, $attributeFQN)
+	public static function getExtraClient($dataViewMode, $productTypeId, $attributeFQN, $responseFields =  null)
 	{
-		$url = ProductTypeExtraUrl::getExtraUrl($attributeFQN, $productTypeId);
+		$url = ProductTypeExtraUrl::getExtraUrl($attributeFQN, $productTypeId, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
 
 	}
 	
 	/**
 	* Assigns a defined extra attribute to the product type based on the information supplied in the request.
 	*
+	* @param DataViewMode $dataViewMode
 	* @param int $productTypeId Identifier of the product type.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param AttributeInProductType $attributeInProductType The properties of the extra attribute definition for this product type assignment.
 	* @return MozuClient
 	*/
-	public static function addExtraClient($dataViewMode, $attributeInProductType, $productTypeId)
+	public static function addExtraClient($dataViewMode, $attributeInProductType, $productTypeId, $responseFields =  null)
 	{
-		$url = ProductTypeExtraUrl::addExtraUrl($productTypeId);
+		$url = ProductTypeExtraUrl::addExtraUrl($productTypeId, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($attributeInProductType)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($attributeInProductType)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
 
 	}
 	
 	/**
 	* Update the definition of an extra attribute for the specified product type.
 	*
+	* @param DataViewMode $dataViewMode
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @param int $productTypeId Identifier of the product type.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param AttributeInProductType $attributeInProductType The properties of the extra attribute definition to update for the product type.
 	* @return MozuClient
 	*/
-	public static function updateExtraClient($dataViewMode, $attributeInProductType, $productTypeId, $attributeFQN)
+	public static function updateExtraClient($dataViewMode, $attributeInProductType, $productTypeId, $attributeFQN, $responseFields =  null)
 	{
-		$url = ProductTypeExtraUrl::updateExtraUrl($attributeFQN, $productTypeId);
+		$url = ProductTypeExtraUrl::updateExtraUrl($attributeFQN, $productTypeId, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($attributeInProductType)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($attributeInProductType)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
 
 	}
 	
 	/**
 	* Removes an extra attribute definition from the specified product type.
 	*
+	* @param DataViewMode $dataViewMode
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @param int $productTypeId Identifier of the product type.
+	* @return MozuClient
 	*/
 	public static function deleteExtraClient($dataViewMode, $productTypeId, $attributeFQN)
 	{
 		$url = ProductTypeExtraUrl::deleteExtraUrl($attributeFQN, $productTypeId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
 
 	}
 	

@@ -20,7 +20,7 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Payments;
 class BillingInfo
 {
 	/**
-	*If true, the system overrides the customer's billing address information with the supplied fulfillment information. 
+	*If true, the system overrides the customer's billing address information with the supplied fulfillment information.
 	*/
 	public $isSameBillingShippingAddress;
 
@@ -29,7 +29,10 @@ class BillingInfo
 	*/
 	public $paymentType;
 
-		public $storeCreditCode;
+	/**
+	*The code that identifies the store credit to apply to the order.
+	*/
+	public $storeCreditCode;
 
 	/**
 	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.

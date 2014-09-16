@@ -12,22 +12,27 @@
 
 namespace Mozu\Api\Resources\Commerce;
 
-use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\OrderClient;
 use Mozu\Api\ApiContext;
-use Mozu\Api\DataViewMode;
-use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\CommerceRuntime\Orders\Order;
+use Mozu\Api\Contracts\CommerceRuntime\Orders\OrderAction;
+use Mozu\Api\Contracts\CommerceRuntime\Discounts\AppliedDiscount;
+use Mozu\Api\Contracts\CommerceRuntime\Orders\OrderCollection;
+use Mozu\Api\Contracts\PricingRuntime\TaxableOrder;
 
 /**
 * Use the Orders resource to manage all components of order processing, payment, and fulfillment.
 */
 class OrderResource {
 
-		private $apiContext;
+	private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
+
+	
 
 	/**
 	* Retrieves a list of orders according to any specified filter criteria and sort options.
@@ -36,21 +41,22 @@ class OrderResource {
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $q A list of order search terms to use in the query when searching across order number and the name or email of the billing contact. Separate multiple search terms with a space character.
 	* @param int $qLimit The maximum number of search results to return in the response. You can limit any range between 1-100.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return OrderCollection 
 	*/
-	public function getOrders($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $q =  null, $qLimit =  null)
+	public function getOrders($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $q =  null, $qLimit =  null, $responseFields =  null)
 	{
-		$mozuClient = OrderClient::getOrdersClient($startIndex, $pageSize, $sortBy, $filter, $q, $qLimit);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = OrderClient::getOrdersClient($startIndex, $pageSize, $sortBy, $filter, $q, $qLimit, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
-	* Retrieves available order actions which depends on the status of the order. Actions are "CreateOrder," "SubmitOrder," "SetOrderAsProcessing," "CloseOrder," or "CancelOrder."
+	* Retrieves the actions available to perform for an order based on its current status.
 	*
 	* @param string $orderId Unique identifier of the available order actions to get.
 	* @return array|string 
@@ -58,24 +64,24 @@ class OrderResource {
 	public function getAvailableActions($orderId)
 	{
 		$mozuClient = OrderClient::getAvailableActionsClient($orderId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
-	* 
+	* Retrieves an order for the purpose of splitting it into multiple taxable orders in order to fulfill the order in multiple locations.
 	*
-	* @param string $orderId 
+	* @param string $orderId Unique identifier of the order to retrieve.
 	* @return array|TaxableOrder 
 	*/
 	public function getTaxableOrders($orderId)
 	{
 		$mozuClient = OrderClient::getTaxableOrdersClient($orderId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -84,29 +90,15 @@ class OrderResource {
 	*
 	* @param bool $draft If true, retrieve the draft version of the order, which might include uncommitted changes to the order or its components.
 	* @param string $orderId Unique identifier of the order details to get.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return Order 
 	*/
-	public function getOrder($orderId, $draft =  null)
+	public function getOrder($orderId, $draft =  null, $responseFields =  null)
 	{
-		$mozuClient = OrderClient::getOrderClient($orderId, $draft);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
-
-	}
-	
-	/**
-	* Creates a new order for no-cart quick-ordering scenarios.
-	*
-	* @param Order $order All properties of the order to place.
-	* @return Order 
-	*/
-	public function createOrder($order)
-	{
-		$mozuClient = OrderClient::createOrderClient($order);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = OrderClient::getOrderClient($orderId, $draft, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -114,30 +106,48 @@ class OrderResource {
 	* Creates a new order from an existing cart when the customer chooses to proceed to checkout.
 	*
 	* @param string $cartId Unique identifier of the cart. This is the original cart ID expressed as a GUID.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return Order 
 	*/
-	public function createOrderFromCart($cartId)
+	public function createOrderFromCart($cartId, $responseFields =  null)
 	{
-		$mozuClient = OrderClient::createOrderFromCartClient($cartId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = OrderClient::createOrderFromCartClient($cartId, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
-	* Perform the specified action for an order. Available actions depend on the current status of the order. When in doubt, first get a list of available order actions.
+	* Creates a new order for no-cart quick-ordering scenarios.
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param OrderAction $action Action to perform, which can be "CreateOrder," "SubmitOrder," "SetOrderAsProcessing," "CloseOrder," or "CancelOrder."
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param Order $order Properties of the order to create and submit.
 	* @return Order 
 	*/
-	public function performOrderAction($action, $orderId)
+	public function createOrder($order, $responseFields =  null)
 	{
-		$mozuClient = OrderClient::performOrderActionClient($action, $orderId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = OrderClient::createOrderClient($order, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
+
+	}
+	
+	/**
+	* Perform the specified action for an order. The actions you can perform depend on the current status of the order.
+	*
+	* @param string $orderId Unique identifier of the order.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param OrderAction $action The action to perform for the order.
+	* @return Order 
+	*/
+	public function performOrderAction($action, $orderId, $responseFields =  null)
+	{
+		$mozuClient = OrderClient::performOrderActionClient($action, $orderId, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -146,17 +156,18 @@ class OrderResource {
 	*
 	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
 	* @param string $orderId Unique identifier of the order discount. System-supplied and read only.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $updateMode Specifies whether to modify the discount by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
 	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 	* @param AppliedDiscount $discount Properties of the order discount to update.
 	* @return Order 
 	*/
-	public function updateOrderDiscount($discount, $orderId, $discountId, $updateMode =  null, $version =  null)
+	public function updateOrderDiscount($discount, $orderId, $discountId, $updateMode =  null, $version =  null, $responseFields =  null)
 	{
-		$mozuClient = OrderClient::updateOrderDiscountClient($discount, $orderId, $discountId, $updateMode, $version);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = OrderClient::updateOrderDiscountClient($discount, $orderId, $discountId, $updateMode, $version, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -165,12 +176,13 @@ class OrderResource {
 	*
 	* @param string $orderId Unique identifier of the order associated with the draft to delete.
 	* @param string $version If applicable, the version of the order draft to delete.
+	* @return void
 	*/
 	public function deleteOrderDraft($orderId, $version =  null)
 	{
 		$mozuClient = OrderClient::deleteOrderDraftClient($orderId, $version);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
+		$mozuClient->withContext($this->apiContext)
+				->execute();
 
 	}
 	
@@ -178,14 +190,15 @@ class OrderResource {
 	* Updates the user ID of the shopper who placed the order to the current user.
 	*
 	* @param string $orderId Unique identifier of the order.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return Order 
 	*/
-	public function changeOrderUserId($orderId)
+	public function changeOrderUserId($orderId, $responseFields =  null)
 	{
-		$mozuClient = OrderClient::changeOrderUserIdClient($orderId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = OrderClient::changeOrderUserIdClient($orderId, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -193,17 +206,18 @@ class OrderResource {
 	* Updates the specified order when additional order information, such as shipping or billing information, is modified during the checkout process.
 	*
 	* @param string $orderId Unique identifier of the order to update.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
 	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 	* @param Order $order The properties of the order to update.
 	* @return Order 
 	*/
-	public function updateOrder($order, $orderId, $updateMode =  null, $version =  null)
+	public function updateOrder($order, $orderId, $updateMode =  null, $version =  null, $responseFields =  null)
 	{
-		$mozuClient = OrderClient::updateOrderClient($order, $orderId, $updateMode, $version);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = OrderClient::updateOrderClient($order, $orderId, $updateMode, $version, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	

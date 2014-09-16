@@ -12,36 +12,73 @@
 
 namespace Mozu\Api\Resources\Content;
 
-use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Content\DocumentTypeClient;
 use Mozu\Api\ApiContext;
-use Mozu\Api\DataViewMode;
-use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\Content\DocumentType;
+use Mozu\Api\Contracts\Content\DocumentTypeCollection;
 
 /**
-* The DocumentTypes resource is a part of the Content Service.
+* Use the Document Types resource to view the document types supplied by the Content API.
 */
 class DocumentTypeResource {
 
-		private $apiContext;
-	public function __construct(ApiContext $apiContext) 
+	private $apiContext;
+	private $dataViewMode;
+	public function __construct(ApiContext $apiContext, $dataViewMode) 
 	{
 		$this->apiContext = $apiContext;
+		$this->dataViewMode = $dataViewMode;
 	}
 
+	
+
+	/**
+	* Retrieves a paged list of the system-defined document types.
+	*
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+	* @return DocumentTypeCollection 
+	*/
+	public function getDocumentTypes($pageSize =  null, $startIndex =  null, $responseFields =  null)
+	{
+		$mozuClient = DocumentTypeClient::getDocumentTypesClient($this->dataViewMode, $pageSize, $startIndex, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
+
+	}
+	
+	/**
+	* Retrieves a system-defined document type.
+	*
+	* @param string $documentTypeName The name of the document type to retrieve.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return DocumentType 
+	*/
+	public function getDocumentType($documentTypeName, $responseFields =  null)
+	{
+		$mozuClient = DocumentTypeClient::getDocumentTypeClient($this->dataViewMode, $documentTypeName, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
+
+	}
+	
 	/**
 	* 
 	*
-	* @param int $pageSize 
-	* @param int $startIndex 
-	* @return DocumentTypeCollection 
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param DocumentType $documentType 
+	* @return DocumentType 
 	*/
-	public function getDocumentTypes($dataViewMode, $pageSize =  null, $startIndex =  null)
+	public function createDocumentType($documentType, $responseFields =  null)
 	{
-		$mozuClient = DocumentTypeClient::getDocumentTypesClient($dataViewMode, $pageSize, $startIndex);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = DocumentTypeClient::createDocumentTypeClient($this->dataViewMode, $documentType, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -49,14 +86,16 @@ class DocumentTypeResource {
 	* 
 	*
 	* @param string $documentTypeName 
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param DocumentType $documentType 
 	* @return DocumentType 
 	*/
-	public function getDocumentType($dataViewMode, $documentTypeName)
+	public function updateDocumentType($documentType, $documentTypeName, $responseFields =  null)
 	{
-		$mozuClient = DocumentTypeClient::getDocumentTypeClient($dataViewMode, $documentTypeName);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = DocumentTypeClient::updateDocumentTypeClient($documentType, $documentTypeName, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	

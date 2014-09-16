@@ -14,8 +14,13 @@ namespace Mozu\Api\Clients\Commerce;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\OrderUrl;
-use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\CommerceRuntime\Orders\Order;
+use Mozu\Api\Contracts\CommerceRuntime\Orders\OrderAction;
+use Mozu\Api\Contracts\CommerceRuntime\Discounts\AppliedDiscount;
+use Mozu\Api\Contracts\CommerceRuntime\Orders\OrderCollection;
+use Mozu\Api\Contracts\PricingRuntime\TaxableOrder;
 
 /**
 * Use the Orders resource to manage all components of order processing, payment, and fulfillment.
@@ -29,21 +34,21 @@ class OrderClient {
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $q A list of order search terms to use in the query when searching across order number and the name or email of the billing contact. Separate multiple search terms with a space character.
 	* @param int $qLimit The maximum number of search results to return in the response. You can limit any range between 1-100.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getOrdersClient($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $q =  null, $qLimit =  null)
+	public static function getOrdersClient($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $q =  null, $qLimit =  null, $responseFields =  null)
 	{
-		$url = OrderUrl::getOrdersUrl($filter, $pageSize, $q, $qLimit, $sortBy, $startIndex);
+		$url = OrderUrl::getOrdersUrl($filter, $pageSize, $q, $qLimit, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
 	/**
-	* Retrieves available order actions which depends on the status of the order. Actions are "CreateOrder," "SubmitOrder," "SetOrderAsProcessing," "CloseOrder," or "CancelOrder."
+	* Retrieves the actions available to perform for an order based on its current status.
 	*
 	* @param string $orderId Unique identifier of the available order actions to get.
 	* @return MozuClient
@@ -52,23 +57,21 @@ class OrderClient {
 	{
 		$url = OrderUrl::getAvailableActionsUrl($orderId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
 	/**
-	* 
+	* Retrieves an order for the purpose of splitting it into multiple taxable orders in order to fulfill the order in multiple locations.
 	*
-	* @param string $orderId 
+	* @param string $orderId Unique identifier of the order to retrieve.
 	* @return MozuClient
 	*/
 	public static function getTaxableOrdersClient($orderId)
 	{
 		$url = OrderUrl::getTaxableOrdersUrl($orderId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
@@ -77,29 +80,14 @@ class OrderClient {
 	*
 	* @param bool $draft If true, retrieve the draft version of the order, which might include uncommitted changes to the order or its components.
 	* @param string $orderId Unique identifier of the order details to get.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
-	public static function getOrderClient($orderId, $draft =  null)
+	public static function getOrderClient($orderId, $draft =  null, $responseFields =  null)
 	{
-		$url = OrderUrl::getOrderUrl($draft, $orderId);
+		$url = OrderUrl::getOrderUrl($draft, $orderId, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
-
-	}
-	
-	/**
-	* Creates a new order for no-cart quick-ordering scenarios.
-	*
-	* @param Order $order All properties of the order to place.
-	* @return MozuClient
-	*/
-	public static function createOrderClient($order)
-	{
-		$url = OrderUrl::createOrderUrl();
-		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($order);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
@@ -107,30 +95,45 @@ class OrderClient {
 	* Creates a new order from an existing cart when the customer chooses to proceed to checkout.
 	*
 	* @param string $cartId Unique identifier of the cart. This is the original cart ID expressed as a GUID.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
-	public static function createOrderFromCartClient($cartId)
+	public static function createOrderFromCartClient($cartId, $responseFields =  null)
 	{
-		$url = OrderUrl::createOrderFromCartUrl($cartId);
+		$url = OrderUrl::createOrderFromCartUrl($cartId, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
 	/**
-	* Perform the specified action for an order. Available actions depend on the current status of the order. When in doubt, first get a list of available order actions.
+	* Creates a new order for no-cart quick-ordering scenarios.
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param OrderAction $action Action to perform, which can be "CreateOrder," "SubmitOrder," "SetOrderAsProcessing," "CloseOrder," or "CancelOrder."
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param Order $order Properties of the order to create and submit.
 	* @return MozuClient
 	*/
-	public static function performOrderActionClient($action, $orderId)
+	public static function createOrderClient($order, $responseFields =  null)
 	{
-		$url = OrderUrl::performOrderActionUrl($orderId);
+		$url = OrderUrl::createOrderUrl($responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($action);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($order);
+
+	}
+	
+	/**
+	* Perform the specified action for an order. The actions you can perform depend on the current status of the order.
+	*
+	* @param string $orderId Unique identifier of the order.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param OrderAction $action The action to perform for the order.
+	* @return MozuClient
+	*/
+	public static function performOrderActionClient($action, $orderId, $responseFields =  null)
+	{
+		$url = OrderUrl::performOrderActionUrl($orderId, $responseFields);
+		$mozuClient = new MozuClient();
+		return $mozuClient->withResourceUrl($url)->withBody($action);
 
 	}
 	
@@ -139,17 +142,17 @@ class OrderClient {
 	*
 	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
 	* @param string $orderId Unique identifier of the order discount. System-supplied and read only.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $updateMode Specifies whether to modify the discount by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
 	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 	* @param AppliedDiscount $discount Properties of the order discount to update.
 	* @return MozuClient
 	*/
-	public static function updateOrderDiscountClient($discount, $orderId, $discountId, $updateMode =  null, $version =  null)
+	public static function updateOrderDiscountClient($discount, $orderId, $discountId, $updateMode =  null, $version =  null, $responseFields =  null)
 	{
-		$url = OrderUrl::updateOrderDiscountUrl($discountId, $orderId, $updateMode, $version);
+		$url = OrderUrl::updateOrderDiscountUrl($discountId, $orderId, $responseFields, $updateMode, $version);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($discount);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($discount);
 
 	}
 	
@@ -158,13 +161,13 @@ class OrderClient {
 	*
 	* @param string $orderId Unique identifier of the order associated with the draft to delete.
 	* @param string $version If applicable, the version of the order draft to delete.
+	* @return MozuClient
 	*/
 	public static function deleteOrderDraftClient($orderId, $version =  null)
 	{
 		$url = OrderUrl::deleteOrderDraftUrl($orderId, $version);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
@@ -172,14 +175,14 @@ class OrderClient {
 	* Updates the user ID of the shopper who placed the order to the current user.
 	*
 	* @param string $orderId Unique identifier of the order.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
-	public static function changeOrderUserIdClient($orderId)
+	public static function changeOrderUserIdClient($orderId, $responseFields =  null)
 	{
-		$url = OrderUrl::changeOrderUserIdUrl($orderId);
+		$url = OrderUrl::changeOrderUserIdUrl($orderId, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
@@ -187,17 +190,17 @@ class OrderClient {
 	* Updates the specified order when additional order information, such as shipping or billing information, is modified during the checkout process.
 	*
 	* @param string $orderId Unique identifier of the order to update.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
 	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 	* @param Order $order The properties of the order to update.
 	* @return MozuClient
 	*/
-	public static function updateOrderClient($order, $orderId, $updateMode =  null, $version =  null)
+	public static function updateOrderClient($order, $orderId, $updateMode =  null, $version =  null, $responseFields =  null)
 	{
-		$url = OrderUrl::updateOrderUrl($orderId, $updateMode, $version);
+		$url = OrderUrl::updateOrderUrl($orderId, $responseFields, $updateMode, $version);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($order);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($order);
 
 	}
 	

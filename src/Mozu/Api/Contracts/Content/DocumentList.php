@@ -19,8 +19,10 @@ namespace Mozu\Api\Contracts\Content;
 */
 class DocumentList
 {
+		public $documentListType;
+
 	/**
-	*A document type is a template.
+	*List of document types associated with this document list.
 	*/
 	public $documentTypes;
 
@@ -29,15 +31,31 @@ class DocumentList
 	*/
 	public $enablePublishing;
 
+		public $listFQN;
+
 	/**
 	*The name of the document list.
 	*/
 	public $name;
 
+		public $namespace;
+
+		public $scopeId;
+
+		public $scopeType;
+
+		public $security;
+
 	/**
 	*If true, changes documents in this list can be saved as drafts until they are published to the site. If false, all document changes are immediately published in live mode. System-supplied and read only.
 	*/
 	public $supportsPublishing;
+
+		public $usages;
+
+		public $metadata;
+
+		public $views;
 
 }
 

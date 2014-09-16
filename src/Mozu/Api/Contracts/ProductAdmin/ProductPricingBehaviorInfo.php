@@ -14,13 +14,25 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
+/**
+*	Properties that describe the behavior the system uses when determining the price of the product.
+*/
 class ProductPricingBehaviorInfo
 {
-		public $discountsRestricted;
+	/**
+	*If true, the system cannot apply any discounts to this product. Discount restrictions are defined at the master catalog level. Client administrators cannot override discount restrictions at the catalog level, but they can limit the restriction to a defined time interval.
+	*/
+	public $discountsRestricted;
 
-		public $discountsRestrictedEndDate;
+	/**
+	*If discounts are restricted for this product, the date and time the discount restriction ends, in UTC datetime.
+	*/
+	public $discountsRestrictedEndDate;
 
-		public $discountsRestrictedStartDate;
+	/**
+	*If discounts are restricted for this product, the date and time the discount restriction begins, in UTC datetime.
+	*/
+	public $discountsRestrictedStartDate;
 
 }
 

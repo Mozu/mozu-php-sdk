@@ -19,23 +19,29 @@ class ApplicationUrl  {
 
 	/**
 		* Get Resource Url for ThirdPartyGetApplication
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function thirdPartyGetApplicationUrl()
+	public static function thirdPartyGetApplicationUrl($responseFields)
 	{
-		$url = "/api/commerce/settings/applications/";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = "/api/commerce/settings/applications/?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for ThirdPartyUpdateApplication
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function thirdPartyUpdateApplicationUrl()
+	public static function thirdPartyUpdateApplicationUrl($responseFields)
 	{
-		$url = "/api/commerce/settings/applications/";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = "/api/commerce/settings/applications/?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	

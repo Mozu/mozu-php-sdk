@@ -14,8 +14,9 @@ namespace Mozu\Api\Clients\Commerce\Settings\General;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Settings\General\TaxableTerritoryUrl;
-use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\SiteSettings\General\TaxableTerritory;
 
 /**
 * Use the taxable territories subresource to manage the regional territories for this site that are subejct to sales tax.
@@ -31,23 +32,22 @@ class TaxableTerritoryClient {
 	{
 		$url = TaxableTerritoryUrl::getTaxableTerritoriesUrl();
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
 	/**
 	* Creates a new territory for which to calculate sales tax.
 	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param TaxableTerritory $taxableTerritory Properties of the taxable territory to create.
 	* @return MozuClient
 	*/
-	public static function addTaxableTerritoryClient($taxableTerritory)
+	public static function addTaxableTerritoryClient($taxableTerritory, $responseFields =  null)
 	{
-		$url = TaxableTerritoryUrl::addTaxableTerritoryUrl();
+		$url = TaxableTerritoryUrl::addTaxableTerritoryUrl($responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($taxableTerritory);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($taxableTerritory);
 
 	}
 	
@@ -61,8 +61,7 @@ class TaxableTerritoryClient {
 	{
 		$url = TaxableTerritoryUrl::updateTaxableTerritoriesUrl();
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($taxableterritories);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($taxableterritories);
 
 	}
 	

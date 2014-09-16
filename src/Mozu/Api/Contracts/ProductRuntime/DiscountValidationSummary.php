@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 
+/**
+*	List of discounts the shopper can redeem for a product in its current state.
+*/
 class DiscountValidationSummary
 {
-		public $applicableDiscounts;
+	/**
+	*List of discount IDs the shopper can redeem for a product in its current state.
+	*/
+	public $applicableDiscounts;
 
 }
 

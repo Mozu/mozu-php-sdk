@@ -2,9 +2,11 @@
 
 namespace Mozu\Api\Security;
 
+use Logger;
 use DateTime;
 use Mozu\Api\Contracts\AppDev\AppAuthInfo;
 use Mozu\Api\Contracts\AppDev\AuthTicketRequest;
+use Mozu\Api\MozuConfig;
 use Mozu\Api\Security\RefreshInterval;
 use Mozu\Api\MozuClient as MozuClient;
 use Mozu\Api\Urls\Platform\Applications\AuthTicketUrl;
@@ -20,19 +22,22 @@ class AppAuthenticator {
 	private $authTicket = null;
 	private static $instance = null;
 	private $refreshInterval = null;
-	
+    private $logger;
+
 	private function __construct(AppAuthInfo $appAuthInfo, $baseUrl) {
 		$this->appAuthInfo = $appAuthInfo;
 		$this->baseUrl = $baseUrl;
 		
-		
+		$this->logger = Logger::getLogger("AppAuthenticator");
 	}
 			
-	public static function initialize(AppAuthInfo $appAuthInfo, $baseUrl,RefreshInterval  $refreshInterval = null) {
+	public static function initialize(AppAuthInfo $appAuthInfo, RefreshInterval  $refreshInterval = null) {
 
-		if (!isset($appAuthInfo) || !isset($baseUrl) || trim($baseUrl) == "")
-			throw new \Exception("AppAuthInfo or BaseURL is missing");
-		
+		if (!isset($appAuthInfo))
+			throw new \Exception("AppAuthInfo is missing");
+
+        $baseUrl = MozuConfig::getBaseUrl();
+
 		if (!isset($appAuthInfo->applicationId) || !isset($appAuthInfo->sharedSecret) 
 			|| trim($appAuthInfo->applicationId) == "" || trim($appAuthInfo->sharedSecret) == "")
 			throw new \Exception("Application or SharedSecret is missing");
@@ -48,8 +53,8 @@ class AppAuthenticator {
 			try {
 				static::$instance->authenticateApp();
 			} catch(\Exception $exc) {
-				static::$instance == null;
-				throw $exc;
+                static::$instance == null;
+                throw $exc;
 			}
 		}
 		return static::$instance;
@@ -58,13 +63,16 @@ class AppAuthenticator {
 	private function authenticateApp() {
 		try {
 			$client = new Client ( $this->baseUrl, HttpHelper::getGuzzleConfig() );
-			$request = $client->post( AuthTicketUrl::AuthenticateAppUrl()->getUrl());
+			$request = $client->post( AuthTicketUrl::AuthenticateAppUrl(null)->getUrl());
 			$request->setBody ( json_encode($this->appAuthInfo), 'application/json' );
 			$response = $request->send();
 			$jsonResp = $response->getBody ( true );
 			static::$instance->authTicket = json_decode ( $jsonResp );
 			$this->setRefreshInterval(false);
+            $this->logger->info("Access Token - " .$this->authTicket->accessToken);
+
 		} catch(\Exception $e) {
+            $this->logger->error($e->getMessage(), $e);
 			HttpHelper::checkError($e);	
 		} 
 	}
@@ -74,14 +82,16 @@ class AppAuthenticator {
 			$requestData = new AuthTicketRequest();
 			$requestData->refreshToken = $this->authTicket->refreshToken;
 			$client = new Client ( $this->baseUrl, HttpHelper::getGuzzleConfig() );
-			$request = $client->put( AuthTicketUrl::RefreshAppAuthTicketUrl()->getUrl());
+			$request = $client->put( AuthTicketUrl::RefreshAppAuthTicketUrl(null)->getUrl());
 			$request->setBody ( json_encode($requestData), 'application/json' );
 			$response = $request->send();
 			$jsonResp = $response->getBody ( true );
 			$this->authTicket = json_decode ( $jsonResp );
 			
 			$this->setRefreshInterval(true);
+
 		} catch(\Exception $e) {
+            $this->logger->error($e->getMessage(), $e);
 			HttpHelper::checkError($e);
 		}
 	}
@@ -103,9 +113,9 @@ class AppAuthenticator {
 		$this->refreshInterval
 				->setAccessTokenExpiration($accessTokenExpiration)
 				->setRefreshTokenExpiration($refreshTokenExpiration);
-		
-		echo "Access Token Expiration - " . $this->refreshInterval->getAccessTokenExpiration()->format('Y-m-d H:i:s') . "\n";
-		echo "Refresh Token Expiration - " .$this->refreshInterval->getRefreshTokenExpiration()->format('Y-m-d H:i:s'). "\n";
+
+		$this->logger->info("Access Token Expiration - " . $this->refreshInterval->getAccessTokenExpiration()->format('Y-m-d H:i:s'));
+        $this->logger->info("Refresh Token Expiration - " .$this->refreshInterval->getRefreshTokenExpiration()->format('Y-m-d H:i:s'));
 	}
 	
 	public function addAuthHeader(Request $request) {
@@ -119,7 +129,7 @@ class AppAuthenticator {
 
 	private function ensureAuthTicket() {
 		$dateTimeNow = new DateTime();
-		echo  ($dateTimeNow >= $this->refreshInterval->getRefreshTokenExpiration());
+        $this->logger->info($dateTimeNow >= $this->refreshInterval->getRefreshTokenExpiration());
 		if ($this->authTicket == null || $dateTimeNow >= $this->refreshInterval->getRefreshTokenExpiration())
 			$this->authenticateApp();
 		else if ($dateTimeNow >= $this->refreshInterval->getAccessTokenExpiration())

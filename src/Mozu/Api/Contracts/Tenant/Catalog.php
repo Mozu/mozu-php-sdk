@@ -50,11 +50,17 @@ class Catalog
 	*/
 	public $name;
 
-		public $tenantId;
+	/**
+	*The current status of the product catalog.
+	*/
+	public $status;
+
+	/**
+	*Unique identifier of the Mozu tenant.
+	*/
+	public $tenantId;
 
 		public $updateDate;
-
-		public $status;
 
 }
 

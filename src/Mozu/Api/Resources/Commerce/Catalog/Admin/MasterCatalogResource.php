@@ -12,49 +12,53 @@
 
 namespace Mozu\Api\Resources\Commerce\Catalog\Admin;
 
-use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Catalog\Admin\MasterCatalogClient;
 use Mozu\Api\ApiContext;
-use Mozu\Api\DataViewMode;
-use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\ProductAdmin\MasterCatalog;
+use Mozu\Api\Contracts\ProductAdmin\MasterCatalogCollection;
 
 /**
 * Use the Master Catalog resource to view details of the master catalogs associated with a tenant and to manage the product publishing mode for each master catalog.
 */
 class MasterCatalogResource {
 
-		private $apiContext;
+	private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
+	
+
 	/**
 	* Retrieve the details of all master catalog associated with a tenant.
 	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MasterCatalogCollection 
 	*/
-	public function getMasterCatalogs()
+	public function getMasterCatalogs($responseFields =  null)
 	{
-		$mozuClient = MasterCatalogClient::getMasterCatalogsClient();
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = MasterCatalogClient::getMasterCatalogsClient($responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
 	* Retrieve the details of the master catalog specified in the request.
 	*
-	* @param int $masterCatalogId 
+	* @param int $masterCatalogId The unique identifier of the master catalog associated with the entity.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MasterCatalog 
 	*/
-	public function getMasterCatalog($dataViewMode, $masterCatalogId)
+	public function getMasterCatalog($masterCatalogId, $responseFields =  null)
 	{
-		$mozuClient = MasterCatalogClient::getMasterCatalogClient($dataViewMode, $masterCatalogId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = MasterCatalogClient::getMasterCatalogClient($masterCatalogId, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -62,15 +66,16 @@ class MasterCatalogResource {
 	* Updates the product publishing mode for the master catalog specified in the request.
 	*
 	* @param int $masterCatalogId 
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param MasterCatalog $masterCatalog Properties of the master catalog to update, which consists of the product publishing mode. Possible values are "Pending" which saves product updates in draft mode until they are published, and "Live" which publishes all product changes immediately.
 	* @return MasterCatalog 
 	*/
-	public function updateMasterCatalog($dataViewMode, $masterCatalog, $masterCatalogId)
+	public function updateMasterCatalog($masterCatalog, $masterCatalogId, $responseFields =  null)
 	{
-		$mozuClient = MasterCatalogClient::updateMasterCatalogClient($dataViewMode, $masterCatalog, $masterCatalogId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = MasterCatalogClient::updateMasterCatalogClient($masterCatalog, $masterCatalogId, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	

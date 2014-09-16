@@ -21,176 +21,207 @@ class CustomerAccountUrl  {
 		* Get Resource Url for GetAccounts
 		* @param string $fields The fields to include in the response.
 		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-		* @param bool $isAnonymous 
+		* @param bool $isAnonymous If true, retrieve anonymous shopper accounts in the response.
 		* @param int $pageSize 
 		* @param string $q A list of customer account search terms to use in the query when searching across customer name and email. Separate multiple search terms with a space character.
 		* @param int $qLimit The maximum number of search results to return in the response. You can limit any range between 1-100.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param string $sortBy 
 		* @param int $startIndex 
 		* @return string Resource Url
 	*/
-	public static function getAccountsUrl($fields, $filter, $isAnonymous, $pageSize, $q, $qLimit, $sortBy, $startIndex)
+	public static function getAccountsUrl($fields, $filter, $isAnonymous, $pageSize, $q, $qLimit, $responseFields, $sortBy, $startIndex)
 	{
-		$url = "/api/commerce/customer/accounts/?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}&fields={fields}&q={q}&qLimit={qLimit}&isAnonymous={isAnonymous}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("fields", $fields);
-		$url = $mozuUrl->formatUrl("filter", $filter);
-		$url = $mozuUrl->formatUrl("isAnonymous", $isAnonymous);
-		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
-		$url = $mozuUrl->formatUrl("q", $q);
-		$url = $mozuUrl->formatUrl("qLimit", $qLimit);
-		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
-		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
+		$url = "/api/commerce/customer/accounts/?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}&fields={fields}&q={q}&qLimit={qLimit}&isAnonymous={isAnonymous}&responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("fields", $fields)
+				->formatUrl("filter", $filter)
+				->formatUrl("isAnonymous", $isAnonymous)
+				->formatUrl("pageSize", $pageSize)
+				->formatUrl("q", $q)
+				->formatUrl("qLimit", $qLimit)
+				->formatUrl("responseFields", $responseFields)
+				->formatUrl("sortBy", $sortBy)
+				->formatUrl("startIndex", $startIndex);
+
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for GetLoginState
+		* @param int $accountId Unique identifier of the customer account.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @return string Resource Url
+	*/
+	public static function getLoginStateUrl($accountId, $responseFields)
+	{
+		$url = "/api/commerce/customer/accounts/{accountId}/loginstate?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("accountId", $accountId)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetAccount
 		* @param int $accountId Unique identifier of the customer account to retrieve.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function getAccountUrl($accountId)
+	public static function getAccountUrl($accountId, $responseFields)
 	{
-		$url = "/api/commerce/customer/accounts/{accountId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("accountId", $accountId);
-		return $mozuUrl;
-	}
-	
-	/**
-		* Get Resource Url for GetLoginState
-		* @param int $accountId 
-		* @return string Resource Url
-	*/
-	public static function getLoginStateUrl($accountId)
-	{
-		$url = "/api/commerce/customer/accounts/{accountId}/loginstate";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		$url = "/api/commerce/customer/accounts/{accountId}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("accountId", $accountId)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for AddAccount
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function addAccountUrl()
+	public static function addAccountUrl($responseFields)
 	{
-		$url = "/api/commerce/customer/accounts/";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = "/api/commerce/customer/accounts/?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for ChangePassword
-		* @param int $accountId 
+		* @param int $accountId The customer account information required to change the userpassword.
 		* @return string Resource Url
 	*/
 	public static function changePasswordUrl($accountId)
 	{
 		$url = "/api/commerce/customer/accounts/{accountId}/Change-Password";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
-		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("accountId", $accountId);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for AddLoginToExistingCustomer
-		* @param int $accountId 
+		* @param int $accountId Unique identifier of the customer account.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function addLoginToExistingCustomerUrl($accountId)
+	public static function addLoginToExistingCustomerUrl($accountId, $responseFields)
 	{
-		$url = "/api/commerce/customer/accounts/{accountId}/Create-Login";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
-		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		$url = "/api/commerce/customer/accounts/{accountId}/Create-Login?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("accountId", $accountId)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for RecomputeCustomerLifetimeValue
-		* @param int $accountId 
+		* @param int $accountId The unique identifier of the customer account for which to calculate customer lifetime value.
 		* @return string Resource Url
 	*/
 	public static function recomputeCustomerLifetimeValueUrl($accountId)
 	{
 		$url = "/api/commerce/customer/accounts/{accountId}/recomputelifetimevalue";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
-		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("accountId", $accountId);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for SetLoginLocked
-		* @param int $accountId 
+		* @param int $accountId The unique identifier of the customer account.
 		* @return string Resource Url
 	*/
 	public static function setLoginLockedUrl($accountId)
 	{
 		$url = "/api/commerce/customer/accounts/{accountId}/Set-Login-Locked";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
-		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("accountId", $accountId);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for SetPasswordChangeRequired
-		* @param int $accountId 
+		* @param int $accountId Unique identifier of the customer account.
 		* @return string Resource Url
 	*/
 	public static function setPasswordChangeRequiredUrl($accountId)
 	{
 		$url = "/api/commerce/customer/accounts/{accountId}/Set-Password-Change-Required";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
-		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("accountId", $accountId);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for AddAccountAndLogin
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function addAccountAndLoginUrl()
+	public static function addAccountAndLoginUrl($responseFields)
 	{
-		$url = "/api/commerce/customer/accounts/Add-Account-And-Login";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = "/api/commerce/customer/accounts/Add-Account-And-Login?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for AddAccounts
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function addAccountsUrl()
+	public static function addAccountsUrl($responseFields)
 	{
-		$url = "/api/commerce/customer/accounts/Bulk";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = "/api/commerce/customer/accounts/Bulk?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetLoginStateByEmailAddress
-		* @param string $emailAddress 
+		* @param string $emailAddress The email address associated with the customer account.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function getLoginStateByEmailAddressUrl($emailAddress)
+	public static function getLoginStateByEmailAddressUrl($emailAddress, $responseFields)
 	{
-		$url = "/api/commerce/customer/accounts/loginstatebyemailaddress?emailAddress={emailAddress}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
-		$url = $mozuUrl->formatUrl("emailAddress", $emailAddress);
+		$url = "/api/commerce/customer/accounts/loginstatebyemailaddress?emailAddress={emailAddress}&responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("emailAddress", $emailAddress)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetLoginStateByUserName
-		* @param string $userName 
+		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $userName The user name associated with the customer account.
 		* @return string Resource Url
 	*/
-	public static function getLoginStateByUserNameUrl($userName)
+	public static function getLoginStateByUserNameUrl($responseFields, $userName)
 	{
-		$url = "/api/commerce/customer/accounts/loginstatebyusername?userName={userName}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
-		$url = $mozuUrl->formatUrl("userName", $userName);
+		$url = "/api/commerce/customer/accounts/loginstatebyusername?userName={userName}&responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields)
+				->formatUrl("userName", $userName);
+
 		return $mozuUrl;
 	}
 	
@@ -201,20 +232,24 @@ class CustomerAccountUrl  {
 	public static function resetPasswordUrl()
 	{
 		$url = "/api/commerce/customer/accounts/Reset-Password";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdateAccount
 		* @param int $accountId Unique identifier of the customer account.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function updateAccountUrl($accountId)
+	public static function updateAccountUrl($accountId, $responseFields)
 	{
-		$url = "/api/commerce/customer/accounts/{accountId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
-		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		$url = "/api/commerce/customer/accounts/{accountId}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
+		$mozuUrl->formatUrl("accountId", $accountId)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
@@ -226,8 +261,9 @@ class CustomerAccountUrl  {
 	public static function deleteAccountUrl($accountId)
 	{
 		$url = "/api/commerce/customer/accounts/{accountId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
-		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
+		$mozuUrl->formatUrl("accountId", $accountId);
+
 		return $mozuUrl;
 	}
 	

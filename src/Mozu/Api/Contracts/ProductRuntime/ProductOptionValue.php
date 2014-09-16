@@ -64,6 +64,10 @@ class ProductOptionValue
 	*/
 	public $value;
 
+		public $bundledProduct;
+
+		public $displayInfo;
+
 }
 
 ?>

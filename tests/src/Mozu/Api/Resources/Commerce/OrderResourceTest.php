@@ -1,5 +1,7 @@
 <?php
 
+namespace Mozu\Api\Resource\Commerce;
+
 require_once __DIR__ . '/../../../../BaseTest.php';
 
 use Mozu\Tests\BaseTest;
@@ -26,7 +28,7 @@ class OrderResourceTest extends BaseTest
 	protected function setUp()
 	{
 		
-		$apiContext = new ApiContext($this->tenantId, 0, 1, 1);
+		$apiContext = new ApiContext($this->tenantId);
 		$this->object = new OrderResource($apiContext);
 
 	}
@@ -44,32 +46,41 @@ class OrderResourceTest extends BaseTest
 	 * @covers Mozu\Api\Resources\Content\Documentlists\DocumentResource::getDocumentContent
 	 * @todo Implement testGetDocumentContent().
 	 */
-	public function testGetOrders()
+	public function testGetOrdersByFilter()
 	{
-		//$filters = urlencode("Status+eq+Accepted");
-		//$orders = $this->object->getOrders($filters);
-		$filters = urlencode("submittedDate+gt+2013-12-15T12:21:24z");
-		$orders = $this->object->getOrders('0',100, null,$filters, null, null);
-		//var_dump($orders);
+        try {
+            $filters = urlencode("Status+eq+Accepted");
+            $orders = $this->object->getOrders($filters);
+            $this->assertNotEmpty($orders);
+            $filters = urlencode("submittedDate+gt+2013-12-15T12:21:24z");
+            $orders = $this->object->getOrders('0',100, null,$filters, null, null);
+            $this->assertNotEmpty($orders);
+        } catch(ApiException $exc) {
+            $this->fail($exc->getMessage());
+        }
+
 	}
+
 	
-	
-	
-	
-	/*public function testGetOrder() {
+	public function testGetOrderByNumberFail() {
 		try{
-			$orders = $this->object->getOrder("2",false);
+			$order = $this->object->getOrder("2",false);
 		} catch(ApiException $ex) {
-			var_dump($ex->getMessage());
-			var_dump($ex->getCorrelationId());
+			$this->assertNotEmpty($ex->getMessage());
+			$this->assertNotEmpty($ex->getCorrelationId());
 			
 		}
 	}
 	
-	public function testGetOrder1() {
-		$order = $this->object->getOrder("03cf384c4fdce0aee42bc16800001e7c", true);
-		var_dump($order->submittedDate);
-	}*/
+	public function testGetOrderByIdFail() {
+        try{
+            $order = $this->object->getOrder("03cf384c4fdce0aee42bc16800001e7c", true);
+        } catch(ApiException $ex) {
+            $this->assertNotEmpty($ex->getMessage());
+            $this->assertContains("Item not found",$ex->getMessage());
+        }
+
+	}
 
 }
 ?>

@@ -14,8 +14,9 @@ namespace Mozu\Api\Clients\Commerce\Settings\Shipping;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Settings\Shipping\SiteShippingHandlingFeeUrl;
-use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\SiteSettings\Shipping\SiteShippingHandlingFee;
 
 /**
 * Use the Order Handling Fee subresource to configure any shipping and handling fees to apply to orders for this site.
@@ -25,44 +26,44 @@ class SiteShippingHandlingFeeClient {
 	/**
 	* Retrieves the details of the order handling fee configured for the site.
 	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
-	public static function getOrderHandlingFeeClient()
+	public static function getOrderHandlingFeeClient($responseFields =  null)
 	{
-		$url = SiteShippingHandlingFeeUrl::getOrderHandlingFeeUrl();
+		$url = SiteShippingHandlingFeeUrl::getOrderHandlingFeeUrl($responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
 	/**
 	* Creates a new order handling fee for the site.
 	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param SiteShippingHandlingFee $orderHandlingFee Properties of the order handling fee to assess for order shipment.
 	* @return MozuClient
 	*/
-	public static function createOrderHandlingFeeClient($orderHandlingFee)
+	public static function createOrderHandlingFeeClient($orderHandlingFee, $responseFields =  null)
 	{
-		$url = SiteShippingHandlingFeeUrl::createOrderHandlingFeeUrl();
+		$url = SiteShippingHandlingFeeUrl::createOrderHandlingFeeUrl($responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($orderHandlingFee);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($orderHandlingFee);
 
 	}
 	
 	/**
 	* Updates the order handling fee amount for the site.
 	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param SiteShippingHandlingFee $orderHandlingFee The combined price for all items in the order, including all selected options but excluding any discounts.
 	* @return MozuClient
 	*/
-	public static function updateOrderHandlingFeeClient($orderHandlingFee)
+	public static function updateOrderHandlingFeeClient($orderHandlingFee, $responseFields =  null)
 	{
-		$url = SiteShippingHandlingFeeUrl::updateOrderHandlingFeeUrl();
+		$url = SiteShippingHandlingFeeUrl::updateOrderHandlingFeeUrl($responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($orderHandlingFee);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($orderHandlingFee);
 
 	}
 	
