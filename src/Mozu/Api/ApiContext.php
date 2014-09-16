@@ -2,6 +2,7 @@
 
 namespace Mozu\Api;
 
+use Logger;
 use Mozu\Api\Contracts\Tenant\Tenant;
 use Mozu\Api\Helpers\SignatureResolver;
 use Mozu\Api\Security\AppAuthenticator;
@@ -49,7 +50,9 @@ class ApiContext implements iApiContext {
 	private $tenant = null;
 	private $userAuthTicket = null;
 	private $appAuthTicket=null;
-	
+
+    private $logger = null;
+
 	private $constructor_signatures = array(
 			'setTenantById' => array('integer'),
 			'setTenantById1' => array('integer', 'integer','integer','integer'),
@@ -58,6 +61,7 @@ class ApiContext implements iApiContext {
 	);
 	
 	 public function __construct() {
+         $this->logger = Logger::getLogger("ApiContext");
 	    $args = func_get_args();
 	    print_r($args, true);
 	    $signature = SignatureResolver::resolve($args);
@@ -97,9 +101,9 @@ class ApiContext implements iApiContext {
 	 	$this->tenant = $tenant;
 	 	$this->tenantId = $tenant->id;
 	 	$this->tenantUrl = $tenant->domain;
-	 	 echo($this->tenantUrl);
+	 	$this->logger->info("Tenant Url :" . $this->tenantUrl);
 	 	//if (count($this->tenant->sites) == 1) {
-	 	//	$this->siteId = $tenant->sites[0]->id;
+	 	//    $this->siteId = $tenant->sites[0]->id;
 	 	//}
 	 	 
 	 	if ( ($this->masterCatalogId == null || $this->masterCatalogId <=0) && count($tenant->masterCatalogs) == 1 ) {

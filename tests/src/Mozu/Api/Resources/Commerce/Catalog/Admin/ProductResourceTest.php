@@ -51,7 +51,7 @@ class ProductResourceTest extends BaseTest
             $this->assertNotNull($productCollection->items);
             $this->assertNotNull($productCollection->pageCount);
     	} catch(ApiException $ex) {
-    		echo $ex->getMessage();
+    		//echo $ex->getMessage();
     	}
        //var_dump($productCollection);
     }

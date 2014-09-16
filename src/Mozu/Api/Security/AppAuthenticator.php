@@ -2,6 +2,7 @@
 
 namespace Mozu\Api\Security;
 
+use Logger;
 use DateTime;
 use Mozu\Api\Contracts\AppDev\AppAuthInfo;
 use Mozu\Api\Contracts\AppDev\AuthTicketRequest;
@@ -21,12 +22,13 @@ class AppAuthenticator {
 	private $authTicket = null;
 	private static $instance = null;
 	private $refreshInterval = null;
-	
+    private $logger;
+
 	private function __construct(AppAuthInfo $appAuthInfo, $baseUrl) {
 		$this->appAuthInfo = $appAuthInfo;
 		$this->baseUrl = $baseUrl;
 		
-		
+		$this->logger = Logger::getLogger("AppAuthenticator");
 	}
 			
 	public static function initialize(AppAuthInfo $appAuthInfo, RefreshInterval  $refreshInterval = null) {
@@ -51,8 +53,8 @@ class AppAuthenticator {
 			try {
 				static::$instance->authenticateApp();
 			} catch(\Exception $exc) {
-				static::$instance == null;
-				throw $exc;
+                static::$instance == null;
+                throw $exc;
 			}
 		}
 		return static::$instance;
@@ -67,9 +69,10 @@ class AppAuthenticator {
 			$jsonResp = $response->getBody ( true );
 			static::$instance->authTicket = json_decode ( $jsonResp );
 			$this->setRefreshInterval(false);
-            echo "Access Token - " .$this->authTicket->accessToken . "\n";
+            $this->logger->info("Access Token - " .$this->authTicket->accessToken);
 
 		} catch(\Exception $e) {
+            $this->logger->error($e->getMessage(), $e);
 			HttpHelper::checkError($e);	
 		} 
 	}
@@ -88,6 +91,7 @@ class AppAuthenticator {
 			$this->setRefreshInterval(true);
 
 		} catch(\Exception $e) {
+            $this->logger->error($e->getMessage(), $e);
 			HttpHelper::checkError($e);
 		}
 	}
@@ -110,8 +114,8 @@ class AppAuthenticator {
 				->setAccessTokenExpiration($accessTokenExpiration)
 				->setRefreshTokenExpiration($refreshTokenExpiration);
 
-		echo "Access Token Expiration - " .$this->refreshInterval->getAccessTokenExpiration()->format('Y-m-d H:i:s') . "\n";
-		echo "Refresh Token Expiration - " .$this->refreshInterval->getRefreshTokenExpiration()->format('Y-m-d H:i:s'). "\n";
+		$this->logger->info("Access Token Expiration - " . $this->refreshInterval->getAccessTokenExpiration()->format('Y-m-d H:i:s'));
+        $this->logger->info("Refresh Token Expiration - " .$this->refreshInterval->getRefreshTokenExpiration()->format('Y-m-d H:i:s'));
 	}
 	
 	public function addAuthHeader(Request $request) {
@@ -125,7 +129,7 @@ class AppAuthenticator {
 
 	private function ensureAuthTicket() {
 		$dateTimeNow = new DateTime();
-		echo  ($dateTimeNow >= $this->refreshInterval->getRefreshTokenExpiration());
+        $this->logger->info($dateTimeNow >= $this->refreshInterval->getRefreshTokenExpiration());
 		if ($this->authTicket == null || $dateTimeNow >= $this->refreshInterval->getRefreshTokenExpiration())
 			$this->authenticateApp();
 		else if ($dateTimeNow >= $this->refreshInterval->getAccessTokenExpiration())

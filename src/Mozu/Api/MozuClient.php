@@ -1,6 +1,8 @@
 <?php
 
 namespace Mozu\Api;
+
+use Logger;
 use Guzzle\Service\Client as Client;
 use Mozu\Api\Security\AppAuthenticator;
 use Mozu\Api\Resources\Platform\TenantResource;
@@ -20,6 +22,11 @@ class MozuClient {
 	private $response = null;
 	private $isStreamContent = false;
 	private $contentType = null;
+    private $logger = null;
+
+    function __construct() {
+        $this->logger = Logger::getLogger("MozuClient");
+    }
 
 	public function withBaseUrl($baseUrl) {
 		$this->baseUrl = $baseUrl;
@@ -133,7 +140,7 @@ class MozuClient {
 		}
 		
 		if ($this->apiContext != null && $this->apiContext->getUserAuthTicket() != null) {
-			echo "Setting user Auth";
+			//echo "Setting user Auth";
 			$this->setUserAuth();
 		}
 		
@@ -180,7 +187,7 @@ class MozuClient {
 		{
 			$authentication = AppAuthenticator::getInstance();
 			if ($authentication == null)
-			throw new \Exception("App is not initialized. Use AppAuthenticator to initialize the app.");
+			    throw new \Exception("App is not initialized. Use AppAuthenticator to initialize the app.");
 			if ($authentication->getBaseUrl() == "")
 				throw new \Exception("Authentication.Instance.BaseUrl is missing");
 		
