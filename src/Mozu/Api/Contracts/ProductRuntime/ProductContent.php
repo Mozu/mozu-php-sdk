@@ -20,11 +20,6 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 class ProductContent
 {
 	/**
-	*Description defined for the metadata used to internally manage information about the product.
-	*/
-	public $metaTagDescription;
-
-	/**
 	*Keywords defined for the metadata used to internally manage information about the product.
 	*/
 	public $metaTagKeywords;
@@ -53,6 +48,11 @@ class ProductContent
 	*Product URL defined for search engine optimization.
 	*/
 	public $seoFriendlyUrl;
+
+	/**
+	*Description defined for the metadata used to internally manage information about the product.
+	*/
+	public $metaTagDescription;
 
 	/**
 	*List of image files associated with the product.

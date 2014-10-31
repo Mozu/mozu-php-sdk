@@ -34,6 +34,8 @@ class AttributeDetail
 	*/
 	public $description;
 
+		public $displayIntention;
+
 	/**
 	*The input type (such as date or text area) accepted for the attribute's data type.
 	*/
@@ -43,6 +45,16 @@ class AttributeDetail
 	*Name of the atrribute in the language specified by the locale code.
 	*/
 	public $name;
+
+	/**
+	*Indicates whether the attribute value is searchable in the storefont by a shopper.
+	*/
+	public $searchableInStorefront;
+
+	/**
+	*If true, the system indexes the display value of string attributes instead of the canonical value for searching. The canonical value is always used for filtering. This does not apply for for non-string attributes.
+	*/
+	public $searchDisplayValue;
 
 	/**
 	*The usage type of the product attribute, which is property, option, or extra.

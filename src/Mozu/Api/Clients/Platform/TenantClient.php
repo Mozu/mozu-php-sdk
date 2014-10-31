@@ -14,8 +14,9 @@ namespace Mozu\Api\Clients\Platform;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Platform\TenantUrl;
-use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\Tenant\Tenant;
 
 /**
 * Use the tenants resource to manage information about a Mozu tenant.
@@ -25,15 +26,15 @@ class TenantClient {
 	/**
 	* Retrieve details about a specific tenant by providing the tenant ID.
 	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param int $tenantId Unique identifier of the Mozu tenant.
 	* @return MozuClient
 	*/
-	public static function getTenantClient($tenantId)
+	public static function getTenantClient($tenantId, $responseFields =  null)
 	{
-		$url = TenantUrl::getTenantUrl($tenantId);
+		$url = TenantUrl::getTenantUrl($responseFields, $tenantId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	

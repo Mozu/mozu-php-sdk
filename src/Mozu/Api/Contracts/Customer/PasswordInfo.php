@@ -14,11 +14,20 @@ namespace Mozu\Api\Contracts\Customer;
 
 
 
+/**
+*	The information required to modify a shopper account password.
+*/
 class PasswordInfo
 {
-		public $newPassword;
+	/**
+	*The new account password value.
+	*/
+	public $newPassword;
 
-		public $oldPassword;
+	/**
+	*The previous shopper account password value.
+	*/
+	public $oldPassword;
 
 }
 

@@ -21,57 +21,69 @@ class CategoryUrl  {
 		* Get Resource Url for GetCategories
 		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product category search results by any of its properties, including its position in the category hierarchy. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param string $sortBy 
 		* @param int $startIndex 
 		* @return string Resource Url
 	*/
-	public static function getCategoriesUrl($filter, $pageSize, $sortBy, $startIndex)
+	public static function getCategoriesUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex)
 	{
-		$url = "/api/commerce/catalog/admin/categories/?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("filter", $filter);
-		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
-		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
-		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
+		$url = "/api/commerce/catalog/admin/categories/?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}&responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("filter", $filter)
+				->formatUrl("pageSize", $pageSize)
+				->formatUrl("responseFields", $responseFields)
+				->formatUrl("sortBy", $sortBy)
+				->formatUrl("startIndex", $startIndex);
+
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for GetChildCategories
+		* @param int $categoryId Unique identifier of the category for which to retrieve subcategories.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @return string Resource Url
+	*/
+	public static function getChildCategoriesUrl($categoryId, $responseFields)
+	{
+		$url = "/api/commerce/catalog/admin/categories/{categoryId}/children?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("categoryId", $categoryId)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetCategory
 		* @param int $categoryId Unique identifier of the category to retrieve.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function getCategoryUrl($categoryId)
+	public static function getCategoryUrl($categoryId, $responseFields)
 	{
-		$url = "/api/commerce/catalog/admin/categories/{categoryId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("categoryId", $categoryId);
-		return $mozuUrl;
-	}
-	
-	/**
-		* Get Resource Url for GetChildCategories
-		* @param int $categoryId Unique identifier of the category whose subcategories are retrieved.
-		* @return string Resource Url
-	*/
-	public static function getChildCategoriesUrl($categoryId)
-	{
-		$url = "/api/commerce/catalog/admin/categories/{categoryId}/children";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("categoryId", $categoryId);
+		$url = "/api/commerce/catalog/admin/categories/{categoryId}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("categoryId", $categoryId)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for AddCategory
-		* @param bool $incrementSequence 
+		* @param bool $incrementSequence If true, when adding a new product category, set the sequence number of the new category to an increment of one integer greater than the maximum available sequence number across all product categories. If false, set the sequence number to zero.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function addCategoryUrl($incrementSequence)
+	public static function addCategoryUrl($incrementSequence, $responseFields)
 	{
-		$url = "/api/commerce/catalog/admin/categories/?incrementSequence={incrementSequence}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
-		$url = $mozuUrl->formatUrl("incrementSequence", $incrementSequence);
+		$url = "/api/commerce/catalog/admin/categories/?incrementSequence={incrementSequence}&responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("incrementSequence", $incrementSequence)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
@@ -79,29 +91,33 @@ class CategoryUrl  {
 		* Get Resource Url for UpdateCategory
 		* @param bool $cascadeVisibility If true, when changing the display option for the category, change it for all subcategories also. Default: False.
 		* @param int $categoryId Unique identifier of the category to modify.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function updateCategoryUrl($cascadeVisibility, $categoryId)
+	public static function updateCategoryUrl($cascadeVisibility, $categoryId, $responseFields)
 	{
-		$url = "/api/commerce/catalog/admin/categories/{categoryId}?cascadeVisibility={cascadeVisibility}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
-		$url = $mozuUrl->formatUrl("cascadeVisibility", $cascadeVisibility);
-		$url = $mozuUrl->formatUrl("categoryId", $categoryId);
+		$url = "/api/commerce/catalog/admin/categories/{categoryId}?cascadeVisibility={cascadeVisibility}&responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
+		$mozuUrl->formatUrl("cascadeVisibility", $cascadeVisibility)
+				->formatUrl("categoryId", $categoryId)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for DeleteCategoryById
-		* @param bool $cascadeDelete If true, any subcategories of a category are deleted when this category is deleted. Default: False.
+		* @param bool $cascadeDelete If true, also delete all subcategories associated with the specified category.
 		* @param int $categoryId Unique identifier of the category to delete.
 		* @return string Resource Url
 	*/
 	public static function deleteCategoryByIdUrl($cascadeDelete, $categoryId)
 	{
 		$url = "/api/commerce/catalog/admin/categories/{categoryId}/?cascadeDelete={cascadeDelete}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
-		$url = $mozuUrl->formatUrl("cascadeDelete", $cascadeDelete);
-		$url = $mozuUrl->formatUrl("categoryId", $categoryId);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
+		$mozuUrl->formatUrl("cascadeDelete", $cascadeDelete)
+				->formatUrl("categoryId", $categoryId);
+
 		return $mozuUrl;
 	}
 	

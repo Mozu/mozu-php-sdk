@@ -30,9 +30,14 @@ class EventSummary
 
 		public $siteId;
 
-		public $tenantId;
+	/**
+	*Unique identifier of the Mozu tenant.
+	*/
+	public $tenantId;
 
 		public $topic;
+
+		public $extendedProperties;
 
 }
 

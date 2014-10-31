@@ -49,6 +49,8 @@ class CartItem
 	*/
 	public $fulfillmentMethod;
 
+		public $handlingAmount;
+
 	/**
 	*Unique identifier of the cart item.
 	*/
@@ -113,6 +115,11 @@ class CartItem
 	*The properties of the associated product.
 	*/
 	public $product;
+
+	/**
+	*Product discounts displays a list of all applicable discount.
+	*/
+	public $productDiscount;
 
 	/**
 	*List of product-level discounts projected to apply to the cart item at checkout.

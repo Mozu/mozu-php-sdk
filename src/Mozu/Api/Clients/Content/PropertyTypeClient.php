@@ -14,8 +14,11 @@ namespace Mozu\Api\Clients\Content;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Content\PropertyTypeUrl;
-use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
+use Mozu\Api\DataViewMode;
+
+use Mozu\Api\Contracts\Content\PropertyType;
+use Mozu\Api\Contracts\Content\PropertyTypeCollection;
 
 /**
 * Use the property types subresource to manage content properties.
@@ -23,47 +26,82 @@ use Mozu\Api\Headers;
 class PropertyTypeClient {
 
 	/**
-	* 
+	* Retrieves a list of the content property types.
 	*
-	* @param int $pageSize 
-	* @param int $startIndex 
+	* @param DataViewMode $dataViewMode
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return MozuClient
 	*/
-	public static function getPropertyTypesClient($dataViewMode, $pageSize =  null, $startIndex =  null)
+	public static function getPropertyTypesClient($dataViewMode, $pageSize =  null, $startIndex =  null, $responseFields =  null)
 	{
-		$url = PropertyTypeUrl::getPropertyTypesUrl($pageSize, $startIndex);
+		$url = PropertyTypeUrl::getPropertyTypesUrl($pageSize, $responseFields, $startIndex);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+
+	}
+	
+	/**
+	* Retrieves the details of the content property type.
+	*
+	* @param DataViewMode $dataViewMode
+	* @param string $propertyTypeName The name of the content property type.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return MozuClient
+	*/
+	public static function getPropertyTypeClient($dataViewMode, $propertyTypeName, $responseFields =  null)
+	{
+		$url = PropertyTypeUrl::getPropertyTypeUrl($propertyTypeName, $responseFields);
+		$mozuClient = new MozuClient();
+		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
 
 	}
 	
 	/**
 	* 
 	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param PropertyType $propertyType 
+	* @return MozuClient
+	*/
+	public static function createPropertyTypeClient($propertyType, $responseFields =  null)
+	{
+		$url = PropertyTypeUrl::createPropertyTypeUrl($responseFields);
+		$mozuClient = new MozuClient();
+		return $mozuClient->withResourceUrl($url)->withBody($propertyType);
+
+	}
+	
+	/**
+	* 
+	*
+	* @param DataViewMode $dataViewMode
+	* @param string $propertyTypeName 
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param PropertyType $propertyType 
+	* @return MozuClient
+	*/
+	public static function updatePropertyTypeClient($dataViewMode, $propertyType, $propertyTypeName, $responseFields =  null)
+	{
+		$url = PropertyTypeUrl::updatePropertyTypeUrl($propertyTypeName, $responseFields);
+		$mozuClient = new MozuClient();
+		return $mozuClient->withResourceUrl($url)->withBody($propertyType)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+
+	}
+	
+	/**
+	* 
+	*
+	* @param DataViewMode $dataViewMode
 	* @param string $propertyTypeName 
 	* @return MozuClient
 	*/
-	public static function getPropertyTypeClient($dataViewMode, $propertyTypeName)
+	public static function deletePropertyTypeClient($dataViewMode, $propertyTypeName)
 	{
-		$url = PropertyTypeUrl::getPropertyTypeUrl($propertyTypeName);
+		$url = PropertyTypeUrl::deletePropertyTypeUrl($propertyTypeName);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
-
-	}
-	
-	/**
-	* Retrieves the value types associated with a content property.
-	*
-	* @return MozuClient
-	*/
-	public static function propertyValueTypesClient($dataViewMode)
-	{
-		$url = PropertyTypeUrl::propertyValueTypesUrl();
-		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
 
 	}
 	

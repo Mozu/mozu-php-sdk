@@ -15,20 +15,29 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 /**
-*	Properties of a created product selection.
+*	Properties of a product configuration with shopper-selected options.
 */
 class ConfiguredProduct
 {
-		public $fulfillmentTypesSupported;
+	/**
+	*The list of fulfillment types the product supports.
+	*/
+	public $fulfillmentTypesSupported;
 
-		public $mfgPartNumber;
+	/**
+	*The manufacturer part number supplied for the product.
+	*/
+	public $mfgPartNumber;
 
 	/**
 	*Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	*/
 	public $productCode;
 
-		public $upc;
+	/**
+	*The universal product code defined for the product.
+	*/
+	public $upc;
 
 	/**
 	*Merchant-created code associated with a specific product variation. Variation product codes maintain an association with the base product code.
@@ -40,7 +49,10 @@ class ConfiguredProduct
 	*/
 	public $availableShippingDiscounts;
 
-		public $inventoryInfo;
+	/**
+	*Properties of the inventory of the configured product, including the number of items in stock, whether the item appears on the storefront, and whether the item is out of stock or can be back ordered.
+	*/
+	public $inventoryInfo;
 
 	/**
 	*Dimensions of the packaged product.
@@ -53,7 +65,7 @@ class ConfiguredProduct
 	public $options;
 
 	/**
-	*Price that the merchant intends to sell the product which is not necessarily the list price. This is the price the merchant intends to sell the product if no sale price is present.
+	*Unit price that the tenant intends to sell the product if no sale price is set.
 	*/
 	public $price;
 

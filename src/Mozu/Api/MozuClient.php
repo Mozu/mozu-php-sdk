@@ -1,10 +1,10 @@
 <?php
 
 namespace Mozu\Api;
-use Mozu\Api\iApiContext;
+
+use Logger;
 use Guzzle\Service\Client as Client;
 use Mozu\Api\Security\AppAuthenticator;
-use Mozu\Api\Headers;
 use Mozu\Api\Resources\Platform\TenantResource;
 use Mozu\Api\Security\UserAuthenticator;
 use Mozu\Api\Security\CustomerAuthenticator;
@@ -13,18 +13,21 @@ use Mozu\Api\Security\AuthenticationScope;
 
 class MozuClient {
 	private $baseAddress;
-	private $httpResponseMessage = null;
 	private $baseUrl = "";
 	private $mozuUrl = "";
 	private $apiContext = null;
 	private $headers = array();
 	private $jsonBody = null;
 	private $request = null;
-	private $result = null;
 	private $response = null;
 	private $isStreamContent = false;
 	private $contentType = null;
-	
+    private $logger = null;
+
+    function __construct() {
+        $this->logger = Logger::getLogger("MozuClient");
+    }
+
 	public function withBaseUrl($baseUrl) {
 		$this->baseUrl = $baseUrl;
 		return $this;
@@ -70,7 +73,14 @@ class MozuClient {
 		if ($apiContext != null && $apiContext->getSiteId() > 0) {
 			$this->withHeader(Headers::X_VOL_SITE,$apiContext->getSiteId());
 		}
-		
+
+        if ($apiContext != null && $apiContext->getLocale() != null ) {
+            $this->withHeader(Headers::X_VOL_LOCALE,$apiContext->getLocale());
+        }
+
+        if ($apiContext != null && $apiContext->getCurrency() != null ) {
+            $this->withHeader(Headers::X_VOL_CURRENCY,$apiContext->getCurrency());
+        }
 		return $this;
 	}
 	
@@ -122,7 +132,7 @@ class MozuClient {
 		$this->client = new Client ( $this->baseAddress, HttpHelper::getGuzzleConfig());
 		$authentication = AppAuthenticator::getInstance();
 		if (!isset($authentication)) {
-			throw new \Exception("Authentication is not initailized");
+			throw new \Exception("Authentication is not initialized");
 		}
 		
 		if ($this->mozuUrl->getVerb()== ""  || $this->mozuUrl->getUrl() == "" ) {
@@ -167,7 +177,7 @@ class MozuClient {
 				$tenant = $tenantResource->getTenant($this->apiContext->getTenantId());
 		
 				if ($tenant == null)
-					throw new \Exception("Tenant " . $apiContext->getTenantId() . " Not found");
+					throw new \Exception("Tenant " . $this->apiContext->getTenantId() . " Not found");
 				$this->baseAddress = HttpHelper::getUrl($tenant->domain);
 			}
 			else
@@ -177,7 +187,7 @@ class MozuClient {
 		{
 			$authentication = AppAuthenticator::getInstance();
 			if ($authentication == null)
-			throw new \Exception("App is not initialized. Use AppAuthenticator to initialize the app.");
+			    throw new \Exception("App is not initialized. Use AppAuthenticator to initialize the app.");
 			if ($authentication->getBaseUrl() == "")
 				throw new \Exception("Authentication.Instance.BaseUrl is missing");
 		

@@ -18,17 +18,56 @@ use Mozu\Api\UrlLocation;
 class ProductVariationUrl  {
 
 	/**
+		* Get Resource Url for GetProductVariationLocalizedDeltaPrices
+		* @param string $productCode 
+		* @param string $variationKey 
+		* @return string Resource Url
+	*/
+	public static function getProductVariationLocalizedDeltaPricesUrl($productCode, $variationKey)
+	{
+		$url = "/api/commerce/catalog/admin/products/{productCode}/variations/{variationKey}/localizedDeltaPrice";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("productCode", $productCode)
+				->formatUrl("variationKey", $variationKey);
+
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for GetProductVariationLocalizedDeltaPrice
+		* @param string $currencyCode 
+		* @param string $productCode 
+		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $variationKey 
+		* @return string Resource Url
+	*/
+	public static function getProductVariationLocalizedDeltaPriceUrl($currencyCode, $productCode, $responseFields, $variationKey)
+	{
+		$url = "/api/commerce/catalog/admin/products/{productCode}/variations/{variationKey}/localizedDeltaPrice/{currencyCode}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("currencyCode", $currencyCode)
+				->formatUrl("productCode", $productCode)
+				->formatUrl("responseFields", $responseFields)
+				->formatUrl("variationKey", $variationKey);
+
+		return $mozuUrl;
+	}
+	
+	/**
 		* Get Resource Url for GetProductVariation
 		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
 		* @return string Resource Url
 	*/
-	public static function getProductVariationUrl($productCode, $variationKey)
+	public static function getProductVariationUrl($productCode, $responseFields, $variationKey)
 	{
-		$url = "/api/commerce/catalog/admin/products/{productCode}/variations/{variationKey}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("productCode", $productCode);
-		$url = $mozuUrl->formatUrl("variationKey", $variationKey);
+		$url = "/api/commerce/catalog/admin/products/{productCode}/variations/{variationKey}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("productCode", $productCode)
+				->formatUrl("responseFields", $responseFields)
+				->formatUrl("variationKey", $variationKey);
+
 		return $mozuUrl;
 	}
 	
@@ -37,47 +76,110 @@ class ProductVariationUrl  {
 		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
 		* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 		* @return string Resource Url
 	*/
-	public static function getProductVariationsUrl($filter, $pageSize, $productCode, $sortBy, $startIndex)
+	public static function getProductVariationsUrl($filter, $pageSize, $productCode, $responseFields, $sortBy, $startIndex)
 	{
-		$url = "/api/commerce/catalog/admin/products/{productCode}/variations?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("filter", $filter);
-		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
-		$url = $mozuUrl->formatUrl("productCode", $productCode);
-		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
-		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
+		$url = "/api/commerce/catalog/admin/products/{productCode}/variations?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}&responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("filter", $filter)
+				->formatUrl("pageSize", $pageSize)
+				->formatUrl("productCode", $productCode)
+				->formatUrl("responseFields", $responseFields)
+				->formatUrl("sortBy", $sortBy)
+				->formatUrl("startIndex", $startIndex);
+
 		return $mozuUrl;
 	}
 	
 	/**
-		* Get Resource Url for UpdateProductVariations
-		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+		* Get Resource Url for AddProductVariationLocalizedDeltaPrice
+		* @param string $productCode 
+		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $variationKey 
 		* @return string Resource Url
 	*/
-	public static function updateProductVariationsUrl($productCode)
+	public static function addProductVariationLocalizedDeltaPriceUrl($productCode, $responseFields, $variationKey)
 	{
-		$url = "/api/commerce/catalog/admin/products/{productCode}/variations";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
-		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = "/api/commerce/catalog/admin/products/{productCode}/variations/{variationKey}/localizedDeltaPrice?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("productCode", $productCode)
+				->formatUrl("responseFields", $responseFields)
+				->formatUrl("variationKey", $variationKey);
+
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for UpdateProductVariationLocalizedDeltaPrices
+		* @param string $productCode 
+		* @param string $variationKey 
+		* @return string Resource Url
+	*/
+	public static function updateProductVariationLocalizedDeltaPricesUrl($productCode, $variationKey)
+	{
+		$url = "/api/commerce/catalog/admin/products/{productCode}/variations/{variationKey}/localizedDeltaPrice";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
+		$mozuUrl->formatUrl("productCode", $productCode)
+				->formatUrl("variationKey", $variationKey);
+
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for UpdateProductVariationLocalizedDeltaPrice
+		* @param string $currencyCode 
+		* @param string $productCode 
+		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $variationKey 
+		* @return string Resource Url
+	*/
+	public static function updateProductVariationLocalizedDeltaPriceUrl($currencyCode, $productCode, $responseFields, $variationKey)
+	{
+		$url = "/api/commerce/catalog/admin/products/{productCode}/variations/{variationKey}/localizedDeltaPrice/{currencyCode}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
+		$mozuUrl->formatUrl("currencyCode", $currencyCode)
+				->formatUrl("productCode", $productCode)
+				->formatUrl("responseFields", $responseFields)
+				->formatUrl("variationKey", $variationKey);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdateProductVariation
 		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
 		* @return string Resource Url
 	*/
-	public static function updateProductVariationUrl($productCode, $variationKey)
+	public static function updateProductVariationUrl($productCode, $responseFields, $variationKey)
 	{
-		$url = "/api/commerce/catalog/admin/products/{productCode}/variations/{variationKey}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
-		$url = $mozuUrl->formatUrl("productCode", $productCode);
-		$url = $mozuUrl->formatUrl("variationKey", $variationKey);
+		$url = "/api/commerce/catalog/admin/products/{productCode}/variations/{variationKey}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
+		$mozuUrl->formatUrl("productCode", $productCode)
+				->formatUrl("responseFields", $responseFields)
+				->formatUrl("variationKey", $variationKey);
+
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for UpdateProductVariations
+		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+		* @param string $responseFields 
+		* @return string Resource Url
+	*/
+	public static function updateProductVariationsUrl($productCode, $responseFields)
+	{
+		$url = "/api/commerce/catalog/admin/products/{productCode}/variations?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
+		$mozuUrl->formatUrl("productCode", $productCode)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
@@ -90,9 +192,28 @@ class ProductVariationUrl  {
 	public static function deleteProductVariationUrl($productCode, $variationKey)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/variations/{variationKey}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
-		$url = $mozuUrl->formatUrl("productCode", $productCode);
-		$url = $mozuUrl->formatUrl("variationKey", $variationKey);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
+		$mozuUrl->formatUrl("productCode", $productCode)
+				->formatUrl("variationKey", $variationKey);
+
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for DeleteProductVariationLocalizedDeltaPrice
+		* @param string $currencyCode 
+		* @param string $productCode 
+		* @param string $variationKey 
+		* @return string Resource Url
+	*/
+	public static function deleteProductVariationLocalizedDeltaPriceUrl($currencyCode, $productCode, $variationKey)
+	{
+		$url = "/api/commerce/catalog/admin/products/{productCode}/variations/{variationKey}/localizedDeltaPrice/{currencyCode}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
+		$mozuUrl->formatUrl("currencyCode", $currencyCode)
+				->formatUrl("productCode", $productCode)
+				->formatUrl("variationKey", $variationKey);
+
 		return $mozuUrl;
 	}
 	

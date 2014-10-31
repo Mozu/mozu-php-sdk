@@ -14,58 +14,57 @@ namespace Mozu\Api\Clients\Commerce\Carts;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Carts\AppliedDiscountUrl;
-use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
+use Mozu\Api\Contracts\CommerceRuntime\Carts\Cart;
+
 /**
-* 
+* Use the Cart Coupons resource to apply a coupon to a defined cart or remove a coupon from a cart. When the shopper proceeds to checkout, the coupons applied to the cart apply to the order.
 */
 class AppliedDiscountClient {
 
 	/**
-	* 
+	* Applies a defined coupon to the cart specified in the request.
 	*
-	* @param string $cartId 
-	* @param string $couponCode 
+	* @param string $cartId Unique identifier of the cart to which to apply the coupon.
+	* @param string $couponCode Code associated with the coupon to apply to the cart.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
-	public static function applyCouponClient($cartId, $couponCode)
+	public static function applyCouponClient($cartId, $couponCode, $responseFields =  null)
 	{
-		$url = AppliedDiscountUrl::applyCouponUrl($cartId, $couponCode);
+		$url = AppliedDiscountUrl::applyCouponUrl($cartId, $couponCode, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
 	/**
-	* 
+	* Removes one or more applied coupons from the cart specified in the request.
 	*
-	* @param string $cartId 
+	* @param string $cartId Unique identifier of the cart.
 	* @return MozuClient
 	*/
 	public static function removeCouponsClient($cartId)
 	{
 		$url = AppliedDiscountUrl::removeCouponsUrl($cartId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
 	/**
-	* 
+	* Removes an applied coupon from the cart specified in the request.
 	*
-	* @param string $cartId 
-	* @param string $couponCode 
+	* @param string $cartId Unique identifier of the cart.
+	* @param string $couponCode Code associated with the coupon to remove from the cart.
 	* @return MozuClient
 	*/
 	public static function removeCouponClient($cartId, $couponCode)
 	{
 		$url = AppliedDiscountUrl::removeCouponUrl($cartId, $couponCode);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	

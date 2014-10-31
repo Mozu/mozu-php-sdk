@@ -14,9 +14,15 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 
+/**
+*	The discounts to evaluate for a specified product code at the time of purchase.
+*/
 class DiscountSelections
 {
-		public $discountIds;
+	/**
+	*List of discount IDs to evaluate for a product code.
+	*/
+	public $discountIds;
 
 }
 

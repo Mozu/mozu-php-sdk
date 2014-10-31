@@ -50,12 +50,12 @@ class UserSystemData
 	public $lastLockedOn;
 
 	/**
-	* When the user last logged into the store. System-supplied and read-only.
+	*When the user last logged into the store. System-supplied and read-only.
 	*/
 	public $lastLoginOn;
 
 	/**
-	* When the password was last modified. System-supplied and read-only.
+	*When the password was last modified. System-supplied and read-only.
 	*/
 	public $lastPasswordChangeOn;
 

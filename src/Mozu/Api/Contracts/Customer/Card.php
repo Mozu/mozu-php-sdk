@@ -29,7 +29,10 @@ class Card
 	*/
 	public $cardType;
 
-		public $contactId;
+	/**
+	*Unique identifier of the customer account contact associated with the credit card.
+	*/
+	public $contactId;
 
 	/**
 	*The two-digit month the credit card expires.

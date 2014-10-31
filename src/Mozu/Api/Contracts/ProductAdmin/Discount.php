@@ -30,18 +30,24 @@ class Discount
 	public $amountType;
 
 	/**
-	*The most recent number of redeemed discounts.
+	*The number of times this discount has been redeemed.
 	*/
 	public $currentRedemptionCount;
 
-		public $doesNotApplyToSalePrice;
+	/**
+	*If true, this discount does not apply to a line item product with a defined sale price. The default is false, which applies the discount to products with and without defined sale prices.
+	*/
+	public $doesNotApplyToSalePrice;
 
 	/**
 	*Unique identifier of the discount.
 	*/
 	public $id;
 
-		public $maximumUsesPerUser;
+	/**
+	*The maximum number of times an individual shopper can redeem the discount.
+	*/
+	public $maximumUsesPerUser;
 
 	/**
 	*The scope to which the discount applies, which is "Order" for order discounts or "LineItem" for individual product discounts.
@@ -58,7 +64,10 @@ class Discount
 	*/
 	public $auditInfo;
 
-		public $conditions;
+	/**
+	*List of conditions that must be met for the discount to apply.
+	*/
+	public $conditions;
 
 	/**
 	*Complex type that contains content for a language specified by LocaleCode.

@@ -15,30 +15,44 @@ namespace Mozu\Api\Contracts\Core;
 
 
 /**
-*	***Always private and should not be published.***
+*	Properties of an application behavior.
 */
 class Behavior
 {
 	/**
-	*Unique identifier for the storefront container used to organize products.
+	*Unique identifier of the behavior category.
 	*/
 	public $categoryId;
 
 	/**
-	*Identifier of the entity.
+	*Unique identifier of the behavior.
 	*/
 	public $id;
 
-		public $isPrivate;
-
-		public $name;
+	/**
+	*If true, this application behavior is not part of the public Mozu API.
+	*/
+	public $isPrivate;
 
 	/**
-	*For validation purposes, the integer value must be a list of behavior Id's.
+	*The name of the behavior.
+	*/
+	public $name;
+
+	/**
+	*For validation purposes, the integer value must be a list of behavior IDs.
 	*/
 	public $requiresBehaviorIds;
 
-		public $validUserTypes;
+	/**
+	*Provides a list of system roles for a specified behavior.
+	*/
+	public $systemRoles;
+
+	/**
+	*The user types that are valid for this behavior.
+	*/
+	public $validUserTypes;
 
 }
 

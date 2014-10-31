@@ -48,9 +48,15 @@ class MasterCatalog
 	*/
 	public $name;
 
-		public $status;
+	/**
+	*The current status of the master catalog.
+	*/
+	public $status;
 
-		public $tenantId;
+	/**
+	*Unique identifier of the Mozu tenant.
+	*/
+	public $tenantId;
 
 		public $updateDate;
 

@@ -29,7 +29,10 @@ class Payment
 	*/
 	public $amountCredited;
 
-		public $amountRequested;
+	/**
+	*The total amount originally requested for this payment.
+	*/
+	public $amountRequested;
 
 	/**
 	*The actions a user can perform for a payment at this time.
@@ -76,7 +79,10 @@ class Payment
 	*/
 	public $billingInfo;
 
-		public $changeMessages;
+	/**
+	*List of change messages associated with the payment.
+	*/
+	public $changeMessages;
 
 	/**
 	*Container for the interactions associated with the payment, which includes details for each action performed for the payment.

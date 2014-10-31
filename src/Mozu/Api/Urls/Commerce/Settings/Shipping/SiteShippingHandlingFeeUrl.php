@@ -19,34 +19,43 @@ class SiteShippingHandlingFeeUrl  {
 
 	/**
 		* Get Resource Url for GetOrderHandlingFee
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function getOrderHandlingFeeUrl()
+	public static function getOrderHandlingFeeUrl($responseFields)
 	{
-		$url = "/api/commerce/settings/shipping/orderhandlingfee";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = "/api/commerce/settings/shipping/orderhandlingfee?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for CreateOrderHandlingFee
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function createOrderHandlingFeeUrl()
+	public static function createOrderHandlingFeeUrl($responseFields)
 	{
-		$url = "/api/commerce/settings/shipping/orderhandlingfee";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = "/api/commerce/settings/shipping/orderhandlingfee?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdateOrderHandlingFee
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function updateOrderHandlingFeeUrl()
+	public static function updateOrderHandlingFeeUrl($responseFields)
 	{
-		$url = "/api/commerce/settings/shipping/orderhandlingfee";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = "/api/commerce/settings/shipping/orderhandlingfee?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	

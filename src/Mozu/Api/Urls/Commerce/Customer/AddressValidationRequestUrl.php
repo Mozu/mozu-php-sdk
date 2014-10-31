@@ -19,12 +19,15 @@ class AddressValidationRequestUrl  {
 
 	/**
 		* Get Resource Url for ValidateAddress
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function validateAddressUrl()
+	public static function validateAddressUrl($responseFields)
 	{
-		$url = "/api/commerce/customer/addressvalidation/";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = "/api/commerce/customer/addressvalidation/?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	

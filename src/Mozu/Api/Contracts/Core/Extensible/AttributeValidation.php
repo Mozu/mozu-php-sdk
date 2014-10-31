@@ -14,6 +14,9 @@ namespace Mozu\Api\Contracts\Core\Extensible;
 
 
 
+/**
+*	Validates the attribute configured for the customer in the storefront against the attribute configured in Mozu admin.
+*/
 class AttributeValidation
 {
 	/**

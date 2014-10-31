@@ -12,22 +12,23 @@
 
 namespace Mozu\Api\Resources\Content\Documentlists;
 
-use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Content\Documentlists\FacetClient;
 use Mozu\Api\ApiContext;
-use Mozu\Api\DataViewMode;
-use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\Content\Facet;
 
 /**
 * Use the facets subresource to allow a merchant to add information for product indexing and searching.
 */
 class FacetResource {
 
-		private $apiContext;
+	private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
+
+	
 
 	/**
 	* Retrieves the properties of facets that aid in indexing and searching.
@@ -36,12 +37,12 @@ class FacetResource {
 	* @param string $propertyName The property name associated with the facets to retrieve.
 	* @return array|Facet 
 	*/
-	public function getFacets($dataViewMode, $documentListName, $propertyName)
+	public function getFacets($documentListName, $propertyName)
 	{
-		$mozuClient = FacetClient::getFacetsClient($dataViewMode, $documentListName, $propertyName);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = FacetClient::getFacetsClient($documentListName, $propertyName);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	

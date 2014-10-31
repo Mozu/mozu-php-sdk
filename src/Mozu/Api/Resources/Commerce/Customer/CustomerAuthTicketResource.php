@@ -12,64 +12,68 @@
 
 namespace Mozu\Api\Resources\Commerce\Customer;
 
-use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Customer\CustomerAuthTicketClient;
 use Mozu\Api\ApiContext;
-use Mozu\Api\DataViewMode;
-use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\Customer\CustomerUserAuthInfo;
+use Mozu\Api\Contracts\Customer\CustomerAuthTicket;
 
 /**
-* 
+* Use the Customer Authentication Tickets resource to generate and refresh authentication tickets for customer accounts.
 */
 class CustomerAuthTicketResource {
 
-		private $apiContext;
+	private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
+	
+
 	/**
-	* 
+	* Creates an authentication ticket for an anonymous shopper user.
 	*
 	* @return Stream 
 	*/
 	public function createAnonymousShopperAuthTicket()
 	{
 		$mozuClient = CustomerAuthTicketClient::createAnonymousShopperAuthTicketClient();
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
-	* 
+	* Generates a new authentication ticket for a customer account.
 	*
-	* @param CustomerUserAuthInfo $userAuthInfo 
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param CustomerUserAuthInfo $userAuthInfo The authentication information required to generate an authetication ticket for a user, which consists of a user name and password.
 	* @return CustomerAuthTicket 
 	*/
-	public function createUserAuthTicket($userAuthInfo)
+	public function createUserAuthTicket($userAuthInfo, $responseFields =  null)
 	{
-		$mozuClient = CustomerAuthTicketClient::createUserAuthTicketClient($userAuthInfo);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = CustomerAuthTicketClient::createUserAuthTicketClient($userAuthInfo, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
-	* 
+	* Refreshes an existing authentication ticket for a customer account by providing the refresh token string.
 	*
-	* @param string $refreshToken 
+	* @param string $refreshToken The refresh token string required to refresh a user's authentication ticket.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return CustomerAuthTicket 
 	*/
-	public function refreshUserAuthTicket($refreshToken)
+	public function refreshUserAuthTicket($refreshToken, $responseFields =  null)
 	{
-		$mozuClient = CustomerAuthTicketClient::refreshUserAuthTicketClient($refreshToken);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = CustomerAuthTicketClient::refreshUserAuthTicketClient($refreshToken, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	

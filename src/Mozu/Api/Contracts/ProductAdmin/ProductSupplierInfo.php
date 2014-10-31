@@ -14,13 +14,25 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
+/**
+*	Supplier-defined properties assigned for the product.
+*/
 class ProductSupplierInfo
 {
-		public $distPartNumber;
+	/**
+	*The distributor part number associated with this product, defined by the product distributor.
+	*/
+	public $distPartNumber;
 
-		public $mfgPartNumber;
+	/**
+	*The manufacturer part number associated with this product, defined by the product manufacturer.
+	*/
+	public $mfgPartNumber;
 
-		public $cost;
+	/**
+	*The amount the client pays the supplier to stock this product in its catalogs.
+	*/
+	public $cost;
 
 }
 

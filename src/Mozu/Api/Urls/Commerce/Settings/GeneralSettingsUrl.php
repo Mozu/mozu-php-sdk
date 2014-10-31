@@ -19,23 +19,29 @@ class GeneralSettingsUrl  {
 
 	/**
 		* Get Resource Url for GetGeneralSettings
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function getGeneralSettingsUrl()
+	public static function getGeneralSettingsUrl($responseFields)
 	{
-		$url = "/api/commerce/settings/general/";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = "/api/commerce/settings/general/?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdateGeneralSettings
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function updateGeneralSettingsUrl()
+	public static function updateGeneralSettingsUrl($responseFields)
 	{
-		$url = "/api/commerce/settings/general/";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = "/api/commerce/settings/general/?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	

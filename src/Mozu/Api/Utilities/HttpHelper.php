@@ -1,7 +1,6 @@
 <?php
 namespace Mozu\Api\Utilities;
 
-use Mozu\Api\Utilities\Proxy;
 use Mozu\Api\ApiException;
 use Mozu\Api\iApiContext;
 
@@ -27,7 +26,6 @@ class HttpHelper {
      *
      * Used to return our current Guzzle configuration
      *
-     * @return Ambigous <NULL, multitype:string multitype:string >
      */
     public static function getGuzzleConfig() {
         $proxy = Proxy::getInstance();
@@ -47,7 +45,7 @@ class HttpHelper {
      *
      * This method will attempt to translate error messages from Guzzle
      *
-     * @param \Exception $e            
+     * @param \Exception $e
      * @param iApiContext $apiContext            
      * @throws \Mozu\Api\ApiException
      * @throws ApiException
@@ -60,14 +58,22 @@ class HttpHelper {
                 // var_dump ($e);
                 $code = $e->getResponse()->getStatusCode();
                 $response = $e->getResponse()->getBody(TRUE);
+
                 $jsonResponse = json_decode($response);
-                $message = $e->getResponse()->getReasonPhrase();
+                if (!empty($jsonResponse))
+                    $message = $jsonResponse->message;
+                else
+                    $message = $e->getResponse()->getReasonPhrase();
+
                 $apiException = new ApiException($message, $code);
                 $header = (string)$e->getResponse()->getHeader("x-vol-correlation");
                 if (!empty($header)) {
                     $apiException->setCorrelationId($header);
                 }
                 if (!empty($jsonResponse)) {
+                    if (isset($jsonResponse->message)) {
+                        $message = $jsonResponse->message;
+                    }
                     if (isset($jsonResponse->additionalErrorData)) {
                         $apiException->setAdditionalErrorData($jsonResponse->additionalErrorData);
                     }

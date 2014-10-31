@@ -14,11 +14,13 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin\Attributedefinition;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\Attributedefinition\AttributeUrl;
-use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
+use Mozu\Api\Contracts\ProductAdmin\Attribute;
+use Mozu\Api\Contracts\ProductAdmin\AttributeCollection;
+
 /**
-* Use the Attribute Definition resource to manage the properties, options, and extras that uniquely describe products of a specific type. Attributes can be associated with a product type, assigned values by a merchant or shopper, and added as faceted search filters for a product category. Options are product attributes that describe unique configurations made by the shopper, such as size or color, and generate a new product variation (or unique SKU). Properties are product attributes that describe aspects of the product that do not represent an option configurable by the shopper, such as screen resolution or brand. Extras are product attributes that describe add-on configurations made by the shopper that do not represent a product variation, such as a monogram.
+* Use the Attribute Definition resource to manage the properties, options, and extras that uniquely describe products of a specific type. Attributes can be associated with a product type, assigned values by a client or shopper, and added as faceted search filters for a product category. Options are product attributes that describe unique configurations made by the shopper, such as size or color, and generate a new product variation (or unique SKU). Properties are product attributes that describe aspects of the product that do not represent an option configurable by the shopper, such as screen resolution or brand. Extras are product attributes that describe add-on configurations made by the shopper that do not represent a product variation, such as a monogram.
 */
 class AttributeClient {
 
@@ -27,16 +29,16 @@ class AttributeClient {
 	*
 	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getAttributesClient($dataViewMode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
+	public static function getAttributesClient($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
-		$url = AttributeUrl::getAttributesUrl($filter, $pageSize, $sortBy, $startIndex);
+		$url = AttributeUrl::getAttributesUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
@@ -44,29 +46,29 @@ class AttributeClient {
 	* Retrieves the details of the specified product attribute.
 	*
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
-	public static function getAttributeClient($dataViewMode, $attributeFQN)
+	public static function getAttributeClient($attributeFQN, $responseFields =  null)
 	{
-		$url = AttributeUrl::getAttributeUrl($attributeFQN);
+		$url = AttributeUrl::getAttributeUrl($attributeFQN, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
 	/**
 	* Creates a new attribute to describe one aspect of a product such as color or size, based on its defined product type. The attribute name, attribute type, input type, and data type are required.
 	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param Attribute $attribute Properties of the new product attribute to create.
 	* @return MozuClient
 	*/
-	public static function addAttributeClient($dataViewMode, $attribute)
+	public static function addAttributeClient($attribute, $responseFields =  null)
 	{
-		$url = AttributeUrl::addAttributeUrl();
+		$url = AttributeUrl::addAttributeUrl($responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($attribute)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($attribute);
 
 	}
 	
@@ -74,15 +76,15 @@ class AttributeClient {
 	* Updates an existing attribute with attribute properties to set.
 	*
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param Attribute $attribute Any properties of the attribute that to update.
 	* @return MozuClient
 	*/
-	public static function updateAttributeClient($dataViewMode, $attribute, $attributeFQN)
+	public static function updateAttributeClient($attribute, $attributeFQN, $responseFields =  null)
 	{
-		$url = AttributeUrl::updateAttributeUrl($attributeFQN);
+		$url = AttributeUrl::updateAttributeUrl($attributeFQN, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($attribute)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($attribute);
 
 	}
 	
@@ -90,13 +92,13 @@ class AttributeClient {
 	* Deletes a defined product attribute. You cannot delete an attribute assigned a value for a product.
 	*
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @return MozuClient
 	*/
-	public static function deleteAttributeClient($dataViewMode, $attributeFQN)
+	public static function deleteAttributeClient($attributeFQN)
 	{
 		$url = AttributeUrl::deleteAttributeUrl($attributeFQN);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	

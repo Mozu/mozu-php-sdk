@@ -14,15 +14,29 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Discounts;
 
 
 
+/**
+*	Properties of an invalid coupon code a shopper attempts to enter for a cart or order.
+*/
 class InvalidCoupon
 {
 		public $couponCode;
 
-		public $createDate;
+	/**
+	*Date and time when the entity was created, represented in UTC Date/Time.
+	*/
+	public $createDate;
 
-		public $reason;
+		public $discountId;
 
-		public $reasonCode;
+	/**
+	*The reason the coupon was determined to be invalid.
+	*/
+	public $reason;
+
+	/**
+	*The code that identifies the reason the coupon code is invalid.
+	*/
+	public $reasonCode;
 
 }
 

@@ -1,7 +1,14 @@
 <?php
 
+namespace Mozu\Api\Resource\Commerce;
+
 require_once __DIR__ . '/../../../../BaseTest.php';
 
+use Mozu\Api\Contracts\CommerceRuntime\Fulfillment\Package;
+use Mozu\Api\Contracts\CommerceRuntime\Fulfillment\PackageItem;
+use Mozu\Api\Contracts\CommerceRuntime\Orders\OrderAttribute;
+use Mozu\Api\Resources\Commerce\Orders\OrderAttributeResource;
+use Mozu\Api\Resources\Commerce\Orders\PackageResource;
 use Mozu\Tests\BaseTest;
 use Mozu\Api\ApiContext;
 use Mozu\Api\DataViewMode;
@@ -26,7 +33,7 @@ class OrderResourceTest extends BaseTest
 	protected function setUp()
 	{
 		
-		$apiContext = new ApiContext($this->tenantId, 0, 1, 1);
+		$apiContext = new ApiContext($this->tenantId);
 		$this->object = new OrderResource($apiContext);
 
 	}
@@ -44,32 +51,114 @@ class OrderResourceTest extends BaseTest
 	 * @covers Mozu\Api\Resources\Content\Documentlists\DocumentResource::getDocumentContent
 	 * @todo Implement testGetDocumentContent().
 	 */
-	public function testGetOrders()
+	public function testGetOrdersByFilter()
 	{
-		//$filters = urlencode("Status+eq+Accepted");
-		//$orders = $this->object->getOrders($filters);
-		$filters = urlencode("submittedDate+gt+2013-12-15T12:21:24z");
-		$orders = $this->object->getOrders('0',100, null,$filters, null, null);
-		//var_dump($orders);
+        try {
+            $filters = urlencode("Status+eq+Accepted");
+            $orders = $this->object->getOrders($filters);
+            $this->assertNotEmpty($orders);
+            $filters = urlencode("submittedDate+gt+2013-12-15T12:21:24z");
+            $orders = $this->object->getOrders('0',100, null,$filters, null, null);
+            $this->assertNotEmpty($orders);
+        } catch(ApiException $exc) {
+            $this->fail($exc->getMessage());
+        }
+
 	}
+
 	
-	
-	
-	
-	/*public function testGetOrder() {
+	/*public function testGetOrderByNumberFail() {
 		try{
-			$orders = $this->object->getOrder("2",false);
+			$order = $this->object->getOrder("2",false);
 		} catch(ApiException $ex) {
-			var_dump($ex->getMessage());
-			var_dump($ex->getCorrelationId());
+			$this->assertNotEmpty($ex->getMessage());
+			$this->assertNotEmpty($ex->getCorrelationId());
 			
 		}
 	}
 	
-	public function testGetOrder1() {
-		$order = $this->object->getOrder("03cf384c4fdce0aee42bc16800001e7c", true);
-		var_dump($order->submittedDate);
-	}*/
+	public function testGetOrderByIdFail() {
+        try{
+            $order = $this->object->getOrder("03cf384c4fdce0aee42bc16800001e7c", true);
+        } catch(ApiException $ex) {
+            $this->assertNotEmpty($ex->getMessage());
+            $this->assertContains("Item not found",$ex->getMessage());
+        }
+
+	}
+
+    public function testOrderPackage() {
+        $packageitem = new PackageItem();
+        $packageitem->productCode = "123";
+        $packageitem->quantity = 1;
+
+        $apiContext = new ApiContext($this->tenantId, $this->siteId, 0, 0);
+        $packageResource = new PackageResource($apiContext);
+
+        $package = new Package();
+        $package->items = array($packageitem);
+        $package->trackingNumber ="1234";
+
+        var_dump($package);
+        try {
+            $packageResource->createPackage($package,"04ae273778bf8a14e4de8ab7000009f0");
+        } catch(ApiException $ae) {
+            echo $ae->getMessage();
+            echo $ae->getCorrelationId();
+        }
+    }
+
+    public function testOrderAttributeUpdate() {
+        try{
+
+            $apiContext = new ApiContext($this->tenantId);
+            $this->object = new OrderResource($apiContext);
+            $attrFqn = "tenant~boolattr";
+            $order = $this->object->getOrder("04ae273778bf8a14e4de8ab7000009f0", true);
+            $this->assertNotNull($order);
+            echo $order->orderNumber;
+            //var_dump($order->attributes);
+            $existingAttr = null;
+            $index = 0;
+            foreach($order->attributes as $key=>$attr) {
+                if (strcasecmp($attr->fullyQualifiedName, $attrFqn) == 0) {
+                    $existingAttr = $attr;
+                    $index = $key;
+                }
+            }
+
+            if ($existingAttr != null){
+                echo 'Updating existing value';
+                $order->attributes[$index]->values =  array('false');
+            } else {
+                $existingAttr = new OrderAttribute();
+                $existingAttr->fullyQualifiedName = $attrFqn;
+                $existingAttr->values = array('true');
+            }
+
+
+            $orderAttributeResource = new OrderAttributeResource(new ApiContext($this->tenantId));
+            if (count($order->attributes) == 0) {
+                echo 'Adding new attribute on order';
+                $order->attributes = array($existingAttr);
+                var_dump($order->attributes);
+                $updatedAttrs = $orderAttributeResource->createOrderAttributes($order->attributes, $order->id);
+            }
+            else {
+                echo 'Updating value an existing attribute';
+                $order->attributes = array($existingAttr);
+                var_dump($order->attributes);
+                $updatedAttrs = $orderAttributeResource->updateOrderAttributes($order->attributes, $order->id, false);
+            }
+
+        } catch(ApiException $ex) {
+            $this->assertNotEmpty($ex->getMessage());
+            $this->assertNotEmpty($ex->getCorrelationId());
+
+            echo $ex->getMessage();
+            echo $ex->getCorrelationId();
+        }
+    }*/
 
 }
 ?>

@@ -12,67 +12,123 @@
 
 namespace Mozu\Api\Resources\Commerce\Catalog\Admin\Attributedefinition\Attributes;
 
-use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Catalog\Admin\Attributedefinition\Attributes\AttributeVocabularyValueClient;
 use Mozu\Api\ApiContext;
-use Mozu\Api\DataViewMode;
-use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\ProductAdmin\AttributeVocabularyValue;
+use Mozu\Api\Contracts\ProductAdmin\AttributeVocabularyValueLocalizedContent;
 
 /**
 * Vocabulary values are predefined for an attribute.
 */
 class AttributeVocabularyValueResource {
 
-		private $apiContext;
+	private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
+	
+
 	/**
-	* Retrieves a list of attribute vocabulary values. To target a query, use one or several valid optional response groups.
+	* Retrieves a list of vocabulary values defined for the attribute specified in the request.
 	*
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @return array|AttributeVocabularyValue 
 	*/
-	public function getAttributeVocabularyValues($dataViewMode, $attributeFQN)
+	public function getAttributeVocabularyValues($attributeFQN)
 	{
-		$mozuClient = AttributeVocabularyValueClient::getAttributeVocabularyValuesClient($dataViewMode, $attributeFQN);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = AttributeVocabularyValueClient::getAttributeVocabularyValuesClient($attributeFQN);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
-	* Retrieves an attribute vocabulary value by providing the attribute FQN and value.
+	* 
+	*
+	* @param string $attributeFQN 
+	* @param string $value 
+	* @return array|AttributeVocabularyValueLocalizedContent 
+	*/
+	public function getAttributeVocabularyValueLocalizedContents($attributeFQN, $value)
+	{
+		$mozuClient = AttributeVocabularyValueClient::getAttributeVocabularyValueLocalizedContentsClient($attributeFQN, $value);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $attributeFQN 
+	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $value 
+	* @return AttributeVocabularyValueLocalizedContent 
+	*/
+	public function getAttributeVocabularyValueLocalizedContent($attributeFQN, $value, $localeCode, $responseFields =  null)
+	{
+		$mozuClient = AttributeVocabularyValueClient::getAttributeVocabularyValueLocalizedContentClient($attributeFQN, $value, $localeCode, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
+
+	}
+	
+	/**
+	* Retrieves the details of a vocabulary value defined for an attribute by providing the attribute's fully qualified name and the value to retrieve.
 	*
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $value The actual unique value of the attribute vocabulary to retrieve. A single attribute must have a unique value and match the attribute's data type. If a string value returns null, the system will generate a value. The actual string content displayed shoud be stored as "Content" and actual content is required for string values.
 	* @return AttributeVocabularyValue 
 	*/
-	public function getAttributeVocabularyValue($dataViewMode, $attributeFQN, $value)
+	public function getAttributeVocabularyValue($attributeFQN, $value, $responseFields =  null)
 	{
-		$mozuClient = AttributeVocabularyValueClient::getAttributeVocabularyValueClient($dataViewMode, $attributeFQN, $value);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = AttributeVocabularyValueClient::getAttributeVocabularyValueClient($attributeFQN, $value, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
-	* Adds a new attribute vocabulary value.
+	* 
+	*
+	* @param string $attributeFQN 
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $value 
+	* @param AttributeVocabularyValueLocalizedContent $localizedContent 
+	* @return AttributeVocabularyValueLocalizedContent 
+	*/
+	public function addAttributeVocabularyValueLocalizedContent($localizedContent, $attributeFQN, $value, $responseFields =  null)
+	{
+		$mozuClient = AttributeVocabularyValueClient::addAttributeVocabularyValueLocalizedContentClient($localizedContent, $attributeFQN, $value, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
+
+	}
+	
+	/**
+	* Creates a vocabulary value for a defined product attribute.
 	*
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param AttributeVocabularyValue $attributeVocabularyValue The predefined vocabulary value to add to the attribute content.
 	* @return AttributeVocabularyValue 
 	*/
-	public function addAttributeVocabularyValue($dataViewMode, $attributeVocabularyValue, $attributeFQN)
+	public function addAttributeVocabularyValue($attributeVocabularyValue, $attributeFQN, $responseFields =  null)
 	{
-		$mozuClient = AttributeVocabularyValueClient::addAttributeVocabularyValueClient($dataViewMode, $attributeVocabularyValue, $attributeFQN);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = AttributeVocabularyValueClient::addAttributeVocabularyValueClient($attributeVocabularyValue, $attributeFQN, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -83,12 +139,48 @@ class AttributeVocabularyValueResource {
 	* @param array|AttributeVocabularyValue $vocabularyValues The actual vocabulary values for the attribute being updated.
 	* @return array|AttributeVocabularyValue 
 	*/
-	public function updateAttributeVocabularyValues($dataViewMode, $vocabularyValues, $attributeFQN)
+	public function updateAttributeVocabularyValues($vocabularyValues, $attributeFQN)
 	{
-		$mozuClient = AttributeVocabularyValueClient::updateAttributeVocabularyValuesClient($dataViewMode, $vocabularyValues, $attributeFQN);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = AttributeVocabularyValueClient::updateAttributeVocabularyValuesClient($vocabularyValues, $attributeFQN);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $attributeFQN 
+	* @param string $value 
+	* @param array|AttributeVocabularyValueLocalizedContent $localizedContent 
+	* @return array|AttributeVocabularyValueLocalizedContent 
+	*/
+	public function updateAttributeVocabularyValueLocalizedContents($localizedContent, $attributeFQN, $value)
+	{
+		$mozuClient = AttributeVocabularyValueClient::updateAttributeVocabularyValueLocalizedContentsClient($localizedContent, $attributeFQN, $value);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $attributeFQN 
+	* @param string $localeCode 
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $value 
+	* @param AttributeVocabularyValueLocalizedContent $localizedContent 
+	* @return AttributeVocabularyValueLocalizedContent 
+	*/
+	public function updateAttributeVocabularyValueLocalizedContent($localizedContent, $attributeFQN, $value, $localeCode, $responseFields =  null)
+	{
+		$mozuClient = AttributeVocabularyValueClient::updateAttributeVocabularyValueLocalizedContentClient($localizedContent, $attributeFQN, $value, $localeCode, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -96,16 +188,17 @@ class AttributeVocabularyValueResource {
 	* Updates existing attribute vocabulary values.
 	*
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $value The actual unique value of the attribute vocabulary value to update. A single attribute must have a unique value and match the attribute's data type. If a string value returns null, the system will generate a value. The actual string content displayed shoud be stored as "Content" and actual content is required for string values.
 	* @param AttributeVocabularyValue $attributeVocabularyValue The predefined vocabulary value to add to the attribute content to update.
 	* @return AttributeVocabularyValue 
 	*/
-	public function updateAttributeVocabularyValue($dataViewMode, $attributeVocabularyValue, $attributeFQN, $value)
+	public function updateAttributeVocabularyValue($attributeVocabularyValue, $attributeFQN, $value, $responseFields =  null)
 	{
-		$mozuClient = AttributeVocabularyValueClient::updateAttributeVocabularyValueClient($dataViewMode, $attributeVocabularyValue, $attributeFQN, $value);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = AttributeVocabularyValueClient::updateAttributeVocabularyValueClient($attributeVocabularyValue, $attributeFQN, $value, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -114,12 +207,29 @@ class AttributeVocabularyValueResource {
 	*
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @param string $value The actual unique value of the attribute vocabulary to delete. A single attribute must have a unique value and match the attribute's data type. If a string value returns null, the system will generate a value. The actual string content displayed shoud be stored as "Content" and actual content is required for string values.
+	* @return void
 	*/
-	public function deleteAttributeVocabularyValue($dataViewMode, $attributeFQN, $value)
+	public function deleteAttributeVocabularyValue($attributeFQN, $value)
 	{
-		$mozuClient = AttributeVocabularyValueClient::deleteAttributeVocabularyValueClient($dataViewMode, $attributeFQN, $value);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
+		$mozuClient = AttributeVocabularyValueClient::deleteAttributeVocabularyValueClient($attributeFQN, $value);
+		$mozuClient->withContext($this->apiContext)
+				->execute();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $attributeFQN 
+	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
+	* @param string $value 
+	* @return void
+	*/
+	public function deleteAttributeVocabularyValueLocalizedContent($attributeFQN, $value, $localeCode)
+	{
+		$mozuClient = AttributeVocabularyValueClient::deleteAttributeVocabularyValueLocalizedContentClient($attributeFQN, $value, $localeCode);
+		$mozuClient->withContext($this->apiContext)
+				->execute();
 
 	}
 	

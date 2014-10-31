@@ -14,19 +14,40 @@ namespace Mozu\Api\Contracts\PricingRuntime\ThirdParty;
 
 
 
+/**
+*	Properties of the taxable context associated with the order or return.
+*/
 class TaxContext
 {
-		public $customerId;
+	/**
+	*Unique identifier of the customer.
+	*/
+	public $customerId;
 
-		public $taxContextId;
+	/**
+	*Unique identifier of the tax context.
+	*/
+	public $taxContextId;
 
-		public $taxExemptId;
+	/**
+	*If the order is exempt from sales tax, the unique identifier of the tax exempt entity.
+	*/
+	public $taxExemptId;
 
-		public $taxShipping;
+	/**
+	*The taxable amount that can be levied against shipping charges.
+	*/
+	public $taxShipping;
 
-		public $destinationAddress;
+	/**
+	*The address to which item in the order will ship.
+	*/
+	public $destinationAddress;
 
-		public $originAddress;
+	/**
+	*The address from which the item in the order will ship.
+	*/
+	public $originAddress;
 
 }
 

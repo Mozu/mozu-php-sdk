@@ -12,178 +12,201 @@
 
 namespace Mozu\Api\Resources\Platform;
 
-use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Platform\ReferenceDataClient;
 use Mozu\Api\ApiContext;
-use Mozu\Api\DataViewMode;
-use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\Reference\TopLevelDomainCollection;
+use Mozu\Api\Contracts\Reference\ContentLocaleCollection;
+use Mozu\Api\Contracts\Core\BehaviorCollection;
+use Mozu\Api\Contracts\Reference\CountryCollection;
+use Mozu\Api\Contracts\Reference\TimeZoneCollection;
+use Mozu\Api\Contracts\Core\BehaviorCategoryCollection;
+use Mozu\Api\Contracts\Core\BehaviorCategory;
+use Mozu\Api\Contracts\Reference\CurrencyCollection;
+use Mozu\Api\Contracts\Reference\AddressSchemaCollection;
+use Mozu\Api\Contracts\Core\Behavior;
+use Mozu\Api\Contracts\Reference\UnitOfMeasureCollection;
+use Mozu\Api\Contracts\Reference\AddressSchema;
 
 /**
 * The Reference resource retrieves collections of standards the Mozu system currently supports. This includes content locales, top-level domains, units of measure, countries, currencies, time zones, and shipping or billing address schemas.
 */
 class ReferenceDataResource {
 
-		private $apiContext;
+	private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
+	
+
 	/**
 	* Retrieves a specific address schema based on the country code provided. This operation allows the creation of custom shipping and billing address fields.
 	*
 	* @param string $countryCode The 2-letter geographic code representing the country for the physical or mailing address. Currently limited to the US.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return AddressSchema 
 	*/
-	public function getAddressSchema($countryCode =  null)
+	public function getAddressSchema($countryCode =  null, $responseFields =  null)
 	{
-		$mozuClient = ReferenceDataClient::getAddressSchemaClient($countryCode);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = ReferenceDataClient::getAddressSchemaClient($countryCode, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
 	* Retrieves the entire list of address schemas that the system supports.
 	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return AddressSchemaCollection 
 	*/
-	public function getAddressSchemas()
+	public function getAddressSchemas($responseFields =  null)
 	{
-		$mozuClient = ReferenceDataClient::getAddressSchemasClient();
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = ReferenceDataClient::getAddressSchemasClient($responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
-	* ***Always private and should not be published.***
+	* Retrieves the details of a behavior based on the behavior ID specified in the request.
 	*
-	* @param int $behaviorId ***Always private and should not be published.***
+	* @param int $behaviorId Unique identifier of the behavior.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return Behavior 
 	*/
-	public function getBehavior($behaviorId)
+	public function getBehavior($behaviorId, $responseFields =  null)
 	{
-		$mozuClient = ReferenceDataClient::getBehaviorClient($behaviorId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = ReferenceDataClient::getBehaviorClient($behaviorId, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
-	* ***Always private and should not be published.***
+	* Retrieves the details of the behavior category specified in the request.
 	*
-	* @return BehaviorCategoryCollection 
-	*/
-	public function getBehaviorCategories()
-	{
-		$mozuClient = ReferenceDataClient::getBehaviorCategoriesClient();
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
-
-	}
-	
-	/**
-	* ***Always private and should not be published.***
-	*
-	* @param int $categoryId ***Always private and should not be published.***
+	* @param int $categoryId Unique identifier of the behavior category.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return BehaviorCategory 
 	*/
-	public function getBehaviorCategory($categoryId)
+	public function getBehaviorCategory($categoryId, $responseFields =  null)
 	{
-		$mozuClient = ReferenceDataClient::getBehaviorCategoryClient($categoryId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = ReferenceDataClient::getBehaviorCategoryClient($categoryId, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
-	* ***Always private and should not be published.***
+	* Retrieves the list of behavior categories.
 	*
-	* @param string $userType 
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return BehaviorCategoryCollection 
+	*/
+	public function getBehaviorCategories($responseFields =  null)
+	{
+		$mozuClient = ReferenceDataClient::getBehaviorCategoriesClient($responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
+
+	}
+	
+	/**
+	* Retrieves a list of application behaviors.
+	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $userType The user type associated with the behaviors to retrieve.
 	* @return BehaviorCollection 
 	*/
-	public function getBehaviors($userType =  null)
+	public function getBehaviors($userType =  null, $responseFields =  null)
 	{
-		$mozuClient = ReferenceDataClient::getBehaviorsClient($userType);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = ReferenceDataClient::getBehaviorsClient($userType, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
 	* Retrieves the list of content locales the system supports. Content locales indicate the language used and the country where the language is used.
 	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return ContentLocaleCollection 
 	*/
-	public function getContentLocales()
+	public function getContentLocales($responseFields =  null)
 	{
-		$mozuClient = ReferenceDataClient::getContentLocalesClient();
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = ReferenceDataClient::getContentLocalesClient($responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
 	* Retrieves the entire list of countries that the system supports.
 	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return CountryCollection 
 	*/
-	public function getCountries()
+	public function getCountries($responseFields =  null)
 	{
-		$mozuClient = ReferenceDataClient::getCountriesClient();
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = ReferenceDataClient::getCountriesClient($responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
 	* Retrieves the entire list of currencies that the system supports.
 	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return CurrencyCollection 
 	*/
-	public function getCurrencies()
+	public function getCurrencies($responseFields =  null)
 	{
-		$mozuClient = ReferenceDataClient::getCurrenciesClient();
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = ReferenceDataClient::getCurrenciesClient($responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
 	* Retrieves the entire list of time zones that the system supports.
 	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return TimeZoneCollection 
 	*/
-	public function getTimeZones()
+	public function getTimeZones($responseFields =  null)
 	{
-		$mozuClient = ReferenceDataClient::getTimeZonesClient();
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = ReferenceDataClient::getTimeZonesClient($responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
 	/**
 	* Retrieves the entire list of top-level internet domains that the system supports.
 	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return TopLevelDomainCollection 
 	*/
-	public function getTopLevelDomains()
+	public function getTopLevelDomains($responseFields =  null)
 	{
-		$mozuClient = ReferenceDataClient::getTopLevelDomainsClient();
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = ReferenceDataClient::getTopLevelDomainsClient($responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -191,14 +214,15 @@ class ReferenceDataResource {
 	* Retrieves an array list of all units of measure the system supports.
 	*
 	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return UnitOfMeasureCollection 
 	*/
-	public function getUnitsOfMeasure($filter =  null)
+	public function getUnitsOfMeasure($filter =  null, $responseFields =  null)
 	{
-		$mozuClient = ReferenceDataClient::getUnitsOfMeasureClient($filter);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = ReferenceDataClient::getUnitsOfMeasureClient($filter, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	

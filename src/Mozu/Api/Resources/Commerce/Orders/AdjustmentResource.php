@@ -12,38 +12,41 @@
 
 namespace Mozu\Api\Resources\Commerce\Orders;
 
-use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Orders\AdjustmentClient;
 use Mozu\Api\ApiContext;
-use Mozu\Api\DataViewMode;
-use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\CommerceRuntime\Commerce\Adjustment;
+use Mozu\Api\Contracts\CommerceRuntime\Orders\Order;
 
 /**
 * Use this subresource to manage ad-hoc order level price adjustments.
 */
 class AdjustmentResource {
 
-		private $apiContext;
+	private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
+	
+
 	/**
 	* Applies a shipping adjustment to the specified order.
 	*
 	* @param string $orderId Unique identifier of the order associated with the shipping adjustment.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $updateMode Specifies whether to apply the shipping adjustment by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
 	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 	* @param Adjustment $adjustment Properties of the shipping adjustment to apply to the order.
 	* @return Order 
 	*/
-	public function applyShippingAdjustment($adjustment, $orderId, $updateMode =  null, $version =  null)
+	public function applyShippingAdjustment($adjustment, $orderId, $updateMode =  null, $version =  null, $responseFields =  null)
 	{
-		$mozuClient = AdjustmentClient::applyShippingAdjustmentClient($adjustment, $orderId, $updateMode, $version);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = AdjustmentClient::applyShippingAdjustmentClient($adjustment, $orderId, $updateMode, $version, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -51,17 +54,18 @@ class AdjustmentResource {
 	* Applies a price adjustment to the specified order.
 	*
 	* @param string $orderId Unique identifier of the order for which to apply the adjustment.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $updateMode Specifies whether to apply the adjustment by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
 	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 	* @param Adjustment $adjustment Properties of the price adjustment to apply to the order.
 	* @return Order 
 	*/
-	public function applyAdjustment($adjustment, $orderId, $updateMode =  null, $version =  null)
+	public function applyAdjustment($adjustment, $orderId, $updateMode =  null, $version =  null, $responseFields =  null)
 	{
-		$mozuClient = AdjustmentClient::applyAdjustmentClient($adjustment, $orderId, $updateMode, $version);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		$mozuClient = AdjustmentClient::applyAdjustmentClient($adjustment, $orderId, $updateMode, $version, $responseFields);
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -76,9 +80,9 @@ class AdjustmentResource {
 	public function removeShippingAdjustment($orderId, $updateMode =  null, $version =  null)
 	{
 		$mozuClient = AdjustmentClient::removeShippingAdjustmentClient($orderId, $updateMode, $version);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	
@@ -93,9 +97,9 @@ class AdjustmentResource {
 	public function removeAdjustment($orderId, $updateMode =  null, $version =  null)
 	{
 		$mozuClient = AdjustmentClient::removeAdjustmentClient($orderId, $updateMode, $version);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
-		$mozuClient->execute();
-		return $mozuClient->getResult();
+		return $mozuClient->withContext($this->apiContext)
+				->execute()
+				->getResult();
 
 	}
 	

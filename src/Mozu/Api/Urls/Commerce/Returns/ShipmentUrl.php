@@ -19,16 +19,19 @@ class ShipmentUrl  {
 
 	/**
 		* Get Resource Url for GetShipment
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param string $returnId Unique identifier of the return associated with the replacement shipment to retrieve.
 		* @param string $shipmentId Unique identifier of the return replacement shipment to retrieve.
 		* @return string Resource Url
 	*/
-	public static function getShipmentUrl($returnId, $shipmentId)
+	public static function getShipmentUrl($responseFields, $returnId, $shipmentId)
 	{
-		$url = "/api/commerce/returns/{returnId}/shipments/{shipmentId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("returnId", $returnId);
-		$url = $mozuUrl->formatUrl("shipmentId", $shipmentId);
+		$url = "/api/commerce/returns/{returnId}/shipments/{shipmentId}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("responseFields", $responseFields)
+				->formatUrl("returnId", $returnId)
+				->formatUrl("shipmentId", $shipmentId);
+
 		return $mozuUrl;
 	}
 	
@@ -40,8 +43,9 @@ class ShipmentUrl  {
 	public static function createPackageShipmentsUrl($returnId)
 	{
 		$url = "/api/commerce/returns/{returnId}/shipments";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
-		$url = $mozuUrl->formatUrl("returnId", $returnId);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("returnId", $returnId);
+
 		return $mozuUrl;
 	}
 	
@@ -54,9 +58,10 @@ class ShipmentUrl  {
 	public static function deleteShipmentUrl($returnId, $shipmentId)
 	{
 		$url = "/api/commerce/returns/{returnId}/shipments/{shipmentId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
-		$url = $mozuUrl->formatUrl("returnId", $returnId);
-		$url = $mozuUrl->formatUrl("shipmentId", $shipmentId);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
+		$mozuUrl->formatUrl("returnId", $returnId)
+				->formatUrl("shipmentId", $shipmentId);
+
 		return $mozuUrl;
 	}
 	

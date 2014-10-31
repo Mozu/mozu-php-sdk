@@ -16,11 +16,17 @@ namespace Mozu\Api\Contracts\Event;
 
 class SubscribingSite
 {
-		public $isActive;
+	/**
+	*This specifies if the subscription is active at the site level.
+	*/
+	public $isActive;
 
 		public $siteId;
 
-		public $auditInfo;
+	/**
+	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
+	*/
+	public $auditInfo;
 
 }
 

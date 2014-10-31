@@ -19,6 +19,13 @@ namespace Mozu\Api\Contracts\Tenant;
 */
 class Catalog
 {
+	/**
+	*The date and time the catalog was deleted.
+	*/
+	public $deleteDate;
+
+		public $id;
+
 		public $createDate;
 
 	/**
@@ -32,13 +39,6 @@ class Catalog
 	public $defaultLocaleCode;
 
 	/**
-	*The date and time the catalog was deleted.
-	*/
-	public $deleteDate;
-
-		public $id;
-
-	/**
 	*If true, the catalog has been deleted.
 	*/
 	public $isDeleted;
@@ -50,11 +50,17 @@ class Catalog
 	*/
 	public $name;
 
-		public $tenantId;
+	/**
+	*The current status of the product catalog.
+	*/
+	public $status;
+
+	/**
+	*Unique identifier of the Mozu tenant.
+	*/
+	public $tenantId;
 
 		public $updateDate;
-
-		public $status;
 
 }
 

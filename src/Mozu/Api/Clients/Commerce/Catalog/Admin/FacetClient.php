@@ -14,8 +14,10 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\FacetUrl;
-use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
+
+use Mozu\Api\Contracts\ProductAdmin\Facet;
+use Mozu\Api\Contracts\ProductAdmin\FacetSet;
 
 /**
 * Use the Facets resource to manage the facets shoppers use to filter product display results on a storefront. Facets can include categories, product attributes, or prices, and use either a range of values or discrete values.
@@ -26,15 +28,15 @@ class FacetClient {
 	* Retrieves a facet specified by its unique identifier and displays its properties.
 	*
 	* @param int $facetId Unique identifier of the facet to retrieve.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param bool $validate Validates that the product category associated with a facet is active. System-supplied and read only.
 	* @return MozuClient
 	*/
-	public static function getFacetClient($dataViewMode, $facetId, $validate =  null)
+	public static function getFacetClient($facetId, $validate =  null, $responseFields =  null)
 	{
-		$url = FacetUrl::getFacetUrl($facetId, $validate);
+		$url = FacetUrl::getFacetUrl($facetId, $responseFields, $validate);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
@@ -43,30 +45,30 @@ class FacetClient {
 	*
 	* @param int $categoryId Unique identifier of the category associated with the facets to retrieve.
 	* @param bool $includeAvailable If true, returns a list of the attributes and categories associated with a product type that have not been defined as a facet for the category.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param bool $validate Validates that the product category associated with a facet is active. System-supplied and read only.
 	* @return MozuClient
 	*/
-	public static function getFacetCategoryListClient($dataViewMode, $categoryId, $includeAvailable =  null, $validate =  null)
+	public static function getFacetCategoryListClient($categoryId, $includeAvailable =  null, $validate =  null, $responseFields =  null)
 	{
-		$url = FacetUrl::getFacetCategoryListUrl($categoryId, $includeAvailable, $validate);
+		$url = FacetUrl::getFacetCategoryListUrl($categoryId, $includeAvailable, $responseFields, $validate);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	
 	/**
-	* Creates a new category, price, or attribute facet. Supply the category or attribute source to use for the facet values.
+	* Creates a new category, price, or attribute facet. Define the category or attribute source to use for the facet values.
 	*
-	* @param Facet $facet Properties of the new facet to create. Required properties: Source, FacetType, IsHidden, and CategoryId.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param Facet $facet Properties of the new facet to create. You must specify the source, type, and category.
 	* @return MozuClient
 	*/
-	public static function addFacetClient($dataViewMode, $facet)
+	public static function addFacetClient($facet, $responseFields =  null)
 	{
-		$url = FacetUrl::addFacetUrl();
+		$url = FacetUrl::addFacetUrl($responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($facet)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($facet);
 
 	}
 	
@@ -74,15 +76,15 @@ class FacetClient {
 	* Modifies one or more properties of a defined facet.
 	*
 	* @param int $facetId Unique identifier of the facet to modify.
-	* @param Facet $facet Properties of the defined facet to modify. Required properties: Source, FacetType, IsHidden, and CategoryId.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param Facet $facet Properties of the defined facet to modify.
 	* @return MozuClient
 	*/
-	public static function updateFacetClient($dataViewMode, $facet, $facetId)
+	public static function updateFacetClient($facet, $facetId, $responseFields =  null)
 	{
-		$url = FacetUrl::updateFacetUrl($facetId);
+		$url = FacetUrl::updateFacetUrl($facetId, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withBody($facet)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url)->withBody($facet);
 
 	}
 	
@@ -90,13 +92,13 @@ class FacetClient {
 	* Deletes the facet specified by its unique identifier.
 	*
 	* @param int $facetId Unique identifier of the facet to delete.
+	* @return MozuClient
 	*/
-	public static function deleteFacetByIdClient($dataViewMode, $facetId)
+	public static function deleteFacetByIdClient($facetId)
 	{
 		$url = FacetUrl::deleteFacetByIdUrl($facetId);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
-		return $mozuClient;
+		return $mozuClient->withResourceUrl($url);
 
 	}
 	

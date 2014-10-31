@@ -19,9 +19,15 @@ namespace Mozu\Api\Contracts\Event;
 */
 class Event
 {
-		public $catalogId;
+	/**
+	*The unique identifier of the catalog of products used by a site.
+	*/
+	public $catalogId;
 
-		public $correlationId;
+	/**
+	*The unique identifier of the API request associated with the event action, which might contain multiple actions.
+	*/
+	public $correlationId;
 
 	/**
 	*The unique identifier of the entity that caused the event. For example, if the event is "product.created", the entity ID value represents the product code of the product that was created.
@@ -38,7 +44,10 @@ class Event
 	*/
 	public $isTest;
 
-		public $masterCatalogId;
+	/**
+	*The unique identifier of the master catalog associated with the entity.
+	*/
+	public $masterCatalogId;
 
 		public $siteId;
 
@@ -56,6 +65,8 @@ class Event
 	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
+
+		public $extendedProperties;
 
 }
 

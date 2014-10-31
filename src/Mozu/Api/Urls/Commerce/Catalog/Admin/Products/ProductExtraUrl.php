@@ -25,8 +25,49 @@ class ProductExtraUrl  {
 	public static function getExtrasUrl($productCode)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/Extras";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("productCode", $productCode);
+
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for GetExtraValueLocalizedDeltaPrices
+		* @param string $attributeFQN 
+		* @param string $productCode 
+		* @param string $value 
+		* @return string Resource Url
+	*/
+	public static function getExtraValueLocalizedDeltaPricesUrl($attributeFQN, $productCode, $value)
+	{
+		$url = "/api/commerce/catalog/admin/products/{productCode}/Extras/{attributeFQN}/Values/{value}/localizedDeltaPrice";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
+				->formatUrl("productCode", $productCode)
+				->formatUrl("value", $value);
+
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for GetExtraValueLocalizedDeltaPrice
+		* @param string $attributeFQN 
+		* @param string $currencyCode 
+		* @param string $productCode 
+		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $value 
+		* @return string Resource Url
+	*/
+	public static function getExtraValueLocalizedDeltaPriceUrl($attributeFQN, $currencyCode, $productCode, $responseFields, $value)
+	{
+		$url = "/api/commerce/catalog/admin/products/{productCode}/Extras/{attributeFQN}/Values/{value}/localizedDeltaPrice/{currencyCode}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
+				->formatUrl("currencyCode", $currencyCode)
+				->formatUrl("productCode", $productCode)
+				->formatUrl("responseFields", $responseFields)
+				->formatUrl("value", $value);
+
 		return $mozuUrl;
 	}
 	
@@ -34,27 +75,93 @@ class ProductExtraUrl  {
 		* Get Resource Url for GetExtra
 		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function getExtraUrl($attributeFQN, $productCode)
+	public static function getExtraUrl($attributeFQN, $productCode, $responseFields)
 	{
-		$url = "/api/commerce/catalog/admin/products/{productCode}/Extras/{attributeFQN}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
-		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = "/api/commerce/catalog/admin/products/{productCode}/Extras/{attributeFQN}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
+				->formatUrl("productCode", $productCode)
+				->formatUrl("responseFields", $responseFields);
+
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for AddExtraValueLocalizedDeltaPrice
+		* @param string $attributeFQN 
+		* @param string $productCode 
+		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $value 
+		* @return string Resource Url
+	*/
+	public static function addExtraValueLocalizedDeltaPriceUrl($attributeFQN, $productCode, $responseFields, $value)
+	{
+		$url = "/api/commerce/catalog/admin/products/{productCode}/Extras/{attributeFQN}/Values/{value}/localizedDeltaPrice?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
+				->formatUrl("productCode", $productCode)
+				->formatUrl("responseFields", $responseFields)
+				->formatUrl("value", $value);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for AddExtra
 		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function addExtraUrl($productCode)
+	public static function addExtraUrl($productCode, $responseFields)
 	{
-		$url = "/api/commerce/catalog/admin/products/{productCode}/Extras";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
-		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = "/api/commerce/catalog/admin/products/{productCode}/Extras?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+		$mozuUrl->formatUrl("productCode", $productCode)
+				->formatUrl("responseFields", $responseFields);
+
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for UpdateExtraValueLocalizedDeltaPrices
+		* @param string $attributeFQN 
+		* @param string $productCode 
+		* @param string $value 
+		* @return string Resource Url
+	*/
+	public static function updateExtraValueLocalizedDeltaPricesUrl($attributeFQN, $productCode, $value)
+	{
+		$url = "/api/commerce/catalog/admin/products/{productCode}/Extras/{attributeFQN}/Values/{value}/localizedDeltaPrice";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
+		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
+				->formatUrl("productCode", $productCode)
+				->formatUrl("value", $value);
+
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for UpdateExtraValueLocalizedDeltaPrice
+		* @param string $attributeFQN 
+		* @param string $currencyCode 
+		* @param string $productCode 
+		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $value 
+		* @return string Resource Url
+	*/
+	public static function updateExtraValueLocalizedDeltaPriceUrl($attributeFQN, $currencyCode, $productCode, $responseFields, $value)
+	{
+		$url = "/api/commerce/catalog/admin/products/{productCode}/Extras/{attributeFQN}/Values/{value}/localizedDeltaPrice/{currencyCode}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
+		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
+				->formatUrl("currencyCode", $currencyCode)
+				->formatUrl("productCode", $productCode)
+				->formatUrl("responseFields", $responseFields)
+				->formatUrl("value", $value);
+
 		return $mozuUrl;
 	}
 	
@@ -62,14 +169,17 @@ class ProductExtraUrl  {
 		* Get Resource Url for UpdateExtra
 		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function updateExtraUrl($attributeFQN, $productCode)
+	public static function updateExtraUrl($attributeFQN, $productCode, $responseFields)
 	{
-		$url = "/api/commerce/catalog/admin/products/{productCode}/Extras/{attributeFQN}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
-		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
-		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = "/api/commerce/catalog/admin/products/{productCode}/Extras/{attributeFQN}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
+		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
+				->formatUrl("productCode", $productCode)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
@@ -82,9 +192,30 @@ class ProductExtraUrl  {
 	public static function deleteExtraUrl($attributeFQN, $productCode)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/Extras/{attributeFQN}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
-		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
-		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
+		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
+				->formatUrl("productCode", $productCode);
+
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for DeleteExtraValueLocalizedDeltaPrice
+		* @param string $attributeFQN 
+		* @param string $currencyCode 
+		* @param string $productCode 
+		* @param string $value Use this field to include those fields which are not included by default.
+		* @return string Resource Url
+	*/
+	public static function deleteExtraValueLocalizedDeltaPriceUrl($attributeFQN, $currencyCode, $productCode, $value)
+	{
+		$url = "/api/commerce/catalog/admin/products/{productCode}/Extras/{attributeFQN}/Values/{value}/localizedDeltaPrice/{currencyCode}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
+		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
+				->formatUrl("currencyCode", $currencyCode)
+				->formatUrl("productCode", $productCode)
+				->formatUrl("value", $value);
+
 		return $mozuUrl;
 	}
 	

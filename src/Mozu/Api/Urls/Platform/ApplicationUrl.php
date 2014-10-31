@@ -19,27 +19,33 @@ class ApplicationUrl  {
 
 	/**
 		* Get Resource Url for GetApplication
-		* @param string $appId 
+		* @param string $appId The application ID that represents the application to retrieve.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function getApplicationUrl($appId)
+	public static function getApplicationUrl($appId, $responseFields)
 	{
-		$url = "/api/platform/applications/{appId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("appId", $appId);
+		$url = "/api/platform/applications/{appId}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl->formatUrl("appId", $appId)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdateApplication
-		* @param string $appId 
+		* @param string $appId The application ID that represents the application to update.
+		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function updateApplicationUrl($appId)
+	public static function updateApplicationUrl($appId, $responseFields)
 	{
-		$url = "/api/platform/applications/{appId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
-		$url = $mozuUrl->formatUrl("appId", $appId);
+		$url = "/api/platform/applications/{appId}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
+		$mozuUrl->formatUrl("appId", $appId)
+				->formatUrl("responseFields", $responseFields);
+
 		return $mozuUrl;
 	}
 	

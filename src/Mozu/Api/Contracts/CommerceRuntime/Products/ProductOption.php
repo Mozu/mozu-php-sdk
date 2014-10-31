@@ -20,6 +20,11 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Products;
 class ProductOption
 {
 	/**
+	*If the value if an object, the value selected.
+	*/
+	public $value;
+
+	/**
 	*The fully qualified name of the attribute, which is a user defined attribute identifier.
 	*/
 	public $attributeFQN;
@@ -43,11 +48,6 @@ class ProductOption
 	*If the value is a string, the string entered for the value.
 	*/
 	public $stringValue;
-
-	/**
-	*If the value if an object, the value selected.
-	*/
-	public $value;
 
 }
 
