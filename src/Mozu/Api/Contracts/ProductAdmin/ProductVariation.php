@@ -20,6 +20,11 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class ProductVariation
 {
 	/**
+	*The difference between the base weight for a product and this variation of the product, which can be a positive or negative decimal value.
+	*/
+	public $deltaWeight;
+
+	/**
 	*Describes the types of fulfillment that are supported for this product variation. A variation can support direct ship, in-store pickup, or both. Supported fulfillment types are defined at the master catalog level. Client administrators cannot override the supported fulfillment types at the catalog level.
 	*/
 	public $fulfillmentTypesSupported;
@@ -53,11 +58,6 @@ class ProductVariation
 	*Merchant-created code associated with a specific product variation. Variation product codes maintain an association with the base product code.
 	*/
 	public $variationProductCode;
-
-	/**
-	*The difference between the base weight for a product and this variation of the product, which can be a positive or negative decimal value.
-	*/
-	public $deltaWeight;
 
 	/**
 	*The difference between the base price for the product and this variation of the product, which can be a positive or negative decimal value. For example, if the base price for a t-shirt product is $10, but the XL variation should cost $12, the DeltaPrice value should be "2". However, if the XS variation should only cost $8, the DeltaPrice value should be "-2".

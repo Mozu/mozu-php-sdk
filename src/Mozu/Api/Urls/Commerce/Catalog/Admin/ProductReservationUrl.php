@@ -88,7 +88,7 @@ class ProductReservationUrl  {
 	*/
 	public static function updateProductReservationsUrl($skipInventoryCheck)
 	{
-		$url = "/api/commerce/catalog/admin/productreservations/?skipInventoryCheck={skipInventoryCheck}&useUp";
+		$url = "/api/commerce/catalog/admin/productreservations/?skipInventoryCheck={skipInventoryCheck}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
 		$mozuUrl->formatUrl("skipInventoryCheck", $skipInventoryCheck);
 

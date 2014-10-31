@@ -206,6 +206,8 @@ class Order
 	*/
 	public $originalCartId;
 
+		public $parentOrderId;
+
 	/**
 	*If this order was created to fulfill an item replacement as part of a return merchandise authorization (RMA), the unique identifier of the return.
 	*/

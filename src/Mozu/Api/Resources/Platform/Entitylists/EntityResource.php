@@ -36,7 +36,7 @@ class EntityResource {
 	* @param string $entityListFullName 
 	* @param string $id 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @return JObject 
+	* @return hashtable 
 	*/
 	public function getEntity($entityListFullName, $id, $responseFields =  null)
 	{
@@ -72,8 +72,8 @@ class EntityResource {
 	*
 	* @param string $entityListFullName 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param JObject $item 
-	* @return JObject 
+	* @param hashtable $item 
+	* @return hashtable 
 	*/
 	public function insertEntity($item, $entityListFullName, $responseFields =  null)
 	{
@@ -90,8 +90,8 @@ class EntityResource {
 	* @param string $entityListFullName 
 	* @param string $id 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param JObject $item 
-	* @return JObject 
+	* @param hashtable $item 
+	* @return hashtable 
 	*/
 	public function updateEntity($item, $entityListFullName, $id, $responseFields =  null)
 	{

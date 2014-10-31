@@ -41,7 +41,7 @@ class ListViewResource {
 	* @param string $entityListFullName 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $viewName 
-	* @return JObject 
+	* @return hashtable 
 	*/
 	public function getViewEntity($entityListFullName, $viewName, $entityId, $responseFields =  null)
 	{

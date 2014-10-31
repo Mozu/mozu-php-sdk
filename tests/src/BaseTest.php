@@ -20,7 +20,6 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
 	public $applicationId;
 	public $sharedSecret;
 	public $baseUrl;
-	public $environment;
 	public $tenantId;
 	public $emailAddress;
 	public $password;
@@ -56,7 +55,7 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
     public function loadSettings() {
     	$settings = parse_ini_file("settings.ini", true);
     	
-    	$this->environment = $settings["config"]["environment"];
+
     	$this->applicationId = $settings["config"]["applicationId"];
     	$this->sharedSecret = $settings["config"]["sharedSecret"];
     	$this->baseUrl = $settings["config"]["baseUrl"];
@@ -71,11 +70,13 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
     	$proxy_host = $settings["config"]["proxy_host"];
     	$proxy_port = $settings["config"]["proxy_port"];
 
-        MozuConfig::setBaseUrl($this->baseUrl);
+
+        if ($this->baseUrl)
+            MozuConfig::setBaseUrl($this->baseUrl);
     	
     	if ($proxy_host && $proxy_port) {
     		Proxy::initialize($proxy_host, $proxy_port);
-			}
+		}
     }
    
  }

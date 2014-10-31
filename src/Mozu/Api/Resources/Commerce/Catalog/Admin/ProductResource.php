@@ -17,6 +17,7 @@ use Mozu\Api\ApiContext;
 
 use Mozu\Api\Contracts\ProductAdmin\ProductInCatalogInfo;
 use Mozu\Api\Contracts\ProductAdmin\Product;
+use Mozu\Api\Contracts\ProductAdmin\ProductCodeRename;
 use Mozu\Api\Contracts\ProductAdmin\ProductCollection;
 
 /**
@@ -134,6 +135,20 @@ class ProductResource {
 		return $mozuClient->withContext($this->apiContext)
 				->execute()
 				->getResult();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param array|ProductCodeRename $productCodeRenames 
+	* @return void
+	*/
+	public function renameProductCodes($productCodeRenames)
+	{
+		$mozuClient = ProductClient::renameProductCodesClient($productCodeRenames);
+		$mozuClient->withContext($this->apiContext)
+				->execute();
 
 	}
 	

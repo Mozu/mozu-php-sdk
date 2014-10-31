@@ -20,6 +20,11 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class FacetSource
 {
 	/**
+	*System-supplied and read-only name of the associated facet source.
+	*/
+	public $name;
+
+	/**
 	*If true, the facet allows for values that consist of one or more ranges, such as 0-100, 100-200, and 200-300.
 	*/
 	public $allowsRangeQuery;
@@ -33,11 +38,6 @@ class FacetSource
 	*Identifier of the facet source, which is attribute, category, or price. For attribute facets, the AttributeFQN.
 	*/
 	public $id;
-
-	/**
-	*System-supplied and read-only name of the associated facet source.
-	*/
-	public $name;
 
 	/**
 	*The source type for the facet, either "Attribute" or "Element". Category and price facets are elements.

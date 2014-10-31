@@ -66,6 +66,8 @@ class Event
 	*/
 	public $auditInfo;
 
+		public $extendedProperties;
+
 }
 
 ?>

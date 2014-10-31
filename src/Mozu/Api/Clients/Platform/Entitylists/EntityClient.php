@@ -63,7 +63,7 @@ class EntityClient {
 	*
 	* @param string $entityListFullName 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param JObject $item 
+	* @param hashtable $item 
 	* @return MozuClient
 	*/
 	public static function insertEntityClient($item, $entityListFullName, $responseFields =  null)
@@ -80,7 +80,7 @@ class EntityClient {
 	* @param string $entityListFullName 
 	* @param string $id 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param JObject $item 
+	* @param hashtable $item 
 	* @return MozuClient
 	*/
 	public static function updateEntityClient($item, $entityListFullName, $id, $responseFields =  null)
