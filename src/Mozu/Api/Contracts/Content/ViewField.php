@@ -16,15 +16,9 @@ namespace Mozu\Api\Contracts\Content;
 
 class ViewField
 {
-		public $isQueryable;
-
-		public $isSortable;
-
 		public $name;
 
 		public $target;
-
-		public $type;
 
 }
 

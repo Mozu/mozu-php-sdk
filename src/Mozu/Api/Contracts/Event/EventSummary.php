@@ -37,6 +37,8 @@ class EventSummary
 
 		public $topic;
 
+		public $extendedProperties;
+
 }
 
 ?>

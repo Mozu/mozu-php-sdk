@@ -129,15 +129,15 @@ class CustomerSegmentResource {
 	}
 	
 	/**
-	* Removes the specified customer accounts from a defined customer segment. You must create the request body to perform this operation.
+	* 
 	*
-	* @param int $id Unique identifier of the segment from which to remove the customer accounts.
-	* @param array|int $accountIds List of customer account identifiers to remove from the specified customer segments.
+	* @param int $accountId 
+	* @param int $id 
 	* @return void
 	*/
-	public function deleteSegmentAccounts($accountIds, $id)
+	public function removeSegmentAccount($id, $accountId)
 	{
-		$mozuClient = CustomerSegmentClient::deleteSegmentAccountsClient($accountIds, $id);
+		$mozuClient = CustomerSegmentClient::removeSegmentAccountClient($id, $accountId);
 		$mozuClient->withContext($this->apiContext)
 				->execute();
 

@@ -19,6 +19,7 @@ use Mozu\Api\DataViewMode;
 
 use Mozu\Api\Contracts\ProductAdmin\ProductInCatalogInfo;
 use Mozu\Api\Contracts\ProductAdmin\Product;
+use Mozu\Api\Contracts\ProductAdmin\ProductCodeRename;
 use Mozu\Api\Contracts\ProductAdmin\ProductCollection;
 
 /**
@@ -126,6 +127,20 @@ class ProductClient {
 		$url = ProductUrl::addProductInCatalogUrl($productCode, $responseFields);
 		$mozuClient = new MozuClient();
 		return $mozuClient->withResourceUrl($url)->withBody($productInCatalogInfoIn)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+
+	}
+	
+	/**
+	* 
+	*
+	* @param array|ProductCodeRename $productCodeRenames 
+	* @return MozuClient
+	*/
+	public static function renameProductCodesClient($productCodeRenames)
+	{
+		$url = ProductUrl::renameProductCodesUrl();
+		$mozuClient = new MozuClient();
+		return $mozuClient->withResourceUrl($url)->withBody($productCodeRenames);
 
 	}
 	

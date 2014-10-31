@@ -24,15 +24,11 @@ class DocumentListType
 
 		public $installationPackage;
 
-		public $localizationType;
-
 		public $name;
 
 		public $namespace;
 
 		public $scopeType;
-
-		public $security;
 
 		public $supportsPublishing;
 

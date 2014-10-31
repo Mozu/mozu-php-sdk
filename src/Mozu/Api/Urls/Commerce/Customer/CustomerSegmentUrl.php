@@ -114,15 +114,17 @@ class CustomerSegmentUrl  {
 	}
 	
 	/**
-		* Get Resource Url for DeleteSegmentAccounts
-		* @param int $id Unique identifier of the segment from which to remove the customer accounts.
+		* Get Resource Url for RemoveSegmentAccount
+		* @param int $accountId 
+		* @param int $id 
 		* @return string Resource Url
 	*/
-	public static function deleteSegmentAccountsUrl($id)
+	public static function removeSegmentAccountUrl($accountId, $id)
 	{
-		$url = "/api/commerce/customer/segments/{id}/accounts";
+		$url = "/api/commerce/customer/segments/{id}/accounts/{accountId}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("id", $id);
+		$mozuUrl->formatUrl("accountId", $accountId)
+				->formatUrl("id", $id);
 
 		return $mozuUrl;
 	}

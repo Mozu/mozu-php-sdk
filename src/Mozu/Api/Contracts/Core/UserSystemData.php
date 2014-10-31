@@ -20,16 +20,6 @@ namespace Mozu\Api\Contracts\Core;
 class UserSystemData
 {
 	/**
-	*The number of login attempts left for the user. The user must login successfully before this value reaches zero otherwise the account will be locked.
-	*/
-	public $remainingLoginAttempts;
-
-	/**
-	*Date and time when the entity was last updated, represented in UTC Date/Time.
-	*/
-	public $updatedOn;
-
-	/**
 	*Date and time when the entity was created, represented in UTC Date/Time.
 	*/
 	public $createdOn;
@@ -68,6 +58,16 @@ class UserSystemData
 	*When the password was last modified. System-supplied and read-only.
 	*/
 	public $lastPasswordChangeOn;
+
+	/**
+	*The number of login attempts left for the user. The user must login successfully before this value reaches zero otherwise the account will be locked.
+	*/
+	public $remainingLoginAttempts;
+
+	/**
+	*Date and time when the entity was last updated, represented in UTC Date/Time.
+	*/
+	public $updatedOn;
 
 }
 

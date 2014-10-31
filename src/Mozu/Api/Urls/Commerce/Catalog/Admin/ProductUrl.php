@@ -124,6 +124,18 @@ class ProductUrl  {
 	}
 	
 	/**
+		* Get Resource Url for RenameProductCodes
+		* @return string Resource Url
+	*/
+	public static function renameProductCodesUrl()
+	{
+		$url = "/api/commerce/catalog/admin/products/Actions/RenameProductCodes";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
+
+		return $mozuUrl;
+	}
+	
+	/**
 		* Get Resource Url for UpdateProductInCatalogs
 		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 		* @return string Resource Url

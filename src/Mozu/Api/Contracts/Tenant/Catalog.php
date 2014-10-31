@@ -19,6 +19,13 @@ namespace Mozu\Api\Contracts\Tenant;
 */
 class Catalog
 {
+	/**
+	*The date and time the catalog was deleted.
+	*/
+	public $deleteDate;
+
+		public $id;
+
 		public $createDate;
 
 	/**
@@ -30,13 +37,6 @@ class Catalog
 	*The default locale code for the product catalog. Currently, only "en-US" is supported.
 	*/
 	public $defaultLocaleCode;
-
-	/**
-	*The date and time the catalog was deleted.
-	*/
-	public $deleteDate;
-
-		public $id;
 
 	/**
 	*If true, the catalog has been deleted.
