@@ -14,9 +14,8 @@ namespace Mozu\Api\Clients\Event\Push;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Event\Push\SubscriptionUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Event\SubscriptionCollection;
 
 /**
 * 
@@ -37,7 +36,8 @@ class SubscriptionClient {
 	{
 		$url = SubscriptionUrl::getSubscriptionsUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

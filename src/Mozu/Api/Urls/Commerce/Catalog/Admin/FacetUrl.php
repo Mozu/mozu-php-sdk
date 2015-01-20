@@ -27,11 +27,10 @@ class FacetUrl  {
 	public static function getFacetUrl($facetId, $responseFields, $validate)
 	{
 		$url = "/api/commerce/catalog/admin/facets/{facetId}?validate={validate}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("facetId", $facetId)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("validate", $validate);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("facetId", $facetId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("validate", $validate);
 		return $mozuUrl;
 	}
 	
@@ -46,12 +45,11 @@ class FacetUrl  {
 	public static function getFacetCategoryListUrl($categoryId, $includeAvailable, $responseFields, $validate)
 	{
 		$url = "/api/commerce/catalog/admin/facets/category/{categoryId}?includeAvailable={includeAvailable}&validate={validate}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("categoryId", $categoryId)
-				->formatUrl("includeAvailable", $includeAvailable)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("validate", $validate);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("categoryId", $categoryId);
+		$url = $mozuUrl->formatUrl("includeAvailable", $includeAvailable);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("validate", $validate);
 		return $mozuUrl;
 	}
 	
@@ -63,9 +61,8 @@ class FacetUrl  {
 	public static function addFacetUrl($responseFields)
 	{
 		$url = "/api/commerce/catalog/admin/facets/?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -78,10 +75,9 @@ class FacetUrl  {
 	public static function updateFacetUrl($facetId, $responseFields)
 	{
 		$url = "/api/commerce/catalog/admin/facets/{facetId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("facetId", $facetId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("facetId", $facetId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -93,9 +89,8 @@ class FacetUrl  {
 	public static function deleteFacetByIdUrl($facetId)
 	{
 		$url = "/api/commerce/catalog/admin/facets/{facetId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("facetId", $facetId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("facetId", $facetId);
 		return $mozuUrl;
 	}
 	

@@ -12,23 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Settings;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Settings\ApplicationClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\SiteSettings\Application\Application;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Applications resource to update site-specific settings for installed applications.
 */
 class ApplicationResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieve the settings of a third-party application.
@@ -39,9 +38,9 @@ class ApplicationResource {
 	public function thirdPartyGetApplication($responseFields =  null)
 	{
 		$mozuClient = ApplicationClient::thirdPartyGetApplicationClient($responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -55,9 +54,9 @@ class ApplicationResource {
 	public function thirdPartyUpdateApplication($application, $responseFields =  null)
 	{
 		$mozuClient = ApplicationClient::thirdPartyUpdateApplicationClient($application, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	

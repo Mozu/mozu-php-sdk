@@ -29,13 +29,12 @@ class ProductUrl  {
 	public static function getProductsUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex)
 	{
 		$url = "/api/commerce/catalog/storefront/products/?filter={filter}&startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("filter", $filter)
-				->formatUrl("pageSize", $pageSize)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("sortBy", $sortBy)
-				->formatUrl("startIndex", $startIndex);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("filter", $filter);
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
 		return $mozuUrl;
 	}
 	
@@ -49,11 +48,10 @@ class ProductUrl  {
 	public static function getProductInventoryUrl($locationCodes, $productCode, $responseFields)
 	{
 		$url = "/api/commerce/catalog/storefront/products/{productCode}/locationinventory?locationCodes={locationCodes}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("locationCodes", $locationCodes)
-				->formatUrl("productCode", $productCode)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("locationCodes", $locationCodes);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -63,19 +61,20 @@ class ProductUrl  {
 		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 		* @param string $responseFields 
 		* @param bool $skipInventoryCheck If true, skip the inventory validation process for the specified product.
+		* @param bool $supressOutOfStock404 
 		* @param string $variationProductCode Merchant-created code associated with a specific product variation. Variation product codes maintain an association with the base product code.
 		* @return string Resource Url
 	*/
-	public static function getProductUrl($allowInactive, $productCode, $responseFields, $skipInventoryCheck, $variationProductCode)
+	public static function getProductUrl($allowInactive, $productCode, $responseFields, $skipInventoryCheck, $supressOutOfStock404, $variationProductCode)
 	{
-		$url = "/api/commerce/catalog/storefront/products/{productCode}?variationProductCode={variationProductCode}&allowInactive={allowInactive}&skipInventoryCheck={skipInventoryCheck}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("allowInactive", $allowInactive)
-				->formatUrl("productCode", $productCode)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("skipInventoryCheck", $skipInventoryCheck)
-				->formatUrl("variationProductCode", $variationProductCode);
-
+		$url = "/api/commerce/catalog/storefront/products/{productCode}?variationProductCode={variationProductCode}&allowInactive={allowInactive}&skipInventoryCheck={skipInventoryCheck}&supressOutOfStock404={supressOutOfStock404}&responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("allowInactive", $allowInactive);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("skipInventoryCheck", $skipInventoryCheck);
+		$url = $mozuUrl->formatUrl("supressOutOfStock404", $supressOutOfStock404);
+		$url = $mozuUrl->formatUrl("variationProductCode", $variationProductCode);
 		return $mozuUrl;
 	}
 	
@@ -90,12 +89,11 @@ class ProductUrl  {
 	public static function configuredProductUrl($includeOptionDetails, $productCode, $responseFields, $skipInventoryCheck)
 	{
 		$url = "/api/commerce/catalog/storefront/products/{productCode}/configure?includeOptionDetails={includeOptionDetails}&skipInventoryCheck={skipInventoryCheck}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("includeOptionDetails", $includeOptionDetails)
-				->formatUrl("productCode", $productCode)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("skipInventoryCheck", $skipInventoryCheck);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("includeOptionDetails", $includeOptionDetails);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("skipInventoryCheck", $skipInventoryCheck);
 		return $mozuUrl;
 	}
 	
@@ -109,11 +107,10 @@ class ProductUrl  {
 	public static function validateProductUrl($productCode, $responseFields, $skipInventoryCheck)
 	{
 		$url = "/api/commerce/catalog/storefront/products/{productCode}/validate?skipInventoryCheck={skipInventoryCheck}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("productCode", $productCode)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("skipInventoryCheck", $skipInventoryCheck);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("skipInventoryCheck", $skipInventoryCheck);
 		return $mozuUrl;
 	}
 	
@@ -130,14 +127,13 @@ class ProductUrl  {
 	public static function validateDiscountsUrl($allowInactive, $customerAccountId, $productCode, $responseFields, $skipInventoryCheck, $variationProductCode)
 	{
 		$url = "/api/commerce/catalog/storefront/products/{productCode}/validateDiscounts?variationProductCode={variationProductCode}&customerAccountId={customerAccountId}&allowInactive={allowInactive}&skipInventoryCheck={skipInventoryCheck}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("allowInactive", $allowInactive)
-				->formatUrl("customerAccountId", $customerAccountId)
-				->formatUrl("productCode", $productCode)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("skipInventoryCheck", $skipInventoryCheck)
-				->formatUrl("variationProductCode", $variationProductCode);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("allowInactive", $allowInactive);
+		$url = $mozuUrl->formatUrl("customerAccountId", $customerAccountId);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("skipInventoryCheck", $skipInventoryCheck);
+		$url = $mozuUrl->formatUrl("variationProductCode", $variationProductCode);
 		return $mozuUrl;
 	}
 	
@@ -149,9 +145,8 @@ class ProductUrl  {
 	public static function getProductInventoriesUrl($responseFields)
 	{
 		$url = "/api/commerce/catalog/storefront/products/locationinventory?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	

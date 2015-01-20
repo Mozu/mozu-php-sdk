@@ -14,9 +14,8 @@ namespace Mozu\Api\Clients\Content\Documentlists;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Content\Documentlists\ViewUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Content\DocumentCollection;
 
 /**
 * 
@@ -39,7 +38,8 @@ class ViewClient {
 	{
 		$url = ViewUrl::getViewDocumentsUrl($documentListName, $filter, $pageSize, $responseFields, $sortBy, $startIndex, $viewName);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

@@ -27,11 +27,10 @@ class ShipmentUrl  {
 	public static function getShipmentUrl($responseFields, $returnId, $shipmentId)
 	{
 		$url = "/api/commerce/returns/{returnId}/shipments/{shipmentId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields)
-				->formatUrl("returnId", $returnId)
-				->formatUrl("shipmentId", $shipmentId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("returnId", $returnId);
+		$url = $mozuUrl->formatUrl("shipmentId", $shipmentId);
 		return $mozuUrl;
 	}
 	
@@ -43,9 +42,8 @@ class ShipmentUrl  {
 	public static function createPackageShipmentsUrl($returnId)
 	{
 		$url = "/api/commerce/returns/{returnId}/shipments";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("returnId", $returnId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("returnId", $returnId);
 		return $mozuUrl;
 	}
 	
@@ -58,10 +56,9 @@ class ShipmentUrl  {
 	public static function deleteShipmentUrl($returnId, $shipmentId)
 	{
 		$url = "/api/commerce/returns/{returnId}/shipments/{shipmentId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("returnId", $returnId)
-				->formatUrl("shipmentId", $shipmentId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("returnId", $returnId);
+		$url = $mozuUrl->formatUrl("shipmentId", $shipmentId);
 		return $mozuUrl;
 	}
 	

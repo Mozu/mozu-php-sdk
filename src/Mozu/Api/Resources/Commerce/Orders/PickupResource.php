@@ -12,23 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Orders;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Orders\PickupClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\CommerceRuntime\Fulfillment\Pickup;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Pickups resource to organize items submitted in an order into pickups that enable the shopper to fulfill the order items using the in-store pickup method.
 */
 class PickupResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves a list of the actions available to perform for the pickup specified in the request.
@@ -40,9 +39,9 @@ class PickupResource {
 	public function getAvailablePickupFulfillmentActions($orderId, $pickupId)
 	{
 		$mozuClient = PickupClient::getAvailablePickupFulfillmentActionsClient($orderId, $pickupId);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -57,9 +56,9 @@ class PickupResource {
 	public function getPickup($orderId, $pickupId, $responseFields =  null)
 	{
 		$mozuClient = PickupClient::getPickupClient($orderId, $pickupId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -74,9 +73,9 @@ class PickupResource {
 	public function createPickup($pickup, $orderId, $responseFields =  null)
 	{
 		$mozuClient = PickupClient::createPickupClient($pickup, $orderId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -92,9 +91,9 @@ class PickupResource {
 	public function updatePickup($pickup, $orderId, $pickupId, $responseFields =  null)
 	{
 		$mozuClient = PickupClient::updatePickupClient($pickup, $orderId, $pickupId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -103,13 +102,12 @@ class PickupResource {
 	*
 	* @param string $orderId Unique identifier of the order associated with the pickup.
 	* @param string $pickupId Unique identifier of the pickup to remove.
-	* @return void
 	*/
 	public function deletePickup($orderId, $pickupId)
 	{
 		$mozuClient = PickupClient::deletePickupClient($orderId, $pickupId);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

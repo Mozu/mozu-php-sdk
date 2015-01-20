@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Platform;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Platform\EntityListUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\MZDB\EntityList;
-use Mozu\Api\Contracts\MZDB\EntityListCollection;
 
 /**
 * 
@@ -38,7 +36,8 @@ class EntityListClient {
 	{
 		$url = EntityListUrl::getEntityListsUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -53,7 +52,8 @@ class EntityListClient {
 	{
 		$url = EntityListUrl::getEntityListUrl($entityListFullName, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -68,7 +68,8 @@ class EntityListClient {
 	{
 		$url = EntityListUrl::createEntityListUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($entityList);
+		$mozuClient->withResourceUrl($url)->withBody($entityList);
+		return $mozuClient;
 
 	}
 	
@@ -84,7 +85,8 @@ class EntityListClient {
 	{
 		$url = EntityListUrl::updateEntityListUrl($entityListFullName, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($entityList);
+		$mozuClient->withResourceUrl($url)->withBody($entityList);
+		return $mozuClient;
 
 	}
 	
@@ -92,13 +94,13 @@ class EntityListClient {
 	* 
 	*
 	* @param string $entityListFullName 
-	* @return MozuClient
 	*/
 	public static function deleteEntityListClient($entityListFullName)
 	{
 		$url = EntityListUrl::deleteEntityListUrl($entityListFullName);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

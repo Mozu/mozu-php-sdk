@@ -12,23 +12,22 @@
 
 namespace Mozu\Api\Resources\Platform\Entitylists;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Platform\Entitylists\EntityClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\MZDB\EntityCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * 
 */
 class EntityResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* 
@@ -36,14 +35,14 @@ class EntityResource {
 	* @param string $entityListFullName 
 	* @param string $id 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @return hashtable 
+	* @return JObject 
 	*/
 	public function getEntity($entityListFullName, $id, $responseFields =  null)
 	{
 		$mozuClient = EntityClient::getEntityClient($entityListFullName, $id, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -61,9 +60,9 @@ class EntityResource {
 	public function getEntities($entityListFullName, $pageSize =  null, $startIndex =  null, $filter =  null, $sortBy =  null, $responseFields =  null)
 	{
 		$mozuClient = EntityClient::getEntitiesClient($entityListFullName, $pageSize, $startIndex, $filter, $sortBy, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -72,15 +71,15 @@ class EntityResource {
 	*
 	* @param string $entityListFullName 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param hashtable $item 
-	* @return hashtable 
+	* @param JObject $item 
+	* @return JObject 
 	*/
 	public function insertEntity($item, $entityListFullName, $responseFields =  null)
 	{
 		$mozuClient = EntityClient::insertEntityClient($item, $entityListFullName, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -90,15 +89,15 @@ class EntityResource {
 	* @param string $entityListFullName 
 	* @param string $id 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param hashtable $item 
-	* @return hashtable 
+	* @param JObject $item 
+	* @return JObject 
 	*/
 	public function updateEntity($item, $entityListFullName, $id, $responseFields =  null)
 	{
 		$mozuClient = EntityClient::updateEntityClient($item, $entityListFullName, $id, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -107,13 +106,12 @@ class EntityResource {
 	*
 	* @param string $entityListFullName 
 	* @param string $id 
-	* @return void
 	*/
 	public function deleteEntity($entityListFullName, $id)
 	{
 		$mozuClient = EntityClient::deleteEntityClient($entityListFullName, $id);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

@@ -14,16 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Customer;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\CustomerAccountUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Customer\CustomerAccountAndAuthInfo;
-use Mozu\Api\Contracts\Customer\CustomerAccount;
-use Mozu\Api\Contracts\Customer\PasswordInfo;
-use Mozu\Api\Contracts\Customer\CustomerLoginInfo;
-use Mozu\Api\Contracts\Customer\ResetPasswordInfo;
-use Mozu\Api\Contracts\Customer\CustomerAccountCollection;
-use Mozu\Api\Contracts\Customer\LoginState;
-use Mozu\Api\Contracts\Customer\CustomerAuthTicket;
 
 /**
 * Use the Customer Accounts resource to manage the components of shopper accounts, including attributes, contact information, company notes, and groups associated with the customer account.
@@ -48,7 +40,8 @@ class CustomerAccountClient {
 	{
 		$url = CustomerAccountUrl::getAccountsUrl($fields, $filter, $isAnonymous, $pageSize, $q, $qLimit, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -63,7 +56,8 @@ class CustomerAccountClient {
 	{
 		$url = CustomerAccountUrl::getLoginStateUrl($accountId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -78,7 +72,8 @@ class CustomerAccountClient {
 	{
 		$url = CustomerAccountUrl::getAccountUrl($accountId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -93,7 +88,8 @@ class CustomerAccountClient {
 	{
 		$url = CustomerAccountUrl::addAccountUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($account);
+		$mozuClient->withResourceUrl($url)->withBody($account);
+		return $mozuClient;
 
 	}
 	
@@ -102,13 +98,13 @@ class CustomerAccountClient {
 	*
 	* @param int $accountId The customer account information required to change the userpassword.
 	* @param PasswordInfo $passwordInfo The password information required to change the user password.
-	* @return MozuClient
 	*/
 	public static function changePasswordClient($passwordInfo, $accountId)
 	{
 		$url = CustomerAccountUrl::changePasswordUrl($accountId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($passwordInfo);
+		$mozuClient->withResourceUrl($url)->withBody($passwordInfo);
+		return $mozuClient;
 
 	}
 	
@@ -124,7 +120,8 @@ class CustomerAccountClient {
 	{
 		$url = CustomerAccountUrl::addLoginToExistingCustomerUrl($accountId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($customerAuthInfo);
+		$mozuClient->withResourceUrl($url)->withBody($customerAuthInfo);
+		return $mozuClient;
 
 	}
 	
@@ -132,13 +129,13 @@ class CustomerAccountClient {
 	* Updates the customer lifetime value of the specified customer account in the event of an order import or a lifetime value calculation error.
 	*
 	* @param int $accountId The unique identifier of the customer account for which to calculate customer lifetime value.
-	* @return MozuClient
 	*/
 	public static function recomputeCustomerLifetimeValueClient($accountId)
 	{
 		$url = CustomerAccountUrl::recomputeCustomerLifetimeValueUrl($accountId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -147,13 +144,13 @@ class CustomerAccountClient {
 	*
 	* @param int $accountId The unique identifier of the customer account.
 	* @param bool $isLocked If true, the customer account is locked from logging in.
-	* @return MozuClient
 	*/
 	public static function setLoginLockedClient($isLocked, $accountId)
 	{
 		$url = CustomerAccountUrl::setLoginLockedUrl($accountId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($isLocked);
+		$mozuClient->withResourceUrl($url)->withBody($isLocked);
+		return $mozuClient;
 
 	}
 	
@@ -162,13 +159,13 @@ class CustomerAccountClient {
 	*
 	* @param int $accountId Unique identifier of the customer account.
 	* @param bool $isPasswordChangeRequired If true, the password for the customer account must be changed.
-	* @return MozuClient
 	*/
 	public static function setPasswordChangeRequiredClient($isPasswordChangeRequired, $accountId)
 	{
 		$url = CustomerAccountUrl::setPasswordChangeRequiredUrl($accountId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($isPasswordChangeRequired);
+		$mozuClient->withResourceUrl($url)->withBody($isPasswordChangeRequired);
+		return $mozuClient;
 
 	}
 	
@@ -183,7 +180,8 @@ class CustomerAccountClient {
 	{
 		$url = CustomerAccountUrl::addAccountAndLoginUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($accountAndAuthInfo);
+		$mozuClient->withResourceUrl($url)->withBody($accountAndAuthInfo);
+		return $mozuClient;
 
 	}
 	
@@ -198,7 +196,8 @@ class CustomerAccountClient {
 	{
 		$url = CustomerAccountUrl::addAccountsUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($customers);
+		$mozuClient->withResourceUrl($url)->withBody($customers);
+		return $mozuClient;
 
 	}
 	
@@ -213,7 +212,8 @@ class CustomerAccountClient {
 	{
 		$url = CustomerAccountUrl::getLoginStateByEmailAddressUrl($emailAddress, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -228,7 +228,8 @@ class CustomerAccountClient {
 	{
 		$url = CustomerAccountUrl::getLoginStateByUserNameUrl($responseFields, $userName);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -236,13 +237,13 @@ class CustomerAccountClient {
 	* Resets the password for a customer account.
 	*
 	* @param ResetPasswordInfo $resetPasswordInfo Information required to reset the password for a customer account.
-	* @return MozuClient
 	*/
 	public static function resetPasswordClient($resetPasswordInfo)
 	{
 		$url = CustomerAccountUrl::resetPasswordUrl();
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($resetPasswordInfo);
+		$mozuClient->withResourceUrl($url)->withBody($resetPasswordInfo);
+		return $mozuClient;
 
 	}
 	
@@ -258,7 +259,8 @@ class CustomerAccountClient {
 	{
 		$url = CustomerAccountUrl::updateAccountUrl($accountId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($account);
+		$mozuClient->withResourceUrl($url)->withBody($account);
+		return $mozuClient;
 
 	}
 	
@@ -266,13 +268,13 @@ class CustomerAccountClient {
 	* Deletes a customer account. A customer account cannot be deleted if any orders exist, past or present.
 	*
 	* @param int $accountId Unique identifier of the customer account to delete.
-	* @return MozuClient
 	*/
 	public static function deleteAccountClient($accountId)
 	{
 		$url = CustomerAccountUrl::deleteAccountUrl($accountId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

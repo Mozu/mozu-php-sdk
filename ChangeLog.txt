@@ -1,10 +1,21 @@
 Events
-0.    Added - Product.Product Code Renamed
+0.    Added - Customer Segment.Customer Segment Customer Added
+1.    Added - Customer Segment.Customer Segment Customer Removed
+2.    Added - Location.Location Updated
+3.    Added - Location.Location Usage Created
+4.    Added - Location.Location Usage Updated
+5.    Added - SearchIndex.Search Index Updated
+6.    Added - Test Utility.Ping Created
+7.    Removed - Wish List.Ping Created
 
 Operation Params
-0.    Added - commerce.catalog.admin.products.RenameProductCodes- Param : productCodeRenames
-1.    Added - commerce.customer.segments.RemoveSegmentAccount- Param : accountId
+0.    Added - commerce.catalog.storefront.products.GetProduct- Param : supressOutOfStock404
+1.    Added - commerce.customer.accounts.PerformCustomerAccountAction- Param : action
+2.    Added - commerce.customer.attributedefinition.attributes.UpdateAttribute- Param : updateReadOnly
+3.    Added - commerce.orders.attributedefinition.attributes.UpdateAttribute- Param : updateReadOnly
 
 Operations
-0.    Added - commerce.catalog.admin.products.RenameProductCodes - POST
-1.    Added - commerce.customer.segments.RemoveSegmentAccount - DELETE
+0.    Added - commerce.catalog.admin.categories.FixCategoryTreeSequences - POST
+1.    Added - commerce.catalog.storefront.shipping.GetShippableStates - GET
+2.    Added - commerce.customer.accounts.PerformCustomerAccountAction - POST
+3.    Added - platform.reference.GetCountriesWithStates - GET

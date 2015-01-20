@@ -12,23 +12,22 @@
 
 namespace Mozu\Api\Resources\Event\Push;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Event\Push\SubscriptionClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\Event\SubscriptionCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * 
 */
 class SubscriptionResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* 
@@ -43,9 +42,9 @@ class SubscriptionResource {
 	public function getSubscriptions($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
 		$mozuClient = SubscriptionClient::getSubscriptionsClient($startIndex, $pageSize, $sortBy, $filter, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	

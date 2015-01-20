@@ -12,24 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Customer\Accounts;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Customer\Accounts\CustomerAttributeClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\Customer\CustomerAttribute;
-use Mozu\Api\Contracts\Customer\CustomerAttributeCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Attributes subresource to manage the attributes used to uniquely identify shopper accounts, such as gender or age.
 */
 class CustomerAttributeResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves the contents of an attribute associated with the specified customer account.
@@ -42,9 +40,9 @@ class CustomerAttributeResource {
 	public function getAccountAttribute($accountId, $attributeFQN, $responseFields =  null)
 	{
 		$mozuClient = CustomerAttributeClient::getAccountAttributeClient($accountId, $attributeFQN, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -62,9 +60,9 @@ class CustomerAttributeResource {
 	public function getAccountAttributes($accountId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
 		$mozuClient = CustomerAttributeClient::getAccountAttributesClient($accountId, $startIndex, $pageSize, $sortBy, $filter, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -79,9 +77,9 @@ class CustomerAttributeResource {
 	public function addAccountAttribute($attribute, $accountId, $responseFields =  null)
 	{
 		$mozuClient = CustomerAttributeClient::addAccountAttributeClient($attribute, $accountId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -97,9 +95,9 @@ class CustomerAttributeResource {
 	public function updateAccountAttribute($attribute, $accountId, $attributeFQN, $responseFields =  null)
 	{
 		$mozuClient = CustomerAttributeClient::updateAccountAttributeClient($attribute, $accountId, $attributeFQN, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -108,13 +106,12 @@ class CustomerAttributeResource {
 	*
 	* @param int $accountId Unique identifier of the customer account.
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-	* @return void
 	*/
 	public function deleteAccountAttribute($accountId, $attributeFQN)
 	{
 		$mozuClient = CustomerAttributeClient::deleteAccountAttributeClient($accountId, $attributeFQN);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

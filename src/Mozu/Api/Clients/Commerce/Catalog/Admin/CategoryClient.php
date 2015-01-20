@@ -14,11 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\CategoryUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\ProductAdmin\Category;
-use Mozu\Api\Contracts\ProductAdmin\CategoryPagedCollection;
-use Mozu\Api\Contracts\ProductAdmin\CategoryCollection;
 
 /**
 * Use the Categories resource to organize products and control where they appear on the storefront. Create and maintain a hierarchy of categories and subcategories where the site will store properties.
@@ -39,7 +36,8 @@ class CategoryClient {
 	{
 		$url = CategoryUrl::getCategoriesUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -54,7 +52,8 @@ class CategoryClient {
 	{
 		$url = CategoryUrl::getChildCategoriesUrl($categoryId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -69,7 +68,8 @@ class CategoryClient {
 	{
 		$url = CategoryUrl::getCategoryUrl($categoryId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -85,7 +85,8 @@ class CategoryClient {
 	{
 		$url = CategoryUrl::addCategoryUrl($incrementSequence, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($category);
+		$mozuClient->withResourceUrl($url)->withBody($category);
+		return $mozuClient;
 
 	}
 	
@@ -102,7 +103,8 @@ class CategoryClient {
 	{
 		$url = CategoryUrl::updateCategoryUrl($cascadeVisibility, $categoryId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($category);
+		$mozuClient->withResourceUrl($url)->withBody($category);
+		return $mozuClient;
 
 	}
 	
@@ -111,13 +113,13 @@ class CategoryClient {
 	*
 	* @param bool $cascadeDelete If true, also delete all subcategories associated with the specified category.
 	* @param int $categoryId Unique identifier of the category to delete.
-	* @return MozuClient
 	*/
 	public static function deleteCategoryByIdClient($categoryId, $cascadeDelete =  null)
 	{
 		$url = CategoryUrl::deleteCategoryByIdUrl($cascadeDelete, $categoryId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

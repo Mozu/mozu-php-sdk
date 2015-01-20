@@ -12,24 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Customer;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Customer\VisitClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\Customer\Visit;
-use Mozu\Api\Contracts\Customer\VisitCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Visits resource to manage all visits a customer makes to a tenant's sites and measure the level of transactions a customer performs during a unique visit for customer account analytics. Clients can track customer visits by site (including online and in-person interactions), the transactions a customer performs during the visit, and the device type associated with the visit, if any.
 */
 class VisitResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves a list of customer visits according to any filter or sort criteria specified in the request.
@@ -44,9 +42,9 @@ class VisitResource {
 	public function getVisits($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
 		$mozuClient = VisitClient::getVisitsClient($startIndex, $pageSize, $sortBy, $filter, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -60,9 +58,9 @@ class VisitResource {
 	public function getVisit($visitId, $responseFields =  null)
 	{
 		$mozuClient = VisitClient::getVisitClient($visitId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -76,9 +74,9 @@ class VisitResource {
 	public function addVisit($visit, $responseFields =  null)
 	{
 		$mozuClient = VisitClient::addVisitClient($visit, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -93,9 +91,9 @@ class VisitResource {
 	public function updateVisit($visit, $visitId, $responseFields =  null)
 	{
 		$mozuClient = VisitClient::updateVisitClient($visit, $visitId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	

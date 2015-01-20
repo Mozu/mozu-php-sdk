@@ -12,26 +12,22 @@
 
 namespace Mozu\Api\Resources\Content;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Content\DocumentListClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\Content\DocumentList;
-use Mozu\Api\Contracts\Content\DocumentListCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the document lists resource to organize your site's documents into a hierarchy. Document lists can contain documents, folders, and complete hierarchies of folders, which contain documents with unique names.
 */
 class DocumentListResource {
 
-	private $apiContext;
-	private $dataViewMode;
-	public function __construct(ApiContext $apiContext, $dataViewMode) 
+		private $apiContext;
+	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
-		$this->dataViewMode = $dataViewMode;
 	}
-
-	
 
 	/**
 	* Retrieves a collection of document lists.
@@ -41,12 +37,12 @@ class DocumentListResource {
 	* @param int $startIndex 
 	* @return DocumentListCollection 
 	*/
-	public function getDocumentLists($pageSize =  null, $startIndex =  null, $responseFields =  null)
+	public function getDocumentLists($dataViewMode, $pageSize =  null, $startIndex =  null, $responseFields =  null)
 	{
-		$mozuClient = DocumentListClient::getDocumentListsClient($this->dataViewMode, $pageSize, $startIndex, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = DocumentListClient::getDocumentListsClient($dataViewMode, $pageSize, $startIndex, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -57,12 +53,12 @@ class DocumentListResource {
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return DocumentList 
 	*/
-	public function getDocumentList($documentListName, $responseFields =  null)
+	public function getDocumentList($dataViewMode, $documentListName, $responseFields =  null)
 	{
-		$mozuClient = DocumentListClient::getDocumentListClient($this->dataViewMode, $documentListName, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = DocumentListClient::getDocumentListClient($dataViewMode, $documentListName, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -73,12 +69,12 @@ class DocumentListResource {
 	* @param DocumentList $list 
 	* @return DocumentList 
 	*/
-	public function createDocumentList($list, $responseFields =  null)
+	public function createDocumentList($dataViewMode, $list, $responseFields =  null)
 	{
-		$mozuClient = DocumentListClient::createDocumentListClient($this->dataViewMode, $list, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = DocumentListClient::createDocumentListClient($dataViewMode, $list, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -93,9 +89,9 @@ class DocumentListResource {
 	public function updateDocumentList($list, $documentListName, $responseFields =  null)
 	{
 		$mozuClient = DocumentListClient::updateDocumentListClient($list, $documentListName, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -103,13 +99,12 @@ class DocumentListResource {
 	* 
 	*
 	* @param string $documentListName 
-	* @return void
 	*/
 	public function deleteDocumentList($documentListName)
 	{
 		$mozuClient = DocumentListClient::deleteDocumentListClient($documentListName);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

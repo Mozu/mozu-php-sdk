@@ -28,12 +28,11 @@ class AdjustmentUrl  {
 	public static function applyShippingAdjustmentUrl($orderId, $responseFields, $updateMode, $version)
 	{
 		$url = "/api/commerce/orders/{orderId}/adjustment/shipping?updatemode={updateMode}&version={version}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("orderId", $orderId)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("updateMode", $updateMode)
-				->formatUrl("version", $version);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("updateMode", $updateMode);
+		$url = $mozuUrl->formatUrl("version", $version);
 		return $mozuUrl;
 	}
 	
@@ -48,12 +47,11 @@ class AdjustmentUrl  {
 	public static function applyAdjustmentUrl($orderId, $responseFields, $updateMode, $version)
 	{
 		$url = "/api/commerce/orders/{orderId}/adjustment?updatemode={updateMode}&version={version}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("orderId", $orderId)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("updateMode", $updateMode)
-				->formatUrl("version", $version);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("updateMode", $updateMode);
+		$url = $mozuUrl->formatUrl("version", $version);
 		return $mozuUrl;
 	}
 	
@@ -67,11 +65,10 @@ class AdjustmentUrl  {
 	public static function removeShippingAdjustmentUrl($orderId, $updateMode, $version)
 	{
 		$url = "/api/commerce/orders/{orderId}/adjustment/shipping?updatemode={updateMode}&version={version}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("orderId", $orderId)
-				->formatUrl("updateMode", $updateMode)
-				->formatUrl("version", $version);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("updateMode", $updateMode);
+		$url = $mozuUrl->formatUrl("version", $version);
 		return $mozuUrl;
 	}
 	
@@ -85,11 +82,10 @@ class AdjustmentUrl  {
 	public static function removeAdjustmentUrl($orderId, $updateMode, $version)
 	{
 		$url = "/api/commerce/orders/{orderId}/adjustment?updatemode={updateMode}&version={version}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("orderId", $orderId)
-				->formatUrl("updateMode", $updateMode)
-				->formatUrl("version", $version);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("updateMode", $updateMode);
+		$url = $mozuUrl->formatUrl("version", $version);
 		return $mozuUrl;
 	}
 	

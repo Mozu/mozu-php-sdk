@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\InStockNotificationSubscriptionUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Customer\InStockNotificationSubscription;
-use Mozu\Api\Contracts\Customer\InStockNotificationSubscriptionCollection;
 
 /**
 * Use the Customer In-Stock Notification Subscription resource to manage the subscriptions customer accounts use to send product notifications. This resource can send a notification when a product in a catalog returns to a site's active inventory after it is out of stock, or when a new product becomes available for the first time.
@@ -38,7 +36,8 @@ class InStockNotificationSubscriptionClient {
 	{
 		$url = InStockNotificationSubscriptionUrl::getInStockNotificationSubscriptionsUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -53,7 +52,8 @@ class InStockNotificationSubscriptionClient {
 	{
 		$url = InStockNotificationSubscriptionUrl::getInStockNotificationSubscriptionUrl($id, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -68,7 +68,8 @@ class InStockNotificationSubscriptionClient {
 	{
 		$url = InStockNotificationSubscriptionUrl::addInStockNotificationSubscriptionUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($inStockNotificationSubscription);
+		$mozuClient->withResourceUrl($url)->withBody($inStockNotificationSubscription);
+		return $mozuClient;
 
 	}
 	
@@ -76,13 +77,13 @@ class InStockNotificationSubscriptionClient {
 	* Deletes a subscription for a customer in-stock notification.
 	*
 	* @param int $id Unique identifier of the customer in-stock notification subscription to delete.
-	* @return MozuClient
 	*/
 	public static function deleteInStockNotificationSubscriptionClient($id)
 	{
 		$url = InStockNotificationSubscriptionUrl::deleteInStockNotificationSubscriptionUrl($id);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

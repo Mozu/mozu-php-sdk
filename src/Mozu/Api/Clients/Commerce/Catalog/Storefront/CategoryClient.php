@@ -14,11 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Storefront;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Storefront\CategoryUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\ProductRuntime\Category;
-use Mozu\Api\Contracts\ProductRuntime\CategoryCollection;
-use Mozu\Api\Contracts\ProductRuntime\CategoryPagedCollection;
 
 /**
 * Use the Storefront Categories resource to view the product category hierarchy as it appears to shoppers who are browsing the storefront. The hierarchy can be returned as a flat list or as a category tree.
@@ -39,7 +36,8 @@ class CategoryClient {
 	{
 		$url = CategoryUrl::getCategoriesUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -55,7 +53,8 @@ class CategoryClient {
 	{
 		$url = CategoryUrl::getCategoryUrl($allowInactive, $categoryId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -69,7 +68,8 @@ class CategoryClient {
 	{
 		$url = CategoryUrl::getCategoryTreeUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

@@ -12,24 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\ChannelClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\CommerceRuntime\Channels\Channel;
-use Mozu\Api\Contracts\CommerceRuntime\Channels\ChannelCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Channels resource to manage the channels a company uses to create logical commercial business divisions based on region or types of sales, such as "US Online," "Amazon," or "EMEA Retail." All orders include a channel association that enables the company to perform financial reporting for each defined channel. Because channels are managed at the tenant level, you must associate all the tenant's sites with a channel. Sites that do not have a defined channel association cannot successfully submit orders.
 */
 class ChannelResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves a list of channels defined for a tenant according to any filter or sort criteria specified in the request.
@@ -44,9 +42,9 @@ class ChannelResource {
 	public function getChannels($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
 		$mozuClient = ChannelClient::getChannelsClient($startIndex, $pageSize, $sortBy, $filter, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -60,9 +58,9 @@ class ChannelResource {
 	public function getChannel($code, $responseFields =  null)
 	{
 		$mozuClient = ChannelClient::getChannelClient($code, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -76,9 +74,9 @@ class ChannelResource {
 	public function createChannel($channel, $responseFields =  null)
 	{
 		$mozuClient = ChannelClient::createChannelClient($channel, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -93,9 +91,9 @@ class ChannelResource {
 	public function updateChannel($channel, $code, $responseFields =  null)
 	{
 		$mozuClient = ChannelClient::updateChannelClient($channel, $code, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -103,13 +101,12 @@ class ChannelResource {
 	* Deletes a defined channel for the tenant and removes the defined site associations. After deleting this channel, assign its associated sites to another channel.
 	*
 	* @param string $code User-defined code that identifies the channel to delete.
-	* @return void
 	*/
 	public function deleteChannel($code)
 	{
 		$mozuClient = ChannelClient::deleteChannelClient($code);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

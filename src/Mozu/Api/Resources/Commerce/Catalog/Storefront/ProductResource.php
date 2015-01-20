@@ -12,33 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Catalog\Storefront;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Catalog\Storefront\ProductClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\ProductRuntime\LocationInventoryQuery;
-use Mozu\Api\Contracts\ProductRuntime\ProductOptionSelections;
-use Mozu\Api\Contracts\ProductRuntime\DiscountSelections;
-use Mozu\Api\Contracts\ProductRuntime\Product;
-use Mozu\Api\Contracts\ProductRuntime\LocationInventoryCollection;
-use Mozu\Api\Contracts\ProductRuntime\ConfiguredProduct;
-use Mozu\Api\Contracts\ProductRuntime\ProductValidationSummary;
-use Mozu\Api\Contracts\ProductRuntime\ProductCollection;
-use Mozu\Api\Contracts\ProductRuntime\DiscountValidationSummary;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Storefront Products  resource to manage the shopper product selection process during a visit to the web storefront. You can update product options as shoppers pick and choose their product choices. A shopper cannot add a product to a cart until all of its required options have been selected.
 */
 class ProductResource {
 
-	private $apiContext;
-	private $dataViewMode;
-	public function __construct(ApiContext $apiContext, $dataViewMode) 
+		private $apiContext;
+	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
-		$this->dataViewMode = $dataViewMode;
 	}
-
-	
 
 	/**
 	* Retrieves a list of products that appear on the web storefront according to any specified filter criteria and sort options.
@@ -50,12 +39,12 @@ class ProductResource {
 	* @param int $startIndex 
 	* @return ProductCollection 
 	*/
-	public function getProducts($filter =  null, $startIndex =  null, $pageSize =  null, $sortBy =  null, $responseFields =  null)
+	public function getProducts($dataViewMode, $filter =  null, $startIndex =  null, $pageSize =  null, $sortBy =  null, $responseFields =  null)
 	{
-		$mozuClient = ProductClient::getProductsClient($this->dataViewMode, $filter, $startIndex, $pageSize, $sortBy, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = ProductClient::getProductsClient($dataViewMode, $filter, $startIndex, $pageSize, $sortBy, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -67,12 +56,12 @@ class ProductResource {
 	* @param string $responseFields 
 	* @return LocationInventoryCollection 
 	*/
-	public function getProductInventory($productCode, $locationCodes =  null, $responseFields =  null)
+	public function getProductInventory($dataViewMode, $productCode, $locationCodes =  null, $responseFields =  null)
 	{
-		$mozuClient = ProductClient::getProductInventoryClient($this->dataViewMode, $productCode, $locationCodes, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = ProductClient::getProductInventoryClient($dataViewMode, $productCode, $locationCodes, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -83,15 +72,16 @@ class ProductResource {
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @param string $responseFields 
 	* @param bool $skipInventoryCheck If true, skip the inventory validation process for the specified product.
+	* @param bool $supressOutOfStock404 
 	* @param string $variationProductCode Merchant-created code associated with a specific product variation. Variation product codes maintain an association with the base product code.
 	* @return Product 
 	*/
-	public function getProduct($productCode, $variationProductCode =  null, $allowInactive =  null, $skipInventoryCheck =  null, $responseFields =  null)
+	public function getProduct($dataViewMode, $productCode, $variationProductCode =  null, $allowInactive =  null, $skipInventoryCheck =  null, $supressOutOfStock404 =  null, $responseFields =  null)
 	{
-		$mozuClient = ProductClient::getProductClient($this->dataViewMode, $productCode, $variationProductCode, $allowInactive, $skipInventoryCheck, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = ProductClient::getProductClient($dataViewMode, $productCode, $variationProductCode, $allowInactive, $skipInventoryCheck, $supressOutOfStock404, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -108,9 +98,9 @@ class ProductResource {
 	public function configuredProduct($productOptionSelections, $productCode, $includeOptionDetails =  null, $skipInventoryCheck =  null, $responseFields =  null)
 	{
 		$mozuClient = ProductClient::configuredProductClient($productOptionSelections, $productCode, $includeOptionDetails, $skipInventoryCheck, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -126,9 +116,9 @@ class ProductResource {
 	public function validateProduct($productOptionSelections, $productCode, $skipInventoryCheck =  null, $responseFields =  null)
 	{
 		$mozuClient = ProductClient::validateProductClient($productOptionSelections, $productCode, $skipInventoryCheck, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -147,9 +137,9 @@ class ProductResource {
 	public function validateDiscounts($discountSelections, $productCode, $variationProductCode =  null, $customerAccountId =  null, $allowInactive =  null, $skipInventoryCheck =  null, $responseFields =  null)
 	{
 		$mozuClient = ProductClient::validateDiscountsClient($discountSelections, $productCode, $variationProductCode, $customerAccountId, $allowInactive, $skipInventoryCheck, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -160,12 +150,12 @@ class ProductResource {
 	* @param LocationInventoryQuery $query 
 	* @return LocationInventoryCollection 
 	*/
-	public function getProductInventories($query, $responseFields =  null)
+	public function getProductInventories($dataViewMode, $query, $responseFields =  null)
 	{
-		$mozuClient = ProductClient::getProductInventoriesClient($this->dataViewMode, $query, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = ProductClient::getProductInventoriesClient($dataViewMode, $query, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	

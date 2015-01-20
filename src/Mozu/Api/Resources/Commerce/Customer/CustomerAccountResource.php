@@ -12,30 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Customer;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Customer\CustomerAccountClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\Customer\CustomerAccountAndAuthInfo;
-use Mozu\Api\Contracts\Customer\CustomerAccount;
-use Mozu\Api\Contracts\Customer\PasswordInfo;
-use Mozu\Api\Contracts\Customer\CustomerLoginInfo;
-use Mozu\Api\Contracts\Customer\ResetPasswordInfo;
-use Mozu\Api\Contracts\Customer\CustomerAccountCollection;
-use Mozu\Api\Contracts\Customer\LoginState;
-use Mozu\Api\Contracts\Customer\CustomerAuthTicket;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Customer Accounts resource to manage the components of shopper accounts, including attributes, contact information, company notes, and groups associated with the customer account.
 */
 class CustomerAccountResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves a list of customer accounts.
@@ -54,9 +46,9 @@ class CustomerAccountResource {
 	public function getAccounts($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $fields =  null, $q =  null, $qLimit =  null, $isAnonymous =  null, $responseFields =  null)
 	{
 		$mozuClient = CustomerAccountClient::getAccountsClient($startIndex, $pageSize, $sortBy, $filter, $fields, $q, $qLimit, $isAnonymous, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -70,9 +62,9 @@ class CustomerAccountResource {
 	public function getLoginState($accountId, $responseFields =  null)
 	{
 		$mozuClient = CustomerAccountClient::getLoginStateClient($accountId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -86,9 +78,9 @@ class CustomerAccountResource {
 	public function getAccount($accountId, $responseFields =  null)
 	{
 		$mozuClient = CustomerAccountClient::getAccountClient($accountId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -102,9 +94,9 @@ class CustomerAccountResource {
 	public function addAccount($account, $responseFields =  null)
 	{
 		$mozuClient = CustomerAccountClient::addAccountClient($account, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -113,13 +105,12 @@ class CustomerAccountResource {
 	*
 	* @param int $accountId The customer account information required to change the userpassword.
 	* @param PasswordInfo $passwordInfo The password information required to change the user password.
-	* @return void
 	*/
 	public function changePassword($passwordInfo, $accountId)
 	{
 		$mozuClient = CustomerAccountClient::changePasswordClient($passwordInfo, $accountId);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	
@@ -134,9 +125,9 @@ class CustomerAccountResource {
 	public function addLoginToExistingCustomer($customerAuthInfo, $accountId, $responseFields =  null)
 	{
 		$mozuClient = CustomerAccountClient::addLoginToExistingCustomerClient($customerAuthInfo, $accountId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -144,13 +135,12 @@ class CustomerAccountResource {
 	* Updates the customer lifetime value of the specified customer account in the event of an order import or a lifetime value calculation error.
 	*
 	* @param int $accountId The unique identifier of the customer account for which to calculate customer lifetime value.
-	* @return void
 	*/
 	public function recomputeCustomerLifetimeValue($accountId)
 	{
 		$mozuClient = CustomerAccountClient::recomputeCustomerLifetimeValueClient($accountId);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	
@@ -159,13 +149,12 @@ class CustomerAccountResource {
 	*
 	* @param int $accountId The unique identifier of the customer account.
 	* @param bool $isLocked If true, the customer account is locked from logging in.
-	* @return void
 	*/
 	public function setLoginLocked($isLocked, $accountId)
 	{
 		$mozuClient = CustomerAccountClient::setLoginLockedClient($isLocked, $accountId);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	
@@ -174,13 +163,12 @@ class CustomerAccountResource {
 	*
 	* @param int $accountId Unique identifier of the customer account.
 	* @param bool $isPasswordChangeRequired If true, the password for the customer account must be changed.
-	* @return void
 	*/
 	public function setPasswordChangeRequired($isPasswordChangeRequired, $accountId)
 	{
 		$mozuClient = CustomerAccountClient::setPasswordChangeRequiredClient($isPasswordChangeRequired, $accountId);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	
@@ -194,9 +182,9 @@ class CustomerAccountResource {
 	public function addAccountAndLogin($accountAndAuthInfo, $responseFields =  null)
 	{
 		$mozuClient = CustomerAccountClient::addAccountAndLoginClient($accountAndAuthInfo, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -210,9 +198,9 @@ class CustomerAccountResource {
 	public function addAccounts($customers, $responseFields =  null)
 	{
 		$mozuClient = CustomerAccountClient::addAccountsClient($customers, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -226,9 +214,9 @@ class CustomerAccountResource {
 	public function getLoginStateByEmailAddress($emailAddress, $responseFields =  null)
 	{
 		$mozuClient = CustomerAccountClient::getLoginStateByEmailAddressClient($emailAddress, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -242,9 +230,9 @@ class CustomerAccountResource {
 	public function getLoginStateByUserName($userName, $responseFields =  null)
 	{
 		$mozuClient = CustomerAccountClient::getLoginStateByUserNameClient($userName, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -252,13 +240,12 @@ class CustomerAccountResource {
 	* Resets the password for a customer account.
 	*
 	* @param ResetPasswordInfo $resetPasswordInfo Information required to reset the password for a customer account.
-	* @return void
 	*/
 	public function resetPassword($resetPasswordInfo)
 	{
 		$mozuClient = CustomerAccountClient::resetPasswordClient($resetPasswordInfo);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	
@@ -273,9 +260,9 @@ class CustomerAccountResource {
 	public function updateAccount($account, $accountId, $responseFields =  null)
 	{
 		$mozuClient = CustomerAccountClient::updateAccountClient($account, $accountId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -283,13 +270,12 @@ class CustomerAccountResource {
 	* Deletes a customer account. A customer account cannot be deleted if any orders exist, past or present.
 	*
 	* @param int $accountId Unique identifier of the customer account to delete.
-	* @return void
 	*/
 	public function deleteAccount($accountId)
 	{
 		$mozuClient = CustomerAccountClient::deleteAccountClient($accountId);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

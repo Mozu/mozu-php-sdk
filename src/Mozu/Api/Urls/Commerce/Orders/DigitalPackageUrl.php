@@ -26,10 +26,9 @@ class DigitalPackageUrl  {
 	public static function getAvailableDigitalPackageFulfillmentActionsUrl($digitalPackageId, $orderId)
 	{
 		$url = "/api/commerce/orders/{orderId}/digitalpackages/{digitalPackageId}/actions";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("digitalPackageId", $digitalPackageId)
-				->formatUrl("orderId", $orderId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("digitalPackageId", $digitalPackageId);
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
 		return $mozuUrl;
 	}
 	
@@ -43,11 +42,10 @@ class DigitalPackageUrl  {
 	public static function getDigitalPackageUrl($digitalPackageId, $orderId, $responseFields)
 	{
 		$url = "/api/commerce/orders/{orderId}/digitalpackages/{digitalPackageId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("digitalPackageId", $digitalPackageId)
-				->formatUrl("orderId", $orderId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("digitalPackageId", $digitalPackageId);
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -60,10 +58,9 @@ class DigitalPackageUrl  {
 	public static function createDigitalPackageUrl($orderId, $responseFields)
 	{
 		$url = "/api/commerce/orders/{orderId}/digitalpackages?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("orderId", $orderId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -77,11 +74,10 @@ class DigitalPackageUrl  {
 	public static function updateDigitalPackageUrl($digitalPackageId, $orderId, $responseFields)
 	{
 		$url = "/api/commerce/orders/{orderId}/digitalpackages/{digitalPackageId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("digitalPackageId", $digitalPackageId)
-				->formatUrl("orderId", $orderId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("digitalPackageId", $digitalPackageId);
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -94,10 +90,9 @@ class DigitalPackageUrl  {
 	public static function deleteDigitalPackageUrl($digitalPackageId, $orderId)
 	{
 		$url = "/api/commerce/orders/{orderId}/digitalpackages/{digitalPackageId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("digitalPackageId", $digitalPackageId)
-				->formatUrl("orderId", $orderId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("digitalPackageId", $digitalPackageId);
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
 		return $mozuUrl;
 	}
 	

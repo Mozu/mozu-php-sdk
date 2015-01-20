@@ -24,6 +24,8 @@ class Application
 	*/
 	public $appId;
 
+		public $appKey;
+
 	/**
 	*If true, the application is enabled for the tenant. System-supplied and read-only.
 	*/

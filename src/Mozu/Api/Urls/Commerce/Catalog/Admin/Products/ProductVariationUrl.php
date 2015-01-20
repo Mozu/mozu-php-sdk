@@ -26,10 +26,9 @@ class ProductVariationUrl  {
 	public static function getProductVariationLocalizedDeltaPricesUrl($productCode, $variationKey)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/variations/{variationKey}/localizedDeltaPrice";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("productCode", $productCode)
-				->formatUrl("variationKey", $variationKey);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("variationKey", $variationKey);
 		return $mozuUrl;
 	}
 	
@@ -44,12 +43,11 @@ class ProductVariationUrl  {
 	public static function getProductVariationLocalizedDeltaPriceUrl($currencyCode, $productCode, $responseFields, $variationKey)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/variations/{variationKey}/localizedDeltaPrice/{currencyCode}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("currencyCode", $currencyCode)
-				->formatUrl("productCode", $productCode)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("variationKey", $variationKey);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("currencyCode", $currencyCode);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("variationKey", $variationKey);
 		return $mozuUrl;
 	}
 	
@@ -63,11 +61,10 @@ class ProductVariationUrl  {
 	public static function getProductVariationUrl($productCode, $responseFields, $variationKey)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/variations/{variationKey}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("productCode", $productCode)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("variationKey", $variationKey);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("variationKey", $variationKey);
 		return $mozuUrl;
 	}
 	
@@ -84,14 +81,13 @@ class ProductVariationUrl  {
 	public static function getProductVariationsUrl($filter, $pageSize, $productCode, $responseFields, $sortBy, $startIndex)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/variations?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("filter", $filter)
-				->formatUrl("pageSize", $pageSize)
-				->formatUrl("productCode", $productCode)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("sortBy", $sortBy)
-				->formatUrl("startIndex", $startIndex);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("filter", $filter);
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
 		return $mozuUrl;
 	}
 	
@@ -105,11 +101,10 @@ class ProductVariationUrl  {
 	public static function addProductVariationLocalizedDeltaPriceUrl($productCode, $responseFields, $variationKey)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/variations/{variationKey}/localizedDeltaPrice?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("productCode", $productCode)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("variationKey", $variationKey);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("variationKey", $variationKey);
 		return $mozuUrl;
 	}
 	
@@ -122,10 +117,9 @@ class ProductVariationUrl  {
 	public static function updateProductVariationLocalizedDeltaPricesUrl($productCode, $variationKey)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/variations/{variationKey}/localizedDeltaPrice";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("productCode", $productCode)
-				->formatUrl("variationKey", $variationKey);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("variationKey", $variationKey);
 		return $mozuUrl;
 	}
 	
@@ -140,12 +134,11 @@ class ProductVariationUrl  {
 	public static function updateProductVariationLocalizedDeltaPriceUrl($currencyCode, $productCode, $responseFields, $variationKey)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/variations/{variationKey}/localizedDeltaPrice/{currencyCode}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("currencyCode", $currencyCode)
-				->formatUrl("productCode", $productCode)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("variationKey", $variationKey);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("currencyCode", $currencyCode);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("variationKey", $variationKey);
 		return $mozuUrl;
 	}
 	
@@ -159,11 +152,10 @@ class ProductVariationUrl  {
 	public static function updateProductVariationUrl($productCode, $responseFields, $variationKey)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/variations/{variationKey}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("productCode", $productCode)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("variationKey", $variationKey);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("variationKey", $variationKey);
 		return $mozuUrl;
 	}
 	
@@ -176,10 +168,9 @@ class ProductVariationUrl  {
 	public static function updateProductVariationsUrl($productCode, $responseFields)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/variations?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("productCode", $productCode)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -192,10 +183,9 @@ class ProductVariationUrl  {
 	public static function deleteProductVariationUrl($productCode, $variationKey)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/variations/{variationKey}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("productCode", $productCode)
-				->formatUrl("variationKey", $variationKey);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("variationKey", $variationKey);
 		return $mozuUrl;
 	}
 	
@@ -209,11 +199,10 @@ class ProductVariationUrl  {
 	public static function deleteProductVariationLocalizedDeltaPriceUrl($currencyCode, $productCode, $variationKey)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/variations/{variationKey}/localizedDeltaPrice/{currencyCode}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("currencyCode", $currencyCode)
-				->formatUrl("productCode", $productCode)
-				->formatUrl("variationKey", $variationKey);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("currencyCode", $currencyCode);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("variationKey", $variationKey);
 		return $mozuUrl;
 	}
 	

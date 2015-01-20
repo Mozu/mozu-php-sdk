@@ -12,24 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\LocationClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\Location\LocationCollection;
-use Mozu\Api\Contracts\Location\Location;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Location resource to retrieve details about a location from a Mozu hosted storefront.
 */
 class LocationResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves the details of the location specified in the request.
@@ -41,9 +39,9 @@ class LocationResource {
 	public function getLocation($code, $responseFields =  null)
 	{
 		$mozuClient = LocationClient::getLocationClient($code, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -58,9 +56,9 @@ class LocationResource {
 	public function getLocationInUsageType($locationUsageType, $code, $responseFields =  null)
 	{
 		$mozuClient = LocationClient::getLocationInUsageTypeClient($locationUsageType, $code, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -78,9 +76,9 @@ class LocationResource {
 	public function getLocationsInUsageType($locationUsageType, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
 		$mozuClient = LocationClient::getLocationsInUsageTypeClient($locationUsageType, $startIndex, $pageSize, $sortBy, $filter, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -93,9 +91,9 @@ class LocationResource {
 	public function getDirectShipLocation($responseFields =  null)
 	{
 		$mozuClient = LocationClient::getDirectShipLocationClient($responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -109,9 +107,9 @@ class LocationResource {
 	public function getInStorePickupLocation($code, $responseFields =  null)
 	{
 		$mozuClient = LocationClient::getInStorePickupLocationClient($code, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -128,9 +126,9 @@ class LocationResource {
 	public function getInStorePickupLocations($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
 		$mozuClient = LocationClient::getInStorePickupLocationsClient($startIndex, $pageSize, $sortBy, $filter, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	

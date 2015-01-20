@@ -12,23 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Orders;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Orders\AppliedDiscountClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\CommerceRuntime\Orders\Order;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use this subresource to apply coupons to or remove coupons from an order based on a supplied coupon code.
 */
 class AppliedDiscountResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Apply a coupon to the order.
@@ -43,9 +42,9 @@ class AppliedDiscountResource {
 	public function applyCoupon($orderId, $couponCode, $updateMode =  null, $version =  null, $responseFields =  null)
 	{
 		$mozuClient = AppliedDiscountClient::applyCouponClient($orderId, $couponCode, $updateMode, $version, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -61,9 +60,9 @@ class AppliedDiscountResource {
 	public function removeCoupon($orderId, $couponCode, $updateMode =  null, $version =  null)
 	{
 		$mozuClient = AppliedDiscountClient::removeCouponClient($orderId, $couponCode, $updateMode, $version);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -78,9 +77,9 @@ class AppliedDiscountResource {
 	public function removeCoupons($orderId, $updateMode =  null, $version =  null)
 	{
 		$mozuClient = AppliedDiscountClient::removeCouponsClient($orderId, $updateMode, $version);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	

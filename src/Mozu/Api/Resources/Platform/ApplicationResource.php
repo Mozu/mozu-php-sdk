@@ -12,23 +12,22 @@
 
 namespace Mozu\Api\Resources\Platform;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Platform\ApplicationClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\InstalledApplications\Application;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Applications resource to update and retrieve details about the applications installed for your tenant.
 */
 class ApplicationResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves the details of the installed application specified in the request.
@@ -40,9 +39,9 @@ class ApplicationResource {
 	public function getApplication($appId, $responseFields =  null)
 	{
 		$mozuClient = ApplicationClient::getApplicationClient($appId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -57,9 +56,9 @@ class ApplicationResource {
 	public function updateApplication($application, $appId, $responseFields =  null)
 	{
 		$mozuClient = ApplicationClient::updateApplicationClient($application, $appId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	

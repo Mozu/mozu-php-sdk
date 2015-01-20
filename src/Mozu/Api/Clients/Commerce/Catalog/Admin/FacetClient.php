@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\FacetUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\ProductAdmin\Facet;
-use Mozu\Api\Contracts\ProductAdmin\FacetSet;
 
 /**
 * Use the Facets resource to manage the facets shoppers use to filter product display results on a storefront. Facets can include categories, product attributes, or prices, and use either a range of values or discrete values.
@@ -36,7 +34,8 @@ class FacetClient {
 	{
 		$url = FacetUrl::getFacetUrl($facetId, $responseFields, $validate);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -53,7 +52,8 @@ class FacetClient {
 	{
 		$url = FacetUrl::getFacetCategoryListUrl($categoryId, $includeAvailable, $responseFields, $validate);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -68,7 +68,8 @@ class FacetClient {
 	{
 		$url = FacetUrl::addFacetUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($facet);
+		$mozuClient->withResourceUrl($url)->withBody($facet);
+		return $mozuClient;
 
 	}
 	
@@ -84,7 +85,8 @@ class FacetClient {
 	{
 		$url = FacetUrl::updateFacetUrl($facetId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($facet);
+		$mozuClient->withResourceUrl($url)->withBody($facet);
+		return $mozuClient;
 
 	}
 	
@@ -92,13 +94,13 @@ class FacetClient {
 	* Deletes the facet specified by its unique identifier.
 	*
 	* @param int $facetId Unique identifier of the facet to delete.
-	* @return MozuClient
 	*/
 	public static function deleteFacetByIdClient($facetId)
 	{
 		$url = FacetUrl::deleteFacetByIdUrl($facetId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

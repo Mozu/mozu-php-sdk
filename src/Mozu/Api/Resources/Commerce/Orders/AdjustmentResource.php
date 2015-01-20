@@ -12,24 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Orders;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Orders\AdjustmentClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\CommerceRuntime\Commerce\Adjustment;
-use Mozu\Api\Contracts\CommerceRuntime\Orders\Order;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use this subresource to manage ad-hoc order level price adjustments.
 */
 class AdjustmentResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Applies a shipping adjustment to the specified order.
@@ -44,9 +42,9 @@ class AdjustmentResource {
 	public function applyShippingAdjustment($adjustment, $orderId, $updateMode =  null, $version =  null, $responseFields =  null)
 	{
 		$mozuClient = AdjustmentClient::applyShippingAdjustmentClient($adjustment, $orderId, $updateMode, $version, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -63,9 +61,9 @@ class AdjustmentResource {
 	public function applyAdjustment($adjustment, $orderId, $updateMode =  null, $version =  null, $responseFields =  null)
 	{
 		$mozuClient = AdjustmentClient::applyAdjustmentClient($adjustment, $orderId, $updateMode, $version, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -80,9 +78,9 @@ class AdjustmentResource {
 	public function removeShippingAdjustment($orderId, $updateMode =  null, $version =  null)
 	{
 		$mozuClient = AdjustmentClient::removeShippingAdjustmentClient($orderId, $updateMode, $version);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -97,9 +95,9 @@ class AdjustmentResource {
 	public function removeAdjustment($orderId, $updateMode =  null, $version =  null)
 	{
 		$mozuClient = AdjustmentClient::removeAdjustmentClient($orderId, $updateMode, $version);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	

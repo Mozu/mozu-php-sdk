@@ -12,27 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Catalog\Admin;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Catalog\Admin\DiscountClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\ProductAdmin\Discount;
-use Mozu\Api\Contracts\ProductAdmin\DiscountLocalizedContent;
-use Mozu\Api\Contracts\ProductAdmin\DiscountCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Define and manage discounts to apply to products, product categories, or orders. The discounts can be a specified amount off the price, percentage off the price, or for free shipping. Create a coupon code that shoppers can use to redeem the discount.
 */
 class DiscountResource {
 
-	private $apiContext;
-	private $dataViewMode;
-	public function __construct(ApiContext $apiContext, $dataViewMode) 
+		private $apiContext;
+	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
-		$this->dataViewMode = $dataViewMode;
 	}
-
-	
 
 	/**
 	* Retrieves a list of discounts according to any specified filter criteria and sort options.
@@ -44,12 +39,12 @@ class DiscountResource {
 	* @param int $startIndex 
 	* @return DiscountCollection 
 	*/
-	public function getDiscounts($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
+	public function getDiscounts($dataViewMode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
-		$mozuClient = DiscountClient::getDiscountsClient($this->dataViewMode, $startIndex, $pageSize, $sortBy, $filter, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = DiscountClient::getDiscountsClient($dataViewMode, $startIndex, $pageSize, $sortBy, $filter, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -60,12 +55,12 @@ class DiscountResource {
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return DiscountLocalizedContent 
 	*/
-	public function getDiscountContent($discountId, $responseFields =  null)
+	public function getDiscountContent($dataViewMode, $discountId, $responseFields =  null)
 	{
-		$mozuClient = DiscountClient::getDiscountContentClient($this->dataViewMode, $discountId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = DiscountClient::getDiscountContentClient($dataViewMode, $discountId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -76,12 +71,12 @@ class DiscountResource {
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return Discount 
 	*/
-	public function getDiscount($discountId, $responseFields =  null)
+	public function getDiscount($dataViewMode, $discountId, $responseFields =  null)
 	{
-		$mozuClient = DiscountClient::getDiscountClient($this->dataViewMode, $discountId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = DiscountClient::getDiscountClient($dataViewMode, $discountId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -94,9 +89,9 @@ class DiscountResource {
 	public function generateRandomCoupon($responseFields =  null)
 	{
 		$mozuClient = DiscountClient::generateRandomCouponClient($responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -110,9 +105,9 @@ class DiscountResource {
 	public function createDiscount($discount, $responseFields =  null)
 	{
 		$mozuClient = DiscountClient::createDiscountClient($discount, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -127,9 +122,9 @@ class DiscountResource {
 	public function updateDiscountContent($content, $discountId, $responseFields =  null)
 	{
 		$mozuClient = DiscountClient::updateDiscountContentClient($content, $discountId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -144,9 +139,9 @@ class DiscountResource {
 	public function updateDiscount($discount, $discountId, $responseFields =  null)
 	{
 		$mozuClient = DiscountClient::updateDiscountClient($discount, $discountId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -154,13 +149,12 @@ class DiscountResource {
 	* Deletes a discount specified by its discount ID.
 	*
 	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
-	* @return void
 	*/
 	public function deleteDiscount($discountId)
 	{
 		$mozuClient = DiscountClient::deleteDiscountClient($discountId);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

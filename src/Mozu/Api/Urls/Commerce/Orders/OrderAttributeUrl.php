@@ -25,9 +25,8 @@ class OrderAttributeUrl  {
 	public static function getOrderAttributesUrl($orderId)
 	{
 		$url = "/api/commerce/orders/{orderId}/attributes";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("orderId", $orderId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
 		return $mozuUrl;
 	}
 	
@@ -39,9 +38,8 @@ class OrderAttributeUrl  {
 	public static function createOrderAttributesUrl($orderId)
 	{
 		$url = "/api/commerce/orders/{orderId}/attributes";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("orderId", $orderId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
 		return $mozuUrl;
 	}
 	
@@ -54,10 +52,9 @@ class OrderAttributeUrl  {
 	public static function updateOrderAttributesUrl($orderId, $removeMissing)
 	{
 		$url = "/api/commerce/orders/{orderId}/attributes?removeMissing={removeMissing}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("orderId", $orderId)
-				->formatUrl("removeMissing", $removeMissing);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("removeMissing", $removeMissing);
 		return $mozuUrl;
 	}
 	

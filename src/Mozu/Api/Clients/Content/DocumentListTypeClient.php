@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Content;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Content\DocumentListTypeUrl;
-use Mozu\Api\Headers;
 use Mozu\Api\DataViewMode;
-
-use Mozu\Api\Contracts\Content\DocumentListType;
+use Mozu\Api\Headers;
 
 /**
 * 
@@ -27,7 +25,6 @@ class DocumentListTypeClient {
 	/**
 	* 
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param DocumentListType $list 
 	* @return MozuClient
@@ -36,7 +33,8 @@ class DocumentListTypeClient {
 	{
 		$url = DocumentListTypeUrl::createDocumentListTypeUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($list)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withBody($list)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
@@ -52,7 +50,8 @@ class DocumentListTypeClient {
 	{
 		$url = DocumentListTypeUrl::updateDocumentListTypeUrl($documentListTypeFQN, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($list);
+		$mozuClient->withResourceUrl($url)->withBody($list);
+		return $mozuClient;
 
 	}
 	

@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin\Attributedefinition\Producttyp
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\Attributedefinition\Producttypes\ProductTypeVariationUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\ProductAdmin\ProductOption;
-use Mozu\Api\Contracts\ProductAdmin\ProductVariationPagedCollection;
 
 /**
 * Use the variations resource to preview possible product variations for a specific product type based on the option attributes defined for the product type, such as size or color.
@@ -41,7 +39,8 @@ class ProductTypeVariationClient {
 	{
 		$url = ProductTypeVariationUrl::generateProductVariationsUrl($filter, $pageSize, $productCode, $productTypeId, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($productOptionsIn);
+		$mozuClient->withResourceUrl($url)->withBody($productOptionsIn);
+		return $mozuClient;
 
 	}
 	

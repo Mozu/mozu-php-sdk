@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Platform\Entitylists;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Platform\Entitylists\EntityContainerUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\MZDB\EntityContainer;
-use Mozu\Api\Contracts\MZDB\EntityContainerCollection;
 
 /**
 * 
@@ -36,7 +34,8 @@ class EntityContainerClient {
 	{
 		$url = EntityContainerUrl::getEntityContainerUrl($entityListFullName, $id, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -55,7 +54,8 @@ class EntityContainerClient {
 	{
 		$url = EntityContainerUrl::getEntityContainersUrl($entityListFullName, $filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

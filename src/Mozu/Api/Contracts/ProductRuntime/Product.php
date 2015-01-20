@@ -20,43 +20,6 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 class Product
 {
 	/**
-	*Date and time when the entity was created, represented in UTC Date/Time.
-	*/
-	public $createDate;
-
-	/**
-	*The list of fulfillment types the product supports.
-	*/
-	public $fulfillmentTypesSupported;
-
-		public $goodsType;
-
-	/**
-	*If true, the product is marked as available for sale. Setting a product to IsActive = false will prevent it from being shown on the customer facing storefront.
-	*/
-	public $isActive;
-
-	/**
-	*If true, this product cannot ship in a package with other products and must ship in a package by itself.
-	*/
-	public $isPackagedStandAlone;
-
-	/**
-	*If true, the product can be purchased or fulfilled at regular intervals such as a monthly billing cycle or a digital or physical subscription.
-	*/
-	public $isRecurring;
-
-	/**
-	*If true, the entity is subject to tax based on the relevant tax rate.
-	*/
-	public $isTaxable;
-
-	/**
-	*The manufacturer part number defined for the product.
-	*/
-	public $mfgPartNumber;
-
-	/**
 	*The list of manufacturer part numbers defined for the product.
 	*/
 	public $mfgPartNumbers;
@@ -100,6 +63,43 @@ class Product
 	*Product code that represents the product variation selected based on the option values the shopper entered.
 	*/
 	public $variationProductCode;
+
+	/**
+	*Date and time when the entity was created, represented in UTC Date/Time.
+	*/
+	public $createDate;
+
+	/**
+	*The list of fulfillment types the product supports.
+	*/
+	public $fulfillmentTypesSupported;
+
+		public $goodsType;
+
+	/**
+	*If true, the product is marked as available for sale. Setting a product to IsActive = false will prevent it from being shown on the customer facing storefront.
+	*/
+	public $isActive;
+
+	/**
+	*If true, this product cannot ship in a package with other products and must ship in a package by itself.
+	*/
+	public $isPackagedStandAlone;
+
+	/**
+	*If true, the product can be purchased or fulfilled at regular intervals such as a monthly billing cycle or a digital or physical subscription.
+	*/
+	public $isRecurring;
+
+	/**
+	*If true, the entity is subject to tax based on the relevant tax rate.
+	*/
+	public $isTaxable;
+
+	/**
+	*The manufacturer part number defined for the product.
+	*/
+	public $mfgPartNumber;
 
 	/**
 	*List of shipping discounts that can be applied to the product.

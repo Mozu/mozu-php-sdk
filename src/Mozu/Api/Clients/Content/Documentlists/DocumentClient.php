@@ -14,11 +14,8 @@ namespace Mozu\Api\Clients\Content\Documentlists;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Content\Documentlists\DocumentUrl;
-use Mozu\Api\Headers;
 use Mozu\Api\DataViewMode;
-
-use Mozu\Api\Contracts\Content\Document;
-use Mozu\Api\Contracts\Content\DocumentCollection;
+use Mozu\Api\Headers;
 
 /**
 * Use this subresource to manage documents in a document list.
@@ -28,7 +25,6 @@ class DocumentClient {
 	/**
 	* Retrieve the content associated with a document, such as a product image or PDF specifications file, by supplying the document ID.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $documentId Unique identifier of the document.
 	* @param string $documentListName The name of the document list associated with the document.
 	* @return MozuClient
@@ -37,14 +33,14 @@ class DocumentClient {
 	{
 		$url = DocumentUrl::getDocumentContentUrl($documentId, $documentListName);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Retrieves a document within the specified document list.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $documentId Identifier of the document being retrieved.
 	* @param string $documentListName The name of the document list associated with the document to retrieve.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
@@ -54,14 +50,14 @@ class DocumentClient {
 	{
 		$url = DocumentUrl::getDocumentUrl($documentId, $documentListName, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Retrieves a collection of documents according to any filter and sort criteria.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $documentListName The name of the document list.
 	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter a document's search results by any of its properties, including its name or folder path. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=Name+sw+Events"
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
@@ -74,14 +70,14 @@ class DocumentClient {
 	{
 		$url = DocumentUrl::getDocumentsUrl($documentListName, $filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Creates a new document in an defined document list.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $documentListName The descriptive alphanumeric document list name being created.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param Document $document The descriptive name of the newly created document.
@@ -91,7 +87,8 @@ class DocumentClient {
 	{
 		$url = DocumentUrl::createDocumentUrl($documentListName, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($document)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withBody($document)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
@@ -101,13 +98,13 @@ class DocumentClient {
 	* @param string $documentId Unique identifier of the document.
 	* @param string $documentListName The name of the document list associated with the document.
 	* @param Stream $stream Input output stream that delivers information.
-	* @return MozuClient
 	*/
 	public static function updateDocumentContentClient($stream, $documentListName, $documentId, $contentType= null)
 	{
 		$url = DocumentUrl::updateDocumentContentUrl($documentId, $documentListName);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withStreamBody($stream)->withHeader(Headers::CONTENT_TYPE ,$contentType);
+		$mozuClient->withResourceUrl($url)->withStreamBody($stream)->withHeader(Headers::CONTENT_TYPE ,$contentType);
+		return $mozuClient;
 
 	}
 	
@@ -124,7 +121,8 @@ class DocumentClient {
 	{
 		$url = DocumentUrl::updateDocumentUrl($documentId, $documentListName, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($document);
+		$mozuClient->withResourceUrl($url)->withBody($document);
+		return $mozuClient;
 
 	}
 	
@@ -133,13 +131,13 @@ class DocumentClient {
 	*
 	* @param string $documentId Identifier of the document being deleted.
 	* @param string $documentListName The name of the document list associated with the document list being deleted.
-	* @return MozuClient
 	*/
 	public static function deleteDocumentClient($documentListName, $documentId)
 	{
 		$url = DocumentUrl::deleteDocumentUrl($documentId, $documentListName);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -148,13 +146,13 @@ class DocumentClient {
 	*
 	* @param string $documentId Unique identifier of the document.
 	* @param string $documentListName The name of the document list associated with the document.
-	* @return MozuClient
 	*/
 	public static function deleteDocumentContentClient($documentListName, $documentId)
 	{
 		$url = DocumentUrl::deleteDocumentContentUrl($documentId, $documentListName);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin\Attributedefinition\Attributes
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\Attributedefinition\Attributes\AttributeVocabularyValueUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\ProductAdmin\AttributeVocabularyValue;
-use Mozu\Api\Contracts\ProductAdmin\AttributeVocabularyValueLocalizedContent;
 
 /**
 * Vocabulary values are predefined for an attribute.
@@ -34,7 +32,8 @@ class AttributeVocabularyValueClient {
 	{
 		$url = AttributeVocabularyValueUrl::getAttributeVocabularyValuesUrl($attributeFQN);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -49,7 +48,8 @@ class AttributeVocabularyValueClient {
 	{
 		$url = AttributeVocabularyValueUrl::getAttributeVocabularyValueLocalizedContentsUrl($attributeFQN, $value);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -66,7 +66,8 @@ class AttributeVocabularyValueClient {
 	{
 		$url = AttributeVocabularyValueUrl::getAttributeVocabularyValueLocalizedContentUrl($attributeFQN, $localeCode, $responseFields, $value);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -82,7 +83,8 @@ class AttributeVocabularyValueClient {
 	{
 		$url = AttributeVocabularyValueUrl::getAttributeVocabularyValueUrl($attributeFQN, $responseFields, $value);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -99,7 +101,8 @@ class AttributeVocabularyValueClient {
 	{
 		$url = AttributeVocabularyValueUrl::addAttributeVocabularyValueLocalizedContentUrl($attributeFQN, $responseFields, $value);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($localizedContent);
+		$mozuClient->withResourceUrl($url)->withBody($localizedContent);
+		return $mozuClient;
 
 	}
 	
@@ -115,7 +118,8 @@ class AttributeVocabularyValueClient {
 	{
 		$url = AttributeVocabularyValueUrl::addAttributeVocabularyValueUrl($attributeFQN, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($attributeVocabularyValue);
+		$mozuClient->withResourceUrl($url)->withBody($attributeVocabularyValue);
+		return $mozuClient;
 
 	}
 	
@@ -130,7 +134,8 @@ class AttributeVocabularyValueClient {
 	{
 		$url = AttributeVocabularyValueUrl::updateAttributeVocabularyValuesUrl($attributeFQN);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($vocabularyValues);
+		$mozuClient->withResourceUrl($url)->withBody($vocabularyValues);
+		return $mozuClient;
 
 	}
 	
@@ -146,7 +151,8 @@ class AttributeVocabularyValueClient {
 	{
 		$url = AttributeVocabularyValueUrl::updateAttributeVocabularyValueLocalizedContentsUrl($attributeFQN, $value);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($localizedContent);
+		$mozuClient->withResourceUrl($url)->withBody($localizedContent);
+		return $mozuClient;
 
 	}
 	
@@ -164,7 +170,8 @@ class AttributeVocabularyValueClient {
 	{
 		$url = AttributeVocabularyValueUrl::updateAttributeVocabularyValueLocalizedContentUrl($attributeFQN, $localeCode, $responseFields, $value);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($localizedContent);
+		$mozuClient->withResourceUrl($url)->withBody($localizedContent);
+		return $mozuClient;
 
 	}
 	
@@ -181,7 +188,8 @@ class AttributeVocabularyValueClient {
 	{
 		$url = AttributeVocabularyValueUrl::updateAttributeVocabularyValueUrl($attributeFQN, $responseFields, $value);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($attributeVocabularyValue);
+		$mozuClient->withResourceUrl($url)->withBody($attributeVocabularyValue);
+		return $mozuClient;
 
 	}
 	
@@ -190,13 +198,13 @@ class AttributeVocabularyValueClient {
 	*
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @param string $value The actual unique value of the attribute vocabulary to delete. A single attribute must have a unique value and match the attribute's data type. If a string value returns null, the system will generate a value. The actual string content displayed shoud be stored as "Content" and actual content is required for string values.
-	* @return MozuClient
 	*/
 	public static function deleteAttributeVocabularyValueClient($attributeFQN, $value)
 	{
 		$url = AttributeVocabularyValueUrl::deleteAttributeVocabularyValueUrl($attributeFQN, $value);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -206,13 +214,13 @@ class AttributeVocabularyValueClient {
 	* @param string $attributeFQN 
 	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
 	* @param string $value 
-	* @return MozuClient
 	*/
 	public static function deleteAttributeVocabularyValueLocalizedContentClient($attributeFQN, $value, $localeCode)
 	{
 		$url = AttributeVocabularyValueUrl::deleteAttributeVocabularyValueLocalizedContentUrl($attributeFQN, $localeCode, $value);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

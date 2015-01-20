@@ -12,26 +12,22 @@
 
 namespace Mozu\Api\Resources\Content;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Content\PropertyTypeClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\Content\PropertyType;
-use Mozu\Api\Contracts\Content\PropertyTypeCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the property types subresource to manage content properties.
 */
 class PropertyTypeResource {
 
-	private $apiContext;
-	private $dataViewMode;
-	public function __construct(ApiContext $apiContext, $dataViewMode) 
+		private $apiContext;
+	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
-		$this->dataViewMode = $dataViewMode;
 	}
-
-	
 
 	/**
 	* Retrieves a list of the content property types.
@@ -41,12 +37,12 @@ class PropertyTypeResource {
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return PropertyTypeCollection 
 	*/
-	public function getPropertyTypes($pageSize =  null, $startIndex =  null, $responseFields =  null)
+	public function getPropertyTypes($dataViewMode, $pageSize =  null, $startIndex =  null, $responseFields =  null)
 	{
-		$mozuClient = PropertyTypeClient::getPropertyTypesClient($this->dataViewMode, $pageSize, $startIndex, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = PropertyTypeClient::getPropertyTypesClient($dataViewMode, $pageSize, $startIndex, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -57,12 +53,12 @@ class PropertyTypeResource {
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return PropertyType 
 	*/
-	public function getPropertyType($propertyTypeName, $responseFields =  null)
+	public function getPropertyType($dataViewMode, $propertyTypeName, $responseFields =  null)
 	{
-		$mozuClient = PropertyTypeClient::getPropertyTypeClient($this->dataViewMode, $propertyTypeName, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = PropertyTypeClient::getPropertyTypeClient($dataViewMode, $propertyTypeName, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -76,9 +72,9 @@ class PropertyTypeResource {
 	public function createPropertyType($propertyType, $responseFields =  null)
 	{
 		$mozuClient = PropertyTypeClient::createPropertyTypeClient($propertyType, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -90,12 +86,12 @@ class PropertyTypeResource {
 	* @param PropertyType $propertyType 
 	* @return PropertyType 
 	*/
-	public function updatePropertyType($propertyType, $propertyTypeName, $responseFields =  null)
+	public function updatePropertyType($dataViewMode, $propertyType, $propertyTypeName, $responseFields =  null)
 	{
-		$mozuClient = PropertyTypeClient::updatePropertyTypeClient($this->dataViewMode, $propertyType, $propertyTypeName, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = PropertyTypeClient::updatePropertyTypeClient($dataViewMode, $propertyType, $propertyTypeName, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -103,13 +99,12 @@ class PropertyTypeResource {
 	* 
 	*
 	* @param string $propertyTypeName 
-	* @return void
 	*/
-	public function deletePropertyType($propertyTypeName)
+	public function deletePropertyType($dataViewMode, $propertyTypeName)
 	{
-		$mozuClient = PropertyTypeClient::deletePropertyTypeClient($this->dataViewMode, $propertyTypeName);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = PropertyTypeClient::deletePropertyTypeClient($dataViewMode, $propertyTypeName);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

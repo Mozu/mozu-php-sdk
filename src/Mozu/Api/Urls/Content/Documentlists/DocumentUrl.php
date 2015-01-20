@@ -26,10 +26,9 @@ class DocumentUrl  {
 	public static function getDocumentContentUrl($documentId, $documentListName)
 	{
 		$url = "/api/content/documentlists/{documentListName}/documents/{documentId}/content";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("documentId", $documentId)
-				->formatUrl("documentListName", $documentListName);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("documentId", $documentId);
+		$url = $mozuUrl->formatUrl("documentListName", $documentListName);
 		return $mozuUrl;
 	}
 	
@@ -43,11 +42,10 @@ class DocumentUrl  {
 	public static function getDocumentUrl($documentId, $documentListName, $responseFields)
 	{
 		$url = "/api/content/documentlists/{documentListName}/documents/{documentId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("documentId", $documentId)
-				->formatUrl("documentListName", $documentListName)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("documentId", $documentId);
+		$url = $mozuUrl->formatUrl("documentListName", $documentListName);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -64,14 +62,13 @@ class DocumentUrl  {
 	public static function getDocumentsUrl($documentListName, $filter, $pageSize, $responseFields, $sortBy, $startIndex)
 	{
 		$url = "/api/content/documentlists/{documentListName}/documents?filter={filter}&sortBy={sortBy}&pageSize={pageSize}&startIndex={startIndex}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("documentListName", $documentListName)
-				->formatUrl("filter", $filter)
-				->formatUrl("pageSize", $pageSize)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("sortBy", $sortBy)
-				->formatUrl("startIndex", $startIndex);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("documentListName", $documentListName);
+		$url = $mozuUrl->formatUrl("filter", $filter);
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
 		return $mozuUrl;
 	}
 	
@@ -84,10 +81,9 @@ class DocumentUrl  {
 	public static function createDocumentUrl($documentListName, $responseFields)
 	{
 		$url = "/api/content/documentlists/{documentListName}/documents?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("documentListName", $documentListName)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("documentListName", $documentListName);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -100,10 +96,9 @@ class DocumentUrl  {
 	public static function updateDocumentContentUrl($documentId, $documentListName)
 	{
 		$url = "/api/content/documentlists/{documentListName}/documents/{documentId}/content";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("documentId", $documentId)
-				->formatUrl("documentListName", $documentListName);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("documentId", $documentId);
+		$url = $mozuUrl->formatUrl("documentListName", $documentListName);
 		return $mozuUrl;
 	}
 	
@@ -117,11 +112,10 @@ class DocumentUrl  {
 	public static function updateDocumentUrl($documentId, $documentListName, $responseFields)
 	{
 		$url = "/api/content/documentlists/{documentListName}/documents/{documentId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("documentId", $documentId)
-				->formatUrl("documentListName", $documentListName)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("documentId", $documentId);
+		$url = $mozuUrl->formatUrl("documentListName", $documentListName);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -134,10 +128,9 @@ class DocumentUrl  {
 	public static function deleteDocumentUrl($documentId, $documentListName)
 	{
 		$url = "/api/content/documentlists/{documentListName}/documents/{documentId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("documentId", $documentId)
-				->formatUrl("documentListName", $documentListName);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("documentId", $documentId);
+		$url = $mozuUrl->formatUrl("documentListName", $documentListName);
 		return $mozuUrl;
 	}
 	
@@ -150,10 +143,9 @@ class DocumentUrl  {
 	public static function deleteDocumentContentUrl($documentId, $documentListName)
 	{
 		$url = "/api/content/documentlists/{documentListName}/documents/{documentId}/content";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("documentId", $documentId)
-				->formatUrl("documentListName", $documentListName);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("documentId", $documentId);
+		$url = $mozuUrl->formatUrl("documentListName", $documentListName);
 		return $mozuUrl;
 	}
 	

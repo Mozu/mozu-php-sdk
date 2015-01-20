@@ -12,23 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Returns;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Returns\PackageClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\CommerceRuntime\Fulfillment\Package;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Return Packages subresource to manage physical packages used to ship return replacement items.
 */
 class PackageResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves the package label image supplied by the carrier for a return replacement.
@@ -40,9 +39,9 @@ class PackageResource {
 	public function getPackageLabel($returnId, $packageId)
 	{
 		$mozuClient = PackageClient::getPackageLabelClient($returnId, $packageId);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -57,9 +56,9 @@ class PackageResource {
 	public function getPackage($returnId, $packageId, $responseFields =  null)
 	{
 		$mozuClient = PackageClient::getPackageClient($returnId, $packageId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -74,9 +73,9 @@ class PackageResource {
 	public function createPackage($pkg, $returnId, $responseFields =  null)
 	{
 		$mozuClient = PackageClient::createPackageClient($pkg, $returnId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -92,9 +91,9 @@ class PackageResource {
 	public function updatePackage($pkg, $returnId, $packageId, $responseFields =  null)
 	{
 		$mozuClient = PackageClient::updatePackageClient($pkg, $returnId, $packageId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -103,13 +102,12 @@ class PackageResource {
 	*
 	* @param string $packageId Unique identifier of the return replacement package to delete.
 	* @param string $returnId Unique identifier of the return associated with the replacement package to delete.
-	* @return void
 	*/
 	public function deletePackage($returnId, $packageId)
 	{
 		$mozuClient = PackageClient::deletePackageClient($returnId, $packageId);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

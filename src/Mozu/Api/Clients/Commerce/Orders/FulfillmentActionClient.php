@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Orders;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Orders\FulfillmentActionUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\CommerceRuntime\Fulfillment\FulfillmentAction;
-use Mozu\Api\Contracts\CommerceRuntime\Orders\Order;
 
 /**
 * Use the Fulfillment resource to manage shipments or pickups of collections of packages for an order.
@@ -36,7 +34,8 @@ class FulfillmentActionClient {
 	{
 		$url = FulfillmentActionUrl::performFulfillmentActionUrl($orderId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($action);
+		$mozuClient->withResourceUrl($url)->withBody($action);
+		return $mozuClient;
 
 	}
 	

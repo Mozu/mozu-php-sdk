@@ -12,24 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\InStockNotificationSubscriptionClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\Customer\InStockNotificationSubscription;
-use Mozu\Api\Contracts\Customer\InStockNotificationSubscriptionCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Customer In-Stock Notification Subscription resource to manage the subscriptions customer accounts use to send product notifications. This resource can send a notification when a product in a catalog returns to a site's active inventory after it is out of stock, or when a new product becomes available for the first time.
 */
 class InStockNotificationSubscriptionResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves a list of in-stock notification subscriptions.
@@ -44,9 +42,9 @@ class InStockNotificationSubscriptionResource {
 	public function getInStockNotificationSubscriptions($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
 		$mozuClient = InStockNotificationSubscriptionClient::getInStockNotificationSubscriptionsClient($startIndex, $pageSize, $sortBy, $filter, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -60,9 +58,9 @@ class InStockNotificationSubscriptionResource {
 	public function getInStockNotificationSubscription($id, $responseFields =  null)
 	{
 		$mozuClient = InStockNotificationSubscriptionClient::getInStockNotificationSubscriptionClient($id, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -76,9 +74,9 @@ class InStockNotificationSubscriptionResource {
 	public function addInStockNotificationSubscription($inStockNotificationSubscription, $responseFields =  null)
 	{
 		$mozuClient = InStockNotificationSubscriptionClient::addInStockNotificationSubscriptionClient($inStockNotificationSubscription, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -86,13 +84,12 @@ class InStockNotificationSubscriptionResource {
 	* Deletes a subscription for a customer in-stock notification.
 	*
 	* @param int $id Unique identifier of the customer in-stock notification subscription to delete.
-	* @return void
 	*/
 	public function deleteInStockNotificationSubscription($id)
 	{
 		$mozuClient = InStockNotificationSubscriptionClient::deleteInStockNotificationSubscriptionClient($id);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

@@ -19,7 +19,9 @@ namespace Mozu\Api\Contracts\ShippingRuntime;
 */
 class RatesResponse
 {
-		public $shippingZoneCode;
+		public $resolvedShippingZoneCode;
+
+		public $shippingZoneCodes;
 
 	/**
 	*Arrayed list of calculated shipping rates for each assocuated carrier.

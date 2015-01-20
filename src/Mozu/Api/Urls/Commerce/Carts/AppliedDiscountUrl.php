@@ -27,11 +27,10 @@ class AppliedDiscountUrl  {
 	public static function applyCouponUrl($cartId, $couponCode, $responseFields)
 	{
 		$url = "/api/commerce/carts/{cartId}/coupons/{couponCode}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("cartId", $cartId)
-				->formatUrl("couponCode", $couponCode)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("cartId", $cartId);
+		$url = $mozuUrl->formatUrl("couponCode", $couponCode);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -43,9 +42,8 @@ class AppliedDiscountUrl  {
 	public static function removeCouponsUrl($cartId)
 	{
 		$url = "/api/commerce/carts/{cartId}/coupons";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("cartId", $cartId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("cartId", $cartId);
 		return $mozuUrl;
 	}
 	
@@ -58,10 +56,9 @@ class AppliedDiscountUrl  {
 	public static function removeCouponUrl($cartId, $couponCode)
 	{
 		$url = "/api/commerce/carts/{cartId}/coupons/{couponcode}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("cartId", $cartId)
-				->formatUrl("couponCode", $couponCode);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("cartId", $cartId);
+		$url = $mozuUrl->formatUrl("couponCode", $couponCode);
 		return $mozuUrl;
 	}
 	

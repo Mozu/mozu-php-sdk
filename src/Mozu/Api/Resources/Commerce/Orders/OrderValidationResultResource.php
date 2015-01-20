@@ -12,23 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Orders;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Orders\OrderValidationResultClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\CommerceRuntime\Orders\OrderValidationResult;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Manage the results of order validation.
 */
 class OrderValidationResultResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves a list of the validation results associated with the order.
@@ -39,9 +38,9 @@ class OrderValidationResultResource {
 	public function getValidationResults($orderId)
 	{
 		$mozuClient = OrderValidationResultClient::getValidationResultsClient($orderId);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -56,9 +55,9 @@ class OrderValidationResultResource {
 	public function addValidationResult($validationResult, $orderId, $responseFields =  null)
 	{
 		$mozuClient = OrderValidationResultClient::addValidationResultClient($validationResult, $orderId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	

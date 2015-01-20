@@ -44,6 +44,8 @@ class Discount
 	*/
 	public $id;
 
+		public $maximumDiscountValuePerOrder;
+
 	/**
 	*The maximum number of times an individual shopper can redeem the discount.
 	*/

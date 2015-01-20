@@ -25,9 +25,8 @@ class ProductTypeExtraUrl  {
 	public static function getExtrasUrl($productTypeId)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/producttypes/{productTypeId}/Extras";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("productTypeId", $productTypeId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("productTypeId", $productTypeId);
 		return $mozuUrl;
 	}
 	
@@ -41,11 +40,10 @@ class ProductTypeExtraUrl  {
 	public static function getExtraUrl($attributeFQN, $productTypeId, $responseFields)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/producttypes/{productTypeId}/Extras/{attributeFQN}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
-				->formatUrl("productTypeId", $productTypeId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("productTypeId", $productTypeId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -58,10 +56,9 @@ class ProductTypeExtraUrl  {
 	public static function addExtraUrl($productTypeId, $responseFields)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/producttypes/{productTypeId}/Extras?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("productTypeId", $productTypeId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("productTypeId", $productTypeId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -75,11 +72,10 @@ class ProductTypeExtraUrl  {
 	public static function updateExtraUrl($attributeFQN, $productTypeId, $responseFields)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/producttypes/{productTypeId}/Extras/{attributeFQN}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
-				->formatUrl("productTypeId", $productTypeId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("productTypeId", $productTypeId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -92,10 +88,9 @@ class ProductTypeExtraUrl  {
 	public static function deleteExtraUrl($attributeFQN, $productTypeId)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/producttypes/{productTypeId}/Extras/{attributeFQN}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
-				->formatUrl("productTypeId", $productTypeId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("productTypeId", $productTypeId);
 		return $mozuUrl;
 	}
 	

@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Customer;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\VisitUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Customer\Visit;
-use Mozu\Api\Contracts\Customer\VisitCollection;
 
 /**
 * Use the Visits resource to manage all visits a customer makes to a tenant's sites and measure the level of transactions a customer performs during a unique visit for customer account analytics. Clients can track customer visits by site (including online and in-person interactions), the transactions a customer performs during the visit, and the device type associated with the visit, if any.
@@ -38,7 +36,8 @@ class VisitClient {
 	{
 		$url = VisitUrl::getVisitsUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -53,7 +52,8 @@ class VisitClient {
 	{
 		$url = VisitUrl::getVisitUrl($responseFields, $visitId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -68,7 +68,8 @@ class VisitClient {
 	{
 		$url = VisitUrl::addVisitUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($visit);
+		$mozuClient->withResourceUrl($url)->withBody($visit);
+		return $mozuClient;
 
 	}
 	
@@ -84,7 +85,8 @@ class VisitClient {
 	{
 		$url = VisitUrl::updateVisitUrl($responseFields, $visitId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($visit);
+		$mozuClient->withResourceUrl($url)->withBody($visit);
+		return $mozuClient;
 
 	}
 	

@@ -21,6 +21,8 @@ class Category
 {
 		public $catalogId;
 
+		public $categoryCode;
+
 	/**
 	*The number of children (subcategories, for example) that stem from a parent (top-level category).
 	*/

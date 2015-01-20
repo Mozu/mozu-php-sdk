@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Platform\Adminuser;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Platform\Adminuser\AdminUserUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Tenant\TenantCollection;
-use Mozu\Api\Contracts\Core\User;
 
 /**
 * Displays the user accounts and account details associated with a developer or Mozu tenant administrator. Email addresses uniquely identify admin user accounts.
@@ -35,7 +33,8 @@ class AdminUserClient {
 	{
 		$url = AdminUserUrl::getTenantScopesForUserUrl($responseFields, $userId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -50,7 +49,8 @@ class AdminUserClient {
 	{
 		$url = AdminUserUrl::getUserUrl($responseFields, $userId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

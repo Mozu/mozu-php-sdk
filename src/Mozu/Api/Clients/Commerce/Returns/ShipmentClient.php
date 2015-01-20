@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Returns;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Returns\ShipmentUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\CommerceRuntime\Fulfillment\Package;
-use Mozu\Api\Contracts\CommerceRuntime\Fulfillment\Shipment;
 
 /**
 * Use the Return Shipments subresource to manage shipments for a return replacement.
@@ -36,7 +34,8 @@ class ShipmentClient {
 	{
 		$url = ShipmentUrl::getShipmentUrl($responseFields, $returnId, $shipmentId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -51,7 +50,8 @@ class ShipmentClient {
 	{
 		$url = ShipmentUrl::createPackageShipmentsUrl($returnId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($packageIds);
+		$mozuClient->withResourceUrl($url)->withBody($packageIds);
+		return $mozuClient;
 
 	}
 	
@@ -60,13 +60,13 @@ class ShipmentClient {
 	*
 	* @param string $returnId Unique identifier of the return associated with the replacement shipment to delete.
 	* @param string $shipmentId Unique identifier of the return replacement shipment to delete.
-	* @return MozuClient
 	*/
 	public static function deleteShipmentClient($returnId, $shipmentId)
 	{
 		$url = ShipmentUrl::deleteShipmentUrl($returnId, $shipmentId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

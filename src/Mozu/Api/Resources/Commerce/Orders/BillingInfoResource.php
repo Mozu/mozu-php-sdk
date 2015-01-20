@@ -12,23 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Orders;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Orders\BillingInfoClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\CommerceRuntime\Payments\BillingInfo;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Billing Info subresource to manage the billing information stored for an order.
 */
 class BillingInfoResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves the billing information associated with an order.
@@ -41,9 +40,9 @@ class BillingInfoResource {
 	public function getBillingInfo($orderId, $draft =  null, $responseFields =  null)
 	{
 		$mozuClient = BillingInfoClient::getBillingInfoClient($orderId, $draft, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -60,9 +59,9 @@ class BillingInfoResource {
 	public function setBillingInfo($billingInfo, $orderId, $updateMode =  null, $version =  null, $responseFields =  null)
 	{
 		$mozuClient = BillingInfoClient::setBillingInfoClient($billingInfo, $orderId, $updateMode, $version, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	

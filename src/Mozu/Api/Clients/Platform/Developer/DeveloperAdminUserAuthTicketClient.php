@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Platform\Developer;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Platform\Developer\DeveloperAdminUserAuthTicketUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Core\UserAuthInfo;
-use Mozu\Api\Contracts\AdminUser\DeveloperAdminUserAuthTicket;
 
 /**
 * Use this resource to manage authentication tickets for your developer account.
@@ -36,7 +34,8 @@ class DeveloperAdminUserAuthTicketClient {
 	{
 		$url = DeveloperAdminUserAuthTicketUrl::createDeveloperUserAuthTicketUrl($developerAccountId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($userAuthInfo);
+		$mozuClient->withResourceUrl($url)->withBody($userAuthInfo);
+		return $mozuClient;
 
 	}
 	
@@ -52,7 +51,8 @@ class DeveloperAdminUserAuthTicketClient {
 	{
 		$url = DeveloperAdminUserAuthTicketUrl::refreshDeveloperAuthTicketUrl($developerAccountId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($existingAuthTicket);
+		$mozuClient->withResourceUrl($url)->withBody($existingAuthTicket);
+		return $mozuClient;
 
 	}
 	
@@ -60,13 +60,13 @@ class DeveloperAdminUserAuthTicketClient {
 	* Deletes the authentication ticket for the developer account by supplying the refresh token.
 	*
 	* @param string $refreshToken Refresh token string associated with the developer account authentication ticket.
-	* @return MozuClient
 	*/
 	public static function deleteUserAuthTicketClient($refreshToken)
 	{
 		$url = DeveloperAdminUserAuthTicketUrl::deleteUserAuthTicketUrl($refreshToken);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

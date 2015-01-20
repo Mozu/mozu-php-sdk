@@ -12,24 +12,22 @@
 
 namespace Mozu\Api\Resources\Platform\Developer;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Platform\Developer\DeveloperAdminUserAuthTicketClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\Core\UserAuthInfo;
-use Mozu\Api\Contracts\AdminUser\DeveloperAdminUserAuthTicket;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use this resource to manage authentication tickets for your developer account.
 */
 class DeveloperAdminUserAuthTicketResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Generate an authentication ticket for a developer account.
@@ -42,9 +40,9 @@ class DeveloperAdminUserAuthTicketResource {
 	public function createDeveloperUserAuthTicket($userAuthInfo, $developerAccountId =  null, $responseFields =  null)
 	{
 		$mozuClient = DeveloperAdminUserAuthTicketClient::createDeveloperUserAuthTicketClient($userAuthInfo, $developerAccountId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -59,9 +57,9 @@ class DeveloperAdminUserAuthTicketResource {
 	public function refreshDeveloperAuthTicket($existingAuthTicket, $developerAccountId =  null, $responseFields =  null)
 	{
 		$mozuClient = DeveloperAdminUserAuthTicketClient::refreshDeveloperAuthTicketClient($existingAuthTicket, $developerAccountId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -69,13 +67,12 @@ class DeveloperAdminUserAuthTicketResource {
 	* Deletes the authentication ticket for the developer account by supplying the refresh token.
 	*
 	* @param string $refreshToken Refresh token string associated with the developer account authentication ticket.
-	* @return void
 	*/
 	public function deleteUserAuthTicket($refreshToken)
 	{
 		$mozuClient = DeveloperAdminUserAuthTicketClient::deleteUserAuthTicketClient($refreshToken);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

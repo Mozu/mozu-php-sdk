@@ -14,12 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin\Products;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\Products\LocationInventoryUrl;
-use Mozu\Api\Headers;
 use Mozu\Api\DataViewMode;
-
-use Mozu\Api\Contracts\ProductAdmin\LocationInventoryAdjustment;
-use Mozu\Api\Contracts\ProductAdmin\LocationInventory;
-use Mozu\Api\Contracts\ProductAdmin\LocationInventoryCollection;
+use Mozu\Api\Headers;
 
 /**
 * Use the Product Location Inventory resource to manage the levels of active product inventory to maintain across defined locations at the product level.
@@ -41,7 +37,8 @@ class LocationInventoryClient {
 	{
 		$url = LocationInventoryUrl::getLocationInventoriesUrl($filter, $pageSize, $productCode, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -57,14 +54,14 @@ class LocationInventoryClient {
 	{
 		$url = LocationInventoryUrl::getLocationInventoryUrl($locationCode, $productCode, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Creates a new location inventory definition for the product code specified in the request.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param bool $performUpserts The performUpserts query string parameter lets the service perform an update if the record already exists instead of throwing an already exists conflict exception. PerformUpserts=true means it updates if the record already exists. By default, no value specified means that the service assumes PerformUpserts=false.
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @param array|LocationInventory $locationInventoryList Array list of the location inventory definitions associated with the product code specified in the request. For each location, you must define the locationCode value and the stockOnHand value. All other properties in the array are system-supplied and read only.
@@ -74,14 +71,14 @@ class LocationInventoryClient {
 	{
 		$url = LocationInventoryUrl::addLocationInventoryUrl($performUpserts, $productCode);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($locationInventoryList)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withBody($locationInventoryList)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Updates the current level of stock at each location associated with the product code specified in the request.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $productCode The product code of the product for which to update active stock on hand inventory at a specified location.
 	* @param array|LocationInventoryAdjustment $locationInventoryAdjustments Properties of the inventory adjustments to perform for the specified location.
 	* @return MozuClient
@@ -90,23 +87,23 @@ class LocationInventoryClient {
 	{
 		$url = LocationInventoryUrl::updateLocationInventoryUrl($productCode);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($locationInventoryAdjustments)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withBody($locationInventoryAdjustments)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Deletes the location inventory definition for the product code specified in the request.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $locationCode The code that identifies the location for which to delete product inventory.
 	* @param string $productCode The product code for which to delete a location's inventory.
-	* @return MozuClient
 	*/
 	public static function deleteLocationInventoryClient($dataViewMode, $productCode, $locationCode)
 	{
 		$url = LocationInventoryUrl::deleteLocationInventoryUrl($locationCode, $productCode);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	

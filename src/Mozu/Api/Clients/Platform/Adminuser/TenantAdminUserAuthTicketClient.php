@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Platform\Adminuser;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Platform\Adminuser\TenantAdminUserAuthTicketUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Core\UserAuthInfo;
-use Mozu\Api\Contracts\AdminUser\TenantAdminUserAuthTicket;
 
 /**
 * Use the Admin User authentication tickets resource to generate and refresh authentication tickets that enable Mozu administrator or developer account users to access development or production tenants.
@@ -36,7 +34,8 @@ class TenantAdminUserAuthTicketClient {
 	{
 		$url = TenantAdminUserAuthTicketUrl::createUserAuthTicketUrl($responseFields, $tenantId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($userAuthInfo);
+		$mozuClient->withResourceUrl($url)->withBody($userAuthInfo);
+		return $mozuClient;
 
 	}
 	
@@ -52,7 +51,8 @@ class TenantAdminUserAuthTicketClient {
 	{
 		$url = TenantAdminUserAuthTicketUrl::refreshAuthTicketUrl($responseFields, $tenantId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($existingAuthTicket);
+		$mozuClient->withResourceUrl($url)->withBody($existingAuthTicket);
+		return $mozuClient;
 
 	}
 	
@@ -60,13 +60,13 @@ class TenantAdminUserAuthTicketClient {
 	* Deletes the authentication ticket for the user by supplying the refresh token.
 	*
 	* @param string $refreshToken Refresh token string associated with the user authentication ticket.
-	* @return MozuClient
 	*/
 	public static function deleteUserAuthTicketClient($refreshToken)
 	{
 		$url = TenantAdminUserAuthTicketUrl::deleteUserAuthTicketUrl($refreshToken);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

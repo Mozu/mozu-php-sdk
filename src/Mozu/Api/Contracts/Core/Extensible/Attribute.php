@@ -58,6 +58,8 @@ class Attribute
 	*/
 	public $isMultiValued;
 
+		public $isReadOnly;
+
 	/**
 	*If true, the attribute must have a defined value.
 	*/

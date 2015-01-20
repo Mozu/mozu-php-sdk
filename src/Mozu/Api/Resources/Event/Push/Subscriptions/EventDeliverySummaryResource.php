@@ -12,24 +12,22 @@
 
 namespace Mozu\Api\Resources\Event\Push\Subscriptions;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Event\Push\Subscriptions\EventDeliverySummaryClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\Event\EventDeliverySummaryCollection;
-use Mozu\Api\Contracts\Event\EventDeliverySummary;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * 
 */
 class EventDeliverySummaryResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* This operation method is the external/public event entity used specifically in pull/poll event scenarios.
@@ -42,9 +40,9 @@ class EventDeliverySummaryResource {
 	public function getDeliveryAttemptSummary($subscriptionId, $id =  null, $responseFields =  null)
 	{
 		$mozuClient = EventDeliverySummaryClient::getDeliveryAttemptSummaryClient($subscriptionId, $id, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -62,9 +60,9 @@ class EventDeliverySummaryResource {
 	public function getDeliveryAttemptSummaries($subscriptionId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
 		$mozuClient = EventDeliverySummaryClient::getDeliveryAttemptSummariesClient($subscriptionId, $startIndex, $pageSize, $sortBy, $filter, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	

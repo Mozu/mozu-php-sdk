@@ -12,27 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\OrderClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\CommerceRuntime\Orders\Order;
-use Mozu\Api\Contracts\CommerceRuntime\Orders\OrderAction;
-use Mozu\Api\Contracts\CommerceRuntime\Discounts\AppliedDiscount;
-use Mozu\Api\Contracts\CommerceRuntime\Orders\OrderCollection;
-use Mozu\Api\Contracts\PricingRuntime\TaxableOrder;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Orders resource to manage all components of order processing, payment, and fulfillment.
 */
 class OrderResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves a list of orders according to any specified filter criteria and sort options.
@@ -49,9 +44,9 @@ class OrderResource {
 	public function getOrders($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $q =  null, $qLimit =  null, $responseFields =  null)
 	{
 		$mozuClient = OrderClient::getOrdersClient($startIndex, $pageSize, $sortBy, $filter, $q, $qLimit, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -64,9 +59,9 @@ class OrderResource {
 	public function getAvailableActions($orderId)
 	{
 		$mozuClient = OrderClient::getAvailableActionsClient($orderId);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -79,9 +74,9 @@ class OrderResource {
 	public function getTaxableOrders($orderId)
 	{
 		$mozuClient = OrderClient::getTaxableOrdersClient($orderId);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -96,9 +91,9 @@ class OrderResource {
 	public function getOrder($orderId, $draft =  null, $responseFields =  null)
 	{
 		$mozuClient = OrderClient::getOrderClient($orderId, $draft, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -112,9 +107,9 @@ class OrderResource {
 	public function createOrderFromCart($cartId, $responseFields =  null)
 	{
 		$mozuClient = OrderClient::createOrderFromCartClient($cartId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -128,9 +123,9 @@ class OrderResource {
 	public function createOrder($order, $responseFields =  null)
 	{
 		$mozuClient = OrderClient::createOrderClient($order, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -145,9 +140,9 @@ class OrderResource {
 	public function performOrderAction($action, $orderId, $responseFields =  null)
 	{
 		$mozuClient = OrderClient::performOrderActionClient($action, $orderId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -165,9 +160,9 @@ class OrderResource {
 	public function updateOrderDiscount($discount, $orderId, $discountId, $updateMode =  null, $version =  null, $responseFields =  null)
 	{
 		$mozuClient = OrderClient::updateOrderDiscountClient($discount, $orderId, $discountId, $updateMode, $version, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -176,13 +171,12 @@ class OrderResource {
 	*
 	* @param string $orderId Unique identifier of the order associated with the draft to delete.
 	* @param string $version If applicable, the version of the order draft to delete.
-	* @return void
 	*/
 	public function deleteOrderDraft($orderId, $version =  null)
 	{
 		$mozuClient = OrderClient::deleteOrderDraftClient($orderId, $version);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	
@@ -196,9 +190,9 @@ class OrderResource {
 	public function changeOrderUserId($orderId, $responseFields =  null)
 	{
 		$mozuClient = OrderClient::changeOrderUserIdClient($orderId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -215,9 +209,9 @@ class OrderResource {
 	public function updateOrder($order, $orderId, $updateMode =  null, $version =  null, $responseFields =  null)
 	{
 		$mozuClient = OrderClient::updateOrderClient($order, $orderId, $updateMode, $version, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	

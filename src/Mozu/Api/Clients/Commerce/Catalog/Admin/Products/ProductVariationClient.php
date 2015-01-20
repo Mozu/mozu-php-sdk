@@ -14,13 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin\Products;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\Products\ProductVariationUrl;
-use Mozu\Api\Headers;
 use Mozu\Api\DataViewMode;
-
-use Mozu\Api\Contracts\ProductAdmin\ProductVariationDeltaPrice;
-use Mozu\Api\Contracts\ProductAdmin\ProductVariationCollection;
-use Mozu\Api\Contracts\ProductAdmin\ProductVariation;
-use Mozu\Api\Contracts\ProductAdmin\ProductVariationPagedCollection;
+use Mozu\Api\Headers;
 
 /**
 * Use the product variations sub-resource to manage the variations of a product based on its attributes. For example, a t-shirt product could be offered in six variations: Small Black, Medium Black, Large Black, Small White, Medium White, and Large White.
@@ -30,7 +25,6 @@ class ProductVariationClient {
 	/**
 	* 
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $productCode 
 	* @param string $variationKey 
 	* @return MozuClient
@@ -39,14 +33,14 @@ class ProductVariationClient {
 	{
 		$url = ProductVariationUrl::getProductVariationLocalizedDeltaPricesUrl($productCode, $variationKey);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* 
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $currencyCode 
 	* @param string $productCode 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
@@ -57,14 +51,14 @@ class ProductVariationClient {
 	{
 		$url = ProductVariationUrl::getProductVariationLocalizedDeltaPriceUrl($currencyCode, $productCode, $responseFields, $variationKey);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Retrieves the details of a product variation based on the supplied product code and variation key.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
@@ -74,14 +68,14 @@ class ProductVariationClient {
 	{
 		$url = ProductVariationUrl::getProductVariationUrl($productCode, $responseFields, $variationKey);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Retrieves a list of the product variations configured for the specified product code.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
@@ -94,14 +88,14 @@ class ProductVariationClient {
 	{
 		$url = ProductVariationUrl::getProductVariationsUrl($filter, $pageSize, $productCode, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* 
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $productCode 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $variationKey 
@@ -112,14 +106,14 @@ class ProductVariationClient {
 	{
 		$url = ProductVariationUrl::addProductVariationLocalizedDeltaPriceUrl($productCode, $responseFields, $variationKey);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($localizedDeltaPrice)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withBody($localizedDeltaPrice)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* 
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $productCode 
 	* @param string $variationKey 
 	* @param array|ProductVariationDeltaPrice $localizedDeltaPrice 
@@ -129,14 +123,14 @@ class ProductVariationClient {
 	{
 		$url = ProductVariationUrl::updateProductVariationLocalizedDeltaPricesUrl($productCode, $variationKey);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($localizedDeltaPrice)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withBody($localizedDeltaPrice)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* 
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $currencyCode 
 	* @param string $productCode 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
@@ -148,14 +142,14 @@ class ProductVariationClient {
 	{
 		$url = ProductVariationUrl::updateProductVariationLocalizedDeltaPriceUrl($currencyCode, $productCode, $responseFields, $variationKey);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($localizedDeltaPrice)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withBody($localizedDeltaPrice)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Modifies the details of a variation, based on the supplied variation key, for the specified product code.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
@@ -166,14 +160,14 @@ class ProductVariationClient {
 	{
 		$url = ProductVariationUrl::updateProductVariationUrl($productCode, $responseFields, $variationKey);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($productVariation)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withBody($productVariation)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Modifies the collection of variations for the specified product code. Because this PUT replaces the existing resource, supply all information necessary to maintain for the product variation.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @param string $responseFields 
 	* @param ProductVariationCollection $productVariations Wrapper for the collection of variations configured for the specified product code.
@@ -183,40 +177,39 @@ class ProductVariationClient {
 	{
 		$url = ProductVariationUrl::updateProductVariationsUrl($productCode, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($productVariations)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withBody($productVariations)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Deletes a variation, based on the supplied variation key, for the specified product code.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
-	* @return MozuClient
 	*/
 	public static function deleteProductVariationClient($dataViewMode, $productCode, $variationKey)
 	{
 		$url = ProductVariationUrl::deleteProductVariationUrl($productCode, $variationKey);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* 
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $currencyCode 
 	* @param string $productCode 
 	* @param string $variationKey 
-	* @return MozuClient
 	*/
 	public static function deleteProductVariationLocalizedDeltaPriceClient($dataViewMode, $productCode, $variationKey, $currencyCode)
 	{
 		$url = ProductVariationUrl::deleteProductVariationLocalizedDeltaPriceUrl($currencyCode, $productCode, $variationKey);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	

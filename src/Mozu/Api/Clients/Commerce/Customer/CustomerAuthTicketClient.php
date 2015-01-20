@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Customer;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\CustomerAuthTicketUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Customer\CustomerUserAuthInfo;
-use Mozu\Api\Contracts\Customer\CustomerAuthTicket;
 
 /**
 * Use the Customer Authentication Tickets resource to generate and refresh authentication tickets for customer accounts.
@@ -33,7 +31,8 @@ class CustomerAuthTicketClient {
 	{
 		$url = CustomerAuthTicketUrl::createAnonymousShopperAuthTicketUrl();
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -48,7 +47,8 @@ class CustomerAuthTicketClient {
 	{
 		$url = CustomerAuthTicketUrl::createUserAuthTicketUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($userAuthInfo);
+		$mozuClient->withResourceUrl($url)->withBody($userAuthInfo);
+		return $mozuClient;
 
 	}
 	
@@ -63,7 +63,8 @@ class CustomerAuthTicketClient {
 	{
 		$url = CustomerAuthTicketUrl::refreshUserAuthTicketUrl($refreshToken, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

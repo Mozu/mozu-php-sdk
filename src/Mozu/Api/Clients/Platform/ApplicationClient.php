@@ -14,9 +14,8 @@ namespace Mozu\Api\Clients\Platform;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Platform\ApplicationUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\InstalledApplications\Application;
 
 /**
 * Use the Applications resource to update and retrieve details about the applications installed for your tenant.
@@ -34,7 +33,8 @@ class ApplicationClient {
 	{
 		$url = ApplicationUrl::getApplicationUrl($appId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -50,7 +50,8 @@ class ApplicationClient {
 	{
 		$url = ApplicationUrl::updateApplicationUrl($appId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($application);
+		$mozuClient->withResourceUrl($url)->withBody($application);
+		return $mozuClient;
 
 	}
 	

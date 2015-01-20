@@ -12,25 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Catalog\Storefront;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Catalog\Storefront\CategoryClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\ProductRuntime\Category;
-use Mozu\Api\Contracts\ProductRuntime\CategoryCollection;
-use Mozu\Api\Contracts\ProductRuntime\CategoryPagedCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Storefront Categories resource to view the product category hierarchy as it appears to shoppers who are browsing the storefront. The hierarchy can be returned as a flat list or as a category tree.
 */
 class CategoryResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves a list of categories according to any specified filter criteria and sort options.
@@ -45,9 +42,9 @@ class CategoryResource {
 	public function getCategories($filter =  null, $startIndex =  null, $pageSize =  null, $sortBy =  null, $responseFields =  null)
 	{
 		$mozuClient = CategoryClient::getCategoriesClient($filter, $startIndex, $pageSize, $sortBy, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -62,9 +59,9 @@ class CategoryResource {
 	public function getCategory($categoryId, $allowInactive =  null, $responseFields =  null)
 	{
 		$mozuClient = CategoryClient::getCategoryClient($categoryId, $allowInactive, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -77,9 +74,9 @@ class CategoryResource {
 	public function getCategoryTree($responseFields =  null)
 	{
 		$mozuClient = CategoryClient::getCategoryTreeClient($responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	

@@ -14,9 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Returns;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Returns\PackageUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\CommerceRuntime\Fulfillment\Package;
 
 /**
 * Use the Return Packages subresource to manage physical packages used to ship return replacement items.
@@ -34,7 +33,8 @@ class PackageClient {
 	{
 		$url = PackageUrl::getPackageLabelUrl($packageId, $returnId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -50,7 +50,8 @@ class PackageClient {
 	{
 		$url = PackageUrl::getPackageUrl($packageId, $responseFields, $returnId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -66,7 +67,8 @@ class PackageClient {
 	{
 		$url = PackageUrl::createPackageUrl($responseFields, $returnId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($pkg);
+		$mozuClient->withResourceUrl($url)->withBody($pkg);
+		return $mozuClient;
 
 	}
 	
@@ -83,7 +85,8 @@ class PackageClient {
 	{
 		$url = PackageUrl::updatePackageUrl($packageId, $responseFields, $returnId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($pkg);
+		$mozuClient->withResourceUrl($url)->withBody($pkg);
+		return $mozuClient;
 
 	}
 	
@@ -92,13 +95,13 @@ class PackageClient {
 	*
 	* @param string $packageId Unique identifier of the return replacement package to delete.
 	* @param string $returnId Unique identifier of the return associated with the replacement package to delete.
-	* @return MozuClient
 	*/
 	public static function deletePackageClient($returnId, $packageId)
 	{
 		$url = PackageUrl::deletePackageUrl($packageId, $returnId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

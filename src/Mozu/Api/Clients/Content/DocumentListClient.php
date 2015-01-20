@@ -14,11 +14,8 @@ namespace Mozu\Api\Clients\Content;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Content\DocumentListUrl;
-use Mozu\Api\Headers;
 use Mozu\Api\DataViewMode;
-
-use Mozu\Api\Contracts\Content\DocumentList;
-use Mozu\Api\Contracts\Content\DocumentListCollection;
+use Mozu\Api\Headers;
 
 /**
 * Use the document lists resource to organize your site's documents into a hierarchy. Document lists can contain documents, folders, and complete hierarchies of folders, which contain documents with unique names.
@@ -28,7 +25,6 @@ class DocumentListClient {
 	/**
 	* Retrieves a collection of document lists.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param int $startIndex 
@@ -38,14 +34,14 @@ class DocumentListClient {
 	{
 		$url = DocumentListUrl::getDocumentListsUrl($pageSize, $responseFields, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Retrieve the details of a document list by providing the list name.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $documentListName The name of the document list.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
@@ -54,14 +50,14 @@ class DocumentListClient {
 	{
 		$url = DocumentListUrl::getDocumentListUrl($documentListName, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* 
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param DocumentList $list 
 	* @return MozuClient
@@ -70,7 +66,8 @@ class DocumentListClient {
 	{
 		$url = DocumentListUrl::createDocumentListUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($list)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withBody($list)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
@@ -86,7 +83,8 @@ class DocumentListClient {
 	{
 		$url = DocumentListUrl::updateDocumentListUrl($documentListName, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($list);
+		$mozuClient->withResourceUrl($url)->withBody($list);
+		return $mozuClient;
 
 	}
 	
@@ -94,13 +92,13 @@ class DocumentListClient {
 	* 
 	*
 	* @param string $documentListName 
-	* @return MozuClient
 	*/
 	public static function deleteDocumentListClient($documentListName)
 	{
 		$url = DocumentListUrl::deleteDocumentListUrl($documentListName);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

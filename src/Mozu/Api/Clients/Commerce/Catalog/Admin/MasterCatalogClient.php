@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\MasterCatalogUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\ProductAdmin\MasterCatalog;
-use Mozu\Api\Contracts\ProductAdmin\MasterCatalogCollection;
 
 /**
 * Use the Master Catalog resource to view details of the master catalogs associated with a tenant and to manage the product publishing mode for each master catalog.
@@ -34,7 +32,8 @@ class MasterCatalogClient {
 	{
 		$url = MasterCatalogUrl::getMasterCatalogsUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -49,7 +48,8 @@ class MasterCatalogClient {
 	{
 		$url = MasterCatalogUrl::getMasterCatalogUrl($masterCatalogId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -65,7 +65,8 @@ class MasterCatalogClient {
 	{
 		$url = MasterCatalogUrl::updateMasterCatalogUrl($masterCatalogId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($masterCatalog);
+		$mozuClient->withResourceUrl($url)->withBody($masterCatalog);
+		return $mozuClient;
 
 	}
 	

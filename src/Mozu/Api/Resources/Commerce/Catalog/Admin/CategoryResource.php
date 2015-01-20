@@ -12,25 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Catalog\Admin;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Catalog\Admin\CategoryClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\ProductAdmin\Category;
-use Mozu\Api\Contracts\ProductAdmin\CategoryPagedCollection;
-use Mozu\Api\Contracts\ProductAdmin\CategoryCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Categories resource to organize products and control where they appear on the storefront. Create and maintain a hierarchy of categories and subcategories where the site will store properties.
 */
 class CategoryResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves a list of categories according to any specified filter criteria and sort options.
@@ -45,9 +42,9 @@ class CategoryResource {
 	public function getCategories($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
 		$mozuClient = CategoryClient::getCategoriesClient($startIndex, $pageSize, $sortBy, $filter, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -61,9 +58,9 @@ class CategoryResource {
 	public function getChildCategories($categoryId, $responseFields =  null)
 	{
 		$mozuClient = CategoryClient::getChildCategoriesClient($categoryId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -77,9 +74,9 @@ class CategoryResource {
 	public function getCategory($categoryId, $responseFields =  null)
 	{
 		$mozuClient = CategoryClient::getCategoryClient($categoryId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -94,9 +91,9 @@ class CategoryResource {
 	public function addCategory($category, $incrementSequence =  null, $responseFields =  null)
 	{
 		$mozuClient = CategoryClient::addCategoryClient($category, $incrementSequence, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -112,9 +109,9 @@ class CategoryResource {
 	public function updateCategory($category, $categoryId, $cascadeVisibility =  null, $responseFields =  null)
 	{
 		$mozuClient = CategoryClient::updateCategoryClient($category, $categoryId, $cascadeVisibility, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -123,13 +120,12 @@ class CategoryResource {
 	*
 	* @param bool $cascadeDelete If true, also delete all subcategories associated with the specified category.
 	* @param int $categoryId Unique identifier of the category to delete.
-	* @return void
 	*/
 	public function deleteCategoryById($categoryId, $cascadeDelete =  null)
 	{
 		$mozuClient = CategoryClient::deleteCategoryByIdClient($categoryId, $cascadeDelete);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

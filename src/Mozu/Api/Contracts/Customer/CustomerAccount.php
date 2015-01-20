@@ -49,10 +49,14 @@ class CustomerAccount
 	*/
 	public $id;
 
+		public $isActive;
+
 	/**
 	*If true, this customer account represents an anonymous shopper.
 	*/
 	public $isAnonymous;
+
+		public $isLocked;
 
 	/**
 	*The last name associated with the customer account.

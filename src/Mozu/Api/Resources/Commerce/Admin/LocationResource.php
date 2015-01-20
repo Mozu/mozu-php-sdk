@@ -12,24 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Admin;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Admin\LocationClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\Location\Location;
-use Mozu\Api\Contracts\Location\LocationCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Locations resource to manage each physical location associated with a tenant. Locations enable tenants to associate a physical address with product inventory, provide a store finder for in-store pickup, or both. Locations that support inventory can use both direct ship and in-store pickup fulfillment types.
 */
 class LocationResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves a list of all locations associated with a tenant, according to any filter and sort criteria specified in the request.
@@ -44,9 +42,9 @@ class LocationResource {
 	public function getLocations($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
 		$mozuClient = LocationClient::getLocationsClient($startIndex, $pageSize, $sortBy, $filter, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -60,9 +58,9 @@ class LocationResource {
 	public function getLocation($locationCode, $responseFields =  null)
 	{
 		$mozuClient = LocationClient::getLocationClient($locationCode, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -76,9 +74,9 @@ class LocationResource {
 	public function addLocation($location, $responseFields =  null)
 	{
 		$mozuClient = LocationClient::addLocationClient($location, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -93,9 +91,9 @@ class LocationResource {
 	public function updateLocation($location, $locationCode, $responseFields =  null)
 	{
 		$mozuClient = LocationClient::updateLocationClient($location, $locationCode, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -103,13 +101,12 @@ class LocationResource {
 	* Deletes the location specified in the request.
 	*
 	* @param string $locationCode The merchant-defined code of the location to delete.
-	* @return void
 	*/
 	public function deleteLocation($locationCode)
 	{
 		$mozuClient = LocationClient::deleteLocationClient($locationCode);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

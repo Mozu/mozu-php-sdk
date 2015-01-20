@@ -28,12 +28,11 @@ class ListViewUrl  {
 	public static function getViewEntityUrl($entityId, $entityListFullName, $responseFields, $viewName)
 	{
 		$url = "/api/platform/entitylists/{entityListFullName}/views/{viewName}/entities/{entityId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("entityId", $entityId)
-				->formatUrl("entityListFullName", $entityListFullName)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("viewName", $viewName);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("entityId", $entityId);
+		$url = $mozuUrl->formatUrl("entityListFullName", $entityListFullName);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("viewName", $viewName);
 		return $mozuUrl;
 	}
 	
@@ -50,14 +49,13 @@ class ListViewUrl  {
 	public static function getViewEntitiesUrl($entityListFullName, $filter, $pageSize, $responseFields, $startIndex, $viewName)
 	{
 		$url = "/api/platform/entitylists/{entityListFullName}/views/{viewName}/entities?pageSize={pageSize}&startIndex={startIndex}&filter={filter}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("entityListFullName", $entityListFullName)
-				->formatUrl("filter", $filter)
-				->formatUrl("pageSize", $pageSize)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("startIndex", $startIndex)
-				->formatUrl("viewName", $viewName);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("entityListFullName", $entityListFullName);
+		$url = $mozuUrl->formatUrl("filter", $filter);
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
+		$url = $mozuUrl->formatUrl("viewName", $viewName);
 		return $mozuUrl;
 	}
 	
@@ -72,12 +70,11 @@ class ListViewUrl  {
 	public static function getViewEntityContainerUrl($entityId, $entityListFullName, $responseFields, $viewName)
 	{
 		$url = "/api/platform/entitylists/{entityListFullName}/views/{viewName}/entityContainers/{entityId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("entityId", $entityId)
-				->formatUrl("entityListFullName", $entityListFullName)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("viewName", $viewName);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("entityId", $entityId);
+		$url = $mozuUrl->formatUrl("entityListFullName", $entityListFullName);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("viewName", $viewName);
 		return $mozuUrl;
 	}
 	
@@ -94,14 +91,13 @@ class ListViewUrl  {
 	public static function getViewEntityContainersUrl($entityListFullName, $filter, $pageSize, $responseFields, $startIndex, $viewName)
 	{
 		$url = "/api/platform/entitylists/{entityListFullName}/views/{viewName}/entityContainers?pageSize={pageSize}&startIndex={startIndex}&filter={filter}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("entityListFullName", $entityListFullName)
-				->formatUrl("filter", $filter)
-				->formatUrl("pageSize", $pageSize)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("startIndex", $startIndex)
-				->formatUrl("viewName", $viewName);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("entityListFullName", $entityListFullName);
+		$url = $mozuUrl->formatUrl("filter", $filter);
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
+		$url = $mozuUrl->formatUrl("viewName", $viewName);
 		return $mozuUrl;
 	}
 	
@@ -115,11 +111,10 @@ class ListViewUrl  {
 	public static function getEntityListViewUrl($entityListFullName, $responseFields, $viewName)
 	{
 		$url = "/api/platform/entitylists/{entityListFullName}/views/{viewName}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("entityListFullName", $entityListFullName)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("viewName", $viewName);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("entityListFullName", $entityListFullName);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("viewName", $viewName);
 		return $mozuUrl;
 	}
 	
@@ -132,10 +127,9 @@ class ListViewUrl  {
 	public static function getEntityListViewsUrl($entityListFullName, $responseFields)
 	{
 		$url = "/api/platform/entitylists/{entityListFullName}/views?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("entityListFullName", $entityListFullName)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("entityListFullName", $entityListFullName);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -148,10 +142,9 @@ class ListViewUrl  {
 	public static function createEntityListViewUrl($entityListFullName, $responseFields)
 	{
 		$url = "/api/platform/entitylists/{entityListFullName}/views/?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("entityListFullName", $entityListFullName)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("entityListFullName", $entityListFullName);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -165,11 +158,10 @@ class ListViewUrl  {
 	public static function updateEntityListViewUrl($entityListFullName, $responseFields, $viewName)
 	{
 		$url = "/api/platform/entitylists/{entityListFullName}/views/{viewName}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("entityListFullName", $entityListFullName)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("viewName", $viewName);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("entityListFullName", $entityListFullName);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("viewName", $viewName);
 		return $mozuUrl;
 	}
 	
@@ -182,10 +174,9 @@ class ListViewUrl  {
 	public static function deleteEntityListViewUrl($entityListFullName, $viewName)
 	{
 		$url = "/api/platform/entitylists/{entityListFullName}/views/{viewName}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("entityListFullName", $entityListFullName)
-				->formatUrl("viewName", $viewName);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("entityListFullName", $entityListFullName);
+		$url = $mozuUrl->formatUrl("viewName", $viewName);
 		return $mozuUrl;
 	}
 	

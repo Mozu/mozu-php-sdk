@@ -28,12 +28,11 @@ class OrderItemUrl  {
 	public static function getOrderItemUrl($draft, $orderId, $orderItemId, $responseFields)
 	{
 		$url = "/api/commerce/orders/{orderId}/items/{orderItemId}?draft={draft}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("draft", $draft)
-				->formatUrl("orderId", $orderId)
-				->formatUrl("orderItemId", $orderItemId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("draft", $draft);
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("orderItemId", $orderItemId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -47,11 +46,10 @@ class OrderItemUrl  {
 	public static function getOrderItemsUrl($draft, $orderId, $responseFields)
 	{
 		$url = "/api/commerce/orders/{orderId}/items?draft={draft}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("draft", $draft)
-				->formatUrl("orderId", $orderId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("draft", $draft);
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -67,13 +65,12 @@ class OrderItemUrl  {
 	public static function createOrderItemUrl($orderId, $responseFields, $skipInventoryCheck, $updateMode, $version)
 	{
 		$url = "/api/commerce/orders/{orderId}/items?updatemode={updateMode}&version={version}&skipInventoryCheck={skipInventoryCheck}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("orderId", $orderId)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("skipInventoryCheck", $skipInventoryCheck)
-				->formatUrl("updateMode", $updateMode)
-				->formatUrl("version", $version);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("skipInventoryCheck", $skipInventoryCheck);
+		$url = $mozuUrl->formatUrl("updateMode", $updateMode);
+		$url = $mozuUrl->formatUrl("version", $version);
 		return $mozuUrl;
 	}
 	
@@ -90,14 +87,13 @@ class OrderItemUrl  {
 	public static function updateOrderItemDiscountUrl($discountId, $orderId, $orderItemId, $responseFields, $updateMode, $version)
 	{
 		$url = "/api/commerce/orders/{orderId}/items/{orderItemId}/discounts/{discountId}?updatemode={updateMode}&version={version}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("discountId", $discountId)
-				->formatUrl("orderId", $orderId)
-				->formatUrl("orderItemId", $orderItemId)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("updateMode", $updateMode)
-				->formatUrl("version", $version);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("discountId", $discountId);
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("orderItemId", $orderItemId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("updateMode", $updateMode);
+		$url = $mozuUrl->formatUrl("version", $version);
 		return $mozuUrl;
 	}
 	
@@ -113,13 +109,12 @@ class OrderItemUrl  {
 	public static function updateItemFulfillmentUrl($orderId, $orderItemId, $responseFields, $updateMode, $version)
 	{
 		$url = "/api/commerce/orders/{orderId}/items/{orderItemId}/fulfillment?updatemode={updateMode}&version={version}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("orderId", $orderId)
-				->formatUrl("orderItemId", $orderItemId)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("updateMode", $updateMode)
-				->formatUrl("version", $version);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("orderItemId", $orderItemId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("updateMode", $updateMode);
+		$url = $mozuUrl->formatUrl("version", $version);
 		return $mozuUrl;
 	}
 	
@@ -136,14 +131,13 @@ class OrderItemUrl  {
 	public static function updateItemProductPriceUrl($orderId, $orderItemId, $price, $responseFields, $updateMode, $version)
 	{
 		$url = "/api/commerce/orders/{orderId}/items/{orderItemId}/price/{price}?updatemode={updateMode}&version={version}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("orderId", $orderId)
-				->formatUrl("orderItemId", $orderItemId)
-				->formatUrl("price", $price)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("updateMode", $updateMode)
-				->formatUrl("version", $version);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("orderItemId", $orderItemId);
+		$url = $mozuUrl->formatUrl("price", $price);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("updateMode", $updateMode);
+		$url = $mozuUrl->formatUrl("version", $version);
 		return $mozuUrl;
 	}
 	
@@ -160,14 +154,13 @@ class OrderItemUrl  {
 	public static function updateItemQuantityUrl($orderId, $orderItemId, $quantity, $responseFields, $updateMode, $version)
 	{
 		$url = "/api/commerce/orders/{orderId}/items/{orderItemId}/quantity/{quantity}?updatemode={updateMode}&version={version}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("orderId", $orderId)
-				->formatUrl("orderItemId", $orderItemId)
-				->formatUrl("quantity", $quantity)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("updateMode", $updateMode)
-				->formatUrl("version", $version);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("orderItemId", $orderItemId);
+		$url = $mozuUrl->formatUrl("quantity", $quantity);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("updateMode", $updateMode);
+		$url = $mozuUrl->formatUrl("version", $version);
 		return $mozuUrl;
 	}
 	
@@ -182,12 +175,11 @@ class OrderItemUrl  {
 	public static function deleteOrderItemUrl($orderId, $orderItemId, $updateMode, $version)
 	{
 		$url = "/api/commerce/orders/{orderId}/items/{orderItemId}?updatemode={updateMode}&version={version}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("orderId", $orderId)
-				->formatUrl("orderItemId", $orderItemId)
-				->formatUrl("updateMode", $updateMode)
-				->formatUrl("version", $version);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("orderItemId", $orderItemId);
+		$url = $mozuUrl->formatUrl("updateMode", $updateMode);
+		$url = $mozuUrl->formatUrl("version", $version);
 		return $mozuUrl;
 	}
 	

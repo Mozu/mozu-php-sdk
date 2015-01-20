@@ -12,24 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Customer\Accounts;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Customer\Accounts\CustomerContactClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\Customer\CustomerContact;
-use Mozu\Api\Contracts\Customer\CustomerContactCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Merchants and customers can create, view, update, and delete a contact for a customer account. A customer account may have multiple contacts for billing and shipping addresses.
 */
 class CustomerContactResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves the specified contact for a customer account such as a billing or shipping contact.
@@ -42,9 +40,9 @@ class CustomerContactResource {
 	public function getAccountContact($accountId, $contactId, $responseFields =  null)
 	{
 		$mozuClient = CustomerContactClient::getAccountContactClient($accountId, $contactId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -62,9 +60,9 @@ class CustomerContactResource {
 	public function getAccountContacts($accountId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
 		$mozuClient = CustomerContactClient::getAccountContactsClient($accountId, $startIndex, $pageSize, $sortBy, $filter, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -79,9 +77,9 @@ class CustomerContactResource {
 	public function addAccountContact($contact, $accountId, $responseFields =  null)
 	{
 		$mozuClient = CustomerContactClient::addAccountContactClient($contact, $accountId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -97,9 +95,9 @@ class CustomerContactResource {
 	public function updateAccountContact($contact, $accountId, $contactId, $responseFields =  null)
 	{
 		$mozuClient = CustomerContactClient::updateAccountContactClient($contact, $accountId, $contactId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -108,13 +106,12 @@ class CustomerContactResource {
 	*
 	* @param int $accountId Unique identifier of the customer account.
 	* @param int $contactId Unique identifier of the customer account contact to delete.
-	* @return void
 	*/
 	public function deleteAccountContact($accountId, $contactId)
 	{
 		$mozuClient = CustomerContactClient::deleteAccountContactClient($accountId, $contactId);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

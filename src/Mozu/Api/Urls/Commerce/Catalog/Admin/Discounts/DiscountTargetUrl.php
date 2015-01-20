@@ -26,10 +26,9 @@ class DiscountTargetUrl  {
 	public static function getDiscountTargetUrl($discountId, $responseFields)
 	{
 		$url = "/api/commerce/catalog/admin/discounts/{discountId}/target?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("discountId", $discountId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("discountId", $discountId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -42,10 +41,9 @@ class DiscountTargetUrl  {
 	public static function updateDiscountTargetUrl($discountId, $responseFields)
 	{
 		$url = "/api/commerce/catalog/admin/discounts/{discountId}/target?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("discountId", $discountId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("discountId", $discountId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	

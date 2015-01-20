@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Customer\Accounts;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\Accounts\CardUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Customer\Card;
-use Mozu\Api\Contracts\Customer\CardCollection;
 
 /**
 * Use the Cards subresource to manage stored credit cards for customer accounts. Mozu stores limited card data in the Customer service for expedited ordering purposes; however, the complete card data is stored in the Payment service.
@@ -36,7 +34,8 @@ class CardClient {
 	{
 		$url = CardUrl::getAccountCardUrl($accountId, $cardId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -51,7 +50,8 @@ class CardClient {
 	{
 		$url = CardUrl::getAccountCardsUrl($accountId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -67,7 +67,8 @@ class CardClient {
 	{
 		$url = CardUrl::addAccountCardUrl($accountId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($card);
+		$mozuClient->withResourceUrl($url)->withBody($card);
+		return $mozuClient;
 
 	}
 	
@@ -84,7 +85,8 @@ class CardClient {
 	{
 		$url = CardUrl::updateAccountCardUrl($accountId, $cardId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($card);
+		$mozuClient->withResourceUrl($url)->withBody($card);
+		return $mozuClient;
 
 	}
 	
@@ -93,13 +95,13 @@ class CardClient {
 	*
 	* @param int $accountId Unique identifier of the customer account.
 	* @param string $cardId Unique identifier of the credit card to delete.
-	* @return MozuClient
 	*/
 	public static function deleteAccountCardClient($accountId, $cardId)
 	{
 		$url = CardUrl::deleteAccountCardUrl($accountId, $cardId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

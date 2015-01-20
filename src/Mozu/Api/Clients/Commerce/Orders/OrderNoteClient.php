@@ -14,9 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Orders;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Orders\OrderNoteUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\CommerceRuntime\Orders\OrderNote;
 
 /**
 * Use the Order Notes subresource to manage merchant-level notes associated with an active order.
@@ -33,7 +32,8 @@ class OrderNoteClient {
 	{
 		$url = OrderNoteUrl::getOrderNotesUrl($orderId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -49,7 +49,8 @@ class OrderNoteClient {
 	{
 		$url = OrderNoteUrl::getOrderNoteUrl($noteId, $orderId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -65,7 +66,8 @@ class OrderNoteClient {
 	{
 		$url = OrderNoteUrl::createOrderNoteUrl($orderId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($orderNote);
+		$mozuClient->withResourceUrl($url)->withBody($orderNote);
+		return $mozuClient;
 
 	}
 	
@@ -82,7 +84,8 @@ class OrderNoteClient {
 	{
 		$url = OrderNoteUrl::updateOrderNoteUrl($noteId, $orderId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($orderNote);
+		$mozuClient->withResourceUrl($url)->withBody($orderNote);
+		return $mozuClient;
 
 	}
 	
@@ -91,13 +94,13 @@ class OrderNoteClient {
 	*
 	* @param string $noteId Unique identifier of the order note to delete.
 	* @param string $orderId Unique identifier of the order associated with the note.
-	* @return MozuClient
 	*/
 	public static function deleteOrderNoteClient($orderId, $noteId)
 	{
 		$url = OrderNoteUrl::deleteOrderNoteUrl($noteId, $orderId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

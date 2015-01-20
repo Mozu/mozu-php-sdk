@@ -14,12 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\DiscountUrl;
-use Mozu\Api\Headers;
 use Mozu\Api\DataViewMode;
-
-use Mozu\Api\Contracts\ProductAdmin\Discount;
-use Mozu\Api\Contracts\ProductAdmin\DiscountLocalizedContent;
-use Mozu\Api\Contracts\ProductAdmin\DiscountCollection;
+use Mozu\Api\Headers;
 
 /**
 * Define and manage discounts to apply to products, product categories, or orders. The discounts can be a specified amount off the price, percentage off the price, or for free shipping. Create a coupon code that shoppers can use to redeem the discount.
@@ -29,7 +25,6 @@ class DiscountClient {
 	/**
 	* Retrieves a list of discounts according to any specified filter criteria and sort options.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
@@ -41,14 +36,14 @@ class DiscountClient {
 	{
 		$url = DiscountUrl::getDiscountsUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Retrieves the localized content specified for the specified discount.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
@@ -57,14 +52,14 @@ class DiscountClient {
 	{
 		$url = DiscountUrl::getDiscountContentUrl($discountId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Retrieves the details of a single discount.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
@@ -73,7 +68,8 @@ class DiscountClient {
 	{
 		$url = DiscountUrl::getDiscountUrl($discountId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
@@ -87,7 +83,8 @@ class DiscountClient {
 	{
 		$url = DiscountUrl::generateRandomCouponUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -102,7 +99,8 @@ class DiscountClient {
 	{
 		$url = DiscountUrl::createDiscountUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($discount);
+		$mozuClient->withResourceUrl($url)->withBody($discount);
+		return $mozuClient;
 
 	}
 	
@@ -118,7 +116,8 @@ class DiscountClient {
 	{
 		$url = DiscountUrl::updateDiscountContentUrl($discountId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($content);
+		$mozuClient->withResourceUrl($url)->withBody($content);
+		return $mozuClient;
 
 	}
 	
@@ -134,7 +133,8 @@ class DiscountClient {
 	{
 		$url = DiscountUrl::updateDiscountUrl($discountId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($discount);
+		$mozuClient->withResourceUrl($url)->withBody($discount);
+		return $mozuClient;
 
 	}
 	
@@ -142,13 +142,13 @@ class DiscountClient {
 	* Deletes a discount specified by its discount ID.
 	*
 	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
-	* @return MozuClient
 	*/
 	public static function deleteDiscountClient($discountId)
 	{
 		$url = DiscountUrl::deleteDiscountUrl($discountId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

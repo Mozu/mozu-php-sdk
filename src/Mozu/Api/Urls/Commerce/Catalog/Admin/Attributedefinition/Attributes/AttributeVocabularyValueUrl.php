@@ -25,9 +25,8 @@ class AttributeVocabularyValueUrl  {
 	public static function getAttributeVocabularyValuesUrl($attributeFQN)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/attributes/{attributeFQN}/VocabularyValues";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("attributeFQN", $attributeFQN);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
 		return $mozuUrl;
 	}
 	
@@ -40,10 +39,9 @@ class AttributeVocabularyValueUrl  {
 	public static function getAttributeVocabularyValueLocalizedContentsUrl($attributeFQN, $value)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/attributes/{attributeFQN}/VocabularyValues/{value}/LocalizedContent";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
-				->formatUrl("value", $value);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("value", $value);
 		return $mozuUrl;
 	}
 	
@@ -58,12 +56,11 @@ class AttributeVocabularyValueUrl  {
 	public static function getAttributeVocabularyValueLocalizedContentUrl($attributeFQN, $localeCode, $responseFields, $value)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/attributes/{attributeFQN}/VocabularyValues/{value}/LocalizedContent/{localeCode}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
-				->formatUrl("localeCode", $localeCode)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("value", $value);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("localeCode", $localeCode);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("value", $value);
 		return $mozuUrl;
 	}
 	
@@ -77,11 +74,10 @@ class AttributeVocabularyValueUrl  {
 	public static function getAttributeVocabularyValueUrl($attributeFQN, $responseFields, $value)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/attributes/{attributeFQN}/VocabularyValues/{value}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("value", $value);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("value", $value);
 		return $mozuUrl;
 	}
 	
@@ -95,11 +91,10 @@ class AttributeVocabularyValueUrl  {
 	public static function addAttributeVocabularyValueLocalizedContentUrl($attributeFQN, $responseFields, $value)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/attributes/{attributeFQN}/VocabularyValues/{value}/localizedContent?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("value", $value);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("value", $value);
 		return $mozuUrl;
 	}
 	
@@ -112,10 +107,9 @@ class AttributeVocabularyValueUrl  {
 	public static function addAttributeVocabularyValueUrl($attributeFQN, $responseFields)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/attributes/{attributeFQN}/VocabularyValues?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -127,9 +121,8 @@ class AttributeVocabularyValueUrl  {
 	public static function updateAttributeVocabularyValuesUrl($attributeFQN)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/attributes/{attributeFQN}/VocabularyValues";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("attributeFQN", $attributeFQN);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
 		return $mozuUrl;
 	}
 	
@@ -142,10 +135,9 @@ class AttributeVocabularyValueUrl  {
 	public static function updateAttributeVocabularyValueLocalizedContentsUrl($attributeFQN, $value)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/attributes/{attributeFQN}/VocabularyValues/{value}/LocalizedContent";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
-				->formatUrl("value", $value);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("value", $value);
 		return $mozuUrl;
 	}
 	
@@ -160,12 +152,11 @@ class AttributeVocabularyValueUrl  {
 	public static function updateAttributeVocabularyValueLocalizedContentUrl($attributeFQN, $localeCode, $responseFields, $value)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/attributes/{attributeFQN}/VocabularyValues/{value}/LocalizedContent/{localeCode}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
-				->formatUrl("localeCode", $localeCode)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("value", $value);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("localeCode", $localeCode);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("value", $value);
 		return $mozuUrl;
 	}
 	
@@ -179,11 +170,10 @@ class AttributeVocabularyValueUrl  {
 	public static function updateAttributeVocabularyValueUrl($attributeFQN, $responseFields, $value)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/attributes/{attributeFQN}/VocabularyValues/{value}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("value", $value);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("value", $value);
 		return $mozuUrl;
 	}
 	
@@ -196,10 +186,9 @@ class AttributeVocabularyValueUrl  {
 	public static function deleteAttributeVocabularyValueUrl($attributeFQN, $value)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/attributes/{attributeFQN}/VocabularyValues/{value}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
-				->formatUrl("value", $value);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("value", $value);
 		return $mozuUrl;
 	}
 	
@@ -213,11 +202,10 @@ class AttributeVocabularyValueUrl  {
 	public static function deleteAttributeVocabularyValueLocalizedContentUrl($attributeFQN, $localeCode, $value)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/attributes/{attributeFQN}/VocabularyValues/{value}/LocalizedContent/{localeCode}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
-				->formatUrl("localeCode", $localeCode)
-				->formatUrl("value", $value);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("localeCode", $localeCode);
+		$url = $mozuUrl->formatUrl("value", $value);
 		return $mozuUrl;
 	}
 	

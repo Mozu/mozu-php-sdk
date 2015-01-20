@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Customer\Credits;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\Credits\CreditTransactionUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Customer\Credit\CreditTransaction;
-use Mozu\Api\Contracts\Customer\Credit\CreditTransactionCollection;
 
 /**
 * Use the Customer Credit Transactions subresource to manage the individual transactions performed using a store credit or gift card.
@@ -39,7 +37,8 @@ class CreditTransactionClient {
 	{
 		$url = CreditTransactionUrl::getTransactionsUrl($code, $filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -55,7 +54,8 @@ class CreditTransactionClient {
 	{
 		$url = CreditTransactionUrl::addTransactionUrl($code, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($creditTransaction);
+		$mozuClient->withResourceUrl($url)->withBody($creditTransaction);
+		return $mozuClient;
 
 	}
 	

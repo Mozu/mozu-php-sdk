@@ -14,13 +14,8 @@ namespace Mozu\Api\Clients\Commerce;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\OrderUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\CommerceRuntime\Orders\Order;
-use Mozu\Api\Contracts\CommerceRuntime\Orders\OrderAction;
-use Mozu\Api\Contracts\CommerceRuntime\Discounts\AppliedDiscount;
-use Mozu\Api\Contracts\CommerceRuntime\Orders\OrderCollection;
-use Mozu\Api\Contracts\PricingRuntime\TaxableOrder;
 
 /**
 * Use the Orders resource to manage all components of order processing, payment, and fulfillment.
@@ -43,7 +38,8 @@ class OrderClient {
 	{
 		$url = OrderUrl::getOrdersUrl($filter, $pageSize, $q, $qLimit, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -57,7 +53,8 @@ class OrderClient {
 	{
 		$url = OrderUrl::getAvailableActionsUrl($orderId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -71,7 +68,8 @@ class OrderClient {
 	{
 		$url = OrderUrl::getTaxableOrdersUrl($orderId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -87,7 +85,8 @@ class OrderClient {
 	{
 		$url = OrderUrl::getOrderUrl($draft, $orderId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -102,7 +101,8 @@ class OrderClient {
 	{
 		$url = OrderUrl::createOrderFromCartUrl($cartId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -117,7 +117,8 @@ class OrderClient {
 	{
 		$url = OrderUrl::createOrderUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($order);
+		$mozuClient->withResourceUrl($url)->withBody($order);
+		return $mozuClient;
 
 	}
 	
@@ -133,7 +134,8 @@ class OrderClient {
 	{
 		$url = OrderUrl::performOrderActionUrl($orderId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($action);
+		$mozuClient->withResourceUrl($url)->withBody($action);
+		return $mozuClient;
 
 	}
 	
@@ -152,7 +154,8 @@ class OrderClient {
 	{
 		$url = OrderUrl::updateOrderDiscountUrl($discountId, $orderId, $responseFields, $updateMode, $version);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($discount);
+		$mozuClient->withResourceUrl($url)->withBody($discount);
+		return $mozuClient;
 
 	}
 	
@@ -161,13 +164,13 @@ class OrderClient {
 	*
 	* @param string $orderId Unique identifier of the order associated with the draft to delete.
 	* @param string $version If applicable, the version of the order draft to delete.
-	* @return MozuClient
 	*/
 	public static function deleteOrderDraftClient($orderId, $version =  null)
 	{
 		$url = OrderUrl::deleteOrderDraftUrl($orderId, $version);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -182,7 +185,8 @@ class OrderClient {
 	{
 		$url = OrderUrl::changeOrderUserIdUrl($orderId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -200,7 +204,8 @@ class OrderClient {
 	{
 		$url = OrderUrl::updateOrderUrl($orderId, $responseFields, $updateMode, $version);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($order);
+		$mozuClient->withResourceUrl($url)->withBody($order);
+		return $mozuClient;
 
 	}
 	

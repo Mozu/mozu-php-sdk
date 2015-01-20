@@ -26,10 +26,9 @@ class AdminUserUrl  {
 	public static function getTenantScopesForUserUrl($responseFields, $userId)
 	{
 		$url = "/api/platform/adminuser/accounts/{userId}/tenants?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields)
-				->formatUrl("userId", $userId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("userId", $userId);
 		return $mozuUrl;
 	}
 	
@@ -42,10 +41,9 @@ class AdminUserUrl  {
 	public static function getUserUrl($responseFields, $userId)
 	{
 		$url = "/api/platform/adminuser/accounts/{userId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields)
-				->formatUrl("userId", $userId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("userId", $userId);
 		return $mozuUrl;
 	}
 	

@@ -14,11 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Orders\Attributedefinition;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Orders\Attributedefinition\AttributeUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Core\Extensible\AttributeCollection;
-use Mozu\Api\Contracts\Core\Extensible\AttributeVocabularyValue;
-use Mozu\Api\Contracts\Core\Extensible\Attribute;
 
 /**
 * Use the Order Attribute Definition resource to manage the attributes that uniquely describe orders, such as the associated shopping season or "How did you hear about us?". Merchants can display order attributes on the order summary, the order confirmation page, invoices, or packing slips.
@@ -39,7 +36,8 @@ class AttributeClient {
 	{
 		$url = AttributeUrl::getAttributesUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -53,7 +51,8 @@ class AttributeClient {
 	{
 		$url = AttributeUrl::getAttributeVocabularyValuesUrl($attributeFQN);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -68,7 +67,8 @@ class AttributeClient {
 	{
 		$url = AttributeUrl::getAttributeUrl($attributeFQN, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

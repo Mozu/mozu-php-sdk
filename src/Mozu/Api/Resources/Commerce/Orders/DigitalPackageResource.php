@@ -12,23 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Orders;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Orders\DigitalPackageClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\CommerceRuntime\Fulfillment\DigitalPackage;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * A digital package is a package in a digital format.
 */
 class DigitalPackageResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* 
@@ -40,9 +39,9 @@ class DigitalPackageResource {
 	public function getAvailableDigitalPackageFulfillmentActions($orderId, $digitalPackageId)
 	{
 		$mozuClient = DigitalPackageClient::getAvailableDigitalPackageFulfillmentActionsClient($orderId, $digitalPackageId);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -57,9 +56,9 @@ class DigitalPackageResource {
 	public function getDigitalPackage($orderId, $digitalPackageId, $responseFields =  null)
 	{
 		$mozuClient = DigitalPackageClient::getDigitalPackageClient($orderId, $digitalPackageId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -74,9 +73,9 @@ class DigitalPackageResource {
 	public function createDigitalPackage($digitalPackage, $orderId, $responseFields =  null)
 	{
 		$mozuClient = DigitalPackageClient::createDigitalPackageClient($digitalPackage, $orderId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -92,9 +91,9 @@ class DigitalPackageResource {
 	public function updateDigitalPackage($digitalPackage, $orderId, $digitalPackageId, $responseFields =  null)
 	{
 		$mozuClient = DigitalPackageClient::updateDigitalPackageClient($digitalPackage, $orderId, $digitalPackageId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -103,13 +102,12 @@ class DigitalPackageResource {
 	*
 	* @param string $digitalPackageId The digitalPackage ID is unique package ID to update on the order.
 	* @param string $orderId The orderId is unique identifier of the order with which to associate the package.
-	* @return void
 	*/
 	public function deleteDigitalPackage($orderId, $digitalPackageId)
 	{
 		$mozuClient = DigitalPackageClient::deleteDigitalPackageClient($orderId, $digitalPackageId);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

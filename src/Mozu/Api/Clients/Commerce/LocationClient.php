@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\LocationUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Location\LocationCollection;
-use Mozu\Api\Contracts\Location\Location;
 
 /**
 * Use the Location resource to retrieve details about a location from a Mozu hosted storefront.
@@ -35,7 +33,8 @@ class LocationClient {
 	{
 		$url = LocationUrl::getLocationUrl($code, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -51,7 +50,8 @@ class LocationClient {
 	{
 		$url = LocationUrl::getLocationInUsageTypeUrl($code, $locationUsageType, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -70,7 +70,8 @@ class LocationClient {
 	{
 		$url = LocationUrl::getLocationsInUsageTypeUrl($filter, $locationUsageType, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -84,7 +85,8 @@ class LocationClient {
 	{
 		$url = LocationUrl::getDirectShipLocationUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -99,7 +101,8 @@ class LocationClient {
 	{
 		$url = LocationUrl::getInStorePickupLocationUrl($code, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -117,7 +120,8 @@ class LocationClient {
 	{
 		$url = LocationUrl::getInStorePickupLocationsUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

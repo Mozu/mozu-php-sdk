@@ -14,9 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Settings\Shipping;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Settings\Shipping\SiteShippingHandlingFeeUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\SiteSettings\Shipping\SiteShippingHandlingFee;
 
 /**
 * Use the Order Handling Fee subresource to configure any shipping and handling fees to apply to orders for this site.
@@ -33,7 +32,8 @@ class SiteShippingHandlingFeeClient {
 	{
 		$url = SiteShippingHandlingFeeUrl::getOrderHandlingFeeUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -48,7 +48,8 @@ class SiteShippingHandlingFeeClient {
 	{
 		$url = SiteShippingHandlingFeeUrl::createOrderHandlingFeeUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($orderHandlingFee);
+		$mozuClient->withResourceUrl($url)->withBody($orderHandlingFee);
+		return $mozuClient;
 
 	}
 	
@@ -63,7 +64,8 @@ class SiteShippingHandlingFeeClient {
 	{
 		$url = SiteShippingHandlingFeeUrl::updateOrderHandlingFeeUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($orderHandlingFee);
+		$mozuClient->withResourceUrl($url)->withBody($orderHandlingFee);
+		return $mozuClient;
 
 	}
 	

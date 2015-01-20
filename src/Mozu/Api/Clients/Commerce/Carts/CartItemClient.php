@@ -14,11 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Carts;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Carts\CartItemUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\CommerceRuntime\Carts\CartItem;
-use Mozu\Api\Contracts\CommerceRuntime\Carts\CartItemCollection;
-use Mozu\Api\Contracts\CommerceRuntime\Carts\Cart;
 
 /**
 * Use the Cart Items subresource to manage a collection of items in an active shopping cart.
@@ -36,7 +33,8 @@ class CartItemClient {
 	{
 		$url = CartItemUrl::getCartItemUrl($cartItemId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -50,7 +48,8 @@ class CartItemClient {
 	{
 		$url = CartItemUrl::getCartItemsUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -65,7 +64,8 @@ class CartItemClient {
 	{
 		$url = CartItemUrl::addItemToCartUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($cartItem);
+		$mozuClient->withResourceUrl($url)->withBody($cartItem);
+		return $mozuClient;
 
 	}
 	
@@ -81,7 +81,8 @@ class CartItemClient {
 	{
 		$url = CartItemUrl::updateCartItemQuantityUrl($cartItemId, $quantity, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -97,7 +98,8 @@ class CartItemClient {
 	{
 		$url = CartItemUrl::updateCartItemUrl($cartItemId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($cartItem);
+		$mozuClient->withResourceUrl($url)->withBody($cartItem);
+		return $mozuClient;
 
 	}
 	
@@ -110,7 +112,8 @@ class CartItemClient {
 	{
 		$url = CartItemUrl::removeAllCartItemsUrl();
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -118,13 +121,13 @@ class CartItemClient {
 	* Deletes a specific cart item by providing the cart item ID.
 	*
 	* @param string $cartItemId Identifier of the cart item to delete.
-	* @return MozuClient
 	*/
 	public static function deleteCartItemClient($cartItemId)
 	{
 		$url = CartItemUrl::deleteCartItemUrl($cartItemId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

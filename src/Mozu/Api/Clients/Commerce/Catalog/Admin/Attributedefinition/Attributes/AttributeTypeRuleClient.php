@@ -14,9 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin\Attributedefinition\Attributes
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\Attributedefinition\Attributes\AttributeTypeRuleUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\ProductAdmin\AttributeTypeRuleCollection;
 
 /**
 * Type rules are subresources of product attributes which could be specifications that can be shared across products in a store or assigned to specific products. Attribute type rules provide definitions of how attribute types will appear on the user interface.
@@ -37,7 +36,8 @@ class AttributeTypeRuleClient {
 	{
 		$url = AttributeTypeRuleUrl::getAttributeTypeRulesUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

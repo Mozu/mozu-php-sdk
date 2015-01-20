@@ -14,16 +14,8 @@ namespace Mozu\Api\Clients\Commerce;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\ReturnUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\CommerceRuntime\Returns\ReturnItem;
-use Mozu\Api\Contracts\CommerceRuntime\Returns\MozuReturn;
-use Mozu\Api\Contracts\CommerceRuntime\Payments\PaymentAction;
-use Mozu\Api\Contracts\CommerceRuntime\Returns\ReturnAction;
-use Mozu\Api\Contracts\CommerceRuntime\Returns\ReturnItemCollection;
-use Mozu\Api\Contracts\CommerceRuntime\Returns\ReturnCollection;
-use Mozu\Api\Contracts\CommerceRuntime\Payments\PaymentCollection;
-use Mozu\Api\Contracts\CommerceRuntime\Payments\Payment;
 
 /**
 * Use the Returns resource to manage returned items that were previously fufilled. Returns can include any number of items associated with an original Mozu order. Each return must either be associated with an original order or a product definition to represent each returned item.
@@ -44,7 +36,8 @@ class ReturnClient {
 	{
 		$url = ReturnUrl::getReturnsUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -58,7 +51,8 @@ class ReturnClient {
 	{
 		$url = ReturnUrl::getAvailableReturnActionsUrl($returnId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -74,7 +68,8 @@ class ReturnClient {
 	{
 		$url = ReturnUrl::getReturnItemUrl($responseFields, $returnId, $returnItemId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -89,7 +84,8 @@ class ReturnClient {
 	{
 		$url = ReturnUrl::getReturnItemsUrl($responseFields, $returnId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -104,7 +100,8 @@ class ReturnClient {
 	{
 		$url = ReturnUrl::getAvailablePaymentActionsForReturnUrl($paymentId, $returnId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -120,7 +117,8 @@ class ReturnClient {
 	{
 		$url = ReturnUrl::getPaymentUrl($paymentId, $responseFields, $returnId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -135,7 +133,8 @@ class ReturnClient {
 	{
 		$url = ReturnUrl::getPaymentsUrl($responseFields, $returnId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -150,7 +149,8 @@ class ReturnClient {
 	{
 		$url = ReturnUrl::getReturnUrl($responseFields, $returnId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -158,14 +158,15 @@ class ReturnClient {
 	* Creates a return for previously fulfilled items. Each return must either be associated with an original order or a product definition to represent each returned item.
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param MozuReturn $ret Wrapper for the properties of the return to create.
+	* @param Return $ret Wrapper for the properties of the return to create.
 	* @return MozuClient
 	*/
 	public static function createReturnClient($ret, $responseFields =  null)
 	{
 		$url = ReturnUrl::createReturnUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($ret);
+		$mozuClient->withResourceUrl($url)->withBody($ret);
+		return $mozuClient;
 
 	}
 	
@@ -181,7 +182,8 @@ class ReturnClient {
 	{
 		$url = ReturnUrl::createReturnItemUrl($responseFields, $returnId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($returnItem);
+		$mozuClient->withResourceUrl($url)->withBody($returnItem);
+		return $mozuClient;
 
 	}
 	
@@ -198,7 +200,8 @@ class ReturnClient {
 	{
 		$url = ReturnUrl::performPaymentActionForReturnUrl($paymentId, $responseFields, $returnId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($action);
+		$mozuClient->withResourceUrl($url)->withBody($action);
+		return $mozuClient;
 
 	}
 	
@@ -214,7 +217,8 @@ class ReturnClient {
 	{
 		$url = ReturnUrl::createPaymentActionForReturnUrl($responseFields, $returnId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($action);
+		$mozuClient->withResourceUrl($url)->withBody($action);
+		return $mozuClient;
 
 	}
 	
@@ -229,7 +233,8 @@ class ReturnClient {
 	{
 		$url = ReturnUrl::performReturnActionsUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($action);
+		$mozuClient->withResourceUrl($url)->withBody($action);
+		return $mozuClient;
 
 	}
 	
@@ -238,14 +243,15 @@ class ReturnClient {
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $returnId Unique identifier of the return.
-	* @param MozuReturn $ret Wrapper for the array of properties to update for the return.
+	* @param Return $ret Wrapper for the array of properties to update for the return.
 	* @return MozuClient
 	*/
 	public static function updateReturnClient($ret, $returnId, $responseFields =  null)
 	{
 		$url = ReturnUrl::updateReturnUrl($responseFields, $returnId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($ret);
+		$mozuClient->withResourceUrl($url)->withBody($ret);
+		return $mozuClient;
 
 	}
 	
@@ -260,7 +266,8 @@ class ReturnClient {
 	{
 		$url = ReturnUrl::deleteOrderItemUrl($returnId, $returnItemId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -268,13 +275,13 @@ class ReturnClient {
 	* Deletes the return specified in the request.
 	*
 	* @param string $returnId Unique identifier of the return to delete.
-	* @return MozuClient
 	*/
 	public static function deleteReturnClient($returnId)
 	{
 		$url = ReturnUrl::deleteReturnUrl($returnId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

@@ -25,9 +25,8 @@ class OrderNoteUrl  {
 	public static function getOrderNotesUrl($orderId)
 	{
 		$url = "/api/commerce/orders/{orderId}/notes";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("orderId", $orderId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
 		return $mozuUrl;
 	}
 	
@@ -41,11 +40,10 @@ class OrderNoteUrl  {
 	public static function getOrderNoteUrl($noteId, $orderId, $responseFields)
 	{
 		$url = "/api/commerce/orders/{orderId}/notes/{noteId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("noteId", $noteId)
-				->formatUrl("orderId", $orderId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("noteId", $noteId);
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -58,10 +56,9 @@ class OrderNoteUrl  {
 	public static function createOrderNoteUrl($orderId, $responseFields)
 	{
 		$url = "/api/commerce/orders/{orderId}/notes?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("orderId", $orderId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -75,11 +72,10 @@ class OrderNoteUrl  {
 	public static function updateOrderNoteUrl($noteId, $orderId, $responseFields)
 	{
 		$url = "/api/commerce/orders/{orderId}/notes/{noteId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("noteId", $noteId)
-				->formatUrl("orderId", $orderId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("noteId", $noteId);
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -92,10 +88,9 @@ class OrderNoteUrl  {
 	public static function deleteOrderNoteUrl($noteId, $orderId)
 	{
 		$url = "/api/commerce/orders/{orderId}/notes/{noteId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("noteId", $noteId)
-				->formatUrl("orderId", $orderId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("noteId", $noteId);
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
 		return $mozuUrl;
 	}
 	

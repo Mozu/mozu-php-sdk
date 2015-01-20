@@ -14,9 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin\Attributedefinition\Attributes
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\Attributedefinition\Attributes\AttributeLocalizedContentUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\ProductAdmin\AttributeLocalizedContent;
 
 /**
 * 
@@ -33,7 +32,8 @@ class AttributeLocalizedContentClient {
 	{
 		$url = AttributeLocalizedContentUrl::getAttributeLocalizedContentsUrl($attributeFQN);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -49,7 +49,8 @@ class AttributeLocalizedContentClient {
 	{
 		$url = AttributeLocalizedContentUrl::getAttributeLocalizedContentUrl($attributeFQN, $localeCode, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -65,7 +66,8 @@ class AttributeLocalizedContentClient {
 	{
 		$url = AttributeLocalizedContentUrl::addLocalizedContentUrl($attributeFQN, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($localizedContent);
+		$mozuClient->withResourceUrl($url)->withBody($localizedContent);
+		return $mozuClient;
 
 	}
 	
@@ -80,7 +82,8 @@ class AttributeLocalizedContentClient {
 	{
 		$url = AttributeLocalizedContentUrl::updateLocalizedContentsUrl($attributeFQN);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($localizedContent);
+		$mozuClient->withResourceUrl($url)->withBody($localizedContent);
+		return $mozuClient;
 
 	}
 	
@@ -97,7 +100,8 @@ class AttributeLocalizedContentClient {
 	{
 		$url = AttributeLocalizedContentUrl::updateLocalizedContentUrl($attributeFQN, $localeCode, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($localizedContent);
+		$mozuClient->withResourceUrl($url)->withBody($localizedContent);
+		return $mozuClient;
 
 	}
 	
@@ -106,13 +110,13 @@ class AttributeLocalizedContentClient {
 	*
 	* @param string $attributeFQN 
 	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
-	* @return MozuClient
 	*/
 	public static function deleteLocalizedContentClient($attributeFQN, $localeCode)
 	{
 		$url = AttributeLocalizedContentUrl::deleteLocalizedContentUrl($attributeFQN, $localeCode);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

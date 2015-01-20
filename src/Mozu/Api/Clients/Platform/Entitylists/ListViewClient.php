@@ -14,13 +14,8 @@ namespace Mozu\Api\Clients\Platform\Entitylists;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Platform\Entitylists\ListViewUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\MZDB\ListView;
-use Mozu\Api\Contracts\MZDB\EntityContainerCollection;
-use Mozu\Api\Contracts\MZDB\EntityCollection;
-use Mozu\Api\Contracts\MZDB\EntityContainer;
-use Mozu\Api\Contracts\MZDB\ListViewCollection;
 
 /**
 * 
@@ -40,7 +35,8 @@ class ListViewClient {
 	{
 		$url = ListViewUrl::getViewEntityUrl($entityId, $entityListFullName, $responseFields, $viewName);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -59,7 +55,8 @@ class ListViewClient {
 	{
 		$url = ListViewUrl::getViewEntitiesUrl($entityListFullName, $filter, $pageSize, $responseFields, $startIndex, $viewName);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -76,7 +73,8 @@ class ListViewClient {
 	{
 		$url = ListViewUrl::getViewEntityContainerUrl($entityId, $entityListFullName, $responseFields, $viewName);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -95,7 +93,8 @@ class ListViewClient {
 	{
 		$url = ListViewUrl::getViewEntityContainersUrl($entityListFullName, $filter, $pageSize, $responseFields, $startIndex, $viewName);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -111,7 +110,8 @@ class ListViewClient {
 	{
 		$url = ListViewUrl::getEntityListViewUrl($entityListFullName, $responseFields, $viewName);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -126,7 +126,8 @@ class ListViewClient {
 	{
 		$url = ListViewUrl::getEntityListViewsUrl($entityListFullName, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -142,7 +143,8 @@ class ListViewClient {
 	{
 		$url = ListViewUrl::createEntityListViewUrl($entityListFullName, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($listView);
+		$mozuClient->withResourceUrl($url)->withBody($listView);
+		return $mozuClient;
 
 	}
 	
@@ -159,7 +161,8 @@ class ListViewClient {
 	{
 		$url = ListViewUrl::updateEntityListViewUrl($entityListFullName, $responseFields, $viewName);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($listView);
+		$mozuClient->withResourceUrl($url)->withBody($listView);
+		return $mozuClient;
 
 	}
 	
@@ -168,13 +171,13 @@ class ListViewClient {
 	*
 	* @param string $entityListFullName 
 	* @param string $viewName 
-	* @return MozuClient
 	*/
 	public static function deleteEntityListViewClient($entityListFullName, $viewName)
 	{
 		$url = ListViewUrl::deleteEntityListViewUrl($entityListFullName, $viewName);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

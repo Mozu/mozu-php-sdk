@@ -12,27 +12,22 @@
 
 namespace Mozu\Api\Resources\Platform\Entitylists;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Platform\Entitylists\ListViewClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\MZDB\ListView;
-use Mozu\Api\Contracts\MZDB\EntityContainerCollection;
-use Mozu\Api\Contracts\MZDB\EntityCollection;
-use Mozu\Api\Contracts\MZDB\EntityContainer;
-use Mozu\Api\Contracts\MZDB\ListViewCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * 
 */
 class ListViewResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* 
@@ -41,14 +36,14 @@ class ListViewResource {
 	* @param string $entityListFullName 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $viewName 
-	* @return hashtable 
+	* @return JObject 
 	*/
 	public function getViewEntity($entityListFullName, $viewName, $entityId, $responseFields =  null)
 	{
 		$mozuClient = ListViewClient::getViewEntityClient($entityListFullName, $viewName, $entityId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -66,9 +61,9 @@ class ListViewResource {
 	public function getViewEntities($entityListFullName, $viewName, $pageSize =  null, $startIndex =  null, $filter =  null, $responseFields =  null)
 	{
 		$mozuClient = ListViewClient::getViewEntitiesClient($entityListFullName, $viewName, $pageSize, $startIndex, $filter, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -84,9 +79,9 @@ class ListViewResource {
 	public function getViewEntityContainer($entityListFullName, $viewName, $entityId, $responseFields =  null)
 	{
 		$mozuClient = ListViewClient::getViewEntityContainerClient($entityListFullName, $viewName, $entityId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -104,9 +99,9 @@ class ListViewResource {
 	public function getViewEntityContainers($entityListFullName, $viewName, $pageSize =  null, $startIndex =  null, $filter =  null, $responseFields =  null)
 	{
 		$mozuClient = ListViewClient::getViewEntityContainersClient($entityListFullName, $viewName, $pageSize, $startIndex, $filter, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -121,9 +116,9 @@ class ListViewResource {
 	public function getEntityListView($entityListFullName, $viewName, $responseFields =  null)
 	{
 		$mozuClient = ListViewClient::getEntityListViewClient($entityListFullName, $viewName, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -137,9 +132,9 @@ class ListViewResource {
 	public function getEntityListViews($entityListFullName, $responseFields =  null)
 	{
 		$mozuClient = ListViewClient::getEntityListViewsClient($entityListFullName, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -154,9 +149,9 @@ class ListViewResource {
 	public function createEntityListView($listView, $entityListFullName, $responseFields =  null)
 	{
 		$mozuClient = ListViewClient::createEntityListViewClient($listView, $entityListFullName, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -172,9 +167,9 @@ class ListViewResource {
 	public function updateEntityListView($listView, $entityListFullName, $viewName, $responseFields =  null)
 	{
 		$mozuClient = ListViewClient::updateEntityListViewClient($listView, $entityListFullName, $viewName, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -183,13 +178,12 @@ class ListViewResource {
 	*
 	* @param string $entityListFullName 
 	* @param string $viewName 
-	* @return void
 	*/
 	public function deleteEntityListView($entityListFullName, $viewName)
 	{
 		$mozuClient = ListViewClient::deleteEntityListViewClient($entityListFullName, $viewName);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

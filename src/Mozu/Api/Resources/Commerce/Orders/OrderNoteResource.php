@@ -12,23 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Orders;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Orders\OrderNoteClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\CommerceRuntime\Orders\OrderNote;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Order Notes subresource to manage merchant-level notes associated with an active order.
 */
 class OrderNoteResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves a list of all notes for an order.
@@ -39,9 +38,9 @@ class OrderNoteResource {
 	public function getOrderNotes($orderId)
 	{
 		$mozuClient = OrderNoteClient::getOrderNotesClient($orderId);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -56,9 +55,9 @@ class OrderNoteResource {
 	public function getOrderNote($orderId, $noteId, $responseFields =  null)
 	{
 		$mozuClient = OrderNoteClient::getOrderNoteClient($orderId, $noteId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -73,9 +72,9 @@ class OrderNoteResource {
 	public function createOrderNote($orderNote, $orderId, $responseFields =  null)
 	{
 		$mozuClient = OrderNoteClient::createOrderNoteClient($orderNote, $orderId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -91,9 +90,9 @@ class OrderNoteResource {
 	public function updateOrderNote($orderNote, $orderId, $noteId, $responseFields =  null)
 	{
 		$mozuClient = OrderNoteClient::updateOrderNoteClient($orderNote, $orderId, $noteId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -102,13 +101,12 @@ class OrderNoteResource {
 	*
 	* @param string $noteId Unique identifier of the order note to delete.
 	* @param string $orderId Unique identifier of the order associated with the note.
-	* @return void
 	*/
 	public function deleteOrderNote($orderId, $noteId)
 	{
 		$mozuClient = OrderNoteClient::deleteOrderNoteClient($orderId, $noteId);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

@@ -30,14 +30,13 @@ class LocationInventoryUrl  {
 	public static function getLocationInventoriesUrl($filter, $pageSize, $productCode, $responseFields, $sortBy, $startIndex)
 	{
 		$url = "/api/commerce/catalog/admin/products/{ProductCode}/LocationInventory/?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("filter", $filter)
-				->formatUrl("pageSize", $pageSize)
-				->formatUrl("productCode", $productCode)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("sortBy", $sortBy)
-				->formatUrl("startIndex", $startIndex);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("filter", $filter);
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
 		return $mozuUrl;
 	}
 	
@@ -51,11 +50,10 @@ class LocationInventoryUrl  {
 	public static function getLocationInventoryUrl($locationCode, $productCode, $responseFields)
 	{
 		$url = "/api/commerce/catalog/admin/products/{ProductCode}/LocationInventory/{LocationCode}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("locationCode", $locationCode)
-				->formatUrl("productCode", $productCode)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("locationCode", $locationCode);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -68,10 +66,9 @@ class LocationInventoryUrl  {
 	public static function addLocationInventoryUrl($performUpserts, $productCode)
 	{
 		$url = "/api/commerce/catalog/admin/products/{ProductCode}/LocationInventory?performUpserts={performUpserts}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("performUpserts", $performUpserts)
-				->formatUrl("productCode", $productCode);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("performUpserts", $performUpserts);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
 		return $mozuUrl;
 	}
 	
@@ -83,9 +80,8 @@ class LocationInventoryUrl  {
 	public static function updateLocationInventoryUrl($productCode)
 	{
 		$url = "/api/commerce/catalog/admin/products/{ProductCode}/LocationInventory";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("productCode", $productCode);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
 		return $mozuUrl;
 	}
 	
@@ -98,10 +94,9 @@ class LocationInventoryUrl  {
 	public static function deleteLocationInventoryUrl($locationCode, $productCode)
 	{
 		$url = "/api/commerce/catalog/admin/products/{ProductCode}/LocationInventory/{LocationCode}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("locationCode", $locationCode)
-				->formatUrl("productCode", $productCode);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("locationCode", $locationCode);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
 		return $mozuUrl;
 	}
 	

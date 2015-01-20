@@ -14,12 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Orders;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Orders\OrderItemUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\CommerceRuntime\Orders\OrderItem;
-use Mozu\Api\Contracts\CommerceRuntime\Discounts\AppliedDiscount;
-use Mozu\Api\Contracts\CommerceRuntime\Orders\Order;
-use Mozu\Api\Contracts\CommerceRuntime\Orders\OrderItemCollection;
 
 /**
 * Use this subresource to retrieve details about items in an active order.
@@ -39,7 +35,8 @@ class OrderItemClient {
 	{
 		$url = OrderItemUrl::getOrderItemUrl($draft, $orderId, $orderItemId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -55,7 +52,8 @@ class OrderItemClient {
 	{
 		$url = OrderItemUrl::getOrderItemsUrl($draft, $orderId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -74,7 +72,8 @@ class OrderItemClient {
 	{
 		$url = OrderItemUrl::createOrderItemUrl($orderId, $responseFields, $skipInventoryCheck, $updateMode, $version);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($orderItem);
+		$mozuClient->withResourceUrl($url)->withBody($orderItem);
+		return $mozuClient;
 
 	}
 	
@@ -94,7 +93,8 @@ class OrderItemClient {
 	{
 		$url = OrderItemUrl::updateOrderItemDiscountUrl($discountId, $orderId, $orderItemId, $responseFields, $updateMode, $version);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($discount);
+		$mozuClient->withResourceUrl($url)->withBody($discount);
+		return $mozuClient;
 
 	}
 	
@@ -113,7 +113,8 @@ class OrderItemClient {
 	{
 		$url = OrderItemUrl::updateItemFulfillmentUrl($orderId, $orderItemId, $responseFields, $updateMode, $version);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($orderItem);
+		$mozuClient->withResourceUrl($url)->withBody($orderItem);
+		return $mozuClient;
 
 	}
 	
@@ -122,7 +123,7 @@ class OrderItemClient {
 	*
 	* @param string $orderId Unique identifier of the order containing the item to price override.
 	* @param string $orderItemId Unique identifier of the item in the order to price override.
-	* @param float $price The override price to specify for this item in the specified order.
+	* @param decimal $price The override price to specify for this item in the specified order.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $updateMode Specifies whether to change the product price by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
 	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
@@ -132,7 +133,8 @@ class OrderItemClient {
 	{
 		$url = OrderItemUrl::updateItemProductPriceUrl($orderId, $orderItemId, $price, $responseFields, $updateMode, $version);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -151,7 +153,8 @@ class OrderItemClient {
 	{
 		$url = OrderItemUrl::updateItemQuantityUrl($orderId, $orderItemId, $quantity, $responseFields, $updateMode, $version);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -168,7 +171,8 @@ class OrderItemClient {
 	{
 		$url = OrderItemUrl::deleteOrderItemUrl($orderId, $orderItemId, $updateMode, $version);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

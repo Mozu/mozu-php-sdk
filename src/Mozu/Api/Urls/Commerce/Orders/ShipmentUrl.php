@@ -27,11 +27,10 @@ class ShipmentUrl  {
 	public static function getShipmentUrl($orderId, $responseFields, $shipmentId)
 	{
 		$url = "/api/commerce/orders/{orderId}/shipments/{shipmentId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("orderId", $orderId)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("shipmentId", $shipmentId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("shipmentId", $shipmentId);
 		return $mozuUrl;
 	}
 	
@@ -43,11 +42,10 @@ class ShipmentUrl  {
 	*/
 	public static function getAvailableShipmentMethodsUrl($draft, $orderId)
 	{
-		$url = "/api/commerce/orders/{orderId}/shipments/methods";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("draft", $draft)
-				->formatUrl("orderId", $orderId);
-
+		$url = "/api/commerce/orders/{orderId}/shipments/methods?draft={draft}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("draft", $draft);
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
 		return $mozuUrl;
 	}
 	
@@ -59,9 +57,8 @@ class ShipmentUrl  {
 	public static function createPackageShipmentsUrl($orderId)
 	{
 		$url = "/api/commerce/orders/{orderId}/shipments";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("orderId", $orderId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
 		return $mozuUrl;
 	}
 	
@@ -74,10 +71,9 @@ class ShipmentUrl  {
 	public static function deleteShipmentUrl($orderId, $shipmentId)
 	{
 		$url = "/api/commerce/orders/{orderId}/shipments/{shipmentId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("orderId", $orderId)
-				->formatUrl("shipmentId", $shipmentId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("shipmentId", $shipmentId);
 		return $mozuUrl;
 	}
 	

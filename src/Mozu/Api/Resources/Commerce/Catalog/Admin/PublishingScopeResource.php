@@ -12,37 +12,33 @@
 
 namespace Mozu\Api\Resources\Commerce\Catalog\Admin;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Catalog\Admin\PublishingScopeClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\ProductAdmin\PublishingScope;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Product Publishing resource to publish or discard pending changes to product definitions in the master catalog.
 */
 class PublishingScopeResource {
 
-	private $apiContext;
-	private $dataViewMode;
-	public function __construct(ApiContext $apiContext, $dataViewMode) 
+		private $apiContext;
+	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
-		$this->dataViewMode = $dataViewMode;
 	}
-
-	
 
 	/**
 	* Deletes the draft version of product changes for each product code specified in the request.
 	*
 	* @param PublishingScope $publishScope Properties of the pending product changes to include in this operation.
-	* @return void
 	*/
-	public function discardDrafts($publishScope)
+	public function discardDrafts($dataViewMode, $publishScope)
 	{
-		$mozuClient = PublishingScopeClient::discardDraftsClient($this->dataViewMode, $publishScope);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = PublishingScopeClient::discardDraftsClient($dataViewMode, $publishScope);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	
@@ -50,13 +46,12 @@ class PublishingScopeResource {
 	* Publishes the draft version of product changes for each product code specified in the request, and changes the product publish state to "live".
 	*
 	* @param PublishingScope $publishScope Properties of the pending product changes to include in this operation.
-	* @return void
 	*/
-	public function publishDrafts($publishScope)
+	public function publishDrafts($dataViewMode, $publishScope)
 	{
-		$mozuClient = PublishingScopeClient::publishDraftsClient($this->dataViewMode, $publishScope);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = PublishingScopeClient::publishDraftsClient($dataViewMode, $publishScope);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

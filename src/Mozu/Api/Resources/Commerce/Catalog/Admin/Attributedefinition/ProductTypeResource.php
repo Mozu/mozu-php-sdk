@@ -12,26 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Catalog\Admin\Attributedefinition;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Catalog\Admin\Attributedefinition\ProductTypeClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\ProductAdmin\ProductType;
-use Mozu\Api\Contracts\ProductAdmin\ProductTypeCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Product Types resource to manage the types for your product catalog. Product types act as configuration templates, which store a set of attributes common to all products associated with that type. Unlike categories, products can only be associated with a single product type.
 */
 class ProductTypeResource {
 
-	private $apiContext;
-	private $dataViewMode;
-	public function __construct(ApiContext $apiContext, $dataViewMode) 
+		private $apiContext;
+	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
-		$this->dataViewMode = $dataViewMode;
 	}
-
-	
 
 	/**
 	* Retrieves a list of product types according to any specified filter criteria and sort options.
@@ -43,12 +39,12 @@ class ProductTypeResource {
 	* @param int $startIndex 
 	* @return ProductTypeCollection 
 	*/
-	public function getProductTypes($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
+	public function getProductTypes($dataViewMode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
-		$mozuClient = ProductTypeClient::getProductTypesClient($this->dataViewMode, $startIndex, $pageSize, $sortBy, $filter, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = ProductTypeClient::getProductTypesClient($dataViewMode, $startIndex, $pageSize, $sortBy, $filter, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -59,12 +55,12 @@ class ProductTypeResource {
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return ProductType 
 	*/
-	public function getProductType($productTypeId, $responseFields =  null)
+	public function getProductType($dataViewMode, $productTypeId, $responseFields =  null)
 	{
-		$mozuClient = ProductTypeClient::getProductTypeClient($this->dataViewMode, $productTypeId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = ProductTypeClient::getProductTypeClient($dataViewMode, $productTypeId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -75,12 +71,12 @@ class ProductTypeResource {
 	* @param ProductType $productType Properties of the product type to create.
 	* @return ProductType 
 	*/
-	public function addProductType($productType, $responseFields =  null)
+	public function addProductType($dataViewMode, $productType, $responseFields =  null)
 	{
-		$mozuClient = ProductTypeClient::addProductTypeClient($this->dataViewMode, $productType, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = ProductTypeClient::addProductTypeClient($dataViewMode, $productType, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -92,12 +88,12 @@ class ProductTypeResource {
 	* @param ProductType $productType The details of the product type to update.
 	* @return ProductType 
 	*/
-	public function updateProductType($productType, $productTypeId, $responseFields =  null)
+	public function updateProductType($dataViewMode, $productType, $productTypeId, $responseFields =  null)
 	{
-		$mozuClient = ProductTypeClient::updateProductTypeClient($this->dataViewMode, $productType, $productTypeId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = ProductTypeClient::updateProductTypeClient($dataViewMode, $productType, $productTypeId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -105,13 +101,12 @@ class ProductTypeResource {
 	* Deletes the product type by providing the product type ID.
 	*
 	* @param int $productTypeId Identifier of the product type to delete.
-	* @return void
 	*/
-	public function deleteProductType($productTypeId)
+	public function deleteProductType($dataViewMode, $productTypeId)
 	{
-		$mozuClient = ProductTypeClient::deleteProductTypeClient($this->dataViewMode, $productTypeId);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = ProductTypeClient::deleteProductTypeClient($dataViewMode, $productTypeId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

@@ -12,24 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Catalog\Admin\Attributedefinition\Attributes;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Catalog\Admin\Attributedefinition\Attributes\AttributeVocabularyValueClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\ProductAdmin\AttributeVocabularyValue;
-use Mozu\Api\Contracts\ProductAdmin\AttributeVocabularyValueLocalizedContent;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Vocabulary values are predefined for an attribute.
 */
 class AttributeVocabularyValueResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves a list of vocabulary values defined for the attribute specified in the request.
@@ -40,9 +38,9 @@ class AttributeVocabularyValueResource {
 	public function getAttributeVocabularyValues($attributeFQN)
 	{
 		$mozuClient = AttributeVocabularyValueClient::getAttributeVocabularyValuesClient($attributeFQN);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -56,9 +54,9 @@ class AttributeVocabularyValueResource {
 	public function getAttributeVocabularyValueLocalizedContents($attributeFQN, $value)
 	{
 		$mozuClient = AttributeVocabularyValueClient::getAttributeVocabularyValueLocalizedContentsClient($attributeFQN, $value);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -74,9 +72,9 @@ class AttributeVocabularyValueResource {
 	public function getAttributeVocabularyValueLocalizedContent($attributeFQN, $value, $localeCode, $responseFields =  null)
 	{
 		$mozuClient = AttributeVocabularyValueClient::getAttributeVocabularyValueLocalizedContentClient($attributeFQN, $value, $localeCode, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -91,9 +89,9 @@ class AttributeVocabularyValueResource {
 	public function getAttributeVocabularyValue($attributeFQN, $value, $responseFields =  null)
 	{
 		$mozuClient = AttributeVocabularyValueClient::getAttributeVocabularyValueClient($attributeFQN, $value, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -109,9 +107,9 @@ class AttributeVocabularyValueResource {
 	public function addAttributeVocabularyValueLocalizedContent($localizedContent, $attributeFQN, $value, $responseFields =  null)
 	{
 		$mozuClient = AttributeVocabularyValueClient::addAttributeVocabularyValueLocalizedContentClient($localizedContent, $attributeFQN, $value, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -126,9 +124,9 @@ class AttributeVocabularyValueResource {
 	public function addAttributeVocabularyValue($attributeVocabularyValue, $attributeFQN, $responseFields =  null)
 	{
 		$mozuClient = AttributeVocabularyValueClient::addAttributeVocabularyValueClient($attributeVocabularyValue, $attributeFQN, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -142,9 +140,9 @@ class AttributeVocabularyValueResource {
 	public function updateAttributeVocabularyValues($vocabularyValues, $attributeFQN)
 	{
 		$mozuClient = AttributeVocabularyValueClient::updateAttributeVocabularyValuesClient($vocabularyValues, $attributeFQN);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -159,9 +157,9 @@ class AttributeVocabularyValueResource {
 	public function updateAttributeVocabularyValueLocalizedContents($localizedContent, $attributeFQN, $value)
 	{
 		$mozuClient = AttributeVocabularyValueClient::updateAttributeVocabularyValueLocalizedContentsClient($localizedContent, $attributeFQN, $value);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -178,9 +176,9 @@ class AttributeVocabularyValueResource {
 	public function updateAttributeVocabularyValueLocalizedContent($localizedContent, $attributeFQN, $value, $localeCode, $responseFields =  null)
 	{
 		$mozuClient = AttributeVocabularyValueClient::updateAttributeVocabularyValueLocalizedContentClient($localizedContent, $attributeFQN, $value, $localeCode, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -196,9 +194,9 @@ class AttributeVocabularyValueResource {
 	public function updateAttributeVocabularyValue($attributeVocabularyValue, $attributeFQN, $value, $responseFields =  null)
 	{
 		$mozuClient = AttributeVocabularyValueClient::updateAttributeVocabularyValueClient($attributeVocabularyValue, $attributeFQN, $value, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -207,13 +205,12 @@ class AttributeVocabularyValueResource {
 	*
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @param string $value The actual unique value of the attribute vocabulary to delete. A single attribute must have a unique value and match the attribute's data type. If a string value returns null, the system will generate a value. The actual string content displayed shoud be stored as "Content" and actual content is required for string values.
-	* @return void
 	*/
 	public function deleteAttributeVocabularyValue($attributeFQN, $value)
 	{
 		$mozuClient = AttributeVocabularyValueClient::deleteAttributeVocabularyValueClient($attributeFQN, $value);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	
@@ -223,13 +220,12 @@ class AttributeVocabularyValueResource {
 	* @param string $attributeFQN 
 	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
 	* @param string $value 
-	* @return void
 	*/
 	public function deleteAttributeVocabularyValueLocalizedContent($attributeFQN, $value, $localeCode)
 	{
 		$mozuClient = AttributeVocabularyValueClient::deleteAttributeVocabularyValueLocalizedContentClient($attributeFQN, $value, $localeCode);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

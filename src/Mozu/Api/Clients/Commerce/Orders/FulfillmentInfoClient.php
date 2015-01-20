@@ -14,9 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Orders;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Orders\FulfillmentInfoUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\CommerceRuntime\Fulfillment\FulfillmentInfo;
 
 /**
 * Use the Fulfillment Information resource to manage shipping or pickup information for orders.
@@ -35,7 +34,8 @@ class FulfillmentInfoClient {
 	{
 		$url = FulfillmentInfoUrl::getFulfillmentInfoUrl($draft, $orderId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -53,7 +53,8 @@ class FulfillmentInfoClient {
 	{
 		$url = FulfillmentInfoUrl::setFulFillmentInfoUrl($orderId, $responseFields, $updateMode, $version);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($fulfillmentInfo);
+		$mozuClient->withResourceUrl($url)->withBody($fulfillmentInfo);
+		return $mozuClient;
 
 	}
 	

@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Storefront;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Storefront\ShippingUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\ShippingRuntime\RateRequest;
-use Mozu\Api\Contracts\ShippingRuntime\RatesResponse;
 
 /**
 * Use the Storefront Shipping resource to retrieve shipping rate information from the website.
@@ -35,7 +33,8 @@ class ShippingClient {
 	{
 		$url = ShippingUrl::getRatesUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($rateRequest);
+		$mozuClient->withResourceUrl($url)->withBody($rateRequest);
+		return $mozuClient;
 
 	}
 	

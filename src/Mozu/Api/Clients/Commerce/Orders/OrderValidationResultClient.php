@@ -14,9 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Orders;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Orders\OrderValidationResultUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\CommerceRuntime\Orders\OrderValidationResult;
 
 /**
 * Manage the results of order validation.
@@ -33,7 +32,8 @@ class OrderValidationResultClient {
 	{
 		$url = OrderValidationResultUrl::getValidationResultsUrl($orderId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -49,7 +49,8 @@ class OrderValidationResultClient {
 	{
 		$url = OrderValidationResultUrl::addValidationResultUrl($orderId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($validationResult);
+		$mozuClient->withResourceUrl($url)->withBody($validationResult);
+		return $mozuClient;
 
 	}
 	

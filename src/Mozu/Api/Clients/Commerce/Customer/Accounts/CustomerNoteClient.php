@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Customer\Accounts;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\Accounts\CustomerNoteUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Customer\CustomerNote;
-use Mozu\Api\Contracts\Customer\CustomerNoteCollection;
 
 /**
 * Tenant administrators can add and view internal notes for a customer account. For example, a client can track a shopper's interests or complaints. Only clients can add and view notes. Shoppers cannot view these notes from the My Account page.
@@ -36,7 +34,8 @@ class CustomerNoteClient {
 	{
 		$url = CustomerNoteUrl::getAccountNoteUrl($accountId, $noteId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -55,7 +54,8 @@ class CustomerNoteClient {
 	{
 		$url = CustomerNoteUrl::getAccountNotesUrl($accountId, $filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -71,7 +71,8 @@ class CustomerNoteClient {
 	{
 		$url = CustomerNoteUrl::addAccountNoteUrl($accountId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($note);
+		$mozuClient->withResourceUrl($url)->withBody($note);
+		return $mozuClient;
 
 	}
 	
@@ -88,7 +89,8 @@ class CustomerNoteClient {
 	{
 		$url = CustomerNoteUrl::updateAccountNoteUrl($accountId, $noteId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($note);
+		$mozuClient->withResourceUrl($url)->withBody($note);
+		return $mozuClient;
 
 	}
 	
@@ -97,13 +99,13 @@ class CustomerNoteClient {
 	*
 	* @param int $accountId Unique identifier of the customer account that contains the note being deleted.
 	* @param int $noteId Unique identifier of the customer account note being deleted.
-	* @return MozuClient
 	*/
 	public static function deleteAccountNoteClient($accountId, $noteId)
 	{
 		$url = CustomerNoteUrl::deleteAccountNoteUrl($accountId, $noteId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

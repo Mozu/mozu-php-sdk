@@ -12,26 +12,22 @@
 
 namespace Mozu\Api\Resources\Content\Documentlists;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Content\Documentlists\DocumentClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\Content\Document;
-use Mozu\Api\Contracts\Content\DocumentCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use this subresource to manage documents in a document list.
 */
 class DocumentResource {
 
-	private $apiContext;
-	private $dataViewMode;
-	public function __construct(ApiContext $apiContext, $dataViewMode) 
+		private $apiContext;
+	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
-		$this->dataViewMode = $dataViewMode;
 	}
-
-	
 
 	/**
 	* Retrieve the content associated with a document, such as a product image or PDF specifications file, by supplying the document ID.
@@ -40,12 +36,12 @@ class DocumentResource {
 	* @param string $documentListName The name of the document list associated with the document.
 	* @return Stream 
 	*/
-	public function getDocumentContent($documentListName, $documentId)
+	public function getDocumentContent($dataViewMode, $documentListName, $documentId)
 	{
-		$mozuClient = DocumentClient::getDocumentContentClient($this->dataViewMode, $documentListName, $documentId);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = DocumentClient::getDocumentContentClient($dataViewMode, $documentListName, $documentId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -57,12 +53,12 @@ class DocumentResource {
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return Document 
 	*/
-	public function getDocument($documentListName, $documentId, $responseFields =  null)
+	public function getDocument($dataViewMode, $documentListName, $documentId, $responseFields =  null)
 	{
-		$mozuClient = DocumentClient::getDocumentClient($this->dataViewMode, $documentListName, $documentId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = DocumentClient::getDocumentClient($dataViewMode, $documentListName, $documentId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -77,12 +73,12 @@ class DocumentResource {
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return DocumentCollection 
 	*/
-	public function getDocuments($documentListName, $filter =  null, $sortBy =  null, $pageSize =  null, $startIndex =  null, $responseFields =  null)
+	public function getDocuments($dataViewMode, $documentListName, $filter =  null, $sortBy =  null, $pageSize =  null, $startIndex =  null, $responseFields =  null)
 	{
-		$mozuClient = DocumentClient::getDocumentsClient($this->dataViewMode, $documentListName, $filter, $sortBy, $pageSize, $startIndex, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = DocumentClient::getDocumentsClient($dataViewMode, $documentListName, $filter, $sortBy, $pageSize, $startIndex, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -94,12 +90,12 @@ class DocumentResource {
 	* @param Document $document The descriptive name of the newly created document.
 	* @return Document 
 	*/
-	public function createDocument($document, $documentListName, $responseFields =  null)
+	public function createDocument($dataViewMode, $document, $documentListName, $responseFields =  null)
 	{
-		$mozuClient = DocumentClient::createDocumentClient($this->dataViewMode, $document, $documentListName, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = DocumentClient::createDocumentClient($dataViewMode, $document, $documentListName, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -109,13 +105,12 @@ class DocumentResource {
 	* @param string $documentId Unique identifier of the document.
 	* @param string $documentListName The name of the document list associated with the document.
 	* @param Stream $stream Input output stream that delivers information.
-	* @return void
 	*/
 	public function updateDocumentContent($stream, $documentListName, $documentId, $contentType= null)
 	{
 		$mozuClient = DocumentClient::updateDocumentContentClient($stream, $documentListName, $documentId, $contentType);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	
@@ -131,9 +126,9 @@ class DocumentResource {
 	public function updateDocument($document, $documentListName, $documentId, $responseFields =  null)
 	{
 		$mozuClient = DocumentClient::updateDocumentClient($document, $documentListName, $documentId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -142,13 +137,12 @@ class DocumentResource {
 	*
 	* @param string $documentId Identifier of the document being deleted.
 	* @param string $documentListName The name of the document list associated with the document list being deleted.
-	* @return void
 	*/
 	public function deleteDocument($documentListName, $documentId)
 	{
 		$mozuClient = DocumentClient::deleteDocumentClient($documentListName, $documentId);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	
@@ -157,13 +151,12 @@ class DocumentResource {
 	*
 	* @param string $documentId Unique identifier of the document.
 	* @param string $documentListName The name of the document list associated with the document.
-	* @return void
 	*/
 	public function deleteDocumentContent($documentListName, $documentId)
 	{
 		$mozuClient = DocumentClient::deleteDocumentContentClient($documentListName, $documentId);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

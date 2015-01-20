@@ -14,9 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Orders;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Orders\BillingInfoUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\CommerceRuntime\Payments\BillingInfo;
 
 /**
 * Use the Billing Info subresource to manage the billing information stored for an order.
@@ -35,7 +34,8 @@ class BillingInfoClient {
 	{
 		$url = BillingInfoUrl::getBillingInfoUrl($draft, $orderId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -53,7 +53,8 @@ class BillingInfoClient {
 	{
 		$url = BillingInfoUrl::setBillingInfoUrl($orderId, $responseFields, $updateMode, $version);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($billingInfo);
+		$mozuClient->withResourceUrl($url)->withBody($billingInfo);
+		return $mozuClient;
 
 	}
 	

@@ -27,11 +27,10 @@ class FulfillmentInfoUrl  {
 	public static function getFulfillmentInfoUrl($draft, $orderId, $responseFields)
 	{
 		$url = "/api/commerce/orders/{orderId}/fulfillmentinfo?draft={draft}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("draft", $draft)
-				->formatUrl("orderId", $orderId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("draft", $draft);
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -46,12 +45,11 @@ class FulfillmentInfoUrl  {
 	public static function setFulFillmentInfoUrl($orderId, $responseFields, $updateMode, $version)
 	{
 		$url = "/api/commerce/orders/{orderId}/fulfillmentinfo?updatemode={updateMode}&version={version}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("orderId", $orderId)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("updateMode", $updateMode)
-				->formatUrl("version", $version);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("updateMode", $updateMode);
+		$url = $mozuUrl->formatUrl("version", $version);
 		return $mozuUrl;
 	}
 	

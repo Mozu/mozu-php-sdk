@@ -14,9 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Customer\Credits;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\Credits\CreditAuditEntryUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Customer\Credit\CreditAuditEntryCollection;
 
 /**
 * Use the Customer Credit Audit Entries subresource to retrieve entries logged in the audit report of a store credit or gift card applied to a customer account. The system creates a new audit entry when the credit is created, deleted, activated, or deactivated. The system then creates a new audit entry each time the credit is updated or redeemed in a transaction.
@@ -38,7 +37,8 @@ class CreditAuditEntryClient {
 	{
 		$url = CreditAuditEntryUrl::getAuditEntriesUrl($code, $filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

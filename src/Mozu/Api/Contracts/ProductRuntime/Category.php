@@ -19,6 +19,8 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 */
 class Category
 {
+		public $categoryCode;
+
 	/**
 	*Unique identifier for the storefront container used to organize products.
 	*/

@@ -12,28 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Catalog\Admin\Products;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Catalog\Admin\Products\ProductVariationClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\ProductAdmin\ProductVariationDeltaPrice;
-use Mozu\Api\Contracts\ProductAdmin\ProductVariationCollection;
-use Mozu\Api\Contracts\ProductAdmin\ProductVariation;
-use Mozu\Api\Contracts\ProductAdmin\ProductVariationPagedCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the product variations sub-resource to manage the variations of a product based on its attributes. For example, a t-shirt product could be offered in six variations: Small Black, Medium Black, Large Black, Small White, Medium White, and Large White.
 */
 class ProductVariationResource {
 
-	private $apiContext;
-	private $dataViewMode;
-	public function __construct(ApiContext $apiContext, $dataViewMode) 
+		private $apiContext;
+	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
-		$this->dataViewMode = $dataViewMode;
 	}
-
-	
 
 	/**
 	* 
@@ -42,12 +36,12 @@ class ProductVariationResource {
 	* @param string $variationKey 
 	* @return array|ProductVariationDeltaPrice 
 	*/
-	public function getProductVariationLocalizedDeltaPrices($productCode, $variationKey)
+	public function getProductVariationLocalizedDeltaPrices($dataViewMode, $productCode, $variationKey)
 	{
-		$mozuClient = ProductVariationClient::getProductVariationLocalizedDeltaPricesClient($this->dataViewMode, $productCode, $variationKey);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = ProductVariationClient::getProductVariationLocalizedDeltaPricesClient($dataViewMode, $productCode, $variationKey);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -60,12 +54,12 @@ class ProductVariationResource {
 	* @param string $variationKey 
 	* @return ProductVariationDeltaPrice 
 	*/
-	public function getProductVariationLocalizedDeltaPrice($productCode, $variationKey, $currencyCode, $responseFields =  null)
+	public function getProductVariationLocalizedDeltaPrice($dataViewMode, $productCode, $variationKey, $currencyCode, $responseFields =  null)
 	{
-		$mozuClient = ProductVariationClient::getProductVariationLocalizedDeltaPriceClient($this->dataViewMode, $productCode, $variationKey, $currencyCode, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = ProductVariationClient::getProductVariationLocalizedDeltaPriceClient($dataViewMode, $productCode, $variationKey, $currencyCode, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -77,12 +71,12 @@ class ProductVariationResource {
 	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
 	* @return ProductVariation 
 	*/
-	public function getProductVariation($productCode, $variationKey, $responseFields =  null)
+	public function getProductVariation($dataViewMode, $productCode, $variationKey, $responseFields =  null)
 	{
-		$mozuClient = ProductVariationClient::getProductVariationClient($this->dataViewMode, $productCode, $variationKey, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = ProductVariationClient::getProductVariationClient($dataViewMode, $productCode, $variationKey, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -97,12 +91,12 @@ class ProductVariationResource {
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return ProductVariationPagedCollection 
 	*/
-	public function getProductVariations($productCode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
+	public function getProductVariations($dataViewMode, $productCode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
-		$mozuClient = ProductVariationClient::getProductVariationsClient($this->dataViewMode, $productCode, $startIndex, $pageSize, $sortBy, $filter, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = ProductVariationClient::getProductVariationsClient($dataViewMode, $productCode, $startIndex, $pageSize, $sortBy, $filter, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -115,12 +109,12 @@ class ProductVariationResource {
 	* @param ProductVariationDeltaPrice $localizedDeltaPrice 
 	* @return ProductVariationDeltaPrice 
 	*/
-	public function addProductVariationLocalizedDeltaPrice($localizedDeltaPrice, $productCode, $variationKey, $responseFields =  null)
+	public function addProductVariationLocalizedDeltaPrice($dataViewMode, $localizedDeltaPrice, $productCode, $variationKey, $responseFields =  null)
 	{
-		$mozuClient = ProductVariationClient::addProductVariationLocalizedDeltaPriceClient($this->dataViewMode, $localizedDeltaPrice, $productCode, $variationKey, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = ProductVariationClient::addProductVariationLocalizedDeltaPriceClient($dataViewMode, $localizedDeltaPrice, $productCode, $variationKey, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -132,12 +126,12 @@ class ProductVariationResource {
 	* @param array|ProductVariationDeltaPrice $localizedDeltaPrice 
 	* @return array|ProductVariationDeltaPrice 
 	*/
-	public function updateProductVariationLocalizedDeltaPrices($localizedDeltaPrice, $productCode, $variationKey)
+	public function updateProductVariationLocalizedDeltaPrices($dataViewMode, $localizedDeltaPrice, $productCode, $variationKey)
 	{
-		$mozuClient = ProductVariationClient::updateProductVariationLocalizedDeltaPricesClient($this->dataViewMode, $localizedDeltaPrice, $productCode, $variationKey);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = ProductVariationClient::updateProductVariationLocalizedDeltaPricesClient($dataViewMode, $localizedDeltaPrice, $productCode, $variationKey);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -151,12 +145,12 @@ class ProductVariationResource {
 	* @param ProductVariationDeltaPrice $localizedDeltaPrice 
 	* @return ProductVariationDeltaPrice 
 	*/
-	public function updateProductVariationLocalizedDeltaPrice($localizedDeltaPrice, $productCode, $variationKey, $currencyCode, $responseFields =  null)
+	public function updateProductVariationLocalizedDeltaPrice($dataViewMode, $localizedDeltaPrice, $productCode, $variationKey, $currencyCode, $responseFields =  null)
 	{
-		$mozuClient = ProductVariationClient::updateProductVariationLocalizedDeltaPriceClient($this->dataViewMode, $localizedDeltaPrice, $productCode, $variationKey, $currencyCode, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = ProductVariationClient::updateProductVariationLocalizedDeltaPriceClient($dataViewMode, $localizedDeltaPrice, $productCode, $variationKey, $currencyCode, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -169,12 +163,12 @@ class ProductVariationResource {
 	* @param ProductVariation $productVariation Wrapper for the properties of the specified product variation.
 	* @return ProductVariation 
 	*/
-	public function updateProductVariation($productVariation, $productCode, $variationKey, $responseFields =  null)
+	public function updateProductVariation($dataViewMode, $productVariation, $productCode, $variationKey, $responseFields =  null)
 	{
-		$mozuClient = ProductVariationClient::updateProductVariationClient($this->dataViewMode, $productVariation, $productCode, $variationKey, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = ProductVariationClient::updateProductVariationClient($dataViewMode, $productVariation, $productCode, $variationKey, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -186,12 +180,12 @@ class ProductVariationResource {
 	* @param ProductVariationCollection $productVariations Wrapper for the collection of variations configured for the specified product code.
 	* @return ProductVariationCollection 
 	*/
-	public function updateProductVariations($productVariations, $productCode, $responseFields =  null)
+	public function updateProductVariations($dataViewMode, $productVariations, $productCode, $responseFields =  null)
 	{
-		$mozuClient = ProductVariationClient::updateProductVariationsClient($this->dataViewMode, $productVariations, $productCode, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = ProductVariationClient::updateProductVariationsClient($dataViewMode, $productVariations, $productCode, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -200,13 +194,12 @@ class ProductVariationResource {
 	*
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
-	* @return void
 	*/
-	public function deleteProductVariation($productCode, $variationKey)
+	public function deleteProductVariation($dataViewMode, $productCode, $variationKey)
 	{
-		$mozuClient = ProductVariationClient::deleteProductVariationClient($this->dataViewMode, $productCode, $variationKey);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = ProductVariationClient::deleteProductVariationClient($dataViewMode, $productCode, $variationKey);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	
@@ -216,13 +209,12 @@ class ProductVariationResource {
 	* @param string $currencyCode 
 	* @param string $productCode 
 	* @param string $variationKey 
-	* @return void
 	*/
-	public function deleteProductVariationLocalizedDeltaPrice($productCode, $variationKey, $currencyCode)
+	public function deleteProductVariationLocalizedDeltaPrice($dataViewMode, $productCode, $variationKey, $currencyCode)
 	{
-		$mozuClient = ProductVariationClient::deleteProductVariationLocalizedDeltaPriceClient($this->dataViewMode, $productCode, $variationKey, $currencyCode);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = ProductVariationClient::deleteProductVariationLocalizedDeltaPriceClient($dataViewMode, $productCode, $variationKey, $currencyCode);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

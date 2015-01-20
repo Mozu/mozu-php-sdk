@@ -14,9 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Orders;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Orders\AppliedDiscountUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\CommerceRuntime\Orders\Order;
 
 /**
 * Use this subresource to apply coupons to or remove coupons from an order based on a supplied coupon code.
@@ -37,7 +36,8 @@ class AppliedDiscountClient {
 	{
 		$url = AppliedDiscountUrl::applyCouponUrl($couponCode, $orderId, $responseFields, $updateMode, $version);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -54,7 +54,8 @@ class AppliedDiscountClient {
 	{
 		$url = AppliedDiscountUrl::removeCouponUrl($couponCode, $orderId, $updateMode, $version);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -70,7 +71,8 @@ class AppliedDiscountClient {
 	{
 		$url = AppliedDiscountUrl::removeCouponsUrl($orderId, $updateMode, $version);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

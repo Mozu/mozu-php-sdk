@@ -14,11 +14,8 @@ namespace Mozu\Api\Clients\Content;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Content\PropertyTypeUrl;
-use Mozu\Api\Headers;
 use Mozu\Api\DataViewMode;
-
-use Mozu\Api\Contracts\Content\PropertyType;
-use Mozu\Api\Contracts\Content\PropertyTypeCollection;
+use Mozu\Api\Headers;
 
 /**
 * Use the property types subresource to manage content properties.
@@ -28,7 +25,6 @@ class PropertyTypeClient {
 	/**
 	* Retrieves a list of the content property types.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
@@ -38,14 +34,14 @@ class PropertyTypeClient {
 	{
 		$url = PropertyTypeUrl::getPropertyTypesUrl($pageSize, $responseFields, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Retrieves the details of the content property type.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $propertyTypeName The name of the content property type.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
@@ -54,7 +50,8 @@ class PropertyTypeClient {
 	{
 		$url = PropertyTypeUrl::getPropertyTypeUrl($propertyTypeName, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
@@ -69,14 +66,14 @@ class PropertyTypeClient {
 	{
 		$url = PropertyTypeUrl::createPropertyTypeUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($propertyType);
+		$mozuClient->withResourceUrl($url)->withBody($propertyType);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* 
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $propertyTypeName 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param PropertyType $propertyType 
@@ -86,22 +83,22 @@ class PropertyTypeClient {
 	{
 		$url = PropertyTypeUrl::updatePropertyTypeUrl($propertyTypeName, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($propertyType)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withBody($propertyType)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* 
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $propertyTypeName 
-	* @return MozuClient
 	*/
 	public static function deletePropertyTypeClient($dataViewMode, $propertyTypeName)
 	{
 		$url = PropertyTypeUrl::deletePropertyTypeUrl($propertyTypeName);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	

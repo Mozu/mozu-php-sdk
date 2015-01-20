@@ -26,10 +26,9 @@ class PackageUrl  {
 	public static function getPackageLabelUrl($packageId, $returnId)
 	{
 		$url = "/api/commerce/returns/{returnId}/packages/{packageId}/label";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("packageId", $packageId)
-				->formatUrl("returnId", $returnId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("packageId", $packageId);
+		$url = $mozuUrl->formatUrl("returnId", $returnId);
 		return $mozuUrl;
 	}
 	
@@ -43,11 +42,10 @@ class PackageUrl  {
 	public static function getPackageUrl($packageId, $responseFields, $returnId)
 	{
 		$url = "/api/commerce/returns/{returnId}/packages/{packageId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("packageId", $packageId)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("returnId", $returnId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("packageId", $packageId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("returnId", $returnId);
 		return $mozuUrl;
 	}
 	
@@ -60,10 +58,9 @@ class PackageUrl  {
 	public static function createPackageUrl($responseFields, $returnId)
 	{
 		$url = "/api/commerce/returns/{returnId}/packages?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields)
-				->formatUrl("returnId", $returnId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("returnId", $returnId);
 		return $mozuUrl;
 	}
 	
@@ -77,11 +74,10 @@ class PackageUrl  {
 	public static function updatePackageUrl($packageId, $responseFields, $returnId)
 	{
 		$url = "/api/commerce/returns/{returnId}/packages/{packageId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("packageId", $packageId)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("returnId", $returnId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("packageId", $packageId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("returnId", $returnId);
 		return $mozuUrl;
 	}
 	
@@ -94,10 +90,9 @@ class PackageUrl  {
 	public static function deletePackageUrl($packageId, $returnId)
 	{
 		$url = "/api/commerce/returns/{returnId}/packages/{packageId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("packageId", $packageId)
-				->formatUrl("returnId", $returnId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("packageId", $packageId);
+		$url = $mozuUrl->formatUrl("returnId", $returnId);
 		return $mozuUrl;
 	}
 	

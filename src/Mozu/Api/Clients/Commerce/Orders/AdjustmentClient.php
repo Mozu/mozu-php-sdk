@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Orders;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Orders\AdjustmentUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\CommerceRuntime\Commerce\Adjustment;
-use Mozu\Api\Contracts\CommerceRuntime\Orders\Order;
 
 /**
 * Use this subresource to manage ad-hoc order level price adjustments.
@@ -38,7 +36,8 @@ class AdjustmentClient {
 	{
 		$url = AdjustmentUrl::applyShippingAdjustmentUrl($orderId, $responseFields, $updateMode, $version);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($adjustment);
+		$mozuClient->withResourceUrl($url)->withBody($adjustment);
+		return $mozuClient;
 
 	}
 	
@@ -56,7 +55,8 @@ class AdjustmentClient {
 	{
 		$url = AdjustmentUrl::applyAdjustmentUrl($orderId, $responseFields, $updateMode, $version);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($adjustment);
+		$mozuClient->withResourceUrl($url)->withBody($adjustment);
+		return $mozuClient;
 
 	}
 	
@@ -72,7 +72,8 @@ class AdjustmentClient {
 	{
 		$url = AdjustmentUrl::removeShippingAdjustmentUrl($orderId, $updateMode, $version);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -88,7 +89,8 @@ class AdjustmentClient {
 	{
 		$url = AdjustmentUrl::removeAdjustmentUrl($orderId, $updateMode, $version);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

@@ -12,25 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Catalog\Admin\Discounts;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Catalog\Admin\Discounts\DiscountTargetClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\ProductAdmin\DiscountTarget;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Retrieves and modifies the products, categories, and shipping methods eligible for discounts in the form of a fixed dollar amount, percentage off a product price, or free shipping.
 */
 class DiscountTargetResource {
 
-	private $apiContext;
-	private $dataViewMode;
-	public function __construct(ApiContext $apiContext, $dataViewMode) 
+		private $apiContext;
+	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
-		$this->dataViewMode = $dataViewMode;
 	}
-
-	
 
 	/**
 	* Retrieves the discount target, that is which products, categories, or shipping methods are eligible for the discount.
@@ -39,12 +36,12 @@ class DiscountTargetResource {
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return DiscountTarget 
 	*/
-	public function getDiscountTarget($discountId, $responseFields =  null)
+	public function getDiscountTarget($dataViewMode, $discountId, $responseFields =  null)
 	{
-		$mozuClient = DiscountTargetClient::getDiscountTargetClient($this->dataViewMode, $discountId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = DiscountTargetClient::getDiscountTargetClient($dataViewMode, $discountId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -59,9 +56,9 @@ class DiscountTargetResource {
 	public function updateDiscountTarget($discountTarget, $discountId, $responseFields =  null)
 	{
 		$mozuClient = DiscountTargetClient::updateDiscountTargetClient($discountTarget, $discountId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	

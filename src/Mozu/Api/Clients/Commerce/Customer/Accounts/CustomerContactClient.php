@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Customer\Accounts;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\Accounts\CustomerContactUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Customer\CustomerContact;
-use Mozu\Api\Contracts\Customer\CustomerContactCollection;
 
 /**
 * Merchants and customers can create, view, update, and delete a contact for a customer account. A customer account may have multiple contacts for billing and shipping addresses.
@@ -36,7 +34,8 @@ class CustomerContactClient {
 	{
 		$url = CustomerContactUrl::getAccountContactUrl($accountId, $contactId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -55,7 +54,8 @@ class CustomerContactClient {
 	{
 		$url = CustomerContactUrl::getAccountContactsUrl($accountId, $filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -71,7 +71,8 @@ class CustomerContactClient {
 	{
 		$url = CustomerContactUrl::addAccountContactUrl($accountId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($contact);
+		$mozuClient->withResourceUrl($url)->withBody($contact);
+		return $mozuClient;
 
 	}
 	
@@ -88,7 +89,8 @@ class CustomerContactClient {
 	{
 		$url = CustomerContactUrl::updateAccountContactUrl($accountId, $contactId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($contact);
+		$mozuClient->withResourceUrl($url)->withBody($contact);
+		return $mozuClient;
 
 	}
 	
@@ -97,13 +99,13 @@ class CustomerContactClient {
 	*
 	* @param int $accountId Unique identifier of the customer account.
 	* @param int $contactId Unique identifier of the customer account contact to delete.
-	* @return MozuClient
 	*/
 	public static function deleteAccountContactClient($accountId, $contactId)
 	{
 		$url = CustomerContactUrl::deleteAccountContactUrl($accountId, $contactId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

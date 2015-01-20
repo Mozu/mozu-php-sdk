@@ -29,13 +29,12 @@ class AppliedDiscountUrl  {
 	public static function applyCouponUrl($couponCode, $orderId, $responseFields, $updateMode, $version)
 	{
 		$url = "/api/commerce/orders/{orderId}/coupons/{couponCode}?updatemode={updateMode}&version={version}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("couponCode", $couponCode)
-				->formatUrl("orderId", $orderId)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("updateMode", $updateMode)
-				->formatUrl("version", $version);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("couponCode", $couponCode);
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("updateMode", $updateMode);
+		$url = $mozuUrl->formatUrl("version", $version);
 		return $mozuUrl;
 	}
 	
@@ -50,12 +49,11 @@ class AppliedDiscountUrl  {
 	public static function removeCouponUrl($couponCode, $orderId, $updateMode, $version)
 	{
 		$url = "/api/commerce/orders/{orderId}/coupons/{couponcode}?updatemode={updateMode}&version={version}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("couponCode", $couponCode)
-				->formatUrl("orderId", $orderId)
-				->formatUrl("updateMode", $updateMode)
-				->formatUrl("version", $version);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("couponCode", $couponCode);
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("updateMode", $updateMode);
+		$url = $mozuUrl->formatUrl("version", $version);
 		return $mozuUrl;
 	}
 	
@@ -69,11 +67,10 @@ class AppliedDiscountUrl  {
 	public static function removeCouponsUrl($orderId, $updateMode, $version)
 	{
 		$url = "/api/commerce/orders/{orderId}/coupons?updatemode={updateMode}&version={version}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("orderId", $orderId)
-				->formatUrl("updateMode", $updateMode)
-				->formatUrl("version", $version);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("updateMode", $updateMode);
+		$url = $mozuUrl->formatUrl("version", $version);
 		return $mozuUrl;
 	}
 	

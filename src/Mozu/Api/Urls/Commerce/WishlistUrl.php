@@ -31,15 +31,14 @@ class WishlistUrl  {
 	public static function getWishlistsUrl($filter, $pageSize, $q, $qLimit, $responseFields, $sortBy, $startIndex)
 	{
 		$url = "/api/commerce/wishlists/?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}&q={q}&qLimit={qLimit}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("filter", $filter)
-				->formatUrl("pageSize", $pageSize)
-				->formatUrl("q", $q)
-				->formatUrl("qLimit", $qLimit)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("sortBy", $sortBy)
-				->formatUrl("startIndex", $startIndex);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("filter", $filter);
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("q", $q);
+		$url = $mozuUrl->formatUrl("qLimit", $qLimit);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
 		return $mozuUrl;
 	}
 	
@@ -52,10 +51,9 @@ class WishlistUrl  {
 	public static function getWishlistUrl($responseFields, $wishlistId)
 	{
 		$url = "/api/commerce/wishlists/{wishlistId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields)
-				->formatUrl("wishlistId", $wishlistId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("wishlistId", $wishlistId);
 		return $mozuUrl;
 	}
 	
@@ -69,11 +67,10 @@ class WishlistUrl  {
 	public static function getWishlistByNameUrl($customerAccountId, $responseFields, $wishlistName)
 	{
 		$url = "/api/commerce/wishlists/customers/{customerAccountId}/{wishlistName}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("customerAccountId", $customerAccountId)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("wishlistName", $wishlistName);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("customerAccountId", $customerAccountId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("wishlistName", $wishlistName);
 		return $mozuUrl;
 	}
 	
@@ -85,9 +82,8 @@ class WishlistUrl  {
 	public static function createWishlistUrl($responseFields)
 	{
 		$url = "/api/commerce/wishlists/?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -100,10 +96,9 @@ class WishlistUrl  {
 	public static function updateWishlistUrl($responseFields, $wishlistId)
 	{
 		$url = "/api/commerce/wishlists/{wishlistId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields)
-				->formatUrl("wishlistId", $wishlistId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("wishlistId", $wishlistId);
 		return $mozuUrl;
 	}
 	
@@ -115,9 +110,8 @@ class WishlistUrl  {
 	public static function deleteWishlistUrl($wishlistId)
 	{
 		$url = "/api/commerce/wishlists/{wishlistId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("wishlistId", $wishlistId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("wishlistId", $wishlistId);
 		return $mozuUrl;
 	}
 	

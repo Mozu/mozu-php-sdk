@@ -14,9 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Admin;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Admin\LocationTypeUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Location\LocationType;
 
 /**
 * Use the Location Types resource to manage the types of locations your tenant maintains, such as warehouses, physical storefronts, and kiosks.
@@ -32,7 +31,8 @@ class LocationTypeClient {
 	{
 		$url = LocationTypeUrl::getLocationTypesUrl();
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -47,7 +47,8 @@ class LocationTypeClient {
 	{
 		$url = LocationTypeUrl::getLocationTypeUrl($locationTypeCode, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -62,7 +63,8 @@ class LocationTypeClient {
 	{
 		$url = LocationTypeUrl::addLocationTypeUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($locationType);
+		$mozuClient->withResourceUrl($url)->withBody($locationType);
+		return $mozuClient;
 
 	}
 	
@@ -78,7 +80,8 @@ class LocationTypeClient {
 	{
 		$url = LocationTypeUrl::updateLocationTypeUrl($locationTypeCode, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($locationType);
+		$mozuClient->withResourceUrl($url)->withBody($locationType);
+		return $mozuClient;
 
 	}
 	
@@ -86,13 +89,13 @@ class LocationTypeClient {
 	* Deletes the location type specified in the request.
 	*
 	* @param string $locationTypeCode User-defined code used to identify the location type.
-	* @return MozuClient
 	*/
 	public static function deleteLocationTypeClient($locationTypeCode)
 	{
 		$url = LocationTypeUrl::deleteLocationTypeUrl($locationTypeCode);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

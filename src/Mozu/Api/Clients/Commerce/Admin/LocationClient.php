@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Admin;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Admin\LocationUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Location\Location;
-use Mozu\Api\Contracts\Location\LocationCollection;
 
 /**
 * Use the Locations resource to manage each physical location associated with a tenant. Locations enable tenants to associate a physical address with product inventory, provide a store finder for in-store pickup, or both. Locations that support inventory can use both direct ship and in-store pickup fulfillment types.
@@ -38,7 +36,8 @@ class LocationClient {
 	{
 		$url = LocationUrl::getLocationsUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -53,7 +52,8 @@ class LocationClient {
 	{
 		$url = LocationUrl::getLocationUrl($locationCode, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -68,7 +68,8 @@ class LocationClient {
 	{
 		$url = LocationUrl::addLocationUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($location);
+		$mozuClient->withResourceUrl($url)->withBody($location);
+		return $mozuClient;
 
 	}
 	
@@ -84,7 +85,8 @@ class LocationClient {
 	{
 		$url = LocationUrl::updateLocationUrl($locationCode, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($location);
+		$mozuClient->withResourceUrl($url)->withBody($location);
+		return $mozuClient;
 
 	}
 	
@@ -92,13 +94,13 @@ class LocationClient {
 	* Deletes the location specified in the request.
 	*
 	* @param string $locationCode The merchant-defined code of the location to delete.
-	* @return MozuClient
 	*/
 	public static function deleteLocationClient($locationCode)
 	{
 		$url = LocationUrl::deleteLocationUrl($locationCode);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

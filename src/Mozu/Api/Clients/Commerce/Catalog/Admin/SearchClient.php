@@ -14,9 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\SearchUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\ProductAdmin\SearchSettings;
 
 /**
 * 
@@ -33,7 +32,8 @@ class SearchClient {
 	{
 		$url = SearchUrl::getSettingsUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -48,7 +48,8 @@ class SearchClient {
 	{
 		$url = SearchUrl::updateSettingsUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($settings);
+		$mozuClient->withResourceUrl($url)->withBody($settings);
+		return $mozuClient;
 
 	}
 	

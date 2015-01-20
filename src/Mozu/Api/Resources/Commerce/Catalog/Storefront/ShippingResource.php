@@ -12,24 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Catalog\Storefront;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Catalog\Storefront\ShippingClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\ShippingRuntime\RateRequest;
-use Mozu\Api\Contracts\ShippingRuntime\RatesResponse;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Storefront Shipping resource to retrieve shipping rate information from the website.
 */
 class ShippingResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves the shipping rates applicable for the site.
@@ -41,9 +39,9 @@ class ShippingResource {
 	public function getRates($rateRequest, $responseFields =  null)
 	{
 		$mozuClient = ShippingClient::getRatesClient($rateRequest, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	

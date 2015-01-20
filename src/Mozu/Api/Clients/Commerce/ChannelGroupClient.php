@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\ChannelGroupUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\CommerceRuntime\Channels\ChannelGroup;
-use Mozu\Api\Contracts\CommerceRuntime\Channels\ChannelGroupCollection;
 
 /**
 * Use the Channel Groups resource to manage groups of channels with common information.
@@ -38,7 +36,8 @@ class ChannelGroupClient {
 	{
 		$url = ChannelGroupUrl::getChannelGroupsUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -53,7 +52,8 @@ class ChannelGroupClient {
 	{
 		$url = ChannelGroupUrl::getChannelGroupUrl($code, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -68,7 +68,8 @@ class ChannelGroupClient {
 	{
 		$url = ChannelGroupUrl::createChannelGroupUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($channelGroup);
+		$mozuClient->withResourceUrl($url)->withBody($channelGroup);
+		return $mozuClient;
 
 	}
 	
@@ -84,7 +85,8 @@ class ChannelGroupClient {
 	{
 		$url = ChannelGroupUrl::updateChannelGroupUrl($code, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($channelGroup);
+		$mozuClient->withResourceUrl($url)->withBody($channelGroup);
+		return $mozuClient;
 
 	}
 	
@@ -92,13 +94,13 @@ class ChannelGroupClient {
 	* Deletes a defined group of channels, which removes the group association with each channel in the group but does not delete the channel definitions themselves.
 	*
 	* @param string $code User-defined code that uniqely identifies the channel group.
-	* @return MozuClient
 	*/
 	public static function deleteChannelGroupClient($code)
 	{
 		$url = ChannelGroupUrl::deleteChannelGroupUrl($code);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

@@ -41,25 +41,24 @@ class ProductSearchResultUrl  {
 	public static function searchUrl($facet, $facetFieldRangeQuery, $facetHierDepth, $facetHierPrefix, $facetHierValue, $facetPageSize, $facetSettings, $facetStartIndex, $facetTemplate, $facetTemplateSubset, $facetValueFilter, $filter, $pageSize, $query, $responseFields, $sortBy, $startIndex)
 	{
 		$url = "/api/commerce/catalog/storefront/productsearch/search/?query={query}&filter={filter}&facetTemplate={facetTemplate}&facetTemplateSubset={facetTemplateSubset}&facet={facet}&facetFieldRangeQuery={facetFieldRangeQuery}&facetHierPrefix={facetHierPrefix}&facetHierValue={facetHierValue}&facetHierDepth={facetHierDepth}&facetStartIndex={facetStartIndex}&facetPageSize={facetPageSize}&facetSettings={facetSettings}&facetValueFilter={facetValueFilter}&sortBy={sortBy}&pageSize={pageSize}&startIndex={startIndex}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("facet", $facet)
-				->formatUrl("facetFieldRangeQuery", $facetFieldRangeQuery)
-				->formatUrl("facetHierDepth", $facetHierDepth)
-				->formatUrl("facetHierPrefix", $facetHierPrefix)
-				->formatUrl("facetHierValue", $facetHierValue)
-				->formatUrl("facetPageSize", $facetPageSize)
-				->formatUrl("facetSettings", $facetSettings)
-				->formatUrl("facetStartIndex", $facetStartIndex)
-				->formatUrl("facetTemplate", $facetTemplate)
-				->formatUrl("facetTemplateSubset", $facetTemplateSubset)
-				->formatUrl("facetValueFilter", $facetValueFilter)
-				->formatUrl("filter", $filter)
-				->formatUrl("pageSize", $pageSize)
-				->formatUrl("query", $query)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("sortBy", $sortBy)
-				->formatUrl("startIndex", $startIndex);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("facet", $facet);
+		$url = $mozuUrl->formatUrl("facetFieldRangeQuery", $facetFieldRangeQuery);
+		$url = $mozuUrl->formatUrl("facetHierDepth", $facetHierDepth);
+		$url = $mozuUrl->formatUrl("facetHierPrefix", $facetHierPrefix);
+		$url = $mozuUrl->formatUrl("facetHierValue", $facetHierValue);
+		$url = $mozuUrl->formatUrl("facetPageSize", $facetPageSize);
+		$url = $mozuUrl->formatUrl("facetSettings", $facetSettings);
+		$url = $mozuUrl->formatUrl("facetStartIndex", $facetStartIndex);
+		$url = $mozuUrl->formatUrl("facetTemplate", $facetTemplate);
+		$url = $mozuUrl->formatUrl("facetTemplateSubset", $facetTemplateSubset);
+		$url = $mozuUrl->formatUrl("facetValueFilter", $facetValueFilter);
+		$url = $mozuUrl->formatUrl("filter", $filter);
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("query", $query);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
 		return $mozuUrl;
 	}
 	
@@ -74,12 +73,11 @@ class ProductSearchResultUrl  {
 	public static function suggestUrl($groups, $pageSize, $query, $responseFields)
 	{
 		$url = "/api/commerce/catalog/storefront/productsearch/suggest?query={query}&groups={groups}&pageSize={pageSize}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("groups", $groups)
-				->formatUrl("pageSize", $pageSize)
-				->formatUrl("query", $query)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("groups", $groups);
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("query", $query);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	

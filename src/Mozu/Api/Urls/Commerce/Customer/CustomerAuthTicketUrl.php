@@ -24,7 +24,7 @@ class CustomerAuthTicketUrl  {
 	public static function createAnonymousShopperAuthTicketUrl()
 	{
 		$url = "/api/commerce/customer/authtickets/anonymousshopper";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
 		return $mozuUrl;
 	}
 	
@@ -36,9 +36,8 @@ class CustomerAuthTicketUrl  {
 	public static function createUserAuthTicketUrl($responseFields)
 	{
 		$url = "/api/commerce/customer/authtickets/?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -51,10 +50,9 @@ class CustomerAuthTicketUrl  {
 	public static function refreshUserAuthTicketUrl($refreshToken, $responseFields)
 	{
 		$url = "/api/commerce/customer/authtickets/refresh?refreshToken={refreshToken}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("refreshToken", $refreshToken)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("refreshToken", $refreshToken);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	

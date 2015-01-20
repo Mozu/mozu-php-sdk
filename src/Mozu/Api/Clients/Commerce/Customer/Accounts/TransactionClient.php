@@ -14,9 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Customer\Accounts;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\Accounts\TransactionUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Customer\Transaction;
 
 /**
 * Use the Customer Account Transactions resource to manage the transactions associated with a customer account.
@@ -33,7 +32,8 @@ class TransactionClient {
 	{
 		$url = TransactionUrl::getTransactionsUrl($accountId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -49,7 +49,8 @@ class TransactionClient {
 	{
 		$url = TransactionUrl::addTransactionUrl($accountId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($transaction);
+		$mozuClient->withResourceUrl($url)->withBody($transaction);
+		return $mozuClient;
 
 	}
 	
@@ -58,13 +59,13 @@ class TransactionClient {
 	*
 	* @param int $accountId Unique identifier of the customer account from which to delete the transaction.
 	* @param string $transactionId Unique identifier of the transaction to delete.
-	* @return MozuClient
 	*/
 	public static function removeTransactionClient($accountId, $transactionId)
 	{
 		$url = TransactionUrl::removeTransactionUrl($accountId, $transactionId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

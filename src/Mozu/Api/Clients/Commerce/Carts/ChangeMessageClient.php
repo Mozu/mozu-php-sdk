@@ -14,9 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Carts;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Carts\ChangeMessageUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\CommerceRuntime\Carts\CartChangeMessageCollection;
 
 /**
 * Use the Cart Messages resource to retrieve messages for live carts that the system logs when a product's price or inventory level changes.
@@ -33,20 +32,21 @@ class ChangeMessageClient {
 	{
 		$url = ChangeMessageUrl::getMessagesUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Deletes all messages associated with the cart of the current shopper.
 	*
-	* @return MozuClient
 	*/
 	public static function removeAllMessagesClient()
 	{
 		$url = ChangeMessageUrl::removeAllMessagesUrl();
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -54,13 +54,13 @@ class ChangeMessageClient {
 	* Removes a single message associated with the cart of the current shopper.
 	*
 	* @param string $messageId Identifier of the message to remove from the cart.
-	* @return MozuClient
 	*/
 	public static function removeMessageClient($messageId)
 	{
 		$url = ChangeMessageUrl::removeMessageUrl($messageId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

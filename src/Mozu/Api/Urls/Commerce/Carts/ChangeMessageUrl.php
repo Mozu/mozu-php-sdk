@@ -25,9 +25,8 @@ class ChangeMessageUrl  {
 	public static function getMessagesUrl($responseFields)
 	{
 		$url = "/api/commerce/carts/current/messages?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -38,7 +37,7 @@ class ChangeMessageUrl  {
 	public static function removeAllMessagesUrl()
 	{
 		$url = "/api/commerce/carts/current/messages";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
 		return $mozuUrl;
 	}
 	
@@ -50,9 +49,8 @@ class ChangeMessageUrl  {
 	public static function removeMessageUrl($messageId)
 	{
 		$url = "/api/commerce/carts/current/messages/{messageId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("messageId", $messageId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("messageId", $messageId);
 		return $mozuUrl;
 	}
 	

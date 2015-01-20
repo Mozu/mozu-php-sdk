@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\CartUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\CommerceRuntime\Carts\Cart;
-use Mozu\Api\Contracts\CommerceRuntime\Carts\CartSummary;
 
 /**
 * Use the Carts resource to manage storefront shopping carts as items are added and removed. Each time a shopper's cart is modified, the Carts resource updates the estimated total with any applicable discounts.
@@ -35,7 +33,8 @@ class CartClient {
 	{
 		$url = CartUrl::getCartUrl($cartId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -49,7 +48,8 @@ class CartClient {
 	{
 		$url = CartUrl::getOrCreateCartUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -63,7 +63,8 @@ class CartClient {
 	{
 		$url = CartUrl::getCartSummaryUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -78,7 +79,8 @@ class CartClient {
 	{
 		$url = CartUrl::getUserCartSummaryUrl($responseFields, $userId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -93,7 +95,8 @@ class CartClient {
 	{
 		$url = CartUrl::getUserCartUrl($responseFields, $userId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -108,7 +111,8 @@ class CartClient {
 	{
 		$url = CartUrl::updateCartUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($cart);
+		$mozuClient->withResourceUrl($url)->withBody($cart);
+		return $mozuClient;
 
 	}
 	
@@ -116,26 +120,26 @@ class CartClient {
 	* Deletes the cart specified in the request.
 	*
 	* @param string $cartId Identifier of the cart to delete.
-	* @return MozuClient
 	*/
 	public static function deleteCartClient($cartId)
 	{
 		$url = CartUrl::deleteCartUrl($cartId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Deletes the cart of the currently active shopper.
 	*
-	* @return MozuClient
 	*/
 	public static function deleteCurrentCartClient()
 	{
 		$url = CartUrl::deleteCurrentCartUrl();
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

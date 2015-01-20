@@ -14,11 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Orders;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Orders\ShipmentUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\CommerceRuntime\Fulfillment\Shipment;
-use Mozu\Api\Contracts\CommerceRuntime\Fulfillment\ShippingRate;
-use Mozu\Api\Contracts\CommerceRuntime\Fulfillment\Package;
 
 /**
 * Use the shipments resource to manage shipments of collections of packages for an order.
@@ -37,7 +34,8 @@ class ShipmentClient {
 	{
 		$url = ShipmentUrl::getShipmentUrl($orderId, $responseFields, $shipmentId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -52,7 +50,8 @@ class ShipmentClient {
 	{
 		$url = ShipmentUrl::getAvailableShipmentMethodsUrl($draft, $orderId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -67,7 +66,8 @@ class ShipmentClient {
 	{
 		$url = ShipmentUrl::createPackageShipmentsUrl($orderId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($packageIds);
+		$mozuClient->withResourceUrl($url)->withBody($packageIds);
+		return $mozuClient;
 
 	}
 	
@@ -76,13 +76,13 @@ class ShipmentClient {
 	*
 	* @param string $orderId Unique identifier of the order to cancel shipment.
 	* @param string $shipmentId Unique identifier of the shipment to cancel.
-	* @return MozuClient
 	*/
 	public static function deleteShipmentClient($orderId, $shipmentId)
 	{
 		$url = ShipmentUrl::deleteShipmentUrl($orderId, $shipmentId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

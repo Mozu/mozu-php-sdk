@@ -14,9 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Orders;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Orders\DigitalPackageUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\CommerceRuntime\Fulfillment\DigitalPackage;
 
 /**
 * A digital package is a package in a digital format.
@@ -34,7 +33,8 @@ class DigitalPackageClient {
 	{
 		$url = DigitalPackageUrl::getAvailableDigitalPackageFulfillmentActionsUrl($digitalPackageId, $orderId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -50,7 +50,8 @@ class DigitalPackageClient {
 	{
 		$url = DigitalPackageUrl::getDigitalPackageUrl($digitalPackageId, $orderId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -66,7 +67,8 @@ class DigitalPackageClient {
 	{
 		$url = DigitalPackageUrl::createDigitalPackageUrl($orderId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($digitalPackage);
+		$mozuClient->withResourceUrl($url)->withBody($digitalPackage);
+		return $mozuClient;
 
 	}
 	
@@ -83,7 +85,8 @@ class DigitalPackageClient {
 	{
 		$url = DigitalPackageUrl::updateDigitalPackageUrl($digitalPackageId, $orderId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($digitalPackage);
+		$mozuClient->withResourceUrl($url)->withBody($digitalPackage);
+		return $mozuClient;
 
 	}
 	
@@ -92,13 +95,13 @@ class DigitalPackageClient {
 	*
 	* @param string $digitalPackageId The digitalPackage ID is unique package ID to update on the order.
 	* @param string $orderId The orderId is unique identifier of the order with which to associate the package.
-	* @return MozuClient
 	*/
 	public static function deleteDigitalPackageClient($orderId, $digitalPackageId)
 	{
 		$url = DigitalPackageUrl::deleteDigitalPackageUrl($digitalPackageId, $orderId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

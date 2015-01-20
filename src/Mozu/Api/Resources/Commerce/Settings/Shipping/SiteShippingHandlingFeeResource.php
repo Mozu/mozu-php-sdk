@@ -12,23 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Settings\Shipping;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Settings\Shipping\SiteShippingHandlingFeeClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\SiteSettings\Shipping\SiteShippingHandlingFee;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Order Handling Fee subresource to configure any shipping and handling fees to apply to orders for this site.
 */
 class SiteShippingHandlingFeeResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves the details of the order handling fee configured for the site.
@@ -39,9 +38,9 @@ class SiteShippingHandlingFeeResource {
 	public function getOrderHandlingFee($responseFields =  null)
 	{
 		$mozuClient = SiteShippingHandlingFeeClient::getOrderHandlingFeeClient($responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -55,9 +54,9 @@ class SiteShippingHandlingFeeResource {
 	public function createOrderHandlingFee($orderHandlingFee, $responseFields =  null)
 	{
 		$mozuClient = SiteShippingHandlingFeeClient::createOrderHandlingFeeClient($orderHandlingFee, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -71,9 +70,9 @@ class SiteShippingHandlingFeeResource {
 	public function updateOrderHandlingFee($orderHandlingFee, $responseFields =  null)
 	{
 		$mozuClient = SiteShippingHandlingFeeClient::updateOrderHandlingFeeClient($orderHandlingFee, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	

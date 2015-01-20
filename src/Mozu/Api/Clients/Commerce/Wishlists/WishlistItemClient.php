@@ -14,11 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Wishlists;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Wishlists\WishlistItemUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\CommerceRuntime\Wishlists\WishlistItem;
-use Mozu\Api\Contracts\CommerceRuntime\Wishlists\WishlistItemCollection;
-use Mozu\Api\Contracts\CommerceRuntime\Wishlists\Wishlist;
 
 /**
 * Use the Wish List Items subresource to manage items in a shopper wish list. The same product can be defined as an item in any number of wish lists for the customer account. Use the Wish Lists resource to manage shopper wish lists.
@@ -37,7 +34,8 @@ class WishlistItemClient {
 	{
 		$url = WishlistItemUrl::getWishlistItemUrl($responseFields, $wishlistId, $wishlistItemId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -56,7 +54,8 @@ class WishlistItemClient {
 	{
 		$url = WishlistItemUrl::getWishlistItemsUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex, $wishlistId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -76,7 +75,8 @@ class WishlistItemClient {
 	{
 		$url = WishlistItemUrl::getWishlistItemsByWishlistNameUrl($customerAccountId, $filter, $pageSize, $responseFields, $sortBy, $startIndex, $wishlistName);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -92,7 +92,8 @@ class WishlistItemClient {
 	{
 		$url = WishlistItemUrl::addItemToWishlistUrl($responseFields, $wishlistId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($wishlistItem);
+		$mozuClient->withResourceUrl($url)->withBody($wishlistItem);
+		return $mozuClient;
 
 	}
 	
@@ -109,7 +110,8 @@ class WishlistItemClient {
 	{
 		$url = WishlistItemUrl::updateWishlistItemQuantityUrl($quantity, $responseFields, $wishlistId, $wishlistItemId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -126,7 +128,8 @@ class WishlistItemClient {
 	{
 		$url = WishlistItemUrl::updateWishlistItemUrl($responseFields, $wishlistId, $wishlistItemId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($wishlistItem);
+		$mozuClient->withResourceUrl($url)->withBody($wishlistItem);
+		return $mozuClient;
 
 	}
 	
@@ -140,7 +143,8 @@ class WishlistItemClient {
 	{
 		$url = WishlistItemUrl::removeAllWishlistItemsUrl($wishlistId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -149,13 +153,13 @@ class WishlistItemClient {
 	*
 	* @param string $wishlistId Unique identifier of the wish list associated with the item to remove.
 	* @param string $wishlistItemId Unique identifier of the item to remove from the shopper wish list.
-	* @return MozuClient
 	*/
 	public static function deleteWishlistItemClient($wishlistId, $wishlistItemId)
 	{
 		$url = WishlistItemUrl::deleteWishlistItemUrl($wishlistId, $wishlistItemId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

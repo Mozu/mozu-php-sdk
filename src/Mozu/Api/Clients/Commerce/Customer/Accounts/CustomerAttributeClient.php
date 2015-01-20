@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Customer\Accounts;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\Accounts\CustomerAttributeUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Customer\CustomerAttribute;
-use Mozu\Api\Contracts\Customer\CustomerAttributeCollection;
 
 /**
 * Use the Attributes subresource to manage the attributes used to uniquely identify shopper accounts, such as gender or age.
@@ -36,7 +34,8 @@ class CustomerAttributeClient {
 	{
 		$url = CustomerAttributeUrl::getAccountAttributeUrl($accountId, $attributeFQN, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -55,7 +54,8 @@ class CustomerAttributeClient {
 	{
 		$url = CustomerAttributeUrl::getAccountAttributesUrl($accountId, $filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -71,7 +71,8 @@ class CustomerAttributeClient {
 	{
 		$url = CustomerAttributeUrl::addAccountAttributeUrl($accountId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($attribute);
+		$mozuClient->withResourceUrl($url)->withBody($attribute);
+		return $mozuClient;
 
 	}
 	
@@ -88,7 +89,8 @@ class CustomerAttributeClient {
 	{
 		$url = CustomerAttributeUrl::updateAccountAttributeUrl($accountId, $attributeFQN, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($attribute);
+		$mozuClient->withResourceUrl($url)->withBody($attribute);
+		return $mozuClient;
 
 	}
 	
@@ -97,13 +99,13 @@ class CustomerAttributeClient {
 	*
 	* @param int $accountId Unique identifier of the customer account.
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-	* @return MozuClient
 	*/
 	public static function deleteAccountAttributeClient($accountId, $attributeFQN)
 	{
 		$url = CustomerAttributeUrl::deleteAccountAttributeUrl($accountId, $attributeFQN);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

@@ -12,24 +12,22 @@
 
 namespace Mozu\Api\Resources\Platform;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Platform\EntityListClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\MZDB\EntityList;
-use Mozu\Api\Contracts\MZDB\EntityListCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * 
 */
 class EntityListResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* 
@@ -44,9 +42,9 @@ class EntityListResource {
 	public function getEntityLists($pageSize =  null, $startIndex =  null, $filter =  null, $sortBy =  null, $responseFields =  null)
 	{
 		$mozuClient = EntityListClient::getEntityListsClient($pageSize, $startIndex, $filter, $sortBy, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -60,9 +58,9 @@ class EntityListResource {
 	public function getEntityList($entityListFullName, $responseFields =  null)
 	{
 		$mozuClient = EntityListClient::getEntityListClient($entityListFullName, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -76,9 +74,9 @@ class EntityListResource {
 	public function createEntityList($entityList, $responseFields =  null)
 	{
 		$mozuClient = EntityListClient::createEntityListClient($entityList, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -93,9 +91,9 @@ class EntityListResource {
 	public function updateEntityList($entityList, $entityListFullName, $responseFields =  null)
 	{
 		$mozuClient = EntityListClient::updateEntityListClient($entityList, $entityListFullName, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -103,13 +101,12 @@ class EntityListResource {
 	* 
 	*
 	* @param string $entityListFullName 
-	* @return void
 	*/
 	public function deleteEntityList($entityListFullName)
 	{
 		$mozuClient = EntityListClient::deleteEntityListClient($entityListFullName);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

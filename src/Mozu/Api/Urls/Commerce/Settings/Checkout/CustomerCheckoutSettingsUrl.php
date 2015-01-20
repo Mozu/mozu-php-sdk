@@ -25,9 +25,8 @@ class CustomerCheckoutSettingsUrl  {
 	public static function getCustomerCheckoutSettingsUrl($responseFields)
 	{
 		$url = "/api/commerce/settings/checkout/customercheckoutsettings?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -39,9 +38,8 @@ class CustomerCheckoutSettingsUrl  {
 	public static function updateCustomerCheckoutSettingsUrl($responseFields)
 	{
 		$url = "/api/commerce/settings/checkout/customercheckoutsettings?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	

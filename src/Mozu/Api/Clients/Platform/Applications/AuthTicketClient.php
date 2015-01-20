@@ -14,11 +14,8 @@ namespace Mozu\Api\Clients\Platform\Applications;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Platform\Applications\AuthTicketUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\AppDev\AppAuthInfo;
-use Mozu\Api\Contracts\AppDev\AuthTicketRequest;
-use Mozu\Api\Contracts\AppDev\AuthTicket;
 
 /**
 * Use this resource to manage authentication tickets for your applications.
@@ -36,7 +33,8 @@ class AuthTicketClient {
 	{
 		$url = AuthTicketUrl::authenticateAppUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($appAuthInfo);
+		$mozuClient->withResourceUrl($url)->withBody($appAuthInfo);
+		return $mozuClient;
 
 	}
 	
@@ -51,7 +49,8 @@ class AuthTicketClient {
 	{
 		$url = AuthTicketUrl::refreshAppAuthTicketUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($authTicketRequest);
+		$mozuClient->withResourceUrl($url)->withBody($authTicketRequest);
+		return $mozuClient;
 
 	}
 	
@@ -59,13 +58,13 @@ class AuthTicketClient {
 	* Deletes an authentication for an application based on the specified refresh token.
 	*
 	* @param string $refreshToken The refresh token string from the application's authentication ticket.
-	* @return MozuClient
 	*/
 	public static function deleteAppAuthTicketClient($refreshToken)
 	{
 		$url = AuthTicketUrl::deleteAppAuthTicketUrl($refreshToken);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

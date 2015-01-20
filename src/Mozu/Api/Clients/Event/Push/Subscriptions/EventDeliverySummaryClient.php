@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Event\Push\Subscriptions;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Event\Push\Subscriptions\EventDeliverySummaryUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Event\EventDeliverySummaryCollection;
-use Mozu\Api\Contracts\Event\EventDeliverySummary;
 
 /**
 * 
@@ -36,7 +34,8 @@ class EventDeliverySummaryClient {
 	{
 		$url = EventDeliverySummaryUrl::getDeliveryAttemptSummaryUrl($id, $responseFields, $subscriptionId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -55,7 +54,8 @@ class EventDeliverySummaryClient {
 	{
 		$url = EventDeliverySummaryUrl::getDeliveryAttemptSummariesUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex, $subscriptionId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

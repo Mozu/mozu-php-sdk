@@ -12,24 +12,22 @@
 
 namespace Mozu\Api\Resources\Platform\Entitylists;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Platform\Entitylists\EntityContainerClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\MZDB\EntityContainer;
-use Mozu\Api\Contracts\MZDB\EntityContainerCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * 
 */
 class EntityContainerResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* 
@@ -42,9 +40,9 @@ class EntityContainerResource {
 	public function getEntityContainer($entityListFullName, $id, $responseFields =  null)
 	{
 		$mozuClient = EntityContainerClient::getEntityContainerClient($entityListFullName, $id, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -62,9 +60,9 @@ class EntityContainerResource {
 	public function getEntityContainers($entityListFullName, $pageSize =  null, $startIndex =  null, $filter =  null, $sortBy =  null, $responseFields =  null)
 	{
 		$mozuClient = EntityContainerClient::getEntityContainersClient($entityListFullName, $pageSize, $startIndex, $filter, $sortBy, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	

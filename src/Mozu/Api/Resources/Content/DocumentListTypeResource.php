@@ -12,25 +12,22 @@
 
 namespace Mozu\Api\Resources\Content;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Content\DocumentListTypeClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\Content\DocumentListType;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * 
 */
 class DocumentListTypeResource {
 
-	private $apiContext;
-	private $dataViewMode;
-	public function __construct(ApiContext $apiContext, $dataViewMode) 
+		private $apiContext;
+	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
-		$this->dataViewMode = $dataViewMode;
 	}
-
-	
 
 	/**
 	* 
@@ -39,12 +36,12 @@ class DocumentListTypeResource {
 	* @param DocumentListType $list 
 	* @return DocumentListType 
 	*/
-	public function createDocumentListType($list, $responseFields =  null)
+	public function createDocumentListType($dataViewMode, $list, $responseFields =  null)
 	{
-		$mozuClient = DocumentListTypeClient::createDocumentListTypeClient($this->dataViewMode, $list, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = DocumentListTypeClient::createDocumentListTypeClient($dataViewMode, $list, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -59,9 +56,9 @@ class DocumentListTypeResource {
 	public function updateDocumentListType($list, $documentListTypeFQN, $responseFields =  null)
 	{
 		$mozuClient = DocumentListTypeClient::updateDocumentListTypeClient($list, $documentListTypeFQN, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	

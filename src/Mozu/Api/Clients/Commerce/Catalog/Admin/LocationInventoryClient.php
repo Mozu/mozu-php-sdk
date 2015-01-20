@@ -14,12 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\LocationInventoryUrl;
-use Mozu\Api\Headers;
 use Mozu\Api\DataViewMode;
-
-use Mozu\Api\Contracts\ProductAdmin\LocationInventoryAdjustment;
-use Mozu\Api\Contracts\ProductAdmin\LocationInventory;
-use Mozu\Api\Contracts\ProductAdmin\LocationInventoryCollection;
+use Mozu\Api\Headers;
 
 /**
 * Use the Location Inventory resource to manage the level of active product inventory maintained at each defined location, at the location level.
@@ -38,7 +34,8 @@ class LocationInventoryClient {
 	{
 		$url = LocationInventoryUrl::getLocationInventoryUrl($locationCode, $productCode, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -57,14 +54,14 @@ class LocationInventoryClient {
 	{
 		$url = LocationInventoryUrl::getLocationInventoriesUrl($filter, $locationCode, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Creates an array of product inventory definitions for the location specified in the request. When adding a new inventory definition, you must specify the productCode and stockOnHand value in each array you define. All other properties are system-supplied and read only.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $locationCode User-defined code that uniquely identifies the location.
 	* @param bool $performUpserts 
 	* @param array|LocationInventory $locationInventoryList Array list of product inventory definitions for all associated locations. For each location inventory in the list, define the productCode and stockOnHand values.
@@ -74,14 +71,14 @@ class LocationInventoryClient {
 	{
 		$url = LocationInventoryUrl::addLocationInventoryUrl($locationCode, $performUpserts);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($locationInventoryList)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withBody($locationInventoryList)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Updates the active stock on hand inventory of products for the location code specified in the request.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $locationCode User-defined code that uniquely identifies the location.
 	* @param array|LocationInventoryAdjustment $locationInventoryAdjustments Properties of the inventory adjustments to perform for the specified location.
 	* @return MozuClient
@@ -90,23 +87,23 @@ class LocationInventoryClient {
 	{
 		$url = LocationInventoryUrl::updateLocationInventoryUrl($locationCode);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($locationInventoryAdjustments)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withBody($locationInventoryAdjustments)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Deletes the product code inventory definition for the location specified in the request.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $locationCode User-defined code that uniquely identifies the location.
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @return MozuClient
 	*/
 	public static function deleteLocationInventoryClient($dataViewMode, $locationCode, $productCode)
 	{
 		$url = LocationInventoryUrl::deleteLocationInventoryUrl($locationCode, $productCode);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	

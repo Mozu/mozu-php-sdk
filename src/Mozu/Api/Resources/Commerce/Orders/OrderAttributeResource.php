@@ -12,23 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Orders;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Orders\OrderAttributeClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\CommerceRuntime\Orders\OrderAttribute;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Order Attributes resource to define how an order attribute definition applies to a specific order.
 */
 class OrderAttributeResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves a list of the attributes defined for the order specified in the request.
@@ -39,9 +38,9 @@ class OrderAttributeResource {
 	public function getOrderAttributes($orderId)
 	{
 		$mozuClient = OrderAttributeClient::getOrderAttributesClient($orderId);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -55,9 +54,9 @@ class OrderAttributeResource {
 	public function createOrderAttributes($orderAttributes, $orderId)
 	{
 		$mozuClient = OrderAttributeClient::createOrderAttributesClient($orderAttributes, $orderId);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -72,9 +71,9 @@ class OrderAttributeResource {
 	public function updateOrderAttributes($orderAttributes, $orderId, $removeMissing =  null)
 	{
 		$mozuClient = OrderAttributeClient::updateOrderAttributesClient($orderAttributes, $orderId, $removeMissing);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	

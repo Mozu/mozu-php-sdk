@@ -14,9 +14,8 @@ namespace Mozu\Api\Clients\Content;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Content\DocumentDraftSummaryUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Content\DocumentDraftSummaryPagedCollection;
 
 /**
 * Use the document publishing subresource to manage and publish document drafts in the Content service.
@@ -36,7 +35,8 @@ class DocumentDraftSummaryClient {
 	{
 		$url = DocumentDraftSummaryUrl::listDocumentDraftSummariesUrl($documentLists, $pageSize, $responseFields, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -45,13 +45,13 @@ class DocumentDraftSummaryClient {
 	*
 	* @param string $documentLists List of document lists that contain documents to delete.
 	* @param array|string $documentIds Unique identifiers of the documents to delete.
-	* @return MozuClient
 	*/
 	public static function deleteDocumentDraftsClient($documentIds, $documentLists =  null)
 	{
 		$url = DocumentDraftSummaryUrl::deleteDocumentDraftsUrl($documentLists);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($documentIds);
+		$mozuClient->withResourceUrl($url)->withBody($documentIds);
+		return $mozuClient;
 
 	}
 	
@@ -60,13 +60,13 @@ class DocumentDraftSummaryClient {
 	*
 	* @param string $documentLists List of document lists that contain documents to publish.
 	* @param array|string $documentIds List of unique identifiers of the document drafts to publish.
-	* @return MozuClient
 	*/
 	public static function publishDocumentsClient($documentIds, $documentLists =  null)
 	{
 		$url = DocumentDraftSummaryUrl::publishDocumentsUrl($documentLists);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($documentIds);
+		$mozuClient->withResourceUrl($url)->withBody($documentIds);
+		return $mozuClient;
 
 	}
 	

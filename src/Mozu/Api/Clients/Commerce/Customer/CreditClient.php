@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Customer;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\CreditUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Customer\Credit\Credit;
-use Mozu\Api\Contracts\Customer\Credit\CreditCollection;
 
 /**
 * Use the Customer Credits resource to manage the store credit associated with a customer account. Store credit can represent a static amount the customer can redeem at any of the tenant's sites, or a gift card registered for a customer account. At this time, gift card functionality is reserved for future use.
@@ -38,7 +36,8 @@ class CreditClient {
 	{
 		$url = CreditUrl::getCreditsUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -53,7 +52,8 @@ class CreditClient {
 	{
 		$url = CreditUrl::getCreditUrl($code, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -68,7 +68,8 @@ class CreditClient {
 	{
 		$url = CreditUrl::addCreditUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($credit);
+		$mozuClient->withResourceUrl($url)->withBody($credit);
+		return $mozuClient;
 
 	}
 	
@@ -83,7 +84,8 @@ class CreditClient {
 	{
 		$url = CreditUrl::associateCreditToShopperUrl($code, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -99,7 +101,8 @@ class CreditClient {
 	{
 		$url = CreditUrl::updateCreditUrl($code, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($credit);
+		$mozuClient->withResourceUrl($url)->withBody($credit);
+		return $mozuClient;
 
 	}
 	
@@ -107,13 +110,13 @@ class CreditClient {
 	* Deletes a store credit previously applied to a customer account.
 	*
 	* @param string $code User-defined code of the store credit to delete.
-	* @return MozuClient
 	*/
 	public static function deleteCreditClient($code)
 	{
 		$url = CreditUrl::deleteCreditUrl($code);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

@@ -14,9 +14,8 @@ namespace Mozu\Api\Clients\Platform\Entitylists;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Platform\Entitylists\EntityUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\MZDB\EntityCollection;
 
 /**
 * 
@@ -35,7 +34,8 @@ class EntityClient {
 	{
 		$url = EntityUrl::getEntityUrl($entityListFullName, $id, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -54,7 +54,8 @@ class EntityClient {
 	{
 		$url = EntityUrl::getEntitiesUrl($entityListFullName, $filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -63,14 +64,15 @@ class EntityClient {
 	*
 	* @param string $entityListFullName 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param hashtable $item 
+	* @param JObject $item 
 	* @return MozuClient
 	*/
 	public static function insertEntityClient($item, $entityListFullName, $responseFields =  null)
 	{
 		$url = EntityUrl::insertEntityUrl($entityListFullName, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($item);
+		$mozuClient->withResourceUrl($url)->withBody($item);
+		return $mozuClient;
 
 	}
 	
@@ -80,14 +82,15 @@ class EntityClient {
 	* @param string $entityListFullName 
 	* @param string $id 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param hashtable $item 
+	* @param JObject $item 
 	* @return MozuClient
 	*/
 	public static function updateEntityClient($item, $entityListFullName, $id, $responseFields =  null)
 	{
 		$url = EntityUrl::updateEntityUrl($entityListFullName, $id, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($item);
+		$mozuClient->withResourceUrl($url)->withBody($item);
+		return $mozuClient;
 
 	}
 	
@@ -96,13 +99,13 @@ class EntityClient {
 	*
 	* @param string $entityListFullName 
 	* @param string $id 
-	* @return MozuClient
 	*/
 	public static function deleteEntityClient($entityListFullName, $id)
 	{
 		$url = EntityUrl::deleteEntityUrl($entityListFullName, $id);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

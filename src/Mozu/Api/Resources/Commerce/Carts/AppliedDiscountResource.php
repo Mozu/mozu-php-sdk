@@ -12,23 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Carts;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Carts\AppliedDiscountClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\CommerceRuntime\Carts\Cart;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Cart Coupons resource to apply a coupon to a defined cart or remove a coupon from a cart. When the shopper proceeds to checkout, the coupons applied to the cart apply to the order.
 */
 class AppliedDiscountResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Applies a defined coupon to the cart specified in the request.
@@ -41,9 +40,9 @@ class AppliedDiscountResource {
 	public function applyCoupon($cartId, $couponCode, $responseFields =  null)
 	{
 		$mozuClient = AppliedDiscountClient::applyCouponClient($cartId, $couponCode, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -56,9 +55,9 @@ class AppliedDiscountResource {
 	public function removeCoupons($cartId)
 	{
 		$mozuClient = AppliedDiscountClient::removeCouponsClient($cartId);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -72,9 +71,9 @@ class AppliedDiscountResource {
 	public function removeCoupon($cartId, $couponCode)
 	{
 		$mozuClient = AppliedDiscountClient::removeCouponClient($cartId, $couponCode);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	

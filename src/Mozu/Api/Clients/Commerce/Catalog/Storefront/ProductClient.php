@@ -14,18 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Storefront;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Storefront\ProductUrl;
-use Mozu\Api\Headers;
 use Mozu\Api\DataViewMode;
-
-use Mozu\Api\Contracts\ProductRuntime\LocationInventoryQuery;
-use Mozu\Api\Contracts\ProductRuntime\ProductOptionSelections;
-use Mozu\Api\Contracts\ProductRuntime\DiscountSelections;
-use Mozu\Api\Contracts\ProductRuntime\Product;
-use Mozu\Api\Contracts\ProductRuntime\LocationInventoryCollection;
-use Mozu\Api\Contracts\ProductRuntime\ConfiguredProduct;
-use Mozu\Api\Contracts\ProductRuntime\ProductValidationSummary;
-use Mozu\Api\Contracts\ProductRuntime\ProductCollection;
-use Mozu\Api\Contracts\ProductRuntime\DiscountValidationSummary;
+use Mozu\Api\Headers;
 
 /**
 * Use the Storefront Products  resource to manage the shopper product selection process during a visit to the web storefront. You can update product options as shoppers pick and choose their product choices. A shopper cannot add a product to a cart until all of its required options have been selected.
@@ -35,7 +25,6 @@ class ProductClient {
 	/**
 	* Retrieves a list of products that appear on the web storefront according to any specified filter criteria and sort options.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $responseFields 
@@ -47,14 +36,14 @@ class ProductClient {
 	{
 		$url = ProductUrl::getProductsUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Retrieves the active inventory level information associated with the product or location specified in the request.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $locationCodes Array of location codes for which to retrieve product inventory information.
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @param string $responseFields 
@@ -64,26 +53,28 @@ class ProductClient {
 	{
 		$url = ProductUrl::getProductInventoryUrl($locationCodes, $productCode, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Retrieves information about a single product given its product code.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param bool $allowInactive If true, returns an inactive product as part of the query.
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @param string $responseFields 
 	* @param bool $skipInventoryCheck If true, skip the inventory validation process for the specified product.
+	* @param bool $supressOutOfStock404 
 	* @param string $variationProductCode Merchant-created code associated with a specific product variation. Variation product codes maintain an association with the base product code.
 	* @return MozuClient
 	*/
-	public static function getProductClient($dataViewMode, $productCode, $variationProductCode =  null, $allowInactive =  null, $skipInventoryCheck =  null, $responseFields =  null)
+	public static function getProductClient($dataViewMode, $productCode, $variationProductCode =  null, $allowInactive =  null, $skipInventoryCheck =  null, $supressOutOfStock404 =  null, $responseFields =  null)
 	{
-		$url = ProductUrl::getProductUrl($allowInactive, $productCode, $responseFields, $skipInventoryCheck, $variationProductCode);
+		$url = ProductUrl::getProductUrl($allowInactive, $productCode, $responseFields, $skipInventoryCheck, $supressOutOfStock404, $variationProductCode);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
@@ -101,7 +92,8 @@ class ProductClient {
 	{
 		$url = ProductUrl::configuredProductUrl($includeOptionDetails, $productCode, $responseFields, $skipInventoryCheck);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($productOptionSelections);
+		$mozuClient->withResourceUrl($url)->withBody($productOptionSelections);
+		return $mozuClient;
 
 	}
 	
@@ -118,7 +110,8 @@ class ProductClient {
 	{
 		$url = ProductUrl::validateProductUrl($productCode, $responseFields, $skipInventoryCheck);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($productOptionSelections);
+		$mozuClient->withResourceUrl($url)->withBody($productOptionSelections);
+		return $mozuClient;
 
 	}
 	
@@ -138,14 +131,14 @@ class ProductClient {
 	{
 		$url = ProductUrl::validateDiscountsUrl($allowInactive, $customerAccountId, $productCode, $responseFields, $skipInventoryCheck, $variationProductCode);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($discountSelections);
+		$mozuClient->withResourceUrl($url)->withBody($discountSelections);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* 
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $responseFields 
 	* @param LocationInventoryQuery $query 
 	* @return MozuClient
@@ -154,7 +147,8 @@ class ProductClient {
 	{
 		$url = ProductUrl::getProductInventoriesUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($query)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withBody($query)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	

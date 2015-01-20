@@ -26,10 +26,9 @@ class TenantAdminUserAuthTicketUrl  {
 	public static function createUserAuthTicketUrl($responseFields, $tenantId)
 	{
 		$url = "/api/platform/adminuser/authtickets/tenants?tenantId={tenantId}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"POST", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields)
-				->formatUrl("tenantId", $tenantId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("tenantId", $tenantId);
 		return $mozuUrl;
 	}
 	
@@ -42,10 +41,9 @@ class TenantAdminUserAuthTicketUrl  {
 	public static function refreshAuthTicketUrl($responseFields, $tenantId)
 	{
 		$url = "/api/platform/adminuser/authtickets/tenants?tenantId={tenantId}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"PUT", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields)
-				->formatUrl("tenantId", $tenantId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("tenantId", $tenantId);
 		return $mozuUrl;
 	}
 	
@@ -57,9 +55,8 @@ class TenantAdminUserAuthTicketUrl  {
 	public static function deleteUserAuthTicketUrl($refreshToken)
 	{
 		$url = "/api/platform/adminuser/authtickets/?refreshToken={refreshToken}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"DELETE", false);
-		$mozuUrl->formatUrl("refreshToken", $refreshToken);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("refreshToken", $refreshToken);
 		return $mozuUrl;
 	}
 	

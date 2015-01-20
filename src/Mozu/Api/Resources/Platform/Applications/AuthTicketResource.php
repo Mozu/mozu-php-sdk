@@ -12,25 +12,22 @@
 
 namespace Mozu\Api\Resources\Platform\Applications;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Platform\Applications\AuthTicketClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\AppDev\AppAuthInfo;
-use Mozu\Api\Contracts\AppDev\AuthTicketRequest;
-use Mozu\Api\Contracts\AppDev\AuthTicket;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use this resource to manage authentication tickets for your applications.
 */
 class AuthTicketResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Generate an authentication ticket for an application.
@@ -42,9 +39,9 @@ class AuthTicketResource {
 	public function authenticateApp($appAuthInfo, $responseFields =  null)
 	{
 		$mozuClient = AuthTicketClient::authenticateAppClient($appAuthInfo, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -58,9 +55,9 @@ class AuthTicketResource {
 	public function refreshAppAuthTicket($authTicketRequest, $responseFields =  null)
 	{
 		$mozuClient = AuthTicketClient::refreshAppAuthTicketClient($authTicketRequest, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -68,13 +65,12 @@ class AuthTicketResource {
 	* Deletes an authentication for an application based on the specified refresh token.
 	*
 	* @param string $refreshToken The refresh token string from the application's authentication ticket.
-	* @return void
 	*/
 	public function deleteAppAuthTicket($refreshToken)
 	{
 		$mozuClient = AuthTicketClient::deleteAppAuthTicketClient($refreshToken);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

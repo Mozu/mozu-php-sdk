@@ -25,9 +25,8 @@ class SiteShippingHandlingFeeUrl  {
 	public static function getOrderHandlingFeeUrl($responseFields)
 	{
 		$url = "/api/commerce/settings/shipping/orderhandlingfee?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -39,9 +38,8 @@ class SiteShippingHandlingFeeUrl  {
 	public static function createOrderHandlingFeeUrl($responseFields)
 	{
 		$url = "/api/commerce/settings/shipping/orderhandlingfee?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -53,9 +51,8 @@ class SiteShippingHandlingFeeUrl  {
 	public static function updateOrderHandlingFeeUrl($responseFields)
 	{
 		$url = "/api/commerce/settings/shipping/orderhandlingfee?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	

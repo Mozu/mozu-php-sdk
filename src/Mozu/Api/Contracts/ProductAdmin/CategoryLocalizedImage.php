@@ -20,6 +20,21 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class CategoryLocalizedImage
 {
 	/**
+	*Type of media specification required to successfully render the image, video, or other media content for the product category.
+	*/
+	public $mediaType;
+
+	/**
+	*Integer that represents the sequential order of this category image or video.
+	*/
+	public $sequence;
+
+	/**
+	*The URL of the product category video. The path name is set in the language specified by the LocaleCode.
+	*/
+	public $videoUrl;
+
+	/**
 	*Descriptive text associated with the image or video that appears on the web storefront.
 	*/
 	public $altText;
@@ -48,21 +63,6 @@ class CategoryLocalizedImage
 	*Language used for the entity. Currently, only "en-US" is supported.
 	*/
 	public $localeCode;
-
-	/**
-	*Type of media specification required to successfully render the image, video, or other media content for the product category.
-	*/
-	public $mediaType;
-
-	/**
-	*Integer that represents the sequential order of this category image or video.
-	*/
-	public $sequence;
-
-	/**
-	*The URL of the product category video. The path name is set in the language specified by the LocaleCode.
-	*/
-	public $videoUrl;
 
 }
 

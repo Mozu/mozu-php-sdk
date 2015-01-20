@@ -14,9 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Orders;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Orders\PackageUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\CommerceRuntime\Fulfillment\Package;
 
 /**
 * Use the Packages subresource to manage the physical packages to ship for an order.
@@ -34,7 +33,8 @@ class PackageClient {
 	{
 		$url = PackageUrl::getAvailablePackageFulfillmentActionsUrl($orderId, $packageId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -49,7 +49,8 @@ class PackageClient {
 	{
 		$url = PackageUrl::getPackageLabelUrl($orderId, $packageId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -65,7 +66,8 @@ class PackageClient {
 	{
 		$url = PackageUrl::getPackageUrl($orderId, $packageId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -81,7 +83,8 @@ class PackageClient {
 	{
 		$url = PackageUrl::createPackageUrl($orderId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($pkg);
+		$mozuClient->withResourceUrl($url)->withBody($pkg);
+		return $mozuClient;
 
 	}
 	
@@ -98,7 +101,8 @@ class PackageClient {
 	{
 		$url = PackageUrl::updatePackageUrl($orderId, $packageId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($pkg);
+		$mozuClient->withResourceUrl($url)->withBody($pkg);
+		return $mozuClient;
 
 	}
 	
@@ -107,13 +111,13 @@ class PackageClient {
 	*
 	* @param string $orderId Unique identifier of the order associated with the package to delete.
 	* @param string $packageId Unique identifier of the package to delete.
-	* @return MozuClient
 	*/
 	public static function deletePackageClient($orderId, $packageId)
 	{
 		$url = PackageUrl::deletePackageUrl($orderId, $packageId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

@@ -12,23 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Customer\Accounts;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Customer\Accounts\TransactionClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\Customer\Transaction;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Customer Account Transactions resource to manage the transactions associated with a customer account.
 */
 class TransactionResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves a list of transactions associated with the customer account specified in the request.
@@ -39,9 +38,9 @@ class TransactionResource {
 	public function getTransactions($accountId)
 	{
 		$mozuClient = TransactionClient::getTransactionsClient($accountId);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -56,9 +55,9 @@ class TransactionResource {
 	public function addTransaction($transaction, $accountId, $responseFields =  null)
 	{
 		$mozuClient = TransactionClient::addTransactionClient($transaction, $accountId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -67,13 +66,12 @@ class TransactionResource {
 	*
 	* @param int $accountId Unique identifier of the customer account from which to delete the transaction.
 	* @param string $transactionId Unique identifier of the transaction to delete.
-	* @return void
 	*/
 	public function removeTransaction($accountId, $transactionId)
 	{
 		$mozuClient = TransactionClient::removeTransactionClient($accountId, $transactionId);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

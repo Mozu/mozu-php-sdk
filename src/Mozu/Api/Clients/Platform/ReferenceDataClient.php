@@ -14,20 +14,8 @@ namespace Mozu\Api\Clients\Platform;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Platform\ReferenceDataUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Reference\TopLevelDomainCollection;
-use Mozu\Api\Contracts\Reference\ContentLocaleCollection;
-use Mozu\Api\Contracts\Core\BehaviorCollection;
-use Mozu\Api\Contracts\Reference\CountryCollection;
-use Mozu\Api\Contracts\Reference\TimeZoneCollection;
-use Mozu\Api\Contracts\Core\BehaviorCategoryCollection;
-use Mozu\Api\Contracts\Core\BehaviorCategory;
-use Mozu\Api\Contracts\Reference\CurrencyCollection;
-use Mozu\Api\Contracts\Reference\AddressSchemaCollection;
-use Mozu\Api\Contracts\Core\Behavior;
-use Mozu\Api\Contracts\Reference\UnitOfMeasureCollection;
-use Mozu\Api\Contracts\Reference\AddressSchema;
 
 /**
 * The Reference resource retrieves collections of standards the Mozu system currently supports. This includes content locales, top-level domains, units of measure, countries, currencies, time zones, and shipping or billing address schemas.
@@ -45,7 +33,8 @@ class ReferenceDataClient {
 	{
 		$url = ReferenceDataUrl::getAddressSchemaUrl($countryCode, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -59,7 +48,8 @@ class ReferenceDataClient {
 	{
 		$url = ReferenceDataUrl::getAddressSchemasUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -74,7 +64,8 @@ class ReferenceDataClient {
 	{
 		$url = ReferenceDataUrl::getBehaviorUrl($behaviorId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -89,7 +80,8 @@ class ReferenceDataClient {
 	{
 		$url = ReferenceDataUrl::getBehaviorCategoryUrl($categoryId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -103,7 +95,8 @@ class ReferenceDataClient {
 	{
 		$url = ReferenceDataUrl::getBehaviorCategoriesUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -118,7 +111,8 @@ class ReferenceDataClient {
 	{
 		$url = ReferenceDataUrl::getBehaviorsUrl($responseFields, $userType);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -132,7 +126,8 @@ class ReferenceDataClient {
 	{
 		$url = ReferenceDataUrl::getContentLocalesUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -146,7 +141,23 @@ class ReferenceDataClient {
 	{
 		$url = ReferenceDataUrl::getCountriesUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $responseFields 
+	* @return MozuClient
+	*/
+	public static function getCountriesWithStatesClient($responseFields =  null)
+	{
+		$url = ReferenceDataUrl::getCountriesWithStatesUrl($responseFields);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -160,7 +171,8 @@ class ReferenceDataClient {
 	{
 		$url = ReferenceDataUrl::getCurrenciesUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -174,7 +186,8 @@ class ReferenceDataClient {
 	{
 		$url = ReferenceDataUrl::getTimeZonesUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -188,7 +201,8 @@ class ReferenceDataClient {
 	{
 		$url = ReferenceDataUrl::getTopLevelDomainsUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -203,7 +217,8 @@ class ReferenceDataClient {
 	{
 		$url = ReferenceDataUrl::getUnitsOfMeasureUrl($filter, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

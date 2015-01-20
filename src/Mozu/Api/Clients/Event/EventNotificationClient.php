@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Event;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Event\EventNotificationUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Event\Event;
-use Mozu\Api\Contracts\Event\EventCollection;
 
 /**
 * Events are notifications Mozu publishes to the application when a create, read, update, or delete operation is performed. If the application subscribes to the event, you can use the Events resource to query for recent events Mozu published to your application or events that were not published successfully.
@@ -38,7 +36,8 @@ class EventNotificationClient {
 	{
 		$url = EventNotificationUrl::getEventsUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -53,7 +52,8 @@ class EventNotificationClient {
 	{
 		$url = EventNotificationUrl::getEventUrl($eventId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

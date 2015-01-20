@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin\Discounts;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\Discounts\DiscountTargetUrl;
-use Mozu\Api\Headers;
 use Mozu\Api\DataViewMode;
-
-use Mozu\Api\Contracts\ProductAdmin\DiscountTarget;
+use Mozu\Api\Headers;
 
 /**
 * Retrieves and modifies the products, categories, and shipping methods eligible for discounts in the form of a fixed dollar amount, percentage off a product price, or free shipping.
@@ -27,7 +25,6 @@ class DiscountTargetClient {
 	/**
 	* Retrieves the discount target, that is which products, categories, or shipping methods are eligible for the discount.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
@@ -36,7 +33,8 @@ class DiscountTargetClient {
 	{
 		$url = DiscountTargetUrl::getDiscountTargetUrl($discountId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
@@ -52,7 +50,8 @@ class DiscountTargetClient {
 	{
 		$url = DiscountTargetUrl::updateDiscountTargetUrl($discountId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($discountTarget);
+		$mozuClient->withResourceUrl($url)->withBody($discountTarget);
+		return $mozuClient;
 
 	}
 	

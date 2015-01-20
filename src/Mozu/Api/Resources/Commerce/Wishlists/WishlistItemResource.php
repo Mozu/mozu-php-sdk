@@ -12,25 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Wishlists;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Wishlists\WishlistItemClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\CommerceRuntime\Wishlists\WishlistItem;
-use Mozu\Api\Contracts\CommerceRuntime\Wishlists\WishlistItemCollection;
-use Mozu\Api\Contracts\CommerceRuntime\Wishlists\Wishlist;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Wish List Items subresource to manage items in a shopper wish list. The same product can be defined as an item in any number of wish lists for the customer account. Use the Wish Lists resource to manage shopper wish lists.
 */
 class WishlistItemResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves the details of an item in a shopper wish list.
@@ -43,9 +40,9 @@ class WishlistItemResource {
 	public function getWishlistItem($wishlistId, $wishlistItemId, $responseFields =  null)
 	{
 		$mozuClient = WishlistItemClient::getWishlistItemClient($wishlistId, $wishlistItemId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -63,9 +60,9 @@ class WishlistItemResource {
 	public function getWishlistItems($wishlistId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
 		$mozuClient = WishlistItemClient::getWishlistItemsClient($wishlistId, $startIndex, $pageSize, $sortBy, $filter, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -84,9 +81,9 @@ class WishlistItemResource {
 	public function getWishlistItemsByWishlistName($customerAccountId, $wishlistName, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
 		$mozuClient = WishlistItemClient::getWishlistItemsByWishlistNameClient($customerAccountId, $wishlistName, $startIndex, $pageSize, $sortBy, $filter, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -101,9 +98,9 @@ class WishlistItemResource {
 	public function addItemToWishlist($wishlistItem, $wishlistId, $responseFields =  null)
 	{
 		$mozuClient = WishlistItemClient::addItemToWishlistClient($wishlistItem, $wishlistId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -119,9 +116,9 @@ class WishlistItemResource {
 	public function updateWishlistItemQuantity($wishlistId, $wishlistItemId, $quantity, $responseFields =  null)
 	{
 		$mozuClient = WishlistItemClient::updateWishlistItemQuantityClient($wishlistId, $wishlistItemId, $quantity, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -137,9 +134,9 @@ class WishlistItemResource {
 	public function updateWishlistItem($wishlistItem, $wishlistId, $wishlistItemId, $responseFields =  null)
 	{
 		$mozuClient = WishlistItemClient::updateWishlistItemClient($wishlistItem, $wishlistId, $wishlistItemId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -152,9 +149,9 @@ class WishlistItemResource {
 	public function removeAllWishlistItems($wishlistId)
 	{
 		$mozuClient = WishlistItemClient::removeAllWishlistItemsClient($wishlistId);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -163,13 +160,12 @@ class WishlistItemResource {
 	*
 	* @param string $wishlistId Unique identifier of the wish list associated with the item to remove.
 	* @param string $wishlistItemId Unique identifier of the item to remove from the shopper wish list.
-	* @return void
 	*/
 	public function deleteWishlistItem($wishlistId, $wishlistItemId)
 	{
 		$mozuClient = WishlistItemClient::deleteWishlistItemClient($wishlistId, $wishlistItemId);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

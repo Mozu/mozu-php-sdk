@@ -27,11 +27,10 @@ class EventDeliverySummaryUrl  {
 	public static function getDeliveryAttemptSummaryUrl($id, $responseFields, $subscriptionId)
 	{
 		$url = "/api/event/push/subscriptions/{subscriptionId}/deliveryattempts/{id}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("id", $id)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("subscriptionId", $subscriptionId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("id", $id);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("subscriptionId", $subscriptionId);
 		return $mozuUrl;
 	}
 	
@@ -48,14 +47,13 @@ class EventDeliverySummaryUrl  {
 	public static function getDeliveryAttemptSummariesUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex, $subscriptionId)
 	{
 		$url = "/api/event/push/subscriptions/{subscriptionId}/deliveryattempts?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("filter", $filter)
-				->formatUrl("pageSize", $pageSize)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("sortBy", $sortBy)
-				->formatUrl("startIndex", $startIndex)
-				->formatUrl("subscriptionId", $subscriptionId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("filter", $filter);
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
+		$url = $mozuUrl->formatUrl("subscriptionId", $subscriptionId);
 		return $mozuUrl;
 	}
 	

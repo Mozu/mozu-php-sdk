@@ -12,24 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Returns;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Returns\ShipmentClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\CommerceRuntime\Fulfillment\Package;
-use Mozu\Api\Contracts\CommerceRuntime\Fulfillment\Shipment;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Return Shipments subresource to manage shipments for a return replacement.
 */
 class ShipmentResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves the details of the specified return replacement shipment.
@@ -42,9 +40,9 @@ class ShipmentResource {
 	public function getShipment($returnId, $shipmentId, $responseFields =  null)
 	{
 		$mozuClient = ShipmentClient::getShipmentClient($returnId, $shipmentId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -58,9 +56,9 @@ class ShipmentResource {
 	public function createPackageShipments($packageIds, $returnId)
 	{
 		$mozuClient = ShipmentClient::createPackageShipmentsClient($packageIds, $returnId);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -69,13 +67,12 @@ class ShipmentResource {
 	*
 	* @param string $returnId Unique identifier of the return associated with the replacement shipment to delete.
 	* @param string $shipmentId Unique identifier of the return replacement shipment to delete.
-	* @return void
 	*/
 	public function deleteShipment($returnId, $shipmentId)
 	{
 		$mozuClient = ShipmentClient::deleteShipmentClient($returnId, $shipmentId);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

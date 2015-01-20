@@ -12,23 +12,22 @@
 
 namespace Mozu\Api\Resources\Content\Documentlists;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Content\Documentlists\ViewClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\Content\DocumentCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * 
 */
 class ViewResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* 
@@ -45,9 +44,9 @@ class ViewResource {
 	public function getViewDocuments($documentListName, $viewName, $filter =  null, $sortBy =  null, $pageSize =  null, $startIndex =  null, $responseFields =  null)
 	{
 		$mozuClient = ViewClient::getViewDocumentsClient($documentListName, $viewName, $filter, $sortBy, $pageSize, $startIndex, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	

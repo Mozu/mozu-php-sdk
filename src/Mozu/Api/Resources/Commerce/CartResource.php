@@ -12,24 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\CartClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\CommerceRuntime\Carts\Cart;
-use Mozu\Api\Contracts\CommerceRuntime\Carts\CartSummary;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Carts resource to manage storefront shopping carts as items are added and removed. Each time a shopper's cart is modified, the Carts resource updates the estimated total with any applicable discounts.
 */
 class CartResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves the cart specified in the request.
@@ -41,9 +39,9 @@ class CartResource {
 	public function getCart($cartId, $responseFields =  null)
 	{
 		$mozuClient = CartClient::getCartClient($cartId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -56,9 +54,9 @@ class CartResource {
 	public function getOrCreateCart($responseFields =  null)
 	{
 		$mozuClient = CartClient::getOrCreateCartClient($responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -71,9 +69,9 @@ class CartResource {
 	public function getCartSummary($responseFields =  null)
 	{
 		$mozuClient = CartClient::getCartSummaryClient($responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -87,9 +85,9 @@ class CartResource {
 	public function getUserCartSummary($userId, $responseFields =  null)
 	{
 		$mozuClient = CartClient::getUserCartSummaryClient($userId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -103,9 +101,9 @@ class CartResource {
 	public function getUserCart($userId, $responseFields =  null)
 	{
 		$mozuClient = CartClient::getUserCartClient($userId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -119,9 +117,9 @@ class CartResource {
 	public function updateCart($cart, $responseFields =  null)
 	{
 		$mozuClient = CartClient::updateCartClient($cart, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -129,26 +127,24 @@ class CartResource {
 	* Deletes the cart specified in the request.
 	*
 	* @param string $cartId Identifier of the cart to delete.
-	* @return void
 	*/
 	public function deleteCart($cartId)
 	{
 		$mozuClient = CartClient::deleteCartClient($cartId);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	
 	/**
 	* Deletes the cart of the currently active shopper.
 	*
-	* @return void
 	*/
 	public function deleteCurrentCart()
 	{
 		$mozuClient = CartClient::deleteCurrentCartClient();
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

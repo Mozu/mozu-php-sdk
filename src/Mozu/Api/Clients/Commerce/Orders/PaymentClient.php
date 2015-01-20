@@ -14,12 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Orders;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Orders\PaymentUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\CommerceRuntime\Payments\PaymentAction;
-use Mozu\Api\Contracts\CommerceRuntime\Payments\PaymentCollection;
-use Mozu\Api\Contracts\CommerceRuntime\Orders\Order;
-use Mozu\Api\Contracts\CommerceRuntime\Payments\Payment;
 
 /**
 * Use the Payments subresource to manage payment transactions for orders. Each transaction performed for an order represents an individual payment. For example, if an order totals $75.00 but the shopper has a $50.00 gift certificate, both the gift certificate transaction and the credit card transaction for the remaining $25.00 are recorded as payments for the order.
@@ -37,7 +33,8 @@ class PaymentClient {
 	{
 		$url = PaymentUrl::getPaymentsUrl($orderId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -52,7 +49,8 @@ class PaymentClient {
 	{
 		$url = PaymentUrl::getAvailablePaymentActionsUrl($orderId, $paymentId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -68,7 +66,8 @@ class PaymentClient {
 	{
 		$url = PaymentUrl::getPaymentUrl($orderId, $paymentId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -85,7 +84,8 @@ class PaymentClient {
 	{
 		$url = PaymentUrl::performPaymentActionUrl($orderId, $paymentId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($action);
+		$mozuClient->withResourceUrl($url)->withBody($action);
+		return $mozuClient;
 
 	}
 	
@@ -101,7 +101,8 @@ class PaymentClient {
 	{
 		$url = PaymentUrl::createPaymentActionUrl($orderId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($action);
+		$mozuClient->withResourceUrl($url)->withBody($action);
+		return $mozuClient;
 
 	}
 	

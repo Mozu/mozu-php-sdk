@@ -14,9 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Orders;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Orders\PickupUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\CommerceRuntime\Fulfillment\Pickup;
 
 /**
 * Use the Pickups resource to organize items submitted in an order into pickups that enable the shopper to fulfill the order items using the in-store pickup method.
@@ -34,7 +33,8 @@ class PickupClient {
 	{
 		$url = PickupUrl::getAvailablePickupFulfillmentActionsUrl($orderId, $pickupId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -50,7 +50,8 @@ class PickupClient {
 	{
 		$url = PickupUrl::getPickupUrl($orderId, $pickupId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -66,7 +67,8 @@ class PickupClient {
 	{
 		$url = PickupUrl::createPickupUrl($orderId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($pickup);
+		$mozuClient->withResourceUrl($url)->withBody($pickup);
+		return $mozuClient;
 
 	}
 	
@@ -83,7 +85,8 @@ class PickupClient {
 	{
 		$url = PickupUrl::updatePickupUrl($orderId, $pickupId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($pickup);
+		$mozuClient->withResourceUrl($url)->withBody($pickup);
+		return $mozuClient;
 
 	}
 	
@@ -92,13 +95,13 @@ class PickupClient {
 	*
 	* @param string $orderId Unique identifier of the order associated with the pickup.
 	* @param string $pickupId Unique identifier of the pickup to remove.
-	* @return MozuClient
 	*/
 	public static function deletePickupClient($orderId, $pickupId)
 	{
 		$url = PickupUrl::deletePickupUrl($orderId, $pickupId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

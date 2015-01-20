@@ -12,23 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Admin;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Admin\LocationTypeClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\Location\LocationType;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Location Types resource to manage the types of locations your tenant maintains, such as warehouses, physical storefronts, and kiosks.
 */
 class LocationTypeResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieve a list of all location types defined for the tenant.
@@ -38,9 +37,9 @@ class LocationTypeResource {
 	public function getLocationTypes()
 	{
 		$mozuClient = LocationTypeClient::getLocationTypesClient();
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -54,9 +53,9 @@ class LocationTypeResource {
 	public function getLocationType($locationTypeCode, $responseFields =  null)
 	{
 		$mozuClient = LocationTypeClient::getLocationTypeClient($locationTypeCode, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -70,9 +69,9 @@ class LocationTypeResource {
 	public function addLocationType($locationType, $responseFields =  null)
 	{
 		$mozuClient = LocationTypeClient::addLocationTypeClient($locationType, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -87,9 +86,9 @@ class LocationTypeResource {
 	public function updateLocationType($locationType, $locationTypeCode, $responseFields =  null)
 	{
 		$mozuClient = LocationTypeClient::updateLocationTypeClient($locationType, $locationTypeCode, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -97,13 +96,12 @@ class LocationTypeResource {
 	* Deletes the location type specified in the request.
 	*
 	* @param string $locationTypeCode User-defined code used to identify the location type.
-	* @return void
 	*/
 	public function deleteLocationType($locationTypeCode)
 	{
 		$mozuClient = LocationTypeClient::deleteLocationTypeClient($locationTypeCode);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

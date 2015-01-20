@@ -12,24 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Customer\Credits;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Customer\Credits\CreditTransactionClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\Customer\Credit\CreditTransaction;
-use Mozu\Api\Contracts\Customer\Credit\CreditTransactionCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Customer Credit Transactions subresource to manage the individual transactions performed using a store credit or gift card.
 */
 class CreditTransactionResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves a list of the transactions performed using a customer credit that update the balance of the credit.
@@ -45,9 +43,9 @@ class CreditTransactionResource {
 	public function getTransactions($code, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
 		$mozuClient = CreditTransactionClient::getTransactionsClient($code, $startIndex, $pageSize, $sortBy, $filter, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -62,9 +60,9 @@ class CreditTransactionResource {
 	public function addTransaction($creditTransaction, $code, $responseFields =  null)
 	{
 		$mozuClient = CreditTransactionClient::addTransactionClient($creditTransaction, $code, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	

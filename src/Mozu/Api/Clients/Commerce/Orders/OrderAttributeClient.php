@@ -14,9 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Orders;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Orders\OrderAttributeUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\CommerceRuntime\Orders\OrderAttribute;
 
 /**
 * Use the Order Attributes resource to define how an order attribute definition applies to a specific order.
@@ -33,7 +32,8 @@ class OrderAttributeClient {
 	{
 		$url = OrderAttributeUrl::getOrderAttributesUrl($orderId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -48,7 +48,8 @@ class OrderAttributeClient {
 	{
 		$url = OrderAttributeUrl::createOrderAttributesUrl($orderId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($orderAttributes);
+		$mozuClient->withResourceUrl($url)->withBody($orderAttributes);
+		return $mozuClient;
 
 	}
 	
@@ -64,7 +65,8 @@ class OrderAttributeClient {
 	{
 		$url = OrderAttributeUrl::updateOrderAttributesUrl($orderId, $removeMissing);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($orderAttributes);
+		$mozuClient->withResourceUrl($url)->withBody($orderAttributes);
+		return $mozuClient;
 
 	}
 	
