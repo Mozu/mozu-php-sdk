@@ -25,7 +25,7 @@ class DocumentResourceTest extends BaseTest
     protected function setUp()
     {
     	$apiContext = new ApiContext($this->tenantId, 0, 1, 1);
-        $this->object = new DocumentResource($apiContext);
+        $this->object = new DocumentResource($apiContext, DataViewMode::LIVE);
         
     }
 
@@ -46,9 +46,10 @@ class DocumentResourceTest extends BaseTest
     {
         try {
             //$content = $this->object->getDocumentContent(DataViewMode::LIVE,  "files@mozu","d2e80a00-40f9-4f89-a065-b6a27db2b4c2");
-            $content = $this->object->getDocumentContent(DataViewMode::LIVE, "d2e80a00-40f9-4f89-a065-b6a27db2b4c2", "files@mozu");
+            $content = $this->object->getDocumentContent("files@mozu","d2e80a00-40f9-4f89-a065-b6a27db2b4c2");
             file_put_contents("c:\\files\\phpdownload.jpg", $content);
         } catch(\Exception $e) {
+            var_dump($e);
             parent::printError($e);
             $this->fail($e->getMessage());
         }

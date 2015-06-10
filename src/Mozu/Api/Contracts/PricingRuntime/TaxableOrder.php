@@ -20,6 +20,21 @@ namespace Mozu\Api\Contracts\PricingRuntime;
 class TaxableOrder
 {
 	/**
+	*3-letter ISO 4217 standard global currency code. Currently, only "USD" (US Dollar) is supported.
+	*/
+	public $currencyCode;
+
+	/**
+	*The combined price for all handling costs calculated together for shipped orders, not for digital or in-store pickup. This includes all handling costs per the product line items and options, excluding taxes and discounts. 
+	*/
+	public $handlingFee;
+
+	/**
+	*The date and time the order was submitted for purchase. 
+	*/
+	public $orderDate;
+
+	/**
 	*The unique identifier of the original order, used to track order changes for tax purposes.
 	*/
 	public $originalDocumentCode;
@@ -38,21 +53,6 @@ class TaxableOrder
 	*The type of request for which to tax this entity, which is Order or Return.
 	*/
 	public $taxRequestType;
-
-	/**
-	*3-letter ISO 4217 standard global currency code. Currently, only "USD" (US Dollar) is supported.
-	*/
-	public $currencyCode;
-
-	/**
-	*The combined price for all handling costs calculated together for shipped orders, not for digital or in-store pickup. This includes all handling costs per the product line items and options, excluding taxes and discounts. 
-	*/
-	public $handlingFee;
-
-	/**
-	*The date and time the order was submitted for purchase. 
-	*/
-	public $orderDate;
 
 	/**
 	*List of line items associated with the order.

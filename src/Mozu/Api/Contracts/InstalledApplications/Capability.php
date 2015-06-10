@@ -20,6 +20,11 @@ namespace Mozu\Api\Contracts\InstalledApplications;
 class Capability
 {
 	/**
+	*The scope at which the object exists, such as "Tenant", "MasterCatalog", or "Site". Scope delineates the level and area of Mozu the object exists within or affects.
+	*/
+	public $scopeType;
+
+	/**
 	*Array list of credit types active for the capability.
 	*/
 	public $activeCreditTypes;
@@ -58,11 +63,6 @@ class Capability
 	*The ID of the specific scope for the object. 
 	*/
 	public $scopeId;
-
-	/**
-	*The scope at which the object exists, such as "Tenant", "MasterCatalog", or "Site". Scope delineates the level and area of Mozu the object exists within or affects.
-	*/
-	public $scopeType;
 
 	/**
 	*Array list of the countries (by country code) to which this capability can actively ship. The entered shipping country is validated against a list of supported shipping countries. Messages return if the country code is not supported or duplicated. Supported carriers are also checked per country code.
