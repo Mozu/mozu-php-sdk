@@ -12,24 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Catalog\Storefront;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Catalog\Storefront\ProductSearchResultClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\ProductRuntime\ProductSearchResult;
-use Mozu\Api\Contracts\ProductRuntime\SearchSuggestionResult;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Product Search resource to provide dynamic search results to shoppers as they browse and search for products on the web storefront, and to suggest possible search terms as the shopper enters text.
 */
 class ProductSearchResultResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Searches the categories displayed on the web storefront for products or product options that the shopper types in a search query.
@@ -45,20 +43,21 @@ class ProductSearchResultResource {
 	* @param string $facetTemplate The facet template to use on the storefront. A template displays all facets associated with the template on the web storefront product search. Currently, only category-level facet templates are available.
 	* @param string $facetTemplateSubset Display a subset of the facets defined in the template specified in facetTemplate parameter.
 	* @param string $facetValueFilter The facet values to apply to the filter.
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product search results by any of its properties, including product code, type, category, and name. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=categoryId+eq+12"
+	* @param string $filter A set of filter expressions representing the search parameters for a query: eq=equals, ne=not equals, gt=greater than, lt = less than or equals, gt = greater than or equals, lt = less than or equals, sw = starts with, or cont = contains. Optional.
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $query The terms to search on.
+	* @param string $query A query entered for searches and facet range.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $searchSettings 
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return ProductSearchResult 
 	*/
-	public function search($query =  null, $filter =  null, $facetTemplate =  null, $facetTemplateSubset =  null, $facet =  null, $facetFieldRangeQuery =  null, $facetHierPrefix =  null, $facetHierValue =  null, $facetHierDepth =  null, $facetStartIndex =  null, $facetPageSize =  null, $facetSettings =  null, $facetValueFilter =  null, $sortBy =  null, $pageSize =  null, $startIndex =  null, $responseFields =  null)
+	public function search($query =  null, $filter =  null, $facetTemplate =  null, $facetTemplateSubset =  null, $facet =  null, $facetFieldRangeQuery =  null, $facetHierPrefix =  null, $facetHierValue =  null, $facetHierDepth =  null, $facetStartIndex =  null, $facetPageSize =  null, $facetSettings =  null, $facetValueFilter =  null, $sortBy =  null, $pageSize =  null, $startIndex =  null, $searchSettings =  null, $responseFields =  null)
 	{
-		$mozuClient = ProductSearchResultClient::searchClient($query, $filter, $facetTemplate, $facetTemplateSubset, $facet, $facetFieldRangeQuery, $facetHierPrefix, $facetHierValue, $facetHierDepth, $facetStartIndex, $facetPageSize, $facetSettings, $facetValueFilter, $sortBy, $pageSize, $startIndex, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = ProductSearchResultClient::searchClient($query, $filter, $facetTemplate, $facetTemplateSubset, $facet, $facetFieldRangeQuery, $facetHierPrefix, $facetHierValue, $facetHierDepth, $facetStartIndex, $facetPageSize, $facetSettings, $facetValueFilter, $sortBy, $pageSize, $startIndex, $searchSettings, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -67,16 +66,16 @@ class ProductSearchResultResource {
 	*
 	* @param string $groups 
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $query 
+	* @param string $query A query entered for searches and facet range.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return SearchSuggestionResult 
 	*/
 	public function suggest($query =  null, $groups =  null, $pageSize =  null, $responseFields =  null)
 	{
 		$mozuClient = ProductSearchResultClient::suggestClient($query, $groups, $pageSize, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	

@@ -30,36 +30,37 @@ class ProductSearchResultUrl  {
 		* @param string $facetTemplate The facet template to use on the storefront. A template displays all facets associated with the template on the web storefront product search. Currently, only category-level facet templates are available.
 		* @param string $facetTemplateSubset Display a subset of the facets defined in the template specified in facetTemplate parameter.
 		* @param string $facetValueFilter The facet values to apply to the filter.
-		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product search results by any of its properties, including product code, type, category, and name. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=categoryId+eq+12"
+		* @param string $filter A set of filter expressions representing the search parameters for a query: eq=equals, ne=not equals, gt=greater than, lt = less than or equals, gt = greater than or equals, lt = less than or equals, sw = starts with, or cont = contains. Optional.
 		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-		* @param string $query The terms to search on.
+		* @param string $query A query entered for searches and facet range.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $searchSettings 
 		* @param string $sortBy 
 		* @param int $startIndex 
 		* @return string Resource Url
 	*/
-	public static function searchUrl($facet, $facetFieldRangeQuery, $facetHierDepth, $facetHierPrefix, $facetHierValue, $facetPageSize, $facetSettings, $facetStartIndex, $facetTemplate, $facetTemplateSubset, $facetValueFilter, $filter, $pageSize, $query, $responseFields, $sortBy, $startIndex)
+	public static function searchUrl($facet, $facetFieldRangeQuery, $facetHierDepth, $facetHierPrefix, $facetHierValue, $facetPageSize, $facetSettings, $facetStartIndex, $facetTemplate, $facetTemplateSubset, $facetValueFilter, $filter, $pageSize, $query, $responseFields, $searchSettings, $sortBy, $startIndex)
 	{
 		$url = "/api/commerce/catalog/storefront/productsearch/search/?query={query}&filter={filter}&facetTemplate={facetTemplate}&facetTemplateSubset={facetTemplateSubset}&facet={facet}&facetFieldRangeQuery={facetFieldRangeQuery}&facetHierPrefix={facetHierPrefix}&facetHierValue={facetHierValue}&facetHierDepth={facetHierDepth}&facetStartIndex={facetStartIndex}&facetPageSize={facetPageSize}&facetSettings={facetSettings}&facetValueFilter={facetValueFilter}&sortBy={sortBy}&pageSize={pageSize}&startIndex={startIndex}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("facet", $facet)
-				->formatUrl("facetFieldRangeQuery", $facetFieldRangeQuery)
-				->formatUrl("facetHierDepth", $facetHierDepth)
-				->formatUrl("facetHierPrefix", $facetHierPrefix)
-				->formatUrl("facetHierValue", $facetHierValue)
-				->formatUrl("facetPageSize", $facetPageSize)
-				->formatUrl("facetSettings", $facetSettings)
-				->formatUrl("facetStartIndex", $facetStartIndex)
-				->formatUrl("facetTemplate", $facetTemplate)
-				->formatUrl("facetTemplateSubset", $facetTemplateSubset)
-				->formatUrl("facetValueFilter", $facetValueFilter)
-				->formatUrl("filter", $filter)
-				->formatUrl("pageSize", $pageSize)
-				->formatUrl("query", $query)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("sortBy", $sortBy)
-				->formatUrl("startIndex", $startIndex);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("facet", $facet);
+		$url = $mozuUrl->formatUrl("facetFieldRangeQuery", $facetFieldRangeQuery);
+		$url = $mozuUrl->formatUrl("facetHierDepth", $facetHierDepth);
+		$url = $mozuUrl->formatUrl("facetHierPrefix", $facetHierPrefix);
+		$url = $mozuUrl->formatUrl("facetHierValue", $facetHierValue);
+		$url = $mozuUrl->formatUrl("facetPageSize", $facetPageSize);
+		$url = $mozuUrl->formatUrl("facetSettings", $facetSettings);
+		$url = $mozuUrl->formatUrl("facetStartIndex", $facetStartIndex);
+		$url = $mozuUrl->formatUrl("facetTemplate", $facetTemplate);
+		$url = $mozuUrl->formatUrl("facetTemplateSubset", $facetTemplateSubset);
+		$url = $mozuUrl->formatUrl("facetValueFilter", $facetValueFilter);
+		$url = $mozuUrl->formatUrl("filter", $filter);
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("query", $query);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("searchSettings", $searchSettings);
+		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
 		return $mozuUrl;
 	}
 	
@@ -67,19 +68,18 @@ class ProductSearchResultUrl  {
 		* Get Resource Url for Suggest
 		* @param string $groups 
 		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-		* @param string $query 
+		* @param string $query A query entered for searches and facet range.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
 	public static function suggestUrl($groups, $pageSize, $query, $responseFields)
 	{
 		$url = "/api/commerce/catalog/storefront/productsearch/suggest?query={query}&groups={groups}&pageSize={pageSize}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("groups", $groups)
-				->formatUrl("pageSize", $pageSize)
-				->formatUrl("query", $query)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("groups", $groups);
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("query", $query);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	

@@ -15,7 +15,7 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 /**
-*	Paged list of defined product attributes.
+*	Array list of customer or order attributes.
 */
 class AttributeCollection
 {

@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\ChannelUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\CommerceRuntime\Channels\Channel;
-use Mozu\Api\Contracts\CommerceRuntime\Channels\ChannelCollection;
 
 /**
 * Use the Channels resource to manage the channels a company uses to create logical commercial business divisions based on region or types of sales, such as "US Online," "Amazon," or "EMEA Retail." All orders include a channel association that enables the company to perform financial reporting for each defined channel. Because channels are managed at the tenant level, you must associate all the tenant's sites with a channel. Sites that do not have a defined channel association cannot successfully submit orders.
@@ -38,14 +36,15 @@ class ChannelClient {
 	{
 		$url = ChannelUrl::getChannelsUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Retrieves the details of the channel specified in the request.
 	*
-	* @param string $code User-defined code that identifies the channel to retrieve.
+	* @param string $code User-defined code that uniqely identifies the channel group.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
@@ -53,7 +52,8 @@ class ChannelClient {
 	{
 		$url = ChannelUrl::getChannelUrl($code, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -61,44 +61,46 @@ class ChannelClient {
 	* Creates a new channel that defines a new logical business division to use for financial reporting.
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Channel $channel Properties of the channel to create.
+	* @param Channel $channel Properties of a channel used to divide a company into logical business divisions, such as "US Retail," "US Online," or "Amazon." All sites and orders are associated with a channel.
 	* @return MozuClient
 	*/
 	public static function createChannelClient($channel, $responseFields =  null)
 	{
 		$url = ChannelUrl::createChannelUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($channel);
+		$mozuClient->withResourceUrl($url)->withBody($channel);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Updates one or more details of a defined channel, including the associated sites.
 	*
-	* @param string $code User-defined code that identifies the channel to update.
+	* @param string $code User-defined code that uniqely identifies the channel group.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Channel $channel Properties of a the channel to update.
+	* @param Channel $channel Properties of a channel used to divide a company into logical business divisions, such as "US Retail," "US Online," or "Amazon." All sites and orders are associated with a channel.
 	* @return MozuClient
 	*/
 	public static function updateChannelClient($channel, $code, $responseFields =  null)
 	{
 		$url = ChannelUrl::updateChannelUrl($code, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($channel);
+		$mozuClient->withResourceUrl($url)->withBody($channel);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Deletes a defined channel for the tenant and removes the defined site associations. After deleting this channel, assign its associated sites to another channel.
 	*
-	* @param string $code User-defined code that identifies the channel to delete.
-	* @return MozuClient
+	* @param string $code User-defined code that uniqely identifies the channel group.
 	*/
 	public static function deleteChannelClient($code)
 	{
 		$url = ChannelUrl::deleteChannelUrl($code);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

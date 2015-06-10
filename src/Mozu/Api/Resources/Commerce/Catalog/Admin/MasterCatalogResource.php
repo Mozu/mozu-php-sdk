@@ -12,24 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Catalog\Admin;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Catalog\Admin\MasterCatalogClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\ProductAdmin\MasterCatalog;
-use Mozu\Api\Contracts\ProductAdmin\MasterCatalogCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Master Catalog resource to view details of the master catalogs associated with a tenant and to manage the product publishing mode for each master catalog.
 */
 class MasterCatalogResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieve the details of all master catalog associated with a tenant.
@@ -40,9 +38,9 @@ class MasterCatalogResource {
 	public function getMasterCatalogs($responseFields =  null)
 	{
 		$mozuClient = MasterCatalogClient::getMasterCatalogsClient($responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -56,9 +54,9 @@ class MasterCatalogResource {
 	public function getMasterCatalog($masterCatalogId, $responseFields =  null)
 	{
 		$mozuClient = MasterCatalogClient::getMasterCatalogClient($masterCatalogId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -67,15 +65,15 @@ class MasterCatalogResource {
 	*
 	* @param int $masterCatalogId 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param MasterCatalog $masterCatalog Properties of the master catalog to update, which consists of the product publishing mode. Possible values are "Pending" which saves product updates in draft mode until they are published, and "Live" which publishes all product changes immediately.
+	* @param MasterCatalog $masterCatalog Properties of a master product catalog defined for a tenant. All catalogs and sites associated with a master catalog share product definitions.
 	* @return MasterCatalog 
 	*/
 	public function updateMasterCatalog($masterCatalog, $masterCatalogId, $responseFields =  null)
 	{
 		$mozuClient = MasterCatalogClient::updateMasterCatalogClient($masterCatalog, $masterCatalogId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	

@@ -21,7 +21,7 @@ class WishlistUrl  {
 		* Get Resource Url for GetWishlists
 		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-		* @param string $q A list of search terms to use in the query when searching across wish list name. Separate multiple search terms with a space character.
+		* @param string $q A list of order search terms (not phrases) to use in the query when searching across order number and the name or email of the billing contact. When entering, separate multiple search terms with a space character.
 		* @param int $qLimit The maximum number of search results to return in the response. You can limit any range between 1-100.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
@@ -31,31 +31,29 @@ class WishlistUrl  {
 	public static function getWishlistsUrl($filter, $pageSize, $q, $qLimit, $responseFields, $sortBy, $startIndex)
 	{
 		$url = "/api/commerce/wishlists/?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}&q={q}&qLimit={qLimit}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("filter", $filter)
-				->formatUrl("pageSize", $pageSize)
-				->formatUrl("q", $q)
-				->formatUrl("qLimit", $qLimit)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("sortBy", $sortBy)
-				->formatUrl("startIndex", $startIndex);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("filter", $filter);
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("q", $q);
+		$url = $mozuUrl->formatUrl("qLimit", $qLimit);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetWishlist
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $wishlistId Unique identifier of the shopper wish list to retrieve.
+		* @param string $wishlistId Unique identifier of the wish list.
 		* @return string Resource Url
 	*/
 	public static function getWishlistUrl($responseFields, $wishlistId)
 	{
 		$url = "/api/commerce/wishlists/{wishlistId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields)
-				->formatUrl("wishlistId", $wishlistId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("wishlistId", $wishlistId);
 		return $mozuUrl;
 	}
 	
@@ -69,11 +67,10 @@ class WishlistUrl  {
 	public static function getWishlistByNameUrl($customerAccountId, $responseFields, $wishlistName)
 	{
 		$url = "/api/commerce/wishlists/customers/{customerAccountId}/{wishlistName}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("customerAccountId", $customerAccountId)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("wishlistName", $wishlistName);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("customerAccountId", $customerAccountId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("wishlistName", $wishlistName);
 		return $mozuUrl;
 	}
 	
@@ -85,39 +82,36 @@ class WishlistUrl  {
 	public static function createWishlistUrl($responseFields)
 	{
 		$url = "/api/commerce/wishlists/?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdateWishlist
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $wishlistId Unique identifier of the shopper wish list to update.
+		* @param string $wishlistId Unique identifier of the wish list.
 		* @return string Resource Url
 	*/
 	public static function updateWishlistUrl($responseFields, $wishlistId)
 	{
 		$url = "/api/commerce/wishlists/{wishlistId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields)
-				->formatUrl("wishlistId", $wishlistId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("wishlistId", $wishlistId);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for DeleteWishlist
-		* @param string $wishlistId Unique identifier of the wish list to delete.
+		* @param string $wishlistId Unique identifier of the wish list.
 		* @return string Resource Url
 	*/
 	public static function deleteWishlistUrl($wishlistId)
 	{
 		$url = "/api/commerce/wishlists/{wishlistId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("wishlistId", $wishlistId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("wishlistId", $wishlistId);
 		return $mozuUrl;
 	}
 	

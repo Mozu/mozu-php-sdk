@@ -19,55 +19,52 @@ class ProductPropertyUrl  {
 
 	/**
 		* Get Resource Url for GetProperties
-		* @param string $productCode 
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
 		* @return string Resource Url
 	*/
 	public static function getPropertiesUrl($productCode)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/Properties";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("productCode", $productCode);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetPropertyValueLocalizedContents
-		* @param string $attributeFQN 
-		* @param string $productCode 
-		* @param string $value 
+		* @param string $attributeFQN Fully qualified name for an attribute.
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+		* @param string $value The value string to create.
 		* @return string Resource Url
 	*/
 	public static function getPropertyValueLocalizedContentsUrl($attributeFQN, $productCode, $value)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/Properties/{attributeFQN}/values/{value}/LocalizedContent";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
-				->formatUrl("productCode", $productCode)
-				->formatUrl("value", $value);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("value", $value);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetPropertyValueLocalizedContent
-		* @param string $attributeFQN 
+		* @param string $attributeFQN Fully qualified name for an attribute.
 		* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
-		* @param string $productCode 
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $value 
+		* @param string $value The value string to create.
 		* @return string Resource Url
 	*/
 	public static function getPropertyValueLocalizedContentUrl($attributeFQN, $localeCode, $productCode, $responseFields, $value)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/Properties/{attributeFQN}/values/{value}/LocalizedContent/{localeCode}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
-				->formatUrl("localeCode", $localeCode)
-				->formatUrl("productCode", $productCode)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("value", $value);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("localeCode", $localeCode);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("value", $value);
 		return $mozuUrl;
 	}
 	
@@ -81,141 +78,133 @@ class ProductPropertyUrl  {
 	public static function getPropertyUrl($attributeFQN, $productCode, $responseFields)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/Properties/{attributeFQN}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
-				->formatUrl("productCode", $productCode)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for AddPropertyValueLocalizedContent
-		* @param string $attributeFQN 
-		* @param string $productCode 
+		* @param string $attributeFQN Fully qualified name for an attribute.
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $value 
+		* @param string $value The value string to create.
 		* @return string Resource Url
 	*/
 	public static function addPropertyValueLocalizedContentUrl($attributeFQN, $productCode, $responseFields, $value)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/Properties/{attributeFQN}/values/{value}/LocalizedContent?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
-				->formatUrl("productCode", $productCode)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("value", $value);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("value", $value);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for AddProperty
-		* @param string $productCode 
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
 	public static function addPropertyUrl($productCode, $responseFields)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/Properties?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("productCode", $productCode)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdatePropertyValueLocalizedContents
-		* @param string $attributeFQN 
-		* @param string $productCode 
-		* @param string $value 
+		* @param string $attributeFQN Fully qualified name for an attribute.
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+		* @param string $value The value string to create.
 		* @return string Resource Url
 	*/
 	public static function updatePropertyValueLocalizedContentsUrl($attributeFQN, $productCode, $value)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/Properties/{attributeFQN}/values/{value}/LocalizedContent";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
-				->formatUrl("productCode", $productCode)
-				->formatUrl("value", $value);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("value", $value);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdatePropertyValueLocalizedContent
-		* @param string $attributeFQN 
+		* @param string $attributeFQN Fully qualified name for an attribute.
 		* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
-		* @param string $productCode 
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $value 
+		* @param string $value The value string to create.
 		* @return string Resource Url
 	*/
 	public static function updatePropertyValueLocalizedContentUrl($attributeFQN, $localeCode, $productCode, $responseFields, $value)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/Properties/{attributeFQN}/values/{value}/LocalizedContent/{localeCode}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
-				->formatUrl("localeCode", $localeCode)
-				->formatUrl("productCode", $productCode)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("value", $value);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("localeCode", $localeCode);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("value", $value);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdateProperty
 		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-		* @param string $productCode 
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
 	public static function updatePropertyUrl($attributeFQN, $productCode, $responseFields)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/Properties/{attributeFQN}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
-				->formatUrl("productCode", $productCode)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for DeleteProperty
 		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-		* @param string $productCode 
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
 		* @return string Resource Url
 	*/
 	public static function deletePropertyUrl($attributeFQN, $productCode)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/Properties/{attributeFQN}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
-				->formatUrl("productCode", $productCode);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for DeletePropertyValueLocalizedContent
-		* @param string $attributeFQN 
+		* @param string $attributeFQN Fully qualified name for an attribute.
 		* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
-		* @param string $productCode 
-		* @param string $value 
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+		* @param string $value The value string to create.
 		* @return string Resource Url
 	*/
 	public static function deletePropertyValueLocalizedContentUrl($attributeFQN, $localeCode, $productCode, $value)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/Properties/{attributeFQN}/values/{value}/LocalizedContent/{localeCode}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
-				->formatUrl("localeCode", $localeCode)
-				->formatUrl("productCode", $productCode)
-				->formatUrl("value", $value);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("localeCode", $localeCode);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("value", $value);
 		return $mozuUrl;
 	}
 	

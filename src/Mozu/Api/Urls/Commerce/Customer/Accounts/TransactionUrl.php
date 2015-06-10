@@ -19,15 +19,14 @@ class TransactionUrl  {
 
 	/**
 		* Get Resource Url for GetTransactions
-		* @param int $accountId Unique identifier of the customer account for which to retrieve transactions.
+		* @param int $accountId Unique identifier of the customer account.
 		* @return string Resource Url
 	*/
 	public static function getTransactionsUrl($accountId)
 	{
 		$url = "/api/commerce/customer/accounts/{accountId}/transactions";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("accountId", $accountId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("accountId", $accountId);
 		return $mozuUrl;
 	}
 	
@@ -40,26 +39,24 @@ class TransactionUrl  {
 	public static function addTransactionUrl($accountId, $responseFields)
 	{
 		$url = "/api/commerce/customer/accounts/{accountId}/transactions?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("accountId", $accountId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for RemoveTransaction
-		* @param int $accountId Unique identifier of the customer account from which to delete the transaction.
+		* @param int $accountId Unique identifier of the customer account.
 		* @param string $transactionId Unique identifier of the transaction to delete.
 		* @return string Resource Url
 	*/
 	public static function removeTransactionUrl($accountId, $transactionId)
 	{
 		$url = "/api/commerce/customer/accounts/{accountId}/transactions/{transactionId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("accountId", $accountId)
-				->formatUrl("transactionId", $transactionId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		$url = $mozuUrl->formatUrl("transactionId", $transactionId);
 		return $mozuUrl;
 	}
 	

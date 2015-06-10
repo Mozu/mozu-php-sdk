@@ -14,9 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Customer\Accounts;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\Accounts\CustomerSegmentUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Customer\CustomerSegmentCollection;
 
 /**
 * Use the Customer Account Segments subresource to view the customer segments associated with a customer account.
@@ -38,7 +37,8 @@ class CustomerSegmentClient {
 	{
 		$url = CustomerSegmentUrl::getAccountSegmentsUrl($accountId, $filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

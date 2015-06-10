@@ -19,9 +19,15 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 */
 class SearchSettings
 {
-		public $searchSynonymSettings;
+	/**
+	*Settings of keys and values for synonyms in search results.
+	*/
+	public $searchSynonymSettings;
 
-		public $siteSearchSettings;
+	/**
+	*Settings for searches performed at the site level.
+	*/
+	public $siteSearchSettings;
 
 }
 

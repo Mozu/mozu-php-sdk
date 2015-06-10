@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\InStockNotificationSubscriptionUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Customer\InStockNotificationSubscription;
-use Mozu\Api\Contracts\Customer\InStockNotificationSubscriptionCollection;
 
 /**
 * Use the Customer In-Stock Notification Subscription resource to manage the subscriptions customer accounts use to send product notifications. This resource can send a notification when a product in a catalog returns to a site's active inventory after it is out of stock, or when a new product becomes available for the first time.
@@ -38,14 +36,15 @@ class InStockNotificationSubscriptionClient {
 	{
 		$url = InStockNotificationSubscriptionUrl::getInStockNotificationSubscriptionsUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Retrieves the details of a subscription that sends a push notification when a product is available in a site's active stock.
 	*
-	* @param int $id Unique identifier of the in-stock notification subscription to retrieve.
+	* @param int $id Unique identifier of the customer segment to retrieve.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
@@ -53,7 +52,8 @@ class InStockNotificationSubscriptionClient {
 	{
 		$url = InStockNotificationSubscriptionUrl::getInStockNotificationSubscriptionUrl($id, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -61,28 +61,29 @@ class InStockNotificationSubscriptionClient {
 	* Creates a new subscription that notifies the customer when the product specified in the request is available in the active inventory of the defined location.
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param InStockNotificationSubscription $inStockNotificationSubscription Properties of a subscription that sends the customer a notification when a product is available in a site's active stock.
+	* @param InStockNotificationSubscription $inStockNotificationSubscription Properties of a push notification to which the shopper subscribes. This notification sends the shopper an alert when a new product or a product previously out of stock becomes available in the specified location's active product inventory.
 	* @return MozuClient
 	*/
 	public static function addInStockNotificationSubscriptionClient($inStockNotificationSubscription, $responseFields =  null)
 	{
 		$url = InStockNotificationSubscriptionUrl::addInStockNotificationSubscriptionUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($inStockNotificationSubscription);
+		$mozuClient->withResourceUrl($url)->withBody($inStockNotificationSubscription);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Deletes a subscription for a customer in-stock notification.
 	*
-	* @param int $id Unique identifier of the customer in-stock notification subscription to delete.
-	* @return MozuClient
+	* @param int $id Unique identifier of the customer segment to retrieve.
 	*/
 	public static function deleteInStockNotificationSubscriptionClient($id)
 	{
 		$url = InStockNotificationSubscriptionUrl::deleteInStockNotificationSubscriptionUrl($id);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

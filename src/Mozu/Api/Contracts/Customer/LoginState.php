@@ -25,42 +25,42 @@ class LoginState
 	public $createdOn;
 
 	/**
-	*The total number of times the customer account has unsuccessfully attempted to log in.
+	*The total number of failed authentication attempts associated with a customer account attempting access.
 	*/
 	public $failedLoginAttemptCount;
 
 	/**
-	*The date and time the customer's first unsuccessful attempt to log in was recorded.
+	*The date and time the initial login was unsuccessful. System-supplied and read only. Each time user authentication fails, an update occurs on this field. The amount of failures is calculated together for `failedLoginAttemptCount`.
 	*/
 	public $firstFailedLoginAttemptOn;
 
 	/**
-	*If true, the customer account is locked and the customer cannot log in.
+	*Indicates if a customer account and associated data is locked. If true, the user account is locked due to multiple failed authentication attempts. The user cannot login until the account is unlocked.
 	*/
 	public $isLocked;
 
 	/**
-	*If true, the customer account user must change the password for the account.
+	*Indicates if the customer account must have the password changed on login. If true, the login action requires a password change for increased security. If false, the login does not require a password change.
 	*/
 	public $isPasswordChangeRequired;
 
 	/**
-	*The date and time the customer account was most recently locked.
+	*Provides date and time data when the customer's account was last locked. System-supplied and read-only.
 	*/
 	public $lastLockedOn;
 
 	/**
-	*The date and time the customer account last logged in.
+	*Provides the date and time the customer last logged into the store. System-supplied and read-only.
 	*/
 	public $lastLoginOn;
 
 	/**
-	*The date and the time the user associated with the customer account last changed the account password.
+	*Date and time the customer's password was last modified. System-supplied and read-only.
 	*/
 	public $lastPasswordChangeOn;
 
 	/**
-	*The remaining number of login attempts the customer can perform before the system locks the customer account.
+	*The number of login attempts remaining for the customer. The user must login successfully before this value reaches zero otherwise the account locks.
 	*/
 	public $remainingLoginAttempts;
 

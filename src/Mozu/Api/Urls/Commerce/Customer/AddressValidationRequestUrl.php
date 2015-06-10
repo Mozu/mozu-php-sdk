@@ -25,9 +25,8 @@ class AddressValidationRequestUrl  {
 	public static function validateAddressUrl($responseFields)
 	{
 		$url = "/api/commerce/customer/addressvalidation/?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	

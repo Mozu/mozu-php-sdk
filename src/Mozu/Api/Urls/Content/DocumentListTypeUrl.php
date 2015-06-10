@@ -25,9 +25,8 @@ class DocumentListTypeUrl  {
 	public static function createDocumentListTypeUrl($responseFields)
 	{
 		$url = "/api/content/documentlistTypes/?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -39,11 +38,10 @@ class DocumentListTypeUrl  {
 	*/
 	public static function updateDocumentListTypeUrl($documentListTypeFQN, $responseFields)
 	{
-		$url = "/api/content/documentlistTypes/{documentListTypeName}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("documentListTypeFQN", $documentListTypeFQN)
-				->formatUrl("responseFields", $responseFields);
-
+		$url = "/api/content/documentlistTypes/{documentListTypeFQN}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("documentListTypeFQN", $documentListTypeFQN);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	

@@ -27,27 +27,25 @@ class PropertyTypeUrl  {
 	public static function getPropertyTypesUrl($pageSize, $responseFields, $startIndex)
 	{
 		$url = "/api/content/propertytypes/?pageSize={pageSize}&startIndex={startIndex}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("pageSize", $pageSize)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("startIndex", $startIndex);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetPropertyType
-		* @param string $propertyTypeName The name of the content property type.
+		* @param string $propertyTypeName The name of the property type.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
 	public static function getPropertyTypeUrl($propertyTypeName, $responseFields)
 	{
 		$url = "/api/content/propertytypes/{propertyTypeName}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("propertyTypeName", $propertyTypeName)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("propertyTypeName", $propertyTypeName);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -59,39 +57,36 @@ class PropertyTypeUrl  {
 	public static function createPropertyTypeUrl($responseFields)
 	{
 		$url = "/api/content/propertytypes/?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdatePropertyType
-		* @param string $propertyTypeName 
+		* @param string $propertyTypeName The name of the property type.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
 	public static function updatePropertyTypeUrl($propertyTypeName, $responseFields)
 	{
 		$url = "/api/content/propertytypes/{propertyTypeName}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("propertyTypeName", $propertyTypeName)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("propertyTypeName", $propertyTypeName);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for DeletePropertyType
-		* @param string $propertyTypeName 
+		* @param string $propertyTypeName The name of the property type.
 		* @return string Resource Url
 	*/
 	public static function deletePropertyTypeUrl($propertyTypeName)
 	{
 		$url = "/api/content/propertytypes/{propertyTypeName}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("propertyTypeName", $propertyTypeName);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("propertyTypeName", $propertyTypeName);
 		return $mozuUrl;
 	}
 	

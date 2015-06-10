@@ -12,24 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\InStockNotificationSubscriptionClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\Customer\InStockNotificationSubscription;
-use Mozu\Api\Contracts\Customer\InStockNotificationSubscriptionCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Customer In-Stock Notification Subscription resource to manage the subscriptions customer accounts use to send product notifications. This resource can send a notification when a product in a catalog returns to a site's active inventory after it is out of stock, or when a new product becomes available for the first time.
 */
 class InStockNotificationSubscriptionResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves a list of in-stock notification subscriptions.
@@ -44,25 +42,25 @@ class InStockNotificationSubscriptionResource {
 	public function getInStockNotificationSubscriptions($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
 		$mozuClient = InStockNotificationSubscriptionClient::getInStockNotificationSubscriptionsClient($startIndex, $pageSize, $sortBy, $filter, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 	/**
 	* Retrieves the details of a subscription that sends a push notification when a product is available in a site's active stock.
 	*
-	* @param int $id Unique identifier of the in-stock notification subscription to retrieve.
+	* @param int $id Unique identifier of the customer segment to retrieve.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return InStockNotificationSubscription 
 	*/
 	public function getInStockNotificationSubscription($id, $responseFields =  null)
 	{
 		$mozuClient = InStockNotificationSubscriptionClient::getInStockNotificationSubscriptionClient($id, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -70,29 +68,28 @@ class InStockNotificationSubscriptionResource {
 	* Creates a new subscription that notifies the customer when the product specified in the request is available in the active inventory of the defined location.
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param InStockNotificationSubscription $inStockNotificationSubscription Properties of a subscription that sends the customer a notification when a product is available in a site's active stock.
+	* @param InStockNotificationSubscription $inStockNotificationSubscription Properties of a push notification to which the shopper subscribes. This notification sends the shopper an alert when a new product or a product previously out of stock becomes available in the specified location's active product inventory.
 	* @return InStockNotificationSubscription 
 	*/
 	public function addInStockNotificationSubscription($inStockNotificationSubscription, $responseFields =  null)
 	{
 		$mozuClient = InStockNotificationSubscriptionClient::addInStockNotificationSubscriptionClient($inStockNotificationSubscription, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 	/**
 	* Deletes a subscription for a customer in-stock notification.
 	*
-	* @param int $id Unique identifier of the customer in-stock notification subscription to delete.
-	* @return void
+	* @param int $id Unique identifier of the customer segment to retrieve.
 	*/
 	public function deleteInStockNotificationSubscription($id)
 	{
 		$mozuClient = InStockNotificationSubscriptionClient::deleteInStockNotificationSubscriptionClient($id);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

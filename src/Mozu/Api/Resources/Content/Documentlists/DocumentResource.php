@@ -12,158 +12,151 @@
 
 namespace Mozu\Api\Resources\Content\Documentlists;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Content\Documentlists\DocumentClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\Content\Document;
-use Mozu\Api\Contracts\Content\DocumentCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use this subresource to manage documents in a document list.
 */
 class DocumentResource {
 
-	private $apiContext;
-	private $dataViewMode;
-	public function __construct(ApiContext $apiContext, $dataViewMode) 
+		private $apiContext;
+	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
-		$this->dataViewMode = $dataViewMode;
 	}
-
-	
 
 	/**
 	* Retrieve the content associated with a document, such as a product image or PDF specifications file, by supplying the document ID.
 	*
-	* @param string $documentId Unique identifier of the document.
-	* @param string $documentListName The name of the document list associated with the document.
+	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
+	* @param string $documentListName Name of content documentListName to delete
 	* @return Stream 
 	*/
-	public function getDocumentContent($documentListName, $documentId)
+	public function getDocumentContent($dataViewMode, $documentListName, $documentId)
 	{
-		$mozuClient = DocumentClient::getDocumentContentClient($this->dataViewMode, $documentListName, $documentId);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = DocumentClient::getDocumentContentClient($dataViewMode, $documentListName, $documentId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 	/**
 	* Retrieves a document within the specified document list.
 	*
-	* @param string $documentId Identifier of the document being retrieved.
-	* @param string $documentListName The name of the document list associated with the document to retrieve.
+	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
+	* @param string $documentListName Name of content documentListName to delete
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return Document 
 	*/
-	public function getDocument($documentListName, $documentId, $responseFields =  null)
+	public function getDocument($dataViewMode, $documentListName, $documentId, $responseFields =  null)
 	{
-		$mozuClient = DocumentClient::getDocumentClient($this->dataViewMode, $documentListName, $documentId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = DocumentClient::getDocumentClient($dataViewMode, $documentListName, $documentId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 	/**
 	* Retrieves a collection of documents according to any filter and sort criteria.
 	*
-	* @param string $documentListName The name of the document list.
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter a document's search results by any of its properties, including its name or folder path. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=Name+sw+Events"
+	* @param string $documentListName Name of content documentListName to delete
+	* @param string $filter A set of filter expressions representing the search parameters for a query: eq=equals, ne=not equals, gt=greater than, lt = less than or equals, gt = greater than or equals, lt = less than or equals, sw = starts with, or cont = contains. Optional.
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return DocumentCollection 
 	*/
-	public function getDocuments($documentListName, $filter =  null, $sortBy =  null, $pageSize =  null, $startIndex =  null, $responseFields =  null)
+	public function getDocuments($dataViewMode, $documentListName, $filter =  null, $sortBy =  null, $pageSize =  null, $startIndex =  null, $responseFields =  null)
 	{
-		$mozuClient = DocumentClient::getDocumentsClient($this->dataViewMode, $documentListName, $filter, $sortBy, $pageSize, $startIndex, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = DocumentClient::getDocumentsClient($dataViewMode, $documentListName, $filter, $sortBy, $pageSize, $startIndex, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 	/**
 	* Creates a new document in an defined document list.
 	*
-	* @param string $documentListName The descriptive alphanumeric document list name being created.
+	* @param string $documentListName Name of content documentListName to delete
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Document $document The descriptive name of the newly created document.
+	* @param Document $document The document properties that define the content used by the content management system (CMS).
 	* @return Document 
 	*/
-	public function createDocument($document, $documentListName, $responseFields =  null)
+	public function createDocument($dataViewMode, $document, $documentListName, $responseFields =  null)
 	{
-		$mozuClient = DocumentClient::createDocumentClient($this->dataViewMode, $document, $documentListName, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = DocumentClient::createDocumentClient($dataViewMode, $document, $documentListName, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 	/**
 	* Updates the content associated with a document, such as a product image or PDF specifications file, by supplying the document ID.
 	*
-	* @param string $documentId Unique identifier of the document.
-	* @param string $documentListName The name of the document list associated with the document.
-	* @param Stream $stream Input output stream that delivers information.
-	* @return void
+	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
+	* @param string $documentListName Name of content documentListName to delete
+	* @param Stream $stream Data stream that delivers information. Used to input and output data.
 	*/
 	public function updateDocumentContent($stream, $documentListName, $documentId, $contentType= null)
 	{
 		$mozuClient = DocumentClient::updateDocumentContentClient($stream, $documentListName, $documentId, $contentType);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	
 	/**
 	* Updates a document in a document list.
 	*
-	* @param string $documentId Unique identifier of the document to update.
-	* @param string $documentListName Name of the document list associated with the document.
+	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
+	* @param string $documentListName Name of content documentListName to delete
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Document $document Properties of the document to update.
+	* @param Document $document The document properties that define the content used by the content management system (CMS).
 	* @return Document 
 	*/
 	public function updateDocument($document, $documentListName, $documentId, $responseFields =  null)
 	{
 		$mozuClient = DocumentClient::updateDocumentClient($document, $documentListName, $documentId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 	/**
 	* Deletes a specific document based on the specified document ID.
 	*
-	* @param string $documentId Identifier of the document being deleted.
-	* @param string $documentListName The name of the document list associated with the document list being deleted.
-	* @return void
+	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
+	* @param string $documentListName Name of content documentListName to delete
 	*/
 	public function deleteDocument($documentListName, $documentId)
 	{
 		$mozuClient = DocumentClient::deleteDocumentClient($documentListName, $documentId);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	
 	/**
 	* Deletes the content associated with a document, such as a product image or PDF specification, by supplying the document ID.
 	*
-	* @param string $documentId Unique identifier of the document.
-	* @param string $documentListName The name of the document list associated with the document.
-	* @return void
+	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
+	* @param string $documentListName Name of content documentListName to delete
 	*/
 	public function deleteDocumentContent($documentListName, $documentId)
 	{
 		$mozuClient = DocumentClient::deleteDocumentContentClient($documentListName, $documentId);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

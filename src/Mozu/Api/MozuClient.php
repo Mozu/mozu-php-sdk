@@ -3,7 +3,9 @@
 namespace Mozu\Api;
 
 use Logger;
-use Guzzle\Service\Client as Client;
+use GuzzleHttp\Client;
+use GuzzleHttp\Psr7;
+use Guzzle\Http\Query;
 use Mozu\Api\Security\AppAuthenticator;
 use Mozu\Api\Resources\Platform\TenantResource;
 use Mozu\Api\Security\UserAuthenticator;
@@ -16,15 +18,16 @@ class MozuClient {
 	private $baseUrl = "";
 	private $mozuUrl = "";
 	private $apiContext = null;
-	private $headers = array();
+	private $headers = [];
 	private $jsonBody = null;
 	private $request = null;
 	private $response = null;
 	private $isStreamContent = false;
 	private $contentType = null;
+	private $client = null;
     private $logger = null;
 
-    function __construct() {
+    public function __construct() {
         $this->logger = Logger::getLogger("MozuClient");
     }
 
@@ -33,7 +36,6 @@ class MozuClient {
 		return $this;
 	}
 
-	
 	private function setUserAuth() {
 		$newTicket = null;
 		$authTicket = $this->apiContext->getUserAuthTicket();
@@ -73,14 +75,7 @@ class MozuClient {
 		if ($apiContext != null && $apiContext->getSiteId() > 0) {
 			$this->withHeader(Headers::X_VOL_SITE,$apiContext->getSiteId());
 		}
-
-        if ($apiContext != null && $apiContext->getLocale() != null ) {
-            $this->withHeader(Headers::X_VOL_LOCALE,$apiContext->getLocale());
-        }
-
-        if ($apiContext != null && $apiContext->getCurrency() != null ) {
-            $this->withHeader(Headers::X_VOL_CURRENCY,$apiContext->getCurrency());
-        }
+		
 		return $this;
 	}
 	
@@ -97,7 +92,10 @@ class MozuClient {
 	}
 	
 	public function getResult() {
-		if (strpos($this->response->getContentType(),"json") != false)
+        foreach ($this->response->getHeaders() as $name => $values) {
+            $this->logger->info($name . ': ' . implode(', ', $values));
+        }
+		if (strpos($this->response->getHeader("Content-Type")[0],"json") != false)
 			return  json_decode ( $this->response->getBody(true) );
 		else
 			return $this->response->getBody();
@@ -120,7 +118,7 @@ class MozuClient {
 		$this->validateContext();
 		$this->buildClientAndRequest();
 	    try {
-	      $this->response = $this->request->send ();
+	      $this->response = $this->client->sendAsync ($this->request)->wait();
 	    } catch (\Exception $e) {
 	    	 HttpHelper::checkError($e, $this->apiContext);
 	    }
@@ -129,7 +127,7 @@ class MozuClient {
 	}
 
 	private function buildClientAndRequest() {
-		$this->client = new Client ( $this->baseAddress, HttpHelper::getGuzzleConfig());
+
 		$authentication = AppAuthenticator::getInstance();
 		if (!isset($authentication)) {
 			throw new \Exception("Authentication is not initialized");
@@ -138,30 +136,25 @@ class MozuClient {
 		if ($this->mozuUrl->getVerb()== ""  || $this->mozuUrl->getUrl() == "" ) {
 			throw new \Exception("Verb or Resource Url is missing in MozuUrl");
 		}
-		
-		if ($this->apiContext != null && $this->apiContext->getUserAuthTicket() != null) {
-			//echo "Setting user Auth";
+
+        $this->client = new Client (['base_uri' => $this->baseAddress,  'verify' => false, 'useUrlEncoding' => false]);
+
+        if ($this->apiContext != null && $this->apiContext->getUserAuthTicket() != null) {
 			$this->setUserAuth();
 		}
-		
-		$this->request = $this->client->createRequest($this->mozuUrl->getVerb(), $this->mozuUrl->getUrl(), null, $this->jsonBody );
-		$this->request = $authentication->addAuthHeader($this->request);
-		if (!$this->isStreamContent)
-			$this->withHeader('Content-Type', 'application/json');
-		foreach ($this->headers as $property=>$value) {
-			$this->request->setHeader($property, $value);
-		}
-		$this->request->setHeader(Headers::X_VOL_VERSION,Version::$apiVersion);
-		
-		if ($this->contentType != null) {
-			$this->request->setHeader(Headers::CONTENT_TYPE,$this->contentType);
-		}
-		
-	    // turn off urlencoding so that filter and sortby params work correctly
-	    $query = $this->request->getQuery();
-	    $query->useUrlEncoding(false);
-    
-		
+
+        $this->headers = $authentication->addAuthHeader($this->headers);
+
+        if (!$this->isStreamContent)
+            $this->withHeader('Content-Type', 'application/json');
+        $this->withHeader(Headers::X_VOL_VERSION,Version::$apiVersion);
+
+        if ($this->contentType != null) {
+            $this->withHeader(Headers::CONTENT_TYPE,$this->contentType);
+        }
+
+        $this->logger->info("Request URI : ".$this->mozuUrl->getUrl());
+        $this->request = new Psr7\Request($this->mozuUrl->getVerb(),$this->mozuUrl->getUrl(), $this->headers,$this->jsonBody);
 	}
 		
 	private function validateContext() {
@@ -183,15 +176,25 @@ class MozuClient {
 			else
 				$this->baseAddress = HttpHelper::getUrl($this->apiContext->getTenantUrl());
 		}
+        else if ($this->mozuUrl->getLocation() == UrlLocation::PCI_POD)
+        {
+            if ($this->apiContext->getTenantId() < 0)
+                throw new \Exception("TenantId is missing");
+
+            if (!isset(MozuConfig::$basePciUrl))
+                throw new \Exception("MozuConfig basePciUrl is empty. A valid value is required");
+
+            $this->baseAddress = MozuConfig::$basePciUrl;
+        }
 		else
 		{
 			$authentication = AppAuthenticator::getInstance();
 			if ($authentication == null)
 			    throw new \Exception("App is not initialized. Use AppAuthenticator to initialize the app.");
-			if ($authentication->getBaseUrl() == "")
-				throw new \Exception("Authentication.Instance.BaseUrl is missing");
+			if (!isset(MozuConfig::$baseAppAuthUrl))
+				throw new \Exception("MozuConfig baseAppAuthUrl is empty. A valid value is required");
 		
-			$this->baseAddress = $authentication->getBaseUrl();
+			$this->baseAddress = MozuConfig::$baseAppAuthUrl;
 		}
 	}
 }

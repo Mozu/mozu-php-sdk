@@ -20,9 +20,14 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Fulfillment;
 class PickupItem
 {
 	/**
-	*This specifies the type of fulfillment item.
+	*This specifies the fulfillment type of digital package item.
 	*/
 	public $fulfillmentItemType;
+
+	/**
+	*The line id associated with the fulfillment.
+	*/
+	public $lineId;
 
 	/**
 	*Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
@@ -30,7 +35,7 @@ class PickupItem
 	public $productCode;
 
 	/**
-	*The quantity of the item in the in-store pickup.
+	*The specified quantity of objects and items. This property is used for numerous object types including products, options, components within a product bundle, cart and order items, returned items, shipping line items, items in a digital product. and items associated with types and reservations.
 	*/
 	public $quantity;
 

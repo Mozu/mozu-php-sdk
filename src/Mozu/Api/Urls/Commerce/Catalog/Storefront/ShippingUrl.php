@@ -25,9 +25,8 @@ class ShippingUrl  {
 	public static function getRatesUrl($responseFields)
 	{
 		$url = "/api/commerce/catalog/storefront/shipping/request-rates?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	

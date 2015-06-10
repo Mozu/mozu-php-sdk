@@ -14,14 +14,11 @@ namespace Mozu\Api\Clients\Platform\Applications;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Platform\Applications\AuthTicketUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
-use Mozu\Api\Contracts\AppDev\AppAuthInfo;
-use Mozu\Api\Contracts\AppDev\AuthTicketRequest;
-use Mozu\Api\Contracts\AppDev\AuthTicket;
-
 /**
-* Use this resource to manage authentication tickets for your applications.
+* Use the Authetickets for applications resource to manage authentication tickets for your apps.
 */
 class AuthTicketClient {
 
@@ -29,14 +26,15 @@ class AuthTicketClient {
 	* Generate an authentication ticket for an application.
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param AppAuthInfo $appAuthInfo Authentication information required to generate an authentication ticket includes the application id and the shared secret.
+	* @param AppAuthInfo $appAuthInfo The information required to authenticate third party applications against the Mozu API.
 	* @return MozuClient
 	*/
 	public static function authenticateAppClient($appAuthInfo, $responseFields =  null)
 	{
 		$url = AuthTicketUrl::authenticateAppUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($appAuthInfo);
+		$mozuClient->withResourceUrl($url)->withBody($appAuthInfo);
+		return $mozuClient;
 
 	}
 	
@@ -44,28 +42,29 @@ class AuthTicketClient {
 	* Refreshes the application's authentication ticket and generates a new access token by providing the refresh token string.
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param AuthTicketRequest $authTicketRequest The refresh token string required to update the application authentication ticket.
+	* @param AuthTicketRequest $authTicketRequest Properties of the authentication ticket refresh requests, which includes the refresh token string.
 	* @return MozuClient
 	*/
 	public static function refreshAppAuthTicketClient($authTicketRequest, $responseFields =  null)
 	{
 		$url = AuthTicketUrl::refreshAppAuthTicketUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($authTicketRequest);
+		$mozuClient->withResourceUrl($url)->withBody($authTicketRequest);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Deletes an authentication for an application based on the specified refresh token.
 	*
-	* @param string $refreshToken The refresh token string from the application's authentication ticket.
-	* @return MozuClient
+	* @param string $refreshToken Alphanumeric string used for access tokens. This token refreshes access for accounts by generating a new developer or application account authentication ticket after an access token expires.
 	*/
 	public static function deleteAppAuthTicketClient($refreshToken)
 	{
 		$url = AuthTicketUrl::deleteAppAuthTicketUrl($refreshToken);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

@@ -18,34 +18,113 @@ use Mozu\Api\UrlLocation;
 class ApplicationUrl  {
 
 	/**
-		* Get Resource Url for GetApplication
-		* @param string $appId The application ID that represents the application to retrieve.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* Get Resource Url for GetAppPackageNames
+		* @param string $applicationKey 
+		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
 		* @return string Resource Url
 	*/
-	public static function getApplicationUrl($appId, $responseFields)
+	public static function getAppPackageNamesUrl($applicationKey, $responseFields)
 	{
-		$url = "/api/platform/applications/{appId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("appId", $appId)
-				->formatUrl("responseFields", $responseFields);
-
+		$url = "/api/platform/developer/applications/{applicationKey}/packagenames?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("applicationKey", $applicationKey);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
 	/**
-		* Get Resource Url for UpdateApplication
-		* @param string $appId The application ID that represents the application to update.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* Get Resource Url for GetAppVersions
+		* @param string $nsAndAppId 
+		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
 		* @return string Resource Url
 	*/
-	public static function updateApplicationUrl($appId, $responseFields)
+	public static function getAppVersionsUrl($nsAndAppId, $responseFields)
 	{
-		$url = "/api/platform/applications/{appId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("appId", $appId)
-				->formatUrl("responseFields", $responseFields);
-
+		$url = "/api/platform/developer/applications/versions/{nsAndAppId}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("nsAndAppId", $nsAndAppId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for GetPackageFileMetadata
+		* @param string $applicationKey 
+		* @param string $filepath 
+		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+		* @return string Resource Url
+	*/
+	public static function getPackageFileMetadataUrl($applicationKey, $filepath, $responseFields)
+	{
+		$url = "/api/platform/developer/packages/{applicationKey}/filemetadata/{filepath}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("applicationKey", $applicationKey);
+		$url = $mozuUrl->formatUrl("filepath", $filepath);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for GetPackageMetadata
+		* @param string $applicationKey 
+		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+		* @return string Resource Url
+	*/
+	public static function getPackageMetadataUrl($applicationKey, $responseFields)
+	{
+		$url = "/api/platform/developer/packages/{applicationKey}/metadata?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("applicationKey", $applicationKey);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for UpsertPackageFile
+		* @param string $applicationKey 
+		* @param string $filepath 
+		* @param string $lastModifiedTime 
+		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+		* @return string Resource Url
+	*/
+	public static function upsertPackageFileUrl($applicationKey, $filepath, $lastModifiedTime, $responseFields)
+	{
+		$url = "/api/platform/developer/packages/{applicationKey}/files/{filepath}?lastModifiedTime={lastModifiedTime}&responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("applicationKey", $applicationKey);
+		$url = $mozuUrl->formatUrl("filepath", $filepath);
+		$url = $mozuUrl->formatUrl("lastModifiedTime", $lastModifiedTime);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for RenamePackageFile
+		* @param string $applicationKey 
+		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+		* @return string Resource Url
+	*/
+	public static function renamePackageFileUrl($applicationKey, $responseFields)
+	{
+		$url = "/api/platform/developer/packages/{applicationKey}/files_rename?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("applicationKey", $applicationKey);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for DeletePackageFile
+		* @param string $applicationKey 
+		* @param string $filepath 
+		* @return string Resource Url
+	*/
+	public static function deletePackageFileUrl($applicationKey, $filepath)
+	{
+		$url = "/api/platform/developer/packages/{applicationKey}/files/{filepath}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("applicationKey", $applicationKey);
+		$url = $mozuUrl->formatUrl("filepath", $filepath);
 		return $mozuUrl;
 	}
 	

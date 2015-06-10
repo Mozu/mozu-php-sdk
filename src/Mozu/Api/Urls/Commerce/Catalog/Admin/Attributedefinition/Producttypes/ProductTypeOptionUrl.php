@@ -19,33 +19,31 @@ class ProductTypeOptionUrl  {
 
 	/**
 		* Get Resource Url for GetOptions
-		* @param int $productTypeId Identifier of the product type to retrieve.
+		* @param int $productTypeId Identifier of the product type.
 		* @return string Resource Url
 	*/
 	public static function getOptionsUrl($productTypeId)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/producttypes/{productTypeId}/Options";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("productTypeId", $productTypeId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("productTypeId", $productTypeId);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetOption
 		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-		* @param int $productTypeId The identifier of the product type.
+		* @param int $productTypeId Identifier of the product type.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
 	public static function getOptionUrl($attributeFQN, $productTypeId, $responseFields)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/producttypes/{productTypeId}/Options/{attributeFQN}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
-				->formatUrl("productTypeId", $productTypeId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("productTypeId", $productTypeId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -58,10 +56,9 @@ class ProductTypeOptionUrl  {
 	public static function addOptionUrl($productTypeId, $responseFields)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/producttypes/{productTypeId}/Options?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("productTypeId", $productTypeId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("productTypeId", $productTypeId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -75,11 +72,10 @@ class ProductTypeOptionUrl  {
 	public static function updateOptionUrl($attributeFQN, $productTypeId, $responseFields)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/producttypes/{productTypeId}/Options/{attributeFQN}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
-				->formatUrl("productTypeId", $productTypeId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("productTypeId", $productTypeId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -92,10 +88,9 @@ class ProductTypeOptionUrl  {
 	public static function deleteOptionUrl($attributeFQN, $productTypeId)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/producttypes/{productTypeId}/Options/{attributeFQN}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
-				->formatUrl("productTypeId", $productTypeId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("productTypeId", $productTypeId);
 		return $mozuUrl;
 	}
 	

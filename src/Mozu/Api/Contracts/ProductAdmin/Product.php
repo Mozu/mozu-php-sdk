@@ -15,7 +15,7 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 /**
-*	Properties of a product in a master catalog. Product properties include discounts, localizable content, inventory information, attribute configurations, price data, and the catalogs associated with a product.
+*	The properties of a product, referenced and used by carts, orders, wish lists, and returns.
 */
 class Product
 {
@@ -25,7 +25,7 @@ class Product
 	public $baseProductCode;
 
 	/**
-	*Describes the types of fulfillment that are supported for this product. A product can support direct ship, in-store pickup, or both. Supported fulfillment types are defined at the master catalog level. Client administrators cannot override the supported fulfillment types at the catalog level.
+	*List of supported types of fulfillment  for the product or variation. The types include direct ship, in-store pickup, or both. 
 	*/
 	public $fulfillmentTypesSupported;
 
@@ -40,17 +40,17 @@ class Product
 	public $hasStandAloneOptions;
 
 	/**
-	*If true, the product must be packaged on its own and should not be jointly packaged with other products.
+	*Indicates if the product must be shipped alone in a container. This is used for products and products within a bundle. If true, this product cannot be shipped in a package with other items and must ship in a package by itself.
 	*/
 	public $isPackagedStandAlone;
 
 	/**
-	*If true, the product can be purchased or fulfilled at regular intervals such as a monthly billing cycle or a digital or physical subscription. This property is reserved for future functionality and is system-supplied and read only.
+	*Indicates if the product in a cart, order, or wish list is purchased on a recurring schedule. If true, the item can be purchased or fulfilled at regular intervals, such as a monthly billing cycle. For example, digital or physical product subscriptions are recurring cart items. This property is not used at this time and is reserved for future functionality.
 	*/
 	public $isRecurring;
 
 	/**
-	*If true, the entity is subject to sales tax based on the relevant tax rate.
+	*Indicates if the item is subject to taxation, used by products, options, extras, cart and order items, line items, and wish lists. If true, the entity is subject to tax based on the relevant tax rate and rules.
 	*/
 	public $isTaxable;
 
@@ -100,7 +100,7 @@ class Product
 	public $standAlonePackageType;
 
 	/**
-	*The universal product code associated with the product. The UPC of a product is unique across all sales channels.
+	*The universal product code (UPC) is the barcode defined for the product. The UPC is unique across all sales channels. 
 	*/
 	public $upc;
 
@@ -110,7 +110,7 @@ class Product
 	public $variationKey;
 
 	/**
-	*List of discounts available for a product.
+	*List of discounts available per configured conditions and criteria. These discounts are associated with products, orders, and shipping costs. Shoppers can view these discounts per order, per product in an order, or for their shipping depending on the configuration.
 	*/
 	public $applicableDiscounts;
 
@@ -127,37 +127,37 @@ class Product
 		public $content;
 
 	/**
-	*List of extra product attributes defined for this product.
+	*List of extra product attributes defined for this product. For example, monogram could be a possible extra for a shirt product.
 	*/
 	public $extras;
 
 	/**
-	*Properties of the inventory levels manages for the product.
+	*Properties and data of inventory information for configured and bundled products. If product stock is managed, the data specifies out of stock behavior.
 	*/
 	public $inventoryInfo;
 
 	/**
-	*List of option product attributes defined for this product.
+	*List of option attributes configured for an object. These values are associated and used by products, product bundles, and product types.
 	*/
 	public $options;
 
 	/**
-	*Height of the package in imperial units of feet and inches.
+	*Height of a package or bundle package in imperial units of feet and inches.
 	*/
 	public $packageHeight;
 
 	/**
-	*Length of the package in imperial units of feet and inches.
+	*Length of a package or bundle package in imperial units of feet and inches.
 	*/
 	public $packageLength;
 
 	/**
-	*Weight of the package in imperial units of pounds and ounces.
+	*Weight of a package or bundle package in imperial units of pounds and ounces.
 	*/
 	public $packageWeight;
 
 	/**
-	*Width of the package in imperial units of feet and inches.
+	*Width of a package or bundle package in imperial units of feet and inches.
 	*/
 	public $packageWidth;
 
@@ -167,7 +167,7 @@ class Product
 	public $price;
 
 	/**
-	*Describes the behavior the system uses when determining the price of the product.
+	*Properties that describe the behavior the system uses when determining the price of products.
 	*/
 	public $pricingBehavior;
 
@@ -177,7 +177,7 @@ class Product
 	public $productInCatalogs;
 
 	/**
-	*List of property product attributes defined for this product.
+	*Collection of property attributes defined for the object. Properties are associated to all objects within Mozu, including documents, products, and product types.
 	*/
 	public $properties;
 
@@ -187,7 +187,7 @@ class Product
 	public $publishingInfo;
 
 	/**
-	*The search engine optimized content defined for this product.
+	*The search engine optimized content defined for products or products associated with a catalog. If no SEO content is specified in the request for products associated with a catalog, this catalog uses the SEO content defined in the master catalog. To override the SEO content for this catalog, the `IsSEOContentOverridden `flag must be set to "true".
 	*/
 	public $seoContent;
 

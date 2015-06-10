@@ -12,24 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\ChannelGroupClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\CommerceRuntime\Channels\ChannelGroup;
-use Mozu\Api\Contracts\CommerceRuntime\Channels\ChannelGroupCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Channel Groups resource to manage groups of channels with common information.
 */
 class ChannelGroupResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves a list of defined channel groups according to any filter and sort criteria specified in the request.
@@ -44,25 +42,25 @@ class ChannelGroupResource {
 	public function getChannelGroups($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
 		$mozuClient = ChannelGroupClient::getChannelGroupsClient($startIndex, $pageSize, $sortBy, $filter, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 	/**
 	* Retrieves the details of a defined channel group.
 	*
-	* @param string $code The code that uniquely identifies the channel group.
+	* @param string $code User-defined code that uniqely identifies the channel group.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return ChannelGroup 
 	*/
 	public function getChannelGroup($code, $responseFields =  null)
 	{
 		$mozuClient = ChannelGroupClient::getChannelGroupClient($code, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -70,32 +68,32 @@ class ChannelGroupResource {
 	* Creates a new group of channels with common information.
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param ChannelGroup $channelGroup Properties of the channel group to create.
+	* @param ChannelGroup $channelGroup Properties of a group of channels that share common information.
 	* @return ChannelGroup 
 	*/
 	public function createChannelGroup($channelGroup, $responseFields =  null)
 	{
 		$mozuClient = ChannelGroupClient::createChannelGroupClient($channelGroup, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 	/**
 	* Updates one or more properties of a defined channel group.
 	*
-	* @param string $code Code that identifies the channel group.
+	* @param string $code User-defined code that uniqely identifies the channel group.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param ChannelGroup $channelGroup Properties of the channel group to update.
+	* @param ChannelGroup $channelGroup Properties of a group of channels that share common information.
 	* @return ChannelGroup 
 	*/
 	public function updateChannelGroup($channelGroup, $code, $responseFields =  null)
 	{
 		$mozuClient = ChannelGroupClient::updateChannelGroupClient($channelGroup, $code, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -103,13 +101,12 @@ class ChannelGroupResource {
 	* Deletes a defined group of channels, which removes the group association with each channel in the group but does not delete the channel definitions themselves.
 	*
 	* @param string $code User-defined code that uniqely identifies the channel group.
-	* @return void
 	*/
 	public function deleteChannelGroup($code)
 	{
 		$mozuClient = ChannelGroupClient::deleteChannelGroupClient($code);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

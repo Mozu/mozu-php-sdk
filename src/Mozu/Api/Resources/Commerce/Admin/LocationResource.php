@@ -12,24 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Admin;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Admin\LocationClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\Location\Location;
-use Mozu\Api\Contracts\Location\LocationCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Locations resource to manage each physical location associated with a tenant. Locations enable tenants to associate a physical address with product inventory, provide a store finder for in-store pickup, or both. Locations that support inventory can use both direct ship and in-store pickup fulfillment types.
 */
 class LocationResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves a list of all locations associated with a tenant, according to any filter and sort criteria specified in the request.
@@ -44,72 +42,71 @@ class LocationResource {
 	public function getLocations($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
 		$mozuClient = LocationClient::getLocationsClient($startIndex, $pageSize, $sortBy, $filter, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 	/**
 	* Retrieves the details of the location specified in the request by location code.
 	*
-	* @param string $locationCode The merchant-defined code of the location to retrieve.
-	* @param string $responseFields 
+	* @param string $locationCode The unique, user-defined code that identifies a location. 
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
 	* @return Location 
 	*/
 	public function getLocation($locationCode, $responseFields =  null)
 	{
 		$mozuClient = LocationClient::getLocationClient($locationCode, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 	/**
 	* Creates a new physical location for the tenant specified in the request header.
 	*
-	* @param string $responseFields 
-	* @param Location $location Properties of the location to create.
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param Location $location Properties of a physical location a tenant uses to manage inventory and fulfills orders, provide store finder functionality, or both.
 	* @return Location 
 	*/
 	public function addLocation($location, $responseFields =  null)
 	{
 		$mozuClient = LocationClient::addLocationClient($location, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 	/**
 	* Updates one or more details of a the location specified in the request by location code.
 	*
-	* @param string $locationCode The merchant-defined code associated with the location to update.
+	* @param string $locationCode The unique, user-defined code that identifies a location. 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Location $location Properties of the location to update.
+	* @param Location $location Properties of a physical location a tenant uses to manage inventory and fulfills orders, provide store finder functionality, or both.
 	* @return Location 
 	*/
 	public function updateLocation($location, $locationCode, $responseFields =  null)
 	{
 		$mozuClient = LocationClient::updateLocationClient($location, $locationCode, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 	/**
 	* Deletes the location specified in the request.
 	*
-	* @param string $locationCode The merchant-defined code of the location to delete.
-	* @return void
+	* @param string $locationCode The unique, user-defined code that identifies a location. 
 	*/
 	public function deleteLocation($locationCode)
 	{
 		$mozuClient = LocationClient::deleteLocationClient($locationCode);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

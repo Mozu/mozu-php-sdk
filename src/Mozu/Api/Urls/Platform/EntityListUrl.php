@@ -20,38 +20,36 @@ class EntityListUrl  {
 	/**
 		* Get Resource Url for GetEntityLists
 		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-		* @param int $pageSize 
+		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The amount is divided and displayed on the `pageCount `amount of pages. The default is 20 and maximum value is 200 per page.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $sortBy 
-		* @param int $startIndex 
+		* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional.
+		* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a `pageSize `of 25, to get the 51st through the 75th items, use `startIndex=3`.
 		* @return string Resource Url
 	*/
 	public static function getEntityListsUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex)
 	{
 		$url = "/api/platform/entitylists/?pageSize={pageSize}&startIndex={startIndex}&filter={filter}&sortBy={sortBy}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("filter", $filter)
-				->formatUrl("pageSize", $pageSize)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("sortBy", $sortBy)
-				->formatUrl("startIndex", $startIndex);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("filter", $filter);
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetEntityList
-		* @param string $entityListFullName 
+		* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
 	public static function getEntityListUrl($entityListFullName, $responseFields)
 	{
 		$url = "/api/platform/entitylists/{entityListFullName}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("entityListFullName", $entityListFullName)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("entityListFullName", $entityListFullName);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -63,39 +61,36 @@ class EntityListUrl  {
 	public static function createEntityListUrl($responseFields)
 	{
 		$url = "/api/platform/entitylists/?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdateEntityList
-		* @param string $entityListFullName 
+		* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
 	public static function updateEntityListUrl($entityListFullName, $responseFields)
 	{
 		$url = "/api/platform/entitylists/{entityListFullName}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("entityListFullName", $entityListFullName)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("entityListFullName", $entityListFullName);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for DeleteEntityList
-		* @param string $entityListFullName 
+		* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
 		* @return string Resource Url
 	*/
 	public static function deleteEntityListUrl($entityListFullName)
 	{
 		$url = "/api/platform/entitylists/{entityListFullName}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("entityListFullName", $entityListFullName);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("entityListFullName", $entityListFullName);
 		return $mozuUrl;
 	}
 	

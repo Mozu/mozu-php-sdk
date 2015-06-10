@@ -19,17 +19,16 @@ class CartUrl  {
 
 	/**
 		* Get Resource Url for GetCart
-		* @param string $cartId Identifier of the cart to retrieve.
+		* @param string $cartId Identifier of the cart to delete.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
 	public static function getCartUrl($cartId, $responseFields)
 	{
 		$url = "/api/commerce/carts/{cartId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("cartId", $cartId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("cartId", $cartId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -41,9 +40,8 @@ class CartUrl  {
 	public static function getOrCreateCartUrl($responseFields)
 	{
 		$url = "/api/commerce/carts/current?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -55,41 +53,38 @@ class CartUrl  {
 	public static function getCartSummaryUrl($responseFields)
 	{
 		$url = "/api/commerce/carts/summary?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetUserCartSummary
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $userId Unique identifier of the user whose cart details you want to retrieve.
+		* @param string $userId Unique identifier of the user whose tenant scopes you want to retrieve.
 		* @return string Resource Url
 	*/
 	public static function getUserCartSummaryUrl($responseFields, $userId)
 	{
 		$url = "/api/commerce/carts/user/{userId}/summary?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields)
-				->formatUrl("userId", $userId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("userId", $userId);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetUserCart
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $userId Unique identifier of the user whose cart you want to retrieve.
+		* @param string $userId Unique identifier of the user whose tenant scopes you want to retrieve.
 		* @return string Resource Url
 	*/
 	public static function getUserCartUrl($responseFields, $userId)
 	{
 		$url = "/api/commerce/carts/user/{userId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields)
-				->formatUrl("userId", $userId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("userId", $userId);
 		return $mozuUrl;
 	}
 	
@@ -101,9 +96,8 @@ class CartUrl  {
 	public static function updateCartUrl($responseFields)
 	{
 		$url = "/api/commerce/carts/current?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -115,9 +109,8 @@ class CartUrl  {
 	public static function deleteCartUrl($cartId)
 	{
 		$url = "/api/commerce/carts/{cartId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("cartId", $cartId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("cartId", $cartId);
 		return $mozuUrl;
 	}
 	
@@ -128,7 +121,7 @@ class CartUrl  {
 	public static function deleteCurrentCartUrl()
 	{
 		$url = "/api/commerce/carts/current";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
 		return $mozuUrl;
 	}
 	

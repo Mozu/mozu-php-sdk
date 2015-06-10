@@ -25,9 +25,8 @@ class CheckoutSettingsUrl  {
 	public static function getCheckoutSettingsUrl($responseFields)
 	{
 		$url = "/api/commerce/settings/checkout/?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	

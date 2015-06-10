@@ -26,78 +26,73 @@ class PaymentUrl  {
 	public static function getPaymentsUrl($orderId, $responseFields)
 	{
 		$url = "/api/commerce/orders/{orderId}/payments/?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("orderId", $orderId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetAvailablePaymentActions
-		* @param string $orderId Unique identifier of the order associated with the payment.
-		* @param string $paymentId Unique identifer of the payment for which to retrieve available actions.
+		* @param string $orderId Unique identifier of the order.
+		* @param string $paymentId Unique identifier of the payment for which to perform the action.
 		* @return string Resource Url
 	*/
 	public static function getAvailablePaymentActionsUrl($orderId, $paymentId)
 	{
 		$url = "/api/commerce/orders/{orderId}/payments/{paymentId}/actions";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("orderId", $orderId)
-				->formatUrl("paymentId", $paymentId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("paymentId", $paymentId);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetPayment
-		* @param string $orderId Unique identifier of the order associated with the payment transaction.
-		* @param string $paymentId Unique identifier of the payment transaction submitted for the order.
+		* @param string $orderId Unique identifier of the order.
+		* @param string $paymentId Unique identifier of the payment for which to perform the action.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
 	public static function getPaymentUrl($orderId, $paymentId, $responseFields)
 	{
 		$url = "/api/commerce/orders/{orderId}/payments/{paymentId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("orderId", $orderId)
-				->formatUrl("paymentId", $paymentId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("paymentId", $paymentId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for PerformPaymentAction
-		* @param string $orderId Unique identifier of the order associated with the payment.
-		* @param string $paymentId Unique identifer of the payment for which to perform the action.
+		* @param string $orderId Unique identifier of the order.
+		* @param string $paymentId Unique identifier of the payment for which to perform the action.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
 	public static function performPaymentActionUrl($orderId, $paymentId, $responseFields)
 	{
 		$url = "/api/commerce/orders/{orderId}/payments/{paymentId}/actions?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("orderId", $orderId)
-				->formatUrl("paymentId", $paymentId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("paymentId", $paymentId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for CreatePaymentAction
-		* @param string $orderId Unique identifier of the order for which to apply the payment.
+		* @param string $orderId Unique identifier of the order.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
 	public static function createPaymentActionUrl($orderId, $responseFields)
 	{
 		$url = "/api/commerce/orders/{orderId}/payments/actions?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("orderId", $orderId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	

@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\PublishingScopeUrl;
-use Mozu\Api\Headers;
 use Mozu\Api\DataViewMode;
-
-use Mozu\Api\Contracts\ProductAdmin\PublishingScope;
+use Mozu\Api\Headers;
 
 /**
 * Use the Product Publishing resource to publish or discard pending changes to product definitions in the master catalog.
@@ -27,30 +25,28 @@ class PublishingScopeClient {
 	/**
 	* Deletes the draft version of product changes for each product code specified in the request.
 	*
-	* @param DataViewMode $dataViewMode
-	* @param PublishingScope $publishScope Properties of the pending product changes to include in this operation.
-	* @return MozuClient
+	* @param PublishingScope $publishScope Describes the scope of the product publishing update, which can include individual product codes or all pending changes.
 	*/
 	public static function discardDraftsClient($dataViewMode, $publishScope)
 	{
 		$url = PublishingScopeUrl::discardDraftsUrl();
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($publishScope)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withBody($publishScope)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Publishes the draft version of product changes for each product code specified in the request, and changes the product publish state to "live".
 	*
-	* @param DataViewMode $dataViewMode
-	* @param PublishingScope $publishScope Properties of the pending product changes to include in this operation.
-	* @return MozuClient
+	* @param PublishingScope $publishScope Describes the scope of the product publishing update, which can include individual product codes or all pending changes.
 	*/
 	public static function publishDraftsClient($dataViewMode, $publishScope)
 	{
 		$url = PublishingScopeUrl::publishDraftsUrl();
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($publishScope)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withBody($publishScope)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	

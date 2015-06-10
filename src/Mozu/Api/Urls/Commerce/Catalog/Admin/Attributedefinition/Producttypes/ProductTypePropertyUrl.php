@@ -25,9 +25,8 @@ class ProductTypePropertyUrl  {
 	public static function getPropertiesUrl($productTypeId)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/producttypes/{productTypeId}/Properties";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("productTypeId", $productTypeId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("productTypeId", $productTypeId);
 		return $mozuUrl;
 	}
 	
@@ -41,11 +40,10 @@ class ProductTypePropertyUrl  {
 	public static function getPropertyUrl($attributeFQN, $productTypeId, $responseFields)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/producttypes/{productTypeId}/Properties/{attributeFQN}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
-				->formatUrl("productTypeId", $productTypeId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("productTypeId", $productTypeId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -58,10 +56,9 @@ class ProductTypePropertyUrl  {
 	public static function addPropertyUrl($productTypeId, $responseFields)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/producttypes/{productTypeId}/Properties?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("productTypeId", $productTypeId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("productTypeId", $productTypeId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -75,11 +72,10 @@ class ProductTypePropertyUrl  {
 	public static function updatePropertyUrl($attributeFQN, $productTypeId, $responseFields)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/producttypes/{productTypeId}/Properties/{attributeFQN}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
-				->formatUrl("productTypeId", $productTypeId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("productTypeId", $productTypeId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -92,10 +88,9 @@ class ProductTypePropertyUrl  {
 	public static function deletePropertyUrl($attributeFQN, $productTypeId)
 	{
 		$url = "/api/commerce/catalog/admin/attributedefinition/producttypes/{productTypeId}/Properties/{attributeFQN}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("attributeFQN", $attributeFQN)
-				->formatUrl("productTypeId", $productTypeId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("productTypeId", $productTypeId);
 		return $mozuUrl;
 	}
 	

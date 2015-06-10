@@ -29,29 +29,27 @@ class InStockNotificationSubscriptionUrl  {
 	public static function getInStockNotificationSubscriptionsUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex)
 	{
 		$url = "/api/commerce/instocknotifications/?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("filter", $filter)
-				->formatUrl("pageSize", $pageSize)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("sortBy", $sortBy)
-				->formatUrl("startIndex", $startIndex);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("filter", $filter);
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetInStockNotificationSubscription
-		* @param int $id Unique identifier of the in-stock notification subscription to retrieve.
+		* @param int $id Unique identifier of the customer segment to retrieve.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
 	public static function getInStockNotificationSubscriptionUrl($id, $responseFields)
 	{
 		$url = "/api/commerce/instocknotifications/{id}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("id", $id)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("id", $id);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -63,23 +61,21 @@ class InStockNotificationSubscriptionUrl  {
 	public static function addInStockNotificationSubscriptionUrl($responseFields)
 	{
 		$url = "/api/commerce/instocknotifications/?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for DeleteInStockNotificationSubscription
-		* @param int $id Unique identifier of the customer in-stock notification subscription to delete.
+		* @param int $id Unique identifier of the customer segment to retrieve.
 		* @return string Resource Url
 	*/
 	public static function deleteInStockNotificationSubscriptionUrl($id)
 	{
 		$url = "/api/commerce/instocknotifications/{id}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("id", $id);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("id", $id);
 		return $mozuUrl;
 	}
 	

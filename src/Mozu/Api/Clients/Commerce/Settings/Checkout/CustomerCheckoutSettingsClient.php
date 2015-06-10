@@ -14,9 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Settings\Checkout;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Settings\Checkout\CustomerCheckoutSettingsUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\SiteSettings\Order\CustomerCheckoutSettings;
 
 /**
 * Use the Customer Checkout Settings resource to define login settings that apply when shoppers proceed to checkout.
@@ -33,7 +32,8 @@ class CustomerCheckoutSettingsClient {
 	{
 		$url = CustomerCheckoutSettingsUrl::getCustomerCheckoutSettingsUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -41,14 +41,15 @@ class CustomerCheckoutSettingsClient {
 	* Modifies existing site checkout settings. Modify Payment, Customer Checkout, and Order Processing settings in one PUT.
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param CustomerCheckoutSettings $customerCheckoutSettings All the properties to update in the checkout settings.
+	* @param CustomerCheckoutSettings $customerCheckoutSettings The properties of the customer checkout settings such as whether shoppers must be logged in.
 	* @return MozuClient
 	*/
 	public static function updateCustomerCheckoutSettingsClient($customerCheckoutSettings, $responseFields =  null)
 	{
 		$url = CustomerCheckoutSettingsUrl::updateCustomerCheckoutSettingsUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($customerCheckoutSettings);
+		$mozuClient->withResourceUrl($url)->withBody($customerCheckoutSettings);
+		return $mozuClient;
 
 	}
 	

@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Platform\Adminuser;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Platform\Adminuser\TenantAdminUserAuthTicketUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Core\UserAuthInfo;
-use Mozu\Api\Contracts\AdminUser\TenantAdminUserAuthTicket;
 
 /**
 * Use the Admin User authentication tickets resource to generate and refresh authentication tickets that enable Mozu administrator or developer account users to access development or production tenants.
@@ -29,14 +27,15 @@ class TenantAdminUserAuthTicketClient {
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param int $tenantId Unique identifier of the development or production tenant for which to generate the user authentication ticket.
-	* @param UserAuthInfo $userAuthInfo The user authentication information required to generate the user authentication ticket, which consists of a user name and password.
+	* @param UserAuthInfo $userAuthInfo Information required to authenticate a user.
 	* @return MozuClient
 	*/
 	public static function createUserAuthTicketClient($userAuthInfo, $tenantId =  null, $responseFields =  null)
 	{
 		$url = TenantAdminUserAuthTicketUrl::createUserAuthTicketUrl($responseFields, $tenantId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($userAuthInfo);
+		$mozuClient->withResourceUrl($url)->withBody($userAuthInfo);
+		return $mozuClient;
 
 	}
 	
@@ -45,28 +44,29 @@ class TenantAdminUserAuthTicketClient {
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param int $tenantId 
-	* @param TenantAdminUserAuthTicket $existingAuthTicket Properties of the authentication ticket to refresh. The refresh token is required to complete this request.
+	* @param TenantAdminUserAuthTicket $existingAuthTicket Properties of the authentication ticket to be used in user claims with the Mozu API.
 	* @return MozuClient
 	*/
 	public static function refreshAuthTicketClient($existingAuthTicket, $tenantId =  null, $responseFields =  null)
 	{
 		$url = TenantAdminUserAuthTicketUrl::refreshAuthTicketUrl($responseFields, $tenantId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($existingAuthTicket);
+		$mozuClient->withResourceUrl($url)->withBody($existingAuthTicket);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Deletes the authentication ticket for the user by supplying the refresh token.
 	*
-	* @param string $refreshToken Refresh token string associated with the user authentication ticket.
-	* @return MozuClient
+	* @param string $refreshToken Alphanumeric string used for access tokens. This token refreshes access for accounts by generating a new developer or application account authentication ticket after an access token expires.
 	*/
 	public static function deleteUserAuthTicketClient($refreshToken)
 	{
 		$url = TenantAdminUserAuthTicketUrl::deleteUserAuthTicketUrl($refreshToken);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

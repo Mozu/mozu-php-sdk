@@ -14,111 +14,111 @@ namespace Mozu\Api\Clients\Platform\Entitylists;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Platform\Entitylists\ListViewUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
-use Mozu\Api\Contracts\MZDB\ListView;
-use Mozu\Api\Contracts\MZDB\EntityContainerCollection;
-use Mozu\Api\Contracts\MZDB\EntityCollection;
-use Mozu\Api\Contracts\MZDB\EntityContainer;
-use Mozu\Api\Contracts\MZDB\ListViewCollection;
-
 /**
-* 
+* Provides settings and options for displaying associated content within a context level of site, tenant, catalog, or master catalog. ListViews can be associated with entity lists and entities.
 */
 class ListViewClient {
 
 	/**
-	* 
+	* Retrieves a view for associated entities. A view provides display context levels (site, tenant, catalog, master catalog) and settings.
 	*
-	* @param string $entityId 
-	* @param string $entityListFullName 
+	* @param string $entityId Unique identifier for an entity, which defines the schema, rules, and formats for JSON entities within the MZDB (Mozu Mongo DB).
+	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $viewName 
+	* @param string $viewName The name for a view. Views are used to render data in Mozu, such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
 	* @return MozuClient
 	*/
 	public static function getViewEntityClient($entityListFullName, $viewName, $entityId, $responseFields =  null)
 	{
 		$url = ListViewUrl::getViewEntityUrl($entityId, $entityListFullName, $responseFields, $viewName);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Retrieves a collection of views for associated entities. Each view provides display context levels (site, tenant, catalog, master catalog) and settings.
 	*
-	* @param string $entityListFullName 
+	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
 	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize 
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The amount is divided and displayed on the `pageCount `amount of pages. The default is 20 and maximum value is 200 per page.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param int $startIndex 
-	* @param string $viewName 
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a `pageSize `of 25, to get the 51st through the 75th items, use `startIndex=3`.
+	* @param string $viewName The name for a view. Views are used to render data in Mozu, such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
 	* @return MozuClient
 	*/
 	public static function getViewEntitiesClient($entityListFullName, $viewName, $pageSize =  null, $startIndex =  null, $filter =  null, $responseFields =  null)
 	{
 		$url = ListViewUrl::getViewEntitiesUrl($entityListFullName, $filter, $pageSize, $responseFields, $startIndex, $viewName);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Retrieves a collection of container data for creating and displaying a view of entities. 
 	*
-	* @param string $entityId 
-	* @param string $entityListFullName 
+	* @param string $entityId Unique identifier for an entity, which defines the schema, rules, and formats for JSON entities within the MZDB (Mozu Mongo DB).
+	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $viewName 
+	* @param string $viewName The name for a view. Views are used to render data in Mozu, such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
 	* @return MozuClient
 	*/
 	public static function getViewEntityContainerClient($entityListFullName, $viewName, $entityId, $responseFields =  null)
 	{
 		$url = ListViewUrl::getViewEntityContainerUrl($entityId, $entityListFullName, $responseFields, $viewName);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Retrieves a collection of container data for creating and displaying a view of entities. 
 	*
-	* @param string $entityListFullName 
+	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
 	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize 
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The amount is divided and displayed on the `pageCount `amount of pages. The default is 20 and maximum value is 200 per page.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param int $startIndex 
-	* @param string $viewName 
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a `pageSize `of 25, to get the 51st through the 75th items, use `startIndex=3`.
+	* @param string $viewName The name for a view. Views are used to render data in Mozu, such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
 	* @return MozuClient
 	*/
 	public static function getViewEntityContainersClient($entityListFullName, $viewName, $pageSize =  null, $startIndex =  null, $filter =  null, $responseFields =  null)
 	{
 		$url = ListViewUrl::getViewEntityContainersUrl($entityListFullName, $filter, $pageSize, $responseFields, $startIndex, $viewName);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Retrieves a specific `EntityListView`. These views provide schema, rules, and formatting for all associated entities. 
 	*
-	* @param string $entityListFullName 
+	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $viewName 
+	* @param string $viewName The name for a view. Views are used to render data in Mozu, such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
 	* @return MozuClient
 	*/
 	public static function getEntityListViewClient($entityListFullName, $viewName, $responseFields =  null)
 	{
 		$url = ListViewUrl::getEntityListViewUrl($entityListFullName, $responseFields, $viewName);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Retrieves a collection of `EntityListViews`. These views provide schema, rules, and formatting for all associated entities. 
 	*
-	* @param string $entityListFullName 
+	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
@@ -126,55 +126,58 @@ class ListViewClient {
 	{
 		$url = ListViewUrl::getEntityListViewsUrl($entityListFullName, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Creates an entity list view. Each view provides display context levels (site, tenant, catalog, master catalog) and settings for the list of entities.
 	*
-	* @param string $entityListFullName 
+	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param ListView $listView 
+	* @param ListView $listView Properties for the list view that specifies what fields and content display per page load. All associated fields in the list view correspond with object data.
 	* @return MozuClient
 	*/
 	public static function createEntityListViewClient($listView, $entityListFullName, $responseFields =  null)
 	{
 		$url = ListViewUrl::createEntityListViewUrl($entityListFullName, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($listView);
+		$mozuClient->withResourceUrl($url)->withBody($listView);
+		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Updates an existing entity list view. Each view provides display context levels (site, tenant, catalog, master catalog) and settings for the list of entities.
 	*
-	* @param string $entityListFullName 
+	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $viewName 
-	* @param ListView $listView 
+	* @param string $viewName The name for a view. Views are used to render data in Mozu, such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
+	* @param ListView $listView Properties for the list view that specifies what fields and content display per page load. All associated fields in the list view correspond with object data.
 	* @return MozuClient
 	*/
 	public static function updateEntityListViewClient($listView, $entityListFullName, $viewName, $responseFields =  null)
 	{
 		$url = ListViewUrl::updateEntityListViewUrl($entityListFullName, $responseFields, $viewName);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($listView);
+		$mozuClient->withResourceUrl($url)->withBody($listView);
+		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Deletes an entity list view. Any associated entities have the association removed.
 	*
-	* @param string $entityListFullName 
-	* @param string $viewName 
-	* @return MozuClient
+	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
+	* @param string $viewName The name for a view. Views are used to render data in Mozu, such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
 	*/
 	public static function deleteEntityListViewClient($entityListFullName, $viewName)
 	{
 		$url = ListViewUrl::deleteEntityListViewUrl($entityListFullName, $viewName);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

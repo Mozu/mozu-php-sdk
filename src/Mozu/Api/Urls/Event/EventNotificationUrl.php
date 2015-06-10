@@ -29,13 +29,12 @@ class EventNotificationUrl  {
 	public static function getEventsUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex)
 	{
 		$url = "/api/event/pull/?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false);
-		$mozuUrl->formatUrl("filter", $filter)
-				->formatUrl("pageSize", $pageSize)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("sortBy", $sortBy)
-				->formatUrl("startIndex", $startIndex);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("filter", $filter);
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
 		return $mozuUrl;
 	}
 	
@@ -48,10 +47,9 @@ class EventNotificationUrl  {
 	public static function getEventUrl($eventId, $responseFields)
 	{
 		$url = "/api/event/pull/{eventId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false);
-		$mozuUrl->formatUrl("eventId", $eventId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("eventId", $eventId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	

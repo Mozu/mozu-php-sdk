@@ -24,7 +24,7 @@ class CustomerAuthTicketUrl  {
 	public static function createAnonymousShopperAuthTicketUrl()
 	{
 		$url = "/api/commerce/customer/authtickets/anonymousshopper";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
 		return $mozuUrl;
 	}
 	
@@ -36,25 +36,23 @@ class CustomerAuthTicketUrl  {
 	public static function createUserAuthTicketUrl($responseFields)
 	{
 		$url = "/api/commerce/customer/authtickets/?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for RefreshUserAuthTicket
-		* @param string $refreshToken The refresh token string required to refresh a user's authentication ticket.
+		* @param string $refreshToken Alphanumeric string used for access tokens. This token refreshes access for accounts by generating a new developer or application account authentication ticket after an access token expires.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
 	public static function refreshUserAuthTicketUrl($refreshToken, $responseFields)
 	{
 		$url = "/api/commerce/customer/authtickets/refresh?refreshToken={refreshToken}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("refreshToken", $refreshToken)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("refreshToken", $refreshToken);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	

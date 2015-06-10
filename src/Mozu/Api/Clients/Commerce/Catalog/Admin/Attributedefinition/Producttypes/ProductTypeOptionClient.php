@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin\Attributedefinition\Producttyp
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\Attributedefinition\Producttypes\ProductTypeOptionUrl;
-use Mozu\Api\Headers;
 use Mozu\Api\DataViewMode;
-
-use Mozu\Api\Contracts\ProductAdmin\AttributeInProductType;
+use Mozu\Api\Headers;
 
 /**
 * Use the Options subresource to define how an option attribute is used for a specific product type. Product attribute definitions are unique for each associated product type.
@@ -27,24 +25,23 @@ class ProductTypeOptionClient {
 	/**
 	* Retrieves a list of option product attributes defined for the specified product type.
 	*
-	* @param DataViewMode $dataViewMode
-	* @param int $productTypeId Identifier of the product type to retrieve.
+	* @param int $productTypeId Identifier of the product type.
 	* @return MozuClient
 	*/
 	public static function getOptionsClient($dataViewMode, $productTypeId)
 	{
 		$url = ProductTypeOptionUrl::getOptionsUrl($productTypeId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Retrieves the details of an option attribute defined for the specified product type.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-	* @param int $productTypeId The identifier of the product type.
+	* @param int $productTypeId Identifier of the product type.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
@@ -52,58 +49,58 @@ class ProductTypeOptionClient {
 	{
 		$url = ProductTypeOptionUrl::getOptionUrl($attributeFQN, $productTypeId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Assigns an option attribute to the product type based on the information supplied in the request.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param int $productTypeId Identifier of the product type.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param AttributeInProductType $attributeInProductType Properties of the option attribute to define for the specified product type.
+	* @param AttributeInProductType $attributeInProductType Properties of an attribute definition associated with a specific product type. When an attribute is applied to a product type, each product of that type maintains the same set of attributes.
 	* @return MozuClient
 	*/
 	public static function addOptionClient($dataViewMode, $attributeInProductType, $productTypeId, $responseFields =  null)
 	{
 		$url = ProductTypeOptionUrl::addOptionUrl($productTypeId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($attributeInProductType)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withBody($attributeInProductType)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Updates an option attribute definition for the specified product type.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @param int $productTypeId Identifier of the product type.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param AttributeInProductType $attributeInProductType Properties of the option product attribute to define for the specified product type.
+	* @param AttributeInProductType $attributeInProductType Properties of an attribute definition associated with a specific product type. When an attribute is applied to a product type, each product of that type maintains the same set of attributes.
 	* @return MozuClient
 	*/
 	public static function updateOptionClient($dataViewMode, $attributeInProductType, $productTypeId, $attributeFQN, $responseFields =  null)
 	{
 		$url = ProductTypeOptionUrl::updateOptionUrl($attributeFQN, $productTypeId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($attributeInProductType)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withBody($attributeInProductType)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Removes an option attribute definition for the specified product type.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @param int $productTypeId Identifier of the product type.
-	* @return MozuClient
 	*/
 	public static function deleteOptionClient($dataViewMode, $productTypeId, $attributeFQN)
 	{
 		$url = ProductTypeOptionUrl::deleteOptionUrl($attributeFQN, $productTypeId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	

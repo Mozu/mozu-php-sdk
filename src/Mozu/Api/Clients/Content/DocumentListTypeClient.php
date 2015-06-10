@@ -14,45 +14,44 @@ namespace Mozu\Api\Clients\Content;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Content\DocumentListTypeUrl;
-use Mozu\Api\Headers;
 use Mozu\Api\DataViewMode;
-
-use Mozu\Api\Contracts\Content\DocumentListType;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Use the Document List Types resource to manage the types of document lists in your site's document hierarchy. The type denotes a content type for that list of folders, sub-folders, and documents such as `web_pages`.
 */
 class DocumentListTypeClient {
 
 	/**
-	* 
+	* Creates a new documentListType
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param DocumentListType $list 
+	* @param DocumentListType $list Properties for the document list type. Document lists contain documents with an associated document type, such as web pages.
 	* @return MozuClient
 	*/
 	public static function createDocumentListTypeClient($dataViewMode, $list, $responseFields =  null)
 	{
 		$url = DocumentListTypeUrl::createDocumentListTypeUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($list)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withBody($list)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Updates a DocumentListType
 	*
 	* @param string $documentListTypeFQN 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param DocumentListType $list 
+	* @param DocumentListType $list Properties for the document list type. Document lists contain documents with an associated document type, such as web pages.
 	* @return MozuClient
 	*/
 	public static function updateDocumentListTypeClient($list, $documentListTypeFQN, $responseFields =  null)
 	{
 		$url = DocumentListTypeUrl::updateDocumentListTypeUrl($documentListTypeFQN, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($list);
+		$mozuClient->withResourceUrl($url)->withBody($list);
+		return $mozuClient;
 
 	}
 	

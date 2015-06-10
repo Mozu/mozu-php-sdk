@@ -14,11 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Storefront;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Storefront\CategoryUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\ProductRuntime\Category;
-use Mozu\Api\Contracts\ProductRuntime\CategoryCollection;
-use Mozu\Api\Contracts\ProductRuntime\CategoryPagedCollection;
 
 /**
 * Use the Storefront Categories resource to view the product category hierarchy as it appears to shoppers who are browsing the storefront. The hierarchy can be returned as a flat list or as a category tree.
@@ -28,9 +25,9 @@ class CategoryClient {
 	/**
 	* Retrieves a list of categories according to any specified filter criteria and sort options.
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product category search results by any of its properties, including its position in the category hierarchy. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param string $filter A set of filter expressions representing the search parameters for a query: eq=equals, ne=not equals, gt=greater than, lt = less than or equals, gt = greater than or equals, lt = less than or equals, sw = starts with, or cont = contains. Optional.
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields 
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return MozuClient
@@ -39,7 +36,8 @@ class CategoryClient {
 	{
 		$url = CategoryUrl::getCategoriesUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -48,28 +46,30 @@ class CategoryClient {
 	*
 	* @param bool $allowInactive If true, allow inactive categories to be retrieved in the category list response. If false, the categories retrieved will not include ones marked inactive.
 	* @param int $categoryId Unique identifier for the storefront container used to organize products.
-	* @param string $responseFields 
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
 	* @return MozuClient
 	*/
 	public static function getCategoryClient($categoryId, $allowInactive =  null, $responseFields =  null)
 	{
 		$url = CategoryUrl::getCategoryUrl($allowInactive, $categoryId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Retrieves the list of product categories that appear on the storefront organized in a hierarchical format. Hidden categories do not appear in the list.
 	*
-	* @param string $responseFields 
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
 	* @return MozuClient
 	*/
 	public static function getCategoryTreeClient($responseFields =  null)
 	{
 		$url = CategoryUrl::getCategoryTreeUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

@@ -27,11 +27,10 @@ class CardUrl  {
 	public static function getAccountCardUrl($accountId, $cardId, $responseFields)
 	{
 		$url = "/api/commerce/customer/accounts/{accountId}/cards/{cardId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("accountId", $accountId)
-				->formatUrl("cardId", $cardId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		$url = $mozuUrl->formatUrl("cardId", $cardId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -44,10 +43,9 @@ class CardUrl  {
 	public static function getAccountCardsUrl($accountId, $responseFields)
 	{
 		$url = "/api/commerce/customer/accounts/{accountId}/cards?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("accountId", $accountId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -60,44 +58,41 @@ class CardUrl  {
 	public static function addAccountCardUrl($accountId, $responseFields)
 	{
 		$url = "/api/commerce/customer/accounts/{accountId}/cards?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("accountId", $accountId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdateAccountCard
 		* @param int $accountId Unique identifier of the customer account.
-		* @param string $cardId Unique identifier of the credit card.
+		* @param string $cardId Unique identifier of the card associated with the customer account billing contact.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
 	public static function updateAccountCardUrl($accountId, $cardId, $responseFields)
 	{
 		$url = "/api/commerce/customer/accounts/{accountId}/cards/{cardId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("accountId", $accountId)
-				->formatUrl("cardId", $cardId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		$url = $mozuUrl->formatUrl("cardId", $cardId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for DeleteAccountCard
 		* @param int $accountId Unique identifier of the customer account.
-		* @param string $cardId Unique identifier of the credit card to delete.
+		* @param string $cardId Unique identifier of the card associated with the customer account billing contact.
 		* @return string Resource Url
 	*/
 	public static function deleteAccountCardUrl($accountId, $cardId)
 	{
 		$url = "/api/commerce/customer/accounts/{accountId}/cards/{cardId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("accountId", $accountId)
-				->formatUrl("cardId", $cardId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		$url = $mozuUrl->formatUrl("cardId", $cardId);
 		return $mozuUrl;
 	}
 	

@@ -12,24 +12,22 @@
 
 namespace Mozu\Api\Resources\Event;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Event\EventNotificationClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\Event\Event;
-use Mozu\Api\Contracts\Event\EventCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Events are notifications Mozu publishes to the application when a create, read, update, or delete operation is performed. If the application subscribes to the event, you can use the Events resource to query for recent events Mozu published to your application or events that were not published successfully.
 */
 class EventNotificationResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves a list of events.
@@ -44,9 +42,9 @@ class EventNotificationResource {
 	public function getEvents($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
 		$mozuClient = EventNotificationClient::getEventsClient($startIndex, $pageSize, $sortBy, $filter, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -60,9 +58,9 @@ class EventNotificationResource {
 	public function getEvent($eventId, $responseFields =  null)
 	{
 		$mozuClient = EventNotificationClient::getEventClient($eventId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	

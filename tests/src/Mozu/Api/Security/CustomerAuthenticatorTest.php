@@ -1,7 +1,5 @@
 <?php
 
-
-
 use Mozu\Tests\BaseTest;
 use Mozu\Api\Security\CustomerAuthenticator;
 use Mozu\Api\Security\CustomerAuthenticationProfile;

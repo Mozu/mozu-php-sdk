@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Customer\Accounts;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\Accounts\CardUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Customer\Card;
-use Mozu\Api\Contracts\Customer\CardCollection;
 
 /**
 * Use the Cards subresource to manage stored credit cards for customer accounts. Mozu stores limited card data in the Customer service for expedited ordering purposes; however, the complete card data is stored in the Payment service.
@@ -36,7 +34,8 @@ class CardClient {
 	{
 		$url = CardUrl::getAccountCardUrl($accountId, $cardId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -51,7 +50,8 @@ class CardClient {
 	{
 		$url = CardUrl::getAccountCardsUrl($accountId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -60,14 +60,15 @@ class CardClient {
 	*
 	* @param int $accountId Unique identifier of the customer account.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Card $card Properties of the customer credit card to add to the account.
+	* @param Card $card Properties of a credit card used to submit payment for an order.
 	* @return MozuClient
 	*/
 	public static function addAccountCardClient($card, $accountId, $responseFields =  null)
 	{
 		$url = CardUrl::addAccountCardUrl($accountId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($card);
+		$mozuClient->withResourceUrl($url)->withBody($card);
+		return $mozuClient;
 
 	}
 	
@@ -75,16 +76,17 @@ class CardClient {
 	* Update one or more properties of a credit card defined for a customer account.
 	*
 	* @param int $accountId Unique identifier of the customer account.
-	* @param string $cardId Unique identifier of the credit card.
+	* @param string $cardId Unique identifier of the card associated with the customer account billing contact.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Card $card Properties of the customer account credit card to update.
+	* @param Card $card Properties of a credit card used to submit payment for an order.
 	* @return MozuClient
 	*/
 	public static function updateAccountCardClient($card, $accountId, $cardId, $responseFields =  null)
 	{
 		$url = CardUrl::updateAccountCardUrl($accountId, $cardId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($card);
+		$mozuClient->withResourceUrl($url)->withBody($card);
+		return $mozuClient;
 
 	}
 	
@@ -92,14 +94,14 @@ class CardClient {
 	* Removes a stored credit card from a customer account.
 	*
 	* @param int $accountId Unique identifier of the customer account.
-	* @param string $cardId Unique identifier of the credit card to delete.
-	* @return MozuClient
+	* @param string $cardId Unique identifier of the card associated with the customer account billing contact.
 	*/
 	public static function deleteAccountCardClient($accountId, $cardId)
 	{
 		$url = CardUrl::deleteAccountCardUrl($accountId, $cardId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

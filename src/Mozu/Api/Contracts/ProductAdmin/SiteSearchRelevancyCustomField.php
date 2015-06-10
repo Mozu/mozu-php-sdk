@@ -14,11 +14,20 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
+/**
+*	Properties for setting custom field site search keyword relevancy settings. Relevancy determines the calculated matched of entered search strings against keywords. The relevancy weight can determine the order of importance for matching a search term such as categories before or after product names.
+*/
 class SiteSearchRelevancyCustomField
 {
-		public $fieldName;
+	/**
+	*Name of the field.
+	*/
+	public $fieldName;
 
-		public $fieldWeight;
+	/**
+	*Relative weight of the field for relevancy purposes.
+	*/
+	public $fieldWeight;
 
 }
 

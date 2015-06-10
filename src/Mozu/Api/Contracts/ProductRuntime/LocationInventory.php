@@ -15,19 +15,27 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 /**
-*	Properties of the active product inventory levels for a specific location.
+*	Properties of an inventory definition that defines the level of inventory for a specific product at a given location.
 */
 class LocationInventory
 {
 	/**
-	*User-defined code that uniquely identifies the location.
+	*The unique, user-defined code that identifies a location. This location can be the location where the order was entered, location for newly in-stock products, and where products are returned.
 	*/
 	public $locationCode;
 
-		public $productCode;
+	/**
+	*The unique, user-defined  product code of a product, used throughout Mozu to reference and associate to a product.
+	*/
+	public $productCode;
 
 	/**
-	*The current level of active product stock available at the specified location.
+	*Mozu.ProductRuntime.Contracts.LocationInventory softStockAvailable ApiTypeMember DOCUMENT_HERE 
+	*/
+	public $softStockAvailable;
+
+	/**
+	*The stock level for the associated product currently available, at specified locations, and based on the number of pending product reservations as applicable. System-supplied and read only.
 	*/
 	public $stockAvailable;
 

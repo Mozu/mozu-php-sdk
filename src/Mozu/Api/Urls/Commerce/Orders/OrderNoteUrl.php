@@ -25,49 +25,46 @@ class OrderNoteUrl  {
 	public static function getOrderNotesUrl($orderId)
 	{
 		$url = "/api/commerce/orders/{orderId}/notes";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("orderId", $orderId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetOrderNote
-		* @param string $noteId Unique identifier of the order note to retrieve.
-		* @param string $orderId Unique identifier of the order associated with the note.
+		* @param string $noteId Unique identifier of a particular note to retrieve.
+		* @param string $orderId Unique identifier of the order.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
 	public static function getOrderNoteUrl($noteId, $orderId, $responseFields)
 	{
 		$url = "/api/commerce/orders/{orderId}/notes/{noteId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("noteId", $noteId)
-				->formatUrl("orderId", $orderId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("noteId", $noteId);
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for CreateOrderNote
-		* @param string $orderId Unique identifier of the order for which to add a note.
+		* @param string $orderId Unique identifier of the order.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
 	public static function createOrderNoteUrl($orderId, $responseFields)
 	{
 		$url = "/api/commerce/orders/{orderId}/notes?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("orderId", $orderId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdateOrderNote
-		* @param string $noteId Unique identifier of the order note.
+		* @param string $noteId Unique identifier of a particular note to retrieve.
 		* @param string $orderId Unique identifier of the order.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
@@ -75,27 +72,25 @@ class OrderNoteUrl  {
 	public static function updateOrderNoteUrl($noteId, $orderId, $responseFields)
 	{
 		$url = "/api/commerce/orders/{orderId}/notes/{noteId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("noteId", $noteId)
-				->formatUrl("orderId", $orderId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("noteId", $noteId);
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for DeleteOrderNote
-		* @param string $noteId Unique identifier of the order note to delete.
-		* @param string $orderId Unique identifier of the order associated with the note.
+		* @param string $noteId Unique identifier of a particular note to retrieve.
+		* @param string $orderId Unique identifier of the order.
 		* @return string Resource Url
 	*/
 	public static function deleteOrderNoteUrl($noteId, $orderId)
 	{
 		$url = "/api/commerce/orders/{orderId}/notes/{noteId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("noteId", $noteId)
-				->formatUrl("orderId", $orderId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("noteId", $noteId);
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
 		return $mozuUrl;
 	}
 	

@@ -20,27 +20,27 @@ namespace Mozu\Api\Contracts\Customer;
 class CustomerAuthTicket
 {
 	/**
-	*Access token string that enables authentication for the customer account.
+	*Alphanumeric string used to authenticate the user in API request headers. The token stores an encrypted list of the application's configured behaviors and authenticates the application.
 	*/
 	public $accessToken;
 
 	/**
-	*The date and time the access token expires.
+	*The date and time the user access token expires. If the token will expire, a new token will need to be generated and assigned to the account to continue and restore access to the store, data, and account.
 	*/
 	public $accessTokenExpiration;
 
 	/**
-	*Refresh token string used to generate a new access token after expiration for a customer account authentication ticket.
+	*Alphanumeric string used for access tokens. This token refreshes access for accounts by generating a new developer or application account authentication ticket after an access token expires.
 	*/
 	public $refreshToken;
 
 	/**
-	*The date and time the refresh token expires.
+	*The date and time the developer account or application refresh token expires.
 	*/
 	public $refreshTokenExpiration;
 
 	/**
-	*User ID associated with the customer account authentication ticket.
+	*Unique identifier of the customer account (shopper or system user). System-supplied and read-only. If the shopper user is anonymous, the user ID represents a system-generated user ID string.
 	*/
 	public $userId;
 

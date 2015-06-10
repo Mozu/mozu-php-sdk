@@ -12,24 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Catalog\Admin\Attributedefinition;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Catalog\Admin\Attributedefinition\AttributeClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\ProductAdmin\Attribute;
-use Mozu\Api\Contracts\ProductAdmin\AttributeCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Attribute Definition resource to manage the properties, options, and extras that uniquely describe products of a specific type. Attributes can be associated with a product type, assigned values by a client or shopper, and added as faceted search filters for a product category. Options are product attributes that describe unique configurations made by the shopper, such as size or color, and generate a new product variation (or unique SKU). Properties are product attributes that describe aspects of the product that do not represent an option configurable by the shopper, such as screen resolution or brand. Extras are product attributes that describe add-on configurations made by the shopper that do not represent a product variation, such as a monogram.
 */
 class AttributeResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves a paged list of attributes according to any specified filter criteria and sort options.
@@ -44,9 +42,9 @@ class AttributeResource {
 	public function getAttributes($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
 		$mozuClient = AttributeClient::getAttributesClient($startIndex, $pageSize, $sortBy, $filter, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -60,9 +58,9 @@ class AttributeResource {
 	public function getAttribute($attributeFQN, $responseFields =  null)
 	{
 		$mozuClient = AttributeClient::getAttributeClient($attributeFQN, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -70,15 +68,15 @@ class AttributeResource {
 	* Creates a new attribute to describe one aspect of a product such as color or size, based on its defined product type. The attribute name, attribute type, input type, and data type are required.
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Attribute $attribute Properties of the new product attribute to create.
+	* @param Attribute $attribute Properties of an attribute used to describe customers or orders.
 	* @return Attribute 
 	*/
 	public function addAttribute($attribute, $responseFields =  null)
 	{
 		$mozuClient = AttributeClient::addAttributeClient($attribute, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -87,15 +85,15 @@ class AttributeResource {
 	*
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Attribute $attribute Any properties of the attribute that to update.
+	* @param Attribute $attribute Properties of an attribute used to describe customers or orders.
 	* @return Attribute 
 	*/
 	public function updateAttribute($attribute, $attributeFQN, $responseFields =  null)
 	{
 		$mozuClient = AttributeClient::updateAttributeClient($attribute, $attributeFQN, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -103,13 +101,12 @@ class AttributeResource {
 	* Deletes a defined product attribute. You cannot delete an attribute assigned a value for a product.
 	*
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-	* @return void
 	*/
 	public function deleteAttribute($attributeFQN)
 	{
 		$mozuClient = AttributeClient::deleteAttributeClient($attributeFQN);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

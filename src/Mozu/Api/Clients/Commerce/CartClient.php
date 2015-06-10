@@ -14,20 +14,18 @@ namespace Mozu\Api\Clients\Commerce;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\CartUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
-use Mozu\Api\Contracts\CommerceRuntime\Carts\Cart;
-use Mozu\Api\Contracts\CommerceRuntime\Carts\CartSummary;
-
 /**
-* Use the Carts resource to manage storefront shopping carts as items are added and removed. Each time a shopper's cart is modified, the Carts resource updates the estimated total with any applicable discounts.
+* Use this resource to manage storefront shopping carts as shoppers add and remove items for purchase. Each time a shopper's cart is modified, the Carts resource updates the estimated total with any applicable discounts.
 */
 class CartClient {
 
 	/**
 	* Retrieves the cart specified in the request.
 	*
-	* @param string $cartId Identifier of the cart to retrieve.
+	* @param string $cartId Identifier of the cart to delete.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
@@ -35,7 +33,8 @@ class CartClient {
 	{
 		$url = CartUrl::getCartUrl($cartId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -49,7 +48,8 @@ class CartClient {
 	{
 		$url = CartUrl::getOrCreateCartUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -63,7 +63,8 @@ class CartClient {
 	{
 		$url = CartUrl::getCartSummaryUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -71,14 +72,15 @@ class CartClient {
 	* Retrieves summary information associated with the cart of user specified in the request, including the number of items in the cart, the current total, and whether the cart has expired. All anonymous idle carts that do not proceed to checkout expire after 14 days.
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $userId Unique identifier of the user whose cart details you want to retrieve.
+	* @param string $userId Unique identifier of the user whose tenant scopes you want to retrieve.
 	* @return MozuClient
 	*/
 	public static function getUserCartSummaryClient($userId, $responseFields =  null)
 	{
 		$url = CartUrl::getUserCartSummaryUrl($responseFields, $userId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -86,14 +88,15 @@ class CartClient {
 	* Retrieves the cart of the user specified in the request.
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $userId Unique identifier of the user whose cart you want to retrieve.
+	* @param string $userId Unique identifier of the user whose tenant scopes you want to retrieve.
 	* @return MozuClient
 	*/
 	public static function getUserCartClient($userId, $responseFields =  null)
 	{
 		$url = CartUrl::getUserCartUrl($responseFields, $userId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -101,14 +104,15 @@ class CartClient {
 	* Update the current shopper's cart.
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Cart $cart All of the properties of the cart to update. The product code is required.
+	* @param Cart $cart Properties of a shopping cart.
 	* @return MozuClient
 	*/
 	public static function updateCartClient($cart, $responseFields =  null)
 	{
 		$url = CartUrl::updateCartUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($cart);
+		$mozuClient->withResourceUrl($url)->withBody($cart);
+		return $mozuClient;
 
 	}
 	
@@ -116,26 +120,26 @@ class CartClient {
 	* Deletes the cart specified in the request.
 	*
 	* @param string $cartId Identifier of the cart to delete.
-	* @return MozuClient
 	*/
 	public static function deleteCartClient($cartId)
 	{
 		$url = CartUrl::deleteCartUrl($cartId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Deletes the cart of the currently active shopper.
 	*
-	* @return MozuClient
 	*/
 	public static function deleteCurrentCartClient()
 	{
 		$url = CartUrl::deleteCurrentCartUrl();
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

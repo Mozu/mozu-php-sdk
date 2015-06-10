@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Customer;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\VisitUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Customer\Visit;
-use Mozu\Api\Contracts\Customer\VisitCollection;
 
 /**
 * Use the Visits resource to manage all visits a customer makes to a tenant's sites and measure the level of transactions a customer performs during a unique visit for customer account analytics. Clients can track customer visits by site (including online and in-person interactions), the transactions a customer performs during the visit, and the device type associated with the visit, if any.
@@ -38,7 +36,8 @@ class VisitClient {
 	{
 		$url = VisitUrl::getVisitsUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -46,14 +45,15 @@ class VisitClient {
 	* Retrieves the details of the customer visit specified in the request.
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $visitId Unique identifier of the customer visit to retrieve.
+	* @param string $visitId Unique identifier of the customer visit to update.
 	* @return MozuClient
 	*/
 	public static function getVisitClient($visitId, $responseFields =  null)
 	{
 		$url = VisitUrl::getVisitUrl($responseFields, $visitId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -61,14 +61,15 @@ class VisitClient {
 	* Creates a new visit for the customer account specified in the request.
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Visit $visit Properties of the visit to add to the customer account.
+	* @param Visit $visit Properties of a customer visit to one of a company's sites.
 	* @return MozuClient
 	*/
 	public static function addVisitClient($visit, $responseFields =  null)
 	{
 		$url = VisitUrl::addVisitUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($visit);
+		$mozuClient->withResourceUrl($url)->withBody($visit);
+		return $mozuClient;
 
 	}
 	
@@ -77,14 +78,15 @@ class VisitClient {
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $visitId Unique identifier of the customer visit to update.
-	* @param Visit $visit Properties of the customer visit to update.
+	* @param Visit $visit Properties of a customer visit to one of a company's sites.
 	* @return MozuClient
 	*/
 	public static function updateVisitClient($visit, $visitId, $responseFields =  null)
 	{
 		$url = VisitUrl::updateVisitUrl($responseFields, $visitId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($visit);
+		$mozuClient->withResourceUrl($url)->withBody($visit);
+		return $mozuClient;
 
 	}
 	

@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Orders;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Orders\AdjustmentUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\CommerceRuntime\Commerce\Adjustment;
-use Mozu\Api\Contracts\CommerceRuntime\Orders\Order;
 
 /**
 * Use this subresource to manage ad-hoc order level price adjustments.
@@ -27,44 +25,46 @@ class AdjustmentClient {
 	/**
 	* Applies a shipping adjustment to the specified order.
 	*
-	* @param string $orderId Unique identifier of the order associated with the shipping adjustment.
+	* @param string $orderId Unique identifier of the order.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $updateMode Specifies whether to apply the shipping adjustment by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
 	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
-	* @param Adjustment $adjustment Properties of the shipping adjustment to apply to the order.
+	* @param Adjustment $adjustment Properties of an ad-hoc price adjustment for an order.
 	* @return MozuClient
 	*/
 	public static function applyShippingAdjustmentClient($adjustment, $orderId, $updateMode =  null, $version =  null, $responseFields =  null)
 	{
 		$url = AdjustmentUrl::applyShippingAdjustmentUrl($orderId, $responseFields, $updateMode, $version);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($adjustment);
+		$mozuClient->withResourceUrl($url)->withBody($adjustment);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Applies a price adjustment to the specified order.
 	*
-	* @param string $orderId Unique identifier of the order for which to apply the adjustment.
+	* @param string $orderId Unique identifier of the order.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $updateMode Specifies whether to apply the adjustment by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
 	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
-	* @param Adjustment $adjustment Properties of the price adjustment to apply to the order.
+	* @param Adjustment $adjustment Properties of an ad-hoc price adjustment for an order.
 	* @return MozuClient
 	*/
 	public static function applyAdjustmentClient($adjustment, $orderId, $updateMode =  null, $version =  null, $responseFields =  null)
 	{
 		$url = AdjustmentUrl::applyAdjustmentUrl($orderId, $responseFields, $updateMode, $version);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($adjustment);
+		$mozuClient->withResourceUrl($url)->withBody($adjustment);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Removes a shipping adjustment previously applied to an order or draft.
 	*
-	* @param string $orderId Unique identifier of the order with the applied shipping adjustment.
-	* @param string $updateMode Specifies whether to remove the shipping adjustment by updating the original order, updating the order in draft mode, or updating the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $orderId Unique identifier of the order.
+	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
 	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 	* @return MozuClient
 	*/
@@ -72,15 +72,16 @@ class AdjustmentClient {
 	{
 		$url = AdjustmentUrl::removeShippingAdjustmentUrl($orderId, $updateMode, $version);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Removes a price adjustment from the specified order.
 	*
-	* @param string $orderId Unique identifier of the order for which to delete the adjustment.
-	* @param string $updateMode Specifies whether to remove the adjustment by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $orderId Unique identifier of the order.
+	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
 	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 	* @return MozuClient
 	*/
@@ -88,7 +89,8 @@ class AdjustmentClient {
 	{
 		$url = AdjustmentUrl::removeAdjustmentUrl($orderId, $updateMode, $version);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

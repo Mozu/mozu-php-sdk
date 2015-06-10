@@ -12,38 +12,36 @@
 
 namespace Mozu\Api\Resources\Commerce\Customer;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Customer\AddressValidationRequestClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\Customer\AddressValidationRequest;
-use Mozu\Api\Contracts\Customer\AddressValidationResponse;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Address Validation resource to validate addresses associated with a customer account contact.
 */
 class AddressValidationRequestResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
-	
-
 	/**
 	* Validates the customer address supplied in the request.
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param AddressValidationRequest $addressValidationRequest Properties of the address to validate.
+	* @param AddressValidationRequest $addressValidationRequest Properties of the address used for validation of the account's full address. This content may include multiple lines of an address, city, state/province, zip/postal code, and country.
 	* @return AddressValidationResponse 
 	*/
 	public function validateAddress($addressValidationRequest, $responseFields =  null)
 	{
 		$mozuClient = AddressValidationRequestClient::validateAddressClient($addressValidationRequest, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	

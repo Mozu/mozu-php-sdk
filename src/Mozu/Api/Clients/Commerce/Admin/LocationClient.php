@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Admin;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Admin\LocationUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Location\Location;
-use Mozu\Api\Contracts\Location\LocationCollection;
 
 /**
 * Use the Locations resource to manage each physical location associated with a tenant. Locations enable tenants to associate a physical address with product inventory, provide a store finder for in-store pickup, or both. Locations that support inventory can use both direct ship and in-store pickup fulfillment types.
@@ -38,67 +36,71 @@ class LocationClient {
 	{
 		$url = LocationUrl::getLocationsUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Retrieves the details of the location specified in the request by location code.
 	*
-	* @param string $locationCode The merchant-defined code of the location to retrieve.
-	* @param string $responseFields 
+	* @param string $locationCode The unique, user-defined code that identifies a location. 
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
 	* @return MozuClient
 	*/
 	public static function getLocationClient($locationCode, $responseFields =  null)
 	{
 		$url = LocationUrl::getLocationUrl($locationCode, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Creates a new physical location for the tenant specified in the request header.
 	*
-	* @param string $responseFields 
-	* @param Location $location Properties of the location to create.
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param Location $location Properties of a physical location a tenant uses to manage inventory and fulfills orders, provide store finder functionality, or both.
 	* @return MozuClient
 	*/
 	public static function addLocationClient($location, $responseFields =  null)
 	{
 		$url = LocationUrl::addLocationUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($location);
+		$mozuClient->withResourceUrl($url)->withBody($location);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Updates one or more details of a the location specified in the request by location code.
 	*
-	* @param string $locationCode The merchant-defined code associated with the location to update.
+	* @param string $locationCode The unique, user-defined code that identifies a location. 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Location $location Properties of the location to update.
+	* @param Location $location Properties of a physical location a tenant uses to manage inventory and fulfills orders, provide store finder functionality, or both.
 	* @return MozuClient
 	*/
 	public static function updateLocationClient($location, $locationCode, $responseFields =  null)
 	{
 		$url = LocationUrl::updateLocationUrl($locationCode, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($location);
+		$mozuClient->withResourceUrl($url)->withBody($location);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Deletes the location specified in the request.
 	*
-	* @param string $locationCode The merchant-defined code of the location to delete.
-	* @return MozuClient
+	* @param string $locationCode The unique, user-defined code that identifies a location. 
 	*/
 	public static function deleteLocationClient($locationCode)
 	{
 		$url = LocationUrl::deleteLocationUrl($locationCode);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

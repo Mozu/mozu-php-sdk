@@ -14,19 +14,45 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
+/**
+*	Properties for the site search settings.
+*/
 class SiteSearchSettings
 {
-		public $customBoosts;
+	/**
+	*Custom boost value for searches.
+	*/
+	public $customBoosts;
 
-		public $isDefault;
+	/**
+	*Indicates if the object is default. This indicator is used for product variations and site search settings. If true, the value/object is the default option. 
+	*/
+	public $isDefault;
 
-		public $settingsName;
+	/**
+	*Mozu.ProductAdmin.Contracts.SiteSearchSettings minimumMatchPercent ApiTypeMember DOCUMENT_HERE 
+	*/
+	public $minimumMatchPercent;
 
-		public $customFields;
+	/**
+	*The name for the search settings.
+	*/
+	public $settingsName;
 
-		public $siteKeywordRelevancy;
+	/**
+	*Custom field for searches.
+	*/
+	public $customFields;
 
-		public $sitePhraseRelevancy;
+	/**
+	*The site keyword relevancy settings.
+	*/
+	public $siteKeywordRelevancy;
+
+	/**
+	*The site phrase relevancy settings.
+	*/
+	public $sitePhraseRelevancy;
 
 }
 

@@ -14,9 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Settings;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Settings\GeneralSettingsUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\SiteSettings\General\GeneralSettings;
 
 /**
 * Define global site settings such as the site name, shipping and email addresses, and logo images. Block undesirable IP addresses using this resource.
@@ -33,7 +32,8 @@ class GeneralSettingsClient {
 	{
 		$url = GeneralSettingsUrl::getGeneralSettingsUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -41,14 +41,15 @@ class GeneralSettingsClient {
 	* Updates a site's general global settings.
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param GeneralSettings $generalSettings The properties of the site's general settings to update.
+	* @param GeneralSettings $generalSettings General settings used on the storefront site.
 	* @return MozuClient
 	*/
 	public static function updateGeneralSettingsClient($generalSettings, $responseFields =  null)
 	{
 		$url = GeneralSettingsUrl::updateGeneralSettingsUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($generalSettings);
+		$mozuClient->withResourceUrl($url)->withBody($generalSettings);
+		return $mozuClient;
 
 	}
 	

@@ -15,12 +15,12 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 /**
-*	Properties of the facet used to index product searches on a storefront.
+*	Properties of the facet used to retrieve documents.
 */
 class Facet
 {
 	/**
-	*The type of facet. Valid values are "range," which enables creation of a range of values, or "value," which populates the facet values based on the associated attribute or category.
+	*The type of facet. Valid values are "range" (enables creation of a range of values) or "value" (populates the facet values based on the associated attribute or category).
 	*/
 	public $facetType;
 
@@ -30,12 +30,12 @@ class Facet
 	public $field;
 
 	/**
-	*The descriptive label for the facet.
+	*Descriptive text used as a label for objects, such as field names, facets, date ranges, contact information, and package information.
 	*/
 	public $label;
 
 	/**
-	*The values associated with the facet.
+	*List of value data for objects.
 	*/
 	public $values;
 

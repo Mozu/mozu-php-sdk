@@ -1,10 +1,7 @@
 <?php
 
-namespace Mozu\Api\Resources\Content\Documentlists;
-
 require_once __DIR__ . '/../../../../../BaseTest.php';
 
-use Mozu\Api\ApiException;
 use Mozu\Tests\BaseTest;
 use Mozu\Api\ApiContext;
 use Mozu\Api\DataViewMode;
@@ -28,7 +25,7 @@ class DocumentResourceTest extends BaseTest
     protected function setUp()
     {
     	$apiContext = new ApiContext($this->tenantId, 0, 1, 1);
-        $this->object = new DocumentResource($apiContext, DataViewMode::LIVE);
+        $this->object = new DocumentResource($apiContext);
         
     }
 
@@ -47,24 +44,25 @@ class DocumentResourceTest extends BaseTest
      */
     public function testGetDocumentContent()
     {
-        try{
-            $content = $this->object->getDocumentContent("9c363f6e-117b-4bf5-94a1-270359d933c5", "files");
-            file_put_contents ("d:\phpdownload.jpg" , $content);
-        } catch(ApiException $ex) {
-            $this->fail($ex->getMessage());
+        try {
+            //$content = $this->object->getDocumentContent(DataViewMode::LIVE,  "files@mozu","d2e80a00-40f9-4f89-a065-b6a27db2b4c2");
+            $content = $this->object->getDocumentContent(DataViewMode::LIVE, "d2e80a00-40f9-4f89-a065-b6a27db2b4c2", "files@mozu");
+            file_put_contents("c:\\files\\phpdownload.jpg", $content);
+        } catch(\Exception $e) {
+            parent::printError($e);
+            $this->fail($e->getMessage());
         }
-
     }
 
     
    	public function testUpdateDocumentContent() {
-        try{
-            $file = file_get_contents("D:\Seismic\images\SAHDL102-0.jpg");
-            $this->object->updateDocumentContent(DataViewMode::LIVE, $file, "9c363f6e-117b-4bf5-94a1-270359d933c5", "files", "image/jpg");
-        } catch(ApiException $ex) {
-            $this->fail($ex->getMessage());
+        try {
+            $file = file_get_contents("C:\\files\\phpdownload.jpg");
+            $this->object->updateDocumentContent($file, "files@mozu", "d2e80a00-40f9-4f89-a065-b6a27db2b4c2", "image/jpg");
+        } catch(\Exception $e) {
+            parent::printError($e);
+            $this->fail($e->getMessage());
         }
-
    	}
 }
 ?>

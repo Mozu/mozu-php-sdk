@@ -30,7 +30,7 @@ class UserRole
 	public $roleName;
 
 	/**
-	*Unique identifier of the user the role is assigned to.
+	*Unique identifier of the customer account (shopper or system user). System-supplied and read-only. If the shopper user is anonymous, the user ID represents a system-generated user ID string.
 	*/
 	public $userId;
 

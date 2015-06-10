@@ -14,9 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Customer\Credits;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\Credits\CreditAuditEntryUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Customer\Credit\CreditAuditEntryCollection;
 
 /**
 * Use the Customer Credit Audit Entries subresource to retrieve entries logged in the audit report of a store credit or gift card applied to a customer account. The system creates a new audit entry when the credit is created, deleted, activated, or deactivated. The system then creates a new audit entry each time the credit is updated or redeemed in a transaction.
@@ -26,7 +25,7 @@ class CreditAuditEntryClient {
 	/**
 	* Retrieves the list of audit entries for the credit, according to any filter or sort criteria specified in the request.
 	*
-	* @param string $code User-defined code of the credit for which to retrieve audit entries.
+	* @param string $code User-defined code that uniqely identifies the channel group.
 	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
@@ -38,7 +37,8 @@ class CreditAuditEntryClient {
 	{
 		$url = CreditAuditEntryUrl::getAuditEntriesUrl($code, $filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

@@ -19,7 +19,7 @@ class DocumentDraftSummaryUrl  {
 
 	/**
 		* Get Resource Url for ListDocumentDraftSummaries
-		* @param string $documentLists Lists that contain the document drafts.
+		* @param string $documentLists List of document lists that contain documents to delete.
 		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
@@ -28,12 +28,11 @@ class DocumentDraftSummaryUrl  {
 	public static function listDocumentDraftSummariesUrl($documentLists, $pageSize, $responseFields, $startIndex)
 	{
 		$url = "/api/content/documentpublishing/draft?pageSize={pageSize}&startIndex={startIndex}&documentLists={documentLists}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("documentLists", $documentLists)
-				->formatUrl("pageSize", $pageSize)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("startIndex", $startIndex);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("documentLists", $documentLists);
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
 		return $mozuUrl;
 	}
 	
@@ -45,23 +44,21 @@ class DocumentDraftSummaryUrl  {
 	public static function deleteDocumentDraftsUrl($documentLists)
 	{
 		$url = "/api/content/documentpublishing/draft?documentLists={documentLists}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("documentLists", $documentLists);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("documentLists", $documentLists);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for PublishDocuments
-		* @param string $documentLists List of document lists that contain documents to publish.
+		* @param string $documentLists List of document lists that contain documents to delete.
 		* @return string Resource Url
 	*/
 	public static function publishDocumentsUrl($documentLists)
 	{
 		$url = "/api/content/documentpublishing/active?documentLists={documentLists}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("documentLists", $documentLists);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("documentLists", $documentLists);
 		return $mozuUrl;
 	}
 	

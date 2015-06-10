@@ -12,23 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Settings\Checkout;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Settings\Checkout\CustomerCheckoutSettingsClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\SiteSettings\Order\CustomerCheckoutSettings;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Customer Checkout Settings resource to define login settings that apply when shoppers proceed to checkout.
 */
 class CustomerCheckoutSettingsResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves all checkout settings defined for the site: Payment settings, such as the payment gateway ID and credentials, supported credit cards, and more; Customer Checkout settings, such as whether login is required, and any custom attributes; and Order Processing settings, such as when payment is authorized and captured, and any custom attributes.
@@ -39,9 +38,9 @@ class CustomerCheckoutSettingsResource {
 	public function getCustomerCheckoutSettings($responseFields =  null)
 	{
 		$mozuClient = CustomerCheckoutSettingsClient::getCustomerCheckoutSettingsClient($responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -49,15 +48,15 @@ class CustomerCheckoutSettingsResource {
 	* Modifies existing site checkout settings. Modify Payment, Customer Checkout, and Order Processing settings in one PUT.
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param CustomerCheckoutSettings $customerCheckoutSettings All the properties to update in the checkout settings.
+	* @param CustomerCheckoutSettings $customerCheckoutSettings The properties of the customer checkout settings such as whether shoppers must be logged in.
 	* @return CustomerCheckoutSettings 
 	*/
 	public function updateCustomerCheckoutSettings($customerCheckoutSettings, $responseFields =  null)
 	{
 		$mozuClient = CustomerCheckoutSettingsClient::updateCustomerCheckoutSettingsClient($customerCheckoutSettings, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	

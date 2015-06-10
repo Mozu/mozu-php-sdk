@@ -12,108 +12,106 @@
 
 namespace Mozu\Api\Resources\Platform\Entitylists;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Platform\Entitylists\EntityClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\MZDB\EntityCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* Entities are JSON entries within the MZDB (Mozu Mongo DB) for handling large data sets to heavily filter (&gt;2,000 items). Each entity is associated to an EntityList with schema, rules, and formatting for storing the content. This content can be accessed via the Mozu API and Mozu Hypr tags.
 */
 class EntityResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
-	
-
 	/**
-	* 
+	* Retrieves an entity with an associated entity list and context level at tenant, master catalog, catalog, or site. 
 	*
-	* @param string $entityListFullName 
-	* @param string $id 
+	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
+	* @param string $id Unique identifier of the customer segment to retrieve.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @return hashtable 
+	* @return JObject 
 	*/
 	public function getEntity($entityListFullName, $id, $responseFields =  null)
 	{
 		$mozuClient = EntityClient::getEntityClient($entityListFullName, $id, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 	/**
-	* 
+	* Retrieves a collection of entities with an associated entity list and context level at tenant, master catalog, catalog, or site. 
 	*
-	* @param string $entityListFullName 
+	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
 	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize 
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The amount is divided and displayed on the `pageCount `amount of pages. The default is 20 and maximum value is 200 per page.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $sortBy 
-	* @param int $startIndex 
+	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional.
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a `pageSize `of 25, to get the 51st through the 75th items, use `startIndex=3`.
 	* @return EntityCollection 
 	*/
 	public function getEntities($entityListFullName, $pageSize =  null, $startIndex =  null, $filter =  null, $sortBy =  null, $responseFields =  null)
 	{
 		$mozuClient = EntityClient::getEntitiesClient($entityListFullName, $pageSize, $startIndex, $filter, $sortBy, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 	/**
-	* 
+	* Inserts a new entity per the entered item, the entity list full name, and associated response fields. 
 	*
-	* @param string $entityListFullName 
+	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param hashtable $item 
-	* @return hashtable 
+	* @param JObject $item JSON code for objects.
+	* @return JObject 
 	*/
 	public function insertEntity($item, $entityListFullName, $responseFields =  null)
 	{
 		$mozuClient = EntityClient::insertEntityClient($item, $entityListFullName, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 	/**
-	* 
+	* Updates the content and associations for an existing entity.
 	*
-	* @param string $entityListFullName 
-	* @param string $id 
+	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
+	* @param string $id Unique identifier of the customer segment to retrieve.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param hashtable $item 
-	* @return hashtable 
+	* @param JObject $item JSON code for objects.
+	* @return JObject 
 	*/
 	public function updateEntity($item, $entityListFullName, $id, $responseFields =  null)
 	{
 		$mozuClient = EntityClient::updateEntityClient($item, $entityListFullName, $id, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 	/**
-	* 
+	* Deletes an entity depending on the context of tenant, master catalog, catalog, or site level. Entities are associated to an entity list (schema and formatting) for displaying within a namespace and context level.
 	*
-	* @param string $entityListFullName 
-	* @param string $id 
-	* @return void
+	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
+	* @param string $id Unique identifier of the customer segment to retrieve.
 	*/
 	public function deleteEntity($entityListFullName, $id)
 	{
 		$mozuClient = EntityClient::deleteEntityClient($entityListFullName, $id);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

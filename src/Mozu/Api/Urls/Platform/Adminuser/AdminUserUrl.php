@@ -26,26 +26,24 @@ class AdminUserUrl  {
 	public static function getTenantScopesForUserUrl($responseFields, $userId)
 	{
 		$url = "/api/platform/adminuser/accounts/{userId}/tenants?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields)
-				->formatUrl("userId", $userId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("userId", $userId);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetUser
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $userId Unique identifier of the administrator account to retrieve.
+		* @param string $userId Unique identifier of the user whose tenant scopes you want to retrieve.
 		* @return string Resource Url
 	*/
 	public static function getUserUrl($responseFields, $userId)
 	{
 		$url = "/api/platform/adminuser/accounts/{userId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields)
-				->formatUrl("userId", $userId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("userId", $userId);
 		return $mozuUrl;
 	}
 	

@@ -12,104 +12,101 @@
 
 namespace Mozu\Api\Resources\Platform;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Platform\EntityListClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\MZDB\EntityList;
-use Mozu\Api\Contracts\MZDB\EntityListCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* 
+* The Entity Lists resource manages all dynamic entities in your Mozu document store of the Mozu cloud. The content is JSON and can have up to five indexed properties (integer, decimal, string, date, and boolean) with support for additional customized elements as needed. Every document in the entity list has a validated unique ID. 
 */
 class EntityListResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
-	
-
 	/**
-	* 
+	* Get a filtered list of EntityLists for a specific tenant.
 	*
 	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize 
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The amount is divided and displayed on the `pageCount `amount of pages. The default is 20 and maximum value is 200 per page.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $sortBy 
-	* @param int $startIndex 
+	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional.
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a `pageSize `of 25, to get the 51st through the 75th items, use `startIndex=3`.
 	* @return EntityListCollection 
 	*/
 	public function getEntityLists($pageSize =  null, $startIndex =  null, $filter =  null, $sortBy =  null, $responseFields =  null)
 	{
 		$mozuClient = EntityListClient::getEntityListsClient($pageSize, $startIndex, $filter, $sortBy, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 	/**
-	* 
+	* Get an existing EntityList definition for a specific tenant
 	*
-	* @param string $entityListFullName 
+	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return EntityList 
 	*/
 	public function getEntityList($entityListFullName, $responseFields =  null)
 	{
 		$mozuClient = EntityListClient::getEntityListClient($entityListFullName, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 	/**
-	* 
+	* Create a new EntityList for a specific tenant.
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param EntityList $entityList 
+	* @param EntityList $entityList The definition of an MZDB EntityList which describes the characteristics of the EntityList on a per tenant basis. EntityLists are created at the tenant level, but instances of the EntityLists are implicitly created at the appropriate context level as entities are added or removed from the EntityList.
 	* @return EntityList 
 	*/
 	public function createEntityList($entityList, $responseFields =  null)
 	{
 		$mozuClient = EntityListClient::createEntityListClient($entityList, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 	/**
-	* 
+	* Update an existing Entitylist for a specific tenant.
 	*
-	* @param string $entityListFullName 
+	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param EntityList $entityList 
+	* @param EntityList $entityList The definition of an MZDB EntityList which describes the characteristics of the EntityList on a per tenant basis. EntityLists are created at the tenant level, but instances of the EntityLists are implicitly created at the appropriate context level as entities are added or removed from the EntityList.
 	* @return EntityList 
 	*/
 	public function updateEntityList($entityList, $entityListFullName, $responseFields =  null)
 	{
 		$mozuClient = EntityListClient::updateEntityListClient($entityList, $entityListFullName, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 	/**
-	* 
+	* Delete an existing EntityList for a specific tenant. This will also delete all Entities in all instances of this EntityList for the tenant.
 	*
-	* @param string $entityListFullName 
-	* @return void
+	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
 	*/
 	public function deleteEntityList($entityListFullName)
 	{
 		$mozuClient = EntityListClient::deleteEntityListClient($entityListFullName);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

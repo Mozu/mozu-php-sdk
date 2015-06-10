@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Customer;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\CustomerAuthTicketUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Customer\CustomerUserAuthInfo;
-use Mozu\Api\Contracts\Customer\CustomerAuthTicket;
 
 /**
 * Use the Customer Authentication Tickets resource to generate and refresh authentication tickets for customer accounts.
@@ -33,7 +31,8 @@ class CustomerAuthTicketClient {
 	{
 		$url = CustomerAuthTicketUrl::createAnonymousShopperAuthTicketUrl();
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -41,21 +40,22 @@ class CustomerAuthTicketClient {
 	* Generates a new authentication ticket for a customer account.
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param CustomerUserAuthInfo $userAuthInfo The authentication information required to generate an authetication ticket for a user, which consists of a user name and password.
+	* @param CustomerUserAuthInfo $userAuthInfo The authentication information required to generate an authentication ticket for a customer account.
 	* @return MozuClient
 	*/
 	public static function createUserAuthTicketClient($userAuthInfo, $responseFields =  null)
 	{
 		$url = CustomerAuthTicketUrl::createUserAuthTicketUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($userAuthInfo);
+		$mozuClient->withResourceUrl($url)->withBody($userAuthInfo);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Refreshes an existing authentication ticket for a customer account by providing the refresh token string.
 	*
-	* @param string $refreshToken The refresh token string required to refresh a user's authentication ticket.
+	* @param string $refreshToken Alphanumeric string used for access tokens. This token refreshes access for accounts by generating a new developer or application account authentication ticket after an access token expires.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
@@ -63,7 +63,8 @@ class CustomerAuthTicketClient {
 	{
 		$url = CustomerAuthTicketUrl::refreshUserAuthTicketUrl($refreshToken, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

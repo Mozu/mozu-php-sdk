@@ -25,12 +25,12 @@ class PaymentCard
 	public $cardNumberPartOrMask;
 
 	/**
-	*The two-digit month the credit card expires.
+	*The two-digit month a credit card expires for a payment method.
 	*/
 	public $expireMonth;
 
 	/**
-	*The four-digit year the credit card expires.
+	*The four-digit year the credit card expires for a payment method.
 	*/
 	public $expireYear;
 
@@ -45,7 +45,7 @@ class PaymentCard
 	public $isUsedRecurring;
 
 	/**
-	*The name printed on the credit card.
+	*The full name printed on a credit card. The name should match what is printed on the card exactly, used in validation during a payment.
 	*/
 	public $nameOnCard;
 

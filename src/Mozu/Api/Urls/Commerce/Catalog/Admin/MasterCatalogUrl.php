@@ -25,9 +25,8 @@ class MasterCatalogUrl  {
 	public static function getMasterCatalogsUrl($responseFields)
 	{
 		$url = "/api/commerce/catalog/admin/mastercatalogs/?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -40,10 +39,9 @@ class MasterCatalogUrl  {
 	public static function getMasterCatalogUrl($masterCatalogId, $responseFields)
 	{
 		$url = "/api/commerce/catalog/admin/mastercatalogs/{masterCatalogId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("masterCatalogId", $masterCatalogId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("masterCatalogId", $masterCatalogId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -56,10 +54,9 @@ class MasterCatalogUrl  {
 	public static function updateMasterCatalogUrl($masterCatalogId, $responseFields)
 	{
 		$url = "/api/commerce/catalog/admin/mastercatalogs/{masterCatalogId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("masterCatalogId", $masterCatalogId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("masterCatalogId", $masterCatalogId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	

@@ -14,16 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Customer;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\CustomerAccountUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Customer\CustomerAccountAndAuthInfo;
-use Mozu\Api\Contracts\Customer\CustomerAccount;
-use Mozu\Api\Contracts\Customer\PasswordInfo;
-use Mozu\Api\Contracts\Customer\CustomerLoginInfo;
-use Mozu\Api\Contracts\Customer\ResetPasswordInfo;
-use Mozu\Api\Contracts\Customer\CustomerAccountCollection;
-use Mozu\Api\Contracts\Customer\LoginState;
-use Mozu\Api\Contracts\Customer\CustomerAuthTicket;
 
 /**
 * Use the Customer Accounts resource to manage the components of shopper accounts, including attributes, contact information, company notes, and groups associated with the customer account.
@@ -37,7 +29,7 @@ class CustomerAccountClient {
 	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 	* @param bool $isAnonymous If true, retrieve anonymous shopper accounts in the response.
 	* @param int $pageSize 
-	* @param string $q A list of customer account search terms to use in the query when searching across customer name and email. Separate multiple search terms with a space character.
+	* @param string $q A list of order search terms (not phrases) to use in the query when searching across order number and the name or email of the billing contact. When entering, separate multiple search terms with a space character.
 	* @param int $qLimit The maximum number of search results to return in the response. You can limit any range between 1-100.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $sortBy 
@@ -48,7 +40,8 @@ class CustomerAccountClient {
 	{
 		$url = CustomerAccountUrl::getAccountsUrl($fields, $filter, $isAnonymous, $pageSize, $q, $qLimit, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -63,14 +56,15 @@ class CustomerAccountClient {
 	{
 		$url = CustomerAccountUrl::getLoginStateUrl($accountId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Retrieve details of a customer account.
 	*
-	* @param int $accountId Unique identifier of the customer account to retrieve.
+	* @param int $accountId Unique identifier of the customer account.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
@@ -78,7 +72,8 @@ class CustomerAccountClient {
 	{
 		$url = CustomerAccountUrl::getAccountUrl($accountId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -86,29 +81,31 @@ class CustomerAccountClient {
 	* Creates a new customer account based on the information specified in the request.
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param CustomerAccount $account Properties of the customer account to update.
+	* @param CustomerAccount $account Properties of the customer account.
 	* @return MozuClient
 	*/
 	public static function addAccountClient($account, $responseFields =  null)
 	{
 		$url = CustomerAccountUrl::addAccountUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($account);
+		$mozuClient->withResourceUrl($url)->withBody($account);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Modify the password associated with a customer account.
 	*
-	* @param int $accountId The customer account information required to change the userpassword.
-	* @param PasswordInfo $passwordInfo The password information required to change the user password.
-	* @return MozuClient
+	* @param int $accountId Unique identifier of the customer account.
+	* @param bool $unlockAccount 
+	* @param PasswordInfo $passwordInfo The information required to modify a shopper account password.
 	*/
-	public static function changePasswordClient($passwordInfo, $accountId)
+	public static function changePasswordClient($passwordInfo, $accountId, $unlockAccount =  null)
 	{
-		$url = CustomerAccountUrl::changePasswordUrl($accountId);
+		$url = CustomerAccountUrl::changePasswordUrl($accountId, $unlockAccount);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($passwordInfo);
+		$mozuClient->withResourceUrl($url)->withBody($passwordInfo);
+		return $mozuClient;
 
 	}
 	
@@ -117,43 +114,44 @@ class CustomerAccountClient {
 	*
 	* @param int $accountId Unique identifier of the customer account.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param CustomerLoginInfo $customerAuthInfo The authentication information for the customer account.
+	* @param CustomerLoginInfo $customerAuthInfo The login information for a customer account.
 	* @return MozuClient
 	*/
 	public static function addLoginToExistingCustomerClient($customerAuthInfo, $accountId, $responseFields =  null)
 	{
 		$url = CustomerAccountUrl::addLoginToExistingCustomerUrl($accountId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($customerAuthInfo);
+		$mozuClient->withResourceUrl($url)->withBody($customerAuthInfo);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Updates the customer lifetime value of the specified customer account in the event of an order import or a lifetime value calculation error.
 	*
-	* @param int $accountId The unique identifier of the customer account for which to calculate customer lifetime value.
-	* @return MozuClient
+	* @param int $accountId Unique identifier of the customer account.
 	*/
 	public static function recomputeCustomerLifetimeValueClient($accountId)
 	{
 		$url = CustomerAccountUrl::recomputeCustomerLifetimeValueUrl($accountId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Lock or unlock a customer account.
 	*
-	* @param int $accountId The unique identifier of the customer account.
+	* @param int $accountId Unique identifier of the customer account.
 	* @param bool $isLocked If true, the customer account is locked from logging in.
-	* @return MozuClient
 	*/
 	public static function setLoginLockedClient($isLocked, $accountId)
 	{
 		$url = CustomerAccountUrl::setLoginLockedUrl($accountId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($isLocked);
+		$mozuClient->withResourceUrl($url)->withBody($isLocked);
+		return $mozuClient;
 
 	}
 	
@@ -162,13 +160,13 @@ class CustomerAccountClient {
 	*
 	* @param int $accountId Unique identifier of the customer account.
 	* @param bool $isPasswordChangeRequired If true, the password for the customer account must be changed.
-	* @return MozuClient
 	*/
 	public static function setPasswordChangeRequiredClient($isPasswordChangeRequired, $accountId)
 	{
 		$url = CustomerAccountUrl::setPasswordChangeRequiredUrl($accountId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($isPasswordChangeRequired);
+		$mozuClient->withResourceUrl($url)->withBody($isPasswordChangeRequired);
+		return $mozuClient;
 
 	}
 	
@@ -176,14 +174,15 @@ class CustomerAccountClient {
 	* Creates a new customer account and logs the user associated with the customer account into the site.
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param CustomerAccountAndAuthInfo $accountAndAuthInfo Properties of the customer account to create, including the user authentication information.
+	* @param CustomerAccountAndAuthInfo $accountAndAuthInfo The authentication information associated with a customer account. The data includes the account properties such as the name, username, authorization access, and email address, the required password to match, and indicates if the account was imported from a third party resource. 
 	* @return MozuClient
 	*/
 	public static function addAccountAndLoginClient($accountAndAuthInfo, $responseFields =  null)
 	{
 		$url = CustomerAccountUrl::addAccountAndLoginUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($accountAndAuthInfo);
+		$mozuClient->withResourceUrl($url)->withBody($accountAndAuthInfo);
+		return $mozuClient;
 
 	}
 	
@@ -191,14 +190,31 @@ class CustomerAccountClient {
 	* Creates multiple customer accounts based on the information specified in the request.
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param array|CustomerAccountAndAuthInfo $customers Properties of the customer accounts to create.
+	* @param array|CustomerAccountAndAuthInfo $customers The authentication information associated with a customer account. The data includes the account properties such as the name, username, authorization access, and email address, the required password to match, and indicates if the account was imported from a third party resource. 
 	* @return MozuClient
 	*/
 	public static function addAccountsClient($customers, $responseFields =  null)
 	{
 		$url = CustomerAccountUrl::addAccountsUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($customers);
+		$mozuClient->withResourceUrl($url)->withBody($customers);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* Changes a collection of shopper passwords
+	*
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param AccountPasswordInfoCollection $accountPasswordInfos Mozu.Customer.Contracts.AccountPasswordInfoCollection ApiType DOCUMENT_HERE 
+	* @return MozuClient
+	*/
+	public static function changePasswordsClient($accountPasswordInfos, $responseFields =  null)
+	{
+		$url = CustomerAccountUrl::changePasswordsUrl($responseFields);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withBody($accountPasswordInfos);
+		return $mozuClient;
 
 	}
 	
@@ -213,7 +229,8 @@ class CustomerAccountClient {
 	{
 		$url = CustomerAccountUrl::getLoginStateByEmailAddressUrl($emailAddress, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -228,7 +245,8 @@ class CustomerAccountClient {
 	{
 		$url = CustomerAccountUrl::getLoginStateByUserNameUrl($responseFields, $userName);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -236,13 +254,13 @@ class CustomerAccountClient {
 	* Resets the password for a customer account.
 	*
 	* @param ResetPasswordInfo $resetPasswordInfo Information required to reset the password for a customer account.
-	* @return MozuClient
 	*/
 	public static function resetPasswordClient($resetPasswordInfo)
 	{
 		$url = CustomerAccountUrl::resetPasswordUrl();
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($resetPasswordInfo);
+		$mozuClient->withResourceUrl($url)->withBody($resetPasswordInfo);
+		return $mozuClient;
 
 	}
 	
@@ -251,28 +269,29 @@ class CustomerAccountClient {
 	*
 	* @param int $accountId Unique identifier of the customer account.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param CustomerAccount $account Properties of the customer account to update.
+	* @param CustomerAccount $account Properties of the customer account.
 	* @return MozuClient
 	*/
 	public static function updateAccountClient($account, $accountId, $responseFields =  null)
 	{
 		$url = CustomerAccountUrl::updateAccountUrl($accountId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($account);
+		$mozuClient->withResourceUrl($url)->withBody($account);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Deletes a customer account. A customer account cannot be deleted if any orders exist, past or present.
 	*
-	* @param int $accountId Unique identifier of the customer account to delete.
-	* @return MozuClient
+	* @param int $accountId Unique identifier of the customer account.
 	*/
 	public static function deleteAccountClient($accountId)
 	{
 		$url = CustomerAccountUrl::deleteAccountUrl($accountId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

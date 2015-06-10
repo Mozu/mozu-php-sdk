@@ -14,11 +14,8 @@ namespace Mozu\Api\Clients\Content;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Content\DocumentListUrl;
-use Mozu\Api\Headers;
 use Mozu\Api\DataViewMode;
-
-use Mozu\Api\Contracts\Content\DocumentList;
-use Mozu\Api\Contracts\Content\DocumentListCollection;
+use Mozu\Api\Headers;
 
 /**
 * Use the document lists resource to organize your site's documents into a hierarchy. Document lists can contain documents, folders, and complete hierarchies of folders, which contain documents with unique names.
@@ -28,7 +25,6 @@ class DocumentListClient {
 	/**
 	* Retrieves a collection of document lists.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param int $startIndex 
@@ -38,15 +34,15 @@ class DocumentListClient {
 	{
 		$url = DocumentListUrl::getDocumentListsUrl($pageSize, $responseFields, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Retrieve the details of a document list by providing the list name.
 	*
-	* @param DataViewMode $dataViewMode
-	* @param string $documentListName The name of the document list.
+	* @param string $documentListName Name of content documentListName to delete
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
@@ -54,53 +50,55 @@ class DocumentListClient {
 	{
 		$url = DocumentListUrl::getDocumentListUrl($documentListName, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Creates a new documentList
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param DocumentList $list 
+	* @param DocumentList $list The list of document types and related properties that define content used by the content management system (CMS).
 	* @return MozuClient
 	*/
 	public static function createDocumentListClient($dataViewMode, $list, $responseFields =  null)
 	{
 		$url = DocumentListUrl::createDocumentListUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($list)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withBody($list)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Updates a `DocumentListName`.
 	*
-	* @param string $documentListName 
+	* @param string $documentListName Name of content documentListName to delete
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param DocumentList $list 
+	* @param DocumentList $list The list of document types and related properties that define content used by the content management system (CMS).
 	* @return MozuClient
 	*/
 	public static function updateDocumentListClient($list, $documentListName, $responseFields =  null)
 	{
 		$url = DocumentListUrl::updateDocumentListUrl($documentListName, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($list);
+		$mozuClient->withResourceUrl($url)->withBody($list);
+		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Deletes the specified `DocumentListName`.
 	*
-	* @param string $documentListName 
-	* @return MozuClient
+	* @param string $documentListName Name of content documentListName to delete
 	*/
 	public static function deleteDocumentListClient($documentListName)
 	{
 		$url = DocumentListUrl::deleteDocumentListUrl($documentListName);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

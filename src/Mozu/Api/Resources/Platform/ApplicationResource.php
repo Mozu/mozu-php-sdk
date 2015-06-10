@@ -12,54 +12,135 @@
 
 namespace Mozu\Api\Resources\Platform;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Platform\ApplicationClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\InstalledApplications\Application;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* Use the Applications resource to update and retrieve details about the applications installed for your tenant.
+* platform/developer related resources. DOCUMENT_HERE 
 */
 class ApplicationResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
-	
-
 	/**
-	* Retrieves the details of the installed application specified in the request.
+	* platform-developer Get GetAppPackageNames description DOCUMENT_HERE 
 	*
-	* @param string $appId The application ID that represents the application to retrieve.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @return Application 
+	* @param string $applicationKey 
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @return PackageNamesCollection 
 	*/
-	public function getApplication($appId, $responseFields =  null)
+	public function getAppPackageNames($applicationKey, $responseFields =  null)
 	{
-		$mozuClient = ApplicationClient::getApplicationClient($appId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = ApplicationClient::getAppPackageNamesClient($applicationKey, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 	/**
-	* Updates one or more properties of the application specified in the request.
+	* platform-developer Get GetAppVersions description DOCUMENT_HERE 
 	*
-	* @param string $appId The application ID that represents the application to update.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Application $application Properties of the application to update.
-	* @return Application 
+	* @param string $nsAndAppId 
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @return ApplicationVersionsCollection 
 	*/
-	public function updateApplication($application, $appId, $responseFields =  null)
+	public function getAppVersions($nsAndAppId, $responseFields =  null)
 	{
-		$mozuClient = ApplicationClient::updateApplicationClient($application, $appId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = ApplicationClient::getAppVersionsClient($nsAndAppId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+	/**
+	* platform-developer Get GetPackageFileMetadata description DOCUMENT_HERE 
+	*
+	* @param string $applicationKey 
+	* @param string $filepath 
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @return FileMetadata 
+	*/
+	public function getPackageFileMetadata($applicationKey, $filepath, $responseFields =  null)
+	{
+		$mozuClient = ApplicationClient::getPackageFileMetadataClient($applicationKey, $filepath, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+	/**
+	* platform-developer Get GetPackageMetadata description DOCUMENT_HERE 
+	*
+	* @param string $applicationKey 
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @return FolderMetadata 
+	*/
+	public function getPackageMetadata($applicationKey, $responseFields =  null)
+	{
+		$mozuClient = ApplicationClient::getPackageMetadataClient($applicationKey, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+	/**
+	* platform-developer Post UpsertPackageFile description DOCUMENT_HERE 
+	*
+	* @param string $applicationKey 
+	* @param string $filepath 
+	* @param string $lastModifiedTime 
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param Stream $stream Data stream that delivers information. Used to input and output data.
+	* @return FileMetadata 
+	*/
+	public function upsertPackageFile($stream, $applicationKey, $filepath, $lastModifiedTime =  null, $responseFields =  null, $contentType= null)
+	{
+		$mozuClient = ApplicationClient::upsertPackageFileClient($stream, $applicationKey, $filepath, $lastModifiedTime, $responseFields, $contentType);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+	/**
+	* platform-developer Post RenamePackageFile description DOCUMENT_HERE 
+	*
+	* @param string $applicationKey 
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param RenameInfo $renameInfo Information required to update the name of a file in a package, which consists of the original name and the new name.
+	* @return FileMetadata 
+	*/
+	public function renamePackageFile($renameInfo, $applicationKey, $responseFields =  null)
+	{
+		$mozuClient = ApplicationClient::renamePackageFileClient($renameInfo, $applicationKey, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+	/**
+	* platform-developer Delete DeletePackageFile description DOCUMENT_HERE 
+	*
+	* @param string $applicationKey 
+	* @param string $filepath 
+	*/
+	public function deletePackageFile($applicationKey, $filepath)
+	{
+		$mozuClient = ApplicationClient::deletePackageFileClient($applicationKey, $filepath);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

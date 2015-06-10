@@ -15,12 +15,12 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 /**
-*	Properties of a customer segment used to group sets of customers for targeted reporting and discounts.
+*	The Customer Segment object includes properties of a defined customer segment used to group customer accounts.
 */
 class CustomerSegment
 {
 	/**
-	*Unique identifier of the customer segment.
+	*Unique identifier of the source product property. For a product field it will be the name of the field. For a product attribute it will be the Attribute FQN. 
 	*/
 	public $id;
 

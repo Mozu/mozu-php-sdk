@@ -12,25 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Orders\Attributedefinition;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Orders\Attributedefinition\AttributeClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\Core\Extensible\AttributeCollection;
-use Mozu\Api\Contracts\Core\Extensible\AttributeVocabularyValue;
-use Mozu\Api\Contracts\Core\Extensible\Attribute;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
-* Use the Order Attribute Definition resource to manage the attributes that uniquely describe orders, such as the associated shopping season or "How did you hear about us?". Merchants can display order attributes on the order summary, the order confirmation page, invoices, or packing slips.
+* Use the Order Attribute Definition resource to manage the attributes that uniquely describe orders, such as the associated shopping season or "How did you hear about us?" information. Merchants can display order attributes on the order summary, the order confirmation page, invoices, or packing slips.
 */
 class AttributeResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves a list of order attributes according to any filter criteria or sort options.
@@ -45,9 +42,9 @@ class AttributeResource {
 	public function getAttributes($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
 		$mozuClient = AttributeClient::getAttributesClient($startIndex, $pageSize, $sortBy, $filter, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -60,9 +57,9 @@ class AttributeResource {
 	public function getAttributeVocabularyValues($attributeFQN)
 	{
 		$mozuClient = AttributeClient::getAttributeVocabularyValuesClient($attributeFQN);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -76,9 +73,9 @@ class AttributeResource {
 	public function getAttribute($attributeFQN, $responseFields =  null)
 	{
 		$mozuClient = AttributeClient::getAttributeClient($attributeFQN, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	

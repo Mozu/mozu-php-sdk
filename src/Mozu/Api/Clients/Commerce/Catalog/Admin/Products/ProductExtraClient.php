@@ -14,11 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin\Products;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\Products\ProductExtraUrl;
-use Mozu\Api\Headers;
 use Mozu\Api\DataViewMode;
-
-use Mozu\Api\Contracts\ProductAdmin\ProductExtraValueDeltaPrice;
-use Mozu\Api\Contracts\ProductAdmin\ProductExtra;
+use Mozu\Api\Headers;
 
 /**
 * Use the Extras resource to configure an extra product attribute for products associated with the product type that uses the extra attribute.
@@ -28,7 +25,6 @@ class ProductExtraClient {
 	/**
 	* Retrieves a list of extras configured for the product according to any defined filter and sort criteria.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @return MozuClient
 	*/
@@ -36,50 +32,50 @@ class ProductExtraClient {
 	{
 		$url = ProductExtraUrl::getExtrasUrl($productCode);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Retrieves a collection of all localized delta price values for a product extra. Localized delta prices are deltas between two differing monetary conversion amounts between countries, such as US Dollar vs Euro.
 	*
-	* @param DataViewMode $dataViewMode
-	* @param string $attributeFQN 
-	* @param string $productCode 
-	* @param string $value 
+	* @param string $attributeFQN Fully qualified name for an attribute.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $value The value string to create.
 	* @return MozuClient
 	*/
 	public static function getExtraValueLocalizedDeltaPricesClient($dataViewMode, $productCode, $attributeFQN, $value)
 	{
 		$url = ProductExtraUrl::getExtraValueLocalizedDeltaPricesUrl($attributeFQN, $productCode, $value);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Retrieves the localized delta price value for a product extra. Localized delta prices are deltas between two differing monetary conversion amounts between countries, such as US Dollar vs Euro.
 	*
-	* @param DataViewMode $dataViewMode
-	* @param string $attributeFQN 
-	* @param string $currencyCode 
-	* @param string $productCode 
+	* @param string $attributeFQN Fully qualified name for an attribute.
+	* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $value 
+	* @param string $value The value string to create.
 	* @return MozuClient
 	*/
 	public static function getExtraValueLocalizedDeltaPriceClient($dataViewMode, $productCode, $attributeFQN, $value, $currencyCode, $responseFields =  null)
 	{
 		$url = ProductExtraUrl::getExtraValueLocalizedDeltaPriceUrl($attributeFQN, $currencyCode, $productCode, $responseFields, $value);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Retrieves the details of an extra attribute configuration for the product specified in the request.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
@@ -89,133 +85,132 @@ class ProductExtraClient {
 	{
 		$url = ProductExtraUrl::getExtraUrl($attributeFQN, $productCode, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Adds a localized delta price value for a product extra. Localized delta prices are deltas between two differing monetary conversion amounts between countries, such as US Dollar vs Euro.
 	*
-	* @param DataViewMode $dataViewMode
-	* @param string $attributeFQN 
-	* @param string $productCode 
+	* @param string $attributeFQN Fully qualified name for an attribute.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $value 
-	* @param ProductExtraValueDeltaPrice $localizedDeltaPrice 
+	* @param string $value The value string to create.
+	* @param ProductExtraValueDeltaPrice $localizedDeltaPrice The properties of the price difference between the product extra and the base product.
 	* @return MozuClient
 	*/
 	public static function addExtraValueLocalizedDeltaPriceClient($dataViewMode, $localizedDeltaPrice, $productCode, $attributeFQN, $value, $responseFields =  null)
 	{
 		$url = ProductExtraUrl::addExtraValueLocalizedDeltaPriceUrl($attributeFQN, $productCode, $responseFields, $value);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($localizedDeltaPrice)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withBody($localizedDeltaPrice)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Configure an extra attribute for the product specified in the request.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param ProductExtra $productExtra Properties of the product extra to configure for the specified product.
+	* @param ProductExtra $productExtra Properties of an extra attribute to defined for a product that is associated with a product type that uses the extra. Setting up extras for a product enables shopper-entered information, such as initials for a monogram.
 	* @return MozuClient
 	*/
 	public static function addExtraClient($dataViewMode, $productExtra, $productCode, $responseFields =  null)
 	{
 		$url = ProductExtraUrl::addExtraUrl($productCode, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($productExtra)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withBody($productExtra)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Updates all localized delta price values for a product extra. Localized delta prices are deltas between two differing monetary conversion amounts between countries, such as US Dollar vs Euro.
 	*
-	* @param DataViewMode $dataViewMode
-	* @param string $attributeFQN 
-	* @param string $productCode 
-	* @param string $value 
-	* @param array|ProductExtraValueDeltaPrice $localizedDeltaPrice 
+	* @param string $attributeFQN Fully qualified name for an attribute.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $value The value string to create.
+	* @param array|ProductExtraValueDeltaPrice $localizedDeltaPrice The properties of the price difference between the product extra and the base product.
 	* @return MozuClient
 	*/
 	public static function updateExtraValueLocalizedDeltaPricesClient($dataViewMode, $localizedDeltaPrice, $productCode, $attributeFQN, $value)
 	{
 		$url = ProductExtraUrl::updateExtraValueLocalizedDeltaPricesUrl($attributeFQN, $productCode, $value);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($localizedDeltaPrice)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withBody($localizedDeltaPrice)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Updates the localized delta price value for a product extra. Localized delta prices are deltas between two differing monetary conversion amounts between countries, such as US Dollar vs Euro.
 	*
-	* @param DataViewMode $dataViewMode
-	* @param string $attributeFQN 
-	* @param string $currencyCode 
-	* @param string $productCode 
+	* @param string $attributeFQN Fully qualified name for an attribute.
+	* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $value 
-	* @param ProductExtraValueDeltaPrice $localizedDeltaPrice 
+	* @param string $value The value string to create.
+	* @param ProductExtraValueDeltaPrice $localizedDeltaPrice The properties of the price difference between the product extra and the base product.
 	* @return MozuClient
 	*/
 	public static function updateExtraValueLocalizedDeltaPriceClient($dataViewMode, $localizedDeltaPrice, $productCode, $attributeFQN, $value, $currencyCode, $responseFields =  null)
 	{
 		$url = ProductExtraUrl::updateExtraValueLocalizedDeltaPriceUrl($attributeFQN, $currencyCode, $productCode, $responseFields, $value);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($localizedDeltaPrice)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withBody($localizedDeltaPrice)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Updates the configuration of an extra attribute for the product specified in the request.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param ProductExtra $productExtra Properties of the extra attribute to update for the specified product.
+	* @param ProductExtra $productExtra Properties of an extra attribute to defined for a product that is associated with a product type that uses the extra. Setting up extras for a product enables shopper-entered information, such as initials for a monogram.
 	* @return MozuClient
 	*/
 	public static function updateExtraClient($dataViewMode, $productExtra, $productCode, $attributeFQN, $responseFields =  null)
 	{
 		$url = ProductExtraUrl::updateExtraUrl($attributeFQN, $productCode, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($productExtra)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withBody($productExtra)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Delete a product extra configuration for the product specified in the request.
 	*
-	* @param DataViewMode $dataViewMode
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @return MozuClient
 	*/
 	public static function deleteExtraClient($dataViewMode, $productCode, $attributeFQN)
 	{
 		$url = ProductExtraUrl::deleteExtraUrl($attributeFQN, $productCode);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Deletes the localized delta price value for a product extra. Localized delta prices are deltas between two differing monetary conversion amounts between countries, such as US Dollar vs Euro.
 	*
-	* @param DataViewMode $dataViewMode
-	* @param string $attributeFQN 
-	* @param string $currencyCode 
-	* @param string $productCode 
+	* @param string $attributeFQN Fully qualified name for an attribute.
+	* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
 	* @param string $value Use this field to include those fields which are not included by default.
-	* @return MozuClient
 	*/
 	public static function deleteExtraValueLocalizedDeltaPriceClient($dataViewMode, $productCode, $attributeFQN, $value, $currencyCode)
 	{
 		$url = ProductExtraUrl::deleteExtraValueLocalizedDeltaPriceUrl($attributeFQN, $currencyCode, $productCode, $value);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
 
 	}
 	

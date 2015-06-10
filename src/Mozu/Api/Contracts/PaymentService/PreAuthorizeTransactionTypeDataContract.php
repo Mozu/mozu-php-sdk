@@ -20,12 +20,12 @@ namespace Mozu\Api\Contracts\PaymentService;
 class PreAuthorizeTransactionTypeDataContract
 {
 	/**
-	*Description of the preauthorization transaction type.
+	*The localized description in text for the object, displayed per the locale code. For example, descriptions are used for product descriptions, attributes, and pre-authorization transaction types.
 	*/
 	public $description;
 
 	/**
-	*Identifier of the entity.
+	*Unique identifier of the source product property. For a product field it will be the name of the field. For a product attribute it will be the Attribute FQN. 
 	*/
 	public $id;
 

@@ -20,56 +20,69 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Orders;
 class OrderItem
 {
 	/**
-	*The subtotal of the order item including any applied discount calculations.
+	*The subtotal of the cart, order, and wishlist items, including any applied discount calculations. Wishlist subtotals may change depending on the length of time, available discounts, and stock amounts of products at the time of review by shoppers.
 	*/
 	public $discountedTotal;
 
 	/**
-	*Estimated amount of discounts applied to the item in the order, which is system-supplied and read-only.
+	*Estimated amount of discounts applied to all items in the carts and orders. System-supplied and read-only. This value will be available at the wish list, cart item, order item, and wish list item level at a later time.
 	*/
 	public $discountTotal;
 
 	/**
-	*Represents the total price of the order item extended to the shopper. This begins with the Unit Price, then uses any of the following prices if they are defined, in the following order: Override Amount, Sale Amount, List Amount.
+	*Duty or Tariff for this item
+	*/
+	public $dutyAmount;
+
+	/**
+	*Represents the total price of the cart item extended to the shopper. This begins with the Unit Price, then uses any of the following prices if they are defined, in the following order: Override Amount, Sale Amount, List Amount. This value is not calculated for wish lists at this time.
 	*/
 	public $extendedTotal;
 
 	/**
-	*The total sum of all fees incurred for an item in an order.
+	*The monetary sum of all fees incurred in the cart, order, line item in a cart, or line item in an order. This value is not calculated for wish lists at this time.
 	*/
 	public $feeTotal;
 
 	/**
-	*Code that identifies the location used to fulfill this order item, whether via in-store pickup or direct shipment.
+	*The code that identifies the location used to fulfill the cart/cart item or order/order item. This code can include physical store locations for in-store pickup, warehouse locations providing the products for shipment, or the location for the digital file(s).
 	*/
 	public $fulfillmentLocationCode;
 
 	/**
-	*The method used to fulfill the item in the order, which is "PickUp" or "Ship". The fulfillment method for the order depends on the supported fulfillment types defined for the product.
+	*The method used to fulfill this cart or order item. The method includes direct ship or in-store pickup. The available methods depend on the supported fulfillment types for the product. 
 	*/
 	public $fulfillmentMethod;
 
-		public $handlingAmount;
+	/**
+	*The combined price for all handling costs calculated together for shipped orders, not for digital or in-store pickup. This includes all handling costs per the product line items and options, excluding taxes and discounts. 
+	*/
+	public $handlingAmount;
 
 	/**
-	*Unique identifier of a specific item in an order.
+	*Unique identifier of the source product property. For a product field it will be the name of the field. For a product attribute it will be the Attribute FQN. 
 	*/
 	public $id;
 
 	/**
-	*If true, the item in the order can be purchased or fulfilled at regular intervals such as a monthly billing cycle or a digital or physical subscription. This property is reserved for future functionality and is system-supplied and read only.
+	*Indicates if the product in a cart, order, or wish list is purchased on a recurring schedule. If true, the item can be purchased or fulfilled at regular intervals, such as a monthly billing cycle. For example, digital or physical product subscriptions are recurring cart items. This property is not used at this time and is reserved for future functionality.
 	*/
 	public $isRecurring;
 
 	/**
-	*If true, the entity is subject to tax based on the relevant tax rate.
+	*Indicates if the item is subject to taxation, used by products, options, extras, cart and order items, line items, and wish lists. If true, the entity is subject to tax based on the relevant tax rate and rules.
 	*/
 	public $isTaxable;
 
 	/**
-	*The total amount of tax that applied to an item in an order.
+	*The total amount of calculated tax for items, used by carts, orders, and wish lists.
 	*/
 	public $itemTaxTotal;
+
+	/**
+	*The line id assigned to the order item. Visible only in the Admin, this is set from the Admin or in CommerceRuntime when a cart is converted to an order.
+	*/
+	public $lineId;
 
 	/**
 	*Language used for the entity. Currently, only "en-US" is supported.
@@ -82,32 +95,32 @@ class OrderItem
 	public $originalCartItemId;
 
 	/**
-	*The quantity of a specific item in an order.
+	*The specified quantity of objects and items. This property is used for numerous object types including products, options, components within a product bundle, cart and order items, returned items, shipping line items, items in a digital product. and items associated with types and reservations.
 	*/
 	public $quantity;
 
 	/**
-	*The total amount of sales tax incurred for shipping charges associated with this item in a cart.
+	*The total amount of tax incurred on the shipping charges in the cart and order. This property is not calculated at this time for wish lists.
 	*/
 	public $shippingTaxTotal;
 
 	/**
-	*Total amount of shipping fees associated with the specified item in the order.
+	*The calculated total shipping amount estimated for carts or orders, including tax. This amount is not calculated for wish lists at this time.
 	*/
 	public $shippingTotal;
 
 	/**
-	*Amount of the item in the order without sales tax, shipping costs, and other fees.
+	*Estimated amount of the cart or order without sales tax, shipping costs, and other fees. This amount is not calculated for wish lists at this time.
 	*/
 	public $subtotal;
 
 	/**
-	*The amount of the item in the order that is subject to tax. This amount typically represents the order item subtotal before applied discounts.
+	*The monetary amount of an item in the cart that is subject to tax. This amount typically represents the line item subtotal before applied discounts for an order.
 	*/
 	public $taxableTotal;
 
 	/**
-	*The total monetary sum of a specific item in an order.
+	*Total is used to indicate the monetary, estimated total amount of the cart or order, including items, sales tax, shipping costs, and other fees. Totals are not estimated for wish lists at this time.
 	*/
 	public $total;
 
@@ -117,27 +130,32 @@ class OrderItem
 	public $auditInfo;
 
 	/**
-	*The product properties of an item in an order.
+	*Custom data for a given vendor set within the commerce process.
+	*/
+	public $data;
+
+	/**
+	*The properties of a product, referenced and used by carts, orders, wish lists, and returns.
 	*/
 	public $product;
 
 	/**
-	*The discount that applies to the product.
+	*The applicable product discount for an associated cart, order, or wish list. 
 	*/
 	public $productDiscount;
 
 	/**
-	*List of product discounts that apply to the item in the order.
+	*List of product-level discounts projected to apply to a cart, order, or wish list.
 	*/
 	public $productDiscounts;
 
 	/**
-	*List of shipping discounts that apply to the item in the order.
+	*List of shipping discounts projected to apply to carts, orders, and wish lists and items at checkout.
 	*/
 	public $shippingDiscounts;
 
 	/**
-	*Properties of the unit price associated with the order item.
+	*Properties of the price per unit of a product, associated with cart and order items. This price is not used for wish lists at this time.
 	*/
 	public $unitPrice;
 

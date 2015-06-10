@@ -20,12 +20,17 @@ namespace Mozu\Api\Contracts\Location;
 class Location
 {
 	/**
+	*Allow fullfillment with no (or less) stock
+	*/
+	public $allowFulfillmentWithNoStock;
+
+	/**
 	*User-defined code to assign to this location.
 	*/
 	public $code;
 
 	/**
-	*User-defined description of this location.
+	*The localized description in text for the object, displayed per the locale code. For example, descriptions are used for product descriptions, attributes, and pre-authorization transaction types.
 	*/
 	public $description;
 
@@ -35,12 +40,17 @@ class Location
 	public $fax;
 
 	/**
-	*The user-defined name of the location.
+	*Locations is disabled (soft delete)
+	*/
+	public $isDisabled;
+
+	/**
+	*The display name of the source product property. For a product field it will be the display name of the field. For a product attribute it will be the Attribute Name.
 	*/
 	public $name;
 
 	/**
-	*Any tenant-defined notes associated with this location.
+	*User-entered notation content for an object, used to save information such as payment, return, account, and order notes.
 	*/
 	public $note;
 
@@ -60,7 +70,7 @@ class Location
 	public $tags;
 
 	/**
-	*The physical address properties of the location.
+	*All address information for the contact. This data is used to validate the address for the customer account and includes the full address.
 	*/
 	public $address;
 

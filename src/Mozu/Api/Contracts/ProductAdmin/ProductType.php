@@ -20,12 +20,12 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class ProductType
 {
 	/**
-	*The type of goods for this product.
+	*The type of goods in a bundled product. A bundled product is composed of products associated to sell together. Possible values include “Physical” and “DigitalCredit”. This comes from the `productType `of the product. Products are defaulted to a Physical `goodsType`. Gift cards have a `goodsType `of DigitalCredit.
 	*/
 	public $goodsType;
 
 	/**
-	*Unique identifier of the product type.
+	*Unique identifier of the source product property. For a product field it will be the name of the field. For a product attribute it will be the Attribute FQN. 
 	*/
 	public $id;
 
@@ -40,12 +40,12 @@ class ProductType
 	public $masterCatalogId;
 
 	/**
-	*Name of the product type, such as "Shoes" or "TVs."
+	*The display name of the source product property. For a product field it will be the display name of the field. For a product attribute it will be the Attribute Name.
 	*/
 	public $name;
 
 	/**
-	*The number of products associated with this product type.
+	*The total number of products. This total may indicate the total products associate with a product type or number of products in a list.
 	*/
 	public $productCount;
 
@@ -60,17 +60,17 @@ class ProductType
 	public $auditInfo;
 
 	/**
-	*The list of product type attributes which exist as extras. Example: monogram
+	*List of extra product attributes defined for this product. For example, monogram could be a possible extra for a shirt product.
 	*/
 	public $extras;
 
 	/**
-	*The list of product type attributes which exist as options.
+	*List of option attributes configured for an object. These values are associated and used by products, product bundles, and product types.
 	*/
 	public $options;
 
 	/**
-	*The list of product type attributes which exist as properties, such as color.
+	*Collection of property attributes defined for the object. Properties are associated to all objects within Mozu, including documents, products, and product types.
 	*/
 	public $properties;
 

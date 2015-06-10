@@ -25,6 +25,11 @@ class AttributeInProductType
 	public $attributeFQN;
 
 	/**
+	*If true, this property is not available on the storefront. If false, this property will be available on storefront. The IsHiddenProperty hides the property from the customer, but is still available from the API.
+	*/
+	public $isAdminOnlyProperty;
+
+	/**
 	*If true, this property is hidden on the storefront. If false, this property is not hidden from the storefront.
 	*/
 	public $isHiddenProperty;
@@ -45,19 +50,22 @@ class AttributeInProductType
 	public $isRequiredByAdmin;
 
 	/**
-	*The sequence of this attribute within its product type.
+	*Integer that represents the sequence order of the attribute.
 	*/
 	public $order;
 
 	/**
-	*The wrapper for the properties of the product attribute to set up or generate from the system in the product admin. Properties include namespace, attribute code, attribute sequence, site group ID, input type, value type, data type, boolean flags, and metadata key value pairs.
+	*Detail data for a product or product options attribute. This acts as a wrapper for the properties to configure or generate from the system in the product Admin. Properties may include namespace, attribute code, attribute sequence, site group ID, input type, and value.
 	*/
 	public $attributeDetail;
 
-		public $displayInfo;
+	/**
+	*Defines the intended display of this attribute in the storefront. Options include Drop Down, Image Picker, and Radio Buttons.
+	*/
+	public $displayInfo;
 
 	/**
-	*The list of vocabulary values available for the attribute associated with the product type.
+	*List of valid vocabulary values defined for an attribute.
 	*/
 	public $vocabularyValues;
 

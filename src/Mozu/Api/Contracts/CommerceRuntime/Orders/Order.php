@@ -20,12 +20,17 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Orders;
 class Order
 {
 	/**
+	*Order level duty or tariff amount. Does not take into account duties or tariffs specifically on items on the order
+	*/
+	public $dutyAmount;
+
+	/**
 	*The date and time the order was accepted by the tenant.
 	*/
 	public $acceptedDate;
 
 	/**
-	*If true, the customer account associated with the order is opted in to receive marketing materials.
+	*Indicates if the customer account is opted to receive marketing materials. If true, the customer account is opted in for receiving the content. 
 	*/
 	public $acceptsMarketing;
 
@@ -35,12 +40,17 @@ class Order
 	public $amountAvailableForRefund;
 
 	/**
+	*A counter for how much money has been issued in refunds. This calculated field does NOT include refunds issued in returns.
+	*/
+	public $amountRefunded;
+
+	/**
 	*The total amount of the order not currently associated with a payment. The shopper must create one or more payments to satisfy this amount before the order can be fully paid.
 	*/
 	public $amountRemainingForPayment;
 
 	/**
-	*The available order, payment, and shipment actions a user can perform for the order.
+	*Available actions you can complete for an order. These actions may differ depending on the status of the order, such as actions required to enter a payment, return of a package, and fulfillment of a shipment.
 	*/
 	public $availableActions;
 
@@ -50,7 +60,7 @@ class Order
 	public $cancelledDate;
 
 	/**
-	*Code that identifies the channel associated with the site where the order was submitted.
+	*Code that identifies the channel associated with the site for the shopper's created shopping cart, order, and return.
 	*/
 	public $channelCode;
 
@@ -60,7 +70,7 @@ class Order
 	public $closedDate;
 
 	/**
-	*Array list of coupon codes associated with an order submitted using an external system. Mozu populates this list during the order import process.
+	*Array list of coupon codes associated with a shopping cart and the associated order. These codes are entered by a shopper when proceeding to checkout. 
 	*/
 	public $couponCodes;
 
@@ -70,12 +80,12 @@ class Order
 	public $currencyCode;
 
 	/**
-	*Numeric identifer of the customer account.
+	*Unique identifer of the customer account. This ID is used to associate numerous types of data and object with the customer account, including orders, returns, wish lists, and in-store credit.
 	*/
 	public $customerAccountId;
 
 	/**
-	*The type of interaction the shopper used to submit the order. Possible values are Website, Call, Store, or Unknown.
+	*The type of customer interaction used to create this shopping cart. Possible values are Website, Call, Store, or Unknown.
 	*/
 	public $customerInteractionType;
 
@@ -85,19 +95,24 @@ class Order
 	public $customerTaxId;
 
 	/**
-	*The aggregate total for all line items in the order, including costs associated with shopper-defined options or extras and any applied discounts.
+	*The aggregate total for all items in the cart, including costs associated with shopper-defined options or extras and any applied discounts.
 	*/
 	public $discountedSubtotal;
 
 	/**
-	*The subtotal of the order including any applied discount calculations.
+	*The subtotal of the cart, order, and wishlist items, including any applied discount calculations. Wishlist subtotals may change depending on the length of time, available discounts, and stock amounts of products at the time of review by shoppers.
 	*/
 	public $discountedTotal;
 
 	/**
-	*Estimated amount of discounts applied to all items in the order, which is system-supplied and read-only.
+	*Estimated amount of discounts applied to all items in the carts and orders. System-supplied and read-only. This value will be available at the wish list, cart item, order item, and wish list item level at a later time.
 	*/
 	public $discountTotal;
+
+	/**
+	*Duties or tariffs for the Order as well as OrderItems (e.g. if the Order has a $5 duty or tariff for any reason and an OrderItem has a $2 duty or tariff then the value in this property would be $7)
+	*/
+	public $dutyTotal;
 
 	/**
 	*The email address of the specified user or the email address associated with the specified entity.
@@ -105,17 +120,17 @@ class Order
 	public $email;
 
 	/**
-	*The date when the order will no longer be active or considered abandoned. For example, if a guest or anonymous shopper has 14 days of inactivity, the order is considered abandoned after that period of inactivity. An order never expires for shoppers who are logged into their account. Date in UTC Date/Time. System-supplied and read-only.
+	*Date and time in UTC format when a discount, credit, wish list, or cart expires. An expired discount no longer can be redeemed. An expired wish list is no longer available. An expired credit can no longer be redeemed for a purchase. Acart becomes inactive and expired based on a system-calculated interval. For example, if an anonymous shopper has 14 days of inactivity, the cart is considered abandoned after that period of inactivity. System-supplied and read-only.
 	*/
 	public $expirationDate;
 
 	/**
-	*Unique identifier used by an external program to identify a Mozu order.
+	*Unique identifier used by an external program to identify a Mozu order, customer account, or wish list.
 	*/
 	public $externalId;
 
 	/**
-	*The monetary sum of all fees incurred in the order.
+	*The monetary sum of all fees incurred in the cart, order, line item in a cart, or line item in an order. This value is not calculated for wish lists at this time.
 	*/
 	public $feeTotal;
 
@@ -125,14 +140,17 @@ class Order
 	public $fulfillmentStatus;
 
 	/**
-	*The combined price for all items in the order, including all selected options but excluding any discounts.
+	*The combined price for all handling costs calculated together for shipped orders, not for digital or in-store pickup. This includes all handling costs per the product line items and options, excluding taxes and discounts. 
 	*/
 	public $handlingAmount;
 
-		public $handlingSubTotal;
+	/**
+	*Handling fees for the Order as well as OrderItems (e.g. if the Order has a $5 handling fee and an OrderItem has a $2 handling fee per item quantity then the value in this property would be $9)
+	*/
+	public $handlingSubTotal;
 
 	/**
-	*If the handling fee for the order is subject to sales tax, the total tax amount.
+	*Calculated total tax amount for handling costs if the cart/order is subject to sales tax. 
 	*/
 	public $handlingTaxTotal;
 
@@ -147,17 +165,17 @@ class Order
 	public $hasDraft;
 
 	/**
-	*Unique identifier of the order.
+	*Unique identifier of the source product property. For a product field it will be the name of the field. For a product attribute it will be the Attribute FQN. 
 	*/
 	public $id;
 
 	/**
-	*If the order was imported from an external program, the date and time the order was imported into Mozu.
+	*The date and time an order or wish list is imported into Mozu. This is not the date and time it was created in the external application. 
 	*/
 	public $importDate;
 
 	/**
-	*The IP address from which the order originated.
+	*A captured and stored IP address. IP addresses are stored for the origin location of submitted orders and the tenant domain.
 	*/
 	public $ipAddress;
 
@@ -172,7 +190,7 @@ class Order
 	public $isEligibleForReturns;
 
 	/**
-	*If true, this order was submitted using an external system, and the order record was imported into Mozu.
+	*Indicates if this object/data was imported from an outside source such as a data import or synchronization via an app or service. If true, this data was originally imported into Mozu and accessible through your store database. Examples of imported objects/data include orders and customer accounts.
 	*/
 	public $isImport;
 
@@ -182,17 +200,17 @@ class Order
 	public $isTaxExempt;
 
 	/**
-	*The total amount of tax applied to items in the order.
+	*The total amount of calculated tax for items, used by carts, orders, and wish lists.
 	*/
 	public $itemTaxTotal;
 
 	/**
-	*The date when the order was last validated against the product catalog. Date in UTC Date/Time. System-supplied and read-only.
+	*The date in UTC Date/Time when the items in the cart were last validated against the site's product catalog. System-supplied and read-only.
 	*/
 	public $lastValidationDate;
 
 	/**
-	*The unique code that identifies the location where the order was submitted.
+	*The unique, user-defined code that identifies a location. This location can be the location where the order was entered, location for newly in-stock products, and where products are returned.
 	*/
 	public $locationCode;
 
@@ -206,7 +224,10 @@ class Order
 	*/
 	public $originalCartId;
 
-		public $parentOrderId;
+	/**
+	*If this Order has a parent Order, the parent Order ID is recorded here.
+	*/
+	public $parentOrderId;
 
 	/**
 	*If this order was created to fulfill an item replacement as part of a return merchandise authorization (RMA), the unique identifier of the return.
@@ -224,17 +245,17 @@ class Order
 	public $returnStatus;
 
 	/**
-	*The shipping subtotal amount calculated without any applied discounts.
+	*The shipping subtotal amount calculated without any applied discounts for line item and entire amounts of carts and orders. This property is not calculated for wish lists at this time.
 	*/
 	public $shippingSubTotal;
 
 	/**
-	*The total amount of sales tax incurred for shipping charges on the order.
+	*The total amount of tax incurred on the shipping charges in the cart and order. This property is not calculated at this time for wish lists.
 	*/
 	public $shippingTaxTotal;
 
 	/**
-	*Amount of the shipping fees for the order.
+	*The calculated total shipping amount estimated for carts or orders, including tax. This amount is not calculated for wish lists at this time.
 	*/
 	public $shippingTotal;
 
@@ -249,7 +270,7 @@ class Order
 	public $sourceDevice;
 
 	/**
-	*The current status of this order. Possible values are "Pending", "Submitted", "Processing", "Pending Review", "Closed", or "Cancelled". System-supplied and read-only.
+	*The current status of an object. This status is specific to the object including payment (New, Authorized, Captured, Declined, Failed, Voided, Credited, CheckRequested, or RolledBack), discount (Active, Scheduled, or Expired), returns (ReturnAuthorized), tenant, package (Fulfilled or NotFulfilled), application, master and product catalogs, orders (Pending, Submitted, Processing, Pending Review, Closed, or Canceled), and order validation results (Pass, Fail, Error, or Review).
 	*/
 	public $status;
 
@@ -259,12 +280,12 @@ class Order
 	public $submittedDate;
 
 	/**
-	*Amount of the order without sales tax, shipping costs, and other fees.
+	*Estimated amount of the cart or order without sales tax, shipping costs, and other fees. This amount is not calculated for wish lists at this time.
 	*/
 	public $subtotal;
 
 	/**
-	*The total monetary sum of sales tax for the order.
+	*The total monetary sum of sales tax estimated for a cart or order.
 	*/
 	public $taxTotal;
 
@@ -274,7 +295,7 @@ class Order
 	public $tenantId;
 
 	/**
-	*Amount of the order, including items, sales tax, shipping costs, and other fees.
+	*Total is used to indicate the monetary, estimated total amount of the cart or order, including items, sales tax, shipping costs, and other fees. Totals are not estimated for wish lists at this time.
 	*/
 	public $total;
 
@@ -289,19 +310,24 @@ class Order
 	public $type;
 
 	/**
-	*The current version number of the order.
+	*The current version number of the order, wish list, document list, or document type list.
 	*/
 	public $version;
 
 	/**
-	*Unique identifier of the customer visit in which the order was created or last updated.
+	*Unique identifier of the customer visit in which the cart was created or last modified.
 	*/
 	public $visitId;
 
 	/**
-	*Unique identifier of the web session in which the order was created or last updated.
+	*Unique identifier of the web session in which the cart, order, return, or wish list was created or last modified.
 	*/
 	public $webSessionId;
+
+	/**
+	*An array list of objects in the returned collection.
+	*/
+	public $items;
 
 	/**
 	*Properties of an ad-hoc price adjustment for an order.
@@ -309,7 +335,7 @@ class Order
 	public $adjustment;
 
 	/**
-	*Paged list collection of order attributes.
+	*Collection of attributes that may be paged list or a list, depending on the usage per object and API type. 
 	*/
 	public $attributes;
 
@@ -319,14 +345,19 @@ class Order
 	public $auditInfo;
 
 	/**
-	*Container for the customer billing information associated with an order.
+	*Properties for the customer's billing information associated with an order or specific payment.
 	*/
 	public $billingInfo;
 
 	/**
-	*Paged list of notes entered when the order was modified.
+	*Collection (list or paged) of change messages logged for each modification made by a shopper to their carts, wishlists, orders, package, payment, pickup, and returns. Change log messages are system-supplied based on shopper actions and read only.
 	*/
 	public $changeMessages;
+
+	/**
+	*Custom data for a given vendor set within the commerce process.
+	*/
+	public $data;
 
 	/**
 	*Specifies the fulfillment of digital packages associated with this order.
@@ -334,39 +365,42 @@ class Order
 	public $digitalPackages;
 
 	/**
-	*Properties of the item fulfillment information associated with the order. Shoppers can fulfill order items using in-store pickup or direct shipping.
+	*Extra properties (key-value pairs) that extend the primary object. Think of this as a property bag of string keys and string values.
+	*/
+	public $extendedProperties;
+
+	/**
+	*Properties of the information required to fulfill the cart, order, or wish list. Shoppers can fulfill ordered items by using in-store pickup or direct shipping.
 	*/
 	public $fulfillmentInfo;
 
-		public $handlingDiscounts;
+	/**
+	*The list of historically-applied handling discounts.  The active one will have IsExcluded == false
+	*/
+	public $handlingDiscounts;
 
 	/**
-	*List of invalid coupon codes the shopper entered for the order.
+	*The list of invalid coupons the shopper attempted to enter for the cart or order. These coupons may no longer be valid or incorrectly entered.
 	*/
 	public $invalidCoupons;
 
 	/**
-	*An array list of objects in the returned collection.
-	*/
-	public $items;
-
-	/**
-	*Paged list collection of order notes.
+	*Paged list collection of note content for objects including customers, orders, and returns. 
 	*/
 	public $notes;
 
 	/**
-	*List of order-level discounts that apply to the order.
+	*List of order-level discounts projected to apply to the cart at checkout or order.
 	*/
 	public $orderDiscounts;
 
 	/**
-	*Array list of physical packages shipped for the specified order.
+	*Array list of physical packages shipped for a specified order.
 	*/
 	public $packages;
 
 	/**
-	*Wrapper for a collection of payments associated with this order. An order can include any number of payments.
+	*Wrapper for a collection of payments associated with an order or return. An order can include a number of payments until the full total is covered. 
 	*/
 	public $payments;
 
@@ -374,6 +408,11 @@ class Order
 	*Array list of the in-store pickups defined for the order.
 	*/
 	public $pickups;
+
+	/**
+	*Refunds associated with this order. A refund is a single exchange of money from merchant to customer that either encapsulates a refund to a credit card or an issuance of a store credit. Refunds does not reduce the 'amount collected' on an order and it is possible for refunds to exceed the total order amount.
+	*/
+	public $refunds;
 
 	/**
 	*Array list of the shipments defined to fulfill items in this order using the direct ship fulfillment method.
@@ -386,7 +425,7 @@ class Order
 	public $shippingAdjustment;
 
 	/**
-	*List of shipping discounts to apply to the order.
+	*List of shipping discounts projected to apply to carts, orders, and wish lists and items at checkout.
 	*/
 	public $shippingDiscounts;
 

@@ -25,7 +25,7 @@ class RateRequest
 	public $carrierIds;
 
 	/**
-	*The date and time the shipment will be shipped to the shopper.
+	*The estimated date and time the shipment will be shipped to the shopper. This calculation is based on product stock, availability, date of order entry, and location.
 	*/
 	public $estimatedShipmentDate;
 
@@ -40,7 +40,7 @@ class RateRequest
 	public $isoCurrencyCode;
 
 	/**
-	*The total amount of the order used to calculate the shipping rate estimate.
+	*The total monetary amount of the order. This amount is used to calculate the shipping rate estimate.
 	*/
 	public $orderTotal;
 
@@ -50,22 +50,27 @@ class RateRequest
 	public $shippingServiceTypes;
 
 	/**
-	*List of key-value pairs that represent custom attributes associated with the request.
+	*Collection of carrier-specific key-value attribute pairs associated with a shipping carrier. These are required to retrieve a shipping rate request and are returned for the generated shipping label.
 	*/
 	public $customAttributes;
 
 	/**
-	*The physical address to which the shipment will ship.
+	*Mozu.ShippingRuntime.Contracts.RateRequest data ApiTypeMember DOCUMENT_HERE 
+	*/
+	public $data;
+
+	/**
+	*The physical address orders are sent to as a shipping destination. This address may contain multiple lines, city, state/province, country, and zip/postal code. The destination is used to calculate shipping costs.
 	*/
 	public $destinationAddress;
 
 	/**
-	*List of items to include in the shipping rate request.
+	*Collection list of items. All returned data is provided in an items array. For a failed request, the returned response may be success with an empty item collection. Items are used throughout APIs for carts, wish lists, documents, payments, returns, properties, and more.
 	*/
 	public $items;
 
 	/**
-	*The physical address from which the shipment will ship.
+	*The physical address from which the order or shipment will ship.
 	*/
 	public $originAddress;
 

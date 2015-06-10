@@ -90,6 +90,11 @@ class GeneralSettings
 	public $senderEmailAddress;
 
 	/**
+	*Email alias used in emails sent to your shoppers.
+	*/
+	public $senderEmailAlias;
+
+	/**
 	*Choose a format to use on the site: 12-hour (hh:mm:ss tt) or 24-hour format (HH:mm:ss).
 	*/
 	public $siteTimeFormat;
@@ -125,9 +130,19 @@ class GeneralSettings
 	public $auditInfo;
 
 	/**
+	*Supressed emails. Setting any of these to 'true' will block Mozu from sending that email and an event will be published instead.
+	*/
+	public $supressedEmailTransactions;
+
+	/**
 	*The territories configured for the site that are subject to sales tax.
 	*/
 	public $taxableTerritories;
+
+	/**
+	*Mozu.SiteSettings.General.Contracts.GeneralSettings viewAuthorizations ApiTypeMember DOCUMENT_HERE 
+	*/
+	public $viewAuthorizations;
 
 }
 

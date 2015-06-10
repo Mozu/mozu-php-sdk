@@ -26,10 +26,9 @@ class ReferenceDataUrl  {
 	public static function getAddressSchemaUrl($countryCode, $responseFields)
 	{
 		$url = "/api/platform/reference/addressschema/{countryCode}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false);
-		$mozuUrl->formatUrl("countryCode", $countryCode)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("countryCode", $countryCode);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -41,9 +40,8 @@ class ReferenceDataUrl  {
 	public static function getAddressSchemasUrl($responseFields)
 	{
 		$url = "/api/platform/reference/addressschemas?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -56,26 +54,24 @@ class ReferenceDataUrl  {
 	public static function getBehaviorUrl($behaviorId, $responseFields)
 	{
 		$url = "/api/platform/reference/behaviors/{behaviorId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false);
-		$mozuUrl->formatUrl("behaviorId", $behaviorId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("behaviorId", $behaviorId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetBehaviorCategory
-		* @param int $categoryId Unique identifier of the behavior category.
+		* @param int $categoryId Unique identifier of the category to modify.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
 	public static function getBehaviorCategoryUrl($categoryId, $responseFields)
 	{
 		$url = "/api/platform/reference/behaviors/categories/{categoryId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false);
-		$mozuUrl->formatUrl("categoryId", $categoryId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("categoryId", $categoryId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -87,9 +83,8 @@ class ReferenceDataUrl  {
 	public static function getBehaviorCategoriesUrl($responseFields)
 	{
 		$url = "/api/platform/reference/behaviors/categories?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -102,10 +97,9 @@ class ReferenceDataUrl  {
 	public static function getBehaviorsUrl($responseFields, $userType)
 	{
 		$url = "/api/platform/reference/behaviors?userType={userType}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields)
-				->formatUrl("userType", $userType);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("userType", $userType);
 		return $mozuUrl;
 	}
 	
@@ -117,9 +111,8 @@ class ReferenceDataUrl  {
 	public static function getContentLocalesUrl($responseFields)
 	{
 		$url = "/api/platform/reference/contentLocales?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -131,9 +124,21 @@ class ReferenceDataUrl  {
 	public static function getCountriesUrl($responseFields)
 	{
 		$url = "/api/platform/reference/countries?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for GetCountriesWithStates
+		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+		* @return string Resource Url
+	*/
+	public static function getCountriesWithStatesUrl($responseFields)
+	{
+		$url = "/api/platform/reference/countrieswithstates?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -145,9 +150,8 @@ class ReferenceDataUrl  {
 	public static function getCurrenciesUrl($responseFields)
 	{
 		$url = "/api/platform/reference/currencies?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -159,9 +163,8 @@ class ReferenceDataUrl  {
 	public static function getTimeZonesUrl($responseFields)
 	{
 		$url = "/api/platform/reference/timezones?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -173,9 +176,8 @@ class ReferenceDataUrl  {
 	public static function getTopLevelDomainsUrl($responseFields)
 	{
 		$url = "/api/platform/reference/topleveldomains?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -188,10 +190,9 @@ class ReferenceDataUrl  {
 	public static function getUnitsOfMeasureUrl($filter, $responseFields)
 	{
 		$url = "/api/platform/reference/unitsofmeasure?filter={filter}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false);
-		$mozuUrl->formatUrl("filter", $filter)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("filter", $filter);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	

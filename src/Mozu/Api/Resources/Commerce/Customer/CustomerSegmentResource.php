@@ -12,24 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Customer;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Customer\CustomerSegmentClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\Customer\CustomerSegment;
-use Mozu\Api\Contracts\Customer\CustomerSegmentCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Customer Segments resource to manage the segments that enable a client to manage groups of customers and target discounts for these segments. After a customer segment is defined, you can associate any number of customer accounts with it.
 */
 class CustomerSegmentResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves a list of defined customer segments according to any filter and sort criteria.
@@ -44,9 +42,9 @@ class CustomerSegmentResource {
 	public function getSegments($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
 		$mozuClient = CustomerSegmentClient::getSegmentsClient($startIndex, $pageSize, $sortBy, $filter, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -60,9 +58,9 @@ class CustomerSegmentResource {
 	public function getSegment($id, $responseFields =  null)
 	{
 		$mozuClient = CustomerSegmentClient::getSegmentClient($id, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -70,76 +68,73 @@ class CustomerSegmentResource {
 	* Creates a new customer segments. New customer segments do not have any associated customer accounts.
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param CustomerSegment $segment Properties of the customer segment to add.
+	* @param CustomerSegment $segment The Customer Segment object includes properties of a defined customer segment used to group customer accounts.
 	* @return CustomerSegment 
 	*/
 	public function addSegment($segment, $responseFields =  null)
 	{
 		$mozuClient = CustomerSegmentClient::addSegmentClient($segment, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 	/**
 	* Adds one or more customer accounts to a defined customer segment.
 	*
-	* @param int $id Unique identifier of the customer segment for which to add the associated customer accounts.
+	* @param int $id Unique identifier of the customer segment to retrieve.
 	* @param array|int $accountIds List of customer account IDs to add to the customer segment specified in the request.
-	* @return void
 	*/
 	public function addSegmentAccounts($accountIds, $id)
 	{
 		$mozuClient = CustomerSegmentClient::addSegmentAccountsClient($accountIds, $id);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	
 	/**
 	* Updates the details of the customer segment specified in the request.
 	*
-	* @param int $id Unique identifier of the customer segment.
+	* @param int $id Unique identifier of the customer segment to retrieve.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param CustomerSegment $segment Properties of the customer segment to update.
+	* @param CustomerSegment $segment The Customer Segment object includes properties of a defined customer segment used to group customer accounts.
 	* @return CustomerSegment 
 	*/
 	public function updateSegment($segment, $id, $responseFields =  null)
 	{
 		$mozuClient = CustomerSegmentClient::updateSegmentClient($segment, $id, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 	/**
 	* Deletes a customer segment specified by its unique identifier. Deleting a segment removes any customer account associations, but does not delete the customer account itself.
 	*
-	* @param int $id Unique identifier of the customer segment to delete.
-	* @return void
+	* @param int $id Unique identifier of the customer segment to retrieve.
 	*/
 	public function deleteSegment($id)
 	{
 		$mozuClient = CustomerSegmentClient::deleteSegmentClient($id);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	
 	/**
-	* 
+	* Removes single account from a segment.
 	*
-	* @param int $accountId 
-	* @param int $id 
-	* @return void
+	* @param int $accountId Unique identifier of the customer account.
+	* @param int $id Unique identifier of the customer segment to retrieve.
 	*/
 	public function removeSegmentAccount($id, $accountId)
 	{
 		$mozuClient = CustomerSegmentClient::removeSegmentAccountClient($id, $accountId);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

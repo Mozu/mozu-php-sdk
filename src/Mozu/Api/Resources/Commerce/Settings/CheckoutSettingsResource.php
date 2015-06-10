@@ -12,23 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Settings;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Settings\CheckoutSettingsClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\SiteSettings\Order\CheckoutSettings;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Checkout Settings resource to specify the site-wide settings that define checkout and order processing behavior. This resource includes subresources for payment settings, customer checkout settings, and order processing settings.
 */
 class CheckoutSettingsResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves all checkout settings defined for the site including payment settings (payment gateway ID and credentials), shopper checkout settings (login requirement or guest mode and custom attributes), and order processing settings (when payment is authorized and captured plus any custom attributes).
@@ -39,9 +38,9 @@ class CheckoutSettingsResource {
 	public function getCheckoutSettings($responseFields =  null)
 	{
 		$mozuClient = CheckoutSettingsClient::getCheckoutSettingsClient($responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	

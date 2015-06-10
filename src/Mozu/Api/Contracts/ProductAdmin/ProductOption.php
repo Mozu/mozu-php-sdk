@@ -25,7 +25,7 @@ class ProductOption
 	public $attributeFQN;
 
 	/**
-	*List of values for the product option. Each value includes an attribute vocabulary value detail and value object.
+	*List of value data for objects.
 	*/
 	public $values;
 

@@ -12,30 +12,27 @@
 
 namespace Mozu\Api\Resources\Commerce\Catalog\Admin;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Catalog\Admin\CategoryClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\ProductAdmin\Category;
-use Mozu\Api\Contracts\ProductAdmin\CategoryPagedCollection;
-use Mozu\Api\Contracts\ProductAdmin\CategoryCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Categories resource to organize products and control where they appear on the storefront. Create and maintain a hierarchy of categories and subcategories where the site will store properties.
 */
 class CategoryResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
-	
-
 	/**
 	* Retrieves a list of categories according to any specified filter criteria and sort options.
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product category search results by any of its properties, including its position in the category hierarchy. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param string $filter A set of filter expressions representing the search parameters for a query: eq=equals, ne=not equals, gt=greater than, lt = less than or equals, gt = greater than or equals, lt = less than or equals, sw = starts with, or cont = contains. Optional.
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $sortBy 
@@ -45,41 +42,41 @@ class CategoryResource {
 	public function getCategories($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
 		$mozuClient = CategoryClient::getCategoriesClient($startIndex, $pageSize, $sortBy, $filter, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 	/**
 	* Retrieves the list of subcategories within a category.
 	*
-	* @param int $categoryId Unique identifier of the category for which to retrieve subcategories.
+	* @param int $categoryId Unique identifier of the category to modify.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return CategoryCollection 
 	*/
 	public function getChildCategories($categoryId, $responseFields =  null)
 	{
 		$mozuClient = CategoryClient::getChildCategoriesClient($categoryId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 	/**
 	* Retrieves the details of a single category.
 	*
-	* @param int $categoryId Unique identifier of the category to retrieve.
+	* @param int $categoryId Unique identifier of the category to modify.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return Category 
 	*/
 	public function getCategory($categoryId, $responseFields =  null)
 	{
 		$mozuClient = CategoryClient::getCategoryClient($categoryId, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -88,15 +85,15 @@ class CategoryResource {
 	*
 	* @param bool $incrementSequence If true, when adding a new product category, set the sequence number of the new category to an increment of one integer greater than the maximum available sequence number across all product categories. If false, set the sequence number to zero.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Category $category Properties of the new category to create. You must specify a name and parent category if you want to create it as a subcategory.
+	* @param Category $category A descriptive container that groups products. A category is merchant defined with associated products and discounts as configured. GThe storefront displays products in a hierarchy of categories. As such, categories can include a nesting of sub-categories to organize products and product options per set guidelines such as color, brand, material, and size.
 	* @return Category 
 	*/
 	public function addCategory($category, $incrementSequence =  null, $responseFields =  null)
 	{
 		$mozuClient = CategoryClient::addCategoryClient($category, $incrementSequence, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -106,15 +103,15 @@ class CategoryResource {
 	* @param bool $cascadeVisibility If true, when changing the display option for the category, change it for all subcategories also. Default: False.
 	* @param int $categoryId Unique identifier of the category to modify.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Category $category Properties of the category to modify.
+	* @param Category $category A descriptive container that groups products. A category is merchant defined with associated products and discounts as configured. GThe storefront displays products in a hierarchy of categories. As such, categories can include a nesting of sub-categories to organize products and product options per set guidelines such as color, brand, material, and size.
 	* @return Category 
 	*/
 	public function updateCategory($category, $categoryId, $cascadeVisibility =  null, $responseFields =  null)
 	{
 		$mozuClient = CategoryClient::updateCategoryClient($category, $categoryId, $cascadeVisibility, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -122,14 +119,15 @@ class CategoryResource {
 	* Deletes the category specified by its category ID.
 	*
 	* @param bool $cascadeDelete If true, also delete all subcategories associated with the specified category.
-	* @param int $categoryId Unique identifier of the category to delete.
-	* @return void
+	* @param int $categoryId Unique identifier of the category to modify.
+	* @param bool $forceDelete 
+	* @param bool $reassignToParent 
 	*/
-	public function deleteCategoryById($categoryId, $cascadeDelete =  null)
+	public function deleteCategoryById($categoryId, $cascadeDelete =  null, $forceDelete =  null, $reassignToParent =  null)
 	{
-		$mozuClient = CategoryClient::deleteCategoryByIdClient($categoryId, $cascadeDelete);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = CategoryClient::deleteCategoryByIdClient($categoryId, $cascadeDelete, $forceDelete, $reassignToParent);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

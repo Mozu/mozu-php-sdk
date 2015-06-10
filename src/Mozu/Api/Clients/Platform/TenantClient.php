@@ -14,9 +14,8 @@ namespace Mozu\Api\Clients\Platform;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Platform\TenantUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Tenant\Tenant;
 
 /**
 * Use the tenants resource to manage information about a Mozu tenant.
@@ -34,7 +33,8 @@ class TenantClient {
 	{
 		$url = TenantUrl::getTenantUrl($responseFields, $tenantId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

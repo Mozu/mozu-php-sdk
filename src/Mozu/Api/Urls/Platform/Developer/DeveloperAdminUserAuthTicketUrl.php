@@ -26,10 +26,9 @@ class DeveloperAdminUserAuthTicketUrl  {
 	public static function createDeveloperUserAuthTicketUrl($developerAccountId, $responseFields)
 	{
 		$url = "/api/platform/developer/authtickets/?developerAccountId={developerAccountId}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"POST", false);
-		$mozuUrl->formatUrl("developerAccountId", $developerAccountId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("developerAccountId", $developerAccountId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -42,24 +41,22 @@ class DeveloperAdminUserAuthTicketUrl  {
 	public static function refreshDeveloperAuthTicketUrl($developerAccountId, $responseFields)
 	{
 		$url = "/api/platform/developer/authtickets/?developerAccountId={developerAccountId}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"PUT", false);
-		$mozuUrl->formatUrl("developerAccountId", $developerAccountId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("developerAccountId", $developerAccountId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for DeleteUserAuthTicket
-		* @param string $refreshToken Refresh token string associated with the developer account authentication ticket.
+		* @param string $refreshToken Alphanumeric string used for access tokens. This token refreshes access for accounts by generating a new developer or application account authentication ticket after an access token expires.
 		* @return string Resource Url
 	*/
 	public static function deleteUserAuthTicketUrl($refreshToken)
 	{
 		$url = "/api/platform/developer/authtickets/?refreshToken={refreshToken}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"DELETE", false);
-		$mozuUrl->formatUrl("refreshToken", $refreshToken);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("refreshToken", $refreshToken);
 		return $mozuUrl;
 	}
 	

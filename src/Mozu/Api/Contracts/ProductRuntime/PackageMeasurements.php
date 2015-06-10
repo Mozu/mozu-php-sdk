@@ -20,22 +20,22 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 class PackageMeasurements
 {
 	/**
-	*Height of the package in imperial units of feet and inches.
+	*Height of a package or bundle package in imperial units of feet and inches.
 	*/
 	public $packageHeight;
 
 	/**
-	*Length of the package in imperial units of feet and inches.
+	*Length of a package or bundle package in imperial units of feet and inches.
 	*/
 	public $packageLength;
 
 	/**
-	*Weight of the package in imperial units of pounds and ounces.
+	*Weight of a package or bundle package in imperial units of pounds and ounces.
 	*/
 	public $packageWeight;
 
 	/**
-	*Width of the package in imperial units of feet and inches.
+	*Width of a package or bundle package in imperial units of feet and inches.
 	*/
 	public $packageWidth;
 

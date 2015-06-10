@@ -29,13 +29,12 @@ class ProductReservationUrl  {
 	public static function getProductReservationsUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex)
 	{
 		$url = "/api/commerce/catalog/admin/productreservations/?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("filter", $filter)
-				->formatUrl("pageSize", $pageSize)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("sortBy", $sortBy)
-				->formatUrl("startIndex", $startIndex);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("filter", $filter);
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
 		return $mozuUrl;
 	}
 	
@@ -48,10 +47,9 @@ class ProductReservationUrl  {
 	public static function getProductReservationUrl($productReservationId, $responseFields)
 	{
 		$url = "/api/commerce/catalog/admin/productreservations/{productReservationId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("productReservationId", $productReservationId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("productReservationId", $productReservationId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -63,9 +61,8 @@ class ProductReservationUrl  {
 	public static function addProductReservationsUrl($skipInventoryCheck)
 	{
 		$url = "/api/commerce/catalog/admin/productreservations/?skipInventoryCheck={skipInventoryCheck}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("skipInventoryCheck", $skipInventoryCheck);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("skipInventoryCheck", $skipInventoryCheck);
 		return $mozuUrl;
 	}
 	
@@ -76,36 +73,33 @@ class ProductReservationUrl  {
 	public static function commitReservationsUrl()
 	{
 		$url = "/api/commerce/catalog/admin/productreservations/commit";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdateProductReservations
-		* @param bool $skipInventoryCheck If true, skip the inventory validation process when updating this product reservation.
+		* @param bool $skipInventoryCheck If true, skip the process to validate inventory when creating this product reservation.
 		* @return string Resource Url
 	*/
 	public static function updateProductReservationsUrl($skipInventoryCheck)
 	{
 		$url = "/api/commerce/catalog/admin/productreservations/?skipInventoryCheck={skipInventoryCheck}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("skipInventoryCheck", $skipInventoryCheck);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("skipInventoryCheck", $skipInventoryCheck);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for DeleteProductReservation
-		* @param int $productReservationId Unique identifier of the reservation.
+		* @param int $productReservationId Unique identifier of the product reservation.
 		* @return string Resource Url
 	*/
 	public static function deleteProductReservationUrl($productReservationId)
 	{
 		$url = "/api/commerce/catalog/admin/productreservations/{productReservationId}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("productReservationId", $productReservationId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("productReservationId", $productReservationId);
 		return $mozuUrl;
 	}
 	

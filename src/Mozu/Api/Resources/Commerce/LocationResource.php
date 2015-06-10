@@ -12,55 +12,36 @@
 
 namespace Mozu\Api\Resources\Commerce;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\LocationClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\Location\LocationCollection;
-use Mozu\Api\Contracts\Location\Location;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Location resource to retrieve details about a location from a Mozu hosted storefront.
 */
 class LocationResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
-	
-
 	/**
 	* Retrieves the details of the location specified in the request.
 	*
-	* @param string $code User-defined code that identifies the location.
+	* @param string $code User-defined code that uniqely identifies the channel group.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return Location 
 	*/
 	public function getLocation($code, $responseFields =  null)
 	{
 		$mozuClient = LocationClient::getLocationClient($code, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
-
-	}
-	
-	/**
-	* Retrieves the details of a location associated with a defined location usage type for the site specified in the request.
-	*
-	* @param string $code Retrieves the details of a location associated with a defined location usage type for the site specified in the request.
-	* @param string $locationUsageType System-defined location usage type code, which is DS for direct ship, SP for in-store pickup, or storeFinder.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @return Location 
-	*/
-	public function getLocationInUsageType($locationUsageType, $code, $responseFields =  null)
-	{
-		$mozuClient = LocationClient::getLocationInUsageTypeClient($locationUsageType, $code, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -78,9 +59,9 @@ class LocationResource {
 	public function getLocationsInUsageType($locationUsageType, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
 		$mozuClient = LocationClient::getLocationsInUsageTypeClient($locationUsageType, $startIndex, $pageSize, $sortBy, $filter, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -93,25 +74,25 @@ class LocationResource {
 	public function getDirectShipLocation($responseFields =  null)
 	{
 		$mozuClient = LocationClient::getDirectShipLocationClient($responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 	/**
 	* Retrieves the details of the location configured for the in-store pickup (SP) location usage type for the site specified in the request. If the location is not associated with a location type configured for the in-store pickup location usage type (SP), the operation returns an error.
 	*
-	* @param string $code The user-defined code that identifies the location to retrieve.
+	* @param string $code User-defined code that uniqely identifies the channel group.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return Location 
 	*/
 	public function getInStorePickupLocation($code, $responseFields =  null)
 	{
 		$mozuClient = LocationClient::getInStorePickupLocationClient($code, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -128,9 +109,9 @@ class LocationResource {
 	public function getInStorePickupLocations($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
 		$mozuClient = LocationClient::getInStorePickupLocationsClient($startIndex, $pageSize, $sortBy, $filter, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	

@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Customer;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\CustomerSegmentUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Customer\CustomerSegment;
-use Mozu\Api\Contracts\Customer\CustomerSegmentCollection;
 
 /**
 * Use the Customer Segments resource to manage the segments that enable a client to manage groups of customers and target discounts for these segments. After a customer segment is defined, you can associate any number of customer accounts with it.
@@ -38,7 +36,8 @@ class CustomerSegmentClient {
 	{
 		$url = CustomerSegmentUrl::getSegmentsUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -53,7 +52,8 @@ class CustomerSegmentClient {
 	{
 		$url = CustomerSegmentUrl::getSegmentUrl($id, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -61,74 +61,76 @@ class CustomerSegmentClient {
 	* Creates a new customer segments. New customer segments do not have any associated customer accounts.
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param CustomerSegment $segment Properties of the customer segment to add.
+	* @param CustomerSegment $segment The Customer Segment object includes properties of a defined customer segment used to group customer accounts.
 	* @return MozuClient
 	*/
 	public static function addSegmentClient($segment, $responseFields =  null)
 	{
 		$url = CustomerSegmentUrl::addSegmentUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($segment);
+		$mozuClient->withResourceUrl($url)->withBody($segment);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Adds one or more customer accounts to a defined customer segment.
 	*
-	* @param int $id Unique identifier of the customer segment for which to add the associated customer accounts.
+	* @param int $id Unique identifier of the customer segment to retrieve.
 	* @param array|int $accountIds List of customer account IDs to add to the customer segment specified in the request.
-	* @return MozuClient
 	*/
 	public static function addSegmentAccountsClient($accountIds, $id)
 	{
 		$url = CustomerSegmentUrl::addSegmentAccountsUrl($id);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($accountIds);
+		$mozuClient->withResourceUrl($url)->withBody($accountIds);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Updates the details of the customer segment specified in the request.
 	*
-	* @param int $id Unique identifier of the customer segment.
+	* @param int $id Unique identifier of the customer segment to retrieve.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param CustomerSegment $segment Properties of the customer segment to update.
+	* @param CustomerSegment $segment The Customer Segment object includes properties of a defined customer segment used to group customer accounts.
 	* @return MozuClient
 	*/
 	public static function updateSegmentClient($segment, $id, $responseFields =  null)
 	{
 		$url = CustomerSegmentUrl::updateSegmentUrl($id, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($segment);
+		$mozuClient->withResourceUrl($url)->withBody($segment);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Deletes a customer segment specified by its unique identifier. Deleting a segment removes any customer account associations, but does not delete the customer account itself.
 	*
-	* @param int $id Unique identifier of the customer segment to delete.
-	* @return MozuClient
+	* @param int $id Unique identifier of the customer segment to retrieve.
 	*/
 	public static function deleteSegmentClient($id)
 	{
 		$url = CustomerSegmentUrl::deleteSegmentUrl($id);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Removes single account from a segment.
 	*
-	* @param int $accountId 
-	* @param int $id 
-	* @return MozuClient
+	* @param int $accountId Unique identifier of the customer account.
+	* @param int $id Unique identifier of the customer segment to retrieve.
 	*/
 	public static function removeSegmentAccountClient($id, $accountId)
 	{
 		$url = CustomerSegmentUrl::removeSegmentAccountUrl($accountId, $id);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

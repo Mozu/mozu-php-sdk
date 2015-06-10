@@ -25,9 +25,8 @@ class OrderValidationResultUrl  {
 	public static function getValidationResultsUrl($orderId)
 	{
 		$url = "/api/commerce/orders/{orderId}/validationresults";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("orderId", $orderId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
 		return $mozuUrl;
 	}
 	
@@ -40,10 +39,9 @@ class OrderValidationResultUrl  {
 	public static function addValidationResultUrl($orderId, $responseFields)
 	{
 		$url = "/api/commerce/orders/{orderId}/validationresults?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("orderId", $orderId)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	

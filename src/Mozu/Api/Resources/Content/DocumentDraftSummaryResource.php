@@ -12,28 +12,27 @@
 
 namespace Mozu\Api\Resources\Content;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Content\DocumentDraftSummaryClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\Content\DocumentDraftSummaryPagedCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the document publishing subresource to manage and publish document drafts in the Content service.
 */
 class DocumentDraftSummaryResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
 
-	
-
 	/**
 	* Retrieves a list of the documents currently in draft state, according to any defined filter and sort criteria.
 	*
-	* @param string $documentLists Lists that contain the document drafts.
+	* @param string $documentLists List of document lists that contain documents to delete.
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
@@ -42,9 +41,9 @@ class DocumentDraftSummaryResource {
 	public function listDocumentDraftSummaries($pageSize =  null, $startIndex =  null, $documentLists =  null, $responseFields =  null)
 	{
 		$mozuClient = DocumentDraftSummaryClient::listDocumentDraftSummariesClient($pageSize, $startIndex, $documentLists, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -53,28 +52,26 @@ class DocumentDraftSummaryResource {
 	*
 	* @param string $documentLists List of document lists that contain documents to delete.
 	* @param array|string $documentIds Unique identifiers of the documents to delete.
-	* @return void
 	*/
 	public function deleteDocumentDrafts($documentIds, $documentLists =  null)
 	{
 		$mozuClient = DocumentDraftSummaryClient::deleteDocumentDraftsClient($documentIds, $documentLists);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	
 	/**
 	* Publish one or more document drafts to live content on the site.
 	*
-	* @param string $documentLists List of document lists that contain documents to publish.
-	* @param array|string $documentIds List of unique identifiers of the document drafts to publish.
-	* @return void
+	* @param string $documentLists List of document lists that contain documents to delete.
+	* @param array|string $documentIds Unique identifiers of the documents to delete.
 	*/
 	public function publishDocuments($documentIds, $documentLists =  null)
 	{
 		$mozuClient = DocumentDraftSummaryClient::publishDocumentsClient($documentIds, $documentLists);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

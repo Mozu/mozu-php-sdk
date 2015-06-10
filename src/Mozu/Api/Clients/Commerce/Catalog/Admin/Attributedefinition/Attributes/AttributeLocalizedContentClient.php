@@ -14,33 +14,33 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin\Attributedefinition\Attributes
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\Attributedefinition\Attributes\AttributeLocalizedContentUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
 
-use Mozu\Api\Contracts\ProductAdmin\AttributeLocalizedContent;
-
 /**
-* 
+* Properties of localized content for attributes, based on a `localeCode` at a site/tenant level. This content supports translated text for product, product options, and additional objects. 
 */
 class AttributeLocalizedContentClient {
 
 	/**
-	* 
+	* Retrieves a collection of localized content for attributes based on a `localeCode`.
 	*
-	* @param string $attributeFQN 
+	* @param string $attributeFQN Fully qualified name for an attribute.
 	* @return MozuClient
 	*/
 	public static function getAttributeLocalizedContentsClient($attributeFQN)
 	{
 		$url = AttributeLocalizedContentUrl::getAttributeLocalizedContentsUrl($attributeFQN);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Retrieves the localized content for an attribute  based on a `localeCode`. 
 	*
-	* @param string $attributeFQN 
+	* @param string $attributeFQN Fully qualified name for an attribute.
 	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
@@ -49,70 +49,74 @@ class AttributeLocalizedContentClient {
 	{
 		$url = AttributeLocalizedContentUrl::getAttributeLocalizedContentUrl($attributeFQN, $localeCode, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Adds new localized content for an attribute  based on a `localeCode`. 
 	*
-	* @param string $attributeFQN 
+	* @param string $attributeFQN Fully qualified name for an attribute.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param AttributeLocalizedContent $localizedContent 
+	* @param AttributeLocalizedContent $localizedContent The localized name and description of the attribute, displayed in the locale defined for the master catalog.
 	* @return MozuClient
 	*/
 	public static function addLocalizedContentClient($localizedContent, $attributeFQN, $responseFields =  null)
 	{
 		$url = AttributeLocalizedContentUrl::addLocalizedContentUrl($attributeFQN, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($localizedContent);
+		$mozuClient->withResourceUrl($url)->withBody($localizedContent);
+		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Updates the localized content for a collection of existing attributes  based on a `localeCode`. 
 	*
-	* @param string $attributeFQN 
-	* @param array|AttributeLocalizedContent $localizedContent 
+	* @param string $attributeFQN Fully qualified name for an attribute.
+	* @param array|AttributeLocalizedContent $localizedContent The localized name and description of the attribute, displayed in the locale defined for the master catalog.
 	* @return MozuClient
 	*/
 	public static function updateLocalizedContentsClient($localizedContent, $attributeFQN)
 	{
 		$url = AttributeLocalizedContentUrl::updateLocalizedContentsUrl($attributeFQN);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($localizedContent);
+		$mozuClient->withResourceUrl($url)->withBody($localizedContent);
+		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Updates the localized content for an existing attribute  based on a `localeCode`. 
 	*
-	* @param string $attributeFQN 
+	* @param string $attributeFQN Fully qualified name for an attribute.
 	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param AttributeLocalizedContent $localizedContent 
+	* @param AttributeLocalizedContent $localizedContent The localized name and description of the attribute, displayed in the locale defined for the master catalog.
 	* @return MozuClient
 	*/
 	public static function updateLocalizedContentClient($localizedContent, $attributeFQN, $localeCode, $responseFields =  null)
 	{
 		$url = AttributeLocalizedContentUrl::updateLocalizedContentUrl($attributeFQN, $localeCode, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($localizedContent);
+		$mozuClient->withResourceUrl($url)->withBody($localizedContent);
+		return $mozuClient;
 
 	}
 	
 	/**
-	* 
+	* Removes all localized content. Localized content is translated text information and data based on a `localeCode`. 
 	*
-	* @param string $attributeFQN 
+	* @param string $attributeFQN Fully qualified name for an attribute.
 	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
-	* @return MozuClient
 	*/
 	public static function deleteLocalizedContentClient($attributeFQN, $localeCode)
 	{
 		$url = AttributeLocalizedContentUrl::deleteLocalizedContentUrl($attributeFQN, $localeCode);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

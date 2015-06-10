@@ -14,17 +14,35 @@ namespace Mozu\Api\Contracts\Event;
 
 
 
+/**
+*	Properties and information captured for an attempted delivery that failed.
+*/
 class EventDeliveryAttempt
 {
-		public $deliveryStatus;
+	/**
+	*Status of the delivery process `EventDeliveryStatusType`. System-supplied and read-only.
+	*/
+	public $deliveryStatus;
 
-		public $errorType;
+	/**
+	*Type of error that occurred, if the delivery was unsuccessful
+	*/
+	public $errorType;
 
-		public $executionDate;
+	/**
+	*The date that the delivery was attempted
+	*/
+	public $executionDate;
 
-		public $message;
+	/**
+	*The text of the change message, such as "This product is no longer available." System-supplied and read-only.
+	*/
+	public $message;
 
-		public $httpStatus;
+	/**
+	*The HTTP Status (code and name) returned by the remote endpoint
+	*/
+	public $httpStatus;
 
 }
 

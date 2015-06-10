@@ -3,7 +3,7 @@ namespace Mozu\Api\Utilities;
 
 use Mozu\Api\ApiException;
 use Mozu\Api\iApiContext;
-
+use Logger;
 /**
  * HttpHelper
  *
@@ -21,59 +21,40 @@ class HttpHelper {
      */
     public static $urlScheme = "http";
 
-    /**
-     * getGuzzleConfig
-     *
-     * Used to return our current Guzzle configuration
-     *
-     */
-    public static function getGuzzleConfig() {
-        $proxy = Proxy::getInstance();
-        $config = null;
-        if (isset($proxy)) $config = array(
-            'version' => 'v1.1',
-            'curl.options' => array(
-                CURLOPT_PROXY => $proxy->getHost() . ":" . $proxy->getPort()
-            )
-        );
-        
-        return $config;
-    }
+
 
     /**
      * checkError
      *
      * This method will attempt to translate error messages from Guzzle
      *
-     * @param \Exception $e
+     * @param \Exception $e            
      * @param iApiContext $apiContext            
      * @throws \Mozu\Api\ApiException
      * @throws ApiException
      */
     public static function checkError(\Exception $e, iApiContext $apiContext = null) {
+        $log = Logger::getLogger("HttpHelper");
+
+        //var_dump($e);
         switch (get_class($e)) {
-            case "Guzzle\Http\Exception\BadResponseException":
-            case "Guzzle\Http\Exception\ClientErrorResponseException":
-            case "Guzzle\Http\Exception\ServerErrorResponseException":
-                // var_dump ($e);
+            case "GuzzleHttp\Exception\BadResponseException":
+            case "GuzzleHttp\Exception\ClientErrorResponseException":
+            case "GuzzleHttp\Exception\ServerErrorResponseException":
+            case "GuzzleHttp\Exception\ServerException":
+            case "GuzzleHttp\Exception\ClientException":
+            case "GuzzleHttp\Exception\RequestException":
                 $code = $e->getResponse()->getStatusCode();
                 $response = $e->getResponse()->getBody(TRUE);
-
                 $jsonResponse = json_decode($response);
-                if (!empty($jsonResponse))
-                    $message = $jsonResponse->message;
-                else
-                    $message = $e->getResponse()->getReasonPhrase();
-
+                $message = $e->getResponse()->getReasonPhrase();
                 $apiException = new ApiException($message, $code);
-                $header = (string)$e->getResponse()->getHeader("x-vol-correlation");
-                if (!empty($header)) {
-                    $apiException->setCorrelationId($header);
+                $correlation = $e->getResponse()->getHeader("x-vol-correlation");
+                if (!empty($correlation)) {
+                    $log->info("CorrelationId : ".$correlation[0]);
+                    $apiException->setCorrelationId($correlation[0]);
                 }
                 if (!empty($jsonResponse)) {
-                    if (isset($jsonResponse->message)) {
-                        $message = $jsonResponse->message;
-                    }
                     if (isset($jsonResponse->additionalErrorData)) {
                         $apiException->setAdditionalErrorData($jsonResponse->additionalErrorData);
                     }

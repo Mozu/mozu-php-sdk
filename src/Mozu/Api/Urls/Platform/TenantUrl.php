@@ -26,10 +26,9 @@ class TenantUrl  {
 	public static function getTenantUrl($responseFields, $tenantId)
 	{
 		$url = "/api/platform/tenants/{tenantId}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields)
-				->formatUrl("tenantId", $tenantId);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("tenantId", $tenantId);
 		return $mozuUrl;
 	}
 	

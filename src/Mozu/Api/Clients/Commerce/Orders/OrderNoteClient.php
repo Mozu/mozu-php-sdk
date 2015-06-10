@@ -14,9 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Orders;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Orders\OrderNoteUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\CommerceRuntime\Orders\OrderNote;
 
 /**
 * Use the Order Notes subresource to manage merchant-level notes associated with an active order.
@@ -33,15 +32,16 @@ class OrderNoteClient {
 	{
 		$url = OrderNoteUrl::getOrderNotesUrl($orderId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Retrieves the details of a specific order note.
 	*
-	* @param string $noteId Unique identifier of the order note to retrieve.
-	* @param string $orderId Unique identifier of the order associated with the note.
+	* @param string $noteId Unique identifier of a particular note to retrieve.
+	* @param string $orderId Unique identifier of the order.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
@@ -49,55 +49,58 @@ class OrderNoteClient {
 	{
 		$url = OrderNoteUrl::getOrderNoteUrl($noteId, $orderId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Creates a new merchant note for the specified order.
 	*
-	* @param string $orderId Unique identifier of the order for which to add a note.
+	* @param string $orderId Unique identifier of the order.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param OrderNote $orderNote The alphanumeric text contained in the note. The maximum length is 256 characters.
+	* @param OrderNote $orderNote Properties of an order note for a merchant, which is internal only for administrative purposes and not available to the shopper.
 	* @return MozuClient
 	*/
 	public static function createOrderNoteClient($orderNote, $orderId, $responseFields =  null)
 	{
 		$url = OrderNoteUrl::createOrderNoteUrl($orderId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($orderNote);
+		$mozuClient->withResourceUrl($url)->withBody($orderNote);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Updates a specific note for an order.
 	*
-	* @param string $noteId Unique identifier of the order note.
+	* @param string $noteId Unique identifier of a particular note to retrieve.
 	* @param string $orderId Unique identifier of the order.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param OrderNote $orderNote The content of the order note. The maximum length is 256 characters.
+	* @param OrderNote $orderNote Properties of an order note for a merchant, which is internal only for administrative purposes and not available to the shopper.
 	* @return MozuClient
 	*/
 	public static function updateOrderNoteClient($orderNote, $orderId, $noteId, $responseFields =  null)
 	{
 		$url = OrderNoteUrl::updateOrderNoteUrl($noteId, $orderId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($orderNote);
+		$mozuClient->withResourceUrl($url)->withBody($orderNote);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Deletes the specified order note.
 	*
-	* @param string $noteId Unique identifier of the order note to delete.
-	* @param string $orderId Unique identifier of the order associated with the note.
-	* @return MozuClient
+	* @param string $noteId Unique identifier of a particular note to retrieve.
+	* @param string $orderId Unique identifier of the order.
 	*/
 	public static function deleteOrderNoteClient($orderId, $noteId)
 	{
 		$url = OrderNoteUrl::deleteOrderNoteUrl($noteId, $orderId);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

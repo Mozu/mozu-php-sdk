@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Customer\Credits;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\Credits\CreditTransactionUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Customer\Credit\CreditTransaction;
-use Mozu\Api\Contracts\Customer\Credit\CreditTransactionCollection;
 
 /**
 * Use the Customer Credit Transactions subresource to manage the individual transactions performed using a store credit or gift card.
@@ -27,7 +25,7 @@ class CreditTransactionClient {
 	/**
 	* Retrieves a list of the transactions performed using a customer credit that update the balance of the credit.
 	*
-	* @param string $code User-defined code that identifies the customer credit.
+	* @param string $code User-defined code that uniqely identifies the channel group.
 	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
@@ -39,23 +37,25 @@ class CreditTransactionClient {
 	{
 		$url = CreditTransactionUrl::getTransactionsUrl($code, $filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Creates a new transaction and updates the amount of a store credit or gift card.
 	*
-	* @param string $code User-defined code that identifies the customer credit to update.
+	* @param string $code User-defined code that uniqely identifies the channel group.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param CreditTransaction $creditTransaction Properties of the transaction to create for the customer credit.
+	* @param CreditTransaction $creditTransaction Properties of a transaction performed for a customer credit that update the remaining balance of the credit.
 	* @return MozuClient
 	*/
 	public static function addTransactionClient($creditTransaction, $code, $responseFields =  null)
 	{
 		$url = CreditTransactionUrl::addTransactionUrl($code, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($creditTransaction);
+		$mozuClient->withResourceUrl($url)->withBody($creditTransaction);
+		return $mozuClient;
 
 	}
 	

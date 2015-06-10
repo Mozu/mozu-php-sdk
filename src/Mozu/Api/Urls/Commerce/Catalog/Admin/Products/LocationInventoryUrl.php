@@ -30,20 +30,19 @@ class LocationInventoryUrl  {
 	public static function getLocationInventoriesUrl($filter, $pageSize, $productCode, $responseFields, $sortBy, $startIndex)
 	{
 		$url = "/api/commerce/catalog/admin/products/{ProductCode}/LocationInventory/?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("filter", $filter)
-				->formatUrl("pageSize", $pageSize)
-				->formatUrl("productCode", $productCode)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("sortBy", $sortBy)
-				->formatUrl("startIndex", $startIndex);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("filter", $filter);
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetLocationInventory
-		* @param string $locationCode User-defined code that identifies the location.
+		* @param string $locationCode The unique, user-defined code that identifies a location. 
 		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
@@ -51,57 +50,53 @@ class LocationInventoryUrl  {
 	public static function getLocationInventoryUrl($locationCode, $productCode, $responseFields)
 	{
 		$url = "/api/commerce/catalog/admin/products/{ProductCode}/LocationInventory/{LocationCode}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("locationCode", $locationCode)
-				->formatUrl("productCode", $productCode)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("locationCode", $locationCode);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for AddLocationInventory
-		* @param bool $performUpserts The performUpserts query string parameter lets the service perform an update if the record already exists instead of throwing an already exists conflict exception. PerformUpserts=true means it updates if the record already exists. By default, no value specified means that the service assumes PerformUpserts=false.
+		* @param bool $performUpserts Query string parameter lets the service perform an update for a new or existing record. When run, the update occurs without throwing a conflict exception that the record exists. If true, the updates completes regardless of the record currently existing. By default, if no value is specified, the service assumes this value is false.
 		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 		* @return string Resource Url
 	*/
 	public static function addLocationInventoryUrl($performUpserts, $productCode)
 	{
 		$url = "/api/commerce/catalog/admin/products/{ProductCode}/LocationInventory?performUpserts={performUpserts}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("performUpserts", $performUpserts)
-				->formatUrl("productCode", $productCode);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("performUpserts", $performUpserts);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdateLocationInventory
-		* @param string $productCode The product code of the product for which to update active stock on hand inventory at a specified location.
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
 		* @return string Resource Url
 	*/
 	public static function updateLocationInventoryUrl($productCode)
 	{
 		$url = "/api/commerce/catalog/admin/products/{ProductCode}/LocationInventory";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("productCode", $productCode);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for DeleteLocationInventory
-		* @param string $locationCode The code that identifies the location for which to delete product inventory.
-		* @param string $productCode The product code for which to delete a location's inventory.
+		* @param string $locationCode The unique, user-defined code that identifies a location. 
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
 		* @return string Resource Url
 	*/
 	public static function deleteLocationInventoryUrl($locationCode, $productCode)
 	{
 		$url = "/api/commerce/catalog/admin/products/{ProductCode}/LocationInventory/{LocationCode}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("locationCode", $locationCode)
-				->formatUrl("productCode", $productCode);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("locationCode", $locationCode);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
 		return $mozuUrl;
 	}
 	

@@ -27,27 +27,25 @@ class DocumentListUrl  {
 	public static function getDocumentListsUrl($pageSize, $responseFields, $startIndex)
 	{
 		$url = "/api/content/documentlists/?pageSize={pageSize}&startIndex={startIndex}&responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("pageSize", $pageSize)
-				->formatUrl("responseFields", $responseFields)
-				->formatUrl("startIndex", $startIndex);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetDocumentList
-		* @param string $documentListName The name of the document list.
+		* @param string $documentListName Name of content documentListName to delete
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
 	public static function getDocumentListUrl($documentListName, $responseFields)
 	{
 		$url = "/api/content/documentlists/{documentListName}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false);
-		$mozuUrl->formatUrl("documentListName", $documentListName)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("documentListName", $documentListName);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
@@ -59,39 +57,36 @@ class DocumentListUrl  {
 	public static function createDocumentListUrl($responseFields)
 	{
 		$url = "/api/content/documentlists/?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false);
-		$mozuUrl->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdateDocumentList
-		* @param string $documentListName 
+		* @param string $documentListName Name of content documentListName to delete
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
 	public static function updateDocumentListUrl($documentListName, $responseFields)
 	{
 		$url = "/api/content/documentlists/{documentListName}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false);
-		$mozuUrl->formatUrl("documentListName", $documentListName)
-				->formatUrl("responseFields", $responseFields);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("documentListName", $documentListName);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for DeleteDocumentList
-		* @param string $documentListName 
+		* @param string $documentListName Name of content documentListName to delete
 		* @return string Resource Url
 	*/
 	public static function deleteDocumentListUrl($documentListName)
 	{
 		$url = "/api/content/documentlists/{documentListName}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false);
-		$mozuUrl->formatUrl("documentListName", $documentListName);
-
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("documentListName", $documentListName);
 		return $mozuUrl;
 	}
 	

@@ -3,7 +3,7 @@
 namespace Mozu\Api;
 
 class Version {
-	public static $apiVersion = "1.12.14296.2";
+	public static $apiVersion = "1.17.15154.0";
 }
 
 ?>

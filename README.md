@@ -14,14 +14,14 @@ $appAuthInfo->applicationId = [applicationId];<br>
 AppAuthenticator::initialize($appAuthInfo,null);<br>
 <br>
 <B>Get Tenant Information</B><br>
-$tenantResource = new TenantResource(new ApiContext());<br>
+$tenantResource = new TenantResource();<br>
 $tenant = $tenantResource->getTenant([tenantId]);<br>
 <br>
 <B>Get Products</B><br>
 $apiContext = new ApiContext($tenant);<br>
 <B>Note:</B> You might need to create an API Context with a specific Mastercatalog or catalogId if you own a multi-catalog tenant<br>
-$productResource = new ProductResource($apiContext, DataViewMode::LIVE);<br>
-$productCollection = $productResource->getProducts( 0, 200);<br>
+$productResource = new ProductResource($apiContext);<br>
+$productCollection = $productResource->getProducts(DataViewMode::LIVE, 0, 200, null, null, null, null, null);<br>
 <br>
 <B>Get Orders - Filter by date</B><br>
 $orderResource = new OrderResource($apiContext);<br>

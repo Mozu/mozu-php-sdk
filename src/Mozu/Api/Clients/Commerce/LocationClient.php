@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\LocationUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\Location\LocationCollection;
-use Mozu\Api\Contracts\Location\Location;
 
 /**
 * Use the Location resource to retrieve details about a location from a Mozu hosted storefront.
@@ -27,7 +25,7 @@ class LocationClient {
 	/**
 	* Retrieves the details of the location specified in the request.
 	*
-	* @param string $code User-defined code that identifies the location.
+	* @param string $code User-defined code that uniqely identifies the channel group.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
@@ -35,23 +33,8 @@ class LocationClient {
 	{
 		$url = LocationUrl::getLocationUrl($code, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
-
-	}
-	
-	/**
-	* Retrieves the details of a location associated with a defined location usage type for the site specified in the request.
-	*
-	* @param string $code Retrieves the details of a location associated with a defined location usage type for the site specified in the request.
-	* @param string $locationUsageType System-defined location usage type code, which is DS for direct ship, SP for in-store pickup, or storeFinder.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @return MozuClient
-	*/
-	public static function getLocationInUsageTypeClient($locationUsageType, $code, $responseFields =  null)
-	{
-		$url = LocationUrl::getLocationInUsageTypeUrl($code, $locationUsageType, $responseFields);
-		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -70,7 +53,8 @@ class LocationClient {
 	{
 		$url = LocationUrl::getLocationsInUsageTypeUrl($filter, $locationUsageType, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -84,14 +68,15 @@ class LocationClient {
 	{
 		$url = LocationUrl::getDirectShipLocationUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Retrieves the details of the location configured for the in-store pickup (SP) location usage type for the site specified in the request. If the location is not associated with a location type configured for the in-store pickup location usage type (SP), the operation returns an error.
 	*
-	* @param string $code The user-defined code that identifies the location to retrieve.
+	* @param string $code User-defined code that uniqely identifies the channel group.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
@@ -99,7 +84,8 @@ class LocationClient {
 	{
 		$url = LocationUrl::getInStorePickupLocationUrl($code, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -117,7 +103,8 @@ class LocationClient {
 	{
 		$url = LocationUrl::getInStorePickupLocationsUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

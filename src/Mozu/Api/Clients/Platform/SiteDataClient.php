@@ -14,8 +14,8 @@ namespace Mozu\Api\Clients\Platform;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Platform\SiteDataUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
 
 /**
 * Use the site data resource to store site-level information required for a third-party application in the Mozu database.
@@ -25,7 +25,7 @@ class SiteDataClient {
 	/**
 	* Retrieves the value of a record in the Mozu database.
 	*
-	* @param string $dbEntryQuery The database entry query string used to retrieve the record information.
+	* @param string $dbEntryQuery The database entry string to create.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
@@ -33,7 +33,8 @@ class SiteDataClient {
 	{
 		$url = SiteDataUrl::getDBValueUrl($dbEntryQuery, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -42,42 +43,42 @@ class SiteDataClient {
 	*
 	* @param string $dbEntryQuery The database entry string to create.
 	* @param string $value The value string to create.
-	* @return MozuClient
 	*/
 	public static function createDBValueClient($value, $dbEntryQuery)
 	{
 		$url = SiteDataUrl::createDBValueUrl($dbEntryQuery);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($value);
+		$mozuClient->withResourceUrl($url)->withBody($value);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Updates a record in the Mozu database based on the information supplied in the request.
 	*
-	* @param string $dbEntryQuery The database entry query string used to update the record information.
-	* @param string $value The database value to update.
-	* @return MozuClient
+	* @param string $dbEntryQuery The database entry string to create.
+	* @param string $value The value string to create.
 	*/
 	public static function updateDBValueClient($value, $dbEntryQuery)
 	{
 		$url = SiteDataUrl::updateDBValueUrl($dbEntryQuery);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($value);
+		$mozuClient->withResourceUrl($url)->withBody($value);
+		return $mozuClient;
 
 	}
 	
 	/**
 	* Removes a previously defined record in the Mozu database.
 	*
-	* @param string $dbEntryQuery The database entry string to delete.
-	* @return MozuClient
+	* @param string $dbEntryQuery The database entry string to create.
 	*/
 	public static function deleteDBValueClient($dbEntryQuery)
 	{
 		$url = SiteDataUrl::deleteDBValueUrl($dbEntryQuery);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	

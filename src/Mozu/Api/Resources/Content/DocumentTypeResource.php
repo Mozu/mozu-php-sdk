@@ -12,26 +12,22 @@
 
 namespace Mozu\Api\Resources\Content;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Content\DocumentTypeClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\Content\DocumentType;
-use Mozu\Api\Contracts\Content\DocumentTypeCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Document Types resource to view the document types supplied by the Content API.
 */
 class DocumentTypeResource {
 
-	private $apiContext;
-	private $dataViewMode;
-	public function __construct(ApiContext $apiContext, $dataViewMode) 
+		private $apiContext;
+	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
-		$this->dataViewMode = $dataViewMode;
 	}
-
-	
 
 	/**
 	* Retrieves a paged list of the system-defined document types.
@@ -41,12 +37,12 @@ class DocumentTypeResource {
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return DocumentTypeCollection 
 	*/
-	public function getDocumentTypes($pageSize =  null, $startIndex =  null, $responseFields =  null)
+	public function getDocumentTypes($dataViewMode, $pageSize =  null, $startIndex =  null, $responseFields =  null)
 	{
-		$mozuClient = DocumentTypeClient::getDocumentTypesClient($this->dataViewMode, $pageSize, $startIndex, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = DocumentTypeClient::getDocumentTypesClient($dataViewMode, $pageSize, $startIndex, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -57,45 +53,45 @@ class DocumentTypeResource {
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return DocumentType 
 	*/
-	public function getDocumentType($documentTypeName, $responseFields =  null)
+	public function getDocumentType($dataViewMode, $documentTypeName, $responseFields =  null)
 	{
-		$mozuClient = DocumentTypeClient::getDocumentTypeClient($this->dataViewMode, $documentTypeName, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = DocumentTypeClient::getDocumentTypeClient($dataViewMode, $documentTypeName, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 	/**
-	* 
+	* Creates a new DocumentType
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param DocumentType $documentType 
+	* @param DocumentType $documentType The type of documents used in the CMS such as "web_page" or "template" or "image_url".
 	* @return DocumentType 
 	*/
-	public function createDocumentType($documentType, $responseFields =  null)
+	public function createDocumentType($dataViewMode, $documentType, $responseFields =  null)
 	{
-		$mozuClient = DocumentTypeClient::createDocumentTypeClient($this->dataViewMode, $documentType, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = DocumentTypeClient::createDocumentTypeClient($dataViewMode, $documentType, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 	/**
-	* 
+	* Updates a DocumentType
 	*
-	* @param string $documentTypeName 
+	* @param string $documentTypeName The name of the document type to retrieve.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param DocumentType $documentType 
+	* @param DocumentType $documentType The type of documents used in the CMS such as "web_page" or "template" or "image_url".
 	* @return DocumentType 
 	*/
 	public function updateDocumentType($documentType, $documentTypeName, $responseFields =  null)
 	{
 		$mozuClient = DocumentTypeClient::updateDocumentTypeClient($documentType, $documentTypeName, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	

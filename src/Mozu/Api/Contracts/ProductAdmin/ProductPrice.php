@@ -20,7 +20,7 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class ProductPrice
 {
 	/**
-	*The credit amount of the product.
+	*The credit value of the product or bundled product. When the `goodsType `is `DigitalCredit`, this value is populated to indicate the value of the credit. This is used to create store credit in the fulfillment of gift cards.
 	*/
 	public $creditValue;
 
@@ -45,7 +45,7 @@ class ProductPrice
 	public $mapStartDate;
 
 	/**
-	*The manufacturer's suggested retail price, as defined by the supplier.
+	*The manufacturer's suggested retail price for the product. This content may be defined by the supplier.
 	*/
 	public $msrp;
 
@@ -55,7 +55,7 @@ class ProductPrice
 	public $price;
 
 	/**
-	*Price of the product with a discount already applied which the merchant intends to sell the product.
+	*The set sale price for a product consisting of a price with a discount already applied.
 	*/
 	public $salePrice;
 

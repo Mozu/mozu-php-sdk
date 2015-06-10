@@ -30,7 +30,7 @@ class AttributeValidation
 	public $maxNumericValue;
 
 	/**
-	*The maximum length possible for a string value entered for an extensible attribute.
+	*The maximum character length possible for a string value entered for an extensible attribute.
 	*/
 	public $maxStringLength;
 
@@ -45,12 +45,12 @@ class AttributeValidation
 	public $minNumericValue;
 
 	/**
-	*The maximum length possible for a string value entered for an extensible attribute.
+	*The minimum character length possible for a string value entered for an extensible attribute.
 	*/
 	public $minStringLength;
 
 	/**
-	*Regular expression used to validate the extensible attribute value.
+	*Regular expression used to process and validate an extensible attribute value that require special formatting, such as phone numbers.
 	*/
 	public $regularExpression;
 

@@ -14,10 +14,8 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin;
 
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\MasterCatalogUrl;
+use Mozu\Api\DataViewMode;
 use Mozu\Api\Headers;
-
-use Mozu\Api\Contracts\ProductAdmin\MasterCatalog;
-use Mozu\Api\Contracts\ProductAdmin\MasterCatalogCollection;
 
 /**
 * Use the Master Catalog resource to view details of the master catalogs associated with a tenant and to manage the product publishing mode for each master catalog.
@@ -34,7 +32,8 @@ class MasterCatalogClient {
 	{
 		$url = MasterCatalogUrl::getMasterCatalogsUrl($responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -49,7 +48,8 @@ class MasterCatalogClient {
 	{
 		$url = MasterCatalogUrl::getMasterCatalogUrl($masterCatalogId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
 
 	}
 	
@@ -58,14 +58,15 @@ class MasterCatalogClient {
 	*
 	* @param int $masterCatalogId 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param MasterCatalog $masterCatalog Properties of the master catalog to update, which consists of the product publishing mode. Possible values are "Pending" which saves product updates in draft mode until they are published, and "Live" which publishes all product changes immediately.
+	* @param MasterCatalog $masterCatalog Properties of a master product catalog defined for a tenant. All catalogs and sites associated with a master catalog share product definitions.
 	* @return MozuClient
 	*/
 	public static function updateMasterCatalogClient($masterCatalog, $masterCatalogId, $responseFields =  null)
 	{
 		$url = MasterCatalogUrl::updateMasterCatalogUrl($masterCatalogId, $responseFields);
 		$mozuClient = new MozuClient();
-		return $mozuClient->withResourceUrl($url)->withBody($masterCatalog);
+		$mozuClient->withResourceUrl($url)->withBody($masterCatalog);
+		return $mozuClient;
 
 	}
 	

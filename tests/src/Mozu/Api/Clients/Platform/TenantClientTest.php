@@ -1,9 +1,5 @@
 <?php
 
-namespace Mozu\Api\Clients\Platform;
-
-
-use Mozu\Api\ApiException;
 use Mozu\Tests\BaseTest;
 use Mozu\Api\Clients\Platform\TenantClient;
 use Mozu\Api\MozuClient;
@@ -43,18 +39,15 @@ class TenantClientTest extends BaseTest
      */
     public function testGetTenantClient()
     {
-        try {
-            $mozuClient = $this->object->getTenantClient(7804);
-
-            $httpClient = $mozuClient->withBaseUrl(parent::$baseUrl)->getHttpClient();
-
-            $tenant = $mozuClient->withBaseUrl(parent::$baseUrl)->execute()->getResult();
-
-            $this->assertSame($tenant->Id, 7804);
-        } catch(ApiException $ex) {
-            $this->fail($ex->getMessage());
-        }
-
+    	$mozuClient = $this->object->getTenantClient(7804);
+    	
+    	$httpClient = $mozuClient->withBaseUrl(parent::$baseUrl)->getHttpClient();
+    	
+    	var_dump($httpClient);
+    	
+    	$tenant = $mozuClient->withBaseUrl(parent::$baseUrl)->execute()->getResult();
+		
+    	$this->assertSame($tenant->Id, 7804);
     }
 }
 ?>

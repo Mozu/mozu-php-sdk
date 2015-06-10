@@ -1,7 +1,4 @@
 <?php
-
-namespace Mozu\Api\Resource\Commerce\Catalog\Admin;
-
 require_once __DIR__ . '/../../../../../../BaseTest.php';
 
 use Mozu\Tests\BaseTest;
@@ -28,8 +25,11 @@ class ProductResourceTest extends BaseTest
      */
     protected function setUp()
     {
-    	$apiContext = new ApiContext($this->tenantId,0,1,0);
-        $this->object = new ProductResource($apiContext, DataViewMode::LIVE);
+    	$tenantResource = new TenantResource();
+    	$tenant = $tenantResource->getTenant($this->tenantId);
+    	
+    	$apiContext = new ApiContext($tenant);
+        $this->object = new ProductResource($apiContext);
     }
 
     /**
@@ -47,9 +47,7 @@ class ProductResourceTest extends BaseTest
     public function testGetProducts()
     {
     	try {
-	       $productCollection = $this->object->getProducts(0, 200);
-            $this->assertNotNull($productCollection->items);
-            $this->assertNotNull($productCollection->pageCount);
+	       $productCollection = $this->object->getProducts(DataViewMode::LIVE, 0, 200, null, "productCode eq AC-1", null, null, null);
     	} catch(ApiException $ex) {
     		//echo $ex->getMessage();
     	}

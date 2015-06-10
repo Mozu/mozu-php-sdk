@@ -12,24 +12,22 @@
 
 namespace Mozu\Api\Resources\Commerce\Customer;
 
+use Mozu\Api\MozuClient;
 use Mozu\Api\Clients\Commerce\Customer\CreditClient;
 use Mozu\Api\ApiContext;
-
-use Mozu\Api\Contracts\Customer\Credit\Credit;
-use Mozu\Api\Contracts\Customer\Credit\CreditCollection;
+use Mozu\Api\DataViewMode;
+use Mozu\Api\Headers;
 
 /**
 * Use the Customer Credits resource to manage the store credit associated with a customer account. Store credit can represent a static amount the customer can redeem at any of the tenant's sites, or a gift card registered for a customer account. At this time, gift card functionality is reserved for future use.
 */
 class CreditResource {
 
-	private $apiContext;
+		private $apiContext;
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
 	}
-
-	
 
 	/**
 	* Retrieves a list of store credits applied to customer accounts, according any filter and sort criteria specified in the request.
@@ -44,25 +42,25 @@ class CreditResource {
 	public function getCredits($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
 		$mozuClient = CreditClient::getCreditsClient($startIndex, $pageSize, $sortBy, $filter, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 	/**
 	* Retrieves the details of a store credit applied to a customer account.
 	*
-	* @param string $code User-defined code that identifies the store credit to retrieve.
+	* @param string $code User-defined code that uniqely identifies the channel group.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return Credit 
 	*/
 	public function getCredit($code, $responseFields =  null)
 	{
 		$mozuClient = CreditClient::getCreditClient($code, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
@@ -70,62 +68,74 @@ class CreditResource {
 	* Creates a new store credit for the customer account specified in the request.
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Credit $credit Properties of the store credit to create.
+	* @param Credit $credit Properties of the store credit of gift card applied to a customer account. At this time, gift card functionality is reserved for future use.
 	* @return Credit 
 	*/
 	public function addCredit($credit, $responseFields =  null)
 	{
 		$mozuClient = CreditClient::addCreditClient($credit, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 	/**
 	* Associates an unclaimed customer credit with the shopper user authenticated in the request header.
 	*
-	* @param string $code The code that represents the credit to claim for the shopper.
+	* @param string $code User-defined code that uniqely identifies the channel group.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return Credit 
 	*/
 	public function associateCreditToShopper($code, $responseFields =  null)
 	{
 		$mozuClient = CreditClient::associateCreditToShopperClient($code, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+	/**
+	* customer-credits Put ResendCreditCreatedEmail description DOCUMENT_HERE 
+	*
+	* @param string $code User-defined code that uniqely identifies the channel group.
+	*/
+	public function resendCreditCreatedEmail($code)
+	{
+		$mozuClient = CreditClient::resendCreditCreatedEmailClient($code);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	
 	/**
 	* Updates one or more properties of a defined store credit applied to a customer account.
 	*
-	* @param string $code User-defined code of the store credit to update.
+	* @param string $code User-defined code that uniqely identifies the channel group.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Credit $credit Properties of the store credit to update.
+	* @param Credit $credit Properties of the store credit of gift card applied to a customer account. At this time, gift card functionality is reserved for future use.
 	* @return Credit 
 	*/
 	public function updateCredit($credit, $code, $responseFields =  null)
 	{
 		$mozuClient = CreditClient::updateCreditClient($credit, $code, $responseFields);
-		return $mozuClient->withContext($this->apiContext)
-				->execute()
-				->getResult();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 	/**
 	* Deletes a store credit previously applied to a customer account.
 	*
-	* @param string $code User-defined code of the store credit to delete.
-	* @return void
+	* @param string $code User-defined code that uniqely identifies the channel group.
 	*/
 	public function deleteCredit($code)
 	{
 		$mozuClient = CreditClient::deleteCreditClient($code);
-		$mozuClient->withContext($this->apiContext)
-				->execute();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
 
 	}
 	

@@ -15,7 +15,7 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 /**
-*	Discount used to calculate SalePrice. Includes coupon code if applicable, amount of the discount, and discount savings. Discounts can be either an absolute price or a percentage off. The sale price beats any discounts.
+*	Name of the discount added and applied to a shopping cart and order for a shopper's purchase. 
 */
 class Discount
 {
@@ -30,9 +30,19 @@ class Discount
 	public $amountType;
 
 	/**
+	*Signifies that the discount is not referenced and can be hard deleted
+	*/
+	public $canBeDeleted;
+
+	/**
 	*The number of times this discount has been redeemed.
 	*/
 	public $currentRedemptionCount;
+
+	/**
+	*Determines whether or not a discount applies to a items with a sale price. Applicable on order and line item discounts. For line items, when this is true, the discount will be disqualified. For order level discounts, when true, the discount will not be applied to those items have a sale price.
+	*/
+	public $doesNotApplyToProductsWithSalePrice;
 
 	/**
 	*If true, this discount does not apply to a line item product with a defined sale price. The default is false, which applies the discount to products with and without defined sale prices.
@@ -40,9 +50,24 @@ class Discount
 	public $doesNotApplyToSalePrice;
 
 	/**
-	*Unique identifier of the discount.
+	*Unique identifier of the source product property. For a product field it will be the name of the field. For a product attribute it will be the Attribute FQN. 
 	*/
 	public $id;
+
+	/**
+	*Maximum impact this discount can apply on a single order. Must be either null or greater than zero.
+	*/
+	public $maximumDiscountImpactPerOrder;
+
+	/**
+	*Maximum impact this discount can apply on a single line item. Must be either null or greater than zero.
+	*/
+	public $maximumDiscountImpactPerRedemption;
+
+	/**
+	*Maximum number of redemptions allowed per order. If null, defaults to unlimited.
+	*/
+	public $maximumRedemptionsPerOrder;
 
 	/**
 	*The maximum number of times an individual shopper can redeem the discount.
@@ -55,7 +80,7 @@ class Discount
 	public $scope;
 
 	/**
-	*Current status of the product discount. Possible values are "Active", "Scheduled", or "Expired".
+	*The current status of an object. This status is specific to the object including payment (New, Authorized, Captured, Declined, Failed, Voided, Credited, CheckRequested, or RolledBack), discount (Active, Scheduled, or Expired), returns (ReturnAuthorized), tenant, package (Fulfilled or NotFulfilled), application, master and product catalogs, orders (Pending, Submitted, Processing, Pending Review, Closed, or Canceled), and order validation results (Pass, Fail, Error, or Review).
 	*/
 	public $status;
 
@@ -75,7 +100,7 @@ class Discount
 	public $content;
 
 	/**
-	*Properties of the target object to which the discount applies, such as a product or an order.
+	*Targets represent the object, such as an item to apply discounts (products or orders) or a view field for content. When accessing MZDB APIs for Mongo interactions, targets are the dot notation that links to the source document property. For example, firstitem for the direc level or firstitem.seconditem.thirditem for a deeper property.              
 	*/
 	public $target;
 
