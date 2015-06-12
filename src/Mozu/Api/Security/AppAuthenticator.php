@@ -62,6 +62,7 @@ class AppAuthenticator {
             $response = $promise->wait();
             $jsonResp = $response->getBody ( true );
             static::$instance->authTicket = json_decode ( $jsonResp );
+            $this->setRefreshInterval(true);
 		} catch(\Exception $e) {
 			HttpHelper::checkError($e);
 		}
@@ -71,9 +72,6 @@ class AppAuthenticator {
 		try {
 			$requestData = new AuthTicketRequest();
 			$requestData->refreshToken = $this->authTicket->refreshToken;
-			/*$client = new Client ( $this->baseUrl, HttpHelper::getGuzzleConfig() );
-			$request = $client->put( AuthTicketUrl::RefreshAppAuthTicketUrl()->getUrl());
-			$request->setBody ( json_encode($requestData), 'application/json' );*/
             $client = new Client (['base_uri' => MozuConfig::$baseAppAuthUrl,  'verify' => false]);
             $headers = ["content-type" => "application/json"];
             $body = json_encode($requestData);
@@ -111,20 +109,24 @@ class AppAuthenticator {
         $this->log->info("Refresh Token Expiration - " .$this->refreshInterval->getRefreshTokenExpiration()->format('Y-m-d H:i:s'));
 	}
 	
-	public function addAuthHeader($headers) {
+	public function getAppClaim() {
 		if ($this->authTicket == null)
 			throw new \Exception("Authentication not initialized");
 		
 		$this->ensureAuthTicket();
-        return array_merge($headers, array(Headers::X_VOL_APP_CLAIMS=>static::$instance->authTicket->accessToken));
+        return static::$instance->authTicket->accessToken;
 	}
 
 	private function ensureAuthTicket() {
 		$dateTimeNow = new DateTime();
-		if ($this->authTicket == null || $dateTimeNow >= $this->refreshInterval->getRefreshTokenExpiration())
-			$this->authenticateApp();
-		else if ($dateTimeNow >= $this->refreshInterval->getAccessTokenExpiration())
-			$this->refreshAuthTicket();
+		if ($this->authTicket == null || $dateTimeNow >= $this->refreshInterval->getRefreshTokenExpiration()) {
+            $this->log->info("Refresh token expired..Generating new token");
+            $this->authenticateApp();
+        }
+		else if ($dateTimeNow >= $this->refreshInterval->getAccessTokenExpiration()) {
+            $this->log->info("Access token expired..Getting new token using refresh token");
+            $this->refreshAuthTicket();
+        }
 	} 
 	
 	public function getAccessToken() {

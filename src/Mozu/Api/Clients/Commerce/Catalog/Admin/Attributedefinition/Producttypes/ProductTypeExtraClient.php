@@ -15,6 +15,8 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin\Attributedefinition\Producttyp
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\Attributedefinition\Producttypes\ProductTypeExtraUrl;
 
+use Mozu\Api\Headers;
+
 /**
 * Use the Extras subresource to define how a product attribute classified as an "extra" is used for a specific product type. Product attribute defintions are unique for each associated product type.
 */

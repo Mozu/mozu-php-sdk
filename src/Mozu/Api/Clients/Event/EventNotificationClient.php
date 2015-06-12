@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Event;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Event\EventNotificationUrl;
 
+
 /**
 * Events are notifications Mozu publishes to the application when a create, read, update, or delete operation is performed. If the application subscribes to the event, you can use the Events resource to query for recent events Mozu published to your application or events that were not published successfully.
 */

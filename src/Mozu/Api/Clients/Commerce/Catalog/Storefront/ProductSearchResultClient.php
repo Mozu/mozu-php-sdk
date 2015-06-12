@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Storefront;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Storefront\ProductSearchResultUrl;
 
+
 /**
 * Use the Product Search resource to provide dynamic search results to shoppers as they browse and search for products on the web storefront, and to suggest possible search terms as the shopper enters text.
 */

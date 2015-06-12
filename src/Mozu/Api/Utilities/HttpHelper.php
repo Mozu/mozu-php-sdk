@@ -3,7 +3,6 @@ namespace Mozu\Api\Utilities;
 
 use Mozu\Api\ApiException;
 use Mozu\Api\iApiContext;
-use Logger;
 /**
  * HttpHelper
  *
@@ -34,9 +33,6 @@ class HttpHelper {
      * @throws ApiException
      */
     public static function checkError(\Exception $e, iApiContext $apiContext = null) {
-        $log = Logger::getLogger("HttpHelper");
-
-        //var_dump($e);
         switch (get_class($e)) {
             case "GuzzleHttp\Exception\BadResponseException":
             case "GuzzleHttp\Exception\ClientErrorResponseException":
@@ -47,14 +43,13 @@ class HttpHelper {
                 $code = $e->getResponse()->getStatusCode();
                 $response = $e->getResponse()->getBody(TRUE);
                 $jsonResponse = json_decode($response);
-                $message = $e->getResponse()->getReasonPhrase();
-                $apiException = new ApiException($message, $code);
-                $correlation = $e->getResponse()->getHeader("x-vol-correlation");
-                if (!empty($correlation)) {
-                    $log->info("CorrelationId : ".$correlation[0]);
-                    $apiException->setCorrelationId($correlation[0]);
-                }
+                $apiException = null;
+
                 if (!empty($jsonResponse)) {
+                    if (isset($jsonResponse->message))
+                        $apiException = new ApiException($jsonResponse->message, $code);
+                    else
+                        $apiException = new ApiException($e->getResponse()->getReasonPhrase().", inspect Mozu\Api\ApiException->items property for more details", $code);
                     if (isset($jsonResponse->additionalErrorData)) {
                         $apiException->setAdditionalErrorData($jsonResponse->additionalErrorData);
                     }
@@ -67,6 +62,12 @@ class HttpHelper {
                     if (isset($jsonResponse->items)) {
                         $apiException->setItems($jsonResponse->items);
                     }
+                } else {
+                    $apiException = new ApiException($e->getResponse()->getReasonPhrase(), $code);
+                }
+                $correlation = $e->getResponse()->getHeader("x-vol-correlation");
+                if (!empty($correlation)) {
+                    $apiException->setCorrelationId($correlation[0]);
                 }
                 throw $apiException;
                 break;

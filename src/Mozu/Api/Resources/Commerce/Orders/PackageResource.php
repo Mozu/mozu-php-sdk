@@ -15,13 +15,14 @@ namespace Mozu\Api\Resources\Commerce\Orders;
 use Mozu\Api\Clients\Commerce\Orders\PackageClient;
 use Mozu\Api\ApiContext;
 
+
 /**
 * Use the Packages subresource to manage the physical packages to ship for an order.
 */
 class PackageResource {
 
-	private $apiContext;
-		
+		private $apiContext;
+			
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -37,6 +38,7 @@ class PackageResource {
 	* @param string $orderId Unique identifier of the order.
 	* @param string $packageId Unique identifier of the package for which to retrieve the label.
 	* @return array|string 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getAvailablePackageFulfillmentActions($orderId, $packageId)
 	{
@@ -47,12 +49,28 @@ class PackageResource {
 
 	}
 	
+/**
+	* Retrieves a list of the actions available to perform for a package associated with order fulfillment.
+	*
+	* @param string $orderId Unique identifier of the order.
+	* @param string $packageId Unique identifier of the package for which to retrieve the label.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getAvailablePackageFulfillmentActionsAsync($orderId, $packageId)
+	{
+		$mozuClient = PackageClient::getAvailablePackageFulfillmentActionsClient($orderId, $packageId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Retrieves the package label image supplied by the carrier.
 	*
 	* @param string $orderId Unique identifier of the order.
 	* @param string $packageId Unique identifier of the package for which to retrieve the label.
 	* @return Stream 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getPackageLabel($orderId, $packageId)
 	{
@@ -63,6 +81,21 @@ class PackageResource {
 
 	}
 	
+/**
+	* Retrieves the package label image supplied by the carrier.
+	*
+	* @param string $orderId Unique identifier of the order.
+	* @param string $packageId Unique identifier of the package for which to retrieve the label.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getPackageLabelAsync($orderId, $packageId)
+	{
+		$mozuClient = PackageClient::getPackageLabelClient($orderId, $packageId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Retrieves the details of a package of order items.
 	*
@@ -70,6 +103,7 @@ class PackageResource {
 	* @param string $packageId Unique identifier of the package for which to retrieve the label.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return Package 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getPackage($orderId, $packageId, $responseFields =  null)
 	{
@@ -80,6 +114,22 @@ class PackageResource {
 
 	}
 	
+/**
+	* Retrieves the details of a package of order items.
+	*
+	* @param string $orderId Unique identifier of the order.
+	* @param string $packageId Unique identifier of the package for which to retrieve the label.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getPackageAsync($orderId, $packageId, $responseFields =  null)
+	{
+		$mozuClient = PackageClient::getPackageClient($orderId, $packageId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Creates a new physical package of order items.
 	*
@@ -87,6 +137,7 @@ class PackageResource {
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param Package $package Properties of a physical package shipped for an order.
 	* @return Package 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function createPackage($pkg, $orderId, $responseFields =  null)
 	{
@@ -94,6 +145,21 @@ class PackageResource {
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Creates a new physical package of order items.
+	*
+	* @param string $orderId Unique identifier of the order.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function createPackageAsync($pkg, $orderId, $responseFields =  null)
+	{
+		$mozuClient = PackageClient::createPackageClient($pkg, $orderId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	
@@ -105,6 +171,7 @@ class PackageResource {
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param Package $package Properties of a physical package shipped for an order.
 	* @return Package 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function updatePackage($pkg, $orderId, $packageId, $responseFields =  null)
 	{
@@ -115,17 +182,49 @@ class PackageResource {
 
 	}
 	
+/**
+	* Updates one or more properties of a physical package of order items.
+	*
+	* @param string $orderId Unique identifier of the order.
+	* @param string $packageId Unique identifier of the package for which to retrieve the label.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function updatePackageAsync($pkg, $orderId, $packageId, $responseFields =  null)
+	{
+		$mozuClient = PackageClient::updatePackageClient($pkg, $orderId, $packageId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Removes a physical package of items from the specified order.
 	*
 	* @param string $orderId Unique identifier of the order.
 	* @param string $packageId Unique identifier of the package for which to retrieve the label.
+	* @deprecated deprecated since version 1.17
 	*/
 	public function deletePackage($orderId, $packageId)
 	{
 		$mozuClient = PackageClient::deletePackageClient($orderId, $packageId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+
+	}
+	
+/**
+	* Removes a physical package of items from the specified order.
+	*
+	* @param string $orderId Unique identifier of the order.
+	* @param string $packageId Unique identifier of the package for which to retrieve the label.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function deletePackageAsync($orderId, $packageId)
+	{
+		$mozuClient = PackageClient::deletePackageClient($orderId, $packageId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	

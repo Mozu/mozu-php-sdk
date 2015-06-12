@@ -15,19 +15,13 @@ namespace Mozu\Api\Resources\Commerce\Payments;
 use Mozu\Api\Clients\Commerce\Payments\PublicCardClient;
 use Mozu\Api\ApiContext;
 
+
 /**
 * commerce/payments/cards related resources. DOCUMENT_HERE 
 */
 class PublicCardResource {
 
-	private $apiContext;
-		
-	public function __construct(ApiContext $apiContext) 
-	{
-		$this->apiContext = $apiContext;
-	}
-
-	
+				
 
 
 
@@ -36,13 +30,25 @@ class PublicCardResource {
 	*
 	* @param PublicCard $request Mozu.PaymentService.Contracts.PublicCard ApiType DOCUMENT_HERE 
 	* @return SyncResponse 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function create($request)
 	{
 		$mozuClient = PublicCardClient::createClient($request);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* payments-cards Post Create description DOCUMENT_HERE 
+	*
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function createAsync($request)
+	{
+		$mozuClient = PublicCardClient::createClient($request);
+		return $mozuClient->executeAsync();
 
 	}
 	
@@ -52,13 +58,26 @@ class PublicCardResource {
 	* @param string $cardId Unique identifier of the card associated with the customer account billing contact.
 	* @param PublicCard $request Mozu.PaymentService.Contracts.PublicCard ApiType DOCUMENT_HERE 
 	* @return SyncResponse 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function update($request, $cardId)
 	{
 		$mozuClient = PublicCardClient::updateClient($request, $cardId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* payments-cards Put Update description DOCUMENT_HERE 
+	*
+	* @param string $cardId Unique identifier of the card associated with the customer account billing contact.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function updateAsync($request, $cardId)
+	{
+		$mozuClient = PublicCardClient::updateClient($request, $cardId);
+		return $mozuClient->executeAsync();
 
 	}
 	
@@ -66,12 +85,25 @@ class PublicCardResource {
 	* payments-cards Delete Delete description DOCUMENT_HERE 
 	*
 	* @param string $cardId Unique identifier of the card associated with the customer account billing contact.
+	* @deprecated deprecated since version 1.17
 	*/
 	public function delete($cardId)
 	{
 		$mozuClient = PublicCardClient::deleteClient($cardId);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+
+	}
+	
+/**
+	* payments-cards Delete Delete description DOCUMENT_HERE 
+	*
+	* @param string $cardId Unique identifier of the card associated with the customer account billing contact.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function deleteAsync($cardId)
+	{
+		$mozuClient = PublicCardClient::deleteClient($cardId);
+		return $mozuClient->executeAsync();
 
 	}
 	

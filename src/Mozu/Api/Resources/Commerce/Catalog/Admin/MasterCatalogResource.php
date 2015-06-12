@@ -15,13 +15,14 @@ namespace Mozu\Api\Resources\Commerce\Catalog\Admin;
 use Mozu\Api\Clients\Commerce\Catalog\Admin\MasterCatalogClient;
 use Mozu\Api\ApiContext;
 
+
 /**
 * Use the Master Catalog resource to view details of the master catalogs associated with a tenant and to manage the product publishing mode for each master catalog.
 */
 class MasterCatalogResource {
 
-	private $apiContext;
-		
+		private $apiContext;
+			
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -36,6 +37,7 @@ class MasterCatalogResource {
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MasterCatalogCollection 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getMasterCatalogs($responseFields =  null)
 	{
@@ -46,12 +48,27 @@ class MasterCatalogResource {
 
 	}
 	
+/**
+	* Retrieve the details of all master catalog associated with a tenant.
+	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getMasterCatalogsAsync($responseFields =  null)
+	{
+		$mozuClient = MasterCatalogClient::getMasterCatalogsClient($responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Retrieve the details of the master catalog specified in the request.
 	*
 	* @param int $masterCatalogId The unique identifier of the master catalog associated with the entity.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MasterCatalog 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getMasterCatalog($masterCatalogId, $responseFields =  null)
 	{
@@ -62,6 +79,21 @@ class MasterCatalogResource {
 
 	}
 	
+/**
+	* Retrieve the details of the master catalog specified in the request.
+	*
+	* @param int $masterCatalogId The unique identifier of the master catalog associated with the entity.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getMasterCatalogAsync($masterCatalogId, $responseFields =  null)
+	{
+		$mozuClient = MasterCatalogClient::getMasterCatalogClient($masterCatalogId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Updates the product publishing mode for the master catalog specified in the request.
 	*
@@ -69,6 +101,7 @@ class MasterCatalogResource {
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param MasterCatalog $masterCatalog Properties of a master product catalog defined for a tenant. All catalogs and sites associated with a master catalog share product definitions.
 	* @return MasterCatalog 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function updateMasterCatalog($masterCatalog, $masterCatalogId, $responseFields =  null)
 	{
@@ -76,6 +109,21 @@ class MasterCatalogResource {
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Updates the product publishing mode for the master catalog specified in the request.
+	*
+	* @param int $masterCatalogId 
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function updateMasterCatalogAsync($masterCatalog, $masterCatalogId, $responseFields =  null)
+	{
+		$mozuClient = MasterCatalogClient::updateMasterCatalogClient($masterCatalog, $masterCatalogId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	

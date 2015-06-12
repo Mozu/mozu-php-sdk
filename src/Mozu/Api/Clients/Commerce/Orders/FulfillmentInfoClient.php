@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Orders;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Orders\FulfillmentInfoUrl;
 
+
 /**
 * Use the Fulfillment Information resource to manage shipping or pickup information for orders.
 */

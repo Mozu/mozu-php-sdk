@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Settings\Shipping;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Settings\Shipping\SiteShippingHandlingFeeUrl;
 
+
 /**
 * Use the Order Handling Fee subresource to configure any shipping and handling fees to apply to orders for this site.
 */

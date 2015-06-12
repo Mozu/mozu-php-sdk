@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Customer;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\CustomerAuthTicketUrl;
 
+
 /**
 * Use the Customer Authentication Tickets resource to generate and refresh authentication tickets for customer accounts.
 */

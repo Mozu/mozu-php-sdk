@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Customer\Credits;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\Credits\CreditTransactionUrl;
 
+
 /**
 * Use the Customer Credit Transactions subresource to manage the individual transactions performed using a store credit or gift card.
 */

@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Orders;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Orders\FulfillmentActionUrl;
 
+
 /**
 * Use the Fulfillment resource to manage shipments or pickups of collections of packages for an order.
 */

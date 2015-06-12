@@ -15,13 +15,15 @@ namespace Mozu\Api\Resources\Content;
 use Mozu\Api\Clients\Content\DocumentTypeClient;
 use Mozu\Api\ApiContext;
 
+use Mozu\Api\Headers;
+
 /**
 * Use the Document Types resource to view the document types supplied by the Content API.
 */
 class DocumentTypeResource {
 
-	private $apiContext;
-	private $dataViewMode;
+		private $apiContext;
+		private $dataViewMode;
 		public function __construct(ApiContext $apiContext, $dataViewMode) 
 	{
 		$this->apiContext = $apiContext;
@@ -38,6 +40,7 @@ class DocumentTypeResource {
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return DocumentTypeCollection 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getDocumentTypes($pageSize =  null, $startIndex =  null, $responseFields =  null)
 	{
@@ -48,12 +51,29 @@ class DocumentTypeResource {
 
 	}
 	
+/**
+	* Retrieves a paged list of the system-defined document types.
+	*
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getDocumentTypesAsync($pageSize =  null, $startIndex =  null, $responseFields =  null)
+	{
+		$mozuClient = DocumentTypeClient::getDocumentTypesClient($this->dataViewMode, $pageSize, $startIndex, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Retrieves a system-defined document type.
 	*
 	* @param string $documentTypeName The name of the document type to retrieve.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return DocumentType 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getDocumentType($documentTypeName, $responseFields =  null)
 	{
@@ -64,12 +84,28 @@ class DocumentTypeResource {
 
 	}
 	
+/**
+	* Retrieves a system-defined document type.
+	*
+	* @param string $documentTypeName The name of the document type to retrieve.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getDocumentTypeAsync($documentTypeName, $responseFields =  null)
+	{
+		$mozuClient = DocumentTypeClient::getDocumentTypeClient($this->dataViewMode, $documentTypeName, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Creates a new DocumentType
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param DocumentType $documentType The type of documents used in the CMS such as "web_page" or "template" or "image_url".
 	* @return DocumentType 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function createDocumentType($documentType, $responseFields =  null)
 	{
@@ -80,6 +116,20 @@ class DocumentTypeResource {
 
 	}
 	
+/**
+	* Creates a new DocumentType
+	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function createDocumentTypeAsync($documentType, $responseFields =  null)
+	{
+		$mozuClient = DocumentTypeClient::createDocumentTypeClient($this->dataViewMode, $documentType, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Updates a DocumentType
 	*
@@ -87,6 +137,7 @@ class DocumentTypeResource {
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param DocumentType $documentType The type of documents used in the CMS such as "web_page" or "template" or "image_url".
 	* @return DocumentType 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function updateDocumentType($documentType, $documentTypeName, $responseFields =  null)
 	{
@@ -94,6 +145,21 @@ class DocumentTypeResource {
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Updates a DocumentType
+	*
+	* @param string $documentTypeName The name of the document type to retrieve.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function updateDocumentTypeAsync($documentType, $documentTypeName, $responseFields =  null)
+	{
+		$mozuClient = DocumentTypeClient::updateDocumentTypeClient($documentType, $documentTypeName, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	

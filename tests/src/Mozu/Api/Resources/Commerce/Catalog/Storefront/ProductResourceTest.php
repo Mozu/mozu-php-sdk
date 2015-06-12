@@ -3,7 +3,6 @@ require_once __DIR__ . '/../../../../../../BaseTest.php';
 
 use Mozu\Tests\BaseTest;
 use Mozu\Api\Resources\Commerce\Catalog\Storefront\ProductResource;
-use Mozu\Api\Resources\Platform\TenantResource;
 use Mozu\Api\ApiContext;
 use Mozu\Api\DataViewMode;
 
@@ -25,7 +24,7 @@ class ProductResourceTest extends BaseTest
     protected function setUp()
     {
     	$apiContext = new ApiContext($this->tenantId,$this->siteId,1,1);
-        $this->object = new ProductResource($apiContext);
+        $this->object = new ProductResource($apiContext, DataViewMode::LIVE);
     }
 
     /**
@@ -40,10 +39,16 @@ class ProductResourceTest extends BaseTest
      * @covers Mozu\Api\Resources\Commerce\Catalog\Admin\ProductResource::getProducts
      * @todo Implement testGetProducts().
      */
-    public function testGetProducts()
+    public function testGetProductsAsync()
     {
-       $productInventoryCollection = $this->object->getProductInventory("AC-99");
-       var_dump($productInventoryCollection);
+       $promise = $this->object->getProductInventoryAsync("AC-99");
+       $promise->then(function($mozuResult){
+           var_dump($mozuResult);
+       }, function($apiException){
+           parent::printError($apiException);
+           $this->fail($apiException->getMessage());
+       });
+
     }
 
     

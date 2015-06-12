@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Customer\Accounts;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\Accounts\CustomerSegmentUrl;
 
+
 /**
 * Use the Customer Account Segments subresource to view the customer segments associated with a customer account.
 */

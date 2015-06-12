@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Customer\Accounts;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\Accounts\TransactionUrl;
 
+
 /**
 * Use the Customer Account Transactions resource to manage the transactions associated with a customer account.
 */

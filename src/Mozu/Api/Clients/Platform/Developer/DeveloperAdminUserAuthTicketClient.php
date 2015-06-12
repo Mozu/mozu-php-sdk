@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Platform\Developer;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Platform\Developer\DeveloperAdminUserAuthTicketUrl;
 
+
 /**
 * Use the Authtickets resource to manage authentication tickets for your developer account.
 */

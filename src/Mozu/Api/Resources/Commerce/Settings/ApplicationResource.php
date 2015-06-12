@@ -15,13 +15,14 @@ namespace Mozu\Api\Resources\Commerce\Settings;
 use Mozu\Api\Clients\Commerce\Settings\ApplicationClient;
 use Mozu\Api\ApiContext;
 
+
 /**
 * Use the Applications resource to update site-specific settings for installed applications.
 */
 class ApplicationResource {
 
-	private $apiContext;
-		
+		private $apiContext;
+			
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -36,6 +37,7 @@ class ApplicationResource {
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return Application 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function thirdPartyGetApplication($responseFields =  null)
 	{
@@ -46,12 +48,27 @@ class ApplicationResource {
 
 	}
 	
+/**
+	* Retrieve the settings of a third-party application.
+	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function thirdPartyGetApplicationAsync($responseFields =  null)
+	{
+		$mozuClient = ApplicationClient::thirdPartyGetApplicationClient($responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Initializes an application with the necessary configured settings.
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param Application $application Properties of an application installed in a tenant.
 	* @return Application 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function thirdPartyUpdateApplication($application, $responseFields =  null)
 	{
@@ -59,6 +76,20 @@ class ApplicationResource {
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Initializes an application with the necessary configured settings.
+	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function thirdPartyUpdateApplicationAsync($application, $responseFields =  null)
+	{
+		$mozuClient = ApplicationClient::thirdPartyUpdateApplicationClient($application, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	

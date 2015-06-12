@@ -15,13 +15,15 @@ namespace Mozu\Api\Resources\Commerce\Catalog\Admin\Products;
 use Mozu\Api\Clients\Commerce\Catalog\Admin\Products\ProductVariationClient;
 use Mozu\Api\ApiContext;
 
+use Mozu\Api\Headers;
+
 /**
 * Use the product variations sub-resource to manage the variations of a product based on its attributes. For example, a t-shirt product could be offered in six variations: Small Black, Medium Black, Large Black, Small White, Medium White, and Large White.
 */
 class ProductVariationResource {
 
-	private $apiContext;
-	private $dataViewMode;
+		private $apiContext;
+		private $dataViewMode;
 		public function __construct(ApiContext $apiContext, $dataViewMode) 
 	{
 		$this->apiContext = $apiContext;
@@ -37,6 +39,7 @@ class ProductVariationResource {
 	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
 	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
 	* @return array|ProductVariationDeltaPrice 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getProductVariationLocalizedDeltaPrices($productCode, $variationKey)
 	{
@@ -44,6 +47,21 @@ class ProductVariationResource {
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Retrieves a collection of the localized delta price values for a product variation. Localized delta prices are deltas between two differing monetary conversion amounts between countries, such as US Dollar vs Euro.
+	*
+	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getProductVariationLocalizedDeltaPricesAsync($productCode, $variationKey)
+	{
+		$mozuClient = ProductVariationClient::getProductVariationLocalizedDeltaPricesClient($this->dataViewMode, $productCode, $variationKey);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	
@@ -55,6 +73,7 @@ class ProductVariationResource {
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
 	* @return ProductVariationDeltaPrice 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getProductVariationLocalizedDeltaPrice($productCode, $variationKey, $currencyCode, $responseFields =  null)
 	{
@@ -65,6 +84,23 @@ class ProductVariationResource {
 
 	}
 	
+/**
+	* Retrieves the localized delta price value for a product variation. Localized delta prices are deltas between two differing monetary conversion amounts between countries, such as US Dollar vs Euro.
+	*
+	* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getProductVariationLocalizedDeltaPriceAsync($productCode, $variationKey, $currencyCode, $responseFields =  null)
+	{
+		$mozuClient = ProductVariationClient::getProductVariationLocalizedDeltaPriceClient($this->dataViewMode, $productCode, $variationKey, $currencyCode, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Retrieves the details of a product variation based on the supplied product code and variation key.
 	*
@@ -72,6 +108,7 @@ class ProductVariationResource {
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
 	* @return ProductVariation 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getProductVariation($productCode, $variationKey, $responseFields =  null)
 	{
@@ -79,6 +116,22 @@ class ProductVariationResource {
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Retrieves the details of a product variation based on the supplied product code and variation key.
+	*
+	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getProductVariationAsync($productCode, $variationKey, $responseFields =  null)
+	{
+		$mozuClient = ProductVariationClient::getProductVariationClient($this->dataViewMode, $productCode, $variationKey, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	
@@ -92,6 +145,7 @@ class ProductVariationResource {
 	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return ProductVariationPagedCollection 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getProductVariations($productCode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
@@ -99,6 +153,25 @@ class ProductVariationResource {
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Retrieves a list of the product variations configured for the specified product code.
+	*
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getProductVariationsAsync($productCode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
+	{
+		$mozuClient = ProductVariationClient::getProductVariationsClient($this->dataViewMode, $productCode, $startIndex, $pageSize, $sortBy, $filter, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	
@@ -110,6 +183,7 @@ class ProductVariationResource {
 	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
 	* @param ProductVariationDeltaPrice $localizedDeltaPrice The difference between the base price for the product and this variation of the product, which can be a positive or negative decimal value. For example, if the base price for a t-shirt product is $10, but the XL variation should cost $12, the DeltaPrice value should be "2". However, if the XS variation should only cost $8, the DeltaPrice value should be "-2".
 	* @return ProductVariationDeltaPrice 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function addProductVariationLocalizedDeltaPrice($localizedDeltaPrice, $productCode, $variationKey, $responseFields =  null)
 	{
@@ -120,6 +194,22 @@ class ProductVariationResource {
 
 	}
 	
+/**
+	* Adds the localized delta price value for a product variation. Localized delta prices are deltas between two differing monetary conversion amounts between countries, such as US Dollar vs Euro.
+	*
+	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function addProductVariationLocalizedDeltaPriceAsync($localizedDeltaPrice, $productCode, $variationKey, $responseFields =  null)
+	{
+		$mozuClient = ProductVariationClient::addProductVariationLocalizedDeltaPriceClient($this->dataViewMode, $localizedDeltaPrice, $productCode, $variationKey, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Updates all localized delta price values for a product variation. Localized delta prices are deltas between two differing monetary conversion amounts between countries, such as US Dollar vs Euro.
 	*
@@ -127,6 +217,7 @@ class ProductVariationResource {
 	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
 	* @param array|ProductVariationDeltaPrice $localizedDeltaPrice The difference between the base price for the product and this variation of the product, which can be a positive or negative decimal value. For example, if the base price for a t-shirt product is $10, but the XL variation should cost $12, the DeltaPrice value should be "2". However, if the XS variation should only cost $8, the DeltaPrice value should be "-2".
 	* @return array|ProductVariationDeltaPrice 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function updateProductVariationLocalizedDeltaPrices($localizedDeltaPrice, $productCode, $variationKey)
 	{
@@ -134,6 +225,21 @@ class ProductVariationResource {
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Updates all localized delta price values for a product variation. Localized delta prices are deltas between two differing monetary conversion amounts between countries, such as US Dollar vs Euro.
+	*
+	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function updateProductVariationLocalizedDeltaPricesAsync($localizedDeltaPrice, $productCode, $variationKey)
+	{
+		$mozuClient = ProductVariationClient::updateProductVariationLocalizedDeltaPricesClient($this->dataViewMode, $localizedDeltaPrice, $productCode, $variationKey);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	
@@ -146,6 +252,7 @@ class ProductVariationResource {
 	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
 	* @param ProductVariationDeltaPrice $localizedDeltaPrice The difference between the base price for the product and this variation of the product, which can be a positive or negative decimal value. For example, if the base price for a t-shirt product is $10, but the XL variation should cost $12, the DeltaPrice value should be "2". However, if the XS variation should only cost $8, the DeltaPrice value should be "-2".
 	* @return ProductVariationDeltaPrice 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function updateProductVariationLocalizedDeltaPrice($localizedDeltaPrice, $productCode, $variationKey, $currencyCode, $responseFields =  null)
 	{
@@ -153,6 +260,23 @@ class ProductVariationResource {
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Updatesthe localized delta price value for a product variation. Localized delta prices are deltas between two differing monetary conversion amounts between countries, such as US Dollar vs Euro.
+	*
+	* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function updateProductVariationLocalizedDeltaPriceAsync($localizedDeltaPrice, $productCode, $variationKey, $currencyCode, $responseFields =  null)
+	{
+		$mozuClient = ProductVariationClient::updateProductVariationLocalizedDeltaPriceClient($this->dataViewMode, $localizedDeltaPrice, $productCode, $variationKey, $currencyCode, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	
@@ -164,6 +288,7 @@ class ProductVariationResource {
 	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
 	* @param ProductVariation $productVariation Properties of a specific product variation.
 	* @return ProductVariation 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function updateProductVariation($productVariation, $productCode, $variationKey, $responseFields =  null)
 	{
@@ -174,6 +299,22 @@ class ProductVariationResource {
 
 	}
 	
+/**
+	* Modifies the details of a variation, based on the supplied variation key, for the specified product code.
+	*
+	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function updateProductVariationAsync($productVariation, $productCode, $variationKey, $responseFields =  null)
+	{
+		$mozuClient = ProductVariationClient::updateProductVariationClient($this->dataViewMode, $productVariation, $productCode, $variationKey, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Modifies the collection of variations for the specified product code. Because this PUT replaces the existing resource, supply all information necessary to maintain for the product variation.
 	*
@@ -181,6 +322,7 @@ class ProductVariationResource {
 	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
 	* @param ProductVariationCollection $productVariations Collection of variations configured for a product.
 	* @return ProductVariationCollection 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function updateProductVariations($productVariations, $productCode, $responseFields =  null)
 	{
@@ -191,11 +333,27 @@ class ProductVariationResource {
 
 	}
 	
+/**
+	* Modifies the collection of variations for the specified product code. Because this PUT replaces the existing resource, supply all information necessary to maintain for the product variation.
+	*
+	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function updateProductVariationsAsync($productVariations, $productCode, $responseFields =  null)
+	{
+		$mozuClient = ProductVariationClient::updateProductVariationsClient($this->dataViewMode, $productVariations, $productCode, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Deletes a variation, based on the supplied variation key, for the specified product code.
 	*
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
+	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteProductVariation($productCode, $variationKey)
 	{
@@ -205,18 +363,50 @@ class ProductVariationResource {
 
 	}
 	
+/**
+	* Deletes a variation, based on the supplied variation key, for the specified product code.
+	*
+	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function deleteProductVariationAsync($productCode, $variationKey)
+	{
+		$mozuClient = ProductVariationClient::deleteProductVariationClient($this->dataViewMode, $productCode, $variationKey);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Deletes the localized delta price value for a product variation. Localized delta prices are deltas between two differing monetary conversion amounts between countries, such as US Dollar vs Euro.
 	*
 	* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
 	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
 	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
+	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteProductVariationLocalizedDeltaPrice($productCode, $variationKey, $currencyCode)
 	{
 		$mozuClient = ProductVariationClient::deleteProductVariationLocalizedDeltaPriceClient($this->dataViewMode, $productCode, $variationKey, $currencyCode);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+
+	}
+	
+/**
+	* Deletes the localized delta price value for a product variation. Localized delta prices are deltas between two differing monetary conversion amounts between countries, such as US Dollar vs Euro.
+	*
+	* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function deleteProductVariationLocalizedDeltaPriceAsync($productCode, $variationKey, $currencyCode)
+	{
+		$mozuClient = ProductVariationClient::deleteProductVariationLocalizedDeltaPriceClient($this->dataViewMode, $productCode, $variationKey, $currencyCode);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	

@@ -15,13 +15,15 @@ namespace Mozu\Api\Resources\Commerce\Catalog\Admin\Attributedefinition\Productt
 use Mozu\Api\Clients\Commerce\Catalog\Admin\Attributedefinition\Producttypes\ProductTypeExtraClient;
 use Mozu\Api\ApiContext;
 
+use Mozu\Api\Headers;
+
 /**
 * Use the Extras subresource to define how a product attribute classified as an "extra" is used for a specific product type. Product attribute defintions are unique for each associated product type.
 */
 class ProductTypeExtraResource {
 
-	private $apiContext;
-	private $dataViewMode;
+		private $apiContext;
+		private $dataViewMode;
 		public function __construct(ApiContext $apiContext, $dataViewMode) 
 	{
 		$this->apiContext = $apiContext;
@@ -36,6 +38,7 @@ class ProductTypeExtraResource {
 	*
 	* @param int $productTypeId Identifier of the product type.
 	* @return array|AttributeInProductType 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getExtras($productTypeId)
 	{
@@ -46,6 +49,20 @@ class ProductTypeExtraResource {
 
 	}
 	
+/**
+	* Retrieves a list of extra attributes defined for the specified product type.
+	*
+	* @param int $productTypeId Identifier of the product type.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getExtrasAsync($productTypeId)
+	{
+		$mozuClient = ProductTypeExtraClient::getExtrasClient($this->dataViewMode, $productTypeId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Retrieves the details of an extra attribute definition for the specified product type.
 	*
@@ -53,6 +70,7 @@ class ProductTypeExtraResource {
 	* @param int $productTypeId Identifier of the product type.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return AttributeInProductType 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getExtra($productTypeId, $attributeFQN, $responseFields =  null)
 	{
@@ -63,6 +81,22 @@ class ProductTypeExtraResource {
 
 	}
 	
+/**
+	* Retrieves the details of an extra attribute definition for the specified product type.
+	*
+	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param int $productTypeId Identifier of the product type.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getExtraAsync($productTypeId, $attributeFQN, $responseFields =  null)
+	{
+		$mozuClient = ProductTypeExtraClient::getExtraClient($this->dataViewMode, $productTypeId, $attributeFQN, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Assigns a defined extra attribute to the product type based on the information supplied in the request.
 	*
@@ -70,6 +104,7 @@ class ProductTypeExtraResource {
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param AttributeInProductType $attributeInProductType Properties of an attribute definition associated with a specific product type. When an attribute is applied to a product type, each product of that type maintains the same set of attributes.
 	* @return AttributeInProductType 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function addExtra($attributeInProductType, $productTypeId, $responseFields =  null)
 	{
@@ -77,6 +112,21 @@ class ProductTypeExtraResource {
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Assigns a defined extra attribute to the product type based on the information supplied in the request.
+	*
+	* @param int $productTypeId Identifier of the product type.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function addExtraAsync($attributeInProductType, $productTypeId, $responseFields =  null)
+	{
+		$mozuClient = ProductTypeExtraClient::addExtraClient($this->dataViewMode, $attributeInProductType, $productTypeId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	
@@ -88,6 +138,7 @@ class ProductTypeExtraResource {
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param AttributeInProductType $attributeInProductType Properties of an attribute definition associated with a specific product type. When an attribute is applied to a product type, each product of that type maintains the same set of attributes.
 	* @return AttributeInProductType 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function updateExtra($attributeInProductType, $productTypeId, $attributeFQN, $responseFields =  null)
 	{
@@ -98,17 +149,49 @@ class ProductTypeExtraResource {
 
 	}
 	
+/**
+	* Update the definition of an extra attribute for the specified product type.
+	*
+	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param int $productTypeId Identifier of the product type.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function updateExtraAsync($attributeInProductType, $productTypeId, $attributeFQN, $responseFields =  null)
+	{
+		$mozuClient = ProductTypeExtraClient::updateExtraClient($this->dataViewMode, $attributeInProductType, $productTypeId, $attributeFQN, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Removes an extra attribute definition from the specified product type.
 	*
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @param int $productTypeId Identifier of the product type.
+	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteExtra($productTypeId, $attributeFQN)
 	{
 		$mozuClient = ProductTypeExtraClient::deleteExtraClient($this->dataViewMode, $productTypeId, $attributeFQN);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+
+	}
+	
+/**
+	* Removes an extra attribute definition from the specified product type.
+	*
+	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param int $productTypeId Identifier of the product type.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function deleteExtraAsync($productTypeId, $attributeFQN)
+	{
+		$mozuClient = ProductTypeExtraClient::deleteExtraClient($this->dataViewMode, $productTypeId, $attributeFQN);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	

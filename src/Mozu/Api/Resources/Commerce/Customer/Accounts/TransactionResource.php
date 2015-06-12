@@ -15,13 +15,14 @@ namespace Mozu\Api\Resources\Commerce\Customer\Accounts;
 use Mozu\Api\Clients\Commerce\Customer\Accounts\TransactionClient;
 use Mozu\Api\ApiContext;
 
+
 /**
 * Use the Customer Account Transactions resource to manage the transactions associated with a customer account.
 */
 class TransactionResource {
 
-	private $apiContext;
-		
+		private $apiContext;
+			
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -36,6 +37,7 @@ class TransactionResource {
 	*
 	* @param int $accountId Unique identifier of the customer account.
 	* @return array|Transaction 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getTransactions($accountId)
 	{
@@ -46,6 +48,20 @@ class TransactionResource {
 
 	}
 	
+/**
+	* Retrieves a list of transactions associated with the customer account specified in the request.
+	*
+	* @param int $accountId Unique identifier of the customer account.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getTransactionsAsync($accountId)
+	{
+		$mozuClient = TransactionClient::getTransactionsClient($accountId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Creates a new transaction for the customer account specified in the request.
 	*
@@ -53,6 +69,7 @@ class TransactionResource {
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param Transaction $transaction Properties of a transaction performed by a customer account. The system creates a transaction each time the customer submits an order, returns an item, picks up items for an order, or manages items on a wish list.
 	* @return Transaction 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function addTransaction($transaction, $accountId, $responseFields =  null)
 	{
@@ -63,17 +80,48 @@ class TransactionResource {
 
 	}
 	
+/**
+	* Creates a new transaction for the customer account specified in the request.
+	*
+	* @param int $accountId Unique identifier of the customer account.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function addTransactionAsync($transaction, $accountId, $responseFields =  null)
+	{
+		$mozuClient = TransactionClient::addTransactionClient($transaction, $accountId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Deletes a transaction from the customer account specified in the request.
 	*
 	* @param int $accountId Unique identifier of the customer account.
 	* @param string $transactionId Unique identifier of the transaction to delete.
+	* @deprecated deprecated since version 1.17
 	*/
 	public function removeTransaction($accountId, $transactionId)
 	{
 		$mozuClient = TransactionClient::removeTransactionClient($accountId, $transactionId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+
+	}
+	
+/**
+	* Deletes a transaction from the customer account specified in the request.
+	*
+	* @param int $accountId Unique identifier of the customer account.
+	* @param string $transactionId Unique identifier of the transaction to delete.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function removeTransactionAsync($accountId, $transactionId)
+	{
+		$mozuClient = TransactionClient::removeTransactionClient($accountId, $transactionId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	

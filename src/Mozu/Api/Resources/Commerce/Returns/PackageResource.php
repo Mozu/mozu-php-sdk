@@ -15,13 +15,14 @@ namespace Mozu\Api\Resources\Commerce\Returns;
 use Mozu\Api\Clients\Commerce\Returns\PackageClient;
 use Mozu\Api\ApiContext;
 
+
 /**
 * Use the Return Packages subresource to manage physical packages used to ship return replacement items.
 */
 class PackageResource {
 
-	private $apiContext;
-		
+		private $apiContext;
+			
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -37,6 +38,7 @@ class PackageResource {
 	* @param string $packageId Unique identifier of the package for which to retrieve the label.
 	* @param string $returnId Unique identifier of the return whose items you want to get.
 	* @return Stream 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getPackageLabel($returnId, $packageId)
 	{
@@ -47,6 +49,21 @@ class PackageResource {
 
 	}
 	
+/**
+	* Retrieves the package label image supplied by the carrier for a return replacement.
+	*
+	* @param string $packageId Unique identifier of the package for which to retrieve the label.
+	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getPackageLabelAsync($returnId, $packageId)
+	{
+		$mozuClient = PackageClient::getPackageLabelClient($returnId, $packageId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Retrieves the details of a package of return replacement items.
 	*
@@ -54,6 +71,7 @@ class PackageResource {
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $returnId Unique identifier of the return whose items you want to get.
 	* @return Package 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getPackage($returnId, $packageId, $responseFields =  null)
 	{
@@ -64,6 +82,22 @@ class PackageResource {
 
 	}
 	
+/**
+	* Retrieves the details of a package of return replacement items.
+	*
+	* @param string $packageId Unique identifier of the package for which to retrieve the label.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getPackageAsync($returnId, $packageId, $responseFields =  null)
+	{
+		$mozuClient = PackageClient::getPackageClient($returnId, $packageId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Creates a new physical package of return replacement items.
 	*
@@ -71,6 +105,7 @@ class PackageResource {
 	* @param string $returnId Unique identifier of the return whose items you want to get.
 	* @param Package $package Properties of a physical package shipped for an order.
 	* @return Package 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function createPackage($pkg, $returnId, $responseFields =  null)
 	{
@@ -78,6 +113,21 @@ class PackageResource {
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Creates a new physical package of return replacement items.
+	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function createPackageAsync($pkg, $returnId, $responseFields =  null)
+	{
+		$mozuClient = PackageClient::createPackageClient($pkg, $returnId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	
@@ -89,6 +139,7 @@ class PackageResource {
 	* @param string $returnId Unique identifier of the return whose items you want to get.
 	* @param Package $package Properties of a physical package shipped for an order.
 	* @return Package 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function updatePackage($pkg, $returnId, $packageId, $responseFields =  null)
 	{
@@ -99,17 +150,49 @@ class PackageResource {
 
 	}
 	
+/**
+	* Updates one or more properties of a package associated with a return replacement.
+	*
+	* @param string $packageId Unique identifier of the package for which to retrieve the label.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function updatePackageAsync($pkg, $returnId, $packageId, $responseFields =  null)
+	{
+		$mozuClient = PackageClient::updatePackageClient($pkg, $returnId, $packageId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Deletes a package associated with a return replacement.
 	*
 	* @param string $packageId Unique identifier of the package for which to retrieve the label.
 	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @deprecated deprecated since version 1.17
 	*/
 	public function deletePackage($returnId, $packageId)
 	{
 		$mozuClient = PackageClient::deletePackageClient($returnId, $packageId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+
+	}
+	
+/**
+	* Deletes a package associated with a return replacement.
+	*
+	* @param string $packageId Unique identifier of the package for which to retrieve the label.
+	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function deletePackageAsync($returnId, $packageId)
+	{
+		$mozuClient = PackageClient::deletePackageClient($returnId, $packageId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	

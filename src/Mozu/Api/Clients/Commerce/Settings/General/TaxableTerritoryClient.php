@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Settings\General;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Settings\General\TaxableTerritoryUrl;
 
+
 /**
 * Use the taxable territories subresource to manage the regional territories for this site that are subejct to sales tax.
 */

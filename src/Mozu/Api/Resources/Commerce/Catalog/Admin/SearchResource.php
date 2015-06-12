@@ -15,13 +15,14 @@ namespace Mozu\Api\Resources\Commerce\Catalog\Admin;
 use Mozu\Api\Clients\Commerce\Catalog\Admin\SearchClient;
 use Mozu\Api\ApiContext;
 
+
 /**
 * The Search resource manages all settings and options for providing product search on your site.
 */
 class SearchResource {
 
-	private $apiContext;
-		
+		private $apiContext;
+			
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -36,6 +37,7 @@ class SearchResource {
 	*
 	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
 	* @return SearchSettings 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getSettings($responseFields =  null)
 	{
@@ -46,12 +48,27 @@ class SearchResource {
 
 	}
 	
+/**
+	* Get site search settings
+	*
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getSettingsAsync($responseFields =  null)
+	{
+		$mozuClient = SearchClient::getSettingsClient($responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Adds or Updates (Upsert) the Search Settings for a specific site
 	*
 	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
 	* @param SearchSettings $settings The settings to control product search and indexing behavior.
 	* @return SearchSettings 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function updateSettings($settings, $responseFields =  null)
 	{
@@ -59,6 +76,20 @@ class SearchResource {
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Adds or Updates (Upsert) the Search Settings for a specific site
+	*
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function updateSettingsAsync($settings, $responseFields =  null)
+	{
+		$mozuClient = SearchClient::updateSettingsClient($settings, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	

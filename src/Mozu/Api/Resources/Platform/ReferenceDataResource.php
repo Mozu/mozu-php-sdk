@@ -15,19 +15,13 @@ namespace Mozu\Api\Resources\Platform;
 use Mozu\Api\Clients\Platform\ReferenceDataClient;
 use Mozu\Api\ApiContext;
 
+
 /**
 * The Reference resource retrieves collections of standards the Mozu system currently supports. This includes content locales, top-level domains, units of measure, countries, currencies, time zones, and shipping or billing address schemas.
 */
 class ReferenceDataResource {
 
-	private $apiContext;
-		
-	public function __construct(ApiContext $apiContext) 
-	{
-		$this->apiContext = $apiContext;
-	}
-
-	
+				
 
 
 
@@ -37,13 +31,27 @@ class ReferenceDataResource {
 	* @param string $countryCode The 2-letter geographic code representing the country for the physical or mailing address. Currently limited to the US.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return AddressSchema 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getAddressSchema($countryCode =  null, $responseFields =  null)
 	{
 		$mozuClient = ReferenceDataClient::getAddressSchemaClient($countryCode, $responseFields);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Retrieves a specific address schema based on the country code provided. This operation allows the creation of custom shipping and billing address fields.
+	*
+	* @param string $countryCode The 2-letter geographic code representing the country for the physical or mailing address. Currently limited to the US.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getAddressSchemaAsync($countryCode =  null, $responseFields =  null)
+	{
+		$mozuClient = ReferenceDataClient::getAddressSchemaClient($countryCode, $responseFields);
+		return $mozuClient->executeAsync();
 
 	}
 	
@@ -52,13 +60,26 @@ class ReferenceDataResource {
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return AddressSchemaCollection 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getAddressSchemas($responseFields =  null)
 	{
 		$mozuClient = ReferenceDataClient::getAddressSchemasClient($responseFields);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Retrieves the entire list of address schemas that the system supports.
+	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getAddressSchemasAsync($responseFields =  null)
+	{
+		$mozuClient = ReferenceDataClient::getAddressSchemasClient($responseFields);
+		return $mozuClient->executeAsync();
 
 	}
 	
@@ -68,13 +89,27 @@ class ReferenceDataResource {
 	* @param int $behaviorId Unique identifier of the behavior.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return Behavior 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getBehavior($behaviorId, $responseFields =  null)
 	{
 		$mozuClient = ReferenceDataClient::getBehaviorClient($behaviorId, $responseFields);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Retrieves the details of a behavior based on the behavior ID specified in the request.
+	*
+	* @param int $behaviorId Unique identifier of the behavior.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getBehaviorAsync($behaviorId, $responseFields =  null)
+	{
+		$mozuClient = ReferenceDataClient::getBehaviorClient($behaviorId, $responseFields);
+		return $mozuClient->executeAsync();
 
 	}
 	
@@ -84,13 +119,27 @@ class ReferenceDataResource {
 	* @param int $categoryId Unique identifier of the category to modify.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return BehaviorCategory 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getBehaviorCategory($categoryId, $responseFields =  null)
 	{
 		$mozuClient = ReferenceDataClient::getBehaviorCategoryClient($categoryId, $responseFields);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Retrieves the details of the behavior category specified in the request.
+	*
+	* @param int $categoryId Unique identifier of the category to modify.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getBehaviorCategoryAsync($categoryId, $responseFields =  null)
+	{
+		$mozuClient = ReferenceDataClient::getBehaviorCategoryClient($categoryId, $responseFields);
+		return $mozuClient->executeAsync();
 
 	}
 	
@@ -99,13 +148,26 @@ class ReferenceDataResource {
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return BehaviorCategoryCollection 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getBehaviorCategories($responseFields =  null)
 	{
 		$mozuClient = ReferenceDataClient::getBehaviorCategoriesClient($responseFields);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Retrieves the list of behavior categories.
+	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getBehaviorCategoriesAsync($responseFields =  null)
+	{
+		$mozuClient = ReferenceDataClient::getBehaviorCategoriesClient($responseFields);
+		return $mozuClient->executeAsync();
 
 	}
 	
@@ -115,13 +177,27 @@ class ReferenceDataResource {
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $userType The user type associated with the behaviors to retrieve.
 	* @return BehaviorCollection 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getBehaviors($userType =  null, $responseFields =  null)
 	{
 		$mozuClient = ReferenceDataClient::getBehaviorsClient($userType, $responseFields);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Retrieves a list of application behaviors.
+	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $userType The user type associated with the behaviors to retrieve.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getBehaviorsAsync($userType =  null, $responseFields =  null)
+	{
+		$mozuClient = ReferenceDataClient::getBehaviorsClient($userType, $responseFields);
+		return $mozuClient->executeAsync();
 
 	}
 	
@@ -130,13 +206,26 @@ class ReferenceDataResource {
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return ContentLocaleCollection 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getContentLocales($responseFields =  null)
 	{
 		$mozuClient = ReferenceDataClient::getContentLocalesClient($responseFields);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Retrieves the list of content locales the system supports. Content locales indicate the language used and the country where the language is used.
+	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getContentLocalesAsync($responseFields =  null)
+	{
+		$mozuClient = ReferenceDataClient::getContentLocalesClient($responseFields);
+		return $mozuClient->executeAsync();
 
 	}
 	
@@ -145,13 +234,26 @@ class ReferenceDataResource {
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return CountryCollection 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getCountries($responseFields =  null)
 	{
 		$mozuClient = ReferenceDataClient::getCountriesClient($responseFields);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Retrieves the entire list of countries that the system supports.
+	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getCountriesAsync($responseFields =  null)
+	{
+		$mozuClient = ReferenceDataClient::getCountriesClient($responseFields);
+		return $mozuClient->executeAsync();
 
 	}
 	
@@ -160,13 +262,26 @@ class ReferenceDataResource {
 	*
 	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
 	* @return CountryWithStatesCollection 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getCountriesWithStates($responseFields =  null)
 	{
 		$mozuClient = ReferenceDataClient::getCountriesWithStatesClient($responseFields);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Retrieves the entire list of countries that the system supports.
+	*
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getCountriesWithStatesAsync($responseFields =  null)
+	{
+		$mozuClient = ReferenceDataClient::getCountriesWithStatesClient($responseFields);
+		return $mozuClient->executeAsync();
 
 	}
 	
@@ -175,13 +290,26 @@ class ReferenceDataResource {
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return CurrencyCollection 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getCurrencies($responseFields =  null)
 	{
 		$mozuClient = ReferenceDataClient::getCurrenciesClient($responseFields);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Retrieves the entire list of currencies that the system supports.
+	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getCurrenciesAsync($responseFields =  null)
+	{
+		$mozuClient = ReferenceDataClient::getCurrenciesClient($responseFields);
+		return $mozuClient->executeAsync();
 
 	}
 	
@@ -190,13 +318,26 @@ class ReferenceDataResource {
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return TimeZoneCollection 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getTimeZones($responseFields =  null)
 	{
 		$mozuClient = ReferenceDataClient::getTimeZonesClient($responseFields);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Retrieves the entire list of time zones that the system supports.
+	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getTimeZonesAsync($responseFields =  null)
+	{
+		$mozuClient = ReferenceDataClient::getTimeZonesClient($responseFields);
+		return $mozuClient->executeAsync();
 
 	}
 	
@@ -205,13 +346,26 @@ class ReferenceDataResource {
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return TopLevelDomainCollection 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getTopLevelDomains($responseFields =  null)
 	{
 		$mozuClient = ReferenceDataClient::getTopLevelDomainsClient($responseFields);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Retrieves the entire list of top-level internet domains that the system supports.
+	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getTopLevelDomainsAsync($responseFields =  null)
+	{
+		$mozuClient = ReferenceDataClient::getTopLevelDomainsClient($responseFields);
+		return $mozuClient->executeAsync();
 
 	}
 	
@@ -221,13 +375,27 @@ class ReferenceDataResource {
 	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return UnitOfMeasureCollection 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getUnitsOfMeasure($filter =  null, $responseFields =  null)
 	{
 		$mozuClient = ReferenceDataClient::getUnitsOfMeasureClient($filter, $responseFields);
-		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Retrieves an array list of all units of measure the system supports.
+	*
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getUnitsOfMeasureAsync($filter =  null, $responseFields =  null)
+	{
+		$mozuClient = ReferenceDataClient::getUnitsOfMeasureClient($filter, $responseFields);
+		return $mozuClient->executeAsync();
 
 	}
 	

@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Orders;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Orders\AppliedDiscountUrl;
 
+
 /**
 * Use this subresource to apply coupons to or remove coupons from an order based on a supplied coupon code.
 */

@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Carts;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Carts\AppliedDiscountUrl;
 
+
 /**
 * Use the Cart Coupons resource to apply a coupon to a defined cart or remove a coupon from a cart. When the shopper proceeds to checkout, the coupons applied to the cart apply to the order.
 */

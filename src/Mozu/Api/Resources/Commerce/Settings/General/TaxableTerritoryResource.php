@@ -15,13 +15,14 @@ namespace Mozu\Api\Resources\Commerce\Settings\General;
 use Mozu\Api\Clients\Commerce\Settings\General\TaxableTerritoryClient;
 use Mozu\Api\ApiContext;
 
+
 /**
 * Use the taxable territories subresource to manage the regional territories for this site that are subejct to sales tax.
 */
 class TaxableTerritoryResource {
 
-	private $apiContext;
-		
+		private $apiContext;
+			
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -35,6 +36,7 @@ class TaxableTerritoryResource {
 	* Retrieves a list of the taxable territories configured for the site.
 	*
 	* @return array|TaxableTerritory 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getTaxableTerritories()
 	{
@@ -45,12 +47,26 @@ class TaxableTerritoryResource {
 
 	}
 	
+/**
+	* Retrieves a list of the taxable territories configured for the site.
+	*
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getTaxableTerritoriesAsync()
+	{
+		$mozuClient = TaxableTerritoryClient::getTaxableTerritoriesClient();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Creates a new territory for which to calculate sales tax.
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param TaxableTerritory $taxableTerritory Properties of the territory which is subject to sales tax.
 	* @return TaxableTerritory 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function addTaxableTerritory($taxableTerritory, $responseFields =  null)
 	{
@@ -61,11 +77,26 @@ class TaxableTerritoryResource {
 
 	}
 	
+/**
+	* Creates a new territory for which to calculate sales tax.
+	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function addTaxableTerritoryAsync($taxableTerritory, $responseFields =  null)
+	{
+		$mozuClient = TaxableTerritoryClient::addTaxableTerritoryClient($taxableTerritory, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Updates one or more taxable territories configured for a site.
 	*
 	* @param array|TaxableTerritory $taxableterritories Properties of the territory which is subject to sales tax.
 	* @return array|TaxableTerritory 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function updateTaxableTerritories($taxableterritories)
 	{
@@ -73,6 +104,19 @@ class TaxableTerritoryResource {
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Updates one or more taxable territories configured for a site.
+	*
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function updateTaxableTerritoriesAsync($taxableterritories)
+	{
+		$mozuClient = TaxableTerritoryClient::updateTaxableTerritoriesClient($taxableterritories);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	

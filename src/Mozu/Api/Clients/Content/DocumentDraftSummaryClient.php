@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Content;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Content\DocumentDraftSummaryUrl;
 
+
 /**
 * Use the document publishing subresource to manage and publish document drafts in the Content service.
 */

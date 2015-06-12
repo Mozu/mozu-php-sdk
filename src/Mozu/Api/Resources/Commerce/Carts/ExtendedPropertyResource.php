@@ -15,13 +15,14 @@ namespace Mozu\Api\Resources\Commerce\Carts;
 use Mozu\Api\Clients\Commerce\Carts\ExtendedPropertyClient;
 use Mozu\Api\ApiContext;
 
+
 /**
 * commerce/carts/cartextendedproperties related resources. DOCUMENT_HERE 
 */
 class ExtendedPropertyResource {
 
-	private $apiContext;
-		
+		private $apiContext;
+			
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -35,6 +36,7 @@ class ExtendedPropertyResource {
 	* carts-cartextendedproperties Get GetExtendedProperties description DOCUMENT_HERE 
 	*
 	* @return array|ExtendedProperty 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getExtendedProperties()
 	{
@@ -45,11 +47,25 @@ class ExtendedPropertyResource {
 
 	}
 	
+/**
+	* carts-cartextendedproperties Get GetExtendedProperties description DOCUMENT_HERE 
+	*
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getExtendedPropertiesAsync()
+	{
+		$mozuClient = ExtendedPropertyClient::getExtendedPropertiesClient();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* carts-cartextendedproperties Post AddExtendedProperties description DOCUMENT_HERE 
 	*
 	* @param array|ExtendedProperty $extendedProperties Mozu.CommerceRuntime.Contracts.Commerce.ExtendedProperty ApiType DOCUMENT_HERE 
 	* @return array|ExtendedProperty 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function addExtendedProperties($extendedProperties)
 	{
@@ -57,6 +73,19 @@ class ExtendedPropertyResource {
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* carts-cartextendedproperties Post AddExtendedProperties description DOCUMENT_HERE 
+	*
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function addExtendedPropertiesAsync($extendedProperties)
+	{
+		$mozuClient = ExtendedPropertyClient::addExtendedPropertiesClient($extendedProperties);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	
@@ -68,6 +97,7 @@ class ExtendedPropertyResource {
 	* @param bool $upsert 
 	* @param ExtendedProperty $extendedProperty Mozu.CommerceRuntime.Contracts.Commerce.ExtendedProperty ApiType DOCUMENT_HERE 
 	* @return ExtendedProperty 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function updateExtendedProperty($extendedProperty, $key, $upsert =  null, $responseFields =  null)
 	{
@@ -78,12 +108,29 @@ class ExtendedPropertyResource {
 
 	}
 	
+/**
+	* carts-cartextendedproperties Put UpdateExtendedProperty description DOCUMENT_HERE 
+	*
+	* @param string $key 
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param bool $upsert 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function updateExtendedPropertyAsync($extendedProperty, $key, $upsert =  null, $responseFields =  null)
+	{
+		$mozuClient = ExtendedPropertyClient::updateExtendedPropertyClient($extendedProperty, $key, $upsert, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* carts-cartextendedproperties Put UpdateExtendedProperties description DOCUMENT_HERE 
 	*
 	* @param bool $upsert 
 	* @param array|ExtendedProperty $extendedProperties Mozu.CommerceRuntime.Contracts.Commerce.ExtendedProperty ApiType DOCUMENT_HERE 
 	* @return array|ExtendedProperty 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function updateExtendedProperties($extendedProperties, $upsert =  null)
 	{
@@ -94,10 +141,25 @@ class ExtendedPropertyResource {
 
 	}
 	
+/**
+	* carts-cartextendedproperties Put UpdateExtendedProperties description DOCUMENT_HERE 
+	*
+	* @param bool $upsert 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function updateExtendedPropertiesAsync($extendedProperties, $upsert =  null)
+	{
+		$mozuClient = ExtendedPropertyClient::updateExtendedPropertiesClient($extendedProperties, $upsert);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* carts-cartextendedproperties Delete DeleteExtendedProperties description DOCUMENT_HERE 
 	*
 	* @param array|string $keys 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteExtendedProperties($keys)
 	{
@@ -107,16 +169,44 @@ class ExtendedPropertyResource {
 
 	}
 	
+/**
+	* carts-cartextendedproperties Delete DeleteExtendedProperties description DOCUMENT_HERE 
+	*
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function deleteExtendedPropertiesAsync($keys)
+	{
+		$mozuClient = ExtendedPropertyClient::deleteExtendedPropertiesClient($keys);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* carts-cartextendedproperties Delete DeleteExtendedProperty description DOCUMENT_HERE 
 	*
 	* @param string $key 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteExtendedProperty($key)
 	{
 		$mozuClient = ExtendedPropertyClient::deleteExtendedPropertyClient($key);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+
+	}
+	
+/**
+	* carts-cartextendedproperties Delete DeleteExtendedProperty description DOCUMENT_HERE 
+	*
+	* @param string $key 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function deleteExtendedPropertyAsync($key)
+	{
+		$mozuClient = ExtendedPropertyClient::deleteExtendedPropertyClient($key);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	

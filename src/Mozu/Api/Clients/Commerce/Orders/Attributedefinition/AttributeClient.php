@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Orders\Attributedefinition;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Orders\Attributedefinition\AttributeUrl;
 
+
 /**
 * Use the Order Attribute Definition resource to manage the attributes that uniquely describe orders, such as the associated shopping season or "How did you hear about us?" information. Merchants can display order attributes on the order summary, the order confirmation page, invoices, or packing slips.
 */

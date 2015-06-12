@@ -15,13 +15,14 @@ namespace Mozu\Api\Resources\Content\Documentlists;
 use Mozu\Api\Clients\Content\Documentlists\FacetClient;
 use Mozu\Api\ApiContext;
 
+
 /**
 * Use the facets subresource to allow a merchant to add information for product indexing and searching.
 */
 class FacetResource {
 
-	private $apiContext;
-		
+		private $apiContext;
+			
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -37,6 +38,7 @@ class FacetResource {
 	* @param string $documentListName Name of content documentListName to delete
 	* @param string $propertyName The property name associated with the facets to retrieve.
 	* @return array|Facet 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getFacets($documentListName, $propertyName)
 	{
@@ -44,6 +46,21 @@ class FacetResource {
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Retrieves the properties of facets that aid in indexing and searching.
+	*
+	* @param string $documentListName Name of content documentListName to delete
+	* @param string $propertyName The property name associated with the facets to retrieve.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getFacetsAsync($documentListName, $propertyName)
+	{
+		$mozuClient = FacetClient::getFacetsClient($documentListName, $propertyName);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	

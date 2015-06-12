@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\WishlistUrl;
 
+
 /**
 * Use the Wish Lists resource to manage the shopper wish lists of products associated with a customer account. Although customer accounts are managed at the tenant level, the system stores shopper wish lists at the site level. This enables the same customer to have wish lists for each of a merchant's sites. Use the Wish List Items resource to manage items in a wish list.
 */

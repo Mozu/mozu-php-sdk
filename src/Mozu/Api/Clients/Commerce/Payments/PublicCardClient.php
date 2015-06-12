@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Payments;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Payments\PublicCardUrl;
 
+
 /**
 * commerce/payments/cards related resources. DOCUMENT_HERE 
 */

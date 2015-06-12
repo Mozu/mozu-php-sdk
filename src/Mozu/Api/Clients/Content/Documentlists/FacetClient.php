@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Content\Documentlists;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Content\Documentlists\FacetUrl;
 
+
 /**
 * Use the facets subresource to allow a merchant to add information for product indexing and searching.
 */

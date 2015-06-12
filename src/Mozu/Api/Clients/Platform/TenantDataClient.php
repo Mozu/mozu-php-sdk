@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Platform;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Platform\TenantDataUrl;
 
+
 /**
 * Use the tenant data resource to store tenant-level information required for a third-party application in the Mozu database.
 */

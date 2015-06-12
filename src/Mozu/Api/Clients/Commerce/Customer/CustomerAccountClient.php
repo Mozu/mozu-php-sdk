@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Customer;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\CustomerAccountUrl;
 
+
 /**
 * Use the Customer Accounts resource to manage the components of shopper accounts, including attributes, contact information, company notes, and groups associated with the customer account.
 */

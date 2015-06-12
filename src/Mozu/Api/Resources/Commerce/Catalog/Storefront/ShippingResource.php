@@ -15,13 +15,14 @@ namespace Mozu\Api\Resources\Commerce\Catalog\Storefront;
 use Mozu\Api\Clients\Commerce\Catalog\Storefront\ShippingClient;
 use Mozu\Api\ApiContext;
 
+
 /**
 * Use the Storefront Shipping resource to retrieve shipping rate information from the website.
 */
 class ShippingResource {
 
-	private $apiContext;
-		
+		private $apiContext;
+			
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -37,6 +38,7 @@ class ShippingResource {
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param RateRequest $rateRequest Properties required to request a shipping rate calculation.
 	* @return RatesResponse 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getRates($rateRequest, $responseFields =  null)
 	{
@@ -44,6 +46,20 @@ class ShippingResource {
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Retrieves the shipping rates applicable for the site.
+	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getRatesAsync($rateRequest, $responseFields =  null)
+	{
+		$mozuClient = ShippingClient::getRatesClient($rateRequest, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	

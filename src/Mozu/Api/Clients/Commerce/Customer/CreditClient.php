@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Customer;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\CreditUrl;
 
+
 /**
 * Use the Customer Credits resource to manage the store credit associated with a customer account. Store credit can represent a static amount the customer can redeem at any of the tenant's sites, or a gift card registered for a customer account. At this time, gift card functionality is reserved for future use.
 */

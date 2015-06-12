@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Settings;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Settings\CheckoutSettingsUrl;
 
+
 /**
 * Use the Checkout Settings resource to specify the site-wide settings that define checkout and order processing behavior. This resource includes subresources for payment settings, customer checkout settings, and order processing settings.
 */

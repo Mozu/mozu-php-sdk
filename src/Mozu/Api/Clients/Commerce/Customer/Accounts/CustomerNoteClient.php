@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Customer\Accounts;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\Accounts\CustomerNoteUrl;
 
+
 /**
 * Tenant administrators can add and view internal notes for a customer account. For example, a client can track a shopper's interests or complaints. Only clients can add and view notes. Shoppers cannot view these notes from the My Account page.
 */

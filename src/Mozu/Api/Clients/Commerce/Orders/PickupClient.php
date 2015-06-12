@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Orders;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Orders\PickupUrl;
 
+
 /**
 * Use the Pickups resource to organize items submitted in an order into pickups that enable the shopper to fulfill the order items using the in-store pickup method.
 */

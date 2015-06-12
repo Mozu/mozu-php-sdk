@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Returns;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Returns\ShipmentUrl;
 
+
 /**
 * Use the Return Shipments subresource to manage shipments for a return replacement.
 */

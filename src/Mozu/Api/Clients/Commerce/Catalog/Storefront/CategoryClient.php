@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Storefront;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Storefront\CategoryUrl;
 
+
 /**
 * Use the Storefront Categories resource to view the product category hierarchy as it appears to shoppers who are browsing the storefront. The hierarchy can be returned as a flat list or as a category tree.
 */

@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\MasterCatalogUrl;
 
+
 /**
 * Use the Master Catalog resource to view details of the master catalogs associated with a tenant and to manage the product publishing mode for each master catalog.
 */

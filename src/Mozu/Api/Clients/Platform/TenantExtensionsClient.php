@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Platform;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Platform\TenantExtensionsUrl;
 
+
 /**
 * platform/extensions related resources. DOCUMENT_HERE 
 */

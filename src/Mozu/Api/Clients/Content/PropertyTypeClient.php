@@ -15,6 +15,8 @@ namespace Mozu\Api\Clients\Content;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Content\PropertyTypeUrl;
 
+use Mozu\Api\Headers;
+
 /**
 * Use the property types subresource to manage content properties.
 */

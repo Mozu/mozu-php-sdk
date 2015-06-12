@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Orders;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Orders\ShipmentUrl;
 
+
 /**
 * Use the shipments resource to manage shipments of collections of packages for an order.
 */

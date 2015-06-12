@@ -15,6 +15,8 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin\Discounts;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\Discounts\DiscountTargetUrl;
 
+use Mozu\Api\Headers;
+
 /**
 * Retrieves and modifies the products, categories, and shipping methods eligible for discounts in the form of a fixed dollar amount, percentage off a product price, or free shipping.
 */

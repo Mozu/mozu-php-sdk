@@ -4,7 +4,6 @@
 use Logger;
 use Mozu\Api\MozuConfig;
 use Mozu\Api\Security\AppAuthenticator;
-use Mozu\Api\Security\RefreshInterval;
 use Mozu\Api\Contracts\AppDev\AppAuthInfo;
 
 require_once __DIR__ .'/../../src/Mozu/Api/Security/AppAuthenticator.php';
@@ -25,7 +24,7 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
 	public $siteId;
     private $log;
 	public function __construct() {
-        Logger::configure('../../../config.xml');
+        Logger::configure('../../../loggerconfig.xml');
         $this->log = Logger::getLogger('BaseTest');
 		$this->loadSettings();
 		$this->auth();
@@ -33,11 +32,8 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
 
 
     public function auth() {
-    	$refreshInterval = new RefreshInterval();
-    	$currentTime = time();
-    	
-    	$refreshInterval->setAccessTokenExpirationInterval($currentTime+5)
-    	->setRefreshTokenExpirationInterval($currentTime+20);
+
+
     	$appAuthInfo = new AppAuthInfo();
     	$appAuthInfo->sharedSecret = $this->sharedSecret;
     	$appAuthInfo->applicationId = $this->applicationId;
@@ -46,7 +42,7 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
             MozuConfig::$baseAppAuthUrl = $this->baseUrl;
             $this->log->info("Base Auth Url : ".MozuConfig::$baseAppAuthUrl);
             $this->log->info('Authenticating...');
-            AppAuthenticator::initialize($appAuthInfo,  $refreshInterval);
+            AppAuthenticator::initialize($appAuthInfo);
             $this->log->info('Authentication done...');
             $appAuthenticator = AppAuthenticator::getInstance();
             $this->log->info("Access Token : " .$appAuthenticator->getAccessToken());

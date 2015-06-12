@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Settings;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Settings\ApplicationUrl;
 
+
 /**
 * Use the Applications resource to update site-specific settings for installed applications.
 */

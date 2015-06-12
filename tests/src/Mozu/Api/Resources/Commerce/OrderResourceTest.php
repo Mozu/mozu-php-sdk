@@ -44,13 +44,18 @@ class OrderResourceTest extends BaseTest
 	 * @covers Mozu\Api\Resources\Content\Documentlists\DocumentResource::getDocumentContent
 	 * @todo Implement testGetDocumentContent().
 	 */
-	public function testGetOrders()
+	public function testGetOrdersAsync()
 	{
-		//$filters = urlencode("Status+eq+Accepted");
-		//$orders = $this->object->getOrders($filters);
 		$filters = urlencode("submittedDate gt 2013-12-15T12:21:24z");
-		$orders = $this->object->getOrders('0',100, null,$filters, null, null);
-		//var_dump($orders);
+		$promise = $this->object->getOrdersAsync('0',100, null,$filters, null, null);
+        $promise->then(function($mozuResult){
+            $collection = $mozuResult->json();
+            var_dump($collection);
+        }, function($apiException){
+            parent::printError($apiException);
+            $this->fail($apiException->getMessage());
+        });
+        $promise->wait();
 	}
 	
 	

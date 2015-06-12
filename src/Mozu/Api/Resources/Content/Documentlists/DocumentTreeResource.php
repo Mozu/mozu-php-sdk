@@ -15,13 +15,15 @@ namespace Mozu\Api\Resources\Content\Documentlists;
 use Mozu\Api\Clients\Content\Documentlists\DocumentTreeClient;
 use Mozu\Api\ApiContext;
 
+use Mozu\Api\Headers;
+
 /**
 * Use the document tree subresource to retrieve documents and manage content within the document hierarchy.
 */
 class DocumentTreeResource {
 
-	private $apiContext;
-	private $dataViewMode;
+		private $apiContext;
+		private $dataViewMode;
 		public function __construct(ApiContext $apiContext, $dataViewMode) 
 	{
 		$this->apiContext = $apiContext;
@@ -37,6 +39,7 @@ class DocumentTreeResource {
 	* @param string $documentListName Name of content documentListName to delete
 	* @param string $documentName The name of the document in the site.
 	* @return Stream 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getTreeDocumentContent($documentListName, $documentName)
 	{
@@ -47,6 +50,21 @@ class DocumentTreeResource {
 
 	}
 	
+/**
+	* Retrieve the content associated with the document, such as a product image or PDF specifications file.
+	*
+	* @param string $documentListName Name of content documentListName to delete
+	* @param string $documentName The name of the document in the site.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getTreeDocumentContentAsync($documentListName, $documentName)
+	{
+		$mozuClient = DocumentTreeClient::getTreeDocumentContentClient($this->dataViewMode, $documentListName, $documentName);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Retrieves a document based on its document list and folder path in the document hierarchy.
 	*
@@ -54,6 +72,7 @@ class DocumentTreeResource {
 	* @param string $documentName The name of the document in the site.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return Document 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getTreeDocument($documentListName, $documentName, $responseFields =  null)
 	{
@@ -64,12 +83,29 @@ class DocumentTreeResource {
 
 	}
 	
+/**
+	* Retrieves a document based on its document list and folder path in the document hierarchy.
+	*
+	* @param string $documentListName Name of content documentListName to delete
+	* @param string $documentName The name of the document in the site.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getTreeDocumentAsync($documentListName, $documentName, $responseFields =  null)
+	{
+		$mozuClient = DocumentTreeClient::getTreeDocumentClient($this->dataViewMode, $documentListName, $documentName, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Updates the content associated with a document, such as a product image or PDF specifications file, based on the document's position in the document hierarchy.
 	*
 	* @param string $documentListName Name of content documentListName to delete
 	* @param string $documentName The name of the document in the site.
 	* @param Stream $stream Data stream that delivers information. Used to input and output data.
+	* @deprecated deprecated since version 1.17
 	*/
 	public function updateTreeDocumentContent($stream, $documentListName, $documentName, $contentType= null)
 	{
@@ -79,18 +115,49 @@ class DocumentTreeResource {
 
 	}
 	
+/**
+	* Updates the content associated with a document, such as a product image or PDF specifications file, based on the document's position in the document hierarchy.
+	*
+	* @param string $documentListName Name of content documentListName to delete
+	* @param string $documentName The name of the document in the site.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function updateTreeDocumentContentAsync($stream, $documentListName, $documentName, $contentType= null)
+	{
+		$mozuClient = DocumentTreeClient::updateTreeDocumentContentClient($stream, $documentListName, $documentName, $contentType);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Deletes the content associated with a document, such as a product image or PDF specifications file.
 	*
 	* @param string $documentListName Name of content documentListName to delete
 	* @param string $documentName The name of the document in the site.
 	* @param Stream $stream Data stream that delivers information. Used to input and output data.
+	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteTreeDocumentContent($stream, $documentListName, $documentName, $contentType= null)
 	{
 		$mozuClient = DocumentTreeClient::deleteTreeDocumentContentClient($stream, $documentListName, $documentName, $contentType);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+
+	}
+	
+/**
+	* Deletes the content associated with a document, such as a product image or PDF specifications file.
+	*
+	* @param string $documentListName Name of content documentListName to delete
+	* @param string $documentName The name of the document in the site.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function deleteTreeDocumentContentAsync($stream, $documentListName, $documentName, $contentType= null)
+	{
+		$mozuClient = DocumentTreeClient::deleteTreeDocumentContentClient($stream, $documentListName, $documentName, $contentType);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	

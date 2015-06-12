@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Settings;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Settings\GeneralSettingsUrl;
 
+
 /**
 * Define global site settings such as the site name, shipping and email addresses, and logo images. Block undesirable IP addresses using this resource.
 */

@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\FacetUrl;
 
+
 /**
 * Use the Facets resource to manage the facets shoppers use to filter product display results on a storefront. Facets can include categories, product attributes, or prices, and use either a range of values or discrete values.
 */

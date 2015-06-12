@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Customer\Accounts;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\Accounts\CustomerContactUrl;
 
+
 /**
 * Merchants and customers can create, view, update, and delete a contact for a customer account. A customer account may have multiple contacts for billing and shipping addresses.
 */

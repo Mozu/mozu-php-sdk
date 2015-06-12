@@ -15,6 +15,8 @@ namespace Mozu\Api\Clients\Content;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Content\DocumentListTypeUrl;
 
+use Mozu\Api\Headers;
+
 /**
 * Use the Document List Types resource to manage the types of document lists in your site's document hierarchy. The type denotes a content type for that list of folders, sub-folders, and documents such as `web_pages`.
 */

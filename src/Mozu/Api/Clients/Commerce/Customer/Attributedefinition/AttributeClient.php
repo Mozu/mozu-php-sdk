@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Customer\Attributedefinition;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\Attributedefinition\AttributeUrl;
 
+
 /**
 * Use the Customer Attribute Definition resource to manage the attributes to define for your shoppers.
 */

@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Carts;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Carts\ExtendedPropertyUrl;
 
+
 /**
 * commerce/carts/cartextendedproperties related resources. DOCUMENT_HERE 
 */

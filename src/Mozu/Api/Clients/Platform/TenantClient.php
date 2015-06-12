@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Platform;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Platform\TenantUrl;
 
+
 /**
 * Use the tenants resource to manage information about a Mozu tenant.
 */

@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Orders;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Orders\DigitalPackageUrl;
 
+
 /**
 * A digital package is a package in a digital format.
 */

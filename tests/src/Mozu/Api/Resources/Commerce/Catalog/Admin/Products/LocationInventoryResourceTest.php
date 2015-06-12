@@ -31,7 +31,7 @@ class LocationInventoryResourceTest extends BaseTest
     	//$tenant = $tenantResource->getTenant($this->tenantId);
     	
     	$apiContext = new ApiContext($this->tenantId,0,1,1);
-        $this->object = new LocationInventoryResource($apiContext);
+        $this->object = new LocationInventoryResource($apiContext, DataViewMode::LIVE);
         
     }
 

@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Storefront;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Storefront\ShippingUrl;
 
+
 /**
 * Use the Storefront Shipping resource to retrieve shipping rate information from the website.
 */

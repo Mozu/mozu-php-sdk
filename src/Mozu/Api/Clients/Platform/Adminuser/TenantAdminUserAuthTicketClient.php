@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Platform\Adminuser;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Platform\Adminuser\TenantAdminUserAuthTicketUrl;
 
+
 /**
 * Use the Admin User authentication tickets resource to generate and refresh authentication tickets that enable Mozu administrator or developer account users to access development or production tenants.
 */

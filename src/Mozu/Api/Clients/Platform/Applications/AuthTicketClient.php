@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Platform\Applications;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Platform\Applications\AuthTicketUrl;
 
+
 /**
 * Use the Authetickets for applications resource to manage authentication tickets for your apps.
 */

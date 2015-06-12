@@ -15,13 +15,14 @@ namespace Mozu\Api\Resources\Commerce\Orders;
 use Mozu\Api\Clients\Commerce\Orders\ExtendedPropertyClient;
 use Mozu\Api\ApiContext;
 
+
 /**
 * commerce/orders/extendedproperties related resources. DOCUMENT_HERE 
 */
 class ExtendedPropertyResource {
 
-	private $apiContext;
-		
+		private $apiContext;
+			
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -37,6 +38,7 @@ class ExtendedPropertyResource {
 	* @param bool $draft If true, retrieve the draft version of the order, which might include uncommitted changes to the order or its components.
 	* @param string $orderId Unique identifier of the order.
 	* @return array|ExtendedProperty 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getExtendedProperties($orderId, $draft =  null)
 	{
@@ -44,6 +46,21 @@ class ExtendedPropertyResource {
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* orders-extendedproperties Get GetExtendedProperties description DOCUMENT_HERE 
+	*
+	* @param bool $draft If true, retrieve the draft version of the order, which might include uncommitted changes to the order or its components.
+	* @param string $orderId Unique identifier of the order.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getExtendedPropertiesAsync($orderId, $draft =  null)
+	{
+		$mozuClient = ExtendedPropertyClient::getExtendedPropertiesClient($orderId, $draft);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	
@@ -55,6 +72,7 @@ class ExtendedPropertyResource {
 	* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
 	* @param array|ExtendedProperty $extendedProperties Mozu.CommerceRuntime.Contracts.Commerce.ExtendedProperty ApiType DOCUMENT_HERE 
 	* @return array|ExtendedProperty 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function addExtendedProperties($extendedProperties, $orderId, $updateMode =  null, $version =  null)
 	{
@@ -62,6 +80,22 @@ class ExtendedPropertyResource {
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* orders-extendedproperties Post AddExtendedProperties description DOCUMENT_HERE 
+	*
+	* @param string $orderId Unique identifier of the order.
+	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function addExtendedPropertiesAsync($extendedProperties, $orderId, $updateMode =  null, $version =  null)
+	{
+		$mozuClient = ExtendedPropertyClient::addExtendedPropertiesClient($extendedProperties, $orderId, $updateMode, $version);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	
@@ -76,6 +110,7 @@ class ExtendedPropertyResource {
 	* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
 	* @param ExtendedProperty $extendedProperty Mozu.CommerceRuntime.Contracts.Commerce.ExtendedProperty ApiType DOCUMENT_HERE 
 	* @return ExtendedProperty 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function updateExtendedProperty($extendedProperty, $orderId, $key, $updateMode =  null, $version =  null, $upsert =  null, $responseFields =  null)
 	{
@@ -83,6 +118,25 @@ class ExtendedPropertyResource {
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* orders-extendedproperties Put UpdateExtendedProperty description DOCUMENT_HERE 
+	*
+	* @param string $key 
+	* @param string $orderId Unique identifier of the order.
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param bool $upsert 
+	* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function updateExtendedPropertyAsync($extendedProperty, $orderId, $key, $updateMode =  null, $version =  null, $upsert =  null, $responseFields =  null)
+	{
+		$mozuClient = ExtendedPropertyClient::updateExtendedPropertyClient($extendedProperty, $orderId, $key, $updateMode, $version, $upsert, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	
@@ -95,6 +149,7 @@ class ExtendedPropertyResource {
 	* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
 	* @param array|ExtendedProperty $extendedProperties Mozu.CommerceRuntime.Contracts.Commerce.ExtendedProperty ApiType DOCUMENT_HERE 
 	* @return array|ExtendedProperty 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function updateExtendedProperties($extendedProperties, $orderId, $updateMode =  null, $version =  null, $upsert =  null)
 	{
@@ -105,6 +160,23 @@ class ExtendedPropertyResource {
 
 	}
 	
+/**
+	* orders-extendedproperties Put UpdateExtendedProperties description DOCUMENT_HERE 
+	*
+	* @param string $orderId Unique identifier of the order.
+	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param bool $upsert 
+	* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function updateExtendedPropertiesAsync($extendedProperties, $orderId, $updateMode =  null, $version =  null, $upsert =  null)
+	{
+		$mozuClient = ExtendedPropertyClient::updateExtendedPropertiesClient($extendedProperties, $orderId, $updateMode, $version, $upsert);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* orders-extendedproperties Delete DeleteExtendedProperty description DOCUMENT_HERE 
 	*
@@ -112,12 +184,30 @@ class ExtendedPropertyResource {
 	* @param string $orderId Unique identifier of the order.
 	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
 	* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
+	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteExtendedProperty($orderId, $key, $updateMode =  null, $version =  null)
 	{
 		$mozuClient = ExtendedPropertyClient::deleteExtendedPropertyClient($orderId, $key, $updateMode, $version);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+
+	}
+	
+/**
+	* orders-extendedproperties Delete DeleteExtendedProperty description DOCUMENT_HERE 
+	*
+	* @param string $key 
+	* @param string $orderId Unique identifier of the order.
+	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function deleteExtendedPropertyAsync($orderId, $key, $updateMode =  null, $version =  null)
+	{
+		$mozuClient = ExtendedPropertyClient::deleteExtendedPropertyClient($orderId, $key, $updateMode, $version);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	
@@ -128,12 +218,29 @@ class ExtendedPropertyResource {
 	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
 	* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
 	* @param array|string $keys 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteExtendedProperties($keys, $orderId, $updateMode =  null, $version =  null)
 	{
 		$mozuClient = ExtendedPropertyClient::deleteExtendedPropertiesClient($keys, $orderId, $updateMode, $version);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+
+	}
+	
+/**
+	* orders-extendedproperties Delete DeleteExtendedProperties description DOCUMENT_HERE 
+	*
+	* @param string $orderId Unique identifier of the order.
+	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function deleteExtendedPropertiesAsync($keys, $orderId, $updateMode =  null, $version =  null)
+	{
+		$mozuClient = ExtendedPropertyClient::deleteExtendedPropertiesClient($keys, $orderId, $updateMode, $version);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	

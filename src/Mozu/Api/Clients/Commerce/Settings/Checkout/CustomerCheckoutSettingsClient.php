@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Settings\Checkout;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Settings\Checkout\CustomerCheckoutSettingsUrl;
 
+
 /**
 * Use the Customer Checkout Settings resource to define login settings that apply when shoppers proceed to checkout.
 */

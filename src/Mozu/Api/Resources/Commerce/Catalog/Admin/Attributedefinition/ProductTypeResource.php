@@ -15,13 +15,15 @@ namespace Mozu\Api\Resources\Commerce\Catalog\Admin\Attributedefinition;
 use Mozu\Api\Clients\Commerce\Catalog\Admin\Attributedefinition\ProductTypeClient;
 use Mozu\Api\ApiContext;
 
+use Mozu\Api\Headers;
+
 /**
 * Use the Product Types resource to manage the types for your product catalog. Product types act as configuration templates, which store a set of attributes common to all products associated with that type. Unlike categories, products can only be associated with a single product type.
 */
 class ProductTypeResource {
 
-	private $apiContext;
-	private $dataViewMode;
+		private $apiContext;
+		private $dataViewMode;
 		public function __construct(ApiContext $apiContext, $dataViewMode) 
 	{
 		$this->apiContext = $apiContext;
@@ -40,6 +42,7 @@ class ProductTypeResource {
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return ProductTypeCollection 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getProductTypes($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
@@ -50,12 +53,31 @@ class ProductTypeResource {
 
 	}
 	
+/**
+	* Retrieves a list of product types according to any specified filter criteria and sort options.
+	*
+	* @param string $filter A set of filter expressions representing the search parameters for a query: eq=equals, ne=not equals, gt=greater than, lt = less than or equals, gt = greater than or equals, lt = less than or equals, sw = starts with, or cont = contains. Optional.
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $sortBy 
+	* @param int $startIndex 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getProductTypesAsync($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
+	{
+		$mozuClient = ProductTypeClient::getProductTypesClient($this->dataViewMode, $startIndex, $pageSize, $sortBy, $filter, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Retrieves the details of the product type specified in the request.
 	*
 	* @param int $productTypeId Identifier of the product type.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return ProductType 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getProductType($productTypeId, $responseFields =  null)
 	{
@@ -66,12 +88,28 @@ class ProductTypeResource {
 
 	}
 	
+/**
+	* Retrieves the details of the product type specified in the request.
+	*
+	* @param int $productTypeId Identifier of the product type.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getProductTypeAsync($productTypeId, $responseFields =  null)
+	{
+		$mozuClient = ProductTypeClient::getProductTypeClient($this->dataViewMode, $productTypeId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Creates a new product type based on the information supplied in the request.
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param ProductType $productType A product type is like a product template.
 	* @return ProductType 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function addProductType($productType, $responseFields =  null)
 	{
@@ -82,6 +120,20 @@ class ProductTypeResource {
 
 	}
 	
+/**
+	* Creates a new product type based on the information supplied in the request.
+	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function addProductTypeAsync($productType, $responseFields =  null)
+	{
+		$mozuClient = ProductTypeClient::addProductTypeClient($this->dataViewMode, $productType, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Updates one or more properties of a product type.
 	*
@@ -89,6 +141,7 @@ class ProductTypeResource {
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param ProductType $productType A product type is like a product template.
 	* @return ProductType 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function updateProductType($productType, $productTypeId, $responseFields =  null)
 	{
@@ -99,16 +152,46 @@ class ProductTypeResource {
 
 	}
 	
+/**
+	* Updates one or more properties of a product type.
+	*
+	* @param int $productTypeId Identifier of the product type.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function updateProductTypeAsync($productType, $productTypeId, $responseFields =  null)
+	{
+		$mozuClient = ProductTypeClient::updateProductTypeClient($this->dataViewMode, $productType, $productTypeId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Deletes the product type by providing the product type ID.
 	*
 	* @param int $productTypeId Identifier of the product type.
+	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteProductType($productTypeId)
 	{
 		$mozuClient = ProductTypeClient::deleteProductTypeClient($this->dataViewMode, $productTypeId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+
+	}
+	
+/**
+	* Deletes the product type by providing the product type ID.
+	*
+	* @param int $productTypeId Identifier of the product type.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function deleteProductTypeAsync($productTypeId)
+	{
+		$mozuClient = ProductTypeClient::deleteProductTypeClient($this->dataViewMode, $productTypeId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	

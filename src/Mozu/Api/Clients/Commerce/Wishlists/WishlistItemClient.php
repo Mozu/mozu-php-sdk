@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Wishlists;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Wishlists\WishlistItemUrl;
 
+
 /**
 * Use the Wish List Items subresource to manage items in a shopper wish list. The same product can be defined as an item in any number of wish lists for the customer account. Use the Wish Lists resource to manage shopper wish lists.
 */

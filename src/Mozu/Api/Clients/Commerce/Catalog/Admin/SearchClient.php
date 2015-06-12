@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\SearchUrl;
 
+
 /**
 * The Search resource manages all settings and options for providing product search on your site.
 */

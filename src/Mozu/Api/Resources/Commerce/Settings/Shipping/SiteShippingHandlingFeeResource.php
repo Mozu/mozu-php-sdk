@@ -15,13 +15,14 @@ namespace Mozu\Api\Resources\Commerce\Settings\Shipping;
 use Mozu\Api\Clients\Commerce\Settings\Shipping\SiteShippingHandlingFeeClient;
 use Mozu\Api\ApiContext;
 
+
 /**
 * Use the Order Handling Fee subresource to configure any shipping and handling fees to apply to orders for this site.
 */
 class SiteShippingHandlingFeeResource {
 
-	private $apiContext;
-		
+		private $apiContext;
+			
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -36,6 +37,7 @@ class SiteShippingHandlingFeeResource {
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return SiteShippingHandlingFee 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getOrderHandlingFee($responseFields =  null)
 	{
@@ -46,12 +48,27 @@ class SiteShippingHandlingFeeResource {
 
 	}
 	
+/**
+	* Retrieves the details of the order handling fee configured for the site.
+	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getOrderHandlingFeeAsync($responseFields =  null)
+	{
+		$mozuClient = SiteShippingHandlingFeeClient::getOrderHandlingFeeClient($responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Creates a new order handling fee for the site.
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param SiteShippingHandlingFee $orderHandlingFee Properties of the handling fee to apply to order shipments for the site.
 	* @return SiteShippingHandlingFee 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function createOrderHandlingFee($orderHandlingFee, $responseFields =  null)
 	{
@@ -62,12 +79,27 @@ class SiteShippingHandlingFeeResource {
 
 	}
 	
+/**
+	* Creates a new order handling fee for the site.
+	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function createOrderHandlingFeeAsync($orderHandlingFee, $responseFields =  null)
+	{
+		$mozuClient = SiteShippingHandlingFeeClient::createOrderHandlingFeeClient($orderHandlingFee, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Updates the order handling fee amount for the site.
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param SiteShippingHandlingFee $orderHandlingFee Properties of the handling fee to apply to order shipments for the site.
 	* @return SiteShippingHandlingFee 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function updateOrderHandlingFee($orderHandlingFee, $responseFields =  null)
 	{
@@ -75,6 +107,20 @@ class SiteShippingHandlingFeeResource {
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Updates the order handling fee amount for the site.
+	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function updateOrderHandlingFeeAsync($orderHandlingFee, $responseFields =  null)
+	{
+		$mozuClient = SiteShippingHandlingFeeClient::updateOrderHandlingFeeClient($orderHandlingFee, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	

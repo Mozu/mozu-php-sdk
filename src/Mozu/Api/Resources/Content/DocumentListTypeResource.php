@@ -15,13 +15,15 @@ namespace Mozu\Api\Resources\Content;
 use Mozu\Api\Clients\Content\DocumentListTypeClient;
 use Mozu\Api\ApiContext;
 
+use Mozu\Api\Headers;
+
 /**
 * Use the Document List Types resource to manage the types of document lists in your site's document hierarchy. The type denotes a content type for that list of folders, sub-folders, and documents such as `web_pages`.
 */
 class DocumentListTypeResource {
 
-	private $apiContext;
-	private $dataViewMode;
+		private $apiContext;
+		private $dataViewMode;
 		public function __construct(ApiContext $apiContext, $dataViewMode) 
 	{
 		$this->apiContext = $apiContext;
@@ -37,6 +39,7 @@ class DocumentListTypeResource {
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param DocumentListType $list Properties for the document list type. Document lists contain documents with an associated document type, such as web pages.
 	* @return DocumentListType 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function createDocumentListType($list, $responseFields =  null)
 	{
@@ -47,6 +50,20 @@ class DocumentListTypeResource {
 
 	}
 	
+/**
+	* Creates a new documentListType
+	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function createDocumentListTypeAsync($list, $responseFields =  null)
+	{
+		$mozuClient = DocumentListTypeClient::createDocumentListTypeClient($this->dataViewMode, $list, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Updates a DocumentListType
 	*
@@ -54,6 +71,7 @@ class DocumentListTypeResource {
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param DocumentListType $list Properties for the document list type. Document lists contain documents with an associated document type, such as web pages.
 	* @return DocumentListType 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function updateDocumentListType($list, $documentListTypeFQN, $responseFields =  null)
 	{
@@ -61,6 +79,21 @@ class DocumentListTypeResource {
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Updates a DocumentListType
+	*
+	* @param string $documentListTypeFQN 
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function updateDocumentListTypeAsync($list, $documentListTypeFQN, $responseFields =  null)
+	{
+		$mozuClient = DocumentListTypeClient::updateDocumentListTypeClient($list, $documentListTypeFQN, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	

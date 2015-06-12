@@ -15,6 +15,8 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\ProductUrl;
 
+use Mozu\Api\Headers;
+
 /**
 * Use the Product Administration resource to create new product definitions in the master catalog and determine which catalogs will feature products. You can also assign attribute values for defined products, manage product-level location inventory, and configure the variations of a product.
 */

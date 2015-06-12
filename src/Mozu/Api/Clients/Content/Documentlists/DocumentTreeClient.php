@@ -15,6 +15,8 @@ namespace Mozu\Api\Clients\Content\Documentlists;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Content\Documentlists\DocumentTreeUrl;
 
+use Mozu\Api\Headers;
+
 /**
 * Use the document tree subresource to retrieve documents and manage content within the document hierarchy.
 */

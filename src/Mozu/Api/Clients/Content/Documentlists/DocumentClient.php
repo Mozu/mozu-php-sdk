@@ -15,6 +15,8 @@ namespace Mozu\Api\Clients\Content\Documentlists;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Content\Documentlists\DocumentUrl;
 
+use Mozu\Api\Headers;
+
 /**
 * Use this subresource to manage documents in a document list.
 */

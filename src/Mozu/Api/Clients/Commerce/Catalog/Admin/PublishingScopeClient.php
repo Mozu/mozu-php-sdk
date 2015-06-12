@@ -15,6 +15,8 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\PublishingScopeUrl;
 
+use Mozu\Api\Headers;
+
 /**
 * Use the Product Publishing resource to publish or discard pending changes to product definitions in the master catalog.
 */

@@ -15,13 +15,14 @@ namespace Mozu\Api\Resources\Commerce\Orders;
 use Mozu\Api\Clients\Commerce\Orders\OrderValidationResultClient;
 use Mozu\Api\ApiContext;
 
+
 /**
 * Manage the results of order validation.
 */
 class OrderValidationResultResource {
 
-	private $apiContext;
-		
+		private $apiContext;
+			
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -36,6 +37,7 @@ class OrderValidationResultResource {
 	*
 	* @param string $orderId Unique identifier of the order.
 	* @return array|OrderValidationResult 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getValidationResults($orderId)
 	{
@@ -46,6 +48,20 @@ class OrderValidationResultResource {
 
 	}
 	
+/**
+	* Retrieves a list of the validation results associated with the order.
+	*
+	* @param string $orderId Unique identifier of the order.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getValidationResultsAsync($orderId)
+	{
+		$mozuClient = OrderValidationResultClient::getValidationResultsClient($orderId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Add a new order validation result to a submitted order.
 	*
@@ -53,6 +69,7 @@ class OrderValidationResultResource {
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param OrderValidationResult $validationResult Properties of the resulting order validation performed by an order validation capability.
 	* @return OrderValidationResult 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function addValidationResult($validationResult, $orderId, $responseFields =  null)
 	{
@@ -60,6 +77,21 @@ class OrderValidationResultResource {
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Add a new order validation result to a submitted order.
+	*
+	* @param string $orderId Unique identifier of the order.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function addValidationResultAsync($validationResult, $orderId, $responseFields =  null)
+	{
+		$mozuClient = OrderValidationResultClient::addValidationResultClient($validationResult, $orderId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	

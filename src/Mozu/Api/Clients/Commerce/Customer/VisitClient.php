@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Customer;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\VisitUrl;
 
+
 /**
 * Use the Visits resource to manage all visits a customer makes to a tenant's sites and measure the level of transactions a customer performs during a unique visit for customer account analytics. Clients can track customer visits by site (including online and in-person interactions), the transactions a customer performs during the visit, and the device type associated with the visit, if any.
 */

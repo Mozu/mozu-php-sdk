@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Admin;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Admin\LocationTypeUrl;
 
+
 /**
 * Use the Location Types resource to manage the types of locations your tenant maintains, such as warehouses, physical storefronts, and kiosks.
 */

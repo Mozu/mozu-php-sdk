@@ -15,13 +15,14 @@ namespace Mozu\Api\Resources\Commerce\Customer;
 use Mozu\Api\Clients\Commerce\Customer\CustomerAuthTicketClient;
 use Mozu\Api\ApiContext;
 
+
 /**
 * Use the Customer Authentication Tickets resource to generate and refresh authentication tickets for customer accounts.
 */
 class CustomerAuthTicketResource {
 
-	private $apiContext;
-		
+		private $apiContext;
+			
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -35,6 +36,7 @@ class CustomerAuthTicketResource {
 	* Creates an authentication ticket for an anonymous shopper user.
 	*
 	* @return Stream 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function createAnonymousShopperAuthTicket()
 	{
@@ -45,12 +47,26 @@ class CustomerAuthTicketResource {
 
 	}
 	
+/**
+	* Creates an authentication ticket for an anonymous shopper user.
+	*
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function createAnonymousShopperAuthTicketAsync()
+	{
+		$mozuClient = CustomerAuthTicketClient::createAnonymousShopperAuthTicketClient();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Generates a new authentication ticket for a customer account.
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param CustomerUserAuthInfo $userAuthInfo The authentication information required to generate an authentication ticket for a customer account.
 	* @return CustomerAuthTicket 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function createUserAuthTicket($userAuthInfo, $responseFields =  null)
 	{
@@ -61,12 +77,27 @@ class CustomerAuthTicketResource {
 
 	}
 	
+/**
+	* Generates a new authentication ticket for a customer account.
+	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function createUserAuthTicketAsync($userAuthInfo, $responseFields =  null)
+	{
+		$mozuClient = CustomerAuthTicketClient::createUserAuthTicketClient($userAuthInfo, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Refreshes an existing authentication ticket for a customer account by providing the refresh token string.
 	*
 	* @param string $refreshToken Alphanumeric string used for access tokens. This token refreshes access for accounts by generating a new developer or application account authentication ticket after an access token expires.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return CustomerAuthTicket 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function refreshUserAuthTicket($refreshToken, $responseFields =  null)
 	{
@@ -74,6 +105,21 @@ class CustomerAuthTicketResource {
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Refreshes an existing authentication ticket for a customer account by providing the refresh token string.
+	*
+	* @param string $refreshToken Alphanumeric string used for access tokens. This token refreshes access for accounts by generating a new developer or application account authentication ticket after an access token expires.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function refreshUserAuthTicketAsync($refreshToken, $responseFields =  null)
+	{
+		$mozuClient = CustomerAuthTicketClient::refreshUserAuthTicketClient($refreshToken, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	

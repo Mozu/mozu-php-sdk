@@ -15,13 +15,15 @@ namespace Mozu\Api\Resources\Content;
 use Mozu\Api\Clients\Content\DocumentListClient;
 use Mozu\Api\ApiContext;
 
+use Mozu\Api\Headers;
+
 /**
 * Use the document lists resource to organize your site's documents into a hierarchy. Document lists can contain documents, folders, and complete hierarchies of folders, which contain documents with unique names.
 */
 class DocumentListResource {
 
-	private $apiContext;
-	private $dataViewMode;
+		private $apiContext;
+		private $dataViewMode;
 		public function __construct(ApiContext $apiContext, $dataViewMode) 
 	{
 		$this->apiContext = $apiContext;
@@ -38,6 +40,7 @@ class DocumentListResource {
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param int $startIndex 
 	* @return DocumentListCollection 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getDocumentLists($pageSize =  null, $startIndex =  null, $responseFields =  null)
 	{
@@ -48,12 +51,29 @@ class DocumentListResource {
 
 	}
 	
+/**
+	* Retrieves a collection of document lists.
+	*
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $startIndex 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getDocumentListsAsync($pageSize =  null, $startIndex =  null, $responseFields =  null)
+	{
+		$mozuClient = DocumentListClient::getDocumentListsClient($this->dataViewMode, $pageSize, $startIndex, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Retrieve the details of a document list by providing the list name.
 	*
 	* @param string $documentListName Name of content documentListName to delete
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return DocumentList 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getDocumentList($documentListName, $responseFields =  null)
 	{
@@ -64,12 +84,28 @@ class DocumentListResource {
 
 	}
 	
+/**
+	* Retrieve the details of a document list by providing the list name.
+	*
+	* @param string $documentListName Name of content documentListName to delete
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getDocumentListAsync($documentListName, $responseFields =  null)
+	{
+		$mozuClient = DocumentListClient::getDocumentListClient($this->dataViewMode, $documentListName, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Creates a new documentList
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param DocumentList $list The list of document types and related properties that define content used by the content management system (CMS).
 	* @return DocumentList 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function createDocumentList($list, $responseFields =  null)
 	{
@@ -80,6 +116,20 @@ class DocumentListResource {
 
 	}
 	
+/**
+	* Creates a new documentList
+	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function createDocumentListAsync($list, $responseFields =  null)
+	{
+		$mozuClient = DocumentListClient::createDocumentListClient($this->dataViewMode, $list, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Updates a `DocumentListName`.
 	*
@@ -87,6 +137,7 @@ class DocumentListResource {
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param DocumentList $list The list of document types and related properties that define content used by the content management system (CMS).
 	* @return DocumentList 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function updateDocumentList($list, $documentListName, $responseFields =  null)
 	{
@@ -97,16 +148,46 @@ class DocumentListResource {
 
 	}
 	
+/**
+	* Updates a `DocumentListName`.
+	*
+	* @param string $documentListName Name of content documentListName to delete
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function updateDocumentListAsync($list, $documentListName, $responseFields =  null)
+	{
+		$mozuClient = DocumentListClient::updateDocumentListClient($list, $documentListName, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Deletes the specified `DocumentListName`.
 	*
 	* @param string $documentListName Name of content documentListName to delete
+	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteDocumentList($documentListName)
 	{
 		$mozuClient = DocumentListClient::deleteDocumentListClient($documentListName);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+
+	}
+	
+/**
+	* Deletes the specified `DocumentListName`.
+	*
+	* @param string $documentListName Name of content documentListName to delete
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function deleteDocumentListAsync($documentListName)
+	{
+		$mozuClient = DocumentListClient::deleteDocumentListClient($documentListName);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	

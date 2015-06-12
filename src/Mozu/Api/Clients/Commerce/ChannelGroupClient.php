@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\ChannelGroupUrl;
 
+
 /**
 * Use the Channel Groups resource to manage groups of channels with common information.
 */

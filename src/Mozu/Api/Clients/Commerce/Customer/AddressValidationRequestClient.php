@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Customer;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Customer\AddressValidationRequestUrl;
 
+
 /**
 * Use the Address Validation resource to validate addresses associated with a customer account contact.
 */

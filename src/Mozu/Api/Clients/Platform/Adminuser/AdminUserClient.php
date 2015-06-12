@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Platform\Adminuser;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Platform\Adminuser\AdminUserUrl;
 
+
 /**
 * The Accounts resource displays the user accounts and account details associated with a developer or Mozu tenant administrator. Email addresses uniquely identify admin user accounts.
 */

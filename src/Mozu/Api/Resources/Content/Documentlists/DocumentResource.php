@@ -15,13 +15,15 @@ namespace Mozu\Api\Resources\Content\Documentlists;
 use Mozu\Api\Clients\Content\Documentlists\DocumentClient;
 use Mozu\Api\ApiContext;
 
+use Mozu\Api\Headers;
+
 /**
 * Use this subresource to manage documents in a document list.
 */
 class DocumentResource {
 
-	private $apiContext;
-	private $dataViewMode;
+		private $apiContext;
+		private $dataViewMode;
 		public function __construct(ApiContext $apiContext, $dataViewMode) 
 	{
 		$this->apiContext = $apiContext;
@@ -37,6 +39,7 @@ class DocumentResource {
 	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
 	* @param string $documentListName Name of content documentListName to delete
 	* @return Stream 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getDocumentContent($documentListName, $documentId)
 	{
@@ -47,6 +50,21 @@ class DocumentResource {
 
 	}
 	
+/**
+	* Retrieve the content associated with a document, such as a product image or PDF specifications file, by supplying the document ID.
+	*
+	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
+	* @param string $documentListName Name of content documentListName to delete
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getDocumentContentAsync($documentListName, $documentId)
+	{
+		$mozuClient = DocumentClient::getDocumentContentClient($this->dataViewMode, $documentListName, $documentId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Retrieves a document within the specified document list.
 	*
@@ -54,6 +72,7 @@ class DocumentResource {
 	* @param string $documentListName Name of content documentListName to delete
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return Document 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getDocument($documentListName, $documentId, $responseFields =  null)
 	{
@@ -61,6 +80,22 @@ class DocumentResource {
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Retrieves a document within the specified document list.
+	*
+	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
+	* @param string $documentListName Name of content documentListName to delete
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getDocumentAsync($documentListName, $documentId, $responseFields =  null)
+	{
+		$mozuClient = DocumentClient::getDocumentClient($this->dataViewMode, $documentListName, $documentId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	
@@ -74,6 +109,7 @@ class DocumentResource {
 	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return DocumentCollection 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getDocuments($documentListName, $filter =  null, $sortBy =  null, $pageSize =  null, $startIndex =  null, $responseFields =  null)
 	{
@@ -84,6 +120,25 @@ class DocumentResource {
 
 	}
 	
+/**
+	* Retrieves a collection of documents according to any filter and sort criteria.
+	*
+	* @param string $documentListName Name of content documentListName to delete
+	* @param string $filter A set of filter expressions representing the search parameters for a query: eq=equals, ne=not equals, gt=greater than, lt = less than or equals, gt = greater than or equals, lt = less than or equals, sw = starts with, or cont = contains. Optional.
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getDocumentsAsync($documentListName, $filter =  null, $sortBy =  null, $pageSize =  null, $startIndex =  null, $responseFields =  null)
+	{
+		$mozuClient = DocumentClient::getDocumentsClient($this->dataViewMode, $documentListName, $filter, $sortBy, $pageSize, $startIndex, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Creates a new document in an defined document list.
 	*
@@ -91,6 +146,7 @@ class DocumentResource {
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param Document $document The document properties that define the content used by the content management system (CMS).
 	* @return Document 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function createDocument($document, $documentListName, $responseFields =  null)
 	{
@@ -101,18 +157,49 @@ class DocumentResource {
 
 	}
 	
+/**
+	* Creates a new document in an defined document list.
+	*
+	* @param string $documentListName Name of content documentListName to delete
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function createDocumentAsync($document, $documentListName, $responseFields =  null)
+	{
+		$mozuClient = DocumentClient::createDocumentClient($this->dataViewMode, $document, $documentListName, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Updates the content associated with a document, such as a product image or PDF specifications file, by supplying the document ID.
 	*
 	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
 	* @param string $documentListName Name of content documentListName to delete
 	* @param Stream $stream Data stream that delivers information. Used to input and output data.
+	* @deprecated deprecated since version 1.17
 	*/
 	public function updateDocumentContent($stream, $documentListName, $documentId, $contentType= null)
 	{
 		$mozuClient = DocumentClient::updateDocumentContentClient($stream, $documentListName, $documentId, $contentType);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+
+	}
+	
+/**
+	* Updates the content associated with a document, such as a product image or PDF specifications file, by supplying the document ID.
+	*
+	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
+	* @param string $documentListName Name of content documentListName to delete
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function updateDocumentContentAsync($stream, $documentListName, $documentId, $contentType= null)
+	{
+		$mozuClient = DocumentClient::updateDocumentContentClient($stream, $documentListName, $documentId, $contentType);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	
@@ -124,6 +211,7 @@ class DocumentResource {
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param Document $document The document properties that define the content used by the content management system (CMS).
 	* @return Document 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function updateDocument($document, $documentListName, $documentId, $responseFields =  null)
 	{
@@ -134,11 +222,28 @@ class DocumentResource {
 
 	}
 	
+/**
+	* Updates a document in a document list.
+	*
+	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
+	* @param string $documentListName Name of content documentListName to delete
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function updateDocumentAsync($document, $documentListName, $documentId, $responseFields =  null)
+	{
+		$mozuClient = DocumentClient::updateDocumentClient($document, $documentListName, $documentId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Deletes a specific document based on the specified document ID.
 	*
 	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
 	* @param string $documentListName Name of content documentListName to delete
+	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteDocument($documentListName, $documentId)
 	{
@@ -148,17 +253,48 @@ class DocumentResource {
 
 	}
 	
+/**
+	* Deletes a specific document based on the specified document ID.
+	*
+	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
+	* @param string $documentListName Name of content documentListName to delete
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function deleteDocumentAsync($documentListName, $documentId)
+	{
+		$mozuClient = DocumentClient::deleteDocumentClient($documentListName, $documentId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Deletes the content associated with a document, such as a product image or PDF specification, by supplying the document ID.
 	*
 	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
 	* @param string $documentListName Name of content documentListName to delete
+	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteDocumentContent($documentListName, $documentId)
 	{
 		$mozuClient = DocumentClient::deleteDocumentContentClient($documentListName, $documentId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+
+	}
+	
+/**
+	* Deletes the content associated with a document, such as a product image or PDF specification, by supplying the document ID.
+	*
+	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
+	* @param string $documentListName Name of content documentListName to delete
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function deleteDocumentContentAsync($documentListName, $documentId)
+	{
+		$mozuClient = DocumentClient::deleteDocumentContentClient($documentListName, $documentId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	

@@ -2,16 +2,21 @@
 
 namespace Mozu\Api;
 
+use GuzzleHttp\Handler\CurlHandler;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Middleware;
 use Logger;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7;
-use Guzzle\Http\Query;
 use Mozu\Api\Security\AppAuthenticator;
 use Mozu\Api\Resources\Platform\TenantResource;
 use Mozu\Api\Security\UserAuthenticator;
 use Mozu\Api\Security\CustomerAuthenticator;
 use Mozu\Api\Utilities\HttpHelper;
 use Mozu\Api\Security\AuthenticationScope;
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
+use GuzzleHttp\Promise;
 
 class MozuClient {
 	private $baseAddress;
@@ -19,13 +24,15 @@ class MozuClient {
 	private $mozuUrl = "";
 	private $apiContext = null;
 	private $headers = [];
-	private $jsonBody = null;
+	private $requestBody = null;
 	private $request = null;
-	private $response = null;
+    private $response = null;
+    //private $mozuResult = null;
 	private $isStreamContent = false;
 	private $contentType = null;
 	private $client = null;
     private $logger = null;
+    //private $apiError = null;
 
     public function __construct() {
         $this->logger = Logger::getLogger("MozuClient");
@@ -48,7 +55,6 @@ class MozuClient {
 			$authTicket = $newTicket->authTicket;
 		}
 		
-		var_dump($authTicket);
 		$this->withHeader(Headers::X_VOL_USER_CLAIMS, $authTicket->accessToken);
 		$this->apiContext->setUserAuthTicket($authTicket);
 		return $this;
@@ -80,25 +86,22 @@ class MozuClient {
 	}
 	
 	public function withBody($body) {
-		$this->jsonBody = json_encode ( $body );
+		$this->requestBody = json_encode ( $body );
 		$this->isStreamContent = false;
 		return $this;
 	}
 	
 	public function withStreamBody($body) {
-		$this->jsonBody = $body;
+		$this->requestBody = $body;
 		$this->isStreamContent = true;
 		return $this;
 	}
 	
 	public function getResult() {
-        foreach ($this->response->getHeaders() as $name => $values) {
-            $this->logger->info($name . ': ' . implode(', ', $values));
-        }
-		if (strpos($this->response->getHeader("Content-Type")[0],"json") != false)
-			return  json_decode ( $this->response->getBody(true) );
-		else
-			return $this->response->getBody();
+        if (strpos($this->response->getHeader("Content-Type")[0],"json") != false)
+            return  json_decode ( $this->response->getBody(true) );
+        else
+            return $this->response->getBody();
 	}
 	
 	public function getHttpClient() {
@@ -117,44 +120,51 @@ class MozuClient {
 	public function execute() {
 		$this->validateContext();
 		$this->buildClientAndRequest();
-	    try {
-	      $this->response = $this->client->sendAsync ($this->request)->wait();
-	    } catch (\Exception $e) {
-	    	 HttpHelper::checkError($e, $this->apiContext);
-	    }
-    
+        $promise = $this->client->sendAsync ($this->request);
+        $this->response = $promise->wait();
+
 		return $this;
 	}
 
+    public function executeAsync() {
+        $this->validateContext();
+        $this->buildClientAndRequest();
+        return $this->client->sendAsync ($this->request)
+        ->then(function($response) {
+            $mozuResult = new MozuResult();
+            if (!$this->notFoundFromServer) {
+                $mozuResult->contentType = $response->getHeader("Content-Type");
+                $mozuResult->body = $response->getBody(true);
+            }
+            $mozuResult->correlationId = $response->getHeader(Headers::X_VOL_CORRELATION)[0];
+            return new Promise\FulfilledPromise($mozuResult);
+        }, function($e) {
+            //$this->logger->error($e);
+            return new Promise\RejectedPromise($e);
+        });
+    }
+
 	private function buildClientAndRequest() {
+        $this->logger->info("Getting Request Client");
+        $stack = new HandlerStack();
+        $stack->setHandler(new CurlHandler());
+        $stack->push(Middleware::mapRequest( function(RequestInterface $request) {
+            return $this->addRequestHeaders($request);
+        }));
 
-		$authentication = AppAuthenticator::getInstance();
-		if (!isset($authentication)) {
-			throw new \Exception("Authentication is not initialized");
-		}
-		
-		if ($this->mozuUrl->getVerb()== ""  || $this->mozuUrl->getUrl() == "" ) {
-			throw new \Exception("Verb or Resource Url is missing in MozuUrl");
-		}
+        $stack->push(Middleware::mapResponse(function(ResponseInterface $response){
+            $this->logger->info('Response status code: ' . $response->getStatusCode());
+            $this->validateResponse($response);
 
-        $this->client = new Client (['base_uri' => $this->baseAddress,  'verify' => false, 'useUrlEncoding' => false]);
 
-        if ($this->apiContext != null && $this->apiContext->getUserAuthTicket() != null) {
-			$this->setUserAuth();
-		}
 
-        $this->headers = $authentication->addAuthHeader($this->headers);
+            return $response;
+        }));
 
-        if (!$this->isStreamContent)
-            $this->withHeader('Content-Type', 'application/json');
-        $this->withHeader(Headers::X_VOL_VERSION,Version::$apiVersion);
-
-        if ($this->contentType != null) {
-            $this->withHeader(Headers::CONTENT_TYPE,$this->contentType);
-        }
+        $this->client = new Client (['handler'=>$stack,'base_uri' => $this->baseAddress,  'verify' => false]);
 
         $this->logger->info("Request URI : ".$this->mozuUrl->getUrl());
-        $this->request = new Psr7\Request($this->mozuUrl->getVerb(),$this->mozuUrl->getUrl(), $this->headers,$this->jsonBody);
+        $this->request = new Psr7\Request($this->mozuUrl->getVerb(),$this->mozuUrl->getUrl(), array(), $this->requestBody);
 	}
 		
 	private function validateContext() {
@@ -197,5 +207,83 @@ class MozuClient {
 			$this->baseAddress = MozuConfig::$baseAppAuthUrl;
 		}
 	}
+
+    private function addRequestHeaders(RequestInterface $request) {
+        $this->logger->info("Setting request headers");
+        $authentication = AppAuthenticator::getInstance();
+        if (!isset($authentication)) {
+            throw new \Exception("Authentication is not initialized");
+        }
+        $this->logger->info("App Claim : ". $authentication->getAppClaim());
+        $request = $request->withHeader(Headers::X_VOL_APP_CLAIMS,$authentication->getAppClaim());
+        $request = $request->withHeader(Headers::X_VOL_VERSION,Version::$apiVersion);
+        if (isset($this->contentType)) {
+            $request = $request->withHeader(Headers::CONTENT_TYPE,$this->contentType);
+        }
+        if (!$this->isStreamContent)
+            $request= $request->withHeader('Content-Type', 'application/json');
+
+        if ($this->apiContext != null && $this->apiContext->getUserAuthTicket() != null) {
+            $this->setUserAuth();
+            $request =$request->withHeader(Headers::X_VOL_USER_CLAIMS, $this->apiContext->getUserAuthTicket());
+        }
+
+        $request = $request->withHeader("Accept-Encoding","gzip, deflate");
+        foreach ($this->headers as $name => $value) {
+            $request = $request->withHeader($name, $value );
+        }
+        return $request;
+    }
+
+    private $notFoundFromServer = false;
+    private function validateResponse(ResponseInterface $response) {
+        $statusCode = $response->getStatusCode();
+        $correlationHdr = $response->getHeader(Headers::X_VOL_CORRELATION);
+
+        if ($statusCode == 304 || $statusCode >= 200 && $statusCode <= 300) return;
+
+        $apiError = null;
+        if ($statusCode == 404 && empty($correlationHdr))
+            $apiError = new ApiException($response->getReasonPhrase(), $statusCode);
+        else if (!empty($correlationHdr)) {
+            $body = $response->getBody(TRUE);
+            $jsonResponse = json_decode($body);
+            $message = $response->getReasonPhrase();
+            if (!empty($jsonResponse)) {
+                if ($jsonResponse->errorCode == "ITEM_NOT_FOUND" && $statusCode == 404  && $this->mozuUrl->getVerb() == "GET" && !MozuConfig::$throwExceptionOn404) {
+                    $this->notFoundFromServer = true;
+                    return;
+                }
+                $this->logger->debug($jsonResponse->errorCode . " : " . (MozuConfig::$throwExceptionOn404 == true));
+
+                if (isset($jsonResponse->message))
+                    $apiError = new ApiException($jsonResponse->message, $statusCode);
+                else
+                    $apiError = new ApiException($response->getReasonPhrase().", inspect Mozu\Api\ApiException->items property for more details", $statusCode);
+                $apiError = new ApiException($jsonResponse->message, $statusCode);
+                if (isset($jsonResponse->additionalErrorData)) {
+                    $apiError->setAdditionalErrorData( $jsonResponse->additionalErrorData);
+                }
+                if (isset($jsonResponse->errorCode)) {
+                    $apiError->setErrorCode($jsonResponse->errorCode);
+                }
+                if (isset($jsonResponse->applicationName)) {
+                    $apiError->setApplicationName($jsonResponse->applicationName);
+                }
+                if (isset($jsonResponse->items)) {
+                    $apiError->setItems($jsonResponse->items);
+                }
+            } else
+                $apiError = new ApiException($message, $statusCode);
+
+            $apiError->setCorrelationId($correlationHdr[0]);
+
+        } else {
+            $apiError = new ApiException("Unknown error", $statusCode);
+        }
+
+        if ($apiError != null)
+            throw $apiError;
+    }
 }
 ?>

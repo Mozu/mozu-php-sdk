@@ -15,13 +15,14 @@ namespace Mozu\Api\Resources\Commerce\Returns;
 use Mozu\Api\Clients\Commerce\Returns\ShipmentClient;
 use Mozu\Api\ApiContext;
 
+
 /**
 * Use the Return Shipments subresource to manage shipments for a return replacement.
 */
 class ShipmentResource {
 
-	private $apiContext;
-		
+		private $apiContext;
+			
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -38,6 +39,7 @@ class ShipmentResource {
 	* @param string $returnId Unique identifier of the return whose items you want to get.
 	* @param string $shipmentId Unique identifier of the shipment to retrieve.
 	* @return Shipment 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getShipment($returnId, $shipmentId, $responseFields =  null)
 	{
@@ -48,12 +50,29 @@ class ShipmentResource {
 
 	}
 	
+/**
+	* Retrieves the details of the specified return replacement shipment.
+	*
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $shipmentId Unique identifier of the shipment to retrieve.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getShipmentAsync($returnId, $shipmentId, $responseFields =  null)
+	{
+		$mozuClient = ShipmentClient::getShipmentClient($returnId, $shipmentId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Creates a shipment from one or more packages associated with a return replacement.
 	*
 	* @param string $returnId Unique identifier of the return whose items you want to get.
 	* @param array|string $packageIds List of unique identifiers for each package associated with this shipment. Not all packages must belong to the same shipment.
 	* @return array|Package 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function createPackageShipments($packageIds, $returnId)
 	{
@@ -64,17 +83,47 @@ class ShipmentResource {
 
 	}
 	
+/**
+	* Creates a shipment from one or more packages associated with a return replacement.
+	*
+	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function createPackageShipmentsAsync($packageIds, $returnId)
+	{
+		$mozuClient = ShipmentClient::createPackageShipmentsClient($packageIds, $returnId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Deletes a shipment for a return replacement.
 	*
 	* @param string $returnId Unique identifier of the return whose items you want to get.
 	* @param string $shipmentId Unique identifier of the shipment to retrieve.
+	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteShipment($returnId, $shipmentId)
 	{
 		$mozuClient = ShipmentClient::deleteShipmentClient($returnId, $shipmentId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+
+	}
+	
+/**
+	* Deletes a shipment for a return replacement.
+	*
+	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $shipmentId Unique identifier of the shipment to retrieve.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function deleteShipmentAsync($returnId, $shipmentId)
+	{
+		$mozuClient = ShipmentClient::deleteShipmentClient($returnId, $shipmentId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	

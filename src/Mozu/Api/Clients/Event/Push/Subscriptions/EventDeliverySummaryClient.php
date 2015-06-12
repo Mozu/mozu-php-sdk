@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Event\Push\Subscriptions;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Event\Push\Subscriptions\EventDeliverySummaryUrl;
 
+
 /**
 * Provides details for each attempted delivery of the event to the endpoint.
 */

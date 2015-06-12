@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Content\Documentlists;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Content\Documentlists\ViewUrl;
 
+
 /**
 * Properties and content for views within a site/tenant. Views provide the schema, formatting, and associated content and entities for displaying content within a site/tenant.
 */

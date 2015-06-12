@@ -15,13 +15,14 @@ namespace Mozu\Api\Resources\Commerce\Catalog\Admin\Attributedefinition\Attribut
 use Mozu\Api\Clients\Commerce\Catalog\Admin\Attributedefinition\Attributes\AttributeVocabularyValueClient;
 use Mozu\Api\ApiContext;
 
+
 /**
 * Vocabulary values are predefined for an attribute.
 */
 class AttributeVocabularyValueResource {
 
-	private $apiContext;
-		
+		private $apiContext;
+			
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -36,6 +37,7 @@ class AttributeVocabularyValueResource {
 	*
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @return array|AttributeVocabularyValue 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getAttributeVocabularyValues($attributeFQN)
 	{
@@ -46,12 +48,27 @@ class AttributeVocabularyValueResource {
 
 	}
 	
+/**
+	* Retrieves a list of vocabulary values defined for the attribute specified in the request.
+	*
+	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getAttributeVocabularyValuesAsync($attributeFQN)
+	{
+		$mozuClient = AttributeVocabularyValueClient::getAttributeVocabularyValuesClient($attributeFQN);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Retrieves a collection of localized content for vocabulary value attributes based on a `localeCode`. 
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
 	* @param string $value The value string to create.
 	* @return array|AttributeVocabularyValueLocalizedContent 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getAttributeVocabularyValueLocalizedContents($attributeFQN, $value)
 	{
@@ -59,6 +76,21 @@ class AttributeVocabularyValueResource {
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Retrieves a collection of localized content for vocabulary value attributes based on a `localeCode`. 
+	*
+	* @param string $attributeFQN Fully qualified name for an attribute.
+	* @param string $value The value string to create.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getAttributeVocabularyValueLocalizedContentsAsync($attributeFQN, $value)
+	{
+		$mozuClient = AttributeVocabularyValueClient::getAttributeVocabularyValueLocalizedContentsClient($attributeFQN, $value);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	
@@ -70,6 +102,7 @@ class AttributeVocabularyValueResource {
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $value The value string to create.
 	* @return AttributeVocabularyValueLocalizedContent 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getAttributeVocabularyValueLocalizedContent($attributeFQN, $value, $localeCode, $responseFields =  null)
 	{
@@ -80,6 +113,23 @@ class AttributeVocabularyValueResource {
 
 	}
 	
+/**
+	* Retrieves the localized content for a vocabulary value attribute based on a `localeCode`. 
+	*
+	* @param string $attributeFQN Fully qualified name for an attribute.
+	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $value The value string to create.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getAttributeVocabularyValueLocalizedContentAsync($attributeFQN, $value, $localeCode, $responseFields =  null)
+	{
+		$mozuClient = AttributeVocabularyValueClient::getAttributeVocabularyValueLocalizedContentClient($attributeFQN, $value, $localeCode, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Retrieves the details of a vocabulary value defined for an attribute by providing the attribute's fully qualified name and the value to retrieve.
 	*
@@ -87,6 +137,7 @@ class AttributeVocabularyValueResource {
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $value The value string to create.
 	* @return AttributeVocabularyValue 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function getAttributeVocabularyValue($attributeFQN, $value, $responseFields =  null)
 	{
@@ -94,6 +145,22 @@ class AttributeVocabularyValueResource {
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Retrieves the details of a vocabulary value defined for an attribute by providing the attribute's fully qualified name and the value to retrieve.
+	*
+	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $value The value string to create.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getAttributeVocabularyValueAsync($attributeFQN, $value, $responseFields =  null)
+	{
+		$mozuClient = AttributeVocabularyValueClient::getAttributeVocabularyValueClient($attributeFQN, $value, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	
@@ -105,6 +172,7 @@ class AttributeVocabularyValueResource {
 	* @param string $value The value string to create.
 	* @param AttributeVocabularyValueLocalizedContent $localizedContent The localized text for the string value of a product attribute.
 	* @return AttributeVocabularyValueLocalizedContent 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function addAttributeVocabularyValueLocalizedContent($localizedContent, $attributeFQN, $value, $responseFields =  null)
 	{
@@ -115,6 +183,22 @@ class AttributeVocabularyValueResource {
 
 	}
 	
+/**
+	* Creates and saves localized vocabulary value content for an attribute, based on the `localeCode`.
+	*
+	* @param string $attributeFQN Fully qualified name for an attribute.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $value The value string to create.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function addAttributeVocabularyValueLocalizedContentAsync($localizedContent, $attributeFQN, $value, $responseFields =  null)
+	{
+		$mozuClient = AttributeVocabularyValueClient::addAttributeVocabularyValueLocalizedContentClient($localizedContent, $attributeFQN, $value, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Creates a vocabulary value for a defined product attribute.
 	*
@@ -122,6 +206,7 @@ class AttributeVocabularyValueResource {
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param AttributeVocabularyValue $attributeVocabularyValue Properties of a vocabulary value defined for an extensible attribute.
 	* @return AttributeVocabularyValue 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function addAttributeVocabularyValue($attributeVocabularyValue, $attributeFQN, $responseFields =  null)
 	{
@@ -132,12 +217,28 @@ class AttributeVocabularyValueResource {
 
 	}
 	
+/**
+	* Creates a vocabulary value for a defined product attribute.
+	*
+	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function addAttributeVocabularyValueAsync($attributeVocabularyValue, $attributeFQN, $responseFields =  null)
+	{
+		$mozuClient = AttributeVocabularyValueClient::addAttributeVocabularyValueClient($attributeVocabularyValue, $attributeFQN, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Update existing vocabulary values for an attribute.
 	*
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @param array|AttributeVocabularyValue $vocabularyValues Properties of a vocabulary value defined for an extensible attribute.
 	* @return array|AttributeVocabularyValue 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function updateAttributeVocabularyValues($vocabularyValues, $attributeFQN)
 	{
@@ -148,6 +249,20 @@ class AttributeVocabularyValueResource {
 
 	}
 	
+/**
+	* Update existing vocabulary values for an attribute.
+	*
+	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function updateAttributeVocabularyValuesAsync($vocabularyValues, $attributeFQN)
+	{
+		$mozuClient = AttributeVocabularyValueClient::updateAttributeVocabularyValuesClient($vocabularyValues, $attributeFQN);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Updates a collection of localized vocabulary value content for existing attributes, based on the `localeCode`.
 	*
@@ -155,6 +270,7 @@ class AttributeVocabularyValueResource {
 	* @param string $value The value string to create.
 	* @param array|AttributeVocabularyValueLocalizedContent $localizedContent The localized text for the string value of a product attribute.
 	* @return array|AttributeVocabularyValueLocalizedContent 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function updateAttributeVocabularyValueLocalizedContents($localizedContent, $attributeFQN, $value)
 	{
@@ -162,6 +278,21 @@ class AttributeVocabularyValueResource {
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Updates a collection of localized vocabulary value content for existing attributes, based on the `localeCode`.
+	*
+	* @param string $attributeFQN Fully qualified name for an attribute.
+	* @param string $value The value string to create.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function updateAttributeVocabularyValueLocalizedContentsAsync($localizedContent, $attributeFQN, $value)
+	{
+		$mozuClient = AttributeVocabularyValueClient::updateAttributeVocabularyValueLocalizedContentsClient($localizedContent, $attributeFQN, $value);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	
@@ -174,6 +305,7 @@ class AttributeVocabularyValueResource {
 	* @param string $value The value string to create.
 	* @param AttributeVocabularyValueLocalizedContent $localizedContent The localized text for the string value of a product attribute.
 	* @return AttributeVocabularyValueLocalizedContent 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function updateAttributeVocabularyValueLocalizedContent($localizedContent, $attributeFQN, $value, $localeCode, $responseFields =  null)
 	{
@@ -181,6 +313,23 @@ class AttributeVocabularyValueResource {
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Updates localized vocabulary value content for an existing attribute, based on the `localeCode`.
+	*
+	* @param string $attributeFQN Fully qualified name for an attribute.
+	* @param string $localeCode The two character country code that sets the locale, such as US for United States. Sites, tenants, and catalogs use locale codes for localizing content, such as translated product text per supported country.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $value The value string to create.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function updateAttributeVocabularyValueLocalizedContentAsync($localizedContent, $attributeFQN, $value, $localeCode, $responseFields =  null)
+	{
+		$mozuClient = AttributeVocabularyValueClient::updateAttributeVocabularyValueLocalizedContentClient($localizedContent, $attributeFQN, $value, $localeCode, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	
@@ -192,6 +341,7 @@ class AttributeVocabularyValueResource {
 	* @param string $value The value string to create.
 	* @param AttributeVocabularyValue $attributeVocabularyValue Properties of a vocabulary value defined for an extensible attribute.
 	* @return AttributeVocabularyValue 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function updateAttributeVocabularyValue($attributeVocabularyValue, $attributeFQN, $value, $responseFields =  null)
 	{
@@ -202,11 +352,28 @@ class AttributeVocabularyValueResource {
 
 	}
 	
+/**
+	* Updates existing attribute vocabulary values.
+	*
+	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $value The value string to create.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function updateAttributeVocabularyValueAsync($attributeVocabularyValue, $attributeFQN, $value, $responseFields =  null)
+	{
+		$mozuClient = AttributeVocabularyValueClient::updateAttributeVocabularyValueClient($attributeVocabularyValue, $attributeFQN, $value, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Deletes an attribute's vocabulary value.
 	*
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @param string $value The value string to create.
+	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteAttributeVocabularyValue($attributeFQN, $value)
 	{
@@ -216,18 +383,50 @@ class AttributeVocabularyValueResource {
 
 	}
 	
+/**
+	* Deletes an attribute's vocabulary value.
+	*
+	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param string $value The value string to create.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function deleteAttributeVocabularyValueAsync($attributeFQN, $value)
+	{
+		$mozuClient = AttributeVocabularyValueClient::deleteAttributeVocabularyValueClient($attributeFQN, $value);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Removes localized content for a vocabulary value attribute. 
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
 	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
 	* @param string $value The value string to create.
+	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteAttributeVocabularyValueLocalizedContent($attributeFQN, $value, $localeCode)
 	{
 		$mozuClient = AttributeVocabularyValueClient::deleteAttributeVocabularyValueLocalizedContentClient($attributeFQN, $value, $localeCode);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+
+	}
+	
+/**
+	* Removes localized content for a vocabulary value attribute. 
+	*
+	* @param string $attributeFQN Fully qualified name for an attribute.
+	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
+	* @param string $value The value string to create.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function deleteAttributeVocabularyValueLocalizedContentAsync($attributeFQN, $value, $localeCode)
+	{
+		$mozuClient = AttributeVocabularyValueClient::deleteAttributeVocabularyValueLocalizedContentClient($attributeFQN, $value, $localeCode);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	

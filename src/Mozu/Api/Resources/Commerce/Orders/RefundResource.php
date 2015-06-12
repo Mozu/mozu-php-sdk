@@ -15,13 +15,14 @@ namespace Mozu\Api\Resources\Commerce\Orders;
 use Mozu\Api\Clients\Commerce\Orders\RefundClient;
 use Mozu\Api\ApiContext;
 
+
 /**
 * commerce/orders/orderrefunds related resources. DOCUMENT_HERE 
 */
 class RefundResource {
 
-	private $apiContext;
-		
+		private $apiContext;
+			
 	public function __construct(ApiContext $apiContext) 
 	{
 		$this->apiContext = $apiContext;
@@ -38,6 +39,7 @@ class RefundResource {
 	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
 	* @param Refund $refund Mozu.CommerceRuntime.Contracts.Refunds.Refund ApiType DOCUMENT_HERE 
 	* @return Refund 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function createRefund($refund, $orderId, $responseFields =  null)
 	{
@@ -48,17 +50,48 @@ class RefundResource {
 
 	}
 	
+/**
+	* orders-orderrefunds Post CreateRefund description DOCUMENT_HERE 
+	*
+	* @param string $orderId Unique identifier of the order.
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function createRefundAsync($refund, $orderId, $responseFields =  null)
+	{
+		$mozuClient = RefundClient::createRefundClient($refund, $orderId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* orders-orderrefunds Put ResendRefundEmail description DOCUMENT_HERE 
 	*
 	* @param string $orderId Unique identifier of the order.
 	* @param string $refundId 
+	* @deprecated deprecated since version 1.17
 	*/
 	public function resendRefundEmail($orderId, $refundId)
 	{
 		$mozuClient = RefundClient::resendRefundEmailClient($orderId, $refundId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+
+	}
+	
+/**
+	* orders-orderrefunds Put ResendRefundEmail description DOCUMENT_HERE 
+	*
+	* @param string $orderId Unique identifier of the order.
+	* @param string $refundId 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function resendRefundEmailAsync($orderId, $refundId)
+	{
+		$mozuClient = RefundClient::resendRefundEmailClient($orderId, $refundId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
 
 	}
 	
