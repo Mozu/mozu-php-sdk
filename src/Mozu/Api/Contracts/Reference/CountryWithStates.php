@@ -14,11 +14,20 @@ namespace Mozu\Api\Contracts\Reference;
 
 
 
+/**
+*	A country and its states. Contrains the 2-letter geographic code representing the country and any states within the country.
+*/
 class CountryWithStates
 {
-		public $code;
+	/**
+	*The two character country code.
+	*/
+	public $code;
 
-		public $states;
+	/**
+	*The state code, name, and tags, if applicable. 
+	*/
+	public $states;
 
 }
 

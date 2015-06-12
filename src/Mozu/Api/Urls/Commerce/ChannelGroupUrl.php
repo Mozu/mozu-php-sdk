@@ -40,7 +40,7 @@ class ChannelGroupUrl  {
 	
 	/**
 		* Get Resource Url for GetChannelGroup
-		* @param string $code The code that uniquely identifies the channel group.
+		* @param string $code User-defined code that uniqely identifies the channel group.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -68,7 +68,7 @@ class ChannelGroupUrl  {
 	
 	/**
 		* Get Resource Url for UpdateChannelGroup
-		* @param string $code Code that identifies the channel group.
+		* @param string $code User-defined code that uniqely identifies the channel group.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/

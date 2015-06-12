@@ -15,8 +15,5 @@
         const X_VOL_VERSION 		= "x-vol-version";
         const X_VOL_DATAVIEW_MODE 	= "x-vol-dataview-mode";
         const CONTENT_TYPE			= "Content-Type";
-        const X_VOL_LOCALE          = "x-vol-locale";
-        const X_VOL_CURRENCY        = "x-vol-locale";
-        const DATE                  = "Date";
 	}
 ?>

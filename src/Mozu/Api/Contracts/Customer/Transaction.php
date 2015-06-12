@@ -24,15 +24,18 @@ class Transaction
 	*/
 	public $amount;
 
-		public $currencyCode;
+	/**
+	*The localized currency code for the monetary amount. 
+	*/
+	public $currencyCode;
 
 	/**
-	*The date and time the customer transaction occurred.
+	*The date and time recording for a customer action including a transaction and storefront visit.
 	*/
 	public $date;
 
 	/**
-	*The type of interaction the customer used to perform the transaction, which is "Website," "Call," "Store," or "Unknown."
+	*The type of payment interaction. The payment can be Capture or CheckReceived. The value also includes customer payment interactions such as Website, Call, Store, or Unknown.
 	*/
 	public $interactionType;
 
@@ -42,12 +45,12 @@ class Transaction
 	public $transactionId;
 
 	/**
-	*The type of transaction the customer performed, which is "Order," "Return," "OrderPickup," or "Wishlist."
+	*The type of transaction, pertaining to the transaction a customer performed or the type of customer credit. For customer credit, you will set the data to Debit to decrease or Credit to update. For the type of transaction, the type includes Order, Return, OrderPickup, or Wishlist.
 	*/
 	public $transactionType;
 
 	/**
-	*Unique identifier of the customer visit associated with the transaction. Customers can perform multiple transactions in the same visit.
+	*Unique identifier of the customer visit in which the cart was created or last modified.
 	*/
 	public $visitId;
 

@@ -40,7 +40,7 @@ class CreditUrl  {
 	
 	/**
 		* Get Resource Url for GetCredit
-		* @param string $code User-defined code that identifies the store credit to retrieve.
+		* @param string $code User-defined code that uniqely identifies the channel group.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -68,7 +68,7 @@ class CreditUrl  {
 	
 	/**
 		* Get Resource Url for AssociateCreditToShopper
-		* @param string $code The code that represents the credit to claim for the shopper.
+		* @param string $code User-defined code that uniqely identifies the channel group.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -82,8 +82,21 @@ class CreditUrl  {
 	}
 	
 	/**
+		* Get Resource Url for ResendCreditCreatedEmail
+		* @param string $code User-defined code that uniqely identifies the channel group.
+		* @return string Resource Url
+	*/
+	public static function resendCreditCreatedEmailUrl($code)
+	{
+		$url = "/api/commerce/customer/credits/{code}/Resend-Email";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("code", $code);
+		return $mozuUrl;
+	}
+	
+	/**
 		* Get Resource Url for UpdateCredit
-		* @param string $code User-defined code of the store credit to update.
+		* @param string $code User-defined code that uniqely identifies the channel group.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -98,7 +111,7 @@ class CreditUrl  {
 	
 	/**
 		* Get Resource Url for DeleteCredit
-		* @param string $code User-defined code of the store credit to delete.
+		* @param string $code User-defined code that uniqely identifies the channel group.
 		* @return string Resource Url
 	*/
 	public static function deleteCreditUrl($code)

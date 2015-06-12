@@ -14,11 +14,20 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 
+/**
+*	A group of product search terms to suggest to a customer based on defined queries.
+*/
 class SearchSuggestionGroup
 {
-		public $name;
+	/**
+	*The display name of the source product property. For a product field it will be the display name of the field. For a product attribute it will be the Attribute Name.
+	*/
+	public $name;
 
-		public $suggestions;
+	/**
+	*List of related SearchSuggestions
+	*/
+	public $suggestions;
 
 }
 

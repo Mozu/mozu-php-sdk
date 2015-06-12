@@ -19,7 +19,7 @@ class CartUrl  {
 
 	/**
 		* Get Resource Url for GetCart
-		* @param string $cartId Identifier of the cart to retrieve.
+		* @param string $cartId Identifier of the cart to delete.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -61,7 +61,7 @@ class CartUrl  {
 	/**
 		* Get Resource Url for GetUserCartSummary
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $userId Unique identifier of the user whose cart details you want to retrieve.
+		* @param string $userId Unique identifier of the user whose tenant scopes you want to retrieve.
 		* @return string Resource Url
 	*/
 	public static function getUserCartSummaryUrl($responseFields, $userId)
@@ -76,7 +76,7 @@ class CartUrl  {
 	/**
 		* Get Resource Url for GetUserCart
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $userId Unique identifier of the user whose cart you want to retrieve.
+		* @param string $userId Unique identifier of the user whose tenant scopes you want to retrieve.
 		* @return string Resource Url
 	*/
 	public static function getUserCartUrl($responseFields, $userId)

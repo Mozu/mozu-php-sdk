@@ -25,7 +25,7 @@ class ProductPurchasableState
 	public $isPurchasable;
 
 	/**
-	*List of messages associated with the product if the product is not ready for purchase.
+	*Array list of validation and status messages associated with shipping rates, orders, and product purchasable state.
 	*/
 	public $messages;
 

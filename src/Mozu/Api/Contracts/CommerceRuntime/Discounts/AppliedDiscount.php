@@ -25,7 +25,7 @@ class AppliedDiscount
 	public $couponCode;
 
 	/**
-	*If true, the system ignores this discount when pricing the order.
+	*Indicates if a discount is not used for the product or product line item in an order. If true, the system ignores this discount when pricing the order.
 	*/
 	public $excluded;
 
@@ -35,7 +35,7 @@ class AppliedDiscount
 	public $impact;
 
 	/**
-	*Discount currently applied to the cart or order.
+	*Name of the discount added and applied to a shopping cart and order for a shopper's purchase. 
 	*/
 	public $discount;
 

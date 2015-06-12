@@ -19,24 +19,45 @@ namespace Mozu\Api\Contracts\Content;
 */
 class DocumentType
 {
-		public $adminName;
-
-		public $documentTypeFQN;
-
-		public $installationPackage;
+	/**
+	*The administrator name associated with the object/data.
+	*/
+	public $adminName;
 
 	/**
-	*The name of the document type.
+	*Fully qualified name of the document type. 
+	*/
+	public $documentTypeFQN;
+
+	/**
+	*The package of document lists and content documents to be installed.
+	*/
+	public $installationPackage;
+
+	/**
+	*The display name of the source product property. For a product field it will be the display name of the field. For a product attribute it will be the Attribute Name.
 	*/
 	public $name;
 
-		public $namespace;
+	/**
+	*If applicable, the registered namespace associated with objects, used to generate the fully qualified name. If no namespace is defined, the namespace associated with the tenant is automatically assigned.
+	*/
+	public $namespace;
 
-		public $version;
+	/**
+	*The current version number of the order, wish list, document list, or document type list.
+	*/
+	public $version;
 
-		public $metadata;
+	/**
+	*Metadata content for entities, used by document lists, document type lists, document type, views, entity lists, and list views.
+	*/
+	public $metadata;
 
-		public $properties;
+	/**
+	*Collection of property attributes defined for the object. Properties are associated to all objects within Mozu, including documents, products, and product types.
+	*/
+	public $properties;
 
 }
 

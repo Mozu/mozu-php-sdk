@@ -1,7 +1,4 @@
 <?php
-
-namespace Mozu\Api\Resource\Commerce\Catalog\Admin;
-
 require_once __DIR__ . '/../../../../../../BaseTest.php';
 
 use Mozu\Tests\BaseTest;
@@ -9,7 +6,7 @@ use Mozu\Api\Resources\Commerce\Catalog\Admin\ProductResource;
 use Mozu\Api\Resources\Platform\TenantResource;
 use Mozu\Api\ApiContext;
 use Mozu\Api\DataViewMode;
-use Mozu\Api\ApiException;
+use GuzzleHttp\Promise;
 
 /**
  * Test class for ProductResource.
@@ -28,8 +25,19 @@ class ProductResourceTest extends BaseTest
      */
     protected function setUp()
     {
-    	$apiContext = new ApiContext($this->tenantId,0,1,0);
-        $this->object = new ProductResource($apiContext, DataViewMode::LIVE);
+        printf("Getting tenant");
+    	$tenantResource = new TenantResource();
+    	$tenantPromise = $tenantResource->getTenantAsync($this->tenantId);
+    	$tenantPromise->then(function($mozuResult) {
+            $apiContext = new ApiContext($mozuResult->json());
+            $this->object = new ProductResource($apiContext, DataViewMode::LIVE);
+        }, function($apiException) {
+            parent::printError($apiException);
+            throw $apiException;
+        });
+
+        $tenantPromise->wait();
+
     }
 
     /**
@@ -44,16 +52,19 @@ class ProductResourceTest extends BaseTest
      * @covers Mozu\Api\Resources\Commerce\Catalog\Admin\ProductResource::getProducts
      * @todo Implement testGetProducts().
      */
-    public function testGetProducts()
+    public function testGetProductsAsync()
     {
-    	try {
-	       $productCollection = $this->object->getProducts(0, 200);
-            $this->assertNotNull($productCollection->items);
-            $this->assertNotNull($productCollection->pageCount);
-    	} catch(ApiException $ex) {
-    		//echo $ex->getMessage();
-    	}
-       //var_dump($productCollection);
+        $promises = [
+            "product1" => $this->object->getProductAsync("AIRMOTION-SCIENCES-BSF09"),
+            "product2" => $this->object->getProductAsync("AIRMOTION-SCIENCES-BSF12"),
+            "product3" => $this->object->getProductAsync("AIRMOTION-SCIENCES-BSF15")
+        ];
+
+        $results = Promise\unwrap($promises);
+
+        $this->assertSame($results["product1"]->json()->productCode,"AIRMOTION-SCIENCES-BSF09" );
+        $this->assertSame($results["product2"]->json()->productCode,"AIRMOTION-SCIENCES-BSF12" );
+        $this->assertSame($results["product3"]->json()->productCode,"AIRMOTION-SCIENCES-BSF15" );
     }
 
     

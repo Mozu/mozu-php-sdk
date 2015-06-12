@@ -25,22 +25,22 @@ class ProductLocalizedContent
 	public $localeCode;
 
 	/**
-	*More detailed or full product description typically used for a product details page.
+	*Lengthy full description for a product description, displayed on product detail pages within the storefront.
 	*/
 	public $productFullDescription;
 
 	/**
-	*The descriptive brief product name.
+	*The name of the product that represents a line item in a taxable order or product bundle.
 	*/
 	public $productName;
 
 	/**
-	*Brief description of the product typically used when the product is displayed in a list or in search results.
+	*Brief text description of the product or component in a product bundle, typically used when the product is displayed in a list or in search results.
 	*/
 	public $productShortDescription;
 
 	/**
-	*List of product images associated with a product.
+	*List of image files associated with a product. This content may include the image file URL, name, and other information as available.
 	*/
 	public $productImages;
 

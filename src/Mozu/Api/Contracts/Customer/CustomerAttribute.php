@@ -30,7 +30,7 @@ class CustomerAttribute
 	public $fullyQualifiedName;
 
 	/**
-	*List of values for the attribute.
+	*List of value data for objects.
 	*/
 	public $values;
 

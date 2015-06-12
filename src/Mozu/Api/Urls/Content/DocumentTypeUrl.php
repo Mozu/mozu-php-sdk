@@ -64,7 +64,7 @@ class DocumentTypeUrl  {
 	
 	/**
 		* Get Resource Url for UpdateDocumentType
-		* @param string $documentTypeName 
+		* @param string $documentTypeName The name of the document type to retrieve.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/

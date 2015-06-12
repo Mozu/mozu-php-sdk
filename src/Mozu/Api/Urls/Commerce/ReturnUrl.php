@@ -40,7 +40,7 @@ class ReturnUrl  {
 	
 	/**
 		* Get Resource Url for GetAvailableReturnActions
-		* @param string $returnId Unique identifier of the return for which to retrieve available actions.
+		* @param string $returnId Unique identifier of the return whose items you want to get.
 		* @return string Resource Url
 	*/
 	public static function getAvailableReturnActionsUrl($returnId)
@@ -54,8 +54,8 @@ class ReturnUrl  {
 	/**
 		* Get Resource Url for GetReturnItem
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $returnId 
-		* @param string $returnItemId 
+		* @param string $returnId Unique identifier of the return whose items you want to get.
+		* @param string $returnItemId Unique identifier of the return item whose details you want to get.
 		* @return string Resource Url
 	*/
 	public static function getReturnItemUrl($responseFields, $returnId, $returnItemId)
@@ -71,7 +71,7 @@ class ReturnUrl  {
 	/**
 		* Get Resource Url for GetReturnItems
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $returnId 
+		* @param string $returnId Unique identifier of the return whose items you want to get.
 		* @return string Resource Url
 	*/
 	public static function getReturnItemsUrl($responseFields, $returnId)
@@ -86,7 +86,7 @@ class ReturnUrl  {
 	/**
 		* Get Resource Url for GetAvailablePaymentActionsForReturn
 		* @param string $paymentId Unique identifier of the payment for which to perform the action.
-		* @param string $returnId Unique identifier of the return associated with the payment.
+		* @param string $returnId Unique identifier of the return whose items you want to get.
 		* @return string Resource Url
 	*/
 	public static function getAvailablePaymentActionsForReturnUrl($paymentId, $returnId)
@@ -100,9 +100,9 @@ class ReturnUrl  {
 	
 	/**
 		* Get Resource Url for GetPayment
-		* @param string $paymentId Unique identifier of the return payment to retrieve.
+		* @param string $paymentId Unique identifier of the payment for which to perform the action.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $returnId Unique identifier of the return associated with the payment.
+		* @param string $returnId Unique identifier of the return whose items you want to get.
 		* @return string Resource Url
 	*/
 	public static function getPaymentUrl($paymentId, $responseFields, $returnId)
@@ -118,7 +118,7 @@ class ReturnUrl  {
 	/**
 		* Get Resource Url for GetPayments
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $returnId Returns the details of the refund payment associated with the return specified in the request.
+		* @param string $returnId Unique identifier of the return whose items you want to get.
 		* @return string Resource Url
 	*/
 	public static function getPaymentsUrl($responseFields, $returnId)
@@ -133,7 +133,7 @@ class ReturnUrl  {
 	/**
 		* Get Resource Url for GetReturn
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $returnId Returns the properties of the return specified in the request as well as system-supplied information.
+		* @param string $returnId Unique identifier of the return whose items you want to get.
 		* @return string Resource Url
 	*/
 	public static function getReturnUrl($responseFields, $returnId)
@@ -161,7 +161,7 @@ class ReturnUrl  {
 	/**
 		* Get Resource Url for CreateReturnItem
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $returnId 
+		* @param string $returnId Unique identifier of the return whose items you want to get.
 		* @return string Resource Url
 	*/
 	public static function createReturnItemUrl($responseFields, $returnId)
@@ -175,9 +175,9 @@ class ReturnUrl  {
 	
 	/**
 		* Get Resource Url for PerformPaymentActionForReturn
-		* @param string $paymentId Unique identifier of the return payment to update.
+		* @param string $paymentId Unique identifier of the payment for which to perform the action.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $returnId Unique identifier of the return associated with the refund payment.
+		* @param string $returnId Unique identifier of the return whose items you want to get.
 		* @return string Resource Url
 	*/
 	public static function performPaymentActionForReturnUrl($paymentId, $responseFields, $returnId)
@@ -193,7 +193,7 @@ class ReturnUrl  {
 	/**
 		* Get Resource Url for CreatePaymentActionForReturn
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $returnId Unique identifier of the return associated with the payment action.
+		* @param string $returnId Unique identifier of the return whose items you want to get.
 		* @return string Resource Url
 	*/
 	public static function createPaymentActionForReturnUrl($responseFields, $returnId)
@@ -221,7 +221,7 @@ class ReturnUrl  {
 	/**
 		* Get Resource Url for UpdateReturn
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $returnId Unique identifier of the return.
+		* @param string $returnId Unique identifier of the return whose items you want to get.
 		* @return string Resource Url
 	*/
 	public static function updateReturnUrl($responseFields, $returnId)
@@ -234,9 +234,20 @@ class ReturnUrl  {
 	}
 	
 	/**
+		* Get Resource Url for ResendReturnEmail
+		* @return string Resource Url
+	*/
+	public static function resendReturnEmailUrl()
+	{
+		$url = "/api/commerce/returns/email/resend";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		return $mozuUrl;
+	}
+	
+	/**
 		* Get Resource Url for DeleteOrderItem
-		* @param string $returnId 
-		* @param string $returnItemId 
+		* @param string $returnId Unique identifier of the return whose items you want to get.
+		* @param string $returnItemId Unique identifier of the return item whose details you want to get.
 		* @return string Resource Url
 	*/
 	public static function deleteOrderItemUrl($returnId, $returnItemId)
@@ -250,7 +261,7 @@ class ReturnUrl  {
 	
 	/**
 		* Get Resource Url for DeleteReturn
-		* @param string $returnId Unique identifier of the return to delete.
+		* @param string $returnId Unique identifier of the return whose items you want to get.
 		* @return string Resource Url
 	*/
 	public static function deleteReturnUrl($returnId)

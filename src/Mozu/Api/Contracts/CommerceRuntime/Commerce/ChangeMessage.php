@@ -25,12 +25,32 @@ class ChangeMessage
 	public $amount;
 
 	/**
+	*Unique identifier of an app available in your Mozu tenant or within Mozu Dev Center. This ID is unique across all apps installed, initialized, and enabled in the Mozu Admin and those in development through the Dev Center Console.
+	*/
+	public $appId;
+
+	/**
+	*App Key
+	*/
+	public $appKey;
+
+	/**
+	*App Name
+	*/
+	public $appName;
+
+	/**
+	*The unique identifier of the API request associated with the event action, which might contain multiple actions.
+	*/
+	public $correlationId;
+
+	/**
 	*Date and time when the entity was created, represented in UTC Date/Time.
 	*/
 	public $createDate;
 
 	/**
-	*Unique identifier of the change message. System-supplied and read-only.
+	*Unique identifier of the source product property. For a product field it will be the name of the field. For a product attribute it will be the Attribute FQN. 
 	*/
 	public $id;
 
@@ -40,9 +60,14 @@ class ChangeMessage
 	public $identifier;
 
 	/**
-	*The text of the change message, such as "This product is no longer available". System-supplied and read-only.
+	*The text of the change message, such as "This product is no longer available." System-supplied and read-only.
 	*/
 	public $message;
+
+	/**
+	*Metadata content for entities, used by document lists, document type lists, document type, views, entity lists, and list views.
+	*/
+	public $metadata;
 
 	/**
 	*The new value of the object affected by the change, such as the new price of the product. System-supplied and read-only.
@@ -70,9 +95,24 @@ class ChangeMessage
 	public $success;
 
 	/**
-	*The unique identifier of the user who initiated the change.
+	*User First Name
+	*/
+	public $userFirstName;
+
+	/**
+	*Unique identifier of the customer account (shopper or system user). System-supplied and read-only. If the shopper user is anonymous, the user ID represents a system-generated user ID string.
 	*/
 	public $userId;
+
+	/**
+	*User Last Name
+	*/
+	public $userLastName;
+
+	/**
+	*User Type (e.g. Shopper, Admin, etc.)
+	*/
+	public $userScopeType;
 
 	/**
 	*The action associated with this message. For example, if the price of a product changes, the verb could be "Increased" or "Decreased". If the product is no longer available, the verb could be "Invalidated". System-supplied and read-only.

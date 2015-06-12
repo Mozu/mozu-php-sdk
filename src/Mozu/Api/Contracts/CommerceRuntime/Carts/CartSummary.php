@@ -35,7 +35,7 @@ class CartSummary
 	public $itemCount;
 
 	/**
-	*Estimated total amount of the cart, including items, sales tax, shipping costs, and other fees.
+	*Total is used to indicate the monetary, estimated total amount of the cart or order, including items, sales tax, shipping costs, and other fees. Totals are not estimated for wish lists at this time.
 	*/
 	public $total;
 

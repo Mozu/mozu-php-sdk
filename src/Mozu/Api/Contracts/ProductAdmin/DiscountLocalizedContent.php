@@ -20,7 +20,7 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class DiscountLocalizedContent
 {
 	/**
-	*The localizable, shopper-facing description defined for the discount.
+	*The localizable, shopper-facing description defined for a discount or a storefront message. 
 	*/
 	public $friendlyDescription;
 
@@ -30,7 +30,7 @@ class DiscountLocalizedContent
 	public $localeCode;
 
 	/**
-	*The localizable name of the discount.
+	*The display name of the source product property. For a product field it will be the display name of the field. For a product attribute it will be the Attribute Name.
 	*/
 	public $name;
 

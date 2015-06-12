@@ -33,7 +33,7 @@ class ProductTypeExtraUrl  {
 	/**
 		* Get Resource Url for GetExtra
 		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-		* @param int $productTypeId Identifier of the product type whose extra is being retrieved.
+		* @param int $productTypeId Identifier of the product type.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/

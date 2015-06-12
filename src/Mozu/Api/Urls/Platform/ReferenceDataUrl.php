@@ -62,7 +62,7 @@ class ReferenceDataUrl  {
 	
 	/**
 		* Get Resource Url for GetBehaviorCategory
-		* @param int $categoryId Unique identifier of the behavior category.
+		* @param int $categoryId Unique identifier of the category to modify.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -131,7 +131,7 @@ class ReferenceDataUrl  {
 	
 	/**
 		* Get Resource Url for GetCountriesWithStates
-		* @param string $responseFields 
+		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
 		* @return string Resource Url
 	*/
 	public static function getCountriesWithStatesUrl($responseFields)

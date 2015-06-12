@@ -15,7 +15,7 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 /**
-*	Collection of products and their related properties.
+*	The container for a set of products.
 */
 class ProductCollection
 {

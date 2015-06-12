@@ -19,8 +19,8 @@ class ProductVariationUrl  {
 
 	/**
 		* Get Resource Url for GetProductVariationLocalizedDeltaPrices
-		* @param string $productCode 
-		* @param string $variationKey 
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+		* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
 		* @return string Resource Url
 	*/
 	public static function getProductVariationLocalizedDeltaPricesUrl($productCode, $variationKey)
@@ -34,10 +34,10 @@ class ProductVariationUrl  {
 	
 	/**
 		* Get Resource Url for GetProductVariationLocalizedDeltaPrice
-		* @param string $currencyCode 
-		* @param string $productCode 
+		* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $variationKey 
+		* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
 		* @return string Resource Url
 	*/
 	public static function getProductVariationLocalizedDeltaPriceUrl($currencyCode, $productCode, $responseFields, $variationKey)
@@ -93,9 +93,9 @@ class ProductVariationUrl  {
 	
 	/**
 		* Get Resource Url for AddProductVariationLocalizedDeltaPrice
-		* @param string $productCode 
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $variationKey 
+		* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
 		* @return string Resource Url
 	*/
 	public static function addProductVariationLocalizedDeltaPriceUrl($productCode, $responseFields, $variationKey)
@@ -110,8 +110,8 @@ class ProductVariationUrl  {
 	
 	/**
 		* Get Resource Url for UpdateProductVariationLocalizedDeltaPrices
-		* @param string $productCode 
-		* @param string $variationKey 
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+		* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
 		* @return string Resource Url
 	*/
 	public static function updateProductVariationLocalizedDeltaPricesUrl($productCode, $variationKey)
@@ -125,10 +125,10 @@ class ProductVariationUrl  {
 	
 	/**
 		* Get Resource Url for UpdateProductVariationLocalizedDeltaPrice
-		* @param string $currencyCode 
-		* @param string $productCode 
+		* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $variationKey 
+		* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
 		* @return string Resource Url
 	*/
 	public static function updateProductVariationLocalizedDeltaPriceUrl($currencyCode, $productCode, $responseFields, $variationKey)
@@ -162,7 +162,7 @@ class ProductVariationUrl  {
 	/**
 		* Get Resource Url for UpdateProductVariations
 		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-		* @param string $responseFields 
+		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
 		* @return string Resource Url
 	*/
 	public static function updateProductVariationsUrl($productCode, $responseFields)
@@ -191,9 +191,9 @@ class ProductVariationUrl  {
 	
 	/**
 		* Get Resource Url for DeleteProductVariationLocalizedDeltaPrice
-		* @param string $currencyCode 
-		* @param string $productCode 
-		* @param string $variationKey 
+		* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+		* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
 		* @return string Resource Url
 	*/
 	public static function deleteProductVariationLocalizedDeltaPriceUrl($currencyCode, $productCode, $variationKey)

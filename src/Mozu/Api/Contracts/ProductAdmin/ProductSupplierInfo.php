@@ -25,7 +25,7 @@ class ProductSupplierInfo
 	public $distPartNumber;
 
 	/**
-	*The manufacturer part number associated with this product, defined by the product manufacturer.
+	*The manufacturer's part number for the product.
 	*/
 	public $mfgPartNumber;
 

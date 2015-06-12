@@ -2,19 +2,13 @@
 namespace Mozu\Api\Security;
 
 use DateTime;
-use Mozu\Api\Security\UserAuthTicket;
-use Mozu\Api\Security\Scope;
-use Mozu\Api\Security\AuthenticationScope;
-use Mozu\Api\Security\AuthenticationProfile;
+use Mozu\Api\Headers;
+use Mozu\Api\MozuConfig;
 use Mozu\Api\Contracts\Core\UserAuthInfo;
-use Mozu\Api\Contracts\Core\UserProfile;
-use Mozu\Api\Security\AppAuthenticator;
-use Guzzle\Http\Client as Client;
-use Guzzle\Http\Message\Request;
+use GuzzleHttp\Client;
 use Mozu\Api\Utilities\HttpHelper;
 use Mozu\Api\Urls\Platform\Adminuser\TenantAdminUserAuthTicketUrl;
 use Mozu\Api\Urls\Platform\Developer\DeveloperAdminUserAuthTicketUrl;
-use Mozu\Api\MozuUrl;
 
 class UserAuthenticator {
 	
@@ -28,10 +22,7 @@ class UserAuthenticator {
 		$dateTimeNow = new DateTime();
 		$accessTokenExpiration = strtotime($authTicket->accessTokenExpiration);
 		$accessTokenExpiratonDate =  new DateTime("@$accessTokenExpiration");
-		
-		//echo $dateTimeNow->format('Y-m-d H:i:s');
-		//echo $accessTokenExpiratonDate->format('Y-m-d H:i:s');
-		
+
 		if ($dateTimeNow >= $accessTokenExpiratonDate)
 			return static::refreshUserAuthTicket($authTicket);
 	
@@ -43,13 +34,13 @@ class UserAuthenticator {
 		try {
 			$authentication = AppAuthenticator::getInstance();
 			$resourceUrl = static::getResourceRefreshUrl($authTicket, $id);
-		
-			
-			$client = new Client ( $authentication->getBaseUrl(), HttpHelper::getGuzzleConfig() );
-			$request = $client->put( $resourceUrl  );
-			$request->setBody ( json_encode($authTicket), 'application/json' );
-			$authentication->addAuthHeader($request);
-			$response = $request->send();
+
+            $client = new Client ( [ 'base_uri' =>  MozuConfig::$baseAppAuthUrl, 'verify' => false ]);
+            $headers = ["content-type" => "application/json", Headers::X_VOL_APP_CLAIMS=>$authentication->getAppClaim()];
+
+            $body = json_encode($authTicket);
+            $promise = $client->requestAsync("PUT", $resourceUrl,['headers'=>$headers,'body'=>$body,'exceptions'=>true]);
+            $response = $promise->wait();
 			$jsonResp = $response->getBody ( true );
 			$authResponse = json_decode ( $jsonResp );
 			
@@ -64,32 +55,36 @@ class UserAuthenticator {
 		try {
 			$authentication = AppAuthenticator::getInstance();
 			$resourceUrl = static::getResourceUrl($scope, $id);
-		
-			$client = new Client ( $authentication->getBaseUrl(), HttpHelper::getGuzzleConfig() );
-			$request = $client->post( $resourceUrl  );
-			$request->setBody ( json_encode($userAuthInfo), 'application/json' );
-			$authentication->addAuthHeader($request);
-			$response = $request->send();
-			$jsonResp = $response->getBody ( true );
-			$authResponse = json_decode ( $jsonResp );
-	
+
+            $client = new Client ( [ 'base_uri' =>  MozuConfig::$baseAppAuthUrl, 'verify' => false ]);
+
+            $headers = ["content-type" => "application/json",Headers::X_VOL_APP_CLAIMS => $authentication->getAppClaim()];
+
+            $body = json_encode($userAuthInfo);
+
+            $promise = $client->requestAsync("POST", $resourceUrl,['headers'=>$headers,'body'=>$body,'exceptions'=>true]);
+            $response = $promise->wait();
+            $jsonResp = $response->getBody ( true );
+
+    		$authResponse = json_decode ( $jsonResp );
 			return static::setUserAuth($authResponse, $scope);
 		} catch(\Exception $e){
 			HttpHelper::checkError($e);
 		}
 	}
 	
-	public static function Logout(UserAuthTicket $authTicket)
+	public static function logout(UserAuthTicket $authTicket)
 	{
 		try {
 			$authentication = AppAuthenticator::getInstance();
-			
+            //var_dump($authTicket);
 			$resourceUrl = static::getLogoutUrl($authTicket);
-			
-			$client = new Client ( $authentication->getBaseUrl() );
-			$request = $client->delete( $resourceUrl  );
-			$authentication->addAuthHeader($request);
-			$response = $request->send();
+
+            $client = new Client ( [ 'base_uri' =>  MozuConfig::$baseAppAuthUrl, 'verify' => false ]);
+            $headers = ["content-type" => "application/json", Headers::X_VOL_APP_CLAIMS => $authentication->getAppClaim()];
+            var_dump($headers);
+            $promise = $client->requestAsync("DELETE", $resourceUrl,['headers'=>$headers,'exceptions'=>true]);
+            $promise->wait();
 		} catch(\Exception $e) {
 			HttpHelper::checkError($e);
 		}
@@ -140,9 +135,9 @@ class UserAuthenticator {
 		switch ($authTicket->authenticationScope)
 		{
 			case AuthenticationScope::TENANT:
-				return TenantAdminUserAuthTicketUrl::refreshAuthTicketUrl($id)->getUrl();
+				return TenantAdminUserAuthTicketUrl::refreshAuthTicketUrl($id,null)->getUrl();
 			case AuthenticationScope::DEVELOEPR:
-				return DeveloperAdminUserAuthTicketUrl::refreshDeveloperAuthTicketUrl($id)->getUrl();
+				return DeveloperAdminUserAuthTicketUrl::refreshDeveloperAuthTicketUrl($id,null)->getUrl();
 			default:
 				throw new \Exception("Not Implemented");
 		}
@@ -153,9 +148,9 @@ class UserAuthenticator {
 		switch ($scope)
 		{
 			case AuthenticationScope::TENANT:
-				return TenantAdminUserAuthTicketUrl::createUserAuthTicketUrl($id)->getUrl();
+				return TenantAdminUserAuthTicketUrl::createUserAuthTicketUrl($id,null)->getUrl();
 			case AuthenticationScope::DEVELOEPR:
-				return DeveloperAdminUserAuthTicketUrl::createDeveloperUserAuthTicketUrl($id)->getUrl();
+				return DeveloperAdminUserAuthTicketUrl::createDeveloperUserAuthTicketUrl($id,null)->getUrl();
 			default:
 				throw new \Exception("Not Implemented");
 		}
@@ -163,12 +158,13 @@ class UserAuthenticator {
 	
 	private static function getLogoutUrl(UserAuthTicket $ticket)
 	{
-		switch ($ticket->getUserScope())
+		switch ($ticket->authenticationScope)
 		{
 			case AuthenticationScope::TENANT:
-				return TenantAdminUserAuthTicketUrl::deleteUserAuthTicketUrl($ticket->getRefreshToken())->getUrl();
+				return TenantAdminUserAuthTicketUrl::deleteUserAuthTicketUrl($ticket->getRefreshToken)->getUrl();
 			case AuthenticationScope::DEVELOEPR:
-				return DeveloperAdminUserAuthTicketUrl::deleteUserAuthTicketUrl($ticket->getRefreshToken())->getUrl();
+                var_dump($ticket->refreshToken);
+				return DeveloperAdminUserAuthTicketUrl::deleteUserAuthTicketUrl($ticket->refreshToken)->getUrl();
 			default:
 				throw new \Exception("Not Implemented");
 		}

@@ -19,7 +19,10 @@ namespace Mozu\Api\Contracts\Content;
 */
 class DocumentList
 {
-		public $documentListType;
+	/**
+	*The type of the document list, containing content for a site. For example, a list type could be web pages.
+	*/
+	public $documentListType;
 
 	/**
 	*List of document types associated with this document list.
@@ -27,35 +30,59 @@ class DocumentList
 	public $documentTypes;
 
 	/**
-	*If true, publishing of draft documents in this document list is enabled for the site. If false, all document changes are immediately published in live mode.
+	*Indicates if the document list and document list type are enabled to publish. If true, publishing of draft documents in this document list/document list type is enabled for the site. If false, all document changes are immediately published in live mode.
 	*/
 	public $enablePublishing;
 
-		public $listFQN;
+	/**
+	*The fully qualified name of the document list.
+	*/
+	public $listFQN;
 
 	/**
-	*The name of the document list.
+	*The display name of the source product property. For a product field it will be the display name of the field. For a product attribute it will be the Attribute Name.
 	*/
 	public $name;
 
-		public $namespace;
-
-		public $scopeId;
-
-		public $scopeType;
-
-		public $security;
+	/**
+	*If applicable, the registered namespace associated with objects, used to generate the fully qualified name. If no namespace is defined, the namespace associated with the tenant is automatically assigned.
+	*/
+	public $namespace;
 
 	/**
-	*If true, changes documents in this list can be saved as drafts until they are published to the site. If false, all document changes are immediately published in live mode. System-supplied and read only.
+	*The ID of the specific scope for the object. 
+	*/
+	public $scopeId;
+
+	/**
+	*The scope at which the object exists, such as "Tenant", "MasterCatalog", or "Site". Scope delineates the level and area of Mozu the object exists within or affects.
+	*/
+	public $scopeType;
+
+	/**
+	*Indicates the security level for the document content as public, administrator, or owner.
+	*/
+	public $security;
+
+	/**
+	*Indicates if modified documents are published automatically or saved to publish at a later time. If true, changed documents in this list can be saved as drafts until they are published to the site. If false, all document changes are immediately published in live mode. System-supplied and read only.
 	*/
 	public $supportsPublishing;
 
-		public $usages;
+	/**
+	*List description of usages for content within a view and scope.
+	*/
+	public $usages;
 
-		public $metadata;
+	/**
+	*Metadata content for entities, used by document lists, document type lists, document type, views, entity lists, and list views.
+	*/
+	public $metadata;
 
-		public $views;
+	/**
+	*The view in the site used by associated entities or document lists/list types.
+	*/
+	public $views;
 
 }
 

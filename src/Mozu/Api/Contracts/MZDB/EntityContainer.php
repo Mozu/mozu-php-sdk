@@ -14,39 +14,75 @@ namespace Mozu\Api\Contracts\MZDB;
 
 
 
+/**
+*	Properties of the EntityContainer within a specific tenant and site.
+*/
 class EntityContainer
 {
-		public $catalogId;
+	/**
+	*The unique identifier for the product catalog. Catalogs are part of a master catalog.
+	*/
+	public $catalogId;
 
-		public $createBy;
+	/**
+	*Identifier of the user that created the object. System created and read only.
+	*/
+	public $createBy;
 
-		public $createDate;
+	/**
+	*The date time in UTC format set when the object was created. 
+	*/
+	public $createDate;
 
-		public $id;
+	/**
+	*Unique identifier of the source product property. For a product field it will be the name of the field. For a product attribute it will be the Attribute FQN. 
+	*/
+	public $id;
 
-		public $listFullName;
+	/**
+	*The nameSpace and name for the EntityList in the format name@nameSpace.
+	*/
+	public $listFullName;
 
 	/**
 	*Language used for the entity. Currently, only "en-US" is supported.
 	*/
 	public $localeCode;
 
-		public $masterCatalogId;
+	/**
+	*Unique identifier for the master catalog. 
+	*/
+	public $masterCatalogId;
 
-		public $siteId;
+	/**
+	*Unique identifier for the site. This ID is used at all levels of a store, catalog, and tenant to associate objects to a site.
+	*/
+	public $siteId;
 
 	/**
 	*Unique identifier of the Mozu tenant.
 	*/
 	public $tenantId;
 
-		public $updateBy;
+	/**
+	*Identifier of the user that updated the entity most recently.
+	*/
+	public $updateBy;
 
-		public $updateDate;
+	/**
+	*The date and time the object was updated most recently. The date is in UTC format.
+	*/
+	public $updateDate;
 
-		public $userId;
+	/**
+	*Unique identifier of the customer account (shopper or system user). System-supplied and read-only. If the shopper user is anonymous, the user ID represents a system-generated user ID string.
+	*/
+	public $userId;
 
-		public $item;
+	/**
+	*The entity in JSON format.
+	*/
+	public $item;
 
 }
 

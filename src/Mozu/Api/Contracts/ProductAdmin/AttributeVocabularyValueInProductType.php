@@ -20,16 +20,19 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class AttributeVocabularyValueInProductType
 {
 	/**
-	*Sequence of the attribute value within the product type.
+	*Integer that represents the sequence order of the attribute.
 	*/
 	public $order;
 
 	/**
-	*The vocabulary value of an attribute defined for a product type.
+	*The value of a property, used by numerous objects within Mozu including facets, attributes, products, localized content, metadata, capabilities (Mozu and third-party), location inventory adjustment, and more. The value may be a string, integer, or double. Validation may be run against the entered and saved values depending on the object type.
 	*/
 	public $value;
 
-		public $displayInfo;
+	/**
+	*Defines the intended display of this attribute in the storefront. Options include Drop Down, Image Picker, and Radio Buttons.
+	*/
+	public $displayInfo;
 
 	/**
 	*Navigates vocabulary value details for an attribute defined for a product type.

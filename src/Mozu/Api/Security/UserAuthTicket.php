@@ -8,7 +8,6 @@ class UserAuthTicket extends AuthTicket {
 	public $authenticationScope;
 	public $siteId;
 	public $tenantId;
-	 
 }
 
 ?>

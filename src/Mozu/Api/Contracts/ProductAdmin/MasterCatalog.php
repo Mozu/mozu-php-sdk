@@ -15,7 +15,7 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 /**
-*	Properties of a master catalog associated with a tenant.
+*	Properties of a master product catalog defined for a tenant. All catalogs and sites associated with a master catalog share product definitions.
 */
 class MasterCatalog
 {
@@ -24,10 +24,13 @@ class MasterCatalog
 	*/
 	public $id;
 
-		public $isDeleted;
+	/**
+	*Indicates if the object is deleted. If true, the object has been deleted. This may affect associated child members and objects. For example, a deleted master catalog affects all associated catalogs. 
+	*/
+	public $isDeleted;
 
 	/**
-	*The name of the master catalog.
+	*The display name of the source product property. For a product field it will be the display name of the field. For a product attribute it will be the Attribute Name.
 	*/
 	public $name;
 

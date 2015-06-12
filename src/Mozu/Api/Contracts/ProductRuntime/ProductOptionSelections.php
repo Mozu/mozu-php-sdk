@@ -20,12 +20,12 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 class ProductOptionSelections
 {
 	/**
-	*Product code that represents the product variation selected based on the option values the shopper entered.
+	*Merchant-created code associated with a specific product variation. Variation product codes maintain an association with the base product code.
 	*/
 	public $variationProductCode;
 
 	/**
-	*List of option attributes associated with the product and the associated values currently defined for this product configuration.
+	*List of option attributes configured for an object. These values are associated and used by products, product bundles, and product types.
 	*/
 	public $options;
 

@@ -40,7 +40,7 @@ class InStockNotificationSubscriptionUrl  {
 	
 	/**
 		* Get Resource Url for GetInStockNotificationSubscription
-		* @param int $id Unique identifier of the in-stock notification subscription to retrieve.
+		* @param int $id Unique identifier of the customer segment to retrieve.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -68,7 +68,7 @@ class InStockNotificationSubscriptionUrl  {
 	
 	/**
 		* Get Resource Url for DeleteInStockNotificationSubscription
-		* @param int $id Unique identifier of the customer in-stock notification subscription to delete.
+		* @param int $id Unique identifier of the customer segment to retrieve.
 		* @return string Resource Url
 	*/
 	public static function deleteInStockNotificationSubscriptionUrl($id)

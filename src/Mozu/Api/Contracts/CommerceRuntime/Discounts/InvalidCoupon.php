@@ -26,15 +26,18 @@ class InvalidCoupon
 	*/
 	public $createDate;
 
-		public $discountId;
+	/**
+	*Unique identifier for the discount in the storefront.
+	*/
+	public $discountId;
 
 	/**
-	*The reason the coupon was determined to be invalid.
+	*The reason description for an action, including item return, coupon not valid, and item is taxed. 
 	*/
 	public $reason;
 
 	/**
-	*The code that identifies the reason the coupon code is invalid.
+	*A code indicating the reason why a facet is invalid.
 	*/
 	public $reasonCode;
 

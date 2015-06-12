@@ -20,7 +20,7 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Returns;
 class ReturnAction
 {
 	/**
-	*The name of the action to perform for the return.
+	*The name of the fulfillment action to perform for the purchased product. Options include "Ship" or "PickUp" (in-store pick-up).
 	*/
 	public $actionName;
 

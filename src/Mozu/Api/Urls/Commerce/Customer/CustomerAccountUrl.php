@@ -23,7 +23,7 @@ class CustomerAccountUrl  {
 		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 		* @param bool $isAnonymous If true, retrieve anonymous shopper accounts in the response.
 		* @param int $pageSize 
-		* @param string $q A list of customer account search terms to use in the query when searching across customer name and email. Separate multiple search terms with a space character.
+		* @param string $q A list of order search terms (not phrases) to use in the query when searching across order number and the name or email of the billing contact. When entering, separate multiple search terms with a space character.
 		* @param int $qLimit The maximum number of search results to return in the response. You can limit any range between 1-100.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param string $sortBy 
@@ -63,7 +63,7 @@ class CustomerAccountUrl  {
 	
 	/**
 		* Get Resource Url for GetAccount
-		* @param int $accountId Unique identifier of the customer account to retrieve.
+		* @param int $accountId Unique identifier of the customer account.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -91,14 +91,16 @@ class CustomerAccountUrl  {
 	
 	/**
 		* Get Resource Url for ChangePassword
-		* @param int $accountId The customer account information required to change the userpassword.
+		* @param int $accountId Unique identifier of the customer account.
+		* @param bool $unlockAccount 
 		* @return string Resource Url
 	*/
-	public static function changePasswordUrl($accountId)
+	public static function changePasswordUrl($accountId, $unlockAccount)
 	{
-		$url = "/api/commerce/customer/accounts/{accountId}/Change-Password";
+		$url = "/api/commerce/customer/accounts/{accountId}/Change-Password?unlockAccount={unlockAccount}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
 		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		$url = $mozuUrl->formatUrl("unlockAccount", $unlockAccount);
 		return $mozuUrl;
 	}
 	
@@ -119,7 +121,7 @@ class CustomerAccountUrl  {
 	
 	/**
 		* Get Resource Url for RecomputeCustomerLifetimeValue
-		* @param int $accountId The unique identifier of the customer account for which to calculate customer lifetime value.
+		* @param int $accountId Unique identifier of the customer account.
 		* @return string Resource Url
 	*/
 	public static function recomputeCustomerLifetimeValueUrl($accountId)
@@ -132,7 +134,7 @@ class CustomerAccountUrl  {
 	
 	/**
 		* Get Resource Url for SetLoginLocked
-		* @param int $accountId The unique identifier of the customer account.
+		* @param int $accountId Unique identifier of the customer account.
 		* @return string Resource Url
 	*/
 	public static function setLoginLockedUrl($accountId)
@@ -177,6 +179,19 @@ class CustomerAccountUrl  {
 	public static function addAccountsUrl($responseFields)
 	{
 		$url = "/api/commerce/customer/accounts/Bulk?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for ChangePasswords
+		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+		* @return string Resource Url
+	*/
+	public static function changePasswordsUrl($responseFields)
+	{
+		$url = "/api/commerce/customer/accounts/Change-Passwords?responseFields={responseFields}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
 		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
@@ -240,7 +255,7 @@ class CustomerAccountUrl  {
 	
 	/**
 		* Get Resource Url for DeleteAccount
-		* @param int $accountId Unique identifier of the customer account to delete.
+		* @param int $accountId Unique identifier of the customer account.
 		* @return string Resource Url
 	*/
 	public static function deleteAccountUrl($accountId)

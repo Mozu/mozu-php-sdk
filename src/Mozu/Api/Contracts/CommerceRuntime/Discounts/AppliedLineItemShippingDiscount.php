@@ -20,19 +20,22 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Discounts;
 class AppliedLineItemShippingDiscount
 {
 	/**
-	*The number of the line item that is used for this particular discount.
+	*The number of the line items that are used for this particular discount.
 	*/
 	public $discountQuantity;
 
 	/**
-	*The impact of this discount for each discount quantity.
+	*The impact of a discount for each discount quantity. 
 	*/
 	public $impactPerUnit;
 
-		public $methodCode;
+	/**
+	*Carrier-supplied, unique code that represents the shipping method service type associated with the shipping discount.
+	*/
+	public $methodCode;
 
 	/**
-	*This describes shipping discounts that apply to a line item in the order, if any.
+	*Name of the discount added and applied to a shopping cart and order for a shopper's purchase. 
 	*/
 	public $discount;
 

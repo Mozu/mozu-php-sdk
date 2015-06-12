@@ -1,10 +1,6 @@
 <?php
-
-namespace Mozu\Api\Resource\Commerce\Catalog\Storefront;
-
 require_once __DIR__ . '/../../../../../../BaseTest.php';
 
-use Mozu\Api\ApiException;
 use Mozu\Tests\BaseTest;
 use Mozu\Api\Resources\Commerce\Catalog\Storefront\ProductResource;
 use Mozu\Api\ApiContext;
@@ -43,14 +39,15 @@ class ProductResourceTest extends BaseTest
      * @covers Mozu\Api\Resources\Commerce\Catalog\Admin\ProductResource::getProducts
      * @todo Implement testGetProducts().
      */
-    public function testGetProducts()
+    public function testGetProductsAsync()
     {
-        try {
-            $productInventoryCollection = $this->object->getProductInventory("AC-99");
-            $this->assertNotEmpty($productInventoryCollection);
-        } catch(ApiException $exc) {
-            $this->fail($exc->getMessage());
-        }
+       $promise = $this->object->getProductInventoryAsync("AC-99");
+       $promise->then(function($mozuResult){
+           var_dump($mozuResult);
+       }, function($apiException){
+           parent::printError($apiException);
+           $this->fail($apiException->getMessage());
+       });
 
     }
 

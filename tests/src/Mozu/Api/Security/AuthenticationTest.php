@@ -1,8 +1,5 @@
 <?php
 
-
-
-
 use Mozu\Api\Security\AppAuthenticator;
 use Mozu\Tests\BaseTest;
 require_once __DIR__ . '/../../../../../src/Mozu/Api/Security/AppAuthenticator.php';
@@ -13,8 +10,8 @@ require_once __DIR__ . '/../../../BaseTest.php';
  */
 class AuthenticationTest extends BaseTest
 {
-
     protected $object;
+    private $log;
 
     /**
      * Sets up the fixture, for example, opens a network connection.
@@ -22,6 +19,7 @@ class AuthenticationTest extends BaseTest
      */
     protected function setUp()
     {
+        $this->log = Logger::getLogger("AuthenticatonTest");
     }
 
     /**
@@ -57,6 +55,7 @@ class AuthenticationTest extends BaseTest
      */
     public function testGetAuthTicket()
     {
+        $this->log->info('Testing getAuthTicket');
     	$authentication = AppAuthenticator::getInstance();
     	$this->assertNotNull($authentication->getAuthTicket());
         $this->assertNotNull($authentication->getAuthTicket()->accessToken);

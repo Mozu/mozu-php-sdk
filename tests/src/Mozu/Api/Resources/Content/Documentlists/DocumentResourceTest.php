@@ -1,10 +1,7 @@
 <?php
 
-namespace Mozu\Api\Resources\Content\Documentlists;
-
 require_once __DIR__ . '/../../../../../BaseTest.php';
 
-use Mozu\Api\ApiException;
 use Mozu\Tests\BaseTest;
 use Mozu\Api\ApiContext;
 use Mozu\Api\DataViewMode;
@@ -47,24 +44,41 @@ class DocumentResourceTest extends BaseTest
      */
     public function testGetDocumentContent()
     {
-        try{
-            $content = $this->object->getDocumentContent("9c363f6e-117b-4bf5-94a1-270359d933c5", "files");
-            file_put_contents ("d:\phpdownload.jpg" , $content);
-        } catch(ApiException $ex) {
-            $this->fail($ex->getMessage());
+        try {
+            $content = $this->object->getDocumentContent("files@mozu","c0e31b00-0a36-445d-94e2-8c8b670739b4");
+            file_put_contents("c:\\files\\phpdownload.jpg", $content);
+        } catch(\Exception $e) {
+            parent::printError($e);
+            $this->fail($e->getMessage());
         }
-
     }
 
-    
-   	public function testUpdateDocumentContent() {
-        try{
-            $file = file_get_contents("D:\Seismic\images\SAHDL102-0.jpg");
-            $this->object->updateDocumentContent(DataViewMode::LIVE, $file, "9c363f6e-117b-4bf5-94a1-270359d933c5", "files", "image/jpg");
-        } catch(ApiException $ex) {
-            $this->fail($ex->getMessage());
-        }
 
+    /**
+     * @covers Mozu\Api\Resources\Content\Documentlists\DocumentResource::getDocumentContent
+     */
+    public function testGetDocumentContentNotFound()
+    {
+        try {
+            $content = $this->object->getDocumentContent("files@mozu","d2e80a00-40f9-4f89-a065-b6a27db2b4c3");
+           $this->assertNull($content);
+        } catch(\Exception $e) {
+            parent::printError($e);
+            $this->fail($e->getMessage());
+        }
+    }
+
+
+    public function testUpdateDocumentContent() {
+        $file = file_get_contents("C:\\files\\phpdownload.jpg");
+        $promise = $this->object->updateDocumentContentAsync($file, "files@mozu", "1bab2900-e57e-4c5b-83be-183edeef9bda", "image/jpg");
+        $promise->then(function($mozuResult){
+            printf($mozuResult->correlationId);
+        }, function($apiException){
+            parent::printError($apiException);
+            $this->fail($apiException->getMessage());
+        });
+        $promise->wait();
    	}
 }
 ?>

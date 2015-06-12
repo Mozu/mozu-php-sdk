@@ -20,7 +20,7 @@ namespace Mozu\Api\Contracts\Tenant;
 class Tenant
 {
 	/**
-	*The domain information associated with the tenant.
+	*The domain associated with the site and/or tenant.
 	*/
 	public $domain;
 
@@ -30,12 +30,12 @@ class Tenant
 	public $id;
 
 	/**
-	*If true, the tenant represents a collection of master catalogs and catalogs for a development tenant, used by a developer account to test applications and themes.
+	*Indicates if the tenant is a development tenant. If true, the tenant represents a collection of master catalogs and catalogs for a development tenant, used by a developer account to test applications and themes.
 	*/
 	public $isDevTenant;
 
 	/**
-	*The name of the tenant.
+	*The display name of the source product property. For a product field it will be the display name of the field. For a product attribute it will be the Attribute Name.
 	*/
 	public $name;
 

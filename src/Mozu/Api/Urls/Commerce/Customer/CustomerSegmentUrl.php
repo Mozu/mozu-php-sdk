@@ -68,7 +68,7 @@ class CustomerSegmentUrl  {
 	
 	/**
 		* Get Resource Url for AddSegmentAccounts
-		* @param int $id Unique identifier of the customer segment for which to add the associated customer accounts.
+		* @param int $id Unique identifier of the customer segment to retrieve.
 		* @return string Resource Url
 	*/
 	public static function addSegmentAccountsUrl($id)
@@ -81,7 +81,7 @@ class CustomerSegmentUrl  {
 	
 	/**
 		* Get Resource Url for UpdateSegment
-		* @param int $id Unique identifier of the customer segment.
+		* @param int $id Unique identifier of the customer segment to retrieve.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -96,7 +96,7 @@ class CustomerSegmentUrl  {
 	
 	/**
 		* Get Resource Url for DeleteSegment
-		* @param int $id Unique identifier of the customer segment to delete.
+		* @param int $id Unique identifier of the customer segment to retrieve.
 		* @return string Resource Url
 	*/
 	public static function deleteSegmentUrl($id)
@@ -109,8 +109,8 @@ class CustomerSegmentUrl  {
 	
 	/**
 		* Get Resource Url for RemoveSegmentAccount
-		* @param int $accountId 
-		* @param int $id 
+		* @param int $accountId Unique identifier of the customer account.
+		* @param int $id Unique identifier of the customer segment to retrieve.
 		* @return string Resource Url
 	*/
 	public static function removeSegmentAccountUrl($accountId, $id)

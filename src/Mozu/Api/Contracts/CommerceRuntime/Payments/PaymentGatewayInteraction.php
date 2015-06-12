@@ -25,12 +25,12 @@ class PaymentGatewayInteraction
 	public $gatewayAuthCode;
 
 	/**
-	*AVS codes supplied by the payment gateway.
+	*AVS (Address Verification Service) codes supplied by the payment gateway. The codes indicate partial to complete or failed matches against the billing address for the shopper against the financial institute data through the gateway.
 	*/
 	public $gatewayAVSCodes;
 
 	/**
-	*CVV2 codes supplied by the payment gateway.
+	*CVV2 (Card Verification Value) codes supplied by the payment gateway. The codes indicate a verified or failed match of the encrypted code entered against the financial institution data through the gateway.
 	*/
 	public $gatewayCVV2Codes;
 
@@ -45,7 +45,7 @@ class PaymentGatewayInteraction
 	public $gatewayResponseCode;
 
 	/**
-	*Textual message returned by the payment gateway.
+	*Textual message returned by the payment gateway for the associated success or failure code.
 	*/
 	public $gatewayResponseText;
 

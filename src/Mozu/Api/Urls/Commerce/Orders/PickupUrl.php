@@ -19,8 +19,8 @@ class PickupUrl  {
 
 	/**
 		* Get Resource Url for GetAvailablePickupFulfillmentActions
-		* @param string $orderId Unique identifier of the order associated with the pickup.
-		* @param string $pickupId Unique identifier of the pickup for which to retrieve available actions.
+		* @param string $orderId Unique identifier of the order.
+		* @param string $pickupId Unique identifier of the pickup to remove.
 		* @return string Resource Url
 	*/
 	public static function getAvailablePickupFulfillmentActionsUrl($orderId, $pickupId)
@@ -34,8 +34,8 @@ class PickupUrl  {
 	
 	/**
 		* Get Resource Url for GetPickup
-		* @param string $orderId Unique identifier of the order associated with the pickup.
-		* @param string $pickupId Unique identifier of the pickup to retrieve.
+		* @param string $orderId Unique identifier of the order.
+		* @param string $pickupId Unique identifier of the pickup to remove.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -66,8 +66,8 @@ class PickupUrl  {
 	
 	/**
 		* Get Resource Url for UpdatePickup
-		* @param string $orderId Unique identifier of the order associated with the in-store pickup.
-		* @param string $pickupId Unique identifier of the pickup to update.
+		* @param string $orderId Unique identifier of the order.
+		* @param string $pickupId Unique identifier of the pickup to remove.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -83,7 +83,7 @@ class PickupUrl  {
 	
 	/**
 		* Get Resource Url for DeletePickup
-		* @param string $orderId Unique identifier of the order associated with the pickup.
+		* @param string $orderId Unique identifier of the order.
 		* @param string $pickupId Unique identifier of the pickup to remove.
 		* @return string Resource Url
 	*/

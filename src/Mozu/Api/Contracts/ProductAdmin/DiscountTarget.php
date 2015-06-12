@@ -20,6 +20,16 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class DiscountTarget
 {
 	/**
+	*Prevents order scoped discounts from layering over items that already have a product discount with the same type.
+	*/
+	public $excludeItemsWithExistingProductDiscounts;
+
+	/**
+	*Prevents order scoped discounts from layering over items that already have a shipping discount with the same type.
+	*/
+	public $excludeItemsWithExistingShippingDiscounts;
+
+	/**
 	*If true, the target discount applies to all products sold on the site, regardless of product category.
 	*/
 	public $includeAllProducts;
@@ -35,17 +45,17 @@ class DiscountTarget
 	public $type;
 
 	/**
-	*The product categories to which the discount can apply. When a discount applies to a category, all products in the category are eligible for the discount.
+	*The list of all categories associated with the product. These categories contain products, can have discounts associated, and define the grouping of products to display on the storefront.
 	*/
 	public $categories;
 
 	/**
-	*Array list of categories to exclude for this discount.
+	*List of the product categories that are not eligible for the discount.
 	*/
 	public $excludedCategories;
 
 	/**
-	*Array list of products to exclude for this discount.
+	*List of products that are not eligible for the discount.
 	*/
 	public $excludedProducts;
 
@@ -59,7 +69,10 @@ class DiscountTarget
 	*/
 	public $shippingMethods;
 
-		public $shippingZones;
+	/**
+	*Shipping Zones that are applicable for this discount
+	*/
+	public $shippingZones;
 
 }
 

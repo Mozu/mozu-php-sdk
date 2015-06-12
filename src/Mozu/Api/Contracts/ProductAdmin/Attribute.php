@@ -15,17 +15,17 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 /**
-*	Details of an attribute used to describe individual aspects of a product.
+*	Properties of an attribute used to describe customers or orders.
 */
 class Attribute
 {
 	/**
-	*The administrative name of the product attribute as it appears in Mozu Admin.
+	*The administrator name associated with the object/data.
 	*/
 	public $adminName;
 
 	/**
-	*Merchant-defined identifier of the product attribute used to generate the attribute's fully qualified name.
+	*Merchant-defined code for an extensible attribute. This code may be used to generate an object's fully qualified name, such as for products.
 	*/
 	public $attributeCode;
 
@@ -45,12 +45,12 @@ class Attribute
 	public $attributeSequence;
 
 	/**
-	*The data type of the product attribute, which is a Bool, DateTime, Number, or String. The attribute's data type cannot be changed.
+	*The data type of the source product property, typically of type Bool, DateTime, Number, or String.
 	*/
 	public $dataType;
 
 	/**
-	*The storefront interface input type for the product attribute, which is a Date, DateTime, List, TextArea, TextBox, or YesNo. The attribute's input type cannot be changed.
+	*The type of input selection used to define a value for the attribute, including Yes/No, Date, DateTime, List, TextBox, or TextArea.
 	*/
 	public $inputType;
 
@@ -75,17 +75,17 @@ class Attribute
 	public $masterCatalogId;
 
 	/**
-	*If applicable, the registered namespace associated with the product attribute, used to generate the fully qualified name. If no namespace is defined, the namespace associated with the tenant is automatically assigned.
+	*If applicable, the registered namespace associated with objects, used to generate the fully qualified name. If no namespace is defined, the namespace associated with the tenant is automatically assigned.
 	*/
 	public $namespace;
 
 	/**
-	*The type of value associated with the product attribute, which is ShopperEntered (the shopper selects or enters an attribute value during checkout), Predefined (the merchant sets the attribute value from a list during product attribute definition), or AdminEntered (the merchant selects or enters a value during product definition). The attribute value type cannot be changed.
+	*An attribute value type is either predefined vocabulary by the admin during attribute set up or user-defined with an appropriate type (AdminEntered or ShopperEntered depending on the user). These types are used by products and attributes. The difference between predefined values versus manually entered values is such that the first choice is a set of options to choose from. AdminEntered and ShopperEntered are values that are entered rather than system-supplied and are not stored in the database, but captured during a live commerce operations such as during an order.
 	*/
 	public $valueType;
 
 	/**
-	*List of key-value pairs that store metadata associated with the product attribute.
+	*List of metadata key-value pairs defined for an extensible attribute.
 	*/
 	public $attributeMetadata;
 
@@ -99,7 +99,10 @@ class Attribute
 	*/
 	public $content;
 
-		public $localizedContent;
+	/**
+	*The localized content of an attribute determined by the `localeCode`. This content is always in the default language of the MasterCatalog.
+	*/
+	public $localizedContent;
 
 	/**
 	*This API type provides the search and indexing settings for the attribute.
@@ -107,12 +110,12 @@ class Attribute
 	public $searchSettings;
 
 	/**
-	*Properties of the validation of a product attribute, which contains rules that dictate what values are valid entries for product attributes.
+	*Properties used when validating a value entered for an object, including extensible attributes, products attributes, and database entries.
 	*/
 	public $validation;
 
 	/**
-	*Array list of the defined vocabulary values for the specified product attribute. For example, for a Color attribute, vocabulary values might include black, white, and purple.
+	*List of valid vocabulary values defined for an attribute.
 	*/
 	public $vocabularyValues;
 

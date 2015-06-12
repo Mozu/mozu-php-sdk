@@ -2,7 +2,6 @@
 
 namespace Mozu\Api;
 
-use Logger;
 use Mozu\Api\Contracts\Tenant\Tenant;
 use Mozu\Api\Helpers\SignatureResolver;
 use Mozu\Api\Security\AppAuthenticator;
@@ -15,9 +14,7 @@ interface iApiContext
 	public function getSiteUrl();
 	public function getMasterCatalogId();
 	public function getCatalogId();
-	public function getLocale();
-    public function getCurrency();
-
+	
 	public function getCorrelationId();
 	public function getHMACSha256();
 	public function getAppAuthTicket();
@@ -29,8 +26,7 @@ interface iApiContext
 	public function setSiteId($siteId);
 	public function setMasterCatalogId($masterCatalogId);
 	public function setCatalogId($catalogId);
-	public function setLocale($locale);
-    public function setCurrency($currency);
+	
 	public function setHMACSha256($hmacSha256);
 	public function setAppAuthTicket($appAuthTicket);
 	public function setUserAuthTicket($userAuthTicket);
@@ -38,6 +34,7 @@ interface iApiContext
 
 class ApiContext implements iApiContext {
 	private $tenantId = 0;
+	private $siteGroupId = null;
 	private $siteId = null;
 	private $masterCatalogId = null;
 	private $catalogId = null;
@@ -45,14 +42,11 @@ class ApiContext implements iApiContext {
 	private $siteUrl=null;
 	private $correlationId=null;
 	private $hmacSha256=null;
-	private $locale=null;
-    private $currency=null;
+	
 	private $tenant = null;
 	private $userAuthTicket = null;
 	private $appAuthTicket=null;
-
-    private $logger = null;
-
+	
 	private $constructor_signatures = array(
 			'setTenantById' => array('integer'),
 			'setTenantById1' => array('integer', 'integer','integer','integer'),
@@ -61,7 +55,6 @@ class ApiContext implements iApiContext {
 	);
 	
 	 public function __construct() {
-         $this->logger = Logger::getLogger("ApiContext");
 	    $args = func_get_args();
 	    print_r($args, true);
 	    $signature = SignatureResolver::resolve($args);
@@ -101,9 +94,9 @@ class ApiContext implements iApiContext {
 	 	$this->tenant = $tenant;
 	 	$this->tenantId = $tenant->id;
 	 	$this->tenantUrl = $tenant->domain;
-	 	$this->logger->info("Tenant Url :" . $this->tenantUrl);
+	 	 //echo($this->tenantUrl);
 	 	//if (count($this->tenant->sites) == 1) {
-	 	//    $this->siteId = $tenant->sites[0]->id;
+	 	//	$this->siteId = $tenant->sites[0]->id;
 	 	//}
 	 	 
 	 	if ( ($this->masterCatalogId == null || $this->masterCatalogId <=0) && count($tenant->masterCatalogs) == 1 ) {
@@ -157,15 +150,7 @@ class ApiContext implements iApiContext {
 	public function getTenant() {
 		return $this->tenant;
 	}
-
-    public function getLocale() {
-        return $this->locale;
-    }
-
-    public function getCurrency() {
-        return $this->currency;
-    }
-
+	
 	public function setTenantId($tenantId) {
 		$this->tenantId = $tenantId;
 		return $this;
@@ -200,16 +185,7 @@ class ApiContext implements iApiContext {
 		$this->appAuthTicket = $appAuthTicket;
 		return $this;
 	}
-
-    public function setLocale($locale) {
-        $this->locale = $locale;
-        return $this;
-    }
-
-    public function setCurrency($currency) {
-        $this->currency = $currency;
-        return $this;
-    }
+	
 }
 
 ?>

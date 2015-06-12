@@ -15,7 +15,7 @@ namespace Mozu\Api\Contracts\Core;
 
 
 /**
-*	Properties of the user.
+*	Properties of the user. Users include customers and Mozu users.
 */
 class User
 {
@@ -30,12 +30,12 @@ class User
 	public $firstName;
 
 	/**
-	*Identifier of the user.
+	*Unique identifier of the source product property. For a product field it will be the name of the field. For a product attribute it will be the Attribute FQN. 
 	*/
 	public $id;
 
 	/**
-	*If true, the user is an active user.
+	*Indicates if the object or feature is active. This indicator is used for subscriptions (at the site or tenant level), customer accounts, products and variations.
 	*/
 	public $isActive;
 
@@ -50,7 +50,7 @@ class User
 	public $localeCode;
 
 	/**
-	*The user password.
+	*The saved password for the customer account. 
 	*/
 	public $password;
 

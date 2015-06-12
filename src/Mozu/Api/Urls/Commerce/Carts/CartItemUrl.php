@@ -19,7 +19,7 @@ class CartItemUrl  {
 
 	/**
 		* Get Resource Url for GetCartItem
-		* @param string $cartItemId Identifier of the cart item to retrieve.
+		* @param string $cartItemId Identifier of the cart item to delete.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -60,7 +60,7 @@ class CartItemUrl  {
 	
 	/**
 		* Get Resource Url for UpdateCartItemQuantity
-		* @param string $cartItemId Identifier of the cart item to update quantity.
+		* @param string $cartItemId Identifier of the cart item to delete.
 		* @param int $quantity The number of cart items in the shopper's active cart.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
@@ -77,7 +77,7 @@ class CartItemUrl  {
 	
 	/**
 		* Get Resource Url for UpdateCartItem
-		* @param string $cartItemId Identifier of the cart item to update.
+		* @param string $cartItemId Identifier of the cart item to delete.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/

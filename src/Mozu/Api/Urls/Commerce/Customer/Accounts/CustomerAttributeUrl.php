@@ -19,7 +19,7 @@ class CustomerAttributeUrl  {
 
 	/**
 		* Get Resource Url for GetAccountAttribute
-		* @param int $accountId Identifier of the customer account associated with the attribute to retrieve.
+		* @param int $accountId Unique identifier of the customer account.
 		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
@@ -36,7 +36,7 @@ class CustomerAttributeUrl  {
 	
 	/**
 		* Get Resource Url for GetAccountAttributes
-		* @param int $accountId Identifier of the customer account associated with the attributes to retrieve.
+		* @param int $accountId Unique identifier of the customer account.
 		* @param string $filter 
 		* @param int $pageSize 
 		* @param string $responseFields Use this field to include those fields which are not included by default.
@@ -74,7 +74,7 @@ class CustomerAttributeUrl  {
 	
 	/**
 		* Get Resource Url for UpdateAccountAttribute
-		* @param int $accountId Identifier of the customer account associated with the attribute.
+		* @param int $accountId Unique identifier of the customer account.
 		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url

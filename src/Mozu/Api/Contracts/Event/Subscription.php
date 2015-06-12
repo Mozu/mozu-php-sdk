@@ -14,35 +14,80 @@ namespace Mozu\Api\Contracts\Event;
 
 
 
+/**
+*	The subscription entity used to provide event notifications for third-parties.
+*/
 class Subscription
 {
-		public $apiVersion;
+	/**
+	*ApiVersion
+	*/
+	public $apiVersion;
 
-		public $appId;
+	/**
+	*Unique identifier of an app available in your Mozu tenant or within Mozu Dev Center. This ID is unique across all apps installed, initialized, and enabled in the Mozu Admin and those in development through the Dev Center Console.
+	*/
+	public $appId;
 
-		public $confirmed;
+	/**
+	*A boolean value that indicates if the subscription endpoint has been confirmed
+	*/
+	public $confirmed;
 
-		public $contentType;
+	/**
+	*Content type of the payload that will be delivered.  This is utilized in combination with the notification delivery type.  Example:  A HTTP Post (notification delivery type) is performed with a JSON representation of the event data (content type).
+	*/
+	public $contentType;
 
-		public $createBy;
+	/**
+	*Identifier of the user that created the object. System created and read only.
+	*/
+	public $createBy;
 
-		public $createDate;
+	/**
+	*The date time in UTC format set when the object was created. 
+	*/
+	public $createDate;
 
-		public $endpoint;
+	/**
+	*The delivery endpoint that will receive notifications when events concerning the specified topics on the subscription occur.  The format of the endpoint may differ depending on the notification type.  For example, the endpoint may be a URL in some cases and an email address in others if multiple notification types are available.
+	*/
+	public $endpoint;
 
-		public $id;
+	/**
+	*Unique identifier of the source product property. For a product field it will be the name of the field. For a product attribute it will be the Attribute FQN. 
+	*/
+	public $id;
 
-		public $isActive;
+	/**
+	*Indicates if the object or feature is active. This indicator is used for subscriptions (at the site or tenant level), customer accounts, products and variations.
+	*/
+	public $isActive;
 
-		public $noCallback;
+	/**
+	*A boolean value that indicates if events should be delivered that resulted from an API call by the application.  If true, any events that occur as a result of a direct API call by the same application will not be delivered. This can prevent an endless loop in certain scenarios.
+	*/
+	public $noCallback;
 
-		public $notificationDeliveryType;
+	/**
+	*Notification delivery type which is a string representation of an enumeration of values.  Example: Http (this is case insensitive, so http may also be passed in)
+	*/
+	public $notificationDeliveryType;
 
-		public $topics;
+	/**
+	*A list of topics that the subscription relates to
+	*/
+	public $topics;
 
-		public $updateBy;
+	/**
+	*Identifier of the user that updated the entity most recently.
+	*/
+	public $updateBy;
 
-		public $updateDate;
+	/**
+	*The date and time the object was updated most recently. The date is in UTC format.
+	*/
+	public $updateDate;
 
 	/**
 	*This is a tenant that is associated with a subscription.

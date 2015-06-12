@@ -32,8 +32,8 @@ class OrderNoteUrl  {
 	
 	/**
 		* Get Resource Url for GetOrderNote
-		* @param string $noteId Unique identifier of the order note to retrieve.
-		* @param string $orderId Unique identifier of the order associated with the note.
+		* @param string $noteId Unique identifier of a particular note to retrieve.
+		* @param string $orderId Unique identifier of the order.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -49,7 +49,7 @@ class OrderNoteUrl  {
 	
 	/**
 		* Get Resource Url for CreateOrderNote
-		* @param string $orderId Unique identifier of the order for which to add a note.
+		* @param string $orderId Unique identifier of the order.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -64,7 +64,7 @@ class OrderNoteUrl  {
 	
 	/**
 		* Get Resource Url for UpdateOrderNote
-		* @param string $noteId Unique identifier of the order note.
+		* @param string $noteId Unique identifier of a particular note to retrieve.
 		* @param string $orderId Unique identifier of the order.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
@@ -81,8 +81,8 @@ class OrderNoteUrl  {
 	
 	/**
 		* Get Resource Url for DeleteOrderNote
-		* @param string $noteId Unique identifier of the order note to delete.
-		* @param string $orderId Unique identifier of the order associated with the note.
+		* @param string $noteId Unique identifier of a particular note to retrieve.
+		* @param string $orderId Unique identifier of the order.
 		* @return string Resource Url
 	*/
 	public static function deleteOrderNoteUrl($noteId, $orderId)

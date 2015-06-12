@@ -1,12 +1,8 @@
 <?php
 
-namespace Mozu\Api\Resource\Platform;
-
 require_once __DIR__ . '/../../../../BaseTest.php';
 use Mozu\Api\Resources\Platform\TenantResource;
-use Mozu\Api\ApiContext;
 use Mozu\Tests\BaseTest;
-use Mozu\Api\ApiException;
 
 /**
  * Test class for TenantResource.
@@ -25,7 +21,7 @@ class TenantResourceTest extends BaseTest
      */
     protected function setUp()
     {
-        $this->object = new TenantResource(new ApiContext());
+        $this->object = new TenantResource();
     }
 
     /**
@@ -42,15 +38,40 @@ class TenantResourceTest extends BaseTest
      */
     public function testGetTenant()
     {
-    	try{
-	      	$tenant = $this->object->getTenant($this->tenantId);
 
+    	try{
+          	$tenant = $this->object->getTenant($this->tenantId);
 	      	$this->assertSame($tenant->id, $this->tenantId);
-    	} catch(ApiException $apiException) {
-    		$this->fail($apiException->getMessage());
+    	} catch(Exception $e) {
+            parent::printError($e);
+            $this->fail($e->getMessage());
     	}
     	
     	 
+    }
+
+    public function testGetTenantAsync()
+    {
+        try {
+            $promise = $this->object->getTenantAsync($this->tenantId);
+            $tenant = $promise->wait()->json();
+            $this->assertSame($tenant->id, $this->tenantId);
+        } catch(Exception $e) {
+            parent::printError($e);
+            $this->fail($e->getMessage());
+        }
+
+
+        /*$promise->then(function($mozuResult) {
+            $tenant = $mozuResult->json();
+            printf("TenantId : ". $tenant->id);
+            $this->assertSame($tenant->id, $this->tenantId);
+        }, function($e) {
+            parent::printError($e);
+            $this->fail($e->getMessage());
+        });
+        $promise->wait();*/
+
     }
 }
 ?>

@@ -25,7 +25,7 @@ class GatewayDefinition
 	public $countryCode;
 
 	/**
-	*Unique identifier of the payment gateway definition.
+	*Unique identifier of the source product property. For a product field it will be the name of the field. For a product attribute it will be the Attribute FQN. 
 	*/
 	public $id;
 
@@ -35,7 +35,7 @@ class GatewayDefinition
 	public $integrationImplTypeName;
 
 	/**
-	*Name of the payment gateway.
+	*The display name of the source product property. For a product field it will be the display name of the field. For a product attribute it will be the Attribute Name.
 	*/
 	public $name;
 
@@ -60,7 +60,7 @@ class GatewayDefinition
 	public $preAuthorizeDefinition;
 
 	/**
-	*The types of credit cards supported by this payment gateway.
+	*The types of credit cards supported by the payment gateway.
 	*/
 	public $supportedCards;
 

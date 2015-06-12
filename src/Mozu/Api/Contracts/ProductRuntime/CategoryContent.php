@@ -20,42 +20,42 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 class CategoryContent
 {
 	/**
-	*The localized description of the category to display on a storefront.
+	*The localized description in text for the object, displayed per the locale code. For example, descriptions are used for product descriptions, attributes, and pre-authorization transaction types.
 	*/
 	public $description;
 
 	/**
-	*Defined description of the metadata used to manage product information internally, such as search engine optimization.
+	*Description defined for metadata, used to interally manage data, in the language specified by the `localeCode`. This content is used by categories, products, localized content, and SEO content.
 	*/
 	public $metaTagDescription;
 
 	/**
-	*Defined keywords of the metadata used to manage product information internally, such as search engine optimization.
+	*Keywords defined for  metadata, used to internally manage data, in the language specified by the `localeCode`. Keywords are used by content for categories, products, localized content, and SEO content.
 	*/
 	public $metaTagKeywords;
 
 	/**
-	*Defined title of the metadata used to manage product information internally, such as search engine optimization.
+	*Title defined for  metadata, used to internally manage data, in the language specified by the `localeCode`. Titles are used by content for categories, products, localized content, and SEO content.
 	*/
 	public $metaTagTitle;
 
 	/**
-	*Name of the product category.
+	*The display name of the source product property. For a product field it will be the display name of the field. For a product attribute it will be the Attribute Name.
 	*/
 	public $name;
 
 	/**
-	*Title that appears on the top of new pages associated with the product category on the storefront.
+	*Title that appears on new product category pages, in the language specified by the `localeCode`.
 	*/
 	public $pageTitle;
 
 	/**
-	*Human-readable identifier to associated with a product category to create friendly URLs.
+	*Slug is used in place of a name, code, or ID to give an SEO, human-friendly URL link for an object, used by categories.
 	*/
 	public $slug;
 
 	/**
-	*Array list of image media associated with the product category.
+	*Array list of media images associated to a product category. These images may be localized in the language specified by the LocaleCode. Images display with the category on the storefront according to the code and formatting of your site theme. Each image includes the name, alt text, and URL location.
 	*/
 	public $categoryImages;
 

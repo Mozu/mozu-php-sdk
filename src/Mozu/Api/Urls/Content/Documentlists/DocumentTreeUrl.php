@@ -19,8 +19,8 @@ class DocumentTreeUrl  {
 
 	/**
 		* Get Resource Url for GetTreeDocumentContent
-		* @param string $documentListName The name of the document list associated with the document.
-		* @param string $documentName The name of the document, which is unique within its folder.
+		* @param string $documentListName Name of content documentListName to delete
+		* @param string $documentName The name of the document in the site.
 		* @return string Resource Url
 	*/
 	public static function getTreeDocumentContentUrl($documentListName, $documentName)
@@ -34,8 +34,8 @@ class DocumentTreeUrl  {
 	
 	/**
 		* Get Resource Url for GetTreeDocument
-		* @param string $documentListName The name of the document list associated with the document.
-		* @param string $documentName The name of the document, which is unique within its folder.
+		* @param string $documentListName Name of content documentListName to delete
+		* @param string $documentName The name of the document in the site.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -51,8 +51,8 @@ class DocumentTreeUrl  {
 	
 	/**
 		* Get Resource Url for UpdateTreeDocumentContent
-		* @param string $documentListName The name of the document list associated with the document.
-		* @param string $documentName The name of the document, which is unique within its folder.
+		* @param string $documentListName Name of content documentListName to delete
+		* @param string $documentName The name of the document in the site.
 		* @return string Resource Url
 	*/
 	public static function updateTreeDocumentContentUrl($documentListName, $documentName)
@@ -66,8 +66,8 @@ class DocumentTreeUrl  {
 	
 	/**
 		* Get Resource Url for DeleteTreeDocumentContent
-		* @param string $documentListName The name of the document list associated with the document.
-		* @param string $documentName The name of the document, which is unique within its folder.
+		* @param string $documentListName Name of content documentListName to delete
+		* @param string $documentName The name of the document in the site.
 		* @return string Resource Url
 	*/
 	public static function deleteTreeDocumentContentUrl($documentListName, $documentName)

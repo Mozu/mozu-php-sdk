@@ -49,7 +49,7 @@ class DeveloperAdminUserAuthTicketUrl  {
 	
 	/**
 		* Get Resource Url for DeleteUserAuthTicket
-		* @param string $refreshToken Refresh token string associated with the developer account authentication ticket.
+		* @param string $refreshToken Alphanumeric string used for access tokens. This token refreshes access for accounts by generating a new developer or application account authentication ticket after an access token expires.
 		* @return string Resource Url
 	*/
 	public static function deleteUserAuthTicketUrl($refreshToken)

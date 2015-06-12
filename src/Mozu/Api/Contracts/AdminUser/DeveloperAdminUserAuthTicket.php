@@ -20,12 +20,12 @@ namespace Mozu\Api\Contracts\AdminUser;
 class DeveloperAdminUserAuthTicket
 {
 	/**
-	*Alphanumeric string used to authenticate the user in API request headers.
+	*Alphanumeric string used to authenticate the user in API request headers. The token stores an encrypted list of the application's configured behaviors and authenticates the application.
 	*/
 	public $accessToken;
 
 	/**
-	*The date and time the user access token expires.
+	*The date and time the user access token expires. If the token will expire, a new token will need to be generated and assigned to the account to continue and restore access to the store, data, and account.
 	*/
 	public $accessTokenExpiration;
 
@@ -40,12 +40,12 @@ class DeveloperAdminUserAuthTicket
 	public $grantedBehaviors;
 
 	/**
-	*Alphanumeric string used to generate a new developer account authentication ticket after the access token expires.
+	*Alphanumeric string used for access tokens. This token refreshes access for accounts by generating a new developer or application account authentication ticket after an access token expires.
 	*/
 	public $refreshToken;
 
 	/**
-	*The date and time the developer account refresh token expires.
+	*The date and time the developer account or application refresh token expires.
 	*/
 	public $refreshTokenExpiration;
 

@@ -20,7 +20,12 @@ namespace Mozu\Api\Contracts\Customer;
 class PasswordInfo
 {
 	/**
-	*The new account password value.
+	*The External Password, typically used for imports in conjunction with a custom action
+	*/
+	public $externalPassword;
+
+	/**
+	*The new password entered and saved by the user of the account. 
 	*/
 	public $newPassword;
 
