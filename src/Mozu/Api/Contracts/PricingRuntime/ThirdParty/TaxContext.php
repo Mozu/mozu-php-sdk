@@ -20,7 +20,7 @@ namespace Mozu\Api\Contracts\PricingRuntime\ThirdParty;
 class TaxContext
 {
 	/**
-	*Unique identifier of the customer.
+	*Unique identifier of the customer in Mozu, used to associate customers with data, orders, returns, and in-store credit.
 	*/
 	public $customerId;
 
@@ -40,12 +40,12 @@ class TaxContext
 	public $taxShipping;
 
 	/**
-	*The address to which item in the order will ship.
+	*The physical address orders are sent to as a shipping destination. This address may contain multiple lines, city, state/province, country, and zip/postal code. The destination is used to calculate shipping costs.
 	*/
 	public $destinationAddress;
 
 	/**
-	*The address from which the item in the order will ship.
+	*The physical address from which the order or shipment will ship.
 	*/
 	public $originAddress;
 

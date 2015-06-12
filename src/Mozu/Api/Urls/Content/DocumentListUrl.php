@@ -36,7 +36,7 @@ class DocumentListUrl  {
 	
 	/**
 		* Get Resource Url for GetDocumentList
-		* @param string $documentListName The name of the document list.
+		* @param string $documentListName Name of content documentListName to delete
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -64,7 +64,7 @@ class DocumentListUrl  {
 	
 	/**
 		* Get Resource Url for UpdateDocumentList
-		* @param string $documentListName 
+		* @param string $documentListName Name of content documentListName to delete
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -79,7 +79,7 @@ class DocumentListUrl  {
 	
 	/**
 		* Get Resource Url for DeleteDocumentList
-		* @param string $documentListName 
+		* @param string $documentListName Name of content documentListName to delete
 		* @return string Resource Url
 	*/
 	public static function deleteDocumentListUrl($documentListName)

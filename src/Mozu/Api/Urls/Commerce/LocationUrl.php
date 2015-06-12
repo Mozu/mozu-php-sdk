@@ -19,7 +19,7 @@ class LocationUrl  {
 
 	/**
 		* Get Resource Url for GetLocation
-		* @param string $code User-defined code that identifies the location.
+		* @param string $code User-defined code that uniqely identifies the channel group.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -28,23 +28,6 @@ class LocationUrl  {
 		$url = "/api/commerce/storefront/locations/{code}?responseFields={responseFields}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
 		$url = $mozuUrl->formatUrl("code", $code);
-		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
-		return $mozuUrl;
-	}
-	
-	/**
-		* Get Resource Url for GetLocationInUsageType
-		* @param string $code Retrieves the details of a location associated with a defined location usage type for the site specified in the request.
-		* @param string $locationUsageType System-defined location usage type code, which is DS for direct ship, SP for in-store pickup, or storeFinder.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @return string Resource Url
-	*/
-	public static function getLocationInUsageTypeUrl($code, $locationUsageType, $responseFields)
-	{
-		$url = "/api/commerce/storefront/locationUsageTypes/{locationUsageType}/locations/{code}?responseFields={responseFields}";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
-		$url = $mozuUrl->formatUrl("code", $code);
-		$url = $mozuUrl->formatUrl("locationUsageType", $locationUsageType);
 		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
@@ -87,7 +70,7 @@ class LocationUrl  {
 	
 	/**
 		* Get Resource Url for GetInStorePickupLocation
-		* @param string $code The user-defined code that identifies the location to retrieve.
+		* @param string $code User-defined code that uniqely identifies the channel group.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/

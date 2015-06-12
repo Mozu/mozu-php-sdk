@@ -19,7 +19,7 @@ class UserDataUrl  {
 
 	/**
 		* Get Resource Url for GetDBValue
-		* @param string $dbEntryQuery The database entry query string used to retrieve the record information.
+		* @param string $dbEntryQuery The database entry string to create.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -47,7 +47,7 @@ class UserDataUrl  {
 	
 	/**
 		* Get Resource Url for UpdateDBValue
-		* @param string $dbEntryQuery The database entry query string used to update the record information.
+		* @param string $dbEntryQuery The database entry string to create.
 		* @return string Resource Url
 	*/
 	public static function updateDBValueUrl($dbEntryQuery)
@@ -60,7 +60,7 @@ class UserDataUrl  {
 	
 	/**
 		* Get Resource Url for DeleteDBValue
-		* @param string $dbEntryQuery The database entry string to delete.
+		* @param string $dbEntryQuery The database entry string to create.
 		* @return string Resource Url
 	*/
 	public static function deleteDBValueUrl($dbEntryQuery)

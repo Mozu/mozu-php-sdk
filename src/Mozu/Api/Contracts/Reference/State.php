@@ -14,13 +14,25 @@ namespace Mozu\Api\Contracts\Reference;
 
 
 
+/**
+*	The state code, name, and tags, if applicable. 
+*/
 class State
 {
-		public $code;
+	/**
+	*The two character state code. 
+	*/
+	public $code;
 
-		public $name;
+	/**
+	*The display name of the source product property. For a product field it will be the display name of the field. For a product attribute it will be the Attribute Name.
+	*/
+	public $name;
 
-		public $tags;
+	/**
+	*Distinguishing information about a state, such as IsArmedForces or IsUSTerritory
+	*/
+	public $tags;
 
 }
 

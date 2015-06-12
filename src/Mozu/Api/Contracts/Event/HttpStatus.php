@@ -14,11 +14,20 @@ namespace Mozu\Api\Contracts\Event;
 
 
 
+/**
+*	Properties for the HTTP status for an event.
+*/
 class HttpStatus
 {
-		public $code;
+	/**
+	*The higher-level integer based HTTP Status Code returned by the remote endpoint
+	*/
+	public $code;
 
-		public $name;
+	/**
+	*The display name of the source product property. For a product field it will be the display name of the field. For a product attribute it will be the Attribute Name.
+	*/
+	public $name;
 
 }
 

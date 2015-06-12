@@ -14,19 +14,40 @@ namespace Mozu\Api\Contracts\ShippingRuntime;
 
 
 
+/**
+*	Properties of summary data for a product, including all data for name, code, categories, options, types, measurements, and more.
+*/
 class ProductSummary
 {
-		public $productCode;
+	/**
+	*The unique, user-defined  product code of a product, used throughout Mozu to reference and associate to a product.
+	*/
+	public $productCode;
 
-		public $productType;
+	/**
+	*The product type template associated with the product on the storefront.
+	*/
+	public $productType;
 
-		public $categories;
+	/**
+	*The list of all categories associated with the product. These categories contain products, can have discounts associated, and define the grouping of products to display on the storefront.
+	*/
+	public $categories;
 
-		public $options;
+	/**
+	*List of option attributes configured for an object. These values are associated and used by products, product bundles, and product types.
+	*/
+	public $options;
 
-		public $properties;
+	/**
+	*Collection of property attributes defined for the object. Properties are associated to all objects within Mozu, including documents, products, and product types.
+	*/
+	public $properties;
 
-		public $unitMeasurements;
+	/**
+	*Product specific dimensions used for shipping, used by product summary and rate request items.  The dimensions can differ between the two uses as a `RateRequestItem `package may contain one or more products.
+	*/
+	public $unitMeasurements;
 
 }
 

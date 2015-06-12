@@ -19,7 +19,7 @@ class ShipmentUrl  {
 
 	/**
 		* Get Resource Url for GetShipment
-		* @param string $orderId Unique identifier of the order associated with the shipment to retrieve.
+		* @param string $orderId Unique identifier of the order.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param string $shipmentId Unique identifier of the shipment to retrieve.
 		* @return string Resource Url
@@ -36,8 +36,8 @@ class ShipmentUrl  {
 	
 	/**
 		* Get Resource Url for GetAvailableShipmentMethods
-		* @param bool $draft 
-		* @param string $orderId Unique identifier of the order for the available shipment methods being retrieved.
+		* @param bool $draft If true, retrieve the draft version of the order, which might include uncommitted changes to the order or its components.
+		* @param string $orderId Unique identifier of the order.
 		* @return string Resource Url
 	*/
 	public static function getAvailableShipmentMethodsUrl($draft, $orderId)
@@ -51,7 +51,7 @@ class ShipmentUrl  {
 	
 	/**
 		* Get Resource Url for CreatePackageShipments
-		* @param string $orderId Unique identifier of the order for this shipment.
+		* @param string $orderId Unique identifier of the order.
 		* @return string Resource Url
 	*/
 	public static function createPackageShipmentsUrl($orderId)
@@ -64,8 +64,8 @@ class ShipmentUrl  {
 	
 	/**
 		* Get Resource Url for DeleteShipment
-		* @param string $orderId Unique identifier of the order to cancel shipment.
-		* @param string $shipmentId Unique identifier of the shipment to cancel.
+		* @param string $orderId Unique identifier of the order.
+		* @param string $shipmentId Unique identifier of the shipment to retrieve.
 		* @return string Resource Url
 	*/
 	public static function deleteShipmentUrl($orderId, $shipmentId)

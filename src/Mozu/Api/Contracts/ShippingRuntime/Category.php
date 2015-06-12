@@ -14,11 +14,20 @@ namespace Mozu\Api\Contracts\ShippingRuntime;
 
 
 
+/**
+*	A descriptive container that groups products. A category is merchant defined with associated products and discounts as configured. GThe storefront displays products in a hierarchy of categories. As such, categories can include a nesting of sub-categories to organize products and product options per set guidelines such as color, brand, material, and size.
+*/
 class Category
 {
-		public $id;
+	/**
+	*Unique identifier of the source product property. For a product field it will be the name of the field. For a product attribute it will be the Attribute FQN. 
+	*/
+	public $id;
 
-		public $parent;
+	/**
+	*If applicable, the parent category in the category tree. This can be associated to a product as the parent category.
+	*/
+	public $parent;
 
 }
 

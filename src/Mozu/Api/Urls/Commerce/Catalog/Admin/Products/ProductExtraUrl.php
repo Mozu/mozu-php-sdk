@@ -32,9 +32,9 @@ class ProductExtraUrl  {
 	
 	/**
 		* Get Resource Url for GetExtraValueLocalizedDeltaPrices
-		* @param string $attributeFQN 
-		* @param string $productCode 
-		* @param string $value 
+		* @param string $attributeFQN Fully qualified name for an attribute.
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+		* @param string $value The value string to create.
 		* @return string Resource Url
 	*/
 	public static function getExtraValueLocalizedDeltaPricesUrl($attributeFQN, $productCode, $value)
@@ -49,11 +49,11 @@ class ProductExtraUrl  {
 	
 	/**
 		* Get Resource Url for GetExtraValueLocalizedDeltaPrice
-		* @param string $attributeFQN 
-		* @param string $currencyCode 
-		* @param string $productCode 
+		* @param string $attributeFQN Fully qualified name for an attribute.
+		* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $value 
+		* @param string $value The value string to create.
 		* @return string Resource Url
 	*/
 	public static function getExtraValueLocalizedDeltaPriceUrl($attributeFQN, $currencyCode, $productCode, $responseFields, $value)
@@ -87,10 +87,10 @@ class ProductExtraUrl  {
 	
 	/**
 		* Get Resource Url for AddExtraValueLocalizedDeltaPrice
-		* @param string $attributeFQN 
-		* @param string $productCode 
+		* @param string $attributeFQN Fully qualified name for an attribute.
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $value 
+		* @param string $value The value string to create.
 		* @return string Resource Url
 	*/
 	public static function addExtraValueLocalizedDeltaPriceUrl($attributeFQN, $productCode, $responseFields, $value)
@@ -121,9 +121,9 @@ class ProductExtraUrl  {
 	
 	/**
 		* Get Resource Url for UpdateExtraValueLocalizedDeltaPrices
-		* @param string $attributeFQN 
-		* @param string $productCode 
-		* @param string $value 
+		* @param string $attributeFQN Fully qualified name for an attribute.
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+		* @param string $value The value string to create.
 		* @return string Resource Url
 	*/
 	public static function updateExtraValueLocalizedDeltaPricesUrl($attributeFQN, $productCode, $value)
@@ -138,11 +138,11 @@ class ProductExtraUrl  {
 	
 	/**
 		* Get Resource Url for UpdateExtraValueLocalizedDeltaPrice
-		* @param string $attributeFQN 
-		* @param string $currencyCode 
-		* @param string $productCode 
+		* @param string $attributeFQN Fully qualified name for an attribute.
+		* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $value 
+		* @param string $value The value string to create.
 		* @return string Resource Url
 	*/
 	public static function updateExtraValueLocalizedDeltaPriceUrl($attributeFQN, $currencyCode, $productCode, $responseFields, $value)
@@ -191,9 +191,9 @@ class ProductExtraUrl  {
 	
 	/**
 		* Get Resource Url for DeleteExtraValueLocalizedDeltaPrice
-		* @param string $attributeFQN 
-		* @param string $currencyCode 
-		* @param string $productCode 
+		* @param string $attributeFQN Fully qualified name for an attribute.
+		* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
 		* @param string $value Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/

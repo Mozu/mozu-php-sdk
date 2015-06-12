@@ -19,7 +19,7 @@ class SearchUrl  {
 
 	/**
 		* Get Resource Url for GetSettings
-		* @param string $responseFields 
+		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
 		* @return string Resource Url
 	*/
 	public static function getSettingsUrl($responseFields)
@@ -32,7 +32,7 @@ class SearchUrl  {
 	
 	/**
 		* Get Resource Url for UpdateSettings
-		* @param string $responseFields 
+		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
 		* @return string Resource Url
 	*/
 	public static function updateSettingsUrl($responseFields)

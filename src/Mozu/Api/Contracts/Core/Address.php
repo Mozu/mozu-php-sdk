@@ -55,7 +55,7 @@ class Address
 	public $countryCode;
 
 	/**
-	*If true, the address has been verified by an address validation service.
+	*Indicates if the address has been validated. If true, the address has been verified by an address validation service.
 	*/
 	public $isValidated;
 

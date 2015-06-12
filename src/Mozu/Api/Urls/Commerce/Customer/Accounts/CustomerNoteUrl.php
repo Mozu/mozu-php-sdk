@@ -19,7 +19,7 @@ class CustomerNoteUrl  {
 
 	/**
 		* Get Resource Url for GetAccountNote
-		* @param int $accountId Unique identifier of the customer account that contains the note being retrieved.
+		* @param int $accountId Unique identifier of the customer account.
 		* @param int $noteId Unique identifier of a particular note to retrieve.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
@@ -59,7 +59,7 @@ class CustomerNoteUrl  {
 	
 	/**
 		* Get Resource Url for AddAccountNote
-		* @param int $accountId Unique identifier of the customer account for which to create the note.
+		* @param int $accountId Unique identifier of the customer account.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -74,8 +74,8 @@ class CustomerNoteUrl  {
 	
 	/**
 		* Get Resource Url for UpdateAccountNote
-		* @param int $accountId Unique identifier of the customer account note to modify.
-		* @param int $noteId Unique identifier of the note to update.
+		* @param int $accountId Unique identifier of the customer account.
+		* @param int $noteId Unique identifier of a particular note to retrieve.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -91,8 +91,8 @@ class CustomerNoteUrl  {
 	
 	/**
 		* Get Resource Url for DeleteAccountNote
-		* @param int $accountId Unique identifier of the customer account that contains the note being deleted.
-		* @param int $noteId Unique identifier of the customer account note being deleted.
+		* @param int $accountId Unique identifier of the customer account.
+		* @param int $noteId Unique identifier of a particular note to retrieve.
 		* @return string Resource Url
 	*/
 	public static function deleteAccountNoteUrl($accountId, $noteId)

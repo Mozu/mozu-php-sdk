@@ -20,7 +20,7 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Orders;
 class ShopperNotes
 {
 	/**
-	*Shopper-entered notes for the associated order.
+	*Notes entered and saved with an order. These notes may be entered by a shopper on a wishlist or for an order. Comments may also be entered by Mozu Admins on an order that may be visible only to authorized shoppers and users.
 	*/
 	public $comments;
 

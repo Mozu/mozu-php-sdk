@@ -19,21 +19,33 @@ namespace Mozu\Api\Contracts\Content;
 */
 class DocumentDraftSummary
 {
-		public $activeUpdateDate;
-
-		public $documentTypeFQN;
-
-		public $draftUpdateDate;
+	/**
+	*Detailed information of the date and time for the active update date for the document draft summary. This data is associated to document and content data.
+	*/
+	public $activeUpdateDate;
 
 	/**
-	*Identifier of document draft.
+	*Fully qualified name of the document type. 
+	*/
+	public $documentTypeFQN;
+
+	/**
+	*Detailed information of the date and time for the draft update date for the document draft summary. This data is associated to document and content data.
+	*/
+	public $draftUpdateDate;
+
+	/**
+	*Unique identifier of the source product property. For a product field it will be the name of the field. For a product attribute it will be the Attribute FQN. 
 	*/
 	public $id;
 
-		public $listFQN;
+	/**
+	*The fully qualified name of the document list.
+	*/
+	public $listFQN;
 
 	/**
-	*Name of the document draft.
+	*The display name of the source product property. For a product field it will be the display name of the field. For a product attribute it will be the Attribute Name.
 	*/
 	public $name;
 

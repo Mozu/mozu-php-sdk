@@ -20,42 +20,42 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 class ProductContent
 {
 	/**
-	*Description defined for the metadata used to internally manage information about the product.
+	*Description defined for metadata, used to interally manage data, in the language specified by the `localeCode`. This content is used by categories, products, localized content, and SEO content.
 	*/
 	public $metaTagDescription;
 
 	/**
-	*Keywords defined for the metadata used to internally manage information about the product.
+	*Keywords defined for  metadata, used to internally manage data, in the language specified by the `localeCode`. Keywords are used by content for categories, products, localized content, and SEO content.
 	*/
 	public $metaTagKeywords;
 
 	/**
-	*Title defined for the metadata used to internally manage information about the product.
+	*Title defined for  metadata, used to internally manage data, in the language specified by the `localeCode`. Titles are used by content for categories, products, localized content, and SEO content.
 	*/
 	public $metaTagTitle;
 
 	/**
-	*Full description of the product, which typically appears on the product details page.
+	*Lengthy full description for a product description, displayed on product detail pages within the storefront.
 	*/
 	public $productFullDescription;
 
 	/**
-	*The descriptive brief product name.
+	*The name of the product that represents a line item in a taxable order or product bundle.
 	*/
 	public $productName;
 
 	/**
-	*Brief description of the product typically used when the product is displayed in a list or in search results.
+	*Brief text description of the product or component in a product bundle, typically used when the product is displayed in a list or in search results.
 	*/
 	public $productShortDescription;
 
 	/**
-	*Product URL defined for search engine optimization.
+	*The search engine optimized, human-readable portion of the URL. The content is localized according to the product's `localeCode`.
 	*/
 	public $seoFriendlyUrl;
 
 	/**
-	*List of image files associated with the product.
+	*List of image files associated with a product. This content may include the image file URL, name, and other information as available.
 	*/
 	public $productImages;
 

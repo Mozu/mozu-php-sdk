@@ -19,7 +19,7 @@ class AttributeLocalizedContentUrl  {
 
 	/**
 		* Get Resource Url for GetAttributeLocalizedContents
-		* @param string $attributeFQN 
+		* @param string $attributeFQN Fully qualified name for an attribute.
 		* @return string Resource Url
 	*/
 	public static function getAttributeLocalizedContentsUrl($attributeFQN)
@@ -32,7 +32,7 @@ class AttributeLocalizedContentUrl  {
 	
 	/**
 		* Get Resource Url for GetAttributeLocalizedContent
-		* @param string $attributeFQN 
+		* @param string $attributeFQN Fully qualified name for an attribute.
 		* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
@@ -49,7 +49,7 @@ class AttributeLocalizedContentUrl  {
 	
 	/**
 		* Get Resource Url for AddLocalizedContent
-		* @param string $attributeFQN 
+		* @param string $attributeFQN Fully qualified name for an attribute.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -64,7 +64,7 @@ class AttributeLocalizedContentUrl  {
 	
 	/**
 		* Get Resource Url for UpdateLocalizedContents
-		* @param string $attributeFQN 
+		* @param string $attributeFQN Fully qualified name for an attribute.
 		* @return string Resource Url
 	*/
 	public static function updateLocalizedContentsUrl($attributeFQN)
@@ -77,7 +77,7 @@ class AttributeLocalizedContentUrl  {
 	
 	/**
 		* Get Resource Url for UpdateLocalizedContent
-		* @param string $attributeFQN 
+		* @param string $attributeFQN Fully qualified name for an attribute.
 		* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
@@ -94,7 +94,7 @@ class AttributeLocalizedContentUrl  {
 	
 	/**
 		* Get Resource Url for DeleteLocalizedContent
-		* @param string $attributeFQN 
+		* @param string $attributeFQN Fully qualified name for an attribute.
 		* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
 		* @return string Resource Url
 	*/

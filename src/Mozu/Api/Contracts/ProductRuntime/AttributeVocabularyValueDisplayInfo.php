@@ -14,13 +14,25 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 
+/**
+*	Provides the display information for attribute vocabulary values. 
+*/
 class AttributeVocabularyValueDisplayInfo
 {
-		public $cmsId;
+	/**
+	*The identifier of the image in the Mozu CMS. Supply a value for either the CMS ID or Image URL parameter.
+	*/
+	public $cmsId;
 
-		public $colorValue;
+	/**
+	*Hex value for a color to display in a color picker. This is an HTML supported code for color.
+	*/
+	public $colorValue;
 
-		public $imageUrl;
+	/**
+	*The URL link for the image file associated with a product or category.
+	*/
+	public $imageUrl;
 
 }
 

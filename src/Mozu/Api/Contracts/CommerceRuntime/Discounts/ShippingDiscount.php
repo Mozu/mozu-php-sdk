@@ -20,12 +20,12 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Discounts;
 class ShippingDiscount
 {
 	/**
-	*Carrier-supplied code that represents the shipping method service type associated with the shipping discount.
+	*Carrier-supplied, unique code that represents the shipping method service type associated with the shipping discount.
 	*/
 	public $methodCode;
 
 	/**
-	*Properties of the shipping discount.
+	*Name of the discount added and applied to a shopping cart and order for a shopper's purchase. 
 	*/
 	public $discount;
 

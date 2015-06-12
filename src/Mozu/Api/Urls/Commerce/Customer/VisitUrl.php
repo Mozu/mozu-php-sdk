@@ -41,7 +41,7 @@ class VisitUrl  {
 	/**
 		* Get Resource Url for GetVisit
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $visitId Unique identifier of the customer visit to retrieve.
+		* @param string $visitId Unique identifier of the customer visit to update.
 		* @return string Resource Url
 	*/
 	public static function getVisitUrl($responseFields, $visitId)

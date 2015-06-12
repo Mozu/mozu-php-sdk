@@ -20,17 +20,17 @@ namespace Mozu\Api\Contracts\Reference;
 class Field
 {
 	/**
-	*Identifier of the field.
+	*Unique identifier of the source product property. For a product field it will be the name of the field. For a product attribute it will be the Attribute FQN. 
 	*/
 	public $id;
 
 	/**
-	*Label for the field.
+	*Descriptive text used as a label for objects, such as field names, facets, date ranges, contact information, and package information.
 	*/
 	public $label;
 
 	/**
-	*Sequence of the field.
+	*Integer that represents the sequence order of the attribute.
 	*/
 	public $order;
 

@@ -2,16 +2,9 @@
 namespace Mozu\Api\Security;
 
 use DateTime;
-use Mozu\Api\ApiContext;
-use Mozu\Api\Security\UserAuthTicket;
-use Mozu\Api\Security\Scope;
-use Mozu\Api\Security\AuthenticationScope;
-use Mozu\Api\Security\CustomerAuthenticationProfile;
 use Mozu\Api\Contracts\Customer\CustomerUserAuthInfo;
 use Mozu\Api\Urls\Commerce\Customer\CustomerAuthTicketUrl;
-use Mozu\Api\Security\AppAuthenticator;
-use Guzzle\Http\Client as Client;
-use Guzzle\Http\Message\Request;
+use GuzzleHttp\Client;
 use Mozu\Api\Utilities\HttpHelper;
 use Mozu\Api\Resources\Platform\TenantResource;
 use Mozu\Api\Headers;
@@ -28,24 +21,27 @@ class CustomerAuthenticator {
 	
 	private static function getAuthUrl($tenantId)
 	{
-		$tenantResource = new TenantResource(new ApiContext());
-		$tenant = $tenantResource->GetTenant($tenantId);
-		return HttpHelper::getUrl($tenant->domain);
+		$tenantResource = new TenantResource();
+		$mozuResult = $tenantResource->GetTenantAsync($tenantId)->wait();
+
+		return HttpHelper::getUrl($mozuResult->json()->domain);
 	}
 	
 	public static function refreshUserAuthTicket(UserAuthTicket $authTicket)
 	{
 		try {
 			$authentication = AppAuthenticator::getInstance();
-			$resourceUrl = CustomerAuthTicketUrl::refreshUserAuthTicketUrl($authTicket->refreshToken,null)->getUrl();
+			$resourceUrl = CustomerAuthTicketUrl::refreshUserAuthTicketUrl($authTicket->refreshToken,null);
 	
 				
-			$client = new Client ( static::getAuthUrl($authTicket->tenantId), HttpHelper::getGuzzleConfig() );
-			$request = $client->put( $resourceUrl  );
-			$request->setBody ( json_encode($authTicket), 'application/json' );
-			$authentication->addAuthHeader($request);
-			$request->setHeader(Headers::X_VOL_SITE, $authTicket->siteId);
-			$response = $request->send();
+			$client = new Client ( [ 'base_uri' => static::getAuthUrl($authTicket->tenantId), 'verify' => false ]);
+            $headers = ["content-type" => "application/json", Headers::X_VOL_APP_CLAIMS=>$authentication->getAppClaim(), Headers::X_VOL_SITE=>$authTicket->siteId];
+
+            $body = json_encode($authTicket);
+
+            $promise = $client->requestAsync($resourceUrl->getVerb(), $resourceUrl->getUrl(),['headers'=>$headers,'body'=>$body,'exceptions'=>true]);
+
+			$response = $promise->wait();
 			$jsonResp = $response->getBody ( true );
 			$authResponse = json_decode ( $jsonResp );
 				
@@ -59,20 +55,22 @@ class CustomerAuthenticator {
 	{
 		try {
 			$authentication = AppAuthenticator::getInstance();
-			$resourceUrl = CustomerAuthTicketUrl::createUserAuthTicketUrl(null)->getUrl();
-	
-			$client = new Client ( static::getAuthUrl($tenantId), HttpHelper::getGuzzleConfig() );
-			$request = $client->post( $resourceUrl  );
-			$request->setBody ( json_encode($customerAuthInfo), 'application/json' );
-			$authentication->addAuthHeader($request);
-			$request->setHeader(Headers::X_VOL_SITE, $siteId);
-			$response = $request->send();
-			$jsonResp = $response->getBody ( true );
+			$resourceUrl = CustomerAuthTicketUrl::createUserAuthTicketUrl(null);
+
+            $client = new Client ( [ 'base_uri' =>  static::getAuthUrl($tenantId), 'verify' => false ]);
+            $headers = ["content-type" => "application/json", Headers::X_VOL_APP_CLAIMS=>$authentication->getAppClaim(), Headers::X_VOL_SITE=>$siteId];
+
+            $body = json_encode($customerAuthInfo);
+
+            $promise = $client->requestAsync($resourceUrl->getVerb(), $resourceUrl->getUrl(),['headers'=>$headers,'body'=>$body,'exceptions'=>true]);
+
+            $response = $promise->wait();
+            $jsonResp = $response->getBody ( true );
 			$authResponse = json_decode ( $jsonResp );
-	
-			return static::setUserAuth($authResponse, $tenantId, $siteId);
+
+			$authProfile= static::setUserAuth($authResponse, $tenantId, $siteId);
+            return $authProfile;
 		} catch(\Exception $e){
-			//var_dump($e);
 			HttpHelper::checkError($e);
 		}
 	}
@@ -82,13 +80,16 @@ class CustomerAuthenticator {
 		$customerAuthenticationProfile = new CustomerAuthenticationProfile();
 	
 		$authTicket = new UserAuthTicket();
-		$authTicket->scope = AuthenticationScope::CUSTOMER;
-		$authTicket->accessToken = $authResponse->$accessToken;
-		$authTicket->refreshToken = $authResponse->$refreshToken;
+		$authTicket->authenticationScope = AuthenticationScope::CUSTOMER;
+		$authTicket->accessToken = $authResponse->accessToken;
+		$authTicket->refreshToken = $authResponse->refreshToken;
+
 		$authTicket->accessTokenExpiration = $authResponse->accessTokenExpiration;
 		$authTicket->refreshTokenExpiration = $authResponse->refreshTokenExpiration;
 		$authTicket->tenantId = $tenantId;
 		$authTicket->siteId = $siteId;
+
+
 		$customerAuthenticationProfile->authTicket = $authTicket;
 		
 		$customerAuthenticationProfile->customerAccount = $authResponse->customerAccount;

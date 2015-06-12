@@ -18,10 +18,29 @@ use Mozu\Api\UrlLocation;
 class OrderItemUrl  {
 
 	/**
+		* Get Resource Url for GetOrderItemViaLineId
+		* @param bool $draft If true, retrieve the draft version of the order, which might include uncommitted changes to the order or its components.
+		* @param int $lineId 
+		* @param string $orderId Unique identifier of the order.
+		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+		* @return string Resource Url
+	*/
+	public static function getOrderItemViaLineIdUrl($draft, $lineId, $orderId, $responseFields)
+	{
+		$url = "/api/commerce/orders/{orderId}/items/{lineId}?draft={draft}&responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("draft", $draft);
+		$url = $mozuUrl->formatUrl("lineId", $lineId);
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		return $mozuUrl;
+	}
+	
+	/**
 		* Get Resource Url for GetOrderItem
-		* @param bool $draft If true, retrieve the draft version of this order item, which might include uncommitted changes to the order item, the order, or other order components.
-		* @param string $orderId Unique identifier of the order item to retrieve.
-		* @param string $orderItemId Unique identifier of the order item details to retrieve.
+		* @param bool $draft If true, retrieve the draft version of the order, which might include uncommitted changes to the order or its components.
+		* @param string $orderId Unique identifier of the order.
+		* @param string $orderItemId Unique identifier of the item to remove from the order.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -38,8 +57,8 @@ class OrderItemUrl  {
 	
 	/**
 		* Get Resource Url for GetOrderItems
-		* @param bool $draft If true, retrieve the draft version of the order's items, which might include uncommitted changes to one or more order items, the order itself, or other order components.
-		* @param string $orderId Unique identifier of the order items to retrieve.
+		* @param bool $draft If true, retrieve the draft version of the order, which might include uncommitted changes to the order or its components.
+		* @param string $orderId Unique identifier of the order.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -55,10 +74,10 @@ class OrderItemUrl  {
 	
 	/**
 		* Get Resource Url for CreateOrderItem
-		* @param string $orderId Unique identifier of the order for which to add the item.
+		* @param string $orderId Unique identifier of the order.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param bool $skipInventoryCheck If true, do not validate the product inventory when adding this item to the order.
-		* @param string $updateMode Specifies whether to add the item by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+		* @param bool $skipInventoryCheck If true, skip the process to validate inventory when creating this product reservation.
+		* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
 		* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 		* @return string Resource Url
 	*/
@@ -77,10 +96,10 @@ class OrderItemUrl  {
 	/**
 		* Get Resource Url for UpdateOrderItemDiscount
 		* @param int $discountId Unique identifier of the discount. System-supplied and read only.
-		* @param string $orderId Unique identifier of the order associated with the item discount.
-		* @param string $orderItemId Unique identifier of the item in the order.
+		* @param string $orderId Unique identifier of the order.
+		* @param string $orderItemId Unique identifier of the item to remove from the order.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $updateMode Specifies whether to change the item discount by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+		* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
 		* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 		* @return string Resource Url
 	*/
@@ -98,11 +117,34 @@ class OrderItemUrl  {
 	}
 	
 	/**
+		* Get Resource Url for UpdateItemDuty
+		* @param decimal $dutyAmount 
+		* @param string $orderId Unique identifier of the order.
+		* @param string $orderItemId Unique identifier of the item to remove from the order.
+		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+		* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+		* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
+		* @return string Resource Url
+	*/
+	public static function updateItemDutyUrl($dutyAmount, $orderId, $orderItemId, $responseFields, $updateMode, $version)
+	{
+		$url = "/api/commerce/orders/{orderId}/items/{orderItemId}/dutyAmount/{dutyAmount}?updatemode={updateMode}&version={version}&responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("dutyAmount", $dutyAmount);
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("orderItemId", $orderItemId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("updateMode", $updateMode);
+		$url = $mozuUrl->formatUrl("version", $version);
+		return $mozuUrl;
+	}
+	
+	/**
 		* Get Resource Url for UpdateItemFulfillment
 		* @param string $orderId Unique identifier of the order.
-		* @param string $orderItemId Unique identifier of the item in the order.
+		* @param string $orderItemId Unique identifier of the item to remove from the order.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $updateMode Specifies whether to apply the coupon by updating the original order, updating the order in draft mode, or updating the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+		* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
 		* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 		* @return string Resource Url
 	*/
@@ -120,11 +162,11 @@ class OrderItemUrl  {
 	
 	/**
 		* Get Resource Url for UpdateItemProductPrice
-		* @param string $orderId Unique identifier of the order containing the item to price override.
-		* @param string $orderItemId Unique identifier of the item in the order to price override.
+		* @param string $orderId Unique identifier of the order.
+		* @param string $orderItemId Unique identifier of the item to remove from the order.
 		* @param decimal $price The override price to specify for this item in the specified order.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $updateMode Specifies whether to change the product price by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+		* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
 		* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 		* @return string Resource Url
 	*/
@@ -143,11 +185,11 @@ class OrderItemUrl  {
 	
 	/**
 		* Get Resource Url for UpdateItemQuantity
-		* @param string $orderId Unique identifier of the order containing the item to update quantity.
-		* @param string $orderItemId Unique identifier of the item in the order to update quantity.
-		* @param int $quantity The quantity of the item in the order to update.
+		* @param string $orderId Unique identifier of the order.
+		* @param string $orderItemId Unique identifier of the item to remove from the order.
+		* @param int $quantity The number of cart items in the shopper's active cart.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $updateMode Specifies whether to change the item quantity by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+		* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
 		* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 		* @return string Resource Url
 	*/
@@ -166,9 +208,9 @@ class OrderItemUrl  {
 	
 	/**
 		* Get Resource Url for DeleteOrderItem
-		* @param string $orderId Unique identifier of the order with the item to remove.
+		* @param string $orderId Unique identifier of the order.
 		* @param string $orderItemId Unique identifier of the item to remove from the order.
-		* @param string $updateMode Specifies whether to remove the item by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+		* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
 		* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
 		* @return string Resource Url
 	*/

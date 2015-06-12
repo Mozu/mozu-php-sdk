@@ -19,7 +19,7 @@ class ProductTypeOptionUrl  {
 
 	/**
 		* Get Resource Url for GetOptions
-		* @param int $productTypeId Identifier of the product type to retrieve.
+		* @param int $productTypeId Identifier of the product type.
 		* @return string Resource Url
 	*/
 	public static function getOptionsUrl($productTypeId)
@@ -33,7 +33,7 @@ class ProductTypeOptionUrl  {
 	/**
 		* Get Resource Url for GetOption
 		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-		* @param int $productTypeId The identifier of the product type.
+		* @param int $productTypeId Identifier of the product type.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/

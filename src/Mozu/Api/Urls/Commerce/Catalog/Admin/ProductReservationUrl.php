@@ -79,7 +79,7 @@ class ProductReservationUrl  {
 	
 	/**
 		* Get Resource Url for UpdateProductReservations
-		* @param bool $skipInventoryCheck If true, skip the inventory validation process when updating this product reservation.
+		* @param bool $skipInventoryCheck If true, skip the process to validate inventory when creating this product reservation.
 		* @return string Resource Url
 	*/
 	public static function updateProductReservationsUrl($skipInventoryCheck)
@@ -92,7 +92,7 @@ class ProductReservationUrl  {
 	
 	/**
 		* Get Resource Url for DeleteProductReservation
-		* @param int $productReservationId Unique identifier of the reservation.
+		* @param int $productReservationId Unique identifier of the product reservation.
 		* @return string Resource Url
 	*/
 	public static function deleteProductReservationUrl($productReservationId)

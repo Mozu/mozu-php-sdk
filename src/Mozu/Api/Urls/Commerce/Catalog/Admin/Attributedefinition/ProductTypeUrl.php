@@ -19,7 +19,7 @@ class ProductTypeUrl  {
 
 	/**
 		* Get Resource Url for GetProductTypes
-		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product type search results by any of its properties. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=Name+cont+shoes"
+		* @param string $filter A set of filter expressions representing the search parameters for a query: eq=equals, ne=not equals, gt=greater than, lt = less than or equals, gt = greater than or equals, lt = less than or equals, sw = starts with, or cont = contains. Optional.
 		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param string $sortBy 
@@ -40,7 +40,7 @@ class ProductTypeUrl  {
 	
 	/**
 		* Get Resource Url for GetProductType
-		* @param int $productTypeId Identifier of the product type to retrieve.
+		* @param int $productTypeId Identifier of the product type.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -68,7 +68,7 @@ class ProductTypeUrl  {
 	
 	/**
 		* Get Resource Url for UpdateProductType
-		* @param int $productTypeId Identifier of the product type to update.
+		* @param int $productTypeId Identifier of the product type.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -83,7 +83,7 @@ class ProductTypeUrl  {
 	
 	/**
 		* Get Resource Url for DeleteProductType
-		* @param int $productTypeId Identifier of the product type to delete.
+		* @param int $productTypeId Identifier of the product type.
 		* @return string Resource Url
 	*/
 	public static function deleteProductTypeUrl($productTypeId)

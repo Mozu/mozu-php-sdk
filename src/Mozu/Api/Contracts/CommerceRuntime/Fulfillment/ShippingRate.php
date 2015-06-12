@@ -25,12 +25,12 @@ class ShippingRate
 	public $currencyCode;
 
 	/**
-	*If true, the estimated shipping rate is valid.
+	*Indicates if the facet is currently valid.
 	*/
 	public $isValid;
 
 	/**
-	*Array list of validation messages associated with the shipping rate.
+	*Array list of validation and status messages associated with shipping rates, orders, and product purchasable state.
 	*/
 	public $messages;
 
@@ -40,16 +40,24 @@ class ShippingRate
 	public $price;
 
 	/**
-	*The code that identifies the service type shipping method, such as FED_EX_INTERNATIONAL.
+	*The code associated with a carrier's shipping method service type, used during fulfillment of packages and shipments. Service type codes include a prefix that indicates the carrier. For example: FEDEX_INTERNATIONAL_STANDARD and UPS_GROUND.
 	*/
 	public $shippingMethodCode;
 
 	/**
-	*The name of the shipping method associated with the estimated rate, such as "UPS Ground".
+	*The carrier-supplied name for the shipping service type, such as "UPS Ground" or "2nd Day Air".
 	*/
 	public $shippingMethodName;
 
-		public $shippingZoneCode;
+	/**
+	*The shipping zone to which this rate applies.
+	*/
+	public $shippingZoneCode;
+
+	/**
+	*Custom data returned by the shipping service.
+	*/
+	public $data;
 
 }
 

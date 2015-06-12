@@ -19,9 +19,15 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 */
 class SearchSuggestion
 {
-		public $suggestion;
+	/**
+	*A suggested entity based on the search query. Use the SuggestionType to determine the type of entity. Could be a SearchTerm, Product, or Category
+	*/
+	public $suggestion;
 
-		public $suggestionType;
+	/**
+	*The type of Suggestion (e.g. Term, Product, Category). Will be one of the values of the SuggestionTypeConst type.
+	*/
+	public $suggestionType;
 
 }
 

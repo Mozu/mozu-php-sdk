@@ -20,12 +20,12 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Returns;
 class ReturnReason
 {
 	/**
-	*The quantity of the item returned for the specified reason.
+	*The specified quantity of objects and items. This property is used for numerous object types including products, options, components within a product bundle, cart and order items, returned items, shipping line items, items in a digital product. and items associated with types and reservations.
 	*/
 	public $quantity;
 
 	/**
-	*The reason for which an item is returned to the merchant.
+	*The reason description for an action, including item return, coupon not valid, and item is taxed. 
 	*/
 	public $reason;
 

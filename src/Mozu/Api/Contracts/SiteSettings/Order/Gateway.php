@@ -25,7 +25,7 @@ class Gateway
 	public $areGatewayCredentialFieldsSet;
 
 	/**
-	*The types of credit cards the merchant supports using this payment gateway.
+	*The types of credit cards supported by the payment gateway.
 	*/
 	public $supportedCards;
 

@@ -14,27 +14,60 @@ namespace Mozu\Api\Contracts\Event;
 
 
 
+/**
+*	Data for event deliveries. Returned content details a summary of actions, events, and results for a delivery event.
+*/
 class EventDeliverySummary
 {
-		public $createDate;
+	/**
+	*The date time in UTC format set when the object was created. 
+	*/
+	public $createDate;
 
-		public $deliveryStatus;
+	/**
+	*Status of the delivery process `EventDeliveryStatusType`. System-supplied and read-only.
+	*/
+	public $deliveryStatus;
 
-		public $id;
+	/**
+	*Unique identifier of the source product property. For a product field it will be the name of the field. For a product attribute it will be the Attribute FQN. 
+	*/
+	public $id;
 
-		public $isRunning;
+	/**
+	*Indicates whether delivery of the event is currently being attempted at this moment in time
+	*/
+	public $isRunning;
 
-		public $lastExecutionDate;
+	/**
+	*The date that the delivery was last attempted (either successfully or not)
+	*/
+	public $lastExecutionDate;
 
-		public $nextExecutionDate;
+	/**
+	*The date that the delivery will next be attempted, if the event has not been successfully delivered yet and there are still retries remaining
+	*/
+	public $nextExecutionDate;
 
-		public $retriesRemaining;
+	/**
+	*Number of delivery attempts remaining
+	*/
+	public $retriesRemaining;
 
-		public $updateDate;
+	/**
+	*The date and time the object was updated most recently. The date is in UTC format.
+	*/
+	public $updateDate;
 
-		public $deliveryAttempts;
+	/**
+	*Details about each attempted delivery of the event to the endpoint
+	*/
+	public $deliveryAttempts;
 
-		public $eventSummary;
+	/**
+	*Event Summary
+	*/
+	public $eventSummary;
 
 }
 

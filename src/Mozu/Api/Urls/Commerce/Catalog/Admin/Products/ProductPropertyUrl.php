@@ -19,7 +19,7 @@ class ProductPropertyUrl  {
 
 	/**
 		* Get Resource Url for GetProperties
-		* @param string $productCode 
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
 		* @return string Resource Url
 	*/
 	public static function getPropertiesUrl($productCode)
@@ -32,9 +32,9 @@ class ProductPropertyUrl  {
 	
 	/**
 		* Get Resource Url for GetPropertyValueLocalizedContents
-		* @param string $attributeFQN 
-		* @param string $productCode 
-		* @param string $value 
+		* @param string $attributeFQN Fully qualified name for an attribute.
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+		* @param string $value The value string to create.
 		* @return string Resource Url
 	*/
 	public static function getPropertyValueLocalizedContentsUrl($attributeFQN, $productCode, $value)
@@ -49,11 +49,11 @@ class ProductPropertyUrl  {
 	
 	/**
 		* Get Resource Url for GetPropertyValueLocalizedContent
-		* @param string $attributeFQN 
+		* @param string $attributeFQN Fully qualified name for an attribute.
 		* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
-		* @param string $productCode 
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $value 
+		* @param string $value The value string to create.
 		* @return string Resource Url
 	*/
 	public static function getPropertyValueLocalizedContentUrl($attributeFQN, $localeCode, $productCode, $responseFields, $value)
@@ -87,10 +87,10 @@ class ProductPropertyUrl  {
 	
 	/**
 		* Get Resource Url for AddPropertyValueLocalizedContent
-		* @param string $attributeFQN 
-		* @param string $productCode 
+		* @param string $attributeFQN Fully qualified name for an attribute.
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $value 
+		* @param string $value The value string to create.
 		* @return string Resource Url
 	*/
 	public static function addPropertyValueLocalizedContentUrl($attributeFQN, $productCode, $responseFields, $value)
@@ -106,7 +106,7 @@ class ProductPropertyUrl  {
 	
 	/**
 		* Get Resource Url for AddProperty
-		* @param string $productCode 
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -121,9 +121,9 @@ class ProductPropertyUrl  {
 	
 	/**
 		* Get Resource Url for UpdatePropertyValueLocalizedContents
-		* @param string $attributeFQN 
-		* @param string $productCode 
-		* @param string $value 
+		* @param string $attributeFQN Fully qualified name for an attribute.
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+		* @param string $value The value string to create.
 		* @return string Resource Url
 	*/
 	public static function updatePropertyValueLocalizedContentsUrl($attributeFQN, $productCode, $value)
@@ -138,11 +138,11 @@ class ProductPropertyUrl  {
 	
 	/**
 		* Get Resource Url for UpdatePropertyValueLocalizedContent
-		* @param string $attributeFQN 
+		* @param string $attributeFQN Fully qualified name for an attribute.
 		* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
-		* @param string $productCode 
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $value 
+		* @param string $value The value string to create.
 		* @return string Resource Url
 	*/
 	public static function updatePropertyValueLocalizedContentUrl($attributeFQN, $localeCode, $productCode, $responseFields, $value)
@@ -160,7 +160,7 @@ class ProductPropertyUrl  {
 	/**
 		* Get Resource Url for UpdateProperty
 		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-		* @param string $productCode 
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -177,7 +177,7 @@ class ProductPropertyUrl  {
 	/**
 		* Get Resource Url for DeleteProperty
 		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-		* @param string $productCode 
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
 		* @return string Resource Url
 	*/
 	public static function deletePropertyUrl($attributeFQN, $productCode)
@@ -191,10 +191,10 @@ class ProductPropertyUrl  {
 	
 	/**
 		* Get Resource Url for DeletePropertyValueLocalizedContent
-		* @param string $attributeFQN 
+		* @param string $attributeFQN Fully qualified name for an attribute.
 		* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
-		* @param string $productCode 
-		* @param string $value 
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+		* @param string $value The value string to create.
 		* @return string Resource Url
 	*/
 	public static function deletePropertyValueLocalizedContentUrl($attributeFQN, $localeCode, $productCode, $value)

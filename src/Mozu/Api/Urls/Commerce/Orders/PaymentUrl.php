@@ -34,8 +34,8 @@ class PaymentUrl  {
 	
 	/**
 		* Get Resource Url for GetAvailablePaymentActions
-		* @param string $orderId Unique identifier of the order associated with the payment.
-		* @param string $paymentId Unique identifer of the payment for which to retrieve available actions.
+		* @param string $orderId Unique identifier of the order.
+		* @param string $paymentId Unique identifier of the payment for which to perform the action.
 		* @return string Resource Url
 	*/
 	public static function getAvailablePaymentActionsUrl($orderId, $paymentId)
@@ -49,8 +49,8 @@ class PaymentUrl  {
 	
 	/**
 		* Get Resource Url for GetPayment
-		* @param string $orderId Unique identifier of the order associated with the payment transaction.
-		* @param string $paymentId Unique identifier of the payment transaction submitted for the order.
+		* @param string $orderId Unique identifier of the order.
+		* @param string $paymentId Unique identifier of the payment for which to perform the action.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -66,8 +66,8 @@ class PaymentUrl  {
 	
 	/**
 		* Get Resource Url for PerformPaymentAction
-		* @param string $orderId Unique identifier of the order associated with the payment.
-		* @param string $paymentId Unique identifer of the payment for which to perform the action.
+		* @param string $orderId Unique identifier of the order.
+		* @param string $paymentId Unique identifier of the payment for which to perform the action.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -83,7 +83,7 @@ class PaymentUrl  {
 	
 	/**
 		* Get Resource Url for CreatePaymentAction
-		* @param string $orderId Unique identifier of the order for which to apply the payment.
+		* @param string $orderId Unique identifier of the order.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/

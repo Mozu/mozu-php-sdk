@@ -36,7 +36,7 @@ class PropertyTypeUrl  {
 	
 	/**
 		* Get Resource Url for GetPropertyType
-		* @param string $propertyTypeName The name of the content property type.
+		* @param string $propertyTypeName The name of the property type.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -64,7 +64,7 @@ class PropertyTypeUrl  {
 	
 	/**
 		* Get Resource Url for UpdatePropertyType
-		* @param string $propertyTypeName 
+		* @param string $propertyTypeName The name of the property type.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -79,7 +79,7 @@ class PropertyTypeUrl  {
 	
 	/**
 		* Get Resource Url for DeletePropertyType
-		* @param string $propertyTypeName 
+		* @param string $propertyTypeName The name of the property type.
 		* @return string Resource Url
 	*/
 	public static function deletePropertyTypeUrl($propertyTypeName)

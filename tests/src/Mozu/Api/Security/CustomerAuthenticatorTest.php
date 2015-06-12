@@ -1,7 +1,5 @@
 <?php
 
-
-
 use Mozu\Tests\BaseTest;
 use Mozu\Api\Security\CustomerAuthenticator;
 use Mozu\Api\Security\CustomerAuthenticationProfile;
@@ -45,15 +43,20 @@ class CustomerAuthenticatorTest extends BaseTest
 	 * @covers Mozu\Api\Security\Authentication::getAccessToken
 	 * @todo Implement testGetAccessToken().
 	 */
-	public function testTenantAdminLogin()
+	public function testCustomerLogin()
 	{
-		$userAuthInfo = new CustomerUserAuthInfo();
-		$userAuthInfo->username = $this->customerUserName;
-		$userAuthInfo->password = $this->customerPassword;
-		 
-		$authenticationProfile = CustomerAuthenticator::authenticate($userAuthInfo,$this->tenantId, $this->siteId);
-		var_dump($authenticationProfile);
-		$this->assertNotNull($authenticationProfile->authTicket);
+        try {
+            $userAuthInfo = new CustomerUserAuthInfo();
+            $userAuthInfo->username = $this->customerUserName;
+            $userAuthInfo->password = $this->customerPassword;
+
+            $authenticationProfile = CustomerAuthenticator::authenticate($userAuthInfo, $this->tenantId, $this->siteId);
+            $this->assertNotNull($authenticationProfile->authTicket);
+            $this->assertNotNull($authenticationProfile->customerAccount);
+       } catch (Exception $e) {
+            parent::printError($e);
+            $this->fail($e->getMessage());
+        }
 	}
 }
 

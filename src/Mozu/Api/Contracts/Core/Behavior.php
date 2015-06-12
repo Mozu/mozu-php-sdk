@@ -15,17 +15,17 @@ namespace Mozu\Api\Contracts\Core;
 
 
 /**
-*	Properties of an application behavior.
+*	Properties of an application's behavior.
 */
 class Behavior
 {
 	/**
-	*Unique identifier of the behavior category.
+	*Unique identifier of a category. 
 	*/
 	public $categoryId;
 
 	/**
-	*Unique identifier of the behavior.
+	*Unique identifier of the source product property. For a product field it will be the name of the field. For a product attribute it will be the Attribute FQN. 
 	*/
 	public $id;
 
@@ -35,7 +35,7 @@ class Behavior
 	public $isPrivate;
 
 	/**
-	*The name of the behavior.
+	*The display name of the source product property. For a product field it will be the display name of the field. For a product attribute it will be the Attribute Name.
 	*/
 	public $name;
 

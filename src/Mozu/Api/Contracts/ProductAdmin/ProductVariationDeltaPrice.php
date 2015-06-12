@@ -20,7 +20,7 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class ProductVariationDeltaPrice
 {
 	/**
-	*The credit amount for the product.
+	*The credit value of the product or bundled product. When the `goodsType `is `DigitalCredit`, this value is populated to indicate the value of the credit. This is used to create store credit in the fulfillment of gift cards.
 	*/
 	public $creditValue;
 
@@ -30,12 +30,12 @@ class ProductVariationDeltaPrice
 	public $currencyCode;
 
 	/**
-	*The manufacturer's suggested retail price, as defined by the supplier.
+	*The manufacturer's suggested retail price for the product. This content may be defined by the supplier.
 	*/
 	public $msrp;
 
 	/**
-	*Positive or negative decimal value that represents the difference between this variation and the base product.
+	*The value of a property, used by numerous objects within Mozu including facets, attributes, products, localized content, metadata, capabilities (Mozu and third-party), location inventory adjustment, and more. The value may be a string, integer, or double. Validation may be run against the entered and saved values depending on the object type.
 	*/
 	public $value;
 

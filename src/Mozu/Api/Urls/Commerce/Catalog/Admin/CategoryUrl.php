@@ -19,7 +19,7 @@ class CategoryUrl  {
 
 	/**
 		* Get Resource Url for GetCategories
-		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product category search results by any of its properties, including its position in the category hierarchy. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+		* @param string $filter A set of filter expressions representing the search parameters for a query: eq=equals, ne=not equals, gt=greater than, lt = less than or equals, gt = greater than or equals, lt = less than or equals, sw = starts with, or cont = contains. Optional.
 		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param string $sortBy 
@@ -40,7 +40,7 @@ class CategoryUrl  {
 	
 	/**
 		* Get Resource Url for GetChildCategories
-		* @param int $categoryId Unique identifier of the category for which to retrieve subcategories.
+		* @param int $categoryId Unique identifier of the category to modify.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -55,7 +55,7 @@ class CategoryUrl  {
 	
 	/**
 		* Get Resource Url for GetCategory
-		* @param int $categoryId Unique identifier of the category to retrieve.
+		* @param int $categoryId Unique identifier of the category to modify.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -103,15 +103,19 @@ class CategoryUrl  {
 	/**
 		* Get Resource Url for DeleteCategoryById
 		* @param bool $cascadeDelete If true, also delete all subcategories associated with the specified category.
-		* @param int $categoryId Unique identifier of the category to delete.
+		* @param int $categoryId Unique identifier of the category to modify.
+		* @param bool $forceDelete 
+		* @param bool $reassignToParent 
 		* @return string Resource Url
 	*/
-	public static function deleteCategoryByIdUrl($cascadeDelete, $categoryId)
+	public static function deleteCategoryByIdUrl($cascadeDelete, $categoryId, $forceDelete, $reassignToParent)
 	{
-		$url = "/api/commerce/catalog/admin/categories/{categoryId}/?cascadeDelete={cascadeDelete}";
+		$url = "/api/commerce/catalog/admin/categories/{categoryId}/?cascadeDelete={cascadeDelete}&forceDelete={forceDelete}&reassignToParent={reassignToParent}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
 		$url = $mozuUrl->formatUrl("cascadeDelete", $cascadeDelete);
 		$url = $mozuUrl->formatUrl("categoryId", $categoryId);
+		$url = $mozuUrl->formatUrl("forceDelete", $forceDelete);
+		$url = $mozuUrl->formatUrl("reassignToParent", $reassignToParent);
 		return $mozuUrl;
 	}
 	

@@ -20,7 +20,7 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 class DiscountValidationSummary
 {
 	/**
-	*List of discount IDs the shopper can redeem for a product in its current state.
+	*List of discounts available per configured conditions and criteria. These discounts are associated with products, orders, and shipping costs. Shoppers can view these discounts per order, per product in an order, or for their shipping depending on the configuration.
 	*/
 	public $applicableDiscounts;
 

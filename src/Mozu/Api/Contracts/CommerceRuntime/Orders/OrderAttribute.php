@@ -20,7 +20,7 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Orders;
 class OrderAttribute
 {
 	/**
-	*Unique identifier of the order attribute definition.
+	*Unique identifier of the attribute definition.
 	*/
 	public $attributeDefinitionId;
 
@@ -30,7 +30,7 @@ class OrderAttribute
 	public $fullyQualifiedName;
 
 	/**
-	*The values defined for the order attribute.
+	*List of value data for objects.
 	*/
 	public $values;
 

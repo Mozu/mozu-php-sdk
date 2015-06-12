@@ -40,7 +40,7 @@ class ChannelUrl  {
 	
 	/**
 		* Get Resource Url for GetChannel
-		* @param string $code User-defined code that identifies the channel to retrieve.
+		* @param string $code User-defined code that uniqely identifies the channel group.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -68,7 +68,7 @@ class ChannelUrl  {
 	
 	/**
 		* Get Resource Url for UpdateChannel
-		* @param string $code User-defined code that identifies the channel to update.
+		* @param string $code User-defined code that uniqely identifies the channel group.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
@@ -83,7 +83,7 @@ class ChannelUrl  {
 	
 	/**
 		* Get Resource Url for DeleteChannel
-		* @param string $code User-defined code that identifies the channel to delete.
+		* @param string $code User-defined code that uniqely identifies the channel group.
 		* @return string Resource Url
 	*/
 	public static function deleteChannelUrl($code)

@@ -25,22 +25,22 @@ class ProductLocalizedSEOContent
 	public $localeCode;
 
 	/**
-	*The description of the metatag used for the product SEO content set to the locale code language. The metadata description is used to manage information internally.
+	*Description defined for metadata, used to interally manage data, in the language specified by the `localeCode`. This content is used by categories, products, localized content, and SEO content.
 	*/
 	public $metaTagDescription;
 
 	/**
-	*The metatag keywords for the product SEO content set in the locale code language. The metatag keywords are used to manage information internally.
+	*Keywords defined for  metadata, used to internally manage data, in the language specified by the `localeCode`. Keywords are used by content for categories, products, localized content, and SEO content.
 	*/
 	public $metaTagKeywords;
 
 	/**
-	*The metatag title for the product SEO content set in the locale code language. The metatag title is used to manage information internally.
+	*Title defined for  metadata, used to internally manage data, in the language specified by the `localeCode`. Titles are used by content for categories, products, localized content, and SEO content.
 	*/
 	public $metaTagTitle;
 
 	/**
-	*The search engine optimized human-readable portion of the URL in the language of the product's locale code.
+	*The search engine optimized, human-readable portion of the URL. The content is localized according to the product's `localeCode`.
 	*/
 	public $seoFriendlyUrl;
 
