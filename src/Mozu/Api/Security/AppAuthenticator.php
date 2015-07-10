@@ -42,7 +42,7 @@ class AppAuthenticator {
 			try {
 				static::$instance->authenticateApp();
 			} catch(\Exception $exc) {
-				static::$instance == null;
+				static::$instance = null;
 				throw $exc;
 			}
 		}
