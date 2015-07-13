@@ -256,11 +256,12 @@ class MozuClient {
                 }
                 $this->logger->debug($jsonResponse->errorCode . " : " . (MozuConfig::$throwExceptionOn404 == true));
 
-                if (isset($jsonResponse->message))
+                if (isset($jsonResponse->message)) {
                     $apiError = new ApiException($jsonResponse->message, $statusCode);
-                else
+                }
+                else {
                     $apiError = new ApiException($response->getReasonPhrase().", inspect Mozu\Api\ApiException->items property for more details", $statusCode);
-                $apiError = new ApiException($jsonResponse->message, $statusCode);
+                }
                 if (isset($jsonResponse->additionalErrorData)) {
                     $apiError->setAdditionalErrorData( $jsonResponse->additionalErrorData);
                 }
