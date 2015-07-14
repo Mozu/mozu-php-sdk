@@ -1,22 +1,17 @@
-<phpunit backupGlobals="true"
+<phpunit backupGlobals="false"
          backupStaticAttributes="false"
-         cacheTokens="false"
-         colors="false"
+         bootstrap="../../vendor/autoload.php"
+         colors="true"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
-         forceCoversAnnotation="false"
-         mapTestClassNameToCoveredClassName="false"
          processIsolation="false"
-         stopOnError="false"
          stopOnFailure="false"
-         stopOnIncomplete="false"
-         stopOnSkipped="false"
-         strict="false"
-         verbose="false">
+         verbose="true"
+          syntaxCheck="false">
         <testsuites>
             <testsuite name="Test Suite">
-                <directory>test</directory>
+                <directory suffix="*Test.php">tests/src/security</directory>
             </testsuite>
         </testsuites>
 </phpunit>

@@ -2,11 +2,9 @@
  namespace Mozu\Tests;
 
 use Logger;
+use Mozu\Api\Contracts\AppDev\AppAuthInfo;
 use Mozu\Api\MozuConfig;
 use Mozu\Api\Security\AppAuthenticator;
-use Mozu\Api\Contracts\AppDev\AppAuthInfo;
-
-require_once __DIR__ .'/../../src/Mozu/Api/Security/AppAuthenticator.php';
 
 
 abstract class BaseTest extends \PHPUnit_Framework_TestCase
@@ -24,7 +22,7 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
 	public $siteId;
     private $log;
 	public function __construct() {
-        Logger::configure('../../../loggerconfig.xml');
+        Logger::configure('loggerconfig.xml');
         $this->log = Logger::getLogger('BaseTest');
 		$this->loadSettings();
 		$this->auth();
@@ -34,12 +32,14 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
     public function auth() {
 
 
-    	$appAuthInfo = new AppAuthInfo();
-    	$appAuthInfo->sharedSecret = $this->sharedSecret;
-    	$appAuthInfo->applicationId = $this->applicationId;
     	
     	try {
+            $this->log->info("Authenticating...");
+            $appAuthInfo = new AppAuthInfo();
+            $appAuthInfo->sharedSecret = $this->sharedSecret;
+            $appAuthInfo->applicationId = $this->applicationId;
             MozuConfig::$baseAppAuthUrl = $this->baseUrl;
+            $this->log->info($this->baseUrl);
             $this->log->info("Base Auth Url : ".MozuConfig::$baseAppAuthUrl);
             $this->log->info('Authenticating...');
             AppAuthenticator::initialize($appAuthInfo);
@@ -47,7 +47,7 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
             $appAuthenticator = AppAuthenticator::getInstance();
             $this->log->info("Access Token : " .$appAuthenticator->getAccessToken());
     	} catch(\Exception $e) {
-           	$this->log->error("Exception : code - " . $e->getCode() . ", message - " . $e->getMessage(). ", correlationid - " . $e->getCorrelationId() );
+          	$this->log->error("Exception : code - " . $e->getCode() . ", message - " . $e->getMessage(). ", correlationid - " . $e->getCorrelationId() );
     		throw $e;
     	}
     }
