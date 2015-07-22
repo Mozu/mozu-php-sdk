@@ -71,7 +71,7 @@ class DocumentResourceTest extends BaseTest
 
     public function testUpdateDocumentContent() {
         $file = file_get_contents("C:\\files\\phpdownload.jpg");
-        $promise = $this->object->updateDocumentContentAsync($file, "files@mozu", "1bab2900-e57e-4c5b-83be-183edeef9bda", "image/jpg");
+        $promise = $this->object->updateDocumentContentAsync($file, "files@mozu", "a487bccd-7ee3-4fef-af9b-91b454559f7d", "image/jpg");
         $promise->then(function($mozuResult){
             printf($mozuResult->correlationId);
         }, function($apiException){

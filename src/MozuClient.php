@@ -86,7 +86,7 @@ class MozuClient {
 	}
 	
 	public function withBody($body) {
-		$this->requestBody = json_encode ( $body );
+		$this->requestBody =  json_encode($body);
 		$this->isStreamContent = false;
 		return $this;
 	}
@@ -120,7 +120,7 @@ class MozuClient {
 	public function execute() {
 		$this->validateContext();
 		$this->buildClientAndRequest();
-        $promise = $this->client->sendAsync ($this->request);
+        $promise = $this->client->sendAsync($this->request);
         $this->response = $promise->wait();
 
 		return $this;
@@ -129,8 +129,8 @@ class MozuClient {
     public function executeAsync() {
         $this->validateContext();
         $this->buildClientAndRequest();
-        return $this->client->sendAsync ($this->request)
-        ->then(function($response) {
+        $promise = $this->client->sendAsync($this->request);
+        return $promise->then(function($response) {
             $mozuResult = new MozuResult();
             if (!$this->notFoundFromServer) {
                 $mozuResult->contentType = $response->getHeader("Content-Type");
@@ -221,7 +221,7 @@ class MozuClient {
             $request = $request->withHeader(Headers::CONTENT_TYPE,$this->contentType);
         }
         if (!$this->isStreamContent)
-            $request= $request->withHeader('Content-Type', 'application/json');
+            $request= $request->withHeader('Content-Type', 'application/json; charset=utf-8');
 
         if ($this->apiContext != null && $this->apiContext->getUserAuthTicket() != null) {
             $this->setUserAuth();
@@ -232,6 +232,9 @@ class MozuClient {
         foreach ($this->headers as $name => $value) {
             $request = $request->withHeader($name, $value );
         }
+
+        if ($this->requestBody != null)
+            $request = $request->withHeader("Content-Length", strlen($this->requestBody));
         return $request;
     }
 
