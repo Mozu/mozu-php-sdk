@@ -87,6 +87,7 @@ class AppAuthenticator {
 	}
 	
 	private function setRefreshInterval($updateRefreshTokenInterval) {
+		$existingTimezone = date_default_timezone_get();
 		if ($this->refreshInterval == null)
 		{
 			date_default_timezone_set("UTC");
@@ -104,8 +105,10 @@ class AppAuthenticator {
 				->setAccessTokenExpiration($accessTokenExpiration)
 				->setRefreshTokenExpiration($refreshTokenExpiration);
 
-        $this->log->info("Access Token Expiration - " . $this->refreshInterval->getAccessTokenExpiration()->format('Y-m-d H:i:s'));
-        $this->log->info("Refresh Token Expiration - " .$this->refreshInterval->getRefreshTokenExpiration()->format('Y-m-d H:i:s'));
+
+       	$this->log->info("Access Token Expiration - " . $this->refreshInterval->getAccessTokenExpiration()->format('Y-m-d H:i:s'));
+       	$this->log->info("Refresh Token Expiration - " .$this->refreshInterval->getRefreshTokenExpiration()->format('Y-m-d H:i:s'));
+       	date_default_timezone_set($existingTimezone);
 	}
 	
 	public function getAppClaim() {
