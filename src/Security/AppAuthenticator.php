@@ -105,6 +105,7 @@ class AppAuthenticator {
 				->setAccessTokenExpiration($accessTokenExpiration)
 				->setRefreshTokenExpiration($refreshTokenExpiration);
 
+
        	$this->log->info("Access Token Expiration - " . $this->refreshInterval->getAccessTokenExpiration()->format('Y-m-d H:i:s'));
        	$this->log->info("Refresh Token Expiration - " .$this->refreshInterval->getRefreshTokenExpiration()->format('Y-m-d H:i:s'));
        	date_default_timezone_set($existingTimezone);
