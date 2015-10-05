@@ -29,6 +29,11 @@ class PublishingScope
 	*/
 	public $productCodes;
 
+	/**
+	*The Publish Set to publish
+	*/
+	public $publishSetCode;
+
 }
 
 ?>

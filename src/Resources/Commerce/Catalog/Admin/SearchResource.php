@@ -12,8 +12,8 @@
 
 namespace Mozu\Api\Resources\Commerce\Catalog\Admin;
 
-use Mozu\Api\ApiContext;
 use Mozu\Api\Clients\Commerce\Catalog\Admin\SearchClient;
+use Mozu\Api\ApiContext;
 
 
 /**
@@ -32,6 +32,104 @@ class SearchResource {
 
 
 
+	/**
+	* admin-search Get GetSearchTuningRule description DOCUMENT_HERE 
+	*
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $searchTuningRuleCode 
+	* @return SearchTuningRule 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function getSearchTuningRule($searchTuningRuleCode, $responseFields =  null)
+	{
+		$mozuClient = SearchClient::getSearchTuningRuleClient($searchTuningRuleCode, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* admin-search Get GetSearchTuningRule description DOCUMENT_HERE 
+	*
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $searchTuningRuleCode 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getSearchTuningRuleAsync($searchTuningRuleCode, $responseFields =  null)
+	{
+		$mozuClient = SearchClient::getSearchTuningRuleClient($searchTuningRuleCode, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* admin-search Get GetSearchTuningRules description DOCUMENT_HERE 
+	*
+	* @param string $filter A set of filter expressions representing the search parameters for a query: eq=equals, ne=not equals, gt=greater than, lt = less than or equals, gt = greater than or equals, lt = less than or equals, sw = starts with, or cont = contains. Optional.
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The amount is divided and displayed on the `pageCount `amount of pages. The default is 20 and maximum value is 200 per page.
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional.
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a `pageSize `of 25, to get the 51st through the 75th items, use `startIndex=3`.
+	* @return SearchTuningRuleCollection 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function getSearchTuningRules($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
+	{
+		$mozuClient = SearchClient::getSearchTuningRulesClient($startIndex, $pageSize, $sortBy, $filter, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* admin-search Get GetSearchTuningRules description DOCUMENT_HERE 
+	*
+	* @param string $filter A set of filter expressions representing the search parameters for a query: eq=equals, ne=not equals, gt=greater than, lt = less than or equals, gt = greater than or equals, lt = less than or equals, sw = starts with, or cont = contains. Optional.
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The amount is divided and displayed on the `pageCount `amount of pages. The default is 20 and maximum value is 200 per page.
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional.
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a `pageSize `of 25, to get the 51st through the 75th items, use `startIndex=3`.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getSearchTuningRulesAsync($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
+	{
+		$mozuClient = SearchClient::getSearchTuningRulesClient($startIndex, $pageSize, $sortBy, $filter, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* 
+	*
+	* @return Stream 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function getSearchTuningRuleSortFields()
+	{
+		$mozuClient = SearchClient::getSearchTuningRuleSortFieldsClient();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* 
+	*
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getSearchTuningRuleSortFieldsAsync()
+	{
+		$mozuClient = SearchClient::getSearchTuningRuleSortFieldsClient();
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Get site search settings
 	*
@@ -63,6 +161,97 @@ class SearchResource {
 	}
 	
 	/**
+	* admin-search Post AddSearchTuningRule description DOCUMENT_HERE 
+	*
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param SearchTuningRule $searchTuningRuleIn Mozu.ProductAdmin.Contracts.Search.SearchTuningRule ApiType DOCUMENT_HERE 
+	* @return SearchTuningRule 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function addSearchTuningRule($searchTuningRuleIn, $responseFields =  null)
+	{
+		$mozuClient = SearchClient::addSearchTuningRuleClient($searchTuningRuleIn, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* admin-search Post AddSearchTuningRule description DOCUMENT_HERE 
+	*
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function addSearchTuningRuleAsync($searchTuningRuleIn, $responseFields =  null)
+	{
+		$mozuClient = SearchClient::addSearchTuningRuleClient($searchTuningRuleIn, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param SearchTuningRuleSortFields $searchTuningRuleSortFieldsIn 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function updateSearchTuningRuleSortFields($searchTuningRuleSortFieldsIn)
+	{
+		$mozuClient = SearchClient::updateSearchTuningRuleSortFieldsClient($searchTuningRuleSortFieldsIn);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+
+	}
+	
+/**
+	* 
+	*
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function updateSearchTuningRuleSortFieldsAsync($searchTuningRuleSortFieldsIn)
+	{
+		$mozuClient = SearchClient::updateSearchTuningRuleSortFieldsClient($searchTuningRuleSortFieldsIn);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* admin-search Put UpdateSearchTuningRule description DOCUMENT_HERE 
+	*
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $searchTuningRuleCode 
+	* @param SearchTuningRule $searchTuningRuleIn Mozu.ProductAdmin.Contracts.Search.SearchTuningRule ApiType DOCUMENT_HERE 
+	* @return SearchTuningRule 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function updateSearchTuningRule($searchTuningRuleIn, $searchTuningRuleCode, $responseFields =  null)
+	{
+		$mozuClient = SearchClient::updateSearchTuningRuleClient($searchTuningRuleIn, $searchTuningRuleCode, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* admin-search Put UpdateSearchTuningRule description DOCUMENT_HERE 
+	*
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $searchTuningRuleCode 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function updateSearchTuningRuleAsync($searchTuningRuleIn, $searchTuningRuleCode, $responseFields =  null)
+	{
+		$mozuClient = SearchClient::updateSearchTuningRuleClient($searchTuningRuleIn, $searchTuningRuleCode, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
 	* Adds or Updates (Upsert) the Search Settings for a specific site
 	*
 	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
@@ -88,6 +277,34 @@ class SearchResource {
 	public function updateSettingsAsync($settings, $responseFields =  null)
 	{
 		$mozuClient = SearchClient::updateSettingsClient($settings, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* admin-search Delete DeleteSearchTuningRule description DOCUMENT_HERE 
+	*
+	* @param string $searchTuningRuleCode 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function deleteSearchTuningRule($searchTuningRuleCode)
+	{
+		$mozuClient = SearchClient::deleteSearchTuningRuleClient($searchTuningRuleCode);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+
+	}
+	
+/**
+	* admin-search Delete DeleteSearchTuningRule description DOCUMENT_HERE 
+	*
+	* @param string $searchTuningRuleCode 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function deleteSearchTuningRuleAsync($searchTuningRuleCode)
+	{
+		$mozuClient = SearchClient::deleteSearchTuningRuleClient($searchTuningRuleCode);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 

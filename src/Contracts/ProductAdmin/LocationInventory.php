@@ -20,7 +20,7 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class LocationInventory
 {
 	/**
-	*Mozu.ProductAdmin.Contracts.LocationInventory baseProductCode ApiTypeMember DOCUMENT_HERE 
+	*Product code defined by the tenant administrator to use as a base prefix when generating product codes for any variations of this product.
 	*/
 	public $baseProductCode;
 

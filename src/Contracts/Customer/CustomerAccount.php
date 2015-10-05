@@ -30,6 +30,11 @@ class CustomerAccount
 	public $companyOrOrganization;
 
 	/**
+	*Mozu.Customer.Contracts.CustomerAccount customerSinceDate ApiTypeMember DOCUMENT_HERE 
+	*/
+	public $customerSinceDate;
+
+	/**
 	*The email address for the customer account and contact. This email may be used for login to the storefront and for subscription mailing lists.
 	*/
 	public $emailAddress;
@@ -75,6 +80,11 @@ class CustomerAccount
 	public $lastName;
 
 	/**
+	*Mozu.Customer.Contracts.CustomerAccount lifeTimeValueSetDate ApiTypeMember DOCUMENT_HERE 
+	*/
+	public $lifeTimeValueSetDate;
+
+	/**
 	*Language used for the entity. Currently, only "en-US" is supported.
 	*/
 	public $localeCode;
@@ -118,6 +128,11 @@ class CustomerAccount
 	*Contact information, including the contact's name, address, phone numbers, email addresses, and company (if supplied). Also indicates whether this is a billing, shipping, or billing and shipping contact.
 	*/
 	public $contacts;
+
+	/**
+	*Mozu.Customer.Contracts.CustomerAccount lifetimeValue ApiTypeMember DOCUMENT_HERE 
+	*/
+	public $lifetimeValue;
 
 	/**
 	*Paged list collection of note content for objects including customers, orders, and returns. 

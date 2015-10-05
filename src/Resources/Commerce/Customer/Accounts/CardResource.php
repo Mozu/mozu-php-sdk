@@ -12,8 +12,8 @@
 
 namespace Mozu\Api\Resources\Commerce\Customer\Accounts;
 
-use Mozu\Api\ApiContext;
 use Mozu\Api\Clients\Commerce\Customer\Accounts\CardClient;
+use Mozu\Api\ApiContext;
 
 
 /**

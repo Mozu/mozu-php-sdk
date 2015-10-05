@@ -30,6 +30,11 @@ class DocumentListType
 	public $documentTypeFQNs;
 
 	/**
+	*Determines if documentLists belonging to this documentListType have ActiveDateRanges turned on or off. Each documentList created from the documentListType will use this value, but it can be overridden in an individual documentList.
+	*/
+	public $enableActiveDateRanges;
+
+	/**
 	*Indicates if the document list and document list type are enabled to publish. If true, publishing of draft documents in this document list/document list type is enabled for the site. If false, all document changes are immediately published in live mode.
 	*/
 	public $enablePublishing;
@@ -53,6 +58,11 @@ class DocumentListType
 	*The scope at which the object exists, such as "Tenant", "MasterCatalog", or "Site". Scope delineates the level and area of Mozu the object exists within or affects.
 	*/
 	public $scopeType;
+
+	/**
+	*Determines if documentLists belonging to this documentListType will support drafting and ActiveDateRanges documents. This field defaults to false and cannot be updated. Each documentList created from the documentListType will use this value.
+	*/
+	public $supportsActiveDateRanges;
 
 	/**
 	*Indicates if modified documents are published automatically or saved to publish at a later time. If true, changed documents in this list can be saved as drafts until they are published to the site. If false, all document changes are immediately published in live mode. System-supplied and read only.

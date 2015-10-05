@@ -13,6 +13,7 @@
 namespace Mozu\Api\Resources\Platform\Applications;
 
 use Mozu\Api\Clients\Platform\Applications\AuthTicketClient;
+use Mozu\Api\ApiContext;
 
 
 /**

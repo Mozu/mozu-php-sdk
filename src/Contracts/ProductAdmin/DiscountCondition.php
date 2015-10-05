@@ -30,6 +30,11 @@ class DiscountCondition
 	public $expirationDate;
 
 	/**
+	*List of payment types that trigger this discount to be valid.
+	*/
+	public $includedPaymentWorkflows;
+
+	/**
 	*The maximum number of times the discount can be redeemed.
 	*/
 	public $maxRedemptionCount;

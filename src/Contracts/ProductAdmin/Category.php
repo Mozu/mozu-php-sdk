@@ -27,6 +27,11 @@ class Category
 	public $categoryCode;
 
 	/**
+	*The Type of Category Static, Dyanmic, DynamicPreComputed
+	*/
+	public $categoryType;
+
+	/**
 	*The number of children (subcategories, for example) that stem from a parent (top-level category).
 	*/
 	public $childCount;
@@ -65,6 +70,11 @@ class Category
 	*Complex type that contains content for a language specified by LocaleCode.
 	*/
 	public $content;
+
+	/**
+	*Mozu.ProductAdmin.Contracts.Category dynamicExpression ApiTypeMember DOCUMENT_HERE 
+	*/
+	public $dynamicExpression;
 
 }
 

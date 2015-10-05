@@ -58,7 +58,7 @@ class ExtendedPropertyUrl  {
 	
 	/**
 		* Get Resource Url for UpdateExtendedProperties
-		* @param bool $upsert 
+		* @param bool $upsert Any set of key value pairs to be stored in the extended properties of a cart.
 		* @return string Resource Url
 	*/
 	public static function updateExtendedPropertiesUrl($upsert)

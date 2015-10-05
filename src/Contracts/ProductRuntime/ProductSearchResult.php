@@ -46,6 +46,11 @@ class ProductSearchResult
 	*/
 	public $items;
 
+	/**
+	*Mozu.ProductRuntime.Contracts.ProductSearchResult solrDebugInfo ApiTypeMember DOCUMENT_HERE 
+	*/
+	public $solrDebugInfo;
+
 }
 
 ?>

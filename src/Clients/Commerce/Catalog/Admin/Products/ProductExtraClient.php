@@ -12,9 +12,10 @@
 
 namespace Mozu\Api\Clients\Commerce\Catalog\Admin\Products;
 
-use Mozu\Api\Headers;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\Products\ProductExtraUrl;
+
+use Mozu\Api\Headers;
 
 /**
 * Use the Extras resource to configure an extra product attribute for products associated with the product type that uses the extra attribute.

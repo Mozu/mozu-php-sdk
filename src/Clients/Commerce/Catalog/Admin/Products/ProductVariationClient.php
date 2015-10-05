@@ -12,9 +12,10 @@
 
 namespace Mozu\Api\Clients\Commerce\Catalog\Admin\Products;
 
-use Mozu\Api\Headers;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\Products\ProductVariationUrl;
+
+use Mozu\Api\Headers;
 
 /**
 * Use the product variations sub-resource to manage the variations of a product based on its attributes. For example, a t-shirt product could be offered in six variations: Small Black, Medium Black, Large Black, Small White, Medium White, and Large White.
@@ -128,7 +129,7 @@ class ProductVariationClient {
 	}
 	
 	/**
-	* Updatesthe localized delta price value for a product variation. Localized delta prices are deltas between two differing monetary conversion amounts between countries, such as US Dollar vs Euro.
+	* Updates the localized delta price value for a product variation. Localized delta prices are deltas between two differing monetary conversion amounts between countries, such as US Dollar vs Euro.
 	*
 	* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
 	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.

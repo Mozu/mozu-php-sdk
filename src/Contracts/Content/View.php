@@ -20,6 +20,11 @@ namespace Mozu\Api\Contracts\Content;
 class View
 {
 	/**
+	*A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	*/
+	public $filter;
+
+	/**
 	*The isVisibleInStorefront field indicates whether documents in the view can be accessed from the Mozu storefront application. If true, the storefront application and storefront client application (javascript tier) can GET documents from the view.
 	*/
 	public $isVisibleInStorefront;

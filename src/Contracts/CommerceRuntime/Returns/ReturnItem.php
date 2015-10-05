@@ -30,6 +30,11 @@ class ReturnItem
 	public $orderItemId;
 
 	/**
+	*This is the Option attribute FQN for the item being returned .. typically only when the return item is a product bundle item.
+	*/
+	public $orderItemOptionAttributeFQN;
+
+	/**
 	*The OrderLineId that this ReturnItem is associated with. If order item is present, the orderLineId should be present also.
 	*/
 	public $orderLineId;

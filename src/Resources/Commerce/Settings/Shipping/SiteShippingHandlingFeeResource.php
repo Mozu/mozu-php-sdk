@@ -12,8 +12,8 @@
 
 namespace Mozu\Api\Resources\Commerce\Settings\Shipping;
 
-use Mozu\Api\ApiContext;
 use Mozu\Api\Clients\Commerce\Settings\Shipping\SiteShippingHandlingFeeClient;
+use Mozu\Api\ApiContext;
 
 
 /**

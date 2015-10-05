@@ -12,8 +12,8 @@
 
 namespace Mozu\Api\Resources\Commerce\Orders;
 
-use Mozu\Api\ApiContext;
 use Mozu\Api\Clients\Commerce\Orders\OrderItemClient;
+use Mozu\Api\ApiContext;
 
 
 /**
@@ -33,7 +33,7 @@ class OrderItemResource {
 
 
 	/**
-	* orders-orderitems Get GetOrderItemViaLineId description DOCUMENT_HERE 
+	* Retrieves an order item with the order line ID.
 	*
 	* @param bool $draft If true, retrieve the draft version of the order, which might include uncommitted changes to the order or its components.
 	* @param int $lineId 
@@ -52,7 +52,7 @@ class OrderItemResource {
 	}
 	
 /**
-	* orders-orderitems Get GetOrderItemViaLineId description DOCUMENT_HERE 
+	* Retrieves an order item with the order line ID.
 	*
 	* @param bool $draft If true, retrieve the draft version of the order, which might include uncommitted changes to the order or its components.
 	* @param int $lineId 
@@ -219,9 +219,10 @@ class OrderItemResource {
 	}
 	
 	/**
-	* orders-orderitems Put UpdateItemDuty description DOCUMENT_HERE 
+	* Update the duty fee information for an order item.
 	*
-	* @param decimal $dutyAmount 
+	* @param decimal $dutyAmount The amount added to the order item for duty fees.
+        
 	* @param string $orderId Unique identifier of the order.
 	* @param string $orderItemId Unique identifier of the item to remove from the order.
 	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
@@ -240,9 +241,10 @@ class OrderItemResource {
 	}
 	
 /**
-	* orders-orderitems Put UpdateItemDuty description DOCUMENT_HERE 
+	* Update the duty fee information for an order item.
 	*
-	* @param decimal $dutyAmount 
+	* @param decimal $dutyAmount The amount added to the order item for duty fees.
+        
 	* @param string $orderId Unique identifier of the order.
 	* @param string $orderItemId Unique identifier of the item to remove from the order.
 	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.

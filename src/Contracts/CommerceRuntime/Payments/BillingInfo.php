@@ -19,6 +19,8 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Payments;
 */
 class BillingInfo
 {
+		public $externalTransactionId;
+
 	/**
 	*If true, the system overrides the customer's billing address information with the supplied fulfillment information.
 	*/
@@ -28,6 +30,11 @@ class BillingInfo
 	*The type of payment, such as credit card, check, or PayPal Express. Additional payment types will be supported in future releases.
 	*/
 	public $paymentType;
+
+	/**
+	*Mozu.CommerceRuntime.Contracts.Payments.BillingInfo paymentWorkflow ApiTypeMember DOCUMENT_HERE 
+	*/
+	public $paymentWorkflow;
 
 	/**
 	*The code that identifies the store credit to apply to the order.
@@ -48,6 +55,8 @@ class BillingInfo
 	*If the customer is paying by card, the credit card information.
 	*/
 	public $card;
+
+		public $data;
 
 }
 

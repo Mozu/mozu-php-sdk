@@ -20,6 +20,11 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class MasterCatalog
 {
 	/**
+	*If the publishingMode is Pending and LiveEditsEnabled = true, DataViewMode live can be passed in the header and live products can be directly edited.
+	*/
+	public $enableLiveEdit;
+
+	/**
 	*The unique identifier of the master catalog associated with the entity.
 	*/
 	public $id;

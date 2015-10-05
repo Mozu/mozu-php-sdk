@@ -12,8 +12,10 @@
 
 namespace Mozu\Api\Resources\Commerce\Catalog\Storefront;
 
-use Mozu\Api\ApiContext;
 use Mozu\Api\Clients\Commerce\Catalog\Storefront\ProductClient;
+use Mozu\Api\ApiContext;
+
+use Mozu\Api\Headers;
 
 /**
 * Use the Storefront Products  resource to manage the shopper product selection process during a visit to the web storefront. You can update product options as shoppers pick and choose their product choices. A shopper cannot add a product to a cart until all of its required options have been selected.
@@ -138,6 +140,38 @@ class ProductResource {
 	public function getProductAsync($productCode, $variationProductCode =  null, $allowInactive =  null, $skipInventoryCheck =  null, $supressOutOfStock404 =  null, $responseFields =  null)
 	{
 		$mozuClient = ProductClient::getProductClient($this->dataViewMode, $productCode, $variationProductCode, $allowInactive, $skipInventoryCheck, $supressOutOfStock404, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* Retrieves information about a single product given its product code for Mozu to index in the search engine
+	*
+	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @return Product 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function getProductForIndexing($productCode, $responseFields =  null)
+	{
+		$mozuClient = ProductClient::getProductForIndexingClient($this->dataViewMode, $productCode, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Retrieves information about a single product given its product code for Mozu to index in the search engine
+	*
+	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getProductForIndexingAsync($productCode, $responseFields =  null)
+	{
+		$mozuClient = ProductClient::getProductForIndexingClient($this->dataViewMode, $productCode, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 

@@ -12,8 +12,8 @@
 
 namespace Mozu\Api\Resources\Platform\Entitylists;
 
-use Mozu\Api\ApiContext;
 use Mozu\Api\Clients\Platform\Entitylists\EntityContainerClient;
+use Mozu\Api\ApiContext;
 
 
 /**

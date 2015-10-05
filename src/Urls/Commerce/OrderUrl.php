@@ -129,6 +129,23 @@ class OrderUrl  {
 	}
 	
 	/**
+		* Get Resource Url for ProcessDigitalWallet
+		* @param string $digitalWalletType 
+		* @param string $orderId Unique identifier of the order.
+		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+		* @return string Resource Url
+	*/
+	public static function processDigitalWalletUrl($digitalWalletType, $orderId, $responseFields)
+	{
+		$url = "/api/commerce/orders/{orderId}/digitalWallet/{digitalWalletType}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("digitalWalletType", $digitalWalletType);
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		return $mozuUrl;
+	}
+	
+	/**
 		* Get Resource Url for UpdateOrderDiscount
 		* @param int $discountId Unique identifier of the discount. System-supplied and read only.
 		* @param string $orderId Unique identifier of the order.

@@ -12,8 +12,8 @@
 
 namespace Mozu\Api\Resources\Commerce\Catalog\Storefront;
 
-use Mozu\Api\ApiContext;
 use Mozu\Api\Clients\Commerce\Catalog\Storefront\CategoryClient;
+use Mozu\Api\ApiContext;
 
 
 /**

@@ -22,6 +22,55 @@ use Mozu\Api\Urls\Commerce\Catalog\Admin\SearchUrl;
 class SearchClient {
 
 	/**
+	* admin-search Get GetSearchTuningRule description DOCUMENT_HERE 
+	*
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $searchTuningRuleCode 
+	* @return MozuClient
+	*/
+	public static function getSearchTuningRuleClient($searchTuningRuleCode, $responseFields =  null)
+	{
+		$url = SearchUrl::getSearchTuningRuleUrl($responseFields, $searchTuningRuleCode);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* admin-search Get GetSearchTuningRules description DOCUMENT_HERE 
+	*
+	* @param string $filter A set of filter expressions representing the search parameters for a query: eq=equals, ne=not equals, gt=greater than, lt = less than or equals, gt = greater than or equals, lt = less than or equals, sw = starts with, or cont = contains. Optional.
+	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The amount is divided and displayed on the `pageCount `amount of pages. The default is 20 and maximum value is 200 per page.
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional.
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a `pageSize `of 25, to get the 51st through the 75th items, use `startIndex=3`.
+	* @return MozuClient
+	*/
+	public static function getSearchTuningRulesClient($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
+	{
+		$url = SearchUrl::getSearchTuningRulesUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* 
+	*
+	* @return MozuClient
+	*/
+	public static function getSearchTuningRuleSortFieldsClient()
+	{
+		$url = SearchUrl::getSearchTuningRuleSortFieldsUrl();
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
+
+	}
+	
+	/**
 	* Get site search settings
 	*
 	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
@@ -32,6 +81,53 @@ class SearchClient {
 		$url = SearchUrl::getSettingsUrl($responseFields);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* admin-search Post AddSearchTuningRule description DOCUMENT_HERE 
+	*
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param SearchTuningRule $searchTuningRuleIn Mozu.ProductAdmin.Contracts.Search.SearchTuningRule ApiType DOCUMENT_HERE 
+	* @return MozuClient
+	*/
+	public static function addSearchTuningRuleClient($searchTuningRuleIn, $responseFields =  null)
+	{
+		$url = SearchUrl::addSearchTuningRuleUrl($responseFields);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withBody($searchTuningRuleIn);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* 
+	*
+	* @param SearchTuningRuleSortFields $searchTuningRuleSortFieldsIn 
+	*/
+	public static function updateSearchTuningRuleSortFieldsClient($searchTuningRuleSortFieldsIn)
+	{
+		$url = SearchUrl::updateSearchTuningRuleSortFieldsUrl();
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withBody($searchTuningRuleSortFieldsIn);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* admin-search Put UpdateSearchTuningRule description DOCUMENT_HERE 
+	*
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $searchTuningRuleCode 
+	* @param SearchTuningRule $searchTuningRuleIn Mozu.ProductAdmin.Contracts.Search.SearchTuningRule ApiType DOCUMENT_HERE 
+	* @return MozuClient
+	*/
+	public static function updateSearchTuningRuleClient($searchTuningRuleIn, $searchTuningRuleCode, $responseFields =  null)
+	{
+		$url = SearchUrl::updateSearchTuningRuleUrl($responseFields, $searchTuningRuleCode);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withBody($searchTuningRuleIn);
 		return $mozuClient;
 
 	}
@@ -48,6 +144,20 @@ class SearchClient {
 		$url = SearchUrl::updateSettingsUrl($responseFields);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($settings);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* admin-search Delete DeleteSearchTuningRule description DOCUMENT_HERE 
+	*
+	* @param string $searchTuningRuleCode 
+	*/
+	public static function deleteSearchTuningRuleClient($searchTuningRuleCode)
+	{
+		$url = SearchUrl::deleteSearchTuningRuleUrl($searchTuningRuleCode);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url);
 		return $mozuClient;
 
 	}

@@ -25,7 +25,7 @@ class CartSummary
 	public $hasActiveCart;
 
 	/**
-	*If true, the cart's period of inactivity is past its calculated expiration date and the cart is considered abandoned.
+	*suaIf true, the cart's period of inactivity is past its calculated expiration date and the cart is considered abandoned.
 	*/
 	public $isExpired;
 

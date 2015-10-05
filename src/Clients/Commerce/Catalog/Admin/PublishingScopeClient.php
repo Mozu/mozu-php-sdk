@@ -12,15 +12,47 @@
 
 namespace Mozu\Api\Clients\Commerce\Catalog\Admin;
 
-use Mozu\Api\Headers;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\PublishingScopeUrl;
+
+use Mozu\Api\Headers;
 
 /**
 * Use the Product Publishing resource to publish or discard pending changes to product definitions in the master catalog.
 */
 class PublishingScopeClient {
 
+	/**
+	* Retrieves the details of a single PublishSet.
+	*
+	* @param string $publishSetCode 
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @return MozuClient
+	*/
+	public static function getPublishSetClient($publishSetCode, $responseFields =  null)
+	{
+		$url = PublishingScopeUrl::getPublishSetUrl($publishSetCode, $responseFields);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* Retrieves a list of PublishSets including the product counts.
+	*
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @return MozuClient
+	*/
+	public static function getPublishSetsClient($responseFields =  null)
+	{
+		$url = PublishingScopeUrl::getPublishSetsUrl($responseFields);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
+
+	}
+	
 	/**
 	* Deletes the draft version of product changes for each product code specified in the request.
 	*
@@ -45,6 +77,37 @@ class PublishingScopeClient {
 		$url = PublishingScopeUrl::publishDraftsUrl();
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($publishScope)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* admin-publishing Post AssignProductsToPublishSet description DOCUMENT_HERE 
+	*
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param PublishSet $publishSet Mozu.ProductAdmin.Contracts.PublishSet ApiType DOCUMENT_HERE 
+	* @return MozuClient
+	*/
+	public static function assignProductsToPublishSetClient($publishSet, $responseFields =  null)
+	{
+		$url = PublishingScopeUrl::assignProductsToPublishSetUrl($responseFields);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withBody($publishSet);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* Removes all details about a PublishSet from the product service. If the discardDrafts param is true, it also deletes the product drafts.
+	*
+	* @param bool $discardDrafts 
+	* @param string $publishSetCode 
+	*/
+	public static function deletePublishSetClient($publishSetCode, $discardDrafts =  null)
+	{
+		$url = PublishingScopeUrl::deletePublishSetUrl($discardDrafts, $publishSetCode);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url);
 		return $mozuClient;
 
 	}

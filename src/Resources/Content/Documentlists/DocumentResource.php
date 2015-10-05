@@ -12,8 +12,10 @@
 
 namespace Mozu\Api\Resources\Content\Documentlists;
 
-use Mozu\Api\ApiContext;
 use Mozu\Api\Clients\Content\Documentlists\DocumentClient;
+use Mozu\Api\ApiContext;
+
+use Mozu\Api\Headers;
 
 /**
 * Use this subresource to manage documents in a document list.
@@ -64,17 +66,64 @@ class DocumentResource {
 	}
 	
 	/**
+	* documentlists-documents Get TransformDocumentContent description DOCUMENT_HERE 
+	*
+	* @param string $crop 
+	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
+	* @param string $documentListName Name of content documentListName to delete
+	* @param int $height 
+	* @param int $max 
+	* @param int $maxHeight 
+	* @param int $maxWidth 
+	* @param int $quality 
+	* @param int $width 
+	* @return Stream 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function transformDocumentContent($documentListName, $documentId, $width =  null, $height =  null, $max =  null, $maxWidth =  null, $maxHeight =  null, $crop =  null, $quality =  null)
+	{
+		$mozuClient = DocumentClient::transformDocumentContentClient($documentListName, $documentId, $width, $height, $max, $maxWidth, $maxHeight, $crop, $quality);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* documentlists-documents Get TransformDocumentContent description DOCUMENT_HERE 
+	*
+	* @param string $crop 
+	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
+	* @param string $documentListName Name of content documentListName to delete
+	* @param int $height 
+	* @param int $max 
+	* @param int $maxHeight 
+	* @param int $maxWidth 
+	* @param int $quality 
+	* @param int $width 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function transformDocumentContentAsync($documentListName, $documentId, $width =  null, $height =  null, $max =  null, $maxWidth =  null, $maxHeight =  null, $crop =  null, $quality =  null)
+	{
+		$mozuClient = DocumentClient::transformDocumentContentClient($documentListName, $documentId, $width, $height, $max, $maxWidth, $maxHeight, $crop, $quality);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
 	* Retrieves a document within the specified document list.
 	*
 	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
 	* @param string $documentListName Name of content documentListName to delete
+	* @param bool $includeInactive 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return Document 
 	* @deprecated deprecated since version 1.17
 	*/
-	public function getDocument($documentListName, $documentId, $responseFields =  null)
+	public function getDocument($documentListName, $documentId, $includeInactive =  null, $responseFields =  null)
 	{
-		$mozuClient = DocumentClient::getDocumentClient($this->dataViewMode, $documentListName, $documentId, $responseFields);
+		$mozuClient = DocumentClient::getDocumentClient($this->dataViewMode, $documentListName, $documentId, $includeInactive, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -86,12 +135,13 @@ class DocumentResource {
 	*
 	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
 	* @param string $documentListName Name of content documentListName to delete
+	* @param bool $includeInactive 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
-	public function getDocumentAsync($documentListName, $documentId, $responseFields =  null)
+	public function getDocumentAsync($documentListName, $documentId, $includeInactive =  null, $responseFields =  null)
 	{
-		$mozuClient = DocumentClient::getDocumentClient($this->dataViewMode, $documentListName, $documentId, $responseFields);
+		$mozuClient = DocumentClient::getDocumentClient($this->dataViewMode, $documentListName, $documentId, $includeInactive, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 
@@ -102,6 +152,7 @@ class DocumentResource {
 	*
 	* @param string $documentListName Name of content documentListName to delete
 	* @param string $filter A set of filter expressions representing the search parameters for a query: eq=equals, ne=not equals, gt=greater than, lt = less than or equals, gt = greater than or equals, lt = less than or equals, sw = starts with, or cont = contains. Optional.
+	* @param bool $includeInactive 
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
@@ -109,9 +160,9 @@ class DocumentResource {
 	* @return DocumentCollection 
 	* @deprecated deprecated since version 1.17
 	*/
-	public function getDocuments($documentListName, $filter =  null, $sortBy =  null, $pageSize =  null, $startIndex =  null, $responseFields =  null)
+	public function getDocuments($documentListName, $filter =  null, $sortBy =  null, $pageSize =  null, $startIndex =  null, $includeInactive =  null, $responseFields =  null)
 	{
-		$mozuClient = DocumentClient::getDocumentsClient($this->dataViewMode, $documentListName, $filter, $sortBy, $pageSize, $startIndex, $responseFields);
+		$mozuClient = DocumentClient::getDocumentsClient($this->dataViewMode, $documentListName, $filter, $sortBy, $pageSize, $startIndex, $includeInactive, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -123,15 +174,16 @@ class DocumentResource {
 	*
 	* @param string $documentListName Name of content documentListName to delete
 	* @param string $filter A set of filter expressions representing the search parameters for a query: eq=equals, ne=not equals, gt=greater than, lt = less than or equals, gt = greater than or equals, lt = less than or equals, sw = starts with, or cont = contains. Optional.
+	* @param bool $includeInactive 
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
-	public function getDocumentsAsync($documentListName, $filter =  null, $sortBy =  null, $pageSize =  null, $startIndex =  null, $responseFields =  null)
+	public function getDocumentsAsync($documentListName, $filter =  null, $sortBy =  null, $pageSize =  null, $startIndex =  null, $includeInactive =  null, $responseFields =  null)
 	{
-		$mozuClient = DocumentClient::getDocumentsClient($this->dataViewMode, $documentListName, $filter, $sortBy, $pageSize, $startIndex, $responseFields);
+		$mozuClient = DocumentClient::getDocumentsClient($this->dataViewMode, $documentListName, $filter, $sortBy, $pageSize, $startIndex, $includeInactive, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 

@@ -12,8 +12,8 @@
 
 namespace Mozu\Api\Resources\Commerce\Settings\General;
 
-use Mozu\Api\ApiContext;
 use Mozu\Api\Clients\Commerce\Settings\General\TaxableTerritoryClient;
+use Mozu\Api\ApiContext;
 
 
 /**

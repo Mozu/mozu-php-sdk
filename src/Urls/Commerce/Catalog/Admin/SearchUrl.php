@@ -18,6 +18,53 @@ use Mozu\Api\UrlLocation;
 class SearchUrl  {
 
 	/**
+		* Get Resource Url for GetSearchTuningRule
+		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+		* @param string $searchTuningRuleCode 
+		* @return string Resource Url
+	*/
+	public static function getSearchTuningRuleUrl($responseFields, $searchTuningRuleCode)
+	{
+		$url = "/api/commerce/catalog/admin/search/searchtuningrules/{searchTuningRuleCode}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("searchTuningRuleCode", $searchTuningRuleCode);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for GetSearchTuningRules
+		* @param string $filter A set of filter expressions representing the search parameters for a query: eq=equals, ne=not equals, gt=greater than, lt = less than or equals, gt = greater than or equals, lt = less than or equals, sw = starts with, or cont = contains. Optional.
+		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The amount is divided and displayed on the `pageCount `amount of pages. The default is 20 and maximum value is 200 per page.
+		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+		* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional.
+		* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a `pageSize `of 25, to get the 51st through the 75th items, use `startIndex=3`.
+		* @return string Resource Url
+	*/
+	public static function getSearchTuningRulesUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex)
+	{
+		$url = "/api/commerce/catalog/admin/search/searchtuningrules?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}&responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("filter", $filter);
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for GetSearchTuningRuleSortFields
+		* @return string Resource Url
+	*/
+	public static function getSearchTuningRuleSortFieldsUrl()
+	{
+		$url = "/api/commerce/catalog/admin/search/searchtuningrulesortfields";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		return $mozuUrl;
+	}
+	
+	/**
 		* Get Resource Url for GetSettings
 		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
 		* @return string Resource Url
@@ -31,6 +78,45 @@ class SearchUrl  {
 	}
 	
 	/**
+		* Get Resource Url for AddSearchTuningRule
+		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+		* @return string Resource Url
+	*/
+	public static function addSearchTuningRuleUrl($responseFields)
+	{
+		$url = "/api/commerce/catalog/admin/search/searchtuningrules?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for UpdateSearchTuningRuleSortFields
+		* @return string Resource Url
+	*/
+	public static function updateSearchTuningRuleSortFieldsUrl()
+	{
+		$url = "/api/commerce/catalog/admin/search/searchtuningrulesortfields";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for UpdateSearchTuningRule
+		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+		* @param string $searchTuningRuleCode 
+		* @return string Resource Url
+	*/
+	public static function updateSearchTuningRuleUrl($responseFields, $searchTuningRuleCode)
+	{
+		$url = "/api/commerce/catalog/admin/search/searchtuningrules/{searchTuningRuleCode}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("searchTuningRuleCode", $searchTuningRuleCode);
+		return $mozuUrl;
+	}
+	
+	/**
 		* Get Resource Url for UpdateSettings
 		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
 		* @return string Resource Url
@@ -40,6 +126,19 @@ class SearchUrl  {
 		$url = "/api/commerce/catalog/admin/search/settings?responseFields={responseFields}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
 		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for DeleteSearchTuningRule
+		* @param string $searchTuningRuleCode 
+		* @return string Resource Url
+	*/
+	public static function deleteSearchTuningRuleUrl($searchTuningRuleCode)
+	{
+		$url = "/api/commerce/catalog/admin/search/searchtuningrules/{searchTuningRuleCode}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("searchTuningRuleCode", $searchTuningRuleCode);
 		return $mozuUrl;
 	}
 	

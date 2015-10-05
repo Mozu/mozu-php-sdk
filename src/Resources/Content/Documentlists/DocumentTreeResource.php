@@ -12,8 +12,10 @@
 
 namespace Mozu\Api\Resources\Content\Documentlists;
 
-use Mozu\Api\ApiContext;
 use Mozu\Api\Clients\Content\Documentlists\DocumentTreeClient;
+use Mozu\Api\ApiContext;
+
+use Mozu\Api\Headers;
 
 /**
 * Use the document tree subresource to retrieve documents and manage content within the document hierarchy.
@@ -64,17 +66,64 @@ class DocumentTreeResource {
 	}
 	
 	/**
+	* documentlists-documentTree Get TransformTreeDocumentContent description DOCUMENT_HERE 
+	*
+	* @param string $crop 
+	* @param string $documentListName Name of content documentListName to delete
+	* @param string $documentName The name of the document in the site.
+	* @param int $height 
+	* @param int $max 
+	* @param int $maxHeight 
+	* @param int $maxWidth 
+	* @param int $quality 
+	* @param int $width 
+	* @return Stream 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function transformTreeDocumentContent($documentListName, $documentName, $width =  null, $height =  null, $max =  null, $maxWidth =  null, $maxHeight =  null, $crop =  null, $quality =  null)
+	{
+		$mozuClient = DocumentTreeClient::transformTreeDocumentContentClient($documentListName, $documentName, $width, $height, $max, $maxWidth, $maxHeight, $crop, $quality);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* documentlists-documentTree Get TransformTreeDocumentContent description DOCUMENT_HERE 
+	*
+	* @param string $crop 
+	* @param string $documentListName Name of content documentListName to delete
+	* @param string $documentName The name of the document in the site.
+	* @param int $height 
+	* @param int $max 
+	* @param int $maxHeight 
+	* @param int $maxWidth 
+	* @param int $quality 
+	* @param int $width 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function transformTreeDocumentContentAsync($documentListName, $documentName, $width =  null, $height =  null, $max =  null, $maxWidth =  null, $maxHeight =  null, $crop =  null, $quality =  null)
+	{
+		$mozuClient = DocumentTreeClient::transformTreeDocumentContentClient($documentListName, $documentName, $width, $height, $max, $maxWidth, $maxHeight, $crop, $quality);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
 	* Retrieves a document based on its document list and folder path in the document hierarchy.
 	*
 	* @param string $documentListName Name of content documentListName to delete
 	* @param string $documentName The name of the document in the site.
+	* @param bool $includeInactive 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return Document 
 	* @deprecated deprecated since version 1.17
 	*/
-	public function getTreeDocument($documentListName, $documentName, $responseFields =  null)
+	public function getTreeDocument($documentListName, $documentName, $includeInactive =  null, $responseFields =  null)
 	{
-		$mozuClient = DocumentTreeClient::getTreeDocumentClient($this->dataViewMode, $documentListName, $documentName, $responseFields);
+		$mozuClient = DocumentTreeClient::getTreeDocumentClient($this->dataViewMode, $documentListName, $documentName, $includeInactive, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -86,12 +135,13 @@ class DocumentTreeResource {
 	*
 	* @param string $documentListName Name of content documentListName to delete
 	* @param string $documentName The name of the document in the site.
+	* @param bool $includeInactive 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
-	public function getTreeDocumentAsync($documentListName, $documentName, $responseFields =  null)
+	public function getTreeDocumentAsync($documentListName, $documentName, $includeInactive =  null, $responseFields =  null)
 	{
-		$mozuClient = DocumentTreeClient::getTreeDocumentClient($this->dataViewMode, $documentListName, $documentName, $responseFields);
+		$mozuClient = DocumentTreeClient::getTreeDocumentClient($this->dataViewMode, $documentListName, $documentName, $includeInactive, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 
