@@ -20,14 +20,14 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Fulfillment;
 class Pickup
 {
 	/**
-	*The specific code that represents pickup.
-	*/
-	public $code;
-
-	/**
 	*Available actions you can complete for an order. These actions may differ depending on the status of the order, such as actions required to enter a payment, return of a package, and fulfillment of a shipment.
 	*/
 	public $availableActions;
+
+	/**
+	*The specific code that represents pickup.
+	*/
+	public $code;
 
 	/**
 	*Date and time when a shipment completes fulfillment by delivery to a customer's physical address, picked up by a customer at a store, or delivered digitally for downloadable products.

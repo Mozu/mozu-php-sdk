@@ -12,8 +12,8 @@
 
 namespace Mozu\Api\Resources\Commerce\Carts;
 
-use Mozu\Api\ApiContext;
 use Mozu\Api\Clients\Commerce\Carts\ChangeMessageClient;
+use Mozu\Api\ApiContext;
 
 
 /**

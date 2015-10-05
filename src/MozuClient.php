@@ -175,12 +175,7 @@ class MozuClient {
 		
 			if (trim($this->apiContext->getTenantUrl()) == "")
 			{
-				$tenantResource = new TenantResource(new ApiContext());
-				
-				$tenant = $tenantResource->getTenant($this->apiContext->getTenantId());
-		
-				if ($tenant == null)
-					throw new \Exception("Tenant " . $this->apiContext->getTenantId() . " Not found");
+                $tenant = $this->getTenant();
 				$this->baseAddress = HttpHelper::getUrl($tenant->domain);
 			}
 			else
@@ -194,7 +189,11 @@ class MozuClient {
             if (!isset(MozuConfig::$basePciUrl))
                 throw new \Exception("MozuConfig basePciUrl is empty. A valid value is required");
 
-            $this->baseAddress = MozuConfig::$basePciUrl;
+            $tenant = $this->getTenant();
+            if ($tenant->isDevTenant)
+                $this->baseAddress = MozuConfig::$baseDevPciUrl;
+            else
+                $this->baseAddress = MozuConfig::$basePciUrl;
         }
 		else
 		{
@@ -207,6 +206,17 @@ class MozuClient {
 			$this->baseAddress = MozuConfig::$baseAppAuthUrl;
 		}
 	}
+
+    private function getTenant() {
+        $tenantResource = new TenantResource();
+
+        $tenant = $tenantResource->getTenantAsync($this->apiContext->getTenantId())->wait();
+
+        if ($tenant == null)
+            throw new \Exception("Tenant " . $this->apiContext->getTenantId() . " Not found");
+
+        return $tenant->json();
+    }
 
     private function addRequestHeaders(RequestInterface $request) {
         $this->logger->info("Setting request headers");

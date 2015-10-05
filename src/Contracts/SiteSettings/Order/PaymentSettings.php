@@ -35,7 +35,7 @@ class PaymentSettings
 	public $externalPaymentWorkflowDefinitions;
 
 	/**
-	*List of name and account information for a payment gateway. Additional payment gateway providers will be supported in future releases.
+	*List of name and account information for a payment gateway.
 	*/
 	public $gateways;
 

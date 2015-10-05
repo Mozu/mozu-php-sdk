@@ -12,8 +12,8 @@
 
 namespace Mozu\Api\Resources\Event\Push\Subscriptions;
 
-use Mozu\Api\ApiContext;
 use Mozu\Api\Clients\Event\Push\Subscriptions\EventDeliverySummaryClient;
+use Mozu\Api\ApiContext;
 
 
 /**

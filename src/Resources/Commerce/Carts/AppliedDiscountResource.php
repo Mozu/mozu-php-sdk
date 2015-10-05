@@ -12,12 +12,12 @@
 
 namespace Mozu\Api\Resources\Commerce\Carts;
 
-use Mozu\Api\ApiContext;
 use Mozu\Api\Clients\Commerce\Carts\AppliedDiscountClient;
+use Mozu\Api\ApiContext;
 
 
 /**
-* Use the Cart Coupons resource to apply a coupon to a defined cart or remove a coupon from a cart. When the shopper proceeds to checkout, the coupons applied to the cart apply to the order.
+* Use the Cart Coupons subresource to apply a coupon to a defined cart or remove a coupon from a cart. When the shopper proceeds to checkout, the coupons applied to the cart apply to the order.
 */
 class AppliedDiscountResource {
 
@@ -67,7 +67,7 @@ class AppliedDiscountResource {
 	}
 	
 	/**
-	* Removes one or more applied coupons from the cart specified in the request.
+	* Removes all coupons from the cart specified in the request.
 	*
 	* @param string $cartId Identifier of the cart to delete.
 	* @return Cart 
@@ -83,7 +83,7 @@ class AppliedDiscountResource {
 	}
 	
 /**
-	* Removes one or more applied coupons from the cart specified in the request.
+	* Removes all coupons from the cart specified in the request.
 	*
 	* @param string $cartId Identifier of the cart to delete.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException

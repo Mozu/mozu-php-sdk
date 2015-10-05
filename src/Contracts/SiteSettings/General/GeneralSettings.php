@@ -25,6 +25,11 @@ class GeneralSettings
 	public $allowInvalidAddresses;
 
 	/**
+	*Custom dns host name for cnd edge caching.
+	*/
+	public $customCdnHostName;
+
+	/**
 	*The physical directory path or URL where the mobile favicon image file is stored. The favicon icon is generally 57x57 pixels. The icon appears on a mobile website or on the mobile device's OS Home.
 	*/
 	public $favIconMobilePath;
@@ -135,6 +140,16 @@ class GeneralSettings
 	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
+
+	/**
+	*Set of settings to deal with site caching.
+	*/
+	public $cacheSettings;
+
+	/**
+	*Site-level control over request routing for SEO purposes. Not available for update, must use its own subresource.
+	*/
+	public $customRoutes;
 
 	/**
 	*Supressed emails. Setting any of these to 'true' will block Mozu from sending that email and an event will be published instead.

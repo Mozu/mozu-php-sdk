@@ -30,12 +30,12 @@ class ChangeMessage
 	public $appId;
 
 	/**
-	*App Key
+	*The application's key.
 	*/
 	public $appKey;
 
 	/**
-	*App Name
+	*The application's name.
 	*/
 	public $appName;
 
@@ -95,7 +95,7 @@ class ChangeMessage
 	public $success;
 
 	/**
-	*User First Name
+	*The user's first name.
 	*/
 	public $userFirstName;
 
@@ -105,12 +105,12 @@ class ChangeMessage
 	public $userId;
 
 	/**
-	*User Last Name
+	*The user's last name.
 	*/
 	public $userLastName;
 
 	/**
-	*User Type (e.g. Shopper, Admin, etc.)
+	*The user type (e.g. Shopper, Admin, etc.).
 	*/
 	public $userScopeType;
 

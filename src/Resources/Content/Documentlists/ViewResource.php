@@ -12,8 +12,8 @@
 
 namespace Mozu\Api\Resources\Content\Documentlists;
 
-use Mozu\Api\ApiContext;
 use Mozu\Api\Clients\Content\Documentlists\ViewClient;
+use Mozu\Api\ApiContext;
 
 
 /**
@@ -37,6 +37,7 @@ class ViewResource {
 	*
 	* @param string $documentListName Name of content documentListName to delete
 	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param bool $includeInactive 
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The amount is divided and displayed on the `pageCount `amount of pages. The default is 20 and maximum value is 200 per page.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional.
@@ -45,9 +46,9 @@ class ViewResource {
 	* @return DocumentCollection 
 	* @deprecated deprecated since version 1.17
 	*/
-	public function getViewDocuments($documentListName, $viewName, $filter =  null, $sortBy =  null, $pageSize =  null, $startIndex =  null, $responseFields =  null)
+	public function getViewDocuments($documentListName, $viewName, $filter =  null, $sortBy =  null, $pageSize =  null, $startIndex =  null, $includeInactive =  null, $responseFields =  null)
 	{
-		$mozuClient = ViewClient::getViewDocumentsClient($documentListName, $viewName, $filter, $sortBy, $pageSize, $startIndex, $responseFields);
+		$mozuClient = ViewClient::getViewDocumentsClient($documentListName, $viewName, $filter, $sortBy, $pageSize, $startIndex, $includeInactive, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -59,6 +60,7 @@ class ViewResource {
 	*
 	* @param string $documentListName Name of content documentListName to delete
 	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param bool $includeInactive 
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The amount is divided and displayed on the `pageCount `amount of pages. The default is 20 and maximum value is 200 per page.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional.
@@ -66,9 +68,9 @@ class ViewResource {
 	* @param string $viewName The name for a view. Views are used to render data in Mozu, such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
-	public function getViewDocumentsAsync($documentListName, $viewName, $filter =  null, $sortBy =  null, $pageSize =  null, $startIndex =  null, $responseFields =  null)
+	public function getViewDocumentsAsync($documentListName, $viewName, $filter =  null, $sortBy =  null, $pageSize =  null, $startIndex =  null, $includeInactive =  null, $responseFields =  null)
 	{
-		$mozuClient = ViewClient::getViewDocumentsClient($documentListName, $viewName, $filter, $sortBy, $pageSize, $startIndex, $responseFields);
+		$mozuClient = ViewClient::getViewDocumentsClient($documentListName, $viewName, $filter, $sortBy, $pageSize, $startIndex, $includeInactive, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 

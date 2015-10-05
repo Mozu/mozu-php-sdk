@@ -12,8 +12,8 @@
 
 namespace Mozu\Api\Resources\Commerce;
 
-use Mozu\Api\ApiContext;
 use Mozu\Api\Clients\Commerce\ChannelClient;
+use Mozu\Api\ApiContext;
 
 
 /**

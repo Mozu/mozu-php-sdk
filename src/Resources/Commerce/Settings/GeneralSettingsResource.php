@@ -12,8 +12,8 @@
 
 namespace Mozu\Api\Resources\Commerce\Settings;
 
-use Mozu\Api\ApiContext;
 use Mozu\Api\Clients\Commerce\Settings\GeneralSettingsClient;
+use Mozu\Api\ApiContext;
 
 
 /**

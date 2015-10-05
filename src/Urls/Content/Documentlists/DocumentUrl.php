@@ -33,18 +33,49 @@ class DocumentUrl  {
 	}
 	
 	/**
+		* Get Resource Url for TransformDocumentContent
+		* @param string $crop 
+		* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
+		* @param string $documentListName Name of content documentListName to delete
+		* @param int $height 
+		* @param int $max 
+		* @param int $maxHeight 
+		* @param int $maxWidth 
+		* @param int $quality 
+		* @param int $width 
+		* @return string Resource Url
+	*/
+	public static function transformDocumentContentUrl($crop, $documentId, $documentListName, $height, $max, $maxHeight, $maxWidth, $quality, $width)
+	{
+		$url = "/api/content/documentlists/{documentListName}/documents/{documentId}/transform?width={width}&height={height}&maxWidth={maxWidth}&maxHeight={maxHeight}&crop={crop}&quality={quality}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("crop", $crop);
+		$url = $mozuUrl->formatUrl("documentId", $documentId);
+		$url = $mozuUrl->formatUrl("documentListName", $documentListName);
+		$url = $mozuUrl->formatUrl("height", $height);
+		$url = $mozuUrl->formatUrl("max", $max);
+		$url = $mozuUrl->formatUrl("maxHeight", $maxHeight);
+		$url = $mozuUrl->formatUrl("maxWidth", $maxWidth);
+		$url = $mozuUrl->formatUrl("quality", $quality);
+		$url = $mozuUrl->formatUrl("width", $width);
+		return $mozuUrl;
+	}
+	
+	/**
 		* Get Resource Url for GetDocument
 		* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
 		* @param string $documentListName Name of content documentListName to delete
+		* @param bool $includeInactive 
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function getDocumentUrl($documentId, $documentListName, $responseFields)
+	public static function getDocumentUrl($documentId, $documentListName, $includeInactive, $responseFields)
 	{
-		$url = "/api/content/documentlists/{documentListName}/documents/{documentId}?responseFields={responseFields}";
+		$url = "/api/content/documentlists/{documentListName}/documents/{documentId}?includeInactive={includeInactive}&responseFields={responseFields}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
 		$url = $mozuUrl->formatUrl("documentId", $documentId);
 		$url = $mozuUrl->formatUrl("documentListName", $documentListName);
+		$url = $mozuUrl->formatUrl("includeInactive", $includeInactive);
 		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
@@ -53,18 +84,20 @@ class DocumentUrl  {
 		* Get Resource Url for GetDocuments
 		* @param string $documentListName Name of content documentListName to delete
 		* @param string $filter A set of filter expressions representing the search parameters for a query: eq=equals, ne=not equals, gt=greater than, lt = less than or equals, gt = greater than or equals, lt = less than or equals, sw = starts with, or cont = contains. Optional.
+		* @param bool $includeInactive 
 		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
 		* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 		* @return string Resource Url
 	*/
-	public static function getDocumentsUrl($documentListName, $filter, $pageSize, $responseFields, $sortBy, $startIndex)
+	public static function getDocumentsUrl($documentListName, $filter, $includeInactive, $pageSize, $responseFields, $sortBy, $startIndex)
 	{
-		$url = "/api/content/documentlists/{documentListName}/documents?filter={filter}&sortBy={sortBy}&pageSize={pageSize}&startIndex={startIndex}&responseFields={responseFields}";
+		$url = "/api/content/documentlists/{documentListName}/documents?filter={filter}&sortBy={sortBy}&pageSize={pageSize}&startIndex={startIndex}&includeInactive={includeInactive}&responseFields={responseFields}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
 		$url = $mozuUrl->formatUrl("documentListName", $documentListName);
 		$url = $mozuUrl->formatUrl("filter", $filter);
+		$url = $mozuUrl->formatUrl("includeInactive", $includeInactive);
 		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
 		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		$url = $mozuUrl->formatUrl("sortBy", $sortBy);

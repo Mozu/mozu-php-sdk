@@ -20,9 +20,29 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 class Product
 {
 	/**
+	*Mozu.ProductRuntime.Contracts.Product catalogEndDate ApiTypeMember DOCUMENT_HERE 
+	*/
+	public $catalogEndDate;
+
+	/**
+	*Mozu.ProductRuntime.Contracts.Product catalogStartDate ApiTypeMember DOCUMENT_HERE 
+	*/
+	public $catalogStartDate;
+
+	/**
 	*Date and time when the entity was created, represented in UTC Date/Time.
 	*/
 	public $createDate;
+
+	/**
+	*Mozu.ProductRuntime.Contracts.Product dateFirstAvailableInCatalog ApiTypeMember DOCUMENT_HERE 
+	*/
+	public $dateFirstAvailableInCatalog;
+
+	/**
+	*Mozu.ProductRuntime.Contracts.Product daysAvailableInCatalog ApiTypeMember DOCUMENT_HERE 
+	*/
+	public $daysAvailableInCatalog;
 
 	/**
 	*List of supported types of fulfillment  for the product or variation. The types include direct ship, in-store pickup, or both. 
@@ -78,6 +98,11 @@ class Product
 	*The product type template associated with the product on the storefront.
 	*/
 	public $productType;
+
+	/**
+	*Mozu.ProductRuntime.Contracts.Product productTypeId ApiTypeMember DOCUMENT_HERE 
+	*/
+	public $productTypeId;
 
 	/**
 	*The usage type that applies to this product, which is Standard (a single product without configurable options), Configurable (a product that includes configurable option attributes), Bundle (a collection of products sold as a single entity), or Component (an invididual product that represents a component in a bundle).
@@ -165,7 +190,7 @@ class Product
 	public $purchasableState;
 
 	/**
-	*Mozu.ProductRuntime.Contracts.Product variations ApiTypeMember DOCUMENT_HERE 
+	*A summary of all variations that exist for the product.
 	*/
 	public $variations;
 

@@ -12,8 +12,8 @@
 
 namespace Mozu\Api\Resources\Commerce\Catalog\Admin\Attributedefinition\Attributes;
 
-use Mozu\Api\ApiContext;
 use Mozu\Api\Clients\Commerce\Catalog\Admin\Attributedefinition\Attributes\AttributeTypeRuleClient;
+use Mozu\Api\ApiContext;
 
 
 /**

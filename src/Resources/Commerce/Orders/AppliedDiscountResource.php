@@ -12,8 +12,8 @@
 
 namespace Mozu\Api\Resources\Commerce\Orders;
 
-use Mozu\Api\ApiContext;
 use Mozu\Api\Clients\Commerce\Orders\AppliedDiscountClient;
+use Mozu\Api\ApiContext;
 
 
 /**

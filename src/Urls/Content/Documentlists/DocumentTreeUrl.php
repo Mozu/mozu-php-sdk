@@ -33,18 +33,49 @@ class DocumentTreeUrl  {
 	}
 	
 	/**
+		* Get Resource Url for TransformTreeDocumentContent
+		* @param string $crop 
+		* @param string $documentListName Name of content documentListName to delete
+		* @param string $documentName The name of the document in the site.
+		* @param int $height 
+		* @param int $max 
+		* @param int $maxHeight 
+		* @param int $maxWidth 
+		* @param int $quality 
+		* @param int $width 
+		* @return string Resource Url
+	*/
+	public static function transformTreeDocumentContentUrl($crop, $documentListName, $documentName, $height, $max, $maxHeight, $maxWidth, $quality, $width)
+	{
+		$url = "/api/content/documentlists/{documentListName}/documentTree/{documentName}/transform?width={width}&height={height}&maxWidth={maxWidth}&maxHeight={maxHeight}&crop={crop}&quality={quality}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("crop", $crop);
+		$url = $mozuUrl->formatUrl("documentListName", $documentListName);
+		$url = $mozuUrl->formatUrl("documentName", $documentName);
+		$url = $mozuUrl->formatUrl("height", $height);
+		$url = $mozuUrl->formatUrl("max", $max);
+		$url = $mozuUrl->formatUrl("maxHeight", $maxHeight);
+		$url = $mozuUrl->formatUrl("maxWidth", $maxWidth);
+		$url = $mozuUrl->formatUrl("quality", $quality);
+		$url = $mozuUrl->formatUrl("width", $width);
+		return $mozuUrl;
+	}
+	
+	/**
 		* Get Resource Url for GetTreeDocument
 		* @param string $documentListName Name of content documentListName to delete
 		* @param string $documentName The name of the document in the site.
+		* @param bool $includeInactive 
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function getTreeDocumentUrl($documentListName, $documentName, $responseFields)
+	public static function getTreeDocumentUrl($documentListName, $documentName, $includeInactive, $responseFields)
 	{
-		$url = "/api/content/documentlists/{documentListName}/documentTree/{documentName}?responseFields={responseFields}";
+		$url = "/api/content/documentlists/{documentListName}/documentTree/{documentName}?includeInactive={includeInactive}&responseFields={responseFields}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
 		$url = $mozuUrl->formatUrl("documentListName", $documentListName);
 		$url = $mozuUrl->formatUrl("documentName", $documentName);
+		$url = $mozuUrl->formatUrl("includeInactive", $includeInactive);
 		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}

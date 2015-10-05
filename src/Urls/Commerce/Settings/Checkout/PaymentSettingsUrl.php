@@ -18,6 +18,21 @@ use Mozu\Api\UrlLocation;
 class PaymentSettingsUrl  {
 
 	/**
+		* Get Resource Url for GetThirdPartyPaymentWorkflowWithValues
+		* @param string $fullyQualifiedName 
+		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+		* @return string Resource Url
+	*/
+	public static function getThirdPartyPaymentWorkflowWithValuesUrl($fullyQualifiedName, $responseFields)
+	{
+		$url = "/api/commerce/settings/checkout/paymentsettings/thirdpartyworkflow/{fullyQualifiedName}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("fullyQualifiedName", $fullyQualifiedName);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		return $mozuUrl;
+	}
+	
+	/**
 		* Get Resource Url for GetThirdPartyPaymentWorkflows
 		* @return string Resource Url
 	*/
@@ -25,6 +40,30 @@ class PaymentSettingsUrl  {
 	{
 		$url = "/api/commerce/settings/checkout/paymentsettings/thirdpartyworkflows";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for AddThirdPartyPaymentWorkflow
+		* @return string Resource Url
+	*/
+	public static function addThirdPartyPaymentWorkflowUrl()
+	{
+		$url = "/api/commerce/settings/checkout/paymentsettings/thirdpartyworkflows";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for DeleteThirdPartyPaymentWorkflow
+		* @param string $fullyQualifiedName 
+		* @return string Resource Url
+	*/
+	public static function deleteThirdPartyPaymentWorkflowUrl($fullyQualifiedName)
+	{
+		$url = "/api/commerce/settings/checkout/paymentsettings/thirdpartyworkflows/{fullyQualifiedName}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("fullyQualifiedName", $fullyQualifiedName);
 		return $mozuUrl;
 	}
 	

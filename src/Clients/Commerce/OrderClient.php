@@ -139,6 +139,24 @@ class OrderClient {
 	}
 	
 	/**
+	* commerce-orders Put ProcessDigitalWallet description DOCUMENT_HERE 
+	*
+	* @param string $digitalWalletType 
+	* @param string $orderId Unique identifier of the order.
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param DigitalWallet $digitalWallet Mozu.CommerceRuntime.Contracts.Orders.DigitalWallet ApiType DOCUMENT_HERE 
+	* @return MozuClient
+	*/
+	public static function processDigitalWalletClient($digitalWallet, $orderId, $digitalWalletType, $responseFields =  null)
+	{
+		$url = OrderUrl::processDigitalWalletUrl($digitalWalletType, $orderId, $responseFields);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withBody($digitalWallet);
+		return $mozuClient;
+
+	}
+	
+	/**
 	* Update the properties of a discount applied to an order.
 	*
 	* @param int $discountId Unique identifier of the discount. System-supplied and read only.

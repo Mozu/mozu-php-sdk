@@ -146,6 +146,19 @@ class ReturnUrl  {
 	}
 	
 	/**
+		* Get Resource Url for GetReasons
+		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+		* @return string Resource Url
+	*/
+	public static function getReasonsUrl($responseFields)
+	{
+		$url = "/api/commerce/returns/reasons?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		return $mozuUrl;
+	}
+	
+	/**
 		* Get Resource Url for CreateReturn
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url

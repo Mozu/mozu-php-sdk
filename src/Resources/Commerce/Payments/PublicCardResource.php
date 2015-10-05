@@ -13,6 +13,7 @@
 namespace Mozu\Api\Resources\Commerce\Payments;
 
 use Mozu\Api\Clients\Commerce\Payments\PublicCardClient;
+use Mozu\Api\ApiContext;
 
 
 /**

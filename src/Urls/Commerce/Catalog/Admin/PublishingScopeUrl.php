@@ -18,6 +18,34 @@ use Mozu\Api\UrlLocation;
 class PublishingScopeUrl  {
 
 	/**
+		* Get Resource Url for GetPublishSet
+		* @param string $publishSetCode 
+		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+		* @return string Resource Url
+	*/
+	public static function getPublishSetUrl($publishSetCode, $responseFields)
+	{
+		$url = "/api/commerce/catalog/admin/publishing/publishsets/{publishSetCode}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("publishSetCode", $publishSetCode);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for GetPublishSets
+		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+		* @return string Resource Url
+	*/
+	public static function getPublishSetsUrl($responseFields)
+	{
+		$url = "/api/commerce/catalog/admin/publishing/publishsets?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		return $mozuUrl;
+	}
+	
+	/**
 		* Get Resource Url for DiscardDrafts
 		* @return string Resource Url
 	*/
@@ -36,6 +64,34 @@ class PublishingScopeUrl  {
 	{
 		$url = "/api/commerce/catalog/admin/publishing/publishdrafts";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for AssignProductsToPublishSet
+		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+		* @return string Resource Url
+	*/
+	public static function assignProductsToPublishSetUrl($responseFields)
+	{
+		$url = "/api/commerce/catalog/admin/publishing/publishsets?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for DeletePublishSet
+		* @param bool $discardDrafts 
+		* @param string $publishSetCode 
+		* @return string Resource Url
+	*/
+	public static function deletePublishSetUrl($discardDrafts, $publishSetCode)
+	{
+		$url = "/api/commerce/catalog/admin/publishing/publishsets/{publishSetCode}?discardDrafts={discardDrafts}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("discardDrafts", $discardDrafts);
+		$url = $mozuUrl->formatUrl("publishSetCode", $publishSetCode);
 		return $mozuUrl;
 	}
 	

@@ -12,8 +12,8 @@
 
 namespace Mozu\Api\Resources\Commerce\Settings\Checkout;
 
-use Mozu\Api\ApiContext;
 use Mozu\Api\Clients\Commerce\Settings\Checkout\CustomerCheckoutSettingsClient;
+use Mozu\Api\ApiContext;
 
 
 /**

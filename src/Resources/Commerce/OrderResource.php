@@ -12,8 +12,8 @@
 
 namespace Mozu\Api\Resources\Commerce;
 
-use Mozu\Api\ApiContext;
 use Mozu\Api\Clients\Commerce\OrderClient;
+use Mozu\Api\ApiContext;
 
 
 /**
@@ -259,6 +259,41 @@ class OrderResource {
 	public function performOrderActionAsync($action, $orderId, $responseFields =  null)
 	{
 		$mozuClient = OrderClient::performOrderActionClient($action, $orderId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* commerce-orders Put ProcessDigitalWallet description DOCUMENT_HERE 
+	*
+	* @param string $digitalWalletType 
+	* @param string $orderId Unique identifier of the order.
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param DigitalWallet $digitalWallet Mozu.CommerceRuntime.Contracts.Orders.DigitalWallet ApiType DOCUMENT_HERE 
+	* @return Order 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function processDigitalWallet($digitalWallet, $orderId, $digitalWalletType, $responseFields =  null)
+	{
+		$mozuClient = OrderClient::processDigitalWalletClient($digitalWallet, $orderId, $digitalWalletType, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* commerce-orders Put ProcessDigitalWallet description DOCUMENT_HERE 
+	*
+	* @param string $digitalWalletType 
+	* @param string $orderId Unique identifier of the order.
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function processDigitalWalletAsync($digitalWallet, $orderId, $digitalWalletType, $responseFields =  null)
+	{
+		$mozuClient = OrderClient::processDigitalWalletClient($digitalWallet, $orderId, $digitalWalletType, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 

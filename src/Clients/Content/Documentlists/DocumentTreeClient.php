@@ -12,9 +12,10 @@
 
 namespace Mozu\Api\Clients\Content\Documentlists;
 
-use Mozu\Api\Headers;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Content\Documentlists\DocumentTreeUrl;
+
+use Mozu\Api\Headers;
 
 /**
 * Use the document tree subresource to retrieve documents and manage content within the document hierarchy.
@@ -38,16 +39,40 @@ class DocumentTreeClient {
 	}
 	
 	/**
+	* documentlists-documentTree Get TransformTreeDocumentContent description DOCUMENT_HERE 
+	*
+	* @param string $crop 
+	* @param string $documentListName Name of content documentListName to delete
+	* @param string $documentName The name of the document in the site.
+	* @param int $height 
+	* @param int $max 
+	* @param int $maxHeight 
+	* @param int $maxWidth 
+	* @param int $quality 
+	* @param int $width 
+	* @return MozuClient
+	*/
+	public static function transformTreeDocumentContentClient($documentListName, $documentName, $width =  null, $height =  null, $max =  null, $maxWidth =  null, $maxHeight =  null, $crop =  null, $quality =  null)
+	{
+		$url = DocumentTreeUrl::transformTreeDocumentContentUrl($crop, $documentListName, $documentName, $height, $max, $maxHeight, $maxWidth, $quality, $width);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
+
+	}
+	
+	/**
 	* Retrieves a document based on its document list and folder path in the document hierarchy.
 	*
 	* @param string $documentListName Name of content documentListName to delete
 	* @param string $documentName The name of the document in the site.
+	* @param bool $includeInactive 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
-	public static function getTreeDocumentClient($dataViewMode, $documentListName, $documentName, $responseFields =  null)
+	public static function getTreeDocumentClient($dataViewMode, $documentListName, $documentName, $includeInactive =  null, $responseFields =  null)
 	{
-		$url = DocumentTreeUrl::getTreeDocumentUrl($documentListName, $documentName, $responseFields);
+		$url = DocumentTreeUrl::getTreeDocumentUrl($documentListName, $documentName, $includeInactive, $responseFields);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
 		return $mozuClient;

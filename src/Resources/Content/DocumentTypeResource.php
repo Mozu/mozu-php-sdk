@@ -12,8 +12,10 @@
 
 namespace Mozu\Api\Resources\Content;
 
-use Mozu\Api\ApiContext;
 use Mozu\Api\Clients\Content\DocumentTypeClient;
+use Mozu\Api\ApiContext;
+
+use Mozu\Api\Headers;
 
 /**
 * Use the Document Types resource to view the document types supplied by the Content API.
