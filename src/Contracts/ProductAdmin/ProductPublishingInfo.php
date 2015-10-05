@@ -34,6 +34,11 @@ class ProductPublishingInfo
 	*/
 	public $publishedState;
 
+	/**
+	*Mozu.ProductAdmin.Contracts.ProductPublishingInfo publishSetCode ApiTypeMember DOCUMENT_HERE 
+	*/
+	public $publishSetCode;
+
 }
 
 ?>

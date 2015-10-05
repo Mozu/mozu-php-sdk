@@ -12,8 +12,10 @@
 
 namespace Mozu\Api\Resources\Commerce\Catalog\Admin\Attributedefinition\Producttypes;
 
-use Mozu\Api\ApiContext;
 use Mozu\Api\Clients\Commerce\Catalog\Admin\Attributedefinition\Producttypes\ProductTypePropertyClient;
+use Mozu\Api\ApiContext;
+
+use Mozu\Api\Headers;
 
 /**
 * Use the Properties subresource to define how property product attributes are used for a specific product type. Product attribute definitions are unique for each associated product type.

@@ -17,12 +17,12 @@ use Mozu\Api\Urls\Commerce\Orders\ExtendedPropertyUrl;
 
 
 /**
-* commerce/orders/extendedproperties related resources. DOCUMENT_HERE 
+* Use the Extended Properties resource to store tracking strings for your orders. Extended properties can help you track affiliate sources.
 */
 class ExtendedPropertyClient {
 
 	/**
-	* orders-extendedproperties Get GetExtendedProperties description DOCUMENT_HERE 
+	* Retrieves the extended property string associated with the order. 
 	*
 	* @param bool $draft If true, retrieve the draft version of the order, which might include uncommitted changes to the order or its components.
 	* @param string $orderId Unique identifier of the order.
@@ -38,7 +38,7 @@ class ExtendedPropertyClient {
 	}
 	
 	/**
-	* orders-extendedproperties Post AddExtendedProperties description DOCUMENT_HERE 
+	* Create an extended property for the order.
 	*
 	* @param string $orderId Unique identifier of the order.
 	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
@@ -56,13 +56,14 @@ class ExtendedPropertyClient {
 	}
 	
 	/**
-	* orders-extendedproperties Put UpdateExtendedProperty description DOCUMENT_HERE 
+	* Updates one ore more extended properties.
 	*
 	* @param string $key 
 	* @param string $orderId Unique identifier of the order.
 	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
 	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
-	* @param bool $upsert 
+	* @param bool $upsert Inserts and updates an extended property.
+        
 	* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
 	* @param ExtendedProperty $extendedProperty Mozu.CommerceRuntime.Contracts.Commerce.ExtendedProperty ApiType DOCUMENT_HERE 
 	* @return MozuClient
@@ -77,11 +78,12 @@ class ExtendedPropertyClient {
 	}
 	
 	/**
-	* orders-extendedproperties Put UpdateExtendedProperties description DOCUMENT_HERE 
+	* Updates one or more extended properties.
 	*
 	* @param string $orderId Unique identifier of the order.
 	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
-	* @param bool $upsert 
+	* @param bool $upsert Inserts and updates the extended property.
+        
 	* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
 	* @param array|ExtendedProperty $extendedProperties Mozu.CommerceRuntime.Contracts.Commerce.ExtendedProperty ApiType DOCUMENT_HERE 
 	* @return MozuClient
@@ -96,7 +98,7 @@ class ExtendedPropertyClient {
 	}
 	
 	/**
-	* orders-extendedproperties Delete DeleteExtendedProperty description DOCUMENT_HERE 
+	* Deletes one or more extended properties.
 	*
 	* @param string $key 
 	* @param string $orderId Unique identifier of the order.
@@ -113,7 +115,7 @@ class ExtendedPropertyClient {
 	}
 	
 	/**
-	* orders-extendedproperties Delete DeleteExtendedProperties description DOCUMENT_HERE 
+	* Deletes the extended property associated with the order. 
 	*
 	* @param string $orderId Unique identifier of the order.
 	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."

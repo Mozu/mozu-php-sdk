@@ -12,8 +12,10 @@
 
 namespace Mozu\Api\Resources\Content;
 
-use Mozu\Api\ApiContext;
 use Mozu\Api\Clients\Content\PropertyTypeClient;
+use Mozu\Api\ApiContext;
+
+use Mozu\Api\Headers;
 
 /**
 * Use the property types subresource to manage content properties.

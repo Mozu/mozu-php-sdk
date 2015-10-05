@@ -13,6 +13,7 @@
 namespace Mozu\Api\Resources\Event;
 
 use Mozu\Api\Clients\Event\EventNotificationClient;
+use Mozu\Api\ApiContext;
 
 
 /**

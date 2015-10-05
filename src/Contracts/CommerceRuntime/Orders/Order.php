@@ -20,11 +20,6 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Orders;
 class Order
 {
 	/**
-	*Order level duty or tariff amount. Does not take into account duties or tariffs specifically on items on the order
-	*/
-	public $dutyAmount;
-
-	/**
 	*The date and time the order was accepted by the tenant.
 	*/
 	public $acceptedDate;
@@ -108,6 +103,11 @@ class Order
 	*Estimated amount of discounts applied to all items in the carts and orders. System-supplied and read-only. This value will be available at the wish list, cart item, order item, and wish list item level at a later time.
 	*/
 	public $discountTotal;
+
+	/**
+	*Order level duty or tariff amount. Does not take into account duties or tariffs specifically on items on the order
+	*/
+	public $dutyAmount;
 
 	/**
 	*Duties or tariffs for the Order as well as OrderItems (e.g. if the Order has a $5 duty or tariff for any reason and an OrderItem has a $2 duty or tariff then the value in this property would be $7)
@@ -325,11 +325,6 @@ class Order
 	public $webSessionId;
 
 	/**
-	*An array list of objects in the returned collection.
-	*/
-	public $items;
-
-	/**
 	*Properties of an ad-hoc price adjustment for an order.
 	*/
 	public $adjustment;
@@ -383,6 +378,11 @@ class Order
 	*The list of invalid coupons the shopper attempted to enter for the cart or order. These coupons may no longer be valid or incorrectly entered.
 	*/
 	public $invalidCoupons;
+
+	/**
+	*An array list of objects in the returned collection.
+	*/
+	public $items;
 
 	/**
 	*Paged list collection of note content for objects including customers, orders, and returns. 

@@ -12,8 +12,10 @@
 
 namespace Mozu\Api\Resources\Content;
 
-use Mozu\Api\ApiContext;
 use Mozu\Api\Clients\Content\DocumentListClient;
+use Mozu\Api\ApiContext;
+
+use Mozu\Api\Headers;
 
 /**
 * Use the document lists resource to organize your site's documents into a hierarchy. Document lists can contain documents, folders, and complete hierarchies of folders, which contain documents with unique names.

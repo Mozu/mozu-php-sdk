@@ -12,9 +12,10 @@
 
 namespace Mozu\Api\Clients\Commerce\Catalog\Admin;
 
-use Mozu\Api\Headers;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\LocationInventoryUrl;
+
+use Mozu\Api\Headers;
 
 /**
 * Use the Location Inventory resource to manage the level of active product inventory maintained at each defined location, at the location level.

@@ -17,12 +17,12 @@ use Mozu\Api\Urls\Commerce\Carts\ExtendedPropertyUrl;
 
 
 /**
-* commerce/carts/cartextendedproperties related resources. DOCUMENT_HERE 
+* Use the Cart Extended Properties subresource to store an arbitrary number of cart extended properties such as tracking strings, marketing sources, affiliates, sales personnel/data, and so on, on a per cart basis. Each cart may have none, one, or more than one entry in the extended properties collection, and all values in the extended properties collection are represented as strings. When you create an order from a cart, all extended properties are retained from the cart and copied to the order. Refer to the  subresource for more information about order extended properties.
 */
 class ExtendedPropertyClient {
 
 	/**
-	* carts-cartextendedproperties Get GetExtendedProperties description DOCUMENT_HERE 
+	* Retrieves a list of cart extended properties specified in the request.
 	*
 	* @return MozuClient
 	*/
@@ -36,7 +36,7 @@ class ExtendedPropertyClient {
 	}
 	
 	/**
-	* carts-cartextendedproperties Post AddExtendedProperties description DOCUMENT_HERE 
+	* Adds one or more specified extended properties to the carts extended properties collection.
 	*
 	* @param array|ExtendedProperty $extendedProperties Mozu.CommerceRuntime.Contracts.Commerce.ExtendedProperty ApiType DOCUMENT_HERE 
 	* @return MozuClient
@@ -51,7 +51,7 @@ class ExtendedPropertyClient {
 	}
 	
 	/**
-	* carts-cartextendedproperties Put UpdateExtendedProperty description DOCUMENT_HERE 
+	* Updates one or more details of the extended property  specified in the request.
 	*
 	* @param string $key 
 	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
@@ -69,9 +69,9 @@ class ExtendedPropertyClient {
 	}
 	
 	/**
-	* carts-cartextendedproperties Put UpdateExtendedProperties description DOCUMENT_HERE 
+	* Updates one or more details of the extended properties specified in the request.
 	*
-	* @param bool $upsert 
+	* @param bool $upsert Any set of key value pairs to be stored in the extended properties of a cart.
 	* @param array|ExtendedProperty $extendedProperties Mozu.CommerceRuntime.Contracts.Commerce.ExtendedProperty ApiType DOCUMENT_HERE 
 	* @return MozuClient
 	*/
@@ -85,7 +85,7 @@ class ExtendedPropertyClient {
 	}
 	
 	/**
-	* carts-cartextendedproperties Delete DeleteExtendedProperties description DOCUMENT_HERE 
+	* Deletes the extended properties  cart extended properties collection.
 	*
 	* @param array|string $keys 
 	*/
@@ -99,7 +99,7 @@ class ExtendedPropertyClient {
 	}
 	
 	/**
-	* carts-cartextendedproperties Delete DeleteExtendedProperty description DOCUMENT_HERE 
+	* Deletes a specific extended property from the cart extended property collection.
 	*
 	* @param string $key 
 	*/

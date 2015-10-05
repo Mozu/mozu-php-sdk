@@ -39,7 +39,7 @@ class FulfillmentActionClient {
 	}
 	
 	/**
-	* orders-fulfillment Post ResendPackageFulfillmentEmail description DOCUMENT_HERE 
+	* Resends an email with details about the package fulfillment to the shopper. 
 	*
 	* @param string $orderId Unique identifier of the order.
 	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.

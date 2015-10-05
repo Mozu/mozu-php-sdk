@@ -12,9 +12,10 @@
 
 namespace Mozu\Api\Clients\Commerce\Catalog\Storefront;
 
-use Mozu\Api\Headers;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Storefront\ProductUrl;
+
+use Mozu\Api\Headers;
 
 /**
 * Use the Storefront Products  resource to manage the shopper product selection process during a visit to the web storefront. You can update product options as shoppers pick and choose their product choices. A shopper cannot add a product to a cart until all of its required options have been selected.
@@ -71,6 +72,22 @@ class ProductClient {
 	public static function getProductClient($dataViewMode, $productCode, $variationProductCode =  null, $allowInactive =  null, $skipInventoryCheck =  null, $supressOutOfStock404 =  null, $responseFields =  null)
 	{
 		$url = ProductUrl::getProductUrl($allowInactive, $productCode, $responseFields, $skipInventoryCheck, $supressOutOfStock404, $variationProductCode);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* Retrieves information about a single product given its product code for Mozu to index in the search engine
+	*
+	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @return MozuClient
+	*/
+	public static function getProductForIndexingClient($dataViewMode, $productCode, $responseFields =  null)
+	{
+		$url = ProductUrl::getProductForIndexingUrl($productCode, $responseFields);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
 		return $mozuClient;

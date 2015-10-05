@@ -15,7 +15,7 @@ namespace Mozu\Api\Contracts\SiteSettings\General\General;
 
 
 /**
-*	Mozu.SiteSettings.General.Contracts.General.ViewAuthorizations ApiType DOCUMENT_HERE 
+*	Set whether you require users to be authenticated to preview content or view the live site.
 */
 class ViewAuthorizations
 {

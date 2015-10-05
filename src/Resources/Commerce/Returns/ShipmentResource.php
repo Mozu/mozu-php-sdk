@@ -12,8 +12,8 @@
 
 namespace Mozu\Api\Resources\Commerce\Returns;
 
-use Mozu\Api\ApiContext;
 use Mozu\Api\Clients\Commerce\Returns\ShipmentClient;
+use Mozu\Api\ApiContext;
 
 
 /**

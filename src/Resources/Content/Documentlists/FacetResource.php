@@ -12,8 +12,8 @@
 
 namespace Mozu\Api\Resources\Content\Documentlists;
 
-use Mozu\Api\ApiContext;
 use Mozu\Api\Clients\Content\Documentlists\FacetClient;
+use Mozu\Api\ApiContext;
 
 
 /**

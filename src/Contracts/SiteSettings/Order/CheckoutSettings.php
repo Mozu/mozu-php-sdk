@@ -30,7 +30,7 @@ class CheckoutSettings
 	public $orderProcessingSettings;
 
 	/**
-	*Payment gateway settings defined for the site. A payment gateway is an eCommerce application service provider that authorizes payments for eBusinesses, online retailers, and other stores that have an online commerce component. Currently, only the Authorize.net gateway is supported.
+	*Payment gateway settings defined for the site. A payment gateway is an eCommerce application service provider that authorizes payments for eBusinesses, online retailers, and other stores that have an online commerce component.
 	*/
 	public $paymentSettings;
 

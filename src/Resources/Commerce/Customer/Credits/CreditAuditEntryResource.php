@@ -12,8 +12,8 @@
 
 namespace Mozu\Api\Resources\Commerce\Customer\Credits;
 
-use Mozu\Api\ApiContext;
 use Mozu\Api\Clients\Commerce\Customer\Credits\CreditAuditEntryClient;
+use Mozu\Api\ApiContext;
 
 
 /**

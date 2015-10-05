@@ -12,9 +12,10 @@
 
 namespace Mozu\Api\Clients\Content\Documentlists;
 
-use Mozu\Api\Headers;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Content\Documentlists\DocumentUrl;
+
+use Mozu\Api\Headers;
 
 /**
 * Use this subresource to manage documents in a document list.
@@ -38,16 +39,40 @@ class DocumentClient {
 	}
 	
 	/**
+	* documentlists-documents Get TransformDocumentContent description DOCUMENT_HERE 
+	*
+	* @param string $crop 
+	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
+	* @param string $documentListName Name of content documentListName to delete
+	* @param int $height 
+	* @param int $max 
+	* @param int $maxHeight 
+	* @param int $maxWidth 
+	* @param int $quality 
+	* @param int $width 
+	* @return MozuClient
+	*/
+	public static function transformDocumentContentClient($documentListName, $documentId, $width =  null, $height =  null, $max =  null, $maxWidth =  null, $maxHeight =  null, $crop =  null, $quality =  null)
+	{
+		$url = DocumentUrl::transformDocumentContentUrl($crop, $documentId, $documentListName, $height, $max, $maxHeight, $maxWidth, $quality, $width);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
+
+	}
+	
+	/**
 	* Retrieves a document within the specified document list.
 	*
 	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
 	* @param string $documentListName Name of content documentListName to delete
+	* @param bool $includeInactive 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
-	public static function getDocumentClient($dataViewMode, $documentListName, $documentId, $responseFields =  null)
+	public static function getDocumentClient($dataViewMode, $documentListName, $documentId, $includeInactive =  null, $responseFields =  null)
 	{
-		$url = DocumentUrl::getDocumentUrl($documentId, $documentListName, $responseFields);
+		$url = DocumentUrl::getDocumentUrl($documentId, $documentListName, $includeInactive, $responseFields);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
 		return $mozuClient;
@@ -59,15 +84,16 @@ class DocumentClient {
 	*
 	* @param string $documentListName Name of content documentListName to delete
 	* @param string $filter A set of filter expressions representing the search parameters for a query: eq=equals, ne=not equals, gt=greater than, lt = less than or equals, gt = greater than or equals, lt = less than or equals, sw = starts with, or cont = contains. Optional.
+	* @param bool $includeInactive 
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return MozuClient
 	*/
-	public static function getDocumentsClient($dataViewMode, $documentListName, $filter =  null, $sortBy =  null, $pageSize =  null, $startIndex =  null, $responseFields =  null)
+	public static function getDocumentsClient($dataViewMode, $documentListName, $filter =  null, $sortBy =  null, $pageSize =  null, $startIndex =  null, $includeInactive =  null, $responseFields =  null)
 	{
-		$url = DocumentUrl::getDocumentsUrl($documentListName, $filter, $pageSize, $responseFields, $sortBy, $startIndex);
+		$url = DocumentUrl::getDocumentsUrl($documentListName, $filter, $includeInactive, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
 		return $mozuClient;

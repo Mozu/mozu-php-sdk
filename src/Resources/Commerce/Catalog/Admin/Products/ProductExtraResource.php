@@ -12,8 +12,10 @@
 
 namespace Mozu\Api\Resources\Commerce\Catalog\Admin\Products;
 
-use Mozu\Api\ApiContext;
 use Mozu\Api\Clients\Commerce\Catalog\Admin\Products\ProductExtraClient;
+use Mozu\Api\ApiContext;
+
+use Mozu\Api\Headers;
 
 /**
 * Use the Extras resource to configure an extra product attribute for products associated with the product type that uses the extra attribute.

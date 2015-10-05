@@ -45,6 +45,11 @@ class PaymentAction
 	public $currencyCode;
 
 	/**
+	*Mozu.CommerceRuntime.Contracts.Payments.PaymentAction externalTransactionId ApiTypeMember DOCUMENT_HERE 
+	*/
+	public $externalTransactionId;
+
+	/**
 	*Date and time of a payment interaction, including handling and processing a payment and validating and completing a payment with a payment gateway.
 	*/
 	public $interactionDate;
@@ -58,6 +63,8 @@ class PaymentAction
 	*The URL provided to redirect users who submit payments using PayPal Express or another non-gateway payment provider.
 	*/
 	public $returnUrl;
+
+		public $data;
 
 	/**
 	*Properties of a manually performed interaction with the payment gateway.

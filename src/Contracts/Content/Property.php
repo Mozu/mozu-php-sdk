@@ -20,6 +20,11 @@ namespace Mozu\Api\Contracts\Content;
 class Property
 {
 	/**
+	*The display name of the source product property. For a product field it will be the display name of the field. For a product attribute it will be the Attribute Name.
+	*/
+	public $name;
+
+	/**
 	*If true, the attribute can have more than one value.
 	*/
 	public $isMultiValued;
@@ -28,11 +33,6 @@ class Property
 	*Indicates if the property, attribute, product option, or product extra is required. If true, the object must have a defined value.
 	*/
 	public $isRequired;
-
-	/**
-	*The display name of the source product property. For a product field it will be the display name of the field. For a product attribute it will be the Attribute Name.
-	*/
-	public $name;
 
 	/**
 	*The type of a property. These types are associated to properties for documents and document types.

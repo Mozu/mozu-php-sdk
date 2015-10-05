@@ -12,8 +12,10 @@
 
 namespace Mozu\Api\Resources\Commerce\Catalog\Admin;
 
-use Mozu\Api\ApiContext;
 use Mozu\Api\Clients\Commerce\Catalog\Admin\PublishingScopeClient;
+use Mozu\Api\ApiContext;
+
+use Mozu\Api\Headers;
 
 /**
 * Use the Product Publishing resource to publish or discard pending changes to product definitions in the master catalog.
@@ -31,6 +33,68 @@ class PublishingScopeResource {
 
 
 
+	/**
+	* Retrieves the details of a single PublishSet.
+	*
+	* @param string $publishSetCode 
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @return PublishSet 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function getPublishSet($publishSetCode, $responseFields =  null)
+	{
+		$mozuClient = PublishingScopeClient::getPublishSetClient($publishSetCode, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Retrieves the details of a single PublishSet.
+	*
+	* @param string $publishSetCode 
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getPublishSetAsync($publishSetCode, $responseFields =  null)
+	{
+		$mozuClient = PublishingScopeClient::getPublishSetClient($publishSetCode, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* Retrieves a list of PublishSets including the product counts.
+	*
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @return PublishSetCollection 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function getPublishSets($responseFields =  null)
+	{
+		$mozuClient = PublishingScopeClient::getPublishSetsClient($responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Retrieves a list of PublishSets including the product counts.
+	*
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getPublishSetsAsync($responseFields =  null)
+	{
+		$mozuClient = PublishingScopeClient::getPublishSetsClient($responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	/**
 	* Deletes the draft version of product changes for each product code specified in the request.
 	*
@@ -80,6 +144,67 @@ class PublishingScopeResource {
 	public function publishDraftsAsync($publishScope)
 	{
 		$mozuClient = PublishingScopeClient::publishDraftsClient($this->dataViewMode, $publishScope);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* admin-publishing Post AssignProductsToPublishSet description DOCUMENT_HERE 
+	*
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param PublishSet $publishSet Mozu.ProductAdmin.Contracts.PublishSet ApiType DOCUMENT_HERE 
+	* @return PublishSet 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function assignProductsToPublishSet($publishSet, $responseFields =  null)
+	{
+		$mozuClient = PublishingScopeClient::assignProductsToPublishSetClient($publishSet, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* admin-publishing Post AssignProductsToPublishSet description DOCUMENT_HERE 
+	*
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function assignProductsToPublishSetAsync($publishSet, $responseFields =  null)
+	{
+		$mozuClient = PublishingScopeClient::assignProductsToPublishSetClient($publishSet, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* Removes all details about a PublishSet from the product service. If the discardDrafts param is true, it also deletes the product drafts.
+	*
+	* @param bool $discardDrafts 
+	* @param string $publishSetCode 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function deletePublishSet($publishSetCode, $discardDrafts =  null)
+	{
+		$mozuClient = PublishingScopeClient::deletePublishSetClient($publishSetCode, $discardDrafts);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+
+	}
+	
+/**
+	* Removes all details about a PublishSet from the product service. If the discardDrafts param is true, it also deletes the product drafts.
+	*
+	* @param bool $discardDrafts 
+	* @param string $publishSetCode 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function deletePublishSetAsync($publishSetCode, $discardDrafts =  null)
+	{
+		$mozuClient = PublishingScopeClient::deletePublishSetClient($publishSetCode, $discardDrafts);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 

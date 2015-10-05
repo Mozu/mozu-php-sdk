@@ -35,7 +35,8 @@ class RefundUrl  {
 	/**
 		* Get Resource Url for ResendRefundEmail
 		* @param string $orderId Unique identifier of the order.
-		* @param string $refundId 
+		* @param string $refundId Unique ID of the refund.
+        
 		* @return string Resource Url
 	*/
 	public static function resendRefundEmailUrl($orderId, $refundId)

@@ -12,8 +12,8 @@
 
 namespace Mozu\Api\Resources\Commerce;
 
-use Mozu\Api\ApiContext;
 use Mozu\Api\Clients\Commerce\ReturnClient;
+use Mozu\Api\ApiContext;
 
 
 /**
@@ -291,6 +291,36 @@ class ReturnResource {
 	public function getReturnAsync($returnId, $responseFields =  null)
 	{
 		$mozuClient = ReturnClient::getReturnClient($returnId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* commerce-returns Get GetReasons description DOCUMENT_HERE 
+	*
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @return ReasonCollection 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function getReasons($responseFields =  null)
+	{
+		$mozuClient = ReturnClient::getReasonsClient($responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* commerce-returns Get GetReasons description DOCUMENT_HERE 
+	*
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getReasonsAsync($responseFields =  null)
+	{
+		$mozuClient = ReturnClient::getReasonsClient($responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 

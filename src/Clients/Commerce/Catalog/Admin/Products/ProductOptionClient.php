@@ -12,9 +12,10 @@
 
 namespace Mozu\Api\Clients\Commerce\Catalog\Admin\Products;
 
-use Mozu\Api\Headers;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\Products\ProductOptionUrl;
+
+use Mozu\Api\Headers;
 
 /**
 * Use the Options resource to configure the option attributes and vocabulary values for an individual product associated with the product type that uses the option attribute. Options are used to generate variations of a product.

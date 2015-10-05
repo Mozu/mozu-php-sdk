@@ -25,6 +25,11 @@ class ProductInCatalogInfo
 	public $catalogId;
 
 	/**
+	*Date this product was first Available for sale in the catalog. This is utilized in expressions that refrence DaysInCatloag.
+	*/
+	public $dateFirstAvailableInCatalog;
+
+	/**
 	*Indicates if the object or feature is active. This indicator is used for subscriptions (at the site or tenant level), customer accounts, products and variations.
 	*/
 	public $isActive;
@@ -43,6 +48,11 @@ class ProductInCatalogInfo
 	*If true, the SEO content defined for this product in the master catalog in overridden in the catalog with the SEO content specified in the request body. If false, this catalog uses the SEO content defined in the master catalog for the product.
 	*/
 	public $isseoContentOverridden;
+
+	/**
+	*If true, the product is marked as available for sale in the catalog. Setting a product to IsActive = false will prevent it from being shown on the customer facing storefront.
+	*/
+	public $activeDateRange;
 
 	/**
 	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.

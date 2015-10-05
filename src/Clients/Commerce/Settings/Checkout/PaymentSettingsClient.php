@@ -22,6 +22,22 @@ use Mozu\Api\Urls\Commerce\Settings\Checkout\PaymentSettingsUrl;
 class PaymentSettingsClient {
 
 	/**
+	* checkout-paymentsettings Get GetThirdPartyPaymentWorkflowWithValues description DOCUMENT_HERE 
+	*
+	* @param string $fullyQualifiedName 
+	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @return MozuClient
+	*/
+	public static function getThirdPartyPaymentWorkflowWithValuesClient($fullyQualifiedName, $responseFields =  null)
+	{
+		$url = PaymentSettingsUrl::getThirdPartyPaymentWorkflowWithValuesUrl($fullyQualifiedName, $responseFields);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
+
+	}
+	
+	/**
 	* Retrieves the details of the third-party payment service workflows configured for the site.
 	*
 	* @return MozuClient
@@ -29,6 +45,34 @@ class PaymentSettingsClient {
 	public static function getThirdPartyPaymentWorkflowsClient()
 	{
 		$url = PaymentSettingsUrl::getThirdPartyPaymentWorkflowsUrl();
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* checkout-paymentsettings Put AddThirdPartyPaymentWorkflow description DOCUMENT_HERE 
+	*
+	* @param ExternalPaymentWorkflowDefinition $definition Properties of an external payment processing workflow defined for the site. At this time, only PayPal Express is supported.
+	*/
+	public static function addThirdPartyPaymentWorkflowClient($definition)
+	{
+		$url = PaymentSettingsUrl::addThirdPartyPaymentWorkflowUrl();
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withBody($definition);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* checkout-paymentsettings Delete DeleteThirdPartyPaymentWorkflow description DOCUMENT_HERE 
+	*
+	* @param string $fullyQualifiedName 
+	*/
+	public static function deleteThirdPartyPaymentWorkflowClient($fullyQualifiedName)
+	{
+		$url = PaymentSettingsUrl::deleteThirdPartyPaymentWorkflowUrl($fullyQualifiedName);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
 		return $mozuClient;

@@ -19,6 +19,7 @@ class ProductSearchResultUrl  {
 
 	/**
 		* Get Resource Url for Search
+		* @param bool $enableSearchTuningRules 
 		* @param string $facet Individually list the facet fields you want to display in a web storefront product search.
 		* @param string $facetFieldRangeQuery Display a range facet not specified in a template in a web storefront product search by listing the facet field and the range to display.
 		* @param string $facetHierDepth If filtering using category facets in a hierarchy, the number of category hierarchy levels to return for the facet. This option is only available for category facets.
@@ -28,6 +29,7 @@ class ProductSearchResultUrl  {
 		* @param string $facetSettings Settings reserved for future facet search functionality on a web storefront product search.
 		* @param string $facetStartIndex When paging through multiple facets, the startIndex value for each facet.
 		* @param string $facetTemplate The facet template to use on the storefront. A template displays all facets associated with the template on the web storefront product search. Currently, only category-level facet templates are available.
+		* @param string $facetTemplateExclude 
 		* @param string $facetTemplateSubset Display a subset of the facets defined in the template specified in facetTemplate parameter.
 		* @param string $facetValueFilter The facet values to apply to the filter.
 		* @param string $filter A set of filter expressions representing the search parameters for a query: eq=equals, ne=not equals, gt=greater than, lt = less than or equals, gt = greater than or equals, lt = less than or equals, sw = starts with, or cont = contains. Optional.
@@ -35,14 +37,17 @@ class ProductSearchResultUrl  {
 		* @param string $query A query entered for searches and facet range.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param string $searchSettings 
+		* @param string $searchTuningRuleCode 
+		* @param string $searchTuningRuleContext 
 		* @param string $sortBy 
 		* @param int $startIndex 
 		* @return string Resource Url
 	*/
-	public static function searchUrl($facet, $facetFieldRangeQuery, $facetHierDepth, $facetHierPrefix, $facetHierValue, $facetPageSize, $facetSettings, $facetStartIndex, $facetTemplate, $facetTemplateSubset, $facetValueFilter, $filter, $pageSize, $query, $responseFields, $searchSettings, $sortBy, $startIndex)
+	public static function searchUrl($enableSearchTuningRules, $facet, $facetFieldRangeQuery, $facetHierDepth, $facetHierPrefix, $facetHierValue, $facetPageSize, $facetSettings, $facetStartIndex, $facetTemplate, $facetTemplateExclude, $facetTemplateSubset, $facetValueFilter, $filter, $pageSize, $query, $responseFields, $searchSettings, $searchTuningRuleCode, $searchTuningRuleContext, $sortBy, $startIndex)
 	{
-		$url = "/api/commerce/catalog/storefront/productsearch/search/?query={query}&filter={filter}&facetTemplate={facetTemplate}&facetTemplateSubset={facetTemplateSubset}&facet={facet}&facetFieldRangeQuery={facetFieldRangeQuery}&facetHierPrefix={facetHierPrefix}&facetHierValue={facetHierValue}&facetHierDepth={facetHierDepth}&facetStartIndex={facetStartIndex}&facetPageSize={facetPageSize}&facetSettings={facetSettings}&facetValueFilter={facetValueFilter}&sortBy={sortBy}&pageSize={pageSize}&startIndex={startIndex}&responseFields={responseFields}";
+		$url = "/api/commerce/catalog/storefront/productsearch/search/?query={query}&filter={filter}&facetTemplate={facetTemplate}&facetTemplateSubset={facetTemplateSubset}&facet={facet}&facetFieldRangeQuery={facetFieldRangeQuery}&facetHierPrefix={facetHierPrefix}&facetHierValue={facetHierValue}&facetHierDepth={facetHierDepth}&facetStartIndex={facetStartIndex}&facetPageSize={facetPageSize}&facetSettings={facetSettings}&facetValueFilter={facetValueFilter}&sortBy={sortBy}&pageSize={pageSize}&startIndex={startIndex}&searchSettings={searchSettings}&enableSearchTuningRules={enableSearchTuningRules}&searchTuningRuleContext={searchTuningRuleContext}&searchTuningRuleCode={searchTuningRuleCode}&facetTemplateExclude={facetTemplateExclude}&responseFields={responseFields}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("enableSearchTuningRules", $enableSearchTuningRules);
 		$url = $mozuUrl->formatUrl("facet", $facet);
 		$url = $mozuUrl->formatUrl("facetFieldRangeQuery", $facetFieldRangeQuery);
 		$url = $mozuUrl->formatUrl("facetHierDepth", $facetHierDepth);
@@ -52,6 +57,7 @@ class ProductSearchResultUrl  {
 		$url = $mozuUrl->formatUrl("facetSettings", $facetSettings);
 		$url = $mozuUrl->formatUrl("facetStartIndex", $facetStartIndex);
 		$url = $mozuUrl->formatUrl("facetTemplate", $facetTemplate);
+		$url = $mozuUrl->formatUrl("facetTemplateExclude", $facetTemplateExclude);
 		$url = $mozuUrl->formatUrl("facetTemplateSubset", $facetTemplateSubset);
 		$url = $mozuUrl->formatUrl("facetValueFilter", $facetValueFilter);
 		$url = $mozuUrl->formatUrl("filter", $filter);
@@ -59,6 +65,8 @@ class ProductSearchResultUrl  {
 		$url = $mozuUrl->formatUrl("query", $query);
 		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		$url = $mozuUrl->formatUrl("searchSettings", $searchSettings);
+		$url = $mozuUrl->formatUrl("searchTuningRuleCode", $searchTuningRuleCode);
+		$url = $mozuUrl->formatUrl("searchTuningRuleContext", $searchTuningRuleContext);
 		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
 		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
 		return $mozuUrl;
