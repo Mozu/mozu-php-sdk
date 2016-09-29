@@ -45,6 +45,11 @@ class AttributeInProductType
 	public $isMultiValueProperty;
 
 	/**
+	*If True this property will not be returned storefront product listings (Search,GetProduct) it will still be returned on GetProduct, ValidateProduct...)
+	*/
+	public $isProductDetailsOnlyProperty;
+
+	/**
 	*If true, the entity is required by the admin. If false, the entity is not required by the admin.
 	*/
 	public $isRequiredByAdmin;

@@ -20,6 +20,11 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 class AttributeDetail
 {
 	/**
+	*Indicates whether the attribute should be able to be used in filters, facets, and sorting on the public storefront.
+	*/
+	public $allowFilteringAndSortingInStorefront;
+
+	/**
 	*The data type of the source product property, typically of type Bool, DateTime, Number, or String.
 	*/
 	public $dataType;

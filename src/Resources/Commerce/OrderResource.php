@@ -35,7 +35,7 @@ class OrderResource {
 	/**
 	* Retrieves a list of orders according to any specified filter criteria and sort options.
 	*
-	* @param string $filter A set of filter expressions representing the search parameters for a query: eq=equals, ne=not equals, gt=greater than, lt = less than or equals, gt = greater than or equals, lt = less than or equals, sw = starts with, or cont = contains. Optional.
+	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for a list of supported filters.
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $q A list of order search terms (not phrases) to use in the query when searching across order number and the name or email of the billing contact. When entering, separate multiple search terms with a space character.
 	* @param int $qLimit The maximum number of search results to return in the response. You can limit any range between 1-100.
@@ -57,7 +57,7 @@ class OrderResource {
 /**
 	* Retrieves a list of orders according to any specified filter criteria and sort options.
 	*
-	* @param string $filter A set of filter expressions representing the search parameters for a query: eq=equals, ne=not equals, gt=greater than, lt = less than or equals, gt = greater than or equals, lt = less than or equals, sw = starts with, or cont = contains. Optional.
+	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for a list of supported filters.
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $q A list of order search terms (not phrases) to use in the query when searching across order number and the name or email of the billing contact. When entering, separate multiple search terms with a space character.
 	* @param int $qLimit The maximum number of search results to return in the response. You can limit any range between 1-100.
@@ -267,9 +267,9 @@ class OrderResource {
 	/**
 	* commerce-orders Put ProcessDigitalWallet description DOCUMENT_HERE 
 	*
-	* @param string $digitalWalletType 
+	* @param string $digitalWalletType The type of digital wallet to be processed.
 	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @param DigitalWallet $digitalWallet Mozu.CommerceRuntime.Contracts.Orders.DigitalWallet ApiType DOCUMENT_HERE 
 	* @return Order 
 	* @deprecated deprecated since version 1.17
@@ -286,9 +286,9 @@ class OrderResource {
 /**
 	* commerce-orders Put ProcessDigitalWallet description DOCUMENT_HERE 
 	*
-	* @param string $digitalWalletType 
+	* @param string $digitalWalletType The type of digital wallet to be processed.
 	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function processDigitalWalletAsync($digitalWallet, $orderId, $digitalWalletType, $responseFields =  null)
@@ -302,7 +302,7 @@ class OrderResource {
 	/**
 	* Update the properties of a discount applied to an order.
 	*
-	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
+	* @param int $discountId discountId parameter description DOCUMENT_HERE 
 	* @param string $orderId Unique identifier of the order.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
@@ -323,7 +323,7 @@ class OrderResource {
 /**
 	* Update the properties of a discount applied to an order.
 	*
-	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
+	* @param int $discountId discountId parameter description DOCUMENT_HERE 
 	* @param string $orderId Unique identifier of the order.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
@@ -392,6 +392,43 @@ class OrderResource {
 	public function resendOrderConfirmationEmailAsync($action, $orderId)
 	{
 		$mozuClient = OrderClient::resendOrderConfirmationEmailClient($action, $orderId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* Changes the pricelist associated with an order. The desired price list code should be specified on the ApiContext.
+	*
+	* @param string $orderId Unique identifier of the order.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
+	* @param string $priceListCode The unique price list code.
+	* @return Order 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function changeOrderPriceList($priceListCode, $orderId, $updateMode =  null, $version =  null, $responseFields =  null)
+	{
+		$mozuClient = OrderClient::changeOrderPriceListClient($priceListCode, $orderId, $updateMode, $version, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Changes the pricelist associated with an order. The desired price list code should be specified on the ApiContext.
+	*
+	* @param string $orderId Unique identifier of the order.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function changeOrderPriceListAsync($priceListCode, $orderId, $updateMode =  null, $version =  null, $responseFields =  null)
+	{
+		$mozuClient = OrderClient::changeOrderPriceListClient($priceListCode, $orderId, $updateMode, $version, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 

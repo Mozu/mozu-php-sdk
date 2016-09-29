@@ -20,11 +20,6 @@ namespace Mozu\Api\Contracts\PaymentService;
 class OrderItem
 {
 	/**
-	*Unique identifier of the source product property. For a product field it will be the name of the field. For a product attribute it will be the Attribute FQN. 
-	*/
-	public $id;
-
-	/**
 	*The specified quantity of objects and items. This property is used for numerous object types including products, options, components within a product bundle, cart and order items, returned items, shipping line items, items in a digital product. and items associated with types and reservations.
 	*/
 	public $quantity;
@@ -43,6 +38,11 @@ class OrderItem
 	*Properties of the price per unit of a product, associated with cart and order items. This price is not used for wish lists at this time.
 	*/
 	public $unitPrice;
+
+	/**
+	*Unique identifier of the source product property. For a product field it will be the name of the field. For a product attribute it will be the Attribute FQN. 
+	*/
+	public $id;
 
 	/**
 	*The properties of a product, referenced and used by carts, orders, wish lists, and returns.

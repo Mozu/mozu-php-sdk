@@ -23,6 +23,39 @@ use Mozu\Api\Headers;
 class DocumentListTypeClient {
 
 	/**
+	* content-documentlistTypes Get GetDocumentListTypes description DOCUMENT_HERE 
+	*
+	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
+	* @return MozuClient
+	*/
+	public static function getDocumentListTypesClient($dataViewMode, $pageSize =  null, $startIndex =  null, $responseFields =  null)
+	{
+		$url = DocumentListTypeUrl::getDocumentListTypesUrl($pageSize, $responseFields, $startIndex);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* content-documentlistTypes Get GetDocumentListType description DOCUMENT_HERE 
+	*
+	* @param string $documentListTypeFQN 
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @return MozuClient
+	*/
+	public static function getDocumentListTypeClient($dataViewMode, $documentListTypeFQN, $responseFields =  null)
+	{
+		$url = DocumentListTypeUrl::getDocumentListTypeUrl($documentListTypeFQN, $responseFields);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
+
+	}
+	
+	/**
 	* Creates a new documentListType
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.

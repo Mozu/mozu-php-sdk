@@ -71,6 +71,39 @@ class AttributeClient {
 
 	}
 	
+	/**
+	* Create and save a new attribute. These attributes are used in products and product options.
+	*
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param Attribute $attribute Properties of an attribute used to describe customers or orders.
+	* @return MozuClient
+	*/
+	public static function createAttributeClient($attribute, $responseFields =  null)
+	{
+		$url = AttributeUrl::createAttributeUrl($responseFields);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withBody($attribute);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* Updates an existing attribute with attribute properties to set.
+	*
+	* @param string $attributeFQN Fully qualified name for an attribute.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param Attribute $attribute Properties of an attribute used to describe customers or orders.
+	* @return MozuClient
+	*/
+	public static function updateAttributeClient($attribute, $attributeFQN, $responseFields =  null)
+	{
+		$url = AttributeUrl::updateAttributeUrl($attributeFQN, $responseFields);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withBody($attribute);
+		return $mozuClient;
+
+	}
+	
 	
 }
 

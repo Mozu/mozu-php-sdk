@@ -36,7 +36,7 @@ class DiscountTargetResource {
 	/**
 	* Retrieves the discount target, that is which products, categories, or shipping methods are eligible for the discount.
 	*
-	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
+	* @param int $discountId discountId parameter description DOCUMENT_HERE 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return DiscountTarget 
 	* @deprecated deprecated since version 1.17
@@ -53,7 +53,7 @@ class DiscountTargetResource {
 /**
 	* Retrieves the discount target, that is which products, categories, or shipping methods are eligible for the discount.
 	*
-	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
+	* @param int $discountId discountId parameter description DOCUMENT_HERE 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -68,7 +68,7 @@ class DiscountTargetResource {
 	/**
 	* Modifies properties of the discount target, for example, the dollar amount, or precentage off the price.
 	*
-	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
+	* @param int $discountId discountId parameter description DOCUMENT_HERE 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param DiscountTarget $discountTarget Properties of the target to which the discount applies, such as the type of discount and which products, categories, or shipping methods are eligible for the discount and the properties of this discount target.
 	* @return DiscountTarget 
@@ -86,7 +86,7 @@ class DiscountTargetResource {
 /**
 	* Modifies properties of the discount target, for example, the dollar amount, or precentage off the price.
 	*
-	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
+	* @param int $discountId discountId parameter description DOCUMENT_HERE 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/

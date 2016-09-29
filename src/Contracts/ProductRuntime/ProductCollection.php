@@ -19,6 +19,8 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 */
 class ProductCollection
 {
+		public $nextCursorMark;
+
 	/**
 	*The number of pages returned based on the startIndex and pageSize values specified. This value is system-supplied and read-only.
 	*/

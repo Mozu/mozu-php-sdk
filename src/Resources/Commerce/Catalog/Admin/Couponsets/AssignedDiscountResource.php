@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* 
+* Use the AssignedDiscounts resource to manage the discounts assigned to coupon sets.
 */
 class AssignedDiscountResource {
 
@@ -33,9 +33,9 @@ class AssignedDiscountResource {
 
 
 	/**
-	* 
+	* Retrieves the discountIds of any assigned discounts for the specified coupon set.
 	*
-	* @param string $couponSetCode 
+	* @param string $couponSetCode The unique identifier of the coupon set.
 	* @return array|AssignedDiscount 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -49,9 +49,9 @@ class AssignedDiscountResource {
 	}
 	
 /**
-	* 
+	* Retrieves the discountIds of any assigned discounts for the specified coupon set.
 	*
-	* @param string $couponSetCode 
+	* @param string $couponSetCode The unique identifier of the coupon set.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getAssignedDiscountsAsync($couponSetCode)
@@ -63,10 +63,10 @@ class AssignedDiscountResource {
 	}
 	
 	/**
-	* 
+	* Assigns or associates an existing discount to a specified coupon set. Use the couponSetCode parameter to specify the coupon set.
 	*
-	* @param string $couponSetCode 
-	* @param AssignedDiscount $assignedDiscount 
+	* @param string $couponSetCode The unique identifier of the coupon set.
+	* @param AssignedDiscount $assignedDiscount Mozu.ProductAdmin.Contracts.AssignedDiscount ApiType DOCUMENT_HERE 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function assignDiscount($assignedDiscount, $couponSetCode)
@@ -78,9 +78,9 @@ class AssignedDiscountResource {
 	}
 	
 /**
-	* 
+	* Assigns or associates an existing discount to a specified coupon set. Use the couponSetCode parameter to specify the coupon set.
 	*
-	* @param string $couponSetCode 
+	* @param string $couponSetCode The unique identifier of the coupon set.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function assignDiscountAsync($assignedDiscount, $couponSetCode)
@@ -92,10 +92,10 @@ class AssignedDiscountResource {
 	}
 	
 	/**
-	* 
+	* Unassigns or disassociates the specified discount with the specified coupon set.
 	*
-	* @param string $couponSetCode 
-	* @param int $discountId 
+	* @param string $couponSetCode The unique identifier of the coupon set.
+	* @param int $discountId discountId parameter description DOCUMENT_HERE 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function unAssignDiscount($couponSetCode, $discountId)
@@ -107,10 +107,10 @@ class AssignedDiscountResource {
 	}
 	
 /**
-	* 
+	* Unassigns or disassociates the specified discount with the specified coupon set.
 	*
-	* @param string $couponSetCode 
-	* @param int $discountId 
+	* @param string $couponSetCode The unique identifier of the coupon set.
+	* @param int $discountId discountId parameter description DOCUMENT_HERE 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function unAssignDiscountAsync($couponSetCode, $discountId)

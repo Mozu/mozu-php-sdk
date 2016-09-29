@@ -28,8 +28,8 @@ class ApplicationResource {
 	/**
 	* platform-developer Get GetAppPackageNames description DOCUMENT_HERE 
 	*
-	* @param string $applicationKey 
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return PackageNamesCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -44,8 +44,8 @@ class ApplicationResource {
 /**
 	* platform-developer Get GetAppPackageNames description DOCUMENT_HERE 
 	*
-	* @param string $applicationKey 
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getAppPackageNamesAsync($applicationKey, $responseFields =  null)
@@ -58,8 +58,8 @@ class ApplicationResource {
 	/**
 	* platform-developer Get GetAppVersions description DOCUMENT_HERE 
 	*
-	* @param string $nsAndAppId 
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $nsAndAppId The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return ApplicationVersionsCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -74,8 +74,8 @@ class ApplicationResource {
 /**
 	* platform-developer Get GetAppVersions description DOCUMENT_HERE 
 	*
-	* @param string $nsAndAppId 
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $nsAndAppId The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getAppVersionsAsync($nsAndAppId, $responseFields =  null)
@@ -88,9 +88,9 @@ class ApplicationResource {
 	/**
 	* platform-developer Get GetPackageFileMetadata description DOCUMENT_HERE 
 	*
-	* @param string $applicationKey 
-	* @param string $filepath 
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
+	* @param string $filepath Represents the file name and location.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return FileMetadata 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -105,9 +105,9 @@ class ApplicationResource {
 /**
 	* platform-developer Get GetPackageFileMetadata description DOCUMENT_HERE 
 	*
-	* @param string $applicationKey 
-	* @param string $filepath 
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
+	* @param string $filepath Represents the file name and location.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getPackageFileMetadataAsync($applicationKey, $filepath, $responseFields =  null)
@@ -120,8 +120,8 @@ class ApplicationResource {
 	/**
 	* platform-developer Get GetPackageMetadata description DOCUMENT_HERE 
 	*
-	* @param string $applicationKey 
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return FolderMetadata 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -136,8 +136,8 @@ class ApplicationResource {
 /**
 	* platform-developer Get GetPackageMetadata description DOCUMENT_HERE 
 	*
-	* @param string $applicationKey 
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getPackageMetadataAsync($applicationKey, $responseFields =  null)
@@ -150,10 +150,10 @@ class ApplicationResource {
 	/**
 	* platform-developer Post UpsertPackageFile description DOCUMENT_HERE 
 	*
-	* @param string $applicationKey 
-	* @param string $filepath 
-	* @param string $lastModifiedTime 
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
+	* @param string $filepath The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
+	* @param string $lastModifiedTime The date and time of the last file insert or update. This parameter is optional.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @param Stream $stream Data stream that delivers information. Used to input and output data.
 	* @return FileMetadata 
 	* @deprecated deprecated since version 1.17
@@ -169,10 +169,10 @@ class ApplicationResource {
 /**
 	* platform-developer Post UpsertPackageFile description DOCUMENT_HERE 
 	*
-	* @param string $applicationKey 
-	* @param string $filepath 
-	* @param string $lastModifiedTime 
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
+	* @param string $filepath The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
+	* @param string $lastModifiedTime The date and time of the last file insert or update. This parameter is optional.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function upsertPackageFileAsync($stream, $applicationKey, $filepath, $lastModifiedTime =  null, $responseFields =  null, $contentType= null)
@@ -185,8 +185,8 @@ class ApplicationResource {
 	/**
 	* platform-developer Post RenamePackageFile description DOCUMENT_HERE 
 	*
-	* @param string $applicationKey 
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @param RenameInfo $renameInfo Information required to update the name of a file in a package, which consists of the original name and the new name.
 	* @return FileMetadata 
 	* @deprecated deprecated since version 1.17
@@ -202,8 +202,8 @@ class ApplicationResource {
 /**
 	* platform-developer Post RenamePackageFile description DOCUMENT_HERE 
 	*
-	* @param string $applicationKey 
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function renamePackageFileAsync($renameInfo, $applicationKey, $responseFields =  null)
@@ -216,8 +216,8 @@ class ApplicationResource {
 	/**
 	* platform-developer Delete DeletePackageFile description DOCUMENT_HERE 
 	*
-	* @param string $applicationKey 
-	* @param string $filepath 
+	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
+	* @param string $filepath Represents the file name and location.
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deletePackageFile($applicationKey, $filepath)
@@ -230,8 +230,8 @@ class ApplicationResource {
 /**
 	* platform-developer Delete DeletePackageFile description DOCUMENT_HERE 
 	*
-	* @param string $applicationKey 
-	* @param string $filepath 
+	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
+	* @param string $filepath Represents the file name and location.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deletePackageFileAsync($applicationKey, $filepath)

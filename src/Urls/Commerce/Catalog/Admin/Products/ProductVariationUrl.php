@@ -52,6 +52,40 @@ class ProductVariationUrl  {
 	}
 	
 	/**
+		* Get Resource Url for GetProductVariationLocalizedPrices
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+		* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
+		* @return string Resource Url
+	*/
+	public static function getProductVariationLocalizedPricesUrl($productCode, $variationKey)
+	{
+		$url = "/api/commerce/catalog/admin/products/{productCode}/variations/{variationKey}/localizedPrice";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("variationKey", $variationKey);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for GetProductVariationLocalizedPrice
+		* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
+		* @return string Resource Url
+	*/
+	public static function getProductVariationLocalizedPriceUrl($currencyCode, $productCode, $responseFields, $variationKey)
+	{
+		$url = "/api/commerce/catalog/admin/products/{productCode}/variations/{variationKey}/localizedPrice/{currencyCode}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("currencyCode", $currencyCode);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("variationKey", $variationKey);
+		return $mozuUrl;
+	}
+	
+	/**
 		* Get Resource Url for GetProductVariation
 		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
@@ -109,6 +143,23 @@ class ProductVariationUrl  {
 	}
 	
 	/**
+		* Get Resource Url for AddProductVariationLocalizedPrice
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
+		* @return string Resource Url
+	*/
+	public static function addProductVariationLocalizedPriceUrl($productCode, $responseFields, $variationKey)
+	{
+		$url = "/api/commerce/catalog/admin/products/{productCode}/variations/{variationKey}/localizedPrice?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("variationKey", $variationKey);
+		return $mozuUrl;
+	}
+	
+	/**
 		* Get Resource Url for UpdateProductVariationLocalizedDeltaPrices
 		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
 		* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
@@ -143,6 +194,40 @@ class ProductVariationUrl  {
 	}
 	
 	/**
+		* Get Resource Url for UpdateProductVariationLocalizedPrices
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+		* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
+		* @return string Resource Url
+	*/
+	public static function updateProductVariationLocalizedPricesUrl($productCode, $variationKey)
+	{
+		$url = "/api/commerce/catalog/admin/products/{productCode}/variations/{variationKey}/localizedPrice";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("variationKey", $variationKey);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for UpdateProductVariationLocalizedPrice
+		* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
+		* @return string Resource Url
+	*/
+	public static function updateProductVariationLocalizedPriceUrl($currencyCode, $productCode, $responseFields, $variationKey)
+	{
+		$url = "/api/commerce/catalog/admin/products/{productCode}/variations/{variationKey}/localizedPrice/{currencyCode}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("currencyCode", $currencyCode);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("variationKey", $variationKey);
+		return $mozuUrl;
+	}
+	
+	/**
 		* Get Resource Url for UpdateProductVariation
 		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
@@ -162,7 +247,7 @@ class ProductVariationUrl  {
 	/**
 		* Get Resource Url for UpdateProductVariations
 		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 		* @return string Resource Url
 	*/
 	public static function updateProductVariationsUrl($productCode, $responseFields)
@@ -199,6 +284,23 @@ class ProductVariationUrl  {
 	public static function deleteProductVariationLocalizedDeltaPriceUrl($currencyCode, $productCode, $variationKey)
 	{
 		$url = "/api/commerce/catalog/admin/products/{productCode}/variations/{variationKey}/localizedDeltaPrice/{currencyCode}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("currencyCode", $currencyCode);
+		$url = $mozuUrl->formatUrl("productCode", $productCode);
+		$url = $mozuUrl->formatUrl("variationKey", $variationKey);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for DeleteProductVariationLocalizedPrice
+		* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
+		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+		* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
+		* @return string Resource Url
+	*/
+	public static function deleteProductVariationLocalizedPriceUrl($currencyCode, $productCode, $variationKey)
+	{
+		$url = "/api/commerce/catalog/admin/products/{productCode}/variations/{variationKey}/localizedPrice/{currencyCode}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
 		$url = $mozuUrl->formatUrl("currencyCode", $currencyCode);
 		$url = $mozuUrl->formatUrl("productCode", $productCode);

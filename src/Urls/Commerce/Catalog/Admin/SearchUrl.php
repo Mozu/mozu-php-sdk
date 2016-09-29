@@ -19,8 +19,8 @@ class SearchUrl  {
 
 	/**
 		* Get Resource Url for GetSearchTuningRule
-		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
-		* @param string $searchTuningRuleCode 
+		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $searchTuningRuleCode The unique identifier of the search tuning rule.
 		* @return string Resource Url
 	*/
 	public static function getSearchTuningRuleUrl($responseFields, $searchTuningRuleCode)
@@ -34,11 +34,11 @@ class SearchUrl  {
 	
 	/**
 		* Get Resource Url for GetSearchTuningRules
-		* @param string $filter A set of filter expressions representing the search parameters for a query: eq=equals, ne=not equals, gt=greater than, lt = less than or equals, gt = greater than or equals, lt = less than or equals, sw = starts with, or cont = contains. Optional.
-		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The amount is divided and displayed on the `pageCount `amount of pages. The default is 20 and maximum value is 200 per page.
-		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
-		* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional.
-		* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a `pageSize `of 25, to get the 51st through the 75th items, use `startIndex=3`.
+		* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for a list of supported filters.
+		* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
+		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for more information.
+		* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
 		* @return string Resource Url
 	*/
 	public static function getSearchTuningRulesUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex)
@@ -55,18 +55,20 @@ class SearchUrl  {
 	
 	/**
 		* Get Resource Url for GetSearchTuningRuleSortFields
+		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 		* @return string Resource Url
 	*/
-	public static function getSearchTuningRuleSortFieldsUrl()
+	public static function getSearchTuningRuleSortFieldsUrl($responseFields)
 	{
-		$url = "/api/commerce/catalog/admin/search/searchtuningrulesortfields";
+		$url = "/api/commerce/catalog/admin/search/searchtuningrulesortfields?responseFields={responseFields}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetSettings
-		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 		* @return string Resource Url
 	*/
 	public static function getSettingsUrl($responseFields)
@@ -78,8 +80,59 @@ class SearchUrl  {
 	}
 	
 	/**
+		* Get Resource Url for GetSynonymDefinitionCollection
+		* @param string $localeCode The two character country code that sets the locale, such as US for United States. Sites, tenants, and catalogs use locale codes for localizing content, such as translated product text per supported country.
+		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @return string Resource Url
+	*/
+	public static function getSynonymDefinitionCollectionUrl($localeCode, $responseFields)
+	{
+		$url = "/api/commerce/catalog/admin/search/synonym-definitions/{localeCode}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("localeCode", $localeCode);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for GetSynonymDefinitions
+		* @param string $filter 
+		* @param int $pageSize 
+		* @param string $responseFields 
+		* @param string $sortBy 
+		* @param int $startIndex 
+		* @return string Resource Url
+	*/
+	public static function getSynonymDefinitionsUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex)
+	{
+		$url = "/api/commerce/catalog/admin/search/synonyms/?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}&responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("filter", $filter);
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for GetSynonymDefinition
+		* @param string $responseFields 
+		* @param int $synonymId 
+		* @return string Resource Url
+	*/
+	public static function getSynonymDefinitionUrl($responseFields, $synonymId)
+	{
+		$url = "/api/commerce/catalog/admin/search/synonyms/{synonymId}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("synonymId", $synonymId);
+		return $mozuUrl;
+	}
+	
+	/**
 		* Get Resource Url for AddSearchTuningRule
-		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 		* @return string Resource Url
 	*/
 	public static function addSearchTuningRuleUrl($responseFields)
@@ -92,19 +145,49 @@ class SearchUrl  {
 	
 	/**
 		* Get Resource Url for UpdateSearchTuningRuleSortFields
+		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 		* @return string Resource Url
 	*/
-	public static function updateSearchTuningRuleSortFieldsUrl()
+	public static function updateSearchTuningRuleSortFieldsUrl($responseFields)
 	{
-		$url = "/api/commerce/catalog/admin/search/searchtuningrulesortfields";
+		$url = "/api/commerce/catalog/admin/search/searchtuningrulesortfields?responseFields={responseFields}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for UpdateSynonymDefinitionCollection
+		* @param string $localeCode The two character country code that sets the locale, such as US for United States. Sites, tenants, and catalogs use locale codes for localizing content, such as translated product text per supported country.
+		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @return string Resource Url
+	*/
+	public static function updateSynonymDefinitionCollectionUrl($localeCode, $responseFields)
+	{
+		$url = "/api/commerce/catalog/admin/search/synonym-definitions/{localeCode}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("localeCode", $localeCode);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for AddSynonymDefinition
+		* @param string $responseFields 
+		* @return string Resource Url
+	*/
+	public static function addSynonymDefinitionUrl($responseFields)
+	{
+		$url = "/api/commerce/catalog/admin/search/synonyms?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdateSearchTuningRule
-		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
-		* @param string $searchTuningRuleCode 
+		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $searchTuningRuleCode The unique identifier of the search tuning rule.
 		* @return string Resource Url
 	*/
 	public static function updateSearchTuningRuleUrl($responseFields, $searchTuningRuleCode)
@@ -118,7 +201,7 @@ class SearchUrl  {
 	
 	/**
 		* Get Resource Url for UpdateSettings
-		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 		* @return string Resource Url
 	*/
 	public static function updateSettingsUrl($responseFields)
@@ -130,8 +213,23 @@ class SearchUrl  {
 	}
 	
 	/**
+		* Get Resource Url for UpdateSynonymDefinition
+		* @param string $responseFields 
+		* @param int $synonymId 
+		* @return string Resource Url
+	*/
+	public static function updateSynonymDefinitionUrl($responseFields, $synonymId)
+	{
+		$url = "/api/commerce/catalog/admin/search/synonyms/{synonymId}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("synonymId", $synonymId);
+		return $mozuUrl;
+	}
+	
+	/**
 		* Get Resource Url for DeleteSearchTuningRule
-		* @param string $searchTuningRuleCode 
+		* @param string $searchTuningRuleCode The unique identifier of the search tuning rule.
 		* @return string Resource Url
 	*/
 	public static function deleteSearchTuningRuleUrl($searchTuningRuleCode)
@@ -139,6 +237,19 @@ class SearchUrl  {
 		$url = "/api/commerce/catalog/admin/search/searchtuningrules/{searchTuningRuleCode}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
 		$url = $mozuUrl->formatUrl("searchTuningRuleCode", $searchTuningRuleCode);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for DeleteSynonymDefinition
+		* @param int $synonymId 
+		* @return string Resource Url
+	*/
+	public static function deleteSynonymDefinitionUrl($synonymId)
+	{
+		$url = "/api/commerce/catalog/admin/search/synonyms/{synonymId}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("synonymId", $synonymId);
 		return $mozuUrl;
 	}
 	

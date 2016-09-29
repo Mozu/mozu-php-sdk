@@ -41,9 +41,9 @@ class ExtendedPropertyUrl  {
 	
 	/**
 		* Get Resource Url for UpdateExtendedProperty
-		* @param string $key 
-		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
-		* @param bool $upsert 
+		* @param string $key Key used for metadata defined for objects, including extensible attributes, custom attributes associated with a shipping provider, and search synonyms definitions. This content may be user-defined depending on the object and usage.
+		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param bool $upsert Any set of key value pairs to be stored in the extended properties of a cart.
 		* @return string Resource Url
 	*/
 	public static function updateExtendedPropertyUrl($key, $responseFields, $upsert)

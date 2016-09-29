@@ -20,16 +20,6 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Payments;
 class Payment
 {
 	/**
-	*Unique identifier of the source product property. For a product field it will be the name of the field. For a product attribute it will be the Attribute FQN. 
-	*/
-	public $id;
-
-	/**
-	*Indicates if the product in a cart, order, or wish list is purchased on a recurring schedule. If true, the item can be purchased or fulfilled at regular intervals, such as a monthly billing cycle. For example, digital or physical product subscriptions are recurring cart items. This property is not used at this time and is reserved for future functionality.
-	*/
-	public $isRecurring;
-
-	/**
 	*The total monetary amount collected in this payment transaction for the order.
 	*/
 	public $amountCollected;
@@ -53,6 +43,16 @@ class Payment
 	*The external/third party transaction Id for this payment. This is used to store the transaction Id from digital wallet like Visa Checkout
 	*/
 	public $externalTransactionId;
+
+	/**
+	*Unique identifier of the source product property. For a product field it will be the name of the field. For a product attribute it will be the Attribute FQN. 
+	*/
+	public $id;
+
+	/**
+	*Indicates if the product in a cart, order, or wish list is purchased on a recurring schedule. If true, the item can be purchased or fulfilled at regular intervals, such as a monthly billing cycle. For example, digital or physical product subscriptions are recurring cart items. This property is not used at this time and is reserved for future functionality.
+	*/
+	public $isRecurring;
 
 	/**
 	*Unique identifier of the order associated with the payment.
@@ -94,7 +94,10 @@ class Payment
 	*/
 	public $changeMessages;
 
-		public $data;
+	/**
+	*Custom data from payment providers
+	*/
+	public $data;
 
 	/**
 	*Container for the interactions associated with the payment, which includes details for each action performed for the payment.

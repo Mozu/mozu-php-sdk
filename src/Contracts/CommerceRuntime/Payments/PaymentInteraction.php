@@ -129,6 +129,8 @@ class PaymentInteraction
 	*/
 	public $auditInfo;
 
+		public $gatewayResponseData;
+
 }
 
 ?>

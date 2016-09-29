@@ -19,7 +19,10 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Payments;
 */
 class BillingInfo
 {
-		public $externalTransactionId;
+	/**
+	*Transaction Id from third party payment source like Visa Checkout, Amazon
+	*/
+	public $externalTransactionId;
 
 	/**
 	*If true, the system overrides the customer's billing address information with the supplied fulfillment information.
@@ -56,7 +59,15 @@ class BillingInfo
 	*/
 	public $card;
 
-		public $data;
+	/**
+	*Custom data from payment providers
+	*/
+	public $data;
+
+	/**
+	*Purchase order payment information
+	*/
+	public $purchaseOrder;
 
 }
 

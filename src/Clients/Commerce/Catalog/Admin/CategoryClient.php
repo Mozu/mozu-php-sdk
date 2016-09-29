@@ -15,6 +15,7 @@ namespace Mozu\Api\Clients\Commerce\Catalog\Admin;
 use Mozu\Api\MozuClient;
 use Mozu\Api\Urls\Commerce\Catalog\Admin\CategoryUrl;
 
+use Mozu\Api\Headers;
 
 /**
 * Use the Categories resource to organize products and control where they appear on the storefront. Create and maintain a hierarchy of categories and subcategories where the site will store properties.
@@ -24,18 +25,18 @@ class CategoryClient {
 	/**
 	* Retrieves a list of categories according to any specified filter criteria and sort options.
 	*
-	* @param string $filter A set of filter expressions representing the search parameters for a query: eq=equals, ne=not equals, gt=greater than, lt = less than or equals, gt = greater than or equals, lt = less than or equals, sw = starts with, or cont = contains. Optional.
+	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for a list of supported filters.
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getCategoriesClient($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
+	public static function getCategoriesClient($dataViewMode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
 	{
 		$url = CategoryUrl::getCategoriesUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
 		return $mozuClient;
 
 	}
@@ -63,11 +64,11 @@ class CategoryClient {
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
-	public static function getCategoryClient($categoryId, $responseFields =  null)
+	public static function getCategoryClient($dataViewMode, $categoryId, $responseFields =  null)
 	{
 		$url = CategoryUrl::getCategoryUrl($categoryId, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url);
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
 		return $mozuClient;
 
 	}
@@ -77,12 +78,13 @@ class CategoryClient {
 	*
 	* @param bool $incrementSequence If true, when adding a new product category, set the sequence number of the new category to an increment of one integer greater than the maximum available sequence number across all product categories. If false, set the sequence number to zero.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param bool $useProvidedId 
 	* @param Category $category A descriptive container that groups products. A category is merchant defined with associated products and discounts as configured. GThe storefront displays products in a hierarchy of categories. As such, categories can include a nesting of sub-categories to organize products and product options per set guidelines such as color, brand, material, and size.
 	* @return MozuClient
 	*/
-	public static function addCategoryClient($category, $incrementSequence =  null, $responseFields =  null)
+	public static function addCategoryClient($category, $incrementSequence =  null, $useProvidedId =  null, $responseFields =  null)
 	{
-		$url = CategoryUrl::addCategoryUrl($incrementSequence, $responseFields);
+		$url = CategoryUrl::addCategoryUrl($incrementSequence, $responseFields, $useProvidedId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($category);
 		return $mozuClient;
@@ -90,9 +92,23 @@ class CategoryClient {
 	}
 	
 	/**
-	* admin-categories Post ValidateDynamicExpression description DOCUMENT_HERE 
+	* Modifies the sequence and hierarchy of multiple categories in a category tree in one operation. This is better for moving a category to a different location in the tree and adjusting the order of multiple categories than doing individual category updates.
 	*
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param CategorySequenceCollection $categorySequencies Mozu.ProductAdmin.Contracts.CategorySequenceCollection ApiType DOCUMENT_HERE 
+	*/
+	public static function updateCategoryTreeClient($categorySequencies)
+	{
+		$url = CategoryUrl::updateCategoryTreeUrl();
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withBody($categorySequencies);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* Validates the precomputed dynamic category expression.
+	*
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @param DynamicExpression $dynamicExpressionIn Mozu.ProductAdmin.Contracts.DynamicExpression ApiType DOCUMENT_HERE 
 	* @return MozuClient
 	*/
@@ -106,9 +122,9 @@ class CategoryClient {
 	}
 	
 	/**
-	* admin-categories Post ValidateRealTimeDynamicExpression description DOCUMENT_HERE 
+	* Validates the realtime dynamic expression.
 	*
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @param DynamicExpression $dynamicExpressionIn Mozu.ProductAdmin.Contracts.DynamicExpression ApiType DOCUMENT_HERE 
 	* @return MozuClient
 	*/
@@ -142,10 +158,10 @@ class CategoryClient {
 	/**
 	* Deletes the category specified by its category ID.
 	*
-	* @param bool $cascadeDelete If true, also delete all subcategories associated with the specified category.
+	* @param bool $cascadeDelete Specifies whether to also delete all subcategories associated with the specified category.If you set this value is false, only the specified category is deleted.The default value is false.
 	* @param int $categoryId Unique identifier of the category to modify.
-	* @param bool $forceDelete 
-	* @param bool $reassignToParent 
+	* @param bool $forceDelete Specifies whether the category, and any associated subcategories, are deleted even if there are products that reference them. The default value is false.
+	* @param bool $reassignToParent Specifies whether any subcategories of the specified category are reassigned to the parent of the specified category.This field only applies if the cascadeDelete parameter is false.The default value is false.
 	*/
 	public static function deleteCategoryByIdClient($categoryId, $cascadeDelete =  null, $forceDelete =  null, $reassignToParent =  null)
 	{

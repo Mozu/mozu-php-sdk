@@ -55,6 +55,16 @@ class ApplicationEntitlement
 	public $applicationVersion;
 
 	/**
+	*Denotes the application owner dev account id
+	*/
+	public $appOwnerDevAccountId;
+
+	/**
+	*Mozu.AppDev.Contracts.ApplicationEntitlement devAccountId ApiTypeMember DOCUMENT_HERE 
+	*/
+	public $devAccountId;
+
+	/**
 	*Mozu.AppDev.Contracts.ApplicationEntitlement effectiveEndDate ApiTypeMember DOCUMENT_HERE 
 	*/
 	public $effectiveEndDate;
@@ -68,6 +78,11 @@ class ApplicationEntitlement
 	*Mozu.AppDev.Contracts.ApplicationEntitlement entitlementStatus ApiTypeMember DOCUMENT_HERE 
 	*/
 	public $entitlementStatus;
+
+	/**
+	*Mozu.AppDev.Contracts.ApplicationEntitlement installedAppsApplicationId ApiTypeMember DOCUMENT_HERE 
+	*/
+	public $installedAppsApplicationId;
 
 	/**
 	*Mozu.AppDev.Contracts.ApplicationEntitlement installedByFirstName ApiTypeMember DOCUMENT_HERE 

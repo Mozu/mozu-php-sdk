@@ -20,9 +20,9 @@ class CouponUrl  {
 	/**
 		* Get Resource Url for GetCoupon
 		* @param string $couponCode Code associated with the coupon to remove from the cart.
-		* @param string $couponSetCode 
-		* @param bool $includeCounts 
-		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+		* @param string $couponSetCode The unique identifier of the coupon set that the coupon belongs to.
+		* @param bool $includeCounts Specifies whether to return the redemptionCount property in the response body object.
+		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 		* @return string Resource Url
 	*/
 	public static function getCouponUrl($couponCode, $couponSetCode, $includeCounts, $responseFields)
@@ -38,13 +38,13 @@ class CouponUrl  {
 	
 	/**
 		* Get Resource Url for GetCoupons
-		* @param string $couponSetCode 
-		* @param string $filter A set of filter expressions representing the search parameters for a query: eq=equals, ne=not equals, gt=greater than, lt = less than or equals, gt = greater than or equals, lt = less than or equals, sw = starts with, or cont = contains. Optional.
-		* @param bool $includeCounts 
-		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The amount is divided and displayed on the `pageCount `amount of pages. The default is 20 and maximum value is 200 per page.
-		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
-		* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional.
-		* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a `pageSize `of 25, to get the 51st through the 75th items, use `startIndex=3`.
+		* @param string $couponSetCode The unique identifier of the coupon set that the coupons belongs to.
+		* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for a list of supported filters.
+		* @param bool $includeCounts Specifies whether to include the redemptionCount property in the response body object.
+		* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
+		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for more information.
+		* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
 		* @return string Resource Url
 	*/
 	public static function getCouponsUrl($couponSetCode, $filter, $includeCounts, $pageSize, $responseFields, $sortBy, $startIndex)
@@ -63,7 +63,7 @@ class CouponUrl  {
 	
 	/**
 		* Get Resource Url for AddCoupons
-		* @param string $couponSetCode 
+		* @param string $couponSetCode The unique identifier of the coupon set.
 		* @return string Resource Url
 	*/
 	public static function addCouponsUrl($couponSetCode)
@@ -76,7 +76,7 @@ class CouponUrl  {
 	
 	/**
 		* Get Resource Url for DeleteCoupons
-		* @param string $couponSetCode 
+		* @param string $couponSetCode The unique identifier of the coupon set that the coupon belongs to.
 		* @return string Resource Url
 	*/
 	public static function deleteCouponsUrl($couponSetCode)
@@ -90,7 +90,7 @@ class CouponUrl  {
 	/**
 		* Get Resource Url for DeleteCoupon
 		* @param string $couponCode Code associated with the coupon to remove from the cart.
-		* @param string $couponSetCode 
+		* @param string $couponSetCode The unique identifier of the coupon set that the coupon belongs to.
 		* @return string Resource Url
 	*/
 	public static function deleteCouponUrl($couponCode, $couponSetCode)

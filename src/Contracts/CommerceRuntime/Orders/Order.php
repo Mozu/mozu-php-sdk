@@ -20,6 +20,11 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Orders;
 class Order
 {
 	/**
+	*Code that identifies the channel associated with the site for the shopper's created shopping cart, order, and return.
+	*/
+	public $channelCode;
+
+	/**
 	*The date and time the order was accepted by the tenant.
 	*/
 	public $acceptedDate;
@@ -53,11 +58,6 @@ class Order
 	*Date when the order was cancelled. System-supplied and read-only.
 	*/
 	public $cancelledDate;
-
-	/**
-	*Code that identifies the channel associated with the site for the shopper's created shopping cart, order, and return.
-	*/
-	public $channelCode;
 
 	/**
 	*Date when the order was closed. Closed order is an order that has been processed and the items shipped. System-supplied and read-only.
@@ -238,6 +238,11 @@ class Order
 	*Status of the payment for the specified order.
 	*/
 	public $paymentStatus;
+
+	/**
+	*Pricelist code for the order
+	*/
+	public $priceListCode;
 
 	/**
 	*Status of any returns associated with this order after it was completed.

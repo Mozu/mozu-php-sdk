@@ -63,7 +63,7 @@ class AttributeLocalizedContentResource {
 	}
 	
 	/**
-	* Retrieves the localized content for an attribute  based on a `localeCode`. 
+	* Retrieves the localized content for an attribute based on a `localeCode`.
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
 	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
@@ -81,7 +81,7 @@ class AttributeLocalizedContentResource {
 	}
 	
 /**
-	* Retrieves the localized content for an attribute  based on a `localeCode`. 
+	* Retrieves the localized content for an attribute based on a `localeCode`.
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
 	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
@@ -97,7 +97,7 @@ class AttributeLocalizedContentResource {
 	}
 	
 	/**
-	* Adds new localized content for an attribute  based on a `localeCode`. 
+	* Adds new localized content for an attribute based on a `localeCode`.
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
@@ -115,7 +115,7 @@ class AttributeLocalizedContentResource {
 	}
 	
 /**
-	* Adds new localized content for an attribute  based on a `localeCode`. 
+	* Adds new localized content for an attribute based on a `localeCode`.
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
@@ -130,7 +130,7 @@ class AttributeLocalizedContentResource {
 	}
 	
 	/**
-	* Updates the localized content for a collection of existing attributes  based on a `localeCode`. 
+	* Updates the localized content for a collection of existing attributes based on a `localeCode`.
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
 	* @param array|AttributeLocalizedContent $localizedContent The localized name and description of the attribute, displayed in the locale defined for the master catalog.
@@ -147,7 +147,7 @@ class AttributeLocalizedContentResource {
 	}
 	
 /**
-	* Updates the localized content for a collection of existing attributes  based on a `localeCode`. 
+	* Updates the localized content for a collection of existing attributes based on a `localeCode`.
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -161,7 +161,7 @@ class AttributeLocalizedContentResource {
 	}
 	
 	/**
-	* Updates the localized content for an existing attribute  based on a `localeCode`. 
+	* Updates the localized content for an existing attribute based on a `localeCode`.
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
 	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
@@ -180,7 +180,7 @@ class AttributeLocalizedContentResource {
 	}
 	
 /**
-	* Updates the localized content for an existing attribute  based on a `localeCode`. 
+	* Updates the localized content for an existing attribute based on a `localeCode`.
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
 	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.

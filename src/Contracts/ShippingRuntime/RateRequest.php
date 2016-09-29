@@ -40,9 +40,19 @@ class RateRequest
 	public $isoCurrencyCode;
 
 	/**
+	*The Order SubTotal After Discounts to be used in rate calculation
+	*/
+	public $orderDiscountedSubTotal;
+
+	/**
 	*The total monetary amount of the order. This amount is used to calculate the shipping rate estimate.
 	*/
 	public $orderTotal;
+
+	/**
+	*The Order ID to be used in rate calculation Information al only
+	*/
+	public $relatedOrderId;
 
 	/**
 	*The shipping methods associated with this request.

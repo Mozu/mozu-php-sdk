@@ -41,6 +41,8 @@ class Category
 	*/
 	public $id;
 
+		public $isActive;
+
 	/**
 	*Indicates if the object is displayed on the storefront. If true, the admin product category is displayed in the store. If true, the category is not displayed.
 	*/

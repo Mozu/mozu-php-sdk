@@ -34,6 +34,11 @@ class ProductPricingBehaviorInfo
 	*/
 	public $discountsRestrictedStartDate;
 
+	/**
+	*Only used when product is a variation
+	*/
+	public $variationPricingMethod;
+
 }
 
 ?>

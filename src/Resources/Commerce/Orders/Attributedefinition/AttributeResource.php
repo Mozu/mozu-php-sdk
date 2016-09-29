@@ -132,6 +132,70 @@ class AttributeResource {
 
 	}
 	
+	/**
+	* Create and save a new attribute. These attributes are used in products and product options.
+	*
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param Attribute $attribute Properties of an attribute used to describe customers or orders.
+	* @return Attribute 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function createAttribute($attribute, $responseFields =  null)
+	{
+		$mozuClient = AttributeClient::createAttributeClient($attribute, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Create and save a new attribute. These attributes are used in products and product options.
+	*
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function createAttributeAsync($attribute, $responseFields =  null)
+	{
+		$mozuClient = AttributeClient::createAttributeClient($attribute, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* Updates an existing attribute with attribute properties to set.
+	*
+	* @param string $attributeFQN Fully qualified name for an attribute.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param Attribute $attribute Properties of an attribute used to describe customers or orders.
+	* @return Attribute 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function updateAttribute($attribute, $attributeFQN, $responseFields =  null)
+	{
+		$mozuClient = AttributeClient::updateAttributeClient($attribute, $attributeFQN, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Updates an existing attribute with attribute properties to set.
+	*
+	* @param string $attributeFQN Fully qualified name for an attribute.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function updateAttributeAsync($attribute, $attributeFQN, $responseFields =  null)
+	{
+		$mozuClient = AttributeClient::updateAttributeClient($attribute, $attributeFQN, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
 	
 }
 

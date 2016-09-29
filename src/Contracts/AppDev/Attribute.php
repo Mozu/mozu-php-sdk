@@ -20,6 +20,11 @@ namespace Mozu\Api\Contracts\AppDev;
 class Attribute
 {
 	/**
+	*List of valid vocabulary values defined for an attribute.
+	*/
+	public $vocabularyValues;
+
+	/**
 	*The administrator name associated with the object/data.
 	*/
 	public $adminName;
@@ -68,11 +73,6 @@ class Attribute
 	*Mozu.AppDev.Contracts.Attribute vocabularyJson ApiTypeMember DOCUMENT_HERE 
 	*/
 	public $vocabularyJson;
-
-	/**
-	*List of valid vocabulary values defined for an attribute.
-	*/
-	public $vocabularyValues;
 
 }
 

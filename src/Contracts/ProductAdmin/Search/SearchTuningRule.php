@@ -60,9 +60,19 @@ class SearchTuningRule
 	public $searchTuningRuleCode;
 
 	/**
+	*Mozu.ProductAdmin.Contracts.Search.SearchTuningRule searchTuningRuleDescription ApiTypeMember DOCUMENT_HERE 
+	*/
+	public $searchTuningRuleDescription;
+
+	/**
 	*Mozu.ProductAdmin.Contracts.Search.SearchTuningRule searchTuningRuleName ApiTypeMember DOCUMENT_HERE 
 	*/
 	public $searchTuningRuleName;
+
+	/**
+	*Unique identifier for the site. This ID is used at all levels of a store, catalog, and tenant to associate objects to a site.
+	*/
+	public $siteId;
 
 	/**
 	*Basic audit info about the object, including date, time, and user account. Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.

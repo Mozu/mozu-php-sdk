@@ -14,11 +14,20 @@ namespace Mozu\Api\Contracts\ProductAdmin\Search;
 
 
 
+/**
+*	Mozu.ProductAdmin.Contracts.Search.SearchTuningRuleSortFields ApiType DOCUMENT_HERE 
+*/
 class SearchTuningRuleSortFields
 {
-		public $inclusionExclusionType;
+	/**
+	*Mozu.ProductAdmin.Contracts.Search.SearchTuningRuleSortFields inclusionExclusionType ApiTypeMember DOCUMENT_HERE 
+	*/
+	public $inclusionExclusionType;
 
-		public $sortFields;
+	/**
+	*Mozu.ProductAdmin.Contracts.Search.SearchTuningRuleSortFields sortFields ApiTypeMember DOCUMENT_HERE 
+	*/
+	public $sortFields;
 
 }
 

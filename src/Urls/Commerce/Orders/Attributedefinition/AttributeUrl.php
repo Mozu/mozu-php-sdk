@@ -66,6 +66,34 @@ class AttributeUrl  {
 		return $mozuUrl;
 	}
 	
+	/**
+		* Get Resource Url for CreateAttribute
+		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @return string Resource Url
+	*/
+	public static function createAttributeUrl($responseFields)
+	{
+		$url = "/api/commerce/orders/attributedefinition/attributes/?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for UpdateAttribute
+		* @param string $attributeFQN Fully qualified name for an attribute.
+		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @return string Resource Url
+	*/
+	public static function updateAttributeUrl($attributeFQN, $responseFields)
+	{
+		$url = "/api/commerce/orders/attributedefinition/attributes/{attributeFQN}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		return $mozuUrl;
+	}
+	
 }
 
 ?>
