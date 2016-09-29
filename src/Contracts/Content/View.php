@@ -24,6 +24,10 @@ class View
 	*/
 	public $filter;
 
+		public $includeInactiveMode;
+
+		public $isAdminDefault;
+
 	/**
 	*The isVisibleInStorefront field indicates whether documents in the view can be accessed from the Mozu storefront application. If true, the storefront application and storefront client application (javascript tier) can GET documents from the view.
 	*/

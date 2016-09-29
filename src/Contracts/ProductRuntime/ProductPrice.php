@@ -35,6 +35,11 @@ class ProductPrice
 	public $creditValue;
 
 	/**
+	*The priceList that was applied to this product
+	*/
+	public $effectivePricelistCode;
+
+	/**
 	*The manufacturer's suggested retail price for the product. This content may be defined by the supplier.
 	*/
 	public $msrp;
@@ -43,6 +48,16 @@ class ProductPrice
 	*The price the merchant intends to charge for the product.
 	*/
 	public $price;
+
+	/**
+	*The specific PriceListCode that was applied (includes inheritence
+	*/
+	public $priceListEntryCode;
+
+	/**
+	*IF a PriceList Entry was applied to this price it will be (simple, bulk...)
+	*/
+	public $priceListEntryMode;
 
 	/**
 	*The price type that displays on the storefront website for the Price field, which is List, MAP, or CatalogSalePrice

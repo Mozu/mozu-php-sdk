@@ -19,7 +19,7 @@ class AssignedDiscountUrl  {
 
 	/**
 		* Get Resource Url for GetAssignedDiscounts
-		* @param string $couponSetCode 
+		* @param string $couponSetCode The unique identifier of the coupon set.
 		* @return string Resource Url
 	*/
 	public static function getAssignedDiscountsUrl($couponSetCode)
@@ -32,7 +32,7 @@ class AssignedDiscountUrl  {
 	
 	/**
 		* Get Resource Url for AssignDiscount
-		* @param string $couponSetCode 
+		* @param string $couponSetCode The unique identifier of the coupon set.
 		* @return string Resource Url
 	*/
 	public static function assignDiscountUrl($couponSetCode)
@@ -45,8 +45,8 @@ class AssignedDiscountUrl  {
 	
 	/**
 		* Get Resource Url for UnAssignDiscount
-		* @param string $couponSetCode 
-		* @param int $discountId 
+		* @param string $couponSetCode The unique identifier of the coupon set.
+		* @param int $discountId discountId parameter description DOCUMENT_HERE 
 		* @return string Resource Url
 	*/
 	public static function unAssignDiscountUrl($couponSetCode, $discountId)

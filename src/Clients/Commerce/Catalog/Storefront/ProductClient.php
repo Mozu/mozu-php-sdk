@@ -25,16 +25,18 @@ class ProductClient {
 	/**
 	* Retrieves a list of products that appear on the web storefront according to any specified filter criteria and sort options.
 	*
+	* @param string $cursorMark 
 	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseOptions 
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getProductsClient($dataViewMode, $filter =  null, $startIndex =  null, $pageSize =  null, $sortBy =  null, $responseFields =  null)
+	public static function getProductsClient($dataViewMode, $filter =  null, $startIndex =  null, $pageSize =  null, $sortBy =  null, $responseOptions =  null, $cursorMark =  null, $responseFields =  null)
 	{
-		$url = ProductUrl::getProductsUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex);
+		$url = ProductUrl::getProductsUrl($cursorMark, $filter, $pageSize, $responseFields, $responseOptions, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
 		return $mozuClient;
@@ -46,7 +48,7 @@ class ProductClient {
 	*
 	* @param string $locationCodes Array of location codes for which to retrieve product inventory information.
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return MozuClient
 	*/
 	public static function getProductInventoryClient($dataViewMode, $productCode, $locationCodes =  null, $responseFields =  null)
@@ -61,17 +63,19 @@ class ProductClient {
 	/**
 	* Retrieves information about a single product given its product code.
 	*
+	* @param bool $acceptVariantProductCode 
 	* @param bool $allowInactive If true, allow inactive categories to be retrieved in the category list response. If false, the categories retrieved will not include ones marked inactive.
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param int $quantity The number of cart items in the shopper's active cart.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @param bool $skipInventoryCheck If true, skip the process to validate inventory when creating this product reservation.
-	* @param bool $supressOutOfStock404 
+	* @param bool $supressOutOfStock404 Specifies whether to supress the 404 error when the product is out of stock.
 	* @param string $variationProductCode Merchant-created code associated with a specific product variation. Variation product codes maintain an association with the base product code.
 	* @return MozuClient
 	*/
-	public static function getProductClient($dataViewMode, $productCode, $variationProductCode =  null, $allowInactive =  null, $skipInventoryCheck =  null, $supressOutOfStock404 =  null, $responseFields =  null)
+	public static function getProductClient($dataViewMode, $productCode, $variationProductCode =  null, $allowInactive =  null, $skipInventoryCheck =  null, $supressOutOfStock404 =  null, $quantity =  null, $acceptVariantProductCode =  null, $responseFields =  null)
 	{
-		$url = ProductUrl::getProductUrl($allowInactive, $productCode, $responseFields, $skipInventoryCheck, $supressOutOfStock404, $variationProductCode);
+		$url = ProductUrl::getProductUrl($acceptVariantProductCode, $allowInactive, $productCode, $quantity, $responseFields, $skipInventoryCheck, $supressOutOfStock404, $variationProductCode);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
 		return $mozuClient;
@@ -82,12 +86,13 @@ class ProductClient {
 	* Retrieves information about a single product given its product code for Mozu to index in the search engine
 	*
 	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param long $productVersion 
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return MozuClient
 	*/
-	public static function getProductForIndexingClient($dataViewMode, $productCode, $responseFields =  null)
+	public static function getProductForIndexingClient($dataViewMode, $productCode, $productVersion =  null, $responseFields =  null)
 	{
-		$url = ProductUrl::getProductForIndexingUrl($productCode, $responseFields);
+		$url = ProductUrl::getProductForIndexingUrl($productCode, $productVersion, $responseFields);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
 		return $mozuClient;
@@ -99,14 +104,15 @@ class ProductClient {
 	*
 	* @param bool $includeOptionDetails If true, the response returns details about the product. If false, returns a product summary such as the product name, price, and sale price.
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param int $quantity The number of cart items in the shopper's active cart.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @param bool $skipInventoryCheck If true, skip the process to validate inventory when creating this product reservation.
 	* @param ProductOptionSelections $productOptionSelections For a product with shopper-configurable options, the properties of the product options selected by the shopper.
 	* @return MozuClient
 	*/
-	public static function configuredProductClient($productOptionSelections, $productCode, $includeOptionDetails =  null, $skipInventoryCheck =  null, $responseFields =  null)
+	public static function configuredProductClient($productOptionSelections, $productCode, $includeOptionDetails =  null, $skipInventoryCheck =  null, $quantity =  null, $responseFields =  null)
 	{
-		$url = ProductUrl::configuredProductUrl($includeOptionDetails, $productCode, $responseFields, $skipInventoryCheck);
+		$url = ProductUrl::configuredProductUrl($includeOptionDetails, $productCode, $quantity, $responseFields, $skipInventoryCheck);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($productOptionSelections);
 		return $mozuClient;
@@ -117,14 +123,15 @@ class ProductClient {
 	* Validate the final state of shopper-selected options.
 	*
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+	* @param int $quantity The number of cart items in the shopper's active cart.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param bool $skipInventoryCheck If true, skip the process to validate inventory when creating this product reservation.
 	* @param ProductOptionSelections $productOptionSelections For a product with shopper-configurable options, the properties of the product options selected by the shopper.
 	* @return MozuClient
 	*/
-	public static function validateProductClient($productOptionSelections, $productCode, $skipInventoryCheck =  null, $responseFields =  null)
+	public static function validateProductClient($productOptionSelections, $productCode, $skipInventoryCheck =  null, $quantity =  null, $responseFields =  null)
 	{
-		$url = ProductUrl::validateProductUrl($productCode, $responseFields, $skipInventoryCheck);
+		$url = ProductUrl::validateProductUrl($productCode, $quantity, $responseFields, $skipInventoryCheck);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($productOptionSelections);
 		return $mozuClient;
@@ -137,7 +144,7 @@ class ProductClient {
 	* @param bool $allowInactive If true, allow inactive categories to be retrieved in the category list response. If false, the categories retrieved will not include ones marked inactive.
 	* @param int $customerAccountId The unique identifier of the customer account for which to retrieve wish lists.
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @param bool $skipInventoryCheck If true, skip the process to validate inventory when creating this product reservation.
 	* @param string $variationProductCode Merchant-created code associated with a specific product variation. Variation product codes maintain an association with the base product code.
 	* @param DiscountSelections $discountSelections The discounts to evaluate for a specified product code at the time of purchase.
@@ -155,7 +162,7 @@ class ProductClient {
 	/**
 	* Retrieves product inventories for the storefront displayed products.
 	*
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @param LocationInventoryQuery $query Properties for the product location inventory provided for queries to locate products by their location.
 	* @return MozuClient
 	*/

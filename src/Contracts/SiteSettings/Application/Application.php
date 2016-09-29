@@ -45,6 +45,11 @@ class Application
 	public $isExtension;
 
 	/**
+	*denotes if the Application is certified to use extension
+	*/
+	public $isExtensionCertified;
+
+	/**
 	*The URL defined for the application that represents the configuration website for the capability. This value is used by installed applications or the site.
 	*/
 	public $uiConfigurationUrl;

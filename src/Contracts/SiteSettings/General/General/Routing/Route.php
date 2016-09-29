@@ -30,6 +30,11 @@ class Route
 	public $defaults;
 
 	/**
+	*Mozu.SiteSettings.General.Contracts.General.Routing.Route functionId ApiTypeMember DOCUMENT_HERE 
+	*/
+	public $functionId;
+
+	/**
 	*Mozu.SiteSettings.General.Contracts.General.Routing.Route internalRoute ApiTypeMember DOCUMENT_HERE 
 	*/
 	public $internalRoute;
@@ -43,6 +48,11 @@ class Route
 	*Mozu.SiteSettings.General.Contracts.General.Routing.Route template ApiTypeMember DOCUMENT_HERE 
 	*/
 	public $template;
+
+	/**
+	*Mozu.SiteSettings.General.Contracts.General.Routing.Route urlScheme ApiTypeMember DOCUMENT_HERE 
+	*/
+	public $urlScheme;
 
 	/**
 	*Mozu.SiteSettings.General.Contracts.General.Routing.Route validators ApiTypeMember DOCUMENT_HERE 

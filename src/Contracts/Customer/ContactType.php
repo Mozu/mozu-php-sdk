@@ -20,14 +20,14 @@ namespace Mozu\Api\Contracts\Customer;
 class ContactType
 {
 	/**
-	*Indicates if the object is primary, used to indicate primary contacts and entities within a tenant. If true, this marker indicates that the object is the primary in a set.
-	*/
-	public $isPrimary;
-
-	/**
 	*The display name of the source product property. For a product field it will be the display name of the field. For a product attribute it will be the Attribute Name.
 	*/
 	public $name;
+
+	/**
+	*Indicates if the object is primary, used to indicate primary contacts and entities within a tenant. If true, this marker indicates that the object is the primary in a set.
+	*/
+	public $isPrimary;
 
 }
 

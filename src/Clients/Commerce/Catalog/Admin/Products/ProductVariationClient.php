@@ -57,6 +57,40 @@ class ProductVariationClient {
 	}
 	
 	/**
+	* Retrieves a list of details of the localized price values for a product variation.
+	*
+	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
+	* @return MozuClient
+	*/
+	public static function getProductVariationLocalizedPricesClient($dataViewMode, $productCode, $variationKey)
+	{
+		$url = ProductVariationUrl::getProductVariationLocalizedPricesUrl($productCode, $variationKey);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* Retrieves the details of the localized price value for a product variation and a specific localized currency.
+	*
+	* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
+	* @return MozuClient
+	*/
+	public static function getProductVariationLocalizedPriceClient($dataViewMode, $productCode, $variationKey, $currencyCode, $responseFields =  null)
+	{
+		$url = ProductVariationUrl::getProductVariationLocalizedPriceUrl($currencyCode, $productCode, $responseFields, $variationKey);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
+
+	}
+	
+	/**
 	* Retrieves the details of a product variation based on the supplied product code and variation key.
 	*
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
@@ -112,6 +146,24 @@ class ProductVariationClient {
 	}
 	
 	/**
+	* Adds the localized price value for a product variation and a specific localized currency.
+	*
+	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
+	* @param ProductVariationFixedPrice $localizedPrice Mozu.ProductAdmin.Contracts.ProductVariationFixedPrice ApiType DOCUMENT_HERE 
+	* @return MozuClient
+	*/
+	public static function addProductVariationLocalizedPriceClient($dataViewMode, $localizedPrice, $productCode, $variationKey, $responseFields =  null)
+	{
+		$url = ProductVariationUrl::addProductVariationLocalizedPriceUrl($productCode, $responseFields, $variationKey);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withBody($localizedPrice)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
+
+	}
+	
+	/**
 	* Updates all localized delta price values for a product variation. Localized delta prices are deltas between two differing monetary conversion amounts between countries, such as US Dollar vs Euro.
 	*
 	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
@@ -148,6 +200,42 @@ class ProductVariationClient {
 	}
 	
 	/**
+	* Updates a list of localized price values for a product variation.
+	*
+	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
+	* @param array|ProductVariationFixedPrice $localizedPrice Mozu.ProductAdmin.Contracts.ProductVariationFixedPrice ApiType DOCUMENT_HERE 
+	* @return MozuClient
+	*/
+	public static function updateProductVariationLocalizedPricesClient($dataViewMode, $localizedPrice, $productCode, $variationKey)
+	{
+		$url = ProductVariationUrl::updateProductVariationLocalizedPricesUrl($productCode, $variationKey);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withBody($localizedPrice)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* Updates the localized price value for a product variation and a specific localized currency.
+	*
+	* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
+	* @param ProductVariationFixedPrice $localizedPrice Mozu.ProductAdmin.Contracts.ProductVariationFixedPrice ApiType DOCUMENT_HERE 
+	* @return MozuClient
+	*/
+	public static function updateProductVariationLocalizedPriceClient($dataViewMode, $localizedPrice, $productCode, $variationKey, $currencyCode, $responseFields =  null)
+	{
+		$url = ProductVariationUrl::updateProductVariationLocalizedPriceUrl($currencyCode, $productCode, $responseFields, $variationKey);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withBody($localizedPrice)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
+
+	}
+	
+	/**
 	* Modifies the details of a variation, based on the supplied variation key, for the specified product code.
 	*
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
@@ -169,7 +257,7 @@ class ProductVariationClient {
 	* Modifies the collection of variations for the specified product code. Because this PUT replaces the existing resource, supply all information necessary to maintain for the product variation.
 	*
 	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @param ProductVariationCollection $productVariations Collection of variations configured for a product.
 	* @return MozuClient
 	*/
@@ -207,6 +295,22 @@ class ProductVariationClient {
 	public static function deleteProductVariationLocalizedDeltaPriceClient($dataViewMode, $productCode, $variationKey, $currencyCode)
 	{
 		$url = ProductVariationUrl::deleteProductVariationLocalizedDeltaPriceUrl($currencyCode, $productCode, $variationKey);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* Deletes the localized price value for a product variation and a specific localized currency.
+	*
+	* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
+	*/
+	public static function deleteProductVariationLocalizedPriceClient($dataViewMode, $productCode, $variationKey, $currencyCode)
+	{
+		$url = ProductVariationUrl::deleteProductVariationLocalizedPriceUrl($currencyCode, $productCode, $variationKey);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withHeader(Headers::X_VOL_DATAVIEW_MODE ,$dataViewMode);
 		return $mozuClient;

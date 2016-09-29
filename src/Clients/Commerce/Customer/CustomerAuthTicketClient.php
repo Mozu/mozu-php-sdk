@@ -24,11 +24,12 @@ class CustomerAuthTicketClient {
 	/**
 	* Creates an authentication ticket for an anonymous shopper user.
 	*
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return MozuClient
 	*/
-	public static function createAnonymousShopperAuthTicketClient()
+	public static function createAnonymousShopperAuthTicketClient($responseFields =  null)
 	{
-		$url = CustomerAuthTicketUrl::createAnonymousShopperAuthTicketUrl();
+		$url = CustomerAuthTicketUrl::createAnonymousShopperAuthTicketUrl($responseFields);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
 		return $mozuClient;

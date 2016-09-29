@@ -20,14 +20,29 @@ namespace Mozu\Api\Contracts\ShippingRuntime;
 class ProductSummary
 {
 	/**
+	*Price (unit price * quantity)
+	*/
+	public $price;
+
+	/**
 	*The unique, user-defined  product code of a product, used throughout Mozu to reference and associate to a product.
 	*/
 	public $productCode;
 
 	/**
+	*Product name/description
+	*/
+	public $productDescription;
+
+	/**
 	*The product type template associated with the product on the storefront.
 	*/
 	public $productType;
+
+	/**
+	*The specified quantity of objects and items. This property is used for numerous object types including products, options, components within a product bundle, cart and order items, returned items, shipping line items, items in a digital product. and items associated with types and reservations.
+	*/
+	public $quantity;
 
 	/**
 	*The list of all categories associated with the product. These categories contain products, can have discounts associated, and define the grouping of products to display on the storefront.

@@ -19,7 +19,7 @@ class CategoryUrl  {
 
 	/**
 		* Get Resource Url for GetCategories
-		* @param string $filter A set of filter expressions representing the search parameters for a query: eq=equals, ne=not equals, gt=greater than, lt = less than or equals, gt = greater than or equals, lt = less than or equals, sw = starts with, or cont = contains. Optional.
+		* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for a list of supported filters.
 		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param string $sortBy 
@@ -72,20 +72,33 @@ class CategoryUrl  {
 		* Get Resource Url for AddCategory
 		* @param bool $incrementSequence If true, when adding a new product category, set the sequence number of the new category to an increment of one integer greater than the maximum available sequence number across all product categories. If false, set the sequence number to zero.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param bool $useProvidedId 
 		* @return string Resource Url
 	*/
-	public static function addCategoryUrl($incrementSequence, $responseFields)
+	public static function addCategoryUrl($incrementSequence, $responseFields, $useProvidedId)
 	{
-		$url = "/api/commerce/catalog/admin/categories/?incrementSequence={incrementSequence}&responseFields={responseFields}";
+		$url = "/api/commerce/catalog/admin/categories/?incrementSequence={incrementSequence}&useProvidedId={useProvidedId}&responseFields={responseFields}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
 		$url = $mozuUrl->formatUrl("incrementSequence", $incrementSequence);
 		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("useProvidedId", $useProvidedId);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for UpdateCategoryTree
+		* @return string Resource Url
+	*/
+	public static function updateCategoryTreeUrl()
+	{
+		$url = "/api/commerce/catalog/admin/categories/category-tree";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for ValidateDynamicExpression
-		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 		* @return string Resource Url
 	*/
 	public static function validateDynamicExpressionUrl($responseFields)
@@ -98,7 +111,7 @@ class CategoryUrl  {
 	
 	/**
 		* Get Resource Url for ValidateRealTimeDynamicExpression
-		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 		* @return string Resource Url
 	*/
 	public static function validateRealTimeDynamicExpressionUrl($responseFields)
@@ -128,10 +141,10 @@ class CategoryUrl  {
 	
 	/**
 		* Get Resource Url for DeleteCategoryById
-		* @param bool $cascadeDelete If true, also delete all subcategories associated with the specified category.
+		* @param bool $cascadeDelete Specifies whether to also delete all subcategories associated with the specified category.If you set this value is false, only the specified category is deleted.The default value is false.
 		* @param int $categoryId Unique identifier of the category to modify.
-		* @param bool $forceDelete 
-		* @param bool $reassignToParent 
+		* @param bool $forceDelete Specifies whether the category, and any associated subcategories, are deleted even if there are products that reference them. The default value is false.
+		* @param bool $reassignToParent Specifies whether any subcategories of the specified category are reassigned to the parent of the specified category.This field only applies if the cascadeDelete parameter is false.The default value is false.
 		* @return string Resource Url
 	*/
 	public static function deleteCategoryByIdUrl($cascadeDelete, $categoryId, $forceDelete, $reassignToParent)

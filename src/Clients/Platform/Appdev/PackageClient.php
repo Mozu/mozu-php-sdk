@@ -24,7 +24,7 @@ class PackageClient {
 	/**
 	* appdev-filebasedpackage Get GetFile description DOCUMENT_HERE 
 	*
-	* @param string $applicationKey 
+	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}. 
 	* @param string $fileName 
 	* @return MozuClient
 	*/

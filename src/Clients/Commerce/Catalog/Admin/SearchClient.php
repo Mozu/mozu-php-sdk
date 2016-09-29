@@ -22,10 +22,10 @@ use Mozu\Api\Urls\Commerce\Catalog\Admin\SearchUrl;
 class SearchClient {
 
 	/**
-	* admin-search Get GetSearchTuningRule description DOCUMENT_HERE 
+	* Retrieves the details of the specified search tuning rule.
 	*
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
-	* @param string $searchTuningRuleCode 
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $searchTuningRuleCode The unique identifier of the search tuning rule.
 	* @return MozuClient
 	*/
 	public static function getSearchTuningRuleClient($searchTuningRuleCode, $responseFields =  null)
@@ -40,11 +40,11 @@ class SearchClient {
 	/**
 	* admin-search Get GetSearchTuningRules description DOCUMENT_HERE 
 	*
-	* @param string $filter A set of filter expressions representing the search parameters for a query: eq=equals, ne=not equals, gt=greater than, lt = less than or equals, gt = greater than or equals, lt = less than or equals, sw = starts with, or cont = contains. Optional.
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The amount is divided and displayed on the `pageCount `amount of pages. The default is 20 and maximum value is 200 per page.
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
-	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional.
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a `pageSize `of 25, to get the 51st through the 75th items, use `startIndex=3`.
+	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for a list of supported filters.
+	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for more information.
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
 	* @return MozuClient
 	*/
 	public static function getSearchTuningRulesClient($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
@@ -57,13 +57,14 @@ class SearchClient {
 	}
 	
 	/**
-	* 
+	* admin-search Get GetSearchTuningRuleSortFields description DOCUMENT_HERE 
 	*
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return MozuClient
 	*/
-	public static function getSearchTuningRuleSortFieldsClient()
+	public static function getSearchTuningRuleSortFieldsClient($responseFields =  null)
 	{
-		$url = SearchUrl::getSearchTuningRuleSortFieldsUrl();
+		$url = SearchUrl::getSearchTuningRuleSortFieldsUrl($responseFields);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
 		return $mozuClient;
@@ -73,7 +74,7 @@ class SearchClient {
 	/**
 	* Get site search settings
 	*
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return MozuClient
 	*/
 	public static function getSettingsClient($responseFields =  null)
@@ -86,9 +87,60 @@ class SearchClient {
 	}
 	
 	/**
+	* Retrieves a collection of synonyms definitions for product searches. Synonyms aid with determining matches for entered searches.
+	*
+	* @param string $localeCode The two character country code that sets the locale, such as US for United States. Sites, tenants, and catalogs use locale codes for localizing content, such as translated product text per supported country.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @return MozuClient
+	*/
+	public static function getSynonymDefinitionCollectionClient($localeCode, $responseFields =  null)
+	{
+		$url = SearchUrl::getSynonymDefinitionCollectionUrl($localeCode, $responseFields);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param string $sortBy 
+	* @param int $startIndex 
+	* @return MozuClient
+	*/
+	public static function getSynonymDefinitionsClient($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
+	{
+		$url = SearchUrl::getSynonymDefinitionsUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $responseFields 
+	* @param int $synonymId 
+	* @return MozuClient
+	*/
+	public static function getSynonymDefinitionClient($synonymId, $responseFields =  null)
+	{
+		$url = SearchUrl::getSynonymDefinitionUrl($responseFields, $synonymId);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
+
+	}
+	
+	/**
 	* admin-search Post AddSearchTuningRule description DOCUMENT_HERE 
 	*
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @param SearchTuningRule $searchTuningRuleIn Mozu.ProductAdmin.Contracts.Search.SearchTuningRule ApiType DOCUMENT_HERE 
 	* @return MozuClient
 	*/
@@ -102,13 +154,15 @@ class SearchClient {
 	}
 	
 	/**
-	* 
+	* admin-search Post UpdateSearchTuningRuleSortFields description DOCUMENT_HERE 
 	*
-	* @param SearchTuningRuleSortFields $searchTuningRuleSortFieldsIn 
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param SearchTuningRuleSortFields $searchTuningRuleSortFieldsIn Mozu.ProductAdmin.Contracts.Search.SearchTuningRuleSortFields ApiType DOCUMENT_HERE 
+	* @return MozuClient
 	*/
-	public static function updateSearchTuningRuleSortFieldsClient($searchTuningRuleSortFieldsIn)
+	public static function updateSearchTuningRuleSortFieldsClient($searchTuningRuleSortFieldsIn, $responseFields =  null)
 	{
-		$url = SearchUrl::updateSearchTuningRuleSortFieldsUrl();
+		$url = SearchUrl::updateSearchTuningRuleSortFieldsUrl($responseFields);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($searchTuningRuleSortFieldsIn);
 		return $mozuClient;
@@ -116,10 +170,43 @@ class SearchClient {
 	}
 	
 	/**
+	* Updates synonym definitions for product searches. Synonyms aid with determining matches for entered searches.
+	*
+	* @param string $localeCode The two character country code that sets the locale, such as US for United States. Sites, tenants, and catalogs use locale codes for localizing content, such as translated product text per supported country.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param SynonymDefinitionCollection $collection Collection of synonym definitions used for determining search results.
+	* @return MozuClient
+	*/
+	public static function updateSynonymDefinitionCollectionClient($collection, $localeCode, $responseFields =  null)
+	{
+		$url = SearchUrl::updateSynonymDefinitionCollectionUrl($localeCode, $responseFields);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withBody($collection);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $responseFields 
+	* @param SynonymDefinition $synonymDefinition 
+	* @return MozuClient
+	*/
+	public static function addSynonymDefinitionClient($synonymDefinition, $responseFields =  null)
+	{
+		$url = SearchUrl::addSynonymDefinitionUrl($responseFields);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withBody($synonymDefinition);
+		return $mozuClient;
+
+	}
+	
+	/**
 	* admin-search Put UpdateSearchTuningRule description DOCUMENT_HERE 
 	*
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
-	* @param string $searchTuningRuleCode 
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $searchTuningRuleCode The unique identifier of the search tuning rule.
 	* @param SearchTuningRule $searchTuningRuleIn Mozu.ProductAdmin.Contracts.Search.SearchTuningRule ApiType DOCUMENT_HERE 
 	* @return MozuClient
 	*/
@@ -135,7 +222,7 @@ class SearchClient {
 	/**
 	* Adds or Updates (Upsert) the Search Settings for a specific site
 	*
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @param SearchSettings $settings The settings to control product search and indexing behavior.
 	* @return MozuClient
 	*/
@@ -149,13 +236,44 @@ class SearchClient {
 	}
 	
 	/**
-	* admin-search Delete DeleteSearchTuningRule description DOCUMENT_HERE 
+	* 
 	*
-	* @param string $searchTuningRuleCode 
+	* @param string $responseFields 
+	* @param int $synonymId 
+	* @param SynonymDefinition $synonymDefinition 
+	* @return MozuClient
+	*/
+	public static function updateSynonymDefinitionClient($synonymDefinition, $synonymId, $responseFields =  null)
+	{
+		$url = SearchUrl::updateSynonymDefinitionUrl($responseFields, $synonymId);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withBody($synonymDefinition);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* Deletes the specified search tuning rule.
+	*
+	* @param string $searchTuningRuleCode The unique identifier of the search tuning rule.
 	*/
 	public static function deleteSearchTuningRuleClient($searchTuningRuleCode)
 	{
 		$url = SearchUrl::deleteSearchTuningRuleUrl($searchTuningRuleCode);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* 
+	*
+	* @param int $synonymId 
+	*/
+	public static function deleteSynonymDefinitionClient($synonymId)
+	{
+		$url = SearchUrl::deleteSynonymDefinitionUrl($synonymId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
 		return $mozuClient;

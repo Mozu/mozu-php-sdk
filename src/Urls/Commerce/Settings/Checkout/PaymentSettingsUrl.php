@@ -19,8 +19,8 @@ class PaymentSettingsUrl  {
 
 	/**
 		* Get Resource Url for GetThirdPartyPaymentWorkflowWithValues
-		* @param string $fullyQualifiedName 
-		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+		* @param string $fullyQualifiedName Fully qualified name of the attribute for the third-party payment workflow.
+		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 		* @return string Resource Url
 	*/
 	public static function getThirdPartyPaymentWorkflowWithValuesUrl($fullyQualifiedName, $responseFields)
@@ -56,7 +56,7 @@ class PaymentSettingsUrl  {
 	
 	/**
 		* Get Resource Url for DeleteThirdPartyPaymentWorkflow
-		* @param string $fullyQualifiedName 
+		* @param string $fullyQualifiedName Fully qualified name of the attribute for the third-party payment workflow.
 		* @return string Resource Url
 	*/
 	public static function deleteThirdPartyPaymentWorkflowUrl($fullyQualifiedName)

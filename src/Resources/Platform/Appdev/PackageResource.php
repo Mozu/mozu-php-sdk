@@ -28,7 +28,7 @@ class PackageResource {
 	/**
 	* appdev-filebasedpackage Get GetFile description DOCUMENT_HERE 
 	*
-	* @param string $applicationKey 
+	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}. 
 	* @param string $fileName 
 	* @return Stream 
 	* @deprecated deprecated since version 1.17
@@ -44,7 +44,7 @@ class PackageResource {
 /**
 	* appdev-filebasedpackage Get GetFile description DOCUMENT_HERE 
 	*
-	* @param string $applicationKey 
+	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}. 
 	* @param string $fileName 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/

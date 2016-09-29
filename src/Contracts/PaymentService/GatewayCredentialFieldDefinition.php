@@ -20,7 +20,7 @@ namespace Mozu\Api\Contracts\PaymentService;
 class GatewayCredentialFieldDefinition
 {
 	/**
-	*The sequential display order of the gateway in Mozu Admin.
+	*The sequential display order of the gateway in .
 	*/
 	public $adminDisplayOrder;
 

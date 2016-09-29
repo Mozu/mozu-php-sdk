@@ -20,6 +20,11 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class AttributeSearchSettings
 {
 	/**
+	*Indicates whether the attribute should be able to be used in filters, facets, and sorting on the public storefront.
+	*/
+	public $allowFilteringAndSortingInStorefront;
+
+	/**
 	*Indicates whether the attribute value is searchable in the merchant catalog admin.
 	*/
 	public $searchableInAdmin;

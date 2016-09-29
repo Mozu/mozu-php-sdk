@@ -19,6 +19,8 @@ namespace Mozu\Api\Contracts\Customer;
 */
 class ResetPasswordInfo
 {
+		public $customerSetCode;
+
 	/**
 	*The email address of the specified user or the email address associated with the specified entity.
 	*/

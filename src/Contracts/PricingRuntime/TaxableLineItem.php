@@ -60,6 +60,11 @@ class TaxableLineItem
 	public $shippingAmount;
 
 	/**
+	*For configurable products, the unique identifier of the product variation that has been selected.
+	*/
+	public $variantProductCode;
+
+	/**
 	*Properties of the product that represents the line item in the order.
 	*/
 	public $productProperties;

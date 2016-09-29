@@ -186,7 +186,7 @@ class CustomerAccountUrl  {
 	
 	/**
 		* Get Resource Url for ChangePasswords
-		* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 		* @return string Resource Url
 	*/
 	public static function changePasswordsUrl($responseFields)
@@ -199,14 +199,16 @@ class CustomerAccountUrl  {
 	
 	/**
 		* Get Resource Url for GetLoginStateByEmailAddress
+		* @param string $customerSetCode 
 		* @param string $emailAddress The email address associated with the customer account.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function getLoginStateByEmailAddressUrl($emailAddress, $responseFields)
+	public static function getLoginStateByEmailAddressUrl($customerSetCode, $emailAddress, $responseFields)
 	{
 		$url = "/api/commerce/customer/accounts/loginstatebyemailaddress?emailAddress={emailAddress}&responseFields={responseFields}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("customerSetCode", $customerSetCode);
 		$url = $mozuUrl->formatUrl("emailAddress", $emailAddress);
 		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
@@ -214,16 +216,37 @@ class CustomerAccountUrl  {
 	
 	/**
 		* Get Resource Url for GetLoginStateByUserName
+		* @param string $customerSetCode 
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param string $userName The user name associated with the customer account.
 		* @return string Resource Url
 	*/
-	public static function getLoginStateByUserNameUrl($responseFields, $userName)
+	public static function getLoginStateByUserNameUrl($customerSetCode, $responseFields, $userName)
 	{
-		$url = "/api/commerce/customer/accounts/loginstatebyusername?userName={userName}&responseFields={responseFields}";
+		$url = "/api/commerce/customer/accounts/loginstatebyusername?userName={userName}&customerSetCode={customerSetCode}&responseFields={responseFields}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("customerSetCode", $customerSetCode);
 		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		$url = $mozuUrl->formatUrl("userName", $userName);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for GetCustomersPurchaseOrderAccounts
+		* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
+		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for more information.
+		* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
+		* @return string Resource Url
+	*/
+	public static function getCustomersPurchaseOrderAccountsUrl($pageSize, $responseFields, $sortBy, $startIndex)
+	{
+		$url = "/api/commerce/customer/accounts/purchaseOrderAccounts?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
+		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
 		return $mozuUrl;
 	}
 	

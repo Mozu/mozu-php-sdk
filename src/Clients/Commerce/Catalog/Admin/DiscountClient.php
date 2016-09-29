@@ -44,7 +44,7 @@ class DiscountClient {
 	/**
 	* Retrieves the localized content specified for the specified discount.
 	*
-	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
+	* @param int $discountId discountId parameter description DOCUMENT_HERE 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
@@ -60,7 +60,7 @@ class DiscountClient {
 	/**
 	* Retrieves the details of a single discount.
 	*
-	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
+	* @param int $discountId discountId parameter description DOCUMENT_HERE 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
@@ -107,7 +107,7 @@ class DiscountClient {
 	/**
 	* Updates the localizable content for the specified discount or rename the discount without modifying its other properties.
 	*
-	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
+	* @param int $discountId discountId parameter description DOCUMENT_HERE 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param DiscountLocalizedContent $content The container for the language-specific name of the discount. A container exists for each supported language (LocaleCode). This parameter enables you to display the discount name in multiple languages yet manage it as a single discount internally.
 	* @return MozuClient
@@ -124,7 +124,7 @@ class DiscountClient {
 	/**
 	* Updates one or more properties of a defined discount.
 	*
-	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
+	* @param int $discountId discountId parameter description DOCUMENT_HERE 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param Discount $discount Name of the discount added and applied to a shopping cart and order for a shopper's purchase. 
 	* @return MozuClient
@@ -141,7 +141,7 @@ class DiscountClient {
 	/**
 	* Deletes a discount specified by its discount ID.
 	*
-	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
+	* @param int $discountId discountId parameter description DOCUMENT_HERE 
 	*/
 	public static function deleteDiscountClient($discountId)
 	{

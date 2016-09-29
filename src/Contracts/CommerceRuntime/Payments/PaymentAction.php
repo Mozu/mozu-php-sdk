@@ -64,7 +64,10 @@ class PaymentAction
 	*/
 	public $returnUrl;
 
-		public $data;
+	/**
+	*Custom data from payment providers
+	*/
+	public $data;
 
 	/**
 	*Properties of a manually performed interaction with the payment gateway.

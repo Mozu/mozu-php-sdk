@@ -33,10 +33,10 @@ class PaymentSettingsResource {
 
 
 	/**
-	* checkout-paymentsettings Get GetThirdPartyPaymentWorkflowWithValues description DOCUMENT_HERE 
+	* Retrieves the schema and definition along with the actual instance values of the third-party payment service workflow configured for the corresponding fully qualified name.
 	*
-	* @param string $fullyQualifiedName 
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $fullyQualifiedName Fully qualified name of the attribute for the third-party payment workflow.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return ExternalPaymentWorkflowDefinition 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -50,10 +50,10 @@ class PaymentSettingsResource {
 	}
 	
 /**
-	* checkout-paymentsettings Get GetThirdPartyPaymentWorkflowWithValues description DOCUMENT_HERE 
+	* Retrieves the schema and definition along with the actual instance values of the third-party payment service workflow configured for the corresponding fully qualified name.
 	*
-	* @param string $fullyQualifiedName 
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $fullyQualifiedName Fully qualified name of the attribute for the third-party payment workflow.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getThirdPartyPaymentWorkflowWithValuesAsync($fullyQualifiedName, $responseFields =  null)
@@ -65,7 +65,7 @@ class PaymentSettingsResource {
 	}
 	
 	/**
-	* Retrieves the details of the third-party payment service workflows configured for the site.
+	* Retrieves the schema and definition of all third-party payment service workflows configured for the site.
 	*
 	* @return array|ExternalPaymentWorkflowDefinition 
 	* @deprecated deprecated since version 1.17
@@ -80,7 +80,7 @@ class PaymentSettingsResource {
 	}
 	
 /**
-	* Retrieves the details of the third-party payment service workflows configured for the site.
+	* Retrieves the schema and definition of all third-party payment service workflows configured for the site.
 	*
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -93,7 +93,7 @@ class PaymentSettingsResource {
 	}
 	
 	/**
-	* checkout-paymentsettings Put AddThirdPartyPaymentWorkflow description DOCUMENT_HERE 
+	* Adds a third-party payment workflow to the site. A third-party payment workflow is a definition of a process by which a third-party payment provider (such as Amazon Payments or PayPal Express) interacts with the Mozu platform.
 	*
 	* @param ExternalPaymentWorkflowDefinition $definition Properties of an external payment processing workflow defined for the site. At this time, only PayPal Express is supported.
 	* @deprecated deprecated since version 1.17
@@ -107,7 +107,7 @@ class PaymentSettingsResource {
 	}
 	
 /**
-	* checkout-paymentsettings Put AddThirdPartyPaymentWorkflow description DOCUMENT_HERE 
+	* Adds a third-party payment workflow to the site. A third-party payment workflow is a definition of a process by which a third-party payment provider (such as Amazon Payments or PayPal Express) interacts with the Mozu platform.
 	*
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -120,9 +120,9 @@ class PaymentSettingsResource {
 	}
 	
 	/**
-	* checkout-paymentsettings Delete DeleteThirdPartyPaymentWorkflow description DOCUMENT_HERE 
+	* Deletes a third-party payment workflow. A third-party payment workflow is a definition of a process by which a third-party payment provider (such as Amazon Payments or PayPal Express) interacts with the Mozu platform. 
 	*
-	* @param string $fullyQualifiedName 
+	* @param string $fullyQualifiedName Fully qualified name of the attribute for the third-party payment workflow.
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteThirdPartyPaymentWorkflow($fullyQualifiedName)
@@ -134,9 +134,9 @@ class PaymentSettingsResource {
 	}
 	
 /**
-	* checkout-paymentsettings Delete DeleteThirdPartyPaymentWorkflow description DOCUMENT_HERE 
+	* Deletes a third-party payment workflow. A third-party payment workflow is a definition of a process by which a third-party payment provider (such as Amazon Payments or PayPal Express) interacts with the Mozu platform. 
 	*
-	* @param string $fullyQualifiedName 
+	* @param string $fullyQualifiedName Fully qualified name of the attribute for the third-party payment workflow.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteThirdPartyPaymentWorkflowAsync($fullyQualifiedName)

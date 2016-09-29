@@ -39,17 +39,17 @@ class DocumentClient {
 	}
 	
 	/**
-	* documentlists-documents Get TransformDocumentContent description DOCUMENT_HERE 
+	* Performs transformations on a document. For example, resizing an image.
 	*
-	* @param string $crop 
+	* @param string $crop Crops the image based on the specified coordinates. The reference point for positive coordinates is the top-left corner of the image, and the reference point for negative coordinates is the bottom-right corner of the image.Usage: Example:  removes 10 pixels from all edges of the image.  leaves the image uncropped.
 	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
 	* @param string $documentListName Name of content documentListName to delete
-	* @param int $height 
-	* @param int $max 
-	* @param int $maxHeight 
-	* @param int $maxWidth 
-	* @param int $quality 
-	* @param int $width 
+	* @param int $height Specifies an exact height dimension for the image, in pixels.
+	* @param int $max Specifies a pixel limitation for the largest side of an image.
+	* @param int $maxHeight Specifies a pixel limitation for the height of the image, preserving the aspect ratio if the image needs resizing.
+	* @param int $maxWidth Specifies a pixel limitation for the width of the image, preserving the aspect ratio if the image needs resizing.
+	* @param int $quality Adjusts the image compression. Accepts values from 0-100, where 100 = highest quality, least compression.
+	* @param int $width Specifies an exact width dimension for the image, in pixels.
 	* @return MozuClient
 	*/
 	public static function transformDocumentContentClient($documentListName, $documentId, $width =  null, $height =  null, $max =  null, $maxWidth =  null, $maxHeight =  null, $crop =  null, $quality =  null)
@@ -66,7 +66,7 @@ class DocumentClient {
 	*
 	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
 	* @param string $documentListName Name of content documentListName to delete
-	* @param bool $includeInactive 
+	* @param bool $includeInactive Include inactive content.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
@@ -83,8 +83,8 @@ class DocumentClient {
 	* Retrieves a collection of documents according to any filter and sort criteria.
 	*
 	* @param string $documentListName Name of content documentListName to delete
-	* @param string $filter A set of filter expressions representing the search parameters for a query: eq=equals, ne=not equals, gt=greater than, lt = less than or equals, gt = greater than or equals, lt = less than or equals, sw = starts with, or cont = contains. Optional.
-	* @param bool $includeInactive 
+	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for a list of supported filters.
+	* @param bool $includeInactive Include inactive content.
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
@@ -118,7 +118,7 @@ class DocumentClient {
 	}
 	
 	/**
-	* Updates the content associated with a document, such as a product image or PDF specifications file, by supplying the document ID.
+	* Updates the binary data or content associated with a document, such as a product image or PDF specifications file, by supplying the document ID.
 	*
 	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
 	* @param string $documentListName Name of content documentListName to delete

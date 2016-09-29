@@ -19,7 +19,10 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Orders;
 */
 class DigitalWallet
 {
-		public $cartId;
+	/**
+	*Cart ID Note: This property should only be set if the order is not created and user opted to create the order from cart using digital wallet.
+	*/
+	public $cartId;
 
 	/**
 	*Digital wallet data. Note: Transform the Json data to a string.

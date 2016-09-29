@@ -85,6 +85,11 @@ class Cart
 	public $lastValidationDate;
 
 	/**
+	*Pricelist code
+	*/
+	public $priceListCode;
+
+	/**
 	*The shipping subtotal amount calculated without any applied discounts for line item and entire amounts of carts and orders. This property is not calculated for wish lists at this time.
 	*/
 	public $shippingSubTotal;
@@ -143,6 +148,13 @@ class Cart
 	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
+
+	/**
+	*Mozu.CommerceRuntime.Contracts.Carts.Cart cartMessage ApiTypeMember DOCUMENT_HERE 
+	*/
+	public $cartMessage;
+
+		public $cartMessages;
 
 	/**
 	*Collection (list or paged) of change messages logged for each modification made by a shopper to their carts, wishlists, orders, package, payment, pickup, and returns. Change log messages are system-supplied based on shopper actions and read only.

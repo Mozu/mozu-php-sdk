@@ -39,17 +39,17 @@ class DocumentTreeClient {
 	}
 	
 	/**
-	* documentlists-documentTree Get TransformTreeDocumentContent description DOCUMENT_HERE 
+	* Performs transformations on a document. For example, resizing an image.
 	*
-	* @param string $crop 
+	* @param string $crop Crops the image based on the specified coordinates. The reference point for positive coordinates is the top-left corner of the image, and the reference point for negative coordinates is the bottom-right corner of the image.Usage: Example:  removes 10 pixels from all edges of the image.  leaves the image uncropped.
 	* @param string $documentListName Name of content documentListName to delete
 	* @param string $documentName The name of the document in the site.
-	* @param int $height 
-	* @param int $max 
-	* @param int $maxHeight 
-	* @param int $maxWidth 
-	* @param int $quality 
-	* @param int $width 
+	* @param int $height Specifies an exact height dimension for the image, in pixels.
+	* @param int $max Specifies a pixel limitation for the largest side of an image.
+	* @param int $maxHeight Specifies a pixel limitation for the height of the image, preserving the aspect ratio if the image needs resizing.
+	* @param int $maxWidth Specifies a pixel limitation for the width of the image, preserving the aspect ratio if the image needs resizing.
+	* @param int $quality Adjusts the image compression. Accepts values from 0-100, where 100 = highest quality, least compression.
+	* @param int $width Specifies an exact width dimension for the image, in pixels.
 	* @return MozuClient
 	*/
 	public static function transformTreeDocumentContentClient($documentListName, $documentName, $width =  null, $height =  null, $max =  null, $maxWidth =  null, $maxHeight =  null, $crop =  null, $quality =  null)
@@ -66,7 +66,7 @@ class DocumentTreeClient {
 	*
 	* @param string $documentListName Name of content documentListName to delete
 	* @param string $documentName The name of the document in the site.
-	* @param bool $includeInactive 
+	* @param bool $includeInactive Include inactive content.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return MozuClient
 	*/
@@ -80,7 +80,7 @@ class DocumentTreeClient {
 	}
 	
 	/**
-	* Updates the content associated with a document, such as a product image or PDF specifications file, based on the document's position in the document hierarchy.
+	* Updates the binary data or content associated with a document, such as a product image or PDF specifications file, by supplying the document name.
 	*
 	* @param string $documentListName Name of content documentListName to delete
 	* @param string $documentName The name of the document in the site.

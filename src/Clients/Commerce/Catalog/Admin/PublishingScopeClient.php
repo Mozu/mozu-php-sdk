@@ -25,8 +25,8 @@ class PublishingScopeClient {
 	/**
 	* Retrieves the details of a single PublishSet.
 	*
-	* @param string $publishSetCode 
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $publishSetCode The unique identifier of the publish set.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return MozuClient
 	*/
 	public static function getPublishSetClient($publishSetCode, $responseFields =  null)
@@ -41,7 +41,7 @@ class PublishingScopeClient {
 	/**
 	* Retrieves a list of PublishSets including the product counts.
 	*
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return MozuClient
 	*/
 	public static function getPublishSetsClient($responseFields =  null)
@@ -82,9 +82,9 @@ class PublishingScopeClient {
 	}
 	
 	/**
-	* admin-publishing Post AssignProductsToPublishSet description DOCUMENT_HERE 
+	* Assigns a product draft to a specified publish set.
 	*
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @param PublishSet $publishSet Mozu.ProductAdmin.Contracts.PublishSet ApiType DOCUMENT_HERE 
 	* @return MozuClient
 	*/
@@ -100,8 +100,8 @@ class PublishingScopeClient {
 	/**
 	* Removes all details about a PublishSet from the product service. If the discardDrafts param is true, it also deletes the product drafts.
 	*
-	* @param bool $discardDrafts 
-	* @param string $publishSetCode 
+	* @param bool $discardDrafts Specifies whether to discard all the drafts assigned to the publish set when the publish set is deleted.
+	* @param string $publishSetCode The unique identifier of the publish set.
 	*/
 	public static function deletePublishSetClient($publishSetCode, $discardDrafts =  null)
 	{

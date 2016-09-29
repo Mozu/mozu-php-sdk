@@ -37,7 +37,7 @@ class AttributeLocalizedContentClient {
 	}
 	
 	/**
-	* Retrieves the localized content for an attribute  based on a `localeCode`. 
+	* Retrieves the localized content for an attribute based on a `localeCode`.
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
 	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
@@ -54,7 +54,7 @@ class AttributeLocalizedContentClient {
 	}
 	
 	/**
-	* Adds new localized content for an attribute  based on a `localeCode`. 
+	* Adds new localized content for an attribute based on a `localeCode`.
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
@@ -71,7 +71,7 @@ class AttributeLocalizedContentClient {
 	}
 	
 	/**
-	* Updates the localized content for a collection of existing attributes  based on a `localeCode`. 
+	* Updates the localized content for a collection of existing attributes based on a `localeCode`.
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
 	* @param array|AttributeLocalizedContent $localizedContent The localized name and description of the attribute, displayed in the locale defined for the master catalog.
@@ -87,7 +87,7 @@ class AttributeLocalizedContentClient {
 	}
 	
 	/**
-	* Updates the localized content for an existing attribute  based on a `localeCode`. 
+	* Updates the localized content for an existing attribute based on a `localeCode`.
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
 	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.

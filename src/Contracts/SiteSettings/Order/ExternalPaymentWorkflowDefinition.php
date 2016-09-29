@@ -20,6 +20,11 @@ namespace Mozu\Api\Contracts\SiteSettings\Order;
 class ExternalPaymentWorkflowDefinition
 {
 	/**
+	*The localized description in text for the object, displayed per the locale code. For example, descriptions are used for product descriptions, attributes, and pre-authorization transaction types.
+	*/
+	public $description;
+
+	/**
 	*Fully qualified name of the attribute for the order or customer. 
 	*/
 	public $fullyQualifiedName;

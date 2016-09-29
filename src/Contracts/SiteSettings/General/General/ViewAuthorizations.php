@@ -19,6 +19,8 @@ namespace Mozu\Api\Contracts\SiteSettings\General\General;
 */
 class ViewAuthorizations
 {
+		public $enforceSitewideSSL;
+
 	/**
 	*Mozu.SiteSettings.General.Contracts.General.ViewAuthorizations requireAuthForLive ApiTypeMember DOCUMENT_HERE 
 	*/

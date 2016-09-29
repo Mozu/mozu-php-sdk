@@ -25,6 +25,11 @@ class GeneralSettings
 	public $allowInvalidAddresses;
 
 	/**
+	*Email address to use for Blind Carbon Copies of mails sent from your site.
+	*/
+	public $bccEmailAddress;
+
+	/**
 	*Custom dns host name for cnd edge caching.
 	*/
 	public $customCdnHostName;
@@ -80,6 +85,11 @@ class GeneralSettings
 	public $logoText;
 
 	/**
+	*MissingImageSubstitute for 404 image requests. Can be name or id of cmsImage in files@mozu.
+	*/
+	public $missingImageSubstitute;
+
+	/**
 	*The name of the theme to use when viewing this website on a mobile device.
 	*/
 	public $mobileTheme;
@@ -93,13 +103,6 @@ class GeneralSettings
 	*Email address to set up so that shoppers and users browsing the site can use to contact the merchant.
 	*/
 	public $senderEmailAddress;
-
-		public $senderEmailAlias;
-
-	/**
-	*Email alias used in emails sent to your shoppers.
-	*/
-	public $senderEmailAlias;
 
 	/**
 	*Email alias used in emails sent to your shoppers.
@@ -150,6 +153,11 @@ class GeneralSettings
 	*Site-level control over request routing for SEO purposes. Not available for update, must use its own subresource.
 	*/
 	public $customRoutes;
+
+	/**
+	*Specific Settings by Email type
+	*/
+	public $emailTypes;
 
 	/**
 	*Supressed emails. Setting any of these to 'true' will block Mozu from sending that email and an event will be published instead.

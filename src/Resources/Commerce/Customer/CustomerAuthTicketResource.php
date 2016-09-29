@@ -35,12 +35,13 @@ class CustomerAuthTicketResource {
 	/**
 	* Creates an authentication ticket for an anonymous shopper user.
 	*
-	* @return Stream 
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @return CustomerAuthTicket 
 	* @deprecated deprecated since version 1.17
 	*/
-	public function createAnonymousShopperAuthTicket()
+	public function createAnonymousShopperAuthTicket($responseFields =  null)
 	{
-		$mozuClient = CustomerAuthTicketClient::createAnonymousShopperAuthTicketClient();
+		$mozuClient = CustomerAuthTicketClient::createAnonymousShopperAuthTicketClient($responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -50,11 +51,12 @@ class CustomerAuthTicketResource {
 /**
 	* Creates an authentication ticket for an anonymous shopper user.
 	*
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
-	public function createAnonymousShopperAuthTicketAsync()
+	public function createAnonymousShopperAuthTicketAsync($responseFields =  null)
 	{
-		$mozuClient = CustomerAuthTicketClient::createAnonymousShopperAuthTicketClient();
+		$mozuClient = CustomerAuthTicketClient::createAnonymousShopperAuthTicketClient($responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 

@@ -25,6 +25,11 @@ class Application
 	public $appId;
 
 	/**
+	*denotes the Application Key for the app.
+	*/
+	public $appKey;
+
+	/**
 	*Indicates if the capability or app is enabled for the tenant/site. If true, the capability/application is enabled for the tenant. System-supplied and read-only.
 	*/
 	public $enabled;
@@ -38,6 +43,11 @@ class Application
 	*Indicates if the installed application is of type extension. If true, the application type is Extension.
 	*/
 	public $isExtension;
+
+	/**
+	*denotes if the Application is certified to use extension
+	*/
+	public $isExtensionCertified;
 
 	/**
 	*The URL defined for the application that represents the configuration website for the capability. This value is used by installed applications or the site.

@@ -34,6 +34,72 @@ class DocumentListTypeResource {
 
 
 	/**
+	* content-documentlistTypes Get GetDocumentListTypes description DOCUMENT_HERE 
+	*
+	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
+	* @return DocumentListTypeCollection 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function getDocumentListTypes($pageSize =  null, $startIndex =  null, $responseFields =  null)
+	{
+		$mozuClient = DocumentListTypeClient::getDocumentListTypesClient($this->dataViewMode, $pageSize, $startIndex, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* content-documentlistTypes Get GetDocumentListTypes description DOCUMENT_HERE 
+	*
+	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getDocumentListTypesAsync($pageSize =  null, $startIndex =  null, $responseFields =  null)
+	{
+		$mozuClient = DocumentListTypeClient::getDocumentListTypesClient($this->dataViewMode, $pageSize, $startIndex, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* content-documentlistTypes Get GetDocumentListType description DOCUMENT_HERE 
+	*
+	* @param string $documentListTypeFQN 
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @return DocumentListType 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function getDocumentListType($documentListTypeFQN, $responseFields =  null)
+	{
+		$mozuClient = DocumentListTypeClient::getDocumentListTypeClient($this->dataViewMode, $documentListTypeFQN, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* content-documentlistTypes Get GetDocumentListType description DOCUMENT_HERE 
+	*
+	* @param string $documentListTypeFQN 
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getDocumentListTypeAsync($documentListTypeFQN, $responseFields =  null)
+	{
+		$mozuClient = DocumentListTypeClient::getDocumentListTypeClient($this->dataViewMode, $documentListTypeFQN, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
 	* Creates a new documentListType
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.

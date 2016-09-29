@@ -79,6 +79,10 @@ class ConfiguredProduct
 	*/
 	public $purchasableState;
 
+		public $volumePriceBands;
+
+		public $volumePriceRange;
+
 }
 
 ?>

@@ -124,6 +124,13 @@ class Product
 	*/
 	public $upCs;
 
+		public $updateDate;
+
+	/**
+	*Mozu.ProductRuntime.Contracts.Product validPriceLists ApiTypeMember DOCUMENT_HERE 
+	*/
+	public $validPriceLists;
+
 	/**
 	*Merchant-created code associated with a specific product variation. Variation product codes maintain an association with the base product code.
 	*/
@@ -193,6 +200,10 @@ class Product
 	*A summary of all variations that exist for the product.
 	*/
 	public $variations;
+
+		public $volumePriceBands;
+
+		public $volumePriceRange;
 
 }
 

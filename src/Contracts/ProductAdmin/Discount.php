@@ -55,6 +55,11 @@ class Discount
 	public $id;
 
 	/**
+	*Products receiving a price from a price list specified here or a child of a specified price list can be discounted.
+	*/
+	public $includedPriceLists;
+
+	/**
 	*Maximum impact this discount can apply on a single order. Must be either null or greater than zero.
 	*/
 	public $maximumDiscountImpactPerOrder;

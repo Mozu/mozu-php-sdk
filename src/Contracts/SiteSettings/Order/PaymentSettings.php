@@ -39,6 +39,11 @@ class PaymentSettings
 	*/
 	public $gateways;
 
+	/**
+	*Mozu.SiteSettings.Order.Contracts.PaymentSettings purchaseOrder ApiTypeMember DOCUMENT_HERE 
+	*/
+	public $purchaseOrder;
+
 }
 
 ?>

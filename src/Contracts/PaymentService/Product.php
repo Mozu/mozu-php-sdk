@@ -29,6 +29,11 @@ class Product
 	*/
 	public $productName;
 
+	/**
+	*Mozu.PaymentService.Contracts.Product variantProductCode ApiTypeMember DOCUMENT_HERE 
+	*/
+	public $variantProductCode;
+
 }
 
 ?>

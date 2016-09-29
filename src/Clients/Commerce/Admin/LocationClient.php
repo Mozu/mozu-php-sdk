@@ -44,7 +44,7 @@ class LocationClient {
 	* Retrieves the details of the location specified in the request by location code.
 	*
 	* @param string $locationCode The unique, user-defined code that identifies a location. 
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return MozuClient
 	*/
 	public static function getLocationClient($locationCode, $responseFields =  null)
@@ -59,7 +59,7 @@ class LocationClient {
 	/**
 	* Creates a new physical location for the tenant specified in the request header.
 	*
-	* @param string $responseFields A list or array of fields returned for a call. These fields may be customized and may be used for various types of data calls in Mozu. For example, responseFields are returned for retrieving or updating attributes, carts, and messages in Mozu.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @param Location $location Properties of a physical location a tenant uses to manage inventory and fulfills orders, provide store finder functionality, or both.
 	* @return MozuClient
 	*/

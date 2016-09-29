@@ -74,7 +74,7 @@ class DiscountResource {
 	/**
 	* Retrieves the localized content specified for the specified discount.
 	*
-	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
+	* @param int $discountId discountId parameter description DOCUMENT_HERE 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return DiscountLocalizedContent 
 	* @deprecated deprecated since version 1.17
@@ -91,7 +91,7 @@ class DiscountResource {
 /**
 	* Retrieves the localized content specified for the specified discount.
 	*
-	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
+	* @param int $discountId discountId parameter description DOCUMENT_HERE 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -106,7 +106,7 @@ class DiscountResource {
 	/**
 	* Retrieves the details of a single discount.
 	*
-	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
+	* @param int $discountId discountId parameter description DOCUMENT_HERE 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return Discount 
 	* @deprecated deprecated since version 1.17
@@ -123,7 +123,7 @@ class DiscountResource {
 /**
 	* Retrieves the details of a single discount.
 	*
-	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
+	* @param int $discountId discountId parameter description DOCUMENT_HERE 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -199,7 +199,7 @@ class DiscountResource {
 	/**
 	* Updates the localizable content for the specified discount or rename the discount without modifying its other properties.
 	*
-	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
+	* @param int $discountId discountId parameter description DOCUMENT_HERE 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param DiscountLocalizedContent $content The container for the language-specific name of the discount. A container exists for each supported language (LocaleCode). This parameter enables you to display the discount name in multiple languages yet manage it as a single discount internally.
 	* @return DiscountLocalizedContent 
@@ -217,7 +217,7 @@ class DiscountResource {
 /**
 	* Updates the localizable content for the specified discount or rename the discount without modifying its other properties.
 	*
-	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
+	* @param int $discountId discountId parameter description DOCUMENT_HERE 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -232,7 +232,7 @@ class DiscountResource {
 	/**
 	* Updates one or more properties of a defined discount.
 	*
-	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
+	* @param int $discountId discountId parameter description DOCUMENT_HERE 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param Discount $discount Name of the discount added and applied to a shopping cart and order for a shopper's purchase. 
 	* @return Discount 
@@ -250,7 +250,7 @@ class DiscountResource {
 /**
 	* Updates one or more properties of a defined discount.
 	*
-	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
+	* @param int $discountId discountId parameter description DOCUMENT_HERE 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -265,7 +265,7 @@ class DiscountResource {
 	/**
 	* Deletes a discount specified by its discount ID.
 	*
-	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
+	* @param int $discountId discountId parameter description DOCUMENT_HERE 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteDiscount($discountId)
@@ -279,7 +279,7 @@ class DiscountResource {
 /**
 	* Deletes a discount specified by its discount ID.
 	*
-	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
+	* @param int $discountId discountId parameter description DOCUMENT_HERE 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteDiscountAsync($discountId)

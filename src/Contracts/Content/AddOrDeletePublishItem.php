@@ -29,9 +29,15 @@ class AddOrDeletePublishItem
 	*/
 	public $documentId;
 
-		public $scopeId;
+	/**
+	*The ID of the specific scope for the object. 
+	*/
+	public $scopeId;
 
-		public $scopeType;
+	/**
+	*The scope at which the object exists, such as "Tenant", "MasterCatalog", or "Site". Scope delineates the level and area of Mozu the object exists within or affects.
+	*/
+	public $scopeType;
 
 }
 
