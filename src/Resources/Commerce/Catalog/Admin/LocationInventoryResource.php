@@ -71,6 +71,7 @@ class LocationInventoryResource {
 	* Retrieves a list of all product inventory definitions for the location code specified in the request.
 	*
 	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param string $filterFunctions Functions that optimize commonly used filters for efficiency.For the  operation, you have access to the  filter function. For example, use  to filter only for product inventory that is currently active.
 	* @param string $locationCode The unique, user-defined code that identifies a location. 
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
@@ -79,9 +80,9 @@ class LocationInventoryResource {
 	* @return LocationInventoryCollection 
 	* @deprecated deprecated since version 1.17
 	*/
-	public function getLocationInventories($locationCode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
+	public function getLocationInventories($locationCode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $filterFunctions =  null, $responseFields =  null)
 	{
-		$mozuClient = LocationInventoryClient::getLocationInventoriesClient($this->dataViewMode, $locationCode, $startIndex, $pageSize, $sortBy, $filter, $responseFields);
+		$mozuClient = LocationInventoryClient::getLocationInventoriesClient($this->dataViewMode, $locationCode, $startIndex, $pageSize, $sortBy, $filter, $filterFunctions, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -92,6 +93,7 @@ class LocationInventoryResource {
 	* Retrieves a list of all product inventory definitions for the location code specified in the request.
 	*
 	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param string $filterFunctions Functions that optimize commonly used filters for efficiency.For the  operation, you have access to the  filter function. For example, use  to filter only for product inventory that is currently active.
 	* @param string $locationCode The unique, user-defined code that identifies a location. 
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
@@ -99,9 +101,9 @@ class LocationInventoryResource {
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
-	public function getLocationInventoriesAsync($locationCode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
+	public function getLocationInventoriesAsync($locationCode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $filterFunctions =  null, $responseFields =  null)
 	{
-		$mozuClient = LocationInventoryClient::getLocationInventoriesClient($this->dataViewMode, $locationCode, $startIndex, $pageSize, $sortBy, $filter, $responseFields);
+		$mozuClient = LocationInventoryClient::getLocationInventoriesClient($this->dataViewMode, $locationCode, $startIndex, $pageSize, $sortBy, $filter, $filterFunctions, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 

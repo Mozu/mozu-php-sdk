@@ -17,12 +17,12 @@ use Mozu\Api\Urls\Platform\UserDataUrl;
 
 
 /**
-* Use the user data subresource to store user-level data required for a third-party application in the Mozu database.
+* Use the user data subresource to store user-level data required for a third-party application in the  database.
 */
 class UserDataClient {
 
 	/**
-	* Retrieves the value of a record in the Mozu database.
+	* Retrieves the value of a record in the  database.
 	*
 	* @param string $dbEntryQuery The database entry string to create.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
@@ -38,7 +38,7 @@ class UserDataClient {
 	}
 	
 	/**
-	* Creates a new record in the Mozu database based on the information supplied in the request.
+	* Creates a new record in the  database based on the information supplied in the request.
 	*
 	* @param string $dbEntryQuery The database entry string to create.
 	* @param string $value The value string to create.
@@ -53,7 +53,7 @@ class UserDataClient {
 	}
 	
 	/**
-	* Updates a record in the Mozu database based on the information supplied in the request.
+	* Updates a record in the  database based on the information supplied in the request.
 	*
 	* @param string $dbEntryQuery The database entry string to create.
 	* @param string $value The value string to create.
@@ -68,7 +68,7 @@ class UserDataClient {
 	}
 	
 	/**
-	* Removes a previously defined record in the Mozu database.
+	* Removes a previously defined record in the  database.
 	*
 	* @param string $dbEntryQuery The database entry string to create.
 	*/

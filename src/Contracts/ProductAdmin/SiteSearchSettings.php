@@ -30,7 +30,7 @@ class SiteSearchSettings
 	public $isDefault;
 
 	/**
-	*Mozu.ProductAdmin.Contracts.SiteSearchSettings minimumMatchPercent ApiTypeMember DOCUMENT_HERE 
+	*Specifies the minimum match percentage setting. The minimum match percentage is a percentage of the number of terms that must match a search request, rounded down. 's default minimum match percentage is 75%. To require all search terms match, set this value to 100%.
 	*/
 	public $minimumMatchPercent;
 

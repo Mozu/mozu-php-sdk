@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* The Search resource manages all settings and options for providing product search on your site.
+* Use the Search resource to manage all settings and options for providing product search on your site, as well as search tuning rules.
 */
 class SearchResource {
 
@@ -65,12 +65,12 @@ class SearchResource {
 	}
 	
 	/**
-	* admin-search Get GetSearchTuningRules description DOCUMENT_HERE 
+	* Retrieves a list of search tuning rules and their properties.
 	*
-	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for a list of supported filters.
+	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
 	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for more information.
+	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for more information.
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
 	* @return SearchTuningRuleCollection 
 	* @deprecated deprecated since version 1.17
@@ -85,12 +85,12 @@ class SearchResource {
 	}
 	
 /**
-	* admin-search Get GetSearchTuningRules description DOCUMENT_HERE 
+	* Retrieves a list of search tuning rules and their properties.
 	*
-	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for a list of supported filters.
+	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
 	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for more information.
+	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for more information.
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -103,7 +103,7 @@ class SearchResource {
 	}
 	
 	/**
-	* admin-search Get GetSearchTuningRuleSortFields description DOCUMENT_HERE 
+	* Retrieves the details of the specified search tuning rule sort fields. Sort fields allow you to control the product relevance whenver shoppers sort products on a page. For more information about sort relevance, refer to [Search Tuning Rules and Sorting](../../../developer/api-guides/search-tuning-rules.htm#search_tuning_rules_and_sorting).
 	*
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return SearchTuningRuleSortFields 
@@ -119,7 +119,7 @@ class SearchResource {
 	}
 	
 /**
-	* admin-search Get GetSearchTuningRuleSortFields description DOCUMENT_HERE 
+	* Retrieves the details of the specified search tuning rule sort fields. Sort fields allow you to control the product relevance whenver shoppers sort products on a page. For more information about sort relevance, refer to [Search Tuning Rules and Sorting](../../../developer/api-guides/search-tuning-rules.htm#search_tuning_rules_and_sorting).
 	*
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -133,7 +133,7 @@ class SearchResource {
 	}
 	
 	/**
-	* Get site search settings
+	* Retrieves the search settings for the specified site.Refer to [Search Settings API Overview](../../../../developer/api-guides/search-settings.htm) for more information about 's search settings.
 	*
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return SearchSettings 
@@ -149,7 +149,7 @@ class SearchResource {
 	}
 	
 /**
-	* Get site search settings
+	* Retrieves the search settings for the specified site.Refer to [Search Settings API Overview](../../../../developer/api-guides/search-settings.htm) for more information about 's search settings.
 	*
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -163,7 +163,7 @@ class SearchResource {
 	}
 	
 	/**
-	* Retrieves a collection of synonyms definitions for product searches. Synonyms aid with determining matches for entered searches.
+	* Retrieves a collection of synonyms definitions for product searches.Refer to [Search Synonyms](../../../../developer/api-guides/search-settings.htm#search_synonyms) for more information about search synonyms.
 	*
 	* @param string $localeCode The two character country code that sets the locale, such as US for United States. Sites, tenants, and catalogs use locale codes for localizing content, such as translated product text per supported country.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
@@ -180,7 +180,7 @@ class SearchResource {
 	}
 	
 /**
-	* Retrieves a collection of synonyms definitions for product searches. Synonyms aid with determining matches for entered searches.
+	* Retrieves a collection of synonyms definitions for product searches.Refer to [Search Synonyms](../../../../developer/api-guides/search-settings.htm#search_synonyms) for more information about search synonyms.
 	*
 	* @param string $localeCode The two character country code that sets the locale, such as US for United States. Sites, tenants, and catalogs use locale codes for localizing content, such as translated product text per supported country.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
@@ -195,13 +195,13 @@ class SearchResource {
 	}
 	
 	/**
-	* 
+	* Retrieves a list of synonym definitions according to any specified filter criteria and sort options.Refer to [Search Synonyms](../../../../developer/api-guides/search-settings.htm#search_synonyms) for more information about search synonyms.
 	*
-	* @param string $filter 
-	* @param int $pageSize 
-	* @param string $responseFields 
-	* @param string $sortBy 
-	* @param int $startIndex 
+	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
+	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for more information.
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
 	* @return SynonymDefinitionPagedCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -215,13 +215,13 @@ class SearchResource {
 	}
 	
 /**
-	* 
+	* Retrieves a list of synonym definitions according to any specified filter criteria and sort options.Refer to [Search Synonyms](../../../../developer/api-guides/search-settings.htm#search_synonyms) for more information about search synonyms.
 	*
-	* @param string $filter 
-	* @param int $pageSize 
-	* @param string $responseFields 
-	* @param string $sortBy 
-	* @param int $startIndex 
+	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
+	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for more information.
+	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getSynonymDefinitionsAsync($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
@@ -233,10 +233,10 @@ class SearchResource {
 	}
 	
 	/**
-	* 
+	* Retrieves the details of the specified synonym defintion.Refer to [Search Synonyms](../../../../developer/api-guides/search-settings.htm#search_synonyms) for more information about search synonyms.
 	*
-	* @param string $responseFields 
-	* @param int $synonymId 
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param int $synonymId The unique identifier of the synonym definition.
 	* @return SynonymDefinition 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -250,10 +250,10 @@ class SearchResource {
 	}
 	
 /**
-	* 
+	* Retrieves the details of the specified synonym defintion.Refer to [Search Synonyms](../../../../developer/api-guides/search-settings.htm#search_synonyms) for more information about search synonyms.
 	*
-	* @param string $responseFields 
-	* @param int $synonymId 
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param int $synonymId The unique identifier of the synonym definition.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getSynonymDefinitionAsync($synonymId, $responseFields =  null)
@@ -265,10 +265,10 @@ class SearchResource {
 	}
 	
 	/**
-	* admin-search Post AddSearchTuningRule description DOCUMENT_HERE 
+	* Creates a search tuning rule for your site. You can use search tuning rules to fine tune the product search results that appear when a shopper searches for a specific keyword, or navigates to a category page.For more information on search tuning rules, refer to [Search Tuning Rules](../../../../developer/api-guides/search-tuning-rules.htm).
 	*
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param SearchTuningRule $searchTuningRuleIn Mozu.ProductAdmin.Contracts.Search.SearchTuningRule ApiType DOCUMENT_HERE 
+	* @param SearchTuningRule $searchTuningRuleIn The details of the new search tuning rule.
 	* @return SearchTuningRule 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -282,7 +282,7 @@ class SearchResource {
 	}
 	
 /**
-	* admin-search Post AddSearchTuningRule description DOCUMENT_HERE 
+	* Creates a search tuning rule for your site. You can use search tuning rules to fine tune the product search results that appear when a shopper searches for a specific keyword, or navigates to a category page.For more information on search tuning rules, refer to [Search Tuning Rules](../../../../developer/api-guides/search-tuning-rules.htm).
 	*
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -296,10 +296,10 @@ class SearchResource {
 	}
 	
 	/**
-	* admin-search Post UpdateSearchTuningRuleSortFields description DOCUMENT_HERE 
+	* Updates the details of the search tuning rule sort fields.
 	*
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param SearchTuningRuleSortFields $searchTuningRuleSortFieldsIn Mozu.ProductAdmin.Contracts.Search.SearchTuningRuleSortFields ApiType DOCUMENT_HERE 
+	* @param SearchTuningRuleSortFields $searchTuningRuleSortFieldsIn The details of the updated search tuning rule sort fields.
 	* @return SearchTuningRuleSortFields 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -313,7 +313,7 @@ class SearchResource {
 	}
 	
 /**
-	* admin-search Post UpdateSearchTuningRuleSortFields description DOCUMENT_HERE 
+	* Updates the details of the search tuning rule sort fields.
 	*
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -327,11 +327,11 @@ class SearchResource {
 	}
 	
 	/**
-	* Updates synonym definitions for product searches. Synonyms aid with determining matches for entered searches.
+	* Updates a collection of synonym definitions.Refer to [Search Synonyms](../../../../developer/api-guides/search-settings.htm#search_synonyms) for more information about search synonyms.
 	*
 	* @param string $localeCode The two character country code that sets the locale, such as US for United States. Sites, tenants, and catalogs use locale codes for localizing content, such as translated product text per supported country.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param SynonymDefinitionCollection $collection Collection of synonym definitions used for determining search results.
+	* @param SynonymDefinitionCollection $collection The updated details of the synonym definition collection.
 	* @return SynonymDefinitionCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -345,7 +345,7 @@ class SearchResource {
 	}
 	
 /**
-	* Updates synonym definitions for product searches. Synonyms aid with determining matches for entered searches.
+	* Updates a collection of synonym definitions.Refer to [Search Synonyms](../../../../developer/api-guides/search-settings.htm#search_synonyms) for more information about search synonyms.
 	*
 	* @param string $localeCode The two character country code that sets the locale, such as US for United States. Sites, tenants, and catalogs use locale codes for localizing content, such as translated product text per supported country.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
@@ -360,10 +360,10 @@ class SearchResource {
 	}
 	
 	/**
-	* 
+	* Creates a new synonym definition.Refer to [Search Synonyms](../../../../developer/api-guides/search-settings.htm#search_synonyms) for more information about search synonyms.
 	*
-	* @param string $responseFields 
-	* @param SynonymDefinition $synonymDefinition 
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param SynonymDefinition $synonymDefinition The details of the new synonym definition.
 	* @return SynonymDefinition 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -377,9 +377,9 @@ class SearchResource {
 	}
 	
 /**
-	* 
+	* Creates a new synonym definition.Refer to [Search Synonyms](../../../../developer/api-guides/search-settings.htm#search_synonyms) for more information about search synonyms.
 	*
-	* @param string $responseFields 
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function addSynonymDefinitionAsync($synonymDefinition, $responseFields =  null)
@@ -391,11 +391,11 @@ class SearchResource {
 	}
 	
 	/**
-	* admin-search Put UpdateSearchTuningRule description DOCUMENT_HERE 
+	* Updates the details of the specified search tuning rule.
 	*
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @param string $searchTuningRuleCode The unique identifier of the search tuning rule.
-	* @param SearchTuningRule $searchTuningRuleIn Mozu.ProductAdmin.Contracts.Search.SearchTuningRule ApiType DOCUMENT_HERE 
+	* @param SearchTuningRule $searchTuningRuleIn The details of the updated search tuning rule.
 	* @return SearchTuningRule 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -409,7 +409,7 @@ class SearchResource {
 	}
 	
 /**
-	* admin-search Put UpdateSearchTuningRule description DOCUMENT_HERE 
+	* Updates the details of the specified search tuning rule.
 	*
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @param string $searchTuningRuleCode The unique identifier of the search tuning rule.
@@ -424,10 +424,10 @@ class SearchResource {
 	}
 	
 	/**
-	* Adds or Updates (Upsert) the Search Settings for a specific site
+	* Updates the search setting properties for a specific site.Refer to [Search Settings API Overview](../../../../developer/api-guides/search-settings.htm) for more information about 's search settings.
 	*
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param SearchSettings $settings The settings to control product search and indexing behavior.
+	* @param SearchSettings $settings The search settings to update.
 	* @return SearchSettings 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -441,7 +441,7 @@ class SearchResource {
 	}
 	
 /**
-	* Adds or Updates (Upsert) the Search Settings for a specific site
+	* Updates the search setting properties for a specific site.Refer to [Search Settings API Overview](../../../../developer/api-guides/search-settings.htm) for more information about 's search settings.
 	*
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -455,11 +455,11 @@ class SearchResource {
 	}
 	
 	/**
-	* 
+	* Updates the details of a synonym definition.Refer to [Search Synonyms](../../../../developer/api-guides/search-settings.htm#search_synonyms) for more information about search synonyms.
 	*
-	* @param string $responseFields 
-	* @param int $synonymId 
-	* @param SynonymDefinition $synonymDefinition 
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param int $synonymId The unique identifier of the synonym definition.
+	* @param SynonymDefinition $synonymDefinition The updated synonym definition details.
 	* @return SynonymDefinition 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -473,10 +473,10 @@ class SearchResource {
 	}
 	
 /**
-	* 
+	* Updates the details of a synonym definition.Refer to [Search Synonyms](../../../../developer/api-guides/search-settings.htm#search_synonyms) for more information about search synonyms.
 	*
-	* @param string $responseFields 
-	* @param int $synonymId 
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param int $synonymId The unique identifier of the synonym definition.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateSynonymDefinitionAsync($synonymDefinition, $synonymId, $responseFields =  null)
@@ -488,7 +488,7 @@ class SearchResource {
 	}
 	
 	/**
-	* Deletes the specified search tuning rule.
+	* Deletes the specified search tuning rule from the site.
 	*
 	* @param string $searchTuningRuleCode The unique identifier of the search tuning rule.
 	* @deprecated deprecated since version 1.17
@@ -502,7 +502,7 @@ class SearchResource {
 	}
 	
 /**
-	* Deletes the specified search tuning rule.
+	* Deletes the specified search tuning rule from the site.
 	*
 	* @param string $searchTuningRuleCode The unique identifier of the search tuning rule.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -516,9 +516,9 @@ class SearchResource {
 	}
 	
 	/**
-	* 
+	* Deletes the specified synonym definition.Refer to [Search Synonyms](../../../../developer/api-guides/search-settings.htm#search_synonyms) for more information about search synonyms.
 	*
-	* @param int $synonymId 
+	* @param int $synonymId The unique identifier of the synonym definition.
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteSynonymDefinition($synonymId)
@@ -530,9 +530,9 @@ class SearchResource {
 	}
 	
 /**
-	* 
+	* Deletes the specified synonym definition.Refer to [Search Synonyms](../../../../developer/api-guides/search-settings.htm#search_synonyms) for more information about search synonyms.
 	*
-	* @param int $synonymId 
+	* @param int $synonymId The unique identifier of the synonym definition.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteSynonymDefinitionAsync($synonymId)

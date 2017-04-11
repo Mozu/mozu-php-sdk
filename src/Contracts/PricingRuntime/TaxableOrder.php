@@ -15,7 +15,7 @@ namespace Mozu\Api\Contracts\PricingRuntime;
 
 
 /**
-*	Properties of an order to calculate tax against. When a tax capability is enabled for a tenant, Mozu sends the `TaxableOrder `properties to the capability as read-only, system-supplied information.
+*	Properties of an order to calculate tax against. When a tax capability is enabled for a tenant,  sends the `TaxableOrder `properties to the capability as read-only, system-supplied information.
 */
 class TaxableOrder
 {
@@ -33,6 +33,11 @@ class TaxableOrder
 	*The date and time the order was submitted for purchase. 
 	*/
 	public $orderDate;
+
+	/**
+	*The order number that the customer sees on the storefront when they place the order.
+	*/
+	public $orderNumber;
 
 	/**
 	*The unique identifier of the original order, used to track order changes for tax purposes.
@@ -53,6 +58,16 @@ class TaxableOrder
 	*The type of request for which to tax this entity, which is Order or Return.
 	*/
 	public $taxRequestType;
+
+	/**
+	*Collection of attributes that may be paged list or a list, depending on the usage per object and API type.
+	*/
+	public $attributes;
+
+	/**
+	*Custom data for a given vendor set within the commerce process.
+	*/
+	public $data;
 
 	/**
 	*List of line items associated with the order.

@@ -35,13 +35,14 @@ class FraudScreenResource {
 	/**
 	* payments-fraudscreen Post Screen description DOCUMENT_HERE 
 	*
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @param FraudScreenRequest $request Mozu.PaymentService.Contracts.Request.FraudScreenRequest ApiType DOCUMENT_HERE 
 	* @return FraudScreen 
 	* @deprecated deprecated since version 1.17
 	*/
-	public function screen($request)
+	public function screen($request, $responseFields =  null)
 	{
-		$mozuClient = FraudScreenClient::screenClient($request);
+		$mozuClient = FraudScreenClient::screenClient($request, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -51,11 +52,12 @@ class FraudScreenResource {
 /**
 	* payments-fraudscreen Post Screen description DOCUMENT_HERE 
 	*
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
-	public function screenAsync($request)
+	public function screenAsync($request, $responseFields =  null)
 	{
-		$mozuClient = FraudScreenClient::screenClient($request);
+		$mozuClient = FraudScreenClient::screenClient($request, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 

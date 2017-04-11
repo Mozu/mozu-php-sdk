@@ -20,6 +20,11 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Carts;
 class CartItem
 {
 	/**
+	*The adjusted subtotal of the line item, including all manual adjustments, discounts, shipping charges and discounts, and duty or any other additional line item fees.
+	*/
+	public $adjustedLineItemSubtotal;
+
+	/**
 	*The subtotal of the cart, order, and wishlist items, including any applied discount calculations. Wishlist subtotals may change depending on the length of time, available discounts, and stock amounts of products at the time of review by shoppers.
 	*/
 	public $discountedTotal;
@@ -55,7 +60,7 @@ class CartItem
 	public $handlingAmount;
 
 	/**
-	*Unique identifier of the source product property. For a product field it will be the name of the field. For a product attribute it will be the Attribute FQN. 
+	*Unique identifier of the source property, such as a catalog, discount, order, or email template.For a product field it will be the name of the field.For a category ID, must be a positive integer not greater than 2000000. By default,  auto-generates a category ID when categories are created. If you want to specify an ID during creation (which preserves category link relationships when migrating tenant data from one sandbox to another), you must also include the  query string in the endpoint. For example, . Then, use the  property to specify the desired category ID.For a product attribute it will be the Attribute FQN.For a document, the ID must be specified as a 32 character, case-insensitive, alphanumeric string. You can specify the ID as 32 sequential characters or as groups separated by dashes in the format 8-4-4-4-12. For example, or.For email templates, the ID must be one of the following values:			
 	*/
 	public $id;
 
@@ -90,6 +95,11 @@ class CartItem
 	public $quantity;
 
 	/**
+	*The total shipping amount for the line item before discounts and adjustments.
+	*/
+	public $shippingAmountBeforeDiscountsAndAdjustments;
+
+	/**
 	*The total amount of tax incurred on the shipping charges in the cart and order. This property is not calculated at this time for wish lists.
 	*/
 	public $shippingTaxTotal;
@@ -113,6 +123,76 @@ class CartItem
 	*Total is used to indicate the monetary, estimated total amount of the cart or order, including items, sales tax, shipping costs, and other fees. Totals are not estimated for wish lists at this time.
 	*/
 	public $total;
+
+	/**
+	*The total charge for the line item without any weighted order level shipping and handling charges.
+	*/
+	public $totalWithoutWeightedShippingAndHandling;
+
+	/**
+	*The total charge for the line item with all weighted order level shipping and handling charges.
+	*/
+	public $totalWithWeightedShippingAndHandling;
+
+	/**
+	*The total weighted order level manual adjustment amount.
+	*/
+	public $weightedOrderAdjustment;
+
+	/**
+	*The total weighted order level discount amount.
+	*/
+	public $weightedOrderDiscount;
+
+	/**
+	*The total weighted order level duty charges.
+	*/
+	public $weightedOrderDuty;
+
+	/**
+	*The amount to adjust the order handling fee.
+	*/
+	public $weightedOrderHandlingAdjustment;
+
+	/**
+	*The total weighted order level handling fee amount.
+	*/
+	public $weightedOrderHandlingFee;
+
+	/**
+	*The total weighted order handling fee discount amount.
+	*/
+	public $weightedOrderHandlingFeeDiscount;
+
+	/**
+	*The total weighted order level handling fee tax amount.
+	*/
+	public $weightedOrderHandlingFeeTax;
+
+	/**
+	*The total weighted order level shipping charge.
+	*/
+	public $weightedOrderShipping;
+
+	/**
+	*The total weighted order level shipping discount amount.
+	*/
+	public $weightedOrderShippingDiscount;
+
+	/**
+	*The total weighted order level shipping manual adjustment amount.
+	*/
+	public $weightedOrderShippingManualAdjustment;
+
+	/**
+	*The total weighted order level shipping tax amount.
+	*/
+	public $weightedOrderShippingTax;
+
+	/**
+	*The total weighted order level tax amount.
+	*/
+	public $weightedOrderTax;
 
 	/**
 	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.

@@ -166,7 +166,7 @@ class CreditResource {
 	}
 	
 	/**
-	* customer-credits Put ResendCreditCreatedEmail description DOCUMENT_HERE 
+	* Resend the notification email that informs a shopper that a credit has been created.
 	*
 	* @param string $code User-defined code that uniqely identifies the channel group.
 	* @deprecated deprecated since version 1.17
@@ -180,7 +180,7 @@ class CreditResource {
 	}
 	
 /**
-	* customer-credits Put ResendCreditCreatedEmail description DOCUMENT_HERE 
+	* Resend the notification email that informs a shopper that a credit has been created.
 	*
 	* @param string $code User-defined code that uniqely identifies the channel group.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException

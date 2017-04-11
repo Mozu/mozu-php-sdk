@@ -60,7 +60,7 @@ class Wishlist
 	public $expirationDate;
 
 	/**
-	*Unique identifier used by an external program to identify a Mozu order, customer account, or wish list.
+	*Unique identifier used by an external program to identify a  order, customer account, or wish list.
 	*/
 	public $externalId;
 
@@ -75,17 +75,17 @@ class Wishlist
 	public $handlingTaxTotal;
 
 	/**
-	*Unique identifier of the source product property. For a product field it will be the name of the field. For a product attribute it will be the Attribute FQN. 
+	*Unique identifier of the source property, such as a catalog, discount, order, or email template.For a product field it will be the name of the field.For a category ID, must be a positive integer not greater than 2000000. By default,  auto-generates a category ID when categories are created. If you want to specify an ID during creation (which preserves category link relationships when migrating tenant data from one sandbox to another), you must also include the  query string in the endpoint. For example, . Then, use the  property to specify the desired category ID.For a product attribute it will be the Attribute FQN.For a document, the ID must be specified as a 32 character, case-insensitive, alphanumeric string. You can specify the ID as 32 sequential characters or as groups separated by dashes in the format 8-4-4-4-12. For example, or.For email templates, the ID must be one of the following values:			
 	*/
 	public $id;
 
 	/**
-	*The date and time an order or wish list is imported into Mozu. This is not the date and time it was created in the external application. 
+	*The date and time an order or wish list is imported into . This is not the date and time it was created in the external application.
 	*/
 	public $importDate;
 
 	/**
-	*Indicates if this object/data was imported from an outside source such as a data import or synchronization via an app or service. If true, this data was originally imported into Mozu and accessible through your store database. Examples of imported objects/data include orders and customer accounts.
+	*Indicates if this object/data was imported from an outside source such as a data import or synchronization via an app or service. If true, this data was originally imported into  and accessible through your store database. Examples of imported objects/data include orders and customer accounts.
 	*/
 	public $isImport;
 
@@ -100,7 +100,12 @@ class Wishlist
 	public $lastValidationDate;
 
 	/**
-	*The display name of the source product property. For a product field it will be the display name of the field. For a product attribute it will be the Attribute Name.
+	*The total charge for the line item with all weighted order level manual adjustments.
+	*/
+	public $lineItemSubtotalWithOrderAdjustments;
+
+	/**
+	*The user supplied name that appears in . You can use this field for identification purposes.
 	*/
 	public $name;
 
@@ -108,6 +113,11 @@ class Wishlist
 	*The type of privacy to apply to this wish list. Possible values are "Private" which makes the wish list viewable only to the shopper, "DirectShare" which makes the wish list viewable only to people with whom the shopper shares the wish list link, or "Public" which makes the wish list available to everyone. At this time, the system treats all shopper wish lists as "Public" regardless of the defined privacy type.
 	*/
 	public $privacyType;
+
+	/**
+	*The total shipping amount for the wishlist before discounts and adjustments.
+	*/
+	public $shippingAmountBeforeDiscountsAndAdjustments;
 
 	/**
 	*The shipping subtotal amount calculated without any applied discounts for line item and entire amounts of carts and orders. This property is not calculated for wish lists at this time.

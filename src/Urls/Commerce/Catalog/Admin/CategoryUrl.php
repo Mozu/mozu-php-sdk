@@ -19,7 +19,7 @@ class CategoryUrl  {
 
 	/**
 		* Get Resource Url for GetCategories
-		* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for a list of supported filters.
+		* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
 		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param string $sortBy 
@@ -72,7 +72,7 @@ class CategoryUrl  {
 		* Get Resource Url for AddCategory
 		* @param bool $incrementSequence If true, when adding a new product category, set the sequence number of the new category to an increment of one integer greater than the maximum available sequence number across all product categories. If false, set the sequence number to zero.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param bool $useProvidedId 
+		* @param bool $useProvidedId Optional. If ,  uses the  you specify in the request as the category's id. If ,  generates an  for the category regardless if you specify an id in the request.If you specify an id already in use and set this parameter to ,  returns an error.
 		* @return string Resource Url
 	*/
 	public static function addCategoryUrl($incrementSequence, $responseFields, $useProvidedId)
@@ -82,17 +82,6 @@ class CategoryUrl  {
 		$url = $mozuUrl->formatUrl("incrementSequence", $incrementSequence);
 		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		$url = $mozuUrl->formatUrl("useProvidedId", $useProvidedId);
-		return $mozuUrl;
-	}
-	
-	/**
-		* Get Resource Url for UpdateCategoryTree
-		* @return string Resource Url
-	*/
-	public static function updateCategoryTreeUrl()
-	{
-		$url = "/api/commerce/catalog/admin/categories/category-tree";
-		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
 		return $mozuUrl;
 	}
 	

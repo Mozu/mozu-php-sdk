@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* Tenant administrators can add and view internal notes for a customer account. For example, a client can track a shopper's interests or complaints. Only clients can add and view notes. Shoppers cannot view these notes from the My Account page.
+* This resources manages notes for a customer account. For example, a client can track a shopper's interests or complaints. Only clients can add and view notes. Shoppers cannot view these notes from the My Account page.
 */
 class CustomerNoteResource {
 

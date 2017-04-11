@@ -30,7 +30,7 @@ class ProductInCatalogInfo
 	public $dateFirstAvailableInCatalog;
 
 	/**
-	*Indicates if the object or feature is active. This indicator is used for subscriptions (at the site or tenant level), customer accounts, products and variations.
+	*Indicates if the object or feature is active.
 	*/
 	public $isActive;
 
@@ -68,6 +68,11 @@ class ProductInCatalogInfo
 	*The price of the product associated with the specified catalog. If no price is specified in the request, this catalog uses the price defined in the master catalog. To override the product price for this catalog, the IsPriceOverridden flag must be set to "true".
 	*/
 	public $price;
+
+	/**
+	*Specifies which static category to use in the navigation breadcrumb, regardless of how shoppers navigate to the product. If not set, or if the product belongs only to dynamic categories, the default is to use the category with the smallest ID.
+	*/
+	public $primaryProductCategory;
 
 	/**
 	*The product categories to define for the product associated with the specified catalog.

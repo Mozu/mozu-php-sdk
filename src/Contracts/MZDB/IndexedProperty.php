@@ -25,7 +25,7 @@ class IndexedProperty
 	public $dataType;
 
 	/**
-	*A JPath query indicating the property that should be indexed to enable querying and sorting.  Non-indexed properties may be used in queries as long as at least one indexed property is also provided in the query.
+	*A JPath query indicating the property that should be indexed to enable querying and sorting. Non-indexed properties may be used in queries as long as at least one indexed property is also provided in the query.
 	*/
 	public $propertyName;
 

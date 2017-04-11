@@ -17,7 +17,7 @@ use Mozu\Api\Urls\Platform\Adminuser\TenantAdminUserAuthTicketUrl;
 
 
 /**
-* Use the Admin User authentication tickets resource to generate and refresh authentication tickets that enable Mozu administrator or developer account users to access development or production tenants.
+* Use the Admin User authentication tickets resource to generate and refresh authentication tickets that enable  administrator or developer account users to access development or production tenants.
 */
 class TenantAdminUserAuthTicketClient {
 
@@ -43,7 +43,7 @@ class TenantAdminUserAuthTicketClient {
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param int $tenantId 
-	* @param TenantAdminUserAuthTicket $existingAuthTicket Properties of the authentication ticket to be used in user claims with the Mozu API.
+	* @param TenantAdminUserAuthTicket $existingAuthTicket Properties of the authentication ticket to be used in user claims with the  API.
 	* @return MozuClient
 	*/
 	public static function refreshAuthTicketClient($existingAuthTicket, $tenantId =  null, $responseFields =  null)

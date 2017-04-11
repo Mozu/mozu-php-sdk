@@ -15,27 +15,27 @@ namespace Mozu\Api\Contracts\Content;
 
 
 /**
-*	Mozu.Content.Contracts.AddOrDeletePublishItem ApiType DOCUMENT_HERE 
+*	This property is not exposed in documentation.
 */
 class AddOrDeletePublishItem
 {
 	/**
-	*Mozu.Content.Contracts.AddOrDeletePublishItem docListFQN ApiTypeMember DOCUMENT_HERE 
+	*The fully qualified name of the document list that the pending content change is associated with.
 	*/
 	public $docListFQN;
 
 	/**
-	*Mozu.Content.Contracts.AddOrDeletePublishItem documentId ApiTypeMember DOCUMENT_HERE 
+	*The unique identifier of the pending content change or the document.
 	*/
 	public $documentId;
 
 	/**
-	*The ID of the specific scope for the object. 
+	*The unique identifier of the scope. For example, if your scope type is site, then this value would be the site id.
 	*/
 	public $scopeId;
 
 	/**
-	*The scope at which the object exists, such as "Tenant", "MasterCatalog", or "Site". Scope delineates the level and area of Mozu the object exists within or affects.
+	*The type of scope associated with the documentList. For example, if the documentList is pageTemplateContent, the scopeType is Site.Valid values are: "Tenant", "MasterCatalog", and "Site".
 	*/
 	public $scopeType;
 

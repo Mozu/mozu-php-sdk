@@ -36,13 +36,14 @@ class PackageResource {
 	* Retrieves the package label image supplied by the carrier for a return replacement.
 	*
 	* @param string $packageId Unique identifier of the package for which to retrieve the label.
+	* @param bool $returnAsBase64Png Specifies whether to return the RMA label image as Base64-encoded PNG image instead of as a byte array encoded in the original image format. The default is .
 	* @param string $returnId Unique identifier of the return whose items you want to get.
 	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
-	public function getPackageLabel($returnId, $packageId)
+	public function getPackageLabel($returnId, $packageId, $returnAsBase64Png =  null)
 	{
-		$mozuClient = PackageClient::getPackageLabelClient($returnId, $packageId);
+		$mozuClient = PackageClient::getPackageLabelClient($returnId, $packageId, $returnAsBase64Png);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -53,12 +54,13 @@ class PackageResource {
 	* Retrieves the package label image supplied by the carrier for a return replacement.
 	*
 	* @param string $packageId Unique identifier of the package for which to retrieve the label.
+	* @param bool $returnAsBase64Png Specifies whether to return the RMA label image as Base64-encoded PNG image instead of as a byte array encoded in the original image format. The default is .
 	* @param string $returnId Unique identifier of the return whose items you want to get.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
-	public function getPackageLabelAsync($returnId, $packageId)
+	public function getPackageLabelAsync($returnId, $packageId, $returnAsBase64Png =  null)
 	{
-		$mozuClient = PackageClient::getPackageLabelClient($returnId, $packageId);
+		$mozuClient = PackageClient::getPackageLabelClient($returnId, $packageId, $returnAsBase64Png);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 

@@ -35,12 +35,12 @@ class ProductPrice
 	public $creditValue;
 
 	/**
-	*The priceList that was applied to this product
+	*The price list code if a price list is applield to the product's pricing.
 	*/
 	public $effectivePricelistCode;
 
 	/**
-	*The manufacturer's suggested retail price for the product. This content may be defined by the supplier.
+	*The manufacturer's suggested retail price (MSRP) for the product. This content may be defined by the supplier.
 	*/
 	public $msrp;
 
@@ -50,27 +50,27 @@ class ProductPrice
 	public $price;
 
 	/**
-	*The specific PriceListCode that was applied (includes inheritence
+	*The price list entry code that controls the product pricing, if a price list is applied to the product pricing.
 	*/
 	public $priceListEntryCode;
 
 	/**
-	*IF a PriceList Entry was applied to this price it will be (simple, bulk...)
+	*The pricing mode of the price list entry, if a price list is applied to the product pricing.The valid values are:* * A value of  indicates the product has volume pricing.
 	*/
 	public $priceListEntryMode;
 
 	/**
-	*The price type that displays on the storefront website for the Price field, which is List, MAP, or CatalogSalePrice
+	*The price type that displays in the price field on product listing pages and product detail pages on the storefront.The valid values are:* * * 
 	*/
 	public $priceType;
 
 	/**
-	*The set sale price for a product consisting of a price with a discount already applied.
+	*The set sale price for a product consisting of a price with a discount already applied.For price list entries, this property is the product's sale price if the  is set to .
 	*/
 	public $salePrice;
 
 	/**
-	*The price type that displays on the storefront website for the Sale Price field, which is CatalogSalePrice, DiscountedList, or DiscountedCatalogSalePrice
+	*The sale price type that displays in the sale price field on product listing pages and product detail pages on the storefront.The valid values are:* * * 
 	*/
 	public $salePriceType;
 

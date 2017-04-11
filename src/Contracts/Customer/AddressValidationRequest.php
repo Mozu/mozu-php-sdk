@@ -20,7 +20,7 @@ namespace Mozu\Api\Contracts\Customer;
 class AddressValidationRequest
 {
 	/**
-	*All address information for the contact. This data is used to validate the address for the customer account and includes the full address.
+	*Address information to supply for a contact.
 	*/
 	public $address;
 

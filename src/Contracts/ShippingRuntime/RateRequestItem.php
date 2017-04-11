@@ -35,7 +35,7 @@ class RateRequestItem
 	public $shipsByItself;
 
 	/**
-	*Mozu.ShippingRuntime.Contracts.RateRequestItem data ApiTypeMember DOCUMENT_HERE 
+	*Data unique to the shipping rate for the item.
 	*/
 	public $data;
 
@@ -45,7 +45,7 @@ class RateRequestItem
 	public $productSummaries;
 
 	/**
-	*Product specific dimensions used for shipping, used by product summary and rate request items.  The dimensions can differ between the two uses as a `RateRequestItem `package may contain one or more products.
+	*Product specific dimensions used for shipping, used by product summary and rate request items. The dimensions can differ between the two uses as a `RateRequestItem `package may contain one or more products.
 	*/
 	public $unitMeasurements;
 

@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* Use the user data subresource to store user-level data required for a third-party application in the Mozu database.
+* Use the user data subresource to store user-level data required for a third-party application in the  database.
 */
 class UserDataResource {
 
@@ -33,7 +33,7 @@ class UserDataResource {
 
 
 	/**
-	* Retrieves the value of a record in the Mozu database.
+	* Retrieves the value of a record in the  database.
 	*
 	* @param string $dbEntryQuery The database entry string to create.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
@@ -50,7 +50,7 @@ class UserDataResource {
 	}
 	
 /**
-	* Retrieves the value of a record in the Mozu database.
+	* Retrieves the value of a record in the  database.
 	*
 	* @param string $dbEntryQuery The database entry string to create.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
@@ -65,7 +65,7 @@ class UserDataResource {
 	}
 	
 	/**
-	* Creates a new record in the Mozu database based on the information supplied in the request.
+	* Creates a new record in the  database based on the information supplied in the request.
 	*
 	* @param string $dbEntryQuery The database entry string to create.
 	* @param string $value The value string to create.
@@ -80,7 +80,7 @@ class UserDataResource {
 	}
 	
 /**
-	* Creates a new record in the Mozu database based on the information supplied in the request.
+	* Creates a new record in the  database based on the information supplied in the request.
 	*
 	* @param string $dbEntryQuery The database entry string to create.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -94,7 +94,7 @@ class UserDataResource {
 	}
 	
 	/**
-	* Updates a record in the Mozu database based on the information supplied in the request.
+	* Updates a record in the  database based on the information supplied in the request.
 	*
 	* @param string $dbEntryQuery The database entry string to create.
 	* @param string $value The value string to create.
@@ -109,7 +109,7 @@ class UserDataResource {
 	}
 	
 /**
-	* Updates a record in the Mozu database based on the information supplied in the request.
+	* Updates a record in the  database based on the information supplied in the request.
 	*
 	* @param string $dbEntryQuery The database entry string to create.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -123,7 +123,7 @@ class UserDataResource {
 	}
 	
 	/**
-	* Removes a previously defined record in the Mozu database.
+	* Removes a previously defined record in the  database.
 	*
 	* @param string $dbEntryQuery The database entry string to create.
 	* @deprecated deprecated since version 1.17
@@ -137,7 +137,7 @@ class UserDataResource {
 	}
 	
 /**
-	* Removes a previously defined record in the Mozu database.
+	* Removes a previously defined record in the  database.
 	*
 	* @param string $dbEntryQuery The database entry string to create.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException

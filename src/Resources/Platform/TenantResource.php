@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* Use the tenants resource to manage information about a Mozu tenant.
+* Use the tenants resource to manage information about a  tenant.
 */
 class TenantResource {
 

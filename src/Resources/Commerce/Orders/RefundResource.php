@@ -37,7 +37,7 @@ class RefundResource {
 	*
 	* @param string $orderId Unique identifier of the order.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param Refund $refund Mozu.CommerceRuntime.Contracts.Refunds.Refund ApiType DOCUMENT_HERE 
+	* @param Refund $refund The details of the refund.
 	* @return Refund 
 	* @deprecated deprecated since version 1.17
 	*/

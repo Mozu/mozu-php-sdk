@@ -14,17 +14,35 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 
+/**
+*	The product price in the applicable volume band.
+*/
 class ProductVolumePrice
 {
-		public $isCurrent;
+	/**
+	*Specifies whether the volume pricing is current for the product.
+	*/
+	public $isCurrent;
 
-		public $maxQty;
+	/**
+	*The maximum product quantity of the volume price band. A shopper must purchase a quantity equal to or less than down to the  in order to receive the pricing in the volume band.
+	*/
+	public $maxQty;
 
-		public $minQty;
+	/**
+	*The minimum product quantity of the volume price band. A shopper must purchase a quantity equal to or greater than up to the  in order to receive the pricing in the volume band.
+	*/
+	public $minQty;
 
-		public $price;
+	/**
+	*The product price in the applicable volume band.
+	*/
+	public $price;
 
-		public $priceRange;
+	/**
+	*For products with options that vary the cost of the product, the range between lowest and highest possible price of the product based on the current selection of options.
+	*/
+	public $priceRange;
 
 }
 

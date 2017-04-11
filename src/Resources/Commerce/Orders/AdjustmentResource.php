@@ -33,6 +33,43 @@ class AdjustmentResource {
 
 
 	/**
+	* Updates the order handling adjustment.
+	*
+	* @param string $orderId Unique identifier of the order.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
+	* @param Adjustment $adjustment 
+	* @return Order 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function applyHandlingAdjustment($adjustment, $orderId, $updateMode =  null, $version =  null, $responseFields =  null)
+	{
+		$mozuClient = AdjustmentClient::applyHandlingAdjustmentClient($adjustment, $orderId, $updateMode, $version, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Updates the order handling adjustment.
+	*
+	* @param string $orderId Unique identifier of the order.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function applyHandlingAdjustmentAsync($adjustment, $orderId, $updateMode =  null, $version =  null, $responseFields =  null)
+	{
+		$mozuClient = AdjustmentClient::applyHandlingAdjustmentClient($adjustment, $orderId, $updateMode, $version, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
 	* Applies a shipping adjustment to the specified order.
 	*
 	* @param string $orderId Unique identifier of the order.
@@ -101,6 +138,40 @@ class AdjustmentResource {
 	public function applyAdjustmentAsync($adjustment, $orderId, $updateMode =  null, $version =  null, $responseFields =  null)
 	{
 		$mozuClient = AdjustmentClient::applyAdjustmentClient($adjustment, $orderId, $updateMode, $version, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* Removes an adjustment to the order handling fee.
+	*
+	* @param string $orderId Unique identifier of the order.
+	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
+	* @return Order 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function removeHandlingAdjustment($orderId, $updateMode =  null, $version =  null)
+	{
+		$mozuClient = AdjustmentClient::removeHandlingAdjustmentClient($orderId, $updateMode, $version);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* Removes an adjustment to the order handling fee.
+	*
+	* @param string $orderId Unique identifier of the order.
+	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function removeHandlingAdjustmentAsync($orderId, $updateMode =  null, $version =  null)
+	{
+		$mozuClient = AdjustmentClient::removeHandlingAdjustmentClient($orderId, $updateMode, $version);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 

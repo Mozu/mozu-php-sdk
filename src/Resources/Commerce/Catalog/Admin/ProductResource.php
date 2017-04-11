@@ -366,7 +366,7 @@ class ProductResource {
 	/**
 	* Deletes the specified product from a master catalog.
 	*
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteProduct($productCode)
@@ -380,7 +380,7 @@ class ProductResource {
 /**
 	* Deletes the specified product from a master catalog.
 	*
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteProductAsync($productCode)

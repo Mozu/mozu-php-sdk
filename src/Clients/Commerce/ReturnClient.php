@@ -17,7 +17,7 @@ use Mozu\Api\Urls\Commerce\ReturnUrl;
 
 
 /**
-* Use the Returns resource to manage returned items that were previously fufilled. Returns can include any number of items associated with an original Mozu order. Each return must either be associated with an original order or a product definition to represent each returned item.
+* Use the Returns resource to manage returned items that were previously fufilled. Returns can include any number of items associated with an original  order. Each return must either be associated with an original order or a product definition to represent each returned item.Refer to the [Returns API](https://www.mozu.com/docs/developer/api-guides/returns.htm) topic for more information about creating and processing returns using the API.
 */
 class ReturnClient {
 
@@ -26,14 +26,15 @@ class ReturnClient {
 	*
 	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
+	* @param string $q A list of order search terms (not phrases) to use in the query when searching across order number and the name or email of the billing contact. When entering, separate multiple search terms with a space character.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 	* @return MozuClient
 	*/
-	public static function getReturnsClient($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
+	public static function getReturnsClient($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $q =  null, $responseFields =  null)
 	{
-		$url = ReturnUrl::getReturnsUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex);
+		$url = ReturnUrl::getReturnsUrl($filter, $pageSize, $q, $responseFields, $sortBy, $startIndex);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
 		return $mozuClient;
@@ -154,7 +155,7 @@ class ReturnClient {
 	}
 	
 	/**
-	* commerce-returns Get GetReasons description DOCUMENT_HERE 
+	* Returns a list of reasons for a return.
 	*
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return MozuClient
@@ -169,7 +170,31 @@ class ReturnClient {
 	}
 	
 	/**
-	* Creates a return for previously fulfilled items. Each return must either be associated with an original order or a product definition to represent each returned item.
+	* Creates a return for previously fulfilled items. Each return must either be associated with an original order or a product definition to represent each returned item.When you create a return, you must specify the following fields:
+* 
+
+* 
+* 
+
+*  (Optional, but recommended)
+
+* 
+* 
+
+* 
+
+
+*  (required for bundle items or product extras, but null for parent product or bundles)
+* 
+
+* 
+
+
+*  (required for product extras, but otherwise null)
+
+*  (set to  to target parent products or bundles without extras)
+
+
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param Return $ret Properties of a return of one or more previously fulfilled items.
@@ -237,6 +262,23 @@ class ReturnClient {
 	}
 	
 	/**
+	* Creates a replacement order for the return.
+	*
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param array|ReturnItemSpecifier $itemQuantities 
+	* @return MozuClient
+	*/
+	public static function createReturnShippingOrderClient($itemQuantities, $returnId, $responseFields =  null)
+	{
+		$url = ReturnUrl::createReturnShippingOrderUrl($responseFields, $returnId);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withBody($itemQuantities);
+		return $mozuClient;
+
+	}
+	
+	/**
 	* Updates the return by performing the action specified in the request.
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
@@ -270,7 +312,7 @@ class ReturnClient {
 	}
 	
 	/**
-	* commerce-returns Put ResendReturnEmail description DOCUMENT_HERE 
+	* Resend the email notification to a shopper that a return has been created.
 	*
 	* @param ReturnAction $action Properties of an action a user can perform for a return.
 	*/

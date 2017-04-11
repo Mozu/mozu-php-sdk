@@ -20,6 +20,11 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Channels;
 class Channel
 {
 	/**
+	*Array list of site identifiers associated with this channel. Each tenant site must have a channel association.
+	*/
+	public $siteIds;
+
+	/**
 	*User-defined code that uniquely identifies the channel.
 	*/
 	public $code;
@@ -32,7 +37,7 @@ class Channel
 	public $groupCode;
 
 	/**
-	*The display name of the source product property. For a product field it will be the display name of the field. For a product attribute it will be the Attribute Name.
+	*The user supplied name that appears in . You can use this field for identification purposes.
 	*/
 	public $name;
 
@@ -40,11 +45,6 @@ class Channel
 	*The geographical region associated with this channel. This region could represent any geographical entity from a state to a continent.
 	*/
 	public $region;
-
-	/**
-	*Array list of site identifiers associated with this channel. Each tenant site must have a channel association.
-	*/
-	public $siteIds;
 
 	/**
 	*Unique identifier of the Mozu tenant.

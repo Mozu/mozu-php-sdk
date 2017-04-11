@@ -20,42 +20,42 @@ namespace Mozu\Api\Contracts\SiteSettings\General\General\Routing;
 class Route
 {
 	/**
-	*Mozu.SiteSettings.General.Contracts.General.Routing.Route canonical ApiTypeMember DOCUMENT_HERE 
+	*When true, specifies that the route is a canonical route.
 	*/
 	public $canonical;
 
 	/**
-	*Mozu.SiteSettings.General.Contracts.General.Routing.Route defaults ApiTypeMember DOCUMENT_HERE 
+	*An array of key-value pairs that provide default values for required route parameters.
 	*/
 	public $defaults;
 
 	/**
-	*Mozu.SiteSettings.General.Contracts.General.Routing.Route functionId ApiTypeMember DOCUMENT_HERE 
+	*For Arc.js routes, specifies the Arc.js function name to create a route to. For example:
 	*/
 	public $functionId;
 
 	/**
-	*Mozu.SiteSettings.General.Contracts.General.Routing.Route internalRoute ApiTypeMember DOCUMENT_HERE 
+	*Specifies the internal route to use for a particular URL template. For example, the "ProductDetails" internal route routes matching URLs to a product page.
 	*/
 	public $internalRoute;
 
 	/**
-	*Mozu.SiteSettings.General.Contracts.General.Routing.Route mappings ApiTypeMember DOCUMENT_HERE 
+	*The list of mappings that a particular route uses.
 	*/
 	public $mappings;
 
 	/**
-	*Mozu.SiteSettings.General.Contracts.General.Routing.Route template ApiTypeMember DOCUMENT_HERE 
+	*Specifies the pattern of URL constants, variables, and segments that result in a match for a particular route.
 	*/
 	public $template;
 
 	/**
-	*Mozu.SiteSettings.General.Contracts.General.Routing.Route urlScheme ApiTypeMember DOCUMENT_HERE 
+	*Specifies whether a custom route uses an  or  protocol. This allows you to set encryption on a route generated from a non-secure request, or vice-versa.
 	*/
 	public $urlScheme;
 
 	/**
-	*Mozu.SiteSettings.General.Contracts.General.Routing.Route validators ApiTypeMember DOCUMENT_HERE 
+	*Specifies the validators that a particular route uses.
 	*/
 	public $validators;
 

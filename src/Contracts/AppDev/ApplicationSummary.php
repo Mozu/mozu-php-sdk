@@ -15,12 +15,12 @@ namespace Mozu\Api\Contracts\AppDev;
 
 
 /**
-*	Mozu.AppDev.Contracts.ApplicationSummary ApiType DOCUMENT_HERE 
+*	This property is not exposed in documentation.
 */
 class ApplicationSummary
 {
 	/**
-	*Unique identifier of an app available in your Mozu tenant or within Mozu Dev Center. This ID is unique across all apps installed, initialized, and enabled in the Mozu Admin and those in development through the Dev Center Console.
+	*Unique identifier of an app available in your  tenant or within  Dev Center. This ID is unique across all apps installed, initialized, and enabled in the  and those in development through the Dev Center Console.
 	*/
 	public $appId;
 
@@ -65,7 +65,7 @@ class ApplicationSummary
 	public $hasVersions;
 
 	/**
-	*The display name of the source product property. For a product field it will be the display name of the field. For a product attribute it will be the Attribute Name.
+	*The user supplied name that appears in . You can use this field for identification purposes.
 	*/
 	public $name;
 

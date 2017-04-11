@@ -40,7 +40,7 @@ class AssignedDiscountClient {
 	* Assigns or associates an existing discount to a specified coupon set. Use the couponSetCode parameter to specify the coupon set.
 	*
 	* @param string $couponSetCode The unique identifier of the coupon set.
-	* @param AssignedDiscount $assignedDiscount Mozu.ProductAdmin.Contracts.AssignedDiscount ApiType DOCUMENT_HERE 
+	* @param AssignedDiscount $assignedDiscount The details of the discount assigned to the coupon set.
 	*/
 	public static function assignDiscountClient($assignedDiscount, $couponSetCode)
 	{

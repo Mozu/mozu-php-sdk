@@ -193,7 +193,7 @@ class ProductClient {
 	/**
 	* Deletes the specified product from a master catalog.
 	*
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	*/
 	public static function deleteProductClient($dataViewMode, $productCode)
 	{

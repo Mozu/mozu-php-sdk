@@ -65,12 +65,27 @@ class Cart
 	public $feeTotal;
 
 	/**
+	*The combined price for all handling costs calculated together for shipped orders, not for digital or in-store pickup. This includes all handling costs per the product line items and options, excluding taxes and discounts.
+	*/
+	public $handlingAmount;
+
+	/**
+	*The handling fee subtotal included in the cart calculation.
+	*/
+	public $handlingSubTotal;
+
+	/**
 	*Calculated total tax amount for handling costs if the cart/order is subject to sales tax. 
 	*/
 	public $handlingTaxTotal;
 
 	/**
-	*Unique identifier of the source product property. For a product field it will be the name of the field. For a product attribute it will be the Attribute FQN. 
+	*The handling fee total included in the cart calculation.
+	*/
+	public $handlingTotal;
+
+	/**
+	*Unique identifier of the source property, such as a catalog, discount, order, or email template.For a product field it will be the name of the field.For a category ID, must be a positive integer not greater than 2000000. By default,  auto-generates a category ID when categories are created. If you want to specify an ID during creation (which preserves category link relationships when migrating tenant data from one sandbox to another), you must also include the  query string in the endpoint. For example, . Then, use the  property to specify the desired category ID.For a product attribute it will be the Attribute FQN.For a document, the ID must be specified as a 32 character, case-insensitive, alphanumeric string. You can specify the ID as 32 sequential characters or as groups separated by dashes in the format 8-4-4-4-12. For example, or.For email templates, the ID must be one of the following values:			
 	*/
 	public $id;
 
@@ -85,9 +100,19 @@ class Cart
 	public $lastValidationDate;
 
 	/**
+	*The total charge for the line item with all weighted order level manual adjustments.
+	*/
+	public $lineItemSubtotalWithOrderAdjustments;
+
+	/**
 	*Pricelist code
 	*/
 	public $priceListCode;
+
+	/**
+	*The total shipping amount for the cart before discounts and adjustments.
+	*/
+	public $shippingAmountBeforeDiscountsAndAdjustments;
 
 	/**
 	*The shipping subtotal amount calculated without any applied discounts for line item and entire amounts of carts and orders. This property is not calculated for wish lists at this time.
@@ -150,11 +175,14 @@ class Cart
 	public $auditInfo;
 
 	/**
-	*Mozu.CommerceRuntime.Contracts.Carts.Cart cartMessage ApiTypeMember DOCUMENT_HERE 
+	*An array of message details associated with the cart.
 	*/
 	public $cartMessage;
 
-		public $cartMessages;
+	/**
+	*A list of cart messages associated with the cart.
+	*/
+	public $cartMessages;
 
 	/**
 	*Collection (list or paged) of change messages logged for each modification made by a shopper to their carts, wishlists, orders, package, payment, pickup, and returns. Change log messages are system-supplied based on shopper actions and read only.

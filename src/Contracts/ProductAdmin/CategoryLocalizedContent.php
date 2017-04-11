@@ -35,17 +35,17 @@ class CategoryLocalizedContent
 	public $metaTagDescription;
 
 	/**
-	*Keywords defined for  metadata, used to internally manage data, in the language specified by the `localeCode`. Keywords are used by content for categories, products, localized content, and SEO content.
+	*Keywords defined for metadata, used to internally manage data, in the language specified by the `localeCode`. Keywords are used by content for categories, products, localized content, and SEO content.
 	*/
 	public $metaTagKeywords;
 
 	/**
-	*Title defined for  metadata, used to internally manage data, in the language specified by the `localeCode`. Titles are used by content for categories, products, localized content, and SEO content.
+	*Title defined for metadata, used to internally manage data, in the language specified by the `localeCode`. Titles are used by content for categories, products, localized content, and SEO content.
 	*/
 	public $metaTagTitle;
 
 	/**
-	*The display name of the source product property. For a product field it will be the display name of the field. For a product attribute it will be the Attribute Name.
+	*The user supplied name that appears in . You can use this field for identification purposes.
 	*/
 	public $name;
 

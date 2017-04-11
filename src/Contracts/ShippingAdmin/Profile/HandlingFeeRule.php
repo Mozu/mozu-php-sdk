@@ -20,17 +20,17 @@ namespace Mozu\Api\Contracts\ShippingAdmin\Profile;
 class HandlingFeeRule
 {
 	/**
-	*The level at which this fee applies shippingrate order
+	*Specifies to what the handling fee rule applies.
 	*/
 	public $appliesTo;
 
 	/**
-	*Unique identifier of the source product property. For a product field it will be the name of the field. For a product attribute it will be the Attribute FQN. 
+	*Unique identifier of the source property, such as a catalog, discount, order, or email template.For a product field it will be the name of the field.For a category ID, must be a positive integer not greater than 2000000. By default,  auto-generates a category ID when categories are created. If you want to specify an ID during creation (which preserves category link relationships when migrating tenant data from one sandbox to another), you must also include the  query string in the endpoint. For example, . Then, use the  property to specify the desired category ID.For a product attribute it will be the Attribute FQN.For a document, the ID must be specified as a 32 character, case-insensitive, alphanumeric string. You can specify the ID as 32 sequential characters or as groups separated by dashes in the format 8-4-4-4-12. For example, or.For email templates, the ID must be one of the following values:			
 	*/
 	public $id;
 
 	/**
-	*the product target rule codes associated with this rule leave empty or null to denote all products
+	*The unique codes of any product rules associated with the handling fee.
 	*/
 	public $productTargetRuleCodes;
 
@@ -40,12 +40,12 @@ class HandlingFeeRule
 	public $sequence;
 
 	/**
-	*The shipping target rule codes associated with this rule leave empty or null to denote all destinations
+	*The unique codes of any shipping target rules associated with the handling fee.
 	*/
 	public $shippingTargetRuleCodes;
 
 	/**
-	*The value of a property, used by numerous objects within Mozu including facets, attributes, products, localized content, metadata, capabilities (Mozu and third-party), location inventory adjustment, and more. The value may be a string, integer, or double. Validation may be run against the entered and saved values depending on the object type.
+	*The value of a property, used by numerous objects within  including facets, attributes, products, localized content, metadata, capabilities ( and third-party), location inventory adjustment, and more. The value may be a string, integer, or double. Validation may be run against the entered and saved values depending on the object type.
 	*/
 	public $value;
 
@@ -55,12 +55,12 @@ class HandlingFeeRule
 	public $valueType;
 
 	/**
-	*Basic audit info about the object, including date, time, and user account. Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
+	*Basic audit info about the object, including date, time, and user account. This data may be captured when creating, updating, and removing data.
 	*/
 	public $auditInfo;
 
 	/**
-	*the servicetypes associated with this rule leave empty or null to denote all carriers and subsequent service types
+	*An array of service type details that are associated with the handling fee.
 	*/
 	public $serviceTypes;
 

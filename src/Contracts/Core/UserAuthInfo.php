@@ -25,7 +25,7 @@ class UserAuthInfo
 	public $emailAddress;
 
 	/**
-	*The saved password for the customer account. 
+	*The write-only password for the customer account.
 	*/
 	public $password;
 

@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* Allows you to temporarily hold a product from inventory while a shopper is filling out payment information. You create a product reservation when a shopper proceeds to check out and then release the reservation when the order process is complete.
+* The Soft Allocations resource allows you to temporarily hold a product from inventory while a shopper is filling out payment information. You create a product reservation when a shopper proceeds to check out and then release the reservation when the order process is complete.
 */
 class SoftAllocationResource {
 
@@ -35,10 +35,10 @@ class SoftAllocationResource {
 	/**
 	* Retrieves a list of sof allocations according to any specified filter criteria and sort options.
 	*
-	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for a list of supported filters.
+	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
 	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for more information.
+	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for more information.
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
 	* @return SoftAllocationCollection 
 	* @deprecated deprecated since version 1.17
@@ -55,10 +55,10 @@ class SoftAllocationResource {
 /**
 	* Retrieves a list of sof allocations according to any specified filter criteria and sort options.
 	*
-	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for a list of supported filters.
+	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
 	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for more information.
+	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for more information.
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -103,9 +103,9 @@ class SoftAllocationResource {
 	}
 	
 	/**
-	* Creates a new product reservation for a product. This places a hold on the product inventory for the quantity specified during the ordering process.
+	* Creates a new soft allocation for a product. This places a hold on the product inventory for the quantity specified during the ordering process.
 	*
-	* @param array|SoftAllocation $softAllocationsIn Mozu.ProductAdmin.Contracts.SoftAllocation ApiType DOCUMENT_HERE 
+	* @param array|SoftAllocation $softAllocationsIn The details of the new soft allocation.
 	* @return array|SoftAllocation 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -119,7 +119,7 @@ class SoftAllocationResource {
 	}
 	
 /**
-	* Creates a new product reservation for a product. This places a hold on the product inventory for the quantity specified during the ordering process.
+	* Creates a new soft allocation for a product. This places a hold on the product inventory for the quantity specified during the ordering process.
 	*
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -132,9 +132,9 @@ class SoftAllocationResource {
 	}
 	
 	/**
-	* Converts a set of existing softAllocations into productReservations
+	* Converts a set of existing soft product allocations into product reservations.
 	*
-	* @param array|SoftAllocation $softAllocations Mozu.ProductAdmin.Contracts.SoftAllocation ApiType DOCUMENT_HERE 
+	* @param array|SoftAllocation $softAllocations The details of the soft allocation which you want to convert into product reservations.
 	* @return array|ProductReservation 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -148,7 +148,7 @@ class SoftAllocationResource {
 	}
 	
 /**
-	* Converts a set of existing softAllocations into productReservations
+	* Converts a set of existing soft product allocations into product reservations.
 	*
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -161,9 +161,9 @@ class SoftAllocationResource {
 	}
 	
 	/**
-	* Updates a set of softAllocations expiration time in a non trassactional batch
+	* Updates the expiration time for a set of soft allocations in a non-transactional batch.
 	*
-	* @param SoftAllocationRenew $softAllocationRenew Mozu.ProductAdmin.Contracts.SoftAllocationRenew ApiType DOCUMENT_HERE 
+	* @param SoftAllocationRenew $softAllocationRenew The details of the soft allocation that you want to renew.
 	* @return array|SoftAllocation 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -177,7 +177,7 @@ class SoftAllocationResource {
 	}
 	
 /**
-	* Updates a set of softAllocations expiration time in a non trassactional batch
+	* Updates the expiration time for a set of soft allocations in a non-transactional batch.
 	*
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -190,9 +190,9 @@ class SoftAllocationResource {
 	}
 	
 	/**
-	* Updates a soft allocationt. This updates a hold on the product inventory for the quantity specified during the ordering process.
+	* Updates a soft allocation. This updates a hold on the product inventory for the quantity specified during the ordering process.
 	*
-	* @param array|SoftAllocation $softAllocations Mozu.ProductAdmin.Contracts.SoftAllocation ApiType DOCUMENT_HERE 
+	* @param array|SoftAllocation $softAllocations The details of the updated soft allocations.
 	* @return array|SoftAllocation 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -206,7 +206,7 @@ class SoftAllocationResource {
 	}
 	
 /**
-	* Updates a soft allocationt. This updates a hold on the product inventory for the quantity specified during the ordering process.
+	* Updates a soft allocation. This updates a hold on the product inventory for the quantity specified during the ordering process.
 	*
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -219,7 +219,7 @@ class SoftAllocationResource {
 	}
 	
 	/**
-	* Deletes a soft allocation. You might delete a allocation when an order or cart is not processed to return the product quantity back to inventory.
+	* Deletes a soft allocation. You might delete a soft allocation when an order or cart is not processed in order to return the product quantity back to inventory.
 	*
 	* @param int $softAllocationId The unique identifier of the soft allocation.
 	* @deprecated deprecated since version 1.17
@@ -233,7 +233,7 @@ class SoftAllocationResource {
 	}
 	
 /**
-	* Deletes a soft allocation. You might delete a allocation when an order or cart is not processed to return the product quantity back to inventory.
+	* Deletes a soft allocation. You might delete a soft allocation when an order or cart is not processed in order to return the product quantity back to inventory.
 	*
 	* @param int $softAllocationId The unique identifier of the soft allocation.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException

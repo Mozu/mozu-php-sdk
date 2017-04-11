@@ -25,7 +25,7 @@ class ProductPriceRange
 	public $lower;
 
 	/**
-	*Thw highest possible price value for a product with options that vary the cost of the product.
+	*The highest possible price value for a product with options that vary the cost of the product.
 	*/
 	public $upper;
 

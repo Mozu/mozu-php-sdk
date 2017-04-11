@@ -24,12 +24,13 @@ class PublicCardClient {
 	/**
 	* payments-cards Post Create description DOCUMENT_HERE 
 	*
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @param PublicCard $request Mozu.PaymentService.Contracts.PublicCard ApiType DOCUMENT_HERE 
 	* @return MozuClient
 	*/
-	public static function createClient($request)
+	public static function createClient($request, $responseFields =  null)
 	{
-		$url = PublicCardUrl::createUrl();
+		$url = PublicCardUrl::createUrl($responseFields);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($request);
 		return $mozuClient;
@@ -40,12 +41,13 @@ class PublicCardClient {
 	* payments-cards Put Update description DOCUMENT_HERE 
 	*
 	* @param string $cardId Unique identifier of the card associated with the customer account billing contact.
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @param PublicCard $request Mozu.PaymentService.Contracts.PublicCard ApiType DOCUMENT_HERE 
 	* @return MozuClient
 	*/
-	public static function updateClient($request, $cardId)
+	public static function updateClient($request, $cardId, $responseFields =  null)
 	{
-		$url = PublicCardUrl::updateUrl($cardId);
+		$url = PublicCardUrl::updateUrl($cardId, $responseFields);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($request);
 		return $mozuClient;

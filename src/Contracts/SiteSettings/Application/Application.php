@@ -20,7 +20,7 @@ namespace Mozu\Api\Contracts\SiteSettings\Application;
 class Application
 {
 	/**
-	*Unique identifier of an app available in your Mozu tenant or within Mozu Dev Center. This ID is unique across all apps installed, initialized, and enabled in the Mozu Admin and those in development through the Dev Center Console.
+	*Unique identifier of an app available in your  tenant or within  Dev Center. This ID is unique across all apps installed, initialized, and enabled in the  and those in development through the Dev Center Console.
 	*/
 	public $appId;
 
@@ -30,7 +30,7 @@ class Application
 	public $appKey;
 
 	/**
-	*Indicates if the capability or app is enabled for the tenant/site. If true, the capability/application is enabled for the tenant. System-supplied and read-only.
+	*Indicates if a capability, function tied to an Arc.js action, application, or price list is enabled for the tenant/site. If true, the capability/application/function/price list is enabled for the tenant. System-supplied and read-only with the exception of functions tied to an Arc.js action and price lists.
 	*/
 	public $enabled;
 
@@ -40,12 +40,12 @@ class Application
 	public $initialized;
 
 	/**
-	*Indicates if the installed application is of type extension. If true, the application type is Extension.
+	*Indicates if the installed application is of type extension. An extension is an application that extends upon the  infrastructure. Examples of extensions include Arc.js applications and applications that integrate third-party services.
 	*/
 	public $isExtension;
 
 	/**
-	*denotes if the Application is certified to use extension
+	*Indicates if the installed application is a  certified application.
 	*/
 	public $isExtensionCertified;
 

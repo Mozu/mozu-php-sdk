@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* Use the Custom Routes resource to manage your custom route settings. Custom routing allows you to display SEO-friendly URLs on your site that map behind-the-scenes to conventional Mozu resources such as a product page or a search results page. With custom routing, you gain advanced control over the URL structures on your site and can more visibly highlight the products or categories your shoppers are interested in purchasing.To learn more about custom routing, refer to the [Custom Route Settings](../../../guides/settings/custom-routes.htm) topic.
+* Use the Custom Routes resource to manage your custom route settings. Custom routing allows you to display SEO-friendly URLs on your site that map behind-the-scenes to conventional  resources such as a product page or a search results page. With custom routing, you gain advanced control over the URL structures on your site and can more visibly highlight the products or categories your shoppers are interested in purchasing.To learn more about custom routing, refer to the [Custom Route Settings](../../../guides/settings/custom-routes.htm) topic.
 */
 class CustomRouteSettingsResource {
 
@@ -66,7 +66,7 @@ class CustomRouteSettingsResource {
 	* Create new custom route settings.
 	*
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param CustomRouteSettings $settings Mozu.SiteSettings.General.Contracts.General.Routing.CustomRouteSettings ApiType DOCUMENT_HERE 
+	* @param CustomRouteSettings $settings The details of the new custom route setting.
 	* @return CustomRouteSettings 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -97,7 +97,7 @@ class CustomRouteSettingsResource {
 	* Updates custom route settings.
 	*
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param CustomRouteSettings $settings Mozu.SiteSettings.General.Contracts.General.Routing.CustomRouteSettings ApiType DOCUMENT_HERE 
+	* @param CustomRouteSettings $settings The updated details of the custom route settings.
 	* @return CustomRouteSettings 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -125,7 +125,7 @@ class CustomRouteSettingsResource {
 	}
 	
 	/**
-	* Deletes all the custom route settings for a site, returning all routes to their Mozu defaults.
+	* Deletes all the custom route settings for a site, returning all routes to their  defaults.
 	*
 	* @deprecated deprecated since version 1.17
 	*/
@@ -138,7 +138,7 @@ class CustomRouteSettingsResource {
 	}
 	
 /**
-	* Deletes all the custom route settings for a site, returning all routes to their Mozu defaults.
+	* Deletes all the custom route settings for a site, returning all routes to their  defaults.
 	*
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/

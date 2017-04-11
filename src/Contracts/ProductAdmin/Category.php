@@ -27,7 +27,7 @@ class Category
 	public $categoryCode;
 
 	/**
-	*The Type of Category Static, Dyanmic, DynamicPreComputed
+	*Specifies the type of category. The following are the valid values:* * * 
 	*/
 	public $categoryType;
 
@@ -37,21 +37,39 @@ class Category
 	public $childCount;
 
 	/**
-	*Unique identifier of the source product property. For a product field it will be the name of the field. For a product attribute it will be the Attribute FQN. 
+	*Unique identifier of the source property, such as a catalog, discount, order, or email template.For a product field it will be the name of the field.For a category ID, must be a positive integer not greater than 2000000. By default,  auto-generates a category ID when categories are created. If you want to specify an ID during creation (which preserves category link relationships when migrating tenant data from one sandbox to another), you must also include the  query string in the endpoint. For example, . Then, use the  property to specify the desired category ID.For a product attribute it will be the Attribute FQN.For a document, the ID must be specified as a 32 character, case-insensitive, alphanumeric string. You can specify the ID as 32 sequential characters or as groups separated by dashes in the format 8-4-4-4-12. For example, or.For email templates, the ID must be one of the following values:			
 	*/
 	public $id;
 
-		public $isActive;
+	/**
+	*Indicates if the object or feature is active.
+	*/
+	public $isActive;
 
 	/**
-	*Indicates if the object is displayed on the storefront. If true, the admin product category is displayed in the store. If true, the category is not displayed.
+	*Indicates if the object is displayed on the storefront. If true, the admin product category is displayed in the store. If false, the category is not displayed.
 	*/
 	public $isDisplayed;
 
 	/**
-	*Identifier of the parent or top-level category.
+	*The code of the current category's parent category.
+	*/
+	public $parentCategoryCode;
+
+	/**
+	*If the current category has a parent, the identifier of the category's parent category.
 	*/
 	public $parentCategoryId;
+
+	/**
+	*If the current category has a parent, the name of the category's parent category.
+	*/
+	public $parentCategoryName;
+
+	/**
+	*Indicates whether the parent category is active.
+	*/
+	public $parentIsActive;
 
 	/**
 	*The total number of products. This total may indicate the total products associate with a product type or number of products in a list.

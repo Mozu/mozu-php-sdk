@@ -41,7 +41,7 @@ class ProductExtraClient {
 	* Retrieves a collection of all localized delta price values for a product extra. Localized delta prices are deltas between two differing monetary conversion amounts between countries, such as US Dollar vs Euro.
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $value The value string to create.
 	* @return MozuClient
 	*/
@@ -59,7 +59,7 @@ class ProductExtraClient {
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
 	* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $value The value string to create.
 	* @return MozuClient
@@ -94,7 +94,7 @@ class ProductExtraClient {
 	* Adds a localized delta price value for a product extra. Localized delta prices are deltas between two differing monetary conversion amounts between countries, such as US Dollar vs Euro.
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $value The value string to create.
 	* @param ProductExtraValueDeltaPrice $localizedDeltaPrice The properties of the price difference between the product extra and the base product.
@@ -130,7 +130,7 @@ class ProductExtraClient {
 	* Updates all localized delta price values for a product extra. Localized delta prices are deltas between two differing monetary conversion amounts between countries, such as US Dollar vs Euro.
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $value The value string to create.
 	* @param array|ProductExtraValueDeltaPrice $localizedDeltaPrice The properties of the price difference between the product extra and the base product.
 	* @return MozuClient
@@ -149,7 +149,7 @@ class ProductExtraClient {
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
 	* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $value The value string to create.
 	* @param ProductExtraValueDeltaPrice $localizedDeltaPrice The properties of the price difference between the product extra and the base product.
@@ -202,7 +202,7 @@ class ProductExtraClient {
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
 	* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $value Use this field to include those fields which are not included by default.
 	*/
 	public static function deleteExtraValueLocalizedDeltaPriceClient($dataViewMode, $productCode, $attributeFQN, $value, $currencyCode)

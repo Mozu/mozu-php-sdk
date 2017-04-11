@@ -79,7 +79,7 @@ class LocationInventoryClient {
 	/**
 	* Updates the current level of stock at each location associated with the product code specified in the request.
 	*
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param array|LocationInventoryAdjustment $locationInventoryAdjustments Properties of an adjustment to the active product inventory of a specific location.
 	* @return MozuClient
 	*/
@@ -96,7 +96,7 @@ class LocationInventoryClient {
 	* Deletes the location inventory definition for the product code specified in the request.
 	*
 	* @param string $locationCode The unique, user-defined code that identifies a location. 
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	*/
 	public static function deleteLocationInventoryClient($dataViewMode, $productCode, $locationCode)
 	{

@@ -20,7 +20,7 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class BundledProduct
 {
 	/**
-	*List of supported types of fulfillment  for the product or variation. The types include direct ship, in-store pickup, or both. 
+	*List of supported types of fulfillment for the product or variation. The types include direct ship, in-store pickup, or both.
 	*/
 	public $fulfillmentTypesSupported;
 

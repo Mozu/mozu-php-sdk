@@ -24,22 +24,28 @@ class View
 	*/
 	public $filter;
 
-		public $includeInactiveMode;
-
-		public $isAdminDefault;
+	/**
+	*Specifies how to filter views based on the status of a document.You can specify the following values for this property: or null—all documents return in the view.—only documents within the active date range (or documents without an active date range specified) return in the view.—only documents with an active date range set in the future return in the view.—only scheduled and active documents return in the view.—only documents with an active date range set in the past return in the view.
+	*/
+	public $includeInactiveMode;
 
 	/**
-	*The isVisibleInStorefront field indicates whether documents in the view can be accessed from the Mozu storefront application. If true, the storefront application and storefront client application (javascript tier) can GET documents from the view.
+	*If , specifies that the view is the default view for a documentList or documentListType when viewed in . If no view is specified as default, then the first view in the documentList or documentListType is default. Only one view within a documentList or documentListType can have this value set to .
+	*/
+	public $isAdminDefault;
+
+	/**
+	*The isVisibleInStorefront field indicates whether documents in the view can be accessed from the  storefront application. If true, the storefront application and storefront client application (javascript tier) can GET documents from the view.
 	*/
 	public $isVisibleInStorefront;
 
 	/**
-	*The display name of the source product property. For a product field it will be the display name of the field. For a product attribute it will be the Attribute Name.
+	*The user supplied name that appears in . You can use this field for identification purposes.
 	*/
 	public $name;
 
 	/**
-	*List description of usages for content within a view and scope.
+	*A string array that determines where the document or entity list displays. The options are , for displaying content in the Custom Schema page in  , and , for displaying content in the site tree in Site Builder (applies only to document lists). The following example demonstrates how to display content across both options:
 	*/
 	public $usages;
 

@@ -15,17 +15,17 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 /**
-*	Mozu.ProductAdmin.Contracts.ActiveDateRange ApiType DOCUMENT_HERE 
+*	Specifies a start date and end date for when associated object is on the live site, if  is set to .If  is set to  ignores this property.
 */
 class ActiveDateRange
 {
 	/**
-	*Mozu.ProductAdmin.Contracts.ActiveDateRange endDate ApiTypeMember DOCUMENT_HERE 
+	*The date that the product is no longer active on the site.
 	*/
 	public $endDate;
 
 	/**
-	*Mozu.ProductAdmin.Contracts.ActiveDateRange startDate ApiTypeMember DOCUMENT_HERE 
+	*The date that the product starts being active on the site.
 	*/
 	public $startDate;
 

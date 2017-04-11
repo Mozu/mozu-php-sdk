@@ -37,7 +37,7 @@ class DigitalPackageItem
 	public $optionAttributeFQN;
 
 	/**
-	*The unique, user-defined  product code of a product, used throughout Mozu to reference and associate to a product.
+	*The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	*/
 	public $productCode;
 

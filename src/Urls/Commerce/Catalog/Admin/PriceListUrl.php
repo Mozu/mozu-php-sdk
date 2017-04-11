@@ -19,10 +19,10 @@ class PriceListUrl  {
 
 	/**
 		* Get Resource Url for GetPriceLists
-		* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for a list of supported filters.
+		* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
 		* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
 		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-		* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for more information.
+		* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for more information.
 		* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
 		* @return string Resource Url
 	*/
@@ -63,6 +63,51 @@ class PriceListUrl  {
 		$url = "/api/commerce/catalog/admin/pricelists/?responseFields={responseFields}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
 		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for BulkAddPriceListEntries
+		* @param bool $invalidateCache 
+		* @param bool $publishEvents 
+		* @return string Resource Url
+	*/
+	public static function bulkAddPriceListEntriesUrl($invalidateCache, $publishEvents)
+	{
+		$url = "/api/commerce/catalog/admin/pricelists/bulkaddentries?publishEvents={publishEvents}&invalidateCache={invalidateCache}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("invalidateCache", $invalidateCache);
+		$url = $mozuUrl->formatUrl("publishEvents", $publishEvents);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for BulkDeletePriceListEntries
+		* @param bool $invalidateCache 
+		* @param bool $publishEvents 
+		* @return string Resource Url
+	*/
+	public static function bulkDeletePriceListEntriesUrl($invalidateCache, $publishEvents)
+	{
+		$url = "/api/commerce/catalog/admin/pricelists/bulkdeleteentries?publishEvents={publishEvents}&invalidateCache={invalidateCache}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("invalidateCache", $invalidateCache);
+		$url = $mozuUrl->formatUrl("publishEvents", $publishEvents);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for BulkUpdatePriceListEntries
+		* @param bool $invalidateCache 
+		* @param bool $publishEvents 
+		* @return string Resource Url
+	*/
+	public static function bulkUpdatePriceListEntriesUrl($invalidateCache, $publishEvents)
+	{
+		$url = "/api/commerce/catalog/admin/pricelists/bulkupdateentries?publishEvents={publishEvents}&invalidateCache={invalidateCache}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("invalidateCache", $invalidateCache);
+		$url = $mozuUrl->formatUrl("publishEvents", $publishEvents);
 		return $mozuUrl;
 	}
 	

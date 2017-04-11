@@ -18,7 +18,7 @@ use Mozu\Api\Urls\Commerce\Catalog\Admin\DiscountUrl;
 use Mozu\Api\Headers;
 
 /**
-* Define and manage discounts to apply to products, product categories, or orders. The discounts can be a specified amount off the price, percentage off the price, or for free shipping. Create a coupon code that shoppers can use to redeem the discount.
+* Use the Discounts resource to define and manage discounts to apply to products, product categories, or orders. The discounts can be a specified amount off the price, percentage off the price, or for free shipping. You can create a coupon code that shoppers can use to redeem the discount.
 */
 class DiscountClient {
 
@@ -105,7 +105,7 @@ class DiscountClient {
 	}
 	
 	/**
-	* Updates the localizable content for the specified discount or rename the discount without modifying its other properties.
+	* Updates the localizable content for the specified discount or renames the discount without modifying its other properties.
 	*
 	* @param int $discountId discountId parameter description DOCUMENT_HERE 
 	* @param string $responseFields Use this field to include those fields which are not included by default.
@@ -122,7 +122,7 @@ class DiscountClient {
 	}
 	
 	/**
-	* Updates one or more properties of a defined discount.
+	* Updates one or more properties of the specified discount.
 	*
 	* @param int $discountId discountId parameter description DOCUMENT_HERE 
 	* @param string $responseFields Use this field to include those fields which are not included by default.

@@ -25,12 +25,12 @@ class GeneralSettings
 	public $allowInvalidAddresses;
 
 	/**
-	*Email address to use for Blind Carbon Copies of mails sent from your site.
+	*An email address to blind carbon copy anytime an automatic email is sent from  to a shopper.
 	*/
 	public $bccEmailAddress;
 
 	/**
-	*Custom dns host name for cnd edge caching.
+	*Custom override of the default subdomain for CDN-hosted content. For example, for SEO reasons you may prefer that the subdomain for your CDN content be  instead of the default subdomain, which might be something like .
 	*/
 	public $customCdnHostName;
 
@@ -65,7 +65,7 @@ class GeneralSettings
 	public $isGoogleAnalyticsEnabled;
 
 	/**
-	*If true, this site represents a Mozu-hosted web storefront.
+	*If true, this site represents a -hosted web storefront.
 	*/
 	public $isMozuWebSite;
 
@@ -85,7 +85,7 @@ class GeneralSettings
 	public $logoText;
 
 	/**
-	*MissingImageSubstitute for 404 image requests. Can be name or id of cmsImage in files@mozu.
+	*Assigns an image to render in place of broken images and unspecified product images (and unspecified category images, if your theme developer has enabled category images). Specified by the name or ID of the CMS image within .
 	*/
 	public $missingImageSubstitute;
 
@@ -95,7 +95,7 @@ class GeneralSettings
 	public $mobileTheme;
 
 	/**
-	*Email address to display on email messages sent from the site.
+	*The email shoppers should use to reply to an automatically-generated email.
 	*/
 	public $replyToEmailAddress;
 
@@ -105,7 +105,7 @@ class GeneralSettings
 	public $senderEmailAddress;
 
 	/**
-	*Email alias used in emails sent to your shoppers.
+	*An alternate name for the sender email. For example, if your sender email is , you might want to use an alias of .
 	*/
 	public $senderEmailAlias;
 
@@ -125,7 +125,7 @@ class GeneralSettings
 	public $tabletTheme;
 
 	/**
-	*Unique identifier of the tenant site that site uses to render content for the shopper. For example, if this site represents a third-party sales channel such as Amazon but the company wants to send shopper emails, this value represents the Mozu-hosted web storefront site that maintains this content.
+	*Unique identifier of the tenant site that site uses to render content for the shopper. For example, if this site represents a third-party sales channel such as Amazon but the company wants to send shopper emails, this value represents the -hosted web storefront site that maintains this content.
 	*/
 	public $templateSiteId;
 
@@ -150,17 +150,22 @@ class GeneralSettings
 	public $cacheSettings;
 
 	/**
-	*Site-level control over request routing for SEO purposes. Not available for update, must use its own subresource.
+	*Site-level settings for custom routing, which allows you to use your own custom URL patterns for common  pages.
 	*/
 	public $customRoutes;
 
 	/**
-	*Specific Settings by Email type
+	*Set this property to  to disable automatically sending order confirmation emails after an order is submitted. If you enable this property, order confirmation emails are triggered only by the  API operation or a Resend Order Confirmation Email event (which can be triggered by an  user).
+	*/
+	public $emailTransactionsOnlyOnRequest;
+
+	/**
+	*A collection of overrides that allow you to apply unique email settings to the email template(s) of your choice.
 	*/
 	public $emailTypes;
 
 	/**
-	*Supressed emails. Setting any of these to 'true' will block Mozu from sending that email and an event will be published instead.
+	*Supressed emails. Setting any of these to 'true' will block  from sending that email and an event will be published instead.
 	*/
 	public $supressedEmailTransactions;
 
@@ -170,7 +175,7 @@ class GeneralSettings
 	public $taxableTerritories;
 
 	/**
-	*Mozu.SiteSettings.General.Contracts.GeneralSettings viewAuthorizations ApiTypeMember DOCUMENT_HERE 
+	*A collection of authorizations that control access to viewing the pending and live sites.
 	*/
 	public $viewAuthorizations;
 

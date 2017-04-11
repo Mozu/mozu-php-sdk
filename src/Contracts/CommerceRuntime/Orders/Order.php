@@ -20,11 +20,6 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Orders;
 class Order
 {
 	/**
-	*Code that identifies the channel associated with the site for the shopper's created shopping cart, order, and return.
-	*/
-	public $channelCode;
-
-	/**
 	*The date and time the order was accepted by the tenant.
 	*/
 	public $acceptedDate;
@@ -58,6 +53,11 @@ class Order
 	*Date when the order was cancelled. System-supplied and read-only.
 	*/
 	public $cancelledDate;
+
+	/**
+	*Code that identifies the channel associated with the site for the shopper's created shopping cart, order, and return.
+	*/
+	public $channelCode;
 
 	/**
 	*Date when the order was closed. Closed order is an order that has been processed and the items shipped. System-supplied and read-only.
@@ -125,7 +125,7 @@ class Order
 	public $expirationDate;
 
 	/**
-	*Unique identifier used by an external program to identify a Mozu order, customer account, or wish list.
+	*Unique identifier used by an external program to identify a  order, customer account, or wish list.
 	*/
 	public $externalId;
 
@@ -165,12 +165,12 @@ class Order
 	public $hasDraft;
 
 	/**
-	*Unique identifier of the source product property. For a product field it will be the name of the field. For a product attribute it will be the Attribute FQN. 
+	*Unique identifier of the source property, such as a catalog, discount, order, or email template.For a product field it will be the name of the field.For a category ID, must be a positive integer not greater than 2000000. By default,  auto-generates a category ID when categories are created. If you want to specify an ID during creation (which preserves category link relationships when migrating tenant data from one sandbox to another), you must also include the  query string in the endpoint. For example, . Then, use the  property to specify the desired category ID.For a product attribute it will be the Attribute FQN.For a document, the ID must be specified as a 32 character, case-insensitive, alphanumeric string. You can specify the ID as 32 sequential characters or as groups separated by dashes in the format 8-4-4-4-12. For example, or.For email templates, the ID must be one of the following values:			
 	*/
 	public $id;
 
 	/**
-	*The date and time an order or wish list is imported into Mozu. This is not the date and time it was created in the external application. 
+	*The date and time an order or wish list is imported into . This is not the date and time it was created in the external application.
 	*/
 	public $importDate;
 
@@ -190,7 +190,7 @@ class Order
 	public $isEligibleForReturns;
 
 	/**
-	*Indicates if this object/data was imported from an outside source such as a data import or synchronization via an app or service. If true, this data was originally imported into Mozu and accessible through your store database. Examples of imported objects/data include orders and customer accounts.
+	*Indicates if this object/data was imported from an outside source such as a data import or synchronization via an app or service. If true, this data was originally imported into  and accessible through your store database. Examples of imported objects/data include orders and customer accounts.
 	*/
 	public $isImport;
 
@@ -208,6 +208,11 @@ class Order
 	*The date in UTC Date/Time when the items in the cart were last validated against the site's product catalog. System-supplied and read-only.
 	*/
 	public $lastValidationDate;
+
+	/**
+	*The total charge for the line item with all weighted order level manual adjustments.
+	*/
+	public $lineItemSubtotalWithOrderAdjustments;
 
 	/**
 	*The unique, user-defined code that identifies a location. This location can be the location where the order was entered, location for newly in-stock products, and where products are returned.
@@ -230,9 +235,19 @@ class Order
 	public $parentOrderId;
 
 	/**
+	*If the Order has a parent Order, the order number is recorded here.
+	*/
+	public $parentOrderNumber;
+
+	/**
 	*If this order was created to fulfill an item replacement as part of a return merchandise authorization (RMA), the unique identifier of the return.
 	*/
 	public $parentReturnId;
+
+	/**
+	*If the Order has a parent Order with a return, the return number is recorded here.
+	*/
+	public $parentReturnNumber;
 
 	/**
 	*Status of the payment for the specified order.
@@ -240,7 +255,7 @@ class Order
 	public $paymentStatus;
 
 	/**
-	*Pricelist code for the order
+	*If the order is associated with a price list, this is the unique code of the price list.
 	*/
 	public $priceListCode;
 
@@ -248,6 +263,11 @@ class Order
 	*Status of any returns associated with this order after it was completed.
 	*/
 	public $returnStatus;
+
+	/**
+	*The total shipping amount for the order before discounts and adjustments.
+	*/
+	public $shippingAmountBeforeDiscountsAndAdjustments;
 
 	/**
 	*The shipping subtotal amount calculated without any applied discounts for line item and entire amounts of carts and orders. This property is not calculated for wish lists at this time.
@@ -275,7 +295,7 @@ class Order
 	public $sourceDevice;
 
 	/**
-	*The current status of an object. This status is specific to the object including payment (New, Authorized, Captured, Declined, Failed, Voided, Credited, CheckRequested, or RolledBack), discount (Active, Scheduled, or Expired), returns (ReturnAuthorized), tenant, package (Fulfilled or NotFulfilled), application, master and product catalogs, orders (Pending, Submitted, Processing, Pending Review, Closed, or Canceled), and order validation results (Pass, Fail, Error, or Review).
+	*The current status of the object.This value is read only. Valid values for this field are: "Active", "Expired", and "Inactive".
 	*/
 	public $status;
 
@@ -375,7 +395,12 @@ class Order
 	public $fulfillmentInfo;
 
 	/**
-	*The list of historically-applied handling discounts.  The active one will have IsExcluded == false
+	*The amount to adjust the order handling fee.
+	*/
+	public $handlingAdjustment;
+
+	/**
+	*The list of historically-applied handling discounts. The active one will have IsExcluded == false
 	*/
 	public $handlingDiscounts;
 

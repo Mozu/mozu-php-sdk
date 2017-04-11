@@ -17,12 +17,18 @@ use Mozu\Api\Urls\Commerce\Customer\Attributedefinition\AttributeUrl;
 
 
 /**
-* Use the Customer Attribute Definition resource to manage the attributes to define for your shoppers.
+* Attributes are used to add custom definitions and characteristics to the following objects:
+*  — are attributes that define the characteristics of products, enabling you to uniquely describe a product. They consist of options, properties, and extras. Refer to [Product Attributes](https://www.mozu.com/docs/guides/catalog/product-attributes.htm) in the Guides section for more information.
+
+*  — are custom attributes that you can apply to customer accounts to add further definition for special uses, such as marketing campaigns, or discounts. Refer to [Customer Attributes](https://www.mozu.com/docs/guides/customers/customers.htm#customer_attributes) in the Guides section for more information.
+
+*  — are custom attributes that enable you to uniquely describe an aspect of an order. Depending on the attribute definition, either you or a shopper can enter values for the order attribute. Refer to [Order Attributes](https://www.mozu.com/docs/guides/orders/order-attributes.htm) in the Guides section for more information.
+
 */
 class AttributeClient {
 
 	/**
-	* Retrieves a list of customer attributes according to any filter and sort criteria specified in the request.
+	* Retrieves a paged list of attributes according to any specified filter criteria and sort options.
 	*
 	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
 	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
@@ -56,7 +62,7 @@ class AttributeClient {
 	}
 	
 	/**
-	* Retrieve a customer attribute definition by supplying its fully qualified name.
+	* Retrieves the details of the specified product attribute.
 	*
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
 	* @param string $responseFields Use this field to include those fields which are not included by default.

@@ -43,11 +43,11 @@ class CouponClient {
 	* Retrieves a list of coupons in a specified coupon set according to any specified filter criteria and sort options.
 	*
 	* @param string $couponSetCode The unique identifier of the coupon set that the coupons belongs to.
-	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for a list of supported filters.
+	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
 	* @param bool $includeCounts Specifies whether to include the redemptionCount property in the response body object.
 	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for more information.
+	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for more information.
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
 	* @return MozuClient
 	*/
@@ -64,7 +64,7 @@ class CouponClient {
 	* Adds coupons  to a specified manual coupon set. Use the couponSetCode parameter to specify the manual coupon set.
 	*
 	* @param string $couponSetCode The unique identifier of the coupon set.
-	* @param array|Coupon $coupons Mozu.ProductAdmin.Contracts.Coupon ApiType DOCUMENT_HERE 
+	* @param array|Coupon $coupons The details necessary to assign the discount to a coupon set, including .
 	*/
 	public static function addCouponsClient($coupons, $couponSetCode)
 	{

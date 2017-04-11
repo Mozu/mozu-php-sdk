@@ -17,7 +17,7 @@ use Mozu\Api\Urls\Commerce\Customer\Accounts\CardUrl;
 
 
 /**
-* Use the Cards subresource to manage stored credit cards for customer accounts. Mozu stores limited card data in the Customer service for expedited ordering purposes; however, the complete card data is stored in the Payment service.
+* Use the Cards subresource to manage stored credit cards for customer accounts.  stores limited card data in the Customer service for expedited ordering purposes; however, the complete card data is stored in the Payment service.
 */
 class CardClient {
 

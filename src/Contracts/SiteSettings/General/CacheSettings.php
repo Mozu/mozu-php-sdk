@@ -15,12 +15,12 @@ namespace Mozu\Api\Contracts\SiteSettings\General;
 
 
 /**
-*	Mozu.SiteSettings.General.Contracts.CacheSettings ApiType DOCUMENT_HERE 
+*	Settings related to the CDN cache.
 */
 class CacheSettings
 {
 	/**
-	*The a query string value that can be used to invalidate a client browser cache/ cdn cache.
+	*A random string value appended to the URLs of CDN content. When a user clicks the Bust Cache button in , the random number in the URL forces the cache to point to the latest version of the CDN content.
 	*/
 	public $cdnCacheBustKey;
 

@@ -20,12 +20,12 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 class Product
 {
 	/**
-	*Mozu.ProductRuntime.Contracts.Product catalogEndDate ApiTypeMember DOCUMENT_HERE 
+	*The date and time in UTC when the product is no longer active in the catalog.
 	*/
 	public $catalogEndDate;
 
 	/**
-	*Mozu.ProductRuntime.Contracts.Product catalogStartDate ApiTypeMember DOCUMENT_HERE 
+	*The date and time in UTC format when the product is active in the catalog.
 	*/
 	public $catalogStartDate;
 
@@ -35,17 +35,17 @@ class Product
 	public $createDate;
 
 	/**
-	*Mozu.ProductRuntime.Contracts.Product dateFirstAvailableInCatalog ApiTypeMember DOCUMENT_HERE 
+	*The date and time in UTC format when the product first became available in the catalog. This field is used to calculate the number of days the product has been available in the catalog for a dynamic expression.
 	*/
 	public $dateFirstAvailableInCatalog;
 
 	/**
-	*Mozu.ProductRuntime.Contracts.Product daysAvailableInCatalog ApiTypeMember DOCUMENT_HERE 
+	*The total number of days the product has been available in the catalog. This field is related to the DaysAvailableInCatalog field in a dynamic expression.
 	*/
 	public $daysAvailableInCatalog;
 
 	/**
-	*List of supported types of fulfillment  for the product or variation. The types include direct ship, in-store pickup, or both. 
+	*List of supported types of fulfillment for the product or variation. The types include direct ship, in-store pickup, or both.
 	*/
 	public $fulfillmentTypesSupported;
 
@@ -55,7 +55,7 @@ class Product
 	public $goodsType;
 
 	/**
-	*Indicates if the object or feature is active. This indicator is used for subscriptions (at the site or tenant level), customer accounts, products and variations.
+	*Indicates if the object or feature is active.
 	*/
 	public $isActive;
 
@@ -95,12 +95,12 @@ class Product
 	public $productSequence;
 
 	/**
-	*The product type template associated with the product on the storefront.
+	*A product type is like a product template.
 	*/
 	public $productType;
 
 	/**
-	*Mozu.ProductRuntime.Contracts.Product productTypeId ApiTypeMember DOCUMENT_HERE 
+	*The unique identifier of the product type of the product.
 	*/
 	public $productTypeId;
 
@@ -124,10 +124,13 @@ class Product
 	*/
 	public $upCs;
 
-		public $updateDate;
+	/**
+	*The date and time in UTC format the object was updated most recently.
+	*/
+	public $updateDate;
 
 	/**
-	*Mozu.ProductRuntime.Contracts.Product validPriceLists ApiTypeMember DOCUMENT_HERE 
+	*A list of price lists for which the product is valid.
 	*/
 	public $validPriceLists;
 
@@ -187,7 +190,7 @@ class Product
 	public $pricingBehavior;
 
 	/**
-	*Collection of property attributes defined for the object. Properties are associated to all objects within Mozu, including documents, products, and product types.
+	*Collection of property attributes defined for the object. Properties are associated to all objects within , including documents, products, and product types.
 	*/
 	public $properties;
 
@@ -201,9 +204,15 @@ class Product
 	*/
 	public $variations;
 
-		public $volumePriceBands;
+	/**
+	*The details of any volume price bands associated with the product.Refer to [Volume Pricing](https://www.mozu.com/docs/guides/catalog/price-lists.htm#volume_pricing) for more information.
+	*/
+	public $volumePriceBands;
 
-		public $volumePriceRange;
+	/**
+	*The details of the volume price range associated with the product. Volume price ranges consist of a lower price and an upper price, and either lower or upper prices can be affected by discounts.You can display the volume price range on product listing pages, such as category and search result pages, and product detail pages.Refer to [Volume Pricing Storefront Behavior](https://www.mozu.com/docs/guides/catalog/price-lists.htm#volume_pricing_storefront_behavior) for more information.
+	*/
+	public $volumePriceRange;
 
 }
 

@@ -24,12 +24,13 @@ class FraudScreenClient {
 	/**
 	* payments-fraudscreen Post Screen description DOCUMENT_HERE 
 	*
+	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @param FraudScreenRequest $request Mozu.PaymentService.Contracts.Request.FraudScreenRequest ApiType DOCUMENT_HERE 
 	* @return MozuClient
 	*/
-	public static function screenClient($request)
+	public static function screenClient($request, $responseFields =  null)
 	{
-		$url = FraudScreenUrl::screenUrl();
+		$url = FraudScreenUrl::screenUrl($responseFields);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($request);
 		return $mozuClient;

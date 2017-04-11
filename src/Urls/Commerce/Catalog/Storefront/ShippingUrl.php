@@ -19,13 +19,15 @@ class ShippingUrl  {
 
 	/**
 		* Get Resource Url for GetRates
+		* @param bool $includeRawResponse Set this parameter to  to retrieve the full raw JSON response from a shipping carrier (instead of just the shipping rate).
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
 	*/
-	public static function getRatesUrl($responseFields)
+	public static function getRatesUrl($includeRawResponse, $responseFields)
 	{
 		$url = "/api/commerce/catalog/storefront/shipping/request-rates?responseFields={responseFields}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("includeRawResponse", $includeRawResponse);
 		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}

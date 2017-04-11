@@ -20,12 +20,12 @@ namespace Mozu\Api\Contracts\InstalledApplications;
 class CustomFunctionsForContext
 {
 	/**
-	*Mozu.InstalledApplications.Contracts.CustomFunctionsForContext context ApiTypeMember DOCUMENT_HERE 
+	*The site ID for the site you want to apply a group of settings to. You do not need to provide this value if you want to apply the same settings to a particular action across all your sites.
 	*/
 	public $context;
 
 	/**
-	*Mozu.InstalledApplications.Contracts.CustomFunctionsForContext customFunctions ApiTypeMember DOCUMENT_HERE 
+	*An array of custom functions tied to a particular action.
 	*/
 	public $customFunctions;
 

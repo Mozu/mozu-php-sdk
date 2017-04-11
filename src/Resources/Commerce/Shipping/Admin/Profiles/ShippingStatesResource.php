@@ -66,7 +66,7 @@ class ShippingStatesResource {
 	* Updates the details of the shipping states.
 	*
 	* @param string $profilecode The unique, user-defined code of the profile with which the shipping state is associated.
-	* @param array|ShippingStates $states Mozu.ShippingAdmin.Contracts.Profile.ShippingStates ApiType DOCUMENT_HERE 
+	* @param array|ShippingStates $states The updated details of the shipping states associated with the specified profilecode.
 	* @return array|ShippingStates 
 	* @deprecated deprecated since version 1.17
 	*/

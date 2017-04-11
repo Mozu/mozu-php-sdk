@@ -17,12 +17,12 @@ use Mozu\Api\Urls\Content\PublishSetSummaryUrl;
 
 
 /**
-* content/publishsets related resources. DOCUMENT_HERE 
+* Use the Content Publish Set resource to manage content publish sets and the pending content drafts.You can use content publish sets to group pending content changes together and publish them all at the same time.
 */
 class PublishSetSummaryClient {
 
 	/**
-	* Returns a List of current Publishing sets with counts of drafts in each
+	* Returns a list of content publish sets.
 	*
 	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
@@ -39,13 +39,13 @@ class PublishSetSummaryClient {
 	}
 	
 	/**
-	* Retrieve a paged collection of publish set Items.
+	* Retrieves a list of content publish sets and their properties.
 	*
 	* @param string $code User-defined code that uniqely identifies the channel group.
-	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for a list of supported filters.
+	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
 	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for more information.
+	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for more information.
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
 	* @return MozuClient
 	*/
@@ -59,7 +59,7 @@ class PublishSetSummaryClient {
 	}
 	
 	/**
-	* Adds a set of documents by id to a publish set
+	* Deletes the specified content publish set. You can use the shouldDiscard parameter to specify whether to discard the content drafts assigned to the content publish set.
 	*
 	* @param string $code User-defined code that uniqely identifies the channel group.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
@@ -76,11 +76,11 @@ class PublishSetSummaryClient {
 	}
 	
 	/**
-	* Adds a set of documents by id to a publish set
+	* Adds a set of documents by id to a specified publish set.
 	*
 	* @param string $code User-defined code that uniqely identifies the channel group.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param array|AddOrDeletePublishItem $itemsToPublish Mozu.Content.Contracts.AddOrDeletePublishItem ApiType DOCUMENT_HERE 
+	* @param array|AddOrDeletePublishItem $itemsToPublish The details of the items that you want to add to a specified publish set.
 	* @return MozuClient
 	*/
 	public static function addPublishSetItemsClient($itemsToPublish, $code, $responseFields =  null)

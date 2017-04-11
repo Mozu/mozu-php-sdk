@@ -95,7 +95,7 @@ class ExtendedPropertyUrl  {
 	
 	/**
 		* Get Resource Url for DeleteExtendedProperty
-		* @param string $key 
+		* @param string $key The extended property key.
 		* @param string $orderId Unique identifier of the order.
 		* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
 		* @param string $version Determines whether or not to check versioning of items for concurrency purposes.

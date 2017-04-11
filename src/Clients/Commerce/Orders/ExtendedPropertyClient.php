@@ -38,12 +38,12 @@ class ExtendedPropertyClient {
 	}
 	
 	/**
-	* Create an extended property for the order.
+	* Creates an extended property for the order.
 	*
 	* @param string $orderId Unique identifier of the order.
 	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
 	* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
-	* @param array|ExtendedProperty $extendedProperties Mozu.CommerceRuntime.Contracts.Commerce.ExtendedProperty ApiType DOCUMENT_HERE 
+	* @param array|ExtendedProperty $extendedProperties The details of the extended property.
 	* @return MozuClient
 	*/
 	public static function addExtendedPropertiesClient($extendedProperties, $orderId, $updateMode =  null, $version =  null)
@@ -65,7 +65,7 @@ class ExtendedPropertyClient {
 	* @param bool $upsert Inserts and updates an extended property.
         
 	* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
-	* @param ExtendedProperty $extendedProperty Mozu.CommerceRuntime.Contracts.Commerce.ExtendedProperty ApiType DOCUMENT_HERE 
+	* @param ExtendedProperty $extendedProperty The details of the updated extended property.
 	* @return MozuClient
 	*/
 	public static function updateExtendedPropertyClient($extendedProperty, $orderId, $key, $updateMode =  null, $version =  null, $upsert =  null, $responseFields =  null)
@@ -85,7 +85,7 @@ class ExtendedPropertyClient {
 	* @param bool $upsert Inserts and updates the extended property.
         
 	* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
-	* @param array|ExtendedProperty $extendedProperties Mozu.CommerceRuntime.Contracts.Commerce.ExtendedProperty ApiType DOCUMENT_HERE 
+	* @param array|ExtendedProperty $extendedProperties The details of the updated extended properties.
 	* @return MozuClient
 	*/
 	public static function updateExtendedPropertiesClient($extendedProperties, $orderId, $updateMode =  null, $version =  null, $upsert =  null)
@@ -100,7 +100,7 @@ class ExtendedPropertyClient {
 	/**
 	* Deletes one or more extended properties.
 	*
-	* @param string $key 
+	* @param string $key The extended property key.
 	* @param string $orderId Unique identifier of the order.
 	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
 	* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
@@ -120,7 +120,7 @@ class ExtendedPropertyClient {
 	* @param string $orderId Unique identifier of the order.
 	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
 	* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
-	* @param array|string $keys 
+	* @param array|string $keys The extended property keys.
 	*/
 	public static function deleteExtendedPropertiesClient($keys, $orderId, $updateMode =  null, $version =  null)
 	{

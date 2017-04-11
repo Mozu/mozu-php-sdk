@@ -175,7 +175,7 @@ class ProductUrl  {
 	
 	/**
 		* Get Resource Url for DeleteProduct
-		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+		* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 		* @return string Resource Url
 	*/
 	public static function deleteProductUrl($productCode)

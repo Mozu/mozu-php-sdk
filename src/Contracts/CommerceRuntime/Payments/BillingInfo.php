@@ -20,7 +20,7 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Payments;
 class BillingInfo
 {
 	/**
-	*Transaction Id from third party payment source like Visa Checkout, Amazon
+	*Holds the transaction ID for an external payment type service.
 	*/
 	public $externalTransactionId;
 
@@ -35,7 +35,7 @@ class BillingInfo
 	public $paymentType;
 
 	/**
-	*Mozu.CommerceRuntime.Contracts.Payments.BillingInfo paymentWorkflow ApiTypeMember DOCUMENT_HERE 
+	*Identifies a specific workflow the payment goes through. This is used to define a workflow for external payment services.
 	*/
 	public $paymentWorkflow;
 
@@ -60,12 +60,17 @@ class BillingInfo
 	public $card;
 
 	/**
-	*Custom data from payment providers
+	*Information about the check used in the billing information, if it exists.
+	*/
+	public $check;
+
+	/**
+	*Custom data originated by the billing service.
 	*/
 	public $data;
 
 	/**
-	*Purchase order payment information
+	*The purchase order payment details.
 	*/
 	public $purchaseOrder;
 

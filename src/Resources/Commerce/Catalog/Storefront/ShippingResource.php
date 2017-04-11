@@ -35,14 +35,15 @@ class ShippingResource {
 	/**
 	* Retrieves the shipping rates applicable for the site.
 	*
+	* @param bool $includeRawResponse Set this parameter to  to retrieve the full raw JSON response from a shipping carrier (instead of just the shipping rate).
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param RateRequest $rateRequest Properties required to request a shipping rate calculation.
 	* @return RatesResponse 
 	* @deprecated deprecated since version 1.17
 	*/
-	public function getRates($rateRequest, $responseFields =  null)
+	public function getRates($rateRequest, $includeRawResponse =  null, $responseFields =  null)
 	{
-		$mozuClient = ShippingClient::getRatesClient($rateRequest, $responseFields);
+		$mozuClient = ShippingClient::getRatesClient($rateRequest, $includeRawResponse, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -52,12 +53,13 @@ class ShippingResource {
 /**
 	* Retrieves the shipping rates applicable for the site.
 	*
+	* @param bool $includeRawResponse Set this parameter to  to retrieve the full raw JSON response from a shipping carrier (instead of just the shipping rate).
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
-	public function getRatesAsync($rateRequest, $responseFields =  null)
+	public function getRatesAsync($rateRequest, $includeRawResponse =  null, $responseFields =  null)
 	{
-		$mozuClient = ShippingClient::getRatesClient($rateRequest, $responseFields);
+		$mozuClient = ShippingClient::getRatesClient($rateRequest, $includeRawResponse, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 

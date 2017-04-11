@@ -20,12 +20,12 @@ namespace Mozu\Api\Contracts\Content;
 class Facet
 {
 	/**
-	*The number of facet results for a product search.
+	*The total number of associated items.
 	*/
 	public $count;
 
 	/**
-	*The display name of the source product property. For a product field it will be the display name of the field. For a product attribute it will be the Attribute Name.
+	*The user supplied name that appears in . You can use this field for identification purposes.
 	*/
 	public $name;
 

@@ -14,25 +14,55 @@ namespace Mozu\Api\Contracts\SiteSettings\General\General\Routing;
 
 
 
+/**
+*	Mozu.SiteSettings.General.Contracts.General.Routing.Mapping ApiType DOCUMENT_HERE 
+*/
 class Mapping
 {
-		public $beforeRouting;
+	/**
+	*beforeRouting ApiType DOCUMENT_HERE 
+	*/
+	public $beforeRouting;
 
-		public $docId;
+	/**
+	*docId ApiType DOCUMENT_HERE 
+	*/
+	public $docId;
 
-		public $facetId;
+	/**
+	*facetId ApiType DOCUMENT_HERE 
+	*/
+	public $facetId;
 
-		public $listFqn;
+	/**
+	*The fully qualified name of the document list.
+	*/
+	public $listFqn;
 
-		public $mappings;
+	/**
+	*mappings ApiType DOCUMENT_HERE 
+	*/
+	public $mappings;
 
-		public $mapTo;
+	/**
+	*mapTo ApiType DOCUMENT_HERE 
+	*/
+	public $mapTo;
 
-		public $pattern;
+	/**
+	*pattern ApiType DOCUMENT_HERE 
+	*/
+	public $pattern;
 
-		public $replacement;
+	/**
+	*replacement ApiType DOCUMENT_HERE 
+	*/
+	public $replacement;
 
-		public $type;
+	/**
+	*type ApiType DOCUMENT_HERE 
+	*/
+	public $type;
 
 }
 

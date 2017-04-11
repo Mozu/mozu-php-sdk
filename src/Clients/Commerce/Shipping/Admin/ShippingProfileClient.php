@@ -17,12 +17,12 @@ use Mozu\Api\Urls\Commerce\Shipping\Admin\ShippingProfileUrl;
 
 
 /**
-* commerce/shipping/admin/profiles related resources. DOCUMENT_HERE 
+* Use the Profiles resource to manage your shipping profiles.
 */
 class ShippingProfileClient {
 
 	/**
-	* Get Shipping Profiles for the Tenant/Master Catalog
+	* Retrieves a list of shipping profiles.
 	*
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return MozuClient

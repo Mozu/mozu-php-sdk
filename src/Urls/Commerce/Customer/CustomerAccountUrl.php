@@ -92,7 +92,7 @@ class CustomerAccountUrl  {
 	/**
 		* Get Resource Url for ChangePassword
 		* @param int $accountId Unique identifier of the customer account.
-		* @param bool $unlockAccount 
+		* @param bool $unlockAccount Specifies whether to unlock the specified customer account.
 		* @return string Resource Url
 	*/
 	public static function changePasswordUrl($accountId, $unlockAccount)
@@ -199,7 +199,7 @@ class CustomerAccountUrl  {
 	
 	/**
 		* Get Resource Url for GetLoginStateByEmailAddress
-		* @param string $customerSetCode 
+		* @param string $customerSetCode The unique idenfitier of the customer set.
 		* @param string $emailAddress The email address associated with the customer account.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @return string Resource Url
@@ -216,7 +216,7 @@ class CustomerAccountUrl  {
 	
 	/**
 		* Get Resource Url for GetLoginStateByUserName
-		* @param string $customerSetCode 
+		* @param string $customerSetCode The unique idenfitier of the customer set.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param string $userName The user name associated with the customer account.
 		* @return string Resource Url
@@ -235,7 +235,7 @@ class CustomerAccountUrl  {
 		* Get Resource Url for GetCustomersPurchaseOrderAccounts
 		* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
 		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-		* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for more information.
+		* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for more information.
 		* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
 		* @return string Resource Url
 	*/

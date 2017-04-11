@@ -15,12 +15,12 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Payments;
 
 
 /**
-*	Mozu.CommerceRuntime.Contracts.Payments.PurchaseOrderPaymentTerm ApiType DOCUMENT_HERE 
+*	The details of the payment terms assocaited with the purchase order payment.Refer to [Payment Terms](https://www.mozu.com/docs/guides/orders/purchase-order.htm#payment_terms) in the Purchase Orders guides topic for more information.
 */
 class PurchaseOrderPaymentTerm
 {
 	/**
-	*Mozu.CommerceRuntime.Contracts.Payments.PurchaseOrderPaymentTerm code ApiTypeMember DOCUMENT_HERE 
+	*The payment term code associated with the purchase order.Refer to [Payment Terms](https://www.mozu.com/docs/guides/orders/purchase-order.htm#payment_terms) in the Purchase Order guides topic for more information.
 	*/
 	public $code;
 

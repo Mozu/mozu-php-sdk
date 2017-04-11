@@ -15,7 +15,7 @@ namespace Mozu\Api\Contracts\AdminUser;
 
 
 /**
-*	Properties of the authentication ticket to be used in user claims with the Mozu API.
+*	Properties of the authentication ticket to be used in user claims with the  API.
 */
 class TenantAdminUserAuthTicket
 {
@@ -60,7 +60,7 @@ class TenantAdminUserAuthTicket
 	public $tenant;
 
 	/**
-	*User information associated with the authentication ticket.
+	*Properties of the user. Users include customers and  users.
 	*/
 	public $user;
 

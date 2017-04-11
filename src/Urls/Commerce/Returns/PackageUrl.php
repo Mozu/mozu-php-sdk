@@ -20,14 +20,16 @@ class PackageUrl  {
 	/**
 		* Get Resource Url for GetPackageLabel
 		* @param string $packageId Unique identifier of the package for which to retrieve the label.
+		* @param bool $returnAsBase64Png Specifies whether to return the RMA label image as Base64-encoded PNG image instead of as a byte array encoded in the original image format. The default is .
 		* @param string $returnId Unique identifier of the return whose items you want to get.
 		* @return string Resource Url
 	*/
-	public static function getPackageLabelUrl($packageId, $returnId)
+	public static function getPackageLabelUrl($packageId, $returnAsBase64Png, $returnId)
 	{
-		$url = "/api/commerce/returns/{returnId}/packages/{packageId}/label";
+		$url = "/api/commerce/returns/{returnId}/packages/{packageId}/label?returnAsBase64Png={returnAsBase64Png}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
 		$url = $mozuUrl->formatUrl("packageId", $packageId);
+		$url = $mozuUrl->formatUrl("returnAsBase64Png", $returnAsBase64Png);
 		$url = $mozuUrl->formatUrl("returnId", $returnId);
 		return $mozuUrl;
 	}

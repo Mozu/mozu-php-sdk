@@ -20,7 +20,7 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Fulfillment;
 class FulfillmentAction
 {
 	/**
-	*The name of the fulfillment action to perform for the purchased product. Options include "Ship" or "PickUp" (in-store pick-up).
+	*The name of the action to perform for the payment, fulfillment, order, or return.
 	*/
 	public $actionName;
 

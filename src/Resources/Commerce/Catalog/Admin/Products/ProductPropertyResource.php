@@ -36,7 +36,7 @@ class ProductPropertyResource {
 	/**
 	* Retrieves a list of the property attributes configured for the product specified in the request.
 	*
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @return array|ProductProperty 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -52,7 +52,7 @@ class ProductPropertyResource {
 /**
 	* Retrieves a list of the property attributes configured for the product specified in the request.
 	*
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getPropertiesAsync($productCode)
@@ -67,7 +67,7 @@ class ProductPropertyResource {
 	* Retrieves a collection of property values for localized content. This content is set by the locale code. 
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $value The value string to create.
 	* @return array|ProductPropertyValueLocalizedContent 
 	* @deprecated deprecated since version 1.17
@@ -85,7 +85,7 @@ class ProductPropertyResource {
 	* Retrieves a collection of property values for localized content. This content is set by the locale code. 
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $value The value string to create.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -102,7 +102,7 @@ class ProductPropertyResource {
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
 	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $value The value string to create.
 	* @return ProductPropertyValueLocalizedContent 
@@ -122,7 +122,7 @@ class ProductPropertyResource {
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
 	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $value The value string to create.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -173,7 +173,7 @@ class ProductPropertyResource {
 	* Adds a property value for localized content. This content is set by the locale code. 
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $value The value string to create.
 	* @param ProductPropertyValueLocalizedContent $localizedContent Use this field to include those fields which are not included by default.
@@ -193,7 +193,7 @@ class ProductPropertyResource {
 	* Adds a property value for localized content. This content is set by the locale code. 
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $value The value string to create.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -209,7 +209,7 @@ class ProductPropertyResource {
 	/**
 	* Configures a property attribute for the product specified in the request.
 	*
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param ProductProperty $productProperty Details of a property defined for a product.
 	* @return ProductProperty 
@@ -227,7 +227,7 @@ class ProductPropertyResource {
 /**
 	* Configures a property attribute for the product specified in the request.
 	*
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -243,7 +243,7 @@ class ProductPropertyResource {
 	* Updates all property values for localized content. This content is set by the locale code. 
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $value The value string to create.
 	* @param array|ProductPropertyValueLocalizedContent $localizedContent Content of the product property value in the language defined for the locale code.
 	* @return array|ProductPropertyValueLocalizedContent 
@@ -262,7 +262,7 @@ class ProductPropertyResource {
 	* Updates all property values for localized content. This content is set by the locale code. 
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $value The value string to create.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -279,7 +279,7 @@ class ProductPropertyResource {
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
 	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $value The value string to create.
 	* @param ProductPropertyValueLocalizedContent $localizedContent Content of the product property value in the language defined for the locale code.
@@ -300,7 +300,7 @@ class ProductPropertyResource {
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
 	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $value The value string to create.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -317,7 +317,7 @@ class ProductPropertyResource {
 	* Update one or more details of a property attribute configuration for the product specified in the request.
 	*
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param ProductProperty $productProperty Details of a property defined for a product.
 	* @return ProductProperty 
@@ -336,7 +336,7 @@ class ProductPropertyResource {
 	* Update one or more details of a property attribute configuration for the product specified in the request.
 	*
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -352,7 +352,7 @@ class ProductPropertyResource {
 	* Deletes the configuration of a property attribute for the product specified in the request.
 	*
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteProperty($productCode, $attributeFQN)
@@ -367,7 +367,7 @@ class ProductPropertyResource {
 	* Deletes the configuration of a property attribute for the product specified in the request.
 	*
 	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deletePropertyAsync($productCode, $attributeFQN)
@@ -383,7 +383,7 @@ class ProductPropertyResource {
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
 	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $value The value string to create.
 	* @deprecated deprecated since version 1.17
 	*/
@@ -400,7 +400,7 @@ class ProductPropertyResource {
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
 	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $value The value string to create.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/

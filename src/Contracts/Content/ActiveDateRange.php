@@ -15,7 +15,7 @@ namespace Mozu\Api\Contracts\Content;
 
 
 /**
-*	Mozu.Content.Contracts.ActiveDateRange ApiType DOCUMENT_HERE 
+*	Specifies a start date and end date for when associated object is on the live site, if  is set to .If  is set to  ignores this property.
 */
 class ActiveDateRange
 {

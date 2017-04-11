@@ -37,7 +37,7 @@ class PriceListEntryResource {
 	*
 	* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
 	* @param string $priceListCode The unique code of the price list associated with the price list entry.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @param DateTime $startDate The start date of the price list entry.
 	* @return PriceListEntry 
@@ -57,7 +57,7 @@ class PriceListEntryResource {
 	*
 	* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
 	* @param string $priceListCode The unique code of the price list associated with the price list entry.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @param DateTime $startDate The start date of the price list entry.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -73,11 +73,11 @@ class PriceListEntryResource {
 	/**
 	* Retrieves a list of price list entries associated with the specified price list according to any specified facets, filter criteria, and sort options.
 	*
-	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for a list of supported filters.
+	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
 	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
 	* @param string $priceListCode The unique code of the price list associated with the price list entry.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for more information.
+	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for more information.
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
 	* @return PriceListEntryCollection 
 	* @deprecated deprecated since version 1.17
@@ -94,11 +94,11 @@ class PriceListEntryResource {
 /**
 	* Retrieves a list of price list entries associated with the specified price list according to any specified facets, filter criteria, and sort options.
 	*
-	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for a list of supported filters.
+	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
 	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
 	* @param string $priceListCode The unique code of the price list associated with the price list entry.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for more information.
+	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for more information.
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -115,7 +115,7 @@ class PriceListEntryResource {
 	*
 	* @param string $priceListCode The specified price list to which you want to add the price list entry.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param PriceListEntry $priceListEntryIn Mozu.ProductAdmin.Contracts.PriceListEntry ApiType DOCUMENT_HERE 
+	* @param PriceListEntry $priceListEntryIn The details of the new price list entry.
 	* @return PriceListEntry 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -148,10 +148,10 @@ class PriceListEntryResource {
 	*
 	* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
 	* @param string $priceListCode The unique code of the price list associated with the price list entry.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @param DateTime $startDate The start date of the price list entry.
-	* @param PriceListEntry $priceListEntryIn Mozu.ProductAdmin.Contracts.PriceListEntry ApiType DOCUMENT_HERE 
+	* @param PriceListEntry $priceListEntryIn The updated details of the price list entry.
 	* @return PriceListEntry 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -169,7 +169,7 @@ class PriceListEntryResource {
 	*
 	* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
 	* @param string $priceListCode The unique code of the price list associated with the price list entry.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @param DateTime $startDate The start date of the price list entry.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -187,7 +187,7 @@ class PriceListEntryResource {
 	*
 	* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
 	* @param string $priceListCode The code of the specified price list associated with the price list entry.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param DateTime $startDate The start date of the price list entry.
 	* @deprecated deprecated since version 1.17
 	*/
@@ -204,7 +204,7 @@ class PriceListEntryResource {
 	*
 	* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
 	* @param string $priceListCode The code of the specified price list associated with the price list entry.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param DateTime $startDate The start date of the price list entry.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/

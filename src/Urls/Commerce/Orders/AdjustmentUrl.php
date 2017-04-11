@@ -18,6 +18,25 @@ use Mozu\Api\UrlLocation;
 class AdjustmentUrl  {
 
 	/**
+		* Get Resource Url for ApplyHandlingAdjustment
+		* @param string $orderId Unique identifier of the order.
+		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+		* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
+		* @return string Resource Url
+	*/
+	public static function applyHandlingAdjustmentUrl($orderId, $responseFields, $updateMode, $version)
+	{
+		$url = "/api/commerce/orders/{orderId}/adjustment/handling?updatemode={updateMode}&version={version}&responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("updateMode", $updateMode);
+		$url = $mozuUrl->formatUrl("version", $version);
+		return $mozuUrl;
+	}
+	
+	/**
 		* Get Resource Url for ApplyShippingAdjustment
 		* @param string $orderId Unique identifier of the order.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
@@ -50,6 +69,23 @@ class AdjustmentUrl  {
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
 		$url = $mozuUrl->formatUrl("orderId", $orderId);
 		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("updateMode", $updateMode);
+		$url = $mozuUrl->formatUrl("version", $version);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for RemoveHandlingAdjustment
+		* @param string $orderId Unique identifier of the order.
+		* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+		* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
+		* @return string Resource Url
+	*/
+	public static function removeHandlingAdjustmentUrl($orderId, $updateMode, $version)
+	{
+		$url = "/api/commerce/orders/{orderId}/adjustment/handling?updatemode={updateMode}&version={version}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
 		$url = $mozuUrl->formatUrl("updateMode", $updateMode);
 		$url = $mozuUrl->formatUrl("version", $version);
 		return $mozuUrl;

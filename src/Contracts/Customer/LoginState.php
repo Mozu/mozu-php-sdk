@@ -20,16 +20,6 @@ namespace Mozu\Api\Contracts\Customer;
 class LoginState
 {
 	/**
-	*Date and time when the entity was created, represented in UTC Date/Time.
-	*/
-	public $createdOn;
-
-	/**
-	*The total number of failed authentication attempts associated with a customer account attempting access.
-	*/
-	public $failedLoginAttemptCount;
-
-	/**
 	*The date and time the initial login was unsuccessful. System-supplied and read only. Each time user authentication fails, an update occurs on this field. The amount of failures is calculated together for `failedLoginAttemptCount`.
 	*/
 	public $firstFailedLoginAttemptOn;
@@ -68,6 +58,16 @@ class LoginState
 	*Date and time when the entity was last updated, represented in UTC Date/Time.
 	*/
 	public $updatedOn;
+
+	/**
+	*Date and time when the entity was created, represented in UTC Date/Time.
+	*/
+	public $createdOn;
+
+	/**
+	*The total number of failed authentication attempts associated with a customer account attempting access.
+	*/
+	public $failedLoginAttemptCount;
 
 }
 

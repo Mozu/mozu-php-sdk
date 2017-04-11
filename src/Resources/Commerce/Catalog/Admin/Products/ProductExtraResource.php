@@ -67,7 +67,7 @@ class ProductExtraResource {
 	* Retrieves a collection of all localized delta price values for a product extra. Localized delta prices are deltas between two differing monetary conversion amounts between countries, such as US Dollar vs Euro.
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $value The value string to create.
 	* @return array|ProductExtraValueDeltaPrice 
 	* @deprecated deprecated since version 1.17
@@ -85,7 +85,7 @@ class ProductExtraResource {
 	* Retrieves a collection of all localized delta price values for a product extra. Localized delta prices are deltas between two differing monetary conversion amounts between countries, such as US Dollar vs Euro.
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $value The value string to create.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -102,7 +102,7 @@ class ProductExtraResource {
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
 	* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $value The value string to create.
 	* @return ProductExtraValueDeltaPrice 
@@ -122,7 +122,7 @@ class ProductExtraResource {
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
 	* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $value The value string to create.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -173,7 +173,7 @@ class ProductExtraResource {
 	* Adds a localized delta price value for a product extra. Localized delta prices are deltas between two differing monetary conversion amounts between countries, such as US Dollar vs Euro.
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $value The value string to create.
 	* @param ProductExtraValueDeltaPrice $localizedDeltaPrice The properties of the price difference between the product extra and the base product.
@@ -193,7 +193,7 @@ class ProductExtraResource {
 	* Adds a localized delta price value for a product extra. Localized delta prices are deltas between two differing monetary conversion amounts between countries, such as US Dollar vs Euro.
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $value The value string to create.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -243,7 +243,7 @@ class ProductExtraResource {
 	* Updates all localized delta price values for a product extra. Localized delta prices are deltas between two differing monetary conversion amounts between countries, such as US Dollar vs Euro.
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $value The value string to create.
 	* @param array|ProductExtraValueDeltaPrice $localizedDeltaPrice The properties of the price difference between the product extra and the base product.
 	* @return array|ProductExtraValueDeltaPrice 
@@ -262,7 +262,7 @@ class ProductExtraResource {
 	* Updates all localized delta price values for a product extra. Localized delta prices are deltas between two differing monetary conversion amounts between countries, such as US Dollar vs Euro.
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $value The value string to create.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -279,7 +279,7 @@ class ProductExtraResource {
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
 	* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $value The value string to create.
 	* @param ProductExtraValueDeltaPrice $localizedDeltaPrice The properties of the price difference between the product extra and the base product.
@@ -300,7 +300,7 @@ class ProductExtraResource {
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
 	* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $value The value string to create.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -383,7 +383,7 @@ class ProductExtraResource {
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
 	* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $value Use this field to include those fields which are not included by default.
 	* @deprecated deprecated since version 1.17
 	*/
@@ -400,7 +400,7 @@ class ProductExtraResource {
 	*
 	* @param string $attributeFQN Fully qualified name for an attribute.
 	* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param string $value Use this field to include those fields which are not included by default.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/

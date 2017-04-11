@@ -45,7 +45,7 @@ class ProductPrice
 	public $mapStartDate;
 
 	/**
-	*The manufacturer's suggested retail price for the product. This content may be defined by the supplier.
+	*The manufacturer's suggested retail price (MSRP) for the product. This content may be defined by the supplier.
 	*/
 	public $msrp;
 
@@ -55,7 +55,7 @@ class ProductPrice
 	public $price;
 
 	/**
-	*The set sale price for a product consisting of a price with a discount already applied.
+	*The set sale price for a product consisting of a price with a discount already applied.For price list entries, this property is the product's sale price if the  is set to .
 	*/
 	public $salePrice;
 

@@ -19,25 +19,29 @@ class PublicCardUrl  {
 
 	/**
 		* Get Resource Url for Create
+		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 		* @return string Resource Url
 	*/
-	public static function createUrl()
+	public static function createUrl($responseFields)
 	{
-		$url = "/payments/commerce/payments/cards/";
+		$url = "/payments/commerce/payments/cards/?responseFields={responseFields}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::PCI_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for Update
 		* @param string $cardId Unique identifier of the card associated with the customer account billing contact.
+		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 		* @return string Resource Url
 	*/
-	public static function updateUrl($cardId)
+	public static function updateUrl($cardId, $responseFields)
 	{
-		$url = "/payments/commerce/payments/cards/{cardId}";
+		$url = "/payments/commerce/payments/cards/{cardId}?responseFields={responseFields}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::PCI_POD,"PUT", false) ;
 		$url = $mozuUrl->formatUrl("cardId", $cardId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;
 	}
 	

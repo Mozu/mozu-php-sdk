@@ -19,7 +19,7 @@ class ProductVariationUrl  {
 
 	/**
 		* Get Resource Url for GetProductVariationLocalizedDeltaPrices
-		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+		* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 		* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
 		* @return string Resource Url
 	*/
@@ -35,7 +35,7 @@ class ProductVariationUrl  {
 	/**
 		* Get Resource Url for GetProductVariationLocalizedDeltaPrice
 		* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
-		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+		* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
 		* @return string Resource Url
@@ -53,7 +53,7 @@ class ProductVariationUrl  {
 	
 	/**
 		* Get Resource Url for GetProductVariationLocalizedPrices
-		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+		* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 		* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
 		* @return string Resource Url
 	*/
@@ -69,7 +69,7 @@ class ProductVariationUrl  {
 	/**
 		* Get Resource Url for GetProductVariationLocalizedPrice
 		* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
-		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+		* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 		* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
 		* @return string Resource Url
@@ -127,7 +127,7 @@ class ProductVariationUrl  {
 	
 	/**
 		* Get Resource Url for AddProductVariationLocalizedDeltaPrice
-		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+		* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
 		* @return string Resource Url
@@ -144,7 +144,7 @@ class ProductVariationUrl  {
 	
 	/**
 		* Get Resource Url for AddProductVariationLocalizedPrice
-		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+		* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 		* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
 		* @return string Resource Url
@@ -161,7 +161,7 @@ class ProductVariationUrl  {
 	
 	/**
 		* Get Resource Url for UpdateProductVariationLocalizedDeltaPrices
-		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+		* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 		* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
 		* @return string Resource Url
 	*/
@@ -177,7 +177,7 @@ class ProductVariationUrl  {
 	/**
 		* Get Resource Url for UpdateProductVariationLocalizedDeltaPrice
 		* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
-		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+		* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
 		* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
 		* @return string Resource Url
@@ -195,7 +195,7 @@ class ProductVariationUrl  {
 	
 	/**
 		* Get Resource Url for UpdateProductVariationLocalizedPrices
-		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+		* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 		* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
 		* @return string Resource Url
 	*/
@@ -211,7 +211,7 @@ class ProductVariationUrl  {
 	/**
 		* Get Resource Url for UpdateProductVariationLocalizedPrice
 		* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
-		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+		* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 		* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
 		* @return string Resource Url
@@ -277,7 +277,7 @@ class ProductVariationUrl  {
 	/**
 		* Get Resource Url for DeleteProductVariationLocalizedDeltaPrice
 		* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
-		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+		* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 		* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
 		* @return string Resource Url
 	*/
@@ -294,7 +294,7 @@ class ProductVariationUrl  {
 	/**
 		* Get Resource Url for DeleteProductVariationLocalizedPrice
 		* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
-		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+		* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 		* @param string $variationKey System-generated key that represents the attribute values that uniquely identify a specific product variation.
 		* @return string Resource Url
 	*/

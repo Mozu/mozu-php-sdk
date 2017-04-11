@@ -20,7 +20,7 @@ namespace Mozu\Api\Contracts\Customer;
 class CustomerUserAuthInfo
 {
 	/**
-	*The saved password for the customer account. 
+	*The write-only password for the customer account.
 	*/
 	public $password;
 

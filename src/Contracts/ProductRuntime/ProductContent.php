@@ -25,12 +25,12 @@ class ProductContent
 	public $metaTagDescription;
 
 	/**
-	*Keywords defined for  metadata, used to internally manage data, in the language specified by the `localeCode`. Keywords are used by content for categories, products, localized content, and SEO content.
+	*Keywords defined for metadata, used to internally manage data, in the language specified by the `localeCode`. Keywords are used by content for categories, products, localized content, and SEO content.
 	*/
 	public $metaTagKeywords;
 
 	/**
-	*Title defined for  metadata, used to internally manage data, in the language specified by the `localeCode`. Titles are used by content for categories, products, localized content, and SEO content.
+	*Title defined for metadata, used to internally manage data, in the language specified by the `localeCode`. Titles are used by content for categories, products, localized content, and SEO content.
 	*/
 	public $metaTagTitle;
 

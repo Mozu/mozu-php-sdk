@@ -20,6 +20,11 @@ namespace Mozu\Api\Contracts\Content;
 class Document
 {
 	/**
+	*The date and time when a document was added to the document list. System-supplied and read-only.
+	*/
+	public $insertDate;
+
+	/**
 	*The character length allowed for the content text.
 	*/
 	public $contentLength;
@@ -45,14 +50,9 @@ class Document
 	public $extension;
 
 	/**
-	*Unique identifier of the source product property. For a product field it will be the name of the field. For a product attribute it will be the Attribute FQN. 
+	*Unique identifier of the source property, such as a catalog, discount, order, or email template.For a product field it will be the name of the field.For a category ID, must be a positive integer not greater than 2000000. By default,  auto-generates a category ID when categories are created. If you want to specify an ID during creation (which preserves category link relationships when migrating tenant data from one sandbox to another), you must also include the  query string in the endpoint. For example, . Then, use the  property to specify the desired category ID.For a product attribute it will be the Attribute FQN.For a document, the ID must be specified as a 32 character, case-insensitive, alphanumeric string. You can specify the ID as 32 sequential characters or as groups separated by dashes in the format 8-4-4-4-12. For example, or.For email templates, the ID must be one of the following values:			
 	*/
 	public $id;
-
-	/**
-	*The date and time when a document was added to the document list. System-supplied and read-only.
-	*/
-	public $insertDate;
 
 	/**
 	*The fully qualified name of the document list.
@@ -60,7 +60,7 @@ class Document
 	public $listFQN;
 
 	/**
-	*The display name of the source product property. For a product field it will be the display name of the field. For a product attribute it will be the Attribute Name.
+	*The user supplied name that appears in . You can use this field for identification purposes.
 	*/
 	public $name;
 
@@ -85,7 +85,7 @@ class Document
 	public $activeDateRange;
 
 	/**
-	*Collection of property attributes defined for the object. Properties are associated to all objects within Mozu, including documents, products, and product types.
+	*Collection of property attributes defined for the object. Properties are associated to all objects within , including documents, products, and product types.
 	*/
 	public $properties;
 

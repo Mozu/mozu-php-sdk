@@ -15,12 +15,12 @@ namespace Mozu\Api\Contracts\SiteSettings\Order;
 
 
 /**
-*	Mozu.SiteSettings.Order.Contracts.PurchaseOrderPaymentDefinition ApiType DOCUMENT_HERE 
+*	The details of the purchase order payment.
 */
 class PurchaseOrderPaymentDefinition
 {
 	/**
-	*Indicates whether another payment can be used with the purchase order
+	*Specifies whether another payment can be used with the purchase order.
 	*/
 	public $allowSplitPayment;
 
@@ -30,12 +30,12 @@ class PurchaseOrderPaymentDefinition
 	public $isEnabled;
 
 	/**
-	*Mozu.SiteSettings.Order.Contracts.PurchaseOrderPaymentDefinition customFields ApiTypeMember DOCUMENT_HERE 
+	*The details of the custom fields associated with the purchase order payment type for the specific site.You can create custom text fields that customers or CSRs can fill out when they use the purchase order payment method before submitting the order.Refer to [Custom Text Fields](https://www.mozu.com/docs/guides/orders/purchase-order.htm#custom_text_fields) in the Purchase Orders guides topic for more information.
 	*/
 	public $customFields;
 
 	/**
-	*Allowed net terms
+	*The complete set of payment terms details for which all your customers are possibly applicable on that specific site.Refer to [Payment Terms](https://www.mozu.com/docs/guides/orders/purchase-order.htm#payment_terms) in the Purchase Orders guides topic for more information.
 	*/
 	public $paymentTerms;
 

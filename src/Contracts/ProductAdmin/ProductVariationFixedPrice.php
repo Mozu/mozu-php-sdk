@@ -15,7 +15,7 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 /**
-*	Mozu.ProductAdmin.Contracts.ProductVariationFixedPrice ApiType DOCUMENT_HERE 
+*	The details of the product variation localized price.
 */
 class ProductVariationFixedPrice
 {
@@ -30,17 +30,17 @@ class ProductVariationFixedPrice
 	public $currencyCode;
 
 	/**
-	*Variation price for fixed pricing
+	*If the product is in explicit pricing mode, this is the list price of the variation.
 	*/
 	public $listPrice;
 
 	/**
-	*The manufacturer's suggested retail price for the product. This content may be defined by the supplier.
+	*The manufacturer's suggested retail price (MSRP) for the product. This content may be defined by the supplier.
 	*/
 	public $msrp;
 
 	/**
-	*The set sale price for a product consisting of a price with a discount already applied.
+	*The set sale price for a product consisting of a price with a discount already applied.For price list entries, this property is the product's sale price if the  is set to .
 	*/
 	public $salePrice;
 

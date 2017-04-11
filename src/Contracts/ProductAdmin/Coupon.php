@@ -20,32 +20,32 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class Coupon
 {
 	/**
-	*Mozu.ProductAdmin.Contracts.Coupon canBeDeleted ApiTypeMember DOCUMENT_HERE 
+	*Specifies whether the coupon can be deleted and removed from a coupon set.
 	*/
 	public $canBeDeleted;
 
 	/**
-	*Code of a discount coupon. This code can be used by a shopper when a coupon code is required to earn the associated discount on a purchase.
+	*The coupon code that a shopper uses to redeem an associated discount  on a purchase. This is also the unique identifier of the coupon itself.
 	*/
 	public $couponCode;
 
 	/**
-	*Link to associated coupon
+	*The unique identifier of the coupon set that the coupon belongs to.
 	*/
 	public $couponSetCode;
 
 	/**
-	*ReadOnly system id for releated couponset.
+	*The unique, system generated id of the coupon set that contains the coupon.This value is read only.
 	*/
 	public $couponSetId;
 
 	/**
-	*Total number of times this code has been redeemed. ReadOnly, calculated. Only returned with response group includeCounts
+	*The total number of times the coupon has been redeemed. When you perform a GetCoupon or GetCoupons operation, set the includeCounts operation parameter to true to view this field.This field is read only.
 	*/
 	public $redemptionCount;
 
 	/**
-	*Basic audit info about the object, including date, time, and user account. Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
+	*Basic audit info about the object, including date, time, and user account. This data may be captured when creating, updating, and removing data.
 	*/
 	public $auditInfo;
 

@@ -75,7 +75,7 @@ class Attribute
 	public $masterCatalogId;
 
 	/**
-	*If applicable, the registered namespace associated with objects, used to generate the fully qualified name. If no namespace is defined, the namespace associated with the tenant is automatically assigned.
+	*The namespace for the accessible APIs and source capabilities in the core of  APIs.
 	*/
 	public $namespace;
 
@@ -100,7 +100,7 @@ class Attribute
 	public $content;
 
 	/**
-	*The localized content of an attribute determined by the `localeCode`. This content is always in the default language of the MasterCatalog.
+	*The localized content associated with the object.
 	*/
 	public $localizedContent;
 

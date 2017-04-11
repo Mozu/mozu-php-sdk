@@ -27,7 +27,7 @@ class InvalidCoupon
 	public $createDate;
 
 	/**
-	*Unique identifier for the discount in the storefront.
+	*The unique identifier of the discount.
 	*/
 	public $discountId;
 

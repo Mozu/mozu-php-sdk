@@ -20,7 +20,7 @@ namespace Mozu\Api\Contracts\ShippingAdmin;
 class TargetRule
 {
 	/**
-	*The user defined code for this rule must be unique
+	*code ApiType DOCUMENT_HERE 
 	*/
 	public $code;
 
@@ -30,12 +30,12 @@ class TargetRule
 	public $description;
 
 	/**
-	*The domain associated with the site and/or tenant.
+	*Properties of the domain that the tenant is associated with such as the domain name, the zone string, audit information (system-supplied and read-only), assignment data, and whether or not the domain is primary or requires a SSL for authentication.
 	*/
 	public $domain;
 
 	/**
-	*the expression of this rule
+	*expression ApiType DOCUMENT_HERE 
 	*/
 	public $expression;
 

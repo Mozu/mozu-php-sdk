@@ -71,7 +71,7 @@ class SecureAppDataResource {
 	*
 	* @param string $appKeyId 
 	* @param string $dbEntryQuery The database entry string to create.
-	* @param JObject $value JSON code for objects.
+	* @param JObject $value The value string to create.
 	* @deprecated deprecated since version 1.17
 	*/
 	public function createDBValue($value, $appKeyId, $dbEntryQuery)
@@ -102,7 +102,7 @@ class SecureAppDataResource {
 	*
 	* @param string $appKeyId 
 	* @param string $dbEntryQuery The database entry string to create.
-	* @param JObject $value JSON code for objects.
+	* @param JObject $value The value string to create.
 	* @deprecated deprecated since version 1.17
 	*/
 	public function updateDBValue($value, $appKeyId, $dbEntryQuery)

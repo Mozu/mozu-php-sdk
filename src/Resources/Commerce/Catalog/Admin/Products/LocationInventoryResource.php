@@ -143,7 +143,7 @@ class LocationInventoryResource {
 	/**
 	* Updates the current level of stock at each location associated with the product code specified in the request.
 	*
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @param array|LocationInventoryAdjustment $locationInventoryAdjustments Properties of an adjustment to the active product inventory of a specific location.
 	* @return array|LocationInventory 
 	* @deprecated deprecated since version 1.17
@@ -160,7 +160,7 @@ class LocationInventoryResource {
 /**
 	* Updates the current level of stock at each location associated with the product code specified in the request.
 	*
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateLocationInventoryAsync($locationInventoryAdjustments, $productCode)
@@ -175,7 +175,7 @@ class LocationInventoryResource {
 	* Deletes the location inventory definition for the product code specified in the request.
 	*
 	* @param string $locationCode The unique, user-defined code that identifies a location. 
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteLocationInventory($productCode, $locationCode)
@@ -190,7 +190,7 @@ class LocationInventoryResource {
 	* Deletes the location inventory definition for the product code specified in the request.
 	*
 	* @param string $locationCode The unique, user-defined code that identifies a location. 
-	* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteLocationInventoryAsync($productCode, $locationCode)

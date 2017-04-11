@@ -18,12 +18,12 @@ use Mozu\Api\Urls\Commerce\Catalog\Admin\PublishingScopeUrl;
 use Mozu\Api\Headers;
 
 /**
-* Use the Product Publishing resource to publish or discard pending changes to product definitions in the master catalog.
+* Use the Product Publishing resource to publish or discard pending changes to products in a master catalog, or to add or remove pending changes to and from product publish sets.You can use product publish sets to group pending product changes together and publish them all at the same time.
 */
 class PublishingScopeClient {
 
 	/**
-	* Retrieves the details of a single PublishSet.
+	* Retrieves the details of the specified product publish set.
 	*
 	* @param string $publishSetCode The unique identifier of the publish set.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
@@ -39,7 +39,7 @@ class PublishingScopeClient {
 	}
 	
 	/**
-	* Retrieves a list of PublishSets including the product counts.
+	* Retrieves a list of product publish sets and their properties, including the amount of pending product changes that are included in each one.
 	*
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return MozuClient
@@ -54,7 +54,7 @@ class PublishingScopeClient {
 	}
 	
 	/**
-	* Deletes the draft version of product changes for each product code specified in the request.
+	* Deletes the draft version of product changes (pending product changes) for each product code specified in the request.
 	*
 	* @param PublishingScope $publishScope Describes the scope of the product publishing update, which can include individual product codes or all pending changes.
 	*/
@@ -68,7 +68,7 @@ class PublishingScopeClient {
 	}
 	
 	/**
-	* Publishes the draft version of product changes for each product code specified in the request, and changes the product publish state to "live".
+	* Publishes the draft version of product changes (pending product changes) for each product code specified in the request, and changes the product publish state to "live".
 	*
 	* @param PublishingScope $publishScope Describes the scope of the product publishing update, which can include individual product codes or all pending changes.
 	*/
@@ -82,10 +82,10 @@ class PublishingScopeClient {
 	}
 	
 	/**
-	* Assigns a product draft to a specified publish set.
+	* Assigns pending product changes to a specified product publish set. Use the code field to specify the product publish set.
 	*
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param PublishSet $publishSet Mozu.ProductAdmin.Contracts.PublishSet ApiType DOCUMENT_HERE 
+	* @param PublishSet $publishSet The details of the publish to which you want to assign products.
 	* @return MozuClient
 	*/
 	public static function assignProductsToPublishSetClient($publishSet, $responseFields =  null)
@@ -98,7 +98,7 @@ class PublishingScopeClient {
 	}
 	
 	/**
-	* Removes all details about a PublishSet from the product service. If the discardDrafts param is true, it also deletes the product drafts.
+	* Deletes the specified product publish set. If you set the discardDrafts parameter to true, this operation also deletes the product drafts assigned to the publish set.
 	*
 	* @param bool $discardDrafts Specifies whether to discard all the drafts assigned to the publish set when the publish set is deleted.
 	* @param string $publishSetCode The unique identifier of the publish set.

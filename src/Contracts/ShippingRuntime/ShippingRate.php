@@ -45,7 +45,7 @@ class ShippingRate
 	public $customAttributes;
 
 	/**
-	*Mozu.ShippingRuntime.Contracts.ShippingRate data ApiTypeMember DOCUMENT_HERE 
+	*Shipping rate data.
 	*/
 	public $data;
 

@@ -35,7 +35,7 @@ class Product
 	public $description;
 
 	/**
-	*Indicates if the discount is restricted. If true, the system cannot apply any discounts to this product. Discount restrictions are defined at the master catalog level. Client administrators cannot override discount restrictions at the catalog level, but they can limit the restriction to a defined time interval.
+	*Indicates if the discount is restricted. If true, the system cannot apply any discounts to this product. Discount restrictions are defined at the master catalog level. Client administrators cannot override discount restrictions at the catalog level, but they can limit the restriction to a defined time interval.For price list entries, specifies whether discounts are restricted for the specific entry if  is set to .Refer to [Discount Restriction](../../../guides/catalog/price-lists.htm#discountrestriction) in the Price Lists guides topic for more information.
 	*/
 	public $discountsRestricted;
 
@@ -55,14 +55,9 @@ class Product
 	public $fulfillmentStatus;
 
 	/**
-	*List of supported types of fulfillment  for the product or variation. The types include direct ship, in-store pickup, or both. 
+	*List of supported types of fulfillment for the product or variation. The types include direct ship, in-store pickup, or both.
 	*/
 	public $fulfillmentTypesSupported;
-
-	/**
-	*The type of goods in a bundled product. A bundled product is composed of products associated to sell together. Possible values include “Physical” and “DigitalCredit”. This comes from the `productType `of the product. Products are defaulted to a Physical `goodsType`. Gift cards have a `goodsType `of DigitalCredit.
-	*/
-	public $goodsType;
 
 	/**
 	*The alternate image description defined for the product, in the language specified in the locale code for the storefront.
@@ -95,7 +90,7 @@ class Product
 	public $mfgPartNumber;
 
 	/**
-	*The display name of the source product property. For a product field it will be the display name of the field. For a product attribute it will be the Attribute Name.
+	*The user supplied name that appears in . You can use this field for identification purposes.
 	*/
 	public $name;
 
@@ -110,7 +105,7 @@ class Product
 	public $productReservationId;
 
 	/**
-	*The product type template associated with the product on the storefront.
+	*A product type is like a product template.
 	*/
 	public $productType;
 
@@ -128,6 +123,11 @@ class Product
 	*Merchant-created code associated with a specific product variation. Variation product codes maintain an association with the base product code.
 	*/
 	public $variationProductCode;
+
+	/**
+	*The type of goods in a bundled product. A bundled product is composed of products associated to sell together. Possible values include “Physical” and “DigitalCredit”. This comes from the `productType `of the product. Products are defaulted to a Physical `goodsType`. Gift cards have a `goodsType `of DigitalCredit.
+	*/
+	public $goodsType;
 
 	/**
 	*Properties of a collection of component products that make up a single product bundle with its own product code. Tenants can define product bundles for any product type that supports the Bundle product usage.
@@ -155,7 +155,7 @@ class Product
 	public $price;
 
 	/**
-	*Collection of property attributes defined for the object. Properties are associated to all objects within Mozu, including documents, products, and product types.
+	*Collection of property attributes defined for the object. Properties are associated to all objects within , including documents, products, and product types.
 	*/
 	public $properties;
 

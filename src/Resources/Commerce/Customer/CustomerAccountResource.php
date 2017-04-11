@@ -174,10 +174,10 @@ class CustomerAccountResource {
 	}
 	
 	/**
-	* Modify the password associated with a customer account.
+	* Modifies the password associated with a customer account.
 	*
 	* @param int $accountId Unique identifier of the customer account.
-	* @param bool $unlockAccount 
+	* @param bool $unlockAccount Specifies whether to unlock the specified customer account.
 	* @param PasswordInfo $passwordInfo The information required to modify a shopper account password.
 	* @deprecated deprecated since version 1.17
 	*/
@@ -190,10 +190,10 @@ class CustomerAccountResource {
 	}
 	
 /**
-	* Modify the password associated with a customer account.
+	* Modifies the password associated with a customer account.
 	*
 	* @param int $accountId Unique identifier of the customer account.
-	* @param bool $unlockAccount 
+	* @param bool $unlockAccount Specifies whether to unlock the specified customer account.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function changePasswordAsync($passwordInfo, $accountId, $unlockAccount =  null)
@@ -386,10 +386,10 @@ class CustomerAccountResource {
 	}
 	
 	/**
-	* Changes a collection of shopper passwords
+	* Changes a collection of customer account passwords.
 	*
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param AccountPasswordInfoCollection $accountPasswordInfos Mozu.Customer.Contracts.AccountPasswordInfoCollection ApiType DOCUMENT_HERE 
+	* @param AccountPasswordInfoCollection $accountPasswordInfos The details of the changed customer account passwords.
 	* @return ChangePasswordResultCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -403,7 +403,7 @@ class CustomerAccountResource {
 	}
 	
 /**
-	* Changes a collection of shopper passwords
+	* Changes a collection of customer account passwords.
 	*
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -419,7 +419,7 @@ class CustomerAccountResource {
 	/**
 	* Retrieves the current login state of a customer account by providing the customer's email address.
 	*
-	* @param string $customerSetCode 
+	* @param string $customerSetCode The unique idenfitier of the customer set.
 	* @param string $emailAddress The email address associated with the customer account.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return LoginState 
@@ -437,7 +437,7 @@ class CustomerAccountResource {
 /**
 	* Retrieves the current login state of a customer account by providing the customer's email address.
 	*
-	* @param string $customerSetCode 
+	* @param string $customerSetCode The unique idenfitier of the customer set.
 	* @param string $emailAddress The email address associated with the customer account.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -453,7 +453,7 @@ class CustomerAccountResource {
 	/**
 	* Retrieves the current login state of a customer account by providing the user name associated with the customer account.
 	*
-	* @param string $customerSetCode 
+	* @param string $customerSetCode The unique idenfitier of the customer set.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $userName The user name associated with the customer account.
 	* @return LoginState 
@@ -471,7 +471,7 @@ class CustomerAccountResource {
 /**
 	* Retrieves the current login state of a customer account by providing the user name associated with the customer account.
 	*
-	* @param string $customerSetCode 
+	* @param string $customerSetCode The unique idenfitier of the customer set.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param string $userName The user name associated with the customer account.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -485,11 +485,11 @@ class CustomerAccountResource {
 	}
 	
 	/**
-	* customer-accounts Post GetCustomersPurchaseOrderAccounts description DOCUMENT_HERE 
+	* Retrieves a list of customer purchase order accounts according to according to any specified sort options.
 	*
 	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for more information.
+	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for more information.
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
 	* @return CustomerPurchaseOrderAccountCollection 
 	* @deprecated deprecated since version 1.17
@@ -504,11 +504,11 @@ class CustomerAccountResource {
 	}
 	
 /**
-	* customer-accounts Post GetCustomersPurchaseOrderAccounts description DOCUMENT_HERE 
+	* Retrieves a list of customer purchase order accounts according to according to any specified sort options.
 	*
 	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for more information.
+	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for more information.
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/

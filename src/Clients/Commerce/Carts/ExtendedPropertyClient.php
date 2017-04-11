@@ -38,7 +38,7 @@ class ExtendedPropertyClient {
 	/**
 	* Adds one or more specified extended properties to the carts extended properties collection.
 	*
-	* @param array|ExtendedProperty $extendedProperties Mozu.CommerceRuntime.Contracts.Commerce.ExtendedProperty ApiType DOCUMENT_HERE 
+	* @param array|ExtendedProperty $extendedProperties The details of the new extended property.
 	* @return MozuClient
 	*/
 	public static function addExtendedPropertiesClient($extendedProperties)
@@ -56,7 +56,7 @@ class ExtendedPropertyClient {
 	* @param string $key Key used for metadata defined for objects, including extensible attributes, custom attributes associated with a shipping provider, and search synonyms definitions. This content may be user-defined depending on the object and usage.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @param bool $upsert Any set of key value pairs to be stored in the extended properties of a cart.
-	* @param ExtendedProperty $extendedProperty Mozu.CommerceRuntime.Contracts.Commerce.ExtendedProperty ApiType DOCUMENT_HERE 
+	* @param ExtendedProperty $extendedProperty The details of the updated extended property.
 	* @return MozuClient
 	*/
 	public static function updateExtendedPropertyClient($extendedProperty, $key, $upsert =  null, $responseFields =  null)
@@ -72,7 +72,7 @@ class ExtendedPropertyClient {
 	* Updates one or more details of the extended properties specified in the request.
 	*
 	* @param bool $upsert Any set of key value pairs to be stored in the extended properties of a cart.
-	* @param array|ExtendedProperty $extendedProperties Mozu.CommerceRuntime.Contracts.Commerce.ExtendedProperty ApiType DOCUMENT_HERE 
+	* @param array|ExtendedProperty $extendedProperties The details of the updated extended properties.
 	* @return MozuClient
 	*/
 	public static function updateExtendedPropertiesClient($extendedProperties, $upsert =  null)

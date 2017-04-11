@@ -20,17 +20,17 @@ namespace Mozu\Api\Contracts\SiteSettings\General\General\Routing;
 class CustomRouteSettings
 {
 	/**
-	*Mozu.SiteSettings.General.Contracts.General.Routing.CustomRouteSettings mappings ApiTypeMember DOCUMENT_HERE 
+	*The mappings configured for the site. Mappings allow you to map the values of URL parameters to other JSON variables or to  objects such as facet values. 
 	*/
 	public $mappings;
 
 	/**
-	*Mozu.SiteSettings.General.Contracts.General.Routing.CustomRouteSettings validators ApiTypeMember DOCUMENT_HERE 
+	*The validators configured for a site. Validators require that URL parameters meet certain conditions before  considers the template a match. 
 	*/
 	public $validators;
 
 	/**
-	*Mozu.SiteSettings.General.Contracts.General.Routing.CustomRouteSettings routes ApiTypeMember DOCUMENT_HERE 
+	*The routes configured for the site. Routes contain all the information necessary to match incoming URLs to a specific page in .
 	*/
 	public $routes;
 

@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* platform/developer related resources. DOCUMENT_HERE 
+* Use the Developer resource to view and update information and files related to application packages.
 */
 class ApplicationResource {
 
@@ -26,7 +26,7 @@ class ApplicationResource {
 
 
 	/**
-	* platform-developer Get GetAppPackageNames description DOCUMENT_HERE 
+	* Returns a collection of package names for the application specified in the request.
 	*
 	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
@@ -42,7 +42,7 @@ class ApplicationResource {
 	}
 	
 /**
-	* platform-developer Get GetAppPackageNames description DOCUMENT_HERE 
+	* Returns a collection of package names for the application specified in the request.
 	*
 	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
@@ -56,7 +56,7 @@ class ApplicationResource {
 	}
 	
 	/**
-	* platform-developer Get GetAppVersions description DOCUMENT_HERE 
+	* Retrieves the available versions for the application specified in the request.
 	*
 	* @param string $nsAndAppId The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
@@ -72,7 +72,7 @@ class ApplicationResource {
 	}
 	
 /**
-	* platform-developer Get GetAppVersions description DOCUMENT_HERE 
+	* Retrieves the available versions for the application specified in the request.
 	*
 	* @param string $nsAndAppId The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
@@ -86,7 +86,7 @@ class ApplicationResource {
 	}
 	
 	/**
-	* platform-developer Get GetPackageFileMetadata description DOCUMENT_HERE 
+	* Retrieves the metadata for a file in an application package.
 	*
 	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
 	* @param string $filepath Represents the file name and location.
@@ -103,7 +103,7 @@ class ApplicationResource {
 	}
 	
 /**
-	* platform-developer Get GetPackageFileMetadata description DOCUMENT_HERE 
+	* Retrieves the metadata for a file in an application package.
 	*
 	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
 	* @param string $filepath Represents the file name and location.
@@ -118,7 +118,7 @@ class ApplicationResource {
 	}
 	
 	/**
-	* platform-developer Get GetPackageMetadata description DOCUMENT_HERE 
+	* Retrieves the metadata for a folder in an application package.
 	*
 	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
@@ -134,7 +134,7 @@ class ApplicationResource {
 	}
 	
 /**
-	* platform-developer Get GetPackageMetadata description DOCUMENT_HERE 
+	* Retrieves the metadata for a folder in an application package.
 	*
 	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
@@ -148,7 +148,7 @@ class ApplicationResource {
 	}
 	
 	/**
-	* platform-developer Post UpsertPackageFile description DOCUMENT_HERE 
+	* Insert or update the specified file into the specified application package.
 	*
 	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
 	* @param string $filepath The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
@@ -167,7 +167,7 @@ class ApplicationResource {
 	}
 	
 /**
-	* platform-developer Post UpsertPackageFile description DOCUMENT_HERE 
+	* Insert or update the specified file into the specified application package.
 	*
 	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
 	* @param string $filepath The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
@@ -183,7 +183,7 @@ class ApplicationResource {
 	}
 	
 	/**
-	* platform-developer Post RenamePackageFile description DOCUMENT_HERE 
+	* Renames a file in an application package.
 	*
 	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
@@ -200,7 +200,7 @@ class ApplicationResource {
 	}
 	
 /**
-	* platform-developer Post RenamePackageFile description DOCUMENT_HERE 
+	* Renames a file in an application package.
 	*
 	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
@@ -214,7 +214,7 @@ class ApplicationResource {
 	}
 	
 	/**
-	* platform-developer Delete DeletePackageFile description DOCUMENT_HERE 
+	* Deletes the specified file from the specified application package.
 	*
 	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
 	* @param string $filepath Represents the file name and location.
@@ -228,7 +228,7 @@ class ApplicationResource {
 	}
 	
 /**
-	* platform-developer Delete DeletePackageFile description DOCUMENT_HERE 
+	* Deletes the specified file from the specified application package.
 	*
 	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
 	* @param string $filepath Represents the file name and location.

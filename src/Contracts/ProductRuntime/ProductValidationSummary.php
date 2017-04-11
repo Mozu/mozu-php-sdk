@@ -20,7 +20,7 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 class ProductValidationSummary
 {
 	/**
-	*List of supported types of fulfillment  for the product or variation. The types include direct ship, in-store pickup, or both. 
+	*List of supported types of fulfillment for the product or variation. The types include direct ship, in-store pickup, or both.
 	*/
 	public $fulfillmentTypesSupported;
 
@@ -60,7 +60,7 @@ class ProductValidationSummary
 	public $productShortDescription;
 
 	/**
-	*The product type template associated with the product on the storefront.
+	*A product type is like a product template.
 	*/
 	public $productType;
 
@@ -115,7 +115,7 @@ class ProductValidationSummary
 	public $pricingBehavior;
 
 	/**
-	*Collection of property attributes defined for the object. Properties are associated to all objects within Mozu, including documents, products, and product types.
+	*Collection of property attributes defined for the object. Properties are associated to all objects within , including documents, products, and product types.
 	*/
 	public $properties;
 

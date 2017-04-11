@@ -52,7 +52,7 @@ class PaymentSettingsClient {
 	}
 	
 	/**
-	* Adds a third-party payment workflow to the site. A third-party payment workflow is a definition of a process by which a third-party payment provider (such as Amazon Payments or PayPal Express) interacts with the Mozu platform.
+	* Adds a third-party payment workflow to the site. A third-party payment workflow is a definition of a process by which a third-party payment provider (such as Amazon Payments or PayPal Express) interacts with the  platform.
 	*
 	* @param ExternalPaymentWorkflowDefinition $definition Properties of an external payment processing workflow defined for the site. At this time, only PayPal Express is supported.
 	*/
@@ -66,7 +66,7 @@ class PaymentSettingsClient {
 	}
 	
 	/**
-	* Deletes a third-party payment workflow. A third-party payment workflow is a definition of a process by which a third-party payment provider (such as Amazon Payments or PayPal Express) interacts with the Mozu platform. 
+	* Deletes a third-party payment workflow. A third-party payment workflow is a definition of a process by which a third-party payment provider (such as Amazon Payments or PayPal Express) interacts with the  platform. 
 	*
 	* @param string $fullyQualifiedName Fully qualified name of the attribute for the third-party payment workflow.
 	*/

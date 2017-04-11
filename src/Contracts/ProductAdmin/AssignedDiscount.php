@@ -20,22 +20,22 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class AssignedDiscount
 {
 	/**
-	*ReadOnly, CouponSetCode copied from URI
+	*The unique identifier of the coupon set.
 	*/
 	public $couponSetCode;
 
 	/**
-	*ReadOnly, CouponSetId
+	*The unique, system generated id. You can use this value to further identify the coupon set.This value is ready only.
 	*/
 	public $couponSetId;
 
 	/**
-	*Unique identifier for the discount in the storefront.
+	*The unique identifier of the discount.
 	*/
 	public $discountId;
 
 	/**
-	*Basic audit info about the object, including date, time, and user account. Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
+	*Basic audit info about the object, including date, time, and user account. This data may be captured when creating, updating, and removing data.
 	*/
 	public $auditInfo;
 

@@ -14,13 +14,25 @@ namespace Mozu\Api\Contracts\Customer;
 
 
 
+/**
+*	The site identifier assigned to the customer set.
+*/
 class CustomerSetSite
 {
-		public $customerSetCode;
+	/**
+	*The unique code of the customer set.
+	*/
+	public $customerSetCode;
 
-		public $name;
+	/**
+	*The user supplied name that appears in . You can use this field for identification purposes.
+	*/
+	public $name;
 
-		public $siteId;
+	/**
+	*Unique identifier for the site. This ID is used at all levels of a store, catalog, and tenant to associate objects to a site.
+	*/
+	public $siteId;
 
 }
 

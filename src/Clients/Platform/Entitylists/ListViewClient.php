@@ -24,10 +24,10 @@ class ListViewClient {
 	/**
 	* Retrieves a view for associated entities. A view provides display context levels (site, tenant, catalog, master catalog) and settings.
 	*
-	* @param string $entityId Unique identifier for an entity, which defines the schema, rules, and formats for JSON entities within the MZDB (Mozu Mongo DB).
+	* @param string $entityId Unique identifier for an entity, which defines the schema, rules, and formats for JSON entities within the MZDB ( Mongo DB).
 	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $viewName The name for a view. Views are used to render data in Mozu, such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
+	* @param string $viewName The name for a view. Views are used to render data in , such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
 	* @return MozuClient
 	*/
 	public static function getViewEntityClient($entityListFullName, $viewName, $entityId, $responseFields =  null)
@@ -47,7 +47,7 @@ class ListViewClient {
 	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
-	* @param string $viewName The name for a view. Views are used to render data in Mozu, such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
+	* @param string $viewName The name for a view. Views are used to render data in , such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
 	* @return MozuClient
 	*/
 	public static function getViewEntitiesClient($entityListFullName, $viewName, $pageSize =  null, $startIndex =  null, $filter =  null, $responseFields =  null)
@@ -62,10 +62,10 @@ class ListViewClient {
 	/**
 	* Retrieves a collection of container data for creating and displaying a view of entities. 
 	*
-	* @param string $entityId Unique identifier for an entity, which defines the schema, rules, and formats for JSON entities within the MZDB (Mozu Mongo DB).
+	* @param string $entityId Unique identifier for an entity, which defines the schema, rules, and formats for JSON entities within the MZDB ( Mongo DB).
 	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $viewName The name for a view. Views are used to render data in Mozu, such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
+	* @param string $viewName The name for a view. Views are used to render data in , such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
 	* @return MozuClient
 	*/
 	public static function getViewEntityContainerClient($entityListFullName, $viewName, $entityId, $responseFields =  null)
@@ -85,7 +85,7 @@ class ListViewClient {
 	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
-	* @param string $viewName The name for a view. Views are used to render data in Mozu, such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
+	* @param string $viewName The name for a view. Views are used to render data in , such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
 	* @return MozuClient
 	*/
 	public static function getViewEntityContainersClient($entityListFullName, $viewName, $pageSize =  null, $startIndex =  null, $filter =  null, $responseFields =  null)
@@ -102,7 +102,7 @@ class ListViewClient {
 	*
 	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $viewName The name for a view. Views are used to render data in Mozu, such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
+	* @param string $viewName The name for a view. Views are used to render data in , such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
 	* @return MozuClient
 	*/
 	public static function getEntityListViewClient($entityListFullName, $viewName, $responseFields =  null)
@@ -152,7 +152,7 @@ class ListViewClient {
 	*
 	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $viewName The name for a view. Views are used to render data in Mozu, such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
+	* @param string $viewName The name for a view. Views are used to render data in , such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
 	* @param ListView $listView Properties for the list view that specifies what fields and content display per page load. All associated fields in the list view correspond with object data.
 	* @return MozuClient
 	*/
@@ -169,7 +169,7 @@ class ListViewClient {
 	* Deletes an entity list view. Any associated entities have the association removed.
 	*
 	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
-	* @param string $viewName The name for a view. Views are used to render data in Mozu, such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
+	* @param string $viewName The name for a view. Views are used to render data in , such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
 	*/
 	public static function deleteEntityListViewClient($entityListFullName, $viewName)
 	{

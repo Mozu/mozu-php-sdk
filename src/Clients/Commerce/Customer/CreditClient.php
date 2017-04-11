@@ -89,7 +89,7 @@ class CreditClient {
 	}
 	
 	/**
-	* customer-credits Put ResendCreditCreatedEmail description DOCUMENT_HERE 
+	* Resend the notification email that informs a shopper that a credit has been created.
 	*
 	* @param string $code User-defined code that uniqely identifies the channel group.
 	*/

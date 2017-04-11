@@ -40,7 +40,7 @@ class ValidationMessage
 	public $sourceId;
 
 	/**
-	*Type of validation error that occurred. This can be checked programatically.              Must be one of the values in ValidationTypeConst.
+	*Type of validation error that occurred. This can be checked programatically. Must be one of the values in ValidationTypeConst.
 	*/
 	public $validationType;
 

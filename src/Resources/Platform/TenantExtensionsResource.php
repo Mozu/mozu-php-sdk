@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* platform/extensions related resources. DOCUMENT_HERE 
+* Use the Extensions resource to manage Arc.js configuration settings. These are the same settings you can configure through  in the Action Management JSON Editor.
 */
 class TenantExtensionsResource {
 
@@ -33,7 +33,7 @@ class TenantExtensionsResource {
 
 
 	/**
-	* platform-extensions Get GetExtensions description DOCUMENT_HERE 
+	* Retrieves the Arc.js configuration settings for a site.
 	*
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return TenantExtensions 
@@ -49,7 +49,7 @@ class TenantExtensionsResource {
 	}
 	
 /**
-	* platform-extensions Get GetExtensions description DOCUMENT_HERE 
+	* Retrieves the Arc.js configuration settings for a site.
 	*
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -63,10 +63,10 @@ class TenantExtensionsResource {
 	}
 	
 	/**
-	* platform-extensions Put UpdateExtensions description DOCUMENT_HERE 
+	* Updates the Arc.js configuration settings for a site.
 	*
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param TenantExtensions $extensions Mozu.InstalledApplications.Contracts.TenantExtensions ApiType DOCUMENT_HERE 
+	* @param TenantExtensions $extensions The updated details of the Arc.js configuration settings.
 	* @return TenantExtensions 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -80,7 +80,7 @@ class TenantExtensionsResource {
 	}
 	
 /**
-	* platform-extensions Put UpdateExtensions description DOCUMENT_HERE 
+	* Updates the Arc.js configuration settings for a site.
 	*
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException

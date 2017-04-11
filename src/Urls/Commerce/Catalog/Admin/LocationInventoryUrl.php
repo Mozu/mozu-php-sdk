@@ -37,6 +37,7 @@ class LocationInventoryUrl  {
 	/**
 		* Get Resource Url for GetLocationInventories
 		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+		* @param string $filterFunctions Functions that optimize commonly used filters for efficiency.For the  operation, you have access to the  filter function. For example, use  to filter only for product inventory that is currently active.
 		* @param string $locationCode The unique, user-defined code that identifies a location. 
 		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
 		* @param string $responseFields Use this field to include those fields which are not included by default.
@@ -44,11 +45,12 @@ class LocationInventoryUrl  {
 		* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
 		* @return string Resource Url
 	*/
-	public static function getLocationInventoriesUrl($filter, $locationCode, $pageSize, $responseFields, $sortBy, $startIndex)
+	public static function getLocationInventoriesUrl($filter, $filterFunctions, $locationCode, $pageSize, $responseFields, $sortBy, $startIndex)
 	{
-		$url = "/api/commerce/catalog/admin/locationinventory/{locationCode}?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}&responseFields={responseFields}";
+		$url = "/api/commerce/catalog/admin/locationinventory/{locationCode}?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}&filterFunctions={filterFunctions}&responseFields={responseFields}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
 		$url = $mozuUrl->formatUrl("filter", $filter);
+		$url = $mozuUrl->formatUrl("filterFunctions", $filterFunctions);
 		$url = $mozuUrl->formatUrl("locationCode", $locationCode);
 		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
 		$url = $mozuUrl->formatUrl("responseFields", $responseFields);

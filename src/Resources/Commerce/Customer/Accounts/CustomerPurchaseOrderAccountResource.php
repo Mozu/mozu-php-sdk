@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* commerce/customer/accounts/purchaseOrder related resources. DOCUMENT_HERE 
+* Use the Customer Account Purchase Order resource to manage purchase order details for specific customer acocunts.
 */
 class CustomerPurchaseOrderAccountResource {
 
@@ -33,7 +33,7 @@ class CustomerPurchaseOrderAccountResource {
 
 
 	/**
-	* accounts-purchaseOrder Get GetCustomerPurchaseOrderAccount description DOCUMENT_HERE 
+	* Retrieves the details of the specified customer purchase order account.
 	*
 	* @param int $accountId Unique identifier of the customer account.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
@@ -50,7 +50,7 @@ class CustomerPurchaseOrderAccountResource {
 	}
 	
 /**
-	* accounts-purchaseOrder Get GetCustomerPurchaseOrderAccount description DOCUMENT_HERE 
+	* Retrieves the details of the specified customer purchase order account.
 	*
 	* @param int $accountId Unique identifier of the customer account.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
@@ -65,13 +65,13 @@ class CustomerPurchaseOrderAccountResource {
 	}
 	
 	/**
-	* accounts-purchaseOrder Get GetCustomerPurchaseOrderTransactions description DOCUMENT_HERE 
+	* Retrieves a list of purchase order transactions for the specified customer account according to any specified sort options.
 	*
 	* @param int $accountId Unique identifier of the customer account.
-	* @param string $filter 
+	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
 	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for more information.
+	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for more information.
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
 	* @return PurchaseOrderTransactionCollection 
 	* @deprecated deprecated since version 1.17
@@ -86,13 +86,13 @@ class CustomerPurchaseOrderAccountResource {
 	}
 	
 /**
-	* accounts-purchaseOrder Get GetCustomerPurchaseOrderTransactions description DOCUMENT_HERE 
+	* Retrieves a list of purchase order transactions for the specified customer account according to any specified sort options.
 	*
 	* @param int $accountId Unique identifier of the customer account.
-	* @param string $filter 
+	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
 	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for more information.
+	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for more information.
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -105,11 +105,11 @@ class CustomerPurchaseOrderAccountResource {
 	}
 	
 	/**
-	* accounts-purchaseOrder Post CreateCustomerPurchaseOrderAccount description DOCUMENT_HERE 
+	* Adds a purchase order account to the specified customer account.This adds the ability for the specified customer account to use the purchase order payment method.
 	*
 	* @param int $accountId Unique identifier of the customer account.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param CustomerPurchaseOrderAccount $customerPurchaseOrderAccount Mozu.Customer.Contracts.CustomerPurchaseOrderAccount ApiType DOCUMENT_HERE 
+	* @param CustomerPurchaseOrderAccount $customerPurchaseOrderAccount Unique identifier of the customer purchase order account.
 	* @return CustomerPurchaseOrderAccount 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -123,7 +123,7 @@ class CustomerPurchaseOrderAccountResource {
 	}
 	
 /**
-	* accounts-purchaseOrder Post CreateCustomerPurchaseOrderAccount description DOCUMENT_HERE 
+	* Adds a purchase order account to the specified customer account.This adds the ability for the specified customer account to use the purchase order payment method.
 	*
 	* @param int $accountId Unique identifier of the customer account.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
@@ -138,11 +138,11 @@ class CustomerPurchaseOrderAccountResource {
 	}
 	
 	/**
-	* accounts-purchaseOrder Post CreatePurchaseOrderTransaction description DOCUMENT_HERE 
+	* Creates a purchase order transaction on the specified customer purchase order account.
 	*
 	* @param int $accountId Unique identifier of the customer account.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param PurchaseOrderTransaction $purchaseOrderTransaction Mozu.Customer.Contracts.PurchaseOrderTransaction ApiType DOCUMENT_HERE 
+	* @param PurchaseOrderTransaction $purchaseOrderTransaction The purchase order transaction type to add to the specified customer account.
 	* @return PurchaseOrderTransaction 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -156,7 +156,7 @@ class CustomerPurchaseOrderAccountResource {
 	}
 	
 /**
-	* accounts-purchaseOrder Post CreatePurchaseOrderTransaction description DOCUMENT_HERE 
+	* Creates a purchase order transaction on the specified customer purchase order account.
 	*
 	* @param int $accountId Unique identifier of the customer account.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
@@ -171,11 +171,11 @@ class CustomerPurchaseOrderAccountResource {
 	}
 	
 	/**
-	* accounts-purchaseOrder Put UpdateCustomerPurchaseOrderAccount description DOCUMENT_HERE 
+	* Updates the details of the purchase order account for the specified customer account.
 	*
 	* @param int $accountId Unique identifier of the customer account.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param CustomerPurchaseOrderAccount $customerPurchaseOrderAccount Mozu.Customer.Contracts.CustomerPurchaseOrderAccount ApiType DOCUMENT_HERE 
+	* @param CustomerPurchaseOrderAccount $customerPurchaseOrderAccount Unique identifier of the customer purchase order account.
 	* @return CustomerPurchaseOrderAccount 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -189,7 +189,7 @@ class CustomerPurchaseOrderAccountResource {
 	}
 	
 /**
-	* accounts-purchaseOrder Put UpdateCustomerPurchaseOrderAccount description DOCUMENT_HERE 
+	* Updates the details of the purchase order account for the specified customer account.
 	*
 	* @param int $accountId Unique identifier of the customer account.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
@@ -204,7 +204,7 @@ class CustomerPurchaseOrderAccountResource {
 	}
 	
 	/**
-	* accounts-purchaseOrder Delete DeleteCustomerPurchaseOrderAccount description DOCUMENT_HERE 
+	* Deletes the specified customer purchase order account.This removes the ability for the specified customer account to use the purchase order payment method.
 	*
 	* @param int $accountId Unique identifier of the customer account.
 	* @deprecated deprecated since version 1.17
@@ -218,7 +218,7 @@ class CustomerPurchaseOrderAccountResource {
 	}
 	
 /**
-	* accounts-purchaseOrder Delete DeleteCustomerPurchaseOrderAccount description DOCUMENT_HERE 
+	* Deletes the specified customer purchase order account.This removes the ability for the specified customer account to use the purchase order payment method.
 	*
 	* @param int $accountId Unique identifier of the customer account.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException

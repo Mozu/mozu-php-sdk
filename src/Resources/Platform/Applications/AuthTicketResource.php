@@ -29,7 +29,7 @@ class AuthTicketResource {
 	* Generate an authentication ticket for an application.
 	*
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param AppAuthInfo $appAuthInfo The information required to authenticate third party applications against the Mozu API.
+	* @param AppAuthInfo $appAuthInfo The information required to authenticate third party applications against the  API.
 	* @return AuthTicket 
 	* @deprecated deprecated since version 1.17
 	*/

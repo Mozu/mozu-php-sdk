@@ -25,12 +25,13 @@ class PackageClient {
 	* Retrieves the package label image supplied by the carrier for a return replacement.
 	*
 	* @param string $packageId Unique identifier of the package for which to retrieve the label.
+	* @param bool $returnAsBase64Png Specifies whether to return the RMA label image as Base64-encoded PNG image instead of as a byte array encoded in the original image format. The default is .
 	* @param string $returnId Unique identifier of the return whose items you want to get.
 	* @return MozuClient
 	*/
-	public static function getPackageLabelClient($returnId, $packageId)
+	public static function getPackageLabelClient($returnId, $packageId, $returnAsBase64Png =  null)
 	{
-		$url = PackageUrl::getPackageLabelUrl($packageId, $returnId);
+		$url = PackageUrl::getPackageLabelUrl($packageId, $returnAsBase64Png, $returnId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
 		return $mozuClient;

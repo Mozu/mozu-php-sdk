@@ -15,7 +15,7 @@ namespace Mozu\Api\Contracts\Customer;
 
 
 /**
-*	Mozu.Customer.Contracts.CustomerAuditEntry ApiType DOCUMENT_HERE 
+*	A list of audit details associated with a specific customer account.
 */
 class CustomerAuditEntry
 {
@@ -30,7 +30,7 @@ class CustomerAuditEntry
 	public $customerAccountId;
 
 	/**
-	*Id of this entry
+	*The unique identifier of the audit entry associated with the customer account.
 	*/
 	public $customerAuditEntryId;
 
@@ -40,32 +40,32 @@ class CustomerAuditEntry
 	public $description;
 
 	/**
-	*Date of the Entry
+	*The date the audit entries was created.
 	*/
 	public $entryDate;
 
 	/**
-	*User ID associated with this Entry
+	*The unique identifier of the user who created the audit entry.
 	*/
 	public $entryUser;
 
 	/**
-	*Path of the field value being changed (e.g. /Customer/Contacts/1/FirstName)
+	*The path of the field value that was changed, for example 
 	*/
 	public $fieldPath;
 
 	/**
-	*New Value after this event
+	*The field's new value after the audit entry event.
 	*/
 	public $newValue;
 
 	/**
-	*Original value before this event
+	*The field's original value before the audit entry event.
 	*/
 	public $oldValue;
 
 	/**
-	*Site associated wit this entry
+	*The site identifier associated with this audit entry.
 	*/
 	public $site;
 

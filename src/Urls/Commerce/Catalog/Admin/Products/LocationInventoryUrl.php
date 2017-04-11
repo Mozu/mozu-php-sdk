@@ -74,7 +74,7 @@ class LocationInventoryUrl  {
 	
 	/**
 		* Get Resource Url for UpdateLocationInventory
-		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+		* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 		* @return string Resource Url
 	*/
 	public static function updateLocationInventoryUrl($productCode)
@@ -88,7 +88,7 @@ class LocationInventoryUrl  {
 	/**
 		* Get Resource Url for DeleteLocationInventory
 		* @param string $locationCode The unique, user-defined code that identifies a location. 
-		* @param string $productCode The unique, user-defined product code of a product, used throughout Mozu to reference and associate to a product.
+		* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
 		* @return string Resource Url
 	*/
 	public static function deleteLocationInventoryUrl($locationCode, $productCode)

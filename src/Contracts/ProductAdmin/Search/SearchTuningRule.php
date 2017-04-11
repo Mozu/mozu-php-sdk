@@ -20,27 +20,27 @@ namespace Mozu\Api\Contracts\ProductAdmin\Search;
 class SearchTuningRule
 {
 	/**
-	*Mozu.ProductAdmin.Contracts.Search.SearchTuningRule active ApiTypeMember DOCUMENT_HERE 
+	*Specifies whether the search results tuning rule is active.
 	*/
 	public $active;
 
 	/**
-	*Mozu.ProductAdmin.Contracts.Search.SearchTuningRule activeEndDate ApiTypeMember DOCUMENT_HERE 
+	*The date that the search tuning rule is no longer active.
 	*/
 	public $activeEndDate;
 
 	/**
-	*Mozu.ProductAdmin.Contracts.Search.SearchTuningRule activeStartDate ApiTypeMember DOCUMENT_HERE 
+	*The date the search tuning rule starts being active.
 	*/
 	public $activeStartDate;
 
 	/**
-	*Mozu.ProductAdmin.Contracts.Search.SearchTuningRule blockedProductCodes ApiTypeMember DOCUMENT_HERE 
+	*A list of product codes that you wish to block from appearing on a search result, or on a specific category page. Use the filters field to specify a category page.
 	*/
 	public $blockedProductCodes;
 
 	/**
-	*Mozu.ProductAdmin.Contracts.Search.SearchTuningRule boostedProductCodes ApiTypeMember DOCUMENT_HERE 
+	*A list of product codes that you wish to explicitly boost using the search tuning rule.  The order that you list products in defines the order that they appear in a search result, or category page.
 	*/
 	public $boostedProductCodes;
 
@@ -50,22 +50,22 @@ class SearchTuningRule
 	public $isDefault;
 
 	/**
-	*Mozu.ProductAdmin.Contracts.Search.SearchTuningRule keywords ApiTypeMember DOCUMENT_HERE 
+	*The keywords that trigger the search tuning rule. These are specific keywords that shoppers search for.
 	*/
 	public $keywords;
 
 	/**
-	*Mozu.ProductAdmin.Contracts.Search.SearchTuningRule searchTuningRuleCode ApiTypeMember DOCUMENT_HERE 
+	*The unique identifier of the search tuning rule.
 	*/
 	public $searchTuningRuleCode;
 
 	/**
-	*Mozu.ProductAdmin.Contracts.Search.SearchTuningRule searchTuningRuleDescription ApiTypeMember DOCUMENT_HERE 
+	*The description of the search tuning rule. Use this field for further identification purposes.
 	*/
 	public $searchTuningRuleDescription;
 
 	/**
-	*Mozu.ProductAdmin.Contracts.Search.SearchTuningRule searchTuningRuleName ApiTypeMember DOCUMENT_HERE 
+	*The name of the search tuning rule. Use this field for further identification purposes.
 	*/
 	public $searchTuningRuleName;
 
@@ -75,12 +75,12 @@ class SearchTuningRule
 	public $siteId;
 
 	/**
-	*Basic audit info about the object, including date, time, and user account. Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
+	*Basic audit info about the object, including date, time, and user account. This data may be captured when creating, updating, and removing data.
 	*/
 	public $auditInfo;
 
 	/**
-	*Mozu.ProductAdmin.Contracts.Search.SearchTuningRule filters ApiTypeMember DOCUMENT_HERE 
+	*The filters that limit what the search tuning rule is applied to. Currently, the only supported filters are category pages.For example, you can limit the search tuning rule to only apply when a shopper either navigates to or searches for a specific keyword on a category page.
 	*/
 	public $filters;
 

@@ -20,21 +20,6 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 class AttributeValidation
 {
 	/**
-	*The minimum numeric value required to validate an extensible attribute.
-	*/
-	public $minNumericValue;
-
-	/**
-	*The minimum character length possible for a string value entered for an extensible attribute.
-	*/
-	public $minStringLength;
-
-	/**
-	*Regular expression used to process and validate an extensible attribute value that require special formatting, such as phone numbers.
-	*/
-	public $regularExpression;
-
-	/**
 	*The maximum date allowed including month, day, and year. System-supplied and read-only.
 	*/
 	public $maxDateValue;
@@ -53,6 +38,21 @@ class AttributeValidation
 	*The minimum date allowed including month, day, and year. System-supplied and read-only.
 	*/
 	public $minDateValue;
+
+	/**
+	*The minimum numeric value required to validate an extensible attribute.
+	*/
+	public $minNumericValue;
+
+	/**
+	*The minimum character length possible for a string value entered for an extensible attribute.
+	*/
+	public $minStringLength;
+
+	/**
+	*Regular expression used to process and validate an extensible attribute value that require special formatting, such as phone numbers.
+	*/
+	public $regularExpression;
 
 }
 

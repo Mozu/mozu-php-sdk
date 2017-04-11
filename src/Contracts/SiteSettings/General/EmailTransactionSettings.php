@@ -20,37 +20,37 @@ namespace Mozu\Api\Contracts\SiteSettings\General;
 class EmailTransactionSettings
 {
 	/**
-	*Mozu.SiteSettings.General.Contracts.EmailTransactionSettings backInStock ApiTypeMember DOCUMENT_HERE 
+	*A flag that determines if an email is sent to a shopper account when the described condition is met.
 	*/
 	public $backInStock;
 
 	/**
-	*Mozu.SiteSettings.General.Contracts.EmailTransactionSettings giftCardCreated ApiTypeMember DOCUMENT_HERE 
+	*A flag that determines if an email is sent to a shopper account when the described condition is met.
 	*/
 	public $giftCardCreated;
 
 	/**
-	*Mozu.SiteSettings.General.Contracts.EmailTransactionSettings orderChanged ApiTypeMember DOCUMENT_HERE 
+	*A flag that determines if an email is sent to a shopper account when the described condition is met.
 	*/
 	public $orderChanged;
 
 	/**
-	*Mozu.SiteSettings.General.Contracts.EmailTransactionSettings orderFulfillmentDetailsChanged ApiTypeMember DOCUMENT_HERE 
+	*A flag that determines if an email is sent to a shopper account when the described condition is met.
 	*/
 	public $orderFulfillmentDetailsChanged;
 
 	/**
-	*Mozu.SiteSettings.General.Contracts.EmailTransactionSettings orderShipped ApiTypeMember DOCUMENT_HERE 
+	*A flag that determines if an email is sent to a shopper account when the described condition is met.
 	*/
 	public $orderShipped;
 
 	/**
-	*Mozu.SiteSettings.General.Contracts.EmailTransactionSettings refundCreated ApiTypeMember DOCUMENT_HERE 
+	*A flag that determines if an email is sent to a shopper account when the described condition is met.
 	*/
 	public $refundCreated;
 
 	/**
-	*Mozu.SiteSettings.General.Contracts.EmailTransactionSettings returnAuthorized ApiTypeMember DOCUMENT_HERE 
+	*A flag that determines if an email is sent to a shopper account when the described condition is met.
 	*/
 	public $returnAuthorized;
 
@@ -65,37 +65,37 @@ class EmailTransactionSettings
 	public $returnClosed;
 
 	/**
-	*Mozu.SiteSettings.General.Contracts.EmailTransactionSettings returnCreated ApiTypeMember DOCUMENT_HERE 
+	*A flag that determines if an email is sent to a shopper account when the described condition is met.
 	*/
 	public $returnCreated;
 
 	/**
-	*Mozu.SiteSettings.General.Contracts.EmailTransactionSettings returnRejected ApiTypeMember DOCUMENT_HERE 
+	*A flag that determines if an email is sent to a shopper account when the described condition is met.
 	*/
 	public $returnRejected;
 
 	/**
-	*Mozu.SiteSettings.General.Contracts.EmailTransactionSettings returnUpdated ApiTypeMember DOCUMENT_HERE 
+	*A flag that determines if an email is sent to a shopper account when the described condition is met.
 	*/
 	public $returnUpdated;
 
 	/**
-	*Mozu.SiteSettings.General.Contracts.EmailTransactionSettings shopperLoginCreated ApiTypeMember DOCUMENT_HERE 
+	*A flag that determines if an email is sent to a shopper account when the described condition is met.
 	*/
 	public $shopperLoginCreated;
 
 	/**
-	*Mozu.SiteSettings.General.Contracts.EmailTransactionSettings shopperPasswordReset ApiTypeMember DOCUMENT_HERE 
+	*A flag that determines if an email is sent to a shopper account when the described condition is met.
 	*/
 	public $shopperPasswordReset;
 
 	/**
-	*Mozu.SiteSettings.General.Contracts.EmailTransactionSettings storeCreditCreated ApiTypeMember DOCUMENT_HERE 
+	*A flag that determines if an email is sent to a shopper account when the described condition is met.
 	*/
 	public $storeCreditCreated;
 
 	/**
-	*The corresponding topic is not currently used by Mozu.
+	*A flag that determines if an email is sent to a shopper account when the described condition is met.
 	*/
 	public $storeCreditUpdated;
 

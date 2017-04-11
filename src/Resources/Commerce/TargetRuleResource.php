@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* commerce/targetrules related resources. DOCUMENT_HERE 
+* Use the TargetRules resource to manage your target rules for products and zones. For example, you can set specific rules that dictate shipping options for specific products.
 */
 class TargetRuleResource {
 
@@ -33,12 +33,12 @@ class TargetRuleResource {
 
 
 	/**
-	* Retrieves a list of TargetRules according to any specified filter criteria and sort options.
+	* Retrieves a list of target rules and their details according to any specified facets, filter criteria, and sort options.
 	*
-	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for a list of supported filters.
+	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
 	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for more information.
+	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for more information.
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
 	* @return TargetRuleCollection 
 	* @deprecated deprecated since version 1.17
@@ -53,12 +53,12 @@ class TargetRuleResource {
 	}
 	
 /**
-	* Retrieves a list of TargetRules according to any specified filter criteria and sort options.
+	* Retrieves a list of target rules and their details according to any specified facets, filter criteria, and sort options.
 	*
-	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for a list of supported filters.
+	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
 	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/applications/sorting-filtering.htm) for more information.
+	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for more information.
 	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -71,7 +71,7 @@ class TargetRuleResource {
 	}
 	
 	/**
-	* Get Target Rule
+	* Retrieves the details of the specified target rule.
 	*
 	* @param string $code User-defined code that uniqely identifies the channel group.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
@@ -88,7 +88,7 @@ class TargetRuleResource {
 	}
 	
 /**
-	* Get Target Rule
+	* Retrieves the details of the specified target rule.
 	*
 	* @param string $code User-defined code that uniqely identifies the channel group.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
@@ -103,10 +103,10 @@ class TargetRuleResource {
 	}
 	
 	/**
-	* commerce-targetrules Post CreateTargetRule description DOCUMENT_HERE 
+	* Creates a new target rule.
 	*
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param TargetRule $targetRule Mozu.ShippingAdmin.Contracts.TargetRule ApiType DOCUMENT_HERE 
+	* @param TargetRule $targetRule The details of the new target rule.
 	* @return TargetRule 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -120,7 +120,7 @@ class TargetRuleResource {
 	}
 	
 /**
-	* commerce-targetrules Post CreateTargetRule description DOCUMENT_HERE 
+	* Creates a new target rule.
 	*
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -134,9 +134,9 @@ class TargetRuleResource {
 	}
 	
 	/**
-	* commerce-targetrules Post ValidateTargetRule description DOCUMENT_HERE 
+	* Validates the details of a target rule.
 	*
-	* @param TargetRule $targetRule Mozu.ShippingAdmin.Contracts.TargetRule ApiType DOCUMENT_HERE 
+	* @param TargetRule $targetRule The details of the target rule you want to validate.
 	* @deprecated deprecated since version 1.17
 	*/
 	public function validateTargetRule($targetRule)
@@ -148,7 +148,7 @@ class TargetRuleResource {
 	}
 	
 /**
-	* commerce-targetrules Post ValidateTargetRule description DOCUMENT_HERE 
+	* Validates the details of a target rule.
 	*
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -161,11 +161,11 @@ class TargetRuleResource {
 	}
 	
 	/**
-	* commerce-targetrules Put UpdateTargetRule description DOCUMENT_HERE 
+	* Updates the details of the specified target rule.
 	*
 	* @param string $code User-defined code that uniqely identifies the channel group.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param TargetRule $targetRule Mozu.ShippingAdmin.Contracts.TargetRule ApiType DOCUMENT_HERE 
+	* @param TargetRule $targetRule The details of the updated target rule.
 	* @return TargetRule 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -179,7 +179,7 @@ class TargetRuleResource {
 	}
 	
 /**
-	* commerce-targetrules Put UpdateTargetRule description DOCUMENT_HERE 
+	* Updates the details of the specified target rule.
 	*
 	* @param string $code User-defined code that uniqely identifies the channel group.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
@@ -194,7 +194,7 @@ class TargetRuleResource {
 	}
 	
 	/**
-	* commerce-targetrules Delete DeleteTargetRule description DOCUMENT_HERE 
+	* Deletes the specified target rule.
 	*
 	* @param string $code User-defined code that uniqely identifies the channel group.
 	* @deprecated deprecated since version 1.17
@@ -208,7 +208,7 @@ class TargetRuleResource {
 	}
 	
 /**
-	* commerce-targetrules Delete DeleteTargetRule description DOCUMENT_HERE 
+	* Deletes the specified target rule.
 	*
 	* @param string $code User-defined code that uniqely identifies the channel group.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException

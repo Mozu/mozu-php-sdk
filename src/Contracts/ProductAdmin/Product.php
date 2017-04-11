@@ -25,7 +25,7 @@ class Product
 	public $baseProductCode;
 
 	/**
-	*List of supported types of fulfillment  for the product or variation. The types include direct ship, in-store pickup, or both. 
+	*List of supported types of fulfillment for the product or variation. The types include direct ship, in-store pickup, or both.
 	*/
 	public $fulfillmentTypesSupported;
 
@@ -177,7 +177,7 @@ class Product
 	public $productInCatalogs;
 
 	/**
-	*Collection of property attributes defined for the object. Properties are associated to all objects within Mozu, including documents, products, and product types.
+	*Collection of property attributes defined for the object. Properties are associated to all objects within , including documents, products, and product types.
 	*/
 	public $properties;
 

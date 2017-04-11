@@ -15,7 +15,7 @@ namespace Mozu\Api\Contracts\AppDev;
 
 
 /**
-*	Mozu.AppDev.Contracts.ApplicationCapabilityType ApiType DOCUMENT_HERE 
+*	This property is not exposed in documentation.
 */
 class ApplicationCapabilityType
 {

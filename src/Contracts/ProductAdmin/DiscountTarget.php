@@ -25,7 +25,7 @@ class DiscountTarget
 	public $appliesToLeastExpensiveProductsFirst;
 
 	/**
-	*Applies to Included categories Defaults to Any
+	*The operator to use on the excludedCategories field. Valid values are: "All" and "Any".
 	*/
 	public $excludedCategoriesOperator;
 
@@ -45,7 +45,7 @@ class DiscountTarget
 	public $includeAllProducts;
 
 	/**
-	*Applies to Included categories Defaults to Any
+	*The operator of the includedCategories field.Valid values are: "All" and "Any".
 	*/
 	public $includedCategoriesOperator;
 
@@ -75,7 +75,7 @@ class DiscountTarget
 	public $excludedProducts;
 
 	/**
-	*List of  product codes that represent the products to which the discount can apply.
+	*List of product codes that represent the products to which the discount can apply.
 	*/
 	public $products;
 

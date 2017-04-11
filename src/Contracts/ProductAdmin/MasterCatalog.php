@@ -20,7 +20,7 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class MasterCatalog
 {
 	/**
-	*If the publishingMode is Pending and LiveEditsEnabled = true, DataViewMode live can be passed in the header and live products can be directly edited.
+	*Enables the live editing of products feature. If you set the productPublishingMode field to Pending, set this field to true, and set the DataViewMode in the context header to live, you can edit the live version of products instead of the pending draft.This should only be enabled for immediate changes to the live version of products. Any edits made to the live version are not applied to the pending draft version, so when you publish the pending draft version, your edits to the live version are overwritten.
 	*/
 	public $enableLiveEdit;
 
@@ -35,7 +35,7 @@ class MasterCatalog
 	public $isDeleted;
 
 	/**
-	*The display name of the source product property. For a product field it will be the display name of the field. For a product attribute it will be the Attribute Name.
+	*The user supplied name that appears in . You can use this field for identification purposes.
 	*/
 	public $name;
 

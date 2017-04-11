@@ -15,7 +15,7 @@ namespace Mozu\Api\Contracts\AppDev;
 
 
 /**
-*	Mozu.AppDev.Contracts.ApplicationAttribute ApiType DOCUMENT_HERE 
+*	This property is not exposed in documentation.
 */
 class ApplicationAttribute
 {

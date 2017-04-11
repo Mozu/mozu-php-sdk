@@ -45,7 +45,7 @@ class MozuReturn
 	public $customerInteractionType;
 
 	/**
-	*Unique identifier of the source product property. For a product field it will be the name of the field. For a product attribute it will be the Attribute FQN. 
+	*Unique identifier of the source property, such as a catalog, discount, order, or email template.For a product field it will be the name of the field.For a category ID, must be a positive integer not greater than 2000000. By default,  auto-generates a category ID when categories are created. If you want to specify an ID during creation (which preserves category link relationships when migrating tenant data from one sandbox to another), you must also include the  query string in the endpoint. For example, . Then, use the  property to specify the desired category ID.For a product attribute it will be the Attribute FQN.For a document, the ID must be specified as a 32 character, case-insensitive, alphanumeric string. You can specify the ID as 32 sequential characters or as groups separated by dashes in the format 8-4-4-4-12. For example, or.For email templates, the ID must be one of the following values:			
 	*/
 	public $id;
 
@@ -65,6 +65,11 @@ class MozuReturn
 	public $originalOrderId;
 
 	/**
+	*The order number of the original order where the return was created.
+	*/
+	public $originalOrderNumber;
+
+	/**
 	*The total tax amount levied on the product loss amount.
 	*/
 	public $productLossTaxTotal;
@@ -75,9 +80,24 @@ class MozuReturn
 	public $productLossTotal;
 
 	/**
+	*The status that indicates whether you have received the return item from the shopper. The accepted values are , , or .
+	*/
+	public $receiveStatus;
+
+	/**
 	*If a refund action was performed for this return, the total amount refunded to the shopper. The refund amount can differ from the sum of the price of the returned items.
 	*/
 	public $refundAmount;
+
+	/**
+	*The status of the refund. The accepted values are  if the shopper only wants a replacement or  if either a partial or full refund is applied to the return.
+	*/
+	public $refundStatus;
+
+	/**
+	*The status of the replacement order. The accepted values are  if there is no replacement order or  if a replacement order exits.
+	*/
+	public $replaceStatus;
 
 	/**
 	*A merchant-specific identifier used to sequentially order returns.
@@ -85,19 +105,14 @@ class MozuReturn
 	public $returnNumber;
 
 	/**
-	*Unique identifier for the order created as a result of the return. If the return results in shipping a replacement item, the order includes shipment information for the replaced items. If the return results in a refund, the order includes payment transactions to credit the shopper.
+	*Unique identifier for the last order created as a result of the return. If the return results in shipping a replacement item, the order includes shipment information for the replaced items. If the return results in a refund, the order includes payment transactions to credit the shopper.
 	*/
 	public $returnOrderId;
 
 	/**
-	*The type of return, which is "Refund" or "Replace".
+	*The type of return, which is  or .At the top-level return level, this field is DEPRECATED because Refund and Replace items can now be mixed within a single return. For backwards-compatibility with older applications, the field defaults to .
 	*/
 	public $returnType;
-
-	/**
-	*The date by which a shopper must ship items associated with a return in an "awaiting items" state to the merchant.
-	*/
-	public $rmaDeadline;
 
 	/**
 	*The total tax amount levied on the shipping loss amount.
@@ -115,7 +130,7 @@ class MozuReturn
 	public $siteId;
 
 	/**
-	*The current status of an object. This status is specific to the object including payment (New, Authorized, Captured, Declined, Failed, Voided, Credited, CheckRequested, or RolledBack), discount (Active, Scheduled, or Expired), returns (ReturnAuthorized), tenant, package (Fulfilled or NotFulfilled), application, master and product catalogs, orders (Pending, Submitted, Processing, Pending Review, Closed, or Canceled), and order validation results (Pass, Fail, Error, or Review).
+	*The current status of the object.This value is read only. Valid values for this field are: "Active", "Expired", and "Inactive".
 	*/
 	public $status;
 
@@ -140,6 +155,11 @@ class MozuReturn
 	public $webSessionId;
 
 	/**
+	*The date by which a shopper must ship items associated with a return in an "awaiting items" state to the merchant.
+	*/
+	public $rmaDeadline;
+
+	/**
 	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
 	*/
 	public $auditInfo;
@@ -148,6 +168,11 @@ class MozuReturn
 	*Collection (list or paged) of change messages logged for each modification made by a shopper to their carts, wishlists, orders, package, payment, pickup, and returns. Change log messages are system-supplied based on shopper actions and read only.
 	*/
 	public $changeMessages;
+
+	/**
+	*contact ApiType DOCUMENT_HERE 
+	*/
+	public $contact;
 
 	/**
 	*An array list of objects in the returned collection.

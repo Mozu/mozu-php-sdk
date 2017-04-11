@@ -20,7 +20,7 @@ namespace Mozu\Api\Contracts\SiteSettings\Order;
 class Gateway
 {
 	/**
-	*If true, the credential fields for the gateway are configured with valid values. For security purposes, Mozu does not return the credential fields for the gateway subresource.
+	*If true, the credential fields for the gateway are configured with valid values. For security purposes,  does not return the credential fields for the gateway subresource.
 	*/
 	public $areGatewayCredentialFieldsSet;
 

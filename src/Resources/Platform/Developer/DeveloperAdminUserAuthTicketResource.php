@@ -61,7 +61,7 @@ class DeveloperAdminUserAuthTicketResource {
 	*
 	* @param int $developerAccountId Unique identifier of the developer account.
 	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param DeveloperAdminUserAuthTicket $existingAuthTicket Properties of the authentication ticket to be used in developer account claims with the Mozu API.
+	* @param DeveloperAdminUserAuthTicket $existingAuthTicket Properties of the authentication ticket to be used in developer account claims with the  API.
 	* @return DeveloperAdminUserAuthTicket 
 	* @deprecated deprecated since version 1.17
 	*/

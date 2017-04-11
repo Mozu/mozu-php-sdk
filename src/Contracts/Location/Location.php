@@ -45,7 +45,7 @@ class Location
 	public $isDisabled;
 
 	/**
-	*The display name of the source product property. For a product field it will be the display name of the field. For a product attribute it will be the Attribute Name.
+	*The user supplied name that appears in . You can use this field for identification purposes.
 	*/
 	public $name;
 
@@ -70,7 +70,7 @@ class Location
 	public $tags;
 
 	/**
-	*All address information for the contact. This data is used to validate the address for the customer account and includes the full address.
+	*Address information to supply for a contact.
 	*/
 	public $address;
 

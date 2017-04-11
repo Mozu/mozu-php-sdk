@@ -43,7 +43,7 @@ class SecureAppDataClient {
 	*
 	* @param string $appKeyId 
 	* @param string $dbEntryQuery The database entry string to create.
-	* @param JObject $value JSON code for objects.
+	* @param JObject $value The value string to create.
 	*/
 	public static function createDBValueClient($value, $appKeyId, $dbEntryQuery)
 	{
@@ -59,7 +59,7 @@ class SecureAppDataClient {
 	*
 	* @param string $appKeyId 
 	* @param string $dbEntryQuery The database entry string to create.
-	* @param JObject $value JSON code for objects.
+	* @param JObject $value The value string to create.
 	*/
 	public static function updateDBValueClient($value, $appKeyId, $dbEntryQuery)
 	{

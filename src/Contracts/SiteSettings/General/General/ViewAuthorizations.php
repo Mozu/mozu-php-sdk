@@ -19,15 +19,18 @@ namespace Mozu\Api\Contracts\SiteSettings\General\General;
 */
 class ViewAuthorizations
 {
-		public $enforceSitewideSSL;
+	/**
+	*Specifies whether to enable secure communication across your entire site, using the SSL (Secure Socket Layer) security protocol. Every page on your site will display as an HTTPS page and contain an SSL certificate.
+	*/
+	public $enforceSitewideSSL;
 
 	/**
-	*Mozu.SiteSettings.General.Contracts.General.ViewAuthorizations requireAuthForLive ApiTypeMember DOCUMENT_HERE 
+	*Require log in to view live storefront site.
 	*/
 	public $requireAuthForLive;
 
 	/**
-	*Mozu.SiteSettings.General.Contracts.General.ViewAuthorizations requireAuthForPending ApiTypeMember DOCUMENT_HERE 
+	*Require log in to view pending storefront site.
 	*/
 	public $requireAuthForPending;
 

@@ -20,7 +20,7 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 class FacetValue
 {
 	/**
-	*The number of facet results for a product search.
+	*The total number of associated items.
 	*/
 	public $count;
 
@@ -35,7 +35,7 @@ class FacetValue
 	public $isApplied;
 
 	/**
-	*Indicates if the object is displayed on the storefront. If true, the admin product category is displayed in the store. If true, the category is not displayed.
+	*Indicates if the object is displayed on the storefront. If true, the admin product category is displayed in the store. If false, the category is not displayed.
 	*/
 	public $isDisplayed;
 
@@ -60,7 +60,7 @@ class FacetValue
 	public $rangeQueryValueStart;
 
 	/**
-	*The value of a property, used by numerous objects within Mozu including facets, attributes, products, localized content, metadata, capabilities (Mozu and third-party), location inventory adjustment, and more. The value may be a string, integer, or double. Validation may be run against the entered and saved values depending on the object type.
+	*The value of a property, used by numerous objects within  including facets, attributes, products, localized content, metadata, capabilities ( and third-party), location inventory adjustment, and more. The value may be a string, integer, or double. Validation may be run against the entered and saved values depending on the object type.
 	*/
 	public $value;
 

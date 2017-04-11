@@ -20,12 +20,12 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class SoftAllocationRenew
 {
 	/**
-	*The UTC DateTime these allocations will expire
+	*The updated date and time in UTC format that you wish the soft allocations to expire on.
 	*/
 	public $expiresAt;
 
 	/**
-	*The allocation IDs to renew
+	*A comma-separate list of unique identifiers of the soft allocations to renew.
 	*/
 	public $ids;
 

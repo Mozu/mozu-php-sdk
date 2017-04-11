@@ -17,7 +17,7 @@ use Mozu\Api\Urls\Commerce\LocationUrl;
 
 
 /**
-* Use the Location resource to retrieve details about a location from a Mozu hosted storefront.
+* Use the Location resource to retrieve details about a location from a  hosted storefront.
 */
 class LocationClient {
 

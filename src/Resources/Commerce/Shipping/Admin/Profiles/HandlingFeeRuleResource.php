@@ -104,7 +104,7 @@ class HandlingFeeRuleResource {
 	*
 	* @param string $profilecode The unique, user-defined code of the profile with which the product handling fee rule is associated.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param HandlingFeeRule $rule Mozu.ShippingAdmin.Contracts.Profile.HandlingFeeRule ApiType DOCUMENT_HERE 
+	* @param HandlingFeeRule $rule The details of the new product handling fee rule.
 	* @return HandlingFeeRule 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -138,7 +138,7 @@ class HandlingFeeRuleResource {
 	* @param string $id Unique identifier of the customer segment to retrieve.
 	* @param string $profilecode The unique, user-defined code of the profile with which the product handling fee rule is associated.
 	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param HandlingFeeRule $rule Mozu.ShippingAdmin.Contracts.Profile.HandlingFeeRule ApiType DOCUMENT_HERE 
+	* @param HandlingFeeRule $rule The updated details of the product handling fee rule.
 	* @return HandlingFeeRule 
 	* @deprecated deprecated since version 1.17
 	*/

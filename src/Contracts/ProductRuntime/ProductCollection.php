@@ -19,7 +19,10 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 */
 class ProductCollection
 {
-		public $nextCursorMark;
+	/**
+	*This parameter is associated with deep paging. If you started a deep paged request by specifying ,  returns an encoded value for the . In your most immediate subsequent request, set  to the same value you received for  to continue paging. When  is null, you've reached the end of paged results.
+	*/
+	public $nextCursorMark;
 
 	/**
 	*The number of pages returned based on the startIndex and pageSize values specified. This value is system-supplied and read-only.

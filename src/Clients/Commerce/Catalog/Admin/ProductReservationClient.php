@@ -18,7 +18,7 @@ use Mozu\Api\Urls\Commerce\Catalog\Admin\ProductReservationUrl;
 use Mozu\Api\Headers;
 
 /**
-* Temporarily hold a product from inventory while a shopper is filling out payment information. Create a product reservation when a shopper proceeds to check out and then release the reservation when the order process is complete.
+* Use the Product Reservations resource to temporarily hold a product from inventory while a shopper is filling out payment information. You can create a product reservation when a shopper proceeds to check out and then release the reservation when the order process is complete.
 */
 class ProductReservationClient {
 

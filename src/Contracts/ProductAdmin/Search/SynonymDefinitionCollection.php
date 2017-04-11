@@ -15,7 +15,7 @@ namespace Mozu\Api\Contracts\ProductAdmin\Search;
 
 
 /**
-*	Collection of synonym definitions used for determining search results.
+*	A collection of synonym definitions.
 */
 class SynonymDefinitionCollection
 {

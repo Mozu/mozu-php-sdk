@@ -30,7 +30,7 @@ class EventSummary
 	public $correlationId;
 
 	/**
-	*The date time in UTC format set when the object was created. 
+	*The date and time in UTC format set when the object was created.
 	*/
 	public $createDate;
 

@@ -25,7 +25,7 @@ class ShippingStates
 	public $countryCode;
 
 	/**
-	*Mozu.ShippingAdmin.Contracts.Profile.ShippingStates states ApiTypeMember DOCUMENT_HERE 
+	*The states of the shipping profile.
 	*/
 	public $states;
 
