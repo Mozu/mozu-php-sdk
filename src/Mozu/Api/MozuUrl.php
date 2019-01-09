@@ -52,7 +52,7 @@ class MozuUrl {
 		$removeString =  $paramName . "=&";
 		if ($value == null and strpos($this->url,$removeString) != false) {
 			$this->url = str_replace($removeString, "", $this->url);
-            $this->logger->info(url);
+            $this->logger->info($this->url);
 		}
 
 		$removeString = "?" . $paramName . "=";
