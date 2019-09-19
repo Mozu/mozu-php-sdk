@@ -14,20 +14,11 @@ namespace Mozu\Api\Contracts\InstalledApplications;
 
 
 
-/**
-*	Mozu.InstalledApplications.Contracts.CustomFunctionsForAction ApiType DOCUMENT_HERE 
-*/
 class CustomFunctionsForAction
 {
-	/**
-	*The full action ID for a specific action.
-	*/
-	public $actionId;
+		public $actionId;
 
-	/**
-	*An array of settings for a particular action.
-	*/
-	public $contexts;
+		public $contexts;
 
 }
 

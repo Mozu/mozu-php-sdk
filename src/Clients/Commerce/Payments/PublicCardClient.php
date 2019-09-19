@@ -17,15 +17,15 @@ use Mozu\Api\Urls\Commerce\Payments\PublicCardUrl;
 
 
 /**
-* commerce/payments/cards related resources. DOCUMENT_HERE 
+* 
 */
 class PublicCardClient {
 
 	/**
-	* payments-cards Post Create description DOCUMENT_HERE 
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param PublicCard $request Mozu.PaymentService.Contracts.PublicCard ApiType DOCUMENT_HERE 
+	* @param string $responseFields 
+	* @param PublicCard $request 
 	* @return MozuClient
 	*/
 	public static function createClient($request, $responseFields =  null)
@@ -38,11 +38,44 @@ class PublicCardClient {
 	}
 	
 	/**
-	* payments-cards Put Update description DOCUMENT_HERE 
+	* 
 	*
-	* @param string $cardId Unique identifier of the card associated with the customer account billing contact.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param PublicCard $request Mozu.PaymentService.Contracts.PublicCard ApiType DOCUMENT_HERE 
+	* @param string $cardId 
+	* @param string $responseFields 
+	* @param GetGiftCardBalanceRequest $balanceRequest 
+	* @return MozuClient
+	*/
+	public static function getGiftCardBalanceClient($balanceRequest, $cardId, $responseFields =  null)
+	{
+		$url = PublicCardUrl::getGiftCardBalanceUrl($cardId, $responseFields);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withBody($balanceRequest);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $responseFields 
+	* @param GetGiftCardBalanceRequest $balanceRequest 
+	* @return MozuClient
+	*/
+	public static function getUnregisteredGiftCardBalanceClient($balanceRequest, $responseFields =  null)
+	{
+		$url = PublicCardUrl::getUnregisteredGiftCardBalanceUrl($responseFields);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withBody($balanceRequest);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $cardId 
+	* @param string $responseFields 
+	* @param PublicCard $request 
 	* @return MozuClient
 	*/
 	public static function updateClient($request, $cardId, $responseFields =  null)
@@ -55,9 +88,9 @@ class PublicCardClient {
 	}
 	
 	/**
-	* payments-cards Delete Delete description DOCUMENT_HERE 
+	* 
 	*
-	* @param string $cardId Unique identifier of the card associated with the customer account billing contact.
+	* @param string $cardId 
 	*/
 	public static function deleteClient($cardId)
 	{

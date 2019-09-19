@@ -19,8 +19,8 @@ class CartUrl  {
 
 	/**
 		* Get Resource Url for GetCart
-		* @param string $cartId Identifier of the cart to delete.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $cartId Identifier of the cart to retrieve.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getCartUrl($cartId, $responseFields)
@@ -34,7 +34,7 @@ class CartUrl  {
 	
 	/**
 		* Get Resource Url for GetOrCreateCart
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getOrCreateCartUrl($responseFields)
@@ -47,7 +47,7 @@ class CartUrl  {
 	
 	/**
 		* Get Resource Url for GetCartSummary
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getCartSummaryUrl($responseFields)
@@ -60,8 +60,8 @@ class CartUrl  {
 	
 	/**
 		* Get Resource Url for GetUserCartSummary
-		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $userId Unique identifier of the user whose tenant scopes you want to retrieve.
+		* @param string $responseFields 
+		* @param string $userId Unique identifier of the user whose cart details you want to retrieve.
 		* @return string Resource Url
 	*/
 	public static function getUserCartSummaryUrl($responseFields, $userId)
@@ -75,8 +75,8 @@ class CartUrl  {
 	
 	/**
 		* Get Resource Url for GetUserCart
-		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $userId Unique identifier of the user whose tenant scopes you want to retrieve.
+		* @param string $responseFields 
+		* @param string $userId Unique identifier of the user whose cart you want to retrieve.
 		* @return string Resource Url
 	*/
 	public static function getUserCartUrl($responseFields, $userId)
@@ -89,8 +89,25 @@ class CartUrl  {
 	}
 	
 	/**
+		* Get Resource Url for RejectSuggestedDiscount
+		* @param string $cartId 
+		* @param int $discountId 
+		* @param string $responseFields 
+		* @return string Resource Url
+	*/
+	public static function rejectSuggestedDiscountUrl($cartId, $discountId, $responseFields)
+	{
+		$url = "/api/commerce/carts/{cartId}/rejectautodiscount/{discountId}?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("cartId", $cartId);
+		$url = $mozuUrl->formatUrl("discountId", $discountId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		return $mozuUrl;
+	}
+	
+	/**
 		* Get Resource Url for UpdateCart
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updateCartUrl($responseFields)

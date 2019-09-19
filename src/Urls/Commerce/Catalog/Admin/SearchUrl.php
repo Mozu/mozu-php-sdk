@@ -19,8 +19,8 @@ class SearchUrl  {
 
 	/**
 		* Get Resource Url for GetSearchTuningRule
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-		* @param string $searchTuningRuleCode The unique identifier of the search tuning rule.
+		* @param string $responseFields 
+		* @param string $searchTuningRuleCode 
 		* @return string Resource Url
 	*/
 	public static function getSearchTuningRuleUrl($responseFields, $searchTuningRuleCode)
@@ -34,11 +34,11 @@ class SearchUrl  {
 	
 	/**
 		* Get Resource Url for GetSearchTuningRules
-		* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
-		* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-		* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for more information.
-		* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
+		* @param string $filter 
+		* @param int $pageSize 
+		* @param string $responseFields 
+		* @param string $sortBy 
+		* @param int $startIndex 
 		* @return string Resource Url
 	*/
 	public static function getSearchTuningRulesUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex)
@@ -55,7 +55,7 @@ class SearchUrl  {
 	
 	/**
 		* Get Resource Url for GetSearchTuningRuleSortFields
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getSearchTuningRuleSortFieldsUrl($responseFields)
@@ -68,7 +68,7 @@ class SearchUrl  {
 	
 	/**
 		* Get Resource Url for GetSettings
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getSettingsUrl($responseFields)
@@ -81,8 +81,8 @@ class SearchUrl  {
 	
 	/**
 		* Get Resource Url for GetSynonymDefinitionCollection
-		* @param string $localeCode The two character country code that sets the locale, such as US for United States. Sites, tenants, and catalogs use locale codes for localizing content, such as translated product text per supported country.
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $localeCode 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getSynonymDefinitionCollectionUrl($localeCode, $responseFields)
@@ -96,11 +96,11 @@ class SearchUrl  {
 	
 	/**
 		* Get Resource Url for GetSynonymDefinitions
-		* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
-		* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-		* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for more information.
-		* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
+		* @param string $filter 
+		* @param int $pageSize 
+		* @param string $responseFields 
+		* @param string $sortBy 
+		* @param int $startIndex 
 		* @return string Resource Url
 	*/
 	public static function getSynonymDefinitionsUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex)
@@ -117,8 +117,8 @@ class SearchUrl  {
 	
 	/**
 		* Get Resource Url for GetSynonymDefinition
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-		* @param int $synonymId The unique identifier of the synonym definition.
+		* @param string $responseFields 
+		* @param int $synonymId 
 		* @return string Resource Url
 	*/
 	public static function getSynonymDefinitionUrl($responseFields, $synonymId)
@@ -132,7 +132,7 @@ class SearchUrl  {
 	
 	/**
 		* Get Resource Url for AddSearchTuningRule
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function addSearchTuningRuleUrl($responseFields)
@@ -145,7 +145,7 @@ class SearchUrl  {
 	
 	/**
 		* Get Resource Url for UpdateSearchTuningRuleSortFields
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updateSearchTuningRuleSortFieldsUrl($responseFields)
@@ -158,8 +158,8 @@ class SearchUrl  {
 	
 	/**
 		* Get Resource Url for UpdateSynonymDefinitionCollection
-		* @param string $localeCode The two character country code that sets the locale, such as US for United States. Sites, tenants, and catalogs use locale codes for localizing content, such as translated product text per supported country.
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $localeCode 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updateSynonymDefinitionCollectionUrl($localeCode, $responseFields)
@@ -173,7 +173,7 @@ class SearchUrl  {
 	
 	/**
 		* Get Resource Url for AddSynonymDefinition
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function addSynonymDefinitionUrl($responseFields)
@@ -186,8 +186,8 @@ class SearchUrl  {
 	
 	/**
 		* Get Resource Url for UpdateSearchTuningRule
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-		* @param string $searchTuningRuleCode The unique identifier of the search tuning rule.
+		* @param string $responseFields 
+		* @param string $searchTuningRuleCode 
 		* @return string Resource Url
 	*/
 	public static function updateSearchTuningRuleUrl($responseFields, $searchTuningRuleCode)
@@ -201,7 +201,7 @@ class SearchUrl  {
 	
 	/**
 		* Get Resource Url for UpdateSettings
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updateSettingsUrl($responseFields)
@@ -214,8 +214,8 @@ class SearchUrl  {
 	
 	/**
 		* Get Resource Url for UpdateSynonymDefinition
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-		* @param int $synonymId The unique identifier of the synonym definition.
+		* @param string $responseFields 
+		* @param int $synonymId 
 		* @return string Resource Url
 	*/
 	public static function updateSynonymDefinitionUrl($responseFields, $synonymId)
@@ -229,7 +229,7 @@ class SearchUrl  {
 	
 	/**
 		* Get Resource Url for DeleteSearchTuningRule
-		* @param string $searchTuningRuleCode The unique identifier of the search tuning rule.
+		* @param string $searchTuningRuleCode 
 		* @return string Resource Url
 	*/
 	public static function deleteSearchTuningRuleUrl($searchTuningRuleCode)
@@ -242,7 +242,7 @@ class SearchUrl  {
 	
 	/**
 		* Get Resource Url for DeleteSynonymDefinition
-		* @param int $synonymId The unique identifier of the synonym definition.
+		* @param int $synonymId 
 		* @return string Resource Url
 	*/
 	public static function deleteSynonymDefinitionUrl($synonymId)

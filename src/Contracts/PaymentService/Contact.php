@@ -14,35 +14,17 @@ namespace Mozu\Api\Contracts\PaymentService;
 
 
 
-/**
-*	Contact information for an account.
-*/
 class Contact
 {
-	/**
-	*Mozu.PaymentService.Contracts.Contact country ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $country;
+		public $country;
 
-	/**
-	*The email address for the customer account and contact. This email may be used for login to the storefront, receiving in-stock product notifications, and subscription mailing lists.
-	*/
-	public $email;
+		public $email;
 
-	/**
-	*The full first name of a customer or contact name.
-	*/
-	public $firstname;
+		public $firstname;
 
-	/**
-	*The full last name of a customer or contact name.
-	*/
-	public $lastname;
+		public $lastname;
 
-	/**
-	*The associated contact's phone number.
-	*/
-	public $phone;
+		public $phone;
 
 }
 

@@ -33,17 +33,18 @@ class CustomerContactResource {
 
 
 	/**
-	* Retrieves the specified contact for a customer account such as a billing or shipping contact.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param int $contactId Unique identifer of the customer account contact being updated.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $accountId Unique identifier of the customer account whose contact information is being retrieved.
+	* @param int $contactId Unique identifier of the customer account contact to retrieve.
+	* @param string $responseFields 
+	* @param string $userId 
 	* @return CustomerContact 
 	* @deprecated deprecated since version 1.17
 	*/
-	public function getAccountContact($accountId, $contactId, $responseFields =  null)
+	public function getAccountContact($accountId, $contactId, $userId =  null, $responseFields =  null)
 	{
-		$mozuClient = CustomerContactClient::getAccountContactClient($accountId, $contactId, $responseFields);
+		$mozuClient = CustomerContactClient::getAccountContactClient($accountId, $contactId, $userId, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -51,36 +52,38 @@ class CustomerContactResource {
 	}
 	
 /**
-	* Retrieves the specified contact for a customer account such as a billing or shipping contact.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param int $contactId Unique identifer of the customer account contact being updated.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $accountId Unique identifier of the customer account whose contact information is being retrieved.
+	* @param int $contactId Unique identifier of the customer account contact to retrieve.
+	* @param string $responseFields 
+	* @param string $userId 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
-	public function getAccountContactAsync($accountId, $contactId, $responseFields =  null)
+	public function getAccountContactAsync($accountId, $contactId, $userId =  null, $responseFields =  null)
 	{
-		$mozuClient = CustomerContactClient::getAccountContactClient($accountId, $contactId, $responseFields);
+		$mozuClient = CustomerContactClient::getAccountContactClient($accountId, $contactId, $userId, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 
 	}
 	
 	/**
-	* Retrieves a list of contacts for a customer according to any specified filter criteria and sort options.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $accountId Unique identifier of the customer account associated with the contact information to retrieve.
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $responseFields 
 	* @param string $sortBy 
 	* @param int $startIndex 
+	* @param string $userId 
 	* @return CustomerContactCollection 
 	* @deprecated deprecated since version 1.17
 	*/
-	public function getAccountContacts($accountId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
+	public function getAccountContacts($accountId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $userId =  null, $responseFields =  null)
 	{
-		$mozuClient = CustomerContactClient::getAccountContactsClient($accountId, $startIndex, $pageSize, $sortBy, $filter, $responseFields);
+		$mozuClient = CustomerContactClient::getAccountContactsClient($accountId, $startIndex, $pageSize, $sortBy, $filter, $userId, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -88,30 +91,31 @@ class CustomerContactResource {
 	}
 	
 /**
-	* Retrieves a list of contacts for a customer according to any specified filter criteria and sort options.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $accountId Unique identifier of the customer account associated with the contact information to retrieve.
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $responseFields 
 	* @param string $sortBy 
 	* @param int $startIndex 
+	* @param string $userId 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
-	public function getAccountContactsAsync($accountId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
+	public function getAccountContactsAsync($accountId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $userId =  null, $responseFields =  null)
 	{
-		$mozuClient = CustomerContactClient::getAccountContactsClient($accountId, $startIndex, $pageSize, $sortBy, $filter, $responseFields);
+		$mozuClient = CustomerContactClient::getAccountContactsClient($accountId, $startIndex, $pageSize, $sortBy, $filter, $userId, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 
 	}
 	
 	/**
-	* Creates a new contact for a customer account such as a new shipping address.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param CustomerContact $contact Contact information, including the contact's name, address, phone numbers, email addresses, and company (if supplied). Also indicates whether this is a billing, shipping, or billing and shipping contact.
+	* @param int $accountId Unique identifier of the customer account containing the new contact.
+	* @param string $responseFields 
+	* @param CustomerContact $contact Properties of the new contact. Required properties: Contact.Email, ContactType.
 	* @return CustomerContact 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -125,10 +129,10 @@ class CustomerContactResource {
 	}
 	
 /**
-	* Creates a new contact for a customer account such as a new shipping address.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $accountId Unique identifier of the customer account containing the new contact.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function addAccountContactAsync($contact, $accountId, $responseFields =  null)
@@ -140,18 +144,19 @@ class CustomerContactResource {
 	}
 	
 	/**
-	* Updates a contact for a specified customer account such as to update addresses or change which contact is the primary contact for billing.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
+	* @param int $accountId Unique identifier of the customer account whose contact information is being updated.
 	* @param int $contactId Unique identifer of the customer account contact being updated.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param CustomerContact $contact Contact information, including the contact's name, address, phone numbers, email addresses, and company (if supplied). Also indicates whether this is a billing, shipping, or billing and shipping contact.
+	* @param string $responseFields 
+	* @param string $userId 
+	* @param CustomerContact $contact All properties the updated contact will have. Required properties: Name and email address.
 	* @return CustomerContact 
 	* @deprecated deprecated since version 1.17
 	*/
-	public function updateAccountContact($contact, $accountId, $contactId, $responseFields =  null)
+	public function updateAccountContact($contact, $accountId, $contactId, $userId =  null, $responseFields =  null)
 	{
-		$mozuClient = CustomerContactClient::updateAccountContactClient($contact, $accountId, $contactId, $responseFields);
+		$mozuClient = CustomerContactClient::updateAccountContactClient($contact, $accountId, $contactId, $userId, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -159,26 +164,61 @@ class CustomerContactResource {
 	}
 	
 /**
-	* Updates a contact for a specified customer account such as to update addresses or change which contact is the primary contact for billing.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
+	* @param int $accountId Unique identifier of the customer account whose contact information is being updated.
 	* @param int $contactId Unique identifer of the customer account contact being updated.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
+	* @param string $userId 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
-	public function updateAccountContactAsync($contact, $accountId, $contactId, $responseFields =  null)
+	public function updateAccountContactAsync($contact, $accountId, $contactId, $userId =  null, $responseFields =  null)
 	{
-		$mozuClient = CustomerContactClient::updateAccountContactClient($contact, $accountId, $contactId, $responseFields);
+		$mozuClient = CustomerContactClient::updateAccountContactClient($contact, $accountId, $contactId, $userId, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 
 	}
 	
 	/**
-	* Deletes a contact for the specified customer account.
+	* 
+	*
+	* @param int $accountId 
+	* @param string $responseFields 
+	* @param array|CustomerContact $contactList 
+	* @return CustomerContactCollection 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function addAccountContactList($contactList, $accountId, $responseFields =  null)
+	{
+		$mozuClient = CustomerContactClient::addAccountContactListClient($contactList, $accountId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* 
+	*
+	* @param int $accountId 
+	* @param string $responseFields 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function addAccountContactListAsync($contactList, $accountId, $responseFields =  null)
+	{
+		$mozuClient = CustomerContactClient::addAccountContactListClient($contactList, $accountId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* 
 	*
 	* @param int $accountId Unique identifier of the customer account.
-	* @param int $contactId Unique identifer of the customer account contact being updated.
+	* @param int $contactId Unique identifier of the customer account contact to delete.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteAccountContact($accountId, $contactId)
@@ -186,14 +226,15 @@ class CustomerContactResource {
 		$mozuClient = CustomerContactClient::deleteAccountContactClient($accountId, $contactId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Deletes a contact for the specified customer account.
+	* 
 	*
 	* @param int $accountId Unique identifier of the customer account.
-	* @param int $contactId Unique identifer of the customer account contact being updated.
+	* @param int $contactId Unique identifier of the customer account contact to delete.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteAccountContactAsync($accountId, $contactId)

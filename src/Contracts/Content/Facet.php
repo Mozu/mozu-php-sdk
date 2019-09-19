@@ -19,15 +19,9 @@ namespace Mozu\Api\Contracts\Content;
 */
 class Facet
 {
-	/**
-	*The total number of associated items.
-	*/
-	public $count;
+		public $count;
 
-	/**
-	*The user supplied name that appears in . You can use this field for identification purposes.
-	*/
-	public $name;
+		public $name;
 
 }
 

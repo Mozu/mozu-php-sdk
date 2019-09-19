@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* Use the Content Publish Set resource to manage content publish sets and the pending content drafts.You can use content publish sets to group pending content changes together and publish them all at the same time.
+* 
 */
 class PublishSetSummaryResource {
 
@@ -33,11 +33,11 @@ class PublishSetSummaryResource {
 
 
 	/**
-	* Returns a list of content publish sets.
+	* 
 	*
-	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param int $startIndex 
 	* @return PublishSetSummaryPagedCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -51,11 +51,11 @@ class PublishSetSummaryResource {
 	}
 	
 /**
-	* Returns a list of content publish sets.
+	* 
 	*
-	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param int $startIndex 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getPublishSetsAsync($pageSize =  null, $startIndex =  null, $responseFields =  null)
@@ -67,14 +67,14 @@ class PublishSetSummaryResource {
 	}
 	
 	/**
-	* Retrieves a list of content publish sets and their properties.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
-	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
-	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for more information.
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
+	* @param string $code 
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param string $sortBy 
+	* @param int $startIndex 
 	* @return DocumentDraftSummaryPagedCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -88,14 +88,14 @@ class PublishSetSummaryResource {
 	}
 	
 /**
-	* Retrieves a list of content publish sets and their properties.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
-	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
-	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for more information.
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
+	* @param string $code 
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param string $sortBy 
+	* @param int $startIndex 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getPublishSetItemsAsync($code, $pageSize =  null, $startIndex =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
@@ -107,11 +107,11 @@ class PublishSetSummaryResource {
 	}
 	
 	/**
-	* Deletes the specified content publish set. You can use the shouldDiscard parameter to specify whether to discard the content drafts assigned to the content publish set.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param bool $shouldDiscard Specifies whether to discard the pending content changes assigned to the content publish set when the publish set is deleted.
+	* @param string $code 
+	* @param string $responseFields 
+	* @param bool $shouldDiscard 
 	* @return object 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -125,11 +125,11 @@ class PublishSetSummaryResource {
 	}
 	
 /**
-	* Deletes the specified content publish set. You can use the shouldDiscard parameter to specify whether to discard the content drafts assigned to the content publish set.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param bool $shouldDiscard Specifies whether to discard the pending content changes assigned to the content publish set when the publish set is deleted.
+	* @param string $code 
+	* @param string $responseFields 
+	* @param bool $shouldDiscard 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deletePublishSetAsync($code, $shouldDiscard =  null, $responseFields =  null)
@@ -141,11 +141,11 @@ class PublishSetSummaryResource {
 	}
 	
 	/**
-	* Adds a set of documents by id to a specified publish set.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param array|AddOrDeletePublishItem $itemsToPublish The details of the items that you want to add to a specified publish set.
+	* @param string $code 
+	* @param string $responseFields 
+	* @param array|AddOrDeletePublishItem $itemsToPublish 
 	* @return object 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -159,10 +159,10 @@ class PublishSetSummaryResource {
 	}
 	
 /**
-	* Adds a set of documents by id to a specified publish set.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $code 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function addPublishSetItemsAsync($itemsToPublish, $code, $responseFields =  null)

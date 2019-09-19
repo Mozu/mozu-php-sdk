@@ -19,40 +19,19 @@ namespace Mozu\Api\Contracts\Location;
 */
 class RegularHours
 {
-	/**
-	*The Friday label array describes the range of hours this location is normally open on Fridays. For example: {"Label": "10:00 AM - 6:00 PM"}.
-	*/
-	public $friday;
+		public $friday;
 
-	/**
-	*The Monday label array describes the range of hours this location is normally open on Mondays. For example: {"Label": "10:00 AM - 6:00 PM"}.
-	*/
-	public $monday;
+		public $monday;
 
-	/**
-	*The Saturday label array describes the range of hours this location is normally open on Saturdays. For example: {"Label": "10:00 AM - 6:00 PM"}.
-	*/
-	public $saturday;
+		public $saturday;
 
-	/**
-	*The Sunday label array describes the range of hours this location is normally open on Sundays. For example: {"Label": "10:00 AM - 6:00 PM"}.
-	*/
-	public $sunday;
+		public $sunday;
 
-	/**
-	*The Thursday label array describes the range of hours this location is normally open on Thursdays. For example: {"Label": "10:00 AM - 6:00 PM"}.
-	*/
-	public $thursday;
+		public $thursday;
 
-	/**
-	*The Tuesday label array describes the range of hours this location is normally open on Tuesdays. For example: {"Label": "10:00 AM - 6:00 PM"}.
-	*/
-	public $tuesday;
+		public $tuesday;
 
-	/**
-	*The Wednesday label array describes the range of hours this location is normally open on Wednesdays. For example: {"Label": "10:00 AM - 6:00 PM"}.
-	*/
-	public $wednesday;
+		public $wednesday;
 
 }
 

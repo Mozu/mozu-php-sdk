@@ -19,35 +19,17 @@ namespace Mozu\Api\Contracts\ShippingRuntime;
 */
 class RateRequestItem
 {
-	/**
-	*Unique identifier of an item used to calculate or request a shipping rate.
-	*/
-	public $itemId;
+		public $itemId;
 
-	/**
-	*The specified quantity of objects and items. This property is used for numerous object types including products, options, components within a product bundle, cart and order items, returned items, shipping line items, items in a digital product. and items associated with types and reservations.
-	*/
-	public $quantity;
+		public $quantity;
 
-	/**
-	*If true, this item must ship separately from other items in a shipment.
-	*/
-	public $shipsByItself;
+		public $shipsByItself;
 
-	/**
-	*Data unique to the shipping rate for the item.
-	*/
-	public $data;
+		public $data;
 
-	/**
-	*If Product Summaries are populated, this information will be utilized in Product Rules (e.g. ProductCode eq "ABC" or (Weight.Unit eq "lbs" and Weight.Value ge 50)
-	*/
-	public $productSummaries;
+		public $productSummaries;
 
-	/**
-	*Product specific dimensions used for shipping, used by product summary and rate request items. The dimensions can differ between the two uses as a `RateRequestItem `package may contain one or more products.
-	*/
-	public $unitMeasurements;
+		public $unitMeasurements;
 
 }
 

@@ -17,15 +17,15 @@ use Mozu\Api\Urls\Commerce\Catalog\Storefront\PriceListUrl;
 
 
 /**
-* Retrieves the details of a price list. The details may contain a hierarchy of ancestor and/or descendant price lists dependening on your configuration.
+* 
 */
 class PriceListClient {
 
 	/**
-	* Retrieves the details of the specified price list.
+	* 
 	*
-	* @param string $priceListCode The unique code of the price list for which you want to retrieve the details.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $priceListCode 
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getPriceListClient($priceListCode, $responseFields =  null)
@@ -38,10 +38,10 @@ class PriceListClient {
 	}
 	
 	/**
-	* Retrieves the details of a price list to which the specified customer resolves. This is primarly used when creating an offline order for a shopper.You can use this operation alongside custom Arc.js actions to alter the price list to which a shopper resolves.
+	* 
 	*
-	* @param int $customerAccountId The unique identifier of the customer account for which to retrieve wish lists.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param int $customerAccountId 
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getResolvedPriceListClient($customerAccountId =  null, $responseFields =  null)

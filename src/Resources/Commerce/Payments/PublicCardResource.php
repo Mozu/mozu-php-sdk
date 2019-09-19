@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* commerce/payments/cards related resources. DOCUMENT_HERE 
+* 
 */
 class PublicCardResource {
 
@@ -26,10 +26,10 @@ class PublicCardResource {
 
 
 	/**
-	* payments-cards Post Create description DOCUMENT_HERE 
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param PublicCard $request Mozu.PaymentService.Contracts.PublicCard ApiType DOCUMENT_HERE 
+	* @param string $responseFields 
+	* @param PublicCard $request 
 	* @return SyncResponse 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -42,9 +42,9 @@ class PublicCardResource {
 	}
 	
 /**
-	* payments-cards Post Create description DOCUMENT_HERE 
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function createAsync($request, $responseFields =  null)
@@ -55,11 +55,71 @@ class PublicCardResource {
 	}
 	
 	/**
-	* payments-cards Put Update description DOCUMENT_HERE 
+	* 
 	*
-	* @param string $cardId Unique identifier of the card associated with the customer account billing contact.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param PublicCard $request Mozu.PaymentService.Contracts.PublicCard ApiType DOCUMENT_HERE 
+	* @param string $cardId 
+	* @param string $responseFields 
+	* @param GetGiftCardBalanceRequest $balanceRequest 
+	* @return SyncResponse 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function getGiftCardBalance($balanceRequest, $cardId, $responseFields =  null)
+	{
+		$mozuClient = PublicCardClient::getGiftCardBalanceClient($balanceRequest, $cardId, $responseFields);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* 
+	*
+	* @param string $cardId 
+	* @param string $responseFields 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getGiftCardBalanceAsync($balanceRequest, $cardId, $responseFields =  null)
+	{
+		$mozuClient = PublicCardClient::getGiftCardBalanceClient($balanceRequest, $cardId, $responseFields);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $responseFields 
+	* @param GetGiftCardBalanceRequest $balanceRequest 
+	* @return SyncResponse 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function getUnregisteredGiftCardBalance($balanceRequest, $responseFields =  null)
+	{
+		$mozuClient = PublicCardClient::getUnregisteredGiftCardBalanceClient($balanceRequest, $responseFields);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* 
+	*
+	* @param string $responseFields 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getUnregisteredGiftCardBalanceAsync($balanceRequest, $responseFields =  null)
+	{
+		$mozuClient = PublicCardClient::getUnregisteredGiftCardBalanceClient($balanceRequest, $responseFields);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $cardId 
+	* @param string $responseFields 
+	* @param PublicCard $request 
 	* @return SyncResponse 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -72,10 +132,10 @@ class PublicCardResource {
 	}
 	
 /**
-	* payments-cards Put Update description DOCUMENT_HERE 
+	* 
 	*
-	* @param string $cardId Unique identifier of the card associated with the customer account billing contact.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $cardId 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateAsync($request, $cardId, $responseFields =  null)
@@ -86,9 +146,9 @@ class PublicCardResource {
 	}
 	
 	/**
-	* payments-cards Delete Delete description DOCUMENT_HERE 
+	* 
 	*
-	* @param string $cardId Unique identifier of the card associated with the customer account billing contact.
+	* @param string $cardId 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function delete($cardId)
@@ -99,9 +159,9 @@ class PublicCardResource {
 	}
 	
 /**
-	* payments-cards Delete Delete description DOCUMENT_HERE 
+	* 
 	*
-	* @param string $cardId Unique identifier of the card associated with the customer account billing contact.
+	* @param string $cardId 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteAsync($cardId)

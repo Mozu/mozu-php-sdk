@@ -33,10 +33,10 @@ class AddressValidationRequestResource {
 
 
 	/**
-	* Validates the customer address supplied in the request.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param AddressValidationRequest $addressValidationRequest Properties of the address used for validation of the account's full address. This content may include multiple lines of an address, city, state/province, zip/postal code, and country.
+	* @param string $responseFields 
+	* @param AddressValidationRequest $addressValidationRequest Properties of the address to validate.
 	* @return AddressValidationResponse 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -50,9 +50,9 @@ class AddressValidationRequestResource {
 	}
 	
 /**
-	* Validates the customer address supplied in the request.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function validateAddressAsync($addressValidationRequest, $responseFields =  null)

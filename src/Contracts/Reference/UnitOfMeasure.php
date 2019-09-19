@@ -19,25 +19,13 @@ namespace Mozu\Api\Contracts\Reference;
 */
 class UnitOfMeasure
 {
-	/**
-	*The user supplied name that appears in . You can use this field for identification purposes.
-	*/
-	public $name;
+		public $name;
 
-	/**
-	*The plural name of the unit of measure, such as "feet".
-	*/
-	public $pluralName;
+		public $pluralName;
 
-	/**
-	*The abbreviated symbol for the unit of measure, such as "ft".
-	*/
-	public $symbol;
+		public $symbol;
 
-	/**
-	*The type of measurement, such as length or volume.
-	*/
-	public $unitOfMeasureType;
+		public $unitOfMeasureType;
 
 }
 

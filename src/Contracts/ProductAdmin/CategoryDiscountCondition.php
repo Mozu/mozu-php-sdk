@@ -20,7 +20,7 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class CategoryDiscountCondition
 {
 	/**
-	*Unique identifier of a category. 
+	*The unique identifier of the product category associated with the discount.
 	*/
 	public $categoryId;
 

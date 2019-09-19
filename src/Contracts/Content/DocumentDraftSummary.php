@@ -19,70 +19,31 @@ namespace Mozu\Api\Contracts\Content;
 */
 class DocumentDraftSummary
 {
-	/**
-	*Detailed information of the date and time for the active update date for the document draft summary. This data is associated to document and content data.
-	*/
-	public $activeUpdateDate;
+		public $activeUpdateDate;
 
-	/**
-	*The unique identifier of the user that last updated the content or document draft.
-	*/
-	public $activeUpdatedBy;
+		public $activeUpdatedBy;
 
-	/**
-	*The unique identifier for the product catalog. Catalogs are part of a master catalog.
-	*/
-	public $catalogId;
+		public $catalogId;
 
-	/**
-	*Fully qualified name of the document type. 
-	*/
-	public $documentTypeFQN;
+		public $documentTypeFQN;
 
-	/**
-	*Detailed information of the date and time for the draft update date for the document draft summary. This data is associated to document and content data.
-	*/
-	public $draftUpdateDate;
+		public $draftUpdateDate;
 
-	/**
-	*Unique identifier of the source property, such as a catalog, discount, order, or email template.For a product field it will be the name of the field.For a category ID, must be a positive integer not greater than 2000000. By default,  auto-generates a category ID when categories are created. If you want to specify an ID during creation (which preserves category link relationships when migrating tenant data from one sandbox to another), you must also include the  query string in the endpoint. For example, . Then, use the  property to specify the desired category ID.For a product attribute it will be the Attribute FQN.For a document, the ID must be specified as a 32 character, case-insensitive, alphanumeric string. You can specify the ID as 32 sequential characters or as groups separated by dashes in the format 8-4-4-4-12. For example, or.For email templates, the ID must be one of the following values:			
-	*/
-	public $id;
+		public $id;
 
-	/**
-	*The fully qualified name of the document list.
-	*/
-	public $listFQN;
+		public $listFQN;
 
-	/**
-	*Unique identifier for the master catalog. 
-	*/
-	public $masterCatalogId;
+		public $masterCatalogId;
 
-	/**
-	*The user supplied name that appears in . You can use this field for identification purposes.
-	*/
-	public $name;
+		public $name;
 
-	/**
-	*The unique identifier of the publish set.
-	*/
-	public $publishSetCode;
+		public $publishSetCode;
 
-	/**
-	*Whether the draft has been published.
-	*/
-	public $publishType;
+		public $publishType;
 
-	/**
-	*Unique identifier for the site. This ID is used at all levels of a store, catalog, and tenant to associate objects to a site.
-	*/
-	public $siteId;
+		public $siteId;
 
-	/**
-	*Unique identifier of the user who last modified the item. This value is system-supplied and read-only.
-	*/
-	public $updatedBy;
+		public $updatedBy;
 
 }
 

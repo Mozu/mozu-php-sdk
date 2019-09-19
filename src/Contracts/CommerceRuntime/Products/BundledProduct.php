@@ -15,52 +15,40 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Products;
 
 
 /**
-*	Properties of a component product in a product bundle. A product bundle can represent either a collection of multiple products sold as a single entity, or a collection of the same product sold as a package. For example, a 10-pack of socks or multiple parts and devices in a technology bundle for a computer.
+*	Properties of a component product in a product bundle. A product bundle can represent either a collection of multiple products sold as a single entity, or a collection of the same product sold as a package. For example, a 10-pack of socks.
 */
 class BundledProduct
 {
-	/**
-	*Allocation ID associated with this product on this order.
-	*/
-	public $allocationExpiration;
+		public $allocationExpiration;
+
+		public $allocationId;
 
 	/**
-	*Allocation ID associated with this product on this order.
-	*/
-	public $allocationId;
-
-	/**
-	*The credit value of the product or bundled product. When the `goodsType `is `DigitalCredit`, this value is populated to indicate the value of the credit. This is used to create store credit in the fulfillment of gift cards.
+	*The credit value of the bundled product.
 	*/
 	public $creditValue;
 
-	/**
-	*If the product is in relative pricing mode, this is the difference between associated prices for a product, variation option, or extra. The difference is calculated by subtracting the base price from the associated price with this product, option, and/or extra. For example, if a product with a defined monogram extra costs an additional $10, the `deltaPrice `value is "10". Between options, a price for a medium may be $10 and a large $12 giving a `deltaPrice `value of "2".Refer to [Product Variant Pricing and Weight](../../../guides/catalog/products.htm#product_variant_pricing_and_weight) in the Products guides topic for more information.
-	*/
-	public $deltaPrice;
+		public $deltaPrice;
 
 	/**
-	*The localized description in text for the object, displayed per the locale code. For example, descriptions are used for product descriptions, attributes, and pre-authorization transaction types.
+	*The description defined for a component product in a product bundle. System-supplied and read only.
 	*/
 	public $description;
 
-	/**
-	*Fulfillment status of the product.
-	*/
-	public $fulfillmentStatus;
+		public $fulfillmentStatus;
 
 	/**
-	*The type of goods in a bundled product. A bundled product is composed of products associated to sell together. Possible values include “Physical” and “DigitalCredit”. This comes from the `productType `of the product. Products are defaulted to a Physical `goodsType`. Gift cards have a `goodsType `of DigitalCredit.
+	*The type of goods in a bundled product. For example: physical, digital, or digital credit.
 	*/
 	public $goodsType;
 
 	/**
-	*Indicates if the product must be shipped alone in a container. This is used for products and products within a bundle. If true, this product cannot be shipped in a package with other items and must ship in a package by itself.
+	*If true, this product cannot be shipped in a package with other items and must ship in a package by itself.
 	*/
 	public $isPackagedStandAlone;
 
 	/**
-	*The user supplied name that appears in . You can use this field for identification purposes.
+	*The name of a component product in a product bundle. System-supplied and read only.
 	*/
 	public $name;
 
@@ -70,7 +58,7 @@ class BundledProduct
 	public $optionAttributeFQN;
 
 	/**
-	*The value of the option attribute. These values are associated and used by product bundles and options.
+	*The value of the bundled product.
 	*/
 	public $optionValue;
 
@@ -80,12 +68,12 @@ class BundledProduct
 	public $productCode;
 
 	/**
-	*Unique identifier of the product reservation associated with the component product in a product bundle or item in a cart/order. System-supplied and read only.
+	*Unique identifier of the product reservation associated with the component product in a product bundle. System-supplied and read only.
 	*/
 	public $productReservationId;
 
 	/**
-	*The specified quantity of objects and items. This property is used for numerous object types including products, options, components within a product bundle, cart and order items, returned items, shipping line items, items in a digital product. and items associated with types and reservations.
+	*The quantity of a component product in its product bundle. System-supplied and read only.
 	*/
 	public $quantity;
 
@@ -93,6 +81,8 @@ class BundledProduct
 	*Dimensions of the packaged product.
 	*/
 	public $measurements;
+
+		public $stock;
 
 }
 

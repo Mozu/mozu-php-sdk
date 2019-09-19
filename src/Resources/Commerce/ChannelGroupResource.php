@@ -33,13 +33,13 @@ class ChannelGroupResource {
 
 
 	/**
-	* Retrieves a list of defined channel groups according to any filter and sort criteria specified in the request.
+	* 
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param string $sortBy 
+	* @param int $startIndex 
 	* @return ChannelGroupCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -53,13 +53,13 @@ class ChannelGroupResource {
 	}
 	
 /**
-	* Retrieves a list of defined channel groups according to any filter and sort criteria specified in the request.
+	* 
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param string $sortBy 
+	* @param int $startIndex 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getChannelGroupsAsync($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
@@ -71,10 +71,10 @@ class ChannelGroupResource {
 	}
 	
 	/**
-	* Retrieves the details of a defined channel group.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $code The code that uniquely identifies the channel group.
+	* @param string $responseFields 
 	* @return ChannelGroup 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -88,10 +88,10 @@ class ChannelGroupResource {
 	}
 	
 /**
-	* Retrieves the details of a defined channel group.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $code The code that uniquely identifies the channel group.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getChannelGroupAsync($code, $responseFields =  null)
@@ -103,10 +103,10 @@ class ChannelGroupResource {
 	}
 	
 	/**
-	* Creates a new group of channels with common information.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param ChannelGroup $channelGroup Properties of a group of channels that share common information.
+	* @param string $responseFields 
+	* @param ChannelGroup $channelGroup Properties of the channel group to create.
 	* @return ChannelGroup 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -120,9 +120,9 @@ class ChannelGroupResource {
 	}
 	
 /**
-	* Creates a new group of channels with common information.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function createChannelGroupAsync($channelGroup, $responseFields =  null)
@@ -134,11 +134,11 @@ class ChannelGroupResource {
 	}
 	
 	/**
-	* Updates one or more properties of a defined channel group.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param ChannelGroup $channelGroup Properties of a group of channels that share common information.
+	* @param string $code Code that identifies the channel group.
+	* @param string $responseFields 
+	* @param ChannelGroup $channelGroup Properties of the channel group to update.
 	* @return ChannelGroup 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -152,10 +152,10 @@ class ChannelGroupResource {
 	}
 	
 /**
-	* Updates one or more properties of a defined channel group.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $code Code that identifies the channel group.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateChannelGroupAsync($channelGroup, $code, $responseFields =  null)
@@ -167,9 +167,10 @@ class ChannelGroupResource {
 	}
 	
 	/**
-	* Deletes a defined group of channels, which removes the group association with each channel in the group but does not delete the channel definitions themselves.
+	* 
 	*
 	* @param string $code User-defined code that uniqely identifies the channel group.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteChannelGroup($code)
@@ -177,11 +178,12 @@ class ChannelGroupResource {
 		$mozuClient = ChannelGroupClient::deleteChannelGroupClient($code);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Deletes a defined group of channels, which removes the group association with each channel in the group but does not delete the channel definitions themselves.
+	* 
 	*
 	* @param string $code User-defined code that uniqely identifies the channel group.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException

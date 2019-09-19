@@ -19,15 +19,9 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 */
 class FacetRangeQuery
 {
-	/**
-	*The maximum value to use for the facet range query.
-	*/
-	public $rangeValueEnd;
+		public $rangeValueEnd;
 
-	/**
-	*The minimum value to use for the facet range query.
-	*/
-	public $rangeValueStart;
+		public $rangeValueStart;
 
 }
 

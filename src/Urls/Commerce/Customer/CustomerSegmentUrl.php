@@ -19,11 +19,11 @@ class CustomerSegmentUrl  {
 
 	/**
 		* Get Resource Url for GetSegments
-		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
-		* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+		* @param string $filter 
+		* @param int $pageSize 
+		* @param string $responseFields 
+		* @param string $sortBy 
+		* @param int $startIndex 
 		* @return string Resource Url
 	*/
 	public static function getSegmentsUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex)
@@ -41,7 +41,7 @@ class CustomerSegmentUrl  {
 	/**
 		* Get Resource Url for GetSegment
 		* @param int $id Unique identifier of the customer segment to retrieve.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getSegmentUrl($id, $responseFields)
@@ -55,7 +55,7 @@ class CustomerSegmentUrl  {
 	
 	/**
 		* Get Resource Url for AddSegment
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function addSegmentUrl($responseFields)
@@ -68,7 +68,7 @@ class CustomerSegmentUrl  {
 	
 	/**
 		* Get Resource Url for AddSegmentAccounts
-		* @param int $id Unique identifier of the customer segment to retrieve.
+		* @param int $id Unique identifier of the customer segment for which to add the associated customer accounts.
 		* @return string Resource Url
 	*/
 	public static function addSegmentAccountsUrl($id)
@@ -81,8 +81,8 @@ class CustomerSegmentUrl  {
 	
 	/**
 		* Get Resource Url for UpdateSegment
-		* @param int $id Unique identifier of the customer segment to retrieve.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param int $id Unique identifier of the customer segment.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updateSegmentUrl($id, $responseFields)
@@ -96,7 +96,7 @@ class CustomerSegmentUrl  {
 	
 	/**
 		* Get Resource Url for DeleteSegment
-		* @param int $id Unique identifier of the customer segment to retrieve.
+		* @param int $id Unique identifier of the customer segment to delete.
 		* @return string Resource Url
 	*/
 	public static function deleteSegmentUrl($id)
@@ -109,8 +109,8 @@ class CustomerSegmentUrl  {
 	
 	/**
 		* Get Resource Url for RemoveSegmentAccount
-		* @param int $accountId Unique identifier of the customer account.
-		* @param int $id Unique identifier of the customer segment to retrieve.
+		* @param int $accountId 
+		* @param int $id 
 		* @return string Resource Url
 	*/
 	public static function removeSegmentAccountUrl($accountId, $id)

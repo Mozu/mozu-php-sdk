@@ -22,9 +22,9 @@ use Mozu\Api\Urls\Commerce\Settings\GeneralSettingsUrl;
 class GeneralSettingsClient {
 
 	/**
-	* Retrieve a site's general global settings.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getGeneralSettingsClient($responseFields =  null)
@@ -37,10 +37,10 @@ class GeneralSettingsClient {
 	}
 	
 	/**
-	* Updates a site's general global settings.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param GeneralSettings $generalSettings General settings used on the storefront site.
+	* @param string $responseFields 
+	* @param GeneralSettings $generalSettings The properties of the site's general settings to update.
 	* @return MozuClient
 	*/
 	public static function updateGeneralSettingsClient($generalSettings, $responseFields =  null)

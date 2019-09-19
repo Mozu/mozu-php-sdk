@@ -22,11 +22,11 @@ use Mozu\Api\Urls\Commerce\Orders\BillingInfoUrl;
 class BillingInfoClient {
 
 	/**
-	* Retrieves the billing information associated with an order.
+	* 
 	*
-	* @param bool $draft If true, retrieve the draft version of the order, which might include uncommitted changes to the order or its components.
+	* @param bool $draft If true, retrieve the draft version of the order billing information, which might include uncommitted changes.
 	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getBillingInfoClient($orderId, $draft =  null, $responseFields =  null)
@@ -39,13 +39,13 @@ class BillingInfoClient {
 	}
 	
 	/**
-	* Updates the billing information supplied for an order.
+	* 
 	*
 	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
-	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
-	* @param BillingInfo $billingInfo Properties of the billing information entered for an order during checkout.
+	* @param string $responseFields 
+	* @param string $updateMode Specifies whether to set the billing information by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version 
+	* @param BillingInfo $billingInfo The properties of the order billing information to update.
 	* @return MozuClient
 	*/
 	public static function setBillingInfoClient($billingInfo, $orderId, $updateMode =  null, $version =  null, $responseFields =  null)

@@ -34,14 +34,14 @@ class ProductResource {
 
 
 	/**
-	* Retrieves a list of products according to any specified facets, filter criteria, and sort options.
+	* 
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param string $filter 
 	* @param bool $noCount If true, the operation does not return the TotalCount number of results.
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $q A list of order search terms (not phrases) to use in the query when searching across order number and the name or email of the billing contact. When entering, separate multiple search terms with a space character.
+	* @param int $pageSize 
+	* @param string $q A list of product search terms to use in the query when searching across product code and product name. Separate multiple search terms with a space character.
 	* @param int $qLimit The maximum number of search results to return in the response. You can limit any range between 1-100.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return ProductCollection 
@@ -57,14 +57,14 @@ class ProductResource {
 	}
 	
 /**
-	* Retrieves a list of products according to any specified facets, filter criteria, and sort options.
+	* 
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param string $filter 
 	* @param bool $noCount If true, the operation does not return the TotalCount number of results.
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $q A list of order search terms (not phrases) to use in the query when searching across order number and the name or email of the billing contact. When entering, separate multiple search terms with a space character.
+	* @param int $pageSize 
+	* @param string $q A list of product search terms to use in the query when searching across product code and product name. Separate multiple search terms with a space character.
 	* @param int $qLimit The maximum number of search results to return in the response. You can limit any range between 1-100.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -78,9 +78,9 @@ class ProductResource {
 	}
 	
 	/**
-	* Retrieves a product that is associated with one or more specific catalogs.
+	* 
 	*
-	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+	* @param string $productCode 
 	* @return array|ProductInCatalogInfo 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -94,9 +94,9 @@ class ProductResource {
 	}
 	
 /**
-	* Retrieves a product that is associated with one or more specific catalogs.
+	* 
 	*
-	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+	* @param string $productCode 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getProductInCatalogsAsync($productCode)
@@ -108,11 +108,11 @@ class ProductResource {
 	}
 	
 	/**
-	* Retrieves the details of a product associated with a specific catalog.
+	* 
 	*
-	* @param int $catalogId The unique identifier of the catalog of products used by a site.
-	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $catalogId 
+	* @param string $productCode 
+	* @param string $responseFields 
 	* @return ProductInCatalogInfo 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -126,11 +126,11 @@ class ProductResource {
 	}
 	
 /**
-	* Retrieves the details of a product associated with a specific catalog.
+	* 
 	*
-	* @param int $catalogId The unique identifier of the catalog of products used by a site.
-	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $catalogId 
+	* @param string $productCode 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getProductInCatalogAsync($productCode, $catalogId, $responseFields =  null)
@@ -142,10 +142,10 @@ class ProductResource {
 	}
 	
 	/**
-	* Retrieves the details of a product definition.
+	* 
 	*
-	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $productCode 
+	* @param string $responseFields 
 	* @return Product 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -159,10 +159,10 @@ class ProductResource {
 	}
 	
 /**
-	* Retrieves the details of a product definition.
+	* 
 	*
-	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $productCode 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getProductAsync($productCode, $responseFields =  null)
@@ -174,10 +174,10 @@ class ProductResource {
 	}
 	
 	/**
-	* Creates a new product definition in the specified master catalog.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Product $product The properties of a product, referenced and used by carts, orders, wish lists, and returns.
+	* @param string $responseFields 
+	* @param Product $product Properties of the new product. You must supply values for the product code, product name, and price.
 	* @return Product 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -191,9 +191,9 @@ class ProductResource {
 	}
 	
 /**
-	* Creates a new product definition in the specified master catalog.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function addProductAsync($product, $responseFields =  null)
@@ -205,11 +205,11 @@ class ProductResource {
 	}
 	
 	/**
-	* Associates a new product defined in the master catalog with a specific catalog.
+	* 
 	*
-	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param ProductInCatalogInfo $productInCatalogInfoIn Properties of a product associated with a specific catalog.
+	* @param string $productCode 
+	* @param string $responseFields 
+	* @param ProductInCatalogInfo $productInCatalogInfoIn Properties of the product to define for the specific catalog association.
 	* @return ProductInCatalogInfo 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -223,10 +223,10 @@ class ProductResource {
 	}
 	
 /**
-	* Associates a new product defined in the master catalog with a specific catalog.
+	* 
 	*
-	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $productCode 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function addProductInCatalogAsync($productInCatalogInfoIn, $productCode, $responseFields =  null)
@@ -238,9 +238,10 @@ class ProductResource {
 	}
 	
 	/**
-	* Performs an update to a product code by renaming or replacing the current product code with a new one.
+	* 
 	*
-	* @param array|ProductCodeRename $productCodeRenames Properties for a product code current and changed content.
+	* @param array|ProductCodeRename $productCodeRenames 
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function renameProductCodes($productCodeRenames)
@@ -248,11 +249,12 @@ class ProductResource {
 		$mozuClient = ProductClient::renameProductCodesClient($productCodeRenames);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Performs an update to a product code by renaming or replacing the current product code with a new one.
+	* 
 	*
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -265,10 +267,10 @@ class ProductResource {
 	}
 	
 	/**
-	* Updates the properties of a product specific to each catalog associated with the product.
+	* 
 	*
-	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @param array|ProductInCatalogInfo $productInCatalogsIn Properties of a product associated with a specific catalog.
+	* @param string $productCode 
+	* @param array|ProductInCatalogInfo $productInCatalogsIn Properties of the product to update for each associated catalog.
 	* @return array|ProductInCatalogInfo 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -282,9 +284,9 @@ class ProductResource {
 	}
 	
 /**
-	* Updates the properties of a product specific to each catalog associated with the product.
+	* 
 	*
-	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+	* @param string $productCode 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateProductInCatalogsAsync($productInCatalogsIn, $productCode)
@@ -296,12 +298,12 @@ class ProductResource {
 	}
 	
 	/**
-	* Updates one or more properties of a product associated with a specific catalog.
+	* 
 	*
-	* @param int $catalogId The unique identifier of the catalog of products used by a site.
-	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param ProductInCatalogInfo $productInCatalogInfoIn Properties of a product associated with a specific catalog.
+	* @param int $catalogId 
+	* @param string $productCode 
+	* @param string $responseFields 
+	* @param ProductInCatalogInfo $productInCatalogInfoIn Properties of the product associated with the catalog specified in the request.
 	* @return ProductInCatalogInfo 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -315,11 +317,11 @@ class ProductResource {
 	}
 	
 /**
-	* Updates one or more properties of a product associated with a specific catalog.
+	* 
 	*
-	* @param int $catalogId The unique identifier of the catalog of products used by a site.
-	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $catalogId 
+	* @param string $productCode 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateProductInCatalogAsync($productInCatalogInfoIn, $productCode, $catalogId, $responseFields =  null)
@@ -331,11 +333,11 @@ class ProductResource {
 	}
 	
 	/**
-	* Updates one or more properties of a product definition in a master catalog.
+	* 
 	*
-	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Product $product The properties of a product, referenced and used by carts, orders, wish lists, and returns.
+	* @param string $productCode 
+	* @param string $responseFields 
+	* @param Product $product Properties of the product definition to update in the master catalog.
 	* @return Product 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -349,10 +351,10 @@ class ProductResource {
 	}
 	
 /**
-	* Updates one or more properties of a product definition in a master catalog.
+	* 
 	*
-	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $productCode 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateProductAsync($product, $productCode, $responseFields =  null)
@@ -364,9 +366,10 @@ class ProductResource {
 	}
 	
 	/**
-	* Deletes the specified product from a master catalog.
+	* 
 	*
-	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
+	* @param string $productCode 
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteProduct($productCode)
@@ -374,13 +377,14 @@ class ProductResource {
 		$mozuClient = ProductClient::deleteProductClient($this->dataViewMode, $productCode);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Deletes the specified product from a master catalog.
+	* 
 	*
-	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
+	* @param string $productCode 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteProductAsync($productCode)
@@ -392,10 +396,11 @@ class ProductResource {
 	}
 	
 	/**
-	* Removes the product association defined for a specific catalog.
+	* 
 	*
-	* @param int $catalogId The unique identifier of the catalog of products used by a site.
-	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+	* @param int $catalogId 
+	* @param string $productCode 
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteProductInCatalog($productCode, $catalogId)
@@ -403,14 +408,15 @@ class ProductResource {
 		$mozuClient = ProductClient::deleteProductInCatalogClient($this->dataViewMode, $productCode, $catalogId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Removes the product association defined for a specific catalog.
+	* 
 	*
-	* @param int $catalogId The unique identifier of the catalog of products used by a site.
-	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+	* @param int $catalogId 
+	* @param string $productCode 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteProductInCatalogAsync($productCode, $catalogId)

@@ -19,8 +19,8 @@ class DocumentListUrl  {
 
 	/**
 		* Get Resource Url for GetDocumentLists
-		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param int $pageSize 
+		* @param string $responseFields 
 		* @param int $startIndex 
 		* @return string Resource Url
 	*/
@@ -36,8 +36,8 @@ class DocumentListUrl  {
 	
 	/**
 		* Get Resource Url for GetDocumentList
-		* @param string $documentListName Name of content documentListName to delete
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $documentListName The name of the document list.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getDocumentListUrl($documentListName, $responseFields)
@@ -51,7 +51,7 @@ class DocumentListUrl  {
 	
 	/**
 		* Get Resource Url for CreateDocumentList
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function createDocumentListUrl($responseFields)
@@ -64,8 +64,8 @@ class DocumentListUrl  {
 	
 	/**
 		* Get Resource Url for UpdateDocumentList
-		* @param string $documentListName Name of content documentListName to delete
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $documentListName 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updateDocumentListUrl($documentListName, $responseFields)
@@ -79,7 +79,7 @@ class DocumentListUrl  {
 	
 	/**
 		* Get Resource Url for DeleteDocumentList
-		* @param string $documentListName Name of content documentListName to delete
+		* @param string $documentListName 
 		* @return string Resource Url
 	*/
 	public static function deleteDocumentListUrl($documentListName)

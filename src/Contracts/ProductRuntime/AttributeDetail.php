@@ -19,65 +19,39 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 */
 class AttributeDetail
 {
-	/**
-	*Indicates whether the attribute should be able to be used in filters, facets, and sorting on the public storefront.
-	*/
-	public $allowFilteringAndSortingInStorefront;
+		public $allowFilteringAndSortingInStorefront;
+
+		public $customWeightInStorefrontSearch;
+
+		public $dataType;
+
+		public $dataTypeSequence;
+
+		public $description;
+
+		public $displayIntention;
+
+		public $indexValueWithCase;
+
+		public $inputType;
+
+		public $name;
 
 	/**
-	*The data type of the source product property, typically of type Bool, DateTime, Number, or String.
-	*/
-	public $dataType;
-
-	/**
-	*Unique sequence of the attribute for its data type.
-	*/
-	public $dataTypeSequence;
-
-	/**
-	*The localized description in text for the object, displayed per the locale code. For example, descriptions are used for product descriptions, attributes, and pre-authorization transaction types.
-	*/
-	public $description;
-
-	/**
-	*Defines the intended display of this attribute in the storefront. Options include Drop Down, Image Picker, and Radio Buttons.
-	*/
-	public $displayIntention;
-
-	/**
-	*The type of input selection used to define a value for the attribute, including Yes/No, Date, DateTime, List, TextBox, or TextArea.
-	*/
-	public $inputType;
-
-	/**
-	*The user supplied name that appears in . You can use this field for identification purposes.
-	*/
-	public $name;
-
-	/**
-	*Indicates if the attribute value is searchable on the public storefront.
+	*Indicates whether the attribute value is searchable in the storefont by a shopper.
 	*/
 	public $searchableInStorefront;
 
 	/**
-	*Indicates what kind of values search queries and returns. If true, the system indexes the display value of string attributes instead of the canonical value for searching. Always use the canonical value for filtering. This does not apply for non-string attributes.
+	*If true, the system indexes the display value of string attributes instead of the canonical value for searching. The canonical value is always used for filtering. This does not apply for for non-string attributes.
 	*/
 	public $searchDisplayValue;
 
-	/**
-	*The usage type of the product attribute, which is property, option, or extra.
-	*/
-	public $usageType;
+		public $usageType;
 
-	/**
-	*An attribute value type is either predefined vocabulary by the admin during attribute set up or user-defined with an appropriate type (AdminEntered or ShopperEntered depending on the user). These types are used by products and attributes. The difference between predefined values versus manually entered values is such that the first choice is a set of options to choose from. AdminEntered and ShopperEntered are values that are entered rather than system-supplied and are not stored in the database, but captured during a live commerce operations such as during an order.
-	*/
-	public $valueType;
+		public $valueType;
 
-	/**
-	*Properties used when validating a value entered for an object, including extensible attributes, products attributes, and database entries.
-	*/
-	public $validation;
+		public $validation;
 
 }
 

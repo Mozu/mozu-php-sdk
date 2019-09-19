@@ -14,20 +14,11 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 
-/**
-*	The results of the suggested search terms made to the customer based on queries.
-*/
 class SearchSuggestionResult
 {
-	/**
-	*Text that the shopper types in a search query.
-	*/
-	public $query;
+		public $query;
 
-	/**
-	*List of SearchSuggestionGroups
-	*/
-	public $suggestionGroups;
+		public $suggestionGroups;
 
 }
 

@@ -15,109 +15,55 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 /**
-*	The properties of a product, referenced and used by carts, orders, wish lists, and returns.
+*	Properties of a product in a master catalog. Product properties include discounts, localizable content, inventory information, attribute configurations, price data, and the catalogs associated with a product.
 */
 class Product
 {
-	/**
-	*Product code defined by the tenant administrator to use as a base prefix when generating product codes for any variations of this product.
-	*/
-	public $baseProductCode;
+		public $baseProductCode;
 
 	/**
-	*List of supported types of fulfillment for the product or variation. The types include direct ship, in-store pickup, or both.
+	*Describes the types of fulfillment that are supported for this product. A product can support direct ship, in-store pickup, or both. Supported fulfillment types are defined at the master catalog level. Client administrators cannot override the supported fulfillment types at the catalog level.
 	*/
 	public $fulfillmentTypesSupported;
 
-	/**
-	*If true, the product has configurable options. This option means that a product is not purchasable until the shopper selects options that resolve into a product variation. Configurable options for a product are the choices a shopper makes when ordering a product. Size and color are configurable options. System-supplied and read-only.
-	*/
-	public $hasConfigurableOptions;
+		public $hasConfigurableOptions;
 
-	/**
-	*If true, this product has standalone options that a shopper can select without configuring a defined product variations. System-supplied and read only.
-	*/
-	public $hasStandAloneOptions;
+		public $hasStandAloneOptions;
 
-	/**
-	*Indicates if the product must be shipped alone in a container. This is used for products and products within a bundle. If true, this product cannot be shipped in a package with other items and must ship in a package by itself.
-	*/
-	public $isPackagedStandAlone;
+		public $isPackagedStandAlone;
 
-	/**
-	*Indicates if the product in a cart, order, or wish list is purchased on a recurring schedule. If true, the item can be purchased or fulfilled at regular intervals, such as a monthly billing cycle. For example, digital or physical product subscriptions are recurring cart items. This property is not used at this time and is reserved for future functionality.
-	*/
-	public $isRecurring;
+		public $isRecurring;
 
-	/**
-	*Indicates if the item is subject to taxation, used by products, options, extras, cart and order items, line items, and wish lists. If true, the entity is subject to tax based on the relevant tax rate and rules.
-	*/
-	public $isTaxable;
+		public $isTaxable;
 
-	/**
-	*If true, this product is valid for the assigned product type.
-	*/
-	public $isValidForProductType;
+		public $isValidForProductType;
 
-	/**
-	*If true, this configured product represents a product variation defined with configurable options. System-supplied and read only.
-	*/
-	public $isVariation;
+		public $isVariation;
 
-	/**
-	*The unique identifier of the master catalog associated with the entity.
-	*/
-	public $masterCatalogId;
+		public $masterCatalogId;
 
-	/**
-	*Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	*/
-	public $productCode;
+		public $productCode;
 
-	/**
-	*Integer that represents the sequential order of the product.
-	*/
-	public $productSequence;
+		public $productSequence;
 
-	/**
-	*Unique identifier of the product type assigned for this product. Tenant administrators can only define one product type per product.
-	*/
-	public $productTypeId;
+		public $productTypeId;
 
 	/**
 	*The usage type that applies to this product, which is Standard (a single product without configurable options), Configurable (a product that includes configurable option attributes), Bundle (a collection of products sold as a single entity), or Component (an invididual product that represents a component in a bundle).
 	*/
 	public $productUsage;
 
-	/**
-	*Identifier of the shipping class.
-	*/
-	public $shippingClassId;
+		public $shippingClassId;
 
-	/**
-	*If the product must be packaged separately, the type of standalone package to use.
-	*/
-	public $standAlonePackageType;
+		public $standAlonePackageType;
 
-	/**
-	*The universal product code (UPC) is the barcode defined for the product. The UPC is unique across all sales channels. 
-	*/
-	public $upc;
+		public $upc;
 
-	/**
-	*System-generated key that represents the attribute values that uniquely identify a specific product variation.
-	*/
-	public $variationKey;
+		public $variationKey;
 
-	/**
-	*List of discounts available per configured conditions and criteria. These discounts are associated with products, orders, and shipping costs. Shoppers can view these discounts per order, per product in an order, or for their shipping depending on the configuration.
-	*/
-	public $applicableDiscounts;
+		public $applicableDiscounts;
 
-	/**
-	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
-	*/
-	public $auditInfo;
+		public $auditInfo;
 
 	/**
 	*Properties of a collection of component products that make up a single product bundle with its own product code. Tenants can define product bundles for any product type that supports the Bundle product usage.
@@ -126,80 +72,43 @@ class Product
 
 		public $content;
 
-	/**
-	*List of extra product attributes defined for this product. For example, monogram could be a possible extra for a shirt product.
-	*/
-	public $extras;
+		public $extras;
+
+		public $inventoryInfo;
+
+		public $options;
+
+		public $packageHeight;
+
+		public $packageLength;
+
+		public $packageWeight;
+
+		public $packageWidth;
+
+		public $price;
 
 	/**
-	*Properties and data of inventory information for configured and bundled products. If product stock is managed, the data specifies out of stock behavior.
-	*/
-	public $inventoryInfo;
-
-	/**
-	*List of option attributes configured for an object. These values are associated and used by products, product bundles, and product types.
-	*/
-	public $options;
-
-	/**
-	*Height of a package or bundle package in imperial units of feet and inches.
-	*/
-	public $packageHeight;
-
-	/**
-	*Length of a package or bundle package in imperial units of feet and inches.
-	*/
-	public $packageLength;
-
-	/**
-	*Weight of a package or bundle package in imperial units of pounds and ounces.
-	*/
-	public $packageWeight;
-
-	/**
-	*Width of a package or bundle package in imperial units of feet and inches.
-	*/
-	public $packageWidth;
-
-	/**
-	*Unit price that the client intends to sell the product if no sale price is set.
-	*/
-	public $price;
-
-	/**
-	*Properties that describe the behavior the system uses when determining the price of products.
+	*Describes the behavior the system uses when determining the price of the product.
 	*/
 	public $pricingBehavior;
 
-	/**
-	*Properties defined for a product as they appear in its associated catalogs.
-	*/
-	public $productInCatalogs;
+		public $productImageGroups;
 
-	/**
-	*Collection of property attributes defined for the object. Properties are associated to all objects within , including documents, products, and product types.
-	*/
-	public $properties;
+		public $productInCatalogs;
 
-	/**
-	*Properties of the product publishing settings for the associated product.
-	*/
-	public $publishingInfo;
+		public $properties;
 
-	/**
-	*The search engine optimized content defined for products or products associated with a catalog. If no SEO content is specified in the request for products associated with a catalog, this catalog uses the SEO content defined in the master catalog. To override the SEO content for this catalog, the `IsSEOContentOverridden `flag must be set to "true".
-	*/
-	public $seoContent;
+		public $publishingInfo;
+
+		public $seoContent;
 
 	/**
 	*Supplier-defined properties assigned for the product.
 	*/
 	public $supplierInfo;
 
-	/**
-	*The list of product variation configurations defined for this product based on its available product option attributes.
-	*/
-	public $variationOptions;
+		public $variationOptions;
 
 }
 

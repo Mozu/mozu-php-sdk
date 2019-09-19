@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* Use the Customer Account Purchase Order resource to manage purchase order details for specific customer acocunts.
+* 
 */
 class CustomerPurchaseOrderAccountResource {
 
@@ -33,10 +33,10 @@ class CustomerPurchaseOrderAccountResource {
 
 
 	/**
-	* Retrieves the details of the specified customer purchase order account.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param int $accountId 
+	* @param string $responseFields 
 	* @return CustomerPurchaseOrderAccount 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -50,10 +50,10 @@ class CustomerPurchaseOrderAccountResource {
 	}
 	
 /**
-	* Retrieves the details of the specified customer purchase order account.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param int $accountId 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getCustomerPurchaseOrderAccountAsync($accountId, $responseFields =  null)
@@ -65,14 +65,14 @@ class CustomerPurchaseOrderAccountResource {
 	}
 	
 	/**
-	* Retrieves a list of purchase order transactions for the specified customer account according to any specified sort options.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
-	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for more information.
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
+	* @param int $accountId 
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param string $sortBy 
+	* @param int $startIndex 
 	* @return PurchaseOrderTransactionCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -86,14 +86,14 @@ class CustomerPurchaseOrderAccountResource {
 	}
 	
 /**
-	* Retrieves a list of purchase order transactions for the specified customer account according to any specified sort options.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
-	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for more information.
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
+	* @param int $accountId 
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param string $sortBy 
+	* @param int $startIndex 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getCustomerPurchaseOrderTransactionsAsync($accountId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
@@ -105,11 +105,11 @@ class CustomerPurchaseOrderAccountResource {
 	}
 	
 	/**
-	* Adds a purchase order account to the specified customer account.This adds the ability for the specified customer account to use the purchase order payment method.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param CustomerPurchaseOrderAccount $customerPurchaseOrderAccount Unique identifier of the customer purchase order account.
+	* @param int $accountId 
+	* @param string $responseFields 
+	* @param CustomerPurchaseOrderAccount $customerPurchaseOrderAccount 
 	* @return CustomerPurchaseOrderAccount 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -123,10 +123,10 @@ class CustomerPurchaseOrderAccountResource {
 	}
 	
 /**
-	* Adds a purchase order account to the specified customer account.This adds the ability for the specified customer account to use the purchase order payment method.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param int $accountId 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function createCustomerPurchaseOrderAccountAsync($customerPurchaseOrderAccount, $accountId, $responseFields =  null)
@@ -138,11 +138,11 @@ class CustomerPurchaseOrderAccountResource {
 	}
 	
 	/**
-	* Creates a purchase order transaction on the specified customer purchase order account.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param PurchaseOrderTransaction $purchaseOrderTransaction The purchase order transaction type to add to the specified customer account.
+	* @param int $accountId 
+	* @param string $responseFields 
+	* @param PurchaseOrderTransaction $purchaseOrderTransaction 
 	* @return PurchaseOrderTransaction 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -156,10 +156,10 @@ class CustomerPurchaseOrderAccountResource {
 	}
 	
 /**
-	* Creates a purchase order transaction on the specified customer purchase order account.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param int $accountId 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function createPurchaseOrderTransactionAsync($purchaseOrderTransaction, $accountId, $responseFields =  null)
@@ -171,11 +171,11 @@ class CustomerPurchaseOrderAccountResource {
 	}
 	
 	/**
-	* Updates the details of the purchase order account for the specified customer account.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param CustomerPurchaseOrderAccount $customerPurchaseOrderAccount Unique identifier of the customer purchase order account.
+	* @param int $accountId 
+	* @param string $responseFields 
+	* @param CustomerPurchaseOrderAccount $customerPurchaseOrderAccount 
 	* @return CustomerPurchaseOrderAccount 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -189,10 +189,10 @@ class CustomerPurchaseOrderAccountResource {
 	}
 	
 /**
-	* Updates the details of the purchase order account for the specified customer account.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param int $accountId 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateCustomerPurchaseOrderAccountAsync($customerPurchaseOrderAccount, $accountId, $responseFields =  null)
@@ -204,9 +204,10 @@ class CustomerPurchaseOrderAccountResource {
 	}
 	
 	/**
-	* Deletes the specified customer purchase order account.This removes the ability for the specified customer account to use the purchase order payment method.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
+	* @param int $accountId 
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteCustomerPurchaseOrderAccount($accountId)
@@ -214,13 +215,14 @@ class CustomerPurchaseOrderAccountResource {
 		$mozuClient = CustomerPurchaseOrderAccountClient::deleteCustomerPurchaseOrderAccountClient($accountId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Deletes the specified customer purchase order account.This removes the ability for the specified customer account to use the purchase order payment method.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
+	* @param int $accountId 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteCustomerPurchaseOrderAccountAsync($accountId)

@@ -15,14 +15,11 @@ namespace Mozu\Api\Contracts\Customer;
 
 
 /**
-*	Properties of the address used for validation of the account's full address. This content may include multiple lines of an address, city, state/province, zip/postal code, and country.
+*	Properties of the address to validate.
 */
 class AddressValidationRequest
 {
-	/**
-	*Address information to supply for a contact.
-	*/
-	public $address;
+		public $address;
 
 }
 

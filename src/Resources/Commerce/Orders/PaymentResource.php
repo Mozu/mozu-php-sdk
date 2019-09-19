@@ -33,10 +33,10 @@ class PaymentResource {
 
 
 	/**
-	* Retrieves information about all payment transactions submitted for the specified order.
+	* 
 	*
 	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return PaymentCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -50,10 +50,10 @@ class PaymentResource {
 	}
 	
 /**
-	* Retrieves information about all payment transactions submitted for the specified order.
+	* 
 	*
 	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getPaymentsAsync($orderId, $responseFields =  null)
@@ -65,10 +65,10 @@ class PaymentResource {
 	}
 	
 	/**
-	* Retrieves the list of all available payment actions dependent on the order payment status by specifying the order ID.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $paymentId Unique identifier of the payment for which to perform the action.
+	* @param string $orderId Unique identifier of the order associated with the payment.
+	* @param string $paymentId Unique identifer of the payment for which to retrieve available actions.
 	* @return array|string 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -82,10 +82,10 @@ class PaymentResource {
 	}
 	
 /**
-	* Retrieves the list of all available payment actions dependent on the order payment status by specifying the order ID.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $paymentId Unique identifier of the payment for which to perform the action.
+	* @param string $orderId Unique identifier of the order associated with the payment.
+	* @param string $paymentId Unique identifer of the payment for which to retrieve available actions.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getAvailablePaymentActionsAsync($orderId, $paymentId)
@@ -97,11 +97,11 @@ class PaymentResource {
 	}
 	
 	/**
-	* Retrieves information about a specific payment transaction submitted for the specified order.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $paymentId Unique identifier of the payment for which to perform the action.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $orderId Unique identifier of the order associated with the payment transaction.
+	* @param string $paymentId Unique identifier of the payment transaction submitted for the order.
+	* @param string $responseFields 
 	* @return Payment 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -115,11 +115,11 @@ class PaymentResource {
 	}
 	
 /**
-	* Retrieves information about a specific payment transaction submitted for the specified order.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $paymentId Unique identifier of the payment for which to perform the action.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $orderId Unique identifier of the order associated with the payment transaction.
+	* @param string $paymentId Unique identifier of the payment transaction submitted for the order.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getPaymentAsync($orderId, $paymentId, $responseFields =  null)
@@ -131,12 +131,12 @@ class PaymentResource {
 	}
 	
 	/**
-	* Performs the specified action for an individual order payment transaction.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $paymentId Unique identifier of the payment for which to perform the action.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param PaymentAction $action Properties of the payment action performed for an order.
+	* @param string $orderId Unique identifier of the order associated with the payment.
+	* @param string $paymentId Unique identifer of the payment for which to perform the action.
+	* @param string $responseFields 
+	* @param PaymentAction $action The action to perform for the payment. Possible values are AuthAndCapture, AuthorizePayment, CapturePayment, VoidPayment, CreditPayment, RequestCheck, ApplyCheck, DeclineCheck.
 	* @return Order 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -150,11 +150,11 @@ class PaymentResource {
 	}
 	
 /**
-	* Performs the specified action for an individual order payment transaction.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $paymentId Unique identifier of the payment for which to perform the action.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $orderId Unique identifier of the order associated with the payment.
+	* @param string $paymentId Unique identifer of the payment for which to perform the action.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function performPaymentActionAsync($action, $orderId, $paymentId, $responseFields =  null)
@@ -166,11 +166,11 @@ class PaymentResource {
 	}
 	
 	/**
-	* Creates a new payment transaction for the specified order and performs the specified action.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param PaymentAction $action Properties of the payment action performed for an order.
+	* @param string $orderId Unique identifier of the order for which to apply the payment.
+	* @param string $responseFields 
+	* @param PaymentAction $action To action to perform for the newly created payment. Possible values are AuthAndCapture, AuthorizePayment, CapturePayment, VoidPayment, CreditPayment, RequestCheck, ApplyCheck, DeclineCheck.
 	* @return Order 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -184,15 +184,49 @@ class PaymentResource {
 	}
 	
 /**
-	* Creates a new payment transaction for the specified order and performs the specified action.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $orderId Unique identifier of the order for which to apply the payment.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function createPaymentActionAsync($action, $orderId, $responseFields =  null)
 	{
 		$mozuClient = PaymentClient::createPaymentActionClient($action, $orderId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param bool $forceCapture 
+	* @param string $orderId 
+	* @param string $responseFields 
+	* @return Order 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function autoCapturePayments($orderId, $forceCapture =  null, $responseFields =  null)
+	{
+		$mozuClient = PaymentClient::autoCapturePaymentsClient($orderId, $forceCapture, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* 
+	*
+	* @param bool $forceCapture 
+	* @param string $orderId 
+	* @param string $responseFields 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function autoCapturePaymentsAsync($orderId, $forceCapture =  null, $responseFields =  null)
+	{
+		$mozuClient = PaymentClient::autoCapturePaymentsClient($orderId, $forceCapture, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 

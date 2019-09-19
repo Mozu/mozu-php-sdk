@@ -23,9 +23,9 @@ use Mozu\Api\Headers;
 class ProductPropertyClient {
 
 	/**
-	* Retrieves a list of the property attributes configured for the product specified in the request.
+	* 
 	*
-	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
+	* @param string $productCode 
 	* @return MozuClient
 	*/
 	public static function getPropertiesClient($dataViewMode, $productCode)
@@ -38,11 +38,11 @@ class ProductPropertyClient {
 	}
 	
 	/**
-	* Retrieves a collection of property values for localized content. This content is set by the locale code. 
+	* 
 	*
-	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
-	* @param string $value The value string to create.
+	* @param string $attributeFQN 
+	* @param string $productCode 
+	* @param string $value 
 	* @return MozuClient
 	*/
 	public static function getPropertyValueLocalizedContentsClient($dataViewMode, $productCode, $attributeFQN, $value)
@@ -55,13 +55,13 @@ class ProductPropertyClient {
 	}
 	
 	/**
-	* Retrieves the property value for localized content. This content is set by the locale code. 
+	* 
 	*
-	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $value The value string to create.
+	* @param string $attributeFQN 
+	* @param string $localeCode 
+	* @param string $productCode 
+	* @param string $responseFields 
+	* @param string $value 
 	* @return MozuClient
 	*/
 	public static function getPropertyValueLocalizedContentClient($dataViewMode, $productCode, $attributeFQN, $value, $localeCode, $responseFields =  null)
@@ -74,11 +74,11 @@ class ProductPropertyClient {
 	}
 	
 	/**
-	* Retrieves the details of a property attribute configuration for the product specified in the request.
+	* 
 	*
-	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $attributeFQN 
+	* @param string $productCode 
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getPropertyClient($dataViewMode, $productCode, $attributeFQN, $responseFields =  null)
@@ -91,13 +91,13 @@ class ProductPropertyClient {
 	}
 	
 	/**
-	* Adds a property value for localized content. This content is set by the locale code. 
+	* 
 	*
-	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $value The value string to create.
-	* @param ProductPropertyValueLocalizedContent $localizedContent Use this field to include those fields which are not included by default.
+	* @param string $attributeFQN 
+	* @param string $productCode 
+	* @param string $responseFields 
+	* @param string $value 
+	* @param ProductPropertyValueLocalizedContent $localizedContent 
 	* @return MozuClient
 	*/
 	public static function addPropertyValueLocalizedContentClient($dataViewMode, $localizedContent, $productCode, $attributeFQN, $value, $responseFields =  null)
@@ -110,11 +110,11 @@ class ProductPropertyClient {
 	}
 	
 	/**
-	* Configures a property attribute for the product specified in the request.
+	* 
 	*
-	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param ProductProperty $productProperty Details of a property defined for a product.
+	* @param string $productCode 
+	* @param string $responseFields 
+	* @param ProductProperty $productProperty Properties of the property attribute to configure for a product.
 	* @return MozuClient
 	*/
 	public static function addPropertyClient($dataViewMode, $productProperty, $productCode, $responseFields =  null)
@@ -127,12 +127,12 @@ class ProductPropertyClient {
 	}
 	
 	/**
-	* Updates all property values for localized content. This content is set by the locale code. 
+	* 
 	*
-	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
-	* @param string $value The value string to create.
-	* @param array|ProductPropertyValueLocalizedContent $localizedContent Content of the product property value in the language defined for the locale code.
+	* @param string $attributeFQN 
+	* @param string $productCode 
+	* @param string $value 
+	* @param array|ProductPropertyValueLocalizedContent $localizedContent 
 	* @return MozuClient
 	*/
 	public static function updatePropertyValueLocalizedContentsClient($dataViewMode, $localizedContent, $productCode, $attributeFQN, $value)
@@ -145,14 +145,14 @@ class ProductPropertyClient {
 	}
 	
 	/**
-	* Updates the property value for localized content. This content is set by the locale code. 
+	* 
 	*
-	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $value The value string to create.
-	* @param ProductPropertyValueLocalizedContent $localizedContent Content of the product property value in the language defined for the locale code.
+	* @param string $attributeFQN 
+	* @param string $localeCode 
+	* @param string $productCode 
+	* @param string $responseFields 
+	* @param string $value 
+	* @param ProductPropertyValueLocalizedContent $localizedContent 
 	* @return MozuClient
 	*/
 	public static function updatePropertyValueLocalizedContentClient($dataViewMode, $localizedContent, $productCode, $attributeFQN, $value, $localeCode, $responseFields =  null)
@@ -165,12 +165,12 @@ class ProductPropertyClient {
 	}
 	
 	/**
-	* Update one or more details of a property attribute configuration for the product specified in the request.
+	* 
 	*
-	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param ProductProperty $productProperty Details of a property defined for a product.
+	* @param string $attributeFQN 
+	* @param string $productCode 
+	* @param string $responseFields 
+	* @param ProductProperty $productProperty Details of the property attribute to update for the product configuration.
 	* @return MozuClient
 	*/
 	public static function updatePropertyClient($dataViewMode, $productProperty, $productCode, $attributeFQN, $responseFields =  null)
@@ -183,10 +183,11 @@ class ProductPropertyClient {
 	}
 	
 	/**
-	* Deletes the configuration of a property attribute for the product specified in the request.
+	* 
 	*
-	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
+	* @param string $attributeFQN 
+	* @param string $productCode 
+	* @return MozuClient
 	*/
 	public static function deletePropertyClient($dataViewMode, $productCode, $attributeFQN)
 	{
@@ -198,12 +199,13 @@ class ProductPropertyClient {
 	}
 	
 	/**
-	* Deletes the property value for localized content. This content is set by the locale code. 
+	* 
 	*
-	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
-	* @param string $value The value string to create.
+	* @param string $attributeFQN 
+	* @param string $localeCode 
+	* @param string $productCode 
+	* @param string $value 
+	* @return MozuClient
 	*/
 	public static function deletePropertyValueLocalizedContentClient($dataViewMode, $productCode, $attributeFQN, $value, $localeCode)
 	{

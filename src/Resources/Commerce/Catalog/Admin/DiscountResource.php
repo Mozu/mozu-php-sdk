@@ -18,7 +18,7 @@ use Mozu\Api\ApiContext;
 use Mozu\Api\Headers;
 
 /**
-* Use the Discounts resource to define and manage discounts to apply to products, product categories, or orders. The discounts can be a specified amount off the price, percentage off the price, or for free shipping. You can create a coupon code that shoppers can use to redeem the discount.
+* Define and manage discounts to apply to products, product categories, or orders. The discounts can be a specified amount off the price, percentage off the price, or for free shipping. Create a coupon code that shoppers can use to redeem the discount.
 */
 class DiscountResource {
 
@@ -34,11 +34,11 @@ class DiscountResource {
 
 
 	/**
-	* Retrieves a list of discounts according to any specified filter criteria and sort options.
+	* 
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $responseFields 
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return DiscountCollection 
@@ -54,11 +54,11 @@ class DiscountResource {
 	}
 	
 /**
-	* Retrieves a list of discounts according to any specified filter criteria and sort options.
+	* 
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $responseFields 
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -72,10 +72,10 @@ class DiscountResource {
 	}
 	
 	/**
-	* Retrieves the localized content specified for the specified discount.
+	* 
 	*
-	* @param int $discountId discountId parameter description DOCUMENT_HERE 
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
+	* @param string $responseFields 
 	* @return DiscountLocalizedContent 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -89,10 +89,10 @@ class DiscountResource {
 	}
 	
 /**
-	* Retrieves the localized content specified for the specified discount.
+	* 
 	*
-	* @param int $discountId discountId parameter description DOCUMENT_HERE 
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getDiscountContentAsync($discountId, $responseFields =  null)
@@ -104,10 +104,10 @@ class DiscountResource {
 	}
 	
 	/**
-	* Retrieves the details of a single discount.
+	* 
 	*
-	* @param int $discountId discountId parameter description DOCUMENT_HERE 
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
+	* @param string $responseFields 
 	* @return Discount 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -121,10 +121,10 @@ class DiscountResource {
 	}
 	
 /**
-	* Retrieves the details of a single discount.
+	* 
 	*
-	* @param int $discountId discountId parameter description DOCUMENT_HERE 
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getDiscountAsync($discountId, $responseFields =  null)
@@ -136,9 +136,9 @@ class DiscountResource {
 	}
 	
 	/**
-	* Generates a random code for a coupon.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return string 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -152,9 +152,9 @@ class DiscountResource {
 	}
 	
 /**
-	* Generates a random code for a coupon.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function generateRandomCouponAsync($responseFields =  null)
@@ -166,10 +166,10 @@ class DiscountResource {
 	}
 	
 	/**
-	* Creates a new discount or coupon to apply to a product, category, order, or shipping.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Discount $discount Name of the discount added and applied to a shopping cart and order for a shopper's purchase. 
+	* @param string $responseFields 
+	* @param Discount $discount Properties of the discount to create. You must specify the discount name, amount type, start date, and target.
 	* @return Discount 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -183,9 +183,9 @@ class DiscountResource {
 	}
 	
 /**
-	* Creates a new discount or coupon to apply to a product, category, order, or shipping.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function createDiscountAsync($discount, $responseFields =  null)
@@ -197,11 +197,11 @@ class DiscountResource {
 	}
 	
 	/**
-	* Updates the localizable content for the specified discount or renames the discount without modifying its other properties.
+	* 
 	*
-	* @param int $discountId discountId parameter description DOCUMENT_HERE 
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param DiscountLocalizedContent $content The container for the language-specific name of the discount. A container exists for each supported language (LocaleCode). This parameter enables you to display the discount name in multiple languages yet manage it as a single discount internally.
+	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
+	* @param string $responseFields 
+	* @param DiscountLocalizedContent $content The discount content to update, including the discount name.
 	* @return DiscountLocalizedContent 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -215,10 +215,10 @@ class DiscountResource {
 	}
 	
 /**
-	* Updates the localizable content for the specified discount or renames the discount without modifying its other properties.
+	* 
 	*
-	* @param int $discountId discountId parameter description DOCUMENT_HERE 
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateDiscountContentAsync($content, $discountId, $responseFields =  null)
@@ -230,11 +230,11 @@ class DiscountResource {
 	}
 	
 	/**
-	* Updates one or more properties of the specified discount.
+	* 
 	*
-	* @param int $discountId discountId parameter description DOCUMENT_HERE 
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Discount $discount Name of the discount added and applied to a shopping cart and order for a shopper's purchase. 
+	* @param int $discountId Unique identifier of the discount to update.
+	* @param string $responseFields 
+	* @param Discount $discount Properties of the discount to update.
 	* @return Discount 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -248,10 +248,10 @@ class DiscountResource {
 	}
 	
 /**
-	* Updates one or more properties of the specified discount.
+	* 
 	*
-	* @param int $discountId discountId parameter description DOCUMENT_HERE 
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $discountId Unique identifier of the discount to update.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateDiscountAsync($discount, $discountId, $responseFields =  null)
@@ -263,9 +263,10 @@ class DiscountResource {
 	}
 	
 	/**
-	* Deletes a discount specified by its discount ID.
+	* 
 	*
-	* @param int $discountId discountId parameter description DOCUMENT_HERE 
+	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteDiscount($discountId)
@@ -273,13 +274,14 @@ class DiscountResource {
 		$mozuClient = DiscountClient::deleteDiscountClient($discountId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Deletes a discount specified by its discount ID.
+	* 
 	*
-	* @param int $discountId discountId parameter description DOCUMENT_HERE 
+	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteDiscountAsync($discountId)

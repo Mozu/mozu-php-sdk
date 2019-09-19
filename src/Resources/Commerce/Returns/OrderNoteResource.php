@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* Use the Return Notes resource to access and modify internal notes associated with returns. These notes can be useful to customer service representatives viewing them in .
+* 
 */
 class OrderNoteResource {
 
@@ -33,9 +33,9 @@ class OrderNoteResource {
 
 
 	/**
-	* Retrieves all internal notes associated with a return.
+	* 
 	*
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $returnId 
 	* @return array|OrderNote 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -49,9 +49,9 @@ class OrderNoteResource {
 	}
 	
 /**
-	* Retrieves all internal notes associated with a return.
+	* 
 	*
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $returnId 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getReturnNotesAsync($returnId)
@@ -63,11 +63,11 @@ class OrderNoteResource {
 	}
 	
 	/**
-	* Retrieves a specific internal note from a return.
+	* 
 	*
-	* @param string $noteId Unique identifier of a particular note to retrieve.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $noteId 
+	* @param string $responseFields 
+	* @param string $returnId 
 	* @return OrderNote 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -81,11 +81,11 @@ class OrderNoteResource {
 	}
 	
 /**
-	* Retrieves a specific internal note from a return.
+	* 
 	*
-	* @param string $noteId Unique identifier of a particular note to retrieve.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $noteId 
+	* @param string $responseFields 
+	* @param string $returnId 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getReturnNoteAsync($returnId, $noteId, $responseFields =  null)
@@ -97,10 +97,10 @@ class OrderNoteResource {
 	}
 	
 	/**
-	* Creates an internal note on a given return. This note is visible in  for customer service representatives to see.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $responseFields 
+	* @param string $returnId 
 	* @param OrderNote $returnNote 
 	* @return OrderNote 
 	* @deprecated deprecated since version 1.17
@@ -115,10 +115,10 @@ class OrderNoteResource {
 	}
 	
 /**
-	* Creates an internal note on a given return. This note is visible in  for customer service representatives to see.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $responseFields 
+	* @param string $returnId 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function createReturnNoteAsync($returnNote, $returnId, $responseFields =  null)
@@ -130,11 +130,11 @@ class OrderNoteResource {
 	}
 	
 	/**
-	* Updates an internal note on a given return. This note is visible in  for customer service representatives to see.
+	* 
 	*
-	* @param string $noteId Unique identifier of a particular note to retrieve.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $noteId 
+	* @param string $responseFields 
+	* @param string $returnId 
 	* @param OrderNote $returnNote 
 	* @return OrderNote 
 	* @deprecated deprecated since version 1.17
@@ -149,11 +149,11 @@ class OrderNoteResource {
 	}
 	
 /**
-	* Updates an internal note on a given return. This note is visible in  for customer service representatives to see.
+	* 
 	*
-	* @param string $noteId Unique identifier of a particular note to retrieve.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $noteId 
+	* @param string $responseFields 
+	* @param string $returnId 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateReturnNoteAsync($returnNote, $returnId, $noteId, $responseFields =  null)
@@ -165,10 +165,11 @@ class OrderNoteResource {
 	}
 	
 	/**
-	* Deletes an internal note from a given return.
+	* 
 	*
-	* @param string $noteId Unique identifier of a particular note to retrieve.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $noteId 
+	* @param string $returnId 
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteReturnNote($returnId, $noteId)
@@ -176,14 +177,15 @@ class OrderNoteResource {
 		$mozuClient = OrderNoteClient::deleteReturnNoteClient($returnId, $noteId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Deletes an internal note from a given return.
+	* 
 	*
-	* @param string $noteId Unique identifier of a particular note to retrieve.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $noteId 
+	* @param string $returnId 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteReturnNoteAsync($returnId, $noteId)

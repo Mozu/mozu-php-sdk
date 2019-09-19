@@ -30,7 +30,7 @@ class TaxableTerritoryUrl  {
 	
 	/**
 		* Get Resource Url for AddTaxableTerritory
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function addTaxableTerritoryUrl($responseFields)

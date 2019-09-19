@@ -19,20 +19,13 @@ namespace Mozu\Api\Contracts\ShippingRuntime;
 */
 class RatesResponse
 {
-	/**
-	*Resolved Shipping Zone Code. This value can be null if the tenant/site does not have shipping zones defined or there are no matching shipping zones for the request (e.g. the only zone defined is "UNITED-STATES" and the destination address of the rate request is in Canada)
-	*/
-	public $resolvedShippingZoneCode;
+		public $id;
 
-	/**
-	*A code denoting a zone for shipping rates. Zip and postal codes are associated to these zones, determining set rates and costs for shipping origin and destination points.
-	*/
-	public $shippingZoneCodes;
+		public $resolvedShippingZoneCode;
 
-	/**
-	*Arrayed list of calculated shipping rates for each assocuated carrier.
-	*/
-	public $rates;
+		public $shippingZoneCodes;
+
+		public $rates;
 
 }
 

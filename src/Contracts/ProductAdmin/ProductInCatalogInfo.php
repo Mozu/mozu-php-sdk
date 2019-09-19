@@ -19,70 +19,31 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 */
 class ProductInCatalogInfo
 {
-	/**
-	*The unique identifier of the catalog of products used by a site.
-	*/
-	public $catalogId;
+		public $catalogId;
 
-	/**
-	*Date this product was first Available for sale in the catalog. This is utilized in expressions that refrence DaysInCatloag.
-	*/
-	public $dateFirstAvailableInCatalog;
+		public $dateFirstAvailableInCatalog;
 
-	/**
-	*Indicates if the object or feature is active.
-	*/
-	public $isActive;
+		public $isActive;
 
-	/**
-	*If true, the content defined for this product in the master catalog in overridden in the catalog with the content specified in the request body. If false, this catalog uses the content defined in the master catalog for the product.
-	*/
-	public $isContentOverridden;
+		public $isContentOverridden;
 
-	/**
-	*If true, the price defined for this product in the master catalog in overridden in the catalog with the price specified in the request body. If false, this catalog uses the price defined in the master catalog for the product.
-	*/
-	public $isPriceOverridden;
+		public $isPriceOverridden;
 
-	/**
-	*If true, the SEO content defined for this product in the master catalog in overridden in the catalog with the SEO content specified in the request body. If false, this catalog uses the SEO content defined in the master catalog for the product.
-	*/
-	public $isseoContentOverridden;
+		public $isseoContentOverridden;
 
-	/**
-	*If true, the product is marked as available for sale in the catalog. Setting a product to IsActive = false will prevent it from being shown on the customer facing storefront.
-	*/
-	public $activeDateRange;
+		public $activeDateRange;
 
-	/**
-	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
-	*/
-	public $auditInfo;
+		public $auditInfo;
 
-	/**
-	*Localizable content (such as a name and/or description) for an attribute. The content may be localized when displayed according to the locale code specified by the master catalog. Content can include descriptive text for product extensible attributes, catalog-level descriptions (displayed if isContentOverriden is true), product bundles, and customer account notes.
-	*/
-	public $content;
+		public $content;
 
-	/**
-	*The price of the product associated with the specified catalog. If no price is specified in the request, this catalog uses the price defined in the master catalog. To override the product price for this catalog, the IsPriceOverridden flag must be set to "true".
-	*/
-	public $price;
+		public $price;
 
-	/**
-	*Specifies which static category to use in the navigation breadcrumb, regardless of how shoppers navigate to the product. If not set, or if the product belongs only to dynamic categories, the default is to use the category with the smallest ID.
-	*/
-	public $primaryProductCategory;
+		public $primaryProductCategory;
 
-	/**
-	*The product categories to define for the product associated with the specified catalog.
-	*/
-	public $productCategories;
+		public $productCategories;
 
-	/**
-	*The search engine optimized content defined for products or products associated with a catalog. If no SEO content is specified in the request for products associated with a catalog, this catalog uses the SEO content defined in the master catalog. To override the SEO content for this catalog, the `IsSEOContentOverridden `flag must be set to "true".
-	*/
-	public $seoContent;
+		public $seoContent;
 
 }
 

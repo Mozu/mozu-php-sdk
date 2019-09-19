@@ -19,20 +19,11 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Commerce;
 */
 class Adjustment
 {
-	/**
-	*The amount of the order-level adjustment, which can be a positive or negative amount.
-	*/
-	public $amount;
+		public $amount;
 
-	/**
-	*The localized description in text for the object, displayed per the locale code. For example, descriptions are used for product descriptions, attributes, and pre-authorization transaction types.
-	*/
-	public $description;
+		public $description;
 
-	/**
-	*Administrator notes associated with the order adjustment. These comments are not shopper facing.
-	*/
-	public $internalComment;
+		public $internalComment;
 
 }
 

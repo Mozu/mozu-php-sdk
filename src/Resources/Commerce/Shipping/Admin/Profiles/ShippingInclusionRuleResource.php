@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* Use the ShippingInclusionRules sub-resource to manage your shipping inclusion rules that are associated with a specific shipping profile.
+* 
 */
 class ShippingInclusionRuleResource {
 
@@ -33,11 +33,11 @@ class ShippingInclusionRuleResource {
 
 
 	/**
-	* Retrieves the details of the specified shipping inclusion rule.
+	* 
 	*
-	* @param string $id Unique identifier of the customer segment to retrieve.
-	* @param string $profilecode The unique, user-defined code of the profile with which the shipping inclusion rule is associated.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $id 
+	* @param string $profilecode 
+	* @param string $responseFields 
 	* @return ShippingInclusionRule 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -51,11 +51,11 @@ class ShippingInclusionRuleResource {
 	}
 	
 /**
-	* Retrieves the details of the specified shipping inclusion rule.
+	* 
 	*
-	* @param string $id Unique identifier of the customer segment to retrieve.
-	* @param string $profilecode The unique, user-defined code of the profile with which the shipping inclusion rule is associated.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $id 
+	* @param string $profilecode 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getShippingInclusionRuleAsync($profilecode, $id, $responseFields =  null)
@@ -67,10 +67,10 @@ class ShippingInclusionRuleResource {
 	}
 	
 	/**
-	* Retrieves a list of shipping inclusion rules and their details.
+	* 
 	*
-	* @param string $profilecode The unique, user-defined code of the profile with which the shipping inclusion rule is associated.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $profilecode 
+	* @param string $responseFields 
 	* @return ShippingInclusionRuleCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -84,10 +84,10 @@ class ShippingInclusionRuleResource {
 	}
 	
 /**
-	* Retrieves a list of shipping inclusion rules and their details.
+	* 
 	*
-	* @param string $profilecode The unique, user-defined code of the profile with which the shipping inclusion rule is associated.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $profilecode 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getShippingInclusionRulesAsync($profilecode, $responseFields =  null)
@@ -99,11 +99,11 @@ class ShippingInclusionRuleResource {
 	}
 	
 	/**
-	* Creates a new shipping inclusion rule.
+	* 
 	*
-	* @param string $profilecode The unique, user-defined code of the profile with which the shipping inclusion rule is associated.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param ShippingInclusionRule $rule The details of the new shipping inclusion rule.
+	* @param string $profilecode 
+	* @param string $responseFields 
+	* @param ShippingInclusionRule $rule 
 	* @return ShippingInclusionRule 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -117,10 +117,10 @@ class ShippingInclusionRuleResource {
 	}
 	
 /**
-	* Creates a new shipping inclusion rule.
+	* 
 	*
-	* @param string $profilecode The unique, user-defined code of the profile with which the shipping inclusion rule is associated.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $profilecode 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function createShippingInclusionRuleAsync($rule, $profilecode, $responseFields =  null)
@@ -132,12 +132,12 @@ class ShippingInclusionRuleResource {
 	}
 	
 	/**
-	* Updates the details of the specified shipping inclusion rule.
+	* 
 	*
-	* @param string $id Unique identifier of the customer segment to retrieve.
-	* @param string $profilecode The unique, user-defined code of the profile with which the shipping inclusion rule is associated.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param ShippingInclusionRule $rule The updated details of the shipping inclusion rule.
+	* @param string $id 
+	* @param string $profilecode 
+	* @param string $responseFields 
+	* @param ShippingInclusionRule $rule 
 	* @return ShippingInclusionRule 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -151,11 +151,11 @@ class ShippingInclusionRuleResource {
 	}
 	
 /**
-	* Updates the details of the specified shipping inclusion rule.
+	* 
 	*
-	* @param string $id Unique identifier of the customer segment to retrieve.
-	* @param string $profilecode The unique, user-defined code of the profile with which the shipping inclusion rule is associated.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $id 
+	* @param string $profilecode 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateShippingInclusionRuleAsync($rule, $profilecode, $id, $responseFields =  null)
@@ -167,10 +167,11 @@ class ShippingInclusionRuleResource {
 	}
 	
 	/**
-	* Deletes the specified shipping inclusion rule.
+	* 
 	*
-	* @param string $id Unique identifier of the customer segment to retrieve.
-	* @param string $profilecode The unique, user-defined code of the profile with which the shipping inclusion rule is associated.
+	* @param string $id 
+	* @param string $profilecode 
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteShippingInclusionRule($profilecode, $id)
@@ -178,14 +179,15 @@ class ShippingInclusionRuleResource {
 		$mozuClient = ShippingInclusionRuleClient::deleteShippingInclusionRuleClient($profilecode, $id);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Deletes the specified shipping inclusion rule.
+	* 
 	*
-	* @param string $id Unique identifier of the customer segment to retrieve.
-	* @param string $profilecode The unique, user-defined code of the profile with which the shipping inclusion rule is associated.
+	* @param string $id 
+	* @param string $profilecode 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteShippingInclusionRuleAsync($profilecode, $id)

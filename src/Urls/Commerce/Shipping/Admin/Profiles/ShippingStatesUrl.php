@@ -19,7 +19,7 @@ class ShippingStatesUrl  {
 
 	/**
 		* Get Resource Url for GetStates
-		* @param string $profileCode The unique, user-defined code of the profile with which the shipping state is associated.
+		* @param string $profileCode 
 		* @return string Resource Url
 	*/
 	public static function getStatesUrl($profileCode)
@@ -32,7 +32,7 @@ class ShippingStatesUrl  {
 	
 	/**
 		* Get Resource Url for UpdateStates
-		* @param string $profilecode The unique, user-defined code of the profile with which the shipping state is associated.
+		* @param string $profilecode 
 		* @return string Resource Url
 	*/
 	public static function updateStatesUrl($profilecode)

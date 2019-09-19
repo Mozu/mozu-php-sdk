@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* Use the Cart Coupons subresource to apply a coupon to a defined cart or remove a coupon from a cart. When the shopper proceeds to checkout, the coupons applied to the cart apply to the order.
+* Use the Cart Coupons resource to apply a coupon to a defined cart or remove a coupon from a cart. When the shopper proceeds to checkout, the coupons applied to the cart apply to the order.
 */
 class AppliedDiscountResource {
 
@@ -33,11 +33,11 @@ class AppliedDiscountResource {
 
 
 	/**
-	* Applies a defined coupon to the cart specified in the request.
+	* 
 	*
-	* @param string $cartId Identifier of the cart to delete.
-	* @param string $couponCode Code associated with the coupon to remove from the cart.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $cartId Unique identifier of the cart to which to apply the coupon.
+	* @param string $couponCode Code associated with the coupon to apply to the cart.
+	* @param string $responseFields 
 	* @return Cart 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -51,11 +51,11 @@ class AppliedDiscountResource {
 	}
 	
 /**
-	* Applies a defined coupon to the cart specified in the request.
+	* 
 	*
-	* @param string $cartId Identifier of the cart to delete.
-	* @param string $couponCode Code associated with the coupon to remove from the cart.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $cartId Unique identifier of the cart to which to apply the coupon.
+	* @param string $couponCode Code associated with the coupon to apply to the cart.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function applyCouponAsync($cartId, $couponCode, $responseFields =  null)
@@ -67,9 +67,9 @@ class AppliedDiscountResource {
 	}
 	
 	/**
-	* Removes all coupons from the cart specified in the request.
+	* 
 	*
-	* @param string $cartId Identifier of the cart to delete.
+	* @param string $cartId Unique identifier of the cart.
 	* @return Cart 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -83,9 +83,9 @@ class AppliedDiscountResource {
 	}
 	
 /**
-	* Removes all coupons from the cart specified in the request.
+	* 
 	*
-	* @param string $cartId Identifier of the cart to delete.
+	* @param string $cartId Unique identifier of the cart.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function removeCouponsAsync($cartId)
@@ -97,9 +97,9 @@ class AppliedDiscountResource {
 	}
 	
 	/**
-	* Removes an applied coupon from the cart specified in the request.
+	* 
 	*
-	* @param string $cartId Identifier of the cart to delete.
+	* @param string $cartId Unique identifier of the cart.
 	* @param string $couponCode Code associated with the coupon to remove from the cart.
 	* @return Cart 
 	* @deprecated deprecated since version 1.17
@@ -114,9 +114,9 @@ class AppliedDiscountResource {
 	}
 	
 /**
-	* Removes an applied coupon from the cart specified in the request.
+	* 
 	*
-	* @param string $cartId Identifier of the cart to delete.
+	* @param string $cartId Unique identifier of the cart.
 	* @param string $couponCode Code associated with the coupon to remove from the cart.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/

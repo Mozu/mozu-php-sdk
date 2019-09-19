@@ -19,30 +19,18 @@ namespace Mozu\Api\Contracts\Customer;
 */
 class CommerceSummary
 {
-	/**
-	*The date and time the shopper last submitted an order for any site associated with the tenant.
-	*/
-	public $lastOrderDate;
+		public $lastOrderDate;
 
-	/**
-	*The total number of order the shopper submitted across all sites associated with the tenant.
-	*/
-	public $orderCount;
+		public $orderCount;
 
 	/**
 	*The number of visits to a site associated with a customer account.
 	*/
 	public $visitsCount;
 
-	/**
-	*The number of wish lists associated with a customer account. This number represents the total number of a shopper's wish lists across all sites associated with a tenant.
-	*/
-	public $wishlistCount;
+		public $wishlistCount;
 
-	/**
-	*The aggregate total amount of all orders the shopper submitted, across all sites associated with the tenant.
-	*/
-	public $totalOrderAmount;
+		public $totalOrderAmount;
 
 }
 

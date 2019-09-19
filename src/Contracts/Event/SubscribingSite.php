@@ -14,20 +14,14 @@ namespace Mozu\Api\Contracts\Event;
 
 
 
-/**
-*	Properties for the site associated with a subscription including audit info, if active, and the unique ID for the site.
-*/
 class SubscribingSite
 {
 	/**
-	*Indicates if the object or feature is active.
+	*This specifies if the subscription is active at the site level.
 	*/
 	public $isActive;
 
-	/**
-	*Unique identifier for the site. This ID is used at all levels of a store, catalog, and tenant to associate objects to a site.
-	*/
-	public $siteId;
+		public $siteId;
 
 	/**
 	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.

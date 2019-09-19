@@ -19,25 +19,13 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Carts;
 */
 class CartSummary
 {
-	/**
-	*If true, this shopping cart is active.
-	*/
-	public $hasActiveCart;
+		public $hasActiveCart;
 
-	/**
-	*suaIf true, the cart's period of inactivity is past its calculated expiration date and the cart is considered abandoned.
-	*/
-	public $isExpired;
+		public $isExpired;
 
-	/**
-	*The total number of line items in the cart. Each line item can have multiple quantities.
-	*/
-	public $itemCount;
+		public $itemCount;
 
-	/**
-	*Total is used to indicate the monetary, estimated total amount of the cart or order, including items, sales tax, shipping costs, and other fees. Totals are not estimated for wish lists at this time.
-	*/
-	public $total;
+		public $total;
 
 	/**
 	*The combined total quantity across all items in the cart.

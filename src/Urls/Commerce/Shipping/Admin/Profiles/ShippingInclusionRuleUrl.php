@@ -19,9 +19,9 @@ class ShippingInclusionRuleUrl  {
 
 	/**
 		* Get Resource Url for GetShippingInclusionRule
-		* @param string $id Unique identifier of the customer segment to retrieve.
-		* @param string $profilecode The unique, user-defined code of the profile with which the shipping inclusion rule is associated.
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $id 
+		* @param string $profilecode 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getShippingInclusionRuleUrl($id, $profilecode, $responseFields)
@@ -36,8 +36,8 @@ class ShippingInclusionRuleUrl  {
 	
 	/**
 		* Get Resource Url for GetShippingInclusionRules
-		* @param string $profilecode The unique, user-defined code of the profile with which the shipping inclusion rule is associated.
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $profilecode 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getShippingInclusionRulesUrl($profilecode, $responseFields)
@@ -51,8 +51,8 @@ class ShippingInclusionRuleUrl  {
 	
 	/**
 		* Get Resource Url for CreateShippingInclusionRule
-		* @param string $profilecode The unique, user-defined code of the profile with which the shipping inclusion rule is associated.
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $profilecode 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function createShippingInclusionRuleUrl($profilecode, $responseFields)
@@ -66,9 +66,9 @@ class ShippingInclusionRuleUrl  {
 	
 	/**
 		* Get Resource Url for UpdateShippingInclusionRule
-		* @param string $id Unique identifier of the customer segment to retrieve.
-		* @param string $profilecode The unique, user-defined code of the profile with which the shipping inclusion rule is associated.
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $id 
+		* @param string $profilecode 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updateShippingInclusionRuleUrl($id, $profilecode, $responseFields)
@@ -83,8 +83,8 @@ class ShippingInclusionRuleUrl  {
 	
 	/**
 		* Get Resource Url for DeleteShippingInclusionRule
-		* @param string $id Unique identifier of the customer segment to retrieve.
-		* @param string $profilecode The unique, user-defined code of the profile with which the shipping inclusion rule is associated.
+		* @param string $id 
+		* @param string $profilecode 
 		* @return string Resource Url
 	*/
 	public static function deleteShippingInclusionRuleUrl($id, $profilecode)

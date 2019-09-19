@@ -19,82 +19,49 @@ namespace Mozu\Api\Contracts\Location;
 */
 class Location
 {
-	/**
-	*Allow fullfillment with no (or less) stock
-	*/
-	public $allowFulfillmentWithNoStock;
+		public $allowFulfillmentWithNoStock;
 
-	/**
-	*User-defined code to assign to this location.
-	*/
-	public $code;
+		public $code;
 
-	/**
-	*The localized description in text for the object, displayed per the locale code. For example, descriptions are used for product descriptions, attributes, and pre-authorization transaction types.
-	*/
-	public $description;
+		public $description;
 
-	/**
-	*The fax number associated with this location.
-	*/
-	public $fax;
+		public $express;
 
-	/**
-	*Locations is disabled (soft delete)
-	*/
-	public $isDisabled;
+		public $fax;
 
-	/**
-	*The user supplied name that appears in . You can use this field for identification purposes.
-	*/
-	public $name;
+		public $includeInInventoryAggregrate;
 
-	/**
-	*User-entered notation content for an object, used to save information such as payment, return, account, and order notes.
-	*/
-	public $note;
+		public $includeInLocationExport;
 
-	/**
-	*The phone number associated with this location.
-	*/
-	public $phone;
+		public $isDisabled;
 
-	/**
-	*If true, this location maintains its own product inventory. If the location uses the direct ship fulfillment type, it must also support inventory.
-	*/
-	public $supportsInventory;
+		public $name;
 
-	/**
-	*List of tenant-defined tags associated with this location.
-	*/
-	public $tags;
+		public $note;
 
-	/**
-	*Address information to supply for a contact.
-	*/
-	public $address;
+		public $phone;
+
+		public $supportsInventory;
+
+		public $tags;
+
+		public $transferEnabled;
+
+		public $warehouseEnabled;
+
+		public $address;
+
+		public $attributes;
 
 		public $auditInfo;
 
-	/**
-	*List of order fulfillment types associated with this location. The location can have fulfillment types of direct ship (DS), in-store pickup (SP), or both.
-	*/
-	public $fulfillmentTypes;
+		public $fulfillmentTypes;
 
-	/**
-	*The geographical coordinates associated with this location.
-	*/
-	public $geo;
+		public $geo;
 
-	/**
-	*List of location types associated with this location. You can associate individual locations with any number of location types.
-	*/
-	public $locationTypes;
+		public $locationTypes;
 
-	/**
-	*List of standard operating hours for each day of the week this location is open for shopper business.
-	*/
-	public $regularHours;
+		public $regularHours;
 
 	/**
 	*Properties of a fulfillment contact for the shipping origin address associated with a location.

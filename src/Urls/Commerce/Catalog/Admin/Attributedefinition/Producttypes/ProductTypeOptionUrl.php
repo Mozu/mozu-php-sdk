@@ -19,7 +19,7 @@ class ProductTypeOptionUrl  {
 
 	/**
 		* Get Resource Url for GetOptions
-		* @param int $productTypeId Identifier of the product type.
+		* @param int $productTypeId Identifier of the product type to retrieve.
 		* @return string Resource Url
 	*/
 	public static function getOptionsUrl($productTypeId)
@@ -32,9 +32,9 @@ class ProductTypeOptionUrl  {
 	
 	/**
 		* Get Resource Url for GetOption
-		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-		* @param int $productTypeId Identifier of the product type.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $attributeFQN 
+		* @param int $productTypeId The identifier of the product type.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getOptionUrl($attributeFQN, $productTypeId, $responseFields)
@@ -50,7 +50,7 @@ class ProductTypeOptionUrl  {
 	/**
 		* Get Resource Url for AddOption
 		* @param int $productTypeId Identifier of the product type.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function addOptionUrl($productTypeId, $responseFields)
@@ -64,9 +64,9 @@ class ProductTypeOptionUrl  {
 	
 	/**
 		* Get Resource Url for UpdateOption
-		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+		* @param string $attributeFQN 
 		* @param int $productTypeId Identifier of the product type.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updateOptionUrl($attributeFQN, $productTypeId, $responseFields)
@@ -81,7 +81,7 @@ class ProductTypeOptionUrl  {
 	
 	/**
 		* Get Resource Url for DeleteOption
-		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+		* @param string $attributeFQN 
 		* @param int $productTypeId Identifier of the product type.
 		* @return string Resource Url
 	*/

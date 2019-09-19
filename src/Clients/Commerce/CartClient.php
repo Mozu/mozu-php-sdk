@@ -17,15 +17,15 @@ use Mozu\Api\Urls\Commerce\CartUrl;
 
 
 /**
-* Use this resource to manage storefront shopping carts as shoppers add and remove items for purchase. Each time a shopper's cart is modified, the Carts resource updates the estimated total with any applicable discounts.
+* Use the Carts resource to manage storefront shopping carts as items are added and removed. Each time a shopper's cart is modified, the Carts resource updates the estimated total with any applicable discounts.
 */
 class CartClient {
 
 	/**
-	* Retrieves the cart specified in the request.
+	* 
 	*
-	* @param string $cartId Identifier of the cart to delete.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $cartId Identifier of the cart to retrieve.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getCartClient($cartId, $responseFields =  null)
@@ -38,9 +38,9 @@ class CartClient {
 	}
 	
 	/**
-	* Retrieves a cart's contents for the current shopper. If the shopper does not have an active cart on the site, the service creates one.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getOrCreateCartClient($responseFields =  null)
@@ -53,9 +53,9 @@ class CartClient {
 	}
 	
 	/**
-	* Retrieves summary information associated with the cart of the current shopper, including the number of items, the current total, and whether the cart has expired. All anonymous idle carts that do not proceed to checkout expire after 14 days.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getCartSummaryClient($responseFields =  null)
@@ -68,10 +68,10 @@ class CartClient {
 	}
 	
 	/**
-	* Retrieves summary information associated with the cart of user specified in the request, including the number of items in the cart, the current total, and whether the cart has expired. All anonymous idle carts that do not proceed to checkout expire after 14 days.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $userId Unique identifier of the user whose tenant scopes you want to retrieve.
+	* @param string $responseFields 
+	* @param string $userId Unique identifier of the user whose cart details you want to retrieve.
 	* @return MozuClient
 	*/
 	public static function getUserCartSummaryClient($userId, $responseFields =  null)
@@ -84,10 +84,10 @@ class CartClient {
 	}
 	
 	/**
-	* Retrieves the cart of the user specified in the request.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $userId Unique identifier of the user whose tenant scopes you want to retrieve.
+	* @param string $responseFields 
+	* @param string $userId Unique identifier of the user whose cart you want to retrieve.
 	* @return MozuClient
 	*/
 	public static function getUserCartClient($userId, $responseFields =  null)
@@ -100,10 +100,27 @@ class CartClient {
 	}
 	
 	/**
-	* Update the current shopper's cart.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Cart $cart Properties of a shopping cart.
+	* @param string $cartId 
+	* @param int $discountId 
+	* @param string $responseFields 
+	* @return MozuClient
+	*/
+	public static function rejectSuggestedDiscountClient($cartId, $discountId, $responseFields =  null)
+	{
+		$url = CartUrl::rejectSuggestedDiscountUrl($cartId, $discountId, $responseFields);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $responseFields 
+	* @param Cart $cart All of the properties of the cart to update. The product code is required.
 	* @return MozuClient
 	*/
 	public static function updateCartClient($cart, $responseFields =  null)
@@ -116,9 +133,10 @@ class CartClient {
 	}
 	
 	/**
-	* Deletes the cart specified in the request.
+	* 
 	*
 	* @param string $cartId Identifier of the cart to delete.
+	* @return MozuClient
 	*/
 	public static function deleteCartClient($cartId)
 	{
@@ -130,8 +148,9 @@ class CartClient {
 	}
 	
 	/**
-	* Deletes the cart of the currently active shopper.
+	* 
 	*
+	* @return MozuClient
 	*/
 	public static function deleteCurrentCartClient()
 	{

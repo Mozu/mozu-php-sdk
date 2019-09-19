@@ -23,11 +23,11 @@ use Mozu\Api\Headers;
 class PropertyTypeClient {
 
 	/**
-	* Retrieves a list of the content property types.
+	* 
 	*
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param int $startIndex 
 	* @return MozuClient
 	*/
 	public static function getPropertyTypesClient($dataViewMode, $pageSize =  null, $startIndex =  null, $responseFields =  null)
@@ -40,10 +40,10 @@ class PropertyTypeClient {
 	}
 	
 	/**
-	* Retrieves the details of the content property type.
+	* 
 	*
-	* @param string $propertyTypeName The name of the property type.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $propertyTypeName The name of the content property type.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getPropertyTypeClient($dataViewMode, $propertyTypeName, $responseFields =  null)
@@ -56,10 +56,10 @@ class PropertyTypeClient {
 	}
 	
 	/**
-	* Creates a new
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param PropertyType $propertyType Property type available for content. Property types are like templates that can be reused.
+	* @param string $responseFields 
+	* @param PropertyType $propertyType 
 	* @return MozuClient
 	*/
 	public static function createPropertyTypeClient($propertyType, $responseFields =  null)
@@ -72,11 +72,11 @@ class PropertyTypeClient {
 	}
 	
 	/**
-	* Updates a
+	* 
 	*
-	* @param string $propertyTypeName The name of the property type.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param PropertyType $propertyType Property type available for content. Property types are like templates that can be reused.
+	* @param string $propertyTypeName 
+	* @param string $responseFields 
+	* @param PropertyType $propertyType 
 	* @return MozuClient
 	*/
 	public static function updatePropertyTypeClient($dataViewMode, $propertyType, $propertyTypeName, $responseFields =  null)
@@ -89,9 +89,10 @@ class PropertyTypeClient {
 	}
 	
 	/**
-	* Delete a specific
+	* 
 	*
-	* @param string $propertyTypeName The name of the property type.
+	* @param string $propertyTypeName 
+	* @return MozuClient
 	*/
 	public static function deletePropertyTypeClient($dataViewMode, $propertyTypeName)
 	{

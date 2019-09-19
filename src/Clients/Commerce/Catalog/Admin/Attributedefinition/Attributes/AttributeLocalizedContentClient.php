@@ -17,14 +17,14 @@ use Mozu\Api\Urls\Commerce\Catalog\Admin\Attributedefinition\Attributes\Attribut
 
 
 /**
-* Properties of localized content for attributes, based on a `localeCode` at a site/tenant level. This content supports translated text for product, product options, and additional objects. 
+* 
 */
 class AttributeLocalizedContentClient {
 
 	/**
-	* Retrieves a collection of localized content for attributes based on a `localeCode`.
+	* 
 	*
-	* @param string $attributeFQN Fully qualified name for an attribute.
+	* @param string $attributeFQN 
 	* @return MozuClient
 	*/
 	public static function getAttributeLocalizedContentsClient($attributeFQN)
@@ -37,11 +37,11 @@ class AttributeLocalizedContentClient {
 	}
 	
 	/**
-	* Retrieves the localized content for an attribute based on a `localeCode`.
+	* 
 	*
-	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $attributeFQN 
+	* @param string $localeCode 
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getAttributeLocalizedContentClient($attributeFQN, $localeCode, $responseFields =  null)
@@ -54,11 +54,11 @@ class AttributeLocalizedContentClient {
 	}
 	
 	/**
-	* Adds new localized content for an attribute based on a `localeCode`.
+	* 
 	*
-	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param AttributeLocalizedContent $localizedContent The localized name and description of the attribute, displayed in the locale defined for the master catalog.
+	* @param string $attributeFQN 
+	* @param string $responseFields 
+	* @param AttributeLocalizedContent $localizedContent 
 	* @return MozuClient
 	*/
 	public static function addLocalizedContentClient($localizedContent, $attributeFQN, $responseFields =  null)
@@ -71,10 +71,10 @@ class AttributeLocalizedContentClient {
 	}
 	
 	/**
-	* Updates the localized content for a collection of existing attributes based on a `localeCode`.
+	* 
 	*
-	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param array|AttributeLocalizedContent $localizedContent The localized name and description of the attribute, displayed in the locale defined for the master catalog.
+	* @param string $attributeFQN 
+	* @param array|AttributeLocalizedContent $localizedContent 
 	* @return MozuClient
 	*/
 	public static function updateLocalizedContentsClient($localizedContent, $attributeFQN)
@@ -87,12 +87,12 @@ class AttributeLocalizedContentClient {
 	}
 	
 	/**
-	* Updates the localized content for an existing attribute based on a `localeCode`.
+	* 
 	*
-	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param AttributeLocalizedContent $localizedContent The localized name and description of the attribute, displayed in the locale defined for the master catalog.
+	* @param string $attributeFQN 
+	* @param string $localeCode 
+	* @param string $responseFields 
+	* @param AttributeLocalizedContent $localizedContent 
 	* @return MozuClient
 	*/
 	public static function updateLocalizedContentClient($localizedContent, $attributeFQN, $localeCode, $responseFields =  null)
@@ -105,10 +105,11 @@ class AttributeLocalizedContentClient {
 	}
 	
 	/**
-	* Removes all localized content. Localized content is translated text information and data based on a `localeCode`. 
+	* 
 	*
-	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
+	* @param string $attributeFQN 
+	* @param string $localeCode 
+	* @return MozuClient
 	*/
 	public static function deleteLocalizedContentClient($attributeFQN, $localeCode)
 	{

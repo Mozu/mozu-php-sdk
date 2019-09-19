@@ -14,45 +14,21 @@ namespace Mozu\Api\Contracts\SiteSettings\General\General\Routing;
 
 
 
-/**
-*	Mozu.SiteSettings.General.Contracts.General.Routing.Validator ApiType DOCUMENT_HERE 
-*/
 class Validator
 {
-	/**
-	*The fully qualified name of the attribute. The attributeDefiniteId may be used to generate this name.
-	*/
-	public $attributeFQN;
+		public $attributeFQN;
 
-	/**
-	*docId ApiType DOCUMENT_HERE 
-	*/
-	public $docId;
+		public $docId;
 
-	/**
-	*field ApiType DOCUMENT_HERE 
-	*/
-	public $field;
+		public $field;
 
-	/**
-	*The fully qualified name of the document list.
-	*/
-	public $listFqn;
+		public $listFqn;
 
-	/**
-	*pattern ApiType DOCUMENT_HERE 
-	*/
-	public $pattern;
+		public $pattern;
 
-	/**
-	*type ApiType DOCUMENT_HERE 
-	*/
-	public $type;
+		public $type;
 
-	/**
-	*List of value data for objects.
-	*/
-	public $values;
+		public $values;
 
 }
 

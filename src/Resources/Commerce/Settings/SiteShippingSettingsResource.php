@@ -33,9 +33,9 @@ class SiteShippingSettingsResource {
 
 
 	/**
-	* Retrieves a list of the shipping settings configured for a site.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return SiteShippingSettings 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -49,9 +49,9 @@ class SiteShippingSettingsResource {
 	}
 	
 /**
-	* Retrieves a list of the shipping settings configured for a site.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getSiteShippingSettingsAsync($responseFields =  null)

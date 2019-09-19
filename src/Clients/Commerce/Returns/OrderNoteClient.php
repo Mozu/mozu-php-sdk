@@ -17,14 +17,14 @@ use Mozu\Api\Urls\Commerce\Returns\OrderNoteUrl;
 
 
 /**
-* Use the Return Notes resource to access and modify internal notes associated with returns. These notes can be useful to customer service representatives viewing them in .
+* 
 */
 class OrderNoteClient {
 
 	/**
-	* Retrieves all internal notes associated with a return.
+	* 
 	*
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $returnId 
 	* @return MozuClient
 	*/
 	public static function getReturnNotesClient($returnId)
@@ -37,11 +37,11 @@ class OrderNoteClient {
 	}
 	
 	/**
-	* Retrieves a specific internal note from a return.
+	* 
 	*
-	* @param string $noteId Unique identifier of a particular note to retrieve.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $noteId 
+	* @param string $responseFields 
+	* @param string $returnId 
 	* @return MozuClient
 	*/
 	public static function getReturnNoteClient($returnId, $noteId, $responseFields =  null)
@@ -54,10 +54,10 @@ class OrderNoteClient {
 	}
 	
 	/**
-	* Creates an internal note on a given return. This note is visible in  for customer service representatives to see.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $responseFields 
+	* @param string $returnId 
 	* @param OrderNote $returnNote 
 	* @return MozuClient
 	*/
@@ -71,11 +71,11 @@ class OrderNoteClient {
 	}
 	
 	/**
-	* Updates an internal note on a given return. This note is visible in  for customer service representatives to see.
+	* 
 	*
-	* @param string $noteId Unique identifier of a particular note to retrieve.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $noteId 
+	* @param string $responseFields 
+	* @param string $returnId 
 	* @param OrderNote $returnNote 
 	* @return MozuClient
 	*/
@@ -89,10 +89,11 @@ class OrderNoteClient {
 	}
 	
 	/**
-	* Deletes an internal note from a given return.
+	* 
 	*
-	* @param string $noteId Unique identifier of a particular note to retrieve.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $noteId 
+	* @param string $returnId 
+	* @return MozuClient
 	*/
 	public static function deleteReturnNoteClient($returnId, $noteId)
 	{

@@ -19,9 +19,9 @@ class ProductTypeUrl  {
 
 	/**
 		* Get Resource Url for GetProductTypes
-		* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
-		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product type search results by any of its properties. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=Name+cont+shoes"
+		* @param int $pageSize 
+		* @param string $responseFields 
 		* @param string $sortBy 
 		* @param int $startIndex 
 		* @return string Resource Url
@@ -40,8 +40,8 @@ class ProductTypeUrl  {
 	
 	/**
 		* Get Resource Url for GetProductType
-		* @param int $productTypeId Identifier of the product type.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param int $productTypeId Identifier of the product type to retrieve.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getProductTypeUrl($productTypeId, $responseFields)
@@ -55,7 +55,7 @@ class ProductTypeUrl  {
 	
 	/**
 		* Get Resource Url for AddProductType
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function addProductTypeUrl($responseFields)
@@ -68,8 +68,8 @@ class ProductTypeUrl  {
 	
 	/**
 		* Get Resource Url for UpdateProductType
-		* @param int $productTypeId Identifier of the product type.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param int $productTypeId Identifier of the product type to update.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updateProductTypeUrl($productTypeId, $responseFields)
@@ -83,7 +83,7 @@ class ProductTypeUrl  {
 	
 	/**
 		* Get Resource Url for DeleteProductType
-		* @param int $productTypeId Identifier of the product type.
+		* @param int $productTypeId Identifier of the product type to delete.
 		* @return string Resource Url
 	*/
 	public static function deleteProductTypeUrl($productTypeId)

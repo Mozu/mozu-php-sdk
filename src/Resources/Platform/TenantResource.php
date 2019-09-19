@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* Use the tenants resource to manage information about a  tenant.
+* Use the tenants resource to manage information about a Mozu tenant.
 */
 class TenantResource {
 
@@ -26,10 +26,10 @@ class TenantResource {
 
 
 	/**
-	* Retrieve details about a specific tenant by providing the tenant ID.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param int $tenantId Unique identifier of the Mozu tenant.
+	* @param string $responseFields 
+	* @param int $tenantId 
 	* @return Tenant 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -42,10 +42,10 @@ class TenantResource {
 	}
 	
 /**
-	* Retrieve details about a specific tenant by providing the tenant ID.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param int $tenantId Unique identifier of the Mozu tenant.
+	* @param string $responseFields 
+	* @param int $tenantId 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getTenantAsync($tenantId, $responseFields =  null)

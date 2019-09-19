@@ -19,8 +19,8 @@ class PriceListUrl  {
 
 	/**
 		* Get Resource Url for GetPriceList
-		* @param string $priceListCode The unique code of the price list for which you want to retrieve the details.
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $priceListCode 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getPriceListUrl($priceListCode, $responseFields)
@@ -34,8 +34,8 @@ class PriceListUrl  {
 	
 	/**
 		* Get Resource Url for GetResolvedPriceList
-		* @param int $customerAccountId The unique identifier of the customer account for which to retrieve wish lists.
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param int $customerAccountId 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getResolvedPriceListUrl($customerAccountId, $responseFields)

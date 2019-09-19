@@ -19,25 +19,16 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Fulfillment;
 */
 class FulfillmentAction
 {
-	/**
-	*The name of the action to perform for the payment, fulfillment, order, or return.
-	*/
-	public $actionName;
+		public $actionName;
 
 	/**
 	*The digital package ID identifies the package to update on the order.
 	*/
 	public $digitalPackageIds;
 
-	/**
-	*Array list of unique IDs of packages in a shipment planned for or finished a shipping fulfillment action. 
-	*/
-	public $packageIds;
+		public $packageIds;
 
-	/**
-	*Array list of in-store pickups for which to perform the fulfillment action.
-	*/
-	public $pickupIds;
+		public $pickupIds;
 
 }
 

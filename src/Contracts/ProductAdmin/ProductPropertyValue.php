@@ -15,29 +15,17 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 /**
-*	Properties of a value for a product property.
+*	Value details for a product property attribute.
 */
 class ProductPropertyValue
 {
-	/**
-	*The value of a property, used by numerous objects within  including facets, attributes, products, localized content, metadata, capabilities ( and third-party), location inventory adjustment, and more. The value may be a string, integer, or double. Validation may be run against the entered and saved values depending on the object type.
-	*/
-	public $value;
+		public $value;
 
-	/**
-	*Properties of an individual vocabulary value for an attribute. For example, a "color" attribute might have the following vocabulary values: Red, Blue, Green.
-	*/
-	public $attributeVocabularyValueDetail;
+		public $attributeVocabularyValueDetail;
 
-	/**
-	*Localizable content (such as a name and/or description) for an attribute. The content may be localized when displayed according to the locale code specified by the master catalog. Content can include descriptive text for product extensible attributes, catalog-level descriptions (displayed if isContentOverriden is true), product bundles, and customer account notes.
-	*/
-	public $content;
+		public $content;
 
-	/**
-	*The localized content associated with the object.
-	*/
-	public $localizedContent;
+		public $localizedContent;
 
 }
 

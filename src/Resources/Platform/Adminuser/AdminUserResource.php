@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* The Accounts resource displays the user accounts and account details associated with a developer or  tenant administrator. Email addresses uniquely identify admin user accounts.
+* Displays the user accounts and account details associated with a developer or Mozu tenant administrator. Email addresses uniquely identify admin user accounts.
 */
 class AdminUserResource {
 
@@ -26,9 +26,75 @@ class AdminUserResource {
 
 
 	/**
-	* Retrieves a list of the  tenants or development stores for which the specified user has an assigned role.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $emailAddress 
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $sortBy 
+	* @param int $startIndex 
+	* @return Stream 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function getUsers($emailAddress =  null, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
+	{
+		$mozuClient = AdminUserClient::getUsersClient($emailAddress, $startIndex, $pageSize, $sortBy, $filter);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* 
+	*
+	* @param string $emailAddress 
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $sortBy 
+	* @param int $startIndex 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getUsersAsync($emailAddress =  null, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
+	{
+		$mozuClient = AdminUserClient::getUsersClient($emailAddress, $startIndex, $pageSize, $sortBy, $filter);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $responseFields 
+	* @param string $userId 
+	* @return UserRoleCollection 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function getUserRoles($userId, $responseFields =  null)
+	{
+		$mozuClient = AdminUserClient::getUserRolesClient($userId, $responseFields);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* 
+	*
+	* @param string $responseFields 
+	* @param string $userId 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getUserRolesAsync($userId, $responseFields =  null)
+	{
+		$mozuClient = AdminUserClient::getUserRolesClient($userId, $responseFields);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $responseFields 
 	* @param string $userId Unique identifier of the user whose tenant scopes you want to retrieve.
 	* @return TenantCollection 
 	* @deprecated deprecated since version 1.17
@@ -42,9 +108,9 @@ class AdminUserResource {
 	}
 	
 /**
-	* Retrieves a list of the  tenants or development stores for which the specified user has an assigned role.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @param string $userId Unique identifier of the user whose tenant scopes you want to retrieve.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -56,10 +122,40 @@ class AdminUserResource {
 	}
 	
 	/**
-	* Retrieves the details of the specified administrator user account.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $userId Unique identifier of the user whose tenant scopes you want to retrieve.
+	* @param string $responseFields 
+	* @param string $userId 
+	* @return User 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function getUserById($userId, $responseFields =  null)
+	{
+		$mozuClient = AdminUserClient::getUserByIdClient($userId, $responseFields);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* 
+	*
+	* @param string $responseFields 
+	* @param string $userId 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getUserByIdAsync($userId, $responseFields =  null)
+	{
+		$mozuClient = AdminUserClient::getUserByIdClient($userId, $responseFields);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $responseFields 
+	* @param string $userId Unique identifier of the administrator account to retrieve.
 	* @return User 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -72,15 +168,248 @@ class AdminUserResource {
 	}
 	
 /**
-	* Retrieves the details of the specified administrator user account.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $userId Unique identifier of the user whose tenant scopes you want to retrieve.
+	* @param string $responseFields 
+	* @param string $userId Unique identifier of the administrator account to retrieve.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getUserAsync($userId, $responseFields =  null)
 	{
 		$mozuClient = AdminUserClient::getUserClient($userId, $responseFields);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $responseFields 
+	* @param User $user 
+	* @return User 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function createUser($user, $responseFields =  null)
+	{
+		$mozuClient = AdminUserClient::createUserClient($user, $responseFields);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* 
+	*
+	* @param string $responseFields 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function createUserAsync($user, $responseFields =  null)
+	{
+		$mozuClient = AdminUserClient::createUserClient($user, $responseFields);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $userId 
+	* @param PasswordInfo $passwordInfo 
+	* @return Stream 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function changePassword($passwordInfo, $userId)
+	{
+		$mozuClient = AdminUserClient::changePasswordClient($passwordInfo, $userId);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* 
+	*
+	* @param string $userId 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function changePasswordAsync($passwordInfo, $userId)
+	{
+		$mozuClient = AdminUserClient::changePasswordClient($passwordInfo, $userId);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $userId 
+	* @param ChangeUserPasswordInfo $changeUserPasswordInfo 
+	* @return Stream 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function changeUserPassword($changeUserPasswordInfo, $userId)
+	{
+		$mozuClient = AdminUserClient::changeUserPasswordClient($changeUserPasswordInfo, $userId);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* 
+	*
+	* @param string $userId 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function changeUserPasswordAsync($changeUserPasswordInfo, $userId)
+	{
+		$mozuClient = AdminUserClient::changeUserPasswordClient($changeUserPasswordInfo, $userId);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param int $roleId 
+	* @param string $userId 
+	* @return Stream 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function addUserRole($userId, $roleId)
+	{
+		$mozuClient = AdminUserClient::addUserRoleClient($userId, $roleId);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* 
+	*
+	* @param int $roleId 
+	* @param string $userId 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function addUserRoleAsync($userId, $roleId)
+	{
+		$mozuClient = AdminUserClient::addUserRoleClient($userId, $roleId);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param ResetPasswordInfo $resetPasswordInfo 
+	* @return Stream 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function resetPassword($resetPasswordInfo)
+	{
+		$mozuClient = AdminUserClient::resetPasswordClient($resetPasswordInfo);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* 
+	*
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function resetPasswordAsync($resetPasswordInfo)
+	{
+		$mozuClient = AdminUserClient::resetPasswordClient($resetPasswordInfo);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $responseFields 
+	* @param string $userId 
+	* @param User $user 
+	* @return User 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function updateUser($user, $userId, $responseFields =  null)
+	{
+		$mozuClient = AdminUserClient::updateUserClient($user, $userId, $responseFields);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* 
+	*
+	* @param string $responseFields 
+	* @param string $userId 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function updateUserAsync($user, $userId, $responseFields =  null)
+	{
+		$mozuClient = AdminUserClient::updateUserClient($user, $userId, $responseFields);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $userId 
+	* @return Stream 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function deleteUser($userId)
+	{
+		$mozuClient = AdminUserClient::deleteUserClient($userId);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* 
+	*
+	* @param string $userId 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function deleteUserAsync($userId)
+	{
+		$mozuClient = AdminUserClient::deleteUserClient($userId);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param int $roleId 
+	* @param string $userId 
+	* @return Stream 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function removeUserRole($userId, $roleId)
+	{
+		$mozuClient = AdminUserClient::removeUserRoleClient($userId, $roleId);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* 
+	*
+	* @param int $roleId 
+	* @param string $userId 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function removeUserRoleAsync($userId, $roleId)
+	{
+		$mozuClient = AdminUserClient::removeUserRoleClient($userId, $roleId);
 		return $mozuClient->executeAsync();
 
 	}

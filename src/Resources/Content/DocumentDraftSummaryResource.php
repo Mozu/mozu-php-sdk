@@ -33,12 +33,12 @@ class DocumentDraftSummaryResource {
 
 
 	/**
-	* Retrieves a list of the documents currently in draft state, according to any defined filter and sort criteria.
+	* 
 	*
-	* @param string $documentLists List of document lists that contain documents to delete.
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+	* @param string $documentLists Lists that contain the document drafts.
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param int $startIndex 
 	* @return DocumentDraftSummaryPagedCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -52,12 +52,12 @@ class DocumentDraftSummaryResource {
 	}
 	
 /**
-	* Retrieves a list of the documents currently in draft state, according to any defined filter and sort criteria.
+	* 
 	*
-	* @param string $documentLists List of document lists that contain documents to delete.
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+	* @param string $documentLists Lists that contain the document drafts.
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param int $startIndex 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function listDocumentDraftSummariesAsync($pageSize =  null, $startIndex =  null, $documentLists =  null, $responseFields =  null)
@@ -69,10 +69,11 @@ class DocumentDraftSummaryResource {
 	}
 	
 	/**
-	* Deletes the drafts of the specified documents. Published documents cannot be deleted.
+	* 
 	*
 	* @param string $documentLists List of document lists that contain documents to delete.
 	* @param array|string $documentIds Unique identifiers of the documents to delete.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteDocumentDrafts($documentIds, $documentLists =  null)
@@ -80,11 +81,12 @@ class DocumentDraftSummaryResource {
 		$mozuClient = DocumentDraftSummaryClient::deleteDocumentDraftsClient($documentIds, $documentLists);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Deletes the drafts of the specified documents. Published documents cannot be deleted.
+	* 
 	*
 	* @param string $documentLists List of document lists that contain documents to delete.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -98,10 +100,11 @@ class DocumentDraftSummaryResource {
 	}
 	
 	/**
-	* Publish one or more document drafts to live content on the site.
+	* 
 	*
-	* @param string $documentLists List of document lists that contain documents to delete.
-	* @param array|string $documentIds Unique identifiers of the documents to delete.
+	* @param string $documentLists List of document lists that contain documents to publish.
+	* @param array|string $documentIds List of unique identifiers of the document drafts to publish.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function publishDocuments($documentIds, $documentLists =  null)
@@ -109,13 +112,14 @@ class DocumentDraftSummaryResource {
 		$mozuClient = DocumentDraftSummaryClient::publishDocumentsClient($documentIds, $documentLists);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Publish one or more document drafts to live content on the site.
+	* 
 	*
-	* @param string $documentLists List of document lists that contain documents to delete.
+	* @param string $documentLists List of document lists that contain documents to publish.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function publishDocumentsAsync($documentIds, $documentLists =  null)

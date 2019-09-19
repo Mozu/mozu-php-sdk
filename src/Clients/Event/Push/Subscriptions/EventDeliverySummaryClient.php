@@ -17,21 +17,21 @@ use Mozu\Api\Urls\Event\Push\Subscriptions\EventDeliverySummaryUrl;
 
 
 /**
-* Provides details for each attempted delivery of the event to the endpoint.
+* 
 */
 class EventDeliverySummaryClient {
 
 	/**
-	* This operation method is the external/public event entity used specifically in pull/poll event scenarios.
+	* 
 	*
-	* @param int $id Unique identifier of the customer segment to retrieve.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $subscriptionId Unique identifier for a subscription, such as subscribing tenants for an event or to receive a notification.
+	* @param int $processId 
+	* @param string $responseFields 
+	* @param string $subscriptionId This operation paramenter is the unique identifer for a subscription.
 	* @return MozuClient
 	*/
-	public static function getDeliveryAttemptSummaryClient($subscriptionId, $id =  null, $responseFields =  null)
+	public static function getDeliveryAttemptSummaryClient($subscriptionId, $processId =  null, $responseFields =  null)
 	{
-		$url = EventDeliverySummaryUrl::getDeliveryAttemptSummaryUrl($id, $responseFields, $subscriptionId);
+		$url = EventDeliverySummaryUrl::getDeliveryAttemptSummaryUrl($processId, $responseFields, $subscriptionId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
 		return $mozuClient;
@@ -39,14 +39,14 @@ class EventDeliverySummaryClient {
 	}
 	
 	/**
-	* Retrieves a collection of data for delivery attempts of events and notifications. These are notifications sent to subscribing sites and tenants. A paged list is returned sorted and filtered per the entered parameters.
+	* 
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for more information.
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
-	* @param string $subscriptionId Unique identifier for a subscription, such as subscribing tenants for an event or to receive a notification.
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param string $sortBy 
+	* @param int $startIndex 
+	* @param string $subscriptionId 
 	* @return MozuClient
 	*/
 	public static function getDeliveryAttemptSummariesClient($subscriptionId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)

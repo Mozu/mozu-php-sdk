@@ -14,55 +14,27 @@ namespace Mozu\Api\Contracts\PaymentService;
 
 
 
-/**
-*	Mozu.PaymentService.Contracts.PublicCard ApiType DOCUMENT_HERE 
-*/
 class PublicCard
 {
-	/**
-	*Mozu.PaymentService.Contracts.PublicCard cardHolderName ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $cardHolderName;
+		public $cardHolderName;
 
-	/**
-	*Mozu.PaymentService.Contracts.PublicCard cardIssueMonth ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $cardIssueMonth;
+		public $cardIssueMonth;
 
-	/**
-	*For Amex Cards, this is an additional field for verification that is used in conjunction with a CVV
-	*/
-	public $cardIssueNumber;
+		public $cardIssueNumber;
 
-	/**
-	*Mozu.PaymentService.Contracts.PublicCard cardIssueYear ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $cardIssueYear;
+		public $cardIssueYear;
 
-	/**
-	*This is the full number of the card.
-	*/
-	public $cardNumber;
+		public $cardNumber;
 
-	/**
-	*Mozu.PaymentService.Contracts.PublicCard cardType ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $cardType;
+		public $cardType;
 
-	/**
-	*Mozu.PaymentService.Contracts.PublicCard cvv ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $cvv;
+		public $cvv;
 
-	/**
-	*The two-digit month a credit card expires for a payment method.
-	*/
-	public $expireMonth;
+		public $expireMonth;
 
-	/**
-	*The four-digit year the credit card expires for a payment method.
-	*/
-	public $expireYear;
+		public $expireYear;
+
+		public $isTokenized;
 
 }
 

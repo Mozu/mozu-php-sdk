@@ -14,20 +14,11 @@ namespace Mozu\Api\Contracts\ShippingAdmin\Profile;
 
 
 
-/**
-*	Mozu.ShippingAdmin.Contracts.Profile.ShippingStates ApiType DOCUMENT_HERE 
-*/
 class ShippingStates
 {
-	/**
-	*The 2-letter geographic code representing the country for the physical or mailing address. Currently limited to the US.
-	*/
-	public $countryCode;
+		public $countryCode;
 
-	/**
-	*The states of the shipping profile.
-	*/
-	public $states;
+		public $states;
 
 }
 

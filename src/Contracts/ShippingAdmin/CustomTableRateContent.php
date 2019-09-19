@@ -14,20 +14,11 @@ namespace Mozu\Api\Contracts\ShippingAdmin;
 
 
 
-/**
-*	Mozu.ShippingAdmin.Contracts.CustomTableRateContent ApiType DOCUMENT_HERE 
-*/
 class CustomTableRateContent
 {
-	/**
-	*The two character locale code, per the country code provided. This code determines the localized content to use and display.
-	*/
-	public $localeCode;
+		public $localeCode;
 
-	/**
-	*The user supplied name that appears in . You can use this field for identification purposes.
-	*/
-	public $name;
+		public $name;
 
 }
 

@@ -19,7 +19,7 @@ class TenantAdminUserAuthTicketUrl  {
 
 	/**
 		* Get Resource Url for CreateUserAuthTicket
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @param int $tenantId Unique identifier of the development or production tenant for which to generate the user authentication ticket.
 		* @return string Resource Url
 	*/
@@ -34,7 +34,7 @@ class TenantAdminUserAuthTicketUrl  {
 	
 	/**
 		* Get Resource Url for RefreshAuthTicket
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @param int $tenantId 
 		* @return string Resource Url
 	*/
@@ -49,7 +49,7 @@ class TenantAdminUserAuthTicketUrl  {
 	
 	/**
 		* Get Resource Url for DeleteUserAuthTicket
-		* @param string $refreshToken Alphanumeric string used for access tokens. This token refreshes access for accounts by generating a new developer or application account authentication ticket after an access token expires.
+		* @param string $refreshToken Refresh token string associated with the user authentication ticket.
 		* @return string Resource Url
 	*/
 	public static function deleteUserAuthTicketUrl($refreshToken)

@@ -22,9 +22,9 @@ use Mozu\Api\Urls\Commerce\Settings\Shipping\SiteShippingHandlingFeeUrl;
 class SiteShippingHandlingFeeClient {
 
 	/**
-	* Retrieves the details of the order handling fee configured for the site.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getOrderHandlingFeeClient($responseFields =  null)
@@ -37,10 +37,10 @@ class SiteShippingHandlingFeeClient {
 	}
 	
 	/**
-	* Creates a new order handling fee for the site.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param SiteShippingHandlingFee $orderHandlingFee Properties of the handling fee to apply to order shipments for the site.
+	* @param string $responseFields 
+	* @param SiteShippingHandlingFee $orderHandlingFee Properties of the order handling fee to assess for order shipment.
 	* @return MozuClient
 	*/
 	public static function createOrderHandlingFeeClient($orderHandlingFee, $responseFields =  null)
@@ -53,10 +53,10 @@ class SiteShippingHandlingFeeClient {
 	}
 	
 	/**
-	* Updates the order handling fee amount for the site.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param SiteShippingHandlingFee $orderHandlingFee Properties of the handling fee to apply to order shipments for the site.
+	* @param string $responseFields 
+	* @param SiteShippingHandlingFee $orderHandlingFee The combined price for all items in the order, including all selected options but excluding any discounts.
 	* @return MozuClient
 	*/
 	public static function updateOrderHandlingFeeClient($orderHandlingFee, $responseFields =  null)

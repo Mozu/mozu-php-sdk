@@ -17,15 +17,15 @@ use Mozu\Api\Urls\Platform\TenantUrl;
 
 
 /**
-* Use the tenants resource to manage information about a  tenant.
+* Use the tenants resource to manage information about a Mozu tenant.
 */
 class TenantClient {
 
 	/**
-	* Retrieve details about a specific tenant by providing the tenant ID.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param int $tenantId Unique identifier of the Mozu tenant.
+	* @param string $responseFields 
+	* @param int $tenantId 
 	* @return MozuClient
 	*/
 	public static function getTenantClient($tenantId, $responseFields =  null)

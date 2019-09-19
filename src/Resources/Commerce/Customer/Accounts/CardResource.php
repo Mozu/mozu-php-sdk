@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* Use the Cards subresource to manage stored credit cards for customer accounts.  stores limited card data in the Customer service for expedited ordering purposes; however, the complete card data is stored in the Payment service.
+* Use the Cards subresource to manage stored credit cards for customer accounts. Mozu stores limited card data in the Customer service for expedited ordering purposes; however, the complete card data is stored in the Payment service.
 */
 class CardResource {
 
@@ -33,11 +33,11 @@ class CardResource {
 
 
 	/**
-	* Retrieves the details of a credit card stored with a customer account billing contact.
+	* 
 	*
 	* @param int $accountId Unique identifier of the customer account.
 	* @param string $cardId Unique identifier of the card associated with the customer account billing contact.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Card 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -51,11 +51,11 @@ class CardResource {
 	}
 	
 /**
-	* Retrieves the details of a credit card stored with a customer account billing contact.
+	* 
 	*
 	* @param int $accountId Unique identifier of the customer account.
 	* @param string $cardId Unique identifier of the card associated with the customer account billing contact.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getAccountCardAsync($accountId, $cardId, $responseFields =  null)
@@ -67,10 +67,10 @@ class CardResource {
 	}
 	
 	/**
-	* Retrieves all stored credit cards for the customer account.
+	* 
 	*
 	* @param int $accountId Unique identifier of the customer account.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return CardCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -84,10 +84,10 @@ class CardResource {
 	}
 	
 /**
-	* Retrieves all stored credit cards for the customer account.
+	* 
 	*
 	* @param int $accountId Unique identifier of the customer account.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getAccountCardsAsync($accountId, $responseFields =  null)
@@ -99,11 +99,11 @@ class CardResource {
 	}
 	
 	/**
-	* Creates a new credit card record and stores it for the customer account.
+	* 
 	*
 	* @param int $accountId Unique identifier of the customer account.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Card $card Properties of a credit card used to submit payment for an order.
+	* @param string $responseFields 
+	* @param Card $card Properties of the customer credit card to add to the account.
 	* @return Card 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -117,10 +117,10 @@ class CardResource {
 	}
 	
 /**
-	* Creates a new credit card record and stores it for the customer account.
+	* 
 	*
 	* @param int $accountId Unique identifier of the customer account.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function addAccountCardAsync($card, $accountId, $responseFields =  null)
@@ -132,12 +132,12 @@ class CardResource {
 	}
 	
 	/**
-	* Update one or more properties of a credit card defined for a customer account.
+	* 
 	*
 	* @param int $accountId Unique identifier of the customer account.
-	* @param string $cardId Unique identifier of the card associated with the customer account billing contact.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Card $card Properties of a credit card used to submit payment for an order.
+	* @param string $cardId Unique identifier of the credit card.
+	* @param string $responseFields 
+	* @param Card $card Properties of the customer account credit card to update.
 	* @return Card 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -151,11 +151,11 @@ class CardResource {
 	}
 	
 /**
-	* Update one or more properties of a credit card defined for a customer account.
+	* 
 	*
 	* @param int $accountId Unique identifier of the customer account.
-	* @param string $cardId Unique identifier of the card associated with the customer account billing contact.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $cardId Unique identifier of the credit card.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateAccountCardAsync($card, $accountId, $cardId, $responseFields =  null)
@@ -167,10 +167,11 @@ class CardResource {
 	}
 	
 	/**
-	* Removes a stored credit card from a customer account.
+	* 
 	*
 	* @param int $accountId Unique identifier of the customer account.
-	* @param string $cardId Unique identifier of the card associated with the customer account billing contact.
+	* @param string $cardId Unique identifier of the credit card to delete.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteAccountCard($accountId, $cardId)
@@ -178,14 +179,15 @@ class CardResource {
 		$mozuClient = CardClient::deleteAccountCardClient($accountId, $cardId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Removes a stored credit card from a customer account.
+	* 
 	*
 	* @param int $accountId Unique identifier of the customer account.
-	* @param string $cardId Unique identifier of the card associated with the customer account billing contact.
+	* @param string $cardId Unique identifier of the credit card to delete.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteAccountCardAsync($accountId, $cardId)

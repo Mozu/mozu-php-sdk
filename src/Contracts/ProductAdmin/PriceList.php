@@ -14,90 +14,39 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
-/**
-*	The details of the price list.
-*/
 class PriceList
 {
-	/**
-	*The unique, user-defined code of the price list.
-	*/
-	public $priceListCode;
+		public $defaultForSites;
 
-	/**
-	*A unique, internal ID of the price list. This property is read-only.
-	*/
-	public $priceListSequence;
+		public $description;
 
-	/**
-	*The resolution rank of the price list that is used to break ties when a customer is applicable for multiple price lists. A lower number represents a higher priority. In order avoid conflicts,  recommends setting this property to a unique value. Refer to [Resolution Rank](https://www.mozu.com/docs/guides/catalog/price-lists.htm#resolution_rank) in the Price List guides topic for more information.
-	*/
-	public $rank;
+		public $enabled;
 
-	/**
-	*Specifies whether the price list is resolvable. When ,  is able to apply the price list and its product pricing directly to a shopper. When ,  is unable to apply the price list and its product pricing directly to a shopper; however  can still apply the price list to a shopper if it is a parent of a resolvable price list. Refer to [Resolution](https://www.mozu.com/docs/guides/catalog/price-lists.htm#resolution) in the Price List guides topic for more information.
-	*/
-	public $resolvable;
+		public $filteredInStorefront;
 
-	/**
-	*Specifies whether the price list is valid for all sites associated with the master catalog to which the price list belongs. If this property is , the  property is empty.
-	*/
-	public $validForAllSites;
+		public $indexedSites;
 
-	/**
-	*A list of sites for which the price list is valid. If this property contains any entries, the  property is .
-	*/
-	public $validSites;
+		public $mappedCustomerSegments;
 
-	/**
-	*A list of sites for which you want the price list the default. The default price list will be in effect on a site if the resolution logic does not return any applicable price lists for the shopper, for example, if the shopper does not belong to any applicable customer segments. Refer to [Default](https://www.mozu.com/docs/guides/catalog/price-lists.htm#default) in the Price Lists guides topic for more information.
-	*/
-	public $defaultForSites;
+		public $name;
 
-	/**
-	*The localized description in text for the object, displayed per the locale code. For example, descriptions are used for product descriptions, attributes, and pre-authorization transaction types.
-	*/
-	public $description;
+		public $parentPriceListCode;
 
-	/**
-	*Indicates if a capability, function tied to an Arc.js action, application, or price list is enabled for the tenant/site. If true, the capability/application/function/price list is enabled for the tenant. System-supplied and read-only with the exception of functions tied to an Arc.js action and price lists.
-	*/
-	public $enabled;
+		public $parentPriceListName;
 
-	/**
-	*Indicates whether the price list is exclusive. When a price list is exclusive, shoppers that resolve to the exclusive price list can only view and purchase products that have price entries in the price list and any of its parents. The default is . Refer to [Exclusivity](https://www.mozu.com/docs/guides/catalog/price-lists.htm#exclusivity) for more information.
-	*/
-	public $filteredInStorefront;
+		public $priceListCode;
 
-	/**
-	*A list of site identifiers for which the price list pricing is indexed. Refer to [Indexing](https://www.mozu.com/docs/guides/catalog/price-lists.htm#indexing) in the Price Lists guides topic for more information.
-	*/
-	public $indexedSites;
+		public $priceListSequence;
 
-	/**
-	*A list of customer segment codes that  uses to determine the shoppers to whom the price list applies. Refer to [Resolution](https://www.mozu.com/docs/guides/catalog/price-lists.htm#resolution) in the Price Lists guides topic for more information.
-	*/
-	public $mappedCustomerSegments;
+		public $rank;
 
-	/**
-	*The user supplied name that appears in . You can use this field for identification purposes.
-	*/
-	public $name;
+		public $resolvable;
 
-	/**
-	*The code of the price list's parent price list. You can assign each price list a parent price list, which allows each child price list to inherit the parent price list's overridden product pricing. Refer to [Inheritance](https://www.mozu.com/docs/guides/catalog/price-lists.htm#inheritance) in the Price Lists guides topic for more information.
-	*/
-	public $parentPriceListCode;
+		public $validForAllSites;
 
-	/**
-	*The user-defined name of the parent price list, if applicable. This value is read-only.
-	*/
-	public $parentPriceListName;
+		public $validSites;
 
-	/**
-	*Basic audit info about the object, including date, time, and user account. This data may be captured when creating, updating, and removing data.
-	*/
-	public $auditInfo;
+		public $auditInfo;
 
 }
 

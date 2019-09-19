@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* Use the Admin User authentication tickets resource to generate and refresh authentication tickets that enable  administrator or developer account users to access development or production tenants.
+* Use the Admin User authentication tickets resource to generate and refresh authentication tickets that enable Mozu administrator or developer account users to access development or production tenants.
 */
 class TenantAdminUserAuthTicketResource {
 
@@ -26,11 +26,11 @@ class TenantAdminUserAuthTicketResource {
 
 
 	/**
-	* Creates an authentication ticket for the supplied user to specify in API requests associated with the supplied tenant.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @param int $tenantId Unique identifier of the development or production tenant for which to generate the user authentication ticket.
-	* @param UserAuthInfo $userAuthInfo Information required to authenticate a user.
+	* @param UserAuthInfo $userAuthInfo The user authentication information required to generate the user authentication ticket, which consists of a user name and password.
 	* @return TenantAdminUserAuthTicket 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -43,9 +43,9 @@ class TenantAdminUserAuthTicketResource {
 	}
 	
 /**
-	* Creates an authentication ticket for the supplied user to specify in API requests associated with the supplied tenant.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @param int $tenantId Unique identifier of the development or production tenant for which to generate the user authentication ticket.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -57,11 +57,11 @@ class TenantAdminUserAuthTicketResource {
 	}
 	
 	/**
-	* Generates a new user authentication ticket for the specified tenant by supplying the user's existing refresh token information.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @param int $tenantId 
-	* @param TenantAdminUserAuthTicket $existingAuthTicket Properties of the authentication ticket to be used in user claims with the  API.
+	* @param TenantAdminUserAuthTicket $existingAuthTicket Properties of the authentication ticket to refresh. The refresh token is required to complete this request.
 	* @return TenantAdminUserAuthTicket 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -74,9 +74,9 @@ class TenantAdminUserAuthTicketResource {
 	}
 	
 /**
-	* Generates a new user authentication ticket for the specified tenant by supplying the user's existing refresh token information.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @param int $tenantId 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -88,22 +88,24 @@ class TenantAdminUserAuthTicketResource {
 	}
 	
 	/**
-	* Deletes the authentication ticket for the user by supplying the refresh token.
+	* 
 	*
-	* @param string $refreshToken Alphanumeric string used for access tokens. This token refreshes access for accounts by generating a new developer or application account authentication ticket after an access token expires.
+	* @param string $refreshToken Refresh token string associated with the user authentication ticket.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteUserAuthTicket($refreshToken)
 	{
 		$mozuClient = TenantAdminUserAuthTicketClient::deleteUserAuthTicketClient($refreshToken);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Deletes the authentication ticket for the user by supplying the refresh token.
+	* 
 	*
-	* @param string $refreshToken Alphanumeric string used for access tokens. This token refreshes access for accounts by generating a new developer or application account authentication ticket after an access token expires.
+	* @param string $refreshToken Refresh token string associated with the user authentication ticket.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteUserAuthTicketAsync($refreshToken)

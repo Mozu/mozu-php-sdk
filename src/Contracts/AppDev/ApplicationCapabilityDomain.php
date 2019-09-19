@@ -14,35 +14,17 @@ namespace Mozu\Api\Contracts\AppDev;
 
 
 
-/**
-*	This property is not exposed in documentation.
-*/
 class ApplicationCapabilityDomain
 {
-	/**
-	*Mozu.AppDev.Contracts.ApplicationCapabilityDomain applicationCapabilityDomainId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationCapabilityDomainId;
+		public $applicationCapabilityDomainId;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationCapabilityDomain applicationCapabilityTypeId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationCapabilityTypeId;
+		public $applicationCapabilityTypeId;
 
-	/**
-	*The user supplied name that appears in . You can use this field for identification purposes.
-	*/
-	public $name;
+		public $name;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationCapabilityDomain applicationCapabilityDomainValues1 ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationCapabilityDomainValues1;
+		public $applicationCapabilityDomainValues1;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationCapabilityDomain applicationCapabilityDomainValues2 ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationCapabilityDomainValues2;
+		public $applicationCapabilityDomainValues2;
 
 }
 

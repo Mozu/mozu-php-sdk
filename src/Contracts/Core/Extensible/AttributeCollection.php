@@ -19,27 +19,15 @@ namespace Mozu\Api\Contracts\Core\Extensible;
 */
 class AttributeCollection
 {
-	/**
-	*The number of pages returned based on the startIndex and pageSize values specified. This value is system-supplied and read-only.
-	*/
-	public $pageCount;
+		public $pageCount;
 
-	/**
-	*The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	*/
-	public $pageSize;
+		public $pageSize;
 
 		public $startIndex;
 
-	/**
-	*The number of results listed in the query collection, represented by a signed 64-bit (8-byte) integer. This value is system-supplied and read-only.
-	*/
-	public $totalCount;
+		public $totalCount;
 
-	/**
-	*An array list of objects in the returned collection.
-	*/
-	public $items;
+		public $items;
 
 }
 

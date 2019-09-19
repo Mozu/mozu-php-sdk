@@ -15,44 +15,23 @@ namespace Mozu\Api\Contracts\Core\Extensible;
 
 
 /**
-*	Validates the attribute configured for the customer in the storefront against the attribute configured in .
+*	Validates the attribute configured for the customer in the storefront against the attribute configured in Mozu admin.
 */
 class AttributeValidation
 {
-	/**
-	*The latest possible date and time the extensible attribute can be validated.
-	*/
-	public $maxDateTime;
+		public $maxDateTime;
 
-	/**
-	*The maximum number that can be entered as a value for an extensible attribute.
-	*/
-	public $maxNumericValue;
+		public $maxNumericValue;
 
-	/**
-	*The maximum character length possible for a string value entered for an extensible attribute.
-	*/
-	public $maxStringLength;
+		public $maxStringLength;
 
-	/**
-	*The earliest date and time an extensible attribute can be validated.
-	*/
-	public $minDateTime;
+		public $minDateTime;
 
-	/**
-	*The minimum numeric value required to validate an extensible attribute.
-	*/
-	public $minNumericValue;
+		public $minNumericValue;
 
-	/**
-	*The minimum character length possible for a string value entered for an extensible attribute.
-	*/
-	public $minStringLength;
+		public $minStringLength;
 
-	/**
-	*Regular expression used to process and validate an extensible attribute value that require special formatting, such as phone numbers.
-	*/
-	public $regularExpression;
+		public $regularExpression;
 
 }
 

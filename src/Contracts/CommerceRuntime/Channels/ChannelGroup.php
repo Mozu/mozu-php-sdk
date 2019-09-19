@@ -19,25 +19,13 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Channels;
 */
 class ChannelGroup
 {
-	/**
-	*User-defined code that identifies the channel group.
-	*/
-	public $code;
+		public $code;
 
-	/**
-	*The user supplied name that appears in . You can use this field for identification purposes.
-	*/
-	public $name;
+		public $name;
 
-	/**
-	*Unique identifier of the Mozu tenant.
-	*/
-	public $tenantId;
+		public $tenantId;
 
-	/**
-	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
-	*/
-	public $auditInfo;
+		public $auditInfo;
 
 }
 

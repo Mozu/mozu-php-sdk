@@ -14,25 +14,17 @@ namespace Mozu\Api\Contracts\ProductAdmin\Search;
 
 
 
-/**
-*	Settings for search synonyms for search results.
-*/
 class SearchSynonymSettings
 {
-	/**
-	*Indicates if synonyms should be expanded.
-	*/
-	public $expandSynonyms;
+		public $expandSynonyms;
 
-	/**
-	*Sets the boost for the words actually sent in the query.
-	*/
-	public $mainPartBoost;
+		public $mainPartBoost;
 
-	/**
-	*Boosts the synonyms to affect rankings for search results.
-	*/
-	public $synonymPartBoost;
+		public $matchOnAnyTerm;
+
+		public $phraseBoost;
+
+		public $synonymPartBoost;
 
 }
 

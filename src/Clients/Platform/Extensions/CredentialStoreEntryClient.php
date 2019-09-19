@@ -17,14 +17,15 @@ use Mozu\Api\Urls\Platform\Extensions\CredentialStoreEntryUrl;
 
 
 /**
-* The CredentialStore resource allows you to encrypt and store sensitive data on your tenant. You can then decrypt and access that data using an Arc.js application, as described in the Arc.js [Programming Patterns](https://www.mozu.com/docs/developer/arcjs-guides/programming-patterns.htm#securely_store_and_access_sensitive_data) topic.
+* 
 */
 class CredentialStoreEntryClient {
 
 	/**
-	* Encrypts and stores data contained in the  JSON object. You can decrypt and access the secured data using an Arc.js application, as described in the Arc.js [Programming Patterns](https://www.mozu.com/docs/developer/arcjs-guides/programming-patterns.htm#securely_store_and_access_sensitive_data) topic.
+	* 
 	*
 	* @param CredentialStoreEntry $credentials 
+	* @return MozuClient
 	*/
 	public static function storeCredentialsClient($credentials)
 	{

@@ -14,95 +14,41 @@ namespace Mozu\Api\Contracts\AppDev;
 
 
 
-/**
-*	This property is not exposed in documentation.
-*/
 class ApplicationSummary
 {
-	/**
-	*Unique identifier of an app available in your  tenant or within  Dev Center. This ID is unique across all apps installed, initialized, and enabled in the  and those in development through the Dev Center Console.
-	*/
-	public $appId;
+		public $appId;
 
-	/**
-	*The AppKey is a runtime type.
-	*/
-	public $appKey;
+		public $appKey;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationSummary applicationId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationId;
+		public $applicationId;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationSummary applicationNamespace ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationNamespace;
+		public $applicationNamespace;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationSummary applicationStatusId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationStatusId;
+		public $applicationStatusId;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationSummary applicationStatusName ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationStatusName;
+		public $applicationStatusName;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationSummary applicationTypeId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationTypeId;
+		public $applicationTypeId;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationSummary appSchemeVersion ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $appSchemeVersion;
+		public $appSchemeVersion;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationSummary hasVersions ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $hasVersions;
+		public $hasVersions;
 
-	/**
-	*The user supplied name that appears in . You can use this field for identification purposes.
-	*/
-	public $name;
+		public $name;
 
-	/**
-	*The AppKey is a runtime type. This only applies for themes that inherit from another theme.
-	*/
-	public $parentAppKey;
+		public $parentAppKey;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationSummary parentName ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $parentName;
+		public $parentName;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationSummary releasePackageId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $releasePackageId;
+		public $releasePackageId;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationSummary releasePackageName ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $releasePackageName;
+		public $releasePackageName;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationSummary updateAvailable ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $updateAvailable;
+		public $updateAvailable;
 
-	/**
-	*The AppKey is a runtime type. This only applies for themes that inherit from another theme. It shows the most current update available.
-	*/
-	public $updateParentAppKey;
+		public $updateParentAppKey;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationSummary applicationVersion ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationVersion;
+		public $applicationVersion;
 
 }
 

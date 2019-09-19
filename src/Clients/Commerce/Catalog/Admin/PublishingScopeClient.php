@@ -18,15 +18,15 @@ use Mozu\Api\Urls\Commerce\Catalog\Admin\PublishingScopeUrl;
 use Mozu\Api\Headers;
 
 /**
-* Use the Product Publishing resource to publish or discard pending changes to products in a master catalog, or to add or remove pending changes to and from product publish sets.You can use product publish sets to group pending product changes together and publish them all at the same time.
+* Use the Product Publishing resource to publish or discard pending changes to product definitions in the master catalog.
 */
 class PublishingScopeClient {
 
 	/**
-	* Retrieves the details of the specified product publish set.
+	* 
 	*
-	* @param string $publishSetCode The unique identifier of the publish set.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $publishSetCode 
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getPublishSetClient($publishSetCode, $responseFields =  null)
@@ -39,9 +39,9 @@ class PublishingScopeClient {
 	}
 	
 	/**
-	* Retrieves a list of product publish sets and their properties, including the amount of pending product changes that are included in each one.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getPublishSetsClient($responseFields =  null)
@@ -54,9 +54,10 @@ class PublishingScopeClient {
 	}
 	
 	/**
-	* Deletes the draft version of product changes (pending product changes) for each product code specified in the request.
+	* 
 	*
-	* @param PublishingScope $publishScope Describes the scope of the product publishing update, which can include individual product codes or all pending changes.
+	* @param PublishingScope $publishScope Properties of the pending product changes to include in this operation.
+	* @return MozuClient
 	*/
 	public static function discardDraftsClient($dataViewMode, $publishScope)
 	{
@@ -68,9 +69,10 @@ class PublishingScopeClient {
 	}
 	
 	/**
-	* Publishes the draft version of product changes (pending product changes) for each product code specified in the request, and changes the product publish state to "live".
+	* 
 	*
-	* @param PublishingScope $publishScope Describes the scope of the product publishing update, which can include individual product codes or all pending changes.
+	* @param PublishingScope $publishScope Properties of the pending product changes to include in this operation.
+	* @return MozuClient
 	*/
 	public static function publishDraftsClient($dataViewMode, $publishScope)
 	{
@@ -82,10 +84,10 @@ class PublishingScopeClient {
 	}
 	
 	/**
-	* Assigns pending product changes to a specified product publish set. Use the code field to specify the product publish set.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param PublishSet $publishSet The details of the publish to which you want to assign products.
+	* @param string $responseFields 
+	* @param PublishSet $publishSet 
 	* @return MozuClient
 	*/
 	public static function assignProductsToPublishSetClient($publishSet, $responseFields =  null)
@@ -98,10 +100,11 @@ class PublishingScopeClient {
 	}
 	
 	/**
-	* Deletes the specified product publish set. If you set the discardDrafts parameter to true, this operation also deletes the product drafts assigned to the publish set.
+	* 
 	*
-	* @param bool $discardDrafts Specifies whether to discard all the drafts assigned to the publish set when the publish set is deleted.
-	* @param string $publishSetCode The unique identifier of the publish set.
+	* @param bool $discardDrafts 
+	* @param string $publishSetCode 
+	* @return MozuClient
 	*/
 	public static function deletePublishSetClient($publishSetCode, $discardDrafts =  null)
 	{

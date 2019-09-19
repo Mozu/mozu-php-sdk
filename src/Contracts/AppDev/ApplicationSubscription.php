@@ -14,35 +14,17 @@ namespace Mozu\Api\Contracts\AppDev;
 
 
 
-/**
-*	This property is not exposed in documentation.
-*/
 class ApplicationSubscription
 {
-	/**
-	*The End Point where the event information will be sent to when the event is fired.
-	*/
-	public $applicationEndPoint;
+		public $applicationEndPoint;
 
-	/**
-	*The unique identifier of an ApplicationVersionEvent record.
-	*/
-	public $applicationSubscriptionId;
+		public $applicationSubscriptionId;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationSubscription noCallback ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $noCallback;
+		public $noCallback;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationSubscription packageId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $packageId;
+		public $packageId;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationSubscription events ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $events;
+		public $events;
 
 }
 

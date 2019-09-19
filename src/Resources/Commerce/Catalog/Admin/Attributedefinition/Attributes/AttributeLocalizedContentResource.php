@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* Properties of localized content for attributes, based on a `localeCode` at a site/tenant level. This content supports translated text for product, product options, and additional objects. 
+* 
 */
 class AttributeLocalizedContentResource {
 
@@ -33,9 +33,9 @@ class AttributeLocalizedContentResource {
 
 
 	/**
-	* Retrieves a collection of localized content for attributes based on a `localeCode`.
+	* 
 	*
-	* @param string $attributeFQN Fully qualified name for an attribute.
+	* @param string $attributeFQN 
 	* @return array|AttributeLocalizedContent 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -49,9 +49,9 @@ class AttributeLocalizedContentResource {
 	}
 	
 /**
-	* Retrieves a collection of localized content for attributes based on a `localeCode`.
+	* 
 	*
-	* @param string $attributeFQN Fully qualified name for an attribute.
+	* @param string $attributeFQN 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getAttributeLocalizedContentsAsync($attributeFQN)
@@ -63,11 +63,11 @@ class AttributeLocalizedContentResource {
 	}
 	
 	/**
-	* Retrieves the localized content for an attribute based on a `localeCode`.
+	* 
 	*
-	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $attributeFQN 
+	* @param string $localeCode 
+	* @param string $responseFields 
 	* @return AttributeLocalizedContent 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -81,11 +81,11 @@ class AttributeLocalizedContentResource {
 	}
 	
 /**
-	* Retrieves the localized content for an attribute based on a `localeCode`.
+	* 
 	*
-	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $attributeFQN 
+	* @param string $localeCode 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getAttributeLocalizedContentAsync($attributeFQN, $localeCode, $responseFields =  null)
@@ -97,11 +97,11 @@ class AttributeLocalizedContentResource {
 	}
 	
 	/**
-	* Adds new localized content for an attribute based on a `localeCode`.
+	* 
 	*
-	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param AttributeLocalizedContent $localizedContent The localized name and description of the attribute, displayed in the locale defined for the master catalog.
+	* @param string $attributeFQN 
+	* @param string $responseFields 
+	* @param AttributeLocalizedContent $localizedContent 
 	* @return AttributeLocalizedContent 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -115,10 +115,10 @@ class AttributeLocalizedContentResource {
 	}
 	
 /**
-	* Adds new localized content for an attribute based on a `localeCode`.
+	* 
 	*
-	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $attributeFQN 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function addLocalizedContentAsync($localizedContent, $attributeFQN, $responseFields =  null)
@@ -130,10 +130,10 @@ class AttributeLocalizedContentResource {
 	}
 	
 	/**
-	* Updates the localized content for a collection of existing attributes based on a `localeCode`.
+	* 
 	*
-	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param array|AttributeLocalizedContent $localizedContent The localized name and description of the attribute, displayed in the locale defined for the master catalog.
+	* @param string $attributeFQN 
+	* @param array|AttributeLocalizedContent $localizedContent 
 	* @return array|AttributeLocalizedContent 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -147,9 +147,9 @@ class AttributeLocalizedContentResource {
 	}
 	
 /**
-	* Updates the localized content for a collection of existing attributes based on a `localeCode`.
+	* 
 	*
-	* @param string $attributeFQN Fully qualified name for an attribute.
+	* @param string $attributeFQN 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateLocalizedContentsAsync($localizedContent, $attributeFQN)
@@ -161,12 +161,12 @@ class AttributeLocalizedContentResource {
 	}
 	
 	/**
-	* Updates the localized content for an existing attribute based on a `localeCode`.
+	* 
 	*
-	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param AttributeLocalizedContent $localizedContent The localized name and description of the attribute, displayed in the locale defined for the master catalog.
+	* @param string $attributeFQN 
+	* @param string $localeCode 
+	* @param string $responseFields 
+	* @param AttributeLocalizedContent $localizedContent 
 	* @return AttributeLocalizedContent 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -180,11 +180,11 @@ class AttributeLocalizedContentResource {
 	}
 	
 /**
-	* Updates the localized content for an existing attribute based on a `localeCode`.
+	* 
 	*
-	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $attributeFQN 
+	* @param string $localeCode 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateLocalizedContentAsync($localizedContent, $attributeFQN, $localeCode, $responseFields =  null)
@@ -196,10 +196,11 @@ class AttributeLocalizedContentResource {
 	}
 	
 	/**
-	* Removes all localized content. Localized content is translated text information and data based on a `localeCode`. 
+	* 
 	*
-	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
+	* @param string $attributeFQN 
+	* @param string $localeCode 
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteLocalizedContent($attributeFQN, $localeCode)
@@ -207,14 +208,15 @@ class AttributeLocalizedContentResource {
 		$mozuClient = AttributeLocalizedContentClient::deleteLocalizedContentClient($attributeFQN, $localeCode);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Removes all localized content. Localized content is translated text information and data based on a `localeCode`. 
+	* 
 	*
-	* @param string $attributeFQN Fully qualified name for an attribute.
-	* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
+	* @param string $attributeFQN 
+	* @param string $localeCode 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteLocalizedContentAsync($attributeFQN, $localeCode)

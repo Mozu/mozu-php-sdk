@@ -34,7 +34,7 @@ class ProductTypePropertyResource {
 
 
 	/**
-	* Retrieves a list of product property attributes defined for a product type.
+	* 
 	*
 	* @param int $productTypeId Identifier of the product type.
 	* @return array|AttributeInProductType 
@@ -50,7 +50,7 @@ class ProductTypePropertyResource {
 	}
 	
 /**
-	* Retrieves a list of product property attributes defined for a product type.
+	* 
 	*
 	* @param int $productTypeId Identifier of the product type.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -64,11 +64,11 @@ class ProductTypePropertyResource {
 	}
 	
 	/**
-	* Retrieves a product property attribute definition for the specified product type.
+	* 
 	*
-	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param string $attributeFQN 
 	* @param int $productTypeId Identifier of the product type.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return AttributeInProductType 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -82,11 +82,11 @@ class ProductTypePropertyResource {
 	}
 	
 /**
-	* Retrieves a product property attribute definition for the specified product type.
+	* 
 	*
-	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param string $attributeFQN 
 	* @param int $productTypeId Identifier of the product type.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getPropertyAsync($productTypeId, $attributeFQN, $responseFields =  null)
@@ -98,11 +98,11 @@ class ProductTypePropertyResource {
 	}
 	
 	/**
-	* Assigns a property attribute to the specified product type, according to the information defined in the request.
+	* 
 	*
 	* @param int $productTypeId Identifier of the product type.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param AttributeInProductType $attributeInProductType Properties of an attribute definition associated with a specific product type. When an attribute is applied to a product type, each product of that type maintains the same set of attributes.
+	* @param string $responseFields 
+	* @param AttributeInProductType $attributeInProductType Properties of the property attribute to define for the specified product type.
 	* @return AttributeInProductType 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -116,10 +116,10 @@ class ProductTypePropertyResource {
 	}
 	
 /**
-	* Assigns a property attribute to the specified product type, according to the information defined in the request.
+	* 
 	*
 	* @param int $productTypeId Identifier of the product type.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function addPropertyAsync($attributeInProductType, $productTypeId, $responseFields =  null)
@@ -131,12 +131,12 @@ class ProductTypePropertyResource {
 	}
 	
 	/**
-	* Updates the definition of a property attribute for the specified product type.
+	* 
 	*
-	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param string $attributeFQN 
 	* @param int $productTypeId Identifier of the product type.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param AttributeInProductType $attributeInProductType Properties of an attribute definition associated with a specific product type. When an attribute is applied to a product type, each product of that type maintains the same set of attributes.
+	* @param string $responseFields 
+	* @param AttributeInProductType $attributeInProductType Properties of the property attribute to define for the product type.
 	* @return AttributeInProductType 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -150,11 +150,11 @@ class ProductTypePropertyResource {
 	}
 	
 /**
-	* Updates the definition of a property attribute for the specified product type.
+	* 
 	*
-	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param string $attributeFQN 
 	* @param int $productTypeId Identifier of the product type.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updatePropertyAsync($attributeInProductType, $productTypeId, $attributeFQN, $responseFields =  null)
@@ -166,10 +166,11 @@ class ProductTypePropertyResource {
 	}
 	
 	/**
-	* Removes a property attribute previously defined for the specified product type.
+	* 
 	*
-	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param string $attributeFQN 
 	* @param int $productTypeId Identifier of the product type.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteProperty($productTypeId, $attributeFQN)
@@ -177,13 +178,14 @@ class ProductTypePropertyResource {
 		$mozuClient = ProductTypePropertyClient::deletePropertyClient($this->dataViewMode, $productTypeId, $attributeFQN);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Removes a property attribute previously defined for the specified product type.
+	* 
 	*
-	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param string $attributeFQN 
 	* @param int $productTypeId Identifier of the product type.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/

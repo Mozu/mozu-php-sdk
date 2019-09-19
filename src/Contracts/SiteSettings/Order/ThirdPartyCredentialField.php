@@ -19,35 +19,17 @@ namespace Mozu\Api\Contracts\SiteSettings\Order;
 */
 class ThirdPartyCredentialField
 {
-	/**
-	*System-supplied API name required to communicate with the external payment processor.
-	*/
-	public $apiName;
+		public $apiName;
 
-	/**
-	*The name that displays for the payment gateway or third-party credentials field. 
-	*/
-	public $displayName;
+		public $displayName;
 
-	/**
-	*The type of input selection used to define a value for the attribute, including Yes/No, Date, DateTime, List, TextBox, or TextArea.
-	*/
-	public $inputType;
+		public $inputType;
 
-	/**
-	*A flag to determine if the field holds sensitive information.
-	*/
-	public $isSensitive;
+		public $isSensitive;
 
-	/**
-	*The value of a property, used by numerous objects within  including facets, attributes, products, localized content, metadata, capabilities ( and third-party), location inventory adjustment, and more. The value may be a string, integer, or double. Validation may be run against the entered and saved values depending on the object type.
-	*/
-	public $value;
+		public $value;
 
-	/**
-	*List of valid vocabulary values defined for an attribute.
-	*/
-	public $vocabularyValues;
+		public $vocabularyValues;
 
 }
 

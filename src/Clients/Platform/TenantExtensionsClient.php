@@ -17,14 +17,14 @@ use Mozu\Api\Urls\Platform\TenantExtensionsUrl;
 
 
 /**
-* Use the Extensions resource to manage Arc.js configuration settings. These are the same settings you can configure through  in the Action Management JSON Editor.
+* 
 */
 class TenantExtensionsClient {
 
 	/**
-	* Retrieves the Arc.js configuration settings for a site.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getExtensionsClient($responseFields =  null)
@@ -37,10 +37,10 @@ class TenantExtensionsClient {
 	}
 	
 	/**
-	* Updates the Arc.js configuration settings for a site.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param TenantExtensions $extensions The updated details of the Arc.js configuration settings.
+	* @param string $responseFields 
+	* @param TenantExtensions $extensions 
 	* @return MozuClient
 	*/
 	public static function updateExtensionsClient($extensions, $responseFields =  null)

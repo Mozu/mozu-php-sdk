@@ -17,16 +17,16 @@ use Mozu\Api\Urls\Commerce\Orders\RefundUrl;
 
 
 /**
-* Use the refunds resource to create a refund.
+* 
 */
 class RefundClient {
 
 	/**
-	* Creates a refund based on the information supplied in the request.  
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param Refund $refund The details of the refund.
+	* @param string $orderId 
+	* @param string $responseFields 
+	* @param Refund $refund 
 	* @return MozuClient
 	*/
 	public static function createRefundClient($refund, $orderId, $responseFields =  null)
@@ -39,11 +39,11 @@ class RefundClient {
 	}
 	
 	/**
-	* Resends the order refund email previously sent to the shopper. 
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $refundId Unique ID of the refund.
-        
+	* @param string $orderId 
+	* @param string $refundId 
+	* @return MozuClient
 	*/
 	public static function resendRefundEmailClient($orderId, $refundId)
 	{

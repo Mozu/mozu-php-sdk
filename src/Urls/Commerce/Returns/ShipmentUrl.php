@@ -19,9 +19,9 @@ class ShipmentUrl  {
 
 	/**
 		* Get Resource Url for GetShipment
-		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $returnId Unique identifier of the return whose items you want to get.
-		* @param string $shipmentId Unique identifier of the shipment to retrieve.
+		* @param string $responseFields 
+		* @param string $returnId Unique identifier of the return associated with the replacement shipment to retrieve.
+		* @param string $shipmentId Unique identifier of the return replacement shipment to retrieve.
 		* @return string Resource Url
 	*/
 	public static function getShipmentUrl($responseFields, $returnId, $shipmentId)
@@ -36,7 +36,7 @@ class ShipmentUrl  {
 	
 	/**
 		* Get Resource Url for CreatePackageShipments
-		* @param string $returnId Unique identifier of the return whose items you want to get.
+		* @param string $returnId Unique identifier of the return for which to create replacement package shipments.
 		* @return string Resource Url
 	*/
 	public static function createPackageShipmentsUrl($returnId)
@@ -49,8 +49,8 @@ class ShipmentUrl  {
 	
 	/**
 		* Get Resource Url for DeleteShipment
-		* @param string $returnId Unique identifier of the return whose items you want to get.
-		* @param string $shipmentId Unique identifier of the shipment to retrieve.
+		* @param string $returnId Unique identifier of the return associated with the replacement shipment to delete.
+		* @param string $shipmentId Unique identifier of the return replacement shipment to delete.
 		* @return string Resource Url
 	*/
 	public static function deleteShipmentUrl($returnId, $shipmentId)

@@ -15,34 +15,19 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 /**
-*	Details of a property defined for a product.
+*	Details of a property attribute defined for a product.
 */
 class ProductProperty
 {
-	/**
-	*The fully qualified name of the attribute, which is a user defined attribute identifier.
-	*/
-	public $attributeFQN;
+		public $attributeFqn;
 
-	/**
-	*Indicates if the object is hidden or breaks inheritance, primarily used by facets, products, and attribute vocabulary values. For example, if true, the attribute vocabulary value does not appear in the list when defining a value for an attribute.
-	*/
-	public $isHidden;
+		public $isHidden;
 
-	/**
-	*Indicates if the object has or can have multiple properties or values. If true, the object can have more than one value, selectable by shoppers through the storefront or configurable through the catalogs. 
-	*/
-	public $isMultiValue;
+		public $isMultiValue;
 
-	/**
-	*The product attribute details common between all attribute types - properties, options, and extras.
-	*/
-	public $attributeDetail;
+		public $attributeDetail;
 
-	/**
-	*List of value data for objects.
-	*/
-	public $values;
+		public $values;
 
 }
 

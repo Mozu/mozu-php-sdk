@@ -19,7 +19,7 @@ class MasterCatalogUrl  {
 
 	/**
 		* Get Resource Url for GetMasterCatalogs
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getMasterCatalogsUrl($responseFields)
@@ -32,8 +32,8 @@ class MasterCatalogUrl  {
 	
 	/**
 		* Get Resource Url for GetMasterCatalog
-		* @param int $masterCatalogId The unique identifier of the master catalog associated with the entity.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param int $masterCatalogId 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getMasterCatalogUrl($masterCatalogId, $responseFields)
@@ -48,7 +48,7 @@ class MasterCatalogUrl  {
 	/**
 		* Get Resource Url for UpdateMasterCatalog
 		* @param int $masterCatalogId 
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updateMasterCatalogUrl($masterCatalogId, $responseFields)

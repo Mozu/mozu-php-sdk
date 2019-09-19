@@ -34,14 +34,14 @@ class LocationInventoryResource {
 
 
 	/**
-	* Retrieves all locations for which a product has inventory defined and displays the inventory definition properties of each location.
+	* 
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $productCode 
+	* @param string $responseFields 
+	* @param string $sortBy 
+	* @param int $startIndex 
 	* @return LocationInventoryCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -55,14 +55,14 @@ class LocationInventoryResource {
 	}
 	
 /**
-	* Retrieves all locations for which a product has inventory defined and displays the inventory definition properties of each location.
+	* 
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $productCode 
+	* @param string $responseFields 
+	* @param string $sortBy 
+	* @param int $startIndex 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getLocationInventoriesAsync($productCode, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
@@ -74,11 +74,11 @@ class LocationInventoryResource {
 	}
 	
 	/**
-	* Retrieves the details of the inventory of the product in the location specified in the request.
+	* 
 	*
-	* @param string $locationCode The unique, user-defined code that identifies a location. 
-	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $locationCode User-defined code that identifies the location.
+	* @param string $productCode 
+	* @param string $responseFields 
 	* @return LocationInventory 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -92,11 +92,11 @@ class LocationInventoryResource {
 	}
 	
 /**
-	* Retrieves the details of the inventory of the product in the location specified in the request.
+	* 
 	*
-	* @param string $locationCode The unique, user-defined code that identifies a location. 
-	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $locationCode User-defined code that identifies the location.
+	* @param string $productCode 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getLocationInventoryAsync($productCode, $locationCode, $responseFields =  null)
@@ -108,11 +108,11 @@ class LocationInventoryResource {
 	}
 	
 	/**
-	* Creates a new location inventory definition for the product code specified in the request.
+	* 
 	*
-	* @param bool $performUpserts Query string parameter lets the service perform an update for a new or existing record. When run, the update occurs without throwing a conflict exception that the record exists. If true, the updates completes regardless of the record currently existing. By default, if no value is specified, the service assumes this value is false.
-	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @param array|LocationInventory $locationInventoryList Properties of an inventory definition that defines the level of inventory for a specific product at a given location.
+	* @param bool $performUpserts The performUpserts query string parameter lets the service perform an update if the record already exists instead of throwing an already exists conflict exception. PerformUpserts=true means it updates if the record already exists. By default, no value specified means that the service assumes PerformUpserts=false.
+	* @param string $productCode 
+	* @param array|LocationInventory $locationInventoryList Array list of the location inventory definitions associated with the product code specified in the request. For each location, you must define the locationCode value and the stockOnHand value. All other properties in the array are system-supplied and read only.
 	* @return array|LocationInventory 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -126,10 +126,10 @@ class LocationInventoryResource {
 	}
 	
 /**
-	* Creates a new location inventory definition for the product code specified in the request.
+	* 
 	*
-	* @param bool $performUpserts Query string parameter lets the service perform an update for a new or existing record. When run, the update occurs without throwing a conflict exception that the record exists. If true, the updates completes regardless of the record currently existing. By default, if no value is specified, the service assumes this value is false.
-	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+	* @param bool $performUpserts The performUpserts query string parameter lets the service perform an update if the record already exists instead of throwing an already exists conflict exception. PerformUpserts=true means it updates if the record already exists. By default, no value specified means that the service assumes PerformUpserts=false.
+	* @param string $productCode 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function addLocationInventoryAsync($locationInventoryList, $productCode, $performUpserts =  null)
@@ -141,10 +141,10 @@ class LocationInventoryResource {
 	}
 	
 	/**
-	* Updates the current level of stock at each location associated with the product code specified in the request.
+	* 
 	*
-	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
-	* @param array|LocationInventoryAdjustment $locationInventoryAdjustments Properties of an adjustment to the active product inventory of a specific location.
+	* @param string $productCode The product code of the product for which to update active stock on hand inventory at a specified location.
+	* @param array|LocationInventoryAdjustment $locationInventoryAdjustments Properties of the inventory adjustments to perform for the specified location.
 	* @return array|LocationInventory 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -158,9 +158,9 @@ class LocationInventoryResource {
 	}
 	
 /**
-	* Updates the current level of stock at each location associated with the product code specified in the request.
+	* 
 	*
-	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
+	* @param string $productCode The product code of the product for which to update active stock on hand inventory at a specified location.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateLocationInventoryAsync($locationInventoryAdjustments, $productCode)
@@ -172,10 +172,11 @@ class LocationInventoryResource {
 	}
 	
 	/**
-	* Deletes the location inventory definition for the product code specified in the request.
+	* 
 	*
-	* @param string $locationCode The unique, user-defined code that identifies a location. 
-	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
+	* @param string $locationCode The code that identifies the location for which to delete product inventory.
+	* @param string $productCode The product code for which to delete a location's inventory.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteLocationInventory($productCode, $locationCode)
@@ -183,14 +184,15 @@ class LocationInventoryResource {
 		$mozuClient = LocationInventoryClient::deleteLocationInventoryClient($this->dataViewMode, $productCode, $locationCode);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Deletes the location inventory definition for the product code specified in the request.
+	* 
 	*
-	* @param string $locationCode The unique, user-defined code that identifies a location. 
-	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
+	* @param string $locationCode The code that identifies the location for which to delete product inventory.
+	* @param string $productCode The product code for which to delete a location's inventory.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteLocationInventoryAsync($productCode, $locationCode)

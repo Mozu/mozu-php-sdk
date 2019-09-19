@@ -19,7 +19,7 @@ class PublicCardUrl  {
 
 	/**
 		* Get Resource Url for Create
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function createUrl($responseFields)
@@ -31,9 +31,37 @@ class PublicCardUrl  {
 	}
 	
 	/**
+		* Get Resource Url for GetGiftCardBalance
+		* @param string $cardId 
+		* @param string $responseFields 
+		* @return string Resource Url
+	*/
+	public static function getGiftCardBalanceUrl($cardId, $responseFields)
+	{
+		$url = "/payments/commerce/payments/cards/{cardId}/balance?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::PCI_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("cardId", $cardId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for GetUnregisteredGiftCardBalance
+		* @param string $responseFields 
+		* @return string Resource Url
+	*/
+	public static function getUnregisteredGiftCardBalanceUrl($responseFields)
+	{
+		$url = "/payments/commerce/payments/cards/balance?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::PCI_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		return $mozuUrl;
+	}
+	
+	/**
 		* Get Resource Url for Update
-		* @param string $cardId Unique identifier of the card associated with the customer account billing contact.
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $cardId 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updateUrl($cardId, $responseFields)
@@ -47,7 +75,7 @@ class PublicCardUrl  {
 	
 	/**
 		* Get Resource Url for Delete
-		* @param string $cardId Unique identifier of the card associated with the customer account billing contact.
+		* @param string $cardId 
 		* @return string Resource Url
 	*/
 	public static function deleteUrl($cardId)

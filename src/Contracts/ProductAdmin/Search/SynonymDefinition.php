@@ -14,25 +14,13 @@ namespace Mozu\Api\Contracts\ProductAdmin\Search;
 
 
 
-/**
-*	Properties of synonyms and their relations via keys and lists to determine search results.
-*/
 class SynonymDefinition
 {
-	/**
-	*Key used for metadata defined for objects, including extensible attributes, custom attributes associated with a shipping provider, and search synonyms definitions. This content may be user-defined depending on the object and usage.For search synonym definitions, refer to [Synonym Expansion Types](https://www.mozu.com/docs/Developer/api-guides/search-settings.htm#synonym_expansion_types) for more information about the key usage.
-	*/
-	public $key;
+		public $key;
 
-	/**
-	*The unique identifier of the synonym.
-	*/
-	public $synonymId;
+		public $synonymId;
 
-	/**
-	*A list of comma seperated synonyms. If you do not specify a ,  uses a two way expansion. Refer to [Synonym Expansion Types](https://www.mozu.com/docs/Developer/api-guides/search-settings.htm#synonym_expansion_types) for more information.
-	*/
-	public $synonyms;
+		public $synonyms;
 
 }
 

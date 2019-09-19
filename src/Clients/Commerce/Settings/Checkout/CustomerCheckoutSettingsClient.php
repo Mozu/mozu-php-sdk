@@ -22,9 +22,9 @@ use Mozu\Api\Urls\Commerce\Settings\Checkout\CustomerCheckoutSettingsUrl;
 class CustomerCheckoutSettingsClient {
 
 	/**
-	* Retrieves all checkout settings defined for the site: Payment settings, such as the payment gateway ID and credentials, supported credit cards, and more; Customer Checkout settings, such as whether login is required, and any custom attributes; and Order Processing settings, such as when payment is authorized and captured, and any custom attributes.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getCustomerCheckoutSettingsClient($responseFields =  null)
@@ -37,10 +37,10 @@ class CustomerCheckoutSettingsClient {
 	}
 	
 	/**
-	* Modifies existing site checkout settings. Modify Payment, Customer Checkout, and Order Processing settings in one PUT.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param CustomerCheckoutSettings $customerCheckoutSettings The properties of the customer checkout settings such as whether shoppers must be logged in.
+	* @param string $responseFields 
+	* @param CustomerCheckoutSettings $customerCheckoutSettings All the properties to update in the checkout settings.
 	* @return MozuClient
 	*/
 	public static function updateCustomerCheckoutSettingsClient($customerCheckoutSettings, $responseFields =  null)

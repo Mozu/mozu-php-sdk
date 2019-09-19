@@ -33,7 +33,7 @@ class OrderNoteResource {
 
 
 	/**
-	* Retrieves a list of all notes for an order.
+	* 
 	*
 	* @param string $orderId Unique identifier of the order.
 	* @return array|OrderNote 
@@ -49,7 +49,7 @@ class OrderNoteResource {
 	}
 	
 /**
-	* Retrieves a list of all notes for an order.
+	* 
 	*
 	* @param string $orderId Unique identifier of the order.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -63,11 +63,11 @@ class OrderNoteResource {
 	}
 	
 	/**
-	* Retrieves the details of a specific order note.
+	* 
 	*
-	* @param string $noteId Unique identifier of a particular note to retrieve.
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $noteId Unique identifier of the order note to retrieve.
+	* @param string $orderId Unique identifier of the order associated with the note.
+	* @param string $responseFields 
 	* @return OrderNote 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -81,11 +81,11 @@ class OrderNoteResource {
 	}
 	
 /**
-	* Retrieves the details of a specific order note.
+	* 
 	*
-	* @param string $noteId Unique identifier of a particular note to retrieve.
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $noteId Unique identifier of the order note to retrieve.
+	* @param string $orderId Unique identifier of the order associated with the note.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getOrderNoteAsync($orderId, $noteId, $responseFields =  null)
@@ -97,11 +97,11 @@ class OrderNoteResource {
 	}
 	
 	/**
-	* Creates a new merchant note for the specified order.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param OrderNote $orderNote Properties of an order note for a merchant, which is internal only for administrative purposes and not available to the shopper.
+	* @param string $orderId Unique identifier of the order for which to add a note.
+	* @param string $responseFields 
+	* @param OrderNote $orderNote The alphanumeric text contained in the note. The maximum length is 256 characters.
 	* @return OrderNote 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -115,10 +115,10 @@ class OrderNoteResource {
 	}
 	
 /**
-	* Creates a new merchant note for the specified order.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $orderId Unique identifier of the order for which to add a note.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function createOrderNoteAsync($orderNote, $orderId, $responseFields =  null)
@@ -130,12 +130,12 @@ class OrderNoteResource {
 	}
 	
 	/**
-	* Updates a specific note for an order.
+	* 
 	*
-	* @param string $noteId Unique identifier of a particular note to retrieve.
+	* @param string $noteId Unique identifier of the order note.
 	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param OrderNote $orderNote Properties of an order note for a merchant, which is internal only for administrative purposes and not available to the shopper.
+	* @param string $responseFields 
+	* @param OrderNote $orderNote The content of the order note. The maximum length is 256 characters.
 	* @return OrderNote 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -149,11 +149,11 @@ class OrderNoteResource {
 	}
 	
 /**
-	* Updates a specific note for an order.
+	* 
 	*
-	* @param string $noteId Unique identifier of a particular note to retrieve.
+	* @param string $noteId Unique identifier of the order note.
 	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateOrderNoteAsync($orderNote, $orderId, $noteId, $responseFields =  null)
@@ -165,10 +165,11 @@ class OrderNoteResource {
 	}
 	
 	/**
-	* Deletes the specified order note.
+	* 
 	*
-	* @param string $noteId Unique identifier of a particular note to retrieve.
-	* @param string $orderId Unique identifier of the order.
+	* @param string $noteId Unique identifier of the order note to delete.
+	* @param string $orderId Unique identifier of the order associated with the note.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteOrderNote($orderId, $noteId)
@@ -176,14 +177,15 @@ class OrderNoteResource {
 		$mozuClient = OrderNoteClient::deleteOrderNoteClient($orderId, $noteId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Deletes the specified order note.
+	* 
 	*
-	* @param string $noteId Unique identifier of a particular note to retrieve.
-	* @param string $orderId Unique identifier of the order.
+	* @param string $noteId Unique identifier of the order note to delete.
+	* @param string $orderId Unique identifier of the order associated with the note.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteOrderNoteAsync($orderId, $noteId)

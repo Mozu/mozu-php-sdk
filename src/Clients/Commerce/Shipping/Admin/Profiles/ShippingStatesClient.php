@@ -17,14 +17,14 @@ use Mozu\Api\Urls\Commerce\Shipping\Admin\Profiles\ShippingStatesUrl;
 
 
 /**
-* Use the ShippingStates sub-resource to manage the states your shipping profile supports. For example, you can specify one of your shipping profiles to only support Texas, Oklahoma, Arkansas, Louisiana, and New Mexico.Each shipping state is composed of a user-definied code and name.
+* 
 */
 class ShippingStatesClient {
 
 	/**
-	* Retrieves a list of shipping states and their details.
+	* 
 	*
-	* @param string $profileCode The unique, user-defined code of the profile with which the shipping state is associated.
+	* @param string $profileCode 
 	* @return MozuClient
 	*/
 	public static function getStatesClient($profileCode)
@@ -37,10 +37,10 @@ class ShippingStatesClient {
 	}
 	
 	/**
-	* Updates the details of the shipping states.
+	* 
 	*
-	* @param string $profilecode The unique, user-defined code of the profile with which the shipping state is associated.
-	* @param array|ShippingStates $states The updated details of the shipping states associated with the specified profilecode.
+	* @param string $profilecode 
+	* @param array|ShippingStates $states 
 	* @return MozuClient
 	*/
 	public static function updateStatesClient($states, $profilecode)

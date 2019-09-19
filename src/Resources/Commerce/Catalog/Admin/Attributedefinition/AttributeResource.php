@@ -17,13 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* Attributes are used to add custom definitions and characteristics to the following objects:
-*  — are attributes that define the characteristics of products, enabling you to uniquely describe a product. They consist of options, properties, and extras. Refer to [Product Attributes](https://www.mozu.com/docs/guides/catalog/product-attributes.htm) in the Guides section for more information.
-
-*  — are custom attributes that you can apply to customer accounts to add further definition for special uses, such as marketing campaigns, or discounts. Refer to [Customer Attributes](https://www.mozu.com/docs/guides/customers/customers.htm#customer_attributes) in the Guides section for more information.
-
-*  — are custom attributes that enable you to uniquely describe an aspect of an order. Depending on the attribute definition, either you or a shopper can enter values for the order attribute. Refer to [Order Attributes](https://www.mozu.com/docs/guides/orders/order-attributes.htm) in the Guides section for more information.
-
+* Use the Attribute Definition resource to manage the properties, options, and extras that uniquely describe products of a specific type. Attributes can be associated with a product type, assigned values by a client or shopper, and added as faceted search filters for a product category. Options are product attributes that describe unique configurations made by the shopper, such as size or color, and generate a new product variation (or unique SKU). Properties are product attributes that describe aspects of the product that do not represent an option configurable by the shopper, such as screen resolution or brand. Extras are product attributes that describe add-on configurations made by the shopper that do not represent a product variation, such as a monogram.
 */
 class AttributeResource {
 
@@ -39,11 +33,11 @@ class AttributeResource {
 
 
 	/**
-	* Retrieves a paged list of attributes according to any specified filter criteria and sort options.
+	* 
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $responseFields 
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return AttributeCollection 
@@ -59,11 +53,11 @@ class AttributeResource {
 	}
 	
 /**
-	* Retrieves a paged list of attributes according to any specified filter criteria and sort options.
+	* 
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $responseFields 
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -77,10 +71,10 @@ class AttributeResource {
 	}
 	
 	/**
-	* Retrieves the details of the specified product attribute.
+	* 
 	*
-	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $attributeFQN 
+	* @param string $responseFields 
 	* @return Attribute 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -94,10 +88,10 @@ class AttributeResource {
 	}
 	
 /**
-	* Retrieves the details of the specified product attribute.
+	* 
 	*
-	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $attributeFQN 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getAttributeAsync($attributeFQN, $responseFields =  null)
@@ -109,10 +103,10 @@ class AttributeResource {
 	}
 	
 	/**
-	* Creates a new attribute to describe one aspect of a product such as color or size, based on its defined product type. The attribute name, attribute type, input type, and data type are required.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Attribute $attribute Properties of an attribute used to describe customers or orders.
+	* @param string $responseFields 
+	* @param Attribute $attribute Properties of the new product attribute to create.
 	* @return Attribute 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -126,9 +120,9 @@ class AttributeResource {
 	}
 	
 /**
-	* Creates a new attribute to describe one aspect of a product such as color or size, based on its defined product type. The attribute name, attribute type, input type, and data type are required.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function addAttributeAsync($attribute, $responseFields =  null)
@@ -140,11 +134,11 @@ class AttributeResource {
 	}
 	
 	/**
-	* Updates an existing attribute with attribute properties to set.
+	* 
 	*
-	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Attribute $attribute Properties of an attribute used to describe customers or orders.
+	* @param string $attributeFQN 
+	* @param string $responseFields 
+	* @param Attribute $attribute Any properties of the attribute that to update.
 	* @return Attribute 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -158,10 +152,10 @@ class AttributeResource {
 	}
 	
 /**
-	* Updates an existing attribute with attribute properties to set.
+	* 
 	*
-	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $attributeFQN 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateAttributeAsync($attribute, $attributeFQN, $responseFields =  null)
@@ -173,9 +167,10 @@ class AttributeResource {
 	}
 	
 	/**
-	* Deletes a defined product attribute. You cannot delete an attribute assigned a value for a product.
+	* 
 	*
-	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param string $attributeFQN 
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteAttribute($attributeFQN)
@@ -183,13 +178,14 @@ class AttributeResource {
 		$mozuClient = AttributeClient::deleteAttributeClient($attributeFQN);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Deletes a defined product attribute. You cannot delete an attribute assigned a value for a product.
+	* 
 	*
-	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param string $attributeFQN 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteAttributeAsync($attributeFQN)

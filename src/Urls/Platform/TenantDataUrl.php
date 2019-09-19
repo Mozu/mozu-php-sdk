@@ -19,8 +19,8 @@ class TenantDataUrl  {
 
 	/**
 		* Get Resource Url for GetDBValue
-		* @param string $dbEntryQuery The database entry string to create.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $dbEntryQuery The database entry query string used to retrieve the record information.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getDBValueUrl($dbEntryQuery, $responseFields)
@@ -47,7 +47,7 @@ class TenantDataUrl  {
 	
 	/**
 		* Get Resource Url for UpdateDBValue
-		* @param string $dbEntryQuery The database entry string to create.
+		* @param string $dbEntryQuery The database entry query string used to update the record information.
 		* @return string Resource Url
 	*/
 	public static function updateDBValueUrl($dbEntryQuery)
@@ -60,7 +60,7 @@ class TenantDataUrl  {
 	
 	/**
 		* Get Resource Url for DeleteDBValue
-		* @param string $dbEntryQuery The database entry string to create.
+		* @param string $dbEntryQuery The database entry string to delete.
 		* @return string Resource Url
 	*/
 	public static function deleteDBValueUrl($dbEntryQuery)

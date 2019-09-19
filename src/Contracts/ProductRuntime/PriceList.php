@@ -14,70 +14,31 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 
-/**
-*	The details of the price list.
-*/
 class PriceList
 {
-	/**
-	*The localized description in text for the object, displayed per the locale code. For example, descriptions are used for product descriptions, attributes, and pre-authorization transaction types.
-	*/
-	public $description;
+		public $description;
 
-	/**
-	*Indicates if a capability, function tied to an Arc.js action, application, or price list is enabled for the tenant/site. If true, the capability/application/function/price list is enabled for the tenant. System-supplied and read-only with the exception of functions tied to an Arc.js action and price lists.
-	*/
-	public $enabled;
+		public $enabled;
 
-	/**
-	*Indicates whether the price list is exclusive. When a price list is exclusive, shoppers that resolve to the exclusive price list can only view and purchase products that have price entries in the price list and any of its parents. The default is .
-	*/
-	public $filteredInStoreFront;
+		public $filteredInStoreFront;
 
-	/**
-	*Specifies whether the price list is indexed for the site.
-	*/
-	public $isIndexed;
+		public $isIndexed;
 
-	/**
-	*Specifies whether the price list is the default price list for the site. Refer to [Default](../../../guides/catalog/price-lists.htm#default) in the Price Lists guides topic for more information. 
-	*/
-	public $isSiteDefault;
+		public $isSiteDefault;
 
-	/**
-	*The user supplied name that appears in . You can use this field for identification purposes.
-	*/
-	public $name;
+		public $name;
 
-	/**
-	*The unique, user-defined code of the price list.
-	*/
-	public $priceListCode;
+		public $priceListCode;
 
-	/**
-	*The internal identifier of the price list.
-	*/
-	public $priceListId;
+		public $priceListId;
 
-	/**
-	*Specifies whether the price list is resolvable. When ,  is able to apply the price list and its product pricing directly to a shopper. When ,  is unable to apply the price list and its product pricing directly to a shopper; however  can still apply the price list to a shopper if it is a parent of a resolvable price list. Refer to [Resolution](../../../guides/catalog/price-lists.htm#resolution) in the Price Lists guides topic for more information.
-	*/
-	public $resolvable;
+		public $resolvable;
 
-	/**
-	*A list of site identifiers for which the price list is valid.
-	*/
-	public $validSites;
+		public $validSites;
 
-	/**
-	*A list of price lists and their details that describe the ancestor/parent hierarchy of the current price list. Each price list within this list is an ancestor/parent of the current price list. An ancestor/parent price list can have it's own ancestor/parent, which is denoted by .
-	*/
-	public $ancestors;
+		public $ancestors;
 
-	/**
-	*A list of price lists and their details that describe the descendant/child hierarchy of the current price list. Each price list within this list is an descendant/child of the current price list. A descendant/child price list can have it's own descendant/child, which is denoted by .
-	*/
-	public $descendants;
+		public $descendants;
 
 }
 

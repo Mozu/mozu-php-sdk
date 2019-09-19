@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* The CredentialStore resource allows you to encrypt and store sensitive data on your tenant. You can then decrypt and access that data using an Arc.js application, as described in the Arc.js [Programming Patterns](https://www.mozu.com/docs/developer/arcjs-guides/programming-patterns.htm#securely_store_and_access_sensitive_data) topic.
+* 
 */
 class CredentialStoreEntryResource {
 
@@ -33,9 +33,10 @@ class CredentialStoreEntryResource {
 
 
 	/**
-	* Encrypts and stores data contained in the  JSON object. You can decrypt and access the secured data using an Arc.js application, as described in the Arc.js [Programming Patterns](https://www.mozu.com/docs/developer/arcjs-guides/programming-patterns.htm#securely_store_and_access_sensitive_data) topic.
+	* 
 	*
 	* @param CredentialStoreEntry $credentials 
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function storeCredentials($credentials)
@@ -43,11 +44,12 @@ class CredentialStoreEntryResource {
 		$mozuClient = CredentialStoreEntryClient::storeCredentialsClient($credentials);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Encrypts and stores data contained in the  JSON object. You can decrypt and access the secured data using an Arc.js application, as described in the Arc.js [Programming Patterns](https://www.mozu.com/docs/developer/arcjs-guides/programming-patterns.htm#securely_store_and_access_sensitive_data) topic.
+	* 
 	*
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/

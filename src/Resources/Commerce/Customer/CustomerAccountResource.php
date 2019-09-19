@@ -33,15 +33,15 @@ class CustomerAccountResource {
 
 
 	/**
-	* Retrieves a list of customer accounts.
+	* 
 	*
 	* @param string $fields The fields to include in the response.
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param string $filter 
 	* @param bool $isAnonymous If true, retrieve anonymous shopper accounts in the response.
 	* @param int $pageSize 
-	* @param string $q A list of order search terms (not phrases) to use in the query when searching across order number and the name or email of the billing contact. When entering, separate multiple search terms with a space character.
+	* @param string $q A list of customer account search terms to use in the query when searching across customer name and email. Separate multiple search terms with a space character.
 	* @param int $qLimit The maximum number of search results to return in the response. You can limit any range between 1-100.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return CustomerAccountCollection 
@@ -57,15 +57,15 @@ class CustomerAccountResource {
 	}
 	
 /**
-	* Retrieves a list of customer accounts.
+	* 
 	*
 	* @param string $fields The fields to include in the response.
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param string $filter 
 	* @param bool $isAnonymous If true, retrieve anonymous shopper accounts in the response.
 	* @param int $pageSize 
-	* @param string $q A list of order search terms (not phrases) to use in the query when searching across order number and the name or email of the billing contact. When entering, separate multiple search terms with a space character.
+	* @param string $q A list of customer account search terms to use in the query when searching across customer name and email. Separate multiple search terms with a space character.
 	* @param int $qLimit The maximum number of search results to return in the response. You can limit any range between 1-100.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -79,16 +79,17 @@ class CustomerAccountResource {
 	}
 	
 	/**
-	* Retrieves the current login state of the customer account specified in the request.
+	* 
 	*
 	* @param int $accountId Unique identifier of the customer account.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
+	* @param string $userId 
 	* @return LoginState 
 	* @deprecated deprecated since version 1.17
 	*/
-	public function getLoginState($accountId, $responseFields =  null)
+	public function getLoginState($accountId, $userId =  null, $responseFields =  null)
 	{
-		$mozuClient = CustomerAccountClient::getLoginStateClient($accountId, $responseFields);
+		$mozuClient = CustomerAccountClient::getLoginStateClient($accountId, $userId, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -96,31 +97,33 @@ class CustomerAccountResource {
 	}
 	
 /**
-	* Retrieves the current login state of the customer account specified in the request.
+	* 
 	*
 	* @param int $accountId Unique identifier of the customer account.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
+	* @param string $userId 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
-	public function getLoginStateAsync($accountId, $responseFields =  null)
+	public function getLoginStateAsync($accountId, $userId =  null, $responseFields =  null)
 	{
-		$mozuClient = CustomerAccountClient::getLoginStateClient($accountId, $responseFields);
+		$mozuClient = CustomerAccountClient::getLoginStateClient($accountId, $userId, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 
 	}
 	
 	/**
-	* Retrieve details of a customer account.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $accountId Unique identifier of the customer account to retrieve.
+	* @param string $responseFields 
+	* @param string $userId 
 	* @return CustomerAccount 
 	* @deprecated deprecated since version 1.17
 	*/
-	public function getAccount($accountId, $responseFields =  null)
+	public function getAccount($accountId, $userId =  null, $responseFields =  null)
 	{
-		$mozuClient = CustomerAccountClient::getAccountClient($accountId, $responseFields);
+		$mozuClient = CustomerAccountClient::getAccountClient($accountId, $userId, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -128,25 +131,26 @@ class CustomerAccountResource {
 	}
 	
 /**
-	* Retrieve details of a customer account.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $accountId Unique identifier of the customer account to retrieve.
+	* @param string $responseFields 
+	* @param string $userId 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
-	public function getAccountAsync($accountId, $responseFields =  null)
+	public function getAccountAsync($accountId, $userId =  null, $responseFields =  null)
 	{
-		$mozuClient = CustomerAccountClient::getAccountClient($accountId, $responseFields);
+		$mozuClient = CustomerAccountClient::getAccountClient($accountId, $userId, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 
 	}
 	
 	/**
-	* Creates a new customer account based on the information specified in the request.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param CustomerAccount $account Properties of the customer account.
+	* @param string $responseFields 
+	* @param CustomerAccount $account Properties of the customer account to update.
 	* @return CustomerAccount 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -160,9 +164,9 @@ class CustomerAccountResource {
 	}
 	
 /**
-	* Creates a new customer account based on the information specified in the request.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function addAccountAsync($account, $responseFields =  null)
@@ -174,42 +178,46 @@ class CustomerAccountResource {
 	}
 	
 	/**
-	* Modifies the password associated with a customer account.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param bool $unlockAccount Specifies whether to unlock the specified customer account.
-	* @param PasswordInfo $passwordInfo The information required to modify a shopper account password.
+	* @param int $accountId The customer account information required to change the userpassword.
+	* @param bool $unlockAccount 
+	* @param string $userId 
+	* @param PasswordInfo $passwordInfo The password information required to change the user password.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
-	public function changePassword($passwordInfo, $accountId, $unlockAccount =  null)
+	public function changePassword($passwordInfo, $accountId, $unlockAccount =  null, $userId =  null)
 	{
-		$mozuClient = CustomerAccountClient::changePasswordClient($passwordInfo, $accountId, $unlockAccount);
+		$mozuClient = CustomerAccountClient::changePasswordClient($passwordInfo, $accountId, $unlockAccount, $userId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Modifies the password associated with a customer account.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param bool $unlockAccount Specifies whether to unlock the specified customer account.
+	* @param int $accountId The customer account information required to change the userpassword.
+	* @param bool $unlockAccount 
+	* @param string $userId 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
-	public function changePasswordAsync($passwordInfo, $accountId, $unlockAccount =  null)
+	public function changePasswordAsync($passwordInfo, $accountId, $unlockAccount =  null, $userId =  null)
 	{
-		$mozuClient = CustomerAccountClient::changePasswordClient($passwordInfo, $accountId, $unlockAccount);
+		$mozuClient = CustomerAccountClient::changePasswordClient($passwordInfo, $accountId, $unlockAccount, $userId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 
 	}
 	
 	/**
-	* Adds a new user login to a defined customer account.
+	* 
 	*
 	* @param int $accountId Unique identifier of the customer account.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param CustomerLoginInfo $customerAuthInfo The login information for a customer account.
+	* @param string $responseFields 
+	* @param CustomerLoginInfo $customerAuthInfo The authentication information for the customer account.
 	* @return CustomerAuthTicket 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -223,10 +231,10 @@ class CustomerAccountResource {
 	}
 	
 /**
-	* Adds a new user login to a defined customer account.
+	* 
 	*
 	* @param int $accountId Unique identifier of the customer account.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function addLoginToExistingCustomerAsync($customerAuthInfo, $accountId, $responseFields =  null)
@@ -238,9 +246,10 @@ class CustomerAccountResource {
 	}
 	
 	/**
-	* Updates the customer lifetime value of the specified customer account in the event of an order import or a lifetime value calculation error.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
+	* @param int $accountId The unique identifier of the customer account for which to calculate customer lifetime value.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function recomputeCustomerLifetimeValue($accountId)
@@ -248,13 +257,14 @@ class CustomerAccountResource {
 		$mozuClient = CustomerAccountClient::recomputeCustomerLifetimeValueClient($accountId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Updates the customer lifetime value of the specified customer account in the event of an order import or a lifetime value calculation error.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
+	* @param int $accountId The unique identifier of the customer account for which to calculate customer lifetime value.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function recomputeCustomerLifetimeValueAsync($accountId)
@@ -266,68 +276,76 @@ class CustomerAccountResource {
 	}
 	
 	/**
-	* Lock or unlock a customer account.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
+	* @param int $accountId The unique identifier of the customer account.
+	* @param string $userId 
 	* @param bool $isLocked If true, the customer account is locked from logging in.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
-	public function setLoginLocked($isLocked, $accountId)
+	public function setLoginLocked($isLocked, $accountId, $userId =  null)
 	{
-		$mozuClient = CustomerAccountClient::setLoginLockedClient($isLocked, $accountId);
+		$mozuClient = CustomerAccountClient::setLoginLockedClient($isLocked, $accountId, $userId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Lock or unlock a customer account.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
+	* @param int $accountId The unique identifier of the customer account.
+	* @param string $userId 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
-	public function setLoginLockedAsync($isLocked, $accountId)
+	public function setLoginLockedAsync($isLocked, $accountId, $userId =  null)
 	{
-		$mozuClient = CustomerAccountClient::setLoginLockedClient($isLocked, $accountId);
+		$mozuClient = CustomerAccountClient::setLoginLockedClient($isLocked, $accountId, $userId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 
 	}
 	
 	/**
-	* Requires the password for the customer account to be changed.
+	* 
 	*
 	* @param int $accountId Unique identifier of the customer account.
+	* @param string $userId 
 	* @param bool $isPasswordChangeRequired If true, the password for the customer account must be changed.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
-	public function setPasswordChangeRequired($isPasswordChangeRequired, $accountId)
+	public function setPasswordChangeRequired($isPasswordChangeRequired, $accountId, $userId =  null)
 	{
-		$mozuClient = CustomerAccountClient::setPasswordChangeRequiredClient($isPasswordChangeRequired, $accountId);
+		$mozuClient = CustomerAccountClient::setPasswordChangeRequiredClient($isPasswordChangeRequired, $accountId, $userId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Requires the password for the customer account to be changed.
+	* 
 	*
 	* @param int $accountId Unique identifier of the customer account.
+	* @param string $userId 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
-	public function setPasswordChangeRequiredAsync($isPasswordChangeRequired, $accountId)
+	public function setPasswordChangeRequiredAsync($isPasswordChangeRequired, $accountId, $userId =  null)
 	{
-		$mozuClient = CustomerAccountClient::setPasswordChangeRequiredClient($isPasswordChangeRequired, $accountId);
+		$mozuClient = CustomerAccountClient::setPasswordChangeRequiredClient($isPasswordChangeRequired, $accountId, $userId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 
 	}
 	
 	/**
-	* Creates a new customer account and logs the user associated with the customer account into the site.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param CustomerAccountAndAuthInfo $accountAndAuthInfo The authentication information associated with a customer account. The data includes the account properties such as the name, username, authorization access, and email address, the required password to match, and indicates if the account was imported from a third party resource. 
+	* @param string $responseFields 
+	* @param CustomerAccountAndAuthInfo $accountAndAuthInfo Properties of the customer account to create, including the user authentication information.
 	* @return CustomerAuthTicket 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -341,9 +359,9 @@ class CustomerAccountResource {
 	}
 	
 /**
-	* Creates a new customer account and logs the user associated with the customer account into the site.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function addAccountAndLoginAsync($accountAndAuthInfo, $responseFields =  null)
@@ -355,10 +373,10 @@ class CustomerAccountResource {
 	}
 	
 	/**
-	* Creates multiple customer accounts based on the information specified in the request.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param array|CustomerAccountAndAuthInfo $customers The authentication information associated with a customer account. The data includes the account properties such as the name, username, authorization access, and email address, the required password to match, and indicates if the account was imported from a third party resource. 
+	* @param string $responseFields 
+	* @param array|CustomerAccountAndAuthInfo $customers Properties of the customer accounts to create.
 	* @return CustomerAccountCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -372,9 +390,9 @@ class CustomerAccountResource {
 	}
 	
 /**
-	* Creates multiple customer accounts based on the information specified in the request.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function addAccountsAsync($customers, $responseFields =  null)
@@ -386,10 +404,10 @@ class CustomerAccountResource {
 	}
 	
 	/**
-	* Changes a collection of customer account passwords.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param AccountPasswordInfoCollection $accountPasswordInfos The details of the changed customer account passwords.
+	* @param string $responseFields 
+	* @param AccountPasswordInfoCollection $accountPasswordInfos 
 	* @return ChangePasswordResultCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -403,9 +421,9 @@ class CustomerAccountResource {
 	}
 	
 /**
-	* Changes a collection of customer account passwords.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function changePasswordsAsync($accountPasswordInfos, $responseFields =  null)
@@ -417,11 +435,11 @@ class CustomerAccountResource {
 	}
 	
 	/**
-	* Retrieves the current login state of a customer account by providing the customer's email address.
+	* 
 	*
-	* @param string $customerSetCode The unique idenfitier of the customer set.
+	* @param string $customerSetCode 
 	* @param string $emailAddress The email address associated with the customer account.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return LoginState 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -435,11 +453,11 @@ class CustomerAccountResource {
 	}
 	
 /**
-	* Retrieves the current login state of a customer account by providing the customer's email address.
+	* 
 	*
-	* @param string $customerSetCode The unique idenfitier of the customer set.
+	* @param string $customerSetCode 
 	* @param string $emailAddress The email address associated with the customer account.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getLoginStateByEmailAddressAsync($emailAddress, $customerSetCode =  null, $responseFields =  null)
@@ -451,10 +469,10 @@ class CustomerAccountResource {
 	}
 	
 	/**
-	* Retrieves the current login state of a customer account by providing the user name associated with the customer account.
+	* 
 	*
-	* @param string $customerSetCode The unique idenfitier of the customer set.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $customerSetCode 
+	* @param string $responseFields 
 	* @param string $userName The user name associated with the customer account.
 	* @return LoginState 
 	* @deprecated deprecated since version 1.17
@@ -469,10 +487,10 @@ class CustomerAccountResource {
 	}
 	
 /**
-	* Retrieves the current login state of a customer account by providing the user name associated with the customer account.
+	* 
 	*
-	* @param string $customerSetCode The unique idenfitier of the customer set.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $customerSetCode 
+	* @param string $responseFields 
 	* @param string $userName The user name associated with the customer account.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -485,18 +503,19 @@ class CustomerAccountResource {
 	}
 	
 	/**
-	* Retrieves a list of customer purchase order accounts according to according to any specified sort options.
+	* 
 	*
-	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for more information.
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
+	* @param string $accountType 
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param string $sortBy 
+	* @param int $startIndex 
 	* @return CustomerPurchaseOrderAccountCollection 
 	* @deprecated deprecated since version 1.17
 	*/
-	public function getCustomersPurchaseOrderAccounts($startIndex =  null, $pageSize =  null, $sortBy =  null, $responseFields =  null)
+	public function getCustomersPurchaseOrderAccounts($startIndex =  null, $pageSize =  null, $sortBy =  null, $accountType =  null, $responseFields =  null)
 	{
-		$mozuClient = CustomerAccountClient::getCustomersPurchaseOrderAccountsClient($startIndex, $pageSize, $sortBy, $responseFields);
+		$mozuClient = CustomerAccountClient::getCustomersPurchaseOrderAccountsClient($startIndex, $pageSize, $sortBy, $accountType, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -504,26 +523,28 @@ class CustomerAccountResource {
 	}
 	
 /**
-	* Retrieves a list of customer purchase order accounts according to according to any specified sort options.
+	* 
 	*
-	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for more information.
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
+	* @param string $accountType 
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param string $sortBy 
+	* @param int $startIndex 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
-	public function getCustomersPurchaseOrderAccountsAsync($startIndex =  null, $pageSize =  null, $sortBy =  null, $responseFields =  null)
+	public function getCustomersPurchaseOrderAccountsAsync($startIndex =  null, $pageSize =  null, $sortBy =  null, $accountType =  null, $responseFields =  null)
 	{
-		$mozuClient = CustomerAccountClient::getCustomersPurchaseOrderAccountsClient($startIndex, $pageSize, $sortBy, $responseFields);
+		$mozuClient = CustomerAccountClient::getCustomersPurchaseOrderAccountsClient($startIndex, $pageSize, $sortBy, $accountType, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 
 	}
 	
 	/**
-	* Resets the password for a customer account.
+	* 
 	*
 	* @param ResetPasswordInfo $resetPasswordInfo Information required to reset the password for a customer account.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function resetPassword($resetPasswordInfo)
@@ -531,11 +552,12 @@ class CustomerAccountResource {
 		$mozuClient = CustomerAccountClient::resetPasswordClient($resetPasswordInfo);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Resets the password for a customer account.
+	* 
 	*
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -548,11 +570,11 @@ class CustomerAccountResource {
 	}
 	
 	/**
-	* Updates a customer account.
+	* 
 	*
 	* @param int $accountId Unique identifier of the customer account.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param CustomerAccount $account Properties of the customer account.
+	* @param string $responseFields 
+	* @param CustomerAccount $account Properties of the customer account to update.
 	* @return CustomerAccount 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -566,10 +588,10 @@ class CustomerAccountResource {
 	}
 	
 /**
-	* Updates a customer account.
+	* 
 	*
 	* @param int $accountId Unique identifier of the customer account.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateAccountAsync($account, $accountId, $responseFields =  null)
@@ -581,9 +603,10 @@ class CustomerAccountResource {
 	}
 	
 	/**
-	* Deletes a customer account. A customer account cannot be deleted if any orders exist, past or present.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
+	* @param int $accountId Unique identifier of the customer account to delete.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteAccount($accountId)
@@ -591,13 +614,14 @@ class CustomerAccountResource {
 		$mozuClient = CustomerAccountClient::deleteAccountClient($accountId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Deletes a customer account. A customer account cannot be deleted if any orders exist, past or present.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
+	* @param int $accountId Unique identifier of the customer account to delete.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteAccountAsync($accountId)

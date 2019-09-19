@@ -14,25 +14,13 @@ namespace Mozu\Api\Contracts\PaymentService;
 
 
 
-/**
-*	The properties of a product, referenced and used by carts, orders, wish lists, and returns.
-*/
 class Product
 {
-	/**
-	*The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
-	*/
-	public $productCode;
+		public $productCode;
 
-	/**
-	*The name of the product that represents a line item in a taxable order or product bundle.
-	*/
-	public $productName;
+		public $productName;
 
-	/**
-	*Mozu.PaymentService.Contracts.Product variantProductCode ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $variantProductCode;
+		public $variantProductCode;
 
 }
 

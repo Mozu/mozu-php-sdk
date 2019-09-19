@@ -22,7 +22,7 @@ use Mozu\Api\Urls\Commerce\Orders\OrderValidationResultUrl;
 class OrderValidationResultClient {
 
 	/**
-	* Retrieves a list of the validation results associated with the order.
+	* 
 	*
 	* @param string $orderId Unique identifier of the order.
 	* @return MozuClient
@@ -37,11 +37,11 @@ class OrderValidationResultClient {
 	}
 	
 	/**
-	* Add a new order validation result to a submitted order.
+	* 
 	*
 	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param OrderValidationResult $validationResult Properties of the resulting order validation performed by an order validation capability.
+	* @param string $responseFields 
+	* @param OrderValidationResult $validationResult Properties of the validation result to add for the order.
 	* @return MozuClient
 	*/
 	public static function addValidationResultClient($validationResult, $orderId, $responseFields =  null)

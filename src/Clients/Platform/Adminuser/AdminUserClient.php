@@ -17,14 +17,49 @@ use Mozu\Api\Urls\Platform\Adminuser\AdminUserUrl;
 
 
 /**
-* The Accounts resource displays the user accounts and account details associated with a developer or  tenant administrator. Email addresses uniquely identify admin user accounts.
+* Displays the user accounts and account details associated with a developer or Mozu tenant administrator. Email addresses uniquely identify admin user accounts.
 */
 class AdminUserClient {
 
 	/**
-	* Retrieves a list of the  tenants or development stores for which the specified user has an assigned role.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $emailAddress 
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $sortBy 
+	* @param int $startIndex 
+	* @return MozuClient
+	*/
+	public static function getUsersClient($emailAddress =  null, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null)
+	{
+		$url = AdminUserUrl::getUsersUrl($emailAddress, $filter, $pageSize, $sortBy, $startIndex);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $responseFields 
+	* @param string $userId 
+	* @return MozuClient
+	*/
+	public static function getUserRolesClient($userId, $responseFields =  null)
+	{
+		$url = AdminUserUrl::getUserRolesUrl($responseFields, $userId);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $responseFields 
 	* @param string $userId Unique identifier of the user whose tenant scopes you want to retrieve.
 	* @return MozuClient
 	*/
@@ -38,15 +73,158 @@ class AdminUserClient {
 	}
 	
 	/**
-	* Retrieves the details of the specified administrator user account.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $userId Unique identifier of the user whose tenant scopes you want to retrieve.
+	* @param string $responseFields 
+	* @param string $userId 
+	* @return MozuClient
+	*/
+	public static function getUserByIdClient($userId, $responseFields =  null)
+	{
+		$url = AdminUserUrl::getUserByIdUrl($responseFields, $userId);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $responseFields 
+	* @param string $userId Unique identifier of the administrator account to retrieve.
 	* @return MozuClient
 	*/
 	public static function getUserClient($userId, $responseFields =  null)
 	{
 		$url = AdminUserUrl::getUserUrl($responseFields, $userId);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $responseFields 
+	* @param User $user 
+	* @return MozuClient
+	*/
+	public static function createUserClient($user, $responseFields =  null)
+	{
+		$url = AdminUserUrl::createUserUrl($responseFields);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withBody($user);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $userId 
+	* @param PasswordInfo $passwordInfo 
+	* @return MozuClient
+	*/
+	public static function changePasswordClient($passwordInfo, $userId)
+	{
+		$url = AdminUserUrl::changePasswordUrl($userId);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withBody($passwordInfo);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $userId 
+	* @param ChangeUserPasswordInfo $changeUserPasswordInfo 
+	* @return MozuClient
+	*/
+	public static function changeUserPasswordClient($changeUserPasswordInfo, $userId)
+	{
+		$url = AdminUserUrl::changeUserPasswordUrl($userId);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withBody($changeUserPasswordInfo);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* 
+	*
+	* @param int $roleId 
+	* @param string $userId 
+	* @return MozuClient
+	*/
+	public static function addUserRoleClient($userId, $roleId)
+	{
+		$url = AdminUserUrl::addUserRoleUrl($roleId, $userId);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* 
+	*
+	* @param ResetPasswordInfo $resetPasswordInfo 
+	* @return MozuClient
+	*/
+	public static function resetPasswordClient($resetPasswordInfo)
+	{
+		$url = AdminUserUrl::resetPasswordUrl();
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withBody($resetPasswordInfo);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $responseFields 
+	* @param string $userId 
+	* @param User $user 
+	* @return MozuClient
+	*/
+	public static function updateUserClient($user, $userId, $responseFields =  null)
+	{
+		$url = AdminUserUrl::updateUserUrl($responseFields, $userId);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withBody($user);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $userId 
+	* @return MozuClient
+	*/
+	public static function deleteUserClient($userId)
+	{
+		$url = AdminUserUrl::deleteUserUrl($userId);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* 
+	*
+	* @param int $roleId 
+	* @param string $userId 
+	* @return MozuClient
+	*/
+	public static function removeUserRoleClient($userId, $roleId)
+	{
+		$url = AdminUserUrl::removeUserRoleUrl($roleId, $userId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
 		return $mozuClient;

@@ -17,15 +17,15 @@ use Mozu\Api\Urls\Platform\ApplicationUrl;
 
 
 /**
-* Use the Developer resource to view and update information and files related to application packages.
+* 
 */
 class ApplicationClient {
 
 	/**
-	* Returns a collection of package names for the application specified in the request.
+	* 
 	*
-	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $applicationKey 
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getAppPackageNamesClient($applicationKey, $responseFields =  null)
@@ -38,10 +38,10 @@ class ApplicationClient {
 	}
 	
 	/**
-	* Retrieves the available versions for the application specified in the request.
+	* 
 	*
-	* @param string $nsAndAppId The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $nsAndAppId 
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getAppVersionsClient($nsAndAppId, $responseFields =  null)
@@ -54,11 +54,11 @@ class ApplicationClient {
 	}
 	
 	/**
-	* Retrieves the metadata for a file in an application package.
+	* 
 	*
-	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
-	* @param string $filepath Represents the file name and location.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $applicationKey 
+	* @param string $filepath 
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getPackageFileMetadataClient($applicationKey, $filepath, $responseFields =  null)
@@ -71,10 +71,10 @@ class ApplicationClient {
 	}
 	
 	/**
-	* Retrieves the metadata for a folder in an application package.
+	* 
 	*
-	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $applicationKey 
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getPackageMetadataClient($applicationKey, $responseFields =  null)
@@ -87,30 +87,29 @@ class ApplicationClient {
 	}
 	
 	/**
-	* Insert or update the specified file into the specified application package.
+	* 
 	*
-	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
-	* @param string $filepath The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
-	* @param string $lastModifiedTime The date and time of the last file insert or update. This parameter is optional.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param Stream $stream Data stream that delivers information. Used to input and output data.
+	* @param string $applicationKey 
+	* @param string $filepath 
+	* @param string $lastModifiedTime 
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
-	public static function upsertPackageFileClient($stream, $applicationKey, $filepath, $lastModifiedTime =  null, $responseFields =  null, $contentType= null)
+	public static function upsertPackageFileClient($applicationKey, $filepath, $lastModifiedTime =  null, $responseFields =  null)
 	{
 		$url = ApplicationUrl::upsertPackageFileUrl($applicationKey, $filepath, $lastModifiedTime, $responseFields);
 		$mozuClient = new MozuClient();
-		$mozuClient->withResourceUrl($url)->withStreamBody($stream)->withHeader(Headers::CONTENT_TYPE ,$contentType);
+		$mozuClient->withResourceUrl($url);
 		return $mozuClient;
 
 	}
 	
 	/**
-	* Renames a file in an application package.
+	* 
 	*
-	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param RenameInfo $renameInfo Information required to update the name of a file in a package, which consists of the original name and the new name.
+	* @param string $applicationKey 
+	* @param string $responseFields 
+	* @param RenameInfo $renameInfo 
 	* @return MozuClient
 	*/
 	public static function renamePackageFileClient($renameInfo, $applicationKey, $responseFields =  null)
@@ -123,10 +122,11 @@ class ApplicationClient {
 	}
 	
 	/**
-	* Deletes the specified file from the specified application package.
+	* 
 	*
-	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
-	* @param string $filepath Represents the file name and location.
+	* @param string $applicationKey 
+	* @param string $filepath 
+	* @return MozuClient
 	*/
 	public static function deletePackageFileClient($applicationKey, $filepath)
 	{

@@ -14,85 +14,21 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Orders;
 
 
 
-/**
-*	Mozu.CommerceRuntime.Contracts.Orders.OrderReturnableItem ApiType DOCUMENT_HERE 
-*/
 class OrderReturnableItem
 {
-	/**
-	*Specifies whether to exclude product extras when you return a product or bundle. For example, assume the following order items:* Product A (bundle item)* Product B (bundle item)* Product C (bundle item)* Product D (extra on bundle)* Product F (extra on product)If this property is , Products D or F are included when the bundle or Product E are added to a return. If this property is , Products D or F are not included unless added individually.
-	*/
-	public $excludeProductExtras;
+		public $productCode;
 
-	/**
-	*The fulfillment status of the item, which is one of the following values:* * 
-	*/
-	public $fulfillmentStatus;
+		public $productName;
 
-	/**
-	*Unique identifier of the order item associated with a validation message, order, or return.
-	*/
-	public $orderItemId;
+		public $quantityFulfilled;
 
-	/**
-	*The fully-qualified name of an attribute option on the item if it has an extra. For bundle items, this property is null.
-	*/
-	public $orderItemOptionAttributeFQN;
+		public $quantityOrdered;
 
-	/**
-	*The unique identifier of the line number associated with the item.
-	*/
-	public $orderLineId;
+		public $quantityReturnable;
 
-	/**
-	*The product code of the parent item, if applicable. For example, a product bundle is the parent of the items in the bundle, and a product is the parent of a product extra.
-	*/
-	public $parentProductCode;
+		public $quantityReturned;
 
-	/**
-	*The name of the parent item, if applicable. For example, a product bundle is the parent of the items in the bundle, and a product is the parent of a product extra.
-	*/
-	public $parentProductName;
-
-	/**
-	*The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
-	*/
-	public $productCode;
-
-	/**
-	*The name of the product that represents a line item in a taxable order or product bundle.
-	*/
-	public $productName;
-
-	/**
-	*The quantity of the item that a shopper or CSR has directly requested for return. For example, if someone requests a return on a product bundle, the bundle is directly returned, but the bundle items are indirectly returned. Conversely, if someone requests a return on a bundle item, the bundle item is directly returned, while the bundle is indirectly returned (in this case, the bundle is only partially returned, unless the other bundle items are also requested for return).
-	*/
-	public $quantityDirectlyReturned;
-
-	/**
-	*The quantity that has been fulfilled for the given line item. An item must be fulfilled before it is returnable. If an order contains Product X with a quantity of 3, and the quantity fulfilled is 2, then two Product X items are returnable (assuming all other return conditions are met).
-	*/
-	public $quantityFulfilled;
-
-	/**
-	*The quantity of the item that is required for the successful return of another item. For example, if someone requests a return on a product bundle, the bundle is directly returned, but the bundle items are indirectly returned. Conversely, if someone requests a return on a bundle item, the bundle item is directly returned, while the bundle is indirectly returned (in this case, the bundle is only partially returned, unless the other bundle items are also requested for return).
-	*/
-	public $quantityIndirectlyReturned;
-
-	/**
-	*The total quantity of an item on the order.
-	*/
-	public $quantityOrdered;
-
-	/**
-	*The quantity of a given item that is eligible for return. This number may be smaller than the quantity ordered, and changes depending on the actions taken on the return. For example, if an order contains five of Product X, but only three of those items are fulfilled, then only three items show as returnable (assuming all other return conditions are met).
-	*/
-	public $quantityReturnable;
-
-	/**
-	*The number of discrete units that make up an individual item. For example, 1 (ordered quantity) bag of screws may contain a unity quantity of 50 screws.
-	*/
-	public $unitQuantity;
+		public $items;
 
 }
 

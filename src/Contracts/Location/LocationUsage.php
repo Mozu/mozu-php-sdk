@@ -19,20 +19,11 @@ namespace Mozu\Api\Contracts\Location;
 */
 class LocationUsage
 {
-	/**
-	*List of location codes to associate with the location usage. At this time, you can only specify one location code in the request for the direct ship location usage type.
-	*/
-	public $locationCodes;
+		public $locationCodes;
 
-	/**
-	*List of location type codes associated with the location usage. The location service identifies the locations of the designated type. The in-store pickup (SP) and store finder (storeFinder) location usage types allow specification or multiple location type codes.
-	*/
-	public $locationTypeCodes;
+		public $locationTypeCodes;
 
-	/**
-	*The system-defined code used to identify the location usage type, which is "DS" for direct ship, "SP" for in-store pickup, or "storeFinder".
-	*/
-	public $locationUsageTypeCode;
+		public $locationUsageTypeCode;
 
 		public $auditInfo;
 

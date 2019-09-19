@@ -34,11 +34,11 @@ class CategoryResource {
 
 
 	/**
-	* Retrieves a list of categories according to any specified filter criteria and sort options.
+	* 
 	*
-	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product category search results by any of its properties, including its position in the category hierarchy. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param int $pageSize 
+	* @param string $responseFields 
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return CategoryPagedCollection 
@@ -54,11 +54,11 @@ class CategoryResource {
 	}
 	
 /**
-	* Retrieves a list of categories according to any specified filter criteria and sort options.
+	* 
 	*
-	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product category search results by any of its properties, including its position in the category hierarchy. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param int $pageSize 
+	* @param string $responseFields 
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -72,11 +72,11 @@ class CategoryResource {
 	}
 	
 	/**
-	* Retrieves the details of a single category.
+	* 
 	*
 	* @param bool $allowInactive If true, allow inactive categories to be retrieved in the category list response. If false, the categories retrieved will not include ones marked inactive.
-	* @param int $categoryId Unique identifier for the storefront container used to organize products.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param int $categoryId Unique identifier of the product category.
+	* @param string $responseFields 
 	* @return Category 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -90,11 +90,11 @@ class CategoryResource {
 	}
 	
 /**
-	* Retrieves the details of a single category.
+	* 
 	*
 	* @param bool $allowInactive If true, allow inactive categories to be retrieved in the category list response. If false, the categories retrieved will not include ones marked inactive.
-	* @param int $categoryId Unique identifier for the storefront container used to organize products.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param int $categoryId Unique identifier of the product category.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getCategoryAsync($categoryId, $allowInactive =  null, $responseFields =  null)
@@ -106,9 +106,9 @@ class CategoryResource {
 	}
 	
 	/**
-	* Retrieves the list of product categories that appear on the storefront organized in a hierarchical format. Hidden categories do not appear in the list.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return CategoryCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -122,9 +122,9 @@ class CategoryResource {
 	}
 	
 /**
-	* Retrieves the list of product categories that appear on the storefront organized in a hierarchical format. Hidden categories do not appear in the list.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getCategoryTreeAsync($responseFields =  null)

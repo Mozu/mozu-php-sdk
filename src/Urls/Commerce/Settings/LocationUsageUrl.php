@@ -19,7 +19,7 @@ class LocationUsageUrl  {
 
 	/**
 		* Get Resource Url for GetLocationUsages
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getLocationUsagesUrl($responseFields)
@@ -32,8 +32,8 @@ class LocationUsageUrl  {
 	
 	/**
 		* Get Resource Url for GetLocationUsage
-		* @param string $code User-defined code that uniqely identifies the channel group.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $code Code that identifies the location usage type, which is "DS" for direct ship, "SP" for in-store pickup, or "storeFinder" for store finder.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getLocationUsageUrl($code, $responseFields)
@@ -47,8 +47,8 @@ class LocationUsageUrl  {
 	
 	/**
 		* Get Resource Url for UpdateLocationUsage
-		* @param string $code User-defined code that uniqely identifies the channel group.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $code Code that identifies the location usage type, which is "DS" for direct ship, "SP" for in-store pickup, or "storeFinder" for store finder.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updateLocationUsageUrl($code, $responseFields)

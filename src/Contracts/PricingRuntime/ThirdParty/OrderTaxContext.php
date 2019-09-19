@@ -30,7 +30,7 @@ class OrderTaxContext
 	public $orderTax;
 
 	/**
-	*Amount of tax applied to shipping costs for line items in and entire orders.
+	*Tax amount applied to the shipping costs on the order.
 	*/
 	public $shippingTax;
 

@@ -19,15 +19,9 @@ namespace Mozu\Api\Contracts\Core\ThirdParty;
 */
 class OperationUrl
 {
-	/**
-	*The user supplied name that appears in . You can use this field for identification purposes.
-	*/
-	public $name;
+		public $name;
 
-	/**
-	*The URL endpoint address.
-	*/
-	public $url;
+		public $url;
 
 }
 

@@ -19,68 +19,46 @@ namespace Mozu\Api\Contracts\Customer;
 */
 class CustomerAccount
 {
-	/**
-	*Indicates if the customer account is opted to receive marketing materials. If true, the customer account is opted in for receiving the content. 
-	*/
-	public $acceptsMarketing;
+		public $acceptsMarketing;
+
+		public $accountType;
+
+		public $companyOrOrganization;
+
+		public $customerSet;
+
+		public $customerSinceDate;
 
 	/**
-	*The legal or doing business as (DBA) or tradestyle name of the business or organization. The maximum character length is 200.
-	*/
-	public $companyOrOrganization;
-
-	/**
-	*customerSet ApiType DOCUMENT_HERE 
-	*/
-	public $customerSet;
-
-	/**
-	*This property tracks the customer account creation date. This date can be set manually via the API for customer accounts that are imported into . 
-	*/
-	public $customerSinceDate;
-
-	/**
-	*The email address for the customer account and contact. This email may be used for login to the storefront and for subscription mailing lists.
+	*The email address associated with the customer account.
 	*/
 	public $emailAddress;
 
 	/**
-	*Unique identifier used by an external program to identify a  order, customer account, or wish list.
+	*Unique identifier an external system uses to identify this customer account.
 	*/
 	public $externalId;
 
 	/**
-	*The full first name of a customer or contact name.
+	*The first name associated with the customer account.
 	*/
 	public $firstName;
 
-	/**
-	*Indicates if an external password is set on this account.
-	*/
-	public $hasExternalPassword;
+		public $hasExternalPassword;
 
-	/**
-	*Unique identifier of the source property, such as a catalog, discount, order, or email template.For a product field it will be the name of the field.For a category ID, must be a positive integer not greater than 2000000. By default,  auto-generates a category ID when categories are created. If you want to specify an ID during creation (which preserves category link relationships when migrating tenant data from one sandbox to another), you must also include the  query string in the endpoint. For example, . Then, use the  property to specify the desired category ID.For a product attribute it will be the Attribute FQN.For a document, the ID must be specified as a 32 character, case-insensitive, alphanumeric string. You can specify the ID as 32 sequential characters or as groups separated by dashes in the format 8-4-4-4-12. For example, or.For email templates, the ID must be one of the following values:			
-	*/
-	public $id;
+		public $id;
 
-	/**
-	*Indicates if the object or feature is active.
-	*/
-	public $isActive;
+		public $isActive;
 
 	/**
 	*If true, this customer account represents an anonymous shopper.
 	*/
 	public $isAnonymous;
 
-	/**
-	*Indicates if a customer account and associated data is locked. If true, the user account is locked due to multiple failed authentication attempts. The user cannot login until the account is unlocked.
-	*/
-	public $isLocked;
+		public $isLocked;
 
 	/**
-	*The full last name of a customer or contact name.
+	*The last name associated with the customer account.
 	*/
 	public $lastName;
 
@@ -89,50 +67,26 @@ class CustomerAccount
 	*/
 	public $localeCode;
 
-	/**
-	*If true, this customer account has tax exempt status.
-	*/
-	public $taxExempt;
+		public $taxExempt;
+
+		public $taxId;
+
+		public $userId;
 
 	/**
-	*The tax identification number associated with the customer account.
-	*/
-	public $taxId;
-
-	/**
-	*Unique identifier of the customer account (shopper or system user). System-supplied and read-only. If the shopper user is anonymous, the user ID represents a system-generated user ID string.
-	*/
-	public $userId;
-
-	/**
-	*The user name associated with the user profile. The customer uses the user name to access the account.
+	*The user name of the user associated with the customer account.
 	*/
 	public $userName;
 
-	/**
-	*Collection of attributes that may be paged list or a list, depending on the usage per object and API type. 
-	*/
-	public $attributes;
+		public $attributes;
 
-	/**
-	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
-	*/
-	public $auditInfo;
+		public $auditInfo;
 
-	/**
-	*Properties of the commerce summary associated with a customer account, which includes details about the shopper's most recent order, wish lists, and total order value over time.
-	*/
-	public $commerceSummary;
+		public $commerceSummary;
 
-	/**
-	*Contact information, including the contact's name, address, phone numbers, email addresses, and company (if supplied). Also indicates whether this is a billing, shipping, or billing and shipping contact.
-	*/
-	public $contacts;
+		public $contacts;
 
-	/**
-	*Paged list collection of note content for objects including customers, orders, and returns. 
-	*/
-	public $notes;
+		public $notes;
 
 	/**
 	*List of customer segments associated with the customer account. Customer accounts can be members of any number of segments.

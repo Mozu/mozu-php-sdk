@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* Use the Profiles resource to manage your shipping profiles.
+* 
 */
 class ShippingProfileResource {
 
@@ -33,9 +33,9 @@ class ShippingProfileResource {
 
 
 	/**
-	* Retrieves a list of shipping profiles.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return ShippingProfileCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -49,9 +49,9 @@ class ShippingProfileResource {
 	}
 	
 /**
-	* Retrieves a list of shipping profiles.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getProfilesAsync($responseFields =  null)

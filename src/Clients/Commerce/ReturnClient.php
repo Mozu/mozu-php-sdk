@@ -17,19 +17,19 @@ use Mozu\Api\Urls\Commerce\ReturnUrl;
 
 
 /**
-* Use the Returns resource to manage returned items that were previously fufilled. Returns can include any number of items associated with an original  order. Each return must either be associated with an original order or a product definition to represent each returned item.Refer to the [Returns API](https://www.mozu.com/docs/developer/api-guides/returns.htm) topic for more information about creating and processing returns using the API.
+* Use the Returns resource to manage returned items that were previously fufilled. Returns can include any number of items associated with an original Mozu order. Each return must either be associated with an original order or a product definition to represent each returned item.
 */
 class ReturnClient {
 
 	/**
-	* Retrieves a list of all returns according to any filter and sort criteria.
+	* 
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $q A list of order search terms (not phrases) to use in the query when searching across order number and the name or email of the billing contact. When entering, separate multiple search terms with a space character.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $q 
+	* @param string $responseFields 
+	* @param string $sortBy 
+	* @param int $startIndex 
 	* @return MozuClient
 	*/
 	public static function getReturnsClient($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $q =  null, $responseFields =  null)
@@ -42,9 +42,9 @@ class ReturnClient {
 	}
 	
 	/**
-	* Retrieves a list of the actions available to perform for the specified return based on its current state.
+	* 
 	*
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $returnId Unique identifier of the return for which to retrieve available actions.
 	* @return MozuClient
 	*/
 	public static function getAvailableReturnActionsClient($returnId)
@@ -57,11 +57,11 @@ class ReturnClient {
 	}
 	
 	/**
-	* Retrieves the details of a single return item.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
-	* @param string $returnItemId Unique identifier of the return item whose details you want to get.
+	* @param string $responseFields 
+	* @param string $returnId 
+	* @param string $returnItemId 
 	* @return MozuClient
 	*/
 	public static function getReturnItemClient($returnId, $returnItemId, $responseFields =  null)
@@ -74,10 +74,10 @@ class ReturnClient {
 	}
 	
 	/**
-	* Retrieves the details of all return items in an order.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $responseFields 
+	* @param string $returnId 
 	* @return MozuClient
 	*/
 	public static function getReturnItemsClient($returnId, $responseFields =  null)
@@ -90,10 +90,10 @@ class ReturnClient {
 	}
 	
 	/**
-	* Retrieves a list of the payment actions available to perform for the specified return when a return results in a refund to the customer.
+	* 
 	*
 	* @param string $paymentId Unique identifier of the payment for which to perform the action.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $returnId Unique identifier of the return associated with the payment.
 	* @return MozuClient
 	*/
 	public static function getAvailablePaymentActionsForReturnClient($returnId, $paymentId)
@@ -106,11 +106,11 @@ class ReturnClient {
 	}
 	
 	/**
-	* Retrieves the details of a payment submitted as part of a refund associated with a customer return.
+	* 
 	*
-	* @param string $paymentId Unique identifier of the payment for which to perform the action.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $paymentId Unique identifier of the return payment to retrieve.
+	* @param string $responseFields 
+	* @param string $returnId Unique identifier of the return associated with the payment.
 	* @return MozuClient
 	*/
 	public static function getPaymentClient($returnId, $paymentId, $responseFields =  null)
@@ -123,10 +123,10 @@ class ReturnClient {
 	}
 	
 	/**
-	* Retrieves a list of all payments submitted as part of a refund associated with a customer return.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $responseFields 
+	* @param string $returnId Returns the details of the refund payment associated with the return specified in the request.
 	* @return MozuClient
 	*/
 	public static function getPaymentsClient($returnId, $responseFields =  null)
@@ -139,10 +139,10 @@ class ReturnClient {
 	}
 	
 	/**
-	* Retrieves a list of properties for the specified return.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $responseFields 
+	* @param string $returnId Returns the properties of the return specified in the request as well as system-supplied information.
 	* @return MozuClient
 	*/
 	public static function getReturnClient($returnId, $responseFields =  null)
@@ -155,9 +155,9 @@ class ReturnClient {
 	}
 	
 	/**
-	* Returns a list of reasons for a return.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getReasonsClient($responseFields =  null)
@@ -170,34 +170,10 @@ class ReturnClient {
 	}
 	
 	/**
-	* Creates a return for previously fulfilled items. Each return must either be associated with an original order or a product definition to represent each returned item.When you create a return, you must specify the following fields:
-* 
-
-* 
-* 
-
-*  (Optional, but recommended)
-
-* 
-* 
-
-* 
-
-
-*  (required for bundle items or product extras, but null for parent product or bundles)
-* 
-
-* 
-
-
-*  (required for product extras, but otherwise null)
-
-*  (set to  to target parent products or bundles without extras)
-
-
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Return $ret Properties of a return of one or more previously fulfilled items.
+	* @param string $responseFields 
+	* @param Return $ret Wrapper for the properties of the return to create.
 	* @return MozuClient
 	*/
 	public static function createReturnClient($ret, $responseFields =  null)
@@ -210,11 +186,11 @@ class ReturnClient {
 	}
 	
 	/**
-	* Adds a return item to the return.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
-	* @param ReturnItem $returnItem Properties of a previously fulfilled item associated with a return.
+	* @param string $responseFields 
+	* @param string $returnId 
+	* @param ReturnItem $returnItem 
 	* @return MozuClient
 	*/
 	public static function createReturnItemClient($returnItem, $returnId, $responseFields =  null)
@@ -227,12 +203,12 @@ class ReturnClient {
 	}
 	
 	/**
-	* Updates a refund payment associated with a customer return by performing the specified action.
+	* 
 	*
-	* @param string $paymentId Unique identifier of the payment for which to perform the action.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
-	* @param PaymentAction $action Properties of the payment action performed for an order.
+	* @param string $paymentId Unique identifier of the return payment to update.
+	* @param string $responseFields 
+	* @param string $returnId Unique identifier of the return associated with the refund payment.
+	* @param PaymentAction $action The payment action to perform for the refund payment.
 	* @return MozuClient
 	*/
 	public static function performPaymentActionForReturnClient($action, $returnId, $paymentId, $responseFields =  null)
@@ -245,11 +221,11 @@ class ReturnClient {
 	}
 	
 	/**
-	* Creates a new payment for a return that results in a refund to the customer.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
-	* @param PaymentAction $action Properties of the payment action performed for an order.
+	* @param string $responseFields 
+	* @param string $returnId Unique identifier of the return associated with the payment action.
+	* @param PaymentAction $action The payment action to perform for the customer return.
 	* @return MozuClient
 	*/
 	public static function createPaymentActionForReturnClient($action, $returnId, $responseFields =  null)
@@ -262,10 +238,27 @@ class ReturnClient {
 	}
 	
 	/**
-	* Creates a replacement order for the return.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $responseFields 
+	* @param string $returnId 
+	* @param array|RestockableReturnItem $returnItems 
+	* @return MozuClient
+	*/
+	public static function restockReturnItemsClient($returnItems, $returnId, $responseFields =  null)
+	{
+		$url = ReturnUrl::restockReturnItemsUrl($responseFields, $returnId);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withBody($returnItems);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $responseFields 
+	* @param string $returnId 
 	* @param array|ReturnItemSpecifier $itemQuantities 
 	* @return MozuClient
 	*/
@@ -279,10 +272,10 @@ class ReturnClient {
 	}
 	
 	/**
-	* Updates the return by performing the action specified in the request.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param ReturnAction $action Properties of an action a user can perform for a return.
+	* @param string $responseFields 
+	* @param ReturnAction $action The name of the return action to perform, such as "Reject" or "Authorize".
 	* @return MozuClient
 	*/
 	public static function performReturnActionsClient($action, $responseFields =  null)
@@ -295,11 +288,11 @@ class ReturnClient {
 	}
 	
 	/**
-	* Updates one or more properties of a return for items previously shipped in a completed order.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
-	* @param Return $ret Properties of a return of one or more previously fulfilled items.
+	* @param string $responseFields 
+	* @param string $returnId Unique identifier of the return.
+	* @param Return $ret Wrapper for the array of properties to update for the return.
 	* @return MozuClient
 	*/
 	public static function updateReturnClient($ret, $returnId, $responseFields =  null)
@@ -312,9 +305,10 @@ class ReturnClient {
 	}
 	
 	/**
-	* Resend the email notification to a shopper that a return has been created.
+	* 
 	*
-	* @param ReturnAction $action Properties of an action a user can perform for a return.
+	* @param ReturnAction $action 
+	* @return MozuClient
 	*/
 	public static function resendReturnEmailClient($action)
 	{
@@ -326,10 +320,10 @@ class ReturnClient {
 	}
 	
 	/**
-	* Removes a particular order item from the order of the current shopper.
+	* 
 	*
-	* @param string $returnId Unique identifier of the return whose items you want to get.
-	* @param string $returnItemId Unique identifier of the return item whose details you want to get.
+	* @param string $returnId 
+	* @param string $returnItemId 
 	* @return MozuClient
 	*/
 	public static function deleteOrderItemClient($returnId, $returnItemId)
@@ -342,9 +336,10 @@ class ReturnClient {
 	}
 	
 	/**
-	* Deletes the return specified in the request.
+	* 
 	*
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $returnId Unique identifier of the return to delete.
+	* @return MozuClient
 	*/
 	public static function deleteReturnClient($returnId)
 	{

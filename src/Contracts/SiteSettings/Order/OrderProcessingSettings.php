@@ -24,20 +24,15 @@ class OrderProcessingSettings
 	*/
 	public $abandonedOrderThresholdInMinutes;
 
-	/**
-	*Determines whether payment authorization occurs when the order is placed or when the order is shipped.
-	*/
-	public $paymentProcessingFlowType;
+		public $giftCardProcessingType;
 
-	/**
-	*If true, use the override price defined for products in the order to calculate discounts for the order.
-	*/
-	public $useOverridePriceToCalculateDiscounts;
+		public $paymentProcessingFlowType;
 
-	/**
-	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
-	*/
-	public $auditInfo;
+		public $useOverridePriceToCalculateDiscounts;
+
+		public $auditInfo;
+
+		public $thirdPartyPaymentSettings;
 
 }
 

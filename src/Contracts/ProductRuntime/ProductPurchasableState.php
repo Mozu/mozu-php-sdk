@@ -19,15 +19,9 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 */
 class ProductPurchasableState
 {
-	/**
-	*If true, the entity has met all requirements and considered a purchasable entity.
-	*/
-	public $isPurchasable;
+		public $isPurchasable;
 
-	/**
-	*Array list of validation and status messages associated with shipping rates, orders, and product purchasable state.
-	*/
-	public $messages;
+		public $messages;
 
 }
 

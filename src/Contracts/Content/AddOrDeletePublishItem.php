@@ -14,30 +14,15 @@ namespace Mozu\Api\Contracts\Content;
 
 
 
-/**
-*	This property is not exposed in documentation.
-*/
 class AddOrDeletePublishItem
 {
-	/**
-	*The fully qualified name of the document list that the pending content change is associated with.
-	*/
-	public $docListFQN;
+		public $docListFQN;
 
-	/**
-	*The unique identifier of the pending content change or the document.
-	*/
-	public $documentId;
+		public $documentId;
 
-	/**
-	*The unique identifier of the scope. For example, if your scope type is site, then this value would be the site id.
-	*/
-	public $scopeId;
+		public $scopeId;
 
-	/**
-	*The type of scope associated with the documentList. For example, if the documentList is pageTemplateContent, the scopeType is Site.Valid values are: "Tenant", "MasterCatalog", and "Site".
-	*/
-	public $scopeType;
+		public $scopeType;
 
 }
 

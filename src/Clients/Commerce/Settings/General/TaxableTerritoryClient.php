@@ -22,7 +22,7 @@ use Mozu\Api\Urls\Commerce\Settings\General\TaxableTerritoryUrl;
 class TaxableTerritoryClient {
 
 	/**
-	* Retrieves a list of the taxable territories configured for the site.
+	* 
 	*
 	* @return MozuClient
 	*/
@@ -36,10 +36,10 @@ class TaxableTerritoryClient {
 	}
 	
 	/**
-	* Creates a new territory for which to calculate sales tax.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param TaxableTerritory $taxableTerritory Properties of the territory which is subject to sales tax.
+	* @param string $responseFields 
+	* @param TaxableTerritory $taxableTerritory Properties of the taxable territory to create.
 	* @return MozuClient
 	*/
 	public static function addTaxableTerritoryClient($taxableTerritory, $responseFields =  null)
@@ -52,9 +52,9 @@ class TaxableTerritoryClient {
 	}
 	
 	/**
-	* Updates one or more taxable territories configured for a site.
+	* 
 	*
-	* @param array|TaxableTerritory $taxableterritories Properties of the territory which is subject to sales tax.
+	* @param array|TaxableTerritory $taxableterritories Properties of the taxable territories to update.
 	* @return MozuClient
 	*/
 	public static function updateTaxableTerritoriesClient($taxableterritories)

@@ -32,9 +32,9 @@ class ProductTypeExtraUrl  {
 	
 	/**
 		* Get Resource Url for GetExtra
-		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-		* @param int $productTypeId Identifier of the product type.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $attributeFQN 
+		* @param int $productTypeId Identifier of the product type whose extra is being retrieved.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getExtraUrl($attributeFQN, $productTypeId, $responseFields)
@@ -50,7 +50,7 @@ class ProductTypeExtraUrl  {
 	/**
 		* Get Resource Url for AddExtra
 		* @param int $productTypeId Identifier of the product type.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function addExtraUrl($productTypeId, $responseFields)
@@ -64,9 +64,9 @@ class ProductTypeExtraUrl  {
 	
 	/**
 		* Get Resource Url for UpdateExtra
-		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+		* @param string $attributeFQN 
 		* @param int $productTypeId Identifier of the product type.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updateExtraUrl($attributeFQN, $productTypeId, $responseFields)
@@ -81,7 +81,7 @@ class ProductTypeExtraUrl  {
 	
 	/**
 		* Get Resource Url for DeleteExtra
-		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+		* @param string $attributeFQN 
 		* @param int $productTypeId Identifier of the product type.
 		* @return string Resource Url
 	*/

@@ -14,25 +14,13 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Payments;
 
 
 
-/**
-*	The details of the custom fields associated with the purchase order payment.Refer to [Custom Text Fields](https://www.mozu.com/docs/guides/orders/purchase-order.htm#custom_text_fields) in the Purchase Orders guides topic for more information.
-*/
 class PurchaseOrderCustomField
 {
-	/**
-	*The code for the custom field associated with the purchase order.Refer to [Custom Text Fields](https://www.mozu.com/docs/guides/orders/purchase-order.htm#custom_text_fields) in the Purchase Order guides topic for more information.
-	*/
-	public $code;
+		public $code;
 
-	/**
-	*Descriptive text used as a label for objects, such as field names, facets, date ranges, contact information, and package information.
-	*/
-	public $label;
+		public $label;
 
-	/**
-	*The value of a property, used by numerous objects within  including facets, attributes, products, localized content, metadata, capabilities ( and third-party), location inventory adjustment, and more. The value may be a string, integer, or double. Validation may be run against the entered and saved values depending on the object type.
-	*/
-	public $value;
+		public $value;
 
 }
 

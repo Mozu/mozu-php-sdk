@@ -33,9 +33,9 @@ class FacetResource {
 
 
 	/**
-	* Retrieves the properties of facets that aid in indexing and searching.
+	* 
 	*
-	* @param string $documentListName Name of content documentListName to delete
+	* @param string $documentListName The document list associated with the facets to retrieve.
 	* @param string $propertyName The property name associated with the facets to retrieve.
 	* @return array|Facet 
 	* @deprecated deprecated since version 1.17
@@ -50,9 +50,9 @@ class FacetResource {
 	}
 	
 /**
-	* Retrieves the properties of facets that aid in indexing and searching.
+	* 
 	*
-	* @param string $documentListName Name of content documentListName to delete
+	* @param string $documentListName The document list associated with the facets to retrieve.
 	* @param string $propertyName The property name associated with the facets to retrieve.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/

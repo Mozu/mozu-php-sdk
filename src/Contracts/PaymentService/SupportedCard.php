@@ -19,15 +19,11 @@ namespace Mozu\Api\Contracts\PaymentService;
 */
 class SupportedCard
 {
-	/**
-	*Company-defined friendly name that identifies the supported card.
-	*/
-	public $friendlyName;
+		public $friendlyName;
 
-	/**
-	*The card type of the supported payment card, such as Visa or Amex.
-	*/
-	public $type;
+		public $paymentType;
+
+		public $type;
 
 }
 

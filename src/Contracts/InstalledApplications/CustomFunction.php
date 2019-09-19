@@ -14,45 +14,21 @@ namespace Mozu\Api\Contracts\InstalledApplications;
 
 
 
-/**
-*	Mozu.InstalledApplications.Contracts.CustomFunction ApiType DOCUMENT_HERE 
-*/
 class CustomFunction
 {
-	/**
-	*The Arc.js application key.
-	*/
-	public $applicationKey;
+		public $applicationKey;
 
-	/**
-	*Indicates if a capability, function tied to an Arc.js action, application, or price list is enabled for the tenant/site. If true, the capability/application/function/price list is enabled for the tenant. System-supplied and read-only with the exception of functions tied to an Arc.js action and price lists.
-	*/
-	public $enabled;
+		public $enabled;
 
-	/**
-	*The behavior to take when an error is encountered. "fault" or "continue". The default is "fault".
-	*/
-	public $exceptionBehavior;
+		public $exceptionBehavior;
 
-	/**
-	*The name of the custom function tied to a particular action.
-	*/
-	public $functionId;
+		public $functionId;
 
-	/**
-	*The priority level to assign to logs related to a particular function. Possible values mirror Apache's log4net: "all", "debug", "info", "warn", "error", "fatal", and "off".
-	*/
-	public $logLevel;
+		public $logLevel;
 
-	/**
-	*The number of milliseconds that the function waits before timing out. The default is 5000 milliseconds
-	*/
-	public $timeoutMilliseconds;
+		public $timeoutMilliseconds;
 
-	/**
-	*Custom function-level settings specified as key-value pairs.
-	*/
-	public $configuration;
+		public $configuration;
 
 }
 

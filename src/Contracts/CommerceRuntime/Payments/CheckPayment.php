@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Payments;
 
 
 
-/**
-*	Mozu.CommerceRuntime.Contracts.Payments.CheckPayment ApiType DOCUMENT_HERE 
-*/
 class CheckPayment
 {
-	/**
-	*If applicable, the check number associated with the payment action or interaction.
-	*/
-	public $checkNumber;
+		public $checkNumber;
 
 }
 

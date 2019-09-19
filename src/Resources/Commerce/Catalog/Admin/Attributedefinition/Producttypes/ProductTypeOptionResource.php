@@ -34,9 +34,9 @@ class ProductTypeOptionResource {
 
 
 	/**
-	* Retrieves a list of option product attributes defined for the specified product type.
+	* 
 	*
-	* @param int $productTypeId Identifier of the product type.
+	* @param int $productTypeId Identifier of the product type to retrieve.
 	* @return array|AttributeInProductType 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -50,9 +50,9 @@ class ProductTypeOptionResource {
 	}
 	
 /**
-	* Retrieves a list of option product attributes defined for the specified product type.
+	* 
 	*
-	* @param int $productTypeId Identifier of the product type.
+	* @param int $productTypeId Identifier of the product type to retrieve.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getOptionsAsync($productTypeId)
@@ -64,11 +64,11 @@ class ProductTypeOptionResource {
 	}
 	
 	/**
-	* Retrieves the details of an option attribute defined for the specified product type.
+	* 
 	*
-	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-	* @param int $productTypeId Identifier of the product type.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $attributeFQN 
+	* @param int $productTypeId The identifier of the product type.
+	* @param string $responseFields 
 	* @return AttributeInProductType 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -82,11 +82,11 @@ class ProductTypeOptionResource {
 	}
 	
 /**
-	* Retrieves the details of an option attribute defined for the specified product type.
+	* 
 	*
-	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-	* @param int $productTypeId Identifier of the product type.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $attributeFQN 
+	* @param int $productTypeId The identifier of the product type.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getOptionAsync($productTypeId, $attributeFQN, $responseFields =  null)
@@ -98,11 +98,11 @@ class ProductTypeOptionResource {
 	}
 	
 	/**
-	* Assigns an option attribute to the product type based on the information supplied in the request.
+	* 
 	*
 	* @param int $productTypeId Identifier of the product type.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param AttributeInProductType $attributeInProductType Properties of an attribute definition associated with a specific product type. When an attribute is applied to a product type, each product of that type maintains the same set of attributes.
+	* @param string $responseFields 
+	* @param AttributeInProductType $attributeInProductType Properties of the option attribute to define for the specified product type.
 	* @return AttributeInProductType 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -116,10 +116,10 @@ class ProductTypeOptionResource {
 	}
 	
 /**
-	* Assigns an option attribute to the product type based on the information supplied in the request.
+	* 
 	*
 	* @param int $productTypeId Identifier of the product type.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function addOptionAsync($attributeInProductType, $productTypeId, $responseFields =  null)
@@ -131,12 +131,12 @@ class ProductTypeOptionResource {
 	}
 	
 	/**
-	* Updates an option attribute definition for the specified product type.
+	* 
 	*
-	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param string $attributeFQN 
 	* @param int $productTypeId Identifier of the product type.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param AttributeInProductType $attributeInProductType Properties of an attribute definition associated with a specific product type. When an attribute is applied to a product type, each product of that type maintains the same set of attributes.
+	* @param string $responseFields 
+	* @param AttributeInProductType $attributeInProductType Properties of the option product attribute to define for the specified product type.
 	* @return AttributeInProductType 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -150,11 +150,11 @@ class ProductTypeOptionResource {
 	}
 	
 /**
-	* Updates an option attribute definition for the specified product type.
+	* 
 	*
-	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param string $attributeFQN 
 	* @param int $productTypeId Identifier of the product type.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateOptionAsync($attributeInProductType, $productTypeId, $attributeFQN, $responseFields =  null)
@@ -166,10 +166,11 @@ class ProductTypeOptionResource {
 	}
 	
 	/**
-	* Removes an option attribute definition for the specified product type.
+	* 
 	*
-	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param string $attributeFQN 
 	* @param int $productTypeId Identifier of the product type.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteOption($productTypeId, $attributeFQN)
@@ -177,13 +178,14 @@ class ProductTypeOptionResource {
 		$mozuClient = ProductTypeOptionClient::deleteOptionClient($this->dataViewMode, $productTypeId, $attributeFQN);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Removes an option attribute definition for the specified product type.
+	* 
 	*
-	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param string $attributeFQN 
 	* @param int $productTypeId Identifier of the product type.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/

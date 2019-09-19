@@ -14,40 +14,19 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
-/**
-*	Mozu.ProductAdmin.Contracts.PriceListEntryExtra ApiType DOCUMENT_HERE 
-*/
 class PriceListEntryExtra
 {
-	/**
-	*Merchant-defined code for an extensible attribute. This code may be used to generate an object's fully qualified name, such as for products.
-	*/
-	public $attributeCode;
+		public $attributeCode;
 
-	/**
-	*The fully qualified name of the attribute. The attributeDefiniteId may be used to generate this name.
-	*/
-	public $attributeFQN;
+		public $attributeFQN;
 
-	/**
-	*Name of attribute that this extra is based on. ReadOnly
-	*/
-	public $attributeName;
+		public $attributeName;
 
-	/**
-	*Value to display. Currently only vaild when Value is a string type. ReadOnly
-	*/
-	public $displayValue;
+		public $displayValue;
 
-	/**
-	*PriceList price for the extra
-	*/
-	public $price;
+		public $price;
 
-	/**
-	*The value of a property, used by numerous objects within  including facets, attributes, products, localized content, metadata, capabilities ( and third-party), location inventory adjustment, and more. The value may be a string, integer, or double. Validation may be run against the entered and saved values depending on the object type.
-	*/
-	public $value;
+		public $value;
 
 }
 

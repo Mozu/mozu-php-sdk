@@ -14,20 +14,11 @@ namespace Mozu\Api\Contracts\Event;
 
 
 
-/**
-*	Properties for the HTTP status for an event.
-*/
 class HttpStatus
 {
-	/**
-	*The higher-level integer based HTTP Status Code returned by the remote endpoint
-	*/
-	public $code;
+		public $code;
 
-	/**
-	*The user supplied name that appears in . You can use this field for identification purposes.
-	*/
-	public $name;
+		public $name;
 
 }
 

@@ -19,30 +19,15 @@ namespace Mozu\Api\Contracts\Core;
 */
 class UserRole
 {
-	/**
-	*Unique identifier of the user role.
-	*/
-	public $roleId;
+		public $roleId;
 
-	/**
-	*The name of the user role, such as "developer" or "administrator".
-	*/
-	public $roleName;
+		public $roleName;
 
-	/**
-	*Unique identifier of the customer account (shopper or system user). System-supplied and read-only. If the shopper user is anonymous, the user ID represents a system-generated user ID string.
-	*/
-	public $userId;
+		public $userId;
 
-	/**
-	*Properties of the developer account or  tenant associated with the user role.
-	*/
-	public $assignedInScope;
+		public $assignedInScope;
 
-	/**
-	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
-	*/
-	public $auditInfo;
+		public $auditInfo;
 
 }
 

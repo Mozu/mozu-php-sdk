@@ -22,9 +22,9 @@ use Mozu\Api\Urls\Commerce\Settings\LocationUsageUrl;
 class LocationUsageClient {
 
 	/**
-	* Retrieves the configured site location usages for the location usage code specified in the request.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getLocationUsagesClient($responseFields =  null)
@@ -37,10 +37,10 @@ class LocationUsageClient {
 	}
 	
 	/**
-	* Retrieves the location usages for the site specified in the request header.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $code Code that identifies the location usage type, which is "DS" for direct ship, "SP" for in-store pickup, or "storeFinder" for store finder.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getLocationUsageClient($code, $responseFields =  null)
@@ -53,11 +53,11 @@ class LocationUsageClient {
 	}
 	
 	/**
-	* Updates the location usage for the site based on the location usage code specified in the request.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param LocationUsage $usage Configuration properties of a location usage type for a specified site. The direct ship location usage type consists of a single location that represents location that supports direct ship (DS) fulfillment. The in-store pickup location usage type consists of a list of location types that represent locations that support in-store pickup (SP) fulfillment. The store finder location usage type consists of a list of location codes, location types, or both.
+	* @param string $code Code that identifies the location usage type, which is "DS" for direct ship, "SP" for in-store pickup, or "storeFinder" for store finder.
+	* @param string $responseFields 
+	* @param LocationUsage $usage Properties of the location usage type to update.
 	* @return MozuClient
 	*/
 	public static function updateLocationUsageClient($usage, $code, $responseFields =  null)

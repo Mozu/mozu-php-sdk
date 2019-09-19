@@ -19,12 +19,12 @@ class ProductUrl  {
 
 	/**
 		* Get Resource Url for GetProducts
-		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+		* @param string $filter 
 		* @param bool $noCount If true, the operation does not return the TotalCount number of results.
-		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-		* @param string $q A list of order search terms (not phrases) to use in the query when searching across order number and the name or email of the billing contact. When entering, separate multiple search terms with a space character.
+		* @param int $pageSize 
+		* @param string $q A list of product search terms to use in the query when searching across product code and product name. Separate multiple search terms with a space character.
 		* @param int $qLimit The maximum number of search results to return in the response. You can limit any range between 1-100.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @param string $sortBy 
 		* @param int $startIndex 
 		* @return string Resource Url
@@ -46,7 +46,7 @@ class ProductUrl  {
 	
 	/**
 		* Get Resource Url for GetProductInCatalogs
-		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+		* @param string $productCode 
 		* @return string Resource Url
 	*/
 	public static function getProductInCatalogsUrl($productCode)
@@ -59,9 +59,9 @@ class ProductUrl  {
 	
 	/**
 		* Get Resource Url for GetProductInCatalog
-		* @param int $catalogId The unique identifier of the catalog of products used by a site.
-		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param int $catalogId 
+		* @param string $productCode 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getProductInCatalogUrl($catalogId, $productCode, $responseFields)
@@ -76,8 +76,8 @@ class ProductUrl  {
 	
 	/**
 		* Get Resource Url for GetProduct
-		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $productCode 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getProductUrl($productCode, $responseFields)
@@ -91,7 +91,7 @@ class ProductUrl  {
 	
 	/**
 		* Get Resource Url for AddProduct
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function addProductUrl($responseFields)
@@ -104,8 +104,8 @@ class ProductUrl  {
 	
 	/**
 		* Get Resource Url for AddProductInCatalog
-		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $productCode 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function addProductInCatalogUrl($productCode, $responseFields)
@@ -130,7 +130,7 @@ class ProductUrl  {
 	
 	/**
 		* Get Resource Url for UpdateProductInCatalogs
-		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+		* @param string $productCode 
 		* @return string Resource Url
 	*/
 	public static function updateProductInCatalogsUrl($productCode)
@@ -143,9 +143,9 @@ class ProductUrl  {
 	
 	/**
 		* Get Resource Url for UpdateProductInCatalog
-		* @param int $catalogId The unique identifier of the catalog of products used by a site.
-		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param int $catalogId 
+		* @param string $productCode 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updateProductInCatalogUrl($catalogId, $productCode, $responseFields)
@@ -160,8 +160,8 @@ class ProductUrl  {
 	
 	/**
 		* Get Resource Url for UpdateProduct
-		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $productCode 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updateProductUrl($productCode, $responseFields)
@@ -175,7 +175,7 @@ class ProductUrl  {
 	
 	/**
 		* Get Resource Url for DeleteProduct
-		* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
+		* @param string $productCode 
 		* @return string Resource Url
 	*/
 	public static function deleteProductUrl($productCode)
@@ -188,8 +188,8 @@ class ProductUrl  {
 	
 	/**
 		* Get Resource Url for DeleteProductInCatalog
-		* @param int $catalogId The unique identifier of the catalog of products used by a site.
-		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+		* @param int $catalogId 
+		* @param string $productCode 
 		* @return string Resource Url
 	*/
 	public static function deleteProductInCatalogUrl($catalogId, $productCode)

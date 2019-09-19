@@ -19,20 +19,11 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 */
 class ProductVariationOption
 {
-	/**
-	*The fully qualified name of the attribute, which is a user defined attribute identifier.
-	*/
-	public $attributeFQN;
+		public $attributeFQN;
 
-	/**
-	*The value of a property, used by numerous objects within  including facets, attributes, products, localized content, metadata, capabilities ( and third-party), location inventory adjustment, and more. The value may be a string, integer, or double. Validation may be run against the entered and saved values depending on the object type.
-	*/
-	public $value;
+		public $value;
 
-	/**
-	*Complex type that contains content for a language specified by LocaleCode.
-	*/
-	public $content;
+		public $content;
 
 }
 

@@ -19,7 +19,7 @@ class AuthTicketUrl  {
 
 	/**
 		* Get Resource Url for AuthenticateApp
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function authenticateAppUrl($responseFields)
@@ -31,8 +31,21 @@ class AuthTicketUrl  {
 	}
 	
 	/**
+		* Get Resource Url for OauthAuthenticateApp
+		* @param string $responseFields 
+		* @return string Resource Url
+	*/
+	public static function oauthAuthenticateAppUrl($responseFields)
+	{
+		$url = "/api/platform/applications/authtickets/oauth?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::HOME_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		return $mozuUrl;
+	}
+	
+	/**
 		* Get Resource Url for RefreshAppAuthTicket
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function refreshAppAuthTicketUrl($responseFields)
@@ -45,7 +58,7 @@ class AuthTicketUrl  {
 	
 	/**
 		* Get Resource Url for DeleteAppAuthTicket
-		* @param string $refreshToken Alphanumeric string used for access tokens. This token refreshes access for accounts by generating a new developer or application account authentication ticket after an access token expires.
+		* @param string $refreshToken The refresh token string from the application's authentication ticket.
 		* @return string Resource Url
 	*/
 	public static function deleteAppAuthTicketUrl($refreshToken)

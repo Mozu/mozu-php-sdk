@@ -31,7 +31,7 @@ class LocationTypeUrl  {
 	/**
 		* Get Resource Url for GetLocationType
 		* @param string $locationTypeCode The user-defined code that identifies the location type.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getLocationTypeUrl($locationTypeCode, $responseFields)
@@ -45,7 +45,7 @@ class LocationTypeUrl  {
 	
 	/**
 		* Get Resource Url for AddLocationType
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function addLocationTypeUrl($responseFields)
@@ -59,7 +59,7 @@ class LocationTypeUrl  {
 	/**
 		* Get Resource Url for UpdateLocationType
 		* @param string $locationTypeCode The user-defined code that identifies the location type.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updateLocationTypeUrl($locationTypeCode, $responseFields)
@@ -73,7 +73,7 @@ class LocationTypeUrl  {
 	
 	/**
 		* Get Resource Url for DeleteLocationType
-		* @param string $locationTypeCode The user-defined code that identifies the location type.
+		* @param string $locationTypeCode User-defined code used to identify the location type.
 		* @return string Resource Url
 	*/
 	public static function deleteLocationTypeUrl($locationTypeCode)

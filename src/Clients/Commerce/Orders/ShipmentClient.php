@@ -22,10 +22,10 @@ use Mozu\Api\Urls\Commerce\Orders\ShipmentUrl;
 class ShipmentClient {
 
 	/**
-	* Retrieves the details of the order shipment specified in the request.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $orderId Unique identifier of the order associated with the shipment to retrieve.
+	* @param string $responseFields 
 	* @param string $shipmentId Unique identifier of the shipment to retrieve.
 	* @return MozuClient
 	*/
@@ -39,10 +39,10 @@ class ShipmentClient {
 	}
 	
 	/**
-	* Retrieves the available shipping methods applicable to the order. Typically used to display available shipping method options on the checkout page.
+	* 
 	*
-	* @param bool $draft If true, retrieve the draft version of the order, which might include uncommitted changes to the order or its components.
-	* @param string $orderId Unique identifier of the order.
+	* @param bool $draft 
+	* @param string $orderId Unique identifier of the order for the available shipment methods being retrieved.
 	* @return MozuClient
 	*/
 	public static function getAvailableShipmentMethodsClient($orderId, $draft =  null)
@@ -55,9 +55,9 @@ class ShipmentClient {
 	}
 	
 	/**
-	* Creates a shipment from one or more package associated with an order and assign a label and tracking number to an order shipment.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
+	* @param string $orderId Unique identifier of the order for this shipment.
 	* @param array|string $packageIds List of unique identifiers for each package associated with this shipment. Not all packages must belong to the same shipment.
 	* @return MozuClient
 	*/
@@ -71,10 +71,79 @@ class ShipmentClient {
 	}
 	
 	/**
-	* Deletes the shipment specified in the request.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $shipmentId Unique identifier of the shipment to retrieve.
+	* @param string $orderId 
+	* @param string $responseFields 
+	* @param int $shipmentNumber 
+	* @param ShipmentAdjustment $shipmentAdjustment 
+	* @return MozuClient
+	*/
+	public static function updateShipmentAdjustmentsClient($shipmentAdjustment, $orderId, $shipmentNumber, $responseFields =  null)
+	{
+		$url = ShipmentUrl::updateShipmentAdjustmentsUrl($orderId, $responseFields, $shipmentNumber);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withBody($shipmentAdjustment);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* 
+	*
+	* @param int $itemId 
+	* @param string $responseFields 
+	* @param int $shipmentNumber 
+	* @param ShipmentItemAdjustment $shipmentItemAdjustment 
+	* @return MozuClient
+	*/
+	public static function updateShipmentItemClient($shipmentItemAdjustment, $shipmentNumber, $itemId, $responseFields =  null)
+	{
+		$url = ShipmentUrl::updateShipmentItemUrl($itemId, $responseFields, $shipmentNumber);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withBody($shipmentItemAdjustment);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $responseFields 
+	* @param int $shipmentNumber 
+	* @param RepriceShipmentObject $repriceShipment 
+	* @return MozuClient
+	*/
+	public static function repriceShipmentClient($repriceShipment, $shipmentNumber, $responseFields =  null)
+	{
+		$url = ShipmentUrl::repriceShipmentUrl($responseFields, $shipmentNumber);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withBody($repriceShipment);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* 
+	*
+	* @param SplitShipmentsObject $splitShipments 
+	* @return MozuClient
+	*/
+	public static function splitShipmentsClient($splitShipments)
+	{
+		$url = ShipmentUrl::splitShipmentsUrl();
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withBody($splitShipments);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $orderId Unique identifier of the order to cancel shipment.
+	* @param string $shipmentId Unique identifier of the shipment to cancel.
+	* @return MozuClient
 	*/
 	public static function deleteShipmentClient($orderId, $shipmentId)
 	{

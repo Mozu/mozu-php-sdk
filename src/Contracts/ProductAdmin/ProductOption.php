@@ -19,15 +19,11 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 */
 class ProductOption
 {
-	/**
-	*The fully qualified name of the attribute, which is a user defined attribute identifier.
-	*/
-	public $attributeFQN;
+		public $attributeFQN;
 
-	/**
-	*List of value data for objects.
-	*/
-	public $values;
+		public $isProductImageGroupSelector;
+
+		public $values;
 
 }
 

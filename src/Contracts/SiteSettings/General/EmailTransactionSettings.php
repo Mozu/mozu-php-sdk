@@ -14,90 +14,39 @@ namespace Mozu\Api\Contracts\SiteSettings\General;
 
 
 
-/**
-*	Mozu.SiteSettings.General.Contracts.EmailTransactionSettings ApiType DOCUMENT_HERE 
-*/
 class EmailTransactionSettings
 {
-	/**
-	*A flag that determines if an email is sent to a shopper account when the described condition is met.
-	*/
-	public $backInStock;
+		public $backInStock;
 
-	/**
-	*A flag that determines if an email is sent to a shopper account when the described condition is met.
-	*/
-	public $giftCardCreated;
+		public $giftCardCreated;
 
-	/**
-	*A flag that determines if an email is sent to a shopper account when the described condition is met.
-	*/
-	public $orderChanged;
+		public $orderChanged;
 
-	/**
-	*A flag that determines if an email is sent to a shopper account when the described condition is met.
-	*/
-	public $orderFulfillmentDetailsChanged;
+		public $orderFulfillmentDetailsChanged;
 
-	/**
-	*A flag that determines if an email is sent to a shopper account when the described condition is met.
-	*/
-	public $orderShipped;
+		public $orderShipped;
 
-	/**
-	*A flag that determines if an email is sent to a shopper account when the described condition is met.
-	*/
-	public $refundCreated;
+		public $refundCreated;
 
-	/**
-	*A flag that determines if an email is sent to a shopper account when the described condition is met.
-	*/
-	public $returnAuthorized;
+		public $returnAuthorized;
 
-	/**
-	*There is no corresponding template for this in the Core theme.
-	*/
-	public $returnCancelled;
+		public $returnCancelled;
 
-	/**
-	*This controls "email/product-return-received" in the Core theme.
-	*/
-	public $returnClosed;
+		public $returnClosed;
 
-	/**
-	*A flag that determines if an email is sent to a shopper account when the described condition is met.
-	*/
-	public $returnCreated;
+		public $returnCreated;
 
-	/**
-	*A flag that determines if an email is sent to a shopper account when the described condition is met.
-	*/
-	public $returnRejected;
+		public $returnRejected;
 
-	/**
-	*A flag that determines if an email is sent to a shopper account when the described condition is met.
-	*/
-	public $returnUpdated;
+		public $returnUpdated;
 
-	/**
-	*A flag that determines if an email is sent to a shopper account when the described condition is met.
-	*/
-	public $shopperLoginCreated;
+		public $shopperLoginCreated;
 
-	/**
-	*A flag that determines if an email is sent to a shopper account when the described condition is met.
-	*/
-	public $shopperPasswordReset;
+		public $shopperPasswordReset;
 
-	/**
-	*A flag that determines if an email is sent to a shopper account when the described condition is met.
-	*/
-	public $storeCreditCreated;
+		public $storeCreditCreated;
 
-	/**
-	*A flag that determines if an email is sent to a shopper account when the described condition is met.
-	*/
-	public $storeCreditUpdated;
+		public $storeCreditUpdated;
 
 }
 

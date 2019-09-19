@@ -19,10 +19,7 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Orders;
 */
 class OrderAction
 {
-	/**
-	*The name of the action to perform for the payment, fulfillment, order, or return.
-	*/
-	public $actionName;
+		public $actionName;
 
 }
 

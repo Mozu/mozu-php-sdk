@@ -23,10 +23,10 @@ use Mozu\Api\Headers;
 class DiscountTargetClient {
 
 	/**
-	* Retrieves the discount target, that is which products, categories, or shipping methods are eligible for the discount.
+	* 
 	*
-	* @param int $discountId discountId parameter description DOCUMENT_HERE 
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getDiscountTargetClient($dataViewMode, $discountId, $responseFields =  null)
@@ -39,11 +39,11 @@ class DiscountTargetClient {
 	}
 	
 	/**
-	* Modifies properties of the discount target, for example, the dollar amount, or precentage off the price.
+	* 
 	*
-	* @param int $discountId discountId parameter description DOCUMENT_HERE 
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param DiscountTarget $discountTarget Properties of the target to which the discount applies, such as the type of discount and which products, categories, or shipping methods are eligible for the discount and the properties of this discount target.
+	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
+	* @param string $responseFields 
+	* @param DiscountTarget $discountTarget Properties of the discount target to modify. Required properties: Target.Type. Any unspecified properties are set to null and boolean variables to false.
 	* @return MozuClient
 	*/
 	public static function updateDiscountTargetClient($discountTarget, $discountId, $responseFields =  null)

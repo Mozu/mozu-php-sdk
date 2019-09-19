@@ -19,40 +19,19 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 */
 class LocationInventory
 {
-	/**
-	*Product code defined by the tenant administrator to use as a base prefix when generating product codes for any variations of this product.
-	*/
-	public $baseProductCode;
+		public $baseProductCode;
 
-	/**
-	*The unique, user-defined code that identifies a location. This location can be the location where the order was entered, location for newly in-stock products, and where products are returned.
-	*/
-	public $locationCode;
+		public $locationCode;
 
-	/**
-	*Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	*/
-	public $productCode;
+		public $productCode;
 
-	/**
-	*The name of the product that represents a line item in a taxable order or product bundle.
-	*/
-	public $productName;
+		public $productName;
 
-	/**
-	*The stock level for the associated product currently available, at specified locations, and based on the number of pending product reservations as applicable. System-supplied and read only.
-	*/
-	public $stockAvailable;
+		public $stockAvailable;
 
-	/**
-	*The stock level for the associated product currently on back order for this location, based on the number of pending product reservations. System-supplied and read only.
-	*/
-	public $stockOnBackOrder;
+		public $stockOnBackOrder;
 
-	/**
-	*The current physical stock level for the associated product, which does not account for pending product reservations.
-	*/
-	public $stockOnHand;
+		public $stockOnHand;
 
 	/**
 	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.

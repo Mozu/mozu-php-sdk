@@ -19,8 +19,8 @@ class DocumentTreeUrl  {
 
 	/**
 		* Get Resource Url for GetTreeDocumentContent
-		* @param string $documentListName Name of content documentListName to delete
-		* @param string $documentName The name of the document in the site.
+		* @param string $documentListName The name of the document list associated with the document.
+		* @param string $documentName The name of the document, which is unique within its folder.
 		* @return string Resource Url
 	*/
 	public static function getTreeDocumentContentUrl($documentListName, $documentName)
@@ -34,15 +34,15 @@ class DocumentTreeUrl  {
 	
 	/**
 		* Get Resource Url for TransformTreeDocumentContent
-		* @param string $crop Crops the image based on the specified coordinates. The reference point for positive coordinates is the top-left corner of the image, and the reference point for negative coordinates is the bottom-right corner of the image.Usage: Example:  removes 10 pixels from all edges of the image.  leaves the image uncropped.
-		* @param string $documentListName Name of content documentListName to delete
-		* @param string $documentName The name of the document in the site.
-		* @param int $height Specifies an exact height dimension for the image, in pixels.
-		* @param int $max Specifies a pixel limitation for the largest side of an image.
-		* @param int $maxHeight Specifies a pixel limitation for the height of the image, preserving the aspect ratio if the image needs resizing.
-		* @param int $maxWidth Specifies a pixel limitation for the width of the image, preserving the aspect ratio if the image needs resizing.
-		* @param int $quality Adjusts the image compression. Accepts values from 0-100, where 100 = highest quality, least compression.
-		* @param int $width Specifies an exact width dimension for the image, in pixels.
+		* @param string $crop 
+		* @param string $documentListName 
+		* @param string $documentName 
+		* @param int $height 
+		* @param int $max 
+		* @param int $maxHeight 
+		* @param int $maxWidth 
+		* @param int $quality 
+		* @param int $width 
 		* @return string Resource Url
 	*/
 	public static function transformTreeDocumentContentUrl($crop, $documentListName, $documentName, $height, $max, $maxHeight, $maxWidth, $quality, $width)
@@ -63,10 +63,10 @@ class DocumentTreeUrl  {
 	
 	/**
 		* Get Resource Url for GetTreeDocument
-		* @param string $documentListName Name of content documentListName to delete
-		* @param string $documentName The name of the document in the site.
-		* @param bool $includeInactive Include inactive content.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $documentListName The name of the document list associated with the document.
+		* @param string $documentName The name of the document, which is unique within its folder.
+		* @param bool $includeInactive 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getTreeDocumentUrl($documentListName, $documentName, $includeInactive, $responseFields)
@@ -82,8 +82,8 @@ class DocumentTreeUrl  {
 	
 	/**
 		* Get Resource Url for UpdateTreeDocumentContent
-		* @param string $documentListName Name of content documentListName to delete
-		* @param string $documentName The name of the document in the site.
+		* @param string $documentListName The name of the document list associated with the document.
+		* @param string $documentName The name of the document, which is unique within its folder.
 		* @return string Resource Url
 	*/
 	public static function updateTreeDocumentContentUrl($documentListName, $documentName)
@@ -97,8 +97,8 @@ class DocumentTreeUrl  {
 	
 	/**
 		* Get Resource Url for DeleteTreeDocumentContent
-		* @param string $documentListName Name of content documentListName to delete
-		* @param string $documentName The name of the document in the site.
+		* @param string $documentListName The name of the document list associated with the document.
+		* @param string $documentName The name of the document, which is unique within its folder.
 		* @return string Resource Url
 	*/
 	public static function deleteTreeDocumentContentUrl($documentListName, $documentName)

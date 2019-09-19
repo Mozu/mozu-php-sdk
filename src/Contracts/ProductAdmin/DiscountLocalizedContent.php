@@ -20,24 +20,15 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class DiscountLocalizedContent
 {
 	/**
-	*The localizable, shopper-facing description defined for a discount or a storefront message. 
+	*The localizable, shopper-facing description defined for the discount.
 	*/
 	public $friendlyDescription;
 
-	/**
-	*Language used for the entity. Currently, only "en-US" is supported.
-	*/
-	public $localeCode;
+		public $localeCode;
 
-	/**
-	*The user supplied name that appears in . You can use this field for identification purposes.
-	*/
-	public $name;
+		public $name;
 
-	/**
-	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
-	*/
-	public $auditInfo;
+		public $auditInfo;
 
 }
 

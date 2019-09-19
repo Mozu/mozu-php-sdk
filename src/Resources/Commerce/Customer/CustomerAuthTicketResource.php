@@ -33,9 +33,9 @@ class CustomerAuthTicketResource {
 
 
 	/**
-	* Creates an authentication ticket for an anonymous shopper user.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return CustomerAuthTicket 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -49,9 +49,9 @@ class CustomerAuthTicketResource {
 	}
 	
 /**
-	* Creates an authentication ticket for an anonymous shopper user.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function createAnonymousShopperAuthTicketAsync($responseFields =  null)
@@ -63,10 +63,10 @@ class CustomerAuthTicketResource {
 	}
 	
 	/**
-	* Generates a new authentication ticket for a customer account.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param CustomerUserAuthInfo $userAuthInfo The authentication information required to generate an authentication ticket for a customer account.
+	* @param string $responseFields 
+	* @param CustomerUserAuthInfo $userAuthInfo The authentication information required to generate an authetication ticket for a user, which consists of a user name and password.
 	* @return CustomerAuthTicket 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -80,9 +80,9 @@ class CustomerAuthTicketResource {
 	}
 	
 /**
-	* Generates a new authentication ticket for a customer account.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function createUserAuthTicketAsync($userAuthInfo, $responseFields =  null)
@@ -94,10 +94,10 @@ class CustomerAuthTicketResource {
 	}
 	
 	/**
-	* Refreshes an existing authentication ticket for a customer account by providing the refresh token string.
+	* 
 	*
-	* @param string $refreshToken Alphanumeric string used for access tokens. This token refreshes access for accounts by generating a new developer or application account authentication ticket after an access token expires.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $refreshToken The refresh token string required to refresh a user's authentication ticket.
+	* @param string $responseFields 
 	* @return CustomerAuthTicket 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -111,10 +111,10 @@ class CustomerAuthTicketResource {
 	}
 	
 /**
-	* Refreshes an existing authentication ticket for a customer account by providing the refresh token string.
+	* 
 	*
-	* @param string $refreshToken Alphanumeric string used for access tokens. This token refreshes access for accounts by generating a new developer or application account authentication ticket after an access token expires.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $refreshToken The refresh token string required to refresh a user's authentication ticket.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function refreshUserAuthTicketAsync($refreshToken, $responseFields =  null)

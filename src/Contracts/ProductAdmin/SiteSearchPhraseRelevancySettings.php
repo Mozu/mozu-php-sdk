@@ -14,25 +14,13 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
-/**
-*	Properties for the site search phrase relevancy settings. Relevancy determines the calculated matched of entered search phrase strings against keywords. The relevancy weight can determine the order of importance for matching a search term such as categories before or after product names.
-*/
 class SiteSearchPhraseRelevancySettings
 {
-	/**
-	*The considered relevancy weight for the attributes phrase.
-	*/
-	public $attributeWeight;
+		public $attributeWeight;
 
-	/**
-	*The considered relevancy weight for descriptions.
-	*/
-	public $descriptionWeight;
+		public $descriptionWeight;
 
-	/**
-	*The weight for the name used in ranking search results.
-	*/
-	public $nameWeight;
+		public $nameWeight;
 
 }
 

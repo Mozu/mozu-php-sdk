@@ -14,20 +14,11 @@ namespace Mozu\Api\Contracts\AppDev;
 
 
 
-/**
-*	Mozu.AppDev.Contracts.PackageRequest ApiType DOCUMENT_HERE 
-*/
 class PackageRequest
 {
-	/**
-	*Mozu.AppDev.Contracts.PackageRequest appKey ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $appKey;
+		public $appKey;
 
-	/**
-	*Mozu.AppDev.Contracts.PackageRequest parentThemeAppKey ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $parentThemeAppKey;
+		public $parentThemeAppKey;
 
 }
 

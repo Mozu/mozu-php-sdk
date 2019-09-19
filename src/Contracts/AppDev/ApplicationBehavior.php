@@ -14,20 +14,11 @@ namespace Mozu\Api\Contracts\AppDev;
 
 
 
-/**
-*	This property is not exposed in documentation.
-*/
 class ApplicationBehavior
 {
-	/**
-	*Mozu.AppDev.Contracts.ApplicationBehavior behaviorId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $behaviorId;
+		public $behaviorId;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationBehavior packageId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $packageId;
+		public $packageId;
 
 }
 

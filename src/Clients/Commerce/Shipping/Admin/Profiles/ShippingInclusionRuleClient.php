@@ -17,16 +17,16 @@ use Mozu\Api\Urls\Commerce\Shipping\Admin\Profiles\ShippingInclusionRuleUrl;
 
 
 /**
-* Use the ShippingInclusionRules sub-resource to manage your shipping inclusion rules that are associated with a specific shipping profile.
+* 
 */
 class ShippingInclusionRuleClient {
 
 	/**
-	* Retrieves the details of the specified shipping inclusion rule.
+	* 
 	*
-	* @param string $id Unique identifier of the customer segment to retrieve.
-	* @param string $profilecode The unique, user-defined code of the profile with which the shipping inclusion rule is associated.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $id 
+	* @param string $profilecode 
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getShippingInclusionRuleClient($profilecode, $id, $responseFields =  null)
@@ -39,10 +39,10 @@ class ShippingInclusionRuleClient {
 	}
 	
 	/**
-	* Retrieves a list of shipping inclusion rules and their details.
+	* 
 	*
-	* @param string $profilecode The unique, user-defined code of the profile with which the shipping inclusion rule is associated.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $profilecode 
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getShippingInclusionRulesClient($profilecode, $responseFields =  null)
@@ -55,11 +55,11 @@ class ShippingInclusionRuleClient {
 	}
 	
 	/**
-	* Creates a new shipping inclusion rule.
+	* 
 	*
-	* @param string $profilecode The unique, user-defined code of the profile with which the shipping inclusion rule is associated.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param ShippingInclusionRule $rule The details of the new shipping inclusion rule.
+	* @param string $profilecode 
+	* @param string $responseFields 
+	* @param ShippingInclusionRule $rule 
 	* @return MozuClient
 	*/
 	public static function createShippingInclusionRuleClient($rule, $profilecode, $responseFields =  null)
@@ -72,12 +72,12 @@ class ShippingInclusionRuleClient {
 	}
 	
 	/**
-	* Updates the details of the specified shipping inclusion rule.
+	* 
 	*
-	* @param string $id Unique identifier of the customer segment to retrieve.
-	* @param string $profilecode The unique, user-defined code of the profile with which the shipping inclusion rule is associated.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param ShippingInclusionRule $rule The updated details of the shipping inclusion rule.
+	* @param string $id 
+	* @param string $profilecode 
+	* @param string $responseFields 
+	* @param ShippingInclusionRule $rule 
 	* @return MozuClient
 	*/
 	public static function updateShippingInclusionRuleClient($rule, $profilecode, $id, $responseFields =  null)
@@ -90,10 +90,11 @@ class ShippingInclusionRuleClient {
 	}
 	
 	/**
-	* Deletes the specified shipping inclusion rule.
+	* 
 	*
-	* @param string $id Unique identifier of the customer segment to retrieve.
-	* @param string $profilecode The unique, user-defined code of the profile with which the shipping inclusion rule is associated.
+	* @param string $id 
+	* @param string $profilecode 
+	* @return MozuClient
 	*/
 	public static function deleteShippingInclusionRuleClient($profilecode, $id)
 	{

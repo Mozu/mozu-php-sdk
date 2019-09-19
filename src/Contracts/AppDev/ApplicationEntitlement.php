@@ -14,120 +14,51 @@ namespace Mozu\Api\Contracts\AppDev;
 
 
 
-/**
-*	This property is not exposed in documentation.
-*/
 class ApplicationEntitlement
 {
-	/**
-	*Mozu.AppDev.Contracts.ApplicationEntitlement appKey ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $appKey;
+		public $appKey;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationEntitlement applicationEntitlementId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationEntitlementId;
+		public $applicationEntitlementId;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationEntitlement applicationId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationId;
+		public $applicationId;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationEntitlement applicationLicenseType ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationLicenseType;
+		public $applicationLicenseType;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationEntitlement applicationName ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationName;
+		public $applicationName;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationEntitlement applicationStatusId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationStatusId;
+		public $applicationStatusId;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationEntitlement applicationVersion ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationVersion;
+		public $applicationVersion;
 
-	/**
-	*Denotes the application owner dev account id
-	*/
-	public $appOwnerDevAccountId;
+		public $appOwnerDevAccountId;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationEntitlement devAccountId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $devAccountId;
+		public $devAccountId;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationEntitlement effectiveEndDate ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $effectiveEndDate;
+		public $effectiveEndDate;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationEntitlement effectiveStartDate ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $effectiveStartDate;
+		public $effectiveStartDate;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationEntitlement entitlementStatus ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $entitlementStatus;
+		public $entitlementStatus;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationEntitlement installedAppsApplicationId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $installedAppsApplicationId;
+		public $installedAppsApplicationId;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationEntitlement installedByFirstName ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $installedByFirstName;
+		public $installedByFirstName;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationEntitlement installedByLastName ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $installedByLastName;
+		public $installedByLastName;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationEntitlement installedDate ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $installedDate;
+		public $installedDate;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationEntitlement packageId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $packageId;
+		public $packageId;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationEntitlement packageName ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $packageName;
+		public $packageName;
 
-	/**
-	*Unique identifier for the site. This ID is used at all levels of a store, catalog, and tenant to associate objects to a site.
-	*/
-	public $siteId;
+		public $siteId;
 
-	/**
-	*Unique identifier of the Mozu tenant.
-	*/
-	public $tenantId;
+		public $tenantId;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationEntitlement tenantName ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $tenantName;
+		public $tenantName;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationEntitlement applicationTransactions ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationTransactions;
+		public $applicationTransactions;
 
 }
 

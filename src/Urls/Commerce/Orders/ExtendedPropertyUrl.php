@@ -19,8 +19,8 @@ class ExtendedPropertyUrl  {
 
 	/**
 		* Get Resource Url for GetExtendedProperties
-		* @param bool $draft If true, retrieve the draft version of the order, which might include uncommitted changes to the order or its components.
-		* @param string $orderId Unique identifier of the order.
+		* @param bool $draft 
+		* @param string $orderId 
 		* @return string Resource Url
 	*/
 	public static function getExtendedPropertiesUrl($draft, $orderId)
@@ -34,9 +34,9 @@ class ExtendedPropertyUrl  {
 	
 	/**
 		* Get Resource Url for AddExtendedProperties
-		* @param string $orderId Unique identifier of the order.
-		* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
-		* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
+		* @param string $orderId 
+		* @param string $updateMode 
+		* @param string $version 
 		* @return string Resource Url
 	*/
 	public static function addExtendedPropertiesUrl($orderId, $updateMode, $version)
@@ -51,13 +51,12 @@ class ExtendedPropertyUrl  {
 	
 	/**
 		* Get Resource Url for UpdateExtendedProperty
-		* @param string $key The extended property key.
-		* @param string $orderId Unique identifier of the order.
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-		* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
-		* @param bool $upsert Inserts and updates an extended property.
-        
-		* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
+		* @param string $key 
+		* @param string $orderId 
+		* @param string $responseFields 
+		* @param string $updateMode 
+		* @param bool $upsert 
+		* @param string $version 
 		* @return string Resource Url
 	*/
 	public static function updateExtendedPropertyUrl($key, $orderId, $responseFields, $updateMode, $upsert, $version)
@@ -75,11 +74,10 @@ class ExtendedPropertyUrl  {
 	
 	/**
 		* Get Resource Url for UpdateExtendedProperties
-		* @param string $orderId Unique identifier of the order.
-		* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
-		* @param bool $upsert Inserts and updates the extended property.
-        
-		* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
+		* @param string $orderId 
+		* @param string $updateMode 
+		* @param bool $upsert 
+		* @param string $version 
 		* @return string Resource Url
 	*/
 	public static function updateExtendedPropertiesUrl($orderId, $updateMode, $upsert, $version)
@@ -95,10 +93,10 @@ class ExtendedPropertyUrl  {
 	
 	/**
 		* Get Resource Url for DeleteExtendedProperty
-		* @param string $key The extended property key.
-		* @param string $orderId Unique identifier of the order.
-		* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
-		* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
+		* @param string $key 
+		* @param string $orderId 
+		* @param string $updateMode 
+		* @param string $version 
 		* @return string Resource Url
 	*/
 	public static function deleteExtendedPropertyUrl($key, $orderId, $updateMode, $version)
@@ -114,9 +112,9 @@ class ExtendedPropertyUrl  {
 	
 	/**
 		* Get Resource Url for DeleteExtendedProperties
-		* @param string $orderId Unique identifier of the order.
-		* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
-		* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
+		* @param string $orderId 
+		* @param string $updateMode 
+		* @param string $version 
 		* @return string Resource Url
 	*/
 	public static function deleteExtendedPropertiesUrl($orderId, $updateMode, $version)

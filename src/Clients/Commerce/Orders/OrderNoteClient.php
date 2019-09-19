@@ -22,7 +22,7 @@ use Mozu\Api\Urls\Commerce\Orders\OrderNoteUrl;
 class OrderNoteClient {
 
 	/**
-	* Retrieves a list of all notes for an order.
+	* 
 	*
 	* @param string $orderId Unique identifier of the order.
 	* @return MozuClient
@@ -37,11 +37,11 @@ class OrderNoteClient {
 	}
 	
 	/**
-	* Retrieves the details of a specific order note.
+	* 
 	*
-	* @param string $noteId Unique identifier of a particular note to retrieve.
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $noteId Unique identifier of the order note to retrieve.
+	* @param string $orderId Unique identifier of the order associated with the note.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getOrderNoteClient($orderId, $noteId, $responseFields =  null)
@@ -54,11 +54,11 @@ class OrderNoteClient {
 	}
 	
 	/**
-	* Creates a new merchant note for the specified order.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param OrderNote $orderNote Properties of an order note for a merchant, which is internal only for administrative purposes and not available to the shopper.
+	* @param string $orderId Unique identifier of the order for which to add a note.
+	* @param string $responseFields 
+	* @param OrderNote $orderNote The alphanumeric text contained in the note. The maximum length is 256 characters.
 	* @return MozuClient
 	*/
 	public static function createOrderNoteClient($orderNote, $orderId, $responseFields =  null)
@@ -71,12 +71,12 @@ class OrderNoteClient {
 	}
 	
 	/**
-	* Updates a specific note for an order.
+	* 
 	*
-	* @param string $noteId Unique identifier of a particular note to retrieve.
+	* @param string $noteId Unique identifier of the order note.
 	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param OrderNote $orderNote Properties of an order note for a merchant, which is internal only for administrative purposes and not available to the shopper.
+	* @param string $responseFields 
+	* @param OrderNote $orderNote The content of the order note. The maximum length is 256 characters.
 	* @return MozuClient
 	*/
 	public static function updateOrderNoteClient($orderNote, $orderId, $noteId, $responseFields =  null)
@@ -89,10 +89,11 @@ class OrderNoteClient {
 	}
 	
 	/**
-	* Deletes the specified order note.
+	* 
 	*
-	* @param string $noteId Unique identifier of a particular note to retrieve.
-	* @param string $orderId Unique identifier of the order.
+	* @param string $noteId Unique identifier of the order note to delete.
+	* @param string $orderId Unique identifier of the order associated with the note.
+	* @return MozuClient
 	*/
 	public static function deleteOrderNoteClient($orderId, $noteId)
 	{

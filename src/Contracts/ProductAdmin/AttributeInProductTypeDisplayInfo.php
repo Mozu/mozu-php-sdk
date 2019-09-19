@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
-/**
-*	Properties for the intended view of the product attribute in the storefront.
-*/
 class AttributeInProductTypeDisplayInfo
 {
-	/**
-	*Defines the intended display of this attribute in the storefront. Options include Drop Down, Image Picker, and Radio Buttons.
-	*/
-	public $displayIntention;
+		public $displayIntention;
 
 }
 

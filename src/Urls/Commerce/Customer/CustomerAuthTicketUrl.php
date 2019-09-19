@@ -19,7 +19,7 @@ class CustomerAuthTicketUrl  {
 
 	/**
 		* Get Resource Url for CreateAnonymousShopperAuthTicket
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function createAnonymousShopperAuthTicketUrl($responseFields)
@@ -32,7 +32,7 @@ class CustomerAuthTicketUrl  {
 	
 	/**
 		* Get Resource Url for CreateUserAuthTicket
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function createUserAuthTicketUrl($responseFields)
@@ -45,8 +45,8 @@ class CustomerAuthTicketUrl  {
 	
 	/**
 		* Get Resource Url for RefreshUserAuthTicket
-		* @param string $refreshToken Alphanumeric string used for access tokens. This token refreshes access for accounts by generating a new developer or application account authentication ticket after an access token expires.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $refreshToken The refresh token string required to refresh a user's authentication ticket.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function refreshUserAuthTicketUrl($refreshToken, $responseFields)

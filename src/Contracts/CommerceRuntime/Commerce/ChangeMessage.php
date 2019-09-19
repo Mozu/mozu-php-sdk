@@ -24,100 +24,49 @@ class ChangeMessage
 	*/
 	public $amount;
 
-	/**
-	*Unique identifier of an app available in your  tenant or within  Dev Center. This ID is unique across all apps installed, initialized, and enabled in the  and those in development through the Dev Center Console.
-	*/
-	public $appId;
+		public $appId;
 
-	/**
-	*The application's key.
-	*/
-	public $appKey;
+		public $appKey;
 
-	/**
-	*The application's name.
-	*/
-	public $appName;
+		public $appName;
 
-	/**
-	*The unique identifier of the API request associated with the event action, which might contain multiple actions.
-	*/
-	public $correlationId;
+		public $correlationId;
 
-	/**
-	*Date and time when the entity was created, represented in UTC Date/Time.
-	*/
-	public $createDate;
+		public $createDate;
 
-	/**
-	*Unique identifier of the source property, such as a catalog, discount, order, or email template.For a product field it will be the name of the field.For a category ID, must be a positive integer not greater than 2000000. By default,  auto-generates a category ID when categories are created. If you want to specify an ID during creation (which preserves category link relationships when migrating tenant data from one sandbox to another), you must also include the  query string in the endpoint. For example, . Then, use the  property to specify the desired category ID.For a product attribute it will be the Attribute FQN.For a document, the ID must be specified as a 32 character, case-insensitive, alphanumeric string. You can specify the ID as 32 sequential characters or as groups separated by dashes in the format 8-4-4-4-12. For example, or.For email templates, the ID must be one of the following values:			
-	*/
-	public $id;
+		public $id;
 
-	/**
-	*Identifier for the object associated with the change message, which can represent a cart, cart item, or an order.
-	*/
-	public $identifier;
+		public $identifier;
 
-	/**
-	*The text of the change message, such as "This product is no longer available." System-supplied and read-only.
-	*/
-	public $message;
+		public $message;
 
-	/**
-	*Metadata content for entities, used by document lists, document type lists, document type, views, entity lists, and list views.
-	*/
-	public $metadata;
+		public $metadata;
 
-	/**
-	*The new value of the object affected by the change, such as the new price of the product. System-supplied and read-only.
-	*/
-	public $newValue;
+		public $newValue;
 
-	/**
-	*The prior value of the object affected by the change, such as the price of the product when it was added to the cart. System-supplied and read-only.
-	*/
-	public $oldValue;
+		public $oldValue;
 
-	/**
-	*The text that appears on the subject line of the message, such as "The product price has changed."
-	*/
-	public $subject;
+		public $subject;
 
-	/**
-	*Represents the type of object affected by the change, such as Cart Item or Product. System-supplied and read-only.
-	*/
-	public $subjectType;
+		public $subjectType;
 
 	/**
 	*If true, the change associated with the message executed successfully.
 	*/
 	public $success;
 
-	/**
-	*The user's first name.
-	*/
-	public $userFirstName;
+		public $userFirstName;
 
 	/**
-	*Unique identifier of the customer account (shopper or system user). System-supplied and read-only. If the shopper user is anonymous, the user ID represents a system-generated user ID string.
+	*The unique identifier of the user who initiated the change.
 	*/
 	public $userId;
 
-	/**
-	*The user's last name.
-	*/
-	public $userLastName;
+		public $userLastName;
 
-	/**
-	*The user type (e.g. Shopper, Admin, etc.).
-	*/
-	public $userScopeType;
+		public $userScopeType;
 
-	/**
-	*The action associated with this message. For example, if the price of a product changes, the verb could be "Increased" or "Decreased". If the product is no longer available, the verb could be "Invalidated". System-supplied and read-only.
-	*/
-	public $verb;
+		public $verb;
 
 }
 

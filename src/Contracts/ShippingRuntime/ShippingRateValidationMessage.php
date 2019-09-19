@@ -19,20 +19,11 @@ namespace Mozu\Api\Contracts\ShippingRuntime;
 */
 class ShippingRateValidationMessage
 {
-	/**
-	*URL displayed with the shipping validation message that links to help information.
-	*/
-	public $helpLink;
+		public $helpLink;
 
-	/**
-	*The text of the change message, such as "This product is no longer available." System-supplied and read-only.
-	*/
-	public $message;
+		public $message;
 
-	/**
-	*The severity level of validation failures for shipping rates and products.
-	*/
-	public $severity;
+		public $severity;
 
 }
 

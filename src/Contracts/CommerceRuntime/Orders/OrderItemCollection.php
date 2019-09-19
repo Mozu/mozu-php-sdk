@@ -19,15 +19,9 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Orders;
 */
 class OrderItemCollection
 {
-	/**
-	*The number of results listed in the query collection, represented by a signed 64-bit (8-byte) integer. This value is system-supplied and read-only.
-	*/
-	public $totalCount;
+		public $totalCount;
 
-	/**
-	*An array list of objects in the returned collection.
-	*/
-	public $items;
+		public $items;
 
 }
 

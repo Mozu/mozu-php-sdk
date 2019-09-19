@@ -17,14 +17,14 @@ use Mozu\Api\Urls\Commerce\Catalog\Admin\Couponsets\AssignedDiscountUrl;
 
 
 /**
-* Use the AssignedDiscounts resource to manage the discounts assigned to coupon sets.
+* 
 */
 class AssignedDiscountClient {
 
 	/**
-	* Retrieves the discountIds of any assigned discounts for the specified coupon set.
+	* 
 	*
-	* @param string $couponSetCode The unique identifier of the coupon set.
+	* @param string $couponSetCode 
 	* @return MozuClient
 	*/
 	public static function getAssignedDiscountsClient($couponSetCode)
@@ -37,10 +37,11 @@ class AssignedDiscountClient {
 	}
 	
 	/**
-	* Assigns or associates an existing discount to a specified coupon set. Use the couponSetCode parameter to specify the coupon set.
+	* 
 	*
-	* @param string $couponSetCode The unique identifier of the coupon set.
-	* @param AssignedDiscount $assignedDiscount The details of the discount assigned to the coupon set.
+	* @param string $couponSetCode 
+	* @param AssignedDiscount $assignedDiscount 
+	* @return MozuClient
 	*/
 	public static function assignDiscountClient($assignedDiscount, $couponSetCode)
 	{
@@ -52,10 +53,11 @@ class AssignedDiscountClient {
 	}
 	
 	/**
-	* Unassigns or disassociates the specified discount with the specified coupon set.
+	* 
 	*
-	* @param string $couponSetCode The unique identifier of the coupon set.
-	* @param int $discountId discountId parameter description DOCUMENT_HERE 
+	* @param string $couponSetCode 
+	* @param int $discountId 
+	* @return MozuClient
 	*/
 	public static function unAssignDiscountClient($couponSetCode, $discountId)
 	{

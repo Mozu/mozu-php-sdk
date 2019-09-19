@@ -22,9 +22,9 @@ use Mozu\Api\Urls\Commerce\Settings\CheckoutSettingsUrl;
 class CheckoutSettingsClient {
 
 	/**
-	* Retrieves all checkout settings defined for the site including payment settings (payment gateway ID and credentials), shopper checkout settings (login requirement or guest mode and custom attributes), and order processing settings (when payment is authorized and captured plus any custom attributes).
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getCheckoutSettingsClient($responseFields =  null)

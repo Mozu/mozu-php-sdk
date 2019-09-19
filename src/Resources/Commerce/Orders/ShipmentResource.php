@@ -33,10 +33,10 @@ class ShipmentResource {
 
 
 	/**
-	* Retrieves the details of the order shipment specified in the request.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $orderId Unique identifier of the order associated with the shipment to retrieve.
+	* @param string $responseFields 
 	* @param string $shipmentId Unique identifier of the shipment to retrieve.
 	* @return Shipment 
 	* @deprecated deprecated since version 1.17
@@ -51,10 +51,10 @@ class ShipmentResource {
 	}
 	
 /**
-	* Retrieves the details of the order shipment specified in the request.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $orderId Unique identifier of the order associated with the shipment to retrieve.
+	* @param string $responseFields 
 	* @param string $shipmentId Unique identifier of the shipment to retrieve.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -67,10 +67,10 @@ class ShipmentResource {
 	}
 	
 	/**
-	* Retrieves the available shipping methods applicable to the order. Typically used to display available shipping method options on the checkout page.
+	* 
 	*
-	* @param bool $draft If true, retrieve the draft version of the order, which might include uncommitted changes to the order or its components.
-	* @param string $orderId Unique identifier of the order.
+	* @param bool $draft 
+	* @param string $orderId Unique identifier of the order for the available shipment methods being retrieved.
 	* @return array|ShippingRate 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -84,10 +84,10 @@ class ShipmentResource {
 	}
 	
 /**
-	* Retrieves the available shipping methods applicable to the order. Typically used to display available shipping method options on the checkout page.
+	* 
 	*
-	* @param bool $draft If true, retrieve the draft version of the order, which might include uncommitted changes to the order or its components.
-	* @param string $orderId Unique identifier of the order.
+	* @param bool $draft 
+	* @param string $orderId Unique identifier of the order for the available shipment methods being retrieved.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getAvailableShipmentMethodsAsync($orderId, $draft =  null)
@@ -99,9 +99,9 @@ class ShipmentResource {
 	}
 	
 	/**
-	* Creates a shipment from one or more package associated with an order and assign a label and tracking number to an order shipment.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
+	* @param string $orderId Unique identifier of the order for this shipment.
 	* @param array|string $packageIds List of unique identifiers for each package associated with this shipment. Not all packages must belong to the same shipment.
 	* @return array|Package 
 	* @deprecated deprecated since version 1.17
@@ -116,9 +116,9 @@ class ShipmentResource {
 	}
 	
 /**
-	* Creates a shipment from one or more package associated with an order and assign a label and tracking number to an order shipment.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
+	* @param string $orderId Unique identifier of the order for this shipment.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function createPackageShipmentsAsync($packageIds, $orderId)
@@ -130,10 +130,143 @@ class ShipmentResource {
 	}
 	
 	/**
-	* Deletes the shipment specified in the request.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $shipmentId Unique identifier of the shipment to retrieve.
+	* @param string $orderId 
+	* @param string $responseFields 
+	* @param int $shipmentNumber 
+	* @param ShipmentAdjustment $shipmentAdjustment 
+	* @return Shipment 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function updateShipmentAdjustments($shipmentAdjustment, $orderId, $shipmentNumber, $responseFields =  null)
+	{
+		$mozuClient = ShipmentClient::updateShipmentAdjustmentsClient($shipmentAdjustment, $orderId, $shipmentNumber, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* 
+	*
+	* @param string $orderId 
+	* @param string $responseFields 
+	* @param int $shipmentNumber 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function updateShipmentAdjustmentsAsync($shipmentAdjustment, $orderId, $shipmentNumber, $responseFields =  null)
+	{
+		$mozuClient = ShipmentClient::updateShipmentAdjustmentsClient($shipmentAdjustment, $orderId, $shipmentNumber, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param int $itemId 
+	* @param string $responseFields 
+	* @param int $shipmentNumber 
+	* @param ShipmentItemAdjustment $shipmentItemAdjustment 
+	* @return Shipment 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function updateShipmentItem($shipmentItemAdjustment, $shipmentNumber, $itemId, $responseFields =  null)
+	{
+		$mozuClient = ShipmentClient::updateShipmentItemClient($shipmentItemAdjustment, $shipmentNumber, $itemId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* 
+	*
+	* @param int $itemId 
+	* @param string $responseFields 
+	* @param int $shipmentNumber 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function updateShipmentItemAsync($shipmentItemAdjustment, $shipmentNumber, $itemId, $responseFields =  null)
+	{
+		$mozuClient = ShipmentClient::updateShipmentItemClient($shipmentItemAdjustment, $shipmentNumber, $itemId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $responseFields 
+	* @param int $shipmentNumber 
+	* @param RepriceShipmentObject $repriceShipment 
+	* @return Shipment 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function repriceShipment($repriceShipment, $shipmentNumber, $responseFields =  null)
+	{
+		$mozuClient = ShipmentClient::repriceShipmentClient($repriceShipment, $shipmentNumber, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* 
+	*
+	* @param string $responseFields 
+	* @param int $shipmentNumber 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function repriceShipmentAsync($repriceShipment, $shipmentNumber, $responseFields =  null)
+	{
+		$mozuClient = ShipmentClient::repriceShipmentClient($repriceShipment, $shipmentNumber, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param SplitShipmentsObject $splitShipments 
+	* @return array|Shipment 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function splitShipments($splitShipments)
+	{
+		$mozuClient = ShipmentClient::splitShipmentsClient($splitShipments);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* 
+	*
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function splitShipmentsAsync($splitShipments)
+	{
+		$mozuClient = ShipmentClient::splitShipmentsClient($splitShipments);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $orderId Unique identifier of the order to cancel shipment.
+	* @param string $shipmentId Unique identifier of the shipment to cancel.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteShipment($orderId, $shipmentId)
@@ -141,14 +274,15 @@ class ShipmentResource {
 		$mozuClient = ShipmentClient::deleteShipmentClient($orderId, $shipmentId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Deletes the shipment specified in the request.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $shipmentId Unique identifier of the shipment to retrieve.
+	* @param string $orderId Unique identifier of the order to cancel shipment.
+	* @param string $shipmentId Unique identifier of the shipment to cancel.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteShipmentAsync($orderId, $shipmentId)

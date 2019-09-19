@@ -20,7 +20,7 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class BundledProduct
 {
 	/**
-	*List of supported types of fulfillment for the product or variation. The types include direct ship, in-store pickup, or both.
+	*Indicates the fulfillment types that the product supports.
 	*/
 	public $fulfillmentTypesSupported;
 
@@ -30,32 +30,32 @@ class BundledProduct
 	public $productCode;
 
 	/**
-	*The name of the product that represents a line item in a taxable order or product bundle.
+	*The read-only name of the component in a bundled product.
 	*/
 	public $productName;
 
 	/**
-	*The specified quantity of objects and items. This property is used for numerous object types including products, options, components within a product bundle, cart and order items, returned items, shipping line items, items in a digital product. and items associated with types and reservations.
+	*The quantity of an individual component product in a bundle. For example, if a product bundle represents a 10-pack of socks, the quantity value for the bundled product would be 10.
 	*/
 	public $quantity;
 
 	/**
-	*Height of a package or bundle package in imperial units of feet and inches.
+	*Height of the bundle package in imperial units of feet and inches.
 	*/
 	public $packageHeight;
 
 	/**
-	*Length of a package or bundle package in imperial units of feet and inches.
+	*Length of the bundle package in imperial units of feet and inches.
 	*/
 	public $packageLength;
 
 	/**
-	*Weight of a package or bundle package in imperial units of pounds and ounces.
+	*Weight of the bundle package in imperial units of pounds and ounces.
 	*/
 	public $packageWeight;
 
 	/**
-	*Width of a package or bundle package in imperial units of feet and inches.
+	*Width of the bundle package in imperial units of feet and inches.
 	*/
 	public $packageWidth;
 

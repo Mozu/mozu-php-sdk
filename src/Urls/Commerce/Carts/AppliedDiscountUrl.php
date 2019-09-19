@@ -19,9 +19,9 @@ class AppliedDiscountUrl  {
 
 	/**
 		* Get Resource Url for ApplyCoupon
-		* @param string $cartId Identifier of the cart to delete.
-		* @param string $couponCode Code associated with the coupon to remove from the cart.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $cartId Unique identifier of the cart to which to apply the coupon.
+		* @param string $couponCode Code associated with the coupon to apply to the cart.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function applyCouponUrl($cartId, $couponCode, $responseFields)
@@ -36,7 +36,7 @@ class AppliedDiscountUrl  {
 	
 	/**
 		* Get Resource Url for RemoveCoupons
-		* @param string $cartId Identifier of the cart to delete.
+		* @param string $cartId Unique identifier of the cart.
 		* @return string Resource Url
 	*/
 	public static function removeCouponsUrl($cartId)
@@ -49,7 +49,7 @@ class AppliedDiscountUrl  {
 	
 	/**
 		* Get Resource Url for RemoveCoupon
-		* @param string $cartId Identifier of the cart to delete.
+		* @param string $cartId Unique identifier of the cart.
 		* @param string $couponCode Code associated with the coupon to remove from the cart.
 		* @return string Resource Url
 	*/

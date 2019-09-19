@@ -19,10 +19,7 @@ namespace Mozu\Api\Contracts\Customer;
 */
 class AddressValidationResponse
 {
-	/**
-	*Array list of possible valid address matches based on the entry supplied in the request.
-	*/
-	public $addressCandidates;
+		public $addressCandidates;
 
 }
 

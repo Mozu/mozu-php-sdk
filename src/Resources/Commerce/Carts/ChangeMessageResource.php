@@ -33,9 +33,9 @@ class ChangeMessageResource {
 
 
 	/**
-	* Retrieves the messages associated with the current shopper's cart.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return CartChangeMessageCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -49,9 +49,9 @@ class ChangeMessageResource {
 	}
 	
 /**
-	* Retrieves the messages associated with the current shopper's cart.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getMessagesAsync($responseFields =  null)
@@ -63,8 +63,9 @@ class ChangeMessageResource {
 	}
 	
 	/**
-	* Deletes all messages associated with the cart of the current shopper.
+	* 
 	*
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function removeAllMessages()
@@ -72,11 +73,12 @@ class ChangeMessageResource {
 		$mozuClient = ChangeMessageClient::removeAllMessagesClient();
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Deletes all messages associated with the cart of the current shopper.
+	* 
 	*
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -89,9 +91,10 @@ class ChangeMessageResource {
 	}
 	
 	/**
-	* Removes a single message associated with the cart of the current shopper.
+	* 
 	*
 	* @param string $messageId Identifier of the message to remove from the cart.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function removeMessage($messageId)
@@ -99,11 +102,12 @@ class ChangeMessageResource {
 		$mozuClient = ChangeMessageClient::removeMessageClient($messageId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Removes a single message associated with the cart of the current shopper.
+	* 
 	*
 	* @param string $messageId Identifier of the message to remove from the cart.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException

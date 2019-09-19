@@ -19,8 +19,8 @@ class TenantUrl  {
 
 	/**
 		* Get Resource Url for GetTenant
-		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param int $tenantId Unique identifier of the Mozu tenant.
+		* @param string $responseFields 
+		* @param int $tenantId 
 		* @return string Resource Url
 	*/
 	public static function getTenantUrl($responseFields, $tenantId)

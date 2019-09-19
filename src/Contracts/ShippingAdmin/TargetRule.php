@@ -14,30 +14,15 @@ namespace Mozu\Api\Contracts\ShippingAdmin;
 
 
 
-/**
-*	Mozu.ShippingAdmin.Contracts.TargetRule ApiType DOCUMENT_HERE 
-*/
 class TargetRule
 {
-	/**
-	*code ApiType DOCUMENT_HERE 
-	*/
-	public $code;
+		public $code;
 
-	/**
-	*The localized description in text for the object, displayed per the locale code. For example, descriptions are used for product descriptions, attributes, and pre-authorization transaction types.
-	*/
-	public $description;
+		public $description;
 
-	/**
-	*Properties of the domain that the tenant is associated with such as the domain name, the zone string, audit information (system-supplied and read-only), assignment data, and whether or not the domain is primary or requires a SSL for authentication.
-	*/
-	public $domain;
+		public $domain;
 
-	/**
-	*expression ApiType DOCUMENT_HERE 
-	*/
-	public $expression;
+		public $expression;
 
 }
 

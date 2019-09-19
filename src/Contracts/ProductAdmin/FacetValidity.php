@@ -15,19 +15,13 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 /**
-*	Describes whether a facet is currently valid and the reason. A facet may become invalid if the source data is changed in some ways (for example if the category tree structure is changed).
+*	System-supplied and read only parameter that validates a facet for its associated category.
 */
 class FacetValidity
 {
-	/**
-	*Indicates if the facet is currently valid.
-	*/
-	public $isValid;
+		public $isValid;
 
-	/**
-	*A code indicating the reason why a facet is invalid.
-	*/
-	public $reasonCode;
+		public $reasonCode;
 
 }
 

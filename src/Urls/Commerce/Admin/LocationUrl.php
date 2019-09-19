@@ -19,11 +19,11 @@ class LocationUrl  {
 
 	/**
 		* Get Resource Url for GetLocations
-		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
-		* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+		* @param string $filter 
+		* @param int $pageSize 
+		* @param string $responseFields 
+		* @param string $sortBy 
+		* @param int $startIndex 
 		* @return string Resource Url
 	*/
 	public static function getLocationsUrl($filter, $pageSize, $responseFields, $sortBy, $startIndex)
@@ -40,8 +40,8 @@ class LocationUrl  {
 	
 	/**
 		* Get Resource Url for GetLocation
-		* @param string $locationCode The unique, user-defined code that identifies a location. 
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $locationCode The merchant-defined code of the location to retrieve.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getLocationUrl($locationCode, $responseFields)
@@ -55,7 +55,7 @@ class LocationUrl  {
 	
 	/**
 		* Get Resource Url for AddLocation
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function addLocationUrl($responseFields)
@@ -68,8 +68,8 @@ class LocationUrl  {
 	
 	/**
 		* Get Resource Url for UpdateLocation
-		* @param string $locationCode The unique, user-defined code that identifies a location. 
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $locationCode The merchant-defined code associated with the location to update.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updateLocationUrl($locationCode, $responseFields)
@@ -83,7 +83,7 @@ class LocationUrl  {
 	
 	/**
 		* Get Resource Url for DeleteLocation
-		* @param string $locationCode The unique, user-defined code that identifies a location. 
+		* @param string $locationCode The merchant-defined code of the location to delete.
 		* @return string Resource Url
 	*/
 	public static function deleteLocationUrl($locationCode)

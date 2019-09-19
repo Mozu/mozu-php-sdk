@@ -22,9 +22,9 @@ use Mozu\Api\Urls\Commerce\Catalog\Admin\MasterCatalogUrl;
 class MasterCatalogClient {
 
 	/**
-	* Retrieve the details of all master catalog associated with a tenant.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getMasterCatalogsClient($responseFields =  null)
@@ -37,10 +37,10 @@ class MasterCatalogClient {
 	}
 	
 	/**
-	* Retrieve the details of the master catalog specified in the request.
+	* 
 	*
-	* @param int $masterCatalogId The unique identifier of the master catalog associated with the entity.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $masterCatalogId 
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getMasterCatalogClient($masterCatalogId, $responseFields =  null)
@@ -53,11 +53,11 @@ class MasterCatalogClient {
 	}
 	
 	/**
-	* Updates the product publishing mode for the master catalog specified in the request.
+	* 
 	*
 	* @param int $masterCatalogId 
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param MasterCatalog $masterCatalog Properties of a master product catalog defined for a tenant. All catalogs and sites associated with a master catalog share product definitions.
+	* @param string $responseFields 
+	* @param MasterCatalog $masterCatalog Properties of the master catalog to update, which consists of the product publishing mode. Possible values are "Pending" which saves product updates in draft mode until they are published, and "Live" which publishes all product changes immediately.
 	* @return MozuClient
 	*/
 	public static function updateMasterCatalogClient($masterCatalog, $masterCatalogId, $responseFields =  null)

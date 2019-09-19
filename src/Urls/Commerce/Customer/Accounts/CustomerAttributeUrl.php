@@ -19,34 +19,37 @@ class CustomerAttributeUrl  {
 
 	/**
 		* Get Resource Url for GetAccountAttribute
-		* @param int $accountId Unique identifier of the customer account.
-		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param int $accountId Identifier of the customer account associated with the attribute to retrieve.
+		* @param string $attributeFQN 
+		* @param string $responseFields 
+		* @param string $userId 
 		* @return string Resource Url
 	*/
-	public static function getAccountAttributeUrl($accountId, $attributeFQN, $responseFields)
+	public static function getAccountAttributeUrl($accountId, $attributeFQN, $responseFields, $userId)
 	{
-		$url = "/api/commerce/customer/accounts/{accountId}/attributes/{attributeFQN}?responseFields={responseFields}";
+		$url = "/api/commerce/customer/accounts/{accountId}/attributes/{attributeFQN}?userId={userId}&responseFields={responseFields}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
 		$url = $mozuUrl->formatUrl("accountId", $accountId);
 		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
 		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("userId", $userId);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetAccountAttributes
-		* @param int $accountId Unique identifier of the customer account.
+		* @param int $accountId Identifier of the customer account associated with the attributes to retrieve.
 		* @param string $filter 
 		* @param int $pageSize 
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @param string $sortBy 
 		* @param int $startIndex 
+		* @param string $userId 
 		* @return string Resource Url
 	*/
-	public static function getAccountAttributesUrl($accountId, $filter, $pageSize, $responseFields, $sortBy, $startIndex)
+	public static function getAccountAttributesUrl($accountId, $filter, $pageSize, $responseFields, $sortBy, $startIndex, $userId)
 	{
-		$url = "/api/commerce/customer/accounts/{accountId}/attributes?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}&responseFields={responseFields}";
+		$url = "/api/commerce/customer/accounts/{accountId}/attributes?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&filter={filter}&userId={userId}&responseFields={responseFields}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
 		$url = $mozuUrl->formatUrl("accountId", $accountId);
 		$url = $mozuUrl->formatUrl("filter", $filter);
@@ -54,53 +57,60 @@ class CustomerAttributeUrl  {
 		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
 		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
+		$url = $mozuUrl->formatUrl("userId", $userId);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for AddAccountAttribute
 		* @param int $accountId Unique identifier of the customer account.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
+		* @param string $userId 
 		* @return string Resource Url
 	*/
-	public static function addAccountAttributeUrl($accountId, $responseFields)
+	public static function addAccountAttributeUrl($accountId, $responseFields, $userId)
 	{
-		$url = "/api/commerce/customer/accounts/{accountId}/attributes?responseFields={responseFields}";
+		$url = "/api/commerce/customer/accounts/{accountId}/attributes?userId={userId}&responseFields={responseFields}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
 		$url = $mozuUrl->formatUrl("accountId", $accountId);
 		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("userId", $userId);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for UpdateAccountAttribute
-		* @param int $accountId Unique identifier of the customer account.
-		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param int $accountId Identifier of the customer account associated with the attribute.
+		* @param string $attributeFQN 
+		* @param string $responseFields 
+		* @param string $userId 
 		* @return string Resource Url
 	*/
-	public static function updateAccountAttributeUrl($accountId, $attributeFQN, $responseFields)
+	public static function updateAccountAttributeUrl($accountId, $attributeFQN, $responseFields, $userId)
 	{
-		$url = "/api/commerce/customer/accounts/{accountId}/attributes/{attributeFQN}?responseFields={responseFields}";
+		$url = "/api/commerce/customer/accounts/{accountId}/attributes/{attributeFQN}?userId={userId}&responseFields={responseFields}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"PUT", false) ;
 		$url = $mozuUrl->formatUrl("accountId", $accountId);
 		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
 		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("userId", $userId);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for DeleteAccountAttribute
 		* @param int $accountId Unique identifier of the customer account.
-		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+		* @param string $attributeFQN 
+		* @param string $userId 
 		* @return string Resource Url
 	*/
-	public static function deleteAccountAttributeUrl($accountId, $attributeFQN)
+	public static function deleteAccountAttributeUrl($accountId, $attributeFQN, $userId)
 	{
-		$url = "/api/commerce/customer/accounts/{accountId}/attributes/{attributeFQN}";
+		$url = "/api/commerce/customer/accounts/{accountId}/attributes/{attributeFQN}?userId={userId}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"DELETE", false) ;
 		$url = $mozuUrl->formatUrl("accountId", $accountId);
 		$url = $mozuUrl->formatUrl("attributeFQN", $attributeFQN);
+		$url = $mozuUrl->formatUrl("userId", $userId);
 		return $mozuUrl;
 	}
 	

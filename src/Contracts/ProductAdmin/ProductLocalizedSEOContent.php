@@ -19,35 +19,17 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 */
 class ProductLocalizedSEOContent
 {
-	/**
-	*Language used for the entity. Currently, only "en-US" is supported.
-	*/
-	public $localeCode;
+		public $localeCode;
 
-	/**
-	*Description defined for metadata, used to interally manage data, in the language specified by the `localeCode`. This content is used by categories, products, localized content, and SEO content.
-	*/
-	public $metaTagDescription;
+		public $metaTagDescription;
 
-	/**
-	*Keywords defined for metadata, used to internally manage data, in the language specified by the `localeCode`. Keywords are used by content for categories, products, localized content, and SEO content.
-	*/
-	public $metaTagKeywords;
+		public $metaTagKeywords;
 
-	/**
-	*Title defined for metadata, used to internally manage data, in the language specified by the `localeCode`. Titles are used by content for categories, products, localized content, and SEO content.
-	*/
-	public $metaTagTitle;
+		public $metaTagTitle;
 
-	/**
-	*The search engine optimized, human-readable portion of the URL. The content is localized according to the product's `localeCode`.
-	*/
-	public $seoFriendlyUrl;
+		public $seoFriendlyUrl;
 
-	/**
-	*Customizes the HTML title tag within the header section of the product details page for the specified product.
-	*/
-	public $titleTagTitle;
+		public $titleTagTitle;
 
 }
 

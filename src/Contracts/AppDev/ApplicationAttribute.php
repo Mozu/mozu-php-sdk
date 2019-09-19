@@ -14,55 +14,25 @@ namespace Mozu\Api\Contracts\AppDev;
 
 
 
-/**
-*	This property is not exposed in documentation.
-*/
 class ApplicationAttribute
 {
-	/**
-	*Comma delimited list of attribute codes.
-	*/
-	public $attributeCodes;
+		public $attributeCodes;
 
-	/**
-	*json representation of attribute definitions
-	*/
-	public $attributeJson;
+		public $attributeJson;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationAttribute isAppliedToBase ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $isAppliedToBase;
+		public $isAppliedToBase;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationAttribute packageId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $packageId;
+		public $packageId;
 
-	/**
-	*Will contain ProductTypeCollection if Product, else AttributeSet
-	*/
-	public $productTypeJson;
+		public $productTypeJson;
 
-	/**
-	*Source Tenant Id
-	*/
-	public $sourceTenantId;
+		public $sourceTenantId;
 
-	/**
-	*Source Tenant Name
-	*/
-	public $sourceTenantName;
+		public $sourceTenantName;
 
-	/**
-	*Customer, Order, or Product
-	*/
-	public $subsystem;
+		public $subsystem;
 
-	/**
-	*Collection of attributes that may be paged list or a list, depending on the usage per object and API type. 
-	*/
-	public $attributes;
+		public $attributes;
 
 }
 

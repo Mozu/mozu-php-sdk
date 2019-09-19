@@ -33,9 +33,9 @@ class MasterCatalogResource {
 
 
 	/**
-	* Retrieve the details of all master catalog associated with a tenant.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return MasterCatalogCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -49,9 +49,9 @@ class MasterCatalogResource {
 	}
 	
 /**
-	* Retrieve the details of all master catalog associated with a tenant.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getMasterCatalogsAsync($responseFields =  null)
@@ -63,10 +63,10 @@ class MasterCatalogResource {
 	}
 	
 	/**
-	* Retrieve the details of the master catalog specified in the request.
+	* 
 	*
-	* @param int $masterCatalogId The unique identifier of the master catalog associated with the entity.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $masterCatalogId 
+	* @param string $responseFields 
 	* @return MasterCatalog 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -80,10 +80,10 @@ class MasterCatalogResource {
 	}
 	
 /**
-	* Retrieve the details of the master catalog specified in the request.
+	* 
 	*
-	* @param int $masterCatalogId The unique identifier of the master catalog associated with the entity.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $masterCatalogId 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getMasterCatalogAsync($masterCatalogId, $responseFields =  null)
@@ -95,11 +95,11 @@ class MasterCatalogResource {
 	}
 	
 	/**
-	* Updates the product publishing mode for the master catalog specified in the request.
+	* 
 	*
 	* @param int $masterCatalogId 
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param MasterCatalog $masterCatalog Properties of a master product catalog defined for a tenant. All catalogs and sites associated with a master catalog share product definitions.
+	* @param string $responseFields 
+	* @param MasterCatalog $masterCatalog Properties of the master catalog to update, which consists of the product publishing mode. Possible values are "Pending" which saves product updates in draft mode until they are published, and "Live" which publishes all product changes immediately.
 	* @return MasterCatalog 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -113,10 +113,10 @@ class MasterCatalogResource {
 	}
 	
 /**
-	* Updates the product publishing mode for the master catalog specified in the request.
+	* 
 	*
 	* @param int $masterCatalogId 
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateMasterCatalogAsync($masterCatalog, $masterCatalogId, $responseFields =  null)

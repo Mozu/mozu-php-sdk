@@ -14,20 +14,11 @@ namespace Mozu\Api\Contracts\Customer;
 
 
 
-/**
-*	A collection of account password information.
-*/
 class AccountPasswordInfoCollection
 {
-	/**
-	*The total number of items in the list.
-	*/
-	public $totalCount;
+		public $totalCount;
 
-	/**
-	*A list of requested items. All returned data is provided in an items array.For a failed request, the returned response may be success with an empty item array.
-	*/
-	public $items;
+		public $items;
 
 }
 

@@ -33,17 +33,18 @@ class CustomerAttributeResource {
 
 
 	/**
-	* Retrieves the contents of an attribute associated with the specified customer account.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $accountId Identifier of the customer account associated with the attribute to retrieve.
+	* @param string $attributeFQN 
+	* @param string $responseFields 
+	* @param string $userId 
 	* @return CustomerAttribute 
 	* @deprecated deprecated since version 1.17
 	*/
-	public function getAccountAttribute($accountId, $attributeFQN, $responseFields =  null)
+	public function getAccountAttribute($accountId, $attributeFQN, $userId =  null, $responseFields =  null)
 	{
-		$mozuClient = CustomerAttributeClient::getAccountAttributeClient($accountId, $attributeFQN, $responseFields);
+		$mozuClient = CustomerAttributeClient::getAccountAttributeClient($accountId, $attributeFQN, $userId, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -51,36 +52,38 @@ class CustomerAttributeResource {
 	}
 	
 /**
-	* Retrieves the contents of an attribute associated with the specified customer account.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $accountId Identifier of the customer account associated with the attribute to retrieve.
+	* @param string $attributeFQN 
+	* @param string $responseFields 
+	* @param string $userId 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
-	public function getAccountAttributeAsync($accountId, $attributeFQN, $responseFields =  null)
+	public function getAccountAttributeAsync($accountId, $attributeFQN, $userId =  null, $responseFields =  null)
 	{
-		$mozuClient = CustomerAttributeClient::getAccountAttributeClient($accountId, $attributeFQN, $responseFields);
+		$mozuClient = CustomerAttributeClient::getAccountAttributeClient($accountId, $attributeFQN, $userId, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 
 	}
 	
 	/**
-	* Retrieves the list of customer account attributes.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
+	* @param int $accountId Identifier of the customer account associated with the attributes to retrieve.
 	* @param string $filter 
 	* @param int $pageSize 
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @param string $sortBy 
 	* @param int $startIndex 
+	* @param string $userId 
 	* @return CustomerAttributeCollection 
 	* @deprecated deprecated since version 1.17
 	*/
-	public function getAccountAttributes($accountId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
+	public function getAccountAttributes($accountId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $userId =  null, $responseFields =  null)
 	{
-		$mozuClient = CustomerAttributeClient::getAccountAttributesClient($accountId, $startIndex, $pageSize, $sortBy, $filter, $responseFields);
+		$mozuClient = CustomerAttributeClient::getAccountAttributesClient($accountId, $startIndex, $pageSize, $sortBy, $filter, $userId, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -88,36 +91,38 @@ class CustomerAttributeResource {
 	}
 	
 /**
-	* Retrieves the list of customer account attributes.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
+	* @param int $accountId Identifier of the customer account associated with the attributes to retrieve.
 	* @param string $filter 
 	* @param int $pageSize 
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @param string $sortBy 
 	* @param int $startIndex 
+	* @param string $userId 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
-	public function getAccountAttributesAsync($accountId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
+	public function getAccountAttributesAsync($accountId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $userId =  null, $responseFields =  null)
 	{
-		$mozuClient = CustomerAttributeClient::getAccountAttributesClient($accountId, $startIndex, $pageSize, $sortBy, $filter, $responseFields);
+		$mozuClient = CustomerAttributeClient::getAccountAttributesClient($accountId, $startIndex, $pageSize, $sortBy, $filter, $userId, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 
 	}
 	
 	/**
-	* Applies a defined attribute to the customer account specified in the request and assigns a value to the customer attribute.
+	* 
 	*
 	* @param int $accountId Unique identifier of the customer account.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param CustomerAttribute $attribute Properties of an attribute associated with a customer account.
+	* @param string $responseFields 
+	* @param string $userId 
+	* @param CustomerAttribute $attribute The attribute to add to the customer account.
 	* @return CustomerAttribute 
 	* @deprecated deprecated since version 1.17
 	*/
-	public function addAccountAttribute($attribute, $accountId, $responseFields =  null)
+	public function addAccountAttribute($attribute, $accountId, $userId =  null, $responseFields =  null)
 	{
-		$mozuClient = CustomerAttributeClient::addAccountAttributeClient($attribute, $accountId, $responseFields);
+		$mozuClient = CustomerAttributeClient::addAccountAttributeClient($attribute, $accountId, $userId, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -125,33 +130,35 @@ class CustomerAttributeResource {
 	}
 	
 /**
-	* Applies a defined attribute to the customer account specified in the request and assigns a value to the customer attribute.
+	* 
 	*
 	* @param int $accountId Unique identifier of the customer account.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
+	* @param string $userId 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
-	public function addAccountAttributeAsync($attribute, $accountId, $responseFields =  null)
+	public function addAccountAttributeAsync($attribute, $accountId, $userId =  null, $responseFields =  null)
 	{
-		$mozuClient = CustomerAttributeClient::addAccountAttributeClient($attribute, $accountId, $responseFields);
+		$mozuClient = CustomerAttributeClient::addAccountAttributeClient($attribute, $accountId, $userId, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 
 	}
 	
 	/**
-	* Updates one or more details of a customer account attribute.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param CustomerAttribute $attribute Properties of an attribute associated with a customer account.
+	* @param int $accountId Identifier of the customer account associated with the attribute.
+	* @param string $attributeFQN 
+	* @param string $responseFields 
+	* @param string $userId 
+	* @param CustomerAttribute $attribute Properties of the customer account attribute to update.
 	* @return CustomerAttribute 
 	* @deprecated deprecated since version 1.17
 	*/
-	public function updateAccountAttribute($attribute, $accountId, $attributeFQN, $responseFields =  null)
+	public function updateAccountAttribute($attribute, $accountId, $attributeFQN, $userId =  null, $responseFields =  null)
 	{
-		$mozuClient = CustomerAttributeClient::updateAccountAttributeClient($attribute, $accountId, $attributeFQN, $responseFields);
+		$mozuClient = CustomerAttributeClient::updateAccountAttributeClient($attribute, $accountId, $attributeFQN, $userId, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -159,46 +166,51 @@ class CustomerAttributeResource {
 	}
 	
 /**
-	* Updates one or more details of a customer account attribute.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $accountId Identifier of the customer account associated with the attribute.
+	* @param string $attributeFQN 
+	* @param string $responseFields 
+	* @param string $userId 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
-	public function updateAccountAttributeAsync($attribute, $accountId, $attributeFQN, $responseFields =  null)
+	public function updateAccountAttributeAsync($attribute, $accountId, $attributeFQN, $userId =  null, $responseFields =  null)
 	{
-		$mozuClient = CustomerAttributeClient::updateAccountAttributeClient($attribute, $accountId, $attributeFQN, $responseFields);
+		$mozuClient = CustomerAttributeClient::updateAccountAttributeClient($attribute, $accountId, $attributeFQN, $userId, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 
 	}
 	
 	/**
-	* Removes the attribute specified in the request from the customer account.
+	* 
 	*
 	* @param int $accountId Unique identifier of the customer account.
-	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param string $attributeFQN 
+	* @param string $userId 
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
-	public function deleteAccountAttribute($accountId, $attributeFQN)
+	public function deleteAccountAttribute($accountId, $attributeFQN, $userId =  null)
 	{
-		$mozuClient = CustomerAttributeClient::deleteAccountAttributeClient($accountId, $attributeFQN);
+		$mozuClient = CustomerAttributeClient::deleteAccountAttributeClient($accountId, $attributeFQN, $userId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Removes the attribute specified in the request from the customer account.
+	* 
 	*
 	* @param int $accountId Unique identifier of the customer account.
-	* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+	* @param string $attributeFQN 
+	* @param string $userId 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
-	public function deleteAccountAttributeAsync($accountId, $attributeFQN)
+	public function deleteAccountAttributeAsync($accountId, $attributeFQN, $userId =  null)
 	{
-		$mozuClient = CustomerAttributeClient::deleteAccountAttributeClient($accountId, $attributeFQN);
+		$mozuClient = CustomerAttributeClient::deleteAccountAttributeClient($accountId, $attributeFQN, $userId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 

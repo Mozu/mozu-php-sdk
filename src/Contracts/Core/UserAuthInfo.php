@@ -19,15 +19,11 @@ namespace Mozu\Api\Contracts\Core;
 */
 class UserAuthInfo
 {
-	/**
-	*The email address of the specified user or the email address associated with the specified entity.
-	*/
-	public $emailAddress;
+		public $emailAddress;
 
-	/**
-	*The write-only password for the customer account.
-	*/
-	public $password;
+		public $password;
+
+		public $userName;
 
 }
 

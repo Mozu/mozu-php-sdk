@@ -19,25 +19,13 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Commerce;
 */
 class CommerceUnitPrice
 {
-	/**
-	*Represents the total price of the line item extended to the shopper. This begins with the Unit Price, then uses any of the following prices if they are defined, in the following order: Override Amount, Sale Amount, List Amount.
-	*/
-	public $extendedAmount;
+		public $extendedAmount;
 
-	/**
-	*The price the item is listed for in the storefront.
-	*/
-	public $listAmount;
+		public $listAmount;
 
-	/**
-	*The override price of the item set by the merchant for a given order.
-	*/
-	public $overrideAmount;
+		public $overrideAmount;
 
-	/**
-	*The sale price set for the item.
-	*/
-	public $saleAmount;
+		public $saleAmount;
 
 }
 

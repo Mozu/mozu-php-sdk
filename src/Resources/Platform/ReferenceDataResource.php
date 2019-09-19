@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* The Reference resource retrieves collections of standards the  system currently supports. This includes content locales, top-level domains, units of measure, countries, currencies, time zones, and shipping or billing address schemas.
+* The Reference resource retrieves collections of standards the Mozu system currently supports. This includes content locales, top-level domains, units of measure, countries, currencies, time zones, and shipping or billing address schemas.
 */
 class ReferenceDataResource {
 
@@ -26,10 +26,10 @@ class ReferenceDataResource {
 
 
 	/**
-	* Retrieves a specific address schema based on the country code provided. This operation allows the creation of custom shipping and billing address fields.
+	* 
 	*
-	* @param string $countryCode The 2-letter geographic code representing the country for the physical or mailing address. Currently limited to the US.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $countryCode The 2-letter country code used to retrieve a specified address schema.
+	* @param string $responseFields 
 	* @return AddressSchema 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -42,10 +42,10 @@ class ReferenceDataResource {
 	}
 	
 /**
-	* Retrieves a specific address schema based on the country code provided. This operation allows the creation of custom shipping and billing address fields.
+	* 
 	*
-	* @param string $countryCode The 2-letter geographic code representing the country for the physical or mailing address. Currently limited to the US.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $countryCode The 2-letter country code used to retrieve a specified address schema.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getAddressSchemaAsync($countryCode =  null, $responseFields =  null)
@@ -56,9 +56,9 @@ class ReferenceDataResource {
 	}
 	
 	/**
-	* Retrieves the entire list of address schemas that the system supports.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return AddressSchemaCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -71,9 +71,9 @@ class ReferenceDataResource {
 	}
 	
 /**
-	* Retrieves the entire list of address schemas that the system supports.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getAddressSchemasAsync($responseFields =  null)
@@ -84,10 +84,10 @@ class ReferenceDataResource {
 	}
 	
 	/**
-	* Retrieves the details of a behavior based on the behavior ID specified in the request.
+	* 
 	*
 	* @param int $behaviorId Unique identifier of the behavior.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Behavior 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -100,10 +100,10 @@ class ReferenceDataResource {
 	}
 	
 /**
-	* Retrieves the details of a behavior based on the behavior ID specified in the request.
+	* 
 	*
 	* @param int $behaviorId Unique identifier of the behavior.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getBehaviorAsync($behaviorId, $responseFields =  null)
@@ -114,10 +114,10 @@ class ReferenceDataResource {
 	}
 	
 	/**
-	* Retrieves the details of the behavior category specified in the request.
+	* 
 	*
-	* @param int $categoryId Unique identifier of the category to modify.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $categoryId Unique identifier of the behavior category.
+	* @param string $responseFields 
 	* @return BehaviorCategory 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -130,10 +130,10 @@ class ReferenceDataResource {
 	}
 	
 /**
-	* Retrieves the details of the behavior category specified in the request.
+	* 
 	*
-	* @param int $categoryId Unique identifier of the category to modify.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $categoryId Unique identifier of the behavior category.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getBehaviorCategoryAsync($categoryId, $responseFields =  null)
@@ -144,9 +144,9 @@ class ReferenceDataResource {
 	}
 	
 	/**
-	* Retrieves the list of behavior categories.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return BehaviorCategoryCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -159,9 +159,9 @@ class ReferenceDataResource {
 	}
 	
 /**
-	* Retrieves the list of behavior categories.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getBehaviorCategoriesAsync($responseFields =  null)
@@ -172,9 +172,9 @@ class ReferenceDataResource {
 	}
 	
 	/**
-	* Retrieves a list of application behaviors.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @param string $userType The user type associated with the behaviors to retrieve.
 	* @return BehaviorCollection 
 	* @deprecated deprecated since version 1.17
@@ -188,9 +188,9 @@ class ReferenceDataResource {
 	}
 	
 /**
-	* Retrieves a list of application behaviors.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @param string $userType The user type associated with the behaviors to retrieve.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -202,9 +202,9 @@ class ReferenceDataResource {
 	}
 	
 	/**
-	* Retrieves the list of content locales the system supports. Content locales indicate the language used and the country where the language is used.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return ContentLocaleCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -217,9 +217,9 @@ class ReferenceDataResource {
 	}
 	
 /**
-	* Retrieves the list of content locales the system supports. Content locales indicate the language used and the country where the language is used.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getContentLocalesAsync($responseFields =  null)
@@ -230,9 +230,9 @@ class ReferenceDataResource {
 	}
 	
 	/**
-	* Retrieves the entire list of countries that the system supports.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return CountryCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -245,9 +245,9 @@ class ReferenceDataResource {
 	}
 	
 /**
-	* Retrieves the entire list of countries that the system supports.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getCountriesAsync($responseFields =  null)
@@ -258,9 +258,9 @@ class ReferenceDataResource {
 	}
 	
 	/**
-	* Retrieves the entire list of countries that the system supports.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return CountryWithStatesCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -273,9 +273,9 @@ class ReferenceDataResource {
 	}
 	
 /**
-	* Retrieves the entire list of countries that the system supports.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getCountriesWithStatesAsync($responseFields =  null)
@@ -286,9 +286,9 @@ class ReferenceDataResource {
 	}
 	
 	/**
-	* Retrieves the entire list of currencies that the system supports.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return CurrencyCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -301,9 +301,9 @@ class ReferenceDataResource {
 	}
 	
 /**
-	* Retrieves the entire list of currencies that the system supports.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getCurrenciesAsync($responseFields =  null)
@@ -314,9 +314,9 @@ class ReferenceDataResource {
 	}
 	
 	/**
-	* Retrieves the entire list of time zones that the system supports.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return TimeZoneCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -329,9 +329,9 @@ class ReferenceDataResource {
 	}
 	
 /**
-	* Retrieves the entire list of time zones that the system supports.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getTimeZonesAsync($responseFields =  null)
@@ -342,9 +342,9 @@ class ReferenceDataResource {
 	}
 	
 	/**
-	* Retrieves the entire list of top-level internet domains that the system supports.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return TopLevelDomainCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -357,9 +357,9 @@ class ReferenceDataResource {
 	}
 	
 /**
-	* Retrieves the entire list of top-level internet domains that the system supports.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getTopLevelDomainsAsync($responseFields =  null)
@@ -370,10 +370,10 @@ class ReferenceDataResource {
 	}
 	
 	/**
-	* Retrieves an array list of all units of measure the system supports.
+	* 
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $filter 
+	* @param string $responseFields 
 	* @return UnitOfMeasureCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -386,10 +386,10 @@ class ReferenceDataResource {
 	}
 	
 /**
-	* Retrieves an array list of all units of measure the system supports.
+	* 
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $filter 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getUnitsOfMeasureAsync($filter =  null, $responseFields =  null)

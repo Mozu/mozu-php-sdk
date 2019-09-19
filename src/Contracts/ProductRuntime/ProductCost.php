@@ -14,20 +14,11 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 
-/**
-*	The cost a client pays the supplier to stock the product.
-*/
 class ProductCost
 {
-	/**
-	*cost ApiType DOCUMENT_HERE 
-	*/
-	public $cost;
+		public $cost;
 
-	/**
-	*The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
-	*/
-	public $productCode;
+		public $productCode;
 
 }
 

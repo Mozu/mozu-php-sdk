@@ -20,7 +20,7 @@ class DeveloperAdminUserAuthTicketUrl  {
 	/**
 		* Get Resource Url for CreateDeveloperUserAuthTicket
 		* @param int $developerAccountId Unique identifier of the developer account.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function createDeveloperUserAuthTicketUrl($developerAccountId, $responseFields)
@@ -35,7 +35,7 @@ class DeveloperAdminUserAuthTicketUrl  {
 	/**
 		* Get Resource Url for RefreshDeveloperAuthTicket
 		* @param int $developerAccountId Unique identifier of the developer account.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function refreshDeveloperAuthTicketUrl($developerAccountId, $responseFields)
@@ -49,7 +49,7 @@ class DeveloperAdminUserAuthTicketUrl  {
 	
 	/**
 		* Get Resource Url for DeleteUserAuthTicket
-		* @param string $refreshToken Alphanumeric string used for access tokens. This token refreshes access for accounts by generating a new developer or application account authentication ticket after an access token expires.
+		* @param string $refreshToken Refresh token string associated with the developer account authentication ticket.
 		* @return string Resource Url
 	*/
 	public static function deleteUserAuthTicketUrl($refreshToken)

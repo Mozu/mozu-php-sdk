@@ -33,7 +33,7 @@ class TaxableTerritoryResource {
 
 
 	/**
-	* Retrieves a list of the taxable territories configured for the site.
+	* 
 	*
 	* @return array|TaxableTerritory 
 	* @deprecated deprecated since version 1.17
@@ -48,7 +48,7 @@ class TaxableTerritoryResource {
 	}
 	
 /**
-	* Retrieves a list of the taxable territories configured for the site.
+	* 
 	*
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -61,10 +61,10 @@ class TaxableTerritoryResource {
 	}
 	
 	/**
-	* Creates a new territory for which to calculate sales tax.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param TaxableTerritory $taxableTerritory Properties of the territory which is subject to sales tax.
+	* @param string $responseFields 
+	* @param TaxableTerritory $taxableTerritory Properties of the taxable territory to create.
 	* @return TaxableTerritory 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -78,9 +78,9 @@ class TaxableTerritoryResource {
 	}
 	
 /**
-	* Creates a new territory for which to calculate sales tax.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function addTaxableTerritoryAsync($taxableTerritory, $responseFields =  null)
@@ -92,9 +92,9 @@ class TaxableTerritoryResource {
 	}
 	
 	/**
-	* Updates one or more taxable territories configured for a site.
+	* 
 	*
-	* @param array|TaxableTerritory $taxableterritories Properties of the territory which is subject to sales tax.
+	* @param array|TaxableTerritory $taxableterritories Properties of the taxable territories to update.
 	* @return array|TaxableTerritory 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -108,7 +108,7 @@ class TaxableTerritoryResource {
 	}
 	
 /**
-	* Updates one or more taxable territories configured for a site.
+	* 
 	*
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/

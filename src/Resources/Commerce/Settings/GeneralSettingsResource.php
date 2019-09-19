@@ -33,9 +33,9 @@ class GeneralSettingsResource {
 
 
 	/**
-	* Retrieve a site's general global settings.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return GeneralSettings 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -49,9 +49,9 @@ class GeneralSettingsResource {
 	}
 	
 /**
-	* Retrieve a site's general global settings.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getGeneralSettingsAsync($responseFields =  null)
@@ -63,10 +63,10 @@ class GeneralSettingsResource {
 	}
 	
 	/**
-	* Updates a site's general global settings.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param GeneralSettings $generalSettings General settings used on the storefront site.
+	* @param string $responseFields 
+	* @param GeneralSettings $generalSettings The properties of the site's general settings to update.
 	* @return GeneralSettings 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -80,9 +80,9 @@ class GeneralSettingsResource {
 	}
 	
 /**
-	* Updates a site's general global settings.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateGeneralSettingsAsync($generalSettings, $responseFields =  null)

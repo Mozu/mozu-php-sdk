@@ -14,60 +14,27 @@ namespace Mozu\Api\Contracts\Customer;
 
 
 
-/**
-*	A list of audit details associated with a specific customer account.
-*/
 class CustomerAuditEntry
 {
-	/**
-	*Applicattion associated with this entry
-	*/
-	public $application;
+		public $application;
 
-	/**
-	*Unique identifer of the customer account. This ID is used to associate numerous types of data and object with the customer account, including orders, returns, wish lists, and in-store credit.
-	*/
-	public $customerAccountId;
+		public $customerAccountId;
 
-	/**
-	*The unique identifier of the audit entry associated with the customer account.
-	*/
-	public $customerAuditEntryId;
+		public $customerAuditEntryId;
 
-	/**
-	*The localized description in text for the object, displayed per the locale code. For example, descriptions are used for product descriptions, attributes, and pre-authorization transaction types.
-	*/
-	public $description;
+		public $description;
 
-	/**
-	*The date the audit entries was created.
-	*/
-	public $entryDate;
+		public $entryDate;
 
-	/**
-	*The unique identifier of the user who created the audit entry.
-	*/
-	public $entryUser;
+		public $entryUser;
 
-	/**
-	*The path of the field value that was changed, for example 
-	*/
-	public $fieldPath;
+		public $fieldPath;
 
-	/**
-	*The field's new value after the audit entry event.
-	*/
-	public $newValue;
+		public $newValue;
 
-	/**
-	*The field's original value before the audit entry event.
-	*/
-	public $oldValue;
+		public $oldValue;
 
-	/**
-	*The site identifier associated with this audit entry.
-	*/
-	public $site;
+		public $site;
 
 }
 

@@ -33,7 +33,7 @@ class LocationTypeResource {
 
 
 	/**
-	* Retrieve a list of all location types defined for the tenant.
+	* 
 	*
 	* @return array|LocationType 
 	* @deprecated deprecated since version 1.17
@@ -48,7 +48,7 @@ class LocationTypeResource {
 	}
 	
 /**
-	* Retrieve a list of all location types defined for the tenant.
+	* 
 	*
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -61,10 +61,10 @@ class LocationTypeResource {
 	}
 	
 	/**
-	* Retrieves the details of the location type specified in the request.
+	* 
 	*
 	* @param string $locationTypeCode The user-defined code that identifies the location type.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return LocationType 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -78,10 +78,10 @@ class LocationTypeResource {
 	}
 	
 /**
-	* Retrieves the details of the location type specified in the request.
+	* 
 	*
 	* @param string $locationTypeCode The user-defined code that identifies the location type.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getLocationTypeAsync($locationTypeCode, $responseFields =  null)
@@ -93,10 +93,10 @@ class LocationTypeResource {
 	}
 	
 	/**
-	* Creates a new location type based on the information specified in the request.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param LocationType $locationType Properties of a type of physical location, such as warehouse or kiosk. Location types enable tenants to group similar locations for filtering and location usage type definition.
+	* @param string $responseFields 
+	* @param LocationType $locationType Properties of the location type to create.
 	* @return LocationType 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -110,9 +110,9 @@ class LocationTypeResource {
 	}
 	
 /**
-	* Creates a new location type based on the information specified in the request.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function addLocationTypeAsync($locationType, $responseFields =  null)
@@ -124,11 +124,11 @@ class LocationTypeResource {
 	}
 	
 	/**
-	* Updates the name of a defined location type.
+	* 
 	*
 	* @param string $locationTypeCode The user-defined code that identifies the location type.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param LocationType $locationType Properties of a type of physical location, such as warehouse or kiosk. Location types enable tenants to group similar locations for filtering and location usage type definition.
+	* @param string $responseFields 
+	* @param LocationType $locationType Properties of the location type to update.
 	* @return LocationType 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -142,10 +142,10 @@ class LocationTypeResource {
 	}
 	
 /**
-	* Updates the name of a defined location type.
+	* 
 	*
 	* @param string $locationTypeCode The user-defined code that identifies the location type.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateLocationTypeAsync($locationType, $locationTypeCode, $responseFields =  null)
@@ -157,9 +157,10 @@ class LocationTypeResource {
 	}
 	
 	/**
-	* Deletes the location type specified in the request.
+	* 
 	*
-	* @param string $locationTypeCode The user-defined code that identifies the location type.
+	* @param string $locationTypeCode User-defined code used to identify the location type.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteLocationType($locationTypeCode)
@@ -167,13 +168,14 @@ class LocationTypeResource {
 		$mozuClient = LocationTypeClient::deleteLocationTypeClient($locationTypeCode);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Deletes the location type specified in the request.
+	* 
 	*
-	* @param string $locationTypeCode The user-defined code that identifies the location type.
+	* @param string $locationTypeCode User-defined code used to identify the location type.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteLocationTypeAsync($locationTypeCode)

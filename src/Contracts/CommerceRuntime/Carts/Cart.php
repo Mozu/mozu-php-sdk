@@ -19,205 +19,99 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Carts;
 */
 class Cart
 {
-	/**
-	*Code that identifies the channel associated with the site for the shopper's created shopping cart, order, and return.
-	*/
-	public $channelCode;
+		public $channelCode;
 
 	/**
-	*Array list of coupon codes associated with a shopping cart and the associated order. These codes are entered by a shopper when proceeding to checkout. 
+	*The coupon codes applied to the cart. When the customer proceeds to checkout, the coupons applied to the cart apply to the order.
 	*/
 	public $couponCodes;
 
-	/**
-	*3-letter ISO 4217 standard global currency code. Currently, only "USD" (US Dollar) is supported.
-	*/
-	public $currencyCode;
+		public $currencyCode;
+
+		public $customerInteractionType;
+
+		public $discountedSubtotal;
+
+		public $discountedTotal;
+
+		public $discountTotal;
+
+		public $expirationDate;
+
+		public $feeTotal;
+
+		public $handlingAmount;
+
+		public $handlingSubTotal;
+
+		public $handlingTaxTotal;
+
+		public $handlingTotal;
+
+		public $id;
+
+		public $itemTaxTotal;
+
+		public $lastValidationDate;
+
+		public $lineItemSubtotalWithOrderAdjustments;
+
+		public $priceListCode;
+
+		public $shippingAmountBeforeDiscountsAndAdjustments;
+
+		public $shippingSubTotal;
+
+		public $shippingTaxTotal;
+
+		public $shippingTotal;
+
+		public $siteId;
+
+		public $subtotal;
+
+		public $taxTotal;
+
+		public $tenantId;
+
+		public $total;
+
+		public $userId;
+
+		public $visitId;
+
+		public $webSessionId;
+
+		public $auditInfo;
+
+		public $cartMessage;
+
+		public $cartMessages;
+
+		public $changeMessages;
+
+		public $data;
+
+		public $discountThresholdMessages;
+
+		public $extendedProperties;
+
+		public $fulfillmentInfo;
 
 	/**
-	*The type of customer interaction used to create this shopping cart. Possible values are Website, Call, Store, or Unknown.
-	*/
-	public $customerInteractionType;
-
-	/**
-	*The aggregate total for all items in the cart, including costs associated with shopper-defined options or extras and any applied discounts.
-	*/
-	public $discountedSubtotal;
-
-	/**
-	*The subtotal of the cart, order, and wishlist items, including any applied discount calculations. Wishlist subtotals may change depending on the length of time, available discounts, and stock amounts of products at the time of review by shoppers.
-	*/
-	public $discountedTotal;
-
-	/**
-	*Estimated amount of discounts applied to all items in the carts and orders. System-supplied and read-only. This value will be available at the wish list, cart item, order item, and wish list item level at a later time.
-	*/
-	public $discountTotal;
-
-	/**
-	*Date and time in UTC format when a discount, credit, wish list, or cart expires. An expired discount no longer can be redeemed. An expired wish list is no longer available. An expired credit can no longer be redeemed for a purchase. Acart becomes inactive and expired based on a system-calculated interval. For example, if an anonymous shopper has 14 days of inactivity, the cart is considered abandoned after that period of inactivity. System-supplied and read-only.
-	*/
-	public $expirationDate;
-
-	/**
-	*The monetary sum of all fees incurred in the cart, order, line item in a cart, or line item in an order. This value is not calculated for wish lists at this time.
-	*/
-	public $feeTotal;
-
-	/**
-	*The combined price for all handling costs calculated together for shipped orders, not for digital or in-store pickup. This includes all handling costs per the product line items and options, excluding taxes and discounts.
-	*/
-	public $handlingAmount;
-
-	/**
-	*The handling fee subtotal included in the cart calculation.
-	*/
-	public $handlingSubTotal;
-
-	/**
-	*Calculated total tax amount for handling costs if the cart/order is subject to sales tax. 
-	*/
-	public $handlingTaxTotal;
-
-	/**
-	*The handling fee total included in the cart calculation.
-	*/
-	public $handlingTotal;
-
-	/**
-	*Unique identifier of the source property, such as a catalog, discount, order, or email template.For a product field it will be the name of the field.For a category ID, must be a positive integer not greater than 2000000. By default,  auto-generates a category ID when categories are created. If you want to specify an ID during creation (which preserves category link relationships when migrating tenant data from one sandbox to another), you must also include the  query string in the endpoint. For example, . Then, use the  property to specify the desired category ID.For a product attribute it will be the Attribute FQN.For a document, the ID must be specified as a 32 character, case-insensitive, alphanumeric string. You can specify the ID as 32 sequential characters or as groups separated by dashes in the format 8-4-4-4-12. For example, or.For email templates, the ID must be one of the following values:			
-	*/
-	public $id;
-
-	/**
-	*The total amount of calculated tax for items, used by carts, orders, and wish lists.
-	*/
-	public $itemTaxTotal;
-
-	/**
-	*The date in UTC Date/Time when the items in the cart were last validated against the site's product catalog. System-supplied and read-only.
-	*/
-	public $lastValidationDate;
-
-	/**
-	*The total charge for the line item with all weighted order level manual adjustments.
-	*/
-	public $lineItemSubtotalWithOrderAdjustments;
-
-	/**
-	*Pricelist code
-	*/
-	public $priceListCode;
-
-	/**
-	*The total shipping amount for the cart before discounts and adjustments.
-	*/
-	public $shippingAmountBeforeDiscountsAndAdjustments;
-
-	/**
-	*The shipping subtotal amount calculated without any applied discounts for line item and entire amounts of carts and orders. This property is not calculated for wish lists at this time.
-	*/
-	public $shippingSubTotal;
-
-	/**
-	*The total amount of tax incurred on the shipping charges in the cart and order. This property is not calculated at this time for wish lists.
-	*/
-	public $shippingTaxTotal;
-
-	/**
-	*The calculated total shipping amount estimated for carts or orders, including tax. This amount is not calculated for wish lists at this time.
-	*/
-	public $shippingTotal;
-
-	/**
-	*Unique identifier of the site.
-	*/
-	public $siteId;
-
-	/**
-	*Estimated amount of the cart or order without sales tax, shipping costs, and other fees. This amount is not calculated for wish lists at this time.
-	*/
-	public $subtotal;
-
-	/**
-	*The total monetary sum of sales tax estimated for a cart or order.
-	*/
-	public $taxTotal;
-
-	/**
-	*Unique identifier of the Mozu tenant.
-	*/
-	public $tenantId;
-
-	/**
-	*Total is used to indicate the monetary, estimated total amount of the cart or order, including items, sales tax, shipping costs, and other fees. Totals are not estimated for wish lists at this time.
-	*/
-	public $total;
-
-	/**
-	*Unique identifier of the customer account (shopper or system user). System-supplied and read-only. If the shopper user is anonymous, the user ID represents a system-generated user ID string.
-	*/
-	public $userId;
-
-	/**
-	*Unique identifier of the customer visit in which the cart was created or last modified.
-	*/
-	public $visitId;
-
-	/**
-	*Unique identifier of the web session in which the cart, order, return, or wish list was created or last modified.
-	*/
-	public $webSessionId;
-
-	/**
-	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
-	*/
-	public $auditInfo;
-
-	/**
-	*An array of message details associated with the cart.
-	*/
-	public $cartMessage;
-
-	/**
-	*A list of cart messages associated with the cart.
-	*/
-	public $cartMessages;
-
-	/**
-	*Collection (list or paged) of change messages logged for each modification made by a shopper to their carts, wishlists, orders, package, payment, pickup, and returns. Change log messages are system-supplied based on shopper actions and read only.
-	*/
-	public $changeMessages;
-
-	/**
-	*Custom data for a given vendor set within the commerce process.
-	*/
-	public $data;
-
-	/**
-	*Extra properties (key-value pairs) that extend the primary object. Think of this as a property bag of string keys and string values.
-	*/
-	public $extendedProperties;
-
-	/**
-	*Properties of the information required to fulfill the cart, order, or wish list. Shoppers can fulfill ordered items by using in-store pickup or direct shipping.
-	*/
-	public $fulfillmentInfo;
-
-	/**
-	*The list of invalid coupons the shopper attempted to enter for the cart or order. These coupons may no longer be valid or incorrectly entered.
+	*The list of invalid coupons the shopper attempted to enter for the cart.
 	*/
 	public $invalidCoupons;
 
-	/**
-	*An array list of objects in the returned collection.
-	*/
-	public $items;
+		public $items;
 
-	/**
-	*List of order-level discounts projected to apply to the cart at checkout or order.
-	*/
-	public $orderDiscounts;
+		public $orderDiscounts;
+
+		public $rejectedDiscounts;
+
+		public $suggestedDiscounts;
+
+		public $taxData;
 
 }
 

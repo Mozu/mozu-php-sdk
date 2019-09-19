@@ -22,9 +22,9 @@ use Mozu\Api\Urls\Commerce\Settings\ApplicationUrl;
 class ApplicationClient {
 
 	/**
-	* Retrieve the settings of a third-party application.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function thirdPartyGetApplicationClient($responseFields =  null)
@@ -37,10 +37,10 @@ class ApplicationClient {
 	}
 	
 	/**
-	* Initializes an application with the necessary configured settings.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Application $application Properties of an application installed in a tenant.
+	* @param string $responseFields 
+	* @param Application $application Properties of the application to update.
 	* @return MozuClient
 	*/
 	public static function thirdPartyUpdateApplicationClient($application, $responseFields =  null)

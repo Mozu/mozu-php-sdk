@@ -19,15 +19,9 @@ namespace Mozu\Api\Contracts\Reference;
 */
 class ContentLocale
 {
-	/**
-	*Language used for the entity. Currently, only "en-US" is supported.
-	*/
-	public $code;
+		public $code;
 
-	/**
-	*The user supplied name that appears in . You can use this field for identification purposes.
-	*/
-	public $name;
+		public $name;
 
 }
 

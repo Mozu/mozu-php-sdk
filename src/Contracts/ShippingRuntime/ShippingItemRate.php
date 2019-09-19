@@ -19,20 +19,11 @@ namespace Mozu\Api\Contracts\ShippingRuntime;
 */
 class ShippingItemRate
 {
-	/**
-	*The calculated shipping amount for an item in a shipment.
-	*/
-	public $amount;
+		public $amount;
 
-	/**
-	*Unique identifier of an item used to calculate or request a shipping rate.
-	*/
-	public $itemId;
+		public $itemId;
 
-	/**
-	*The specified quantity of objects and items. This property is used for numerous object types including products, options, components within a product bundle, cart and order items, returned items, shipping line items, items in a digital product. and items associated with types and reservations.
-	*/
-	public $quantity;
+		public $quantity;
 
 }
 

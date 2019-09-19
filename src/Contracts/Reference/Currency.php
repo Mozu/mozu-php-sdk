@@ -19,15 +19,9 @@ namespace Mozu\Api\Contracts\Reference;
 */
 class Currency
 {
-	/**
-	*3-letter ISO 4217 standard global currency code. Currently, only "USD" (US Dollar) is supported.
-	*/
-	public $code;
+		public $code;
 
-	/**
-	*The user supplied name that appears in . You can use this field for identification purposes.
-	*/
-	public $name;
+		public $name;
 
 }
 

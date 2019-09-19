@@ -23,11 +23,11 @@ use Mozu\Api\Headers;
 class DocumentTypeClient {
 
 	/**
-	* Retrieves a paged list of the system-defined document types.
+	* 
 	*
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param int $startIndex 
 	* @return MozuClient
 	*/
 	public static function getDocumentTypesClient($dataViewMode, $pageSize =  null, $startIndex =  null, $responseFields =  null)
@@ -40,10 +40,10 @@ class DocumentTypeClient {
 	}
 	
 	/**
-	* Retrieves a system-defined document type.
+	* 
 	*
 	* @param string $documentTypeName The name of the document type to retrieve.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getDocumentTypeClient($dataViewMode, $documentTypeName, $responseFields =  null)
@@ -56,10 +56,10 @@ class DocumentTypeClient {
 	}
 	
 	/**
-	* Creates a new DocumentType
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param DocumentType $documentType The type of documents used in the CMS such as "web_page" or "template" or "image_url".
+	* @param string $responseFields 
+	* @param DocumentType $documentType 
 	* @return MozuClient
 	*/
 	public static function createDocumentTypeClient($dataViewMode, $documentType, $responseFields =  null)
@@ -72,11 +72,11 @@ class DocumentTypeClient {
 	}
 	
 	/**
-	* Updates a DocumentType
+	* 
 	*
-	* @param string $documentTypeName The name of the document type to retrieve.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param DocumentType $documentType The type of documents used in the CMS such as "web_page" or "template" or "image_url".
+	* @param string $documentTypeName 
+	* @param string $responseFields 
+	* @param DocumentType $documentType 
 	* @return MozuClient
 	*/
 	public static function updateDocumentTypeClient($documentType, $documentTypeName, $responseFields =  null)

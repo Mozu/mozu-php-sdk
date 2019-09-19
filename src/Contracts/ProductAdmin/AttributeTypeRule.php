@@ -19,25 +19,13 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 */
 class AttributeTypeRule
 {
-	/**
-	*The data type of the attribute. There are four valid data types: "Bool", "DateTime", "Number", "String"
-	*/
-	public $attributeDataType;
+		public $attributeDataType;
 
-	/**
-	*An attribute's data type would be either "NotSpecified", "Textbox", "Textarea", "Date", "DateTime", "Dropdown", "Listbox", "Radio", "Currency", or "Checkbox" and will be a valid value defined in the type rules resource.
-	*/
-	public $attributeInputType;
+		public $attributeInputType;
 
-	/**
-	*Describes how an attribute will be used. Valid types are "Extra", "Option", and "Property".
-	*/
-	public $attributeUsageType;
+		public $attributeUsageType;
 
-	/**
-	*An attribute value type is either predefined vocabulary by the admin during product attribute set up or it can be "AdminEntered" or "ShopperEntered". The difference between predefined values versus manually entered values is such that the first choice is a set of options to choose from. AdminEntered and ShopperEntered are values that are entered rather than system-supplied and are not stored in the database, but captured during a live commerce operations such as during an order.
-	*/
-	public $attributeValueType;
+		public $attributeValueType;
 
 }
 

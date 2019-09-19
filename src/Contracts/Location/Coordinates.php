@@ -19,15 +19,9 @@ namespace Mozu\Api\Contracts\Location;
 */
 class Coordinates
 {
-	/**
-	*The latitude coordinate of the location.
-	*/
-	public $lat;
+		public $lat;
 
-	/**
-	*The longitude coordinate of the location.
-	*/
-	public $lng;
+		public $lng;
 
 }
 

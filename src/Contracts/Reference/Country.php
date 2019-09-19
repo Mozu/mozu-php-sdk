@@ -19,15 +19,9 @@ namespace Mozu\Api\Contracts\Reference;
 */
 class Country
 {
-	/**
-	*The 2-letter geographic code representing the country for the physical or mailing address. Currently limited to the US.
-	*/
-	public $code;
+		public $code;
 
-	/**
-	*The user supplied name that appears in . You can use this field for identification purposes.
-	*/
-	public $name;
+		public $name;
 
 }
 

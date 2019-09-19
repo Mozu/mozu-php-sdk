@@ -14,25 +14,13 @@ namespace Mozu\Api\Contracts\InstalledApplications;
 
 
 
-/**
-*	Mozu.InstalledApplications.Contracts.TenantExtensions ApiType DOCUMENT_HERE 
-*/
 class TenantExtensions
 {
-	/**
-	*The priority level to assign to application logs. Possible values mirror Apache's log4net: "all", "debug", "info", "warn", "error", "fatal", and "off".
-	*/
-	public $defaultLogLevel;
+		public $defaultLogLevel;
 
-	/**
-	*The list of actions configured for the site.
-	*/
-	public $actions;
+		public $actions;
 
-	/**
-	*An array of settings that apply to all actions within the application.
-	*/
-	public $configurations;
+		public $configurations;
 
 }
 

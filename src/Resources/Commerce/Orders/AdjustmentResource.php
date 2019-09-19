@@ -33,12 +33,12 @@ class AdjustmentResource {
 
 
 	/**
-	* Updates the order handling adjustment.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
-	* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
+	* @param string $orderId 
+	* @param string $responseFields 
+	* @param string $updateMode 
+	* @param string $version 
 	* @param Adjustment $adjustment 
 	* @return Order 
 	* @deprecated deprecated since version 1.17
@@ -53,12 +53,12 @@ class AdjustmentResource {
 	}
 	
 /**
-	* Updates the order handling adjustment.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
-	* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
+	* @param string $orderId 
+	* @param string $responseFields 
+	* @param string $updateMode 
+	* @param string $version 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function applyHandlingAdjustmentAsync($adjustment, $orderId, $updateMode =  null, $version =  null, $responseFields =  null)
@@ -70,13 +70,13 @@ class AdjustmentResource {
 	}
 	
 	/**
-	* Applies a shipping adjustment to the specified order.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
-	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
-	* @param Adjustment $adjustment Properties of an ad-hoc price adjustment for an order.
+	* @param string $orderId Unique identifier of the order associated with the shipping adjustment.
+	* @param string $responseFields 
+	* @param string $updateMode Specifies whether to apply the shipping adjustment by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version 
+	* @param Adjustment $adjustment Properties of the shipping adjustment to apply to the order.
 	* @return Order 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -90,12 +90,12 @@ class AdjustmentResource {
 	}
 	
 /**
-	* Applies a shipping adjustment to the specified order.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
-	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
+	* @param string $orderId Unique identifier of the order associated with the shipping adjustment.
+	* @param string $responseFields 
+	* @param string $updateMode Specifies whether to apply the shipping adjustment by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function applyShippingAdjustmentAsync($adjustment, $orderId, $updateMode =  null, $version =  null, $responseFields =  null)
@@ -107,13 +107,13 @@ class AdjustmentResource {
 	}
 	
 	/**
-	* Applies a price adjustment to the specified order.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
-	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
-	* @param Adjustment $adjustment Properties of an ad-hoc price adjustment for an order.
+	* @param string $orderId Unique identifier of the order for which to apply the adjustment.
+	* @param string $responseFields 
+	* @param string $updateMode Specifies whether to apply the adjustment by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version 
+	* @param Adjustment $adjustment Properties of the price adjustment to apply to the order.
 	* @return Order 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -127,12 +127,12 @@ class AdjustmentResource {
 	}
 	
 /**
-	* Applies a price adjustment to the specified order.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
-	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
+	* @param string $orderId Unique identifier of the order for which to apply the adjustment.
+	* @param string $responseFields 
+	* @param string $updateMode Specifies whether to apply the adjustment by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function applyAdjustmentAsync($adjustment, $orderId, $updateMode =  null, $version =  null, $responseFields =  null)
@@ -144,11 +144,11 @@ class AdjustmentResource {
 	}
 	
 	/**
-	* Removes an adjustment to the order handling fee.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
-	* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
+	* @param string $orderId 
+	* @param string $updateMode 
+	* @param string $version 
 	* @return Order 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -162,11 +162,11 @@ class AdjustmentResource {
 	}
 	
 /**
-	* Removes an adjustment to the order handling fee.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
-	* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
+	* @param string $orderId 
+	* @param string $updateMode 
+	* @param string $version 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function removeHandlingAdjustmentAsync($orderId, $updateMode =  null, $version =  null)
@@ -178,11 +178,11 @@ class AdjustmentResource {
 	}
 	
 	/**
-	* Removes a shipping adjustment previously applied to an order or draft.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
-	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
+	* @param string $orderId Unique identifier of the order with the applied shipping adjustment.
+	* @param string $updateMode Specifies whether to remove the shipping adjustment by updating the original order, updating the order in draft mode, or updating the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version 
 	* @return Order 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -196,11 +196,11 @@ class AdjustmentResource {
 	}
 	
 /**
-	* Removes a shipping adjustment previously applied to an order or draft.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
-	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
+	* @param string $orderId Unique identifier of the order with the applied shipping adjustment.
+	* @param string $updateMode Specifies whether to remove the shipping adjustment by updating the original order, updating the order in draft mode, or updating the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function removeShippingAdjustmentAsync($orderId, $updateMode =  null, $version =  null)
@@ -212,11 +212,11 @@ class AdjustmentResource {
 	}
 	
 	/**
-	* Removes a price adjustment from the specified order.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
-	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
+	* @param string $orderId Unique identifier of the order for which to delete the adjustment.
+	* @param string $updateMode Specifies whether to remove the adjustment by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version 
 	* @return Order 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -230,11 +230,11 @@ class AdjustmentResource {
 	}
 	
 /**
-	* Removes a price adjustment from the specified order.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
-	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
+	* @param string $orderId Unique identifier of the order for which to delete the adjustment.
+	* @param string $updateMode Specifies whether to remove the adjustment by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function removeAdjustmentAsync($orderId, $updateMode =  null, $version =  null)

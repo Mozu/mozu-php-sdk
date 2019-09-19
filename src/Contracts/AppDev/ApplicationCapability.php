@@ -14,35 +14,17 @@ namespace Mozu\Api\Contracts\AppDev;
 
 
 
-/**
-*	This property is not exposed in documentation.
-*/
 class ApplicationCapability
 {
-	/**
-	*Mozu.AppDev.Contracts.ApplicationCapability applicationCapabilityId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationCapabilityId;
+		public $applicationCapabilityId;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationCapability applicationCapabilityTypeId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationCapabilityTypeId;
+		public $applicationCapabilityTypeId;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationCapability applicationEndPoint ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationEndPoint;
+		public $applicationEndPoint;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationCapability capabilityTypeContractId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $capabilityTypeContractId;
+		public $capabilityTypeContractId;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationCapability packageId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $packageId;
+		public $packageId;
 
 }
 

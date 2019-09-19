@@ -19,9 +19,9 @@ class CustomerNoteUrl  {
 
 	/**
 		* Get Resource Url for GetAccountNote
-		* @param int $accountId Unique identifier of the customer account.
+		* @param int $accountId Unique identifier of the customer account that contains the note being retrieved.
 		* @param int $noteId Unique identifier of a particular note to retrieve.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getAccountNoteUrl($accountId, $noteId, $responseFields)
@@ -37,11 +37,11 @@ class CustomerNoteUrl  {
 	/**
 		* Get Resource Url for GetAccountNotes
 		* @param int $accountId Unique identifier of the customer account.
-		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
-		* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+		* @param string $filter 
+		* @param int $pageSize 
+		* @param string $responseFields 
+		* @param string $sortBy 
+		* @param int $startIndex 
 		* @return string Resource Url
 	*/
 	public static function getAccountNotesUrl($accountId, $filter, $pageSize, $responseFields, $sortBy, $startIndex)
@@ -59,8 +59,8 @@ class CustomerNoteUrl  {
 	
 	/**
 		* Get Resource Url for AddAccountNote
-		* @param int $accountId Unique identifier of the customer account.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param int $accountId Unique identifier of the customer account for which to create the note.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function addAccountNoteUrl($accountId, $responseFields)
@@ -74,9 +74,9 @@ class CustomerNoteUrl  {
 	
 	/**
 		* Get Resource Url for UpdateAccountNote
-		* @param int $accountId Unique identifier of the customer account.
-		* @param int $noteId Unique identifier of a particular note to retrieve.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param int $accountId Unique identifier of the customer account note to modify.
+		* @param int $noteId Unique identifier of the note to update.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updateAccountNoteUrl($accountId, $noteId, $responseFields)
@@ -91,8 +91,8 @@ class CustomerNoteUrl  {
 	
 	/**
 		* Get Resource Url for DeleteAccountNote
-		* @param int $accountId Unique identifier of the customer account.
-		* @param int $noteId Unique identifier of a particular note to retrieve.
+		* @param int $accountId Unique identifier of the customer account that contains the note being deleted.
+		* @param int $noteId Unique identifier of the customer account note being deleted.
 		* @return string Resource Url
 	*/
 	public static function deleteAccountNoteUrl($accountId, $noteId)

@@ -19,45 +19,25 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Payments;
 */
 class PaymentCard
 {
-	/**
-	*The masked credit card number part returned from the payment gateway.
-	*/
-	public $cardNumberPartOrMask;
+		public $bin;
 
-	/**
-	*The two-digit month a credit card expires for a payment method.
-	*/
-	public $expireMonth;
+		public $cardNumberPartOrMask;
 
-	/**
-	*The four-digit year the credit card expires for a payment method.
-	*/
-	public $expireYear;
+		public $expireMonth;
 
-	/**
-	*If true, the credit card information is saved to the customer account for future use.
-	*/
-	public $isCardInfoSaved;
+		public $expireYear;
 
-	/**
-	*If true, the credit card is used for a recurring order payment.
-	*/
-	public $isUsedRecurring;
+		public $isCardInfoSaved;
 
-	/**
-	*The full name printed on a credit card. The name should match what is printed on the card exactly, used in validation during a payment.
-	*/
-	public $nameOnCard;
+		public $isTokenized;
 
-	/**
-	*The type of credit card, such as Visa or Amex.
-	*/
-	public $paymentOrCardType;
+		public $isUsedRecurring;
 
-	/**
-	*Unique identifier of the credit card from the payment service.
-	*/
-	public $paymentServiceCardId;
+		public $nameOnCard;
+
+		public $paymentOrCardType;
+
+		public $paymentServiceCardId;
 
 }
 

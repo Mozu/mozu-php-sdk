@@ -14,35 +14,17 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
-/**
-*	Mozu.ProductAdmin.Contracts.PriceListEntryPrice ApiType DOCUMENT_HERE 
-*/
 class PriceListEntryPrice
 {
-	/**
-	*The product's list price if  is set to .
-	*/
-	public $listPrice;
+		public $listPrice;
 
-	/**
-	*Specifies whether to use the product's default catalog list price, or to override the product's default catalog list price.This property has the following valid values:* * 
-	*/
-	public $listPriceMode;
+		public $listPriceMode;
 
-	/**
-	*This property is for future price list entry functionality and currently should always be 1.
-	*/
-	public $minQty;
+		public $minQty;
 
-	/**
-	*The set sale price for a product consisting of a price with a discount already applied.For price list entries, this property is the product's sale price if the  is set to .
-	*/
-	public $salePrice;
+		public $salePrice;
 
-	/**
-	*Specifies whether to use the product's default catalog sale price, or to override the product's default catalog sale price.This property has the following valid values:* * 
-	*/
-	public $salePriceMode;
+		public $salePriceMode;
 
 }
 

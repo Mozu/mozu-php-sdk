@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* Use the user data subresource to store user-level data required for a third-party application in the  database.
+* Use the user data subresource to store user-level data required for a third-party application in the Mozu database.
 */
 class UserDataResource {
 
@@ -33,10 +33,10 @@ class UserDataResource {
 
 
 	/**
-	* Retrieves the value of a record in the  database.
+	* 
 	*
-	* @param string $dbEntryQuery The database entry string to create.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $dbEntryQuery The database entry query string used to retrieve the record information.
+	* @param string $responseFields 
 	* @return string 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -50,10 +50,10 @@ class UserDataResource {
 	}
 	
 /**
-	* Retrieves the value of a record in the  database.
+	* 
 	*
-	* @param string $dbEntryQuery The database entry string to create.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $dbEntryQuery The database entry query string used to retrieve the record information.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getDBValueAsync($dbEntryQuery, $responseFields =  null)
@@ -65,10 +65,11 @@ class UserDataResource {
 	}
 	
 	/**
-	* Creates a new record in the  database based on the information supplied in the request.
+	* 
 	*
 	* @param string $dbEntryQuery The database entry string to create.
 	* @param string $value The value string to create.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function createDBValue($value, $dbEntryQuery)
@@ -76,11 +77,12 @@ class UserDataResource {
 		$mozuClient = UserDataClient::createDBValueClient($value, $dbEntryQuery);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Creates a new record in the  database based on the information supplied in the request.
+	* 
 	*
 	* @param string $dbEntryQuery The database entry string to create.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -94,10 +96,11 @@ class UserDataResource {
 	}
 	
 	/**
-	* Updates a record in the  database based on the information supplied in the request.
+	* 
 	*
-	* @param string $dbEntryQuery The database entry string to create.
-	* @param string $value The value string to create.
+	* @param string $dbEntryQuery The database entry query string used to update the record information.
+	* @param string $value The database value to update.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function updateDBValue($value, $dbEntryQuery)
@@ -105,13 +108,14 @@ class UserDataResource {
 		$mozuClient = UserDataClient::updateDBValueClient($value, $dbEntryQuery);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Updates a record in the  database based on the information supplied in the request.
+	* 
 	*
-	* @param string $dbEntryQuery The database entry string to create.
+	* @param string $dbEntryQuery The database entry query string used to update the record information.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateDBValueAsync($value, $dbEntryQuery)
@@ -123,9 +127,10 @@ class UserDataResource {
 	}
 	
 	/**
-	* Removes a previously defined record in the  database.
+	* 
 	*
-	* @param string $dbEntryQuery The database entry string to create.
+	* @param string $dbEntryQuery The database entry string to delete.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteDBValue($dbEntryQuery)
@@ -133,13 +138,14 @@ class UserDataResource {
 		$mozuClient = UserDataClient::deleteDBValueClient($dbEntryQuery);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Removes a previously defined record in the  database.
+	* 
 	*
-	* @param string $dbEntryQuery The database entry string to create.
+	* @param string $dbEntryQuery The database entry string to delete.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteDBValueAsync($dbEntryQuery)

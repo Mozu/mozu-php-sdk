@@ -14,30 +14,15 @@ namespace Mozu\Api\Contracts\Customer;
 
 
 
-/**
-*	The purchase order payment terms that are associated with the specific customer account. Usually the payment terms are an amount of time, such as a certain amount of days the customer has in order to pay the order balance in full.
-*/
 class CustomerPurchaseOrderPaymentTerm
 {
-	/**
-	*The code of the payment term associated with the customer purchase order account. This term must match the payment term code specified in the purchase order site settings.Refer to [Payment Terms](https://www.mozu.com/guides/orders/purchase-order.htm#payment_terms) in the Purchase Order guides topic for more information.
-	*/
-	public $code;
+		public $code;
 
-	/**
-	*The localized description in text for the object, displayed per the locale code. For example, descriptions are used for product descriptions, attributes, and pre-authorization transaction types.
-	*/
-	public $description;
+		public $description;
 
-	/**
-	*Unique identifier for the site. This ID is used at all levels of a store, catalog, and tenant to associate objects to a site.
-	*/
-	public $siteId;
+		public $siteId;
 
-	/**
-	*Basic audit info about the object, including date, time, and user account. This data may be captured when creating, updating, and removing data.
-	*/
-	public $auditInfo;
+		public $auditInfo;
 
 }
 

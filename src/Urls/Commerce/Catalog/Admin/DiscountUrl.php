@@ -19,9 +19,9 @@ class DiscountUrl  {
 
 	/**
 		* Get Resource Url for GetDiscounts
-		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $filter 
+		* @param int $pageSize 
+		* @param string $responseFields 
 		* @param string $sortBy 
 		* @param int $startIndex 
 		* @return string Resource Url
@@ -40,8 +40,8 @@ class DiscountUrl  {
 	
 	/**
 		* Get Resource Url for GetDiscountContent
-		* @param int $discountId discountId parameter description DOCUMENT_HERE 
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getDiscountContentUrl($discountId, $responseFields)
@@ -55,8 +55,8 @@ class DiscountUrl  {
 	
 	/**
 		* Get Resource Url for GetDiscount
-		* @param int $discountId discountId parameter description DOCUMENT_HERE 
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getDiscountUrl($discountId, $responseFields)
@@ -70,7 +70,7 @@ class DiscountUrl  {
 	
 	/**
 		* Get Resource Url for GenerateRandomCoupon
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function generateRandomCouponUrl($responseFields)
@@ -83,7 +83,7 @@ class DiscountUrl  {
 	
 	/**
 		* Get Resource Url for CreateDiscount
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function createDiscountUrl($responseFields)
@@ -96,8 +96,8 @@ class DiscountUrl  {
 	
 	/**
 		* Get Resource Url for UpdateDiscountContent
-		* @param int $discountId discountId parameter description DOCUMENT_HERE 
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updateDiscountContentUrl($discountId, $responseFields)
@@ -111,8 +111,8 @@ class DiscountUrl  {
 	
 	/**
 		* Get Resource Url for UpdateDiscount
-		* @param int $discountId discountId parameter description DOCUMENT_HERE 
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param int $discountId Unique identifier of the discount to update.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updateDiscountUrl($discountId, $responseFields)
@@ -126,7 +126,7 @@ class DiscountUrl  {
 	
 	/**
 		* Get Resource Url for DeleteDiscount
-		* @param int $discountId discountId parameter description DOCUMENT_HERE 
+		* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
 		* @return string Resource Url
 	*/
 	public static function deleteDiscountUrl($discountId)

@@ -19,9 +19,9 @@ class DocumentTypeUrl  {
 
 	/**
 		* Get Resource Url for GetDocumentTypes
-		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+		* @param int $pageSize 
+		* @param string $responseFields 
+		* @param int $startIndex 
 		* @return string Resource Url
 	*/
 	public static function getDocumentTypesUrl($pageSize, $responseFields, $startIndex)
@@ -37,7 +37,7 @@ class DocumentTypeUrl  {
 	/**
 		* Get Resource Url for GetDocumentType
 		* @param string $documentTypeName The name of the document type to retrieve.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getDocumentTypeUrl($documentTypeName, $responseFields)
@@ -51,7 +51,7 @@ class DocumentTypeUrl  {
 	
 	/**
 		* Get Resource Url for CreateDocumentType
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function createDocumentTypeUrl($responseFields)
@@ -64,8 +64,8 @@ class DocumentTypeUrl  {
 	
 	/**
 		* Get Resource Url for UpdateDocumentType
-		* @param string $documentTypeName The name of the document type to retrieve.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $documentTypeName 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updateDocumentTypeUrl($documentTypeName, $responseFields)

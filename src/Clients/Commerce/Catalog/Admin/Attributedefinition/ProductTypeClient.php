@@ -23,11 +23,11 @@ use Mozu\Api\Headers;
 class ProductTypeClient {
 
 	/**
-	* Retrieves a list of product types according to any specified filter criteria and sort options.
+	* 
 	*
-	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product type search results by any of its properties. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=Name+cont+shoes"
+	* @param int $pageSize 
+	* @param string $responseFields 
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return MozuClient
@@ -42,10 +42,10 @@ class ProductTypeClient {
 	}
 	
 	/**
-	* Retrieves the details of the product type specified in the request.
+	* 
 	*
-	* @param int $productTypeId Identifier of the product type.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $productTypeId Identifier of the product type to retrieve.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getProductTypeClient($dataViewMode, $productTypeId, $responseFields =  null)
@@ -58,10 +58,10 @@ class ProductTypeClient {
 	}
 	
 	/**
-	* Creates a new product type based on the information supplied in the request.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param ProductType $productType A product type is like a product template.
+	* @param string $responseFields 
+	* @param ProductType $productType Properties of the product type to create.
 	* @return MozuClient
 	*/
 	public static function addProductTypeClient($dataViewMode, $productType, $responseFields =  null)
@@ -74,11 +74,11 @@ class ProductTypeClient {
 	}
 	
 	/**
-	* Updates one or more properties of a product type.
+	* 
 	*
-	* @param int $productTypeId Identifier of the product type.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param ProductType $productType A product type is like a product template.
+	* @param int $productTypeId Identifier of the product type to update.
+	* @param string $responseFields 
+	* @param ProductType $productType The details of the product type to update.
 	* @return MozuClient
 	*/
 	public static function updateProductTypeClient($dataViewMode, $productType, $productTypeId, $responseFields =  null)
@@ -91,9 +91,10 @@ class ProductTypeClient {
 	}
 	
 	/**
-	* Deletes the product type by providing the product type ID.
+	* 
 	*
-	* @param int $productTypeId Identifier of the product type.
+	* @param int $productTypeId Identifier of the product type to delete.
+	* @return MozuClient
 	*/
 	public static function deleteProductTypeClient($dataViewMode, $productTypeId)
 	{

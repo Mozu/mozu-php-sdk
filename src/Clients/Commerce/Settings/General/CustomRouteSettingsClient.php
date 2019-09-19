@@ -17,14 +17,14 @@ use Mozu\Api\Urls\Commerce\Settings\General\CustomRouteSettingsUrl;
 
 
 /**
-* Use the Custom Routes resource to manage your custom route settings. Custom routing allows you to display SEO-friendly URLs on your site that map behind-the-scenes to conventional  resources such as a product page or a search results page. With custom routing, you gain advanced control over the URL structures on your site and can more visibly highlight the products or categories your shoppers are interested in purchasing.To learn more about custom routing, refer to the [Custom Route Settings](../../../guides/settings/custom-routes.htm) topic.
+* 
 */
 class CustomRouteSettingsClient {
 
 	/**
-	* Retrieves the custom route settings configured for a site. These are the same settings configured through  in the Custom Routing JSON Editor.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getCustomRouteSettingsClient($responseFields =  null)
@@ -37,10 +37,10 @@ class CustomRouteSettingsClient {
 	}
 	
 	/**
-	* Create new custom route settings.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param CustomRouteSettings $settings The details of the new custom route setting.
+	* @param string $responseFields 
+	* @param CustomRouteSettings $settings 
 	* @return MozuClient
 	*/
 	public static function createCustomRouteSettingsClient($settings, $responseFields =  null)
@@ -53,10 +53,10 @@ class CustomRouteSettingsClient {
 	}
 	
 	/**
-	* Updates custom route settings.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param CustomRouteSettings $settings The updated details of the custom route settings.
+	* @param string $responseFields 
+	* @param CustomRouteSettings $settings 
 	* @return MozuClient
 	*/
 	public static function updateCustomRouteSettingsClient($settings, $responseFields =  null)
@@ -69,8 +69,9 @@ class CustomRouteSettingsClient {
 	}
 	
 	/**
-	* Deletes all the custom route settings for a site, returning all routes to their  defaults.
+	* 
 	*
+	* @return MozuClient
 	*/
 	public static function deleteCustomRouteSettingsClient()
 	{

@@ -41,9 +41,9 @@ class ExtendedPropertyUrl  {
 	
 	/**
 		* Get Resource Url for UpdateExtendedProperty
-		* @param string $key Key used for metadata defined for objects, including extensible attributes, custom attributes associated with a shipping provider, and search synonyms definitions. This content may be user-defined depending on the object and usage.
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-		* @param bool $upsert Any set of key value pairs to be stored in the extended properties of a cart.
+		* @param string $key 
+		* @param string $responseFields 
+		* @param bool $upsert 
 		* @return string Resource Url
 	*/
 	public static function updateExtendedPropertyUrl($key, $responseFields, $upsert)
@@ -58,7 +58,7 @@ class ExtendedPropertyUrl  {
 	
 	/**
 		* Get Resource Url for UpdateExtendedProperties
-		* @param bool $upsert Any set of key value pairs to be stored in the extended properties of a cart.
+		* @param bool $upsert 
 		* @return string Resource Url
 	*/
 	public static function updateExtendedPropertiesUrl($upsert)

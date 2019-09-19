@@ -22,10 +22,10 @@ use Mozu\Api\Urls\Commerce\Orders\PackageUrl;
 class PackageClient {
 
 	/**
-	* Retrieves a list of the actions available to perform for a package associated with order fulfillment.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $packageId Unique identifier of the package for which to retrieve the label.
+	* @param string $orderId Unique identifier of the order associated with the package fulfillment.
+	* @param string $packageId Unique identifier of the package associated with the fulfillment actions to retrieve.
 	* @return MozuClient
 	*/
 	public static function getAvailablePackageFulfillmentActionsClient($orderId, $packageId)
@@ -38,9 +38,9 @@ class PackageClient {
 	}
 	
 	/**
-	* Retrieves the package label image supplied by the carrier.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
+	* @param string $orderId Unique identifier of the order associated with the package label to retrieve.
 	* @param string $packageId Unique identifier of the package for which to retrieve the label.
 	* @return MozuClient
 	*/
@@ -54,11 +54,11 @@ class PackageClient {
 	}
 	
 	/**
-	* Retrieves the details of a package of order items.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $packageId Unique identifier of the package for which to retrieve the label.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $orderId Unique identifier of the order associated with the package to retrieve.
+	* @param string $packageId Unique identifier of the package to retrieve.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getPackageClient($orderId, $packageId, $responseFields =  null)
@@ -71,11 +71,11 @@ class PackageClient {
 	}
 	
 	/**
-	* Creates a new physical package of order items.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Package $package Properties of a physical package shipped for an order.
+	* @param string $orderId Unique identifier of the order associated with this package.
+	* @param string $responseFields 
+	* @param Package $package Properties of the physical package of order items.
 	* @return MozuClient
 	*/
 	public static function createPackageClient($pkg, $orderId, $responseFields =  null)
@@ -88,12 +88,12 @@ class PackageClient {
 	}
 	
 	/**
-	* Updates one or more properties of a physical package of order items.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $packageId Unique identifier of the package for which to retrieve the label.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Package $package Properties of a physical package shipped for an order.
+	* @param string $orderId Unique identifier of the order associated with the package to update.
+	* @param string $packageId Unique identifier of the package of order items to update.
+	* @param string $responseFields 
+	* @param Package $package Wrapper of properties for the package of order items to update.
 	* @return MozuClient
 	*/
 	public static function updatePackageClient($pkg, $orderId, $packageId, $responseFields =  null)
@@ -106,10 +106,11 @@ class PackageClient {
 	}
 	
 	/**
-	* Removes a physical package of items from the specified order.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $packageId Unique identifier of the package for which to retrieve the label.
+	* @param string $orderId Unique identifier of the order associated with the package to delete.
+	* @param string $packageId Unique identifier of the package to delete.
+	* @return MozuClient
 	*/
 	public static function deletePackageClient($orderId, $packageId)
 	{

@@ -19,7 +19,7 @@ class CustomRouteSettingsUrl  {
 
 	/**
 		* Get Resource Url for GetCustomRouteSettings
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getCustomRouteSettingsUrl($responseFields)
@@ -32,7 +32,7 @@ class CustomRouteSettingsUrl  {
 	
 	/**
 		* Get Resource Url for CreateCustomRouteSettings
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function createCustomRouteSettingsUrl($responseFields)
@@ -45,7 +45,7 @@ class CustomRouteSettingsUrl  {
 	
 	/**
 		* Get Resource Url for UpdateCustomRouteSettings
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updateCustomRouteSettingsUrl($responseFields)

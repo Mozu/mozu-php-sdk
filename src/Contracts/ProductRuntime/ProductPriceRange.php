@@ -19,15 +19,9 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 */
 class ProductPriceRange
 {
-	/**
-	*The lowest possible price value for a product with options that vary the cost of the product.
-	*/
-	public $lower;
+		public $lower;
 
-	/**
-	*The highest possible price value for a product with options that vary the cost of the product.
-	*/
-	public $upper;
+		public $upper;
 
 }
 

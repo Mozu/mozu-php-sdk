@@ -32,9 +32,9 @@ class ProductTypePropertyUrl  {
 	
 	/**
 		* Get Resource Url for GetProperty
-		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+		* @param string $attributeFQN 
 		* @param int $productTypeId Identifier of the product type.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getPropertyUrl($attributeFQN, $productTypeId, $responseFields)
@@ -50,7 +50,7 @@ class ProductTypePropertyUrl  {
 	/**
 		* Get Resource Url for AddProperty
 		* @param int $productTypeId Identifier of the product type.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function addPropertyUrl($productTypeId, $responseFields)
@@ -64,9 +64,9 @@ class ProductTypePropertyUrl  {
 	
 	/**
 		* Get Resource Url for UpdateProperty
-		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+		* @param string $attributeFQN 
 		* @param int $productTypeId Identifier of the product type.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updatePropertyUrl($attributeFQN, $productTypeId, $responseFields)
@@ -81,7 +81,7 @@ class ProductTypePropertyUrl  {
 	
 	/**
 		* Get Resource Url for DeleteProperty
-		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
+		* @param string $attributeFQN 
 		* @param int $productTypeId Identifier of the product type.
 		* @return string Resource Url
 	*/

@@ -22,10 +22,10 @@ use Mozu\Api\Urls\Commerce\Customer\AddressValidationRequestUrl;
 class AddressValidationRequestClient {
 
 	/**
-	* Validates the customer address supplied in the request.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param AddressValidationRequest $addressValidationRequest Properties of the address used for validation of the account's full address. This content may include multiple lines of an address, city, state/province, zip/postal code, and country.
+	* @param string $responseFields 
+	* @param AddressValidationRequest $addressValidationRequest Properties of the address to validate.
 	* @return MozuClient
 	*/
 	public static function validateAddressClient($addressValidationRequest, $responseFields =  null)

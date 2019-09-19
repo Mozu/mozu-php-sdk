@@ -14,20 +14,11 @@ namespace Mozu\Api\Contracts\InstalledApplications;
 
 
 
-/**
-*	Mozu.InstalledApplications.Contracts.ExtensionConfiguration ApiType DOCUMENT_HERE 
-*/
 class ExtensionConfiguration
 {
-	/**
-	*The Arc.js application key.
-	*/
-	public $applicationKey;
+		public $applicationKey;
 
-	/**
-	*Custom application-level settings specified as key-value pairs.
-	*/
-	public $configuration;
+		public $configuration;
 
 }
 

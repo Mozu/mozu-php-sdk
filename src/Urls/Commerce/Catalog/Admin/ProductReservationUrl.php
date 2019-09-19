@@ -19,10 +19,10 @@ class ProductReservationUrl  {
 
 	/**
 		* Get Resource Url for GetProductReservations
-		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $sortBy 
+		* @param string $filter 
+		* @param int $pageSize Used to page results from a query. Indicates the maximum number of entities to return from a query. Default value: 20. Max value: 200.
+		* @param string $responseFields 
+		* @param string $sortBy The element to sort the results by and the order in which the results appear. Either ascending order (a-z) which accepts 'asc' or 'asc' or descending order (z-a) which accepts 'desc' or 'desc'. The sortBy parameter follows an available property.
 		* @param int $startIndex 
 		* @return string Resource Url
 	*/
@@ -41,7 +41,7 @@ class ProductReservationUrl  {
 	/**
 		* Get Resource Url for GetProductReservation
 		* @param int $productReservationId Unique identifier of the product reservation.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getProductReservationUrl($productReservationId, $responseFields)
@@ -79,7 +79,7 @@ class ProductReservationUrl  {
 	
 	/**
 		* Get Resource Url for UpdateProductReservations
-		* @param bool $skipInventoryCheck If true, skip the process to validate inventory when creating this product reservation.
+		* @param bool $skipInventoryCheck If true, skip the inventory validation process when updating this product reservation.
 		* @return string Resource Url
 	*/
 	public static function updateProductReservationsUrl($skipInventoryCheck)
@@ -92,7 +92,7 @@ class ProductReservationUrl  {
 	
 	/**
 		* Get Resource Url for DeleteProductReservation
-		* @param int $productReservationId Unique identifier of the product reservation.
+		* @param int $productReservationId Unique identifier of the reservation.
 		* @return string Resource Url
 	*/
 	public static function deleteProductReservationUrl($productReservationId)

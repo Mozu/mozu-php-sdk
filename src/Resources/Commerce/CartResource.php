@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* Use this resource to manage storefront shopping carts as shoppers add and remove items for purchase. Each time a shopper's cart is modified, the Carts resource updates the estimated total with any applicable discounts.
+* Use the Carts resource to manage storefront shopping carts as items are added and removed. Each time a shopper's cart is modified, the Carts resource updates the estimated total with any applicable discounts.
 */
 class CartResource {
 
@@ -33,10 +33,10 @@ class CartResource {
 
 
 	/**
-	* Retrieves the cart specified in the request.
+	* 
 	*
-	* @param string $cartId Identifier of the cart to delete.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $cartId Identifier of the cart to retrieve.
+	* @param string $responseFields 
 	* @return Cart 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -50,10 +50,10 @@ class CartResource {
 	}
 	
 /**
-	* Retrieves the cart specified in the request.
+	* 
 	*
-	* @param string $cartId Identifier of the cart to delete.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $cartId Identifier of the cart to retrieve.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getCartAsync($cartId, $responseFields =  null)
@@ -65,9 +65,9 @@ class CartResource {
 	}
 	
 	/**
-	* Retrieves a cart's contents for the current shopper. If the shopper does not have an active cart on the site, the service creates one.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Cart 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -81,9 +81,9 @@ class CartResource {
 	}
 	
 /**
-	* Retrieves a cart's contents for the current shopper. If the shopper does not have an active cart on the site, the service creates one.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getOrCreateCartAsync($responseFields =  null)
@@ -95,9 +95,9 @@ class CartResource {
 	}
 	
 	/**
-	* Retrieves summary information associated with the cart of the current shopper, including the number of items, the current total, and whether the cart has expired. All anonymous idle carts that do not proceed to checkout expire after 14 days.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return CartSummary 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -111,9 +111,9 @@ class CartResource {
 	}
 	
 /**
-	* Retrieves summary information associated with the cart of the current shopper, including the number of items, the current total, and whether the cart has expired. All anonymous idle carts that do not proceed to checkout expire after 14 days.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getCartSummaryAsync($responseFields =  null)
@@ -125,10 +125,10 @@ class CartResource {
 	}
 	
 	/**
-	* Retrieves summary information associated with the cart of user specified in the request, including the number of items in the cart, the current total, and whether the cart has expired. All anonymous idle carts that do not proceed to checkout expire after 14 days.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $userId Unique identifier of the user whose tenant scopes you want to retrieve.
+	* @param string $responseFields 
+	* @param string $userId Unique identifier of the user whose cart details you want to retrieve.
 	* @return CartSummary 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -142,10 +142,10 @@ class CartResource {
 	}
 	
 /**
-	* Retrieves summary information associated with the cart of user specified in the request, including the number of items in the cart, the current total, and whether the cart has expired. All anonymous idle carts that do not proceed to checkout expire after 14 days.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $userId Unique identifier of the user whose tenant scopes you want to retrieve.
+	* @param string $responseFields 
+	* @param string $userId Unique identifier of the user whose cart details you want to retrieve.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getUserCartSummaryAsync($userId, $responseFields =  null)
@@ -157,10 +157,10 @@ class CartResource {
 	}
 	
 	/**
-	* Retrieves the cart of the user specified in the request.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $userId Unique identifier of the user whose tenant scopes you want to retrieve.
+	* @param string $responseFields 
+	* @param string $userId Unique identifier of the user whose cart you want to retrieve.
 	* @return Cart 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -174,10 +174,10 @@ class CartResource {
 	}
 	
 /**
-	* Retrieves the cart of the user specified in the request.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $userId Unique identifier of the user whose tenant scopes you want to retrieve.
+	* @param string $responseFields 
+	* @param string $userId Unique identifier of the user whose cart you want to retrieve.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getUserCartAsync($userId, $responseFields =  null)
@@ -189,10 +189,44 @@ class CartResource {
 	}
 	
 	/**
-	* Update the current shopper's cart.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Cart $cart Properties of a shopping cart.
+	* @param string $cartId 
+	* @param int $discountId 
+	* @param string $responseFields 
+	* @return Cart 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function rejectSuggestedDiscount($cartId, $discountId, $responseFields =  null)
+	{
+		$mozuClient = CartClient::rejectSuggestedDiscountClient($cartId, $discountId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* 
+	*
+	* @param string $cartId 
+	* @param int $discountId 
+	* @param string $responseFields 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function rejectSuggestedDiscountAsync($cartId, $discountId, $responseFields =  null)
+	{
+		$mozuClient = CartClient::rejectSuggestedDiscountClient($cartId, $discountId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $responseFields 
+	* @param Cart $cart All of the properties of the cart to update. The product code is required.
 	* @return Cart 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -206,9 +240,9 @@ class CartResource {
 	}
 	
 /**
-	* Update the current shopper's cart.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateCartAsync($cart, $responseFields =  null)
@@ -220,9 +254,10 @@ class CartResource {
 	}
 	
 	/**
-	* Deletes the cart specified in the request.
+	* 
 	*
 	* @param string $cartId Identifier of the cart to delete.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteCart($cartId)
@@ -230,11 +265,12 @@ class CartResource {
 		$mozuClient = CartClient::deleteCartClient($cartId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Deletes the cart specified in the request.
+	* 
 	*
 	* @param string $cartId Identifier of the cart to delete.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -248,8 +284,9 @@ class CartResource {
 	}
 	
 	/**
-	* Deletes the cart of the currently active shopper.
+	* 
 	*
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteCurrentCart()
@@ -257,11 +294,12 @@ class CartResource {
 		$mozuClient = CartClient::deleteCurrentCartClient();
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Deletes the cart of the currently active shopper.
+	* 
 	*
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/

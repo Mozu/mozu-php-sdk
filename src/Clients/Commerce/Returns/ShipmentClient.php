@@ -22,11 +22,11 @@ use Mozu\Api\Urls\Commerce\Returns\ShipmentUrl;
 class ShipmentClient {
 
 	/**
-	* Retrieves the details of the specified return replacement shipment.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
-	* @param string $shipmentId Unique identifier of the shipment to retrieve.
+	* @param string $responseFields 
+	* @param string $returnId Unique identifier of the return associated with the replacement shipment to retrieve.
+	* @param string $shipmentId Unique identifier of the return replacement shipment to retrieve.
 	* @return MozuClient
 	*/
 	public static function getShipmentClient($returnId, $shipmentId, $responseFields =  null)
@@ -39,10 +39,10 @@ class ShipmentClient {
 	}
 	
 	/**
-	* Creates a shipment from one or more packages associated with a return replacement.
+	* 
 	*
-	* @param string $returnId Unique identifier of the return whose items you want to get.
-	* @param array|string $packageIds List of unique identifiers for each package associated with this shipment. Not all packages must belong to the same shipment.
+	* @param string $returnId Unique identifier of the return for which to create replacement package shipments.
+	* @param array|string $packageIds List of packages in the return replacement shipment.
 	* @return MozuClient
 	*/
 	public static function createPackageShipmentsClient($packageIds, $returnId)
@@ -55,10 +55,11 @@ class ShipmentClient {
 	}
 	
 	/**
-	* Deletes a shipment for a return replacement.
+	* 
 	*
-	* @param string $returnId Unique identifier of the return whose items you want to get.
-	* @param string $shipmentId Unique identifier of the shipment to retrieve.
+	* @param string $returnId Unique identifier of the return associated with the replacement shipment to delete.
+	* @param string $shipmentId Unique identifier of the return replacement shipment to delete.
+	* @return MozuClient
 	*/
 	public static function deleteShipmentClient($returnId, $shipmentId)
 	{

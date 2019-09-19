@@ -14,25 +14,13 @@ namespace Mozu\Api\Contracts\SiteSettings\General\General;
 
 
 
-/**
-*	Set whether you require users to be authenticated to preview content or view the live site.
-*/
 class ViewAuthorizations
 {
-	/**
-	*Specifies whether to enable secure communication across your entire site, using the SSL (Secure Socket Layer) security protocol. Every page on your site will display as an HTTPS page and contain an SSL certificate.
-	*/
-	public $enforceSitewideSSL;
+		public $enforceSitewideSSL;
 
-	/**
-	*Require log in to view live storefront site.
-	*/
-	public $requireAuthForLive;
+		public $requireAuthForLive;
 
-	/**
-	*Require log in to view pending storefront site.
-	*/
-	public $requireAuthForPending;
+		public $requireAuthForPending;
 
 }
 

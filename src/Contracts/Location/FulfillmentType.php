@@ -19,15 +19,9 @@ namespace Mozu\Api\Contracts\Location;
 */
 class FulfillmentType
 {
-	/**
-	*The system-supplied code that identifies the fulfillment type, which is "DS" for direct ship or "SP" for in-store pickup.
-	*/
-	public $code;
+		public $code;
 
-	/**
-	*The user supplied name that appears in . You can use this field for identification purposes.
-	*/
-	public $name;
+		public $name;
 
 }
 

@@ -14,20 +14,11 @@ namespace Mozu\Api\Contracts\Content;
 
 
 
-/**
-*	Specifies a start date and end date for when associated object is on the live site, if  is set to .If  is set to  ignores this property.
-*/
 class ActiveDateRange
 {
-	/**
-	*The end of the active date range for this document
-	*/
-	public $endDate;
+		public $endDate;
 
-	/**
-	*The beginning of the active date range of this document
-	*/
-	public $startDate;
+		public $startDate;
 
 }
 

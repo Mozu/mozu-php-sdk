@@ -19,65 +19,29 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Payments;
 */
 class PaymentAction
 {
-	/**
-	*The name of the action to perform for the payment, fulfillment, order, or return.
-	*/
-	public $actionName;
+		public $actionName;
 
-	/**
-	*The total monetary amount of the payment transaction.
-	*/
-	public $amount;
+		public $amount;
 
-	/**
-	*The URL provided to cancel payments submitted using PayPal Express or another non-gateway payment provider.
-	*/
-	public $cancelUrl;
+		public $cancelUrl;
 
-	/**
-	*If applicable, the check number associated with the payment action or interaction.
-	*/
-	public $checkNumber;
+		public $checkNumber;
 
-	/**
-	*3-letter ISO 4217 standard global currency code. Currently, only "USD" (US Dollar) is supported.
-	*/
-	public $currencyCode;
+		public $currencyCode;
 
-	/**
-	*An ID provided by a third party external payment service to identify a transaction.
-	*/
-	public $externalTransactionId;
+		public $externalTransactionId;
 
-	/**
-	*Date and time of a payment interaction, including handling and processing a payment and validating and completing a payment with a payment gateway.
-	*/
-	public $interactionDate;
+		public $interactionDate;
 
-	/**
-	*Unique ID that references an original transaction in the event of a credit back.
-	*/
-	public $referenceSourcePaymentId;
+		public $referenceSourcePaymentId;
 
-	/**
-	*The URL provided to redirect users who submit payments using PayPal Express or another non-gateway payment provider.
-	*/
-	public $returnUrl;
+		public $returnUrl;
 
-	/**
-	*A general field for data to be communicated from an external payment service. 
-	*/
-	public $data;
+		public $data;
 
-	/**
-	*Properties of a manually performed interaction with the payment gateway.
-	*/
-	public $manualGatewayInteraction;
+		public $manualGatewayInteraction;
 
-	/**
-	*The billing information associated with this payment action.
-	*/
-	public $newBillingInfo;
+		public $newBillingInfo;
 
 }
 

@@ -19,35 +19,19 @@ namespace Mozu\Api\Contracts\SiteSettings\Order;
 */
 class ExternalPaymentWorkflowDefinition
 {
-	/**
-	*The localized description in text for the object, displayed per the locale code. For example, descriptions are used for product descriptions, attributes, and pre-authorization transaction types.
-	*/
-	public $description;
+		public $description;
 
-	/**
-	*Fully qualified name of the attribute for the order or customer. 
-	*/
-	public $fullyQualifiedName;
+		public $fullyQualifiedName;
 
-	/**
-	*Indicates if the object or process is enabled. This indicator is used on external payment workflows and product option values. For product options, if true, the product option value is available for a shopper to choose. During configuration, this property will be false if the option value is invalid with other selected options. For external payment workflows, if true, the workflow is enabled and available for routing payments for the submitted order.
-	*/
-	public $isEnabled;
+		public $isEnabled;
 
-	/**
-	*The user supplied name that appears in . You can use this field for identification purposes.
-	*/
-	public $name;
+		public $isLegacy;
 
-	/**
-	*The namespace for the accessible APIs and source capabilities in the core of  APIs.
-	*/
-	public $namespace;
+		public $name;
 
-	/**
-	*The credential fields required to communicate with the external payment processor.
-	*/
-	public $credentials;
+		public $namespace;
+
+		public $credentials;
 
 }
 

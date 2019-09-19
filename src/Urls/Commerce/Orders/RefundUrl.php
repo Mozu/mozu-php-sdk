@@ -19,8 +19,8 @@ class RefundUrl  {
 
 	/**
 		* Get Resource Url for CreateRefund
-		* @param string $orderId Unique identifier of the order.
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $orderId 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function createRefundUrl($orderId, $responseFields)
@@ -34,9 +34,8 @@ class RefundUrl  {
 	
 	/**
 		* Get Resource Url for ResendRefundEmail
-		* @param string $orderId Unique identifier of the order.
-		* @param string $refundId Unique ID of the refund.
-        
+		* @param string $orderId 
+		* @param string $refundId 
 		* @return string Resource Url
 	*/
 	public static function resendRefundEmailUrl($orderId, $refundId)

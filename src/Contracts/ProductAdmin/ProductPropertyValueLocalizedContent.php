@@ -19,15 +19,9 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 */
 class ProductPropertyValueLocalizedContent
 {
-	/**
-	*Language used for the entity. Currently, only "en-US" is supported.
-	*/
-	public $localeCode;
+		public $localeCode;
 
-	/**
-	*If the object value is a String, this value provides that string value, used by vocabulary property values, products, and options.
-	*/
-	public $stringValue;
+		public $stringValue;
 
 }
 

@@ -17,14 +17,14 @@ use Mozu\Api\Urls\Commerce\Catalog\Storefront\OrderTaxContextUrl;
 
 
 /**
-* Use the Storefront Tax resource to retrieve tax information from the storefront.
+* 
 */
 class OrderTaxContextClient {
 
 	/**
-	* Retrieves tax information applicable to the site.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @param TaxableOrder $taxableOrder 
 	* @return MozuClient
 	*/

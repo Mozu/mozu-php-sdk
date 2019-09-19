@@ -19,7 +19,7 @@ class TransactionUrl  {
 
 	/**
 		* Get Resource Url for GetTransactions
-		* @param int $accountId Unique identifier of the customer account.
+		* @param int $accountId Unique identifier of the customer account for which to retrieve transactions.
 		* @return string Resource Url
 	*/
 	public static function getTransactionsUrl($accountId)
@@ -33,7 +33,7 @@ class TransactionUrl  {
 	/**
 		* Get Resource Url for AddTransaction
 		* @param int $accountId Unique identifier of the customer account.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function addTransactionUrl($accountId, $responseFields)
@@ -47,7 +47,7 @@ class TransactionUrl  {
 	
 	/**
 		* Get Resource Url for RemoveTransaction
-		* @param int $accountId Unique identifier of the customer account.
+		* @param int $accountId Unique identifier of the customer account from which to delete the transaction.
 		* @param string $transactionId Unique identifier of the transaction to delete.
 		* @return string Resource Url
 	*/

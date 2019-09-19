@@ -20,19 +20,18 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class DiscountCondition
 {
 	/**
-	*The coupon code that a shopper uses to redeem an associated discount  on a purchase. This is also the unique identifier of the coupon itself.
+	*If the discount is a coupon, the code required to redeem the coupon.
 	*/
 	public $couponCode;
 
 	/**
-	*Date and time in UTC format when a discount, credit, wish list, or cart expires. An expired discount no longer can be redeemed. An expired wish list is no longer available. An expired credit can no longer be redeemed for a purchase. Acart becomes inactive and expired based on a system-calculated interval. For example, if an anonymous shopper has 14 days of inactivity, the cart is considered abandoned after that period of inactivity. System-supplied and read-only.
+	*The date and time on which the discount expires and cannot be redeemed.
 	*/
 	public $expirationDate;
 
-	/**
-	*List of payment types that trigger this discount to be valid.
-	*/
-	public $includedPaymentWorkflows;
+		public $includedPaymentWorkflows;
+
+		public $maximumOrderAmount;
 
 	/**
 	*The maximum number of times the discount can be redeemed.
@@ -40,7 +39,7 @@ class DiscountCondition
 	public $maxRedemptionCount;
 
 	/**
-	*This specifies the minimum amount that must be purchased in the combined categories defined in IncludedCategories. This amount is calculated before discounting and it is not used if IncludedCategories is empty.
+	*This pecifies the minimum amount that must be purchased in the combined categories defined in IncludedCategories. This amount is calculated before discounting and it is not used if IncludedCategories is empty.
 	*/
 	public $minimumCategorySubtotalBeforeDiscounts;
 
@@ -55,14 +54,16 @@ class DiscountCondition
 	public $minimumOrderAmount;
 
 	/**
-	*This specifies the minimum quantity of products in the categories specified in IncludedCategories, which must be purchased to qualify for the associated discount. This defaults to 1 if null, and IncludedCategories has values.
+	*This specifies the minimum quantity of products in the categories specified in IncludedCategories, which must be purchased to qualify for the associated discount. This defaults to 1 if  null, and IncludedCategories has values.
 	*/
 	public $minimumQuantityProductsRequiredInCategories;
 
 	/**
-	*This specifies the minimum quantity of products in the specified IncludedProducts that must be purchased to qualify for the associated discount. This defaults to 1 if null, and IncludedProducts has values.
+	*This specifies the minimum quantity of products in the specified IncludedProducts that must be purchased to qualify for the associated discount. This defaults to 1 if  null, and IncludedProducts has values.
 	*/
 	public $minimumQuantityRequiredProducts;
+
+		public $minimumRequiredQuantityPerRedemption;
 
 	/**
 	*If true, only authenticated users can redeem the discount. If false, anonymous users can redeem the discount.
@@ -79,6 +80,8 @@ class DiscountCondition
 	*/
 	public $startDate;
 
+		public $categoriesToExcludeFromMinOrderTotal;
+
 	/**
 	*List of customer segments associated with the discount. Shoppers who are members of an associated customer segment can redeem this discount.
 	*/
@@ -90,7 +93,7 @@ class DiscountCondition
 	public $excludedCategories;
 
 	/**
-	*List of products that are not eligible for the discount.
+	*List of the products that are not eligible for the discount.
 	*/
 	public $excludedProducts;
 
@@ -103,6 +106,8 @@ class DiscountCondition
 	*List of products that are eligible for the discount.
 	*/
 	public $includedProducts;
+
+		public $productsToExcludeFromMinOrderTotal;
 
 }
 

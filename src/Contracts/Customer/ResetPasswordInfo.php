@@ -19,10 +19,7 @@ namespace Mozu\Api\Contracts\Customer;
 */
 class ResetPasswordInfo
 {
-	/**
-	*The unique code of the customer set.
-	*/
-	public $customerSetCode;
+		public $customerSetCode;
 
 	/**
 	*The email address of the specified user or the email address associated with the specified entity.
@@ -30,7 +27,7 @@ class ResetPasswordInfo
 	public $emailAddress;
 
 	/**
-	*The user name associated with the user profile. The customer uses the user name to access the account.
+	*User name of the user associated with the customer account.
 	*/
 	public $userName;
 

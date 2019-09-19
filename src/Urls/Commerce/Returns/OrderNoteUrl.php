@@ -19,7 +19,7 @@ class OrderNoteUrl  {
 
 	/**
 		* Get Resource Url for GetReturnNotes
-		* @param string $returnId Unique identifier of the return whose items you want to get.
+		* @param string $returnId 
 		* @return string Resource Url
 	*/
 	public static function getReturnNotesUrl($returnId)
@@ -32,9 +32,9 @@ class OrderNoteUrl  {
 	
 	/**
 		* Get Resource Url for GetReturnNote
-		* @param string $noteId Unique identifier of a particular note to retrieve.
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-		* @param string $returnId Unique identifier of the return whose items you want to get.
+		* @param string $noteId 
+		* @param string $responseFields 
+		* @param string $returnId 
 		* @return string Resource Url
 	*/
 	public static function getReturnNoteUrl($noteId, $responseFields, $returnId)
@@ -49,8 +49,8 @@ class OrderNoteUrl  {
 	
 	/**
 		* Get Resource Url for CreateReturnNote
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-		* @param string $returnId Unique identifier of the return whose items you want to get.
+		* @param string $responseFields 
+		* @param string $returnId 
 		* @return string Resource Url
 	*/
 	public static function createReturnNoteUrl($responseFields, $returnId)
@@ -64,9 +64,9 @@ class OrderNoteUrl  {
 	
 	/**
 		* Get Resource Url for UpdateReturnNote
-		* @param string $noteId Unique identifier of a particular note to retrieve.
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-		* @param string $returnId Unique identifier of the return whose items you want to get.
+		* @param string $noteId 
+		* @param string $responseFields 
+		* @param string $returnId 
 		* @return string Resource Url
 	*/
 	public static function updateReturnNoteUrl($noteId, $responseFields, $returnId)
@@ -81,8 +81,8 @@ class OrderNoteUrl  {
 	
 	/**
 		* Get Resource Url for DeleteReturnNote
-		* @param string $noteId Unique identifier of a particular note to retrieve.
-		* @param string $returnId Unique identifier of the return whose items you want to get.
+		* @param string $noteId 
+		* @param string $returnId 
 		* @return string Resource Url
 	*/
 	public static function deleteReturnNoteUrl($noteId, $returnId)

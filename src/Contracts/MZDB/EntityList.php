@@ -14,105 +14,48 @@ namespace Mozu\Api\Contracts\MZDB;
 
 
 
-/**
-*	The definition of an MZDB EntityList which describes the characteristics of the EntityList on a per tenant basis. EntityLists are created at the tenant level, but instances of the EntityLists are implicitly created at the appropriate context level as entities are added or removed from the EntityList.
-*/
 class EntityList
 {
-	/**
-	*At which context level are entities stored in the list. Possible values are "tenant", "site", "masterCatalog" or "catalog". Each list instance will exist at this context level for the tenant.
-	*/
-	public $contextLevel;
+		public $contextLevel;
 
-	/**
-	*The date and time in UTC format set when the object was created.
-	*/
-	public $createDate;
+		public $createDate;
 
-	/**
-	*Indicates whether MZDB should store entities in the EntityList instance specific to the localeCode provided. If true, all operations on the EntityList will be filtered by the provided localeCode on the request or using the defautLocaleCode for the context. All entities created in the EntityList will be stored with the localeCode provided on the request or the defautLocaleCode for the context as an additional implicit key. The default value is false.
-	*/
-	public $isLocaleSpecific;
+		public $isLocaleSpecific;
 
-	/**
-	*Indicates whether MZDB should clone all of the Entities in the EntityList when cloning an existing sandbox for which this list is already defined. The default value is false.
-	*/
-	public $isSandboxDataCloningSupported;
+		public $isSandboxDataCloningSupported;
 
-	/**
-	*Indicates whether MZDB should store entities in the EntityList instance specific to the current shopper on the request. If true, all operations on the EntityList will be filtered by the id of the shopper from the shopper claims provided on the request. All entities created in the EntityList will be stored with the id of the shopper from the shopper claims provided on the request as an additional implicit key. The default value is false.
-	*/
-	public $isShopperSpecific;
+		public $isShopperSpecific;
 
-	/**
-	*Indicates whether Enitities in the EntityList are allowed to be accessed from a  storefront.
-	*/
-	public $isVisibleInStorefront;
+		public $isVisibleInStorefront;
 
-	/**
-	*The user supplied name that appears in . You can use this field for identification purposes.
-	*/
-	public $name;
+		public $name;
 
-	/**
-	*The namespace for the accessible APIs and source capabilities in the core of  APIs.
-	*/
-	public $nameSpace;
+		public $nameSpace;
 
 	/**
 	*Unique identifier of the Mozu tenant.
 	*/
 	public $tenantId;
 
-	/**
-	*The date and time in UTC format the object was updated most recently.
-	*/
-	public $updateDate;
+		public $updateDate;
 
-	/**
-	*A string array that determines where the document or entity list displays. The options are , for displaying content in the Custom Schema page in  , and , for displaying content in the site tree in Site Builder (applies only to document lists). The following example demonstrates how to display content across both options:
-	*/
-	public $usages;
+		public $usages;
 
-	/**
-	*Indicates whether or not  should assign a generated identifier for each entity in the list or whether a unique identifier will be provided for each identity. If set to false, then a value must be provided for the IdProperty for the list.
-	*/
-	public $useSystemAssignedId;
+		public $useSystemAssignedId;
 
-	/**
-	*An IndexedProperty defintion which indicates a property on every entity provided that should be indexed to enable querying and sorting. Non-indexed properties may be used in queries as long as at least one indexed property is also provided in the query.
-	*/
-	public $indexB;
+		public $idProperty;
 
-	/**
-	*An IndexedProperty defintion which indicates the property on every entity provided should be used as the unique identifier for the document. Within an EntityList instance each entity must have a unique identifier.
-	*/
-	public $idProperty;
+		public $indexA;
 
-	/**
-	*An IndexedProperty defintion which indicates a property on every entity provided that should be indexed to enable querying and sorting. Non-indexed properties may be used in queries as long as at least one indexed property is also provided in the query.
-	*/
-	public $indexA;
+		public $indexB;
 
-	/**
-	*An IndexedProperty defintion which indicates a property on every entity provided that should be indexed to enable querying and sorting. Non-indexed properties may be used in queries as long as at least one indexed property is also provided in the query.
-	*/
-	public $indexC;
+		public $indexC;
 
-	/**
-	*An IndexedProperty defintion which indicates a property on every entity provided that should be indexed to enable querying and sorting. Non-indexed properties may be used in queries as long as at least one indexed property is also provided in the query.
-	*/
-	public $indexD;
+		public $indexD;
 
-	/**
-	*Metadata content for entities, used by document lists, document type lists, document type, views, entity lists, and list views.
-	*/
-	public $metadata;
+		public $metadata;
 
-	/**
-	*The view in the site used by associated entities or document lists/list types.
-	*/
-	public $views;
+		public $views;
 
 }
 

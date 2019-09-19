@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* Provides settings and options for displaying associated content within a context level of site, tenant, catalog, or master catalog. ListViews can be associated with entity lists and entities.
+* 
 */
 class ListViewResource {
 
@@ -33,12 +33,12 @@ class ListViewResource {
 
 
 	/**
-	* Retrieves a view for associated entities. A view provides display context levels (site, tenant, catalog, master catalog) and settings.
+	* 
 	*
-	* @param string $entityId Unique identifier for an entity, which defines the schema, rules, and formats for JSON entities within the MZDB ( Mongo DB).
-	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $viewName The name for a view. Views are used to render data in , such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
+	* @param string $entityId 
+	* @param string $entityListFullName 
+	* @param string $responseFields 
+	* @param string $viewName 
 	* @return JObject 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -52,12 +52,12 @@ class ListViewResource {
 	}
 	
 /**
-	* Retrieves a view for associated entities. A view provides display context levels (site, tenant, catalog, master catalog) and settings.
+	* 
 	*
-	* @param string $entityId Unique identifier for an entity, which defines the schema, rules, and formats for JSON entities within the MZDB ( Mongo DB).
-	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $viewName The name for a view. Views are used to render data in , such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
+	* @param string $entityId 
+	* @param string $entityListFullName 
+	* @param string $responseFields 
+	* @param string $viewName 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getViewEntityAsync($entityListFullName, $viewName, $entityId, $responseFields =  null)
@@ -69,14 +69,14 @@ class ListViewResource {
 	}
 	
 	/**
-	* Retrieves a collection of views for associated entities. Each view provides display context levels (site, tenant, catalog, master catalog) and settings.
+	* 
 	*
-	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
-	* @param string $viewName The name for a view. Views are used to render data in , such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
+	* @param string $entityListFullName 
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param int $startIndex 
+	* @param string $viewName 
 	* @return EntityCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -90,14 +90,14 @@ class ListViewResource {
 	}
 	
 /**
-	* Retrieves a collection of views for associated entities. Each view provides display context levels (site, tenant, catalog, master catalog) and settings.
+	* 
 	*
-	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
-	* @param string $viewName The name for a view. Views are used to render data in , such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
+	* @param string $entityListFullName 
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param int $startIndex 
+	* @param string $viewName 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getViewEntitiesAsync($entityListFullName, $viewName, $pageSize =  null, $startIndex =  null, $filter =  null, $responseFields =  null)
@@ -109,12 +109,12 @@ class ListViewResource {
 	}
 	
 	/**
-	* Retrieves a collection of container data for creating and displaying a view of entities. 
+	* 
 	*
-	* @param string $entityId Unique identifier for an entity, which defines the schema, rules, and formats for JSON entities within the MZDB ( Mongo DB).
-	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $viewName The name for a view. Views are used to render data in , such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
+	* @param string $entityId 
+	* @param string $entityListFullName 
+	* @param string $responseFields 
+	* @param string $viewName 
 	* @return EntityContainer 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -128,12 +128,12 @@ class ListViewResource {
 	}
 	
 /**
-	* Retrieves a collection of container data for creating and displaying a view of entities. 
+	* 
 	*
-	* @param string $entityId Unique identifier for an entity, which defines the schema, rules, and formats for JSON entities within the MZDB ( Mongo DB).
-	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $viewName The name for a view. Views are used to render data in , such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
+	* @param string $entityId 
+	* @param string $entityListFullName 
+	* @param string $responseFields 
+	* @param string $viewName 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getViewEntityContainerAsync($entityListFullName, $viewName, $entityId, $responseFields =  null)
@@ -145,14 +145,14 @@ class ListViewResource {
 	}
 	
 	/**
-	* Retrieves a collection of container data for creating and displaying a view of entities. 
+	* 
 	*
-	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
-	* @param string $viewName The name for a view. Views are used to render data in , such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
+	* @param string $entityListFullName 
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param int $startIndex 
+	* @param string $viewName 
 	* @return EntityContainerCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -166,14 +166,14 @@ class ListViewResource {
 	}
 	
 /**
-	* Retrieves a collection of container data for creating and displaying a view of entities. 
+	* 
 	*
-	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
-	* @param string $viewName The name for a view. Views are used to render data in , such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
+	* @param string $entityListFullName 
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param int $startIndex 
+	* @param string $viewName 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getViewEntityContainersAsync($entityListFullName, $viewName, $pageSize =  null, $startIndex =  null, $filter =  null, $responseFields =  null)
@@ -185,11 +185,11 @@ class ListViewResource {
 	}
 	
 	/**
-	* Retrieves a specific `EntityListView`. These views provide schema, rules, and formatting for all associated entities. 
+	* 
 	*
-	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $viewName The name for a view. Views are used to render data in , such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
+	* @param string $entityListFullName 
+	* @param string $responseFields 
+	* @param string $viewName 
 	* @return ListView 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -203,11 +203,11 @@ class ListViewResource {
 	}
 	
 /**
-	* Retrieves a specific `EntityListView`. These views provide schema, rules, and formatting for all associated entities. 
+	* 
 	*
-	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $viewName The name for a view. Views are used to render data in , such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
+	* @param string $entityListFullName 
+	* @param string $responseFields 
+	* @param string $viewName 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getEntityListViewAsync($entityListFullName, $viewName, $responseFields =  null)
@@ -219,10 +219,10 @@ class ListViewResource {
 	}
 	
 	/**
-	* Retrieves a collection of `EntityListViews`. These views provide schema, rules, and formatting for all associated entities. 
+	* 
 	*
-	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $entityListFullName 
+	* @param string $responseFields 
 	* @return ListViewCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -236,10 +236,10 @@ class ListViewResource {
 	}
 	
 /**
-	* Retrieves a collection of `EntityListViews`. These views provide schema, rules, and formatting for all associated entities. 
+	* 
 	*
-	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $entityListFullName 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getEntityListViewsAsync($entityListFullName, $responseFields =  null)
@@ -251,11 +251,11 @@ class ListViewResource {
 	}
 	
 	/**
-	* Creates an entity list view. Each view provides display context levels (site, tenant, catalog, master catalog) and settings for the list of entities.
+	* 
 	*
-	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param ListView $listView Properties for the list view that specifies what fields and content display per page load. All associated fields in the list view correspond with object data.
+	* @param string $entityListFullName 
+	* @param string $responseFields 
+	* @param ListView $listView 
 	* @return ListView 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -269,10 +269,10 @@ class ListViewResource {
 	}
 	
 /**
-	* Creates an entity list view. Each view provides display context levels (site, tenant, catalog, master catalog) and settings for the list of entities.
+	* 
 	*
-	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $entityListFullName 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function createEntityListViewAsync($listView, $entityListFullName, $responseFields =  null)
@@ -284,12 +284,12 @@ class ListViewResource {
 	}
 	
 	/**
-	* Updates an existing entity list view. Each view provides display context levels (site, tenant, catalog, master catalog) and settings for the list of entities.
+	* 
 	*
-	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $viewName The name for a view. Views are used to render data in , such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
-	* @param ListView $listView Properties for the list view that specifies what fields and content display per page load. All associated fields in the list view correspond with object data.
+	* @param string $entityListFullName 
+	* @param string $responseFields 
+	* @param string $viewName 
+	* @param ListView $listView 
 	* @return ListView 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -303,11 +303,11 @@ class ListViewResource {
 	}
 	
 /**
-	* Updates an existing entity list view. Each view provides display context levels (site, tenant, catalog, master catalog) and settings for the list of entities.
+	* 
 	*
-	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $viewName The name for a view. Views are used to render data in , such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
+	* @param string $entityListFullName 
+	* @param string $responseFields 
+	* @param string $viewName 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateEntityListViewAsync($listView, $entityListFullName, $viewName, $responseFields =  null)
@@ -319,10 +319,11 @@ class ListViewResource {
 	}
 	
 	/**
-	* Deletes an entity list view. Any associated entities have the association removed.
+	* 
 	*
-	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
-	* @param string $viewName The name for a view. Views are used to render data in , such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
+	* @param string $entityListFullName 
+	* @param string $viewName 
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteEntityListView($entityListFullName, $viewName)
@@ -330,14 +331,15 @@ class ListViewResource {
 		$mozuClient = ListViewClient::deleteEntityListViewClient($entityListFullName, $viewName);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Deletes an entity list view. Any associated entities have the association removed.
+	* 
 	*
-	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
-	* @param string $viewName The name for a view. Views are used to render data in , such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
+	* @param string $entityListFullName 
+	* @param string $viewName 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteEntityListViewAsync($entityListFullName, $viewName)

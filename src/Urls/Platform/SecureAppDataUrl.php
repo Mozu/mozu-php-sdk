@@ -20,8 +20,8 @@ class SecureAppDataUrl  {
 	/**
 		* Get Resource Url for GetDBValue
 		* @param string $appKeyId 
-		* @param string $dbEntryQuery The database entry string to create.
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $dbEntryQuery 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getDBValueUrl($appKeyId, $dbEntryQuery, $responseFields)
@@ -37,7 +37,7 @@ class SecureAppDataUrl  {
 	/**
 		* Get Resource Url for CreateDBValue
 		* @param string $appKeyId 
-		* @param string $dbEntryQuery The database entry string to create.
+		* @param string $dbEntryQuery 
 		* @return string Resource Url
 	*/
 	public static function createDBValueUrl($appKeyId, $dbEntryQuery)
@@ -52,7 +52,7 @@ class SecureAppDataUrl  {
 	/**
 		* Get Resource Url for UpdateDBValue
 		* @param string $appKeyId 
-		* @param string $dbEntryQuery The database entry string to create.
+		* @param string $dbEntryQuery 
 		* @return string Resource Url
 	*/
 	public static function updateDBValueUrl($appKeyId, $dbEntryQuery)
@@ -67,7 +67,7 @@ class SecureAppDataUrl  {
 	/**
 		* Get Resource Url for DeleteDBValue
 		* @param string $appKeyId 
-		* @param string $dbEntryQuery The database entry string to create.
+		* @param string $dbEntryQuery 
 		* @return string Resource Url
 	*/
 	public static function deleteDBValueUrl($appKeyId, $dbEntryQuery)

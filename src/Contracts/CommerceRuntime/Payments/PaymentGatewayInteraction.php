@@ -19,40 +19,22 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Payments;
 */
 class PaymentGatewayInteraction
 {
-	/**
-	*If required by the payment gateway, the authorization code of the transaction.
-	*/
-	public $gatewayAuthCode;
+		public $gatewayAuthCode;
+
+		public $gatewayAVSCodes;
+
+		public $gatewayCVV2Codes;
+
+		public $gatewayInteractionId;
+
+		public $gatewayResponseCode;
 
 	/**
-	*AVS (Address Verification Service) codes supplied by the payment gateway. The codes indicate partial to complete or failed matches against the billing address for the shopper against the financial institute data through the gateway.
-	*/
-	public $gatewayAVSCodes;
-
-	/**
-	*CVV2 (Card Verification Value) codes supplied by the payment gateway. The codes indicate a verified or failed match of the encrypted code entered against the financial institution data through the gateway.
-	*/
-	public $gatewayCVV2Codes;
-
-	/**
-	*Unique identifier of the payment interaction from the payment gateway.
-	*/
-	public $gatewayInteractionId;
-
-	/**
-	*Response code from the gateway associated with the payment interaction. The response code is unique to the gateway.The response code is associated with the , which contains the textual response message.Refer to [Gateway Response Code and Text](https://www.mozu.com/docs/developer/api-guides/payment-gateways.htm#gateway_response_code_and_text) in the API Guides for more information.
-	*/
-	public $gatewayResponseCode;
-
-	/**
-	*Textual message returned by the payment gateway for the associated .Refer to [Gateway Response Code and Text](https://www.mozu.com/docs/developer/api-guides/payment-gateways.htm#gateway_response_code_and_text) in the API Guides for more information.
+	*Textual message returned by the payment gateway.
 	*/
 	public $gatewayResponseText;
 
-	/**
-	*Unique identifier of the gateway transaction associated with the payment interaction.
-	*/
-	public $gatewayTransactionId;
+		public $gatewayTransactionId;
 
 }
 

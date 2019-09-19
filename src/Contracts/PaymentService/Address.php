@@ -14,50 +14,23 @@ namespace Mozu\Api\Contracts\PaymentService;
 
 
 
-/**
-*	Address information to supply for a contact.
-*/
 class Address
 {
-	/**
-	*The associated city.
-	*/
-	public $city;
+		public $city;
 
-	/**
-	*The company name associated to this address object.
-	*/
-	public $companyName;
+		public $companyName;
 
-	/**
-	*The associated country
-	*/
-	public $country;
+		public $country;
 
-	/**
-	*Address 1
-	*/
-	public $line1;
+		public $line1;
 
-	/**
-	*Address 2
-	*/
-	public $line2;
+		public $line2;
 
-	/**
-	*Address 3
-	*/
-	public $line3;
+		public $line3;
 
-	/**
-	*The associated postal code.
-	*/
-	public $postalCode;
+		public $postalCode;
 
-	/**
-	*The associated state.
-	*/
-	public $state;
+		public $state;
 
 }
 

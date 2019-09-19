@@ -19,10 +19,7 @@ namespace Mozu\Api\Contracts\SiteSettings\Shipping;
 */
 class SiteShippingHandlingFee
 {
-	/**
-	*The amount of the order handling fee.
-	*/
-	public $amount;
+		public $amount;
 
 }
 

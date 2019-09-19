@@ -17,16 +17,16 @@ use Mozu\Api\Urls\Commerce\Carts\AppliedDiscountUrl;
 
 
 /**
-* Use the Cart Coupons subresource to apply a coupon to a defined cart or remove a coupon from a cart. When the shopper proceeds to checkout, the coupons applied to the cart apply to the order.
+* Use the Cart Coupons resource to apply a coupon to a defined cart or remove a coupon from a cart. When the shopper proceeds to checkout, the coupons applied to the cart apply to the order.
 */
 class AppliedDiscountClient {
 
 	/**
-	* Applies a defined coupon to the cart specified in the request.
+	* 
 	*
-	* @param string $cartId Identifier of the cart to delete.
-	* @param string $couponCode Code associated with the coupon to remove from the cart.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $cartId Unique identifier of the cart to which to apply the coupon.
+	* @param string $couponCode Code associated with the coupon to apply to the cart.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function applyCouponClient($cartId, $couponCode, $responseFields =  null)
@@ -39,9 +39,9 @@ class AppliedDiscountClient {
 	}
 	
 	/**
-	* Removes all coupons from the cart specified in the request.
+	* 
 	*
-	* @param string $cartId Identifier of the cart to delete.
+	* @param string $cartId Unique identifier of the cart.
 	* @return MozuClient
 	*/
 	public static function removeCouponsClient($cartId)
@@ -54,9 +54,9 @@ class AppliedDiscountClient {
 	}
 	
 	/**
-	* Removes an applied coupon from the cart specified in the request.
+	* 
 	*
-	* @param string $cartId Identifier of the cart to delete.
+	* @param string $cartId Unique identifier of the cart.
 	* @param string $couponCode Code associated with the coupon to remove from the cart.
 	* @return MozuClient
 	*/

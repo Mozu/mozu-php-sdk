@@ -19,7 +19,7 @@ class GeneralSettingsUrl  {
 
 	/**
 		* Get Resource Url for GetGeneralSettings
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getGeneralSettingsUrl($responseFields)
@@ -32,7 +32,7 @@ class GeneralSettingsUrl  {
 	
 	/**
 		* Get Resource Url for UpdateGeneralSettings
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updateGeneralSettingsUrl($responseFields)

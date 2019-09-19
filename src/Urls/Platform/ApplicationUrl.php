@@ -19,8 +19,8 @@ class ApplicationUrl  {
 
 	/**
 		* Get Resource Url for GetAppPackageNames
-		* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $applicationKey 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getAppPackageNamesUrl($applicationKey, $responseFields)
@@ -34,8 +34,8 @@ class ApplicationUrl  {
 	
 	/**
 		* Get Resource Url for GetAppVersions
-		* @param string $nsAndAppId The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $nsAndAppId 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getAppVersionsUrl($nsAndAppId, $responseFields)
@@ -49,9 +49,9 @@ class ApplicationUrl  {
 	
 	/**
 		* Get Resource Url for GetPackageFileMetadata
-		* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
-		* @param string $filepath Represents the file name and location.
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $applicationKey 
+		* @param string $filepath 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getPackageFileMetadataUrl($applicationKey, $filepath, $responseFields)
@@ -66,8 +66,8 @@ class ApplicationUrl  {
 	
 	/**
 		* Get Resource Url for GetPackageMetadata
-		* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $applicationKey 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getPackageMetadataUrl($applicationKey, $responseFields)
@@ -81,10 +81,10 @@ class ApplicationUrl  {
 	
 	/**
 		* Get Resource Url for UpsertPackageFile
-		* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
-		* @param string $filepath The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
-		* @param string $lastModifiedTime The date and time of the last file insert or update. This parameter is optional.
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $applicationKey 
+		* @param string $filepath 
+		* @param string $lastModifiedTime 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function upsertPackageFileUrl($applicationKey, $filepath, $lastModifiedTime, $responseFields)
@@ -100,8 +100,8 @@ class ApplicationUrl  {
 	
 	/**
 		* Get Resource Url for RenamePackageFile
-		* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $applicationKey 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function renamePackageFileUrl($applicationKey, $responseFields)
@@ -115,8 +115,8 @@ class ApplicationUrl  {
 	
 	/**
 		* Get Resource Url for DeletePackageFile
-		* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}.
-		* @param string $filepath Represents the file name and location.
+		* @param string $applicationKey 
+		* @param string $filepath 
 		* @return string Resource Url
 	*/
 	public static function deletePackageFileUrl($applicationKey, $filepath)

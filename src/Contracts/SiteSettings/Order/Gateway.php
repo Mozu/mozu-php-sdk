@@ -19,25 +19,15 @@ namespace Mozu\Api\Contracts\SiteSettings\Order;
 */
 class Gateway
 {
-	/**
-	*If true, the credential fields for the gateway are configured with valid values. For security purposes,  does not return the credential fields for the gateway subresource.
-	*/
-	public $areGatewayCredentialFieldsSet;
+		public $areGatewayCredentialFieldsSet;
 
-	/**
-	*The types of credit cards supported by the payment gateway.
-	*/
-	public $supportedCards;
+		public $supportedCards;
 
-	/**
-	*Account information associated with the specified payment gateway.
-	*/
-	public $gatewayAccount;
+		public $gatewayAccount;
 
-	/**
-	*Properties of the payment gateway definition.
-	*/
-	public $gatewayDefinition;
+		public $gatewayDefinition;
+
+		public $siteGatewaySupportedCards;
 
 }
 

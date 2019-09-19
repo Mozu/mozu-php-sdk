@@ -15,99 +15,74 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 /**
-*	Name of the discount added and applied to a shopping cart and order for a shopper's purchase. 
+*	Discount used to calculate SalePrice. Includes coupon code if applicable, amount of the discount, and discount savings. Discounts can be either an absolute price or a percentage off. The sale price beats any discounts.
 */
 class Discount
 {
-	/**
-	*The integer amount of the discount. For example, an entry of "10" could represent a discount of $10.00 or a discount of 10%, depending on the type.
-	*/
-	public $amount;
+		public $amount;
 
-	/**
-	*The type of discount amount, such as an amount or a percentage.
-	*/
-	public $amountType;
+		public $amountType;
 
-	/**
-	*Signifies that the discount is not referenced and can be hard deleted
-	*/
-	public $canBeDeleted;
+		public $canBeDeleted;
 
-	/**
-	*The number of times this discount has been redeemed.
-	*/
-	public $currentRedemptionCount;
+		public $canBeStackedUpon;
 
-	/**
-	*Determines whether or not a discount applies to a items with a sale price. Applicable on order and line item discounts. For line items, when this is true, the discount will be disqualified. For order level discounts, when true, the discount will not be applied to those items have a sale price.
-	*/
-	public $doesNotApplyToProductsWithSalePrice;
+		public $currentRedemptionCount;
+
+		public $doesNotApplyToMultiShipToOrders;
+
+		public $doesNotApplyToProductsWithSalePrice;
 
 	/**
 	*If true, this discount does not apply to a line item product with a defined sale price. The default is false, which applies the discount to products with and without defined sale prices.
 	*/
 	public $doesNotApplyToSalePrice;
 
-	/**
-	*Unique identifier of the source property, such as a catalog, discount, order, or email template.For a product field it will be the name of the field.For a category ID, must be a positive integer not greater than 2000000. By default,  auto-generates a category ID when categories are created. If you want to specify an ID during creation (which preserves category link relationships when migrating tenant data from one sandbox to another), you must also include the  query string in the endpoint. For example, . Then, use the  property to specify the desired category ID.For a product attribute it will be the Attribute FQN.For a document, the ID must be specified as a 32 character, case-insensitive, alphanumeric string. You can specify the ID as 32 sequential characters or as groups separated by dashes in the format 8-4-4-4-12. For example, or.For email templates, the ID must be one of the following values:			
-	*/
-	public $id;
+		public $hasPurchaseConditions;
 
-	/**
-	*Products receiving a price from a price list specified here or a child of a specified price list can be discounted.
-	*/
-	public $includedPriceLists;
+		public $id;
 
-	/**
-	*Maximum impact this discount can apply on a single order. Must be either null or greater than zero.
-	*/
-	public $maximumDiscountImpactPerOrder;
+		public $includedPriceLists;
 
-	/**
-	*Maximum impact this discount can apply on a single line item. Must be either null or greater than zero.
-	*/
-	public $maximumDiscountImpactPerRedemption;
+		public $isBxGx;
 
-	/**
-	*Maximum number of redemptions allowed per order. If null, defaults to unlimited.
-	*/
-	public $maximumRedemptionsPerOrder;
+		public $maximumDiscountImpactPerOrder;
+
+		public $maximumDiscountImpactPerRedemption;
+
+		public $maximumRedemptionsPerOrder;
 
 	/**
 	*The maximum number of times an individual shopper can redeem the discount.
 	*/
 	public $maximumUsesPerUser;
 
-	/**
-	*The scope to which the discount applies, which is "Order" for order discounts or "LineItem" for individual product discounts.
-	*/
-	public $scope;
+		public $preventLineItemShippingDiscounts;
 
-	/**
-	*The current status of the object.This value is read only. Valid values for this field are: "Active", "Expired", and "Inactive".
-	*/
-	public $status;
+		public $preventOrderProductDiscounts;
 
-	/**
-	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
-	*/
-	public $auditInfo;
+		public $preventOrderShippingDiscounts;
+
+		public $purchaseRequirementType;
+
+		public $scope;
+
+		public $stackingLayer;
+
+		public $status;
+
+		public $auditInfo;
 
 	/**
 	*List of conditions that must be met for the discount to apply.
 	*/
 	public $conditions;
 
-	/**
-	*Complex type that contains content for a language specified by LocaleCode.
-	*/
-	public $content;
+		public $content;
 
-	/**
-	*Targets represent the object, such as an item to apply discounts to(products or orders) or a view field for content. Targets are the dot notations that link to the source document property. For example, firstitem for the direct level or firstitem.seconditem.thirditem for a deeper property.
-	*/
-	public $target;
+		public $target;
+
+		public $thresholdMessage;
 
 }
 

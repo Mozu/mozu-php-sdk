@@ -15,109 +15,52 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 /**
-*	Properties of an attribute used to describe customers or orders.
+*	Details of an attribute used to describe individual aspects of a product.
 */
 class Attribute
 {
-	/**
-	*The administrator name associated with the object/data.
-	*/
-	public $adminName;
+		public $adminName;
 
-	/**
-	*Merchant-defined code for an extensible attribute. This code may be used to generate an object's fully qualified name, such as for products.
-	*/
-	public $attributeCode;
+		public $attributeCode;
 
-	/**
-	*Generated sequence that increments for each attribute and data type combination created. This value is system-supplied and read-only.
-	*/
-	public $attributeDataTypeSequence;
+		public $attributeDataTypeSequence;
 
-	/**
-	*The fully qualified name of the attribute, which is a user defined attribute identifier.
-	*/
-	public $attributeFQN;
+		public $attributeFQN;
 
-	/**
-	*Generated sequence that increments for each product attribute created. This value is system-supplied and read-only.
-	*/
-	public $attributeSequence;
+		public $attributeSequence;
 
-	/**
-	*The data type of the source product property, typically of type Bool, DateTime, Number, or String.
-	*/
-	public $dataType;
+		public $dataType;
 
-	/**
-	*The type of input selection used to define a value for the attribute, including Yes/No, Date, DateTime, List, TextBox, or TextArea.
-	*/
-	public $inputType;
+		public $inputType;
 
-	/**
-	*If true, the product attribute is an add-on configuration made by the shopper that does not represent a product variation, such as a monogram.
-	*/
-	public $isExtra;
+		public $isExtra;
 
-	/**
-	*If true, the product attribute is a merchant- or shopper-configurable option, such as size or color, that represents a product variation.
-	*/
-	public $isOption;
+		public $isOption;
 
-	/**
-	*If true, the product attribute describes aspects of the product that do not represent an option configurable by the shopper, such as screen resolution or brand.
-	*/
-	public $isProperty;
+		public $isProperty;
 
-	/**
-	*The unique identifier of the master catalog associated with the entity.
-	*/
-	public $masterCatalogId;
+		public $masterCatalogId;
 
-	/**
-	*The namespace for the accessible APIs and source capabilities in the core of  APIs.
-	*/
-	public $namespace;
+		public $namespace;
 
-	/**
-	*An attribute value type is either predefined vocabulary by the admin during attribute set up or user-defined with an appropriate type (AdminEntered or ShopperEntered depending on the user). These types are used by products and attributes. The difference between predefined values versus manually entered values is such that the first choice is a set of options to choose from. AdminEntered and ShopperEntered are values that are entered rather than system-supplied and are not stored in the database, but captured during a live commerce operations such as during an order.
-	*/
-	public $valueType;
+		public $valueType;
 
-	/**
-	*List of metadata key-value pairs defined for an extensible attribute.
-	*/
-	public $attributeMetadata;
+		public $attributeMetadata;
 
-	/**
-	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
-	*/
-	public $auditInfo;
+		public $auditInfo;
 
-	/**
-	*Complex type that contains content for a language specified by LocaleCode.
-	*/
-	public $content;
+		public $content;
 
-	/**
-	*The localized content associated with the object.
-	*/
-	public $localizedContent;
+		public $localizedContent;
 
 	/**
 	*This API type provides the search and indexing settings for the attribute.
 	*/
 	public $searchSettings;
 
-	/**
-	*Properties used when validating a value entered for an object, including extensible attributes, products attributes, and database entries.
-	*/
-	public $validation;
+		public $validation;
 
-	/**
-	*List of valid vocabulary values defined for an attribute.
-	*/
-	public $vocabularyValues;
+		public $vocabularyValues;
 
 }
 

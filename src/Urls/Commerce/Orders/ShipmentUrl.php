@@ -19,8 +19,8 @@ class ShipmentUrl  {
 
 	/**
 		* Get Resource Url for GetShipment
-		* @param string $orderId Unique identifier of the order.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $orderId Unique identifier of the order associated with the shipment to retrieve.
+		* @param string $responseFields 
 		* @param string $shipmentId Unique identifier of the shipment to retrieve.
 		* @return string Resource Url
 	*/
@@ -36,8 +36,8 @@ class ShipmentUrl  {
 	
 	/**
 		* Get Resource Url for GetAvailableShipmentMethods
-		* @param bool $draft If true, retrieve the draft version of the order, which might include uncommitted changes to the order or its components.
-		* @param string $orderId Unique identifier of the order.
+		* @param bool $draft 
+		* @param string $orderId Unique identifier of the order for the available shipment methods being retrieved.
 		* @return string Resource Url
 	*/
 	public static function getAvailableShipmentMethodsUrl($draft, $orderId)
@@ -51,7 +51,7 @@ class ShipmentUrl  {
 	
 	/**
 		* Get Resource Url for CreatePackageShipments
-		* @param string $orderId Unique identifier of the order.
+		* @param string $orderId Unique identifier of the order for this shipment.
 		* @return string Resource Url
 	*/
 	public static function createPackageShipmentsUrl($orderId)
@@ -63,9 +63,69 @@ class ShipmentUrl  {
 	}
 	
 	/**
+		* Get Resource Url for UpdateShipmentAdjustments
+		* @param string $orderId 
+		* @param string $responseFields 
+		* @param int $shipmentNumber 
+		* @return string Resource Url
+	*/
+	public static function updateShipmentAdjustmentsUrl($orderId, $responseFields, $shipmentNumber)
+	{
+		$url = "/api/commerce/orders/{orderId}/shipments/{shipmentNumber}/adjustments/?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("shipmentNumber", $shipmentNumber);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for UpdateShipmentItem
+		* @param int $itemId 
+		* @param string $responseFields 
+		* @param int $shipmentNumber 
+		* @return string Resource Url
+	*/
+	public static function updateShipmentItemUrl($itemId, $responseFields, $shipmentNumber)
+	{
+		$url = "/api/commerce/orders/{orderId}/shipments/{shipmentNumber}/item/{itemId}/adjustments?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("itemId", $itemId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("shipmentNumber", $shipmentNumber);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for RepriceShipment
+		* @param string $responseFields 
+		* @param int $shipmentNumber 
+		* @return string Resource Url
+	*/
+	public static function repriceShipmentUrl($responseFields, $shipmentNumber)
+	{
+		$url = "/api/commerce/orders/{orderId}/shipments/{shipmentNumber}/reprice?responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("shipmentNumber", $shipmentNumber);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for SplitShipments
+		* @return string Resource Url
+	*/
+	public static function splitShipmentsUrl()
+	{
+		$url = "/api/commerce/orders/{orderId}/shipments/{shipmentNumber}/split";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		return $mozuUrl;
+	}
+	
+	/**
 		* Get Resource Url for DeleteShipment
-		* @param string $orderId Unique identifier of the order.
-		* @param string $shipmentId Unique identifier of the shipment to retrieve.
+		* @param string $orderId Unique identifier of the order to cancel shipment.
+		* @param string $shipmentId Unique identifier of the shipment to cancel.
 		* @return string Resource Url
 	*/
 	public static function deleteShipmentUrl($orderId, $shipmentId)

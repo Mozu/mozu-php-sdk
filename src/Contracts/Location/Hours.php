@@ -19,10 +19,7 @@ namespace Mozu\Api\Contracts\Location;
 */
 class Hours
 {
-	/**
-	*Descriptive text used as a label for objects, such as field names, facets, date ranges, contact information, and package information.
-	*/
-	public $label;
+		public $label;
 
 }
 

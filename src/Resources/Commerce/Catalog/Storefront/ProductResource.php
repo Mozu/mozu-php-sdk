@@ -18,7 +18,7 @@ use Mozu\Api\ApiContext;
 use Mozu\Api\Headers;
 
 /**
-* Use the Storefront Products resource to manage the shopper product selection process during a visit to the web storefront. You can update product options as shoppers pick and choose their product choices. A shopper cannot add a product to a cart until all of its required options have been selected.
+* Use the Storefront Products  resource to manage the shopper product selection process during a visit to the web storefront. You can update product options as shoppers pick and choose their product choices. A shopper cannot add a product to a cart until all of its required options have been selected.
 */
 class ProductResource {
 
@@ -34,21 +34,22 @@ class ProductResource {
 
 
 	/**
-	* Retrieves a list of products that appear on the web storefront according to any specified filter criteria and sort options.
+	* 
 	*
-	* @param string $cursorMark In your first deep paged request, set this parameter to . Then, in all subsequent requests, set this parameter to the subsequent values of  that's returned in each response to continue paging through the results. Continue this pattern until  is null, which signifies the end of the paged results.
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $responseOptions Options you can specify for the response. This parameter is null by default.You can primarily use this parameter to return volume price band information in product details, which you can then display on category pages and search results depanding on your theme configuration. To return volume price band information, set this parameter to .
+	* @param string $cursorMark 
+	* @param string $defaultSort 
+	* @param string $filter 
+	* @param int $pageSize Used to page results from a query. Indicates the maximum number of entities to return from a single query. Default value: 20. Maximum value: 200.
+	* @param string $responseFields 
+	* @param string $responseOptions 
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return ProductCollection 
 	* @deprecated deprecated since version 1.17
 	*/
-	public function getProducts($filter =  null, $startIndex =  null, $pageSize =  null, $sortBy =  null, $responseOptions =  null, $cursorMark =  null, $responseFields =  null)
+	public function getProducts($filter =  null, $startIndex =  null, $pageSize =  null, $sortBy =  null, $responseOptions =  null, $cursorMark =  null, $defaultSort =  null, $responseFields =  null)
 	{
-		$mozuClient = ProductClient::getProductsClient($this->dataViewMode, $filter, $startIndex, $pageSize, $sortBy, $responseOptions, $cursorMark, $responseFields);
+		$mozuClient = ProductClient::getProductsClient($this->dataViewMode, $filter, $startIndex, $pageSize, $sortBy, $responseOptions, $cursorMark, $defaultSort, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -56,31 +57,32 @@ class ProductResource {
 	}
 	
 /**
-	* Retrieves a list of products that appear on the web storefront according to any specified filter criteria and sort options.
+	* 
 	*
-	* @param string $cursorMark In your first deep paged request, set this parameter to . Then, in all subsequent requests, set this parameter to the subsequent values of  that's returned in each response to continue paging through the results. Continue this pattern until  is null, which signifies the end of the paged results.
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $responseOptions Options you can specify for the response. This parameter is null by default.You can primarily use this parameter to return volume price band information in product details, which you can then display on category pages and search results depanding on your theme configuration. To return volume price band information, set this parameter to .
+	* @param string $cursorMark 
+	* @param string $defaultSort 
+	* @param string $filter 
+	* @param int $pageSize Used to page results from a query. Indicates the maximum number of entities to return from a single query. Default value: 20. Maximum value: 200.
+	* @param string $responseFields 
+	* @param string $responseOptions 
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
-	public function getProductsAsync($filter =  null, $startIndex =  null, $pageSize =  null, $sortBy =  null, $responseOptions =  null, $cursorMark =  null, $responseFields =  null)
+	public function getProductsAsync($filter =  null, $startIndex =  null, $pageSize =  null, $sortBy =  null, $responseOptions =  null, $cursorMark =  null, $defaultSort =  null, $responseFields =  null)
 	{
-		$mozuClient = ProductClient::getProductsClient($this->dataViewMode, $filter, $startIndex, $pageSize, $sortBy, $responseOptions, $cursorMark, $responseFields);
+		$mozuClient = ProductClient::getProductsClient($this->dataViewMode, $filter, $startIndex, $pageSize, $sortBy, $responseOptions, $cursorMark, $defaultSort, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 
 	}
 	
 	/**
-	* Retrieves the active inventory level information associated with the product or location specified in the request.
+	* 
 	*
 	* @param string $locationCodes Array of location codes for which to retrieve product inventory information.
-	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $productCode 
+	* @param string $responseFields 
 	* @return LocationInventoryCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -94,11 +96,11 @@ class ProductResource {
 	}
 	
 /**
-	* Retrieves the active inventory level information associated with the product or location specified in the request.
+	* 
 	*
 	* @param string $locationCodes Array of location codes for which to retrieve product inventory information.
-	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $productCode 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getProductInventoryAsync($productCode, $locationCodes =  null, $responseFields =  null)
@@ -110,22 +112,24 @@ class ProductResource {
 	}
 	
 	/**
-	* Retrieves information about a single product given its product code.
+	* 
 	*
-	* @param bool $acceptVariantProductCode Specifies whether to accept a product variant's code as the .When you set this parameter to , you can pass in a product variant's code in the GetProduct call to retrieve the product variant details that are associated with the base product.
-	* @param bool $allowInactive If true, allow inactive categories to be retrieved in the category list response. If false, the categories retrieved will not include ones marked inactive.
-	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @param int $quantity The number of cart items in the shopper's active cart.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param bool $skipInventoryCheck If true, skip the process to validate inventory when creating this product reservation.
-	* @param bool $supressOutOfStock404 Specifies whether to supress the 404 error when the product is out of stock.
+	* @param bool $acceptVariantProductCode 
+	* @param bool $allowInactive If true, returns an inactive product as part of the query.
+	* @param string $productCode 
+	* @param string $purchaseLocation 
+	* @param int $quantity 
+	* @param string $responseFields 
+	* @param bool $skipInventoryCheck If true, skip the inventory validation process for the specified product.
+	* @param bool $supressOutOfStock404 
 	* @param string $variationProductCode Merchant-created code associated with a specific product variation. Variation product codes maintain an association with the base product code.
+	* @param string $variationProductCodeFilter 
 	* @return Product 
 	* @deprecated deprecated since version 1.17
 	*/
-	public function getProduct($productCode, $variationProductCode =  null, $allowInactive =  null, $skipInventoryCheck =  null, $supressOutOfStock404 =  null, $quantity =  null, $acceptVariantProductCode =  null, $responseFields =  null)
+	public function getProduct($productCode, $variationProductCode =  null, $allowInactive =  null, $skipInventoryCheck =  null, $supressOutOfStock404 =  null, $quantity =  null, $acceptVariantProductCode =  null, $purchaseLocation =  null, $variationProductCodeFilter =  null, $responseFields =  null)
 	{
-		$mozuClient = ProductClient::getProductClient($this->dataViewMode, $productCode, $variationProductCode, $allowInactive, $skipInventoryCheck, $supressOutOfStock404, $quantity, $acceptVariantProductCode, $responseFields);
+		$mozuClient = ProductClient::getProductClient($this->dataViewMode, $productCode, $variationProductCode, $allowInactive, $skipInventoryCheck, $supressOutOfStock404, $quantity, $acceptVariantProductCode, $purchaseLocation, $variationProductCodeFilter, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -133,33 +137,35 @@ class ProductResource {
 	}
 	
 /**
-	* Retrieves information about a single product given its product code.
+	* 
 	*
-	* @param bool $acceptVariantProductCode Specifies whether to accept a product variant's code as the .When you set this parameter to , you can pass in a product variant's code in the GetProduct call to retrieve the product variant details that are associated with the base product.
-	* @param bool $allowInactive If true, allow inactive categories to be retrieved in the category list response. If false, the categories retrieved will not include ones marked inactive.
-	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @param int $quantity The number of cart items in the shopper's active cart.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param bool $skipInventoryCheck If true, skip the process to validate inventory when creating this product reservation.
-	* @param bool $supressOutOfStock404 Specifies whether to supress the 404 error when the product is out of stock.
+	* @param bool $acceptVariantProductCode 
+	* @param bool $allowInactive If true, returns an inactive product as part of the query.
+	* @param string $productCode 
+	* @param string $purchaseLocation 
+	* @param int $quantity 
+	* @param string $responseFields 
+	* @param bool $skipInventoryCheck If true, skip the inventory validation process for the specified product.
+	* @param bool $supressOutOfStock404 
 	* @param string $variationProductCode Merchant-created code associated with a specific product variation. Variation product codes maintain an association with the base product code.
+	* @param string $variationProductCodeFilter 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
-	public function getProductAsync($productCode, $variationProductCode =  null, $allowInactive =  null, $skipInventoryCheck =  null, $supressOutOfStock404 =  null, $quantity =  null, $acceptVariantProductCode =  null, $responseFields =  null)
+	public function getProductAsync($productCode, $variationProductCode =  null, $allowInactive =  null, $skipInventoryCheck =  null, $supressOutOfStock404 =  null, $quantity =  null, $acceptVariantProductCode =  null, $purchaseLocation =  null, $variationProductCodeFilter =  null, $responseFields =  null)
 	{
-		$mozuClient = ProductClient::getProductClient($this->dataViewMode, $productCode, $variationProductCode, $allowInactive, $skipInventoryCheck, $supressOutOfStock404, $quantity, $acceptVariantProductCode, $responseFields);
+		$mozuClient = ProductClient::getProductClient($this->dataViewMode, $productCode, $variationProductCode, $allowInactive, $skipInventoryCheck, $supressOutOfStock404, $quantity, $acceptVariantProductCode, $purchaseLocation, $variationProductCodeFilter, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 
 	}
 	
 	/**
-	* Retrieves information about a single product given its product code for  to index in the search engine
+	* 
 	*
-	* @param DateTime $lastModifiedDate The date when the product was last updated.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
-	* @param long $productVersion The product version.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param DateTime $lastModifiedDate 
+	* @param string $productCode 
+	* @param long $productVersion 
+	* @param string $responseFields 
 	* @return Product 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -173,12 +179,12 @@ class ProductResource {
 	}
 	
 /**
-	* Retrieves information about a single product given its product code for  to index in the search engine
+	* 
 	*
-	* @param DateTime $lastModifiedDate The date when the product was last updated.
-	* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
-	* @param long $productVersion The product version.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param DateTime $lastModifiedDate 
+	* @param string $productCode 
+	* @param long $productVersion 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getProductForIndexingAsync($productCode, $productVersion =  null, $lastModifiedDate =  null, $responseFields =  null)
@@ -190,20 +196,22 @@ class ProductResource {
 	}
 	
 	/**
-	* Creates a new product configuration each time a shopper selects a product option value. After the shopper defines values for all required product options, the shopper can add the product configuration to a cart.
+	* 
 	*
 	* @param bool $includeOptionDetails If true, the response returns details about the product. If false, returns a product summary such as the product name, price, and sale price.
-	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @param int $quantity The number of cart items in the shopper's active cart.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param bool $skipInventoryCheck If true, skip the process to validate inventory when creating this product reservation.
+	* @param string $productCode 
+	* @param string $purchaseLocation 
+	* @param int $quantity 
+	* @param string $responseFields 
+	* @param bool $skipInventoryCheck If true, skip the inventory validation process for the specified product.
+	* @param string $variationProductCodeFilter 
 	* @param ProductOptionSelections $productOptionSelections For a product with shopper-configurable options, the properties of the product options selected by the shopper.
 	* @return ConfiguredProduct 
 	* @deprecated deprecated since version 1.17
 	*/
-	public function configuredProduct($productOptionSelections, $productCode, $includeOptionDetails =  null, $skipInventoryCheck =  null, $quantity =  null, $responseFields =  null)
+	public function configuredProduct($productOptionSelections, $productCode, $includeOptionDetails =  null, $skipInventoryCheck =  null, $quantity =  null, $purchaseLocation =  null, $variationProductCodeFilter =  null, $responseFields =  null)
 	{
-		$mozuClient = ProductClient::configuredProductClient($productOptionSelections, $productCode, $includeOptionDetails, $skipInventoryCheck, $quantity, $responseFields);
+		$mozuClient = ProductClient::configuredProductClient($productOptionSelections, $productCode, $includeOptionDetails, $skipInventoryCheck, $quantity, $purchaseLocation, $variationProductCodeFilter, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -211,38 +219,41 @@ class ProductResource {
 	}
 	
 /**
-	* Creates a new product configuration each time a shopper selects a product option value. After the shopper defines values for all required product options, the shopper can add the product configuration to a cart.
+	* 
 	*
 	* @param bool $includeOptionDetails If true, the response returns details about the product. If false, returns a product summary such as the product name, price, and sale price.
-	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @param int $quantity The number of cart items in the shopper's active cart.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param bool $skipInventoryCheck If true, skip the process to validate inventory when creating this product reservation.
+	* @param string $productCode 
+	* @param string $purchaseLocation 
+	* @param int $quantity 
+	* @param string $responseFields 
+	* @param bool $skipInventoryCheck If true, skip the inventory validation process for the specified product.
+	* @param string $variationProductCodeFilter 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
-	public function configuredProductAsync($productOptionSelections, $productCode, $includeOptionDetails =  null, $skipInventoryCheck =  null, $quantity =  null, $responseFields =  null)
+	public function configuredProductAsync($productOptionSelections, $productCode, $includeOptionDetails =  null, $skipInventoryCheck =  null, $quantity =  null, $purchaseLocation =  null, $variationProductCodeFilter =  null, $responseFields =  null)
 	{
-		$mozuClient = ProductClient::configuredProductClient($productOptionSelections, $productCode, $includeOptionDetails, $skipInventoryCheck, $quantity, $responseFields);
+		$mozuClient = ProductClient::configuredProductClient($productOptionSelections, $productCode, $includeOptionDetails, $skipInventoryCheck, $quantity, $purchaseLocation, $variationProductCodeFilter, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 
 	}
 	
 	/**
-	* Validate the final state of shopper-selected options.
+	* 
 	*
-	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @param int $quantity The number of cart items in the shopper's active cart.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param bool $skipDefaults Normally, product validation applies default extras to products that do not have options specified. If , product validation does not apply default extras to products.
-	* @param bool $skipInventoryCheck If true, skip the process to validate inventory when creating this product reservation.
+	* @param string $productCode 
+	* @param string $purchaseLocation 
+	* @param int $quantity 
+	* @param string $responseFields 
+	* @param bool $skipDefaults 
+	* @param bool $skipInventoryCheck If true, skip the inventory validation process for the specified product.
 	* @param ProductOptionSelections $productOptionSelections For a product with shopper-configurable options, the properties of the product options selected by the shopper.
 	* @return ProductValidationSummary 
 	* @deprecated deprecated since version 1.17
 	*/
-	public function validateProduct($productOptionSelections, $productCode, $skipInventoryCheck =  null, $quantity =  null, $skipDefaults =  null, $responseFields =  null)
+	public function validateProduct($productOptionSelections, $productCode, $skipInventoryCheck =  null, $quantity =  null, $skipDefaults =  null, $purchaseLocation =  null, $responseFields =  null)
 	{
-		$mozuClient = ProductClient::validateProductClient($productOptionSelections, $productCode, $skipInventoryCheck, $quantity, $skipDefaults, $responseFields);
+		$mozuClient = ProductClient::validateProductClient($productOptionSelections, $productCode, $skipInventoryCheck, $quantity, $skipDefaults, $purchaseLocation, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -250,33 +261,34 @@ class ProductResource {
 	}
 	
 /**
-	* Validate the final state of shopper-selected options.
+	* 
 	*
-	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @param int $quantity The number of cart items in the shopper's active cart.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param bool $skipDefaults Normally, product validation applies default extras to products that do not have options specified. If , product validation does not apply default extras to products.
-	* @param bool $skipInventoryCheck If true, skip the process to validate inventory when creating this product reservation.
+	* @param string $productCode 
+	* @param string $purchaseLocation 
+	* @param int $quantity 
+	* @param string $responseFields 
+	* @param bool $skipDefaults 
+	* @param bool $skipInventoryCheck If true, skip the inventory validation process for the specified product.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
-	public function validateProductAsync($productOptionSelections, $productCode, $skipInventoryCheck =  null, $quantity =  null, $skipDefaults =  null, $responseFields =  null)
+	public function validateProductAsync($productOptionSelections, $productCode, $skipInventoryCheck =  null, $quantity =  null, $skipDefaults =  null, $purchaseLocation =  null, $responseFields =  null)
 	{
-		$mozuClient = ProductClient::validateProductClient($productOptionSelections, $productCode, $skipInventoryCheck, $quantity, $skipDefaults, $responseFields);
+		$mozuClient = ProductClient::validateProductClient($productOptionSelections, $productCode, $skipInventoryCheck, $quantity, $skipDefaults, $purchaseLocation, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 
 	}
 	
 	/**
-	* Evaluates whether a collection of discounts specified in the request can be redeemed for the supplied product code.
+	* 
 	*
-	* @param bool $allowInactive If true, allow inactive categories to be retrieved in the category list response. If false, the categories retrieved will not include ones marked inactive.
-	* @param int $customerAccountId The unique identifier of the customer account for which to retrieve wish lists.
-	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param bool $skipInventoryCheck If true, skip the process to validate inventory when creating this product reservation.
+	* @param bool $allowInactive If true, this operation returns inactive product discounts as part of the POST.
+	* @param int $customerAccountId Unique ID of the customer account associated with the shopper requesting the discount.
+	* @param string $productCode 
+	* @param string $responseFields 
+	* @param bool $skipInventoryCheck If true, do not validate the product inventory when evaluating the list of discounts.
 	* @param string $variationProductCode Merchant-created code associated with a specific product variation. Variation product codes maintain an association with the base product code.
-	* @param DiscountSelections $discountSelections The discounts to evaluate for a specified product code at the time of purchase.
+	* @param DiscountSelections $discountSelections List of discount IDs to evaluate for the specified product.
 	* @return DiscountValidationSummary 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -290,13 +302,13 @@ class ProductResource {
 	}
 	
 /**
-	* Evaluates whether a collection of discounts specified in the request can be redeemed for the supplied product code.
+	* 
 	*
-	* @param bool $allowInactive If true, allow inactive categories to be retrieved in the category list response. If false, the categories retrieved will not include ones marked inactive.
-	* @param int $customerAccountId The unique identifier of the customer account for which to retrieve wish lists.
-	* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param bool $skipInventoryCheck If true, skip the process to validate inventory when creating this product reservation.
+	* @param bool $allowInactive If true, this operation returns inactive product discounts as part of the POST.
+	* @param int $customerAccountId Unique ID of the customer account associated with the shopper requesting the discount.
+	* @param string $productCode 
+	* @param string $responseFields 
+	* @param bool $skipInventoryCheck If true, do not validate the product inventory when evaluating the list of discounts.
 	* @param string $variationProductCode Merchant-created code associated with a specific product variation. Variation product codes maintain an association with the base product code.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -309,10 +321,10 @@ class ProductResource {
 	}
 	
 	/**
-	* Retrieves the product cost based on a list of product codes. The product cost is the amount the merchant pays for the product—it is not the price that the shopper sees on the storefront (which is usually higher).
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param ProductCostQuery $query Properties for the product location inventory provided for queries to locate products by their location.
+	* @param string $responseFields 
+	* @param ProductCostQuery $query 
 	* @return ProductCostCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -326,9 +338,9 @@ class ProductResource {
 	}
 	
 /**
-	* Retrieves the product cost based on a list of product codes. The product cost is the amount the merchant pays for the product—it is not the price that the shopper sees on the storefront (which is usually higher).
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getProductCostsAsync($query, $responseFields =  null)
@@ -340,10 +352,10 @@ class ProductResource {
 	}
 	
 	/**
-	* Retrieves product inventories for the storefront displayed products.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param LocationInventoryQuery $query Properties for the product location inventory provided for queries to locate products by their location.
+	* @param string $responseFields 
+	* @param LocationInventoryQuery $query 
 	* @return LocationInventoryCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -357,9 +369,9 @@ class ProductResource {
 	}
 	
 /**
-	* Retrieves product inventories for the storefront displayed products.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getProductInventoriesAsync($query, $responseFields =  null)

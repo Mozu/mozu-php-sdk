@@ -19,42 +19,21 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Channels;
 */
 class Channel
 {
-	/**
-	*Array list of site identifiers associated with this channel. Each tenant site must have a channel association.
-	*/
-	public $siteIds;
-
-	/**
-	*User-defined code that uniquely identifies the channel.
-	*/
-	public $code;
+		public $code;
 
 		public $countryCode;
 
-	/**
-	*User-defined code that identifies the channel group.
-	*/
-	public $groupCode;
+		public $groupCode;
 
-	/**
-	*The user supplied name that appears in . You can use this field for identification purposes.
-	*/
-	public $name;
+		public $name;
 
-	/**
-	*The geographical region associated with this channel. This region could represent any geographical entity from a state to a continent.
-	*/
-	public $region;
+		public $region;
 
-	/**
-	*Unique identifier of the Mozu tenant.
-	*/
-	public $tenantId;
+		public $siteIds;
 
-	/**
-	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
-	*/
-	public $auditInfo;
+		public $tenantId;
+
+		public $auditInfo;
 
 }
 

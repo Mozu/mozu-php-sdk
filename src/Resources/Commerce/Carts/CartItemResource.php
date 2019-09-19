@@ -33,10 +33,10 @@ class CartItemResource {
 
 
 	/**
-	* Retrieves a particular cart item by providing the cart item ID.
+	* 
 	*
-	* @param string $cartItemId Identifier of the cart item to delete.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $cartItemId Identifier of the cart item to retrieve.
+	* @param string $responseFields 
 	* @return CartItem 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -50,10 +50,10 @@ class CartItemResource {
 	}
 	
 /**
-	* Retrieves a particular cart item by providing the cart item ID.
+	* 
 	*
-	* @param string $cartItemId Identifier of the cart item to delete.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $cartItemId Identifier of the cart item to retrieve.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getCartItemAsync($cartItemId, $responseFields =  null)
@@ -65,9 +65,9 @@ class CartItemResource {
 	}
 	
 	/**
-	* Retrieves a list of cart items including the total number of items in the cart.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return CartItemCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -81,9 +81,9 @@ class CartItemResource {
 	}
 	
 /**
-	* Retrieves a list of cart items including the total number of items in the cart.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getCartItemsAsync($responseFields =  null)
@@ -95,10 +95,41 @@ class CartItemResource {
 	}
 	
 	/**
-	* Adds a product to the current shopper's cart.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param CartItem $cartItem Properties of an item added to an active shopping cart.
+	* @param bool $throwErrorOnInvalidItems 
+	* @param array|CartItem $cartItems 
+	* @return Stream 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function addItemsToCart($cartItems, $throwErrorOnInvalidItems =  null)
+	{
+		$mozuClient = CartItemClient::addItemsToCartClient($cartItems, $throwErrorOnInvalidItems);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* 
+	*
+	* @param bool $throwErrorOnInvalidItems 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function addItemsToCartAsync($cartItems, $throwErrorOnInvalidItems =  null)
+	{
+		$mozuClient = CartItemClient::addItemsToCartClient($cartItems, $throwErrorOnInvalidItems);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $responseFields 
+	* @param CartItem $cartItem All properties of the new cart item. The product code is required.
 	* @return CartItem 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -112,9 +143,9 @@ class CartItemResource {
 	}
 	
 /**
-	* Adds a product to the current shopper's cart.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function addItemToCartAsync($cartItem, $responseFields =  null)
@@ -126,11 +157,11 @@ class CartItemResource {
 	}
 	
 	/**
-	* Update the quantity of an individual cart item in the cart of the current shopper.
+	* 
 	*
-	* @param string $cartItemId Identifier of the cart item to delete.
+	* @param string $cartItemId Identifier of the cart item to update quantity.
 	* @param int $quantity The number of cart items in the shopper's active cart.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return CartItem 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -144,11 +175,11 @@ class CartItemResource {
 	}
 	
 /**
-	* Update the quantity of an individual cart item in the cart of the current shopper.
+	* 
 	*
-	* @param string $cartItemId Identifier of the cart item to delete.
+	* @param string $cartItemId Identifier of the cart item to update quantity.
 	* @param int $quantity The number of cart items in the shopper's active cart.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateCartItemQuantityAsync($cartItemId, $quantity, $responseFields =  null)
@@ -160,11 +191,11 @@ class CartItemResource {
 	}
 	
 	/**
-	* Update the product or product quantity of an item in the current shopper's cart.
+	* 
 	*
-	* @param string $cartItemId Identifier of the cart item to delete.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param CartItem $cartItem Properties of an item added to an active shopping cart.
+	* @param string $cartItemId Identifier of the cart item to update.
+	* @param string $responseFields 
+	* @param CartItem $cartItem The properties of the cart item to update.
 	* @return CartItem 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -178,10 +209,10 @@ class CartItemResource {
 	}
 	
 /**
-	* Update the product or product quantity of an item in the current shopper's cart.
+	* 
 	*
-	* @param string $cartItemId Identifier of the cart item to delete.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $cartItemId Identifier of the cart item to update.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateCartItemAsync($cartItem, $cartItemId, $responseFields =  null)
@@ -193,7 +224,7 @@ class CartItemResource {
 	}
 	
 	/**
-	* Removes all items in the current shopper's active cart.
+	* 
 	*
 	* @return Cart 
 	* @deprecated deprecated since version 1.17
@@ -208,7 +239,7 @@ class CartItemResource {
 	}
 	
 /**
-	* Removes all items in the current shopper's active cart.
+	* 
 	*
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -221,9 +252,10 @@ class CartItemResource {
 	}
 	
 	/**
-	* Deletes a specific cart item by providing the cart item ID.
+	* 
 	*
 	* @param string $cartItemId Identifier of the cart item to delete.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteCartItem($cartItemId)
@@ -231,11 +263,12 @@ class CartItemResource {
 		$mozuClient = CartItemClient::deleteCartItemClient($cartItemId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Deletes a specific cart item by providing the cart item ID.
+	* 
 	*
 	* @param string $cartItemId Identifier of the cart item to delete.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException

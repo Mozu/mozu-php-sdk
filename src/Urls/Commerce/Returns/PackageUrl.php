@@ -19,9 +19,9 @@ class PackageUrl  {
 
 	/**
 		* Get Resource Url for GetPackageLabel
-		* @param string $packageId Unique identifier of the package for which to retrieve the label.
-		* @param bool $returnAsBase64Png Specifies whether to return the RMA label image as Base64-encoded PNG image instead of as a byte array encoded in the original image format. The default is .
-		* @param string $returnId Unique identifier of the return whose items you want to get.
+		* @param string $packageId Unique identifier of the return replacement package for which to retrieve the label.
+		* @param bool $returnAsBase64Png 
+		* @param string $returnId Unique identifier of the return associated with the replacement package label to retrieve.
 		* @return string Resource Url
 	*/
 	public static function getPackageLabelUrl($packageId, $returnAsBase64Png, $returnId)
@@ -36,9 +36,9 @@ class PackageUrl  {
 	
 	/**
 		* Get Resource Url for GetPackage
-		* @param string $packageId Unique identifier of the package for which to retrieve the label.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $returnId Unique identifier of the return whose items you want to get.
+		* @param string $packageId Unique identifier of the return replacement package to retrieve.
+		* @param string $responseFields 
+		* @param string $returnId Unique identifier of the return associated with the replacement package to retrieve.
 		* @return string Resource Url
 	*/
 	public static function getPackageUrl($packageId, $responseFields, $returnId)
@@ -53,8 +53,8 @@ class PackageUrl  {
 	
 	/**
 		* Get Resource Url for CreatePackage
-		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $returnId Unique identifier of the return whose items you want to get.
+		* @param string $responseFields 
+		* @param string $returnId Unique identifier of the return for which to create a replacement package.
 		* @return string Resource Url
 	*/
 	public static function createPackageUrl($responseFields, $returnId)
@@ -68,9 +68,9 @@ class PackageUrl  {
 	
 	/**
 		* Get Resource Url for UpdatePackage
-		* @param string $packageId Unique identifier of the package for which to retrieve the label.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $returnId Unique identifier of the return whose items you want to get.
+		* @param string $packageId Unique identifier of the return replacement package to update.
+		* @param string $responseFields 
+		* @param string $returnId Unique identifier of the return associated with the replacement package to update.
 		* @return string Resource Url
 	*/
 	public static function updatePackageUrl($packageId, $responseFields, $returnId)
@@ -85,8 +85,8 @@ class PackageUrl  {
 	
 	/**
 		* Get Resource Url for DeletePackage
-		* @param string $packageId Unique identifier of the package for which to retrieve the label.
-		* @param string $returnId Unique identifier of the return whose items you want to get.
+		* @param string $packageId Unique identifier of the return replacement package to delete.
+		* @param string $returnId Unique identifier of the return associated with the replacement package to delete.
 		* @return string Resource Url
 	*/
 	public static function deletePackageUrl($packageId, $returnId)

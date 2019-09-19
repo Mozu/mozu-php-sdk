@@ -33,11 +33,11 @@ class WishlistItemResource {
 
 
 	/**
-	* Retrieves the details of an item in a shopper wish list.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $wishlistId Unique identifier of the wish list.
-	* @param string $wishlistItemId Unique identifier of the item to remove from the shopper wish list.
+	* @param string $responseFields 
+	* @param string $wishlistId Unique identifier of the wish list item to retrieve.
+	* @param string $wishlistItemId Unique identifier of the wish list associated with the item to retrieve.
 	* @return WishlistItem 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -51,11 +51,11 @@ class WishlistItemResource {
 	}
 	
 /**
-	* Retrieves the details of an item in a shopper wish list.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $wishlistId Unique identifier of the wish list.
-	* @param string $wishlistItemId Unique identifier of the item to remove from the shopper wish list.
+	* @param string $responseFields 
+	* @param string $wishlistId Unique identifier of the wish list item to retrieve.
+	* @param string $wishlistItemId Unique identifier of the wish list associated with the item to retrieve.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getWishlistItemAsync($wishlistId, $wishlistItemId, $responseFields =  null)
@@ -67,14 +67,14 @@ class WishlistItemResource {
 	}
 	
 	/**
-	* Retrieves a list of items in a shopper wish list according to any specified filter and sort criteria.
+	* 
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
-	* @param string $wishlistId Unique identifier of the wish list.
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param string $sortBy 
+	* @param int $startIndex 
+	* @param string $wishlistId Unique identifier of the wish list associated with the items to retrieve.
 	* @return WishlistItemCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -88,14 +88,14 @@ class WishlistItemResource {
 	}
 	
 /**
-	* Retrieves a list of items in a shopper wish list according to any specified filter and sort criteria.
+	* 
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
-	* @param string $wishlistId Unique identifier of the wish list.
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param string $sortBy 
+	* @param int $startIndex 
+	* @param string $wishlistId Unique identifier of the wish list associated with the items to retrieve.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getWishlistItemsAsync($wishlistId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
@@ -107,15 +107,15 @@ class WishlistItemResource {
 	}
 	
 	/**
-	* Retrieve a list of items in a customer wish list by supplying the wish list name.
+	* 
 	*
-	* @param int $customerAccountId The unique identifier of the customer account for which to retrieve wish lists.
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
-	* @param string $wishlistName The name of the wish list to retrieve.
+	* @param int $customerAccountId The unique identifier of the customer account associated with the wish list.
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param string $sortBy 
+	* @param int $startIndex 
+	* @param string $wishlistName The name of the wish list that contains the items to retrieve.
 	* @return WishlistItemCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -129,15 +129,15 @@ class WishlistItemResource {
 	}
 	
 /**
-	* Retrieve a list of items in a customer wish list by supplying the wish list name.
+	* 
 	*
-	* @param int $customerAccountId The unique identifier of the customer account for which to retrieve wish lists.
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
-	* @param string $wishlistName The name of the wish list to retrieve.
+	* @param int $customerAccountId The unique identifier of the customer account associated with the wish list.
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param string $sortBy 
+	* @param int $startIndex 
+	* @param string $wishlistName The name of the wish list that contains the items to retrieve.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getWishlistItemsByWishlistNameAsync($customerAccountId, $wishlistName, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
@@ -149,11 +149,11 @@ class WishlistItemResource {
 	}
 	
 	/**
-	* Adds a product in a site's catalog as an item in a shopper wish list.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $wishlistId Unique identifier of the wish list.
-	* @param WishlistItem $wishlistItem Properties of an item in a shopper wish list.
+	* @param string $responseFields 
+	* @param string $wishlistId Unique identifier of the wish list associated with the item to add.
+	* @param WishlistItem $wishlistItem Properties of the item to add to the wish list.
 	* @return WishlistItem 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -167,10 +167,10 @@ class WishlistItemResource {
 	}
 	
 /**
-	* Adds a product in a site's catalog as an item in a shopper wish list.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $wishlistId Unique identifier of the wish list.
+	* @param string $responseFields 
+	* @param string $wishlistId Unique identifier of the wish list associated with the item to add.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function addItemToWishlistAsync($wishlistItem, $wishlistId, $responseFields =  null)
@@ -182,12 +182,12 @@ class WishlistItemResource {
 	}
 	
 	/**
-	* Updates the quantity of an item in a shopper wish list.
+	* 
 	*
-	* @param int $quantity The number of cart items in the shopper's active cart.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $wishlistId Unique identifier of the wish list.
-	* @param string $wishlistItemId Unique identifier of the item to remove from the shopper wish list.
+	* @param int $quantity The quantity of the item in the wish list.
+	* @param string $responseFields 
+	* @param string $wishlistId Unique identifier of the wish list associated with the item quantity to update.
+	* @param string $wishlistItemId Unique identifier of the item in the wish list to update quantity.
 	* @return WishlistItem 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -201,12 +201,12 @@ class WishlistItemResource {
 	}
 	
 /**
-	* Updates the quantity of an item in a shopper wish list.
+	* 
 	*
-	* @param int $quantity The number of cart items in the shopper's active cart.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $wishlistId Unique identifier of the wish list.
-	* @param string $wishlistItemId Unique identifier of the item to remove from the shopper wish list.
+	* @param int $quantity The quantity of the item in the wish list.
+	* @param string $responseFields 
+	* @param string $wishlistId Unique identifier of the wish list associated with the item quantity to update.
+	* @param string $wishlistItemId Unique identifier of the item in the wish list to update quantity.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateWishlistItemQuantityAsync($wishlistId, $wishlistItemId, $quantity, $responseFields =  null)
@@ -218,12 +218,12 @@ class WishlistItemResource {
 	}
 	
 	/**
-	* Updates the details of an item in a shopper wish list.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $wishlistId Unique identifier of the wish list.
-	* @param string $wishlistItemId Unique identifier of the item to remove from the shopper wish list.
-	* @param WishlistItem $wishlistItem Properties of an item in a shopper wish list.
+	* @param string $responseFields 
+	* @param string $wishlistId Unique identifier of the wish list associated with the item to update.
+	* @param string $wishlistItemId Unique identifier of the item in the shopper wish list to update.
+	* @param WishlistItem $wishlistItem Properties of the shopper wish list item to update.
 	* @return WishlistItem 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -237,11 +237,11 @@ class WishlistItemResource {
 	}
 	
 /**
-	* Updates the details of an item in a shopper wish list.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $wishlistId Unique identifier of the wish list.
-	* @param string $wishlistItemId Unique identifier of the item to remove from the shopper wish list.
+	* @param string $responseFields 
+	* @param string $wishlistId Unique identifier of the wish list associated with the item to update.
+	* @param string $wishlistItemId Unique identifier of the item in the shopper wish list to update.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateWishlistItemAsync($wishlistItem, $wishlistId, $wishlistItemId, $responseFields =  null)
@@ -253,9 +253,9 @@ class WishlistItemResource {
 	}
 	
 	/**
-	* Removes all items associated with a shopper wish list.
+	* 
 	*
-	* @param string $wishlistId Unique identifier of the wish list.
+	* @param string $wishlistId Unique identifier of the wish list associated with the items to remove.
 	* @return Wishlist 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -269,9 +269,9 @@ class WishlistItemResource {
 	}
 	
 /**
-	* Removes all items associated with a shopper wish list.
+	* 
 	*
-	* @param string $wishlistId Unique identifier of the wish list.
+	* @param string $wishlistId Unique identifier of the wish list associated with the items to remove.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function removeAllWishlistItemsAsync($wishlistId)
@@ -283,10 +283,11 @@ class WishlistItemResource {
 	}
 	
 	/**
-	* Removes an item from the wish list specified in the request.
+	* 
 	*
-	* @param string $wishlistId Unique identifier of the wish list.
+	* @param string $wishlistId Unique identifier of the wish list associated with the item to remove.
 	* @param string $wishlistItemId Unique identifier of the item to remove from the shopper wish list.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteWishlistItem($wishlistId, $wishlistItemId)
@@ -294,13 +295,14 @@ class WishlistItemResource {
 		$mozuClient = WishlistItemClient::deleteWishlistItemClient($wishlistId, $wishlistItemId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Removes an item from the wish list specified in the request.
+	* 
 	*
-	* @param string $wishlistId Unique identifier of the wish list.
+	* @param string $wishlistId Unique identifier of the wish list associated with the item to remove.
 	* @param string $wishlistItemId Unique identifier of the item to remove from the shopper wish list.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/

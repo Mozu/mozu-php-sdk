@@ -14,40 +14,19 @@ namespace Mozu\Api\Contracts\ShippingAdmin\Profile;
 
 
 
-/**
-*	Mozu.ShippingAdmin.Contracts.Profile.ShippingProfile ApiType DOCUMENT_HERE 
-*/
 class ShippingProfile
 {
-	/**
-	*The unique code of the shipping profile.
-	*/
-	public $code;
+		public $code;
 
-	/**
-	*A list of unique site identifiers that the shipping profile targets.
-	*/
-	public $targetedSiteIds;
+		public $targetedSiteIds;
 
-	/**
-	*Basic audit info about the object, including date, time, and user account. This data may be captured when creating, updating, and removing data.
-	*/
-	public $auditInfo;
+		public $auditInfo;
 
-	/**
-	*A list of order handling fee rules and their details.
-	*/
-	public $orderHandlingFeeRules;
+		public $orderHandlingFeeRules;
 
-	/**
-	*A list of product handling fee rules and their details.
-	*/
-	public $productHandlingFeeRules;
+		public $productHandlingFeeRules;
 
-	/**
-	*A list of shipping inclusion rules and their details.
-	*/
-	public $shippingInclusionRules;
+		public $shippingInclusionRules;
 
 }
 

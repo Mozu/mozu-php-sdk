@@ -19,8 +19,8 @@ class DocumentUrl  {
 
 	/**
 		* Get Resource Url for GetDocumentContent
-		* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
-		* @param string $documentListName Name of content documentListName to delete
+		* @param string $documentId Unique identifier of the document.
+		* @param string $documentListName The name of the document list associated with the document.
 		* @return string Resource Url
 	*/
 	public static function getDocumentContentUrl($documentId, $documentListName)
@@ -34,15 +34,15 @@ class DocumentUrl  {
 	
 	/**
 		* Get Resource Url for TransformDocumentContent
-		* @param string $crop Crops the image based on the specified coordinates. The reference point for positive coordinates is the top-left corner of the image, and the reference point for negative coordinates is the bottom-right corner of the image.Usage: Example:  removes 10 pixels from all edges of the image.  leaves the image uncropped.
-		* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
-		* @param string $documentListName Name of content documentListName to delete
-		* @param int $height Specifies an exact height dimension for the image, in pixels.
-		* @param int $max Specifies a pixel limitation for the largest side of an image.
-		* @param int $maxHeight Specifies a pixel limitation for the height of the image, preserving the aspect ratio if the image needs resizing.
-		* @param int $maxWidth Specifies a pixel limitation for the width of the image, preserving the aspect ratio if the image needs resizing.
-		* @param int $quality Adjusts the image compression. Accepts values from 0-100, where 100 = highest quality, least compression.
-		* @param int $width Specifies an exact width dimension for the image, in pixels.
+		* @param string $crop 
+		* @param string $documentId 
+		* @param string $documentListName 
+		* @param int $height 
+		* @param int $max 
+		* @param int $maxHeight 
+		* @param int $maxWidth 
+		* @param int $quality 
+		* @param int $width 
 		* @return string Resource Url
 	*/
 	public static function transformDocumentContentUrl($crop, $documentId, $documentListName, $height, $max, $maxHeight, $maxWidth, $quality, $width)
@@ -63,10 +63,10 @@ class DocumentUrl  {
 	
 	/**
 		* Get Resource Url for GetDocument
-		* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
-		* @param string $documentListName Name of content documentListName to delete
-		* @param bool $includeInactive Include inactive content.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $documentId Identifier of the document being retrieved.
+		* @param string $documentListName The name of the document list associated with the document to retrieve.
+		* @param bool $includeInactive 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getDocumentUrl($documentId, $documentListName, $includeInactive, $responseFields)
@@ -82,13 +82,13 @@ class DocumentUrl  {
 	
 	/**
 		* Get Resource Url for GetDocuments
-		* @param string $documentListName Name of content documentListName to delete
-		* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
-		* @param bool $includeInactive Include inactive content.
-		* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
-		* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+		* @param string $documentListName The name of the document list.
+		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter a document's search results by any of its properties, including its name or folder path. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=Name+sw+Events"
+		* @param bool $includeInactive 
+		* @param int $pageSize 
+		* @param string $responseFields 
+		* @param string $sortBy 
+		* @param int $startIndex 
 		* @return string Resource Url
 	*/
 	public static function getDocumentsUrl($documentListName, $filter, $includeInactive, $pageSize, $responseFields, $sortBy, $startIndex)
@@ -107,8 +107,8 @@ class DocumentUrl  {
 	
 	/**
 		* Get Resource Url for CreateDocument
-		* @param string $documentListName Name of content documentListName to delete
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $documentListName The descriptive alphanumeric document list name being created.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function createDocumentUrl($documentListName, $responseFields)
@@ -122,8 +122,8 @@ class DocumentUrl  {
 	
 	/**
 		* Get Resource Url for UpdateDocumentContent
-		* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
-		* @param string $documentListName Name of content documentListName to delete
+		* @param string $documentId Unique identifier of the document.
+		* @param string $documentListName The name of the document list associated with the document.
 		* @return string Resource Url
 	*/
 	public static function updateDocumentContentUrl($documentId, $documentListName)
@@ -137,9 +137,9 @@ class DocumentUrl  {
 	
 	/**
 		* Get Resource Url for UpdateDocument
-		* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
-		* @param string $documentListName Name of content documentListName to delete
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $documentId Unique identifier of the document to update.
+		* @param string $documentListName Name of the document list associated with the document.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updateDocumentUrl($documentId, $documentListName, $responseFields)
@@ -154,8 +154,8 @@ class DocumentUrl  {
 	
 	/**
 		* Get Resource Url for DeleteDocument
-		* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
-		* @param string $documentListName Name of content documentListName to delete
+		* @param string $documentId Identifier of the document being deleted.
+		* @param string $documentListName The name of the document list associated with the document list being deleted.
 		* @return string Resource Url
 	*/
 	public static function deleteDocumentUrl($documentId, $documentListName)
@@ -169,8 +169,8 @@ class DocumentUrl  {
 	
 	/**
 		* Get Resource Url for DeleteDocumentContent
-		* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
-		* @param string $documentListName Name of content documentListName to delete
+		* @param string $documentId Unique identifier of the document.
+		* @param string $documentListName The name of the document list associated with the document.
 		* @return string Resource Url
 	*/
 	public static function deleteDocumentContentUrl($documentId, $documentListName)

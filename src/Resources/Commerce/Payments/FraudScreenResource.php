@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* commerce/payments/fraudscreen related resources. DOCUMENT_HERE 
+* 
 */
 class FraudScreenResource {
 
@@ -33,10 +33,10 @@ class FraudScreenResource {
 
 
 	/**
-	* payments-fraudscreen Post Screen description DOCUMENT_HERE 
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param FraudScreenRequest $request Mozu.PaymentService.Contracts.Request.FraudScreenRequest ApiType DOCUMENT_HERE 
+	* @param string $responseFields 
+	* @param FraudScreenRequest $request 
 	* @return FraudScreen 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -50,9 +50,9 @@ class FraudScreenResource {
 	}
 	
 /**
-	* payments-fraudscreen Post Screen description DOCUMENT_HERE 
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function screenAsync($request, $responseFields =  null)

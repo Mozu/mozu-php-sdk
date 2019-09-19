@@ -14,25 +14,13 @@ namespace Mozu\Api\Contracts\AppDev;
 
 
 
-/**
-*	Mozu.AppDev.Contracts.AppVersion ApiType DOCUMENT_HERE 
-*/
 class AppVersion
 {
-	/**
-	*Mozu.AppDev.Contracts.AppVersion majorVersion ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $majorVersion;
+		public $majorVersion;
 
-	/**
-	*Mozu.AppDev.Contracts.AppVersion minorVersion ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $minorVersion;
+		public $minorVersion;
 
-	/**
-	*Mozu.AppDev.Contracts.AppVersion revision ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $revision;
+		public $revision;
 
 }
 

@@ -22,7 +22,7 @@ use Mozu\Api\Urls\Commerce\Admin\LocationTypeUrl;
 class LocationTypeClient {
 
 	/**
-	* Retrieve a list of all location types defined for the tenant.
+	* 
 	*
 	* @return MozuClient
 	*/
@@ -36,10 +36,10 @@ class LocationTypeClient {
 	}
 	
 	/**
-	* Retrieves the details of the location type specified in the request.
+	* 
 	*
 	* @param string $locationTypeCode The user-defined code that identifies the location type.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getLocationTypeClient($locationTypeCode, $responseFields =  null)
@@ -52,10 +52,10 @@ class LocationTypeClient {
 	}
 	
 	/**
-	* Creates a new location type based on the information specified in the request.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param LocationType $locationType Properties of a type of physical location, such as warehouse or kiosk. Location types enable tenants to group similar locations for filtering and location usage type definition.
+	* @param string $responseFields 
+	* @param LocationType $locationType Properties of the location type to create.
 	* @return MozuClient
 	*/
 	public static function addLocationTypeClient($locationType, $responseFields =  null)
@@ -68,11 +68,11 @@ class LocationTypeClient {
 	}
 	
 	/**
-	* Updates the name of a defined location type.
+	* 
 	*
 	* @param string $locationTypeCode The user-defined code that identifies the location type.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param LocationType $locationType Properties of a type of physical location, such as warehouse or kiosk. Location types enable tenants to group similar locations for filtering and location usage type definition.
+	* @param string $responseFields 
+	* @param LocationType $locationType Properties of the location type to update.
 	* @return MozuClient
 	*/
 	public static function updateLocationTypeClient($locationType, $locationTypeCode, $responseFields =  null)
@@ -85,9 +85,10 @@ class LocationTypeClient {
 	}
 	
 	/**
-	* Deletes the location type specified in the request.
+	* 
 	*
-	* @param string $locationTypeCode The user-defined code that identifies the location type.
+	* @param string $locationTypeCode User-defined code used to identify the location type.
+	* @return MozuClient
 	*/
 	public static function deleteLocationTypeClient($locationTypeCode)
 	{

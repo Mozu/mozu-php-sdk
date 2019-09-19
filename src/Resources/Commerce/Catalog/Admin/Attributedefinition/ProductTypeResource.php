@@ -34,11 +34,11 @@ class ProductTypeResource {
 
 
 	/**
-	* Retrieves a list of product types according to any specified filter criteria and sort options.
+	* 
 	*
-	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product type search results by any of its properties. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=Name+cont+shoes"
+	* @param int $pageSize 
+	* @param string $responseFields 
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return ProductTypeCollection 
@@ -54,11 +54,11 @@ class ProductTypeResource {
 	}
 	
 /**
-	* Retrieves a list of product types according to any specified filter criteria and sort options.
+	* 
 	*
-	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product type search results by any of its properties. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=Name+cont+shoes"
+	* @param int $pageSize 
+	* @param string $responseFields 
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -72,10 +72,10 @@ class ProductTypeResource {
 	}
 	
 	/**
-	* Retrieves the details of the product type specified in the request.
+	* 
 	*
-	* @param int $productTypeId Identifier of the product type.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $productTypeId Identifier of the product type to retrieve.
+	* @param string $responseFields 
 	* @return ProductType 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -89,10 +89,10 @@ class ProductTypeResource {
 	}
 	
 /**
-	* Retrieves the details of the product type specified in the request.
+	* 
 	*
-	* @param int $productTypeId Identifier of the product type.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $productTypeId Identifier of the product type to retrieve.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getProductTypeAsync($productTypeId, $responseFields =  null)
@@ -104,10 +104,10 @@ class ProductTypeResource {
 	}
 	
 	/**
-	* Creates a new product type based on the information supplied in the request.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param ProductType $productType A product type is like a product template.
+	* @param string $responseFields 
+	* @param ProductType $productType Properties of the product type to create.
 	* @return ProductType 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -121,9 +121,9 @@ class ProductTypeResource {
 	}
 	
 /**
-	* Creates a new product type based on the information supplied in the request.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function addProductTypeAsync($productType, $responseFields =  null)
@@ -135,11 +135,11 @@ class ProductTypeResource {
 	}
 	
 	/**
-	* Updates one or more properties of a product type.
+	* 
 	*
-	* @param int $productTypeId Identifier of the product type.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param ProductType $productType A product type is like a product template.
+	* @param int $productTypeId Identifier of the product type to update.
+	* @param string $responseFields 
+	* @param ProductType $productType The details of the product type to update.
 	* @return ProductType 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -153,10 +153,10 @@ class ProductTypeResource {
 	}
 	
 /**
-	* Updates one or more properties of a product type.
+	* 
 	*
-	* @param int $productTypeId Identifier of the product type.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $productTypeId Identifier of the product type to update.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateProductTypeAsync($productType, $productTypeId, $responseFields =  null)
@@ -168,9 +168,10 @@ class ProductTypeResource {
 	}
 	
 	/**
-	* Deletes the product type by providing the product type ID.
+	* 
 	*
-	* @param int $productTypeId Identifier of the product type.
+	* @param int $productTypeId Identifier of the product type to delete.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteProductType($productTypeId)
@@ -178,13 +179,14 @@ class ProductTypeResource {
 		$mozuClient = ProductTypeClient::deleteProductTypeClient($this->dataViewMode, $productTypeId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Deletes the product type by providing the product type ID.
+	* 
 	*
-	* @param int $productTypeId Identifier of the product type.
+	* @param int $productTypeId Identifier of the product type to delete.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteProductTypeAsync($productTypeId)

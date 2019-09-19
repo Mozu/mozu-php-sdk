@@ -33,7 +33,7 @@ class OrderValidationResultResource {
 
 
 	/**
-	* Retrieves a list of the validation results associated with the order.
+	* 
 	*
 	* @param string $orderId Unique identifier of the order.
 	* @return array|OrderValidationResult 
@@ -49,7 +49,7 @@ class OrderValidationResultResource {
 	}
 	
 /**
-	* Retrieves a list of the validation results associated with the order.
+	* 
 	*
 	* @param string $orderId Unique identifier of the order.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -63,11 +63,11 @@ class OrderValidationResultResource {
 	}
 	
 	/**
-	* Add a new order validation result to a submitted order.
+	* 
 	*
 	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param OrderValidationResult $validationResult Properties of the resulting order validation performed by an order validation capability.
+	* @param string $responseFields 
+	* @param OrderValidationResult $validationResult Properties of the validation result to add for the order.
 	* @return OrderValidationResult 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -81,10 +81,10 @@ class OrderValidationResultResource {
 	}
 	
 /**
-	* Add a new order validation result to a submitted order.
+	* 
 	*
 	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function addValidationResultAsync($validationResult, $orderId, $responseFields =  null)

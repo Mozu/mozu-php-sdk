@@ -14,35 +14,17 @@ namespace Mozu\Api\Contracts\AppDev;
 
 
 
-/**
-*	This property is not exposed in documentation.
-*/
 class ApplicationCapabilityDomainValue
 {
-	/**
-	*Mozu.AppDev.Contracts.ApplicationCapabilityDomainValue applicationCapabilityDomainId1 ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationCapabilityDomainId1;
+		public $applicationCapabilityDomainId1;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationCapabilityDomainValue applicationCapabilityDomainId2 ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationCapabilityDomainId2;
+		public $applicationCapabilityDomainId2;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationCapabilityDomainValue applicationCapabilityDomainValueId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationCapabilityDomainValueId;
+		public $applicationCapabilityDomainValueId;
 
-	/**
-	*The name that displays for the payment gateway or third-party credentials field. 
-	*/
-	public $displayName;
+		public $displayName;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationCapabilityDomainValue valueName ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $valueName;
+		public $valueName;
 
 }
 

@@ -33,11 +33,11 @@ class FulfillmentActionResource {
 
 
 	/**
-	* Sets the fulfillment action to "Ship" or "PickUp". To ship an order or prepare it for in-store pickup, the order must have a customer name, the "Open" or "OpenAndProcessing" status. To ship the order, it must also have the full shipping address and shipping method. Shipping all packages or picking up all pickups for an order will complete a paid order.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param FulfillmentAction $action Properties of an action to perform when fulfilling an item in an order, whether through in-store pickup or direct shipping.
+	* @param string $orderId Unique identifier of the order for which to perform the fulfillment action.
+	* @param string $responseFields Updated order with a new fulfillment status resulting from the action supplied in the request.
+	* @param FulfillmentAction $action The action to perform for the order fulfillment.
 	* @return Order 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -51,10 +51,10 @@ class FulfillmentActionResource {
 	}
 	
 /**
-	* Sets the fulfillment action to "Ship" or "PickUp". To ship an order or prepare it for in-store pickup, the order must have a customer name, the "Open" or "OpenAndProcessing" status. To ship the order, it must also have the full shipping address and shipping method. Shipping all packages or picking up all pickups for an order will complete a paid order.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $orderId Unique identifier of the order for which to perform the fulfillment action.
+	* @param string $responseFields Updated order with a new fulfillment status resulting from the action supplied in the request.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function performFulfillmentActionAsync($action, $orderId, $responseFields =  null)
@@ -66,11 +66,11 @@ class FulfillmentActionResource {
 	}
 	
 	/**
-	* Resends an email with details about the package fulfillment to the shopper. 
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param FulfillmentAction $action Properties of an action to perform when fulfilling an item in an order, whether through in-store pickup or direct shipping.
+	* @param string $orderId 
+	* @param string $responseFields 
+	* @param FulfillmentAction $action 
 	* @return Order 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -84,10 +84,10 @@ class FulfillmentActionResource {
 	}
 	
 /**
-	* Resends an email with details about the package fulfillment to the shopper. 
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $orderId 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function resendPackageFulfillmentEmailAsync($action, $orderId, $responseFields =  null)

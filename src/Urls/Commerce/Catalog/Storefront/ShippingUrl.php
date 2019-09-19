@@ -18,9 +18,22 @@ use Mozu\Api\UrlLocation;
 class ShippingUrl  {
 
 	/**
+		* Get Resource Url for GetMultiRates
+		* @param bool $includeRawResponse 
+		* @return string Resource Url
+	*/
+	public static function getMultiRatesUrl($includeRawResponse)
+	{
+		$url = "/api/commerce/catalog/storefront/shipping/request-multi-rates";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("includeRawResponse", $includeRawResponse);
+		return $mozuUrl;
+	}
+	
+	/**
 		* Get Resource Url for GetRates
-		* @param bool $includeRawResponse Set this parameter to  to retrieve the full raw JSON response from a shipping carrier (instead of just the shipping rate).
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param bool $includeRawResponse 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getRatesUrl($includeRawResponse, $responseFields)

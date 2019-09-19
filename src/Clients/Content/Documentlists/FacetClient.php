@@ -22,9 +22,9 @@ use Mozu\Api\Urls\Content\Documentlists\FacetUrl;
 class FacetClient {
 
 	/**
-	* Retrieves the properties of facets that aid in indexing and searching.
+	* 
 	*
-	* @param string $documentListName Name of content documentListName to delete
+	* @param string $documentListName The document list associated with the facets to retrieve.
 	* @param string $propertyName The property name associated with the facets to retrieve.
 	* @return MozuClient
 	*/

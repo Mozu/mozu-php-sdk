@@ -19,7 +19,7 @@ class ProductExtraUrl  {
 
 	/**
 		* Get Resource Url for GetExtras
-		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+		* @param string $productCode 
 		* @return string Resource Url
 	*/
 	public static function getExtrasUrl($productCode)
@@ -32,9 +32,9 @@ class ProductExtraUrl  {
 	
 	/**
 		* Get Resource Url for GetExtraValueLocalizedDeltaPrices
-		* @param string $attributeFQN Fully qualified name for an attribute.
-		* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
-		* @param string $value The value string to create.
+		* @param string $attributeFQN 
+		* @param string $productCode 
+		* @param string $value 
 		* @return string Resource Url
 	*/
 	public static function getExtraValueLocalizedDeltaPricesUrl($attributeFQN, $productCode, $value)
@@ -49,11 +49,11 @@ class ProductExtraUrl  {
 	
 	/**
 		* Get Resource Url for GetExtraValueLocalizedDeltaPrice
-		* @param string $attributeFQN Fully qualified name for an attribute.
-		* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
-		* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $value The value string to create.
+		* @param string $attributeFQN 
+		* @param string $currencyCode 
+		* @param string $productCode 
+		* @param string $responseFields 
+		* @param string $value 
 		* @return string Resource Url
 	*/
 	public static function getExtraValueLocalizedDeltaPriceUrl($attributeFQN, $currencyCode, $productCode, $responseFields, $value)
@@ -70,9 +70,9 @@ class ProductExtraUrl  {
 	
 	/**
 		* Get Resource Url for GetExtra
-		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $attributeFQN 
+		* @param string $productCode 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getExtraUrl($attributeFQN, $productCode, $responseFields)
@@ -87,10 +87,10 @@ class ProductExtraUrl  {
 	
 	/**
 		* Get Resource Url for AddExtraValueLocalizedDeltaPrice
-		* @param string $attributeFQN Fully qualified name for an attribute.
-		* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $value The value string to create.
+		* @param string $attributeFQN 
+		* @param string $productCode 
+		* @param string $responseFields 
+		* @param string $value 
 		* @return string Resource Url
 	*/
 	public static function addExtraValueLocalizedDeltaPriceUrl($attributeFQN, $productCode, $responseFields, $value)
@@ -106,8 +106,8 @@ class ProductExtraUrl  {
 	
 	/**
 		* Get Resource Url for AddExtra
-		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $productCode 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function addExtraUrl($productCode, $responseFields)
@@ -121,9 +121,9 @@ class ProductExtraUrl  {
 	
 	/**
 		* Get Resource Url for UpdateExtraValueLocalizedDeltaPrices
-		* @param string $attributeFQN Fully qualified name for an attribute.
-		* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
-		* @param string $value The value string to create.
+		* @param string $attributeFQN 
+		* @param string $productCode 
+		* @param string $value 
 		* @return string Resource Url
 	*/
 	public static function updateExtraValueLocalizedDeltaPricesUrl($attributeFQN, $productCode, $value)
@@ -138,11 +138,11 @@ class ProductExtraUrl  {
 	
 	/**
 		* Get Resource Url for UpdateExtraValueLocalizedDeltaPrice
-		* @param string $attributeFQN Fully qualified name for an attribute.
-		* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
-		* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $value The value string to create.
+		* @param string $attributeFQN 
+		* @param string $currencyCode 
+		* @param string $productCode 
+		* @param string $responseFields 
+		* @param string $value 
 		* @return string Resource Url
 	*/
 	public static function updateExtraValueLocalizedDeltaPriceUrl($attributeFQN, $currencyCode, $productCode, $responseFields, $value)
@@ -159,9 +159,9 @@ class ProductExtraUrl  {
 	
 	/**
 		* Get Resource Url for UpdateExtra
-		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $attributeFQN 
+		* @param string $productCode 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updateExtraUrl($attributeFQN, $productCode, $responseFields)
@@ -176,8 +176,8 @@ class ProductExtraUrl  {
 	
 	/**
 		* Get Resource Url for DeleteExtra
-		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
+		* @param string $attributeFQN 
+		* @param string $productCode 
 		* @return string Resource Url
 	*/
 	public static function deleteExtraUrl($attributeFQN, $productCode)
@@ -191,10 +191,10 @@ class ProductExtraUrl  {
 	
 	/**
 		* Get Resource Url for DeleteExtraValueLocalizedDeltaPrice
-		* @param string $attributeFQN Fully qualified name for an attribute.
-		* @param string $currencyCode The three character ISO currency code, such as USD for US Dollars.
-		* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
-		* @param string $value Use this field to include those fields which are not included by default.
+		* @param string $attributeFQN 
+		* @param string $currencyCode 
+		* @param string $productCode 
+		* @param string $value 
 		* @return string Resource Url
 	*/
 	public static function deleteExtraValueLocalizedDeltaPriceUrl($attributeFQN, $currencyCode, $productCode, $value)

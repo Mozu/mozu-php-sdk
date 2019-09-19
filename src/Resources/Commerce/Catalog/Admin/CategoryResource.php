@@ -34,11 +34,11 @@ class CategoryResource {
 
 
 	/**
-	* Retrieves a list of categories according to any specified filter criteria and sort options.
+	* 
 	*
-	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product category search results by any of its properties, including its position in the category hierarchy. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param int $pageSize 
+	* @param string $responseFields 
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return CategoryPagedCollection 
@@ -54,11 +54,11 @@ class CategoryResource {
 	}
 	
 /**
-	* Retrieves a list of categories according to any specified filter criteria and sort options.
+	* 
 	*
-	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter product category search results by any of its properties, including its position in the category hierarchy. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+	* @param int $pageSize 
+	* @param string $responseFields 
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
@@ -72,10 +72,10 @@ class CategoryResource {
 	}
 	
 	/**
-	* Retrieves the list of subcategories within a category.
+	* 
 	*
-	* @param int $categoryId Unique identifier of the category to modify.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $categoryId Unique identifier of the category for which to retrieve subcategories.
+	* @param string $responseFields 
 	* @return CategoryCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -89,10 +89,10 @@ class CategoryResource {
 	}
 	
 /**
-	* Retrieves the list of subcategories within a category.
+	* 
 	*
-	* @param int $categoryId Unique identifier of the category to modify.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $categoryId Unique identifier of the category for which to retrieve subcategories.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getChildCategoriesAsync($categoryId, $responseFields =  null)
@@ -104,10 +104,10 @@ class CategoryResource {
 	}
 	
 	/**
-	* Retrieves the details of a single category.
+	* 
 	*
-	* @param int $categoryId Unique identifier of the category to modify.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $categoryId Unique identifier of the category to retrieve.
+	* @param string $responseFields 
 	* @return Category 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -121,10 +121,10 @@ class CategoryResource {
 	}
 	
 /**
-	* Retrieves the details of a single category.
+	* 
 	*
-	* @param int $categoryId Unique identifier of the category to modify.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $categoryId Unique identifier of the category to retrieve.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getCategoryAsync($categoryId, $responseFields =  null)
@@ -136,12 +136,12 @@ class CategoryResource {
 	}
 	
 	/**
-	* Adds a new category to the site's category hierarchy.Specify a  to determine where to place the category in the hierarchy. If no  is specified, the new category is a top-level category.
+	* 
 	*
 	* @param bool $incrementSequence If true, when adding a new product category, set the sequence number of the new category to an increment of one integer greater than the maximum available sequence number across all product categories. If false, set the sequence number to zero.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param bool $useProvidedId Optional. If ,  uses the  you specify in the request as the category's id. If ,  generates an  for the category regardless if you specify an id in the request.If you specify an id already in use and set this parameter to ,  returns an error.
-	* @param Category $category A descriptive container that groups products. A category is merchant defined with associated products and discounts as configured. GThe storefront displays products in a hierarchy of categories. As such, categories can include a nesting of sub-categories to organize products and product options per set guidelines such as color, brand, material, and size.
+	* @param string $responseFields 
+	* @param bool $useProvidedId 
+	* @param Category $category Properties of the new category to create. You must specify a name and parent category if you want to create it as a subcategory.
 	* @return Category 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -155,11 +155,11 @@ class CategoryResource {
 	}
 	
 /**
-	* Adds a new category to the site's category hierarchy.Specify a  to determine where to place the category in the hierarchy. If no  is specified, the new category is a top-level category.
+	* 
 	*
 	* @param bool $incrementSequence If true, when adding a new product category, set the sequence number of the new category to an increment of one integer greater than the maximum available sequence number across all product categories. If false, set the sequence number to zero.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param bool $useProvidedId Optional. If ,  uses the  you specify in the request as the category's id. If ,  generates an  for the category regardless if you specify an id in the request.If you specify an id already in use and set this parameter to ,  returns an error.
+	* @param string $responseFields 
+	* @param bool $useProvidedId 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function addCategoryAsync($category, $incrementSequence =  null, $useProvidedId =  null, $responseFields =  null)
@@ -171,10 +171,72 @@ class CategoryResource {
 	}
 	
 	/**
-	* Validate the precomputed dynamic category expression for correctness.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param DynamicExpression $dynamicExpressionIn The details of the dynamic expression that you want to validate.
+	* @param int $categoryId 
+	* @param array|string $productCodes 
+	* @return Stream 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function addProductsToCategory($productCodes, $categoryId)
+	{
+		$mozuClient = CategoryClient::addProductsToCategoryClient($this->dataViewMode, $productCodes, $categoryId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* 
+	*
+	* @param int $categoryId 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function addProductsToCategoryAsync($productCodes, $categoryId)
+	{
+		$mozuClient = CategoryClient::addProductsToCategoryClient($this->dataViewMode, $productCodes, $categoryId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param int $categoryId 
+	* @param array|string $productCodes 
+	* @return Stream 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function removeProductsFromCategory($productCodes, $categoryId)
+	{
+		$mozuClient = CategoryClient::removeProductsFromCategoryClient($productCodes, $categoryId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* 
+	*
+	* @param int $categoryId 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function removeProductsFromCategoryAsync($productCodes, $categoryId)
+	{
+		$mozuClient = CategoryClient::removeProductsFromCategoryClient($productCodes, $categoryId);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $responseFields 
+	* @param DynamicExpression $dynamicExpressionIn 
 	* @return DynamicExpression 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -188,9 +250,9 @@ class CategoryResource {
 	}
 	
 /**
-	* Validate the precomputed dynamic category expression for correctness.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function validateDynamicExpressionAsync($dynamicExpressionIn, $responseFields =  null)
@@ -202,10 +264,10 @@ class CategoryResource {
 	}
 	
 	/**
-	* Validates the readltime dynamic category expression for correctness.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param DynamicExpression $dynamicExpressionIn The details of the dynamic expression that you want to validate.
+	* @param string $responseFields 
+	* @param DynamicExpression $dynamicExpressionIn 
 	* @return DynamicExpression 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -219,9 +281,9 @@ class CategoryResource {
 	}
 	
 /**
-	* Validates the readltime dynamic category expression for correctness.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function validateRealTimeDynamicExpressionAsync($dynamicExpressionIn, $responseFields =  null)
@@ -233,12 +295,12 @@ class CategoryResource {
 	}
 	
 	/**
-	* Update the properties of a defined category or move it to another location in the category hierarchy. Because this operation replaces the defined resource,include all the information to maintain for the category in the request.
+	* 
 	*
-	* @param bool $cascadeVisibility If true, when changing the display option for the category, change it for all subcategories also. The default value is false.
+	* @param bool $cascadeVisibility If true, when changing the display option for the category, change it for all subcategories also. Default: False.
 	* @param int $categoryId Unique identifier of the category to modify.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Category $category A descriptive container that groups products. A category is merchant defined with associated products and discounts as configured. GThe storefront displays products in a hierarchy of categories. As such, categories can include a nesting of sub-categories to organize products and product options per set guidelines such as color, brand, material, and size.
+	* @param string $responseFields 
+	* @param Category $category Properties of the category to modify.
 	* @return Category 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -252,11 +314,11 @@ class CategoryResource {
 	}
 	
 /**
-	* Update the properties of a defined category or move it to another location in the category hierarchy. Because this operation replaces the defined resource,include all the information to maintain for the category in the request.
+	* 
 	*
-	* @param bool $cascadeVisibility If true, when changing the display option for the category, change it for all subcategories also. The default value is false.
+	* @param bool $cascadeVisibility If true, when changing the display option for the category, change it for all subcategories also. Default: False.
 	* @param int $categoryId Unique identifier of the category to modify.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateCategoryAsync($category, $categoryId, $cascadeVisibility =  null, $responseFields =  null)
@@ -268,12 +330,13 @@ class CategoryResource {
 	}
 	
 	/**
-	* Deletes the specified category. Use the categoryId parameter to specify the category.
+	* 
 	*
-	* @param bool $cascadeDelete Specifies whether to also delete all subcategories associated with the specified category.If you set this value is false, only the specified category is deleted.The default value is false.
-	* @param int $categoryId Unique identifier of the category to modify.
-	* @param bool $forceDelete Specifies whether the category, and any associated subcategories, are deleted even if there are products that reference them. The default value is false.
-	* @param bool $reassignToParent Specifies whether any subcategories of the specified category are reassigned to the parent of the specified category.This field only applies if the cascadeDelete parameter is false.The default value is false.
+	* @param bool $cascadeDelete If true, also delete all subcategories associated with the specified category.
+	* @param int $categoryId Unique identifier of the category to delete.
+	* @param bool $forceDelete 
+	* @param bool $reassignToParent 
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteCategoryById($categoryId, $cascadeDelete =  null, $forceDelete =  null, $reassignToParent =  null)
@@ -281,16 +344,17 @@ class CategoryResource {
 		$mozuClient = CategoryClient::deleteCategoryByIdClient($categoryId, $cascadeDelete, $forceDelete, $reassignToParent);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Deletes the specified category. Use the categoryId parameter to specify the category.
+	* 
 	*
-	* @param bool $cascadeDelete Specifies whether to also delete all subcategories associated with the specified category.If you set this value is false, only the specified category is deleted.The default value is false.
-	* @param int $categoryId Unique identifier of the category to modify.
-	* @param bool $forceDelete Specifies whether the category, and any associated subcategories, are deleted even if there are products that reference them. The default value is false.
-	* @param bool $reassignToParent Specifies whether any subcategories of the specified category are reassigned to the parent of the specified category.This field only applies if the cascadeDelete parameter is false.The default value is false.
+	* @param bool $cascadeDelete If true, also delete all subcategories associated with the specified category.
+	* @param int $categoryId Unique identifier of the category to delete.
+	* @param bool $forceDelete 
+	* @param bool $reassignToParent 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteCategoryByIdAsync($categoryId, $cascadeDelete =  null, $forceDelete =  null, $reassignToParent =  null)

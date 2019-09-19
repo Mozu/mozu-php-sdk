@@ -22,9 +22,9 @@ use Mozu\Api\Urls\Commerce\Settings\SiteShippingSettingsUrl;
 class SiteShippingSettingsClient {
 
 	/**
-	* Retrieves a list of the shipping settings configured for a site.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getSiteShippingSettingsClient($responseFields =  null)

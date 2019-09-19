@@ -14,25 +14,13 @@ namespace Mozu\Api\Contracts\Reference;
 
 
 
-/**
-*	The state code, name, and tags, if applicable. 
-*/
 class State
 {
-	/**
-	*The two character state code. 
-	*/
-	public $code;
+		public $code;
 
-	/**
-	*The user supplied name that appears in . You can use this field for identification purposes.
-	*/
-	public $name;
+		public $name;
 
-	/**
-	*Distinguishing information about a state, such as IsArmedForces or IsUSTerritory
-	*/
-	public $tags;
+		public $tags;
 
 }
 

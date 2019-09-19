@@ -33,9 +33,9 @@ class ApplicationResource {
 
 
 	/**
-	* Retrieve the settings of a third-party application.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Application 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -49,9 +49,9 @@ class ApplicationResource {
 	}
 	
 /**
-	* Retrieve the settings of a third-party application.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function thirdPartyGetApplicationAsync($responseFields =  null)
@@ -63,10 +63,10 @@ class ApplicationResource {
 	}
 	
 	/**
-	* Initializes an application with the necessary configured settings.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Application $application Properties of an application installed in a tenant.
+	* @param string $responseFields 
+	* @param Application $application Properties of the application to update.
 	* @return Application 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -80,9 +80,9 @@ class ApplicationResource {
 	}
 	
 /**
-	* Initializes an application with the necessary configured settings.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function thirdPartyUpdateApplicationAsync($application, $responseFields =  null)

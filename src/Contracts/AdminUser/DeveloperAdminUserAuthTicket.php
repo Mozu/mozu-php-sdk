@@ -15,54 +15,29 @@ namespace Mozu\Api\Contracts\AdminUser;
 
 
 /**
-*	Properties of the authentication ticket to be used in developer account claims with the  API.
+*	Properties of the authentication ticket to be used in developer account claims with the Mozu API.
 */
 class DeveloperAdminUserAuthTicket
 {
-	/**
-	*Alphanumeric string used to authenticate the user in API request headers. The token stores an encrypted list of the application's configured behaviors and authenticates the application.
-	*/
-	public $accessToken;
+		public $accessToken;
 
-	/**
-	*The date and time the user access token expires. If the token will expire, a new token will need to be generated and assigned to the account to continue and restore access to the store, data, and account.
-	*/
-	public $accessTokenExpiration;
+		public $accessTokenExpiration;
 
-	/**
-	*Date and time when the entity was created, represented in UTC Date/Time.
-	*/
-	public $createdOn;
+		public $createdOn;
 
-	/**
-	*Collection of behaviors encrypted in the developer account authentication ticket. Behaviors are granted to users as part of the role assigned for the given developer account.
-	*/
-	public $grantedBehaviors;
+		public $grantedBehaviors;
 
-	/**
-	*Alphanumeric string used for access tokens. This token refreshes access for accounts by generating a new developer or application account authentication ticket after an access token expires.
-	*/
-	public $refreshToken;
+		public $jwtAccessToken;
 
-	/**
-	*The date and time the developer account or application refresh token expires.
-	*/
-	public $refreshTokenExpiration;
+		public $refreshToken;
 
-	/**
-	*Properties of the developer account for which the user authentication ticket grants access.
-	*/
-	public $account;
+		public $refreshTokenExpiration;
 
-	/**
-	*Collection of developer accounts for which the user authentication ticket grants access.
-	*/
-	public $availableAccounts;
+		public $account;
 
-	/**
-	*Properties of the user. Users include customers and  users.
-	*/
-	public $user;
+		public $availableAccounts;
+
+		public $user;
 
 }
 

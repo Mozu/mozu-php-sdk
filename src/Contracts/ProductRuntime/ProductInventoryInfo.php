@@ -15,34 +15,24 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 /**
-*	Properties of the inventory behavior associated with a product definition.
+*	Properties of the active inventory managed for the product.
 */
 class ProductInventoryInfo
 {
-	/**
-	*Indicates is the item's stock is managed. If true,  manages inventory levels for this product.
-	*/
-	public $manageStock;
+		public $availableDate;
+
+		public $manageStock;
 
 	/**
 	*The location code for the direct ship location associated with the available online stock.
 	*/
 	public $onlineLocationCode;
 
-	/**
-	*Number of product items currently available for purchase.
-	*/
-	public $onlineSoftStockAvailable;
+		public $onlineSoftStockAvailable;
 
-	/**
-	*The current number of products that are available for purchase.
-	*/
-	public $onlineStockAvailable;
+		public $onlineStockAvailable;
 
-	/**
-	*Determines the method this product uses when active stock is depeleted. Options include "DisplayMessage" to display an out of stock message to the shopper, "HideProduct" to disable the product on the storefront, or "AllowBackOrder" to allow the shopper to back order the product. This property is required only if  manages inventory for this product.
-	*/
-	public $outOfStockBehavior;
+		public $outOfStockBehavior;
 
 }
 

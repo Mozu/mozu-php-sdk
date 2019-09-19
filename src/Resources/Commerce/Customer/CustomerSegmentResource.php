@@ -33,13 +33,13 @@ class CustomerSegmentResource {
 
 
 	/**
-	* Retrieves a list of defined customer segments according to any filter and sort criteria.
+	* 
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param string $sortBy 
+	* @param int $startIndex 
 	* @return CustomerSegmentCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -53,13 +53,13 @@ class CustomerSegmentResource {
 	}
 	
 /**
-	* Retrieves a list of defined customer segments according to any filter and sort criteria.
+	* 
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param string $sortBy 
+	* @param int $startIndex 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getSegmentsAsync($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
@@ -71,10 +71,10 @@ class CustomerSegmentResource {
 	}
 	
 	/**
-	* Retrieves the details of the customer segment specified in the request. This operation does not return a list of the customer accounts associated with the segment.
+	* 
 	*
 	* @param int $id Unique identifier of the customer segment to retrieve.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return CustomerSegment 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -88,10 +88,10 @@ class CustomerSegmentResource {
 	}
 	
 /**
-	* Retrieves the details of the customer segment specified in the request. This operation does not return a list of the customer accounts associated with the segment.
+	* 
 	*
 	* @param int $id Unique identifier of the customer segment to retrieve.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getSegmentAsync($id, $responseFields =  null)
@@ -103,10 +103,10 @@ class CustomerSegmentResource {
 	}
 	
 	/**
-	* Creates a new customer segments. New customer segments do not have any associated customer accounts.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param CustomerSegment $segment The Customer Segment object includes properties of a defined customer segment used to group customer accounts.
+	* @param string $responseFields 
+	* @param CustomerSegment $segment Properties of the customer segment to add.
 	* @return CustomerSegment 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -120,9 +120,9 @@ class CustomerSegmentResource {
 	}
 	
 /**
-	* Creates a new customer segments. New customer segments do not have any associated customer accounts.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function addSegmentAsync($segment, $responseFields =  null)
@@ -134,10 +134,11 @@ class CustomerSegmentResource {
 	}
 	
 	/**
-	* Adds one or more customer accounts to a defined customer segment.
+	* 
 	*
-	* @param int $id Unique identifier of the customer segment to retrieve.
+	* @param int $id Unique identifier of the customer segment for which to add the associated customer accounts.
 	* @param array|int $accountIds List of customer account IDs to add to the customer segment specified in the request.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function addSegmentAccounts($accountIds, $id)
@@ -145,13 +146,14 @@ class CustomerSegmentResource {
 		$mozuClient = CustomerSegmentClient::addSegmentAccountsClient($accountIds, $id);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Adds one or more customer accounts to a defined customer segment.
+	* 
 	*
-	* @param int $id Unique identifier of the customer segment to retrieve.
+	* @param int $id Unique identifier of the customer segment for which to add the associated customer accounts.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function addSegmentAccountsAsync($accountIds, $id)
@@ -163,11 +165,11 @@ class CustomerSegmentResource {
 	}
 	
 	/**
-	* Updates the details of the customer segment specified in the request.
+	* 
 	*
-	* @param int $id Unique identifier of the customer segment to retrieve.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param CustomerSegment $segment The Customer Segment object includes properties of a defined customer segment used to group customer accounts.
+	* @param int $id Unique identifier of the customer segment.
+	* @param string $responseFields 
+	* @param CustomerSegment $segment Properties of the customer segment to update.
 	* @return CustomerSegment 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -181,10 +183,10 @@ class CustomerSegmentResource {
 	}
 	
 /**
-	* Updates the details of the customer segment specified in the request.
+	* 
 	*
-	* @param int $id Unique identifier of the customer segment to retrieve.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $id Unique identifier of the customer segment.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateSegmentAsync($segment, $id, $responseFields =  null)
@@ -196,9 +198,10 @@ class CustomerSegmentResource {
 	}
 	
 	/**
-	* Deletes a customer segment specified by its unique identifier. Deleting a segment removes any customer account associations, but does not delete the customer account itself.
+	* 
 	*
-	* @param int $id Unique identifier of the customer segment to retrieve.
+	* @param int $id Unique identifier of the customer segment to delete.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteSegment($id)
@@ -206,13 +209,14 @@ class CustomerSegmentResource {
 		$mozuClient = CustomerSegmentClient::deleteSegmentClient($id);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Deletes a customer segment specified by its unique identifier. Deleting a segment removes any customer account associations, but does not delete the customer account itself.
+	* 
 	*
-	* @param int $id Unique identifier of the customer segment to retrieve.
+	* @param int $id Unique identifier of the customer segment to delete.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteSegmentAsync($id)
@@ -224,10 +228,11 @@ class CustomerSegmentResource {
 	}
 	
 	/**
-	* Removes single account from a segment.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param int $id Unique identifier of the customer segment to retrieve.
+	* @param int $accountId 
+	* @param int $id 
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function removeSegmentAccount($id, $accountId)
@@ -235,14 +240,15 @@ class CustomerSegmentResource {
 		$mozuClient = CustomerSegmentClient::removeSegmentAccountClient($id, $accountId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Removes single account from a segment.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param int $id Unique identifier of the customer segment to retrieve.
+	* @param int $accountId 
+	* @param int $id 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function removeSegmentAccountAsync($id, $accountId)

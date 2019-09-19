@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* Use the refunds resource to create a refund.
+* 
 */
 class RefundResource {
 
@@ -33,11 +33,11 @@ class RefundResource {
 
 
 	/**
-	* Creates a refund based on the information supplied in the request.  
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param Refund $refund The details of the refund.
+	* @param string $orderId 
+	* @param string $responseFields 
+	* @param Refund $refund 
 	* @return Refund 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -51,10 +51,10 @@ class RefundResource {
 	}
 	
 /**
-	* Creates a refund based on the information supplied in the request.  
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $orderId 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function createRefundAsync($refund, $orderId, $responseFields =  null)
@@ -66,11 +66,11 @@ class RefundResource {
 	}
 	
 	/**
-	* Resends the order refund email previously sent to the shopper. 
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $refundId Unique ID of the refund.
-        
+	* @param string $orderId 
+	* @param string $refundId 
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function resendRefundEmail($orderId, $refundId)
@@ -78,15 +78,15 @@ class RefundResource {
 		$mozuClient = RefundClient::resendRefundEmailClient($orderId, $refundId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Resends the order refund email previously sent to the shopper. 
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $refundId Unique ID of the refund.
-        
+	* @param string $orderId 
+	* @param string $refundId 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function resendRefundEmailAsync($orderId, $refundId)

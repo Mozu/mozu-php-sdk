@@ -22,13 +22,13 @@ use Mozu\Api\Urls\Commerce\Customer\CreditUrl;
 class CreditClient {
 
 	/**
-	* Retrieves a list of store credits applied to customer accounts, according any filter and sort criteria specified in the request.
+	* 
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param string $sortBy 
+	* @param int $startIndex 
 	* @return MozuClient
 	*/
 	public static function getCreditsClient($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
@@ -41,10 +41,10 @@ class CreditClient {
 	}
 	
 	/**
-	* Retrieves the details of a store credit applied to a customer account.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $code User-defined code that identifies the store credit to retrieve.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getCreditClient($code, $responseFields =  null)
@@ -57,15 +57,16 @@ class CreditClient {
 	}
 	
 	/**
-	* Creates a new store credit for the customer account specified in the request.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Credit $credit Properties of the store credit of gift card applied to a customer account. At this time, gift card functionality is reserved for future use.
+	* @param string $responseFields 
+	* @param string $userId 
+	* @param Credit $credit Properties of the store credit to create.
 	* @return MozuClient
 	*/
-	public static function addCreditClient($credit, $responseFields =  null)
+	public static function addCreditClient($credit, $userId =  null, $responseFields =  null)
 	{
-		$url = CreditUrl::addCreditUrl($responseFields);
+		$url = CreditUrl::addCreditUrl($responseFields, $userId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url)->withBody($credit);
 		return $mozuClient;
@@ -73,10 +74,10 @@ class CreditClient {
 	}
 	
 	/**
-	* Associates an unclaimed customer credit with the shopper user authenticated in the request header.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $code The code that represents the credit to claim for the shopper.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function associateCreditToShopperClient($code, $responseFields =  null)
@@ -89,13 +90,15 @@ class CreditClient {
 	}
 	
 	/**
-	* Resend the notification email that informs a shopper that a credit has been created.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
+	* @param string $code 
+	* @param string $userId 
+	* @return MozuClient
 	*/
-	public static function resendCreditCreatedEmailClient($code)
+	public static function resendCreditCreatedEmailClient($code, $userId =  null)
 	{
-		$url = CreditUrl::resendCreditCreatedEmailUrl($code);
+		$url = CreditUrl::resendCreditCreatedEmailUrl($code, $userId);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
 		return $mozuClient;
@@ -103,11 +106,11 @@ class CreditClient {
 	}
 	
 	/**
-	* Updates one or more properties of a defined store credit applied to a customer account.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Credit $credit Properties of the store credit of gift card applied to a customer account. At this time, gift card functionality is reserved for future use.
+	* @param string $code User-defined code of the store credit to update.
+	* @param string $responseFields 
+	* @param Credit $credit Properties of the store credit to update.
 	* @return MozuClient
 	*/
 	public static function updateCreditClient($credit, $code, $responseFields =  null)
@@ -120,9 +123,10 @@ class CreditClient {
 	}
 	
 	/**
-	* Deletes a store credit previously applied to a customer account.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
+	* @param string $code User-defined code of the store credit to delete.
+	* @return MozuClient
 	*/
 	public static function deleteCreditClient($code)
 	{

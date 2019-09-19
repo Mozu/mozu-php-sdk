@@ -19,20 +19,11 @@ namespace Mozu\Api\Contracts\Core;
 */
 class Phone
 {
-	/**
-	*Home phone number.
-	*/
-	public $home;
+		public $home;
 
-	/**
-	*Mobile phone number.
-	*/
-	public $mobile;
+		public $mobile;
 
-	/**
-	*Work phone number.
-	*/
-	public $work;
+		public $work;
 
 }
 

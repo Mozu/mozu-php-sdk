@@ -15,49 +15,28 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 /**
-*	A descriptive container that groups products. A category is merchant defined with associated products and discounts as configured. GThe storefront displays products in a hierarchy of categories. As such, categories can include a nesting of sub-categories to organize products and product options per set guidelines such as color, brand, material, and size.
+*	Properties of the product category that appears on the storefront.
 */
 class Category
 {
-	/**
-	*External unique identifier of the category.
-	*/
-	public $categoryCode;
+		public $categoryCode;
+
+		public $categoryId;
+
+		public $count;
 
 	/**
-	*Unique identifier for the storefront container used to organize products.
-	*/
-	public $categoryId;
-
-	/**
-	*The total number of associated items.
-	*/
-	public $count;
-
-	/**
-	*Indicates if the object is displayed on the storefront. If true, the admin product category is displayed in the store. If false, the category is not displayed.
+	*If true, the category is displayed on the website storefront.
 	*/
 	public $isDisplayed;
 
-	/**
-	*The numeric order of objects, used by a vocabulary value defined for an extensible attribute, images, and categories.
-	*/
-	public $sequence;
+		public $sequence;
 
-	/**
-	*Complex type that contains content for a language specified by LocaleCode.
-	*/
-	public $content;
+		public $childrenCategories;
 
-	/**
-	*List of the subcategories in the hierarchy for the specified categories.
-	*/
-	public $childrenCategories;
+		public $parentCategory;
 
-	/**
-	*If applicable, the parent category in the hierarchy for the specified category.
-	*/
-	public $parentCategory;
+		public $content;
 
 }
 

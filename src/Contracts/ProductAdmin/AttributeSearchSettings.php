@@ -19,10 +19,11 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 */
 class AttributeSearchSettings
 {
-	/**
-	*Indicates whether the attribute should be able to be used in filters, facets, and sorting on the public storefront.
-	*/
-	public $allowFilteringAndSortingInStorefront;
+		public $allowFilteringAndSortingInStorefront;
+
+		public $customWeightInStorefrontSearch;
+
+		public $indexValueWithCase;
 
 	/**
 	*Indicates whether the attribute value is searchable in the merchant catalog admin.
@@ -30,12 +31,12 @@ class AttributeSearchSettings
 	public $searchableInAdmin;
 
 	/**
-	*Indicates if the attribute value is searchable on the public storefront.
+	*Indicates whether the attribute value is searchable on the public storefront.
 	*/
 	public $searchableInStorefront;
 
 	/**
-	*Indicates what kind of values search queries and returns. If true, the system indexes the display value of string attributes instead of the canonical value for searching. Always use the canonical value for filtering. This does not apply for non-string attributes.
+	*If true, the system indexs the display value of string attributes instead of the canonical value for searching. Always use the canonical value for filtering. This does not apply for for non-string attributes.
 	*/
 	public $searchDisplayValue;
 

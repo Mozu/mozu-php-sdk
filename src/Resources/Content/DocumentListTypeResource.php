@@ -18,7 +18,7 @@ use Mozu\Api\ApiContext;
 use Mozu\Api\Headers;
 
 /**
-* Use the Document List Types resource to manage the types of document lists in your site's document hierarchy. The type denotes a content type for that list of folders, sub-folders, and documents such as `web_pages`.
+* 
 */
 class DocumentListTypeResource {
 
@@ -34,11 +34,11 @@ class DocumentListTypeResource {
 
 
 	/**
-	* Gets all the available documentListTypes.
+	* 
 	*
-	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param int $startIndex 
 	* @return DocumentListTypeCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -52,11 +52,11 @@ class DocumentListTypeResource {
 	}
 	
 /**
-	* Gets all the available documentListTypes.
+	* 
 	*
-	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param int $startIndex 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getDocumentListTypesAsync($pageSize =  null, $startIndex =  null, $responseFields =  null)
@@ -68,10 +68,10 @@ class DocumentListTypeResource {
 	}
 	
 	/**
-	* Gets a documentListType.
+	* 
 	*
 	* @param string $documentListTypeFQN 
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return DocumentListType 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -85,10 +85,10 @@ class DocumentListTypeResource {
 	}
 	
 /**
-	* Gets a documentListType.
+	* 
 	*
 	* @param string $documentListTypeFQN 
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getDocumentListTypeAsync($documentListTypeFQN, $responseFields =  null)
@@ -100,10 +100,10 @@ class DocumentListTypeResource {
 	}
 	
 	/**
-	* Creates a new documentListType.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param DocumentListType $list Properties for the document list type. Document lists contain documents with an associated document type, such as web pages.
+	* @param string $responseFields 
+	* @param DocumentListType $list 
 	* @return DocumentListType 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -117,9 +117,9 @@ class DocumentListTypeResource {
 	}
 	
 /**
-	* Creates a new documentListType.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function createDocumentListTypeAsync($list, $responseFields =  null)
@@ -131,11 +131,11 @@ class DocumentListTypeResource {
 	}
 	
 	/**
-	* Updates a DocumentListType
+	* 
 	*
 	* @param string $documentListTypeFQN 
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param DocumentListType $list Properties for the document list type. Document lists contain documents with an associated document type, such as web pages.
+	* @param string $responseFields 
+	* @param DocumentListType $list 
 	* @return DocumentListType 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -149,10 +149,10 @@ class DocumentListTypeResource {
 	}
 	
 /**
-	* Updates a DocumentListType
+	* 
 	*
 	* @param string $documentListTypeFQN 
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateDocumentListTypeAsync($list, $documentListTypeFQN, $responseFields =  null)

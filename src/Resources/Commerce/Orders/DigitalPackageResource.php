@@ -33,10 +33,10 @@ class DigitalPackageResource {
 
 
 	/**
-	* Retrieves a collection of fulfillment options for digital packages. Options may include emailed files/links or provided links. 
+	* 
 	*
 	* @param string $digitalPackageId This parameter supplies package ID to get fulfillment actions for the digital package.
-	* @param string $orderId Unique identifier of the order.
+	* @param string $orderId This parameter provides the unique identifier of the order on which to get a list of available actions.
 	* @return array|string 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -50,10 +50,10 @@ class DigitalPackageResource {
 	}
 	
 /**
-	* Retrieves a collection of fulfillment options for digital packages. Options may include emailed files/links or provided links. 
+	* 
 	*
 	* @param string $digitalPackageId This parameter supplies package ID to get fulfillment actions for the digital package.
-	* @param string $orderId Unique identifier of the order.
+	* @param string $orderId This parameter provides the unique identifier of the order on which to get a list of available actions.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getAvailableDigitalPackageFulfillmentActionsAsync($orderId, $digitalPackageId)
@@ -65,11 +65,11 @@ class DigitalPackageResource {
 	}
 	
 	/**
-	* This operation retreives a digital package within an order and it requires two parameters: orderId and digitalPackageId.
+	* 
 	*
-	* @param string $digitalPackageId This parameter supplies package ID to get fulfillment actions for the digital package.
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $digitalPackageId This parameter provides the digital package Id.
+	* @param string $orderId This parameter provides the unique identifier of the order with which to associate the digital package.
+	* @param string $responseFields 
 	* @return DigitalPackage 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -83,11 +83,11 @@ class DigitalPackageResource {
 	}
 	
 /**
-	* This operation retreives a digital package within an order and it requires two parameters: orderId and digitalPackageId.
+	* 
 	*
-	* @param string $digitalPackageId This parameter supplies package ID to get fulfillment actions for the digital package.
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $digitalPackageId This parameter provides the digital package Id.
+	* @param string $orderId This parameter provides the unique identifier of the order with which to associate the digital package.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getDigitalPackageAsync($orderId, $digitalPackageId, $responseFields =  null)
@@ -99,11 +99,11 @@ class DigitalPackageResource {
 	}
 	
 	/**
-	* Lets you apply a digital package to the order using the orderId and digitalPackage parameters.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param DigitalPackage $digitalPackage Lets you manage an order's digital packages, by applying a digital package to the order.
+	* @param string $orderId The orderID is a required paramter for the digitalpackages operation. The orderId is a unique identifier of the order with which to associate the digital package.
+	* @param string $responseFields 
+	* @param DigitalPackage $digitalPackage The digitalPackage parameter is a required parameter for the CreateDigitalPackages operation. The digitalPackage is the digital package to create and add to the order.
 	* @return DigitalPackage 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -117,10 +117,10 @@ class DigitalPackageResource {
 	}
 	
 /**
-	* Lets you apply a digital package to the order using the orderId and digitalPackage parameters.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $orderId The orderID is a required paramter for the digitalpackages operation. The orderId is a unique identifier of the order with which to associate the digital package.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function createDigitalPackageAsync($digitalPackage, $orderId, $responseFields =  null)
@@ -132,12 +132,12 @@ class DigitalPackageResource {
 	}
 	
 	/**
-	* This method operates on one digital package, specified by the id given. This method ensures that the digital package ID provided is in the order with the id given, and then updates the properties of that package with the properties of the one passed in using the ‘digitalpackage’ parameter.
+	* 
 	*
-	* @param string $digitalPackageId This parameter supplies package ID to get fulfillment actions for the digital package.
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param DigitalPackage $digitalPackage Lets you manage an order's digital packages, by applying a digital package to the order.
+	* @param string $digitalPackageId This parameter specifies the digital package to update in the order.
+	* @param string $orderId This parameter provides the unique identifier of the order with which to associate the digital package.
+	* @param string $responseFields 
+	* @param DigitalPackage $digitalPackage This parameter provides the package content to update in the order.
 	* @return DigitalPackage 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -151,11 +151,11 @@ class DigitalPackageResource {
 	}
 	
 /**
-	* This method operates on one digital package, specified by the id given. This method ensures that the digital package ID provided is in the order with the id given, and then updates the properties of that package with the properties of the one passed in using the ‘digitalpackage’ parameter.
+	* 
 	*
-	* @param string $digitalPackageId This parameter supplies package ID to get fulfillment actions for the digital package.
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $digitalPackageId This parameter specifies the digital package to update in the order.
+	* @param string $orderId This parameter provides the unique identifier of the order with which to associate the digital package.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateDigitalPackageAsync($digitalPackage, $orderId, $digitalPackageId, $responseFields =  null)
@@ -167,10 +167,11 @@ class DigitalPackageResource {
 	}
 	
 	/**
-	* This operation deletes a digital package from an order. This operation requires three parameters: orderId, digitalPackageId, and digitalPackage.
+	* 
 	*
-	* @param string $digitalPackageId This parameter supplies package ID to get fulfillment actions for the digital package.
-	* @param string $orderId Unique identifier of the order.
+	* @param string $digitalPackageId The digitalPackage ID is unique package ID to update on the order.
+	* @param string $orderId The orderId is unique identifier of the order with which to associate the package.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteDigitalPackage($orderId, $digitalPackageId)
@@ -178,14 +179,15 @@ class DigitalPackageResource {
 		$mozuClient = DigitalPackageClient::deleteDigitalPackageClient($orderId, $digitalPackageId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* This operation deletes a digital package from an order. This operation requires three parameters: orderId, digitalPackageId, and digitalPackage.
+	* 
 	*
-	* @param string $digitalPackageId This parameter supplies package ID to get fulfillment actions for the digital package.
-	* @param string $orderId Unique identifier of the order.
+	* @param string $digitalPackageId The digitalPackage ID is unique package ID to update on the order.
+	* @param string $orderId The orderId is unique identifier of the order with which to associate the package.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteDigitalPackageAsync($orderId, $digitalPackageId)

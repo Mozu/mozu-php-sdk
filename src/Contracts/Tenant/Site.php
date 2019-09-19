@@ -19,44 +19,25 @@ namespace Mozu\Api\Contracts\Tenant;
 */
 class Site
 {
-	/**
-	*The unique identifier of the catalog of products used by a site.
-	*/
-	public $catalogId;
+		public $catalogId;
 
 		public $countryCode;
 
-	/**
-	*3-letter ISO 4217 standard global currency code. Currently, only "USD" (US Dollar) is supported.
-	*/
-	public $currencyCode;
+		public $currencyCode;
 
-	/**
-	*Properties of the domain that the tenant is associated with such as the domain name, the zone string, audit information (system-supplied and read-only), assignment data, and whether or not the domain is primary or requires a SSL for authentication.
-	*/
-	public $domain;
+		public $domain;
 
 		public $id;
 
-	/**
-	*Language used for the entity. Currently, only "en-US" is supported.
-	*/
-	public $localeCode;
+		public $localeCode;
 
-	/**
-	*The user supplied name that appears in . You can use this field for identification purposes.
-	*/
-	public $name;
+		public $name;
 
-	/**
-	*The primary custom domain of the site.
-	*/
-	public $primaryCustomDomain;
+		public $primaryCustomDomain;
 
-	/**
-	*Unique identifier of the Mozu tenant.
-	*/
-	public $tenantId;
+		public $tenantId;
+
+		public $attributes;
 
 }
 

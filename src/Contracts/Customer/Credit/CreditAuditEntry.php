@@ -24,6 +24,8 @@ class CreditAuditEntry
 	*/
 	public $activityType;
 
+		public $activityTypeId;
+
 	/**
 	*Detail log that describes the activity performed for this credit audit entry.
 	*/

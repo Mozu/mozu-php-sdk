@@ -14,55 +14,25 @@ namespace Mozu\Api\Contracts\AppDev;
 
 
 
-/**
-*	This property is not exposed in documentation.
-*/
 class ApplicationCapabilityType
 {
-	/**
-	*Mozu.AppDev.Contracts.ApplicationCapabilityType applicationCapabilityTypeId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationCapabilityTypeId;
+		public $applicationCapabilityTypeId;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationCapabilityType applicationId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationId;
+		public $applicationId;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationCapabilityType capabilityTypeId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $capabilityTypeId;
+		public $capabilityTypeId;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationCapabilityType capabilityTypeName ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $capabilityTypeName;
+		public $capabilityTypeName;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationCapabilityType isImplemented ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $isImplemented;
+		public $isImplemented;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationCapabilityType isInitializedByDefault ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $isInitializedByDefault;
+		public $isInitializedByDefault;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationCapabilityType packageId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $packageId;
+		public $packageId;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationCapabilityType applicationCapabilities ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationCapabilities;
+		public $applicationCapabilities;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationCapabilityType applicationCapabilityDomains ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationCapabilityDomains;
+		public $applicationCapabilityDomains;
 
 }
 

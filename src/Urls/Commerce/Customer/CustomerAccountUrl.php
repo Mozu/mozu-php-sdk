@@ -20,12 +20,12 @@ class CustomerAccountUrl  {
 	/**
 		* Get Resource Url for GetAccounts
 		* @param string $fields The fields to include in the response.
-		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
+		* @param string $filter 
 		* @param bool $isAnonymous If true, retrieve anonymous shopper accounts in the response.
 		* @param int $pageSize 
-		* @param string $q A list of order search terms (not phrases) to use in the query when searching across order number and the name or email of the billing contact. When entering, separate multiple search terms with a space character.
+		* @param string $q A list of customer account search terms to use in the query when searching across customer name and email. Separate multiple search terms with a space character.
 		* @param int $qLimit The maximum number of search results to return in the response. You can limit any range between 1-100.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @param string $sortBy 
 		* @param int $startIndex 
 		* @return string Resource Url
@@ -49,36 +49,40 @@ class CustomerAccountUrl  {
 	/**
 		* Get Resource Url for GetLoginState
 		* @param int $accountId Unique identifier of the customer account.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
+		* @param string $userId 
 		* @return string Resource Url
 	*/
-	public static function getLoginStateUrl($accountId, $responseFields)
+	public static function getLoginStateUrl($accountId, $responseFields, $userId)
 	{
-		$url = "/api/commerce/customer/accounts/{accountId}/loginstate?responseFields={responseFields}";
+		$url = "/api/commerce/customer/accounts/{accountId}/loginstate?userId={userId}&responseFields={responseFields}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
 		$url = $mozuUrl->formatUrl("accountId", $accountId);
 		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("userId", $userId);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for GetAccount
-		* @param int $accountId Unique identifier of the customer account.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param int $accountId Unique identifier of the customer account to retrieve.
+		* @param string $responseFields 
+		* @param string $userId 
 		* @return string Resource Url
 	*/
-	public static function getAccountUrl($accountId, $responseFields)
+	public static function getAccountUrl($accountId, $responseFields, $userId)
 	{
-		$url = "/api/commerce/customer/accounts/{accountId}?responseFields={responseFields}";
+		$url = "/api/commerce/customer/accounts/{accountId}?userId={userId}&responseFields={responseFields}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
 		$url = $mozuUrl->formatUrl("accountId", $accountId);
 		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		$url = $mozuUrl->formatUrl("userId", $userId);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for AddAccount
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function addAccountUrl($responseFields)
@@ -91,23 +95,25 @@ class CustomerAccountUrl  {
 	
 	/**
 		* Get Resource Url for ChangePassword
-		* @param int $accountId Unique identifier of the customer account.
-		* @param bool $unlockAccount Specifies whether to unlock the specified customer account.
+		* @param int $accountId The customer account information required to change the userpassword.
+		* @param bool $unlockAccount 
+		* @param string $userId 
 		* @return string Resource Url
 	*/
-	public static function changePasswordUrl($accountId, $unlockAccount)
+	public static function changePasswordUrl($accountId, $unlockAccount, $userId)
 	{
-		$url = "/api/commerce/customer/accounts/{accountId}/Change-Password?unlockAccount={unlockAccount}";
+		$url = "/api/commerce/customer/accounts/{accountId}/Change-Password?unlockAccount={unlockAccount}&userId={userId}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
 		$url = $mozuUrl->formatUrl("accountId", $accountId);
 		$url = $mozuUrl->formatUrl("unlockAccount", $unlockAccount);
+		$url = $mozuUrl->formatUrl("userId", $userId);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for AddLoginToExistingCustomer
 		* @param int $accountId Unique identifier of the customer account.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function addLoginToExistingCustomerUrl($accountId, $responseFields)
@@ -121,7 +127,7 @@ class CustomerAccountUrl  {
 	
 	/**
 		* Get Resource Url for RecomputeCustomerLifetimeValue
-		* @param int $accountId Unique identifier of the customer account.
+		* @param int $accountId The unique identifier of the customer account for which to calculate customer lifetime value.
 		* @return string Resource Url
 	*/
 	public static function recomputeCustomerLifetimeValueUrl($accountId)
@@ -134,33 +140,37 @@ class CustomerAccountUrl  {
 	
 	/**
 		* Get Resource Url for SetLoginLocked
-		* @param int $accountId Unique identifier of the customer account.
+		* @param int $accountId The unique identifier of the customer account.
+		* @param string $userId 
 		* @return string Resource Url
 	*/
-	public static function setLoginLockedUrl($accountId)
+	public static function setLoginLockedUrl($accountId, $userId)
 	{
-		$url = "/api/commerce/customer/accounts/{accountId}/Set-Login-Locked";
+		$url = "/api/commerce/customer/accounts/{accountId}/Set-Login-Locked?userId={userId}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
 		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		$url = $mozuUrl->formatUrl("userId", $userId);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for SetPasswordChangeRequired
 		* @param int $accountId Unique identifier of the customer account.
+		* @param string $userId 
 		* @return string Resource Url
 	*/
-	public static function setPasswordChangeRequiredUrl($accountId)
+	public static function setPasswordChangeRequiredUrl($accountId, $userId)
 	{
-		$url = "/api/commerce/customer/accounts/{accountId}/Set-Password-Change-Required";
+		$url = "/api/commerce/customer/accounts/{accountId}/Set-Password-Change-Required?userId={userId}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
 		$url = $mozuUrl->formatUrl("accountId", $accountId);
+		$url = $mozuUrl->formatUrl("userId", $userId);
 		return $mozuUrl;
 	}
 	
 	/**
 		* Get Resource Url for AddAccountAndLogin
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function addAccountAndLoginUrl($responseFields)
@@ -173,7 +183,7 @@ class CustomerAccountUrl  {
 	
 	/**
 		* Get Resource Url for AddAccounts
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function addAccountsUrl($responseFields)
@@ -186,7 +196,7 @@ class CustomerAccountUrl  {
 	
 	/**
 		* Get Resource Url for ChangePasswords
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function changePasswordsUrl($responseFields)
@@ -199,9 +209,9 @@ class CustomerAccountUrl  {
 	
 	/**
 		* Get Resource Url for GetLoginStateByEmailAddress
-		* @param string $customerSetCode The unique idenfitier of the customer set.
+		* @param string $customerSetCode 
 		* @param string $emailAddress The email address associated with the customer account.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getLoginStateByEmailAddressUrl($customerSetCode, $emailAddress, $responseFields)
@@ -216,8 +226,8 @@ class CustomerAccountUrl  {
 	
 	/**
 		* Get Resource Url for GetLoginStateByUserName
-		* @param string $customerSetCode The unique idenfitier of the customer set.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $customerSetCode 
+		* @param string $responseFields 
 		* @param string $userName The user name associated with the customer account.
 		* @return string Resource Url
 	*/
@@ -233,16 +243,18 @@ class CustomerAccountUrl  {
 	
 	/**
 		* Get Resource Url for GetCustomersPurchaseOrderAccounts
-		* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-		* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for more information.
-		* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
+		* @param string $accountType 
+		* @param int $pageSize 
+		* @param string $responseFields 
+		* @param string $sortBy 
+		* @param int $startIndex 
 		* @return string Resource Url
 	*/
-	public static function getCustomersPurchaseOrderAccountsUrl($pageSize, $responseFields, $sortBy, $startIndex)
+	public static function getCustomersPurchaseOrderAccountsUrl($accountType, $pageSize, $responseFields, $sortBy, $startIndex)
 	{
-		$url = "/api/commerce/customer/accounts/purchaseOrderAccounts?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&responseFields={responseFields}";
+		$url = "/api/commerce/customer/accounts/purchaseOrderAccounts?startIndex={startIndex}&pageSize={pageSize}&sortBy={sortBy}&accountType={accountType}&responseFields={responseFields}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("accountType", $accountType);
 		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
 		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		$url = $mozuUrl->formatUrl("sortBy", $sortBy);
@@ -264,7 +276,7 @@ class CustomerAccountUrl  {
 	/**
 		* Get Resource Url for UpdateAccount
 		* @param int $accountId Unique identifier of the customer account.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updateAccountUrl($accountId, $responseFields)
@@ -278,7 +290,7 @@ class CustomerAccountUrl  {
 	
 	/**
 		* Get Resource Url for DeleteAccount
-		* @param int $accountId Unique identifier of the customer account.
+		* @param int $accountId Unique identifier of the customer account to delete.
 		* @return string Resource Url
 	*/
 	public static function deleteAccountUrl($accountId)

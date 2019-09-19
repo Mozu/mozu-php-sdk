@@ -19,10 +19,7 @@ namespace Mozu\Api\Contracts\Core\ThirdParty;
 */
 class ActiveShippingCountry
 {
-	/**
-	*Array list of the active shipping carriers for the country.
-	*/
-	public $activeCarriers;
+		public $activeCarriers;
 
 		public $countryCode;
 

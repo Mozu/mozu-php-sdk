@@ -17,15 +17,15 @@ use Mozu\Api\Urls\Platform\TenantDataUrl;
 
 
 /**
-* Use the tenant data resource to store tenant-level information required for a third-party application in the  database.
+* Use the tenant data resource to store tenant-level information required for a third-party application in the Mozu database.
 */
 class TenantDataClient {
 
 	/**
-	* Retrieves the value of a record in the  database.
+	* 
 	*
-	* @param string $dbEntryQuery The database entry string to create.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $dbEntryQuery The database entry query string used to retrieve the record information.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getDBValueClient($dbEntryQuery, $responseFields =  null)
@@ -38,10 +38,11 @@ class TenantDataClient {
 	}
 	
 	/**
-	* Creates a new record in the  database based on the information supplied in the request.
+	* 
 	*
 	* @param string $dbEntryQuery The database entry string to create.
 	* @param string $value The value string to create.
+	* @return MozuClient
 	*/
 	public static function createDBValueClient($value, $dbEntryQuery)
 	{
@@ -53,10 +54,11 @@ class TenantDataClient {
 	}
 	
 	/**
-	* Updates a record in the  database based on the information supplied in the request.
+	* 
 	*
-	* @param string $dbEntryQuery The database entry string to create.
-	* @param string $value The value string to create.
+	* @param string $dbEntryQuery The database entry query string used to update the record information.
+	* @param string $value The database value to update.
+	* @return MozuClient
 	*/
 	public static function updateDBValueClient($value, $dbEntryQuery)
 	{
@@ -68,9 +70,10 @@ class TenantDataClient {
 	}
 	
 	/**
-	* Removes a previously defined record in the  database.
+	* 
 	*
-	* @param string $dbEntryQuery The database entry string to create.
+	* @param string $dbEntryQuery The database entry string to delete.
+	* @return MozuClient
 	*/
 	public static function deleteDBValueClient($dbEntryQuery)
 	{

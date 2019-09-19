@@ -20,7 +20,7 @@ class PaymentUrl  {
 	/**
 		* Get Resource Url for GetPayments
 		* @param string $orderId Unique identifier of the order.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getPaymentsUrl($orderId, $responseFields)
@@ -34,8 +34,8 @@ class PaymentUrl  {
 	
 	/**
 		* Get Resource Url for GetAvailablePaymentActions
-		* @param string $orderId Unique identifier of the order.
-		* @param string $paymentId Unique identifier of the payment for which to perform the action.
+		* @param string $orderId Unique identifier of the order associated with the payment.
+		* @param string $paymentId Unique identifer of the payment for which to retrieve available actions.
 		* @return string Resource Url
 	*/
 	public static function getAvailablePaymentActionsUrl($orderId, $paymentId)
@@ -49,9 +49,9 @@ class PaymentUrl  {
 	
 	/**
 		* Get Resource Url for GetPayment
-		* @param string $orderId Unique identifier of the order.
-		* @param string $paymentId Unique identifier of the payment for which to perform the action.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $orderId Unique identifier of the order associated with the payment transaction.
+		* @param string $paymentId Unique identifier of the payment transaction submitted for the order.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getPaymentUrl($orderId, $paymentId, $responseFields)
@@ -66,9 +66,9 @@ class PaymentUrl  {
 	
 	/**
 		* Get Resource Url for PerformPaymentAction
-		* @param string $orderId Unique identifier of the order.
-		* @param string $paymentId Unique identifier of the payment for which to perform the action.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $orderId Unique identifier of the order associated with the payment.
+		* @param string $paymentId Unique identifer of the payment for which to perform the action.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function performPaymentActionUrl($orderId, $paymentId, $responseFields)
@@ -83,14 +83,31 @@ class PaymentUrl  {
 	
 	/**
 		* Get Resource Url for CreatePaymentAction
-		* @param string $orderId Unique identifier of the order.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $orderId Unique identifier of the order for which to apply the payment.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function createPaymentActionUrl($orderId, $responseFields)
 	{
 		$url = "/api/commerce/orders/{orderId}/payments/actions?responseFields={responseFields}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("orderId", $orderId);
+		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
+		return $mozuUrl;
+	}
+	
+	/**
+		* Get Resource Url for AutoCapturePayments
+		* @param bool $forceCapture 
+		* @param string $orderId 
+		* @param string $responseFields 
+		* @return string Resource Url
+	*/
+	public static function autoCapturePaymentsUrl($forceCapture, $orderId, $responseFields)
+	{
+		$url = "/api/commerce/orders/{orderId}/payments/autocapture?forcecapture={forceCapture}&responseFields={responseFields}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("forceCapture", $forceCapture);
 		$url = $mozuUrl->formatUrl("orderId", $orderId);
 		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
 		return $mozuUrl;

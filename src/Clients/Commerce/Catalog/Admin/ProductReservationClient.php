@@ -18,17 +18,17 @@ use Mozu\Api\Urls\Commerce\Catalog\Admin\ProductReservationUrl;
 use Mozu\Api\Headers;
 
 /**
-* Use the Product Reservations resource to temporarily hold a product from inventory while a shopper is filling out payment information. You can create a product reservation when a shopper proceeds to check out and then release the reservation when the order process is complete.
+* Temporarily hold a product from inventory while a shopper is filling out payment information. Create a product reservation when a shopper proceeds to check out and then release the reservation when the order process is complete.
 */
 class ProductReservationClient {
 
 	/**
-	* Retrieves a list of product reservations according to any specified filter criteria and sort options.
+	* 
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $sortBy 
+	* @param string $filter 
+	* @param int $pageSize Used to page results from a query. Indicates the maximum number of entities to return from a query. Default value: 20. Max value: 200.
+	* @param string $responseFields 
+	* @param string $sortBy The element to sort the results by and the order in which the results appear. Either ascending order (a-z) which accepts 'asc' or 'asc' or descending order (z-a) which accepts 'desc' or 'desc'. The sortBy parameter follows an available property.
 	* @param int $startIndex 
 	* @return MozuClient
 	*/
@@ -42,10 +42,10 @@ class ProductReservationClient {
 	}
 	
 	/**
-	* Retrieves the details of a product reservation.
+	* 
 	*
 	* @param int $productReservationId Unique identifier of the product reservation.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getProductReservationClient($dataViewMode, $productReservationId, $responseFields =  null)
@@ -58,10 +58,10 @@ class ProductReservationClient {
 	}
 	
 	/**
-	* Creates a new product reservation for a product. This action places a hold on the product inventory for the quantity specified during the ordering process.
+	* 
 	*
 	* @param bool $skipInventoryCheck If true, skip the process to validate inventory when creating this product reservation.
-	* @param array|ProductReservation $productReservations A hold placed on product inventory for a particular product so that the quantity specified is set aside and available for purchase during the ordering process.
+	* @param array|ProductReservation $productReservations Details of the product reservations to add.
 	* @return MozuClient
 	*/
 	public static function addProductReservationsClient($dataViewMode, $productReservations, $skipInventoryCheck =  null)
@@ -74,9 +74,10 @@ class ProductReservationClient {
 	}
 	
 	/**
-	* Commits a product reservation to decrement the product's inventory by the quantity specified then release the reservation once the order process completed successfully.
+	* 
 	*
-	* @param array|ProductReservation $productReservations A hold placed on product inventory for a particular product so that the quantity specified is set aside and available for purchase during the ordering process.
+	* @param array|ProductReservation $productReservations List of unique identifiers of the reservations to commit.
+	* @return MozuClient
 	*/
 	public static function commitReservationsClient($dataViewMode, $productReservations)
 	{
@@ -88,10 +89,10 @@ class ProductReservationClient {
 	}
 	
 	/**
-	* Updates an existing product reservation for a product.
+	* 
 	*
-	* @param bool $skipInventoryCheck If true, skip the process to validate inventory when creating this product reservation.
-	* @param array|ProductReservation $productReservations A hold placed on product inventory for a particular product so that the quantity specified is set aside and available for purchase during the ordering process.
+	* @param bool $skipInventoryCheck If true, skip the inventory validation process when updating this product reservation.
+	* @param array|ProductReservation $productReservations Properties of the product reservations to update.
 	* @return MozuClient
 	*/
 	public static function updateProductReservationsClient($dataViewMode, $productReservations, $skipInventoryCheck =  null)
@@ -104,9 +105,10 @@ class ProductReservationClient {
 	}
 	
 	/**
-	* Deletes a product reservation. For example, delete a reservation when an order is not processed to return the product quantity back to inventory.
+	* 
 	*
-	* @param int $productReservationId Unique identifier of the product reservation.
+	* @param int $productReservationId Unique identifier of the reservation.
+	* @return MozuClient
 	*/
 	public static function deleteProductReservationClient($dataViewMode, $productReservationId)
 	{

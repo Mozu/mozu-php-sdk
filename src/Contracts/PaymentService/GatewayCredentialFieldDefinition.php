@@ -19,25 +19,13 @@ namespace Mozu\Api\Contracts\PaymentService;
 */
 class GatewayCredentialFieldDefinition
 {
-	/**
-	*The sequential display order of the gateway in .
-	*/
-	public $adminDisplayOrder;
+		public $adminDisplayOrder;
 
-	/**
-	*The name that displays for the payment gateway or third-party credentials field. 
-	*/
-	public $displayName;
+		public $displayName;
 
-	/**
-	*The user supplied name that appears in . You can use this field for identification purposes.
-	*/
-	public $name;
+		public $isPublic;
 
-	/**
-	*The name of the Volusion store.
-	*/
-	public $volusionStoreName;
+		public $name;
 
 }
 

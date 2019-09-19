@@ -19,7 +19,7 @@ class CheckoutSettingsUrl  {
 
 	/**
 		* Get Resource Url for GetCheckoutSettings
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getCheckoutSettingsUrl($responseFields)

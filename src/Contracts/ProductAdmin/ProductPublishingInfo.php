@@ -19,25 +19,13 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 */
 class ProductPublishingInfo
 {
-	/**
-	*The user ID of the user who last published changes for this product in the catalog.
-	*/
-	public $lastPublishedBy;
+		public $lastPublishedBy;
 
-	/**
-	*The date and time a draft change for this product was published to the catalog.
-	*/
-	public $lastPublishedDate;
+		public $lastPublishedDate;
 
-	/**
-	*The current publishing state of this product in the catalog, which is Live, New, or Draft. Live products appear on the storefront and have no pending changes. New products have been created but do not yet appear on the storefront. Draft products appear on the storefront but have pending changes that have not yet been published.
-	*/
-	public $publishedState;
+		public $publishedState;
 
-	/**
-	*The unique identifier of the publish set the pending product draft is assigned to. This field is not valid if the product is live.
-	*/
-	public $publishSetCode;
+		public $publishSetCode;
 
 }
 

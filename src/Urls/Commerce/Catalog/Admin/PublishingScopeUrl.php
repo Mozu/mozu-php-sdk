@@ -19,8 +19,8 @@ class PublishingScopeUrl  {
 
 	/**
 		* Get Resource Url for GetPublishSet
-		* @param string $publishSetCode The unique identifier of the publish set.
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $publishSetCode 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getPublishSetUrl($publishSetCode, $responseFields)
@@ -34,7 +34,7 @@ class PublishingScopeUrl  {
 	
 	/**
 		* Get Resource Url for GetPublishSets
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getPublishSetsUrl($responseFields)
@@ -69,7 +69,7 @@ class PublishingScopeUrl  {
 	
 	/**
 		* Get Resource Url for AssignProductsToPublishSet
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function assignProductsToPublishSetUrl($responseFields)
@@ -82,8 +82,8 @@ class PublishingScopeUrl  {
 	
 	/**
 		* Get Resource Url for DeletePublishSet
-		* @param bool $discardDrafts Specifies whether to discard all the drafts assigned to the publish set when the publish set is deleted.
-		* @param string $publishSetCode The unique identifier of the publish set.
+		* @param bool $discardDrafts 
+		* @param string $publishSetCode 
 		* @return string Resource Url
 	*/
 	public static function deletePublishSetUrl($discardDrafts, $publishSetCode)

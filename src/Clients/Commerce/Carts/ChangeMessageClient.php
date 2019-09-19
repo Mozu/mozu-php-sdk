@@ -22,9 +22,9 @@ use Mozu\Api\Urls\Commerce\Carts\ChangeMessageUrl;
 class ChangeMessageClient {
 
 	/**
-	* Retrieves the messages associated with the current shopper's cart.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getMessagesClient($responseFields =  null)
@@ -37,8 +37,9 @@ class ChangeMessageClient {
 	}
 	
 	/**
-	* Deletes all messages associated with the cart of the current shopper.
+	* 
 	*
+	* @return MozuClient
 	*/
 	public static function removeAllMessagesClient()
 	{
@@ -50,9 +51,10 @@ class ChangeMessageClient {
 	}
 	
 	/**
-	* Removes a single message associated with the cart of the current shopper.
+	* 
 	*
 	* @param string $messageId Identifier of the message to remove from the cart.
+	* @return MozuClient
 	*/
 	public static function removeMessageClient($messageId)
 	{

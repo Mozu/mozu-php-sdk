@@ -14,25 +14,13 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
-/**
-*	Mozu.ProductAdmin.Contracts.PublishSet ApiType DOCUMENT_HERE 
-*/
 class PublishSet
 {
-	/**
-	*The unique identifier of the product publish set.
-	*/
-	public $code;
+		public $code;
 
-	/**
-	*A list of product codes of associated products. When this field is in the Product Publishing resource, you can use this field  to publish or delete individual pending product changes, or assign individual pending product changes to a publish set.
-	*/
-	public $productCodes;
+		public $productCodes;
 
-	/**
-	*The total number of products. This total may indicate the total products associate with a product type or number of products in a list.
-	*/
-	public $productCount;
+		public $productCount;
 
 }
 

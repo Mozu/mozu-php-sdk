@@ -19,30 +19,19 @@ namespace Mozu\Api\Contracts\SiteSettings\Order;
 */
 class PaymentSettings
 {
-	/**
-	*Settings that provide for the ability to pay for an order by mail.
-	*/
-	public $payByMail;
+		public $payByMail;
 
-	/**
-	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
-	*/
-	public $auditInfo;
+		public $paymentRanking;
 
-	/**
-	*The external payment workflwo definitions configured for the site's payment settings. At this time, only PayPal Express is supported.
-	*/
-	public $externalPaymentWorkflowDefinitions;
+		public $auditInfo;
 
-	/**
-	*List of name and account information for a payment gateway.
-	*/
-	public $gateways;
+		public $externalPaymentWorkflowDefinitions;
 
-	/**
-	*The purchase order payment type settings associated with a site.Refer to [Enable the Purchase Order Payment Type](https://www.mozu.com/docs/guides/orders/purchase-order.htm#enable_the_purchase_order_payment_type) in the Purchase Orders guides topic for more information.
-	*/
-	public $purchaseOrder;
+		public $gateways;
+
+		public $jobSettings;
+
+		public $purchaseOrder;
 
 }
 

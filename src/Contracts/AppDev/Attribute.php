@@ -14,65 +14,29 @@ namespace Mozu\Api\Contracts\AppDev;
 
 
 
-/**
-*	Properties of an attribute used to describe customers or orders.
-*/
 class Attribute
 {
-	/**
-	*List of valid vocabulary values defined for an attribute.
-	*/
-	public $vocabularyValues;
+		public $adminName;
 
-	/**
-	*The administrator name associated with the object/data.
-	*/
-	public $adminName;
+		public $applicationAttributeId;
 
-	/**
-	*Mozu.AppDev.Contracts.Attribute applicationAttributeId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationAttributeId;
+		public $attributeId;
 
-	/**
-	*Mozu.AppDev.Contracts.Attribute attributeId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $attributeId;
+		public $code;
 
-	/**
-	*Mozu.AppDev.Contracts.Attribute code ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $code;
+		public $fqn;
 
-	/**
-	*Mozu.AppDev.Contracts.Attribute fqn ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $fqn;
+		public $inputType;
 
-	/**
-	*The type of input selection used to define a value for the attribute, including Yes/No, Date, DateTime, List, TextBox, or TextArea.
-	*/
-	public $inputType;
+		public $name;
 
-	/**
-	*The user supplied name that appears in . You can use this field for identification purposes.
-	*/
-	public $name;
+		public $sequence;
 
-	/**
-	*The numeric order of objects, used by a vocabulary value defined for an extensible attribute, images, and categories.
-	*/
-	public $sequence;
+		public $type;
 
-	/**
-	*Mozu.AppDev.Contracts.Attribute type ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $type;
+		public $vocabularyJson;
 
-	/**
-	*Mozu.AppDev.Contracts.Attribute vocabularyJson ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $vocabularyJson;
+		public $vocabularyValues;
 
 }
 

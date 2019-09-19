@@ -17,15 +17,15 @@ use Mozu\Api\Urls\Commerce\Payments\FraudScreenUrl;
 
 
 /**
-* commerce/payments/fraudscreen related resources. DOCUMENT_HERE 
+* 
 */
 class FraudScreenClient {
 
 	/**
-	* payments-fraudscreen Post Screen description DOCUMENT_HERE 
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param FraudScreenRequest $request Mozu.PaymentService.Contracts.Request.FraudScreenRequest ApiType DOCUMENT_HERE 
+	* @param string $responseFields 
+	* @param FraudScreenRequest $request 
 	* @return MozuClient
 	*/
 	public static function screenClient($request, $responseFields =  null)

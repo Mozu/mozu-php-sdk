@@ -17,14 +17,14 @@ use Mozu\Api\Urls\Commerce\Settings\CartSettingsUrl;
 
 
 /**
-* Use the cart subresource to manage settings for the cart, such as whether to include handling fees in the cost calculations.
+* 
 */
 class CartSettingsClient {
 
 	/**
-	* Retrieves cart settings.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getCartSettingsClient($responseFields =  null)
@@ -37,9 +37,9 @@ class CartSettingsClient {
 	}
 	
 	/**
-	* Creates cart settings.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @param CartSettings $cartSettings 
 	* @return MozuClient
 	*/
@@ -53,9 +53,9 @@ class CartSettingsClient {
 	}
 	
 	/**
-	* Updates cart settings.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @param CartSettings $cartSettings 
 	* @return MozuClient
 	*/

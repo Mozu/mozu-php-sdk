@@ -19,25 +19,13 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 */
 class ProductOptionSelection
 {
-	/**
-	*The fully qualified name of the attribute, which is a user defined attribute identifier.
-	*/
-	public $attributeFQN;
+		public $attributeFqn;
 
-	/**
-	*Unique identifier of the attribute's value.
-	*/
-	public $attributeValueId;
+		public $attributeValueId;
 
-	/**
-	*The value a shopper entered for an attribute that requires additional input for the product on a storefront. This entered value is a selected option or entered content for an extra, such as selecting a color or entering content for a monogram.
-	*/
-	public $shopperEnteredValue;
+		public $shopperEnteredValue;
 
-	/**
-	*The value of a property, used by numerous objects within  including facets, attributes, products, localized content, metadata, capabilities ( and third-party), location inventory adjustment, and more. The value may be a string, integer, or double. Validation may be run against the entered and saved values depending on the object type.
-	*/
-	public $value;
+		public $value;
 
 }
 

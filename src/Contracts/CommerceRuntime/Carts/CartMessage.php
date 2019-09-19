@@ -14,25 +14,13 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Carts;
 
 
 
-/**
-*	Mozu.CommerceRuntime.Contracts.Carts.CartMessage ApiType DOCUMENT_HERE 
-*/
 class CartMessage
 {
-	/**
-	*The text of the change message, such as "This product is no longer available." System-supplied and read-only.
-	*/
-	public $message;
+		public $message;
 
-	/**
-	*Specifies the cart message type.
-	*/
-	public $messageType;
+		public $messageType;
 
-	/**
-	*An array of product details for any products that have been removed from the cart.
-	*/
-	public $productsRemoved;
+		public $productsRemoved;
 
 }
 

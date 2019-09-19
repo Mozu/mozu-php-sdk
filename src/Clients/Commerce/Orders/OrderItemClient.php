@@ -22,12 +22,12 @@ use Mozu\Api\Urls\Commerce\Orders\OrderItemUrl;
 class OrderItemClient {
 
 	/**
-	* Retrieves an order item with the order line ID.
+	* 
 	*
-	* @param bool $draft If true, retrieve the draft version of the order, which might include uncommitted changes to the order or its components.
-	* @param int $lineId The specific line id that's associated with the order item.
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param bool $draft 
+	* @param int $lineId 
+	* @param string $orderId 
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getOrderItemViaLineIdClient($orderId, $lineId, $draft =  null, $responseFields =  null)
@@ -40,12 +40,12 @@ class OrderItemClient {
 	}
 	
 	/**
-	* Retrieves the details of a single order item.
+	* 
 	*
-	* @param bool $draft If true, retrieve the draft version of the order, which might include uncommitted changes to the order or its components.
-	* @param string $orderId Unique identifier of the order.
-	* @param string $orderItemId Unique identifier of the item to remove from the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param bool $draft If true, retrieve the draft version of this order item, which might include uncommitted changes to the order item, the order, or other order components.
+	* @param string $orderId Unique identifier of the order item to retrieve.
+	* @param string $orderItemId Unique identifier of the order item details to retrieve.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getOrderItemClient($orderId, $orderItemId, $draft =  null, $responseFields =  null)
@@ -58,11 +58,11 @@ class OrderItemClient {
 	}
 	
 	/**
-	* Retrieves the details of all items in an order.
+	* 
 	*
-	* @param bool $draft If true, retrieve the draft version of the order, which might include uncommitted changes to the order or its components.
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param bool $draft If true, retrieve the draft version of the order's items, which might include uncommitted changes to one or more order items, the order itself, or other order components.
+	* @param string $orderId Unique identifier of the order items to retrieve.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getOrderItemsClient($orderId, $draft =  null, $responseFields =  null)
@@ -75,14 +75,14 @@ class OrderItemClient {
 	}
 	
 	/**
-	* Adds a new item to a defined order.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param bool $skipInventoryCheck If true, skip the process to validate inventory when creating this product reservation.
-	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
-	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
-	* @param OrderItem $orderItem The details associated with a specific item in an order.
+	* @param string $orderId Unique identifier of the order for which to add the item.
+	* @param string $responseFields 
+	* @param bool $skipInventoryCheck If true, do not validate the product inventory when adding this item to the order.
+	* @param string $updateMode Specifies whether to add the item by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version 
+	* @param OrderItem $orderItem The properties of the item to create in the existing order.
 	* @return MozuClient
 	*/
 	public static function createOrderItemClient($orderItem, $orderId, $updateMode =  null, $version =  null, $skipInventoryCheck =  null, $responseFields =  null)
@@ -95,15 +95,15 @@ class OrderItemClient {
 	}
 	
 	/**
-	* Update the discount applied to an item in an order.
+	* 
 	*
-	* @param int $discountId discountId parameter description DOCUMENT_HERE 
-	* @param string $orderId Unique identifier of the order.
-	* @param string $orderItemId Unique identifier of the item to remove from the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
-	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
-	* @param AppliedDiscount $discount Properties of all applied discounts for an associated cart, order, or product. 
+	* @param int $discountId Unique identifier of the discount. System-supplied and read only.
+	* @param string $orderId Unique identifier of the order associated with the item discount.
+	* @param string $orderItemId Unique identifier of the item in the order.
+	* @param string $responseFields 
+	* @param string $updateMode Specifies whether to change the item discount by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version 
+	* @param AppliedDiscount $discount Properties of the discount to modify for the order item.
 	* @return MozuClient
 	*/
 	public static function updateOrderItemDiscountClient($discount, $orderId, $orderItemId, $discountId, $updateMode =  null, $version =  null, $responseFields =  null)
@@ -116,15 +116,14 @@ class OrderItemClient {
 	}
 	
 	/**
-	* Update the duty fee information for an order item.
+	* 
 	*
-	* @param decimal $dutyAmount The amount added to the order item for duty fees.
-        
-	* @param string $orderId Unique identifier of the order.
-	* @param string $orderItemId Unique identifier of the item to remove from the order.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
-	* @param string $version Determines whether or not to check versioning of items for concurrency purposes.
+	* @param decimal $dutyAmount 
+	* @param string $orderId 
+	* @param string $orderItemId 
+	* @param string $responseFields 
+	* @param string $updateMode 
+	* @param string $version 
 	* @return MozuClient
 	*/
 	public static function updateItemDutyClient($orderId, $orderItemId, $dutyAmount, $updateMode =  null, $version =  null, $responseFields =  null)
@@ -137,14 +136,14 @@ class OrderItemClient {
 	}
 	
 	/**
-	* Updates the item fulfillment information for the order specified in the request.
+	* 
 	*
 	* @param string $orderId Unique identifier of the order.
-	* @param string $orderItemId Unique identifier of the item to remove from the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
-	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
-	* @param OrderItem $orderItem The details associated with a specific item in an order.
+	* @param string $orderItemId Unique identifier of the item in the order.
+	* @param string $responseFields 
+	* @param string $updateMode Specifies whether to apply the coupon by updating the original order, updating the order in draft mode, or updating the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version 
+	* @param OrderItem $orderItem Properties of the order item to update for fulfillment.
 	* @return MozuClient
 	*/
 	public static function updateItemFulfillmentClient($orderItem, $orderId, $orderItemId, $updateMode =  null, $version =  null, $responseFields =  null)
@@ -157,14 +156,14 @@ class OrderItemClient {
 	}
 	
 	/**
-	* Override the price of an individual product on a line item in the specified order.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $orderItemId Unique identifier of the item to remove from the order.
+	* @param string $orderId Unique identifier of the order containing the item to price override.
+	* @param string $orderItemId Unique identifier of the item in the order to price override.
 	* @param decimal $price The override price to specify for this item in the specified order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
-	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
+	* @param string $responseFields 
+	* @param string $updateMode Specifies whether to change the product price by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version 
 	* @return MozuClient
 	*/
 	public static function updateItemProductPriceClient($orderId, $orderItemId, $price, $updateMode =  null, $version =  null, $responseFields =  null)
@@ -177,14 +176,14 @@ class OrderItemClient {
 	}
 	
 	/**
-	* Update the quantity of an item in an order.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $orderItemId Unique identifier of the item to remove from the order.
-	* @param int $quantity The number of cart items in the shopper's active cart.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
-	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
+	* @param string $orderId Unique identifier of the order containing the item to update quantity.
+	* @param string $orderItemId Unique identifier of the item in the order to update quantity.
+	* @param int $quantity The quantity of the item in the order to update.
+	* @param string $responseFields 
+	* @param string $updateMode Specifies whether to change the item quantity by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version 
 	* @return MozuClient
 	*/
 	public static function updateItemQuantityClient($orderId, $orderItemId, $quantity, $updateMode =  null, $version =  null, $responseFields =  null)
@@ -197,12 +196,12 @@ class OrderItemClient {
 	}
 	
 	/**
-	* Removes a previously added item from a defined order.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
+	* @param string $orderId Unique identifier of the order with the item to remove.
 	* @param string $orderItemId Unique identifier of the item to remove from the order.
-	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
-	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
+	* @param string $updateMode Specifies whether to remove the item by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version 
 	* @return MozuClient
 	*/
 	public static function deleteOrderItemClient($orderId, $orderItemId, $updateMode =  null, $version =  null)

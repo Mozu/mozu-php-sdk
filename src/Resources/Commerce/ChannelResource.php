@@ -33,13 +33,13 @@ class ChannelResource {
 
 
 	/**
-	* Retrieves a list of channels defined for a tenant according to any filter or sort criteria specified in the request.
+	* 
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param string $sortBy 
+	* @param int $startIndex 
 	* @return ChannelCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -53,13 +53,13 @@ class ChannelResource {
 	}
 	
 /**
-	* Retrieves a list of channels defined for a tenant according to any filter or sort criteria specified in the request.
+	* 
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param string $sortBy 
+	* @param int $startIndex 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getChannelsAsync($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
@@ -71,10 +71,10 @@ class ChannelResource {
 	}
 	
 	/**
-	* Retrieves the details of the channel specified in the request.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $code User-defined code that identifies the channel to retrieve.
+	* @param string $responseFields 
 	* @return Channel 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -88,10 +88,10 @@ class ChannelResource {
 	}
 	
 /**
-	* Retrieves the details of the channel specified in the request.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $code User-defined code that identifies the channel to retrieve.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getChannelAsync($code, $responseFields =  null)
@@ -103,10 +103,10 @@ class ChannelResource {
 	}
 	
 	/**
-	* Creates a new channel that defines a new logical business division to use for financial reporting.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Channel $channel Properties of a channel used to divide a company into logical business divisions, such as "US Retail," "US Online," or "Amazon." All sites and orders are associated with a channel.
+	* @param string $responseFields 
+	* @param Channel $channel Properties of the channel to create.
 	* @return Channel 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -120,9 +120,9 @@ class ChannelResource {
 	}
 	
 /**
-	* Creates a new channel that defines a new logical business division to use for financial reporting.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function createChannelAsync($channel, $responseFields =  null)
@@ -134,11 +134,11 @@ class ChannelResource {
 	}
 	
 	/**
-	* Updates one or more details of a defined channel, including the associated sites.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Channel $channel Properties of a channel used to divide a company into logical business divisions, such as "US Retail," "US Online," or "Amazon." All sites and orders are associated with a channel.
+	* @param string $code User-defined code that identifies the channel to update.
+	* @param string $responseFields 
+	* @param Channel $channel Properties of a the channel to update.
 	* @return Channel 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -152,10 +152,10 @@ class ChannelResource {
 	}
 	
 /**
-	* Updates one or more details of a defined channel, including the associated sites.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $code User-defined code that identifies the channel to update.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateChannelAsync($channel, $code, $responseFields =  null)
@@ -167,9 +167,10 @@ class ChannelResource {
 	}
 	
 	/**
-	* Deletes a defined channel for the tenant and removes the defined site associations. After deleting this channel, assign its associated sites to another channel.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
+	* @param string $code User-defined code that identifies the channel to delete.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteChannel($code)
@@ -177,13 +178,14 @@ class ChannelResource {
 		$mozuClient = ChannelClient::deleteChannelClient($code);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Deletes a defined channel for the tenant and removes the defined site associations. After deleting this channel, assign its associated sites to another channel.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
+	* @param string $code User-defined code that identifies the channel to delete.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteChannelAsync($code)

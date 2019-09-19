@@ -19,7 +19,7 @@ class ProductPropertyUrl  {
 
 	/**
 		* Get Resource Url for GetProperties
-		* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
+		* @param string $productCode 
 		* @return string Resource Url
 	*/
 	public static function getPropertiesUrl($productCode)
@@ -32,9 +32,9 @@ class ProductPropertyUrl  {
 	
 	/**
 		* Get Resource Url for GetPropertyValueLocalizedContents
-		* @param string $attributeFQN Fully qualified name for an attribute.
-		* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
-		* @param string $value The value string to create.
+		* @param string $attributeFQN 
+		* @param string $productCode 
+		* @param string $value 
 		* @return string Resource Url
 	*/
 	public static function getPropertyValueLocalizedContentsUrl($attributeFQN, $productCode, $value)
@@ -49,11 +49,11 @@ class ProductPropertyUrl  {
 	
 	/**
 		* Get Resource Url for GetPropertyValueLocalizedContent
-		* @param string $attributeFQN Fully qualified name for an attribute.
-		* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
-		* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $value The value string to create.
+		* @param string $attributeFQN 
+		* @param string $localeCode 
+		* @param string $productCode 
+		* @param string $responseFields 
+		* @param string $value 
 		* @return string Resource Url
 	*/
 	public static function getPropertyValueLocalizedContentUrl($attributeFQN, $localeCode, $productCode, $responseFields, $value)
@@ -70,9 +70,9 @@ class ProductPropertyUrl  {
 	
 	/**
 		* Get Resource Url for GetProperty
-		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-		* @param string $productCode Merchant-created code that uniquely identifies the product such as a SKU or item number. Once created, the product code is read-only.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $attributeFQN 
+		* @param string $productCode 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getPropertyUrl($attributeFQN, $productCode, $responseFields)
@@ -87,10 +87,10 @@ class ProductPropertyUrl  {
 	
 	/**
 		* Get Resource Url for AddPropertyValueLocalizedContent
-		* @param string $attributeFQN Fully qualified name for an attribute.
-		* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $value The value string to create.
+		* @param string $attributeFQN 
+		* @param string $productCode 
+		* @param string $responseFields 
+		* @param string $value 
 		* @return string Resource Url
 	*/
 	public static function addPropertyValueLocalizedContentUrl($attributeFQN, $productCode, $responseFields, $value)
@@ -106,8 +106,8 @@ class ProductPropertyUrl  {
 	
 	/**
 		* Get Resource Url for AddProperty
-		* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $productCode 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function addPropertyUrl($productCode, $responseFields)
@@ -121,9 +121,9 @@ class ProductPropertyUrl  {
 	
 	/**
 		* Get Resource Url for UpdatePropertyValueLocalizedContents
-		* @param string $attributeFQN Fully qualified name for an attribute.
-		* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
-		* @param string $value The value string to create.
+		* @param string $attributeFQN 
+		* @param string $productCode 
+		* @param string $value 
 		* @return string Resource Url
 	*/
 	public static function updatePropertyValueLocalizedContentsUrl($attributeFQN, $productCode, $value)
@@ -138,11 +138,11 @@ class ProductPropertyUrl  {
 	
 	/**
 		* Get Resource Url for UpdatePropertyValueLocalizedContent
-		* @param string $attributeFQN Fully qualified name for an attribute.
-		* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
-		* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $value The value string to create.
+		* @param string $attributeFQN 
+		* @param string $localeCode 
+		* @param string $productCode 
+		* @param string $responseFields 
+		* @param string $value 
 		* @return string Resource Url
 	*/
 	public static function updatePropertyValueLocalizedContentUrl($attributeFQN, $localeCode, $productCode, $responseFields, $value)
@@ -159,9 +159,9 @@ class ProductPropertyUrl  {
 	
 	/**
 		* Get Resource Url for UpdateProperty
-		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-		* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $attributeFQN 
+		* @param string $productCode 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updatePropertyUrl($attributeFQN, $productCode, $responseFields)
@@ -176,8 +176,8 @@ class ProductPropertyUrl  {
 	
 	/**
 		* Get Resource Url for DeleteProperty
-		* @param string $attributeFQN The fully qualified name of the attribute, which is a user defined attribute identifier.
-		* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
+		* @param string $attributeFQN 
+		* @param string $productCode 
 		* @return string Resource Url
 	*/
 	public static function deletePropertyUrl($attributeFQN, $productCode)
@@ -191,10 +191,10 @@ class ProductPropertyUrl  {
 	
 	/**
 		* Get Resource Url for DeletePropertyValueLocalizedContent
-		* @param string $attributeFQN Fully qualified name for an attribute.
-		* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
-		* @param string $productCode The unique, user-defined product code of a product, used throughout  to reference and associate to a product.
-		* @param string $value The value string to create.
+		* @param string $attributeFQN 
+		* @param string $localeCode 
+		* @param string $productCode 
+		* @param string $value 
 		* @return string Resource Url
 	*/
 	public static function deletePropertyValueLocalizedContentUrl($attributeFQN, $localeCode, $productCode, $value)

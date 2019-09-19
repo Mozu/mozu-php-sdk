@@ -25,72 +25,46 @@ class RateRequest
 	public $carrierIds;
 
 	/**
-	*The estimated date and time the shipment will be shipped to the shopper. This calculation is based on product stock, availability, date of order entry, and location.
+	*The date and time the shipment will be shipped to the shopper.
 	*/
 	public $estimatedShipmentDate;
 
-	/**
-	*If true, the destination address associated with the shipping rate request is a commercial address.
-	*/
-	public $isDestinationAddressCommercial;
+		public $handlingTotal;
 
-	/**
-	*3-letter ISO 4217 standard global currency code. Currently, only "USD" (US Dollar) is supported.
-	*/
-	public $isoCurrencyCode;
+		public $id;
 
-	/**
-	*The sub total of the order including all applicable discounts.
-	*/
-	public $orderDiscountedSubTotal;
+		public $isDestinationAddressCommercial;
 
-	/**
-	*The total monetary amount of the order. This amount is used to calculate the shipping rate estimate.
-	*/
-	public $orderTotal;
+		public $isoCurrencyCode;
 
-	/**
-	*The unique identifier of the order to which the shipping rate is related.You can use Arc.js in combination with this property to retrieve other properties of the related order.
-	*/
-	public $relatedOrderId;
+		public $orderDiscountedSubTotal;
 
-	/**
-	*The order number that the customer sees on the storefront when they place the order.
-	*/
-	public $relatedOrderNumber;
+		public $orderTotal;
+
+		public $relatedOrderId;
+
+		public $relatedOrderNumber;
 
 	/**
 	*The shipping methods associated with this request.
 	*/
 	public $shippingServiceTypes;
 
-	/**
-	*Collection of attributes that may be paged list or a list, depending on the usage per object and API type.
-	*/
-	public $attributes;
+		public $attributes;
 
 	/**
-	*Collection of carrier-specific key-value attribute pairs associated with a shipping carrier. These are required to retrieve a shipping rate request and are returned for the generated shipping label.
+	*List of key-value pairs that represent custom attributes associated with the request.
 	*/
 	public $customAttributes;
 
-	/**
-	*Data included in the shipping rate information.
-	*/
-	public $data;
+		public $data;
+
+		public $destinationAddress;
+
+		public $items;
 
 	/**
-	*The physical address orders are sent to as a shipping destination. This address may contain multiple lines, city, state/province, country, and zip/postal code. The destination is used to calculate shipping costs.
-	*/
-	public $destinationAddress;
-
-	/**
-	*A list of requested items. All returned data is provided in an items array.For a failed request, the returned response may be success with an empty item array.
-	*/
-	public $items;
-
-	/**
-	*The physical address from which the order or shipment will ship.
+	*The physical address from which the shipment will ship.
 	*/
 	public $originAddress;
 

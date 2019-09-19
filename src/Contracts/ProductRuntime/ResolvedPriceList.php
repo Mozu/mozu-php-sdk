@@ -14,30 +14,15 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 
-/**
-*	Mozu.ProductRuntime.Contracts.ResolvedPriceList ApiType DOCUMENT_HERE 
-*/
 class ResolvedPriceList
 {
-	/**
-	*The localized description in text for the object, displayed per the locale code. For example, descriptions are used for product descriptions, attributes, and pre-authorization transaction types.
-	*/
-	public $description;
+		public $description;
 
-	/**
-	*The user supplied name that appears in . You can use this field for identification purposes.
-	*/
-	public $name;
+		public $name;
 
-	/**
-	*The code of the price list to which the customer resolves.
-	*/
-	public $priceListCode;
+		public $priceListCode;
 
-	/**
-	*The internal id of the price list to which the customer resolves.
-	*/
-	public $priceListId;
+		public $priceListId;
 
 }
 

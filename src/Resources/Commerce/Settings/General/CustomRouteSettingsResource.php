@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* Use the Custom Routes resource to manage your custom route settings. Custom routing allows you to display SEO-friendly URLs on your site that map behind-the-scenes to conventional  resources such as a product page or a search results page. With custom routing, you gain advanced control over the URL structures on your site and can more visibly highlight the products or categories your shoppers are interested in purchasing.To learn more about custom routing, refer to the [Custom Route Settings](../../../guides/settings/custom-routes.htm) topic.
+* 
 */
 class CustomRouteSettingsResource {
 
@@ -33,9 +33,9 @@ class CustomRouteSettingsResource {
 
 
 	/**
-	* Retrieves the custom route settings configured for a site. These are the same settings configured through  in the Custom Routing JSON Editor.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return CustomRouteSettings 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -49,9 +49,9 @@ class CustomRouteSettingsResource {
 	}
 	
 /**
-	* Retrieves the custom route settings configured for a site. These are the same settings configured through  in the Custom Routing JSON Editor.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getCustomRouteSettingsAsync($responseFields =  null)
@@ -63,10 +63,10 @@ class CustomRouteSettingsResource {
 	}
 	
 	/**
-	* Create new custom route settings.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param CustomRouteSettings $settings The details of the new custom route setting.
+	* @param string $responseFields 
+	* @param CustomRouteSettings $settings 
 	* @return CustomRouteSettings 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -80,9 +80,9 @@ class CustomRouteSettingsResource {
 	}
 	
 /**
-	* Create new custom route settings.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function createCustomRouteSettingsAsync($settings, $responseFields =  null)
@@ -94,10 +94,10 @@ class CustomRouteSettingsResource {
 	}
 	
 	/**
-	* Updates custom route settings.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param CustomRouteSettings $settings The updated details of the custom route settings.
+	* @param string $responseFields 
+	* @param CustomRouteSettings $settings 
 	* @return CustomRouteSettings 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -111,9 +111,9 @@ class CustomRouteSettingsResource {
 	}
 	
 /**
-	* Updates custom route settings.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateCustomRouteSettingsAsync($settings, $responseFields =  null)
@@ -125,8 +125,9 @@ class CustomRouteSettingsResource {
 	}
 	
 	/**
-	* Deletes all the custom route settings for a site, returning all routes to their  defaults.
+	* 
 	*
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteCustomRouteSettings()
@@ -134,11 +135,12 @@ class CustomRouteSettingsResource {
 		$mozuClient = CustomRouteSettingsClient::deleteCustomRouteSettingsClient();
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Deletes all the custom route settings for a site, returning all routes to their  defaults.
+	* 
 	*
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/

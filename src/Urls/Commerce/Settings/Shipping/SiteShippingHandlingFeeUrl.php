@@ -19,7 +19,7 @@ class SiteShippingHandlingFeeUrl  {
 
 	/**
 		* Get Resource Url for GetOrderHandlingFee
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getOrderHandlingFeeUrl($responseFields)
@@ -32,7 +32,7 @@ class SiteShippingHandlingFeeUrl  {
 	
 	/**
 		* Get Resource Url for CreateOrderHandlingFee
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function createOrderHandlingFeeUrl($responseFields)
@@ -45,7 +45,7 @@ class SiteShippingHandlingFeeUrl  {
 	
 	/**
 		* Get Resource Url for UpdateOrderHandlingFee
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updateOrderHandlingFeeUrl($responseFields)

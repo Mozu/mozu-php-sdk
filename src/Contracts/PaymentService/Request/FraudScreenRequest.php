@@ -14,140 +14,59 @@ namespace Mozu\Api\Contracts\PaymentService\Request;
 
 
 
-/**
-*	Mozu.PaymentService.Contracts.Request.FraudScreenRequest ApiType DOCUMENT_HERE 
-*/
 class FraudScreenRequest
 {
-	/**
-	*Mozu.PaymentService.Contracts.Request.FraudScreenRequest avsCodes ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $avsCodes;
+		public $avsCodes;
 
-	/**
-	*Mozu.PaymentService.Contracts.Request.FraudScreenRequest cardId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $cardId;
+		public $cardId;
 
-	/**
-	*Mozu.PaymentService.Contracts.Request.FraudScreenRequest cardNumberPart ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $cardNumberPart;
+		public $cardNumberPart;
 
-	/**
-	*The 2-letter geographic code representing the country for the physical or mailing address. Currently limited to the US.
-	*/
-	public $countryCode;
+		public $countryCode;
 
-	/**
-	*The localized currency code for the monetary amount. 
-	*/
-	public $currencyCode;
+		public $currencyCode;
 
-	/**
-	*Unique identifier of the customer in , used to associate customers with data, orders, returns, and in-store credit.
-	*/
-	public $customerId;
+		public $customerId;
 
-	/**
-	*Mozu.PaymentService.Contracts.Request.FraudScreenRequest cvV2Codes ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $cvV2Codes;
+		public $cvV2Codes;
 
-	/**
-	*The two-digit month a credit card expires for a payment method.
-	*/
-	public $expireMonth;
+		public $expireMonth;
 
-	/**
-	*The four-digit year the credit card expires for a payment method.
-	*/
-	public $expireYear;
+		public $expireYear;
 
-	/**
-	*Mozu.PaymentService.Contracts.Request.FraudScreenRequest gatewayAccountId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $gatewayAccountId;
+		public $gatewayAccountId;
 
-	/**
-	*Mozu.PaymentService.Contracts.Request.FraudScreenRequest merchantTransactionId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $merchantTransactionId;
+		public $merchantTransactionId;
 
-	/**
-	*Mozu.PaymentService.Contracts.Request.FraudScreenRequest orderNumber ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $orderNumber;
+		public $orderNumber;
 
-	/**
-	*Mozu.PaymentService.Contracts.Request.FraudScreenRequest paymentTransactionId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $paymentTransactionId;
+		public $paymentTransactionId;
 
-	/**
-	*The type of payment, such as credit card, check, or PayPal Express. Additional payment types will be supported in future releases.
-	*/
-	public $paymentType;
+		public $paymentType;
 
-	/**
-	*Mozu.PaymentService.Contracts.Request.FraudScreenRequest requestorIp ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $requestorIp;
+		public $requestorIp;
 
-	/**
-	*Mozu.PaymentService.Contracts.Request.FraudScreenRequest requestorUrl ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $requestorUrl;
+		public $requestorUrl;
 
-	/**
-	*Mozu.PaymentService.Contracts.Request.FraudScreenRequest requestorUserAgent ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $requestorUserAgent;
+		public $requestorUserAgent;
 
-	/**
-	*Mozu.PaymentService.Contracts.Request.FraudScreenRequest shipType ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $shipType;
+		public $shipType;
 
-	/**
-	*Total is used to indicate the monetary, estimated total amount of the cart or order, including items, sales tax, shipping costs, and other fees. Totals are not estimated for wish lists at this time.
-	*/
-	public $total;
+		public $total;
 
-	/**
-	*Mozu.PaymentService.Contracts.Request.FraudScreenRequest billingAddress ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $billingAddress;
+		public $billingAddress;
 
-	/**
-	*Mozu.PaymentService.Contracts.Request.FraudScreenRequest billingContact ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $billingContact;
+		public $billingContact;
 
-	/**
-	*Mozu.PaymentService.Contracts.Request.FraudScreenRequest credentialFieldsOverride ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $credentialFieldsOverride;
+		public $credentialFieldsOverride;
 
-	/**
-	*Mozu.PaymentService.Contracts.Request.FraudScreenRequest customData ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $customData;
+		public $customData;
 
-	/**
-	*Mozu.PaymentService.Contracts.Request.FraudScreenRequest orderItems ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $orderItems;
+		public $orderItems;
 
-	/**
-	*Mozu.PaymentService.Contracts.Request.FraudScreenRequest shippingAddress ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $shippingAddress;
+		public $shippingAddress;
 
-	/**
-	*Mozu.PaymentService.Contracts.Request.FraudScreenRequest shippingContact ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $shippingContact;
+		public $shippingContact;
 
 }
 

@@ -19,60 +19,27 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 */
 class AttributeInProductType
 {
-	/**
-	*The fully qualified name of the attribute, which is a user defined attribute identifier.
-	*/
-	public $attributeFQN;
+		public $attributeFQN;
 
-	/**
-	*If true, this property is not available on the storefront. If false, this property will be available on storefront. The IsHiddenProperty hides the property from the customer, but is still available from the API.
-	*/
-	public $isAdminOnlyProperty;
+		public $isAdminOnlyProperty;
 
-	/**
-	*If true, this property is hidden on the storefront. If false, this property is not hidden from the storefront.
-	*/
-	public $isHiddenProperty;
+		public $isHiddenProperty;
 
-	/**
-	*If true, this entity is inherited from the base type. If false, this entity is not inherited from the base type.
-	*/
-	public $isInheritedFromBaseType;
+		public $isInheritedFromBaseType;
 
-	/**
-	*If true, this attribute has more than one possible value.
-	*/
-	public $isMultiValueProperty;
+		public $isMultiValueProperty;
 
-	/**
-	*If True this property will not be returned storefront product listings (Search,GetProduct) it will still be returned on GetProduct, ValidateProduct...)
-	*/
-	public $isProductDetailsOnlyProperty;
+		public $isProductDetailsOnlyProperty;
 
-	/**
-	*If true, the entity is required by the admin. If false, the entity is not required by the admin.
-	*/
-	public $isRequiredByAdmin;
+		public $isRequiredByAdmin;
 
-	/**
-	*Integer that represents the sequence order of the attribute.
-	*/
-	public $order;
+		public $order;
 
-	/**
-	*The product attribute details common between all attribute types - properties, options, and extras.
-	*/
-	public $attributeDetail;
+		public $attributeDetail;
 
-	/**
-	*Defines the intended display of this attribute in the storefront. Options include Drop Down, Image Picker, and Radio Buttons.
-	*/
-	public $displayInfo;
+		public $displayInfo;
 
-	/**
-	*List of valid vocabulary values defined for an attribute.
-	*/
-	public $vocabularyValues;
+		public $vocabularyValues;
 
 }
 

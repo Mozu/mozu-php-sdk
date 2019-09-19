@@ -19,28 +19,16 @@ namespace Mozu\Api\Contracts\Core;
 */
 class UserProfile
 {
-	/**
-	*The email address of the specified user or the email address associated with the specified entity.
-	*/
-	public $emailAddress;
+		public $emailAddress;
+
+		public $firstName;
+
+		public $lastName;
+
+		public $userId;
 
 	/**
-	*The first name of the contact. The maximum character length is 200.
-	*/
-	public $firstName;
-
-	/**
-	*The last name or surname of the contact. The maximum character length is 200.
-	*/
-	public $lastName;
-
-	/**
-	*Unique identifier of the customer account (shopper or system user). System-supplied and read-only. If the shopper user is anonymous, the user ID represents a system-generated user ID string.
-	*/
-	public $userId;
-
-	/**
-	*The user name associated with the user profile. The customer uses the user name to access the account.
+	*The user name associated with the user profile.
 	*/
 	public $userName;
 

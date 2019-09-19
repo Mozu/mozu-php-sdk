@@ -33,11 +33,42 @@ class ShippingResource {
 
 
 	/**
-	* Retrieves the shipping rates applicable for the site.
+	* 
 	*
-	* @param bool $includeRawResponse Set this parameter to  to retrieve the full raw JSON response from a shipping carrier (instead of just the shipping rate).
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param RateRequest $rateRequest Properties required to request a shipping rate calculation.
+	* @param bool $includeRawResponse 
+	* @param array|RateRequestGroup $rateRequestGroupList 
+	* @return array|RatesResponseGroup 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function getMultiRates($rateRequestGroupList, $includeRawResponse =  null)
+	{
+		$mozuClient = ShippingClient::getMultiRatesClient($rateRequestGroupList, $includeRawResponse);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* 
+	*
+	* @param bool $includeRawResponse 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function getMultiRatesAsync($rateRequestGroupList, $includeRawResponse =  null)
+	{
+		$mozuClient = ShippingClient::getMultiRatesClient($rateRequestGroupList, $includeRawResponse);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param bool $includeRawResponse 
+	* @param string $responseFields 
+	* @param RateRequest $rateRequest Properties of the shipping rate request sent on behalf of the storefront website.
 	* @return RatesResponse 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -51,10 +82,10 @@ class ShippingResource {
 	}
 	
 /**
-	* Retrieves the shipping rates applicable for the site.
+	* 
 	*
-	* @param bool $includeRawResponse Set this parameter to  to retrieve the full raw JSON response from a shipping carrier (instead of just the shipping rate).
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param bool $includeRawResponse 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getRatesAsync($rateRequest, $includeRawResponse =  null, $responseFields =  null)

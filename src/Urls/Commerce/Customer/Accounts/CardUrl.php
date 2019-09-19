@@ -21,7 +21,7 @@ class CardUrl  {
 		* Get Resource Url for GetAccountCard
 		* @param int $accountId Unique identifier of the customer account.
 		* @param string $cardId Unique identifier of the card associated with the customer account billing contact.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getAccountCardUrl($accountId, $cardId, $responseFields)
@@ -37,7 +37,7 @@ class CardUrl  {
 	/**
 		* Get Resource Url for GetAccountCards
 		* @param int $accountId Unique identifier of the customer account.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getAccountCardsUrl($accountId, $responseFields)
@@ -52,7 +52,7 @@ class CardUrl  {
 	/**
 		* Get Resource Url for AddAccountCard
 		* @param int $accountId Unique identifier of the customer account.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function addAccountCardUrl($accountId, $responseFields)
@@ -67,8 +67,8 @@ class CardUrl  {
 	/**
 		* Get Resource Url for UpdateAccountCard
 		* @param int $accountId Unique identifier of the customer account.
-		* @param string $cardId Unique identifier of the card associated with the customer account billing contact.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $cardId Unique identifier of the credit card.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updateAccountCardUrl($accountId, $cardId, $responseFields)
@@ -84,7 +84,7 @@ class CardUrl  {
 	/**
 		* Get Resource Url for DeleteAccountCard
 		* @param int $accountId Unique identifier of the customer account.
-		* @param string $cardId Unique identifier of the card associated with the customer account billing contact.
+		* @param string $cardId Unique identifier of the credit card to delete.
 		* @return string Resource Url
 	*/
 	public static function deleteAccountCardUrl($accountId, $cardId)

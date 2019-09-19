@@ -20,24 +20,21 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 class ProductPricingBehaviorInfo
 {
 	/**
-	*Indicates if the discount is restricted. If true, the system cannot apply any discounts to this product. Discount restrictions are defined at the master catalog level. Client administrators cannot override discount restrictions at the catalog level, but they can limit the restriction to a defined time interval.For price list entries, specifies whether discounts are restricted for the specific entry if  is set to .Refer to [Discount Restriction](../../../guides/catalog/price-lists.htm#discountrestriction) in the Price Lists guides topic for more information.
+	*If true, the system cannot apply any discounts to this product. Discount restrictions are defined at the master catalog level. Client administrators cannot override discount restrictions at the catalog level, but they can limit the restriction to a defined time interval.
 	*/
 	public $discountsRestricted;
 
 	/**
-	*The date and time on which the discount restriction period ends.
+	*If discounts are restricted for this product, the date and time the discount restriction ends, in UTC datetime.
 	*/
 	public $discountsRestrictedEndDate;
 
 	/**
-	*The date and time on which the discount restriction period starts.
+	*If discounts are restricted for this product, the date and time the discount restriction begins, in UTC datetime.
 	*/
 	public $discountsRestrictedStartDate;
 
-	/**
-	*Specifies the pricing method for variations associated with the product.This property has the following valid values:* * 
-	*/
-	public $variationPricingMethod;
+		public $variationPricingMethod;
 
 }
 

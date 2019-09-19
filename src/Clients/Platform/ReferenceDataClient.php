@@ -17,15 +17,15 @@ use Mozu\Api\Urls\Platform\ReferenceDataUrl;
 
 
 /**
-* The Reference resource retrieves collections of standards the  system currently supports. This includes content locales, top-level domains, units of measure, countries, currencies, time zones, and shipping or billing address schemas.
+* The Reference resource retrieves collections of standards the Mozu system currently supports. This includes content locales, top-level domains, units of measure, countries, currencies, time zones, and shipping or billing address schemas.
 */
 class ReferenceDataClient {
 
 	/**
-	* Retrieves a specific address schema based on the country code provided. This operation allows the creation of custom shipping and billing address fields.
+	* 
 	*
-	* @param string $countryCode The 2-letter geographic code representing the country for the physical or mailing address. Currently limited to the US.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $countryCode The 2-letter country code used to retrieve a specified address schema.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getAddressSchemaClient($countryCode =  null, $responseFields =  null)
@@ -38,9 +38,9 @@ class ReferenceDataClient {
 	}
 	
 	/**
-	* Retrieves the entire list of address schemas that the system supports.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getAddressSchemasClient($responseFields =  null)
@@ -53,10 +53,10 @@ class ReferenceDataClient {
 	}
 	
 	/**
-	* Retrieves the details of a behavior based on the behavior ID specified in the request.
+	* 
 	*
 	* @param int $behaviorId Unique identifier of the behavior.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getBehaviorClient($behaviorId, $responseFields =  null)
@@ -69,10 +69,10 @@ class ReferenceDataClient {
 	}
 	
 	/**
-	* Retrieves the details of the behavior category specified in the request.
+	* 
 	*
-	* @param int $categoryId Unique identifier of the category to modify.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $categoryId Unique identifier of the behavior category.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getBehaviorCategoryClient($categoryId, $responseFields =  null)
@@ -85,9 +85,9 @@ class ReferenceDataClient {
 	}
 	
 	/**
-	* Retrieves the list of behavior categories.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getBehaviorCategoriesClient($responseFields =  null)
@@ -100,9 +100,9 @@ class ReferenceDataClient {
 	}
 	
 	/**
-	* Retrieves a list of application behaviors.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @param string $userType The user type associated with the behaviors to retrieve.
 	* @return MozuClient
 	*/
@@ -116,9 +116,9 @@ class ReferenceDataClient {
 	}
 	
 	/**
-	* Retrieves the list of content locales the system supports. Content locales indicate the language used and the country where the language is used.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getContentLocalesClient($responseFields =  null)
@@ -131,9 +131,9 @@ class ReferenceDataClient {
 	}
 	
 	/**
-	* Retrieves the entire list of countries that the system supports.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getCountriesClient($responseFields =  null)
@@ -146,9 +146,9 @@ class ReferenceDataClient {
 	}
 	
 	/**
-	* Retrieves the entire list of countries that the system supports.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getCountriesWithStatesClient($responseFields =  null)
@@ -161,9 +161,9 @@ class ReferenceDataClient {
 	}
 	
 	/**
-	* Retrieves the entire list of currencies that the system supports.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getCurrenciesClient($responseFields =  null)
@@ -176,9 +176,9 @@ class ReferenceDataClient {
 	}
 	
 	/**
-	* Retrieves the entire list of time zones that the system supports.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getTimeZonesClient($responseFields =  null)
@@ -191,9 +191,9 @@ class ReferenceDataClient {
 	}
 	
 	/**
-	* Retrieves the entire list of top-level internet domains that the system supports.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getTopLevelDomainsClient($responseFields =  null)
@@ -206,10 +206,10 @@ class ReferenceDataClient {
 	}
 	
 	/**
-	* Retrieves an array list of all units of measure the system supports.
+	* 
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $filter 
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getUnitsOfMeasureClient($filter =  null, $responseFields =  null)

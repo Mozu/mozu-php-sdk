@@ -19,8 +19,8 @@ class CartItemUrl  {
 
 	/**
 		* Get Resource Url for GetCartItem
-		* @param string $cartItemId Identifier of the cart item to delete.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $cartItemId Identifier of the cart item to retrieve.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getCartItemUrl($cartItemId, $responseFields)
@@ -34,7 +34,7 @@ class CartItemUrl  {
 	
 	/**
 		* Get Resource Url for GetCartItems
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getCartItemsUrl($responseFields)
@@ -46,8 +46,21 @@ class CartItemUrl  {
 	}
 	
 	/**
+		* Get Resource Url for AddItemsToCart
+		* @param bool $throwErrorOnInvalidItems 
+		* @return string Resource Url
+	*/
+	public static function addItemsToCartUrl($throwErrorOnInvalidItems)
+	{
+		$url = "/api/commerce/carts/current/bulkitems?throwErrorOnInvalidItems={throwErrorOnInvalidItems}";
+		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"POST", false) ;
+		$url = $mozuUrl->formatUrl("throwErrorOnInvalidItems", $throwErrorOnInvalidItems);
+		return $mozuUrl;
+	}
+	
+	/**
 		* Get Resource Url for AddItemToCart
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function addItemToCartUrl($responseFields)
@@ -60,9 +73,9 @@ class CartItemUrl  {
 	
 	/**
 		* Get Resource Url for UpdateCartItemQuantity
-		* @param string $cartItemId Identifier of the cart item to delete.
+		* @param string $cartItemId Identifier of the cart item to update quantity.
 		* @param int $quantity The number of cart items in the shopper's active cart.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updateCartItemQuantityUrl($cartItemId, $quantity, $responseFields)
@@ -77,8 +90,8 @@ class CartItemUrl  {
 	
 	/**
 		* Get Resource Url for UpdateCartItem
-		* @param string $cartItemId Identifier of the cart item to delete.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $cartItemId Identifier of the cart item to update.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updateCartItemUrl($cartItemId, $responseFields)

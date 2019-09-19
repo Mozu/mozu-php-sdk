@@ -22,12 +22,12 @@ use Mozu\Api\Urls\Content\DocumentDraftSummaryUrl;
 class DocumentDraftSummaryClient {
 
 	/**
-	* Retrieves a list of the documents currently in draft state, according to any defined filter and sort criteria.
+	* 
 	*
-	* @param string $documentLists List of document lists that contain documents to delete.
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+	* @param string $documentLists Lists that contain the document drafts.
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param int $startIndex 
 	* @return MozuClient
 	*/
 	public static function listDocumentDraftSummariesClient($pageSize =  null, $startIndex =  null, $documentLists =  null, $responseFields =  null)
@@ -40,10 +40,11 @@ class DocumentDraftSummaryClient {
 	}
 	
 	/**
-	* Deletes the drafts of the specified documents. Published documents cannot be deleted.
+	* 
 	*
 	* @param string $documentLists List of document lists that contain documents to delete.
 	* @param array|string $documentIds Unique identifiers of the documents to delete.
+	* @return MozuClient
 	*/
 	public static function deleteDocumentDraftsClient($documentIds, $documentLists =  null)
 	{
@@ -55,10 +56,11 @@ class DocumentDraftSummaryClient {
 	}
 	
 	/**
-	* Publish one or more document drafts to live content on the site.
+	* 
 	*
-	* @param string $documentLists List of document lists that contain documents to delete.
-	* @param array|string $documentIds Unique identifiers of the documents to delete.
+	* @param string $documentLists List of document lists that contain documents to publish.
+	* @param array|string $documentIds List of unique identifiers of the document drafts to publish.
+	* @return MozuClient
 	*/
 	public static function publishDocumentsClient($documentIds, $documentLists =  null)
 	{

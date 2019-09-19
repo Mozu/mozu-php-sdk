@@ -14,25 +14,13 @@ namespace Mozu\Api\Contracts\ShippingRuntime;
 
 
 
-/**
-*	Mozu.ShippingRuntime.Contracts.RateRequestAttribute ApiType DOCUMENT_HERE 
-*/
 class RateRequestAttribute
 {
-	/**
-	*Unique identifier of the attribute definition.
-	*/
-	public $attributeDefinitionId;
+		public $attributeDefinitionId;
 
-	/**
-	*Fully qualified name of the attribute for the order or customer.
-	*/
-	public $fullyQualifiedName;
+		public $fullyQualifiedName;
 
-	/**
-	*List of value data for objects.
-	*/
-	public $values;
+		public $values;
 
 }
 

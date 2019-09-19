@@ -19,30 +19,15 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 */
 class ProductLocalizedContent
 {
-	/**
-	*Language used for the entity. Currently, only "en-US" is supported.
-	*/
-	public $localeCode;
+		public $localeCode;
 
-	/**
-	*Lengthy full description for a product description, displayed on product detail pages within the storefront.
-	*/
-	public $productFullDescription;
+		public $productFullDescription;
 
-	/**
-	*The name of the product that represents a line item in a taxable order or product bundle.
-	*/
-	public $productName;
+		public $productName;
 
-	/**
-	*Brief text description of the product or component in a product bundle, typically used when the product is displayed in a list or in search results.
-	*/
-	public $productShortDescription;
+		public $productShortDescription;
 
-	/**
-	*List of image files associated with a product. This content may include the image file URL, name, and other information as available.
-	*/
-	public $productImages;
+		public $productImages;
 
 }
 

@@ -33,10 +33,10 @@ class PickupResource {
 
 
 	/**
-	* Retrieves a list of the actions available to perform for the pickup specified in the request.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $pickupId Unique identifier of the pickup to remove.
+	* @param string $orderId Unique identifier of the order associated with the pickup.
+	* @param string $pickupId Unique identifier of the pickup for which to retrieve available actions.
 	* @return array|string 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -50,10 +50,10 @@ class PickupResource {
 	}
 	
 /**
-	* Retrieves a list of the actions available to perform for the pickup specified in the request.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $pickupId Unique identifier of the pickup to remove.
+	* @param string $orderId Unique identifier of the order associated with the pickup.
+	* @param string $pickupId Unique identifier of the pickup for which to retrieve available actions.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getAvailablePickupFulfillmentActionsAsync($orderId, $pickupId)
@@ -65,11 +65,11 @@ class PickupResource {
 	}
 	
 	/**
-	* Retrieves the details of the in-store pickup specified in the request.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $pickupId Unique identifier of the pickup to remove.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $orderId Unique identifier of the order associated with the pickup.
+	* @param string $pickupId Unique identifier of the pickup to retrieve.
+	* @param string $responseFields 
 	* @return Pickup 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -83,11 +83,11 @@ class PickupResource {
 	}
 	
 /**
-	* Retrieves the details of the in-store pickup specified in the request.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $pickupId Unique identifier of the pickup to remove.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $orderId Unique identifier of the order associated with the pickup.
+	* @param string $pickupId Unique identifier of the pickup to retrieve.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getPickupAsync($orderId, $pickupId, $responseFields =  null)
@@ -99,11 +99,11 @@ class PickupResource {
 	}
 	
 	/**
-	* Create a new pickup for the order specified in the request for in-store fufillment.
+	* 
 	*
 	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Pickup $pickup Properties of an in-store pickup defined to fulfill items in an order.
+	* @param string $responseFields 
+	* @param Pickup $pickup Properties of the in-store pickup to create.
 	* @return Pickup 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -117,10 +117,10 @@ class PickupResource {
 	}
 	
 /**
-	* Create a new pickup for the order specified in the request for in-store fufillment.
+	* 
 	*
 	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function createPickupAsync($pickup, $orderId, $responseFields =  null)
@@ -132,12 +132,12 @@ class PickupResource {
 	}
 	
 	/**
-	* Updates one or more details of a defined in-store pickup.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $pickupId Unique identifier of the pickup to remove.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Pickup $pickup Properties of an in-store pickup defined to fulfill items in an order.
+	* @param string $orderId Unique identifier of the order associated with the in-store pickup.
+	* @param string $pickupId Unique identifier of the pickup to update.
+	* @param string $responseFields 
+	* @param Pickup $pickup Properties of the in-store pickup to update.
 	* @return Pickup 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -151,11 +151,11 @@ class PickupResource {
 	}
 	
 /**
-	* Updates one or more details of a defined in-store pickup.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $pickupId Unique identifier of the pickup to remove.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $orderId Unique identifier of the order associated with the in-store pickup.
+	* @param string $pickupId Unique identifier of the pickup to update.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updatePickupAsync($pickup, $orderId, $pickupId, $responseFields =  null)
@@ -167,10 +167,11 @@ class PickupResource {
 	}
 	
 	/**
-	* Removes a pickup previously defined for order item in-store pickup fulfillment.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
+	* @param string $orderId Unique identifier of the order associated with the pickup.
 	* @param string $pickupId Unique identifier of the pickup to remove.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deletePickup($orderId, $pickupId)
@@ -178,13 +179,14 @@ class PickupResource {
 		$mozuClient = PickupClient::deletePickupClient($orderId, $pickupId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Removes a pickup previously defined for order item in-store pickup fulfillment.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
+	* @param string $orderId Unique identifier of the order associated with the pickup.
 	* @param string $pickupId Unique identifier of the pickup to remove.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/

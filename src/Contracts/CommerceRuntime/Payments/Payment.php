@@ -19,90 +19,49 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Payments;
 */
 class Payment
 {
-	/**
-	*The total monetary amount collected in this payment transaction for the order.
-	*/
-	public $amountCollected;
+		public $amountCollected;
 
-	/**
-	*If the payment transaction is a shopper store credit, the total monetary amount credited in this payment transaction for the order.
-	*/
-	public $amountCredited;
+		public $amountCredited;
 
 	/**
 	*The total amount originally requested for this payment.
 	*/
 	public $amountRequested;
 
-	/**
-	*Available actions you can complete for an order. These actions may differ depending on the status of the order, such as actions required to enter a payment, return of a package, and fulfillment of a shipment.
-	*/
-	public $availableActions;
+		public $availableActions;
+
+		public $externalTransactionId;
+
+		public $id;
+
+		public $isRecurring;
+
+		public $orderId;
+
+		public $paymentServiceTransactionId;
+
+		public $paymentType;
+
+		public $paymentWorkflow;
+
+		public $status;
+
+		public $auditInfo;
+
+		public $billingInfo;
 
 	/**
-	*The external/third party transaction Id for this payment. This is used to store the transaction Id from digital wallet like Visa Checkout
-	*/
-	public $externalTransactionId;
-
-	/**
-	*Unique identifier of the source property, such as a catalog, discount, order, or email template.For a product field it will be the name of the field.For a category ID, must be a positive integer not greater than 2000000. By default,  auto-generates a category ID when categories are created. If you want to specify an ID during creation (which preserves category link relationships when migrating tenant data from one sandbox to another), you must also include the  query string in the endpoint. For example, . Then, use the  property to specify the desired category ID.For a product attribute it will be the Attribute FQN.For a document, the ID must be specified as a 32 character, case-insensitive, alphanumeric string. You can specify the ID as 32 sequential characters or as groups separated by dashes in the format 8-4-4-4-12. For example, or.For email templates, the ID must be one of the following values:			
-	*/
-	public $id;
-
-	/**
-	*Indicates if the product in a cart, order, or wish list is purchased on a recurring schedule. If true, the item can be purchased or fulfilled at regular intervals, such as a monthly billing cycle. For example, digital or physical product subscriptions are recurring cart items. This property is not used at this time and is reserved for future functionality.
-	*/
-	public $isRecurring;
-
-	/**
-	*Unique identifier of the order associated with the payment.
-	*/
-	public $orderId;
-
-	/**
-	*The transaction ID supplied by the payment service to associate with this order payment.
-	*/
-	public $paymentServiceTransactionId;
-
-	/**
-	*The type of payment, such as credit card, check, or PayPal Express. Additional payment types will be supported in future releases.
-	*/
-	public $paymentType;
-
-	/**
-	*The source of data for this payment. By default, this will be set to 'mozu'
-	*/
-	public $paymentWorkflow;
-
-	/**
-	*The current status of the object.This value is read only. Valid values for this field are: "Active", "Expired", and "Inactive".
-	*/
-	public $status;
-
-	/**
-	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
-	*/
-	public $auditInfo;
-
-	/**
-	*Properties for the customer's billing information associated with an order or specific payment.
-	*/
-	public $billingInfo;
-
-	/**
-	*Collection (list or paged) of change messages logged for each modification made by a shopper to their carts, wishlists, orders, package, payment, pickup, and returns. Change log messages are system-supplied based on shopper actions and read only.
+	*List of change messages associated with the payment.
 	*/
 	public $changeMessages;
 
-	/**
-	*Custom data originated by the payment service.
-	*/
-	public $data;
+		public $data;
 
-	/**
-	*Container for the interactions associated with the payment, which includes details for each action performed for the payment.
-	*/
-	public $interactions;
+		public $groupId;
+
+		public $interactions;
+
+		public $subPayments;
 
 }
 

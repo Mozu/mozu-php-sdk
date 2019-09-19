@@ -34,28 +34,22 @@ class AppliedLineItemProductDiscount
 	*/
 	public $discountQuantity;
 
-	/**
-	*Indicates if a discount is not used for the product or product line item in an order. If true, the system ignores this discount when pricing the order.
-	*/
-	public $excluded;
+		public $excluded;
 
 	/**
-	*The value of the discount applied to the cart or order, represented as a negative currency amount to apply to the original price.
+	*The value of the applied discount. This is a negative number, which is subtracted from the original price to get the final price.
 	*/
 	public $impact;
 
 	/**
-	*The impact of a discount for each discount quantity. 
+	*The impact of this discount for each discount quantity.
 	*/
 	public $impactPerUnit;
 
-	/**
-	*Quantity of products priced. This is always one unless calculating pricing on the order or cart.
-	*/
-	public $productQuantity;
+		public $productQuantity;
 
 	/**
-	*Name of the discount added and applied to a shopping cart and order for a shopper's purchase. 
+	*This describes discounts that apply to the order, if any. For example, when the subtotal of the order exceeds a certain amount, or a discount for free shipping.
 	*/
 	public $discount;
 

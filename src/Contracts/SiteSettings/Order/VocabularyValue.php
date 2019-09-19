@@ -14,20 +14,11 @@ namespace Mozu\Api\Contracts\SiteSettings\Order;
 
 
 
-/**
-*	Mozu.SiteSettings.Order.Contracts.VocabularyValue ApiType DOCUMENT_HERE 
-*/
 class VocabularyValue
 {
-	/**
-	*Key used for metadata defined for objects, including extensible attributes, custom attributes associated with a shipping provider, and search synonyms definitions. This content may be user-defined depending on the object and usage.For search synonym definitions, refer to [Synonym Expansion Types](https://www.mozu.com/docs/Developer/api-guides/search-settings.htm#synonym_expansion_types) for more information about the key usage.
-	*/
-	public $key;
+		public $key;
 
-	/**
-	*Contents of the vocabulary values that have been defined for an attribute.
-	*/
-	public $contents;
+		public $contents;
 
 }
 

@@ -14,20 +14,11 @@ namespace Mozu\Api\Contracts\Content;
 
 
 
-/**
-*	Mozu.Content.Contracts.PublishSetSummary ApiType DOCUMENT_HERE 
-*/
 class PublishSetSummary
 {
-	/**
-	*The total number of associated items.
-	*/
-	public $count;
+		public $count;
 
-	/**
-	*The unique identifier of the content publish set.
-	*/
-	public $publishSetCode;
+		public $publishSetCode;
 
 }
 

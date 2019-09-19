@@ -34,10 +34,10 @@ class DocumentResource {
 
 
 	/**
-	* Retrieve the content associated with a document, such as a product image or PDF specifications file, by supplying the document ID.
+	* 
 	*
-	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
-	* @param string $documentListName Name of content documentListName to delete
+	* @param string $documentId Unique identifier of the document.
+	* @param string $documentListName The name of the document list associated with the document.
 	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -51,10 +51,10 @@ class DocumentResource {
 	}
 	
 /**
-	* Retrieve the content associated with a document, such as a product image or PDF specifications file, by supplying the document ID.
+	* 
 	*
-	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
-	* @param string $documentListName Name of content documentListName to delete
+	* @param string $documentId Unique identifier of the document.
+	* @param string $documentListName The name of the document list associated with the document.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getDocumentContentAsync($documentListName, $documentId)
@@ -66,17 +66,17 @@ class DocumentResource {
 	}
 	
 	/**
-	* Performs transformations on a document. For example, resizing an image.
+	* 
 	*
-	* @param string $crop Crops the image based on the specified coordinates. The reference point for positive coordinates is the top-left corner of the image, and the reference point for negative coordinates is the bottom-right corner of the image.Usage: Example:  removes 10 pixels from all edges of the image.  leaves the image uncropped.
-	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
-	* @param string $documentListName Name of content documentListName to delete
-	* @param int $height Specifies an exact height dimension for the image, in pixels.
-	* @param int $max Specifies a pixel limitation for the largest side of an image.
-	* @param int $maxHeight Specifies a pixel limitation for the height of the image, preserving the aspect ratio if the image needs resizing.
-	* @param int $maxWidth Specifies a pixel limitation for the width of the image, preserving the aspect ratio if the image needs resizing.
-	* @param int $quality Adjusts the image compression. Accepts values from 0-100, where 100 = highest quality, least compression.
-	* @param int $width Specifies an exact width dimension for the image, in pixels.
+	* @param string $crop 
+	* @param string $documentId 
+	* @param string $documentListName 
+	* @param int $height 
+	* @param int $max 
+	* @param int $maxHeight 
+	* @param int $maxWidth 
+	* @param int $quality 
+	* @param int $width 
 	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -90,17 +90,17 @@ class DocumentResource {
 	}
 	
 /**
-	* Performs transformations on a document. For example, resizing an image.
+	* 
 	*
-	* @param string $crop Crops the image based on the specified coordinates. The reference point for positive coordinates is the top-left corner of the image, and the reference point for negative coordinates is the bottom-right corner of the image.Usage: Example:  removes 10 pixels from all edges of the image.  leaves the image uncropped.
-	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
-	* @param string $documentListName Name of content documentListName to delete
-	* @param int $height Specifies an exact height dimension for the image, in pixels.
-	* @param int $max Specifies a pixel limitation for the largest side of an image.
-	* @param int $maxHeight Specifies a pixel limitation for the height of the image, preserving the aspect ratio if the image needs resizing.
-	* @param int $maxWidth Specifies a pixel limitation for the width of the image, preserving the aspect ratio if the image needs resizing.
-	* @param int $quality Adjusts the image compression. Accepts values from 0-100, where 100 = highest quality, least compression.
-	* @param int $width Specifies an exact width dimension for the image, in pixels.
+	* @param string $crop 
+	* @param string $documentId 
+	* @param string $documentListName 
+	* @param int $height 
+	* @param int $max 
+	* @param int $maxHeight 
+	* @param int $maxWidth 
+	* @param int $quality 
+	* @param int $width 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function transformDocumentContentAsync($documentListName, $documentId, $width =  null, $height =  null, $max =  null, $maxWidth =  null, $maxHeight =  null, $crop =  null, $quality =  null)
@@ -112,12 +112,12 @@ class DocumentResource {
 	}
 	
 	/**
-	* Retrieves a document within the specified document list.
+	* 
 	*
-	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
-	* @param string $documentListName Name of content documentListName to delete
-	* @param bool $includeInactive Include inactive content.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $documentId Identifier of the document being retrieved.
+	* @param string $documentListName The name of the document list associated with the document to retrieve.
+	* @param bool $includeInactive 
+	* @param string $responseFields 
 	* @return Document 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -131,12 +131,12 @@ class DocumentResource {
 	}
 	
 /**
-	* Retrieves a document within the specified document list.
+	* 
 	*
-	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
-	* @param string $documentListName Name of content documentListName to delete
-	* @param bool $includeInactive Include inactive content.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $documentId Identifier of the document being retrieved.
+	* @param string $documentListName The name of the document list associated with the document to retrieve.
+	* @param bool $includeInactive 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getDocumentAsync($documentListName, $documentId, $includeInactive =  null, $responseFields =  null)
@@ -148,15 +148,15 @@ class DocumentResource {
 	}
 	
 	/**
-	* Retrieves a collection of documents according to any filter and sort criteria.
+	* 
 	*
-	* @param string $documentListName Name of content documentListName to delete
-	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
-	* @param bool $includeInactive Include inactive content.
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+	* @param string $documentListName The name of the document list.
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter a document's search results by any of its properties, including its name or folder path. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=Name+sw+Events"
+	* @param bool $includeInactive 
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param string $sortBy 
+	* @param int $startIndex 
 	* @return DocumentCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -170,15 +170,15 @@ class DocumentResource {
 	}
 	
 /**
-	* Retrieves a collection of documents according to any filter and sort criteria.
+	* 
 	*
-	* @param string $documentListName Name of content documentListName to delete
-	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
-	* @param bool $includeInactive Include inactive content.
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+	* @param string $documentListName The name of the document list.
+	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter a document's search results by any of its properties, including its name or folder path. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=Name+sw+Events"
+	* @param bool $includeInactive 
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param string $sortBy 
+	* @param int $startIndex 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getDocumentsAsync($documentListName, $filter =  null, $sortBy =  null, $pageSize =  null, $startIndex =  null, $includeInactive =  null, $responseFields =  null)
@@ -190,11 +190,11 @@ class DocumentResource {
 	}
 	
 	/**
-	* Creates a new document in an defined document list.
+	* 
 	*
-	* @param string $documentListName Name of content documentListName to delete
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Document $document The document properties that define the content used by the content management system (CMS).
+	* @param string $documentListName The descriptive alphanumeric document list name being created.
+	* @param string $responseFields 
+	* @param Document $document The descriptive name of the newly created document.
 	* @return Document 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -208,10 +208,10 @@ class DocumentResource {
 	}
 	
 /**
-	* Creates a new document in an defined document list.
+	* 
 	*
-	* @param string $documentListName Name of content documentListName to delete
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $documentListName The descriptive alphanumeric document list name being created.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function createDocumentAsync($document, $documentListName, $responseFields =  null)
@@ -223,11 +223,12 @@ class DocumentResource {
 	}
 	
 	/**
-	* Updates the binary data or content associated with a document, such as a product image or PDF specifications file, by supplying the document ID.
+	* 
 	*
-	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
-	* @param string $documentListName Name of content documentListName to delete
-	* @param Stream $stream Data stream that delivers information. Used to input and output data.
+	* @param string $documentId Unique identifier of the document.
+	* @param string $documentListName The name of the document list associated with the document.
+	* @param Stream $stream Input output stream that delivers information.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function updateDocumentContent($stream, $documentListName, $documentId, $contentType= null)
@@ -235,14 +236,15 @@ class DocumentResource {
 		$mozuClient = DocumentClient::updateDocumentContentClient($stream, $documentListName, $documentId, $contentType);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Updates the binary data or content associated with a document, such as a product image or PDF specifications file, by supplying the document ID.
+	* 
 	*
-	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
-	* @param string $documentListName Name of content documentListName to delete
+	* @param string $documentId Unique identifier of the document.
+	* @param string $documentListName The name of the document list associated with the document.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateDocumentContentAsync($stream, $documentListName, $documentId, $contentType= null)
@@ -254,12 +256,12 @@ class DocumentResource {
 	}
 	
 	/**
-	* Updates a document in a document list.
+	* 
 	*
-	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
-	* @param string $documentListName Name of content documentListName to delete
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Document $document The document properties that define the content used by the content management system (CMS).
+	* @param string $documentId Unique identifier of the document to update.
+	* @param string $documentListName Name of the document list associated with the document.
+	* @param string $responseFields 
+	* @param Document $document Properties of the document to update.
 	* @return Document 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -273,11 +275,11 @@ class DocumentResource {
 	}
 	
 /**
-	* Updates a document in a document list.
+	* 
 	*
-	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
-	* @param string $documentListName Name of content documentListName to delete
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $documentId Unique identifier of the document to update.
+	* @param string $documentListName Name of the document list associated with the document.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateDocumentAsync($document, $documentListName, $documentId, $responseFields =  null)
@@ -289,10 +291,11 @@ class DocumentResource {
 	}
 	
 	/**
-	* Deletes a specific document based on the specified document ID.
+	* 
 	*
-	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
-	* @param string $documentListName Name of content documentListName to delete
+	* @param string $documentId Identifier of the document being deleted.
+	* @param string $documentListName The name of the document list associated with the document list being deleted.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteDocument($documentListName, $documentId)
@@ -300,14 +303,15 @@ class DocumentResource {
 		$mozuClient = DocumentClient::deleteDocumentClient($documentListName, $documentId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Deletes a specific document based on the specified document ID.
+	* 
 	*
-	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
-	* @param string $documentListName Name of content documentListName to delete
+	* @param string $documentId Identifier of the document being deleted.
+	* @param string $documentListName The name of the document list associated with the document list being deleted.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteDocumentAsync($documentListName, $documentId)
@@ -319,10 +323,11 @@ class DocumentResource {
 	}
 	
 	/**
-	* Deletes the content associated with a document, such as a product image or PDF specification, by supplying the document ID.
+	* 
 	*
-	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
-	* @param string $documentListName Name of content documentListName to delete
+	* @param string $documentId Unique identifier of the document.
+	* @param string $documentListName The name of the document list associated with the document.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteDocumentContent($documentListName, $documentId)
@@ -330,14 +335,15 @@ class DocumentResource {
 		$mozuClient = DocumentClient::deleteDocumentContentClient($documentListName, $documentId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Deletes the content associated with a document, such as a product image or PDF specification, by supplying the document ID.
+	* 
 	*
-	* @param string $documentId Unique identifier for a document, used by content and document calls. Document IDs are associated with document types, document type lists, sites, and tenants.
-	* @param string $documentListName Name of content documentListName to delete
+	* @param string $documentId Unique identifier of the document.
+	* @param string $documentListName The name of the document list associated with the document.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteDocumentContentAsync($documentListName, $documentId)

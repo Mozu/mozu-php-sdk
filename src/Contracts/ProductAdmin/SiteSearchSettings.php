@@ -14,45 +14,21 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
-/**
-*	Properties for the site search settings.
-*/
 class SiteSearchSettings
 {
-	/**
-	*Custom boost value for searches.
-	*/
-	public $customBoosts;
+		public $customBoosts;
 
-	/**
-	*Indicates if the object is default. This indicator is used for product variations and site search settings. If true, the value/object is the default option. 
-	*/
-	public $isDefault;
+		public $isDefault;
 
-	/**
-	*Specifies the minimum match percentage setting. The minimum match percentage is a percentage of the number of terms that must match a search request, rounded down. 's default minimum match percentage is 75%. To require all search terms match, set this value to 100%.
-	*/
-	public $minimumMatchPercent;
+		public $minimumMatchPercent;
 
-	/**
-	*The name for the search settings.
-	*/
-	public $settingsName;
+		public $settingsName;
 
-	/**
-	*Custom field for searches.
-	*/
-	public $customFields;
+		public $customFields;
 
-	/**
-	*The site keyword relevancy settings.
-	*/
-	public $siteKeywordRelevancy;
+		public $siteKeywordRelevancy;
 
-	/**
-	*The site phrase relevancy settings.
-	*/
-	public $sitePhraseRelevancy;
+		public $sitePhraseRelevancy;
 
 }
 

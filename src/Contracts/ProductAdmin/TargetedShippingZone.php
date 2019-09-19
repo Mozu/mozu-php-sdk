@@ -14,15 +14,9 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 
-/**
-*	The targeted shipping zone for the product.
-*/
 class TargetedShippingZone
 {
-	/**
-	*The zone string for the tenant domain.
-	*/
-	public $zone;
+		public $zone;
 
 }
 

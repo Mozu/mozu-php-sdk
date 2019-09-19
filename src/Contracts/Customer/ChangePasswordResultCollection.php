@@ -14,20 +14,11 @@ namespace Mozu\Api\Contracts\Customer;
 
 
 
-/**
-*	Mozu.Customer.Contracts.ChangePasswordResultCollection ApiType DOCUMENT_HERE 
-*/
 class ChangePasswordResultCollection
 {
-	/**
-	*The total number of items in the list.
-	*/
-	public $totalCount;
+		public $totalCount;
 
-	/**
-	*A list of requested items. All returned data is provided in an items array.For a failed request, the returned response may be success with an empty item array.
-	*/
-	public $items;
+		public $items;
 
 }
 

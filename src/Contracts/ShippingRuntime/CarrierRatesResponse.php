@@ -19,20 +19,11 @@ namespace Mozu\Api\Contracts\ShippingRuntime;
 */
 class CarrierRatesResponse
 {
-	/**
-	*Unique identifier of the shipping carrier.
-	*/
-	public $carrierId;
+		public $carrierId;
 
-	/**
-	*Collection of carrier-specific key-value attribute pairs associated with a shipping carrier. These are required to retrieve a shipping rate request and are returned for the generated shipping label.
-	*/
-	public $customAttributes;
+		public $customAttributes;
 
-	/**
-	*Array list of calculated shipping rates for the specified carrier.
-	*/
-	public $shippingRates;
+		public $shippingRates;
 
 }
 

@@ -14,25 +14,13 @@ namespace Mozu\Api\Contracts\ShippingRuntime;
 
 
 
-/**
-*	Details of a property defined for a product.
-*/
 class ProductProperty
 {
-	/**
-	*The fully qualified name of the attribute. The attributeDefiniteId may be used to generate this name.
-	*/
-	public $attributeFQN;
+		public $attributeFQN;
 
-	/**
-	*The data type of the source product property, typically of type Bool, DateTime, Number, or String.
-	*/
-	public $dataType;
+		public $dataType;
 
-	/**
-	*List of value data for objects.
-	*/
-	public $values;
+		public $values;
 
 }
 

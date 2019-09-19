@@ -19,15 +19,11 @@ namespace Mozu\Api\Contracts\ShippingAdmin;
 */
 class ServiceType
 {
-	/**
-	*The service type code supplied by the carrier. Service type codes include a prefix that indicates the carrier name. For example: FEDEX_INTERNATIONAL_STANDARD.
-	*/
-	public $code;
+		public $code;
 
-	/**
-	*Complex type that contains content for a language specified by LocaleCode.
-	*/
-	public $content;
+		public $deliveryDuration;
+
+		public $content;
 
 }
 

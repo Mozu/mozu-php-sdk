@@ -19,15 +19,9 @@ namespace Mozu\Api\Contracts\Location;
 */
 class LocationType
 {
-	/**
-	*User-defined identifying code for the location type.
-	*/
-	public $code;
+		public $code;
 
-	/**
-	*The user supplied name that appears in . You can use this field for identification purposes.
-	*/
-	public $name;
+		public $name;
 
 		public $auditInfo;
 

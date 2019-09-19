@@ -19,14 +19,14 @@ class DocumentListTypeUrl  {
 
 	/**
 		* Get Resource Url for GetDocumentListTypes
-		* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-		* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
+		* @param int $pageSize 
+		* @param string $responseFields 
+		* @param int $startIndex 
 		* @return string Resource Url
 	*/
 	public static function getDocumentListTypesUrl($pageSize, $responseFields, $startIndex)
 	{
-		$url = "/api/content/documentlistTypes/{documentListTypeFQN}?responseFields={responseFields}";
+		$url = "/api/content/documentlistTypes/?responseFields={responseFields}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
 		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
 		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
@@ -37,7 +37,7 @@ class DocumentListTypeUrl  {
 	/**
 		* Get Resource Url for GetDocumentListType
 		* @param string $documentListTypeFQN 
-		* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getDocumentListTypeUrl($documentListTypeFQN, $responseFields)
@@ -51,7 +51,7 @@ class DocumentListTypeUrl  {
 	
 	/**
 		* Get Resource Url for CreateDocumentListType
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function createDocumentListTypeUrl($responseFields)
@@ -65,7 +65,7 @@ class DocumentListTypeUrl  {
 	/**
 		* Get Resource Url for UpdateDocumentListType
 		* @param string $documentListTypeFQN 
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updateDocumentListTypeUrl($documentListTypeFQN, $responseFields)

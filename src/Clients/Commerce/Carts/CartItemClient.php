@@ -22,10 +22,10 @@ use Mozu\Api\Urls\Commerce\Carts\CartItemUrl;
 class CartItemClient {
 
 	/**
-	* Retrieves a particular cart item by providing the cart item ID.
+	* 
 	*
-	* @param string $cartItemId Identifier of the cart item to delete.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $cartItemId Identifier of the cart item to retrieve.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getCartItemClient($cartItemId, $responseFields =  null)
@@ -38,9 +38,9 @@ class CartItemClient {
 	}
 	
 	/**
-	* Retrieves a list of cart items including the total number of items in the cart.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getCartItemsClient($responseFields =  null)
@@ -53,10 +53,26 @@ class CartItemClient {
 	}
 	
 	/**
-	* Adds a product to the current shopper's cart.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param CartItem $cartItem Properties of an item added to an active shopping cart.
+	* @param bool $throwErrorOnInvalidItems 
+	* @param array|CartItem $cartItems 
+	* @return MozuClient
+	*/
+	public static function addItemsToCartClient($cartItems, $throwErrorOnInvalidItems =  null)
+	{
+		$url = CartItemUrl::addItemsToCartUrl($throwErrorOnInvalidItems);
+		$mozuClient = new MozuClient();
+		$mozuClient->withResourceUrl($url)->withBody($cartItems);
+		return $mozuClient;
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $responseFields 
+	* @param CartItem $cartItem All properties of the new cart item. The product code is required.
 	* @return MozuClient
 	*/
 	public static function addItemToCartClient($cartItem, $responseFields =  null)
@@ -69,11 +85,11 @@ class CartItemClient {
 	}
 	
 	/**
-	* Update the quantity of an individual cart item in the cart of the current shopper.
+	* 
 	*
-	* @param string $cartItemId Identifier of the cart item to delete.
+	* @param string $cartItemId Identifier of the cart item to update quantity.
 	* @param int $quantity The number of cart items in the shopper's active cart.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function updateCartItemQuantityClient($cartItemId, $quantity, $responseFields =  null)
@@ -86,11 +102,11 @@ class CartItemClient {
 	}
 	
 	/**
-	* Update the product or product quantity of an item in the current shopper's cart.
+	* 
 	*
-	* @param string $cartItemId Identifier of the cart item to delete.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param CartItem $cartItem Properties of an item added to an active shopping cart.
+	* @param string $cartItemId Identifier of the cart item to update.
+	* @param string $responseFields 
+	* @param CartItem $cartItem The properties of the cart item to update.
 	* @return MozuClient
 	*/
 	public static function updateCartItemClient($cartItem, $cartItemId, $responseFields =  null)
@@ -103,7 +119,7 @@ class CartItemClient {
 	}
 	
 	/**
-	* Removes all items in the current shopper's active cart.
+	* 
 	*
 	* @return MozuClient
 	*/
@@ -117,9 +133,10 @@ class CartItemClient {
 	}
 	
 	/**
-	* Deletes a specific cart item by providing the cart item ID.
+	* 
 	*
 	* @param string $cartItemId Identifier of the cart item to delete.
+	* @return MozuClient
 	*/
 	public static function deleteCartItemClient($cartItemId)
 	{

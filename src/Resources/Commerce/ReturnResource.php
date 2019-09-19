@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* Use the Returns resource to manage returned items that were previously fufilled. Returns can include any number of items associated with an original  order. Each return must either be associated with an original order or a product definition to represent each returned item.Refer to the [Returns API](https://www.mozu.com/docs/developer/api-guides/returns.htm) topic for more information about creating and processing returns using the API.
+* Use the Returns resource to manage returned items that were previously fufilled. Returns can include any number of items associated with an original Mozu order. Each return must either be associated with an original order or a product definition to represent each returned item.
 */
 class ReturnResource {
 
@@ -33,14 +33,14 @@ class ReturnResource {
 
 
 	/**
-	* Retrieves a list of all returns according to any filter and sort criteria.
+	* 
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $q A list of order search terms (not phrases) to use in the query when searching across order number and the name or email of the billing contact. When entering, separate multiple search terms with a space character.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $q 
+	* @param string $responseFields 
+	* @param string $sortBy 
+	* @param int $startIndex 
 	* @return ReturnCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -54,14 +54,14 @@ class ReturnResource {
 	}
 	
 /**
-	* Retrieves a list of all returns according to any filter and sort criteria.
+	* 
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $q A list of order search terms (not phrases) to use in the query when searching across order number and the name or email of the billing contact. When entering, separate multiple search terms with a space character.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $q 
+	* @param string $responseFields 
+	* @param string $sortBy 
+	* @param int $startIndex 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getReturnsAsync($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $q =  null, $responseFields =  null)
@@ -73,9 +73,9 @@ class ReturnResource {
 	}
 	
 	/**
-	* Retrieves a list of the actions available to perform for the specified return based on its current state.
+	* 
 	*
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $returnId Unique identifier of the return for which to retrieve available actions.
 	* @return array|string 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -89,9 +89,9 @@ class ReturnResource {
 	}
 	
 /**
-	* Retrieves a list of the actions available to perform for the specified return based on its current state.
+	* 
 	*
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $returnId Unique identifier of the return for which to retrieve available actions.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getAvailableReturnActionsAsync($returnId)
@@ -103,11 +103,11 @@ class ReturnResource {
 	}
 	
 	/**
-	* Retrieves the details of a single return item.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
-	* @param string $returnItemId Unique identifier of the return item whose details you want to get.
+	* @param string $responseFields 
+	* @param string $returnId 
+	* @param string $returnItemId 
 	* @return ReturnItem 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -121,11 +121,11 @@ class ReturnResource {
 	}
 	
 /**
-	* Retrieves the details of a single return item.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
-	* @param string $returnItemId Unique identifier of the return item whose details you want to get.
+	* @param string $responseFields 
+	* @param string $returnId 
+	* @param string $returnItemId 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getReturnItemAsync($returnId, $returnItemId, $responseFields =  null)
@@ -137,10 +137,10 @@ class ReturnResource {
 	}
 	
 	/**
-	* Retrieves the details of all return items in an order.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $responseFields 
+	* @param string $returnId 
 	* @return ReturnItemCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -154,10 +154,10 @@ class ReturnResource {
 	}
 	
 /**
-	* Retrieves the details of all return items in an order.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $responseFields 
+	* @param string $returnId 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getReturnItemsAsync($returnId, $responseFields =  null)
@@ -169,10 +169,10 @@ class ReturnResource {
 	}
 	
 	/**
-	* Retrieves a list of the payment actions available to perform for the specified return when a return results in a refund to the customer.
+	* 
 	*
 	* @param string $paymentId Unique identifier of the payment for which to perform the action.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $returnId Unique identifier of the return associated with the payment.
 	* @return array|string 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -186,10 +186,10 @@ class ReturnResource {
 	}
 	
 /**
-	* Retrieves a list of the payment actions available to perform for the specified return when a return results in a refund to the customer.
+	* 
 	*
 	* @param string $paymentId Unique identifier of the payment for which to perform the action.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $returnId Unique identifier of the return associated with the payment.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getAvailablePaymentActionsForReturnAsync($returnId, $paymentId)
@@ -201,11 +201,11 @@ class ReturnResource {
 	}
 	
 	/**
-	* Retrieves the details of a payment submitted as part of a refund associated with a customer return.
+	* 
 	*
-	* @param string $paymentId Unique identifier of the payment for which to perform the action.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $paymentId Unique identifier of the return payment to retrieve.
+	* @param string $responseFields 
+	* @param string $returnId Unique identifier of the return associated with the payment.
 	* @return Payment 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -219,11 +219,11 @@ class ReturnResource {
 	}
 	
 /**
-	* Retrieves the details of a payment submitted as part of a refund associated with a customer return.
+	* 
 	*
-	* @param string $paymentId Unique identifier of the payment for which to perform the action.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $paymentId Unique identifier of the return payment to retrieve.
+	* @param string $responseFields 
+	* @param string $returnId Unique identifier of the return associated with the payment.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getPaymentAsync($returnId, $paymentId, $responseFields =  null)
@@ -235,10 +235,10 @@ class ReturnResource {
 	}
 	
 	/**
-	* Retrieves a list of all payments submitted as part of a refund associated with a customer return.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $responseFields 
+	* @param string $returnId Returns the details of the refund payment associated with the return specified in the request.
 	* @return PaymentCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -252,10 +252,10 @@ class ReturnResource {
 	}
 	
 /**
-	* Retrieves a list of all payments submitted as part of a refund associated with a customer return.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $responseFields 
+	* @param string $returnId Returns the details of the refund payment associated with the return specified in the request.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getPaymentsAsync($returnId, $responseFields =  null)
@@ -267,10 +267,10 @@ class ReturnResource {
 	}
 	
 	/**
-	* Retrieves a list of properties for the specified return.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $responseFields 
+	* @param string $returnId Returns the properties of the return specified in the request as well as system-supplied information.
 	* @return Return 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -284,10 +284,10 @@ class ReturnResource {
 	}
 	
 /**
-	* Retrieves a list of properties for the specified return.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $responseFields 
+	* @param string $returnId Returns the properties of the return specified in the request as well as system-supplied information.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getReturnAsync($returnId, $responseFields =  null)
@@ -299,9 +299,9 @@ class ReturnResource {
 	}
 	
 	/**
-	* Returns a list of reasons for a return.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return ReasonCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -315,9 +315,9 @@ class ReturnResource {
 	}
 	
 /**
-	* Returns a list of reasons for a return.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getReasonsAsync($responseFields =  null)
@@ -329,34 +329,10 @@ class ReturnResource {
 	}
 	
 	/**
-	* Creates a return for previously fulfilled items. Each return must either be associated with an original order or a product definition to represent each returned item.When you create a return, you must specify the following fields:
-* 
-
-* 
-* 
-
-*  (Optional, but recommended)
-
-* 
-* 
-
-* 
-
-
-*  (required for bundle items or product extras, but null for parent product or bundles)
-* 
-
-* 
-
-
-*  (required for product extras, but otherwise null)
-
-*  (set to  to target parent products or bundles without extras)
-
-
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Return $ret Properties of a return of one or more previously fulfilled items.
+	* @param string $responseFields 
+	* @param Return $ret Wrapper for the properties of the return to create.
 	* @return Return 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -370,33 +346,9 @@ class ReturnResource {
 	}
 	
 /**
-	* Creates a return for previously fulfilled items. Each return must either be associated with an original order or a product definition to represent each returned item.When you create a return, you must specify the following fields:
-* 
-
-* 
-* 
-
-*  (Optional, but recommended)
-
-* 
-* 
-
-* 
-
-
-*  (required for bundle items or product extras, but null for parent product or bundles)
-* 
-
-* 
-
-
-*  (required for product extras, but otherwise null)
-
-*  (set to  to target parent products or bundles without extras)
-
-
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function createReturnAsync($ret, $responseFields =  null)
@@ -408,11 +360,11 @@ class ReturnResource {
 	}
 	
 	/**
-	* Adds a return item to the return.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
-	* @param ReturnItem $returnItem Properties of a previously fulfilled item associated with a return.
+	* @param string $responseFields 
+	* @param string $returnId 
+	* @param ReturnItem $returnItem 
 	* @return Return 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -426,10 +378,10 @@ class ReturnResource {
 	}
 	
 /**
-	* Adds a return item to the return.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $responseFields 
+	* @param string $returnId 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function createReturnItemAsync($returnItem, $returnId, $responseFields =  null)
@@ -441,12 +393,12 @@ class ReturnResource {
 	}
 	
 	/**
-	* Updates a refund payment associated with a customer return by performing the specified action.
+	* 
 	*
-	* @param string $paymentId Unique identifier of the payment for which to perform the action.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
-	* @param PaymentAction $action Properties of the payment action performed for an order.
+	* @param string $paymentId Unique identifier of the return payment to update.
+	* @param string $responseFields 
+	* @param string $returnId Unique identifier of the return associated with the refund payment.
+	* @param PaymentAction $action The payment action to perform for the refund payment.
 	* @return Return 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -460,11 +412,11 @@ class ReturnResource {
 	}
 	
 /**
-	* Updates a refund payment associated with a customer return by performing the specified action.
+	* 
 	*
-	* @param string $paymentId Unique identifier of the payment for which to perform the action.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $paymentId Unique identifier of the return payment to update.
+	* @param string $responseFields 
+	* @param string $returnId Unique identifier of the return associated with the refund payment.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function performPaymentActionForReturnAsync($action, $returnId, $paymentId, $responseFields =  null)
@@ -476,11 +428,11 @@ class ReturnResource {
 	}
 	
 	/**
-	* Creates a new payment for a return that results in a refund to the customer.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
-	* @param PaymentAction $action Properties of the payment action performed for an order.
+	* @param string $responseFields 
+	* @param string $returnId Unique identifier of the return associated with the payment action.
+	* @param PaymentAction $action The payment action to perform for the customer return.
 	* @return Return 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -494,10 +446,10 @@ class ReturnResource {
 	}
 	
 /**
-	* Creates a new payment for a return that results in a refund to the customer.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $responseFields 
+	* @param string $returnId Unique identifier of the return associated with the payment action.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function createPaymentActionForReturnAsync($action, $returnId, $responseFields =  null)
@@ -509,10 +461,43 @@ class ReturnResource {
 	}
 	
 	/**
-	* Creates a replacement order for the return.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $responseFields 
+	* @param string $returnId 
+	* @param array|RestockableReturnItem $returnItems 
+	* @return Return 
+	* @deprecated deprecated since version 1.17
+	*/
+	public function restockReturnItems($returnItems, $returnId, $responseFields =  null)
+	{
+		$mozuClient = ReturnClient::restockReturnItemsClient($returnItems, $returnId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		$mozuClient->execute();
+		return $mozuClient->getResult();
+
+	}
+	
+/**
+	* 
+	*
+	* @param string $responseFields 
+	* @param string $returnId 
+	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
+	*/
+	public function restockReturnItemsAsync($returnItems, $returnId, $responseFields =  null)
+	{
+		$mozuClient = ReturnClient::restockReturnItemsClient($returnItems, $returnId, $responseFields);
+		$mozuClient = $mozuClient->withContext($this->apiContext);
+		return $mozuClient->executeAsync();
+
+	}
+	
+	/**
+	* 
+	*
+	* @param string $responseFields 
+	* @param string $returnId 
 	* @param array|ReturnItemSpecifier $itemQuantities 
 	* @return Order 
 	* @deprecated deprecated since version 1.17
@@ -527,10 +512,10 @@ class ReturnResource {
 	}
 	
 /**
-	* Creates a replacement order for the return.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $responseFields 
+	* @param string $returnId 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function createReturnShippingOrderAsync($itemQuantities, $returnId, $responseFields =  null)
@@ -542,10 +527,10 @@ class ReturnResource {
 	}
 	
 	/**
-	* Updates the return by performing the action specified in the request.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param ReturnAction $action Properties of an action a user can perform for a return.
+	* @param string $responseFields 
+	* @param ReturnAction $action The name of the return action to perform, such as "Reject" or "Authorize".
 	* @return ReturnCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -559,9 +544,9 @@ class ReturnResource {
 	}
 	
 /**
-	* Updates the return by performing the action specified in the request.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function performReturnActionsAsync($action, $responseFields =  null)
@@ -573,11 +558,11 @@ class ReturnResource {
 	}
 	
 	/**
-	* Updates one or more properties of a return for items previously shipped in a completed order.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
-	* @param Return $ret Properties of a return of one or more previously fulfilled items.
+	* @param string $responseFields 
+	* @param string $returnId Unique identifier of the return.
+	* @param Return $ret Wrapper for the array of properties to update for the return.
 	* @return Return 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -591,10 +576,10 @@ class ReturnResource {
 	}
 	
 /**
-	* Updates one or more properties of a return for items previously shipped in a completed order.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $responseFields 
+	* @param string $returnId Unique identifier of the return.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateReturnAsync($ret, $returnId, $responseFields =  null)
@@ -606,9 +591,10 @@ class ReturnResource {
 	}
 	
 	/**
-	* Resend the email notification to a shopper that a return has been created.
+	* 
 	*
-	* @param ReturnAction $action Properties of an action a user can perform for a return.
+	* @param ReturnAction $action 
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function resendReturnEmail($action)
@@ -616,11 +602,12 @@ class ReturnResource {
 		$mozuClient = ReturnClient::resendReturnEmailClient($action);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Resend the email notification to a shopper that a return has been created.
+	* 
 	*
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -633,10 +620,10 @@ class ReturnResource {
 	}
 	
 	/**
-	* Removes a particular order item from the order of the current shopper.
+	* 
 	*
-	* @param string $returnId Unique identifier of the return whose items you want to get.
-	* @param string $returnItemId Unique identifier of the return item whose details you want to get.
+	* @param string $returnId 
+	* @param string $returnItemId 
 	* @return Return 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -650,10 +637,10 @@ class ReturnResource {
 	}
 	
 /**
-	* Removes a particular order item from the order of the current shopper.
+	* 
 	*
-	* @param string $returnId Unique identifier of the return whose items you want to get.
-	* @param string $returnItemId Unique identifier of the return item whose details you want to get.
+	* @param string $returnId 
+	* @param string $returnItemId 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteOrderItemAsync($returnId, $returnItemId)
@@ -665,9 +652,10 @@ class ReturnResource {
 	}
 	
 	/**
-	* Deletes the return specified in the request.
+	* 
 	*
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $returnId Unique identifier of the return to delete.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteReturn($returnId)
@@ -675,13 +663,14 @@ class ReturnResource {
 		$mozuClient = ReturnClient::deleteReturnClient($returnId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Deletes the return specified in the request.
+	* 
 	*
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $returnId Unique identifier of the return to delete.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteReturnAsync($returnId)

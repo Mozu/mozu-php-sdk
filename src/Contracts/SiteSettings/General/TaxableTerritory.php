@@ -19,20 +19,11 @@ namespace Mozu\Api\Contracts\SiteSettings\General;
 */
 class TaxableTerritory
 {
-	/**
-	*The 2-letter geographic code representing the country for the physical or mailing address. Currently limited to the US.
-	*/
-	public $countryCode;
+		public $countryCode;
 
-	/**
-	*If true, all shipping charges for this territory are subject to sales tax.
-	*/
-	public $isShippingTaxable;
+		public $isShippingTaxable;
 
-	/**
-	*The two-letter geographic code representing the state for the physical or mailing address. This is currently limited to the US.
-	*/
-	public $stateOrProvinceCode;
+		public $stateOrProvinceCode;
 
 }
 

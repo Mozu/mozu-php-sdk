@@ -33,11 +33,11 @@ class ShipmentResource {
 
 
 	/**
-	* Retrieves the details of the specified return replacement shipment.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
-	* @param string $shipmentId Unique identifier of the shipment to retrieve.
+	* @param string $responseFields 
+	* @param string $returnId Unique identifier of the return associated with the replacement shipment to retrieve.
+	* @param string $shipmentId Unique identifier of the return replacement shipment to retrieve.
 	* @return Shipment 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -51,11 +51,11 @@ class ShipmentResource {
 	}
 	
 /**
-	* Retrieves the details of the specified return replacement shipment.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $returnId Unique identifier of the return whose items you want to get.
-	* @param string $shipmentId Unique identifier of the shipment to retrieve.
+	* @param string $responseFields 
+	* @param string $returnId Unique identifier of the return associated with the replacement shipment to retrieve.
+	* @param string $shipmentId Unique identifier of the return replacement shipment to retrieve.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getShipmentAsync($returnId, $shipmentId, $responseFields =  null)
@@ -67,10 +67,10 @@ class ShipmentResource {
 	}
 	
 	/**
-	* Creates a shipment from one or more packages associated with a return replacement.
+	* 
 	*
-	* @param string $returnId Unique identifier of the return whose items you want to get.
-	* @param array|string $packageIds List of unique identifiers for each package associated with this shipment. Not all packages must belong to the same shipment.
+	* @param string $returnId Unique identifier of the return for which to create replacement package shipments.
+	* @param array|string $packageIds List of packages in the return replacement shipment.
 	* @return array|Package 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -84,9 +84,9 @@ class ShipmentResource {
 	}
 	
 /**
-	* Creates a shipment from one or more packages associated with a return replacement.
+	* 
 	*
-	* @param string $returnId Unique identifier of the return whose items you want to get.
+	* @param string $returnId Unique identifier of the return for which to create replacement package shipments.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function createPackageShipmentsAsync($packageIds, $returnId)
@@ -98,10 +98,11 @@ class ShipmentResource {
 	}
 	
 	/**
-	* Deletes a shipment for a return replacement.
+	* 
 	*
-	* @param string $returnId Unique identifier of the return whose items you want to get.
-	* @param string $shipmentId Unique identifier of the shipment to retrieve.
+	* @param string $returnId Unique identifier of the return associated with the replacement shipment to delete.
+	* @param string $shipmentId Unique identifier of the return replacement shipment to delete.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteShipment($returnId, $shipmentId)
@@ -109,14 +110,15 @@ class ShipmentResource {
 		$mozuClient = ShipmentClient::deleteShipmentClient($returnId, $shipmentId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Deletes a shipment for a return replacement.
+	* 
 	*
-	* @param string $returnId Unique identifier of the return whose items you want to get.
-	* @param string $shipmentId Unique identifier of the shipment to retrieve.
+	* @param string $returnId Unique identifier of the return associated with the replacement shipment to delete.
+	* @param string $shipmentId Unique identifier of the return replacement shipment to delete.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteShipmentAsync($returnId, $shipmentId)

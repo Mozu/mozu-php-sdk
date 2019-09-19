@@ -15,64 +15,31 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 /**
-*	Properties of a value associated with a product option attribute.
+*	Represents the values that are the product option selections for a shopper to choose when ordering a product.
 */
 class ProductOptionValue
 {
-	/**
-	*Unique identifier of the attribute's value.
-	*/
-	public $attributeValueId;
+		public $attributeValueId;
 
-	/**
-	*If the product is in relative pricing mode, this is the difference between associated prices for a product, variation option, or extra. The difference is calculated by subtracting the base price from the associated price with this product, option, and/or extra. For example, if a product with a defined monogram extra costs an additional $10, the `deltaPrice `value is "10". Between options, a price for a medium may be $10 and a large $12 giving a `deltaPrice `value of "2".Refer to [Product Variant Pricing and Weight](../../../guides/catalog/products.htm#product_variant_pricing_and_weight) in the Products guides topic for more information.
-	*/
-	public $deltaPrice;
+		public $deltaPrice;
 
-	/**
-	*The difference between the weight associated with this product, variation option, or extra and the base product. For example, if a product with a monogram weighs an extra 1/4 lb, the DeltaWeight value is "0.25". The amount of the delta is set by the weight type for the storefront.
-	*/
-	public $deltaWeight;
+		public $deltaWeight;
 
-	/**
-	*Indicates if the object is default. This indicator is used for product variations and site search settings. If true, the value/object is the default option. 
-	*/
-	public $isDefault;
+		public $isDefault;
 
-	/**
-	*Indicates if the object or process is enabled. This indicator is used on external payment workflows and product option values. For product options, if true, the product option value is available for a shopper to choose. During configuration, this property will be false if the option value is invalid with other selected options. For external payment workflows, if true, the workflow is enabled and available for routing payments for the submitted order.
-	*/
-	public $isEnabled;
+		public $isEnabled;
 
-	/**
-	*If true, the entity is selected. If false, the entity is not selected.
-	*/
-	public $isSelected;
+		public $isSelected;
 
-	/**
-	*The value a shopper entered for an attribute that requires additional input for the product on a storefront. This entered value is a selected option or entered content for an extra, such as selecting a color or entering content for a monogram.
-	*/
-	public $shopperEnteredValue;
+		public $shopperEnteredValue;
 
-	/**
-	*If the object value is a String, this value provides that string value, used by vocabulary property values, products, and options.
-	*/
-	public $stringValue;
+		public $stringValue;
 
-	/**
-	*The value of a property, used by numerous objects within  including facets, attributes, products, localized content, metadata, capabilities ( and third-party), location inventory adjustment, and more. The value may be a string, integer, or double. Validation may be run against the entered and saved values depending on the object type.
-	*/
-	public $value;
+		public $value;
 
-	/**
-	*The bundled product of a product as extra
-	*/
-	public $bundledProduct;
+		public $bundledProduct;
 
-	/**
-	*Defines the intended display of this attribute in the storefront. Options include Drop Down, Image Picker, and Radio Buttons.
-	*/
-	public $displayInfo;
+		public $displayInfo;
 
 }
 

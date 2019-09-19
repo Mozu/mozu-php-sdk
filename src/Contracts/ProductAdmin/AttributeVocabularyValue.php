@@ -15,39 +15,21 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 
 
 /**
-*	Properties of a vocabulary value defined for an extensible attribute.
+*	Properties of an individual vocabulary value for an attribute. For example, a "color" attribute might have the following vocabulary values: Red, Blue, Green.
 */
 class AttributeVocabularyValue
 {
-	/**
-	*The order in which the attribute value displays. If you omit a value for this property,  infers the display order from the attribute value's position the list.
-	*/
-	public $displayOrder;
+		public $displayOrder;
 
-	/**
-	*The name of the product that represents a line item in a taxable order or product bundle.
-	*/
-	public $productName;
+		public $productName;
 
-	/**
-	*The value of a property, used by numerous objects within  including facets, attributes, products, localized content, metadata, capabilities ( and third-party), location inventory adjustment, and more. The value may be a string, integer, or double. Validation may be run against the entered and saved values depending on the object type.
-	*/
-	public $value;
+		public $value;
 
-	/**
-	*The number that denotes the order of the entity value within a list of entity values.
-	*/
-	public $valueSequence;
+		public $valueSequence;
 
-	/**
-	*Complex type that contains content for a language specified by LocaleCode.
-	*/
-	public $content;
+		public $content;
 
-	/**
-	*The localized content associated with the object.
-	*/
-	public $localizedContent;
+		public $localizedContent;
 
 }
 

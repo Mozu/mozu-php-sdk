@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* The Entity Lists resource manages all dynamic entities in your  document store of the  cloud. The content is JSON and can have up to five indexed properties (integer, decimal, string, date, and boolean) with support for additional customized elements as needed. Every document in the entity list has a validated unique ID.
+* 
 */
 class EntityListResource {
 
@@ -33,13 +33,13 @@ class EntityListResource {
 
 
 	/**
-	* Get a filtered list of EntityLists for a specific tenant.
+	* 
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for more information.
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param string $sortBy 
+	* @param int $startIndex 
 	* @return EntityListCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -53,13 +53,13 @@ class EntityListResource {
 	}
 	
 /**
-	* Get a filtered list of EntityLists for a specific tenant.
+	* 
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for more information.
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param string $sortBy 
+	* @param int $startIndex 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getEntityListsAsync($pageSize =  null, $startIndex =  null, $filter =  null, $sortBy =  null, $responseFields =  null)
@@ -71,10 +71,10 @@ class EntityListResource {
 	}
 	
 	/**
-	* Get an existing EntityList definition for a specific tenant
+	* 
 	*
-	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $entityListFullName 
+	* @param string $responseFields 
 	* @return EntityList 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -88,10 +88,10 @@ class EntityListResource {
 	}
 	
 /**
-	* Get an existing EntityList definition for a specific tenant
+	* 
 	*
-	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $entityListFullName 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getEntityListAsync($entityListFullName, $responseFields =  null)
@@ -103,10 +103,10 @@ class EntityListResource {
 	}
 	
 	/**
-	* Create a new EntityList for a specific tenant.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param EntityList $entityList The definition of an MZDB EntityList which describes the characteristics of the EntityList on a per tenant basis. EntityLists are created at the tenant level, but instances of the EntityLists are implicitly created at the appropriate context level as entities are added or removed from the EntityList.
+	* @param string $responseFields 
+	* @param EntityList $entityList 
 	* @return EntityList 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -120,9 +120,9 @@ class EntityListResource {
 	}
 	
 /**
-	* Create a new EntityList for a specific tenant.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function createEntityListAsync($entityList, $responseFields =  null)
@@ -134,11 +134,11 @@ class EntityListResource {
 	}
 	
 	/**
-	* Update an existing Entitylist for a specific tenant.
+	* 
 	*
-	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param EntityList $entityList The definition of an MZDB EntityList which describes the characteristics of the EntityList on a per tenant basis. EntityLists are created at the tenant level, but instances of the EntityLists are implicitly created at the appropriate context level as entities are added or removed from the EntityList.
+	* @param string $entityListFullName 
+	* @param string $responseFields 
+	* @param EntityList $entityList 
 	* @return EntityList 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -152,10 +152,10 @@ class EntityListResource {
 	}
 	
 /**
-	* Update an existing Entitylist for a specific tenant.
+	* 
 	*
-	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $entityListFullName 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateEntityListAsync($entityList, $entityListFullName, $responseFields =  null)
@@ -167,9 +167,10 @@ class EntityListResource {
 	}
 	
 	/**
-	* Delete an existing EntityList for a specific tenant. This will also delete all Entities in all instances of this EntityList for the tenant.
+	* 
 	*
-	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
+	* @param string $entityListFullName 
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteEntityList($entityListFullName)
@@ -177,13 +178,14 @@ class EntityListResource {
 		$mozuClient = EntityListClient::deleteEntityListClient($entityListFullName);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Delete an existing EntityList for a specific tenant. This will also delete all Entities in all instances of this EntityList for the tenant.
+	* 
 	*
-	* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
+	* @param string $entityListFullName 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteEntityListAsync($entityListFullName)

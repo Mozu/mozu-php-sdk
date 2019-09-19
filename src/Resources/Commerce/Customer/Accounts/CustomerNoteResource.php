@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* This resources manages notes for a customer account. For example, a client can track a shopper's interests or complaints. Only clients can add and view notes. Shoppers cannot view these notes from the My Account page.
+* Tenant administrators can add and view internal notes for a customer account. For example, a client can track a shopper's interests or complaints. Only clients can add and view notes. Shoppers cannot view these notes from the My Account page.
 */
 class CustomerNoteResource {
 
@@ -33,11 +33,11 @@ class CustomerNoteResource {
 
 
 	/**
-	* Retrieves the contents of a particular note attached to a specified customer account.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
+	* @param int $accountId Unique identifier of the customer account that contains the note being retrieved.
 	* @param int $noteId Unique identifier of a particular note to retrieve.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return CustomerNote 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -51,11 +51,11 @@ class CustomerNoteResource {
 	}
 	
 /**
-	* Retrieves the contents of a particular note attached to a specified customer account.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
+	* @param int $accountId Unique identifier of the customer account that contains the note being retrieved.
 	* @param int $noteId Unique identifier of a particular note to retrieve.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getAccountNoteAsync($accountId, $noteId, $responseFields =  null)
@@ -67,14 +67,14 @@ class CustomerNoteResource {
 	}
 	
 	/**
-	* Retrieves a list of notes added to a customer account according to any specified filter criteria and sort options.
+	* 
 	*
 	* @param int $accountId Unique identifier of the customer account.
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param string $sortBy 
+	* @param int $startIndex 
 	* @return CustomerNoteCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -88,14 +88,14 @@ class CustomerNoteResource {
 	}
 	
 /**
-	* Retrieves a list of notes added to a customer account according to any specified filter criteria and sort options.
+	* 
 	*
 	* @param int $accountId Unique identifier of the customer account.
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param string $sortBy 
+	* @param int $startIndex 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getAccountNotesAsync($accountId, $startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
@@ -107,11 +107,11 @@ class CustomerNoteResource {
 	}
 	
 	/**
-	* Adds a new note to the specified customer account.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param CustomerNote $note Properties of a note configured for a customer account.
+	* @param int $accountId Unique identifier of the customer account for which to create the note.
+	* @param string $responseFields 
+	* @param CustomerNote $note Properties of the customer account note to create.
 	* @return CustomerNote 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -125,10 +125,10 @@ class CustomerNoteResource {
 	}
 	
 /**
-	* Adds a new note to the specified customer account.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $accountId Unique identifier of the customer account for which to create the note.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function addAccountNoteAsync($note, $accountId, $responseFields =  null)
@@ -140,12 +140,12 @@ class CustomerNoteResource {
 	}
 	
 	/**
-	* Modifies an existing note for a customer account.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param int $noteId Unique identifier of a particular note to retrieve.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param CustomerNote $note Properties of a note configured for a customer account.
+	* @param int $accountId Unique identifier of the customer account note to modify.
+	* @param int $noteId Unique identifier of the note to update.
+	* @param string $responseFields 
+	* @param CustomerNote $note The new content to replace the existing note.
 	* @return CustomerNote 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -159,11 +159,11 @@ class CustomerNoteResource {
 	}
 	
 /**
-	* Modifies an existing note for a customer account.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param int $noteId Unique identifier of a particular note to retrieve.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $accountId Unique identifier of the customer account note to modify.
+	* @param int $noteId Unique identifier of the note to update.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateAccountNoteAsync($note, $accountId, $noteId, $responseFields =  null)
@@ -175,10 +175,11 @@ class CustomerNoteResource {
 	}
 	
 	/**
-	* Removes a note from the specified customer account.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param int $noteId Unique identifier of a particular note to retrieve.
+	* @param int $accountId Unique identifier of the customer account that contains the note being deleted.
+	* @param int $noteId Unique identifier of the customer account note being deleted.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteAccountNote($accountId, $noteId)
@@ -186,14 +187,15 @@ class CustomerNoteResource {
 		$mozuClient = CustomerNoteClient::deleteAccountNoteClient($accountId, $noteId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Removes a note from the specified customer account.
+	* 
 	*
-	* @param int $accountId Unique identifier of the customer account.
-	* @param int $noteId Unique identifier of a particular note to retrieve.
+	* @param int $accountId Unique identifier of the customer account that contains the note being deleted.
+	* @param int $noteId Unique identifier of the customer account note being deleted.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteAccountNoteAsync($accountId, $noteId)

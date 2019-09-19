@@ -15,36 +15,21 @@ namespace Mozu\Api\Contracts\ProductRuntime;
 
 
 /**
-*	The container for a set of products.
+*	Collection of products and their related properties.
 */
 class ProductCollection
 {
-	/**
-	*This parameter is associated with deep paging. If you started a deep paged request by specifying ,  returns an encoded value for the . In your most immediate subsequent request, set  to the same value you received for  to continue paging. When  is null, you've reached the end of paged results.
-	*/
-	public $nextCursorMark;
+		public $nextCursorMark;
 
-	/**
-	*The number of pages returned based on the startIndex and pageSize values specified. This value is system-supplied and read-only.
-	*/
-	public $pageCount;
+		public $pageCount;
 
-	/**
-	*The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	*/
-	public $pageSize;
+		public $pageSize;
 
 		public $startIndex;
 
-	/**
-	*The number of results listed in the query collection, represented by a signed 64-bit (8-byte) integer. This value is system-supplied and read-only.
-	*/
-	public $totalCount;
+		public $totalCount;
 
-	/**
-	*An array list of objects in the returned collection.
-	*/
-	public $items;
+		public $items;
 
 }
 

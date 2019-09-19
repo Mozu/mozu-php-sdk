@@ -14,35 +14,17 @@ namespace Mozu\Api\Contracts\SiteSettings\General;
 
 
 
-/**
-*	Mozu.SiteSettings.General.Contracts.EmailTypeSetting ApiType DOCUMENT_HERE 
-*/
 class EmailTypeSetting
 {
-	/**
-	*Overwrites the Bcc email address for the given template.
-	*/
-	public $bccEmailAddressOverride;
+		public $bccEmailAddressOverride;
 
-	/**
-	*Unique identifier of the source property, such as a catalog, discount, order, or email template.For a product field it will be the name of the field.For a category ID, must be a positive integer not greater than 2000000. By default,  auto-generates a category ID when categories are created. If you want to specify an ID during creation (which preserves category link relationships when migrating tenant data from one sandbox to another), you must also include the  query string in the endpoint. For example, . Then, use the  property to specify the desired category ID.For a product attribute it will be the Attribute FQN.For a document, the ID must be specified as a 32 character, case-insensitive, alphanumeric string. You can specify the ID as 32 sequential characters or as groups separated by dashes in the format 8-4-4-4-12. For example, or.For email templates, the ID must be one of the following values:			
-	*/
-	public $id;
+		public $id;
 
-	/**
-	*Overwrites the Reply-to email address for the given template.
-	*/
-	public $replyToEmailAddressOverride;
+		public $replyToEmailAddressOverride;
 
-	/**
-	*Overwrites the Sender email address for the given template.
-	*/
-	public $senderEmailAddressOverride;
+		public $senderEmailAddressOverride;
 
-	/**
-	*Overwrites the Sender email alias for the given template.
-	*/
-	public $senderEmailAliasOverride;
+		public $senderEmailAliasOverride;
 
 }
 

@@ -19,55 +19,111 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Fulfillment;
 */
 class Shipment
 {
-	/**
-	*Total cost of shipping the shipment to the shopper.
-	*/
-	public $cost;
+		public $backorderCreatedDate;
 
-	/**
-	*3-letter ISO 4217 standard global currency code. Currently, only "USD" (US Dollar) is supported.
-	*/
-	public $currencyCode;
+		public $cost;
 
-	/**
-	*Unique identifier of the source property, such as a catalog, discount, order, or email template.For a product field it will be the name of the field.For a category ID, must be a positive integer not greater than 2000000. By default,  auto-generates a category ID when categories are created. If you want to specify an ID during creation (which preserves category link relationships when migrating tenant data from one sandbox to another), you must also include the  query string in the endpoint. For example, . Then, use the  property to specify the desired category ID.For a product attribute it will be the Attribute FQN.For a document, the ID must be specified as a 32 character, case-insensitive, alphanumeric string. You can specify the ID as 32 sequential characters or as groups separated by dashes in the format 8-4-4-4-12. For example, or.For email templates, the ID must be one of the following values:			
-	*/
-	public $id;
+		public $currencyCode;
 
-	/**
-	*Array list of unique IDs of packages in a shipment planned for or finished a shipping fulfillment action. 
-	*/
-	public $packageIds;
+		public $customerAccountId;
 
-	/**
-	*The code associated with a carrier's shipping method service type, used during fulfillment of packages and shipments. Service type codes include a prefix that indicates the carrier. For example: FEDEX_INTERNATIONAL_STANDARD and UPS_GROUND.If using a custom rate, this property corresponds to the  field in  when you navigate to  &gt;  &gt; , and then click on an existing rate or on .
-	*/
-	public $shippingMethodCode;
+		public $customerTaxId;
 
-	/**
-	*If true, a shopper signature is required to deliver this shipment.
-	*/
-	public $signatureRequired;
+		public $dutyAdjustment;
 
-	/**
-	*Tracking number for the package or shipment, supplied by the shipping carrier to track the shipment until fulfillment completes. The tracking number format may differ between carriers.
-	*/
-	public $trackingNumber;
+		public $dutyTotal;
 
-	/**
-	*Identifier and datetime stamp information recorded when a user or application creates, updates, or deletes a resource entity. This value is system-supplied and read-only.
-	*/
-	public $auditInfo;
+		public $email;
 
-	/**
-	*The physical address orders are sent to as a shipping destination. This address may contain multiple lines, city, state/province, country, and zip/postal code. The destination is used to calculate shipping costs.
-	*/
-	public $destinationAddress;
+		public $externalShipmentId;
 
-	/**
-	*The physical address from which the order or shipment will ship.
-	*/
-	public $originAddress;
+		public $fulfillmentDate;
+
+		public $fulfillmentLocationCode;
+
+		public $fulfillmentStatus;
+
+		public $handlingAdjustment;
+
+		public $handlingSubtotal;
+
+		public $handlingTaxAdjustment;
+
+		public $handlingTaxTotal;
+
+		public $handlingTotal;
+
+		public $id;
+
+		public $lineItemSubtotal;
+
+		public $lineItemTaxAdjustment;
+
+		public $lineItemTaxTotal;
+
+		public $lineItemTotal;
+
+		public $number;
+
+		public $orderId;
+
+		public $orderNumber;
+
+		public $orderSubmitDate;
+
+		public $pickStatus;
+
+		public $pickType;
+
+		public $shipmentAdjustment;
+
+		public $shipmentStatus;
+
+		public $shipmentType;
+
+		public $shippingAdjustment;
+
+		public $shippingMethodCode;
+
+		public $shippingMethodName;
+
+		public $shippingSubtotal;
+
+		public $shippingTaxAdjustment;
+
+		public $shippingTaxTotal;
+
+		public $shippingTotal;
+
+		public $signatureRequired;
+
+		public $total;
+
+		public $trackingNumbers;
+
+		public $workflowProcessContainerId;
+
+		public $workflowProcessId;
+
+		public $auditInfo;
+
+		public $canceledItems;
+
+		public $changeMessages;
+
+		public $data;
+
+		public $destination;
+
+		public $items;
+
+		public $origin;
+
+		public $packages;
+
+		public $taxData;
+
+		public $workflowState;
 
 }
 

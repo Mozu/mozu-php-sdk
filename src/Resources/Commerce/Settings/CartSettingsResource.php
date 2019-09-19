@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* Use the cart subresource to manage settings for the cart, such as whether to include handling fees in the cost calculations.
+* 
 */
 class CartSettingsResource {
 
@@ -33,9 +33,9 @@ class CartSettingsResource {
 
 
 	/**
-	* Retrieves cart settings.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return CartSettings 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -49,9 +49,9 @@ class CartSettingsResource {
 	}
 	
 /**
-	* Retrieves cart settings.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getCartSettingsAsync($responseFields =  null)
@@ -63,9 +63,9 @@ class CartSettingsResource {
 	}
 	
 	/**
-	* Creates cart settings.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @param CartSettings $cartSettings 
 	* @return CartSettings 
 	* @deprecated deprecated since version 1.17
@@ -80,9 +80,9 @@ class CartSettingsResource {
 	}
 	
 /**
-	* Creates cart settings.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function createCartSettingsAsync($cartSettings, $responseFields =  null)
@@ -94,9 +94,9 @@ class CartSettingsResource {
 	}
 	
 	/**
-	* Updates cart settings.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @param CartSettings $cartSettings 
 	* @return CartSettings 
 	* @deprecated deprecated since version 1.17
@@ -111,9 +111,9 @@ class CartSettingsResource {
 	}
 	
 /**
-	* Updates cart settings.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateCartSettingsAsync($cartSettings, $responseFields =  null)

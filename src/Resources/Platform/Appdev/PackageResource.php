@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* This resource is not public.
+* 
 */
 class PackageResource {
 
@@ -26,9 +26,9 @@ class PackageResource {
 
 
 	/**
-	* This operation is not public.
+	* 
 	*
-	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}. 
+	* @param string $applicationKey 
 	* @param string $fileName 
 	* @return Stream 
 	* @deprecated deprecated since version 1.17
@@ -42,9 +42,9 @@ class PackageResource {
 	}
 	
 /**
-	* This operation is not public.
+	* 
 	*
-	* @param string $applicationKey The application key uniquely identifies the developer namespace, application ID, version, and package in Dev Center. The format is {Dev Account namespace}.{Application ID}.{Application Version}.{Package name}. 
+	* @param string $applicationKey 
 	* @param string $fileName 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/

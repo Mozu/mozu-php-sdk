@@ -33,13 +33,13 @@ class CreditResource {
 
 
 	/**
-	* Retrieves a list of store credits applied to customer accounts, according any filter and sort criteria specified in the request.
+	* 
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param string $sortBy 
+	* @param int $startIndex 
 	* @return CreditCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -53,13 +53,13 @@ class CreditResource {
 	}
 	
 /**
-	* Retrieves a list of store credits applied to customer accounts, according any filter and sort criteria specified in the request.
+	* 
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $sortBy The property by which to sort results and whether the results appear in ascending (a-z) order, represented by ASC or in descending (z-a) order, represented by DESC. The sortBy parameter follows an available property. For example: "sortBy=productCode+asc"
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with a PageSize of 25, to get the 51st through the 75th items, use startIndex=3.
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param string $sortBy 
+	* @param int $startIndex 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getCreditsAsync($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $responseFields =  null)
@@ -71,10 +71,10 @@ class CreditResource {
 	}
 	
 	/**
-	* Retrieves the details of a store credit applied to a customer account.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $code User-defined code that identifies the store credit to retrieve.
+	* @param string $responseFields 
 	* @return Credit 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -88,10 +88,10 @@ class CreditResource {
 	}
 	
 /**
-	* Retrieves the details of a store credit applied to a customer account.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $code User-defined code that identifies the store credit to retrieve.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getCreditAsync($code, $responseFields =  null)
@@ -103,16 +103,17 @@ class CreditResource {
 	}
 	
 	/**
-	* Creates a new store credit for the customer account specified in the request.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Credit $credit Properties of the store credit of gift card applied to a customer account. At this time, gift card functionality is reserved for future use.
+	* @param string $responseFields 
+	* @param string $userId 
+	* @param Credit $credit Properties of the store credit to create.
 	* @return Credit 
 	* @deprecated deprecated since version 1.17
 	*/
-	public function addCredit($credit, $responseFields =  null)
+	public function addCredit($credit, $userId =  null, $responseFields =  null)
 	{
-		$mozuClient = CreditClient::addCreditClient($credit, $responseFields);
+		$mozuClient = CreditClient::addCreditClient($credit, $userId, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -120,24 +121,25 @@ class CreditResource {
 	}
 	
 /**
-	* Creates a new store credit for the customer account specified in the request.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
+	* @param string $userId 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
-	public function addCreditAsync($credit, $responseFields =  null)
+	public function addCreditAsync($credit, $userId =  null, $responseFields =  null)
 	{
-		$mozuClient = CreditClient::addCreditClient($credit, $responseFields);
+		$mozuClient = CreditClient::addCreditClient($credit, $userId, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 
 	}
 	
 	/**
-	* Associates an unclaimed customer credit with the shopper user authenticated in the request header.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $code The code that represents the credit to claim for the shopper.
+	* @param string $responseFields 
 	* @return Credit 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -151,10 +153,10 @@ class CreditResource {
 	}
 	
 /**
-	* Associates an unclaimed customer credit with the shopper user authenticated in the request header.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $code The code that represents the credit to claim for the shopper.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function associateCreditToShopperAsync($code, $responseFields =  null)
@@ -166,39 +168,43 @@ class CreditResource {
 	}
 	
 	/**
-	* Resend the notification email that informs a shopper that a credit has been created.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
+	* @param string $code 
+	* @param string $userId 
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
-	public function resendCreditCreatedEmail($code)
+	public function resendCreditCreatedEmail($code, $userId =  null)
 	{
-		$mozuClient = CreditClient::resendCreditCreatedEmailClient($code);
+		$mozuClient = CreditClient::resendCreditCreatedEmailClient($code, $userId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Resend the notification email that informs a shopper that a credit has been created.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
+	* @param string $code 
+	* @param string $userId 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
-	public function resendCreditCreatedEmailAsync($code)
+	public function resendCreditCreatedEmailAsync($code, $userId =  null)
 	{
-		$mozuClient = CreditClient::resendCreditCreatedEmailClient($code);
+		$mozuClient = CreditClient::resendCreditCreatedEmailClient($code, $userId);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 
 	}
 	
 	/**
-	* Updates one or more properties of a defined store credit applied to a customer account.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Credit $credit Properties of the store credit of gift card applied to a customer account. At this time, gift card functionality is reserved for future use.
+	* @param string $code User-defined code of the store credit to update.
+	* @param string $responseFields 
+	* @param Credit $credit Properties of the store credit to update.
 	* @return Credit 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -212,10 +218,10 @@ class CreditResource {
 	}
 	
 /**
-	* Updates one or more properties of a defined store credit applied to a customer account.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $code User-defined code of the store credit to update.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateCreditAsync($credit, $code, $responseFields =  null)
@@ -227,9 +233,10 @@ class CreditResource {
 	}
 	
 	/**
-	* Deletes a store credit previously applied to a customer account.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
+	* @param string $code User-defined code of the store credit to delete.
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteCredit($code)
@@ -237,13 +244,14 @@ class CreditResource {
 		$mozuClient = CreditClient::deleteCreditClient($code);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Deletes a store credit previously applied to a customer account.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
+	* @param string $code User-defined code of the store credit to delete.
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteCreditAsync($code)

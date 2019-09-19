@@ -22,13 +22,13 @@ use Mozu\Api\Urls\Commerce\Orders\AppliedDiscountUrl;
 class AppliedDiscountClient {
 
 	/**
-	* Apply a coupon to the order.
+	* 
 	*
-	* @param string $couponCode Alphanumeric code associated with the coupon or promotion that results in a discounted price.
-	* @param string $orderId Unique identifier of the order.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
-	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
+	* @param string $couponCode 
+	* @param string $orderId Unique identifier of the order to associate the coupon. System-supplied and read-only.
+	* @param string $responseFields 
+	* @param string $updateMode Specifies whether to apply the coupon by updating the original order, updating the order in draft mode, or updating the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version 
 	* @return MozuClient
 	*/
 	public static function applyCouponClient($orderId, $couponCode, $updateMode =  null, $version =  null, $responseFields =  null)
@@ -41,12 +41,12 @@ class AppliedDiscountClient {
 	}
 	
 	/**
-	* Removes a coupon previously applied to the order.
+	* 
 	*
-	* @param string $couponCode Alphanumeric code associated with the coupon or promotion that results in a discounted price.
-	* @param string $orderId Unique identifier of the order.
-	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
-	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
+	* @param string $couponCode 
+	* @param string $orderId Unique identifier of the order with the coupon to remove.
+	* @param string $updateMode Specifies whether to remove the coupon by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version 
 	* @return MozuClient
 	*/
 	public static function removeCouponClient($orderId, $couponCode, $updateMode =  null, $version =  null)
@@ -59,11 +59,11 @@ class AppliedDiscountClient {
 	}
 	
 	/**
-	* Removes all coupons previously applied to the order.
+	* 
 	*
-	* @param string $orderId Unique identifier of the order.
-	* @param string $updateMode Specifies whether to update the original order, update the order in draft mode, or update the order in draft mode and then commit the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
-	* @param string $version System-supplied integer that represents the current version of the order, which prevents users from unintentionally overriding changes to the order. When a user performs an operation for a defined order, the system validates that the version of the updated order matches the version of the order on the server. After the operation completes successfully, the system increments the version number by one.
+	* @param string $orderId Unique identifier of the order with the coupons to remove.
+	* @param string $updateMode Specifies whether to remove coupons by updating the original order, updating the order in draft mode, or updating the order in draft mode and then committing the changes to the original. Draft mode enables users to make incremental order changes before committing the changes to the original order. Valid values are "ApplyToOriginal," "ApplyToDraft," or "ApplyAndCommit."
+	* @param string $version 
 	* @return MozuClient
 	*/
 	public static function removeCouponsClient($orderId, $updateMode =  null, $version =  null)

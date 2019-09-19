@@ -19,25 +19,13 @@ namespace Mozu\Api\Contracts\Core;
 */
 class AuditInfo
 {
-	/**
-	*Unique identifier of the user created the resource entity. This value is system-supplied and read-only.
-	*/
-	public $createBy;
+		public $createBy;
 
-	/**
-	*Date and time when the entity was created, represented in UTC Date/Time.
-	*/
-	public $createDate;
+		public $createDate;
 
-	/**
-	*Unique identifier of the user who last modified the item. This value is system-supplied and read-only.
-	*/
-	public $updateBy;
+		public $updateBy;
 
-	/**
-	*Date and time when the entity was last updated, represented in UTC Date/Time.
-	*/
-	public $updateDate;
+		public $updateDate;
 
 }
 

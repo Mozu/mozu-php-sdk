@@ -14,70 +14,31 @@ namespace Mozu\Api\Contracts\AppDev;
 
 
 
-/**
-*	Mozu.AppDev.Contracts.ApplicationTransaction ApiType DOCUMENT_HERE 
-*/
 class ApplicationTransaction
 {
-	/**
-	*Mozu.AppDev.Contracts.ApplicationTransaction applicationEntitlementId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationEntitlementId;
+		public $applicationEntitlementId;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationTransaction applicationId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationId;
+		public $applicationId;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationTransaction applicationTransactionId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationTransactionId;
+		public $applicationTransactionId;
 
-	/**
-	*The three character ISO currency code for the monetary amount. For example, USD is used for US Dollars. 
-	*/
-	public $isoCurrencyCode;
+		public $isoCurrencyCode;
 
-	/**
-	*Language used for the entity. Currently, only "en-US" is supported.
-	*/
-	public $localeCode;
+		public $localeCode;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationTransaction orderNumber ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $orderNumber;
+		public $orderNumber;
 
-	/**
-	*Unique identifier for the site. This ID is used at all levels of a store, catalog, and tenant to associate objects to a site.
-	*/
-	public $siteId;
+		public $siteId;
 
-	/**
-	*Unique identifier of the Mozu tenant.
-	*/
-	public $tenantId;
+		public $tenantId;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationTransaction transactionDate ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $transactionDate;
+		public $transactionDate;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationTransaction transactionPrice ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $transactionPrice;
+		public $transactionPrice;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationTransaction transactionTax ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $transactionTax;
+		public $transactionTax;
 
-	/**
-	*Mozu.AppDev.Contracts.ApplicationTransaction transactionTotal ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $transactionTotal;
+		public $transactionTotal;
 
 }
 

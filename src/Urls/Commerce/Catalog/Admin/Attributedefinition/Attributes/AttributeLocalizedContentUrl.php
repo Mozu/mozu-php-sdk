@@ -19,7 +19,7 @@ class AttributeLocalizedContentUrl  {
 
 	/**
 		* Get Resource Url for GetAttributeLocalizedContents
-		* @param string $attributeFQN Fully qualified name for an attribute.
+		* @param string $attributeFQN 
 		* @return string Resource Url
 	*/
 	public static function getAttributeLocalizedContentsUrl($attributeFQN)
@@ -32,9 +32,9 @@ class AttributeLocalizedContentUrl  {
 	
 	/**
 		* Get Resource Url for GetAttributeLocalizedContent
-		* @param string $attributeFQN Fully qualified name for an attribute.
-		* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $attributeFQN 
+		* @param string $localeCode 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getAttributeLocalizedContentUrl($attributeFQN, $localeCode, $responseFields)
@@ -49,8 +49,8 @@ class AttributeLocalizedContentUrl  {
 	
 	/**
 		* Get Resource Url for AddLocalizedContent
-		* @param string $attributeFQN Fully qualified name for an attribute.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $attributeFQN 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function addLocalizedContentUrl($attributeFQN, $responseFields)
@@ -64,7 +64,7 @@ class AttributeLocalizedContentUrl  {
 	
 	/**
 		* Get Resource Url for UpdateLocalizedContents
-		* @param string $attributeFQN Fully qualified name for an attribute.
+		* @param string $attributeFQN 
 		* @return string Resource Url
 	*/
 	public static function updateLocalizedContentsUrl($attributeFQN)
@@ -77,9 +77,9 @@ class AttributeLocalizedContentUrl  {
 	
 	/**
 		* Get Resource Url for UpdateLocalizedContent
-		* @param string $attributeFQN Fully qualified name for an attribute.
-		* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $attributeFQN 
+		* @param string $localeCode 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updateLocalizedContentUrl($attributeFQN, $localeCode, $responseFields)
@@ -94,8 +94,8 @@ class AttributeLocalizedContentUrl  {
 	
 	/**
 		* Get Resource Url for DeleteLocalizedContent
-		* @param string $attributeFQN Fully qualified name for an attribute.
-		* @param string $localeCode Language used for the entity. Currently, only "en-US" is supported.
+		* @param string $attributeFQN 
+		* @param string $localeCode 
 		* @return string Resource Url
 	*/
 	public static function deleteLocalizedContentUrl($attributeFQN, $localeCode)

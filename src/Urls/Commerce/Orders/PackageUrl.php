@@ -19,8 +19,8 @@ class PackageUrl  {
 
 	/**
 		* Get Resource Url for GetAvailablePackageFulfillmentActions
-		* @param string $orderId Unique identifier of the order.
-		* @param string $packageId Unique identifier of the package for which to retrieve the label.
+		* @param string $orderId Unique identifier of the order associated with the package fulfillment.
+		* @param string $packageId Unique identifier of the package associated with the fulfillment actions to retrieve.
 		* @return string Resource Url
 	*/
 	public static function getAvailablePackageFulfillmentActionsUrl($orderId, $packageId)
@@ -34,7 +34,7 @@ class PackageUrl  {
 	
 	/**
 		* Get Resource Url for GetPackageLabel
-		* @param string $orderId Unique identifier of the order.
+		* @param string $orderId Unique identifier of the order associated with the package label to retrieve.
 		* @param string $packageId Unique identifier of the package for which to retrieve the label.
 		* @return string Resource Url
 	*/
@@ -49,9 +49,9 @@ class PackageUrl  {
 	
 	/**
 		* Get Resource Url for GetPackage
-		* @param string $orderId Unique identifier of the order.
-		* @param string $packageId Unique identifier of the package for which to retrieve the label.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $orderId Unique identifier of the order associated with the package to retrieve.
+		* @param string $packageId Unique identifier of the package to retrieve.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getPackageUrl($orderId, $packageId, $responseFields)
@@ -66,8 +66,8 @@ class PackageUrl  {
 	
 	/**
 		* Get Resource Url for CreatePackage
-		* @param string $orderId Unique identifier of the order.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $orderId Unique identifier of the order associated with this package.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function createPackageUrl($orderId, $responseFields)
@@ -81,9 +81,9 @@ class PackageUrl  {
 	
 	/**
 		* Get Resource Url for UpdatePackage
-		* @param string $orderId Unique identifier of the order.
-		* @param string $packageId Unique identifier of the package for which to retrieve the label.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $orderId Unique identifier of the order associated with the package to update.
+		* @param string $packageId Unique identifier of the package of order items to update.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updatePackageUrl($orderId, $packageId, $responseFields)
@@ -98,8 +98,8 @@ class PackageUrl  {
 	
 	/**
 		* Get Resource Url for DeletePackage
-		* @param string $orderId Unique identifier of the order.
-		* @param string $packageId Unique identifier of the package for which to retrieve the label.
+		* @param string $orderId Unique identifier of the order associated with the package to delete.
+		* @param string $packageId Unique identifier of the package to delete.
 		* @return string Resource Url
 	*/
 	public static function deletePackageUrl($orderId, $packageId)

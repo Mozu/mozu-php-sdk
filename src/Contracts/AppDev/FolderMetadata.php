@@ -19,25 +19,13 @@ namespace Mozu\Api\Contracts\AppDev;
 */
 class FolderMetadata
 {
-	/**
-	*The directory of the file location of the folder in the package.
-	*/
-	public $fullPath;
+		public $fullPath;
 
-	/**
-	*The user supplied name that appears in . You can use this field for identification purposes.
-	*/
-	public $name;
+		public $name;
 
-	/**
-	*Array list of files in the folder.
-	*/
-	public $files;
+		public $subFolders;
 
-	/**
-	*Array list of subfolders stored in this folder.
-	*/
-	public $subFolders;
+		public $files;
 
 }
 

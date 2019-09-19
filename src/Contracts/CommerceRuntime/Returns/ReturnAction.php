@@ -19,15 +19,9 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Returns;
 */
 class ReturnAction
 {
-	/**
-	*The name of the action to perform for the payment, fulfillment, order, or return.
-	*/
-	public $actionName;
+		public $actionName;
 
-	/**
-	*The list of returns for which to perform the action.
-	*/
-	public $returnIds;
+		public $returnIds;
 
 }
 

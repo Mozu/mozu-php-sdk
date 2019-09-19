@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* Use the ShippingStates sub-resource to manage the states your shipping profile supports. For example, you can specify one of your shipping profiles to only support Texas, Oklahoma, Arkansas, Louisiana, and New Mexico.Each shipping state is composed of a user-definied code and name.
+* 
 */
 class ShippingStatesResource {
 
@@ -33,9 +33,9 @@ class ShippingStatesResource {
 
 
 	/**
-	* Retrieves a list of shipping states and their details.
+	* 
 	*
-	* @param string $profileCode The unique, user-defined code of the profile with which the shipping state is associated.
+	* @param string $profileCode 
 	* @return array|ShippingStates 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -49,9 +49,9 @@ class ShippingStatesResource {
 	}
 	
 /**
-	* Retrieves a list of shipping states and their details.
+	* 
 	*
-	* @param string $profileCode The unique, user-defined code of the profile with which the shipping state is associated.
+	* @param string $profileCode 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getStatesAsync($profileCode)
@@ -63,10 +63,10 @@ class ShippingStatesResource {
 	}
 	
 	/**
-	* Updates the details of the shipping states.
+	* 
 	*
-	* @param string $profilecode The unique, user-defined code of the profile with which the shipping state is associated.
-	* @param array|ShippingStates $states The updated details of the shipping states associated with the specified profilecode.
+	* @param string $profilecode 
+	* @param array|ShippingStates $states 
 	* @return array|ShippingStates 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -80,9 +80,9 @@ class ShippingStatesResource {
 	}
 	
 /**
-	* Updates the details of the shipping states.
+	* 
 	*
-	* @param string $profilecode The unique, user-defined code of the profile with which the shipping state is associated.
+	* @param string $profilecode 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateStatesAsync($states, $profilecode)

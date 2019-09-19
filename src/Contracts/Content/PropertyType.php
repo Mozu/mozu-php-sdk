@@ -19,55 +19,25 @@ namespace Mozu\Api\Contracts\Content;
 */
 class PropertyType
 {
-	/**
-	*The administrator name associated with the object/data.
-	*/
-	public $adminName;
+		public $adminName;
 
-	/**
-	*The data type of the source product property, typically of type Bool, DateTime, Number, or String.
-	*/
-	public $dataType;
+		public $dataType;
 
-	/**
-	*The package of document lists and content documents to be installed.
-	*/
-	public $installationPackage;
+		public $installationPackage;
 
-	/**
-	*If true, this entity can be grouped.
-	*/
-	public $isAggregatable;
+		public $isAggregatable;
 
-	/**
-	*Indicates if the entity can be located and returned in a search, used for fields and property types. If true, the entity can be searched. 
-	*/
-	public $isQueryable;
+		public $isQueryable;
 
-	/**
-	*Indicates if the fields or property types are sortable on the page. If true, the property type results are sortable. If false, the property type results cannot be sorted by any options.
-	*/
-	public $isSortable;
+		public $isSortable;
 
-	/**
-	*The user supplied name that appears in . You can use this field for identification purposes.
-	*/
-	public $name;
+		public $name;
 
-	/**
-	*The namespace for the accessible APIs and source capabilities in the core of  APIs.
-	*/
-	public $namespace;
+		public $namespace;
 
-	/**
-	*The fully qualified name for the property type for content.
-	*/
-	public $propertyTypeFQN;
+		public $propertyTypeFQN;
 
-	/**
-	*The current version number of the order, wish list, document list, or document type list.
-	*/
-	public $version;
+		public $version;
 
 }
 

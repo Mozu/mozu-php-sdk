@@ -14,30 +14,15 @@ namespace Mozu\Api\Contracts\AppDev;
 
 
 
-/**
-*	Mozu.AppDev.Contracts.Event ApiType DOCUMENT_HERE 
-*/
 class Event
 {
-	/**
-	*The Api Version Number which defines what events are available for a given API version.
-	*/
-	public $apiVersionNumber;
+		public $apiVersionNumber;
 
-	/**
-	*The category the event belongs to.
-	*/
-	public $eventCategory;
+		public $eventCategory;
 
-	/**
-	*Unique identifier for the event. 
-	*/
-	public $eventId;
+		public $eventId;
 
-	/**
-	*The name of the event.
-	*/
-	public $eventName;
+		public $eventName;
 
 }
 

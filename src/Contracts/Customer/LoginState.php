@@ -20,37 +20,47 @@ namespace Mozu\Api\Contracts\Customer;
 class LoginState
 {
 	/**
-	*The date and time the initial login was unsuccessful. System-supplied and read only. Each time user authentication fails, an update occurs on this field. The amount of failures is calculated together for `failedLoginAttemptCount`.
+	*Date and time when the entity was created, represented in UTC Date/Time.
+	*/
+	public $createdOn;
+
+	/**
+	*The total number of times the customer account has unsuccessfully attempted to log in.
+	*/
+	public $failedLoginAttemptCount;
+
+	/**
+	*The date and time the customer's first unsuccessful attempt to log in was recorded.
 	*/
 	public $firstFailedLoginAttemptOn;
 
 	/**
-	*Indicates if a customer account and associated data is locked. If true, the user account is locked due to multiple failed authentication attempts. The user cannot login until the account is unlocked.
+	*If true, the customer account is locked and the customer cannot log in.
 	*/
 	public $isLocked;
 
 	/**
-	*Indicates if the customer account must have the password changed on login. If true, the login action requires a password change for increased security. If false, the login does not require a password change.
+	*If true, the customer account user must change the password for the account.
 	*/
 	public $isPasswordChangeRequired;
 
 	/**
-	*Provides date and time data when the customer's account was last locked. System-supplied and read-only.
+	*The date and time the customer account was most recently locked.
 	*/
 	public $lastLockedOn;
 
 	/**
-	*Provides the date and time the customer last logged into the store. System-supplied and read-only.
+	*The date and time the customer account last logged in.
 	*/
 	public $lastLoginOn;
 
 	/**
-	*Date and time the customer's password was last modified. System-supplied and read-only.
+	*The date and the time the user associated with the customer account last changed the account password.
 	*/
 	public $lastPasswordChangeOn;
 
 	/**
-	*The number of login attempts remaining for the customer. The user must login successfully before this value reaches zero otherwise the account locks.
+	*The remaining number of login attempts the customer can perform before the system locks the customer account.
 	*/
 	public $remainingLoginAttempts;
 
@@ -58,16 +68,6 @@ class LoginState
 	*Date and time when the entity was last updated, represented in UTC Date/Time.
 	*/
 	public $updatedOn;
-
-	/**
-	*Date and time when the entity was created, represented in UTC Date/Time.
-	*/
-	public $createdOn;
-
-	/**
-	*The total number of failed authentication attempts associated with a customer account attempting access.
-	*/
-	public $failedLoginAttemptCount;
 
 }
 

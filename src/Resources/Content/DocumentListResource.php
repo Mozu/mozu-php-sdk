@@ -34,10 +34,10 @@ class DocumentListResource {
 
 
 	/**
-	* Retrieves a collection of document lists.
+	* 
 	*
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $pageSize 
+	* @param string $responseFields 
 	* @param int $startIndex 
 	* @return DocumentListCollection 
 	* @deprecated deprecated since version 1.17
@@ -52,10 +52,10 @@ class DocumentListResource {
 	}
 	
 /**
-	* Retrieves a collection of document lists.
+	* 
 	*
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $pageSize 
+	* @param string $responseFields 
 	* @param int $startIndex 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
@@ -68,10 +68,10 @@ class DocumentListResource {
 	}
 	
 	/**
-	* Retrieve the details of a document list by providing the list name.
+	* 
 	*
-	* @param string $documentListName Name of content documentListName to delete
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $documentListName The name of the document list.
+	* @param string $responseFields 
 	* @return DocumentList 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -85,10 +85,10 @@ class DocumentListResource {
 	}
 	
 /**
-	* Retrieve the details of a document list by providing the list name.
+	* 
 	*
-	* @param string $documentListName Name of content documentListName to delete
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $documentListName The name of the document list.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getDocumentListAsync($documentListName, $responseFields =  null)
@@ -100,10 +100,10 @@ class DocumentListResource {
 	}
 	
 	/**
-	* Creates a new documentList
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param DocumentList $list The list of document types and related properties that define content used by the content management system (CMS).
+	* @param string $responseFields 
+	* @param DocumentList $list 
 	* @return DocumentList 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -117,9 +117,9 @@ class DocumentListResource {
 	}
 	
 /**
-	* Creates a new documentList
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function createDocumentListAsync($list, $responseFields =  null)
@@ -131,11 +131,11 @@ class DocumentListResource {
 	}
 	
 	/**
-	* Updates a `DocumentListName`.
+	* 
 	*
-	* @param string $documentListName Name of content documentListName to delete
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param DocumentList $list The list of document types and related properties that define content used by the content management system (CMS).
+	* @param string $documentListName 
+	* @param string $responseFields 
+	* @param DocumentList $list 
 	* @return DocumentList 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -149,10 +149,10 @@ class DocumentListResource {
 	}
 	
 /**
-	* Updates a `DocumentListName`.
+	* 
 	*
-	* @param string $documentListName Name of content documentListName to delete
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $documentListName 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateDocumentListAsync($list, $documentListName, $responseFields =  null)
@@ -164,9 +164,10 @@ class DocumentListResource {
 	}
 	
 	/**
-	* Deletes the specified `DocumentListName`.
+	* 
 	*
-	* @param string $documentListName Name of content documentListName to delete
+	* @param string $documentListName 
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteDocumentList($documentListName)
@@ -174,13 +175,14 @@ class DocumentListResource {
 		$mozuClient = DocumentListClient::deleteDocumentListClient($documentListName);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Deletes the specified `DocumentListName`.
+	* 
 	*
-	* @param string $documentListName Name of content documentListName to delete
+	* @param string $documentListName 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteDocumentListAsync($documentListName)

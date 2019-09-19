@@ -19,10 +19,10 @@ class ListViewUrl  {
 
 	/**
 		* Get Resource Url for GetViewEntity
-		* @param string $entityId Unique identifier for an entity, which defines the schema, rules, and formats for JSON entities within the MZDB ( Mongo DB).
-		* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
-		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $viewName The name for a view. Views are used to render data in , such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
+		* @param string $entityId 
+		* @param string $entityListFullName 
+		* @param string $responseFields 
+		* @param string $viewName 
 		* @return string Resource Url
 	*/
 	public static function getViewEntityUrl($entityId, $entityListFullName, $responseFields, $viewName)
@@ -38,12 +38,12 @@ class ListViewUrl  {
 	
 	/**
 		* Get Resource Url for GetViewEntities
-		* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
-		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-		* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
-		* @param string $viewName The name for a view. Views are used to render data in , such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
+		* @param string $entityListFullName 
+		* @param string $filter 
+		* @param int $pageSize 
+		* @param string $responseFields 
+		* @param int $startIndex 
+		* @param string $viewName 
 		* @return string Resource Url
 	*/
 	public static function getViewEntitiesUrl($entityListFullName, $filter, $pageSize, $responseFields, $startIndex, $viewName)
@@ -61,10 +61,10 @@ class ListViewUrl  {
 	
 	/**
 		* Get Resource Url for GetViewEntityContainer
-		* @param string $entityId Unique identifier for an entity, which defines the schema, rules, and formats for JSON entities within the MZDB ( Mongo DB).
-		* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
-		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $viewName The name for a view. Views are used to render data in , such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
+		* @param string $entityId 
+		* @param string $entityListFullName 
+		* @param string $responseFields 
+		* @param string $viewName 
 		* @return string Resource Url
 	*/
 	public static function getViewEntityContainerUrl($entityId, $entityListFullName, $responseFields, $viewName)
@@ -80,12 +80,12 @@ class ListViewUrl  {
 	
 	/**
 		* Get Resource Url for GetViewEntityContainers
-		* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
-		* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-		* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
-		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
-		* @param string $viewName The name for a view. Views are used to render data in , such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
+		* @param string $entityListFullName 
+		* @param string $filter 
+		* @param int $pageSize 
+		* @param string $responseFields 
+		* @param int $startIndex 
+		* @param string $viewName 
 		* @return string Resource Url
 	*/
 	public static function getViewEntityContainersUrl($entityListFullName, $filter, $pageSize, $responseFields, $startIndex, $viewName)
@@ -103,9 +103,9 @@ class ListViewUrl  {
 	
 	/**
 		* Get Resource Url for GetEntityListView
-		* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
-		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $viewName The name for a view. Views are used to render data in , such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
+		* @param string $entityListFullName 
+		* @param string $responseFields 
+		* @param string $viewName 
 		* @return string Resource Url
 	*/
 	public static function getEntityListViewUrl($entityListFullName, $responseFields, $viewName)
@@ -120,8 +120,8 @@ class ListViewUrl  {
 	
 	/**
 		* Get Resource Url for GetEntityListViews
-		* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $entityListFullName 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getEntityListViewsUrl($entityListFullName, $responseFields)
@@ -135,8 +135,8 @@ class ListViewUrl  {
 	
 	/**
 		* Get Resource Url for CreateEntityListView
-		* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param string $entityListFullName 
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function createEntityListViewUrl($entityListFullName, $responseFields)
@@ -150,9 +150,9 @@ class ListViewUrl  {
 	
 	/**
 		* Get Resource Url for UpdateEntityListView
-		* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
-		* @param string $responseFields Use this field to include those fields which are not included by default.
-		* @param string $viewName The name for a view. Views are used to render data in , such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
+		* @param string $entityListFullName 
+		* @param string $responseFields 
+		* @param string $viewName 
 		* @return string Resource Url
 	*/
 	public static function updateEntityListViewUrl($entityListFullName, $responseFields, $viewName)
@@ -167,8 +167,8 @@ class ListViewUrl  {
 	
 	/**
 		* Get Resource Url for DeleteEntityListView
-		* @param string $entityListFullName The full name of the EntityList including namespace in name@nameSpace format
-		* @param string $viewName The name for a view. Views are used to render data in , such as document and entity lists. Each view includes a schema, format, name, ID, and associated data types to render.
+		* @param string $entityListFullName 
+		* @param string $viewName 
 		* @return string Resource Url
 	*/
 	public static function deleteEntityListViewUrl($entityListFullName, $viewName)

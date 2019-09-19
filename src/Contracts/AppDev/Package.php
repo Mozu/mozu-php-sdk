@@ -15,274 +15,115 @@ namespace Mozu\Api\Contracts\AppDev;
 
 
 /**
-*	Properties for a package for fulfillment and shipment. A package may include one to many products, or a bundle of products.
+*	Properties of a development or release package of theme asset or application configuration files.
 */
 class Package
 {
-	/**
-	*Mozu.AppDev.Contracts.Package apiVersion ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $apiVersion;
+		public $apiVersion;
 
-	/**
-	*This will be used by the 3rd party developers to set a URL the intalled applications can call from the Tenant installation/
-	*/
-	public $appConfigUrl;
+		public $appConfigUrl;
 
-	/**
-	*Unique identifier of an app available in your  tenant or within  Dev Center. This ID is unique across all apps installed, initialized, and enabled in the  and those in development through the Dev Center Console.
-	*/
-	public $appId;
+		public $appId;
 
-	/**
-	*App Key for the package in question.
-	*/
-	public $appKey;
+		public $appKey;
 
-	/**
-	*Mozu.AppDev.Contracts.Package applicationDescription ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationDescription;
+		public $applicationDescription;
 
-	/**
-	*Mozu.AppDev.Contracts.Package applicationDetailId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationDetailId;
+		public $applicationDetailId;
 
-	/**
-	*Mozu.AppDev.Contracts.Package applicationId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationId;
+		public $applicationId;
 
-	/**
-	*Mozu.AppDev.Contracts.Package applicationName ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationName;
+		public $applicationName;
 
-	/**
-	*This is the DevAccountId that owns the application
-	*/
-	public $applicationOwnerDevAccountId;
+		public $applicationOwnerDevAccountId;
 
-	/**
-	*Mozu.AppDev.Contracts.Package applicationStatus ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationStatus;
+		public $applicationStatus;
 
-	/**
-	*Mozu.AppDev.Contracts.Package applicationStatusId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationStatusId;
+		public $applicationStatusId;
 
-	/**
-	*Mozu.AppDev.Contracts.Package applicationStatusName ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationStatusName;
+		public $applicationStatusName;
 
-	/**
-	*Mozu.AppDev.Contracts.Package applicationTypeId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationTypeId;
+		public $applicationTypeId;
 
-	/**
-	*Mozu.AppDev.Contracts.Package applicationTypeName ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationTypeName;
+		public $applicationTypeName;
 
-	/**
-	*The date and time in UTC format when the application was updated most recently.
-	*/
-	public $applicationUpdateDate;
+		public $applicationUpdateDate;
 
-	/**
-	*Mozu.AppDev.Contracts.Package appSchemeVersion ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $appSchemeVersion;
+		public $appSchemeVersion;
 
-	/**
-	*Mozu.AppDev.Contracts.Package assetFileCount ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $assetFileCount;
+		public $assetFileCount;
 
-	/**
-	*Mozu.AppDev.Contracts.Package attributeNamespace ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $attributeNamespace;
+		public $attributeNamespace;
 
-	/**
-	*Mozu.AppDev.Contracts.Package dataNamespace ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $dataNamespace;
+		public $dataNamespace;
 
-	/**
-	*Mozu.AppDev.Contracts.Package hasApplicationVersions ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $hasApplicationVersions;
+		public $hasApplicationVersions;
 
-	/**
-	*Unique identifier of the source property, such as a catalog, discount, order, or email template.For a product field it will be the name of the field.For a category ID, must be a positive integer not greater than 2000000. By default,  auto-generates a category ID when categories are created. If you want to specify an ID during creation (which preserves category link relationships when migrating tenant data from one sandbox to another), you must also include the  query string in the endpoint. For example, . Then, use the  property to specify the desired category ID.For a product attribute it will be the Attribute FQN.For a document, the ID must be specified as a 32 character, case-insensitive, alphanumeric string. You can specify the ID as 32 sequential characters or as groups separated by dashes in the format 8-4-4-4-12. For example, or.For email templates, the ID must be one of the following values:			
-	*/
-	public $id;
+		public $id;
 
-	/**
-	*Indicates if the object is deleted. If true, the object has been deleted. This may affect associated child members and objects. For example, a deleted master catalog affects all associated catalogs. 
-	*/
-	public $isDeleted;
+		public $isDeleted;
 
-	/**
-	*Indicates if a customer account and associated data is locked. If true, the user account is locked due to multiple failed authentication attempts. The user cannot login until the account is unlocked.
-	*/
-	public $isLocked;
+		public $isLocked;
 
-	/**
-	*Mozu.AppDev.Contracts.Package isReleasePackage ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $isReleasePackage;
+		public $isReleasePackage;
 
-	/**
-	*Mozu.AppDev.Contracts.Package legacyNamespace ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $legacyNamespace;
+		public $legacyNamespace;
 
-	/**
-	*Mozu.AppDev.Contracts.Package majorVersion ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $majorVersion;
+		public $majorVersion;
 
-	/**
-	*Mozu.AppDev.Contracts.Package minorVersion ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $minorVersion;
+		public $minorVersion;
 
-	/**
-	*The namespace for the accessible APIs and source capabilities in the core of  APIs.
-	*/
-	public $namespace;
+		public $namespace;
 
-	/**
-	*Mozu.AppDev.Contracts.Package namespaceRegistryId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $namespaceRegistryId;
+		public $namespaceRegistryId;
 
-	/**
-	*Mozu.AppDev.Contracts.Package packageDescription ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $packageDescription;
+		public $packageDescription;
 
-	/**
-	*Mozu.AppDev.Contracts.Package packageGuid ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $packageGuid;
+		public $packageGuid;
 
-	/**
-	*Mozu.AppDev.Contracts.Package packageName ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $packageName;
+		public $packageName;
 
-	/**
-	*The parent theme AppKey if this is a theme and the theme extends a valid, published theme.
-	*/
-	public $parentThemeAppKey;
+		public $parentThemeAppKey;
 
-	/**
-	*Mozu.AppDev.Contracts.Package parentThemeName ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $parentThemeName;
+		public $parentThemeName;
 
-	/**
-	*Mozu.AppDev.Contracts.Package publishedParentSemanticVersion ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $publishedParentSemanticVersion;
+		public $publishedParentSemanticVersion;
 
-	/**
-	*Mozu.AppDev.Contracts.Package publishedParentThemeId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $publishedParentThemeId;
+		public $publishedParentThemeId;
 
-	/**
-	*Mozu.AppDev.Contracts.Package revision ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $revision;
+		public $revision;
 
-	/**
-	*Mozu.AppDev.Contracts.Package semanticVersionRange ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $semanticVersionRange;
+		public $semanticVersionRange;
 
-	/**
-	*Mozu.AppDev.Contracts.Package sharedSecret ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $sharedSecret;
+		public $sharedSecret;
 
-	/**
-	*Mozu.AppDev.Contracts.Package themeEngineVersion ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $themeEngineVersion;
+		public $themeEngineVersion;
 
-	/**
-	*Whether or not there's a theme update.
-	*/
-	public $updateAvailable;
+		public $updateAvailable;
 
-	/**
-	*The date and time in UTC format the object was updated most recently.
-	*/
-	public $updateDate;
+		public $updateDate;
 
-	/**
-	*The AppKey is a runtime type. This only applies for themes that inherit from another theme. It shows the most current update available.
-	*/
-	public $updateParentAppKey;
+		public $updateParentAppKey;
 
-	/**
-	*updateParentThemeName ApiType DOCUMENT_HERE 
-	*/
-	public $updateParentThemeName;
+		public $updateParentThemeName;
 
-	/**
-	*updateParentThemeVersion ApiType DOCUMENT_HERE 
-	*/
-	public $updateParentThemeVersion;
+		public $updateParentThemeVersion;
 
-	/**
-	*Unique identifier of the customer account (shopper or system user). System-supplied and read-only. If the shopper user is anonymous, the user ID represents a system-generated user ID string.
-	*/
-	public $userId;
+		public $userId;
 
-	/**
-	*List of Statuses that the application can move to during the application lifecycle. This is based on what the current value of the ApplicatinStatusId is.
-	*/
-	public $validApplicationStatusIdList;
+		public $validApplicationStatusIdList;
 
-	/**
-	*Mozu.AppDev.Contracts.Package applicationAttributes ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationAttributes;
+		public $applicationAttributes;
 
-	/**
-	*List of Application Behaviors that apply to this version of the application.
-	*/
-	public $applicationBehaviors;
+		public $applicationBehaviors;
 
-	/**
-	*Mozu.AppDev.Contracts.Package applicationCapabilities ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationCapabilities;
+		public $applicationCapabilities;
 
-	/**
-	*Mozu.AppDev.Contracts.Package applicationCapabilityTypes ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationCapabilityTypes;
+		public $applicationCapabilityTypes;
 
-	/**
-	*Mozu.AppDev.Contracts.Package applicationEntitlements ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationEntitlements;
+		public $applicationEntitlements;
 
-	/**
-	*Mozu.AppDev.Contracts.Package applicationSubscriptions ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $applicationSubscriptions;
+		public $applicationSubscriptions;
 
 }
 

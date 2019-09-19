@@ -19,10 +19,7 @@ namespace Mozu\Api\Contracts\ProductAdmin;
 */
 class ProductCategory
 {
-	/**
-	*Unique identifier for the storefront container used to organize products.
-	*/
-	public $categoryId;
+		public $categoryId;
 
 }
 

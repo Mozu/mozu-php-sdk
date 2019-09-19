@@ -19,45 +19,24 @@ namespace Mozu\Api\Contracts\ShippingRuntime;
 */
 class ShippingRate
 {
-	/**
-	*The total calculated shipping amount requested for the package or shipment.
-	*/
-	public $amount;
+		public $amount;
 
-	/**
-	*The carrier-defined alphanumeric code associated with this shipping rate.
-	*/
-	public $code;
+		public $code;
 
 	/**
 	*The number of days the shipment will spend between the origin address and the destination address.
 	*/
 	public $daysInTransit;
 
-	/**
-	*Localizable content (such as a name and/or description) for an attribute. The content may be localized when displayed according to the locale code specified by the master catalog. Content can include descriptive text for product extensible attributes, catalog-level descriptions (displayed if isContentOverriden is true), product bundles, and customer account notes.
-	*/
-	public $content;
+		public $content;
 
-	/**
-	*Collection of carrier-specific key-value attribute pairs associated with a shipping carrier. These are required to retrieve a shipping rate request and are returned for the generated shipping label.
-	*/
-	public $customAttributes;
+		public $customAttributes;
 
-	/**
-	*Shipping rate data.
-	*/
-	public $data;
+		public $data;
 
-	/**
-	*Array list of validation and status messages associated with shipping rates, orders, and product purchasable state.
-	*/
-	public $messages;
+		public $messages;
 
-	/**
-	*Properties of a calculated shipping rate for individual line items in a shipment.
-	*/
-	public $shippingItemRates;
+		public $shippingItemRates;
 
 }
 

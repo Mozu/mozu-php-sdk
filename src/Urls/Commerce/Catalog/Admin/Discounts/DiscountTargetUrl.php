@@ -19,8 +19,8 @@ class DiscountTargetUrl  {
 
 	/**
 		* Get Resource Url for GetDiscountTarget
-		* @param int $discountId discountId parameter description DOCUMENT_HERE 
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param int $discountId Unique identifier of the discount. System-supplied and read only.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function getDiscountTargetUrl($discountId, $responseFields)
@@ -34,8 +34,8 @@ class DiscountTargetUrl  {
 	
 	/**
 		* Get Resource Url for UpdateDiscountTarget
-		* @param int $discountId discountId parameter description DOCUMENT_HERE 
-		* @param string $responseFields Use this field to include those fields which are not included by default.
+		* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
+		* @param string $responseFields 
 		* @return string Resource Url
 	*/
 	public static function updateDiscountTargetUrl($discountId, $responseFields)

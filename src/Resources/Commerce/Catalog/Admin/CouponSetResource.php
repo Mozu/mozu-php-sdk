@@ -17,7 +17,7 @@ use Mozu\Api\ApiContext;
 
 
 /**
-* Use the Coupon Sets resource to view and create coupon sets. You can use coupon sets to group multiple coupon codes together and associate them with one or more discounts. Use the  subresource to manage the coupon codes within manual coupon sets. Use the  subresource to mange the discounts assigned to coupon sets.
+* 
 */
 class CouponSetResource {
 
@@ -33,14 +33,14 @@ class CouponSetResource {
 
 
 	/**
-	* Retrieves a list of coupon sets in the catalog according to any specified filter criteria and sort options.
+	* 
 	*
-	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
-	* @param bool $includeCounts Specifies whether to include the number of redeemed coupons, existing coupon codes, and assigned discounts in the response body.
-	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for more information.
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
+	* @param string $filter 
+	* @param bool $includeCounts 
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param string $sortBy 
+	* @param int $startIndex 
 	* @return CouponSetCollection 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -54,14 +54,14 @@ class CouponSetResource {
 	}
 	
 /**
-	* Retrieves a list of coupon sets in the catalog according to any specified filter criteria and sort options.
+	* 
 	*
-	* @param string $filter A set of filter expressions representing the search parameters for a query. This parameter is optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for a list of supported filters.
-	* @param bool $includeCounts Specifies whether to include the number of redeemed coupons, existing coupon codes, and assigned discounts in the response body.
-	* @param int $pageSize When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with this parameter set to 25, to get the 51st through the 75th items, set startIndex to 50.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param string $sortBy The element to sort the results by and the channel in which the results appear. Either ascending (a-z) or descending (z-a) channel. Optional. Refer to [Sorting and Filtering](../../../../Developer/api-guides/sorting-filtering.htm) for more information.
-	* @param int $startIndex When creating paged results from a query, this value indicates the zero-based offset in the complete result set where the returned entities begin. For example, with pageSize set to 25, to get the 51st through the 75th items, set this parameter to 50.
+	* @param string $filter 
+	* @param bool $includeCounts 
+	* @param int $pageSize 
+	* @param string $responseFields 
+	* @param string $sortBy 
+	* @param int $startIndex 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getCouponSetsAsync($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $includeCounts =  null, $responseFields =  null)
@@ -73,11 +73,11 @@ class CouponSetResource {
 	}
 	
 	/**
-	* Retrieves the details of a single coupon set. Use the couponSetCode parameter to specify the coupon set. Use the includeCounts parameter to specify whether to include the number of redeemed coupons, existing coupon codes, and assigned discounts.
+	* 
 	*
-	* @param string $couponSetCode The unique identifier of the coupon set.
-	* @param bool $includeCounts Specifies whether to include the number of redeemed coupons, existing coupon codes, and assigned discounts in the response body.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $couponSetCode 
+	* @param bool $includeCounts 
+	* @param string $responseFields 
 	* @return CouponSet 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -91,11 +91,11 @@ class CouponSetResource {
 	}
 	
 /**
-	* Retrieves the details of a single coupon set. Use the couponSetCode parameter to specify the coupon set. Use the includeCounts parameter to specify whether to include the number of redeemed coupons, existing coupon codes, and assigned discounts.
+	* 
 	*
-	* @param string $couponSetCode The unique identifier of the coupon set.
-	* @param bool $includeCounts Specifies whether to include the number of redeemed coupons, existing coupon codes, and assigned discounts in the response body.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $couponSetCode 
+	* @param bool $includeCounts 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getCouponSetAsync($couponSetCode, $includeCounts =  null, $responseFields =  null)
@@ -107,9 +107,9 @@ class CouponSetResource {
 	}
 	
 	/**
-	* Returns a unique, random four character code to use for the couponSetCode.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return string 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -123,9 +123,9 @@ class CouponSetResource {
 	}
 	
 /**
-	* Returns a unique, random four character code to use for the couponSetCode.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function getUniqueCouponSetCodeAsync($responseFields =  null)
@@ -137,10 +137,10 @@ class CouponSetResource {
 	}
 	
 	/**
-	* Adds a single coupon set to the catalog.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param CouponSet $couponSet The details of the new coupon set.
+	* @param string $responseFields 
+	* @param CouponSet $couponSet 
 	* @return CouponSet 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -154,9 +154,9 @@ class CouponSetResource {
 	}
 	
 /**
-	* Adds a single coupon set to the catalog.
+	* 
 	*
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function addCouponSetAsync($couponSet, $responseFields =  null)
@@ -168,9 +168,10 @@ class CouponSetResource {
 	}
 	
 	/**
-	* Validates the couponSetCode and tests it for uniqueness.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
+	* @param string $code 
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function validateUniqueCouponSetCode($code)
@@ -178,13 +179,14 @@ class CouponSetResource {
 		$mozuClient = CouponSetClient::validateUniqueCouponSetCodeClient($code);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Validates the couponSetCode and tests it for uniqueness.
+	* 
 	*
-	* @param string $code User-defined code that uniqely identifies the channel group.
+	* @param string $code 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function validateUniqueCouponSetCodeAsync($code)
@@ -196,11 +198,11 @@ class CouponSetResource {
 	}
 	
 	/**
-	* Updates one or more properties of a coupon set in the catalog.
+	* 
 	*
-	* @param string $couponSetCode The unique identifier of the coupon set.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
-	* @param CouponSet $couponSet The details of the updated coupon set.
+	* @param string $couponSetCode 
+	* @param string $responseFields 
+	* @param CouponSet $couponSet 
 	* @return CouponSet 
 	* @deprecated deprecated since version 1.17
 	*/
@@ -214,10 +216,10 @@ class CouponSetResource {
 	}
 	
 /**
-	* Updates one or more properties of a coupon set in the catalog.
+	* 
 	*
-	* @param string $couponSetCode The unique identifier of the coupon set.
-	* @param string $responseFields Filtering syntax appended to an API call to increase or decrease the amount of data returned inside a JSON object. This parameter should only be used to retrieve data. Attempting to update data using this parameter may cause data loss.
+	* @param string $couponSetCode 
+	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function updateCouponSetAsync($couponSet, $couponSetCode, $responseFields =  null)
@@ -229,9 +231,10 @@ class CouponSetResource {
 	}
 	
 	/**
-	* Deletes a specified coupon set from the catalog. Use the couponSetCode parameter to specify the coupon set to delete.
+	* 
 	*
-	* @param string $couponSetCode The unique identifier of the coupon set.
+	* @param string $couponSetCode 
+	* @return Stream 
 	* @deprecated deprecated since version 1.17
 	*/
 	public function deleteCouponSet($couponSetCode)
@@ -239,13 +242,14 @@ class CouponSetResource {
 		$mozuClient = CouponSetClient::deleteCouponSetClient($couponSetCode);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
+		return $mozuClient->getResult();
 
 	}
 	
 /**
-	* Deletes a specified coupon set from the catalog. Use the couponSetCode parameter to specify the coupon set to delete.
+	* 
 	*
-	* @param string $couponSetCode The unique identifier of the coupon set.
+	* @param string $couponSetCode 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
 	public function deleteCouponSetAsync($couponSetCode)

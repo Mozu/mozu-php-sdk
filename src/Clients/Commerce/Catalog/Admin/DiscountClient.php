@@ -18,16 +18,16 @@ use Mozu\Api\Urls\Commerce\Catalog\Admin\DiscountUrl;
 use Mozu\Api\Headers;
 
 /**
-* Use the Discounts resource to define and manage discounts to apply to products, product categories, or orders. The discounts can be a specified amount off the price, percentage off the price, or for free shipping. You can create a coupon code that shoppers can use to redeem the discount.
+* Define and manage discounts to apply to products, product categories, or orders. The discounts can be a specified amount off the price, percentage off the price, or for free shipping. Create a coupon code that shoppers can use to redeem the discount.
 */
 class DiscountClient {
 
 	/**
-	* Retrieves a list of discounts according to any specified filter criteria and sort options.
+	* 
 	*
-	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=IsDisplayed+eq+true"
-	* @param int $pageSize The number of results to display on each page when creating paged results from a query. The maximum value is 200.
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $filter 
+	* @param int $pageSize 
+	* @param string $responseFields 
 	* @param string $sortBy 
 	* @param int $startIndex 
 	* @return MozuClient
@@ -42,10 +42,10 @@ class DiscountClient {
 	}
 	
 	/**
-	* Retrieves the localized content specified for the specified discount.
+	* 
 	*
-	* @param int $discountId discountId parameter description DOCUMENT_HERE 
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getDiscountContentClient($dataViewMode, $discountId, $responseFields =  null)
@@ -58,10 +58,10 @@ class DiscountClient {
 	}
 	
 	/**
-	* Retrieves the details of a single discount.
+	* 
 	*
-	* @param int $discountId discountId parameter description DOCUMENT_HERE 
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function getDiscountClient($dataViewMode, $discountId, $responseFields =  null)
@@ -74,9 +74,9 @@ class DiscountClient {
 	}
 	
 	/**
-	* Generates a random code for a coupon.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
+	* @param string $responseFields 
 	* @return MozuClient
 	*/
 	public static function generateRandomCouponClient($responseFields =  null)
@@ -89,10 +89,10 @@ class DiscountClient {
 	}
 	
 	/**
-	* Creates a new discount or coupon to apply to a product, category, order, or shipping.
+	* 
 	*
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Discount $discount Name of the discount added and applied to a shopping cart and order for a shopper's purchase. 
+	* @param string $responseFields 
+	* @param Discount $discount Properties of the discount to create. You must specify the discount name, amount type, start date, and target.
 	* @return MozuClient
 	*/
 	public static function createDiscountClient($discount, $responseFields =  null)
@@ -105,11 +105,11 @@ class DiscountClient {
 	}
 	
 	/**
-	* Updates the localizable content for the specified discount or renames the discount without modifying its other properties.
+	* 
 	*
-	* @param int $discountId discountId parameter description DOCUMENT_HERE 
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param DiscountLocalizedContent $content The container for the language-specific name of the discount. A container exists for each supported language (LocaleCode). This parameter enables you to display the discount name in multiple languages yet manage it as a single discount internally.
+	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
+	* @param string $responseFields 
+	* @param DiscountLocalizedContent $content The discount content to update, including the discount name.
 	* @return MozuClient
 	*/
 	public static function updateDiscountContentClient($content, $discountId, $responseFields =  null)
@@ -122,11 +122,11 @@ class DiscountClient {
 	}
 	
 	/**
-	* Updates one or more properties of the specified discount.
+	* 
 	*
-	* @param int $discountId discountId parameter description DOCUMENT_HERE 
-	* @param string $responseFields Use this field to include those fields which are not included by default.
-	* @param Discount $discount Name of the discount added and applied to a shopping cart and order for a shopper's purchase. 
+	* @param int $discountId Unique identifier of the discount to update.
+	* @param string $responseFields 
+	* @param Discount $discount Properties of the discount to update.
 	* @return MozuClient
 	*/
 	public static function updateDiscountClient($discount, $discountId, $responseFields =  null)
@@ -139,9 +139,10 @@ class DiscountClient {
 	}
 	
 	/**
-	* Deletes a discount specified by its discount ID.
+	* 
 	*
-	* @param int $discountId discountId parameter description DOCUMENT_HERE 
+	* @param int $discountId Unique identifier of the discount. System-supplied and read-only.
+	* @return MozuClient
 	*/
 	public static function deleteDiscountClient($discountId)
 	{

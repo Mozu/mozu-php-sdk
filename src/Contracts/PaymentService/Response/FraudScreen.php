@@ -14,30 +14,15 @@ namespace Mozu\Api\Contracts\PaymentService\Response;
 
 
 
-/**
-*	Mozu.PaymentService.Contracts.Response.FraudScreen ApiType DOCUMENT_HERE 
-*/
 class FraudScreen
 {
-	/**
-	*Unique identifier of the payment interaction from the payment gateway.
-	*/
-	public $gatewayInteractionId;
+		public $gatewayInteractionId;
 
-	/**
-	*The current status of the object.This value is read only. Valid values for this field are: "Active", "Expired", and "Inactive".
-	*/
-	public $status;
+		public $status;
 
-	/**
-	*Mozu.PaymentService.Contracts.Response.FraudScreen transactionId ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $transactionId;
+		public $transactionId;
 
-	/**
-	*Mozu.PaymentService.Contracts.Response.FraudScreen fraudScreenResponseData ApiTypeMember DOCUMENT_HERE 
-	*/
-	public $fraudScreenResponseData;
+		public $fraudScreenResponseData;
 
 }
 
