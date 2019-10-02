@@ -16,11 +16,11 @@ namespace Mozu\Api\Contracts\MZDB;
 
 class EntityContainerCollection
 {
+		public $startIndex;
+
 		public $pageCount;
 
 		public $pageSize;
-
-		public $startIndex;
 
 		public $totalCount;
 

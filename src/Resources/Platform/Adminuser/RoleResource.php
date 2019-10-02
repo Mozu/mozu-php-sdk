@@ -36,15 +36,13 @@ class RoleResource {
 	* 
 	*
 	* @param string $filter 
-	* @param int $pageSize 
 	* @param string $responseFields 
-	* @param int $startIndex 
 	* @return RoleCollection 
 	* @deprecated deprecated since version 1.17
 	*/
-	public function getRoles($startIndex =  null, $pageSize =  null, $filter =  null, $responseFields =  null)
+	public function getRoles($filter =  null, $responseFields =  null)
 	{
-		$mozuClient = RoleClient::getRolesClient($startIndex, $pageSize, $filter, $responseFields);
+		$mozuClient = RoleClient::getRolesClient($filter, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -55,14 +53,12 @@ class RoleResource {
 	* 
 	*
 	* @param string $filter 
-	* @param int $pageSize 
 	* @param string $responseFields 
-	* @param int $startIndex 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
-	public function getRolesAsync($startIndex =  null, $pageSize =  null, $filter =  null, $responseFields =  null)
+	public function getRolesAsync($filter =  null, $responseFields =  null)
 	{
-		$mozuClient = RoleClient::getRolesClient($startIndex, $pageSize, $filter, $responseFields);
+		$mozuClient = RoleClient::getRolesClient($filter, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 

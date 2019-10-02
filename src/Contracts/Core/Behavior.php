@@ -19,6 +19,8 @@ namespace Mozu\Api\Contracts\Core;
 */
 class Behavior
 {
+		public $categoryId;
+
 		public $id;
 
 		public $isPrivate;
@@ -33,8 +35,6 @@ class Behavior
 	public $systemRoles;
 
 		public $validUserTypes;
-
-		public $categoryId;
 
 }
 

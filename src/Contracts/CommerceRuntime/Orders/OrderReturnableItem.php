@@ -16,6 +16,18 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Orders;
 
 class OrderReturnableItem
 {
+		public $fulfillmentStatus;
+
+		public $orderItemId;
+
+		public $orderItemOptionAttributeFQN;
+
+		public $orderLineId;
+
+		public $parentProductCode;
+
+		public $parentProductName;
+
 		public $productCode;
 
 		public $productName;
@@ -28,7 +40,11 @@ class OrderReturnableItem
 
 		public $quantityReturned;
 
-		public $items;
+		public $shipmentItemId;
+
+		public $shipmentNumber;
+
+		public $unitQuantity;
 
 }
 

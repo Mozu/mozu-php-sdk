@@ -20,19 +20,15 @@ class RoleUrl  {
 	/**
 		* Get Resource Url for GetRoles
 		* @param string $filter 
-		* @param int $pageSize 
 		* @param string $responseFields 
-		* @param int $startIndex 
 		* @return string Resource Url
 	*/
-	public static function getRolesUrl($filter, $pageSize, $responseFields, $startIndex)
+	public static function getRolesUrl($filter, $responseFields)
 	{
-		$url = "/api/platform/adminuser/roles/?startIndex={startIndex}&pageSize={pageSize}&filter={filter}&responseFields={responseFields}";
+		$url = "/api/platform/adminuser/roles/?filter={filter}&responseFields={responseFields}";
 		$mozuUrl = new MozuUrl($url, UrlLocation::TENANT_POD,"GET", false) ;
 		$url = $mozuUrl->formatUrl("filter", $filter);
-		$url = $mozuUrl->formatUrl("pageSize", $pageSize);
 		$url = $mozuUrl->formatUrl("responseFields", $responseFields);
-		$url = $mozuUrl->formatUrl("startIndex", $startIndex);
 		return $mozuUrl;
 	}
 	

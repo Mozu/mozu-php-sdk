@@ -16,9 +16,7 @@ namespace Mozu\Api\Contracts\CommerceRuntime\Fulfillment;
 
 class ShipmentItemAdjustment
 {
-		public $actualPrice;
-
-		public $unitTax;
+		public $overridePrice;
 
 }
 

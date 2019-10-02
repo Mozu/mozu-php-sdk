@@ -25,14 +25,12 @@ class RoleClient {
 	* 
 	*
 	* @param string $filter 
-	* @param int $pageSize 
 	* @param string $responseFields 
-	* @param int $startIndex 
 	* @return MozuClient
 	*/
-	public static function getRolesClient($startIndex =  null, $pageSize =  null, $filter =  null, $responseFields =  null)
+	public static function getRolesClient($filter =  null, $responseFields =  null)
 	{
-		$url = RoleUrl::getRolesUrl($filter, $pageSize, $responseFields, $startIndex);
+		$url = RoleUrl::getRolesUrl($filter, $responseFields);
 		$mozuClient = new MozuClient();
 		$mozuClient->withResourceUrl($url);
 		return $mozuClient;

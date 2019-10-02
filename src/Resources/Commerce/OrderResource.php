@@ -37,6 +37,7 @@ class OrderResource {
 	*
 	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter an order's search results by any of its properties, including status, contact information, or total. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=Status+eq+Submitted"
 	* @param bool $includeBin 
+	* @param string $mode 
 	* @param int $pageSize Used to page results from a query. Indicates the maximum number of entities to return from a query. Default value: 20. Max value: 200.
 	* @param string $q A list of order search terms to use in the query when searching across order number and the name or email of the billing contact. Separate multiple search terms with a space character.
 	* @param int $qLimit The maximum number of search results to return in the response. You can limit any range between 1-100.
@@ -46,9 +47,9 @@ class OrderResource {
 	* @return OrderCollection 
 	* @deprecated deprecated since version 1.17
 	*/
-	public function getOrders($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $q =  null, $qLimit =  null, $includeBin =  null, $responseFields =  null)
+	public function getOrders($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $q =  null, $qLimit =  null, $includeBin =  null, $mode =  null, $responseFields =  null)
 	{
-		$mozuClient = OrderClient::getOrdersClient($startIndex, $pageSize, $sortBy, $filter, $q, $qLimit, $includeBin, $responseFields);
+		$mozuClient = OrderClient::getOrdersClient($startIndex, $pageSize, $sortBy, $filter, $q, $qLimit, $includeBin, $mode, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -60,6 +61,7 @@ class OrderResource {
 	*
 	* @param string $filter A set of expressions that consist of a field, operator, and value and represent search parameter syntax when filtering results of a query. You can filter an order's search results by any of its properties, including status, contact information, or total. Valid operators include equals (eq), does not equal (ne), greater than (gt), less than (lt), greater than or equal to (ge), less than or equal to (le), starts with (sw), or contains (cont). For example - "filter=Status+eq+Submitted"
 	* @param bool $includeBin 
+	* @param string $mode 
 	* @param int $pageSize Used to page results from a query. Indicates the maximum number of entities to return from a query. Default value: 20. Max value: 200.
 	* @param string $q A list of order search terms to use in the query when searching across order number and the name or email of the billing contact. Separate multiple search terms with a space character.
 	* @param int $qLimit The maximum number of search results to return in the response. You can limit any range between 1-100.
@@ -68,9 +70,9 @@ class OrderResource {
 	* @param int $startIndex 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
-	public function getOrdersAsync($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $q =  null, $qLimit =  null, $includeBin =  null, $responseFields =  null)
+	public function getOrdersAsync($startIndex =  null, $pageSize =  null, $sortBy =  null, $filter =  null, $q =  null, $qLimit =  null, $includeBin =  null, $mode =  null, $responseFields =  null)
 	{
-		$mozuClient = OrderClient::getOrdersClient($startIndex, $pageSize, $sortBy, $filter, $q, $qLimit, $includeBin, $responseFields);
+		$mozuClient = OrderClient::getOrdersClient($startIndex, $pageSize, $sortBy, $filter, $q, $qLimit, $includeBin, $mode, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 
@@ -141,14 +143,15 @@ class OrderResource {
 	*
 	* @param bool $draft If true, retrieve the draft version of the order, which might include uncommitted changes to the order or its components.
 	* @param bool $includeBin 
+	* @param string $mode 
 	* @param string $orderId Unique identifier of the order details to get.
 	* @param string $responseFields 
 	* @return Order 
 	* @deprecated deprecated since version 1.17
 	*/
-	public function getOrder($orderId, $draft =  null, $includeBin =  null, $responseFields =  null)
+	public function getOrder($orderId, $draft =  null, $includeBin =  null, $mode =  null, $responseFields =  null)
 	{
-		$mozuClient = OrderClient::getOrderClient($orderId, $draft, $includeBin, $responseFields);
+		$mozuClient = OrderClient::getOrderClient($orderId, $draft, $includeBin, $mode, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		$mozuClient->execute();
 		return $mozuClient->getResult();
@@ -160,13 +163,14 @@ class OrderResource {
 	*
 	* @param bool $draft If true, retrieve the draft version of the order, which might include uncommitted changes to the order or its components.
 	* @param bool $includeBin 
+	* @param string $mode 
 	* @param string $orderId Unique identifier of the order details to get.
 	* @param string $responseFields 
 	* @return Promise - use $promise->then(sucessfn, errorfn). successFn is passed Mozu\Api\MozuResult. errorFn is passed Mozu\Api\ApiException
 	*/
-	public function getOrderAsync($orderId, $draft =  null, $includeBin =  null, $responseFields =  null)
+	public function getOrderAsync($orderId, $draft =  null, $includeBin =  null, $mode =  null, $responseFields =  null)
 	{
-		$mozuClient = OrderClient::getOrderClient($orderId, $draft, $includeBin, $responseFields);
+		$mozuClient = OrderClient::getOrderClient($orderId, $draft, $includeBin, $mode, $responseFields);
 		$mozuClient = $mozuClient->withContext($this->apiContext);
 		return $mozuClient->executeAsync();
 

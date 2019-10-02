@@ -117,6 +117,8 @@ class Order
 
 		public $isTaxExempt;
 
+		public $isUnified;
+
 		public $itemTaxTotal;
 
 		public $lastValidationDate;

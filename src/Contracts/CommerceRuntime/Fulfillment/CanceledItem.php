@@ -64,9 +64,29 @@ class CanceledItem
 
 		public $shippingTax;
 
+		public $taxableHandling;
+
+		public $taxableLineItemCost;
+
+		public $taxableShipping;
+
 		public $unitPrice;
 
 		public $variationProductCode;
+
+		public $weightedDutyAdjustment;
+
+		public $weightedHandlingAdjustment;
+
+		public $weightedHandlingTaxAdjustment;
+
+		public $weightedLineItemTaxAdjustment;
+
+		public $weightedShipmentAdjustment;
+
+		public $weightedShippingAdjustment;
+
+		public $weightedShippingTaxAdjustment;
 
 		public $auditInfo;
 
